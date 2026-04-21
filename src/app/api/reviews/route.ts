@@ -43,5 +43,5 @@ export async function POST(request: Request) {
     entityId: submission.id
   });
 
-  return NextResponse.json({ message: "החוויה התקבלה ותיבדק לפני פרסום." });
+  return NextResponse.json({ message: "השיתוף נשמר. הוא יעלה רק אחרי בדיקה קצרה." });
 }

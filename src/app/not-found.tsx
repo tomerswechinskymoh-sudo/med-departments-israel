@@ -7,7 +7,7 @@ export default function NotFound() {
         <p className="text-sm font-semibold text-brand-600">404</p>
         <h1 className="mt-3 text-3xl font-bold text-ink">העמוד שחיפשת לא נמצא</h1>
         <p className="mt-4 max-w-xl text-sm leading-7 text-slate-600">
-          ייתכן שהקישור השתנה או שהמחלקה אינה זמינה כרגע לצפייה ציבורית.
+          ייתכן שהקישור השתנה או שהמחלקה אינה זמינה כרגע לצפייה.
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Link

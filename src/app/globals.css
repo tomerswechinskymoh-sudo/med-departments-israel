@@ -15,9 +15,10 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(29, 170, 165, 0.12), transparent 24%),
-    linear-gradient(180deg, #f7fcfd 0%, #edf6f9 100%);
-  color: #163043;
+    radial-gradient(circle at top right, rgba(19, 179, 154, 0.16), transparent 24%),
+    radial-gradient(circle at top left, rgba(59, 115, 150, 0.2), transparent 28%),
+    linear-gradient(180deg, #f7fafc 0%, #eef4f8 52%, #e7eff5 100%);
+  color: #10273a;
   font-family: "Rubik", "Heebo", "Assistant", "Segoe UI", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -33,7 +34,7 @@ a {
 }
 
 ::selection {
-  background: rgba(47, 138, 168, 0.18);
+  background: rgba(59, 115, 150, 0.22);
 }
 
 input,
@@ -41,4 +42,20 @@ textarea,
 select,
 button {
   font: inherit;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+details summary {
+  list-style: none;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
 }

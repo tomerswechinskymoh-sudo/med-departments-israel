@@ -18,24 +18,37 @@ export default async function SubmitReviewPage({
   return (
     <PageShell className="py-10">
       <div className="mx-auto max-w-5xl">
-        <Card className="overflow-hidden p-0">
+        <Card className="overflow-hidden border-brand-100/80 bg-white/94 p-0">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-            <div className="p-6 lg:p-8">
+            <div className="space-y-5 p-6 lg:p-8">
               <PlaceholderVisual
-                label="החוויה שלך יכולה לעזור לבאים אחריך"
-                caption="שיתוף ציבורי עם אימות פרטי ומלא moderation לפני פרסום"
+                label="מהשטח, כמו שזה באמת הרגיש"
+                caption="שיתוף קצר שלך יכול לעזור למישהו אחר להבין אם זה מתאים לו"
                 variant="hero"
                 className="aspect-[1/1.08] w-full"
               />
+              <div className="grid gap-4">
+                <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/75 p-4">
+                  <p className="text-sm font-semibold text-brand-700">לא צריך חשבון</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-700">
+                    אפשר לשתף חוויה גם בלי להירשם. כמה דקות, וזהו.
+                  </p>
+                </div>
+                <div className="rounded-[1.5rem] border border-amber-200 bg-amber-50/90 p-4">
+                  <p className="text-sm font-semibold text-amber-900">שומרים עלייך</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-700">
+                    הטלפון נשמר רק לאימות. אם בוחרים בעילום שם, לא מציגים שום פרט מזהה באתר.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="p-6 lg:p-8">
-              <p className="text-sm font-semibold text-brand-600">הגשת חוויה ציבורית</p>
+              <p className="text-sm font-semibold text-brand-600">שיתוף חוויה מהמחלקה</p>
               <h1 className="mt-2 text-3xl font-bold text-ink">רוצה לספר על החוויה שלך?</h1>
               <p className="mt-3 text-sm leading-7 text-slate-600">
-                מתמחים, סטאז'רים וגם סטודנטים יכולים לשתף כאן חוויה ממחלקה, סבב או אלקטיב
-                בלי לפתוח חשבון. פרטי הקשר נשמרים רק לצורך אימות, והחוויה עצמה לא תפורסם
-                לפני בדיקה ואישור.
+                אם היית שם כסטודנט/ית, סטאז&apos;ר/ית או מתמחה/ה, זה המקום לשתף מה באמת
+                קורה שם. קצר, אישי, ועוזר למי שבודק/ת עכשיו את הצעד הבא.
               </p>
               {selectedDepartment ? (
                 <p className="mt-3 text-sm font-medium text-brand-700">

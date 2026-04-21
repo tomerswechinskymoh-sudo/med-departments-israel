@@ -140,13 +140,13 @@ export default async function DashboardPage() {
             <Link href="/reviews/new" className="rounded-2xl bg-brand-50 p-4 transition hover:bg-brand-100">
               <p className="font-semibold text-ink">רוצה לספר על החוויה שלך?</p>
               <p className="mt-1 text-sm text-slate-600">
-                שליחת חוויה לצוות האתר לצורך אימות ובדיקה לפני פרסום.
+                לשתף מהשטח בלי חשבון, עם אימות קצר לפני שזה עולה.
               </p>
             </Link>
             <Link href="/faq" className="rounded-2xl bg-brand-50 p-4 transition hover:bg-brand-100">
               <p className="font-semibold text-ink">איך להשתמש באתר</p>
               <p className="mt-1 text-sm text-slate-600">
-                שאלות נפוצות על הרשמה, ביקורות, פרסום הזדמנויות ומדיניות האתר.
+                תשובות קצרות על הרשמה, שיתופים מהשטח, פרטיות ופרסום רשמי.
               </p>
             </Link>
           </div>

@@ -71,7 +71,7 @@ export function DepartmentCard({
 
         <div className="mt-6 space-y-4">
           <div className="flex items-center justify-between text-sm text-slate-600">
-            <span>{department.reviewCount} חוויות מאושרות</span>
+            <span>{department.reviewCount} שיתופים מהשטח</span>
             <RatingStars value={department.averageOverall || 0} />
           </div>
 

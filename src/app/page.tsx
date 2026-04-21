@@ -49,14 +49,14 @@ export default async function HomePage() {
                 לדעת איך מחלקה באמת נראית
               </h1>
               <p className="max-w-2xl text-base leading-8 text-slate-700 md:text-lg">
-                מחלקות, פתיחות, מחקר וחוויות מהשטח. קצר, ברור, ועוזר להחליט.
+                מחלקות, תקנים, מחקר ושיתופים מהשטח. קצר, ברור, ועוזר להבין אם זה מתאים לך.
               </p>
             </div>
 
             <form
               id="home-search"
               action="/departments"
-              className="rounded-[1.75rem] border border-brand-100 bg-white/95 p-3 shadow-panel"
+              className="rounded-[1.75rem] border border-brand-100 bg-white/96 p-3 shadow-panel"
             >
               <div className="flex flex-col gap-3 md:flex-row">
                 <input
@@ -101,21 +101,21 @@ export default async function HomePage() {
 
             <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               <Card className="bg-brand-900 text-white">
-                <p className="text-xs font-semibold text-brand-100">מה בודקים</p>
+                <p className="text-xs font-semibold text-brand-100">מה באמת קורה שם</p>
                 <p className="mt-2 text-sm leading-7 text-brand-50">
                   איפה לומדים טוב, איך נראה היום־יום, ומה פתוח עכשיו.
                 </p>
               </Card>
               <Card>
-                <p className="text-xs font-semibold text-brand-700">מה מקבלים</p>
+                <p className="text-xs font-semibold text-brand-700">לא רק לשמוע</p>
                 <p className="mt-2 text-sm leading-7 text-slate-700">
-                  תמונה קצרה וברורה לפני שנכנסים לעומק.
+                  לראות תמונה ברורה לפני שנכנסים לעומק.
                 </p>
               </Card>
               <Card>
-                <p className="text-xs font-semibold text-brand-700">למי זה בנוי</p>
+                <p className="text-xs font-semibold text-brand-700">למה זה עוזר</p>
                 <p className="mt-2 text-sm leading-7 text-slate-700">
-                  קודם כל לסטודנטים ולסטאז&apos;רים שבודקים כיוון.
+                  להבין מהר אם מחלקה שווה בדיקה רצינית.
                 </p>
               </Card>
             </div>
@@ -126,7 +126,7 @@ export default async function HomePage() {
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard label="מוסדות" value={data.stats.institutions} />
         <StatCard label="מחלקות" value={data.stats.departments} />
-        <StatCard label="חוויות מאושרות" value={data.stats.publishedReviews} />
+        <StatCard label="שיתופים שעלו" value={data.stats.publishedReviews} />
         <StatCard label="פתיחות פעילות" value={data.stats.officialOpenings} />
       </section>
 
@@ -134,7 +134,7 @@ export default async function HomePage() {
         <SectionHeading
           eyebrow="להתחיל מכאן"
           title="מחלקות שכדאי לבדוק"
-          description="מידע עדכני, חוויות חדשות ופתיחות רלוונטיות."
+          description="עמודים עם מספיק מידע כדי להבין מהר אם שווה להעמיק."
         />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {data.featuredDepartments.map((department) => (
@@ -160,7 +160,7 @@ export default async function HomePage() {
         <SectionHeading
           eyebrow="מהשטח"
           title="מה אומרים מי שהיו שם"
-          description="מה טוב, מה פחות, ומה כדאי לדעת לפני שמגיעים."
+          description="מה עבד, מה פחות, ומה חשוב לדעת לפני שמגיעים."
         />
         <div className="grid gap-4 xl:grid-cols-3">
           {data.latestReviews.map((review) => (
@@ -193,7 +193,7 @@ export default async function HomePage() {
             <p className="text-sm font-semibold text-brand-100">ממשיכים מכאן</p>
             <h2 className="mt-2 text-3xl font-bold">יש לך כמה כיוונים בראש?</h2>
             <p className="mt-3 text-sm leading-7 text-brand-50 md:text-base">
-              תתחילו בחיפוש. תוך דקה התמונה נהיית הרבה יותר ברורה.
+              תתחילו בחיפוש. תוך דקה כבר רואים תמונה הרבה יותר ברורה.
             </p>
           </div>
           <Link

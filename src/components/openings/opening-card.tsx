@@ -120,7 +120,7 @@ export function OpeningCard({
           </div>
           <div className="rounded-2xl bg-brand-50/70 p-3">
             <p className="text-xs font-semibold text-slate-500">מתי ועדה</p>
-            <p className="mt-1 font-semibold text-ink">{formatDate(opening.committeeDate)}</p>
+            <p className="mt-1 text-lg font-bold text-ink">{formatDate(opening.committeeDate)}</p>
           </div>
           <div className="rounded-2xl bg-brand-50/70 p-3">
             <p className="text-xs font-semibold text-slate-500">מה חשוב למחלקה</p>

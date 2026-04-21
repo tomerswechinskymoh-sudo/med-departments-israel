@@ -5,9 +5,9 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
-  title: "מחלקות לרפואה בישראל",
+  title: "מסלול למחלקה",
   description:
-    "פלטפורמה בעברית לסטודנטים, סטאז'רים ומתמחים לחקר מחלקות בבתי חולים בישראל."
+    "פלטפורמה בעברית לסטודנטים ולסטאז'רים שרוצים להבין איך מחלקות באמת נראות לפני שבוחרים."
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {

@@ -33,7 +33,7 @@ export function ReviewCard({
         <div className="flex flex-wrap items-center gap-2">
           <Badge tone="default">{reviewerTypeLabel(review.reviewerType)}</Badge>
           <Badge tone={review.isAnonymous ? "warning" : "success"}>
-            {review.isAnonymous ? "פורסם באנונימיות" : review.displayName ?? "הגשה מזוהה"}
+            {review.isAnonymous ? "בעילום שם" : review.displayName ?? "בשם מלא"}
           </Badge>
         </div>
         <span className="text-xs text-slate-500">{formatDate(review.publishedAt)}</span>
@@ -72,11 +72,11 @@ export function ReviewCard({
           <p className="mt-2 text-sm leading-7 text-slate-600">{review.pros}</p>
         </div>
         <div className="rounded-2xl bg-brand-50/60 p-4">
-          <p className="text-sm font-semibold text-ink">מה היה מאתגר</p>
+          <p className="text-sm font-semibold text-ink">מה פחות עבד</p>
           <p className="mt-2 text-sm leading-7 text-slate-600">{review.cons}</p>
         </div>
         <div className="rounded-2xl bg-brand-50/60 p-4">
-          <p className="text-sm font-semibold text-ink">טיפ למי שמגיע/ה</p>
+          <p className="text-sm font-semibold text-ink">מה הייתי אומר/ת למי שמגיע/ה</p>
           <p className="mt-2 text-sm leading-7 text-slate-600">{review.tips}</p>
         </div>
       </div>

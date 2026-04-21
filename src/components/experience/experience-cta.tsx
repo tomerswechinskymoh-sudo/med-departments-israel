@@ -9,18 +9,18 @@ type ReviewerType = "RESIDENT" | "INTERN" | "STUDENT";
 const roleChoices: Array<{ value: ReviewerType; label: string; description: string }> = [
   {
     value: "RESIDENT",
-    label: "אני מתמחה",
-    description: "כדי לשתף על המחלקה מנקודת מבט של התמחות ועבודה יומיומית."
+    label: "מתמחה/ה",
+    description: "לשתף איך המחלקה נראית מבפנים ביום־יום."
   },
   {
     value: "INTERN",
-    label: "אני סטאז׳ר/ית",
-    description: "כדי לשתף איך הרגיש הסבב בפועל בזמן סטאז'."
+    label: "סטאז׳ר/ית",
+    description: "לספר איך נראה הסבב באמת, מה לומדים ומה הקצב."
   },
   {
     value: "STUDENT",
-    label: "אני סטודנט/ית",
-    description: "כדי לשתף חוויית סבב, אלקטיב, יום חשיפה או מפגש משמעותי עם המחלקה."
+    label: "סטודנט/ית",
+    description: "לשתף סבב, אלקטיב או יום חשיפה שעזר להבין את המקום."
   }
 ];
 
@@ -74,20 +74,20 @@ export function ExperienceCta({
         title="רוצה לספר על החוויה שלך?"
         description={
           description ??
-          "אפשר לשתף חוויה גם בלי לפתוח חשבון. שום דבר לא מתפרסם מיד: הצוות בודק כל הגשה לפני פרסום."
+          "אפשר לשתף גם בלי לפתוח חשבון. הטלפון נשמר רק לאימות, ומה שיעלה לאתר תלוי בבחירה שלך ובעמידה בבדיקה."
         }
         className="max-w-5xl"
       >
         {!selectedRole ? (
           <div className="space-y-5">
-            <p className="text-sm font-semibold text-slate-500">לפני שמתחילים, איך להגדיר את ההגשה?</p>
+            <p className="text-sm font-semibold text-slate-500">מאיפה את/ה משתף/ת?</p>
             <div className="grid gap-4 md:grid-cols-3">
               {roleChoices.map((role) => (
                 <button
                   key={role.value}
                   type="button"
                   onClick={() => setSelectedRole(role.value)}
-                  className="rounded-[1.75rem] border border-brand-100 bg-white p-5 text-right transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-panel"
+                  className="rounded-[1.75rem] border border-brand-100 bg-gradient-to-b from-white to-brand-50/50 p-5 text-right transition hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-panel"
                 >
                   <p className="text-lg font-bold text-ink">{role.label}</p>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{role.description}</p>
@@ -97,9 +97,9 @@ export function ExperienceCta({
           </div>
         ) : (
           <div className="space-y-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-[1.5rem] border border-brand-100 bg-brand-50/70 p-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-[1.5rem] border border-brand-100 bg-gradient-to-l from-brand-50 to-white p-4">
               <div>
-                <p className="text-sm font-semibold text-brand-700">מסלול ההגשה שנבחר</p>
+                <p className="text-sm font-semibold text-brand-700">המסלול שבחרת</p>
                 <p className="mt-1 text-lg font-bold text-ink">{selectedLabel}</p>
               </div>
               <button

@@ -32,7 +32,7 @@ export default async function AdminPage() {
       <SectionHeading
         eyebrow="דשבורד אדמין"
         title="ניהול מוסדות, מחלקות, חוויות, הרשאות ומועמדויות"
-        description="מרכז הבקרה של המערכת: moderation, הרשאות פרסום, תחזוקת מאגר ותוכן רשמי."
+        description="מרכז הבקרה של המערכת: בדיקת תכנים, הרשאות פרסום, תחזוקת חיפוש המחלקות ותוכן רשמי."
       />
 
       <div className="grid gap-4 md:grid-cols-5">

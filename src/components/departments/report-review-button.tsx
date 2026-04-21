@@ -18,7 +18,7 @@ export function ReportReviewButton({ reviewId }: { reviewId: string }) {
     });
 
     if (response.ok) {
-      setMessage("הדיווח נשלח לבדיקה.");
+      setMessage("הדיווח נשלח. נבדוק את זה בהקדם.");
       setReason("");
       setDetails("");
       setIsOpen(false);
@@ -36,7 +36,7 @@ export function ReportReviewButton({ reviewId }: { reviewId: string }) {
         onClick={() => setIsOpen((value) => !value)}
         className="text-xs font-semibold text-rose-700 transition hover:text-rose-800"
       >
-        דיווח על ביקורת
+        דיווח על תוכן
       </button>
 
       {isOpen ? (
@@ -44,13 +44,13 @@ export function ReportReviewButton({ reviewId }: { reviewId: string }) {
           <input
             value={reason}
             onChange={(event) => setReason(event.target.value)}
-            placeholder="סיבת הדיווח"
+            placeholder="מה הבעיה כאן?"
             className="w-full rounded-2xl border border-rose-100 bg-white px-4 py-3 text-sm outline-none"
           />
           <textarea
             value={details}
             onChange={(event) => setDetails(event.target.value)}
-            placeholder="פירוט נוסף"
+            placeholder="אם צריך, אפשר להוסיף עוד כמה מילים"
             className="min-h-24 w-full rounded-2xl border border-rose-100 bg-white px-4 py-3 text-sm outline-none"
           />
           <button
@@ -58,7 +58,7 @@ export function ReportReviewButton({ reviewId }: { reviewId: string }) {
             onClick={submitReport}
             className="rounded-full bg-rose-600 px-4 py-2 text-sm font-semibold text-white"
           >
-            שליחת דיווח
+            שליחה
           </button>
         </div>
       ) : null}

@@ -63,7 +63,7 @@ export default async function DepartmentDetailsPage({
 
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               <div className="rounded-2xl bg-brand-50 p-4">
-                <p className="text-sm text-slate-500">חוויות שפורסמו</p>
+                <p className="text-sm text-slate-500">שיתופים מהשטח</p>
                 <p className="mt-2 text-2xl font-bold text-ink">{department.summary.reviewCount}</p>
               </div>
               <div className="rounded-2xl bg-brand-50 p-4">
@@ -113,7 +113,7 @@ export default async function DepartmentDetailsPage({
         </Card>
 
         <Card>
-          <SectionHeading title="פרטי קשר ציבוריים" description="מופיעים רק אם המחלקה בחרה לפרסם אותם." />
+          <SectionHeading title="פרטי קשר בעמוד" description="מופיעים רק אם המחלקה בחרה לשתף אותם." />
           <div className="mt-5 space-y-3 text-sm leading-7 text-slate-700">
             <p>
               <span className="font-semibold text-ink">אימייל: </span>
@@ -125,7 +125,7 @@ export default async function DepartmentDetailsPage({
             </p>
             <p className="rounded-2xl bg-brand-50/70 p-4 text-xs leading-6 text-slate-600">
               פתיחות רשמיות מתפרסמות רק דרך נציגים מאושרים של המחלקה. אם ראיתם פתיחה בדף,
-              היא הגיעה מאזור פרסום מאומת ולא מטופס ציבורי.
+              היא הגיעה מאזור פרסום מאומת ולא מטופס פתוח לכולם.
             </p>
           </div>
         </Card>
@@ -245,10 +245,10 @@ export default async function DepartmentDetailsPage({
 
       <section className="space-y-6">
         <SectionHeading
-          title="חוויות שפורסמו"
+          title="שיתופים מהשטח"
           description={
             session
-              ? "כאן רואים את כל החוויות שאושרו לפרסום."
+              ? "כאן רואים את כל השיתופים שאושרו לעלייה."
               : "ללא התחברות מוצגת טעימה קצרה. חשבון עוזר בעיקר לשמור מחלקות להשוואה ולעקוב בנוחות."
           }
         />
@@ -259,7 +259,7 @@ export default async function DepartmentDetailsPage({
           {!session && department.reviews.length > visibleReviews.length ? (
             <Card className="text-center">
               <p className="text-sm text-slate-600">
-                יש עוד חוויות שפורסמו למחלקה הזו. התחברות נועדה בעיקר לשמירה להשוואה, מעקב ונוחות
+                יש עוד שיתופים מהשטח למחלקה הזו. התחברות נועדה בעיקר לשמירה להשוואה, מעקב ונוחות
                 שימוש, לא כתנאי לקריאת עיקר המידע.
               </p>
               <Link

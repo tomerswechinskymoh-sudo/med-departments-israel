@@ -81,17 +81,17 @@ export const reviewSubmissionSchema = z
     researchExposure: scaleSchema,
     lifestyleBalance: scaleSchema,
     overallRecommendation: scaleSchema,
-    pros: z.string().min(15, "יש לפרט מה עבד טוב."),
-    cons: z.string().min(15, "יש לפרט מה היה מאתגר."),
-    tips: z.string().min(15, "יש להוסיף טיפים מעשיים."),
+    pros: z.string().min(15, "יש לכתוב בקצרה מה עבד טוב בשבילך."),
+    cons: z.string().min(15, "יש לכתוב מה פחות עבד או מה כדאי לדעת מראש."),
+    tips: z.string().min(15, "יש להוסיף טיפ קצר למי שמגיע/ה אחריך."),
     consentToContact: z.literal(true, {
-      errorMap: () => ({ message: "יש לאשר יצירת קשר לצורך אימות." })
+      errorMap: () => ({ message: "צריך לאשר יצירת קשר לצורך אימות." })
     }),
     consentToTerms: z.literal(true, {
-      errorMap: () => ({ message: "יש לאשר את תנאי הפרסום." })
+      errorMap: () => ({ message: "צריך לאשר שהשיתוף נשלח לבדיקה לפני פרסום." })
     }),
     consentNoPatientInfo: z.literal(true, {
-      errorMap: () => ({ message: "יש לאשר שאין בטקסט מידע מזהה על מטופלים." })
+      errorMap: () => ({ message: "צריך לאשר שאין בטקסט מידע מזהה על מטופלים." })
     })
   })
   .superRefine((data, ctx) => {
@@ -99,7 +99,7 @@ export const reviewSubmissionSchema = z
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         path: ["fullName"],
-        message: "כשבוחרים פרסום מזוהה יש להזין שם מלא."
+        message: "אם בחרת לפרסם בשם, צריך למלא שם מלא."
       });
     }
   });

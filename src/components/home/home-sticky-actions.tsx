@@ -13,11 +13,11 @@ export function HomeStickyActions({
   }[];
 }) {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-white/80 bg-white/92 px-4 py-3 shadow-[0_-16px_40px_-24px_rgba(22,48,67,0.4)] backdrop-blur md:hidden">
-      <div className="mx-auto flex max-w-7xl items-center gap-3">
+    <div className="fixed inset-x-0 bottom-0 z-30 bg-transparent px-4 py-3 md:hidden">
+      <div className="mx-auto flex max-w-7xl items-center gap-3 rounded-[1.5rem] border border-white/80 bg-white/94 p-3 shadow-[0_-18px_46px_-30px_rgba(9,28,45,0.5)] backdrop-blur-xl">
         <a
           href="#home-search"
-          className="inline-flex min-h-12 flex-1 items-center justify-center rounded-full bg-brand-700 px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
+          className="inline-flex min-h-12 flex-1 items-center justify-center rounded-full bg-gradient-to-l from-brand-700 to-teal-600 px-4 py-3 text-sm font-semibold text-white transition hover:from-brand-800 hover:to-teal-700"
         >
           חיפוש מחלקות
         </a>

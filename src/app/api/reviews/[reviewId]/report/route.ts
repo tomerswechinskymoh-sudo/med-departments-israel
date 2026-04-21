@@ -11,7 +11,7 @@ export async function POST(
   const session = await getSession();
 
   if (!session) {
-    return NextResponse.json({ error: "יש להתחבר כדי לדווח על ביקורת." }, { status: 401 });
+    return NextResponse.json({ error: "יש להתחבר כדי לדווח על תוכן." }, { status: 401 });
   }
 
   const { reviewId } = await params;
@@ -29,7 +29,7 @@ export async function POST(
   });
 
   if (!review) {
-    return NextResponse.json({ error: "הביקורת לא נמצאה." }, { status: 404 });
+    return NextResponse.json({ error: "השיתוף לא נמצא." }, { status: 404 });
   }
 
   const report = await prisma.reviewReport.create({

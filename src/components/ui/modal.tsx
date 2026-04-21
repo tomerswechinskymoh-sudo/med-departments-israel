@@ -43,7 +43,7 @@ export function Modal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/45 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[radial-gradient(circle_at_top,rgba(19,179,154,0.16),transparent_24%),rgba(2,12,24,0.66)] p-4">
       <button
         type="button"
         aria-label="סגירה"
@@ -52,11 +52,11 @@ export function Modal({
       />
       <div
         className={cn(
-          "relative max-h-[90vh] w-full max-w-4xl overflow-auto rounded-[2rem] border border-white/80 bg-white p-6 shadow-2xl",
+          "relative max-h-[90vh] w-full max-w-4xl overflow-auto rounded-[2rem] border border-brand-100/80 bg-white/96 p-6 shadow-2xl backdrop-blur-xl",
           className
         )}
       >
-        <div className="sticky top-0 z-10 -mx-6 -mt-6 mb-6 flex items-start justify-between gap-4 border-b border-slate-100 bg-white/95 px-6 py-5 backdrop-blur">
+        <div className="sticky top-0 z-10 -mx-6 -mt-6 mb-6 flex items-start justify-between gap-4 border-b border-brand-100/70 bg-white/95 px-6 py-5 backdrop-blur">
           <div>
             <h2 className="text-2xl font-bold text-ink">{title}</h2>
             {description ? (
@@ -66,7 +66,7 @@ export function Modal({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-600 transition hover:bg-slate-50"
+            className="rounded-full border border-brand-100 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-brand-50"
           >
             סגירה
           </button>

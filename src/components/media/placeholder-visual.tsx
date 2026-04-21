@@ -13,8 +13,8 @@ function initialsFromLabel(label: string) {
 
 const paletteMap = {
   hero: "from-brand-900 via-brand-700 to-teal-500",
-  department: "from-brand-800 via-brand-700 to-cyan-500",
-  institution: "from-teal-700 via-brand-700 to-brand-400",
+  department: "from-brand-900 via-brand-700 to-cyan-500",
+  institution: "from-teal-800 via-brand-700 to-brand-400",
   head: "from-amber-300 via-amber-200 to-white"
 } as const;
 
@@ -42,16 +42,18 @@ export function PlaceholderVisual({
       )}
     >
       <div className={cn("absolute inset-0 bg-gradient-to-br", paletteMap[variant])} />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.32),transparent_26%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.18),transparent_24%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.38),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.22),transparent_26%),radial-gradient(circle_at_center,rgba(34,211,238,0.18),transparent_36%)]" />
+      <div className="absolute -left-10 top-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
+      <div className="absolute -bottom-6 right-8 h-40 w-40 rounded-full bg-teal-200/15 blur-3xl" />
       <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.18)_1px,transparent_1px)] [background-size:24px_24px]" />
       <div className="absolute inset-x-6 bottom-6 flex items-end justify-between gap-4 text-white">
         <div>
-          <p className={cn("font-bold", circle ? "text-3xl" : "text-2xl")}>{label}</p>
-          {caption ? <p className="mt-1 text-sm text-white/85">{caption}</p> : null}
+          <p className={cn("font-bold tracking-tight", circle ? "text-3xl" : "text-2xl")}>{label}</p>
+          {caption ? <p className="mt-1 text-sm leading-6 text-white/88">{caption}</p> : null}
         </div>
         <div
           className={cn(
-            "flex shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/15 font-bold uppercase text-white/95 shadow-lg backdrop-blur",
+            "flex shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/15 font-bold uppercase text-white/95 shadow-lg backdrop-blur-xl",
             circle ? "h-16 w-16 text-xl" : "h-16 w-16 text-lg"
           )}
         >

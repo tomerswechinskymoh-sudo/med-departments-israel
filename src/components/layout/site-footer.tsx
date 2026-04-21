@@ -14,26 +14,26 @@ export function SiteFooter() {
   ];
 
   return (
-    <footer className="border-t border-white/80 bg-white/75">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-slate-600 md:px-6">
+    <footer className="border-t border-brand-900/20 bg-gradient-to-b from-brand-900 to-[#06121f] text-white">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 text-sm md:px-6">
         <div>
-          <p className="font-semibold text-brand-900">מסלול למחלקה</p>
-          <p className="mt-1 max-w-2xl">
-            פלטפורמה בעברית לסטודנטים לרפואה ולסטאז'רים שמחפשים להבין איך מחלקות ומסלולים
-            נראים באמת לפני בחירת רוטציה, סטאז', מחקר או התמחות.
+          <p className="font-semibold text-white">מסלול למחלקה</p>
+          <p className="mt-2 max-w-2xl leading-7 text-brand-50/88">
+            מקום אחד לסטודנטים ולסטאז&apos;רים שרוצים להבין איך מחלקה באמת מרגישה לפני
+            שבוחרים סבב, מחקר או כיוון להמשך.
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-slate-700">
+        <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-brand-50/88">
           {links.map((link) => (
-            <Link key={link.href} href={link.href} className="transition hover:text-brand-700">
+            <Link key={link.href} href={link.href} className="transition hover:text-white">
               {link.label}
             </Link>
           ))}
         </div>
 
-        <div className="text-xs leading-6 text-slate-500">
-          <p>חוויות ציבוריות מתפרסמות רק אחרי בדיקה ואישור אדמיניסטרטיבי.</p>
+        <div className="grid gap-3 rounded-[1.5rem] border border-white/10 bg-white/5 p-4 text-xs leading-6 text-brand-50/78 md:grid-cols-2">
+          <p>שיתופים מהשטח עולים רק אחרי בדיקה, כדי לשמור על תוכן אמין ומכבד.</p>
           <p>טלפונים, קורות חיים, תמונות וקבצים נשמרים בפרטיות ונגישים רק לגורמים מורשים.</p>
         </div>
       </div>
