@@ -1,0 +1,1053 @@
+import {
+  ContentStatus,
+  OpportunityStatus,
+  OpeningApplicationStatus,
+  OpeningType,
+  Prisma,
+  PublisherRequestStatus,
+  ReviewSourceType,
+  RoleKey,
+  SubmissionStatus
+} from "@prisma/client";
+import {
+  APPLICATION_STATUS_LABELS,
+  OPENING_TYPE_LABELS
+} from "@/lib/constants";
+import { prisma } from "@/lib/prisma";
+import { average } from "@/lib/utils";
+
+const publishedReviewSelect = {
+  id: true,
+  reviewerType: true,
+  displayName: true,
+  isAnonymous: true,
+  teachingQuality: true,
+  workAtmosphere: true,
+  seniorsApproachability: true,
+  researchExposure: true,
+  lifestyleBalance: true,
+  overallRecommendation: true,
+  pros: true,
+  cons: true,
+  tips: true,
+  publishedAt: true
+} satisfies Prisma.ReviewSelect;
+
+const openingCriteriaSelect = {
+  researchImportance: true,
+  departmentElectiveImportance: true,
+  residentSelectionInfluence: true,
+  specialistSelectionInfluence: true,
+  departmentHeadInfluence: true,
+  medicalSchoolInfluence: true,
+  personalFitImportance: true,
+  previousDepartmentExperienceImportance: true,
+  notes: true
+} satisfies Prisma.OpeningAcceptanceCriteriaSelect;
+
+async function getManagedDepartments(userId: string, includeAllDepartments = false) {
+  if (includeAllDepartments) {
+    return prisma.department.findMany({
+      select: {
+        id: true,
+        institutionId: true
+      }
+    });
+  }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId
+    },
+    include: {
+      publisherRequests: {
+        where: {
+          status: PublisherRequestStatus.APPROVED
+        },
+        select: {
+          departmentId: true,
+          institutionId: true
+        }
+      }
+    }
+  });
+
+  if (!user) {
+    return [];
+  }
+
+  if (user.roleKey === RoleKey.ADMIN) {
+    return prisma.department.findMany({
+      select: {
+        id: true,
+        institutionId: true
+      }
+    });
+  }
+
+  const departmentIds = user.publisherRequests
+    .map((request) => request.departmentId)
+    .filter((value): value is string => Boolean(value));
+  const institutionIds = user.publisherRequests
+    .map((request) => request.institutionId)
+    .filter((value): value is string => Boolean(value));
+
+  if (departmentIds.length === 0 && institutionIds.length === 0) {
+    return [];
+  }
+
+  return prisma.department.findMany({
+    where: {
+      OR: [
+        departmentIds.length > 0 ? { id: { in: departmentIds } } : undefined,
+        institutionIds.length > 0 ? { institutionId: { in: institutionIds } } : undefined
+      ].filter(Boolean) as Prisma.DepartmentWhereInput[]
+    },
+    select: {
+      id: true,
+      institutionId: true
+    }
+  });
+}
+
+export async function getHomePageData() {
+  const [featuredDepartments, latestReviews, featuredOpenings, latestResearchOpportunities, stats] =
+    await Promise.all([
+      prisma.department.findMany({
+        include: {
+          institution: true,
+          specialty: true,
+          reviews: {
+            select: {
+              overallRecommendation: true
+            }
+          },
+          researchOpportunities: {
+            where: {
+              contentStatus: ContentStatus.PUBLISHED
+            },
+            select: {
+              id: true
+            }
+          },
+          residencyOpenings: {
+            where: {
+              contentStatus: ContentStatus.PUBLISHED,
+              status: {
+                in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+              }
+            },
+            include: {
+              acceptanceCriteria: {
+                select: openingCriteriaSelect
+              }
+            }
+          }
+        },
+        orderBy: {
+          updatedAt: "desc"
+        },
+        take: 4
+      }),
+      prisma.review.findMany({
+        select: {
+          ...publishedReviewSelect,
+          department: {
+            select: {
+              id: true,
+              name: true,
+              slug: true,
+              institution: {
+                select: {
+                  name: true
+                }
+              }
+            }
+          }
+        },
+        orderBy: {
+          publishedAt: "desc"
+        },
+        take: 3
+      }),
+      prisma.residencyOpening.findMany({
+        where: {
+          contentStatus: ContentStatus.PUBLISHED,
+          status: {
+            in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+          }
+        },
+        include: {
+          department: {
+            include: {
+              institution: true,
+              specialty: true
+            }
+          },
+          acceptanceCriteria: {
+            select: openingCriteriaSelect
+          },
+          _count: {
+            select: {
+              applications: true
+            }
+          }
+        },
+        orderBy: [{ isImmediate: "desc" }, { committeeDate: "asc" }, { publishedAt: "desc" }],
+        take: 5
+      }),
+      prisma.researchOpportunity.findMany({
+        where: {
+          contentStatus: ContentStatus.PUBLISHED
+        },
+        include: {
+          department: {
+            include: {
+              institution: true
+            }
+          }
+        },
+        orderBy: {
+          publishedAt: "desc"
+        },
+        take: 4
+      }),
+      prisma.$transaction([
+        prisma.institution.count(),
+        prisma.department.count(),
+        prisma.review.count(),
+        prisma.residencyOpening.count({
+          where: {
+            contentStatus: ContentStatus.PUBLISHED,
+            status: {
+              in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+            }
+          }
+        })
+      ])
+    ]);
+
+  return {
+    featuredDepartments: featuredDepartments.map((department) => ({
+      id: department.id,
+      slug: department.slug,
+      name: department.name,
+      institutionName: department.institution.name,
+      city: department.institution.city,
+      coverImageUrl: department.coverImageUrl ?? department.institution.coverImageUrl,
+      specialtyName: department.specialty.name,
+      shortSummary: department.shortSummary,
+      reviewCount: department.reviews.length,
+      averageOverall: average(department.reviews.map((review) => review.overallRecommendation)),
+      hasResearch: department.researchOpportunities.length > 0,
+      hasOpenResidency: department.residencyOpenings.length > 0
+    })),
+    latestReviews,
+    featuredOpenings,
+    latestResearchOpportunities,
+    stats: {
+      institutions: stats[0],
+      departments: stats[1],
+      publishedReviews: stats[2],
+      officialOpenings: stats[3]
+    }
+  };
+}
+
+export async function getDirectoryFilters() {
+  const [institutions, specialties] = await Promise.all([
+    prisma.institution.findMany({
+      select: {
+        id: true,
+        name: true,
+        city: true,
+        type: true
+      },
+      orderBy: {
+        name: "asc"
+      }
+    }),
+    prisma.specialty.findMany({
+      select: {
+        id: true,
+        name: true
+      },
+      orderBy: {
+        name: "asc"
+      }
+    })
+  ]);
+
+  return { institutions, specialties };
+}
+
+export async function getDirectoryData(
+  filters: {
+    search?: string;
+    institution?: string;
+    specialty?: string;
+    city?: string;
+  },
+  userId?: string
+) {
+  const departments = await prisma.department.findMany({
+    where: {
+      AND: [
+        filters.search
+          ? {
+              OR: [
+                { name: { contains: filters.search, mode: "insensitive" } },
+                { shortSummary: { contains: filters.search, mode: "insensitive" } },
+                { institution: { name: { contains: filters.search, mode: "insensitive" } } },
+                { specialty: { name: { contains: filters.search, mode: "insensitive" } } }
+              ]
+            }
+          : {},
+        filters.institution ? { institutionId: filters.institution } : {},
+        filters.specialty ? { specialtyId: filters.specialty } : {},
+        filters.city
+          ? {
+              institution: {
+                city: {
+                  equals: filters.city,
+                  mode: "insensitive"
+                }
+              }
+            }
+          : {}
+      ]
+    },
+    include: {
+      institution: true,
+      specialty: true,
+      reviews: {
+        select: {
+          overallRecommendation: true
+        }
+      },
+      residencyOpenings: {
+        where: {
+          contentStatus: ContentStatus.PUBLISHED,
+          status: {
+            in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+          }
+        }
+      },
+      researchOpportunities: {
+        where: {
+          contentStatus: ContentStatus.PUBLISHED
+        }
+      },
+      favorites: userId
+        ? {
+            where: {
+              userId
+            },
+            select: {
+              userId: true
+            }
+          }
+        : false
+    },
+    orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
+  });
+
+  return departments.map((department) => ({
+    id: department.id,
+    slug: department.slug,
+    name: department.name,
+    institutionName: department.institution.name,
+    institutionType: department.institution.type,
+    city: department.institution.city,
+    specialtyName: department.specialty.name,
+    coverImageUrl: department.coverImageUrl ?? department.institution.coverImageUrl,
+    shortSummary: department.shortSummary,
+    reviewCount: department.reviews.length,
+    averageOverall: average(department.reviews.map((review) => review.overallRecommendation)),
+    hasOpenResidency: department.residencyOpenings.length > 0,
+    hasResearch: department.researchOpportunities.length > 0,
+    isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0
+  }));
+}
+
+export async function getDepartmentPageData(slug: string, viewerId?: string) {
+  const department = await prisma.department.findUnique({
+    where: {
+      slug
+    },
+    include: {
+      institution: true,
+      specialty: true,
+      heads: {
+        orderBy: {
+          displayOrder: "asc"
+        }
+      },
+      officialUpdates: {
+        where: {
+          contentStatus: ContentStatus.PUBLISHED
+        },
+        orderBy: {
+          publishedAt: "desc"
+        }
+      },
+      researchOpportunities: {
+        where: {
+          contentStatus: ContentStatus.PUBLISHED
+        },
+        orderBy: {
+          publishedAt: "desc"
+        }
+      },
+      residencyOpenings: {
+        where: {
+          contentStatus: ContentStatus.PUBLISHED
+        },
+        include: {
+          acceptanceCriteria: {
+            select: openingCriteriaSelect
+          }
+        },
+        orderBy: [{ isImmediate: "desc" }, { committeeDate: "asc" }, { publishedAt: "desc" }]
+      },
+      reviews: {
+        select: publishedReviewSelect,
+        orderBy: {
+          publishedAt: "desc"
+        }
+      },
+      favorites: viewerId
+        ? {
+            where: {
+              userId: viewerId
+            },
+            select: {
+              userId: true
+            }
+          }
+        : false
+    }
+  });
+
+  if (!department) {
+    return null;
+  }
+
+  return {
+    ...department,
+    isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
+    summary: {
+      reviewCount: department.reviews.length,
+      teachingQuality: average(department.reviews.map((review) => review.teachingQuality)),
+      workAtmosphere: average(department.reviews.map((review) => review.workAtmosphere)),
+      seniorsApproachability: average(
+        department.reviews.map((review) => review.seniorsApproachability)
+      ),
+      researchExposure: average(department.reviews.map((review) => review.researchExposure)),
+      lifestyleBalance: average(department.reviews.map((review) => review.lifestyleBalance)),
+      overallRecommendation: average(
+        department.reviews.map((review) => review.overallRecommendation)
+      )
+    }
+  };
+}
+
+export async function getOpeningPageData(openingId: string) {
+  return prisma.residencyOpening.findFirst({
+    where: {
+      id: openingId,
+      contentStatus: ContentStatus.PUBLISHED
+    },
+    include: {
+      department: {
+        include: {
+          institution: true,
+          specialty: true,
+          heads: {
+            orderBy: {
+              displayOrder: "asc"
+            }
+          }
+        }
+      },
+      acceptanceCriteria: {
+        select: openingCriteriaSelect
+      },
+      _count: {
+        select: {
+          applications: true
+        }
+      }
+    }
+  });
+}
+
+export async function getOpeningApplicationPageData(openingId: string) {
+  return prisma.residencyOpening.findFirst({
+    where: {
+      id: openingId,
+      contentStatus: ContentStatus.PUBLISHED,
+      status: {
+        in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+      }
+    },
+    include: {
+      department: {
+        include: {
+          institution: true,
+          specialty: true
+        }
+      },
+      acceptanceCriteria: {
+        select: openingCriteriaSelect
+      }
+    }
+  });
+}
+
+export async function getDepartmentOptions() {
+  return prisma.department.findMany({
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      institution: {
+        select: {
+          name: true
+        }
+      }
+    },
+    orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
+  });
+}
+
+export async function getInstitutionOptions() {
+  return prisma.institution.findMany({
+    select: {
+      id: true,
+      name: true,
+      type: true
+    },
+    orderBy: {
+      name: "asc"
+    }
+  });
+}
+
+export async function getUserDashboardData(userId: string) {
+  return prisma.user.findUnique({
+    where: {
+      id: userId
+    },
+    include: {
+      favorites: {
+        include: {
+          department: {
+            include: {
+              institution: true,
+              specialty: true
+            }
+          }
+        }
+      },
+      publisherRequests: {
+        include: {
+          institution: true,
+          department: {
+            include: {
+              institution: true
+            }
+          }
+        },
+        orderBy: {
+          createdAt: "desc"
+        }
+      }
+    }
+  });
+}
+
+export async function getFavoritesData(userId: string) {
+  const favorites = await prisma.favoriteDepartment.findMany({
+    where: {
+      userId
+    },
+    include: {
+      department: {
+        include: {
+          institution: true,
+          specialty: true,
+          reviews: {
+            select: {
+              overallRecommendation: true
+            }
+          },
+          residencyOpenings: {
+            where: {
+              contentStatus: ContentStatus.PUBLISHED,
+              status: {
+                in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+              }
+            }
+          },
+          researchOpportunities: {
+            where: {
+              contentStatus: ContentStatus.PUBLISHED
+            }
+          }
+        }
+      }
+    }
+  });
+
+  return favorites.map((favorite) => ({
+    id: favorite.department.id,
+    slug: favorite.department.slug,
+    name: favorite.department.name,
+    institutionName: favorite.department.institution.name,
+    city: favorite.department.institution.city,
+    specialtyName: favorite.department.specialty.name,
+    coverImageUrl:
+      favorite.department.coverImageUrl ?? favorite.department.institution.coverImageUrl,
+    shortSummary: favorite.department.shortSummary,
+    reviewCount: favorite.department.reviews.length,
+    averageOverall: average(
+      favorite.department.reviews.map((review) => review.overallRecommendation)
+    ),
+    hasOpenResidency: favorite.department.residencyOpenings.length > 0,
+    hasResearch: favorite.department.researchOpportunities.length > 0,
+    isFavorite: true
+  }));
+}
+
+export async function getRepresentativeDashboardData(
+  userId: string,
+  options?: { includeAllDepartments?: boolean }
+) {
+  const departments = await getManagedDepartments(userId, options?.includeAllDepartments);
+  const managedDepartmentIds = departments.map((department) => department.id);
+
+  if (managedDepartmentIds.length === 0) {
+    return [];
+  }
+
+  return prisma.department.findMany({
+    where: {
+      id: {
+        in: managedDepartmentIds
+      }
+    },
+    include: {
+      institution: true,
+      specialty: true,
+      heads: {
+        orderBy: {
+          displayOrder: "asc"
+        }
+      },
+      officialUpdates: {
+        orderBy: {
+          createdAt: "desc"
+        }
+      },
+      researchOpportunities: {
+        orderBy: {
+          createdAt: "desc"
+        }
+      },
+      residencyOpenings: {
+        include: {
+          acceptanceCriteria: {
+            select: openingCriteriaSelect
+          },
+          _count: {
+            select: {
+              applications: true
+            }
+          }
+        },
+        orderBy: [{ status: "asc" }, { committeeDate: "asc" }, { createdAt: "desc" }]
+      }
+    },
+    orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
+  });
+}
+
+export async function getRepresentativeOpeningFormData(
+  userId: string,
+  openingId?: string,
+  options?: { includeAllDepartments?: boolean }
+) {
+  const managedDepartments = await getManagedDepartments(userId, options?.includeAllDepartments);
+  const managedDepartmentIds = managedDepartments.map((department) => department.id);
+
+  const departmentOptions = await prisma.department.findMany({
+    where:
+      managedDepartmentIds.length > 0
+        ? {
+            id: {
+              in: managedDepartmentIds
+            }
+          }
+        : {
+            id: "__none__"
+          },
+    select: {
+      id: true,
+      name: true,
+      institution: {
+        select: {
+          name: true
+        }
+      },
+      specialty: {
+        select: {
+          name: true
+        }
+      }
+    },
+    orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
+  });
+
+  if (!openingId) {
+    return {
+      departmentOptions,
+      opening: null
+    };
+  }
+
+  const opening = await prisma.residencyOpening.findUnique({
+    where: {
+      id: openingId
+    },
+    include: {
+      department: {
+        include: {
+          institution: true,
+          specialty: true
+        }
+      },
+      acceptanceCriteria: true,
+      attachments: {
+        orderBy: {
+          createdAt: "desc"
+        }
+      }
+    }
+  });
+
+  if (!opening || !managedDepartmentIds.includes(opening.departmentId)) {
+    return {
+      departmentOptions,
+      opening: null
+    };
+  }
+
+  return {
+    departmentOptions,
+    opening
+  };
+}
+
+export async function getOpeningManagementData(
+  userId: string,
+  openingId: string,
+  options?: { includeAllDepartments?: boolean }
+) {
+  const managedDepartments = await getManagedDepartments(userId, options?.includeAllDepartments);
+  const managedDepartmentIds = new Set(managedDepartments.map((department) => department.id));
+
+  const opening = await prisma.residencyOpening.findUnique({
+    where: {
+      id: openingId
+    },
+    include: {
+      department: {
+        include: {
+          institution: true,
+          specialty: true
+        }
+      },
+      acceptanceCriteria: true,
+      attachments: {
+        orderBy: {
+          createdAt: "desc"
+        }
+      },
+      applications: {
+        include: {
+          files: {
+            orderBy: {
+              createdAt: "desc"
+            }
+          }
+        },
+        orderBy: {
+          createdAt: "desc"
+        }
+      }
+    }
+  });
+
+  if (!opening || !managedDepartmentIds.has(opening.departmentId)) {
+    return null;
+  }
+
+  return opening;
+}
+
+export async function getAdminDashboardData() {
+  const [
+    stats,
+    pendingReviewSubmissions,
+    pendingPublisherRequests,
+    recentOpeningApplications,
+    users,
+    departments,
+    institutions,
+    specialties,
+    auditLogs
+  ] = await Promise.all([
+    prisma.$transaction([
+      prisma.user.count(),
+      prisma.department.count(),
+      prisma.reviewSubmission.count({
+        where: {
+          status: SubmissionStatus.PENDING_REVIEW
+        }
+      }),
+      prisma.publisherRequest.count({
+        where: {
+          status: PublisherRequestStatus.PENDING
+        }
+      }),
+      prisma.openingApplication.count({
+        where: {
+          status: {
+            in: [OpeningApplicationStatus.SUBMITTED, OpeningApplicationStatus.UNDER_REVIEW]
+          }
+        }
+      })
+    ]),
+    prisma.reviewSubmission.findMany({
+      where: {
+        status: SubmissionStatus.PENDING_REVIEW
+      },
+      include: {
+        department: {
+          include: {
+            institution: true
+          }
+        }
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 10
+    }),
+    prisma.publisherRequest.findMany({
+      where: {
+        status: PublisherRequestStatus.PENDING
+      },
+      include: {
+        user: true,
+        institution: true,
+        department: {
+          include: {
+            institution: true
+          }
+        }
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 10
+    }),
+    prisma.openingApplication.findMany({
+      include: {
+        files: {
+          orderBy: {
+            createdAt: "desc"
+          }
+        },
+        opening: {
+          include: {
+            department: {
+              include: {
+                institution: true
+              }
+            }
+          }
+        }
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 10
+    }),
+    prisma.user.findMany({
+      select: {
+        id: true,
+        fullName: true,
+        email: true,
+        roleKey: true,
+        isApprovedPublisher: true,
+        createdAt: true
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 12
+    }),
+    prisma.department.findMany({
+      include: {
+        institution: true,
+        specialty: true
+      },
+      orderBy: [{ institution: { name: "asc" } }, { name: "asc" }],
+      take: 15
+    }),
+    prisma.institution.findMany({
+      orderBy: {
+        name: "asc"
+      }
+    }),
+    prisma.specialty.findMany({
+      orderBy: {
+        name: "asc"
+      }
+    }),
+    prisma.auditLog.findMany({
+      include: {
+        actor: true
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 14
+    })
+  ]);
+
+  return {
+    stats: {
+      users: stats[0],
+      departments: stats[1],
+      pendingReviewSubmissions: stats[2],
+      pendingPublisherRequests: stats[3],
+      pendingOpeningApplications: stats[4]
+    },
+    pendingReviewSubmissions,
+    pendingPublisherRequests,
+    recentOpeningApplications,
+    users,
+    departments,
+    institutions,
+    specialties,
+    auditLogs
+  };
+}
+
+export async function getReviewFormContext(departmentSlug?: string) {
+  const departments = await getDepartmentOptions();
+
+  return {
+    departments,
+    selectedDepartment: departmentSlug
+      ? departments.find((department) => department.slug === departmentSlug) ?? null
+      : null
+  };
+}
+
+export async function getPublisherRequestFormContext() {
+  const [departments, institutions] = await Promise.all([
+    getDepartmentOptions(),
+    getInstitutionOptions()
+  ]);
+
+  return { departments, institutions };
+}
+
+export async function canUserPublishDepartment(userId: string, departmentId: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId
+    }
+  });
+
+  if (!user) {
+    return false;
+  }
+
+  if (user.roleKey === RoleKey.ADMIN) {
+    return true;
+  }
+
+  if (!user.isApprovedPublisher) {
+    return false;
+  }
+
+  const department = await prisma.department.findUnique({
+    where: {
+      id: departmentId
+    },
+    select: {
+      institutionId: true
+    }
+  });
+
+  if (!department) {
+    return false;
+  }
+
+  const approvedRequest = await prisma.publisherRequest.findFirst({
+    where: {
+      userId,
+      status: PublisherRequestStatus.APPROVED,
+      OR: [
+        {
+          departmentId
+        },
+        {
+          institutionId: department.institutionId,
+          departmentId: null
+        }
+      ]
+    }
+  });
+
+  return Boolean(approvedRequest);
+}
+
+export function userRoleLabel(roleKey: RoleKey) {
+  switch (roleKey) {
+    case RoleKey.ADMIN:
+      return "אדמין";
+    case RoleKey.REPRESENTATIVE:
+      return "נציג/ת מחלקה";
+    case RoleKey.RESIDENT:
+      return "מתמחה";
+    case RoleKey.STUDENT:
+    default:
+      return "סטודנט/ית / סטאז'ר/ית";
+  }
+}
+
+export function reviewerTypeLabel(reviewerType: ReviewSourceType) {
+  switch (reviewerType) {
+    case ReviewSourceType.RESIDENT:
+      return "מתמחה";
+    case ReviewSourceType.STUDENT:
+      return "סטודנט/ית";
+    case ReviewSourceType.INTERN:
+    default:
+      return "סטאז'ר/ית";
+  }
+}
+
+export function openingTypeLabel(openingType: OpeningType) {
+  return OPENING_TYPE_LABELS[openingType];
+}
+
+export function openingApplicationStatusLabel(status: OpeningApplicationStatus) {
+  return APPLICATION_STATUS_LABELS[status];
+}

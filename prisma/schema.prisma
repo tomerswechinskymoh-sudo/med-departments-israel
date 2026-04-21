@@ -1,0 +1,436 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum RoleKey {
+  STUDENT
+  RESIDENT
+  REPRESENTATIVE
+  ADMIN
+}
+
+enum InstitutionType {
+  HOSPITAL
+  HMO
+}
+
+enum ReviewSourceType {
+  RESIDENT
+  INTERN
+  STUDENT
+}
+
+enum SubmissionStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  PUBLISHED
+}
+
+enum OpportunityStatus {
+  OPEN
+  UPCOMING
+  CLOSED
+}
+
+enum ContentStatus {
+  DRAFT
+  PENDING_REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+enum PublisherRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum OpeningType {
+  RESIDENCY
+  FELLOWSHIP
+  ACADEMIC_TRACK
+  COMMUNITY_TRACK
+  OTHER
+}
+
+enum OpeningApplicationStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  CONTACTED
+  ARCHIVED
+}
+
+enum UploadedFileCategory {
+  OPENING_ATTACHMENT
+  APPLICATION_CV
+  APPLICATION_PROFILE_PHOTO
+  APPLICATION_SUPPORTING
+}
+
+model Role {
+  key         RoleKey @id
+  label       String
+  description String
+  users       User[]
+}
+
+model User {
+  id                          String                  @id @default(cuid())
+  email                       String                  @unique
+  passwordHash                String                  @map("password_hash")
+  fullName                    String                  @map("full_name")
+  phone                       String?
+  roleKey                     RoleKey                 @default(STUDENT) @map("role_key")
+  isApprovedPublisher         Boolean                 @default(false) @map("is_approved_publisher")
+  createdAt                   DateTime                @default(now()) @map("created_at")
+  updatedAt                   DateTime                @updatedAt @map("updated_at")
+  role                        Role                    @relation(fields: [roleKey], references: [key], onUpdate: Cascade)
+  favorites                   FavoriteDepartment[]
+  createdOfficialUpdates      OfficialDepartmentUpdate[] @relation("OfficialUpdateAuthor")
+  createdResidencyOpenings    ResidencyOpening[]      @relation("ResidencyOpeningAuthor")
+  createdResearchOpportunities ResearchOpportunity[]  @relation("ResearchOpportunityAuthor")
+  publisherRequests           PublisherRequest[]      @relation("PublisherRequestOwner")
+  reviewedPublisherRequests   PublisherRequest[]      @relation("PublisherRequestReviewer")
+  moderatedReviewSubmissions  ReviewSubmission[]      @relation("ReviewSubmissionModerator")
+  reviewedOpeningApplications OpeningApplication[]    @relation("OpeningApplicationReviewer")
+  reviewReports               ReviewReport[]
+  uploadedFiles               UploadedFile[]          @relation("UploadedFileOwner")
+  auditEntries                AuditLog[]              @relation("AuditActor")
+
+  @@index([roleKey])
+  @@index([isApprovedPublisher])
+}
+
+model Institution {
+  id                String             @id @default(cuid())
+  name              String
+  slug              String             @unique
+  type              InstitutionType
+  city              String?
+  summary           String
+  websiteUrl        String?            @map("website_url")
+  coverImageUrl     String?            @map("cover_image_url")
+  createdAt         DateTime           @default(now()) @map("created_at")
+  updatedAt         DateTime           @updatedAt @map("updated_at")
+  departments       Department[]
+  publisherRequests PublisherRequest[]
+
+  @@index([type])
+  @@index([city])
+}
+
+model Specialty {
+  id          String       @id @default(cuid())
+  name        String
+  slug        String       @unique
+  description String
+  departments Department[]
+}
+
+model Department {
+  id                      String                   @id @default(cuid())
+  institutionId           String                   @map("institution_id")
+  specialtyId             String                   @map("specialty_id")
+  slug                    String                   @unique
+  name                    String
+  shortSummary            String                   @map("short_summary")
+  about                   String
+  practicalInfo           String                   @map("practical_info")
+  publicContactEmail      String?                  @map("public_contact_email")
+  publicContactPhone      String?                  @map("public_contact_phone")
+  coverImageUrl           String?                  @map("cover_image_url")
+  futureEnrichmentEnabled Boolean                  @default(false) @map("future_enrichment_enabled")
+  createdAt               DateTime                 @default(now()) @map("created_at")
+  updatedAt               DateTime                 @updatedAt @map("updated_at")
+  institution             Institution              @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  specialty               Specialty                @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+  heads                   DepartmentHead[]
+  residencyOpenings       ResidencyOpening[]
+  researchOpportunities   ResearchOpportunity[]
+  officialUpdates         OfficialDepartmentUpdate[]
+  reviewSubmissions       ReviewSubmission[]
+  reviews                 Review[]
+  favorites               FavoriteDepartment[]
+  publisherRequests       PublisherRequest[]
+  uploadedFiles           UploadedFile[]
+
+  @@unique([institutionId, name])
+  @@index([institutionId])
+  @@index([specialtyId])
+  @@index([name])
+}
+
+model DepartmentHead {
+  id              String      @id @default(cuid())
+  departmentId    String      @map("department_id")
+  name            String
+  title           String
+  bio             String
+  profileImageUrl String?     @map("profile_image_url")
+  displayOrder    Int         @default(0) @map("display_order")
+  createdAt       DateTime    @default(now()) @map("created_at")
+  updatedAt       DateTime    @updatedAt @map("updated_at")
+  department      Department  @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@index([departmentId, displayOrder])
+}
+
+model ResidencyOpening {
+  id                 String                 @id @default(cuid())
+  departmentId       String                 @map("department_id")
+  createdByUserId    String?                @map("created_by_user_id")
+  title              String
+  summary            String
+  openingType        OpeningType            @map("opening_type")
+  isImmediate        Boolean                @default(false) @map("is_immediate")
+  openingsCount      Int?                   @map("openings_count")
+  status             OpportunityStatus
+  committeeDate      DateTime?              @map("committee_date")
+  applicationDeadline DateTime?             @map("application_deadline")
+  expectedStartDate  DateTime?              @map("expected_start_date")
+  notes              String?
+  supportingInfo     String?                @map("supporting_info")
+  contentStatus      ContentStatus          @default(PUBLISHED) @map("content_status")
+  publishedAt        DateTime?              @map("published_at")
+  createdAt          DateTime               @default(now()) @map("created_at")
+  updatedAt          DateTime               @updatedAt @map("updated_at")
+  department         Department             @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  createdBy          User?                  @relation("ResidencyOpeningAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  acceptanceCriteria OpeningAcceptanceCriteria?
+  applications       OpeningApplication[]
+  attachments        UploadedFile[]         @relation("OpeningFiles")
+
+  @@index([departmentId, contentStatus])
+  @@index([status, contentStatus])
+  @@index([committeeDate])
+  @@index([applicationDeadline])
+}
+
+model OpeningAcceptanceCriteria {
+  id                                   String            @id @default(cuid())
+  openingId                            String            @unique @map("opening_id")
+  researchImportance                   Int               @default(3) @map("research_importance")
+  departmentElectiveImportance         Int               @default(3) @map("department_elective_importance")
+  residentSelectionInfluence           Int               @default(3) @map("resident_selection_influence")
+  specialistSelectionInfluence         Int               @default(3) @map("specialist_selection_influence")
+  departmentHeadInfluence              Int               @default(3) @map("department_head_influence")
+  medicalSchoolInfluence               Int               @default(3) @map("medical_school_influence")
+  personalFitImportance                Int               @default(3) @map("personal_fit_importance")
+  previousDepartmentExperienceImportance Int             @default(3) @map("previous_department_experience_importance")
+  notes                                String?
+  createdAt                            DateTime          @default(now()) @map("created_at")
+  updatedAt                            DateTime          @updatedAt @map("updated_at")
+  opening                              ResidencyOpening  @relation(fields: [openingId], references: [id], onDelete: Cascade)
+}
+
+model OpeningApplication {
+  id                        String                   @id @default(cuid())
+  openingId                 String                   @map("opening_id")
+  reviewedByUserId          String?                  @map("reviewed_by_user_id")
+  applicantType             ReviewSourceType         @map("applicant_type")
+  fullName                  String                   @map("full_name")
+  phone                     String
+  email                     String?
+  didDepartmentElective     Boolean                  @default(false) @map("did_department_elective")
+  departmentElectiveDetails String?                  @map("department_elective_details")
+  hasResearch               Boolean                  @default(false) @map("has_research")
+  researchDetails           String?                  @map("research_details")
+  didInternshipThere        Boolean                  @default(false) @map("did_internship_there")
+  internshipDetails         String?                  @map("internship_details")
+  motivationText            String                   @map("motivation_text")
+  relevantExperience        String                   @map("relevant_experience")
+  additionalNotes           String?                  @map("additional_notes")
+  status                    OpeningApplicationStatus @default(SUBMITTED)
+  reviewerNote              String?                  @map("reviewer_note")
+  reviewedAt                DateTime?                @map("reviewed_at")
+  createdAt                 DateTime                 @default(now()) @map("created_at")
+  updatedAt                 DateTime                 @updatedAt @map("updated_at")
+  opening                   ResidencyOpening         @relation(fields: [openingId], references: [id], onDelete: Cascade)
+  reviewedBy                User?                    @relation("OpeningApplicationReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  files                     UploadedFile[]           @relation("ApplicationFiles")
+
+  @@index([openingId, status])
+  @@index([reviewedByUserId])
+}
+
+model ResearchOpportunity {
+  id              String        @id @default(cuid())
+  departmentId    String        @map("department_id")
+  createdByUserId String?       @map("created_by_user_id")
+  title           String
+  summary         String
+  description     String
+  contactInfo     String?       @map("contact_info")
+  contentStatus   ContentStatus @default(PUBLISHED) @map("content_status")
+  publishedAt     DateTime?     @map("published_at")
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+  department      Department    @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  createdBy       User?         @relation("ResearchOpportunityAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+
+  @@index([departmentId, contentStatus])
+}
+
+model OfficialDepartmentUpdate {
+  id              String        @id @default(cuid())
+  departmentId    String        @map("department_id")
+  createdByUserId String?       @map("created_by_user_id")
+  title           String
+  body            String
+  contentStatus   ContentStatus @default(PUBLISHED) @map("content_status")
+  publishedAt     DateTime?     @map("published_at")
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+  department      Department    @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  createdBy       User?         @relation("OfficialUpdateAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+
+  @@index([departmentId, contentStatus])
+}
+
+model ReviewSubmission {
+  id                     String            @id @default(cuid())
+  departmentId           String            @map("department_id")
+  reviewerType           ReviewSourceType  @map("reviewer_type")
+  fullName               String?           @map("full_name")
+  phone                  String
+  email                  String?
+  isAnonymous            Boolean           @default(true) @map("is_anonymous")
+  teachingQuality        Int               @map("teaching_quality")
+  workAtmosphere         Int               @map("work_atmosphere")
+  seniorsApproachability Int               @map("seniors_approachability")
+  researchExposure       Int               @map("research_exposure")
+  lifestyleBalance       Int               @map("lifestyle_balance")
+  overallRecommendation  Int               @map("overall_recommendation")
+  pros                   String
+  cons                   String
+  tips                   String
+  consentToContact       Boolean           @map("consent_to_contact")
+  consentToTerms         Boolean           @map("consent_to_terms")
+  consentNoPatientInfo   Boolean           @map("consent_no_patient_info")
+  status                 SubmissionStatus  @default(PENDING_REVIEW)
+  adminNote              String?           @map("admin_note")
+  reviewedByUserId       String?           @map("reviewed_by_user_id")
+  reviewedAt             DateTime?         @map("reviewed_at")
+  createdAt              DateTime          @default(now()) @map("created_at")
+  updatedAt              DateTime          @updatedAt @map("updated_at")
+  department             Department        @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  reviewedBy             User?             @relation("ReviewSubmissionModerator", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  publishedReview        Review?
+
+  @@index([departmentId, status])
+  @@index([reviewerType, status])
+}
+
+model Review {
+  id                     String           @id @default(cuid())
+  departmentId           String           @map("department_id")
+  submissionId           String           @unique @map("submission_id")
+  reviewerType           ReviewSourceType @map("reviewer_type")
+  displayName            String?          @map("display_name")
+  isAnonymous            Boolean          @default(true) @map("is_anonymous")
+  teachingQuality        Int              @map("teaching_quality")
+  workAtmosphere         Int              @map("work_atmosphere")
+  seniorsApproachability Int              @map("seniors_approachability")
+  researchExposure       Int              @map("research_exposure")
+  lifestyleBalance       Int              @map("lifestyle_balance")
+  overallRecommendation  Int              @map("overall_recommendation")
+  pros                   String
+  cons                   String
+  tips                   String
+  publishedAt            DateTime         @default(now()) @map("published_at")
+  createdAt              DateTime         @default(now()) @map("created_at")
+  updatedAt              DateTime         @updatedAt @map("updated_at")
+  department             Department       @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  submission             ReviewSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  reports                ReviewReport[]
+
+  @@index([departmentId, publishedAt])
+}
+
+model ReviewReport {
+  id             String    @id @default(cuid())
+  reviewId       String    @map("review_id")
+  reporterUserId String?   @map("reporter_user_id")
+  reason         String
+  details        String?
+  createdAt      DateTime  @default(now()) @map("created_at")
+  review         Review    @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  reporter       User?     @relation(fields: [reporterUserId], references: [id], onDelete: SetNull)
+
+  @@index([reviewId])
+}
+
+model PublisherRequest {
+  id               String                 @id @default(cuid())
+  userId           String                 @map("user_id")
+  departmentId     String?                @map("department_id")
+  institutionId    String?                @map("institution_id")
+  requestedRole    RoleKey                @default(REPRESENTATIVE) @map("requested_role")
+  note             String?
+  status           PublisherRequestStatus @default(PENDING)
+  adminNote        String?                @map("admin_note")
+  reviewedByUserId String?                @map("reviewed_by_user_id")
+  reviewedAt       DateTime?              @map("reviewed_at")
+  createdAt        DateTime               @default(now()) @map("created_at")
+  updatedAt        DateTime               @updatedAt @map("updated_at")
+  user             User                   @relation("PublisherRequestOwner", fields: [userId], references: [id], onDelete: Cascade)
+  reviewedBy       User?                  @relation("PublisherRequestReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  department       Department?            @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  institution      Institution?           @relation(fields: [institutionId], references: [id], onDelete: SetNull)
+
+  @@index([userId, status])
+  @@index([departmentId, status])
+}
+
+model UploadedFile {
+  id                   String               @id @default(cuid())
+  departmentId         String?              @map("department_id")
+  openingId            String?              @map("opening_id")
+  openingApplicationId String?              @map("opening_application_id")
+  uploadedByUserId     String?              @map("uploaded_by_user_id")
+  category             UploadedFileCategory
+  isPublic             Boolean              @default(false) @map("is_public")
+  originalName         String               @map("original_name")
+  mimeType             String               @map("mime_type")
+  sizeBytes            Int                  @map("size_bytes")
+  bytes                Bytes
+  createdAt            DateTime             @default(now()) @map("created_at")
+  department           Department?          @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  opening              ResidencyOpening?    @relation("OpeningFiles", fields: [openingId], references: [id], onDelete: SetNull)
+  application          OpeningApplication?  @relation("ApplicationFiles", fields: [openingApplicationId], references: [id], onDelete: SetNull)
+  uploadedBy           User?                @relation("UploadedFileOwner", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([departmentId])
+  @@index([openingId, category])
+  @@index([openingApplicationId, category])
+}
+
+model FavoriteDepartment {
+  userId       String     @map("user_id")
+  departmentId String     @map("department_id")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@id([userId, departmentId])
+}
+
+model AuditLog {
+  id          String    @id @default(cuid())
+  actorUserId String?   @map("actor_user_id")
+  action      String
+  entityType  String    @map("entity_type")
+  entityId    String?   @map("entity_id")
+  metadata    Json?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  actor       User?     @relation("AuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+
+  @@index([action, createdAt])
+}

@@ -1,0 +1,8 @@
+.next
+node_modules
+.env
+coverage
+dist
+*.log
+storage/verification-documents/*
+!storage/verification-documents/.gitkeep
