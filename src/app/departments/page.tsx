@@ -34,9 +34,9 @@ export default async function DepartmentsPage({
   return (
     <PageShell className="space-y-8 py-10">
       <SectionHeading
-        eyebrow="מאגר מחלקות"
+        eyebrow="חיפוש מחלקות"
         title="חיפוש מחלקות, מסלולים וקהילה במקום אחד"
-        description="סננו לפי מוסד, תחום או עיר והשוו בין ביקורות, מחקר, תקנים ומידע פרקטי ליום-יום."
+        description="סננו לפי מוסד, תחום או עיר והשוו בין מה שאומרים מהשטח, מחקר, תקנים ומידע פרקטי."
       />
 
       <DepartmentFilters

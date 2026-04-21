@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const session = await getSession();
 
   if (!session) {
-    return NextResponse.json({ error: "יש להתחבר כדי לשמור מועדפים." }, { status: 401 });
+    return NextResponse.json({ error: "יש להתחבר כדי לשמור מחלקות להשוואה." }, { status: 401 });
   }
 
   const body = (await request.json().catch(() => null)) as { departmentId?: string } | null;

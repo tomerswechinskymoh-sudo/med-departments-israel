@@ -14,7 +14,7 @@ export async function SiteHeader() {
           </Link>
           <nav className="hidden items-center gap-4 text-sm text-slate-700 md:flex">
             <Link href="/departments" className="transition hover:text-brand-700">
-              מאגר מחלקות
+              חיפוש מחלקות
             </Link>
             <Link href="/faq" className="transition hover:text-brand-700">
               שאלות נפוצות
@@ -23,7 +23,7 @@ export async function SiteHeader() {
               אודות
             </Link>
             <Link href="/favorites" className="transition hover:text-brand-700">
-              מועדפים
+              הרשימה שלי
             </Link>
             {session && (
               <Link href="/dashboard" className="transition hover:text-brand-700">

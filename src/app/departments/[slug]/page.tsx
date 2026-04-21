@@ -95,7 +95,7 @@ export default async function DepartmentDetailsPage({
                   href={`/login?next=/departments/${department.slug}`}
                   className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800"
                 >
-                  התחברות לשמירת מועדפים
+                  התחברות לשמירה להשוואה
                 </Link>
               )}
             </div>
@@ -249,7 +249,7 @@ export default async function DepartmentDetailsPage({
           description={
             session
               ? "כאן רואים את כל החוויות שאושרו לפרסום."
-              : "ללא התחברות מוצגת טעימה קצרה. חשבון עוזר בעיקר לשמור מועדפים ולעקוב בנוחות."
+              : "ללא התחברות מוצגת טעימה קצרה. חשבון עוזר בעיקר לשמור מחלקות להשוואה ולעקוב בנוחות."
           }
         />
         <div className="grid gap-4">
@@ -259,7 +259,7 @@ export default async function DepartmentDetailsPage({
           {!session && department.reviews.length > visibleReviews.length ? (
             <Card className="text-center">
               <p className="text-sm text-slate-600">
-                יש עוד חוויות שפורסמו למחלקה הזו. התחברות נועדה בעיקר למועדפים, מעקב ונוחות
+                יש עוד חוויות שפורסמו למחלקה הזו. התחברות נועדה בעיקר לשמירה להשוואה, מעקב ונוחות
                 שימוש, לא כתנאי לקריאת עיקר המידע.
               </p>
               <Link

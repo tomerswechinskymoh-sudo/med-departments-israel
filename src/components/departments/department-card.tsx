@@ -40,9 +40,8 @@ export function DepartmentCard({
       <div className="flex flex-1 flex-col justify-between px-6 pb-6">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <Badge>{department.institutionName}</Badge>
             <Badge tone={department.hasOpenResidency ? "success" : "warning"}>
-              {department.hasOpenResidency ? "יש פתיחות רשמיות" : "ללא פתיחות כרגע"}
+              {department.hasOpenResidency ? "יש פתיחות" : "ללא פתיחות כרגע"}
             </Badge>
             <Badge tone={department.hasResearch ? "success" : "default"}>
               {department.hasResearch ? "מחקר פעיל" : "ללא מחקר פתוח"}
@@ -50,11 +49,24 @@ export function DepartmentCard({
           </div>
 
           <h3 className="mt-4 text-2xl font-bold text-ink">{department.name}</h3>
-          <p className="mt-2 text-sm font-semibold text-brand-700">
-            {department.specialtyName}
-            {department.city ? ` · ${department.city}` : ""}
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-2xl bg-brand-50/70 p-3">
+              <p className="text-xs font-semibold text-slate-500">מוסד</p>
+              <p className="mt-1 text-sm font-semibold text-ink">
+                {department.institutionName}
+                {department.city ? ` · ${department.city}` : ""}
+              </p>
+            </div>
+            <div className="rounded-2xl bg-brand-50/70 p-3">
+              <p className="text-xs font-semibold text-slate-500">תחום</p>
+              <p className="mt-1 text-sm font-semibold text-ink">{department.specialtyName}</p>
+            </div>
+          </div>
+
+          <p className="mt-4 truncate text-sm text-slate-600" title={department.shortSummary}>
+            {department.shortSummary}
           </p>
-          <p className="mt-4 text-sm leading-7 text-slate-600">{department.shortSummary}</p>
         </div>
 
         <div className="mt-6 space-y-4">

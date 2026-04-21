@@ -44,13 +44,13 @@ export default async function DashboardPage() {
             href="/favorites"
             className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white"
           >
-            מועדפים
+            הרשימה שלי
           </Link>
           <Link
             href="/departments"
             className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800"
           >
-            למאגר המחלקות
+            לחיפוש מחלקות
           </Link>
           <Link
             href={canPublish ? "/representative" : "/verification"}
@@ -64,18 +64,18 @@ export default async function DashboardPage() {
       <section className="grid gap-6 lg:grid-cols-2">
         <Card>
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold text-ink">מחלקות מועדפות</h2>
+            <h2 className="text-xl font-bold text-ink">הרשימה שלי</h2>
             <Link href="/favorites" className="text-sm font-semibold text-brand-700">
-              לכל המועדפים
+              לכל הרשימה
             </Link>
           </div>
           <div className="mt-4 space-y-4">
             {data.favorites.length === 0 ? (
               <EmptyState
                 title="אין עדיין מחלקות שמורות"
-                description="שמרו מחלקות ממאגר המחלקות כדי לחזור אליהן מהר."
+                description="שמרו מחלקות להשוואה מתוך חיפוש המחלקות כדי לחזור אליהן מהר."
                 ctaHref="/departments"
-                ctaLabel="למאגר המחלקות"
+                ctaLabel="לחיפוש מחלקות"
               />
             ) : (
               data.favorites.slice(0, 4).map((favorite) => (
@@ -164,7 +164,7 @@ export default async function DashboardPage() {
               {data.isApprovedPublisher ? "מאושר/ת" : "לא פעיל"}
             </p>
             <p>
-              חשבון רגיל מספיק כדי לגלוש, לשמור מועדפים ולעקוב אחרי מחלקות. פרסום עדכונים
+              חשבון רגיל מספיק כדי לגלוש, לשמור מחלקות להשוואה ולעקוב אחרי מחלקות. פרסום עדכונים
               רשמיים דורש הרשאה נפרדת ואישור אדמין.
             </p>
           </div>

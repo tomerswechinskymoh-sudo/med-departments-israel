@@ -16,6 +16,38 @@ function statusLabel(status: "OPEN" | "UPCOMING" | "CLOSED") {
   return { label: "סגור כרגע", tone: "default" as const };
 }
 
+function keyDepartmentFocus(
+  criteria:
+    | {
+        researchImportance: number;
+        departmentElectiveImportance: number;
+        personalFitImportance: number;
+      }
+    | null
+    | undefined
+) {
+  if (!criteria) {
+    return "טרם פורסם";
+  }
+
+  const sortedCriteria = [
+    { label: "מחקר", value: criteria.researchImportance },
+    { label: "אלקטיב במחלקה", value: criteria.departmentElectiveImportance },
+    { label: "התאמה אישית", value: criteria.personalFitImportance }
+  ]
+    .sort((left, right) => right.value - left.value)
+    .filter((item) => item.value > 0);
+
+  if (sortedCriteria.length === 0) {
+    return "טרם פורסם";
+  }
+
+  return sortedCriteria
+    .slice(0, 2)
+    .map((item) => item.label)
+    .join(" + ");
+}
+
 export function OpeningCard({
   opening,
   showInstitution = true,
@@ -72,22 +104,37 @@ export function OpeningCard({
           </p>
         ) : null}
 
-        <p className="mt-4 text-sm leading-7 text-slate-700">{opening.summary}</p>
-
         <div className="mt-5 grid gap-3 text-sm text-slate-600 md:grid-cols-2">
           <div className="rounded-2xl bg-brand-50/70 p-3">
-            <p className="text-xs font-semibold text-slate-500">תאריך ועדה קרוב</p>
+            <p className="text-xs font-semibold text-slate-500">איפה</p>
+            <p className="mt-1 font-semibold text-ink">
+              {opening.department.institution.name} · {opening.department.name}
+            </p>
+          </div>
+          <div className="rounded-2xl bg-brand-50/70 p-3">
+            <p className="text-xs font-semibold text-slate-500">מה פתוח</p>
+            <p className="mt-1 font-semibold text-ink">
+              {openingTypeLabel(opening.openingType)}
+              {opening.openingsCount ? ` · ${opening.openingsCount} תקנים` : ""}
+            </p>
+          </div>
+          <div className="rounded-2xl bg-brand-50/70 p-3">
+            <p className="text-xs font-semibold text-slate-500">מתי ועדה</p>
             <p className="mt-1 font-semibold text-ink">{formatDate(opening.committeeDate)}</p>
           </div>
           <div className="rounded-2xl bg-brand-50/70 p-3">
-            <p className="text-xs font-semibold text-slate-500">דדליין להגשה</p>
-            <p className="mt-1 font-semibold text-ink">{formatDate(opening.applicationDeadline)}</p>
+            <p className="text-xs font-semibold text-slate-500">מה חשוב למחלקה</p>
+            <p className="mt-1 font-semibold text-ink">
+              {keyDepartmentFocus(opening.acceptanceCriteria)}
+            </p>
           </div>
         </div>
 
+        <p className="mt-5 text-sm leading-7 text-slate-700">{opening.summary}</p>
+
         {opening.acceptanceCriteria ? (
           <div className="mt-5 rounded-2xl border border-brand-100 bg-white p-4">
-            <p className="text-xs font-semibold text-slate-500">מה המחלקה מדגישה במיוחד</p>
+            <p className="text-xs font-semibold text-slate-500">פירוט סדרי עדיפויות</p>
             <div className="mt-3 grid gap-3 md:grid-cols-3">
               <div>
                 <p className="text-xs text-slate-500">מחקר</p>

@@ -41,7 +41,7 @@ export function FavoriteToggleButton({
       disabled={isPending}
       className="rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-800 transition hover:bg-brand-50 disabled:opacity-50"
     >
-      {isPending ? "מעדכן..." : isFavorite ? "הסרה ממועדפים" : "שמירה למועדפים"}
+      {isPending ? "מעדכן..." : isFavorite ? "הסרה מהרשימה" : "שמור להשוואה"}
     </button>
   );
 }

@@ -17,7 +17,7 @@ export default async function LoginPage({
         <p className="text-sm font-semibold text-brand-600">כניסה מאובטחת</p>
         <h1 className="mt-2 text-3xl font-bold text-ink">ברוכים הבאים חזרה</h1>
         <p className="mt-3 text-sm leading-7 text-slate-600">
-          התחברו כדי לשמור מחלקות למועדפים, לנהל את האזור האישי ולהגיש בקשות לפרסום רשמי בשם
+          התחברו כדי לשמור מחלקות להשוואה, לנהל את האזור האישי ולהגיש בקשות לפרסום רשמי בשם
           מחלקה או מוסד. ביקורות עצמן ניתנות לשליחה גם בלי חשבון.
         </p>
         <div className="mt-6">

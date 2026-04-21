@@ -14,17 +14,17 @@ export default async function FavoritesPage() {
   return (
     <PageShell className="space-y-8 py-10">
       <SectionHeading
-        eyebrow="מועדפים"
-        title="המחלקות ששמרת"
-        description="גישה מהירה למחלקות שמעניינות אותך במיוחד."
+        eyebrow="הרשימה שלי"
+        title="המחלקות ששמרת להשוואה"
+        description="גישה מהירה למחלקות שתרצו לחזור אליהן."
       />
 
       {favorites.length === 0 ? (
         <EmptyState
           title="אין מחלקות שמורות"
-          description="אפשר להוסיף מחלקות למועדפים מתוך מאגר המחלקות או מתוך עמוד מחלקה."
+          description="אפשר לשמור מחלקות להשוואה מתוך חיפוש המחלקות או מתוך עמוד מחלקה."
           ctaHref="/departments"
-          ctaLabel="לעיון במאגר"
+          ctaLabel="לחיפוש מחלקות"
         />
       ) : (
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
