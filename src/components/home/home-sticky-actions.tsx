@@ -19,7 +19,7 @@ export function HomeStickyActions({
           href="#home-search"
           className="inline-flex min-h-12 flex-1 items-center justify-center rounded-full bg-gradient-to-l from-brand-700 to-teal-600 px-4 py-3 text-sm font-semibold text-white transition hover:from-brand-800 hover:to-teal-700"
         >
-          חיפוש מחלקות
+          חפש מחלקה
         </a>
         <ExperienceCta
           departments={departments}

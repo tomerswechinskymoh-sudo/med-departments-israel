@@ -19,8 +19,8 @@ export function SiteFooter() {
         <div>
           <p className="font-semibold text-white">מסלול למחלקה</p>
           <p className="mt-2 max-w-2xl leading-7 text-brand-50/88">
-            מקום אחד לסטודנטים ולסטאז&apos;רים שרוצים להבין איך מחלקה באמת מרגישה לפני
-            שבוחרים סבב, מחקר או כיוון להמשך.
+            מסלול למחלקה — מקום אחד להבין איך מחלקות באמת נראות לפני שבוחרים סבב, מחקר
+            או התמחות.
           </p>
         </div>
 
@@ -33,8 +33,8 @@ export function SiteFooter() {
         </div>
 
         <div className="grid gap-3 rounded-[1.5rem] border border-white/10 bg-white/5 p-4 text-xs leading-6 text-brand-50/78 md:grid-cols-2">
-          <p>שיתופים מהשטח עולים רק אחרי בדיקה, כדי לשמור על תוכן אמין ומכבד.</p>
-          <p>טלפונים, קורות חיים, תמונות וקבצים נשמרים בפרטיות ונגישים רק לגורמים מורשים.</p>
+          <p>שיתופים מהשטח עולים רק אחרי בדיקה כדי לשמור על תוכן אמין.</p>
+          <p>פרטים אישיים וקבצים נשמרים בפרטיות ונגישים רק לגורמים מורשים.</p>
         </div>
       </div>
     </footer>
