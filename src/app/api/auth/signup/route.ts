@@ -27,11 +27,7 @@ export async function POST(request: Request) {
 
   const passwordHash = await hashPassword(parsed.data.password);
   const roleKey =
-    parsed.data.accountIntent === "representative"
-      ? RoleKey.REPRESENTATIVE
-      : parsed.data.accountIntent === "resident"
-        ? RoleKey.RESIDENT
-        : RoleKey.STUDENT;
+    parsed.data.accountIntent === "resident" ? RoleKey.RESIDENT : RoleKey.STUDENT;
   const user = await prisma.user.create({
     data: {
       fullName: parsed.data.fullName,
@@ -57,9 +53,7 @@ export async function POST(request: Request) {
     email: user.email,
     fullName: user.fullName,
     role:
-      roleKey === RoleKey.REPRESENTATIVE
-        ? "representative"
-        : roleKey === RoleKey.RESIDENT
+      roleKey === RoleKey.RESIDENT
           ? "resident"
           : "student",
     isApprovedPublisher: user.isApprovedPublisher

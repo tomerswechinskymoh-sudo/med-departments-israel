@@ -33,16 +33,6 @@ export async function requireAdmin() {
   return requireRole([RoleKey.ADMIN]);
 }
 
-export async function requireRepresentativeOrAdmin() {
-  return requireRole([RoleKey.REPRESENTATIVE, RoleKey.ADMIN]);
-}
-
-export async function requireApprovedPublisher() {
-  const session = await requireRepresentativeOrAdmin();
-
-  if (!session.isApprovedPublisher && session.role !== "admin") {
-    redirect("/verification");
-  }
-
-  return session;
+export async function requireRepresentative() {
+  return requireRole([RoleKey.REPRESENTATIVE]);
 }

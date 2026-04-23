@@ -11,9 +11,11 @@ import { openingApplicationSchema } from "@/lib/validation";
 type FormValues = z.infer<typeof openingApplicationSchema>;
 
 export function OpeningApplicationForm({
-  openingId
+  openingId,
+  initialValues
 }: {
   openingId: string;
+  initialValues?: Partial<FormValues>;
 }) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
@@ -29,11 +31,11 @@ export function OpeningApplicationForm({
     resolver: zodResolver(openingApplicationSchema),
     defaultValues: {
       openingId,
-      applicantType: "INTERN",
-      fullName: "",
-      phone: "",
-      email: "",
-      medicalSchool: "",
+      applicantType: initialValues?.applicantType ?? "INTERN",
+      fullName: initialValues?.fullName ?? "",
+      phone: initialValues?.phone ?? "",
+      email: initialValues?.email ?? "",
+      medicalSchool: initialValues?.medicalSchool ?? "",
       didDepartmentElective: false,
       departmentElectiveDetails: "",
       hasResearch: false,
@@ -61,12 +63,46 @@ export function OpeningApplicationForm({
     }
 
     const formData = new FormData();
+    formData.set("openingId", openingId);
+    formData.set("applicantType", values.applicantType);
+    formData.set("fullName", values.fullName.trim());
+    formData.set("phone", values.phone.trim());
 
-    Object.entries(values).forEach(([key, value]) => {
-      if (value !== undefined && value !== null && value !== "") {
-        formData.set(key, typeof value === "boolean" ? String(value) : String(value));
-      }
-    });
+    if (values.email?.trim()) {
+      formData.set("email", values.email.trim());
+    }
+
+    formData.set("medicalSchool", values.medicalSchool.trim());
+    formData.set("didDepartmentElective", String(values.didDepartmentElective));
+    formData.set("hasResearch", String(values.hasResearch));
+    formData.set("didInternshipThere", String(values.didInternshipThere));
+
+    if (values.departmentElectiveDetails?.trim()) {
+      formData.set("departmentElectiveDetails", values.departmentElectiveDetails.trim());
+    }
+
+    if (values.researchDetails?.trim()) {
+      formData.set("researchDetails", values.researchDetails.trim());
+    }
+
+    if (values.internshipDetails?.trim()) {
+      formData.set("internshipDetails", values.internshipDetails.trim());
+    }
+
+    if (values.recommendationDetails?.trim()) {
+      formData.set("recommendationDetails", values.recommendationDetails.trim());
+    }
+
+    if (values.departmentFamiliarityDetails?.trim()) {
+      formData.set("departmentFamiliarityDetails", values.departmentFamiliarityDetails.trim());
+    }
+
+    formData.set("motivationText", values.motivationText.trim());
+    formData.set("relevantExperience", values.relevantExperience.trim());
+
+    if (values.additionalNotes?.trim()) {
+      formData.set("additionalNotes", values.additionalNotes.trim());
+    }
 
     formData.set("cvFile", cvFile);
 
@@ -186,12 +222,12 @@ export function OpeningApplicationForm({
       <div className="grid gap-4 md:grid-cols-2">
         <textarea
           {...register("motivationText")}
-          placeholder="למה דווקא המחלקה הזאת מעניינת אותך?"
+          placeholder="למה המחלקה הזאת מעניינת אותך, ומה מושך אותך דווקא למסלול הזה?"
           className="min-h-36 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
         />
         <textarea
           {...register("relevantExperience")}
-          placeholder="ניסיון רלוונטי: קליני, מחקרי, קהילתי, הוראתי או אחר"
+          placeholder="מה כבר עשית שיכול לעזור להבין את ההתאמה שלך למחלקה?"
           className="min-h-36 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
         />
       </div>
@@ -247,7 +283,7 @@ export function OpeningApplicationForm({
         disabled={isSubmitting}
         className="w-full rounded-2xl bg-brand-700 px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
       >
-        {isSubmitting ? "שולח/ת..." : "שליחת מועמדות פרטית"}
+        {isSubmitting ? "שולח/ת..." : "שליחת מועמדות"}
       </button>
     </form>
   );

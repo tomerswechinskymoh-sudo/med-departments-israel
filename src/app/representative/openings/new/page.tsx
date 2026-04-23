@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { requireApprovedPublisher } from "@/lib/auth-guards";
+import { requireRepresentative } from "@/lib/auth-guards";
 import { OpeningEditorForm } from "@/components/openings/opening-editor-form";
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
@@ -13,13 +13,11 @@ export default async function NewOpeningPage({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const session = await requireApprovedPublisher();
+  const session = await requireRepresentative();
   const params = await searchParams;
   const preferredDepartmentId =
     typeof params.departmentId === "string" ? params.departmentId : undefined;
-  const data = await getRepresentativeOpeningFormData(session.userId, undefined, {
-    includeAllDepartments: session.role === "admin"
-  });
+  const data = await getRepresentativeOpeningFormData(session.userId);
 
   if (data.departmentOptions.length === 0) {
     redirect("/representative");
@@ -30,16 +28,16 @@ export default async function NewOpeningPage({
       <div className="mx-auto max-w-5xl space-y-6">
         <Card className="bg-brand-900 text-white">
           <p className="text-sm font-semibold text-brand-100">פרסום רשמי</p>
-          <h1 className="mt-2 text-3xl font-bold">פתיחה חדשה למחלקה</h1>
+          <h1 className="mt-2 text-3xl font-bold">תקן פתוח חדש למחלקה</h1>
           <p className="mt-3 text-sm leading-7 text-brand-50">
-            הפתיחה תופיע לציבור רק מתוך האזור המאושר הזה, ולא דרך ה־homepage הציבורי.
+            ההצעה תישלח קודם לאישור אדמין. רק אחרי אישור היא תעלה לציבור.
           </p>
         </Card>
 
         <Card>
           <SectionHeading
-            title="פרטי הפתיחה"
-            description="הגדירו כותרת, לוח זמנים, קריטריונים לקבלה, וכמה מועמדים מובילים תרצו לקבל במייל אחרי הדדליין."
+            title="פרטי התקן הפתוח"
+            description="מגדירים תוכן, לוח זמנים, דגשים לקבלה וכמה מועמדים מובילים תרצו לקבל אחרי הדדליין. הכול נשמר קודם לבדיקה."
           />
           <div className="mt-6">
             <OpeningEditorForm

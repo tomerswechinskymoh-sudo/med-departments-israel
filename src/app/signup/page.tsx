@@ -11,7 +11,8 @@ export default function SignupPage() {
           <h1 className="mt-2 text-3xl font-bold text-ink">הצטרפות לפלטפורמת המחלקות</h1>
           <p className="mt-3 text-sm leading-7 text-slate-600">
             פתיחת חשבון מיועדת בעיקר לסטודנטים ולסטאז&apos;רים שרוצים לשמור מחלקות להשוואה
-            ולעבוד בצורה מסודרת. נציגי מחלקות יכולים להגיש אחר כך בקשת הרשאת פרסום רשמי.
+            ולעבוד בצורה מסודרת. חשבונות נציגי מחלקות נוצרים רק ע״י אדמין ומקבלים שיוך למחלקות
+            באופן ידני.
           </p>
           <div className="mt-6">
             <SignupForm />

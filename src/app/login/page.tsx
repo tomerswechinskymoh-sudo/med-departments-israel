@@ -17,8 +17,9 @@ export default async function LoginPage({
         <p className="text-sm font-semibold text-brand-600">כניסה מאובטחת</p>
         <h1 className="mt-2 text-3xl font-bold text-ink">ברוכים הבאים חזרה</h1>
         <p className="mt-3 text-sm leading-7 text-slate-600">
-          התחברו כדי לשמור מחלקות להשוואה, לנהל את האזור האישי ולהגיש בקשות לפרסום רשמי בשם
-          מחלקה או מוסד. שיתוף חוויה מהמחלקה אפשרי גם בלי חשבון.
+          התחברו כדי לשמור מחלקות להשוואה, לנהל את האזור האישי ולהגיש מועמדות פרטית לתקנים
+          פתוחים. שיתוף חוויה מהמחלקה אפשרי גם בלי חשבון, וחשבונות נציגי מחלקות נוצרים רק ע״י
+          אדמין.
         </p>
         <div className="mt-6">
           <LoginForm nextPath={nextPath} />

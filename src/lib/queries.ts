@@ -4,7 +4,6 @@ import {
   OpeningApplicationStatus,
   OpeningType,
   Prisma,
-  PublisherRequestStatus,
   ReviewSourceType,
   RoleKey,
   SubmissionStatus
@@ -49,62 +48,29 @@ const openingCriteriaSelect = {
 } satisfies Prisma.OpeningAcceptanceCriteriaSelect;
 
 async function getManagedDepartments(userId: string, includeAllDepartments = false) {
-  if (includeAllDepartments) {
-    return prisma.department.findMany({
-      select: {
-        id: true,
-        institutionId: true
-      }
-    });
-  }
-
-  const user = await prisma.user.findUnique({
+  const assignments = await prisma.representativeAssignment.findMany({
     where: {
-      id: userId
+      userId
     },
-    include: {
-      publisherRequests: {
-        where: {
-          status: PublisherRequestStatus.APPROVED
-        },
+    select: {
+      departmentId: true,
+      department: {
         select: {
-          departmentId: true,
           institutionId: true
         }
       }
     }
   });
 
-  if (!user) {
-    return [];
-  }
-
-  if (user.roleKey === RoleKey.ADMIN) {
-    return prisma.department.findMany({
-      select: {
-        id: true,
-        institutionId: true
-      }
-    });
-  }
-
-  const departmentIds = user.publisherRequests
-    .map((request) => request.departmentId)
-    .filter((value): value is string => Boolean(value));
-  const institutionIds = user.publisherRequests
-    .map((request) => request.institutionId)
-    .filter((value): value is string => Boolean(value));
-
-  if (departmentIds.length === 0 && institutionIds.length === 0) {
+  if (assignments.length === 0) {
     return [];
   }
 
   return prisma.department.findMany({
     where: {
-      OR: [
-        departmentIds.length > 0 ? { id: { in: departmentIds } } : undefined,
-        institutionIds.length > 0 ? { institutionId: { in: institutionIds } } : undefined
-      ].filter(Boolean) as Prisma.DepartmentWhereInput[]
+      id: {
+        in: assignments.map((assignment) => assignment.departmentId)
+      }
     },
     select: {
       id: true,
@@ -428,7 +394,19 @@ export async function getDepartmentPageData(slug: string, viewerId?: string) {
               userId: true
             }
           }
-        : false
+        : false,
+      representativeAssignments: {
+        include: {
+          user: {
+            include: {
+              representativeProfile: true
+            }
+          }
+        },
+        orderBy: {
+          createdAt: "asc"
+        }
+      }
     }
   });
 
@@ -554,19 +532,20 @@ export async function getUserDashboardData(userId: string) {
           }
         }
       },
-      publisherRequests: {
+      representativeAssignments: {
         include: {
-          institution: true,
           department: {
             include: {
-              institution: true
+              institution: true,
+              specialty: true
             }
           }
         },
         orderBy: {
           createdAt: "desc"
         }
-      }
+      },
+      representativeProfile: true
     }
   });
 }
@@ -649,6 +628,24 @@ export async function getRepresentativeDashboardData(
           displayOrder: "asc"
         }
       },
+      representativeAssignments: {
+        include: {
+          user: {
+            include: {
+              representativeProfile: true
+            }
+          }
+        }
+      },
+      departmentChangeRequests: {
+        where: {
+          submittedByUserId: userId
+        },
+        orderBy: {
+          createdAt: "desc"
+        },
+        take: 3
+      },
       officialUpdates: {
         orderBy: {
           createdAt: "desc"
@@ -664,6 +661,12 @@ export async function getRepresentativeDashboardData(
           acceptanceCriteria: {
             select: openingCriteriaSelect
           },
+          createdBy: {
+            select: {
+              id: true,
+              fullName: true
+            }
+          },
           applications: {
             select: {
               id: true,
@@ -677,7 +680,7 @@ export async function getRepresentativeDashboardData(
             }
           }
         },
-        orderBy: [{ status: "asc" }, { committeeDate: "asc" }, { createdAt: "desc" }]
+        orderBy: [{ contentStatus: "asc" }, { status: "asc" }, { committeeDate: "asc" }, { createdAt: "desc" }]
       }
     },
     orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
@@ -830,9 +833,11 @@ export async function getAdminDashboardData() {
   const [
     stats,
     pendingReviewSubmissions,
-    pendingPublisherRequests,
+    pendingDepartmentChangeRequests,
+    pendingOpeningApprovals,
     recentOpeningApplications,
     users,
+    representativeUsers,
     departments,
     institutions,
     specialties,
@@ -846,9 +851,14 @@ export async function getAdminDashboardData() {
           status: SubmissionStatus.PENDING_REVIEW
         }
       }),
-      prisma.publisherRequest.count({
+      prisma.residencyOpening.count({
         where: {
-          status: PublisherRequestStatus.PENDING
+          contentStatus: ContentStatus.PENDING_REVIEW
+        }
+      }),
+      prisma.departmentChangeRequest.count({
+        where: {
+          status: SubmissionStatus.PENDING_REVIEW
         }
       }),
       prisma.openingApplication.count({
@@ -875,16 +885,39 @@ export async function getAdminDashboardData() {
       },
       take: 10
     }),
-    prisma.publisherRequest.findMany({
+    prisma.departmentChangeRequest.findMany({
       where: {
-        status: PublisherRequestStatus.PENDING
+        status: SubmissionStatus.PENDING_REVIEW
       },
       include: {
-        user: true,
-        institution: true,
         department: {
           include: {
             institution: true
+          }
+        },
+        submittedBy: true
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 10
+    }),
+    prisma.residencyOpening.findMany({
+      where: {
+        contentStatus: ContentStatus.PENDING_REVIEW
+      },
+      include: {
+        department: {
+          include: {
+            institution: true,
+            specialty: true
+          }
+        },
+        createdBy: true,
+        acceptanceCriteria: true,
+        attachments: {
+          orderBy: {
+            createdAt: "desc"
           }
         }
       },
@@ -927,6 +960,30 @@ export async function getAdminDashboardData() {
       },
       take: 12
     }),
+    prisma.user.findMany({
+      where: {
+        roleKey: RoleKey.REPRESENTATIVE
+      },
+      include: {
+        representativeProfile: true,
+        representativeAssignments: {
+          include: {
+            department: {
+              include: {
+                institution: true
+              }
+            }
+          },
+          orderBy: {
+            createdAt: "asc"
+          }
+        }
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 12
+    }),
     prisma.department.findMany({
       include: {
         institution: true,
@@ -961,13 +1018,16 @@ export async function getAdminDashboardData() {
       users: stats[0],
       departments: stats[1],
       pendingReviewSubmissions: stats[2],
-      pendingPublisherRequests: stats[3],
-      pendingOpeningApplications: stats[4]
+      pendingOpeningApprovals: stats[3],
+      pendingDepartmentChangeRequests: stats[4],
+      pendingOpeningApplications: stats[5]
     },
     pendingReviewSubmissions,
-    pendingPublisherRequests,
+    pendingDepartmentChangeRequests,
+    pendingOpeningApprovals,
     recentOpeningApplications,
     users,
+    representativeUsers,
     departments,
     institutions,
     specialties,
@@ -1006,44 +1066,18 @@ export async function canUserPublishDepartment(userId: string, departmentId: str
     return false;
   }
 
-  if (user.roleKey === RoleKey.ADMIN) {
-    return true;
-  }
-
-  if (!user.isApprovedPublisher) {
+  if (user.roleKey !== RoleKey.REPRESENTATIVE) {
     return false;
   }
 
-  const department = await prisma.department.findUnique({
-    where: {
-      id: departmentId
-    },
-    select: {
-      institutionId: true
-    }
-  });
-
-  if (!department) {
-    return false;
-  }
-
-  const approvedRequest = await prisma.publisherRequest.findFirst({
+  const assignment = await prisma.representativeAssignment.findFirst({
     where: {
       userId,
-      status: PublisherRequestStatus.APPROVED,
-      OR: [
-        {
-          departmentId
-        },
-        {
-          institutionId: department.institutionId,
-          departmentId: null
-        }
-      ]
+      departmentId
     }
   });
 
-  return Boolean(approvedRequest);
+  return Boolean(assignment);
 }
 
 export function userRoleLabel(roleKey: RoleKey) {

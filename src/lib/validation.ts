@@ -34,6 +34,14 @@ const emptyToUndefined = (value: unknown) => {
   return trimmed === "" ? undefined : trimmed;
 };
 
+const trimString = (value: unknown) => {
+  if (typeof value !== "string") {
+    return value;
+  }
+
+  return value.trim();
+};
+
 const scaleSchema = z.coerce.number().int().min(1).max(5);
 
 export const loginSchema = z.object({
@@ -53,7 +61,7 @@ export const signupSchema = z
       .regex(/[a-z]/, "יש לכלול אות קטנה אחת לפחות.")
       .regex(/[0-9]/, "יש לכלול ספרה אחת לפחות."),
     confirmPassword: z.string(),
-    accountIntent: z.enum(["student", "resident", "representative"]).default("student")
+    accountIntent: z.enum(["student", "resident"]).default("student")
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
@@ -140,6 +148,50 @@ export const openingApplicationModerationSchema = z.object({
   reviewerNote: z.preprocess(emptyToUndefined, z.string().max(800).optional())
 });
 
+export const representativeProfileSchema = z.object({
+  title: z.preprocess(emptyToUndefined, z.string().min(2, "יש להזין תפקיד / טייטל.").optional()),
+  contactDetails: z.preprocess(
+    emptyToUndefined,
+    z.string().max(500, "יש לקצר את פרטי הקשר.").optional()
+  ),
+  note: z.preprocess(emptyToUndefined, z.string().max(700, "יש לקצר את ההערה.").optional())
+});
+
+export const representativeAccountProfileSchema = z.object({
+  fullName: z.string().min(2, "יש להזין שם מלא."),
+  email: z.string().email("יש להזין אימייל תקין."),
+  phone: z.preprocess(emptyToUndefined, z.string().min(9, "יש להזין טלפון תקין.").optional()),
+  profile: representativeProfileSchema
+});
+
+export const adminRepresentativeCreateSchema = z.object({
+  fullName: z.string().min(2, "יש להזין שם מלא."),
+  email: z.string().email("יש להזין אימייל תקין."),
+  phone: z.preprocess(emptyToUndefined, z.string().min(9).optional()),
+  password: z
+    .string()
+    .min(8, "יש להזין סיסמה זמנית של לפחות 8 תווים.")
+    .regex(/[A-Z]/, "יש לכלול אות גדולה אחת לפחות.")
+    .regex(/[a-z]/, "יש לכלול אות קטנה אחת לפחות.")
+    .regex(/[0-9]/, "יש לכלול ספרה אחת לפחות."),
+  departmentIds: z.array(z.string().min(1)).min(1, "יש לשייך לפחות מחלקה אחת."),
+  profile: representativeProfileSchema
+});
+
+export const representativeAssignmentUpdateSchema = z.object({
+  departmentIds: z.array(z.string().min(1)).min(1, "יש לשייך לפחות מחלקה אחת.")
+});
+
+export const openingContentReviewSchema = z.object({
+  decision: z.enum(["APPROVE", "REJECT"]),
+  adminNote: z.preprocess(emptyToUndefined, z.string().max(800).optional())
+});
+
+export const departmentChangeReviewSchema = z.object({
+  decision: z.enum(["APPROVE", "REJECT"]),
+  adminNote: z.preprocess(emptyToUndefined, z.string().max(800).optional())
+});
+
 export const departmentHeadSchema = z.object({
   id: z.preprocess(emptyToUndefined, z.string().optional()),
   name: z.string().min(2, "יש להזין שם."),
@@ -210,10 +262,10 @@ export const openingApplicationSchema = z
   .object({
     openingId: z.string().min(1),
     applicantType: z.enum(reviewerTypeValues),
-    fullName: z.string().min(2, "יש להזין שם מלא."),
-    phone: z.string().min(9, "יש להזין מספר טלפון."),
+    fullName: z.preprocess(trimString, z.string().min(2, "יש להזין שם מלא.")),
+    phone: z.preprocess(trimString, z.string().min(9, "יש להזין מספר טלפון.")),
     email: z.preprocess(emptyToUndefined, z.string().email("יש להזין אימייל תקין.").optional()),
-    medicalSchool: z.string().min(2, "יש להזין מוסד לימודים."),
+    medicalSchool: z.preprocess(trimString, z.string().min(2, "יש להזין מוסד לימודים.")),
     didDepartmentElective: z.boolean(),
     departmentElectiveDetails: z.preprocess(emptyToUndefined, z.string().max(800).optional()),
     hasResearch: z.boolean(),
@@ -222,8 +274,14 @@ export const openingApplicationSchema = z
     internshipDetails: z.preprocess(emptyToUndefined, z.string().max(800).optional()),
     recommendationDetails: z.preprocess(emptyToUndefined, z.string().max(800).optional()),
     departmentFamiliarityDetails: z.preprocess(emptyToUndefined, z.string().max(800).optional()),
-    motivationText: z.string().min(40, "יש להסביר למה המחלקה מעניינת אותך."),
-    relevantExperience: z.string().min(20, "יש לתאר ניסיון רלוונטי."),
+    motivationText: z.preprocess(
+      trimString,
+      z.string().min(15, "יש לכתוב בקצרה למה המחלקה מעניינת אותך.")
+    ),
+    relevantExperience: z.preprocess(
+      trimString,
+      z.string().min(12, "יש לתאר בקצרה ניסיון רלוונטי.")
+    ),
     additionalNotes: z.preprocess(emptyToUndefined, z.string().max(1200).optional())
   })
   .superRefine((data, ctx) => {
@@ -289,6 +347,5 @@ export const adminDepartmentSchema = z.object({
 });
 
 export const adminUserRoleSchema = z.object({
-  role: z.enum(roleKeyValues),
-  isApprovedPublisher: z.boolean().optional()
+  role: z.enum(["STUDENT", "RESIDENT", "ADMIN"])
 });

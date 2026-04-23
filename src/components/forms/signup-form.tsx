@@ -48,7 +48,7 @@ export function SignupForm() {
       return;
     }
 
-    router.push(accountIntent === "representative" ? "/verification" : "/dashboard");
+    router.push("/dashboard");
     router.refresh();
   });
 
@@ -93,7 +93,6 @@ export function SignupForm() {
         >
           <option value="student">סטודנט/ית או סטאז'ר/ית</option>
           <option value="resident">מתמחה</option>
-          <option value="representative">נציג/ת מחלקה</option>
         </select>
       </div>
 
@@ -123,11 +122,9 @@ export function SignupForm() {
       </div>
 
       <div className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-600">
-        {accountIntent === "representative"
-          ? "לאחר יצירת החשבון תוכל/י להגיש בקשת הרשאת פרסום. רק משתמשים מאושרים יכולים לפרסם עדכונים, משרות והזדמנויות רשמיות."
-          : accountIntent === "resident"
+        {accountIntent === "resident"
             ? "החשבון מאפשר לשמור מחלקות להשוואה ולעקוב אחרי מחלקות. שיתוף חוויה פתוח גם בלי הרשמה, ויאומת בנפרד מול צוות האתר."
-            : "החשבון מיועד לגלישה נוחה, שמירת מחלקות להשוואה וגישה מהירה למוסדות ולמחלקות שמעניינים אותך."}
+            : "החשבון מיועד לגלישה נוחה, שמירת מחלקות להשוואה, והגשת מועמדות פרטית לתקנים פתוחים מתוך אזור אישי מסודר."}
       </div>
 
       {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}

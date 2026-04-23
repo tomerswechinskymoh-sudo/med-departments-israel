@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { parseSessionTokenEdge } from "@/lib/auth-edge";
 import { getSessionCookieName } from "@/lib/session";
 
-const authRequiredPrefixes = ["/dashboard", "/favorites", "/verification"];
+const authRequiredPrefixes = ["/dashboard", "/favorites"];
 const representativePrefixes = ["/representative"];
 const adminPrefixes = ["/admin"];
 
@@ -27,7 +27,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (representativePrefixes.some((prefix) => pathname.startsWith(prefix))) {
-    if (!["representative", "admin"].includes(session.role)) {
+    if (session.role !== "representative") {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
   }
@@ -42,5 +42,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/favorites/:path*", "/verification/:path*", "/representative/:path*", "/admin/:path*"]
+  matcher: ["/dashboard/:path*", "/favorites/:path*", "/representative/:path*", "/admin/:path*"]
 };

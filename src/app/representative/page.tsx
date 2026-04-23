@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { requireApprovedPublisher } from "@/lib/auth-guards";
+import { requireRepresentative } from "@/lib/auth-guards";
 import { getRepresentativeDashboardData } from "@/lib/queries";
 import { DepartmentEditorForm } from "@/components/forms/department-editor-form";
 import { PageShell } from "@/components/layout/page-shell";
@@ -23,29 +23,21 @@ function openingStatusLabel(status: "OPEN" | "UPCOMING" | "CLOSED") {
 }
 
 export default async function RepresentativePage() {
-  const session = await requireApprovedPublisher();
-  const assignments = await getRepresentativeDashboardData(session.userId, {
-    includeAllDepartments: session.role === "admin"
-  });
+  const session = await requireRepresentative();
+  const assignments = await getRepresentativeDashboardData(session.userId);
 
   return (
     <PageShell className="space-y-8 py-10">
       <SectionHeading
-        eyebrow="אזור פרסום רשמי"
-        title="ניהול עמודי מחלקה, פתיחות, מחקר ומועמדויות"
-        description={
-          session.role === "admin"
-            ? "כאדמין אפשר לנהל את כל שכבת הפרסום הרשמית ולעבור בין מחלקות שונות."
-            : "האזור הזה מיועד רק לנציגים מאושרים. כל פרסום פתיחות נעשה מכאן ולא דרך ה-homepage הציבורי."
-        }
+        eyebrow="אזור נציגי מחלקה"
+        title="ניהול עמודי מחלקה, תקנים פתוחים, מחקר ומועמדויות"
+        description="האזור הזה מיועד רק לנציגים שנוצרו ע״י אדמין ושויכו למחלקות. שום תוכן לא עולה מכאן ישירות לציבור בלי אישור אדמין."
       />
 
       {assignments.length === 0 ? (
         <EmptyState
-          title="אין מחלקות מורשות לחשבון הזה"
-          description="אם זה חשבון חדש, ייתכן שהבקשה עדיין ממתינה לאישור או שלא שויכה מחלקה."
-          ctaHref="/verification"
-          ctaLabel="לבדיקת בקשות"
+          title="עדיין לא שויכו מחלקות לחשבון הזה"
+          description="כדי לנהל תוכן רשמי צריך שאדמין ישייך אותך למחלקה אחת או יותר. אם משהו חסר, כדאי לפנות לצוות המערכת."
         />
       ) : (
         <div className="space-y-8">

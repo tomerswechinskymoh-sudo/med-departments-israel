@@ -93,8 +93,14 @@ model User {
   updatedAt                   DateTime                @updatedAt @map("updated_at")
   role                        Role                    @relation(fields: [roleKey], references: [key], onUpdate: Cascade)
   favorites                   FavoriteDepartment[]
+  representativeProfile       RepresentativeProfile?
+  representativeAssignments   RepresentativeAssignment[] @relation("RepresentativeAssignments")
+  createdRepresentativeAssignments RepresentativeAssignment[] @relation("RepresentativeAssignmentCreator")
+  submittedDepartmentChangeRequests DepartmentChangeRequest[] @relation("DepartmentChangeSubmitter")
+  reviewedDepartmentChangeRequests DepartmentChangeRequest[] @relation("DepartmentChangeReviewer")
   createdOfficialUpdates      OfficialDepartmentUpdate[] @relation("OfficialUpdateAuthor")
   createdResidencyOpenings    ResidencyOpening[]      @relation("ResidencyOpeningAuthor")
+  reviewedResidencyOpenings   ResidencyOpening[]      @relation("ResidencyOpeningReviewer")
   createdResearchOpportunities ResearchOpportunity[]  @relation("ResearchOpportunityAuthor")
   publisherRequests           PublisherRequest[]      @relation("PublisherRequestOwner")
   reviewedPublisherRequests   PublisherRequest[]      @relation("PublisherRequestReviewer")
@@ -160,11 +166,38 @@ model Department {
   favorites               FavoriteDepartment[]
   publisherRequests       PublisherRequest[]
   uploadedFiles           UploadedFile[]
+  representativeAssignments RepresentativeAssignment[]
+  departmentChangeRequests DepartmentChangeRequest[]
 
   @@unique([institutionId, name])
   @@index([institutionId])
   @@index([specialtyId])
   @@index([name])
+}
+
+model RepresentativeProfile {
+  id             String   @id @default(cuid())
+  userId         String   @unique @map("user_id")
+  title          String?  @map("title")
+  contactDetails String?  @map("contact_details")
+  note           String?  @map("note")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model RepresentativeAssignment {
+  id              String     @id @default(cuid())
+  userId          String     @map("user_id")
+  departmentId    String     @map("department_id")
+  createdByUserId String?    @map("created_by_user_id")
+  createdAt       DateTime   @default(now()) @map("created_at")
+  user            User       @relation("RepresentativeAssignments", fields: [userId], references: [id], onDelete: Cascade)
+  department      Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  createdBy       User?      @relation("RepresentativeAssignmentCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+
+  @@unique([userId, departmentId])
+  @@index([departmentId])
 }
 
 model DepartmentHead {
@@ -186,6 +219,8 @@ model ResidencyOpening {
   id                 String                 @id @default(cuid())
   departmentId       String                 @map("department_id")
   createdByUserId    String?                @map("created_by_user_id")
+  reviewedByUserId   String?                @map("reviewed_by_user_id")
+  supersedesOpeningId String?               @map("supersedes_opening_id")
   title              String
   summary            String
   openingType        OpeningType            @map("opening_type")
@@ -200,12 +235,17 @@ model ResidencyOpening {
   supportingInfo     String?                @map("supporting_info")
   topMatchesDeliveredAt DateTime?           @map("top_matches_delivered_at")
   topMatchesLastError String?               @map("top_matches_last_error")
+  reviewNote         String?                @map("review_note")
+  reviewedAt         DateTime?              @map("reviewed_at")
   contentStatus      ContentStatus          @default(PUBLISHED) @map("content_status")
   publishedAt        DateTime?              @map("published_at")
   createdAt          DateTime               @default(now()) @map("created_at")
   updatedAt          DateTime               @updatedAt @map("updated_at")
   department         Department             @relation(fields: [departmentId], references: [id], onDelete: Cascade)
   createdBy          User?                  @relation("ResidencyOpeningAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  reviewedBy         User?                  @relation("ResidencyOpeningReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  supersedesOpening  ResidencyOpening?      @relation("OpeningRevision", fields: [supersedesOpeningId], references: [id], onDelete: SetNull)
+  pendingRevisions   ResidencyOpening[]     @relation("OpeningRevision")
   acceptanceCriteria OpeningAcceptanceCriteria?
   applications       OpeningApplication[]
   attachments        UploadedFile[]         @relation("OpeningFiles")
@@ -215,6 +255,7 @@ model ResidencyOpening {
   @@index([committeeDate])
   @@index([applicationDeadline])
   @@index([topMatchesDeliveredAt])
+  @@index([supersedesOpeningId])
 }
 
 model OpeningAcceptanceCriteria {
@@ -312,6 +353,26 @@ model OfficialDepartmentUpdate {
   createdBy       User?         @relation("OfficialUpdateAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
 
   @@index([departmentId, contentStatus])
+}
+
+model DepartmentChangeRequest {
+  id               String           @id @default(cuid())
+  departmentId     String           @map("department_id")
+  submittedByUserId String          @map("submitted_by_user_id")
+  reviewedByUserId String?          @map("reviewed_by_user_id")
+  summary          String?          @map("summary")
+  payload          Json
+  status           SubmissionStatus @default(PENDING_REVIEW)
+  adminNote        String?          @map("admin_note")
+  reviewedAt       DateTime?        @map("reviewed_at")
+  createdAt        DateTime         @default(now()) @map("created_at")
+  updatedAt        DateTime         @updatedAt @map("updated_at")
+  department       Department       @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  submittedBy      User             @relation("DepartmentChangeSubmitter", fields: [submittedByUserId], references: [id], onDelete: Cascade)
+  reviewedBy       User?            @relation("DepartmentChangeReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+
+  @@index([departmentId, status])
+  @@index([submittedByUserId, status])
 }
 
 model ReviewSubmission {

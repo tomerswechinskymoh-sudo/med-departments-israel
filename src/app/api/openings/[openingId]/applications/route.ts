@@ -1,5 +1,6 @@
 import { UploadedFileCategory } from "@prisma/client";
 import { NextResponse } from "next/server";
+import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
 import { readOptionalFormFile, storeUploadedFile } from "@/lib/uploads";
@@ -18,6 +19,15 @@ export async function POST(
   request: Request,
   { params }: { params: Promise<{ openingId: string }> }
 ) {
+  const session = await getSession();
+
+  if (!session) {
+    return NextResponse.json(
+      { error: "צריך להתחבר כדי לשלוח מועמדות פרטית לתקן פתוח." },
+      { status: 401 }
+    );
+  }
+
   const { openingId } = await params;
   const opening = await prisma.residencyOpening.findFirst({
     where: {
@@ -102,6 +112,7 @@ export async function POST(
       departmentId: opening.departmentId,
       openingId,
       openingApplicationId: created.id,
+      uploadedByUserId: session.userId,
       isPublic: false
     });
 
@@ -112,6 +123,7 @@ export async function POST(
         departmentId: opening.departmentId,
         openingId,
         openingApplicationId: created.id,
+        uploadedByUserId: session.userId,
         isPublic: false
       });
     }
@@ -123,6 +135,7 @@ export async function POST(
         departmentId: opening.departmentId,
         openingId,
         openingApplicationId: created.id,
+        uploadedByUserId: session.userId,
         isPublic: false
       });
     }
@@ -131,8 +144,8 @@ export async function POST(
   });
 
   await createAuditLog({
-    actorUserId: null,
-    action: "opening_application.submitted_public",
+    actorUserId: session.userId,
+    action: "opening_application.submitted",
     entityType: "OpeningApplication",
     entityId: application.id,
     metadata: {

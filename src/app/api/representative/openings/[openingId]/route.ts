@@ -1,11 +1,11 @@
-import { UploadedFileCategory } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
 import { canUserPublishDepartment } from "@/lib/queries";
 import { prisma } from "@/lib/prisma";
-import { readOptionalFormFile, storeUploadedFile } from "@/lib/uploads";
+import { readOptionalFormFile } from "@/lib/uploads";
 import { openingEditorSchema } from "@/lib/validation";
+import { submitOpeningForReview } from "@/server/workflows/opening-content";
 
 function getString(formData: FormData, key: string) {
   const value = formData.get(key);
@@ -22,7 +22,7 @@ export async function POST(
 ) {
   const session = await getSession();
 
-  if (!session || !["representative", "admin"].includes(session.role)) {
+  if (!session || session.role !== "representative") {
     return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
   }
 
@@ -35,12 +35,13 @@ export async function POST(
     return NextResponse.json({ error: "הפתיחה לא נמצאה." }, { status: 404 });
   }
 
-  if (session.role !== "admin") {
-    const canPublish = await canUserPublishDepartment(session.userId, existingOpening.departmentId);
+  const canAccessCurrentDepartment = await canUserPublishDepartment(
+    session.userId,
+    existingOpening.departmentId
+  );
 
-    if (!canPublish) {
-      return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
-    }
+  if (!canAccessCurrentDepartment) {
+    return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
   }
 
   const formData = await request.formData();
@@ -101,72 +102,43 @@ export async function POST(
     );
   }
 
-  if (session.role !== "admin") {
-    const canPublishToTargetDepartment = await canUserPublishDepartment(
-      session.userId,
-      parsed.data.departmentId
-    );
+  const canPublishToTargetDepartment = await canUserPublishDepartment(
+    session.userId,
+    parsed.data.departmentId
+  );
 
-    if (!canPublishToTargetDepartment) {
-      return NextResponse.json(
-        { error: "אי אפשר להעביר או לעדכן פתיחה עבור מחלקה שאין עבורה הרשאת פרסום." },
-        { status: 403 }
-      );
-    }
+  if (!canPublishToTargetDepartment) {
+    return NextResponse.json(
+      { error: "אי אפשר לנהל תקן פתוח במחלקה שלא שויכה לחשבון הזה." },
+      { status: 403 }
+    );
   }
 
-  const opening = await prisma.$transaction(async (tx) => {
-    const updated = await tx.residencyOpening.update({
-      where: { id: openingId },
-      data: {
-        departmentId: parsed.data.departmentId,
-        title: parsed.data.title,
-        summary: parsed.data.summary,
-        openingType: parsed.data.openingType,
-        isImmediate: parsed.data.isImmediate,
-        openingsCount: parsed.data.openingsCount ?? null,
-        topApplicantsToEmail: parsed.data.topApplicantsToEmail,
-        status: parsed.data.status,
-        committeeDate: parsed.data.committeeDate ? new Date(parsed.data.committeeDate) : null,
-        applicationDeadline: parsed.data.applicationDeadline
-          ? new Date(parsed.data.applicationDeadline)
-        : null,
-        expectedStartDate: parsed.data.expectedStartDate
-          ? new Date(parsed.data.expectedStartDate)
-          : null,
-        notes: parsed.data.notes,
-        supportingInfo: parsed.data.supportingInfo,
-        topMatchesDeliveredAt: null,
-        topMatchesLastError: null,
-        acceptanceCriteria: {
-          upsert: {
-            create: parsed.data.acceptanceCriteria,
-            update: parsed.data.acceptanceCriteria
-          }
-        }
-      }
+  if (existingOpening.contentStatus === "PUBLISHED" && parsed.data.departmentId !== existingOpening.departmentId) {
+    return NextResponse.json(
+      { error: "כדי לשייך תקן למחלקה אחרת צריך ליצור תקן פתוח חדש." },
+      { status: 400 }
+    );
+  }
+
+  const result = await prisma.$transaction(async (tx) => {
+    return submitOpeningForReview(tx, {
+      openingId,
+      authorUserId: session.userId,
+      payload: parsed.data,
+      attachment
     });
-
-    if (attachment) {
-      await storeUploadedFile(tx, {
-        file: attachment,
-        category: UploadedFileCategory.OPENING_ATTACHMENT,
-        departmentId: updated.departmentId,
-        openingId: updated.id,
-        uploadedByUserId: session.userId,
-        isPublic: false
-      });
-    }
-
-    return updated;
   });
 
   await createAuditLog({
     actorUserId: session.userId,
-    action: "opening.updated",
+    action: "opening.updated_pending_review",
     entityType: "ResidencyOpening",
-    entityId: opening.id
+    entityId: result.openingId,
+    metadata: {
+      sourceOpeningId: openingId
+    }
   });
 
-  return NextResponse.json({ message: "הפתיחה עודכנה בהצלחה.", openingId: opening.id });
+  return NextResponse.json({ message: result.message, openingId: result.openingId });
 }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { requireApprovedPublisher } from "@/lib/auth-guards";
+import { requireRepresentative } from "@/lib/auth-guards";
 import { OpeningApplicationModerationForm } from "@/components/admin/opening-application-moderation-form";
 import { OpeningEditorForm } from "@/components/openings/opening-editor-form";
 import { PageShell } from "@/components/layout/page-shell";
@@ -20,15 +20,11 @@ export default async function RepresentativeOpeningPage({
 }: {
   params: Promise<{ openingId: string }>;
 }) {
-  const session = await requireApprovedPublisher();
+  const session = await requireRepresentative();
   const { openingId } = await params;
   const [data, opening] = await Promise.all([
-    getRepresentativeOpeningFormData(session.userId, openingId, {
-      includeAllDepartments: session.role === "admin"
-    }),
-    getOpeningManagementData(session.userId, openingId, {
-      includeAllDepartments: session.role === "admin"
-    })
+    getRepresentativeOpeningFormData(session.userId, openingId),
+    getOpeningManagementData(session.userId, openingId)
   ]);
 
   if (!opening || !data.opening) {

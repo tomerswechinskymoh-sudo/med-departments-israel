@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getSession } from "@/lib/auth";
 import { PlaceholderVisual } from "@/components/media/placeholder-visual";
 import { OpeningCriteriaGrid } from "@/components/openings/opening-criteria-grid";
 import { PageShell } from "@/components/layout/page-shell";
@@ -29,7 +30,7 @@ export default async function OpeningDetailsPage({
   params: Promise<{ openingId: string }>;
 }) {
   const { openingId } = await params;
-  const opening = await getOpeningPageData(openingId);
+  const [opening, session] = await Promise.all([getOpeningPageData(openingId), getSession()]);
 
   if (!opening) {
     notFound();
@@ -88,10 +89,12 @@ export default async function OpeningDetailsPage({
             <div className="mt-6 flex flex-wrap gap-3">
               {canApply ? (
                 <Link
-                  href={`/openings/${opening.id}/apply`}
+                  href={
+                    session ? `/openings/${opening.id}/apply` : `/login?next=/openings/${opening.id}/apply`
+                  }
                   className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white"
                 >
-                  הגשת מועמדות פרטית
+                  {session ? "הגשת מועמדות פרטית" : "התחברות להגשת מועמדות"}
                 </Link>
               ) : null}
               <Link
@@ -134,7 +137,7 @@ export default async function OpeningDetailsPage({
         <Card>
           <SectionHeading
             title="חומר למחשבה לפני הגשה"
-            description="המועמדות נשלחת ישירות למחלקה. קורות חיים ותמונה לא מופיעים באתר."
+            description="המועמדות נשלחת ישירות למחלקה מתוך חשבון מחובר. קורות חיים ותמונה לא מופיעים באתר."
           />
           <div className="mt-5 space-y-3 text-sm leading-7 text-slate-700">
             <p>שווה להיעזר בשדות הייעודיים כדי להסביר אם עשית אלקטיב, סטאז' או מחקר רלוונטי.</p>

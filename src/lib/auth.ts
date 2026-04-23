@@ -120,7 +120,7 @@ export async function authenticateUser(email: string, password: string) {
     email: user.email,
     fullName: user.fullName,
     role: mapRole(user.roleKey),
-    isApprovedPublisher: user.isApprovedPublisher
+    isApprovedPublisher: user.roleKey === RoleKey.REPRESENTATIVE || user.isApprovedPublisher
   } satisfies AppSession;
 }
 
@@ -148,7 +148,7 @@ export async function getSession() {
     email: user.email,
     fullName: user.fullName,
     role: mapRole(user.roleKey),
-    isApprovedPublisher: user.isApprovedPublisher
+    isApprovedPublisher: user.roleKey === RoleKey.REPRESENTATIVE || user.isApprovedPublisher
   } satisfies AppSession;
 }
 
