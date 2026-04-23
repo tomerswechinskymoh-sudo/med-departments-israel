@@ -191,12 +191,15 @@ model ResidencyOpening {
   openingType        OpeningType            @map("opening_type")
   isImmediate        Boolean                @default(false) @map("is_immediate")
   openingsCount      Int?                   @map("openings_count")
+  topApplicantsToEmail Int                  @default(5) @map("top_applicants_to_email")
   status             OpportunityStatus
   committeeDate      DateTime?              @map("committee_date")
   applicationDeadline DateTime?             @map("application_deadline")
   expectedStartDate  DateTime?              @map("expected_start_date")
   notes              String?
   supportingInfo     String?                @map("supporting_info")
+  topMatchesDeliveredAt DateTime?           @map("top_matches_delivered_at")
+  topMatchesLastError String?               @map("top_matches_last_error")
   contentStatus      ContentStatus          @default(PUBLISHED) @map("content_status")
   publishedAt        DateTime?              @map("published_at")
   createdAt          DateTime               @default(now()) @map("created_at")
@@ -211,6 +214,7 @@ model ResidencyOpening {
   @@index([status, contentStatus])
   @@index([committeeDate])
   @@index([applicationDeadline])
+  @@index([topMatchesDeliveredAt])
 }
 
 model OpeningAcceptanceCriteria {
@@ -218,13 +222,16 @@ model OpeningAcceptanceCriteria {
   openingId                            String            @unique @map("opening_id")
   researchImportance                   Int               @default(3) @map("research_importance")
   departmentElectiveImportance         Int               @default(3) @map("department_elective_importance")
+  departmentInternshipImportance       Int               @default(3) @map("department_internship_importance")
   residentSelectionInfluence           Int               @default(3) @map("resident_selection_influence")
   specialistSelectionInfluence         Int               @default(3) @map("specialist_selection_influence")
   departmentHeadInfluence              Int               @default(3) @map("department_head_influence")
   medicalSchoolInfluence               Int               @default(3) @map("medical_school_influence")
+  recommendationsImportance            Int               @default(3) @map("recommendations_importance")
   personalFitImportance                Int               @default(3) @map("personal_fit_importance")
   previousDepartmentExperienceImportance Int             @default(3) @map("previous_department_experience_importance")
   notes                                String?
+  whatWeAreLookingFor                  String?           @map("what_we_are_looking_for")
   createdAt                            DateTime          @default(now()) @map("created_at")
   updatedAt                            DateTime          @updatedAt @map("updated_at")
   opening                              ResidencyOpening  @relation(fields: [openingId], references: [id], onDelete: Cascade)
@@ -238,15 +245,26 @@ model OpeningApplication {
   fullName                  String                   @map("full_name")
   phone                     String
   email                     String?
+  medicalSchool             String?                  @map("medical_school")
   didDepartmentElective     Boolean                  @default(false) @map("did_department_elective")
   departmentElectiveDetails String?                  @map("department_elective_details")
   hasResearch               Boolean                  @default(false) @map("has_research")
   researchDetails           String?                  @map("research_details")
   didInternshipThere        Boolean                  @default(false) @map("did_internship_there")
   internshipDetails         String?                  @map("internship_details")
+  recommendationDetails     String?                  @map("recommendation_details")
+  departmentFamiliarityDetails String?               @map("department_familiarity_details")
   motivationText            String                   @map("motivation_text")
   relevantExperience        String                   @map("relevant_experience")
   additionalNotes           String?                  @map("additional_notes")
+  matchScore                Int?                     @map("match_score")
+  matchShortSummary         String?                  @map("match_short_summary")
+  matchStrengths            Json?                    @map("match_strengths")
+  matchConcerns             Json?                    @map("match_concerns")
+  matchEngine               String?                  @map("match_engine")
+  matchEvaluatedAt          DateTime?                @map("match_evaluated_at")
+  matchEvaluationError      String?                  @map("match_evaluation_error")
+  isTopMatch                Boolean                  @default(false) @map("is_top_match")
   status                    OpeningApplicationStatus @default(SUBMITTED)
   reviewerNote              String?                  @map("reviewer_note")
   reviewedAt                DateTime?                @map("reviewed_at")
@@ -257,6 +275,8 @@ model OpeningApplication {
   files                     UploadedFile[]           @relation("ApplicationFiles")
 
   @@index([openingId, status])
+  @@index([openingId, isTopMatch])
+  @@index([openingId, matchScore])
   @@index([reviewedByUserId])
 }
 

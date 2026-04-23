@@ -20,10 +20,12 @@ export const VERIFICATION_RETENTION_NOTE =
 export const OPENING_ACCEPTANCE_CRITERIA_LABELS = [
   { key: "researchImportance", label: "כמה חשוב מחקר" },
   { key: "departmentElectiveImportance", label: "כמה חשוב אלקטיב במחלקה" },
+  { key: "departmentInternshipImportance", label: "כמה חשוב סטאז' / סבב במחלקה" },
   { key: "residentSelectionInfluence", label: "כמה משפיעה בחירת המתמחים" },
   { key: "specialistSelectionInfluence", label: "כמה משפיעה בחירת המומחים" },
   { key: "departmentHeadInfluence", label: "כמה משפיע מנהל המחלקה" },
   { key: "medicalSchoolInfluence", label: "כמה משפיע מוסד הלימוד" },
+  { key: "recommendationsImportance", label: "כמה חשובות המלצות" },
   { key: "personalFitImportance", label: "כמה חשוב רושם אישי / התאמה אישית" },
   {
     key: "previousDepartmentExperienceImportance",

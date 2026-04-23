@@ -21,6 +21,8 @@ function keyDepartmentFocus(
     | {
         researchImportance: number;
         departmentElectiveImportance: number;
+        departmentInternshipImportance: number;
+        recommendationsImportance: number;
         personalFitImportance: number;
       }
     | null
@@ -33,6 +35,8 @@ function keyDepartmentFocus(
   const sortedCriteria = [
     { label: "מחקר", value: criteria.researchImportance },
     { label: "אלקטיב במחלקה", value: criteria.departmentElectiveImportance },
+    { label: "סטאז' במחלקה", value: criteria.departmentInternshipImportance },
+    { label: "המלצות", value: criteria.recommendationsImportance },
     { label: "התאמה אישית", value: criteria.personalFitImportance }
   ]
     .sort((left, right) => right.value - left.value)
@@ -60,9 +64,9 @@ export function OpeningCard({
     openingType: "RESIDENCY" | "FELLOWSHIP" | "ACADEMIC_TRACK" | "COMMUNITY_TRACK" | "OTHER";
     isImmediate: boolean;
     openingsCount?: number | null;
-    status: "OPEN" | "UPCOMING" | "CLOSED";
-    committeeDate?: Date | string | null;
-    applicationDeadline?: Date | string | null;
+      status: "OPEN" | "UPCOMING" | "CLOSED";
+      committeeDate?: Date | string | null;
+      applicationDeadline?: Date | string | null;
     department: {
       name: string;
       institution: {
@@ -75,6 +79,8 @@ export function OpeningCard({
     acceptanceCriteria?: {
       researchImportance: number;
       departmentElectiveImportance: number;
+      departmentInternshipImportance: number;
+      recommendationsImportance: number;
       personalFitImportance: number;
     } | null;
     _count?: {
@@ -84,7 +90,16 @@ export function OpeningCard({
   showInstitution?: boolean;
   showApplyButton?: boolean;
 }) {
-  const status = statusLabel(opening.status);
+  const deadline = opening.applicationDeadline ? new Date(opening.applicationDeadline) : null;
+  const deadlinePassed = Boolean(deadline && deadline < new Date());
+  const status =
+    deadlinePassed && opening.status !== "CLOSED"
+      ? { label: "הדדליין עבר", tone: "default" as const }
+      : statusLabel(opening.status);
+  const canApply =
+    showApplyButton &&
+    opening.status !== "CLOSED" &&
+    !deadlinePassed;
 
   return (
     <Card className="flex h-full flex-col justify-between">
@@ -143,15 +158,25 @@ export function OpeningCard({
                 </p>
               </div>
               <div>
-                <p className="text-xs text-slate-500">אלקטיב במחלקה</p>
+                <p className="text-xs text-slate-500">אלקטיב / סטאז'</p>
                 <p className="mt-1 font-semibold text-ink">
-                  {opening.acceptanceCriteria.departmentElectiveImportance}/5
+                  {Math.max(
+                    opening.acceptanceCriteria.departmentElectiveImportance,
+                    opening.acceptanceCriteria.departmentInternshipImportance
+                  )}
+                  /5
                 </p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">התאמה אישית</p>
                 <p className="mt-1 font-semibold text-ink">
                   {opening.acceptanceCriteria.personalFitImportance}/5
+                </p>
+              </div>
+              <div>
+                <p className="text-xs text-slate-500">המלצות</p>
+                <p className="mt-1 font-semibold text-ink">
+                  {opening.acceptanceCriteria.recommendationsImportance}/5
                 </p>
               </div>
             </div>
@@ -166,7 +191,7 @@ export function OpeningCard({
         >
           לפרטי הפתיחה
         </Link>
-        {showApplyButton && opening.status !== "CLOSED" ? (
+        {canApply ? (
           <Link
             href={`/openings/${opening.id}/apply`}
             className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800 transition hover:bg-brand-50"

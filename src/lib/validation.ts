@@ -177,13 +177,16 @@ export const departmentEditorSchema = z.object({
 export const openingAcceptanceCriteriaSchema = z.object({
   researchImportance: scaleSchema,
   departmentElectiveImportance: scaleSchema,
+  departmentInternshipImportance: scaleSchema,
   residentSelectionInfluence: scaleSchema,
   specialistSelectionInfluence: scaleSchema,
   departmentHeadInfluence: scaleSchema,
   medicalSchoolInfluence: scaleSchema,
+  recommendationsImportance: scaleSchema,
   personalFitImportance: scaleSchema,
   previousDepartmentExperienceImportance: scaleSchema,
-  notes: z.preprocess(emptyToUndefined, z.string().max(500).optional())
+  notes: z.preprocess(emptyToUndefined, z.string().max(500).optional()),
+  whatWeAreLookingFor: z.preprocess(emptyToUndefined, z.string().max(700).optional())
 });
 
 export const openingEditorSchema = z.object({
@@ -193,6 +196,7 @@ export const openingEditorSchema = z.object({
   openingType: z.enum(openingTypeValues),
   isImmediate: z.boolean().default(false),
   openingsCount: z.preprocess(emptyToUndefined, z.coerce.number().int().min(0).max(20).optional()),
+  topApplicantsToEmail: z.coerce.number().int().min(1).max(20).default(5),
   status: z.enum(opportunityStatusValues),
   committeeDate: z.preprocess(emptyToUndefined, z.string().optional()),
   applicationDeadline: z.preprocess(emptyToUndefined, z.string().optional()),
@@ -209,12 +213,15 @@ export const openingApplicationSchema = z
     fullName: z.string().min(2, "יש להזין שם מלא."),
     phone: z.string().min(9, "יש להזין מספר טלפון."),
     email: z.preprocess(emptyToUndefined, z.string().email("יש להזין אימייל תקין.").optional()),
+    medicalSchool: z.string().min(2, "יש להזין מוסד לימודים."),
     didDepartmentElective: z.boolean(),
     departmentElectiveDetails: z.preprocess(emptyToUndefined, z.string().max(800).optional()),
     hasResearch: z.boolean(),
     researchDetails: z.preprocess(emptyToUndefined, z.string().max(800).optional()),
     didInternshipThere: z.boolean(),
     internshipDetails: z.preprocess(emptyToUndefined, z.string().max(800).optional()),
+    recommendationDetails: z.preprocess(emptyToUndefined, z.string().max(800).optional()),
+    departmentFamiliarityDetails: z.preprocess(emptyToUndefined, z.string().max(800).optional()),
     motivationText: z.string().min(40, "יש להסביר למה המחלקה מעניינת אותך."),
     relevantExperience: z.string().min(20, "יש לתאר ניסיון רלוונטי."),
     additionalNotes: z.preprocess(emptyToUndefined, z.string().max(1200).optional())

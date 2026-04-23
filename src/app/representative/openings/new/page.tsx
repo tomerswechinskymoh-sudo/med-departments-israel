@@ -39,7 +39,7 @@ export default async function NewOpeningPage({
         <Card>
           <SectionHeading
             title="פרטי הפתיחה"
-            description="הגדירו כותרת, לוח זמנים, קריטריונים לקבלה וקובץ מצורף פנימי אם צריך."
+            description="הגדירו כותרת, לוח זמנים, קריטריונים לקבלה, וכמה מועמדים מובילים תרצו לקבל במייל אחרי הדדליין."
           />
           <div className="mt-6">
             <OpeningEditorForm

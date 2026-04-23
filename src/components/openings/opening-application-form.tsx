@@ -33,12 +33,15 @@ export function OpeningApplicationForm({
       fullName: "",
       phone: "",
       email: "",
+      medicalSchool: "",
       didDepartmentElective: false,
       departmentElectiveDetails: "",
       hasResearch: false,
       researchDetails: "",
       didInternshipThere: false,
       internshipDetails: "",
+      recommendationDetails: "",
+      departmentFamiliarityDetails: "",
       motivationText: "",
       relevantExperience: "",
       additionalNotes: ""
@@ -121,6 +124,12 @@ export function OpeningApplicationForm({
         className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
       />
 
+      <input
+        {...register("medicalSchool")}
+        placeholder="איפה למדת / את לומדת רפואה?"
+        className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
+      />
+
       <div className="rounded-[1.75rem] border border-brand-100 bg-brand-50/70 p-5">
         <p className="text-sm font-semibold text-brand-700">מידע שיעזור למחלקה להבין את ההתאמה שלך</p>
         <div className="mt-5 space-y-4">
@@ -159,6 +168,18 @@ export function OpeningApplicationForm({
               className="min-h-24 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
             />
           ) : null}
+
+          <textarea
+            {...register("departmentFamiliarityDetails")}
+            placeholder="אם יש לך היכרות נוספת עם המחלקה, עם הצוות או עם אופי העבודה שם, זה המקום לכתוב."
+            className="min-h-24 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
+          />
+
+          <textarea
+            {...register("recommendationDetails")}
+            placeholder="יש המלצות, חונכים או אנשי צוות שמכירים אותך מקצועית? אפשר לציין כאן בקצרה."
+            className="min-h-24 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
+          />
         </div>
       </div>
 

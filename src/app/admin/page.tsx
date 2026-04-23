@@ -141,12 +141,24 @@ export default async function AdminPage() {
                       {application.opening.department.institution.name} · {application.opening.department.name}
                     </p>
                   </div>
-                  <Badge tone="default">{openingApplicationStatusLabel(application.status)}</Badge>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {application.isTopMatch ? <Badge tone="warning">Top match</Badge> : null}
+                    {application.matchScore !== null ? (
+                      <Badge tone="success">התאמה {application.matchScore}/100</Badge>
+                    ) : null}
+                    <Badge tone="default">{openingApplicationStatusLabel(application.status)}</Badge>
+                  </div>
                 </div>
                 <p className="mt-2 text-sm text-slate-600">
                   {reviewerTypeLabel(application.applicantType)} · {application.phone}
                   {application.email ? ` · ${application.email}` : ""}
                 </p>
+                {application.matchShortSummary ? (
+                  <p className="mt-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm leading-7 text-slate-700">
+                    <span className="font-semibold text-ink">סיכום התאמה: </span>
+                    {application.matchShortSummary}
+                  </p>
+                ) : null}
                 <p className="mt-3 text-sm leading-7 text-slate-700">{application.motivationText}</p>
                 <div className="mt-4 flex flex-wrap gap-3 text-xs">
                   {application.files.map((file) => (

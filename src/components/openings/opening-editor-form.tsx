@@ -40,6 +40,7 @@ export function OpeningEditorForm({
       openingType: initialValues?.openingType ?? "RESIDENCY",
       isImmediate: initialValues?.isImmediate ?? false,
       openingsCount: initialValues?.openingsCount,
+      topApplicantsToEmail: initialValues?.topApplicantsToEmail ?? 5,
       status: initialValues?.status ?? "OPEN",
       committeeDate: initialValues?.committeeDate ?? "",
       applicationDeadline: initialValues?.applicationDeadline ?? "",
@@ -50,16 +51,21 @@ export function OpeningEditorForm({
         researchImportance: initialValues?.acceptanceCriteria?.researchImportance ?? 3,
         departmentElectiveImportance:
           initialValues?.acceptanceCriteria?.departmentElectiveImportance ?? 3,
+        departmentInternshipImportance:
+          initialValues?.acceptanceCriteria?.departmentInternshipImportance ?? 3,
         residentSelectionInfluence:
           initialValues?.acceptanceCriteria?.residentSelectionInfluence ?? 3,
         specialistSelectionInfluence:
           initialValues?.acceptanceCriteria?.specialistSelectionInfluence ?? 3,
         departmentHeadInfluence: initialValues?.acceptanceCriteria?.departmentHeadInfluence ?? 3,
         medicalSchoolInfluence: initialValues?.acceptanceCriteria?.medicalSchoolInfluence ?? 3,
+        recommendationsImportance:
+          initialValues?.acceptanceCriteria?.recommendationsImportance ?? 3,
         personalFitImportance: initialValues?.acceptanceCriteria?.personalFitImportance ?? 3,
         previousDepartmentExperienceImportance:
           initialValues?.acceptanceCriteria?.previousDepartmentExperienceImportance ?? 3,
-        notes: initialValues?.acceptanceCriteria?.notes ?? ""
+        notes: initialValues?.acceptanceCriteria?.notes ?? "",
+        whatWeAreLookingFor: initialValues?.acceptanceCriteria?.whatWeAreLookingFor ?? ""
       }
     }
   });
@@ -204,6 +210,33 @@ export function OpeningEditorForm({
         </div>
       </div>
 
+      <div className="rounded-[1.75rem] border border-brand-100 bg-slate-50/80 p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-sm font-semibold text-ink">אחרי שהדדליין עובר</p>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              המערכת תדרג את המועמדויות לפי מה שהגדרתם כאן, ותשלח לבעל/ת הפתיחה רק את ההתאמות הכי חזקות.
+            </p>
+          </div>
+          <div className="min-w-[220px]">
+            <label className="mb-2 block text-sm font-semibold text-ink">
+              כמה מועמדים מובילים לשלוח במייל
+            </label>
+            <select
+              {...register("topApplicantsToEmail")}
+              className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
+            >
+              <option value={3}>Top 3</option>
+              <option value={5}>Top 5</option>
+              <option value={10}>Top 10</option>
+            </select>
+            {errors.topApplicantsToEmail ? (
+              <p className="mt-2 text-xs text-rose-600">{errors.topApplicantsToEmail.message}</p>
+            ) : null}
+          </div>
+        </div>
+      </div>
+
       <div className="grid gap-4 md:grid-cols-2">
         <textarea
           {...register("notes")}
@@ -246,8 +279,14 @@ export function OpeningEditorForm({
         </div>
 
         <textarea
+          {...register("acceptanceCriteria.whatWeAreLookingFor")}
+          placeholder="בשורה התחתונה, את מי אתם מחפשים? למשל סקרנות מחקרית, נוכחות קלינית, התאמה לצוות או ניסיון קודם."
+          className="mt-4 min-h-28 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
+        />
+
+        <textarea
           {...register("acceptanceCriteria.notes")}
-          placeholder="הערה משלימה למועמדים: למשל איזה סוג התאמה אתם מחפשים או מה יכול לחזק מועמדות."
+          placeholder="הערה משלימה למועמדים: מה יכול לחזק מועמדות, או מה חשוב שתראו בטופס לפני הוועדה."
           className="mt-4 min-h-28 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
         />
       </div>

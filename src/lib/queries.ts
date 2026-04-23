@@ -36,13 +36,16 @@ const publishedReviewSelect = {
 const openingCriteriaSelect = {
   researchImportance: true,
   departmentElectiveImportance: true,
+  departmentInternshipImportance: true,
   residentSelectionInfluence: true,
   specialistSelectionInfluence: true,
   departmentHeadInfluence: true,
   medicalSchoolInfluence: true,
+  recommendationsImportance: true,
   personalFitImportance: true,
   previousDepartmentExperienceImportance: true,
-  notes: true
+  notes: true,
+  whatWeAreLookingFor: true
 } satisfies Prisma.OpeningAcceptanceCriteriaSelect;
 
 async function getManagedDepartments(userId: string, includeAllDepartments = false) {
@@ -489,7 +492,8 @@ export async function getOpeningApplicationPageData(openingId: string) {
       contentStatus: ContentStatus.PUBLISHED,
       status: {
         in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
-      }
+      },
+      OR: [{ applicationDeadline: null }, { applicationDeadline: { gte: new Date() } }]
     },
     include: {
       department: {
@@ -660,6 +664,13 @@ export async function getRepresentativeDashboardData(
           acceptanceCriteria: {
             select: openingCriteriaSelect
           },
+          applications: {
+            select: {
+              id: true,
+              matchScore: true,
+              isTopMatch: true
+            }
+          },
           _count: {
             select: {
               applications: true
@@ -721,6 +732,13 @@ export async function getRepresentativeOpeningFormData(
       id: openingId
     },
     include: {
+      createdBy: {
+        select: {
+          id: true,
+          fullName: true,
+          email: true
+        }
+      },
       department: {
         include: {
           institution: true,
@@ -781,9 +799,6 @@ export async function getOpeningManagementData(
               createdAt: "desc"
             }
           }
-        },
-        orderBy: {
-          createdAt: "desc"
         }
       }
     }
@@ -792,6 +807,21 @@ export async function getOpeningManagementData(
   if (!opening || !managedDepartmentIds.has(opening.departmentId)) {
     return null;
   }
+
+  opening.applications.sort((left, right) => {
+    if (left.isTopMatch !== right.isTopMatch) {
+      return left.isTopMatch ? -1 : 1;
+    }
+
+    const leftScore = left.matchScore ?? -1;
+    const rightScore = right.matchScore ?? -1;
+
+    if (leftScore !== rightScore) {
+      return rightScore - leftScore;
+    }
+
+    return right.createdAt.getTime() - left.createdAt.getTime();
+  });
 
   return opening;
 }
@@ -880,9 +910,7 @@ export async function getAdminDashboardData() {
           }
         }
       },
-      orderBy: {
-        createdAt: "desc"
-      },
+      orderBy: [{ isTopMatch: "desc" }, { matchScore: "desc" }, { createdAt: "desc" }],
       take: 10
     }),
     prisma.user.findMany({

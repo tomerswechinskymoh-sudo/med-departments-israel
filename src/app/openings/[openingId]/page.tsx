@@ -35,7 +35,14 @@ export default async function OpeningDetailsPage({
     notFound();
   }
 
-  const status = statusLabel(opening.status);
+  const deadline = opening.applicationDeadline ? new Date(opening.applicationDeadline) : null;
+  const deadlinePassed = Boolean(deadline && deadline < new Date());
+  const status =
+    deadlinePassed && opening.status !== "CLOSED"
+      ? { label: "הדדליין עבר", tone: "default" as const }
+      : statusLabel(opening.status);
+  const canApply =
+    opening.status !== "CLOSED" && !deadlinePassed;
 
   return (
     <PageShell className="space-y-8 py-10">
@@ -79,7 +86,7 @@ export default async function OpeningDetailsPage({
             </div>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              {opening.status !== "CLOSED" ? (
+              {canApply ? (
                 <Link
                   href={`/openings/${opening.id}/apply`}
                   className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white"

@@ -33,6 +33,7 @@ export async function POST(request: Request) {
     openingType: getString(formData, "openingType"),
     isImmediate: getBoolean(formData, "isImmediate"),
     openingsCount: getString(formData, "openingsCount"),
+    topApplicantsToEmail: getString(formData, "topApplicantsToEmail") ?? "5",
     status: getString(formData, "status") ?? OpportunityStatus.OPEN,
     committeeDate: getString(formData, "committeeDate"),
     applicationDeadline: getString(formData, "applicationDeadline"),
@@ -45,6 +46,10 @@ export async function POST(request: Request) {
         formData,
         "acceptanceCriteria.departmentElectiveImportance"
       ),
+      departmentInternshipImportance: getString(
+        formData,
+        "acceptanceCriteria.departmentInternshipImportance"
+      ),
       residentSelectionInfluence: getString(
         formData,
         "acceptanceCriteria.residentSelectionInfluence"
@@ -55,12 +60,17 @@ export async function POST(request: Request) {
       ),
       departmentHeadInfluence: getString(formData, "acceptanceCriteria.departmentHeadInfluence"),
       medicalSchoolInfluence: getString(formData, "acceptanceCriteria.medicalSchoolInfluence"),
+      recommendationsImportance: getString(
+        formData,
+        "acceptanceCriteria.recommendationsImportance"
+      ),
       personalFitImportance: getString(formData, "acceptanceCriteria.personalFitImportance"),
       previousDepartmentExperienceImportance: getString(
         formData,
         "acceptanceCriteria.previousDepartmentExperienceImportance"
       ),
-      notes: getString(formData, "acceptanceCriteria.notes")
+      notes: getString(formData, "acceptanceCriteria.notes"),
+      whatWeAreLookingFor: getString(formData, "acceptanceCriteria.whatWeAreLookingFor")
     }
   });
 
@@ -92,6 +102,7 @@ export async function POST(request: Request) {
         openingType: parsed.data.openingType,
         isImmediate: parsed.data.isImmediate,
         openingsCount: parsed.data.openingsCount ?? null,
+        topApplicantsToEmail: parsed.data.topApplicantsToEmail,
         status: parsed.data.status,
         committeeDate: parsed.data.committeeDate ? new Date(parsed.data.committeeDate) : null,
         applicationDeadline: parsed.data.applicationDeadline

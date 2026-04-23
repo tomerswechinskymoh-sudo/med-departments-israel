@@ -33,6 +33,10 @@ export async function POST(
     return NextResponse.json({ error: "הפתיחה לא זמינה להגשה כרגע." }, { status: 404 });
   }
 
+  if (opening.applicationDeadline && new Date(opening.applicationDeadline) < new Date()) {
+    return NextResponse.json({ error: "מועד ההגשה לפתיחה הזו הסתיים." }, { status: 400 });
+  }
+
   const formData = await request.formData();
   const cvFile = readOptionalFormFile(formData.get("cvFile"));
   const profilePhoto = readOptionalFormFile(formData.get("profilePhoto"));
@@ -48,12 +52,15 @@ export async function POST(
     fullName: getString(formData, "fullName"),
     phone: getString(formData, "phone"),
     email: getString(formData, "email"),
+    medicalSchool: getString(formData, "medicalSchool"),
     didDepartmentElective: getBoolean(formData, "didDepartmentElective"),
     departmentElectiveDetails: getString(formData, "departmentElectiveDetails"),
     hasResearch: getBoolean(formData, "hasResearch"),
     researchDetails: getString(formData, "researchDetails"),
     didInternshipThere: getBoolean(formData, "didInternshipThere"),
     internshipDetails: getString(formData, "internshipDetails"),
+    recommendationDetails: getString(formData, "recommendationDetails"),
+    departmentFamiliarityDetails: getString(formData, "departmentFamiliarityDetails"),
     motivationText: getString(formData, "motivationText"),
     relevantExperience: getString(formData, "relevantExperience"),
     additionalNotes: getString(formData, "additionalNotes")
@@ -74,12 +81,15 @@ export async function POST(
         fullName: parsed.data.fullName,
         phone: parsed.data.phone,
         email: parsed.data.email,
+        medicalSchool: parsed.data.medicalSchool,
         didDepartmentElective: parsed.data.didDepartmentElective,
         departmentElectiveDetails: parsed.data.departmentElectiveDetails,
         hasResearch: parsed.data.hasResearch,
         researchDetails: parsed.data.researchDetails,
         didInternshipThere: parsed.data.didInternshipThere,
         internshipDetails: parsed.data.internshipDetails,
+        recommendationDetails: parsed.data.recommendationDetails,
+        departmentFamiliarityDetails: parsed.data.departmentFamiliarityDetails,
         motivationText: parsed.data.motivationText,
         relevantExperience: parsed.data.relevantExperience,
         additionalNotes: parsed.data.additionalNotes

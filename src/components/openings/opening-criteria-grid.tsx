@@ -28,13 +28,16 @@ export function OpeningCriteriaGrid({
   criteria: {
     researchImportance: number;
     departmentElectiveImportance: number;
+    departmentInternshipImportance: number;
     residentSelectionInfluence: number;
     specialistSelectionInfluence: number;
     departmentHeadInfluence: number;
     medicalSchoolInfluence: number;
+    recommendationsImportance: number;
     personalFitImportance: number;
     previousDepartmentExperienceImportance: number;
     notes?: string | null;
+    whatWeAreLookingFor?: string | null;
   } | null;
   compact?: boolean;
 }) {
@@ -67,6 +70,12 @@ export function OpeningCriteriaGrid({
           );
         })}
       </div>
+      {criteria.whatWeAreLookingFor ? (
+        <div className="rounded-2xl border border-brand-100 bg-slate-900 px-4 py-4 text-sm leading-7 text-white">
+          <span className="font-semibold text-white">מה אנחנו מחפשים: </span>
+          {criteria.whatWeAreLookingFor}
+        </div>
+      ) : null}
       {criteria.notes ? (
         <div className="rounded-2xl border border-brand-100 bg-brand-50/70 p-4 text-sm leading-7 text-slate-700">
           <span className="font-semibold text-ink">הערת המחלקה: </span>

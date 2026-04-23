@@ -140,6 +140,18 @@ export default async function RepresentativePage() {
                       ) : (
                         assignment.residencyOpenings.map((opening) => {
                           const status = openingStatusLabel(opening.status);
+                          const bestScore = opening.applications.reduce<number | null>(
+                            (best, application) =>
+                              application.matchScore === null
+                                ? best
+                                : best === null || application.matchScore > best
+                                  ? application.matchScore
+                                  : best,
+                            null
+                          );
+                          const topMatchesCount = opening.applications.filter(
+                            (application) => application.isTopMatch
+                          ).length;
 
                           return (
                             <div key={opening.id} className="rounded-2xl border border-brand-100 bg-brand-50/60 p-4">
@@ -153,6 +165,8 @@ export default async function RepresentativePage() {
                               <div className="mt-4 flex flex-wrap items-center gap-3 text-xs text-slate-500">
                                 <span>{opening._count.applications} מועמדויות</span>
                                 <span>ועדה: {opening.committeeDate ? new Date(opening.committeeDate).toLocaleDateString("he-IL") : "לא הוגדר"}</span>
+                                {bestScore !== null ? <span>התאמה מובילה: {bestScore}/100</span> : null}
+                                {topMatchesCount > 0 ? <span>Top matches: {topMatchesCount}</span> : null}
                               </div>
                               <div className="mt-4 flex flex-wrap gap-3">
                                 <Link

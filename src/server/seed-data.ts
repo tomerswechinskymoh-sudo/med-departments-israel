@@ -495,6 +495,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       openingType: OpeningType.RESIDENCY,
       isImmediate: true,
       openingsCount: 2,
+      topApplicantsToEmail: 5,
       status: OpportunityStatus.OPEN,
       committeeDate: new Date("2026-05-18"),
       applicationDeadline: new Date("2026-05-10"),
@@ -507,13 +508,17 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
         create: {
           researchImportance: 5,
           departmentElectiveImportance: 4,
+          departmentInternshipImportance: 4,
           residentSelectionInfluence: 4,
           specialistSelectionInfluence: 3,
           departmentHeadInfluence: 4,
           medicalSchoolInfluence: 2,
+          recommendationsImportance: 4,
           personalFitImportance: 5,
           previousDepartmentExperienceImportance: 4,
-          notes: "המחלקה מחפשת מועמדים עם סקרנות אמיתית, מקצועיות ויכולת להשתלב בצוות עמוס."
+          notes: "המחלקה מחפשת מועמדים עם סקרנות אמיתית, מקצועיות ויכולת להשתלב בצוות עמוס.",
+          whatWeAreLookingFor:
+            "מועמדים עם סקרנות מחקרית, נוכחות קלינית טובה ויכולת להחזיק קצב במחלקה עמוסה."
         }
       }
     }
@@ -528,6 +533,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       openingType: OpeningType.RESIDENCY,
       isImmediate: false,
       openingsCount: 1,
+      topApplicantsToEmail: 3,
       status: OpportunityStatus.UPCOMING,
       committeeDate: new Date("2026-09-03"),
       applicationDeadline: new Date("2026-08-20"),
@@ -540,12 +546,16 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
         create: {
           researchImportance: 4,
           departmentElectiveImportance: 5,
+          departmentInternshipImportance: 4,
           residentSelectionInfluence: 4,
           specialistSelectionInfluence: 4,
           departmentHeadInfluence: 3,
           medicalSchoolInfluence: 2,
+          recommendationsImportance: 3,
           personalFitImportance: 5,
-          previousDepartmentExperienceImportance: 5
+          previousDepartmentExperienceImportance: 5,
+          whatWeAreLookingFor:
+            "אנשים עם חיבור אמיתי לנוירולוגיה דחופה, סבלנות ללמידה ויכולת עבודה עם מקרים מורכבים."
         }
       }
     }
@@ -560,6 +570,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       openingType: OpeningType.COMMUNITY_TRACK,
       isImmediate: true,
       openingsCount: 2,
+      topApplicantsToEmail: 5,
       status: OpportunityStatus.OPEN,
       committeeDate: new Date("2026-05-28"),
       applicationDeadline: new Date("2026-05-21"),
@@ -572,12 +583,16 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
         create: {
           researchImportance: 2,
           departmentElectiveImportance: 3,
+          departmentInternshipImportance: 4,
           residentSelectionInfluence: 3,
           specialistSelectionInfluence: 4,
           departmentHeadInfluence: 3,
           medicalSchoolInfluence: 2,
+          recommendationsImportance: 3,
           personalFitImportance: 5,
-          previousDepartmentExperienceImportance: 4
+          previousDepartmentExperienceImportance: 4,
+          whatWeAreLookingFor:
+            "מועמדים עם גישה טיפולית רציפה, אהבה לקהילה ויכולת ליצור קשר מעולה עם מטופלים."
         }
       }
     }
@@ -592,6 +607,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       openingType: OpeningType.RESIDENCY,
       isImmediate: false,
       openingsCount: 1,
+      topApplicantsToEmail: 3,
       status: OpportunityStatus.UPCOMING,
       committeeDate: new Date("2026-07-07"),
       applicationDeadline: new Date("2026-06-28"),
@@ -604,12 +620,16 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
         create: {
           researchImportance: 2,
           departmentElectiveImportance: 4,
+          departmentInternshipImportance: 4,
           residentSelectionInfluence: 5,
           specialistSelectionInfluence: 4,
           departmentHeadInfluence: 4,
           medicalSchoolInfluence: 1,
+          recommendationsImportance: 3,
           personalFitImportance: 5,
-          previousDepartmentExperienceImportance: 4
+          previousDepartmentExperienceImportance: 4,
+          whatWeAreLookingFor:
+            "מועמדים עם ידיים טובות, נוכחות רגועה בסביבה עמוסה ורושם אישי מצוין על הצוות."
         }
       }
     }
@@ -926,11 +946,14 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       fullName: "ד\"ר ליאור רז",
       phone: "050-7770001",
       email: "lior.raz@example.com",
+      medicalSchool: "אוניברסיטת תל אביב",
       didDepartmentElective: true,
       departmentElectiveDetails: "ביצעתי אלקטיב של ארבעה שבועות במחלקה בסוף שנה ו'.",
       hasResearch: true,
       researchDetails: "מעורב/ת בפרויקט רטרוספקטיבי בקרדיולוגיה פולשנית.",
       didInternshipThere: false,
+      recommendationDetails: "המלצה ממנהל/ת מיון פנימי ומהקרדיולוג המלווה את הפרויקט המחקרי.",
+      departmentFamiliarityDetails: "השתתפתי גם בשני ימי חשיפה של המחלקה ובדיוני בוקר.",
       motivationText: "אני מחפש/ת מחלקה עם שילוב בין הוראה חזקה, עומק קליני ואפשרות למחקר משמעותי.",
       relevantExperience: "עבדתי כסטאז'ר/ית במיון פנימי ועקבתי אחרי חולי לב מורכבים.",
       additionalNotes: "אשמח להשתלב גם בפעילות אקדמית של המחלקה.",
@@ -948,10 +971,13 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       fullName: "שקד מימון",
       phone: "050-7770002",
       email: "shaked.maymon@example.com",
+      medicalSchool: "הטכניון",
       didDepartmentElective: false,
       hasResearch: false,
       didInternshipThere: true,
       internshipDetails: "הייתי בחודש קהילה במסלול דומה והבנתי שאני רוצה משפחה.",
+      recommendationDetails: "המדריכה במרפאה הקהילתית הציעה להיות ממליצה.",
+      departmentFamiliarityDetails: "שוחחתי עם צוות המסלול ביום חשיפה והכרתי את מבנה השבוע.",
       motivationText: "אני רוצה מסלול קהילה עם מדריכים נגישים ורצף טיפולי אמיתי.",
       relevantExperience: "ניסיון בפרויקטים של חינוך לבריאות וחשיפה למרפאות בקהילה.",
       status: OpeningApplicationStatus.SUBMITTED
@@ -965,12 +991,15 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       fullName: "יובל כהן",
       phone: "050-7770003",
       email: "yuval.cohen@example.com",
+      medicalSchool: "האוניברסיטה העברית",
       didDepartmentElective: true,
       departmentElectiveDetails: "אלקטיב של שבועיים באורתופדיה עם השתתפות בסבבים ובחדר ניתוח.",
       hasResearch: true,
       researchDetails: "עבודה קטנה בנושא outcomes בניתוחי שבר.",
       didInternshipThere: true,
       internshipDetails: "חודש סטאז' במיון אורתופדי.",
+      recommendationDetails: "מכתב מהמדריך בחדר ניתוח והמלצה מרופא בכיר מהסטאז'.",
+      departmentFamiliarityDetails: "הייתי גם בתורנות ערב נוספת במחלקה כצופה.",
       motivationText: "אני רוצה להמשיך למחלקה דינמית עם טראומה, עשייה hands-on וצוות נגיש.",
       relevantExperience: "נוכחות קבועה בחדר ניתוח והצגת מקרים במהלך הסבב.",
       additionalNotes: "גמיש/ה לתאריכי התחלה שונים.",
