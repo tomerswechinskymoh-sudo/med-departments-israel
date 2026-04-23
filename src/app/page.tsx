@@ -46,12 +46,12 @@ export default async function HomePage() {
             <p className="text-sm font-semibold text-brand-700">לפני שבוחרים, בודקים</p>
             <div className="space-y-4">
               <h1 className="max-w-3xl text-4xl font-bold leading-tight text-ink md:text-6xl">
-                לדעת איך מחלקה באמת נראית — לפני שנכנסים אליה
+                לדעת איך מחלקה באמת נראית, לפני שנכנסים אליה
               </h1>
               <p className="max-w-2xl text-base leading-8 text-slate-700 md:text-lg">
                 מחלקות, תקנים, מחקר ושיתופים מהשטח.
                 <br className="hidden md:block" />
-                כל מה שצריך כדי להבין אם זה מתאים לך — בלי ניחושים.
+                כל מה שצריך כדי להבין אם זה מתאים לך, בלי ניחושים.
               </p>
             </div>
 
@@ -143,7 +143,7 @@ export default async function HomePage() {
       <HomeSection tone="soft" className="space-y-6">
         <SectionHeading
           eyebrow="פתוח עכשיו"
-          title="מה פתוח עכשיו — ומה הסיכוי שלך להיכנס"
+          title="מה פתוח עכשיו, ומה הסיכוי שלך להיכנס"
           description="תקנים, תאריכי ועדות ומה באמת חשוב למחלקה"
         />
         <div className="grid gap-4 xl:grid-cols-2">
@@ -190,7 +190,7 @@ export default async function HomePage() {
             <p className="text-sm font-semibold text-brand-100">ממשיכים מכאן</p>
             <h2 className="mt-2 text-3xl font-bold">יש לך כמה כיוונים בראש?</h2>
             <p className="mt-3 text-sm leading-7 text-brand-50 md:text-base">
-              תתחיל בחיפוש — תוך דקה כבר רואים תמונה הרבה יותר ברורה
+              תתחיל בחיפוש. תוך דקה כבר רואים תמונה הרבה יותר ברורה
             </p>
           </div>
           <Link

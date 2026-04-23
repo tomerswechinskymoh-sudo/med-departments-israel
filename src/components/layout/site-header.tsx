@@ -13,7 +13,7 @@ export async function SiteHeader() {
             href="/"
             className="inline-flex items-center rounded-full border border-brand-100/70 bg-white/85 px-4 py-2 text-lg font-bold tracking-tight text-brand-900 shadow-panel"
           >
-            מסלול למחלקה
+            הדרך להתמחות
           </Link>
           <nav className="hidden items-center gap-4 text-sm text-slate-700 md:flex">
             <Link href="/departments" className="transition hover:text-brand-700">

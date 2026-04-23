@@ -17,9 +17,9 @@ export function SiteFooter() {
     <footer className="border-t border-brand-900/20 bg-gradient-to-b from-brand-900 to-[#06121f] text-white">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 text-sm md:px-6">
         <div>
-          <p className="font-semibold text-white">מסלול למחלקה</p>
+          <p className="font-semibold text-white">הדרך להתמחות</p>
           <p className="mt-2 max-w-2xl leading-7 text-brand-50/88">
-            מסלול למחלקה — מקום אחד להבין איך מחלקות באמת נראות לפני שבוחרים סבב, מחקר
+            הדרך להתמחות, מקום אחד להבין איך מחלקות באמת נראות לפני שבוחרים סבב, מחקר
             או התמחות.
           </p>
         </div>

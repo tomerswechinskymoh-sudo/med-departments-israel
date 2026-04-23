@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 
 export const metadata: Metadata = {
-  title: "מסלול למחלקה",
+  title: "הדרך להתמחות",
   description:
     "פלטפורמה בעברית לסטודנטים ולסטאז'רים שרוצים להבין איך מחלקות באמת נראות לפני שבוחרים."
 };
