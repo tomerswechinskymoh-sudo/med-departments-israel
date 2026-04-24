@@ -5,16 +5,13 @@ import { useState } from "react";
 
 export function UserRoleForm({
   userId,
-  currentRole,
-  initialIsApprovedPublisher = false
+  currentRole
 }: {
   userId: string;
-  currentRole: "STUDENT" | "RESIDENT" | "REPRESENTATIVE" | "ADMIN";
-  initialIsApprovedPublisher?: boolean;
+  currentRole: "STUDENT" | "RESIDENT" | "ADMIN";
 }) {
   const router = useRouter();
   const [role, setRole] = useState(currentRole);
-  const [isApprovedPublisher, setIsApprovedPublisher] = useState(initialIsApprovedPublisher);
   const [isPending, setIsPending] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -27,7 +24,7 @@ export function UserRoleForm({
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ role, isApprovedPublisher })
+      body: JSON.stringify({ role })
     });
 
     const payload = (await response.json().catch(() => null)) as { error?: string; message?: string } | null;
@@ -46,17 +43,8 @@ export function UserRoleForm({
         >
           <option value="STUDENT">סטודנט/ית / סטאז'ר/ית</option>
           <option value="RESIDENT">מתמחה</option>
-          <option value="REPRESENTATIVE">נציג/ת מחלקה</option>
           <option value="ADMIN">אדמין</option>
         </select>
-        <label className="flex items-center gap-2 text-sm text-slate-700">
-          <input
-            type="checkbox"
-            checked={isApprovedPublisher}
-            onChange={(event) => setIsApprovedPublisher(event.target.checked)}
-          />
-          הרשאת פרסום רשמי
-        </label>
         <button
           type="button"
           onClick={submitRole}

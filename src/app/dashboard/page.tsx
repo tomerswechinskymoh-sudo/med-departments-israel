@@ -8,18 +8,6 @@ import { Badge } from "@/components/ui/badge";
 
 export const dynamic = "force-dynamic";
 
-function requestStatusLabel(status: "PENDING" | "APPROVED" | "REJECTED") {
-  if (status === "APPROVED") {
-    return { label: "אושר", tone: "success" as const };
-  }
-
-  if (status === "REJECTED") {
-    return { label: "נדחה", tone: "danger" as const };
-  }
-
-  return { label: "ממתין", tone: "warning" as const };
-}
-
 export default async function DashboardPage() {
   const session = await requireAuth();
   const data = await getUserDashboardData(session.userId);
@@ -28,7 +16,7 @@ export default async function DashboardPage() {
     return null;
   }
 
-  const canPublish = session.role === "admin" || session.isApprovedPublisher;
+  const isRepresentative = session.role === "representative";
 
   return (
     <PageShell className="space-y-8 py-10">
@@ -52,12 +40,14 @@ export default async function DashboardPage() {
           >
             לחיפוש מחלקות
           </Link>
-          <Link
-            href={canPublish ? "/representative" : "/verification"}
-            className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800"
-          >
-            {canPublish ? "ניהול פרסום רשמי" : "בקשת הרשאת פרסום"}
-          </Link>
+          {isRepresentative ? (
+            <Link
+              href="/representative"
+              className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800"
+            >
+              אזור נציגים
+            </Link>
+          ) : null}
         </div>
       </section>
 
@@ -91,43 +81,32 @@ export default async function DashboardPage() {
         </Card>
 
         <Card>
-          <h2 className="text-xl font-bold text-ink">בקשות הרשאת פרסום</h2>
-          <div className="mt-4 space-y-4">
-            {data.publisherRequests.length === 0 ? (
-              <EmptyState
-                title="אין בקשות פעילות"
-                description="אם תרצו לפרסם עדכוני מחלקה, משרות או הזדמנויות מחקר, הגישו בקשה לאישור."
-                ctaHref="/verification"
-                ctaLabel="הגשת בקשה"
-              />
+          <h2 className="text-xl font-bold text-ink">סטטוס חשבון</h2>
+          <div className="mt-4 space-y-3 text-sm leading-7 text-slate-700">
+            <p>
+              <span className="font-semibold text-ink">תפקיד נוכחי: </span>
+              {userRoleLabel(data.roleKey)}
+            </p>
+            <p>
+              חשבון רגיל מספיק כדי לגלוש, לשמור מחלקות להשוואה ולהגיש מועמדות מתוך חשבון
+              מחובר. תפקיד נציג/ת מחלקה לא נפתח בהרשמה עצמית ונוצר רק על ידי אדמין.
+            </p>
+            {isRepresentative ? (
+              <div className="rounded-2xl border border-brand-100 bg-brand-50/70 px-4 py-3">
+                <p className="font-semibold text-ink">מחלקות משויכות</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {data.representativeAssignments.map((assignment) => (
+                    <Badge key={assignment.id} tone="success">
+                      {assignment.department.institution.name} · {assignment.department.name}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
             ) : (
-              data.publisherRequests.map((request) => {
-                const status = requestStatusLabel(request.status);
-
-                return (
-                  <div key={request.id} className="rounded-2xl bg-brand-50 p-4">
-                    <div className="flex flex-wrap items-center justify-between gap-3">
-                      <div>
-                        <p className="font-semibold text-ink">
-                          {request.department?.name ?? request.institution?.name ?? "בקשת פרסום"}
-                        </p>
-                        <p className="text-sm text-slate-600">
-                          {request.institution?.name ?? "ללא מוסד"}
-                        </p>
-                      </div>
-                      <Badge tone={status.tone}>{status.label}</Badge>
-                    </div>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">
-                      {request.note ?? "לא נוספה הערה לבקשה."}
-                    </p>
-                    {request.adminNote ? (
-                      <p className="mt-2 text-xs leading-6 text-slate-500">
-                        הערת אדמין: {request.adminNote}
-                      </p>
-                    ) : null}
-                  </div>
-                );
-              })
+              <p className="rounded-2xl border border-brand-100 bg-brand-50/70 px-4 py-3">
+                אם את/ה עובד/ת מטעם מחלקה וצריך גישת נציג/ה, זה נעשה ידנית על ידי צוות
+                המערכת ולא דרך טופס הרשמה.
+              </p>
             )}
           </div>
         </Card>
@@ -144,29 +123,20 @@ export default async function DashboardPage() {
               </p>
             </Link>
             <Link href="/faq" className="rounded-2xl bg-brand-50 p-4 transition hover:bg-brand-100">
-              <p className="font-semibold text-ink">איך להשתמש באתר</p>
+              <p className="font-semibold text-ink">איך משתמשים באתר</p>
               <p className="mt-1 text-sm text-slate-600">
-                תשובות קצרות על הרשמה, שיתופים מהשטח, פרטיות ופרסום רשמי.
+                תשובות קצרות על הרשמה, שיתופים מהשטח, פרטיות ותקנים פתוחים.
               </p>
             </Link>
           </div>
         </Card>
 
         <Card>
-          <h2 className="text-xl font-bold text-ink">סטטוס חשבון</h2>
+          <h2 className="text-xl font-bold text-ink">מה חשוב לדעת</h2>
           <div className="mt-4 space-y-3 text-sm leading-7 text-slate-700">
-            <p>
-              <span className="font-semibold text-ink">תפקיד נוכחי: </span>
-              {userRoleLabel(data.roleKey)}
-            </p>
-            <p>
-              <span className="font-semibold text-ink">הרשאת פרסום רשמי: </span>
-              {data.isApprovedPublisher ? "מאושר/ת" : "לא פעיל"}
-            </p>
-            <p>
-              חשבון רגיל מספיק כדי לגלוש, לשמור מחלקות להשוואה ולעקוב אחרי מחלקות. פרסום עדכונים
-              רשמיים דורש הרשאה נפרדת ואישור אדמין.
-            </p>
+            <p>חוויות מהמחלקה עולות רק אחרי אישור אדמין.</p>
+            <p>מועמדות לתקן פתוח דורשת חשבון מחובר, ונשמרת פרטית למחלקה.</p>
+            <p>תקנים פתוחים ועדכוני מחלקה נשלחים מאזור נציגים בלבד ורק אחרי אישור אדמין.</p>
           </div>
         </Card>
       </section>

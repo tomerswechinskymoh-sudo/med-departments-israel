@@ -47,7 +47,7 @@ export async function POST(request: Request) {
         fullName: parsed.data.fullName,
         phone: parsed.data.phone,
         roleKey: RoleKey.REPRESENTATIVE,
-        isApprovedPublisher: true
+        isApprovedPublisher: false
       }
     });
 
@@ -83,4 +83,3 @@ export async function POST(request: Request) {
 
   return NextResponse.json({ message: "נציג/ת המחלקה נוצר/ה ונשויך/ה בהצלחה." });
 }
-

@@ -50,10 +50,10 @@ export default async function DepartmentDetailsPage({
               <Badge>{department.institution.name}</Badge>
               <Badge>{department.specialty.name}</Badge>
               <Badge tone={department.residencyOpenings.length > 0 ? "success" : "warning"}>
-                {department.residencyOpenings.length > 0 ? "יש פתיחות רשמיות" : "אין פתיחות כרגע"}
+                {department.residencyOpenings.length > 0 ? "יש תקנים פתוחים" : "אין תקנים פתוחים כרגע"}
               </Badge>
               <Badge tone={department.researchOpportunities.length > 0 ? "success" : "default"}>
-                {department.researchOpportunities.length > 0 ? "יש מחקר פתוח" : "ללא מחקר פתוח"}
+                {department.researchOpportunities.length > 0 ? "יש הזדמנויות מחקר" : "ללא הזדמנויות מחקר"}
               </Badge>
             </div>
 
@@ -124,14 +124,14 @@ export default async function DepartmentDetailsPage({
               {department.publicContactPhone ?? "לא פורסם"}
             </p>
             <p className="rounded-2xl bg-brand-50/70 p-4 text-xs leading-6 text-slate-600">
-              פתיחות רשמיות מתפרסמות רק דרך נציגים מאושרים של המחלקה. אם ראיתם פתיחה בדף,
-              היא הגיעה מאזור פרסום מאומת ולא מטופס פתוח לכולם.
+              תקנים פתוחים מתפרסמים רק דרך נציגים מאושרים של המחלקה, ורק אחרי אישור אדמין.
+              אם ראיתם תקן בדף, הוא לא הגיע מטופס פתוח לכולם.
             </p>
           </div>
         </Card>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-2">
+      <section className="grid gap-6 lg:grid-cols-3">
         <div className="space-y-6">
           <SectionHeading title="ראשי המחלקה" />
           <div className="grid gap-4">
@@ -158,16 +158,51 @@ export default async function DepartmentDetailsPage({
           <SectionHeading title="עדכונים רשמיים" />
           <OfficialUpdatesList updates={department.officialUpdates} />
         </div>
+
+        <div className="space-y-6">
+          <SectionHeading
+            title="נציג/ת המחלקה"
+            description="איש/אשת הקשר לתוכן הרשמי של המחלקה. לא חייב/ת להיות ראש/ת המחלקה."
+          />
+          <div className="grid gap-4">
+            {department.representativeAssignments.length === 0 ? (
+              <Card>
+                <p className="text-sm text-slate-600">עדיין לא פורסם נציג/ת מחלקה בעמוד הזה.</p>
+              </Card>
+            ) : (
+              department.representativeAssignments.map((assignment) => (
+                <Card key={assignment.id}>
+                  <p className="text-lg font-bold text-ink">{assignment.user.fullName}</p>
+                  <p className="mt-1 text-sm font-semibold text-brand-700">
+                    {assignment.user.representativeProfile?.title ?? "נציג/ת מחלקה"}
+                  </p>
+                  {assignment.user.representativeProfile?.note ? (
+                    <p className="mt-3 text-sm leading-7 text-slate-700">
+                      {assignment.user.representativeProfile.note}
+                    </p>
+                  ) : null}
+                  <div className="mt-4 space-y-2 text-sm text-slate-600">
+                    {assignment.user.representativeProfile?.contactDetails ? (
+                      <p>{assignment.user.representativeProfile.contactDetails}</p>
+                    ) : null}
+                    {assignment.user.email ? <p>אימייל: {assignment.user.email}</p> : null}
+                    {assignment.user.phone ? <p>טלפון: {assignment.user.phone}</p> : null}
+                  </div>
+                </Card>
+              ))
+            )}
+          </div>
+        </div>
       </section>
 
       <section className="space-y-6">
         <SectionHeading
-          title="פתיחות, תקנים והזדמנויות"
+          title="תקנים פתוחים והזדמנויות"
           description="תוכן רשמי שנשלח דרך נציגים מאושרים בלבד, עם הסבר מה חשוב למחלקה ומה המועמד/ת צריך/ה לדעת מראש."
         />
         {department.residencyOpenings.length === 0 ? (
           <Card>
-            <p className="text-sm text-slate-600">עדיין לא פורסמו פתיחות רשמיות למחלקה הזו.</p>
+            <p className="text-sm text-slate-600">עדיין לא פורסמו תקנים פתוחים למחלקה הזו.</p>
           </Card>
         ) : (
           <div className="grid gap-6">
@@ -196,7 +231,7 @@ export default async function DepartmentDetailsPage({
         <section className="space-y-6">
           <SectionHeading
             title="מה בדרך כלל חשוב למחלקה"
-            description="הנה דוגמה מתוך אחת הפתיחות הפעילות או העתידיות של המחלקה. בפתיחה עצמה אפשר לראות את כל הפירוט."
+            description="הנה דוגמה מתוך אחד התקנים הפעילים או העתידיים של המחלקה. בעמוד התקן עצמו אפשר לראות את כל הפירוט."
           />
           <Card>
             <OpeningCriteriaGrid criteria={department.residencyOpenings[0].acceptanceCriteria} />

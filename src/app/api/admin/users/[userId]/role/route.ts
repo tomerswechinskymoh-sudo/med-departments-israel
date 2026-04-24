@@ -38,8 +38,7 @@ export async function POST(
       id: userId
     },
     data: {
-      roleKey: parsed.data.role as RoleKey,
-      isApprovedPublisher: parsed.data.isApprovedPublisher
+      roleKey: parsed.data.role as RoleKey
     }
   });
 
@@ -49,8 +48,7 @@ export async function POST(
     entityType: "User",
     entityId: updatedUser.id,
     metadata: {
-      role: updatedUser.roleKey,
-      isApprovedPublisher: updatedUser.isApprovedPublisher
+      role: updatedUser.roleKey
     }
   });
 

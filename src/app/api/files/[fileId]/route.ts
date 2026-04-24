@@ -42,7 +42,7 @@ export async function GET(
     file.departmentId ?? file.opening?.departmentId ?? file.application?.opening.departmentId ?? null;
 
   if (session.role !== "admin") {
-    if (!departmentId || !session.isApprovedPublisher) {
+    if (!departmentId || session.role !== "representative") {
       return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
     }
 

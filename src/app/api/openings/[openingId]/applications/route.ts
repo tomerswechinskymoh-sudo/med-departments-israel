@@ -40,11 +40,11 @@ export async function POST(
   });
 
   if (!opening) {
-    return NextResponse.json({ error: "הפתיחה לא זמינה להגשה כרגע." }, { status: 404 });
+    return NextResponse.json({ error: "התקן הפתוח לא זמין להגשה כרגע." }, { status: 404 });
   }
 
   if (opening.applicationDeadline && new Date(opening.applicationDeadline) < new Date()) {
-    return NextResponse.json({ error: "מועד ההגשה לפתיחה הזו הסתיים." }, { status: 400 });
+    return NextResponse.json({ error: "מועד ההגשה לתקן הזה הסתיים." }, { status: 400 });
   }
 
   const formData = await request.formData();

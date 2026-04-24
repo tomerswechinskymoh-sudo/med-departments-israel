@@ -12,10 +12,11 @@ type FormValues = z.infer<typeof loginSchema>;
 export function LoginForm({ nextPath }: { nextPath?: string }) {
   const router = useRouter();
   const [formError, setFormError] = useState<string | null>(null);
+  const invalidCredentialsMessage = "שם משתמש או סיסמא לא נכונים";
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { isSubmitting }
   } = useForm<FormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -24,29 +25,33 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
     }
   });
 
-  const onSubmit = handleSubmit(async (values) => {
-    setFormError(null);
+  const onSubmit = handleSubmit(
+    async (values) => {
+      setFormError(null);
 
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(values)
-    });
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values)
+      });
 
-    if (!response.ok) {
-      const payload = (await response.json().catch(() => null)) as { error?: string } | null;
-      setFormError(payload?.error ?? "ההתחברות נכשלה.");
-      return;
+      if (!response.ok) {
+        setFormError(invalidCredentialsMessage);
+        return;
+      }
+
+      router.push(nextPath || "/dashboard");
+      router.refresh();
+    },
+    () => {
+      setFormError(invalidCredentialsMessage);
     }
-
-    router.push(nextPath || "/dashboard");
-    router.refresh();
-  });
+  );
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={onSubmit} noValidate className="space-y-4">
       <div>
         <label className="mb-2 block text-sm font-semibold text-ink">אימייל</label>
         <input
@@ -54,7 +59,6 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
           type="email"
           className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
         />
-        {errors.email ? <p className="mt-2 text-xs text-rose-600">{errors.email.message}</p> : null}
       </div>
 
       <div>
@@ -64,9 +68,6 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
           type="password"
           className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
         />
-        {errors.password ? (
-          <p className="mt-2 text-xs text-rose-600">{errors.password.message}</p>
-        ) : null}
       </div>
 
       {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}

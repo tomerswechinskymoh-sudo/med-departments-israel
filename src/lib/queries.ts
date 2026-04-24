@@ -47,7 +47,7 @@ const openingCriteriaSelect = {
   whatWeAreLookingFor: true
 } satisfies Prisma.OpeningAcceptanceCriteriaSelect;
 
-async function getManagedDepartments(userId: string, includeAllDepartments = false) {
+async function getManagedDepartments(userId: string) {
   const assignments = await prisma.representativeAssignment.findMany({
     where: {
       userId
@@ -229,7 +229,6 @@ export async function getDirectoryFilters() {
       select: {
         id: true,
         name: true,
-        city: true,
         type: true
       },
       orderBy: {
@@ -253,9 +252,8 @@ export async function getDirectoryFilters() {
 export async function getDirectoryData(
   filters: {
     search?: string;
-    institution?: string;
-    specialty?: string;
-    city?: string;
+    institutions?: string[];
+    specialties?: string[];
   },
   userId?: string
 ) {
@@ -272,15 +270,17 @@ export async function getDirectoryData(
               ]
             }
           : {},
-        filters.institution ? { institutionId: filters.institution } : {},
-        filters.specialty ? { specialtyId: filters.specialty } : {},
-        filters.city
+        filters.institutions?.length
           ? {
-              institution: {
-                city: {
-                  equals: filters.city,
-                  mode: "insensitive"
-                }
+              institutionId: {
+                in: filters.institutions
+              }
+            }
+          : {},
+        filters.specialties?.length
+          ? {
+              specialtyId: {
+                in: filters.specialties
               }
             }
           : {}
@@ -604,10 +604,9 @@ export async function getFavoritesData(userId: string) {
 }
 
 export async function getRepresentativeDashboardData(
-  userId: string,
-  options?: { includeAllDepartments?: boolean }
+  userId: string
 ) {
-  const departments = await getManagedDepartments(userId, options?.includeAllDepartments);
+  const departments = await getManagedDepartments(userId);
   const managedDepartmentIds = departments.map((department) => department.id);
 
   if (managedDepartmentIds.length === 0) {
@@ -657,9 +656,26 @@ export async function getRepresentativeDashboardData(
         }
       },
       residencyOpenings: {
+        where: {
+          supersedesOpeningId: null
+        },
         include: {
           acceptanceCriteria: {
             select: openingCriteriaSelect
+          },
+          pendingRevisions: {
+            where: {
+              contentStatus: ContentStatus.PENDING_REVIEW
+            },
+            select: {
+              id: true,
+              createdAt: true,
+              reviewedAt: true
+            },
+            orderBy: {
+              createdAt: "desc"
+            },
+            take: 1
           },
           createdBy: {
             select: {
@@ -689,10 +705,9 @@ export async function getRepresentativeDashboardData(
 
 export async function getRepresentativeOpeningFormData(
   userId: string,
-  openingId?: string,
-  options?: { includeAllDepartments?: boolean }
+  openingId?: string
 ) {
-  const managedDepartments = await getManagedDepartments(userId, options?.includeAllDepartments);
+  const managedDepartments = await getManagedDepartments(userId);
   const managedDepartmentIds = managedDepartments.map((department) => department.id);
 
   const departmentOptions = await prisma.department.findMany({
@@ -749,6 +764,13 @@ export async function getRepresentativeOpeningFormData(
         }
       },
       acceptanceCriteria: true,
+      supersedesOpening: {
+        select: {
+          id: true,
+          title: true,
+          departmentId: true
+        }
+      },
       attachments: {
         orderBy: {
           createdAt: "desc"
@@ -772,10 +794,9 @@ export async function getRepresentativeOpeningFormData(
 
 export async function getOpeningManagementData(
   userId: string,
-  openingId: string,
-  options?: { includeAllDepartments?: boolean }
+  openingId: string
 ) {
-  const managedDepartments = await getManagedDepartments(userId, options?.includeAllDepartments);
+  const managedDepartments = await getManagedDepartments(userId);
   const managedDepartmentIds = new Set(managedDepartments.map((department) => department.id));
 
   const opening = await prisma.residencyOpening.findUnique({
@@ -790,18 +811,17 @@ export async function getOpeningManagementData(
         }
       },
       acceptanceCriteria: true,
+      supersedesOpening: {
+        select: {
+          id: true,
+          title: true,
+          departmentId: true,
+          status: true
+        }
+      },
       attachments: {
         orderBy: {
           createdAt: "desc"
-        }
-      },
-      applications: {
-        include: {
-          files: {
-            orderBy: {
-              createdAt: "desc"
-            }
-          }
         }
       }
     }
@@ -811,7 +831,21 @@ export async function getOpeningManagementData(
     return null;
   }
 
-  opening.applications.sort((left, right) => {
+  const applicationSourceOpeningId = opening.supersedesOpeningId ?? opening.id;
+  const applications = await prisma.openingApplication.findMany({
+    where: {
+      openingId: applicationSourceOpeningId
+    },
+    include: {
+      files: {
+        orderBy: {
+          createdAt: "desc"
+        }
+      }
+    }
+  });
+
+  applications.sort((left, right) => {
     if (left.isTopMatch !== right.isTopMatch) {
       return left.isTopMatch ? -1 : 1;
     }
@@ -826,7 +860,10 @@ export async function getOpeningManagementData(
     return right.createdAt.getTime() - left.createdAt.getTime();
   });
 
-  return opening;
+  return {
+    ...opening,
+    applications
+  };
 }
 
 export async function getAdminDashboardData() {

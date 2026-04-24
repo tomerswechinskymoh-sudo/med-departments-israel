@@ -41,7 +41,7 @@ export function DepartmentCard({
         <div>
           <div className="flex flex-wrap items-center gap-2">
             <Badge tone={department.hasOpenResidency ? "success" : "warning"}>
-              {department.hasOpenResidency ? "יש פתיחות" : "ללא פתיחות כרגע"}
+              {department.hasOpenResidency ? "יש תקנים פתוחים" : "אין תקנים פתוחים כרגע"}
             </Badge>
             <Badge tone={department.hasResearch ? "success" : "default"}>
               {department.hasResearch ? "מחקר פעיל" : "ללא מחקר פתוח"}

@@ -42,8 +42,8 @@ export default async function OpeningDetailsPage({
     deadlinePassed && opening.status !== "CLOSED"
       ? { label: "הדדליין עבר", tone: "default" as const }
       : statusLabel(opening.status);
-  const canApply =
-    opening.status !== "CLOSED" && !deadlinePassed;
+  const canApply = opening.status !== "CLOSED" && !deadlinePassed;
+  const showApplicationCount = session?.role === "admin";
 
   return (
     <PageShell className="space-y-8 py-10">
@@ -111,7 +111,7 @@ export default async function OpeningDetailsPage({
       <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <Card>
           <SectionHeading
-            title="מה המחלקה פרסמה על הפתיחה"
+            title="מה המחלקה פרסמה על התקן"
             description="מידע רשמי שמגיע מאזור נציגים מאושר בלבד."
           />
           <div className="mt-5 space-y-4 text-sm leading-8 text-slate-700">
@@ -127,10 +127,12 @@ export default async function OpeningDetailsPage({
                 {opening.supportingInfo}
               </p>
             ) : null}
-            <p>
-              <span className="font-semibold text-ink">מספר מועמדויות שנקלטו עד כה: </span>
-              {opening._count.applications}
-            </p>
+            {showApplicationCount ? (
+              <p>
+                <span className="font-semibold text-ink">מספר מועמדויות שנקלטו עד כה: </span>
+                {opening._count.applications}
+              </p>
+            ) : null}
           </div>
         </Card>
 
@@ -150,7 +152,7 @@ export default async function OpeningDetailsPage({
       <section className="space-y-6">
         <SectionHeading
           title="מה חשוב למחלקה בבחירה"
-          description="השקיפות הזו נועדה לעזור להבין מה באמת משפיע בפתיחה הספציפית הזו."
+          description="השקיפות הזו נועדה לעזור להבין מה באמת משפיע בתקן הספציפי הזה."
         />
         <Card>
           <OpeningCriteriaGrid criteria={opening.acceptanceCriteria} />

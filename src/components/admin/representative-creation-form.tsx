@@ -106,7 +106,7 @@ export function RepresentativeCreationForm({
 
       <textarea
         {...register("profile.note")}
-        placeholder="הערת פתיחה או תיאור קצר של התפקיד"
+        placeholder="כמה מילים על התפקיד או על תחום האחריות"
         className="min-h-24 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
       />
 
@@ -149,4 +149,3 @@ export function RepresentativeCreationForm({
     </form>
   );
 }
-

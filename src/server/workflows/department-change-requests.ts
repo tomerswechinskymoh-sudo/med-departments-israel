@@ -128,7 +128,7 @@ export async function upsertDepartmentChangeRequest(
         id: existingRequest.id
       },
       data: {
-        payload: input.payload,
+        payload: input.payload ?? {},
         summary,
         adminNote: null,
         reviewedAt: null,
@@ -142,7 +142,7 @@ export async function upsertDepartmentChangeRequest(
       departmentId: input.departmentId,
       submittedByUserId: input.submittedByUserId,
       summary,
-      payload: input.payload
+      payload: input.payload ?? {},
     }
   });
 }

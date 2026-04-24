@@ -27,7 +27,7 @@ export default async function NewOpeningPage({
     <PageShell className="py-10">
       <div className="mx-auto max-w-5xl space-y-6">
         <Card className="bg-brand-900 text-white">
-          <p className="text-sm font-semibold text-brand-100">פרסום רשמי</p>
+          <p className="text-sm font-semibold text-brand-100">תוכן רשמי למחלקה</p>
           <h1 className="mt-2 text-3xl font-bold">תקן פתוח חדש למחלקה</h1>
           <p className="mt-3 text-sm leading-7 text-brand-50">
             ההצעה תישלח קודם לאישור אדמין. רק אחרי אישור היא תעלה לציבור.

@@ -8,20 +8,15 @@ export function DepartmentFilters({
 }: {
   filters: {
     search?: string;
-    institution?: string;
-    specialty?: string;
-    city?: string;
+    institutions?: string[];
+    specialties?: string[];
   };
-  institutions: { id: string; name: string; city: string | null; type: "HOSPITAL" | "HMO" }[];
+  institutions: { id: string; name: string; type: "HOSPITAL" | "HMO" }[];
   specialties: { id: string; name: string }[];
 }) {
-  const cities = Array.from(
-    new Set(institutions.map((institution) => institution.city).filter(Boolean) as string[])
-  ).sort();
-
   return (
     <Card className="rounded-[2rem]">
-      <form className="grid gap-4 md:grid-cols-4">
+      <form className="space-y-4">
         <input
           type="text"
           name="search"
@@ -29,43 +24,53 @@ export function DepartmentFilters({
           placeholder="חיפוש לפי מחלקה, מוסד או תחום"
           className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none ring-0 transition focus:border-brand-300"
         />
-        <select
-          name="institution"
-          defaultValue={filters.institution}
-          className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none transition focus:border-brand-300"
-        >
-          <option value="">כל המוסדות</option>
-          {institutions.map((institution) => (
-            <option key={institution.id} value={institution.id}>
-              {institution.name}
-            </option>
-          ))}
-        </select>
-        <select
-          name="specialty"
-          defaultValue={filters.specialty}
-          className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none transition focus:border-brand-300"
-        >
-          <option value="">כל התחומים</option>
-          {specialties.map((specialty) => (
-            <option key={specialty.id} value={specialty.id}>
-              {specialty.name}
-            </option>
-          ))}
-        </select>
-        <select
-          name="city"
-          defaultValue={filters.city}
-          className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none transition focus:border-brand-300"
-        >
-          <option value="">כל הערים</option>
-          {cities.map((city) => (
-            <option key={city} value={city}>
-              {city}
-            </option>
-          ))}
-        </select>
-        <div className="flex flex-wrap gap-3 md:col-span-4">
+        <div className="grid gap-4 lg:grid-cols-2">
+          <fieldset className="rounded-[1.5rem] border border-brand-100 bg-brand-50/50 p-4">
+            <legend className="px-2 text-sm font-semibold text-ink">מוסדות</legend>
+            <div className="mt-3 grid max-h-60 gap-2 overflow-y-auto pr-1">
+              {institutions.map((institution) => (
+                <label
+                  key={institution.id}
+                  className="flex items-start gap-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm text-slate-700"
+                >
+                  <input
+                    type="checkbox"
+                    name="institution"
+                    value={institution.id}
+                    defaultChecked={filters.institutions?.includes(institution.id)}
+                  />
+                  <span>
+                    {institution.name}
+                    <span className="mr-2 text-xs text-slate-500">
+                      {institution.type === "HOSPITAL" ? "בית חולים" : "קהילה / קופה"}
+                    </span>
+                  </span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset className="rounded-[1.5rem] border border-brand-100 bg-brand-50/50 p-4">
+            <legend className="px-2 text-sm font-semibold text-ink">תחומים</legend>
+            <div className="mt-3 grid max-h-60 gap-2 overflow-y-auto pr-1">
+              {specialties.map((specialty) => (
+                <label
+                  key={specialty.id}
+                  className="flex items-start gap-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm text-slate-700"
+                >
+                  <input
+                    type="checkbox"
+                    name="specialty"
+                    value={specialty.id}
+                    defaultChecked={filters.specialties?.includes(specialty.id)}
+                  />
+                  <span>{specialty.name}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+        </div>
+        <div className="flex flex-wrap gap-3">
           <Button type="submit">סינון מחלקות</Button>
           <a
             href="/departments"

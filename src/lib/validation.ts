@@ -42,6 +42,24 @@ const trimString = (value: unknown) => {
   return value.trim();
 };
 
+const queryStringArray = (value: unknown) => {
+  if (Array.isArray(value)) {
+    const cleaned = value
+      .filter((item): item is string => typeof item === "string")
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    return cleaned.length > 0 ? cleaned : undefined;
+  }
+
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    return trimmed ? [trimmed] : undefined;
+  }
+
+  return undefined;
+};
+
 const scaleSchema = z.coerce.number().int().min(1).max(5);
 
 export const loginSchema = z.object({
@@ -70,9 +88,8 @@ export const signupSchema = z
 
 export const departmentFilterSchema = z.object({
   search: z.preprocess(emptyToUndefined, z.string().optional()),
-  institution: z.preprocess(emptyToUndefined, z.string().optional()),
-  specialty: z.preprocess(emptyToUndefined, z.string().optional()),
-  city: z.preprocess(emptyToUndefined, z.string().optional())
+  institutions: z.preprocess(queryStringArray, z.array(z.string()).optional()),
+  specialties: z.preprocess(queryStringArray, z.array(z.string()).optional())
 });
 
 export const reviewSubmissionSchema = z
@@ -179,7 +196,8 @@ export const adminRepresentativeCreateSchema = z.object({
 });
 
 export const representativeAssignmentUpdateSchema = z.object({
-  departmentIds: z.array(z.string().min(1)).min(1, "יש לשייך לפחות מחלקה אחת.")
+  institutionId: z.string().min(1, "יש לבחור מוסד."),
+  departmentIds: z.array(z.string().min(1))
 });
 
 export const openingContentReviewSchema = z.object({
@@ -243,7 +261,7 @@ export const openingAcceptanceCriteriaSchema = z.object({
 
 export const openingEditorSchema = z.object({
   departmentId: z.string().min(1, "יש לבחור מחלקה."),
-  title: z.string().min(3, "יש להזין כותרת לפתיחה."),
+  title: z.string().min(3, "יש להזין כותרת לתקן הפתוח."),
   summary: z.string().min(20, "יש להזין תקציר."),
   openingType: z.enum(openingTypeValues),
   isImmediate: z.boolean().default(false),

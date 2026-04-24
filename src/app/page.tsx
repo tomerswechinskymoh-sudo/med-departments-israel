@@ -16,18 +16,18 @@ export const dynamic = "force-dynamic";
 
 const trustItems = [
   "חוויות מאומתות בלבד",
-  "פתיחות רשמיות בלבד",
+  "תקנים פתוחים רשמיים בלבד",
   "שמור להשוואה"
 ];
 
 const decisionSteps = [
   {
     title: "מחפשים",
-    description: "לפי מוסד, תחום או עיר"
+    description: "לפי מוסד, תחום או שם מחלקה"
   },
   {
     title: "משווים",
-    description: "אווירה, עומס, פתיחות ומחקר"
+    description: "אווירה, עומס, תקנים פתוחים ומחקר"
   },
   {
     title: "שומרים וחוזרים",
@@ -98,21 +98,21 @@ export default async function HomePage() {
 
             <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
               <Card className="bg-brand-900 text-white">
-                <p className="text-xs font-semibold text-brand-100">למה זה חשוב</p>
+                <p className="text-xs font-semibold text-brand-100">מבפנים</p>
                 <p className="mt-2 text-sm leading-7 text-brand-50">
-                  להבין מהר אם מחלקה שווה בדיקה רצינית
+                  להבין את המחלקה מבפנים
                 </p>
               </Card>
               <Card>
-                <p className="text-xs font-semibold text-brand-700">לא רק לשמוע</p>
+                <p className="text-xs font-semibold text-brand-700">ביום־יום</p>
                 <p className="mt-2 text-sm leading-7 text-slate-700">
-                  לראות תמונה אמיתית לפני שמתחייבים
+                  לראות איך זה באמת מרגיש ביום־יום
                 </p>
               </Card>
               <Card>
-                <p className="text-xs font-semibold text-brand-700">מה באמת קורה</p>
+                <p className="text-xs font-semibold text-brand-700">לפני שנכנסים</p>
                 <p className="mt-2 text-sm leading-7 text-slate-700">
-                  איך נראה היום־יום ומה מצפה לך בפועל
+                  לדעת למה לצפות לפני שנכנסים
                 </p>
               </Card>
             </div>
@@ -124,7 +124,7 @@ export default async function HomePage() {
         <StatCard label="מוסדות" value={data.stats.institutions} />
         <StatCard label="מחלקות" value={data.stats.departments} />
         <StatCard label="שיתופים שעלו" value={data.stats.publishedReviews} />
-        <StatCard label="פתיחות פעילות" value={data.stats.officialOpenings} />
+        <StatCard label="תקנים פתוחים" value={data.stats.officialOpenings} />
       </section>
 
       <HomeSection tone="plain" className="space-y-6">
@@ -144,7 +144,7 @@ export default async function HomePage() {
         <SectionHeading
           eyebrow="פתוח עכשיו"
           title="מה פתוח עכשיו, ומה הסיכוי שלך להיכנס"
-          description="תקנים, תאריכי ועדות ומה באמת חשוב למחלקה"
+          description="תקנים פתוחים, מועדי ועדה ומה באמת חשוב למחלקה"
         />
         <div className="grid gap-4 xl:grid-cols-2">
           {data.featuredOpenings.map((opening) => (

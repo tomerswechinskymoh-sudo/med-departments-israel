@@ -5,7 +5,6 @@ import {
   OpeningType,
   OpportunityStatus,
   PrismaClient,
-  PublisherRequestStatus,
   ReviewSourceType,
   RoleKey,
   SubmissionStatus,
@@ -42,6 +41,9 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
     await prisma.openingApplication.deleteMany();
     await prisma.openingAcceptanceCriteria.deleteMany();
     await prisma.residencyOpening.deleteMany();
+    await prisma.departmentChangeRequest.deleteMany();
+    await prisma.representativeAssignment.deleteMany();
+    await prisma.representativeProfile.deleteMany();
     await prisma.publisherRequest.deleteMany();
     await prisma.officialDepartmentUpdate.deleteMany();
     await prisma.researchOpportunity.deleteMany();
@@ -69,12 +71,12 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       {
         key: RoleKey.REPRESENTATIVE,
         label: "נציג/ת מחלקה",
-        description: "משתמש/ת מאושר/ת עם הרשאת פרסום רשמי מטעם מחלקה או מוסד."
+        description: "חשבון שנפתח על ידי אדמין בלבד ומנוהל לפי שיוך למחלקות."
       },
       {
         key: RoleKey.ADMIN,
         label: "אדמין",
-        description: "ניהול מלא של מוסדות, מחלקות, פתיחות, הגשות והרשאות."
+        description: "יצירת נציגים, שיוך מחלקות, אישור תוכן ופיקוח על הרשאות."
       }
     ]
   });
@@ -385,6 +387,35 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
 
   const departmentMap = Object.fromEntries(departments.map((department) => [department.slug, department]));
 
+  await prisma.representativeProfile.create({
+    data: {
+      userId: representativeUser.id,
+      title: "רכזת מתמחים וסטודנטים במחלקה",
+      contactDetails: "מענה בימי א'-ה' בשעות 08:00-15:00, עדיף קודם במייל ואז בטלפון.",
+      note: "אחראית על עדכונים רשמיים, ימי חשיפה ותיאום סביב תקנים פתוחים."
+    }
+  });
+
+  await prisma.representativeAssignment.createMany({
+    data: [
+      {
+        userId: representativeUser.id,
+        departmentId: departmentMap["sheba-cardiology"].id,
+        createdByUserId: adminUser.id
+      },
+      {
+        userId: representativeUser.id,
+        departmentId: departmentMap["clalit-family-medicine"].id,
+        createdByUserId: adminUser.id
+      },
+      {
+        userId: representativeUser.id,
+        departmentId: departmentMap["wolfson-orthopedics"].id,
+        createdByUserId: adminUser.id
+      }
+    ]
+  });
+
   await prisma.departmentHead.createMany({
     data: [
       { departmentId: departmentMap["sheba-cardiology"].id, name: "פרופ' יעל רותם", title: "מנהלת המחלקה", bio: "קרדיולוגית בכירה עם דגש על הוראה ומחקר קליני.", displayOrder: 0 },
@@ -528,7 +559,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
     data: {
       departmentId: departmentMap["ichilov-neurology"].id,
       createdByUserId: representativeUser.id,
-      title: "פתיחה עתידית בנוירולוגיה",
+      title: "תקן עתידי בנוירולוגיה",
       summary: "תקן צפוי להיפתח בסוף השנה, עם דגש על התאמה קלינית ועניין בנוירולוגיה דחופה.",
       openingType: OpeningType.RESIDENCY,
       isImmediate: false,
@@ -603,7 +634,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       departmentId: departmentMap["wolfson-orthopedics"].id,
       createdByUserId: representativeUser.id,
       title: "תקן עתידי באורתופדיה",
-      summary: "פתיחה צפויה למחזור הבא עם שילוב בין טראומה, מרפאות וחדרי ניתוח.",
+      summary: "תקן צפוי למחזור הבא עם שילוב בין טראומה, מרפאות וחדרי ניתוח.",
       openingType: OpeningType.RESIDENCY,
       isImmediate: false,
       openingsCount: 1,
@@ -883,42 +914,79 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
     ]
   });
 
-  const approvedRequestSheba = await prisma.publisherRequest.create({
+  const pendingOpeningApproval = await prisma.residencyOpening.create({
     data: {
-      userId: representativeUser.id,
-      institutionId: institutionMap.sheba.id,
-      departmentId: departmentMap["sheba-cardiology"].id,
-      requestedRole: RoleKey.REPRESENTATIVE,
-      note: "אחראית על עדכונים ומשרות במחלקה.",
-      status: PublisherRequestStatus.APPROVED,
-      adminNote: "אושר לאחר בדיקה מול המחלקה.",
-      reviewedByUserId: adminUser.id,
-      reviewedAt: new Date("2026-03-18")
+      departmentId: departmentMap["wolfson-orthopedics"].id,
+      createdByUserId: representativeUser.id,
+      title: "תקן פתוח חדש באורתופדיה - סתיו 2026",
+      summary: "טיוטה שממתינה לאישור אדמין, עם דגש על טראומה, נוכחות אישית וניסיון קודם במחלקה.",
+      openingType: OpeningType.RESIDENCY,
+      isImmediate: false,
+      openingsCount: 1,
+      topApplicantsToEmail: 5,
+      status: OpportunityStatus.UPCOMING,
+      committeeDate: new Date("2026-10-12"),
+      applicationDeadline: new Date("2026-10-01"),
+      expectedStartDate: new Date("2027-01-01"),
+      notes: "יום היכרות למחלקה מתוכנן במהלך ספטמבר.",
+      supportingInfo: "המועמדים יקבלו עדיפות אם ביצעו אלקטיב במחלקה או הראו התאמה גבוהה לצוות.",
+      contentStatus: ContentStatus.PENDING_REVIEW,
+      acceptanceCriteria: {
+        create: {
+          researchImportance: 2,
+          departmentElectiveImportance: 5,
+          departmentInternshipImportance: 4,
+          residentSelectionInfluence: 5,
+          specialistSelectionInfluence: 4,
+          departmentHeadInfluence: 4,
+          medicalSchoolInfluence: 1,
+          recommendationsImportance: 3,
+          personalFitImportance: 5,
+          previousDepartmentExperienceImportance: 4,
+          whatWeAreLookingFor: "נוכחות טובה במחלקה, ידיים טובות, ויכולת להשתלב מהר בצוות כירורגי."
+        }
+      }
     }
   });
 
-  const approvedRequestClalit = await prisma.publisherRequest.create({
+  const pendingDepartmentChangeRequest = await prisma.departmentChangeRequest.create({
     data: {
-      userId: representativeUser.id,
-      institutionId: institutionMap.clalit.id,
       departmentId: departmentMap["clalit-family-medicine"].id,
-      requestedRole: RoleKey.REPRESENTATIVE,
-      note: "אחראית על מסלול הקהילה והזדמנויות סטודנטים.",
-      status: PublisherRequestStatus.APPROVED,
-      adminNote: "אושר ברמת מסלול קהילה.",
-      reviewedByUserId: adminUser.id,
-      reviewedAt: new Date("2026-03-22")
-    }
-  });
-
-  const pendingPublisherRequest = await prisma.publisherRequest.create({
-    data: {
-      userId: studentUser.id,
-      institutionId: institutionMap.maccabi.id,
-      departmentId: departmentMap["maccabi-womens-health"].id,
-      requestedRole: RoleKey.REPRESENTATIVE,
-      note: "מבקש/ת הרשאה לעדכונים רשמיים למסלול הקהילה.",
-      status: PublisherRequestStatus.PENDING
+      submittedByUserId: representativeUser.id,
+      summary: "עדכון עמוד מחלקה, 1 עדכון רשמי, 1 הזדמנות מחקר",
+      payload: {
+        departmentId: departmentMap["clalit-family-medicine"].id,
+        shortSummary:
+          "מסלול קהילתי מובנה עם הדרכה קרובה, רצף טיפולי וחשיפה טובה להחלטות יומיומיות בקהילה.",
+        about:
+          "המסלול ברפואת משפחה בכללית מחבר בין מרפאות, דיוני צוות וחשיפה למטופלים לאורך זמן. הדגש הוא על עבודה מסודרת, המשכיות טיפול וחיבור טוב בין ידע קליני למערכת.",
+        practicalInfo:
+          "מתאים למי שמחפש/ת להבין קהילה לעומק, לעבוד עם רצף טיפולי, ולראות איך החלטות קטנות ביום־יום מצטברות לרפואה משמעותית.",
+        publicContactEmail: "family-track@clalit.example",
+        publicContactPhone: "03-5550101",
+        heads: [
+          {
+            name: "ד\"ר קרן מזרחי",
+            title: "מנהלת המסלול",
+            bio: "אחראית על ההכשרה הקלינית והחיבור בין המרפאות, המדריכים והסטודנטים.",
+            profileImageUrl: ""
+          }
+        ],
+        officialUpdates: [
+          {
+            title: "נפתחו ימי חשיפה נוספים למסלול",
+            body: "במהלך החודש הקרוב יתקיימו עוד שני ימי חשיפה לסטודנטים וסטאז'רים."
+          }
+        ],
+        researchOpportunities: [
+          {
+            title: "פרויקט איכות בקהילה",
+            summary: "עבודה עם נתוני איכות במרפאות קהילה.",
+            description: "הזדמנות מחקרית לסטודנטים שרוצים להכיר מדדי איכות, follow-up ותהליכי שיפור.",
+            contactInfo: "family.research@clalit.example"
+          }
+        ]
+      }
     }
   });
 
@@ -1110,7 +1178,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       },
       {
         actorUserId: null,
-        action: "opening_application.submitted_public",
+        action: "opening_application.submitted",
         entityType: "OpeningApplication",
         entityId: applicationTwo.id
       },
@@ -1122,15 +1190,15 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       },
       {
         actorUserId: adminUser.id,
-        action: "publisher_request.approved",
-        entityType: "PublisherRequest",
-        entityId: approvedRequestSheba.id
+        action: "admin.representative_created",
+        entityType: "User",
+        entityId: representativeUser.id
       },
       {
         actorUserId: adminUser.id,
-        action: "publisher_request.approved",
-        entityType: "PublisherRequest",
-        entityId: approvedRequestClalit.id
+        action: "admin.representative_assignments_updated",
+        entityType: "User",
+        entityId: representativeUser.id
       },
       {
         actorUserId: studentUser.id,
@@ -1151,10 +1219,16 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
         entityId: pendingSubmissionTwo.id
       },
       {
-        actorUserId: null,
-        action: "publisher_request.created",
-        entityType: "PublisherRequest",
-        entityId: pendingPublisherRequest.id
+        actorUserId: representativeUser.id,
+        action: "department_change_request.submitted",
+        entityType: "DepartmentChangeRequest",
+        entityId: pendingDepartmentChangeRequest.id
+      },
+      {
+        actorUserId: representativeUser.id,
+        action: "opening.submitted_for_review",
+        entityType: "ResidencyOpening",
+        entityId: pendingOpeningApproval.id
       }
     ]
   });
@@ -1176,7 +1250,12 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       institutions: institutions.length,
       specialties: specialties.length,
       departments: departments.length,
-      openings: 4
-    }
+      openings: 5
+    },
+    representativeAssignments: [
+      "שיבא תל השומר · קרדיולוגיה",
+      "כללית · רפואת משפחה בקהילה",
+      "וולפסון · אורתופדיה"
+    ]
   };
 }

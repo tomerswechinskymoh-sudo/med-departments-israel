@@ -134,7 +134,7 @@ export function OpeningCard({
             </p>
           </div>
           <div className="rounded-2xl bg-brand-50/70 p-3">
-            <p className="text-xs font-semibold text-slate-500">מתי ועדה</p>
+            <p className="text-xs font-semibold text-slate-500">מועד ועדה</p>
             <p className="mt-1 text-lg font-bold text-ink">{formatDate(opening.committeeDate)}</p>
           </div>
           <div className="rounded-2xl bg-brand-50/70 p-3">
@@ -189,7 +189,7 @@ export function OpeningCard({
           href={`/openings/${opening.id}`}
           className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
         >
-          לפרטי הפתיחה
+          לפרטי התקן
         </Link>
         {canApply ? (
           <Link
@@ -198,9 +198,6 @@ export function OpeningCard({
           >
             הגשת מועמדות
           </Link>
-        ) : null}
-        {opening._count ? (
-          <span className="text-xs text-slate-500">{opening._count.applications} מועמדויות התקבלו</span>
         ) : null}
       </div>
     </Card>

@@ -38,7 +38,7 @@ export const OPENING_TYPE_LABELS = {
   FELLOWSHIP: "פלו / מסלול המשך",
   ACADEMIC_TRACK: "מסלול משולב מחקר / אקדמיה",
   COMMUNITY_TRACK: "מסלול קהילה",
-  OTHER: "פתיחה אחרת"
+  OTHER: "מסלול אחר"
 } as const;
 
 export const APPLICATION_STATUS_LABELS = {

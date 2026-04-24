@@ -1,4 +1,4 @@
-import { ContentStatus, Prisma } from "@prisma/client";
+import { ContentStatus, Prisma, UploadedFileCategory } from "@prisma/client";
 import { storeUploadedFile } from "@/lib/uploads";
 import { openingEditorSchema } from "@/lib/validation";
 
@@ -182,7 +182,7 @@ export async function submitOpeningForReview(
   if (input.attachment) {
     await storeUploadedFile(tx, {
       file: input.attachment,
-      category: "OPENING_ATTACHMENT",
+      category: UploadedFileCategory.OPENING_ATTACHMENT,
       departmentId: parsed.departmentId,
       openingId: targetOpeningId,
       uploadedByUserId: input.authorUserId,

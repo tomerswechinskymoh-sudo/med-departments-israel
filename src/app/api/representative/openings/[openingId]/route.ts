@@ -32,7 +32,7 @@ export async function POST(
   });
 
   if (!existingOpening) {
-    return NextResponse.json({ error: "הפתיחה לא נמצאה." }, { status: 404 });
+    return NextResponse.json({ error: "התקן הפתוח לא נמצא." }, { status: 404 });
   }
 
   const canAccessCurrentDepartment = await canUserPublishDepartment(

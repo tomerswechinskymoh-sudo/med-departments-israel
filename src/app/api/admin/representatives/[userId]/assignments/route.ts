@@ -40,12 +40,55 @@ export async function POST(
     return NextResponse.json({ error: "החשבון שנבחר אינו נציג/ת מחלקה." }, { status: 404 });
   }
 
+  const institutionDepartments = await prisma.department.findMany({
+    where: {
+      institutionId: parsed.data.institutionId
+    },
+    select: {
+      id: true
+    }
+  });
+  const institutionDepartmentIds = institutionDepartments.map((department) => department.id);
+  const invalidDepartmentIds = parsed.data.departmentIds.filter(
+    (departmentId) => !institutionDepartmentIds.includes(departmentId)
+  );
+
+  if (invalidDepartmentIds.length > 0) {
+    return NextResponse.json(
+      { error: "אפשר לשייך רק מחלקות ששייכות למוסד שנבחר." },
+      { status: 400 }
+    );
+  }
+
+  const assignmentsOutsideInstitution = await prisma.representativeAssignment.count({
+    where: {
+      userId,
+      departmentId: {
+        notIn: institutionDepartmentIds
+      }
+    }
+  });
+
+  if (assignmentsOutsideInstitution === 0 && parsed.data.departmentIds.length === 0) {
+    return NextResponse.json(
+      { error: "יש לשייך לפחות מחלקה אחת לנציג/ה." },
+      { status: 400 }
+    );
+  }
+
   await prisma.$transaction(async (tx) => {
     await tx.representativeAssignment.deleteMany({
       where: {
-        userId
+        userId,
+        departmentId: {
+          in: institutionDepartmentIds
+        }
       }
     });
+
+    if (parsed.data.departmentIds.length === 0) {
+      return;
+    }
 
     await tx.representativeAssignment.createMany({
       data: parsed.data.departmentIds.map((departmentId) => ({
@@ -62,10 +105,10 @@ export async function POST(
     entityType: "User",
     entityId: userId,
     metadata: {
+      institutionId: parsed.data.institutionId,
       departmentIds: parsed.data.departmentIds
     }
   });
 
-  return NextResponse.json({ message: "שיוכי המחלקות נשמרו." });
+  return NextResponse.json({ message: "שיוכי המחלקות במוסד שנבחר נשמרו." });
 }
-

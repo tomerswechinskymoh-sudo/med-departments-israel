@@ -125,7 +125,7 @@ export async function processExpiredOpenings() {
     ]);
 
     if (!opening.createdBy?.email) {
-      const message = "לא נמצא אימייל לבעל/ת הפתיחה, לכן לא נשלח תקציר התאמות.";
+      const message = "לא נמצא אימייל לבעל/ת התקן, לכן לא נשלח תקציר התאמות.";
 
       await prisma.residencyOpening.update({
         where: {
@@ -261,4 +261,3 @@ export async function processExpiredOpenings() {
     processed
   };
 }
-

@@ -1,35 +1,60 @@
 # הדרך להתמחות
 
-אפליקציית Full-Stack בעברית וב־RTL לסטודנטים לרפואה ולסטאז'רים בישראל, שמאפשרת להבין מחלקות, פתיחות, מחקר וחוויות מהשטח לפני בחירת רוטציה, סטאז', מחקר או כיוון עתידי להתמחות.
+אפליקציית Full-Stack בעברית וב־RTL לסטודנטים לרפואה ולסטאז'רים בישראל. המוצר עוזר להבין איך מחלקות באמת נראות לפני שבוחרים סבב, מחקר או כיוון עתידי להתמחות.
 
 ## מה יש במוצר
 
 - `Next.js App Router` עם `TypeScript`
 - `Tailwind CSS` עם עיצוב RTL-first
 - `Prisma` + `PostgreSQL`
-- session auth מאובטח עם תפקידים
-- חוויות ציבוריות בלי הרשמה, עם moderation לפני פרסום
-- פתיחות רשמיות רק לנציגים מאושרים
-- הגשת מועמדות פרטית לפתיחות, כולל קבצים
-- דירוג מועמדויות אחרי דדליין בעזרת OpenAI API ושליחת Top matches במייל לבעל/ת הפתיחה
-- דשבורד נציגים לניהול עמוד מחלקה, פתיחות ומועמדויות
-- דשבורד אדמין לניהול מוסדות, תחומים, מחלקות, חוויות, הרשאות ולוגים
+- session auth מאובטח עם תפקידים והרשאות
+- חוויות מהשטח בלי הרשמה, עם אישור אדמין לפני פרסום
+- תקנים פתוחים רשמיים דרך אזור נציגים בלבד
+- מועמדות פרטית לתקן פתוח מתוך חשבון מחובר בלבד
+- דירוג מועמדויות אחרי דדליין בעזרת OpenAI API ושליחת התאמות מובילות במייל
+- דשבורד נציגים לניהול פרופיל, שינויים למחלקה ותקנים פתוחים
+- דשבורד אדמין ליצירת נציגים, שיוך מחלקות, אישורים ופיקוח
 - `DepartmentEnrichmentService` מוכן להרחבה עתידית עם mock implementation
 
-## עקרונות מוצר
+## עקרונות מוצר והרשאות
 
-- קהל היעד הראשי הוא `סטודנטים` ו־`סטאז'רים`
-- Residents ונציגי מחלקות הם שחקנים משניים שתורמים תוכן
-- ה־homepage והניווט נשארים student-first
-- חוויות ציבוריות:
-  - לא דורשות הרשמה
-  - נשמרות כ־`ReviewSubmission`
-  - מתפרסמות רק אחרי אישור אדמין כ־`Review`
-- פרסום רשמי:
-  - דורש הרשמה
-  - דורש התחברות
-  - דורש הרשאת פרסום מאושרת
-  - מתבצע רק מתוך `/representative`
+### קהל יעד
+
+- ה־homepage, הניווט והעמודים הציבוריים מיועדים קודם כל לסטודנטים ולסטאז'רים
+- מתמחים ונציגי מחלקות מוסיפים תוכן, אבל לא עומדים במרכז החוויה הציבורית
+
+### חוויות מהשטח
+
+- לא דורשות חשבון
+- נשמרות כ־`ReviewSubmission`
+- נבדקות על ידי אדמין
+- מתפרסמות רק אחרי אישור כ־`Review`
+
+### מועמדות לתקן פתוח
+
+- דורשת התחברות
+- לא מוצגת לציבור
+- נשמרת פרטית למחלקה, לנציגים מורשים ולאדמין
+- כוללת קבצים ושדות התאמה מובנים
+
+### נציגי מחלקות
+
+- לא נרשמים לבד
+- לא מבקשים הרשאה דרך signup
+- נוצרים רק על ידי אדמין
+- משויכים למחלקה אחת או יותר דרך `RepresentativeAssignment`
+- יכולים להגיש רק שינויים ותקנים פתוחים למחלקות המשויכות להם
+- שום תוכן לא עולה לציבור ישירות, הכול עובר אישור אדמין
+
+### אדמין
+
+- יוצר חשבונות נציגים
+- משייך נציגים למחלקות
+- מאשר או דוחה חוויות מהשטח
+- מאשר או דוחה תקנים פתוחים
+- מאשר או דוחה שינויי מחלקה
+- מנהל הרשאות, מוסדות, תחומים, מחלקות ולוג פעילות
+- לא משמש כנציג/ת מחלקה במסלול העבודה הרגיל
 
 ## מודל נתונים
 
@@ -41,12 +66,14 @@
 - `Specialty`
 - `Department`
 - `DepartmentHead`
+- `RepresentativeProfile`
+- `RepresentativeAssignment`
+- `DepartmentChangeRequest`
 - `ResearchOpportunity`
 - `OfficialDepartmentUpdate`
 - `ReviewSubmission`
 - `Review`
 - `ReviewReport`
-- `PublisherRequest`
 - `ResidencyOpening`
 - `OpeningAcceptanceCriteria`
 - `OpeningApplication`
@@ -54,10 +81,11 @@
 - `FavoriteDepartment`
 - `AuditLog`
 
-בנוסף:
+### דגשים חשובים
 
-- `ResidencyOpening` שומר גם כמה מועמדים מובילים לשלוח במייל אחרי הדדליין
-- `OpeningApplication` שומר ציון התאמה, סיכום קצר, חוזקות, חששות ומנוע הדירוג
+- `ResidencyOpening` תומך ב־pending approval ובטיוטות עדכון למחלקות
+- `DepartmentChangeRequest` שומר שינויים למחלקה עד שאדמין מאשר
+- `OpeningApplication` שומר גם ציון התאמה, סיכום, חוזקות, חששות ומנוע דירוג
 
 ## Seed ודמו
 
@@ -67,19 +95,27 @@
 - 38 תחומים
 - 14 מחלקות דמו
 - ראשי מחלקה
-- פתיחות רשמיות
-- הזדמנויות מחקר
+- תקנים פתוחים רשמיים
+- בקשת שינוי מחלקה שממתינה לאישור
+- תקן פתוח שממתין לאישור
 - מועמדויות פרטיות לדוגמה
 - חוויות שפורסמו וחוויות ממתינות
-- בקשות הרשאת פרסום
 - לוג פעילות
 
 ### חשבונות דמו קבועים
 
-- `admin@example.com` / `Admin123!`
+- אדמין: `admin@example.com` / `Admin123!`
 - `student@example.com` / `Student123!`
 - `resident@example.com` / `Resident123!`
-- `representative@example.com` / `Rep123!`
+- נציג/ת מחלקה: `representative@example.com` / `Rep123!`
+
+### שיוכי נציג הדמו
+
+החשבון `representative@example.com` משויך/ת ל:
+
+- `שיבא תל השומר · קרדיולוגיה`
+- `כללית · רפואת משפחה בקהילה`
+- `וולפסון · אורתופדיה`
 
 ## הרצה מקומית
 
@@ -101,7 +137,7 @@ cp .env.example .env
 docker compose up -d
 ```
 
-4. איפוס הדאטהבייס, החלת migrations וטעינת seed
+4. החלת migrations וטעינת seed
 
 ```bash
 npx prisma migrate reset --force
@@ -122,8 +158,9 @@ npm run dev
 - `npm run prisma:migrate` - migration dev מקומית
 - `npm run prisma:migrate:deploy` - החלת migrations קיימות
 - `npm run prisma:seed` - טעינת seed
-- `npm run vercel-build` - generate + migrate deploy + build
+- `npm run vercel-build` - `prisma generate` + `prisma migrate deploy` + `next build`
 - `npm run enrichment:mock` - הרצת mock enrichment לראשי מחלקה
+- `npm run openings:process-expired` - עיבוד תקנים פתוחים שעברו את הדדליין
 
 ## פריסה ל־Vercel
 
@@ -149,14 +186,6 @@ npm run dev
 
 - `OPENAI_MATCH_MODEL` - ברירת מחדל: `gpt-4o-mini`
 
-### ערכים מומלצים בפרודקשן
-
-- `APP_URL=https://your-domain.vercel.app`
-- `MAX_UPLOAD_MB=4`
-
-הערה:
-ב־Vercel יש מגבלות request body, לכן ברירת המחדל באפליקציה הוגדרה ל־`4MB` לקובץ.
-
 ### תהליך פריסה מומלץ
 
 1. לחבר את הריפו ל־Vercel
@@ -167,8 +196,6 @@ npm run dev
 npm run vercel-build
 ```
 
-4. להשאיר start command ריק, או להשתמש בברירת המחדל של Next.js ב־Vercel
-
 ### מה קורה בזמן build
 
 `npm run vercel-build` מבצע:
@@ -177,47 +204,50 @@ npm run vercel-build
 2. `prisma migrate deploy`
 3. `next build`
 
-ה־migration הראשונית כבר קיימת תחת:
-
-- [prisma/migrations/202604210001_public_experience_openings_refactor/migration.sql](/Users/tomerswechinsky/Documents/CODEX/med-departments-israel/prisma/migrations/202604210001_public_experience_openings_refactor/migration.sql)
-
 ## זרימות עיקריות
 
-### חוויה ציבורית
+### שיתוף חוויה מהמחלקה
 
 - כניסה דרך CTA: `רוצה לספר על החוויה שלך?`
 - modal עם בחירת סוג מגיש:
   - מתמחה
   - סטאז'ר/ית
   - סטודנט/ית
-- טלפון נאסף לאימות בלבד
+- הטלפון נשמר רק לאימות
 - אם נבחרת אנונימיות, הפרסום הציבורי נשאר אנונימי
-- ההגשה נשמרת פרטית ועוברת moderation
+- השיתוף נשמר לבדיקה לפני פרסום
 
-### פתיחה רשמית
+### תקן פתוח רשמי
 
-- גלויה לציבור
-- נוצרת רק מתוך `/representative`
-- דורשת התחברות והרשאת פרסום מאושרת
-- כוללת:
-  - תאריך ועדה
+- גלוי לציבור רק אחרי אישור אדמין
+- נוצר רק מתוך `/representative`
+- זמין רק לנציג/ה משויך/ת למחלקה
+- כולל:
+  - מועד ועדה
   - דדליין להגשה
-  - סוג פתיחה
-  - תקנים
+  - סוג תקן
+  - מספר תקנים
   - notes
   - supporting info
   - קריטריוני קבלה מובנים
   - קובץ פנימי אופציונלי
-  - בחירה של Top 3 / Top 5 / Top 10 לשליחת מייל אחרי הדדליין
+  - בחירה של `Top 3 / Top 5 / Top 10` למשלוח מייל אחרי הדדליין
+
+### שינוי עמוד מחלקה
+
+- נשלח מתוך אזור נציגים בלבד
+- נשמר כ־`DepartmentChangeRequest`
+- כולל תקציר, תוכן עמוד, ראשי מחלקה, עדכונים רשמיים והזדמנויות מחקר
+- עולה לציבור רק אחרי אישור אדמין
 
 ### דירוג מועמדויות אחרי דדליין
 
-- אחרי שה־`applicationDeadline` עובר, אפשר לעבד את הפתיחות דרך:
+- אחרי ש־`applicationDeadline` עובר, אפשר לעבד תקנים דרך:
   - route cron-ready: `/api/jobs/process-expired-openings`
   - או ידנית עם `npm run openings:process-expired`
 - ה־route מאובטח דרך `OPENINGS_CRON_SECRET`, או דרך session של אדמין
 - לכל מועמדות המערכת שולחת ל־OpenAI:
-  - העדפות מובנות של הפתיחה
+  - העדפות מובנות של התקן
   - נתוני מועמדות מובנים
   - נוכחות קבצים ושמות קבצים
 - OpenAI מחזיר JSON מובנה עם:
@@ -226,31 +256,14 @@ npm run vercel-build
   - `concerns`
   - `short_summary`
 - אם OpenAI לא זמין, יש fallback heuristic כדי לא לשבור את הזרימה
-- נשמרים:
-  - ציון התאמה
-  - סיכום קצר
-  - חוזקות
-  - חששות
-  - מנוע הדירוג (`OPENAI` או `FALLBACK`)
-- לבעל/ת הפתיחה נשלח מייל עם המועמדים המובילים בלבד, ולא עם כל המועמדים
-
-### מועמדות לפתיחה
-
-- מוגשת באופן פרטי דרך `/openings/[openingId]/apply`
-- כוללת:
-  - קורות חיים
-  - תמונת פרופיל אופציונלית
-  - קובץ נוסף אופציונלי
-  - תשובות מובנות על אלקטיב, סטאז', מחקר, מוסד לימודים, היכרות עם המחלקה, המלצות ומוטיבציה
-- הקבצים והחומרים אינם ציבוריים
+- לבעל/ת התקן נשלח מייל עם המועמדים המובילים בלבד
 
 ## פרטיות ואמון
 
 - מספרי טלפון להגשות חוויה נשמרים רק לצורך אימות
 - מועמדויות, קורות חיים ותמונות נשמרים כקבצים פרטיים ב־DB
-- קבצים פרטיים נגישים רק לנציגים מורשים ולאדמינים דרך route מאובטח
+- קבצים פרטיים נגישים רק לנציגים משויכים ולאדמינים דרך route מאובטח
 - דירוג ההתאמה רץ רק בצד השרת, ולא חושף חומרי מועמדות לציבור
-- יש `TODO` מפורש להוספת חילוץ טקסט מאובטח מ־CV בעתיד, אם וכאשר יהיה צורך עסקי ותפעולי
 - יש `TODO` מפורש למדיניות retention למחיקת מסמכים פרטיים וחומרי מועמדות
 
 ## Enrichment עתידי
@@ -258,22 +271,3 @@ npm run vercel-build
 - `DepartmentEnrichmentService` הוא interface מוכן להרחבה
 - `MockDepartmentEnrichmentService` מספק תוצאות דמה כרגע
 - `src/server/jobs/run-department-enrichment.ts` מדגים job עתידי
-- יש `TODO` מפורש לשילוב scraping או enrichment אמיתי
-- כל scraping עתידי חייב לעמוד בתנאי שימוש, robots, זכויות ותנאי פרטיות של המקור
-
-## מבנה כללי
-
-- `src/app` - דפים ו־API routes
-- `src/components` - רכיבי UI, טפסים, דשבורדים ו־flows
-- `src/lib` - auth, queries, validation, uploads, audit ושירותים
-- `src/server` - seed ו־jobs
-- `prisma/schema.prisma` - הסכמה
-- `prisma/migrations` - migrations לפריסה
-- `prisma/seed.ts` - entrypoint ל־seed
-
-## לפני פרודקשן אמיתי
-
-- להחליף מסמכי legal בנוסח מאושר משפטית
-- להגדיר retention policy לחומרים רגישים
-- להוסיף rate limiting והקשחת abuse controls
-- לשקול העברת קבצים פרטיים ל־object storage מאובטח אם נפח הקבצים יגדל

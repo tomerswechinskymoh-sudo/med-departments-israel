@@ -4,6 +4,7 @@ import { createAuditLog } from "@/lib/audit";
 import { canUserPublishDepartment } from "@/lib/queries";
 import { prisma } from "@/lib/prisma";
 import { departmentEditorSchema } from "@/lib/validation";
+import { upsertDepartmentChangeRequest } from "@/server/workflows/department-change-requests";
 
 export async function POST(
   request: Request,
@@ -11,7 +12,7 @@ export async function POST(
 ) {
   const session = await getSession();
 
-  if (!session || !["representative", "admin"].includes(session.role)) {
+  if (!session || session.role !== "representative") {
     return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
   }
 
@@ -43,101 +44,36 @@ export async function POST(
     return NextResponse.json({ error: "המחלקה לא נמצאה." }, { status: 404 });
   }
 
-  if (session.role !== "admin") {
-    const canPublish = await canUserPublishDepartment(session.userId, departmentId);
+  const canPublish = await canUserPublishDepartment(session.userId, departmentId);
 
-    if (!canPublish) {
-      return NextResponse.json(
-        { error: "לחשבון זה אין הרשאת פרסום למחלקה הזו." },
-        { status: 403 }
-      );
-    }
+  if (!canPublish) {
+    return NextResponse.json(
+      { error: "לחשבון הזה אין שיוך למחלקה שנבחרה." },
+      { status: 403 }
+    );
   }
 
-  await prisma.$transaction(async (tx) => {
-    await tx.department.update({
-      where: {
-        id: departmentId
-      },
-      data: {
-        shortSummary: parsed.data.shortSummary,
-        about: parsed.data.about,
-        practicalInfo: parsed.data.practicalInfo,
-        publicContactEmail: parsed.data.publicContactEmail,
-        publicContactPhone: parsed.data.publicContactPhone
-      }
+  const changeRequest = await prisma.$transaction(async (tx) => {
+    return upsertDepartmentChangeRequest(tx, {
+      departmentId,
+      submittedByUserId: session.userId,
+      payload: parsed.data
     });
-
-    await tx.departmentHead.deleteMany({
-      where: {
-        departmentId
-      }
-    });
-
-    if (parsed.data.heads.length > 0) {
-      await tx.departmentHead.createMany({
-        data: parsed.data.heads.map((head, index) => ({
-          departmentId,
-          name: head.name,
-          title: head.title,
-          bio: head.bio,
-          profileImageUrl: head.profileImageUrl,
-          displayOrder: index
-        }))
-      });
-    }
-
-    await tx.officialDepartmentUpdate.deleteMany({
-      where: {
-        departmentId
-      }
-    });
-
-    if (parsed.data.officialUpdates.length > 0) {
-      await tx.officialDepartmentUpdate.createMany({
-        data: parsed.data.officialUpdates.map((update) => ({
-          departmentId,
-          createdByUserId: session.userId,
-          title: update.title,
-          body: update.body,
-          contentStatus: "PUBLISHED",
-          publishedAt: new Date()
-        }))
-      });
-    }
-
-    await tx.researchOpportunity.deleteMany({
-      where: {
-        departmentId
-      }
-    });
-
-    if (parsed.data.researchOpportunities.length > 0) {
-      await tx.researchOpportunity.createMany({
-        data: parsed.data.researchOpportunities.map((opportunity) => ({
-          departmentId,
-          createdByUserId: session.userId,
-          title: opportunity.title,
-          summary: opportunity.summary,
-          description: opportunity.description,
-          contactInfo: opportunity.contactInfo,
-          contentStatus: "PUBLISHED",
-          publishedAt: new Date()
-        }))
-      });
-    }
   });
 
   await createAuditLog({
     actorUserId: session.userId,
-    action: "department.updated_by_representative",
-    entityType: "Department",
-    entityId: departmentId,
+    action: "department_change_request.submitted",
+    entityType: "DepartmentChangeRequest",
+    entityId: changeRequest.id,
     metadata: {
       officialUpdates: parsed.data.officialUpdates.length,
       researchOpportunities: parsed.data.researchOpportunities.length
     }
   });
 
-  return NextResponse.json({ message: "פרטי המחלקה עודכנו." });
+  return NextResponse.json({
+    message: "השינויים נשמרו ונשלחו לאישור אדמין.",
+    requestId: changeRequest.id
+  });
 }

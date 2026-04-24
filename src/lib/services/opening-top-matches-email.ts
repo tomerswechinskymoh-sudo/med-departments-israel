@@ -107,7 +107,7 @@ export async function sendOpeningTopMatchesEmail(input: TopMatchEmailInput) {
         <p style="margin:0;font-size:13px;font-weight:700;color:#0b5fb5;">הדרך להתמחות</p>
         <h1 style="margin:12px 0 0;font-size:30px;line-height:1.3;color:#0f172a;">סיכום התאמות אחרי הדדליין</h1>
         <p style="margin:16px 0 0;font-size:16px;line-height:1.8;color:#334155;">
-          ${input.ownerName ? `${input.ownerName}, ` : ""}הדדליין לפתיחה <strong>${input.opening.title}</strong> הגיע.
+          ${input.ownerName ? `${input.ownerName}, ` : ""}הדדליין לתקן <strong>${input.opening.title}</strong> הגיע.
           סיננו עבורך את המועמדים עם ההתאמה הגבוהה ביותר, כדי להתחיל מהאנשים שהכי שווה לבדוק לעומק.
         </p>
 
@@ -134,18 +134,18 @@ export async function sendOpeningTopMatchesEmail(input: TopMatchEmailInput) {
             `
             : `
               <div style="margin-top:28px;padding:18px 20px;border-radius:20px;background:#fff7ed;color:#7c2d12;line-height:1.8;">
-                לא נקלטו מועמדויות מתאימות למשלוח בתקציר הזה. אפשר להיכנס לפתיחה ולבדוק אם נוספו חומרים ידנית.
+                לא נקלטו מועמדויות מתאימות למשלוח בתקציר הזה. אפשר להיכנס לתקן ולבדוק אם נוספו חומרים ידנית.
               </div>
             `
         }
 
-        <a href="${reviewUrl}" style="display:inline-block;margin-top:28px;padding:14px 20px;border-radius:999px;background:#0b5fb5;color:white;font-weight:700;text-decoration:none;">לניהול הפתיחה המלא</a>
+        <a href="${reviewUrl}" style="display:inline-block;margin-top:28px;padding:14px 20px;border-radius:999px;background:#0b5fb5;color:white;font-weight:700;text-decoration:none;">לניהול התקן המלא</a>
       </div>
     </div>
   `;
 
   const text = [
-    `${input.ownerName ? `${input.ownerName}, ` : ""}הדדליין לפתיחה ${input.opening.title} הגיע.`,
+    `${input.ownerName ? `${input.ownerName}, ` : ""}הדדליין לתקן ${input.opening.title} הגיע.`,
     `מחלקה: ${input.opening.department.institution.name} · ${input.opening.department.name}`,
     `סה"כ מועמדים: ${input.totalApplicants}`,
     input.selectedApplicants.length > 0 ? "המועמדים המובילים:" : "לא נמצאו מועמדויות מתאימות למשלוח בתקציר הזה.",
@@ -162,4 +162,3 @@ export async function sendOpeningTopMatchesEmail(input: TopMatchEmailInput) {
     text
   });
 }
-

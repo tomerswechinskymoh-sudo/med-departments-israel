@@ -36,19 +36,21 @@ export default async function RepresentativeOpeningPage({
       <Card className="bg-brand-900 text-white">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold text-brand-100">ניהול פתיחה רשמית</p>
+            <p className="text-sm font-semibold text-brand-100">ניהול תקן פתוח</p>
             <h1 className="mt-2 text-3xl font-bold">{opening.title}</h1>
             <p className="mt-3 text-sm text-brand-50">
               {opening.department.institution.name} · {opening.department.name}
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link
-              href={`/openings/${opening.id}`}
-              className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-brand-900"
-            >
-              תצוגה ציבורית
-            </Link>
+            {opening.contentStatus === "PUBLISHED" || opening.supersedesOpening ? (
+              <Link
+                href={`/openings/${opening.supersedesOpening?.id ?? opening.id}`}
+                className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-brand-900"
+              >
+                תצוגה ציבורית
+              </Link>
+            ) : null}
             <Link
               href="/representative"
               className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold text-white"
@@ -62,12 +64,13 @@ export default async function RepresentativeOpeningPage({
       <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
         <Card>
           <SectionHeading
-            title="עריכת פרטי הפתיחה"
-            description="עדכון התוכן הציבורי, קריטריוני הקבלה והקבצים הפנימיים."
+            title="עריכת פרטי התקן"
+            description="כל שינוי כאן נשמר קודם לאישור אדמין. אם כבר קיים תקן ציבורי, הציבור ימשיך לראות את הגרסה המאושרת עד לאישור העדכון."
           />
           <div className="mt-6">
             <OpeningEditorForm
               openingId={opening.id}
+              lockDepartmentSelection={Boolean(opening.supersedesOpening || opening.contentStatus === "PUBLISHED")}
               departmentOptions={data.departmentOptions}
               initialValues={{
                 departmentId: opening.departmentId,
@@ -122,7 +125,7 @@ export default async function RepresentativeOpeningPage({
             />
             <div className="mt-4 flex flex-wrap gap-3">
               {opening.attachments.length === 0 ? (
-                <p className="text-sm text-slate-600">עדיין לא צורפו קבצים לפתיחה הזו.</p>
+                <p className="text-sm text-slate-600">עדיין לא צורפו קבצים לתקן הזה.</p>
               ) : (
                 opening.attachments.map((file) => (
                   <Link
@@ -140,7 +143,7 @@ export default async function RepresentativeOpeningPage({
           <Card>
             <SectionHeading
               title="אוטומציה אחרי הדדליין"
-              description="כשהדדליין עובר, המערכת מדרגת את המועמדויות ושולחת לבעל/ת הפתיחה רק את ההתאמות החזקות ביותר."
+              description="כשהדדליין עובר, המערכת מדרגת את המועמדויות ושולחת לבעל/ת התקן רק את ההתאמות החזקות ביותר."
             />
             <div className="mt-4 space-y-3 text-sm leading-7 text-slate-700">
               <p>
@@ -168,7 +171,7 @@ export default async function RepresentativeOpeningPage({
             />
             <div className="mt-4 space-y-4">
               {opening.applications.length === 0 ? (
-                <p className="text-sm text-slate-600">עדיין לא הוגשו מועמדויות לפתיחה הזו.</p>
+                <p className="text-sm text-slate-600">עדיין לא הוגשו מועמדויות לתקן הזה.</p>
               ) : (
                 opening.applications.map((application) => (
                   <div id={`application-${application.id}`} key={application.id} className="rounded-2xl bg-brand-50 p-4">

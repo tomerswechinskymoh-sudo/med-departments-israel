@@ -248,7 +248,7 @@ export function DepartmentEditorForm({
         disabled={isSubmitting}
         className="w-full rounded-2xl bg-brand-700 px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
       >
-        {isSubmitting ? "שומר/ת..." : "שמירת עמוד המחלקה"}
+        {isSubmitting ? "שומר/ת..." : "שליחת השינויים לאישור"}
       </button>
     </form>
   );

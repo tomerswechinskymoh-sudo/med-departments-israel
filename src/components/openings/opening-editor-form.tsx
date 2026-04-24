@@ -13,7 +13,8 @@ type FormValues = z.infer<typeof openingEditorSchema>;
 export function OpeningEditorForm({
   departmentOptions,
   initialValues,
-  openingId
+  openingId,
+  lockDepartmentSelection = false
 }: {
   departmentOptions: Array<{
     id: string;
@@ -23,6 +24,7 @@ export function OpeningEditorForm({
   }>;
   initialValues?: Partial<FormValues>;
   openingId?: string;
+  lockDepartmentSelection?: boolean;
 }) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
@@ -104,11 +106,11 @@ export function OpeningEditorForm({
     const payload = (await response.json().catch(() => null)) as { message?: string; error?: string; openingId?: string } | null;
 
     if (!response.ok) {
-      setMessage(payload?.error ?? "שמירת הפתיחה נכשלה.");
+      setMessage(payload?.error ?? "שמירת התקן הפתוח נכשלה.");
       return;
     }
 
-    setMessage(payload?.message ?? "הפתיחה נשמרה.");
+    setMessage(payload?.message ?? "התקן הפתוח נשמר.");
     router.push(`/representative/openings/${payload?.openingId ?? openingId}`);
     router.refresh();
   });
@@ -120,6 +122,7 @@ export function OpeningEditorForm({
           <label className="mb-2 block text-sm font-semibold text-ink">מחלקה</label>
           <select
             {...register("departmentId")}
+            disabled={lockDepartmentSelection}
             className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
           >
             <option value="">בחירת מחלקה</option>
@@ -135,7 +138,7 @@ export function OpeningEditorForm({
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-ink">סוג פתיחה</label>
+          <label className="mb-2 block text-sm font-semibold text-ink">סוג תקן</label>
           <select
             {...register("openingType")}
             className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
@@ -152,7 +155,7 @@ export function OpeningEditorForm({
       <div className="grid gap-4 md:grid-cols-2">
         <input
           {...register("title")}
-          placeholder="כותרת לפתיחה"
+          placeholder="כותרת לתקן הפתוח"
           className="rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
         />
         <select
@@ -167,13 +170,13 @@ export function OpeningEditorForm({
 
       <textarea
         {...register("summary")}
-        placeholder="תקציר קצר וברור לסטודנטים וסטאז'רים: על מה הפתיחה, למי זה מתאים, ומה חשוב לדעת."
+        placeholder="תקציר קצר וברור לסטודנטים וסטאז'רים: על מה התקן, למי זה מתאים, ומה חשוב לדעת."
         className="min-h-28 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
       />
 
       <label className="flex items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50/80 px-4 py-3 text-sm font-medium text-amber-950">
         <input type="checkbox" {...register("isImmediate")} />
-        זו פתיחה מיידית שכרגע רלוונטית להגשה
+        זה תקן מיידי שכרגע רלוונטי להגשה
       </label>
 
       <div className="grid gap-4 md:grid-cols-4">
@@ -215,7 +218,7 @@ export function OpeningEditorForm({
           <div>
             <p className="text-sm font-semibold text-ink">אחרי שהדדליין עובר</p>
             <p className="mt-2 text-sm leading-7 text-slate-600">
-              המערכת תדרג את המועמדויות לפי מה שהגדרתם כאן, ותשלח לבעל/ת הפתיחה רק את ההתאמות הכי חזקות.
+              המערכת תדרג את המועמדויות לפי מה שהגדרתם כאן, ותשלח לבעל/ת התקן רק את ההתאמות הכי חזקות.
             </p>
           </div>
           <div className="min-w-[220px]">
@@ -240,12 +243,12 @@ export function OpeningEditorForm({
       <div className="grid gap-4 md:grid-cols-2">
         <textarea
           {...register("notes")}
-          placeholder="הערות לציבור: למשל יום חשיפה, תהליך, מה כדאי להכין."
+          placeholder="הערות לציבור: למשל יום חשיפה, תהליך, ומה כדאי להכין מראש."
           className="min-h-32 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
         />
         <textarea
           {...register("supportingInfo")}
-          placeholder="מידע משלים: איך המחלקה רואה את הפתיחה, מה מחפשים, או מה כדאי לדעת לפני שמגישים."
+          placeholder="מידע משלים: איך המחלקה רואה את התקן, מה מחפשים, או מה כדאי לדעת לפני שמגישים."
           className="min-h-32 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
         />
       </div>
@@ -310,7 +313,7 @@ export function OpeningEditorForm({
         disabled={isSubmitting}
         className="w-full rounded-2xl bg-brand-700 px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
       >
-        {isSubmitting ? "שומר/ת..." : openingId ? "שמירת שינויים בפתיחה" : "פרסום פתיחה חדשה"}
+        {isSubmitting ? "שומר/ת..." : openingId ? "שמירת שינויים לאישור" : "שליחת תקן פתוח לאישור"}
       </button>
     </form>
   );

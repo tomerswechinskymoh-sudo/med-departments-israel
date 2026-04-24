@@ -22,11 +22,8 @@ export default async function DepartmentsPage({
 
   const parsedFilters = departmentFilterSchema.parse({
     search: typeof rawSearchParams.search === "string" ? rawSearchParams.search : undefined,
-    institution:
-      typeof rawSearchParams.institution === "string" ? rawSearchParams.institution : undefined,
-    specialty:
-      typeof rawSearchParams.specialty === "string" ? rawSearchParams.specialty : undefined,
-    city: typeof rawSearchParams.city === "string" ? rawSearchParams.city : undefined
+    institutions: rawSearchParams.institution,
+    specialties: rawSearchParams.specialty
   });
 
   const departments = await getDirectoryData(parsedFilters, session?.userId);
@@ -36,7 +33,7 @@ export default async function DepartmentsPage({
       <SectionHeading
         eyebrow="חיפוש מחלקות"
         title="חיפוש מחלקות, מסלולים וקהילה במקום אחד"
-        description="סננו לפי מוסד, תחום או עיר והשוו בין מה שאומרים מהשטח, מחקר, תקנים ומידע פרקטי."
+        description="סננו לפי מוסד ותחום, והשוו בין מה שאומרים מהשטח, מחקר, תקנים ומידע פרקטי."
       />
 
       <DepartmentFilters

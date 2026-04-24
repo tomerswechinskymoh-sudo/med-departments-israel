@@ -4,6 +4,15 @@ import { LogoutButton } from "@/components/layout/logout-button";
 
 export async function SiteHeader() {
   const session = await getSession();
+  const isAdmin = session?.role === "admin";
+  const navItems = isAdmin
+    ? [{ href: "/admin", label: "אדמין" }]
+    : [
+        { href: "/departments", label: "חיפוש מחלקות" },
+        { href: "/faq", label: "שאלות נפוצות" },
+        { href: "/about", label: "אודות" },
+        { href: "/favorites", label: "הרשימה שלי" }
+      ];
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/70 bg-white/78 backdrop-blur-2xl">
@@ -16,43 +25,33 @@ export async function SiteHeader() {
             הדרך להתמחות
           </Link>
           <nav className="hidden items-center gap-4 text-sm text-slate-700 md:flex">
-            <Link href="/departments" className="transition hover:text-brand-700">
-              חיפוש מחלקות
-            </Link>
-            <Link href="/faq" className="transition hover:text-brand-700">
-              שאלות נפוצות
-            </Link>
-            <Link href="/about" className="transition hover:text-brand-700">
-              אודות
-            </Link>
-            <Link href="/favorites" className="transition hover:text-brand-700">
-              הרשימה שלי
-            </Link>
-            {session && (
+            {navItems.map((item) => (
+              <Link key={item.href} href={item.href} className="transition hover:text-brand-700">
+                {item.label}
+              </Link>
+            ))}
+            {session && !isAdmin ? (
               <Link href="/dashboard" className="transition hover:text-brand-700">
                 האזור האישי
               </Link>
-            )}
-            {session && (session.role === "admin" || session.isApprovedPublisher) ? (
-              <Link href="/representative" className="transition hover:text-brand-700">
-                פרסום רשמי
-              </Link>
             ) : null}
-            {session?.role === "admin" ? (
-              <Link href="/admin" className="transition hover:text-brand-700">
-                אדמין
+            {session?.role === "representative" ? (
+              <Link href="/representative" className="transition hover:text-brand-700">
+                אזור נציגים
               </Link>
             ) : null}
           </nav>
         </div>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/reviews/new"
-            className="hidden rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-4 py-2 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-200/45 transition hover:-translate-y-0.5 md:inline-flex"
-          >
-            רוצה לספר על החוויה שלך?
-          </Link>
+          {!isAdmin ? (
+            <Link
+              href="/reviews/new"
+              className="hidden rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-4 py-2 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-200/45 transition hover:-translate-y-0.5 md:inline-flex"
+            >
+              רוצה לספר על החוויה שלך?
+            </Link>
+          ) : null}
           {session ? (
             <>
               <div className="hidden text-left md:block">

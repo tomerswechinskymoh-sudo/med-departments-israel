@@ -18,7 +18,7 @@ export function HomeHeroImage() {
 
       <div className="absolute inset-x-6 bottom-6 flex max-w-sm flex-col gap-3 text-white">
         <span className="inline-flex w-fit rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold backdrop-blur-xl">
-          לא רק לשמוע, להבין
+          לבחור עם יותר ביטחון ופחות ניחושים
         </span>
         <h2 className="text-2xl font-bold leading-tight">
           תמונה ברורה יותר של המחלקה לפני שמתחייבים
