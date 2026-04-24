@@ -87,6 +87,9 @@ model User {
   passwordHash                String                  @map("password_hash")
   fullName                    String                  @map("full_name")
   phone                       String?
+  linkedinId                  String?                 @unique @map("linkedin_id")
+  profileImageUrl             String?                 @map("profile_image_url")
+  linkedinConnectedAt         DateTime?               @map("linkedin_connected_at")
   roleKey                     RoleKey                 @default(STUDENT) @map("role_key")
   isApprovedPublisher         Boolean                 @default(false) @map("is_approved_publisher")
   createdAt                   DateTime                @default(now()) @map("created_at")

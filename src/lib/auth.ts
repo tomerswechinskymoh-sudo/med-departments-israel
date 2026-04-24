@@ -62,6 +62,22 @@ function mapRole(role: RoleKey): AppRole {
   }
 }
 
+export function toAppSession(user: {
+  id: string;
+  email: string;
+  fullName: string;
+  roleKey: RoleKey;
+  isApprovedPublisher: boolean;
+}) {
+  return {
+    userId: user.id,
+    email: user.email,
+    fullName: user.fullName,
+    role: mapRole(user.roleKey),
+    isApprovedPublisher: user.roleKey === RoleKey.REPRESENTATIVE || user.isApprovedPublisher
+  } satisfies AppSession;
+}
+
 export function createSessionToken(input: { userId: string; role: AppRole }) {
   const payload: SessionPayload = {
     userId: input.userId,
@@ -115,13 +131,7 @@ export async function authenticateUser(email: string, password: string) {
     return null;
   }
 
-  return {
-    userId: user.id,
-    email: user.email,
-    fullName: user.fullName,
-    role: mapRole(user.roleKey),
-    isApprovedPublisher: user.roleKey === RoleKey.REPRESENTATIVE || user.isApprovedPublisher
-  } satisfies AppSession;
+  return toAppSession(user);
 }
 
 export async function getSession() {
@@ -143,13 +153,7 @@ export async function getSession() {
     return null;
   }
 
-  return {
-    userId: user.id,
-    email: user.email,
-    fullName: user.fullName,
-    role: mapRole(user.roleKey),
-    isApprovedPublisher: user.roleKey === RoleKey.REPRESENTATIVE || user.isApprovedPublisher
-  } satisfies AppSession;
+  return toAppSession(user);
 }
 
 export async function setSessionCookie(session: AppSession) {

@@ -7,7 +7,7 @@
 - `Next.js App Router` עם `TypeScript`
 - `Tailwind CSS` עם עיצוב RTL-first
 - `Prisma` + `PostgreSQL`
-- session auth מאובטח עם תפקידים והרשאות
+- session auth מאובטח עם תפקידים והרשאות, כולל LinkedIn OAuth למשתמשים שאינם אדמין
 - חוויות מהשטח בלי הרשמה, עם אישור אדמין לפני פרסום
 - תקנים פתוחים רשמיים דרך אזור נציגים בלבד
 - מועמדות פרטית לתקן פתוח מתוך חשבון מחובר בלבד
@@ -44,6 +44,7 @@
 - נוצרים רק על ידי אדמין
 - משויכים למחלקה אחת או יותר דרך `RepresentativeAssignment`
 - יכולים להגיש רק שינויים ותקנים פתוחים למחלקות המשויכות להם
+- יכולים לחבר LinkedIn רק אחרי שהאדמין יצר את החשבון ורק מתוך אזור הנציג/ה
 - שום תוכן לא עולה לציבור ישירות, הכול עובר אישור אדמין
 
 ### אדמין
@@ -175,6 +176,8 @@ npm run dev
 - `DATABASE_URL`
 - `DIRECT_URL`
 - `AUTH_SECRET`
+- `LINKEDIN_CLIENT_ID`
+- `LINKEDIN_CLIENT_SECRET`
 - `APP_URL`
 - `MAX_UPLOAD_MB`
 - `OPENAI_API_KEY`
@@ -185,6 +188,7 @@ npm run dev
 ### משתני סביבה אופציונליים
 
 - `OPENAI_MATCH_MODEL` - ברירת מחדל: `gpt-4o-mini`
+- `LINKEDIN_CLIENT_ID` / `LINKEDIN_CLIENT_SECRET` - נדרשים רק אם רוצים להפעיל התחברות עם LinkedIn
 
 ### תהליך פריסה מומלץ
 
@@ -203,6 +207,40 @@ npm run vercel-build
 1. `prisma generate`
 2. `prisma migrate deploy`
 3. `next build`
+
+## הגדרת LinkedIn OAuth
+
+הפרויקט משתמש במנגנון ה־session הקיים שלו, ולא ב־NextAuth. כדי להפעיל התחברות עם LinkedIn:
+
+1. ליצור אפליקציה חדשה ב־[LinkedIn Developer Portal](https://www.linkedin.com/developers/)
+2. להפעיל Sign In with LinkedIn באמצעות OpenID Connect
+3. להוסיף Redirect URL לפיתוח:
+
+```text
+http://localhost:3000/api/auth/linkedin/callback
+```
+
+4. להוסיף Redirect URL לפרודקשן:
+
+```text
+https://your-domain.example/api/auth/linkedin/callback
+```
+
+5. להעתיק לקובץ `.env` את הערכים:
+
+```bash
+LINKEDIN_CLIENT_ID="your-linkedin-client-id"
+LINKEDIN_CLIENT_SECRET="your-linkedin-client-secret"
+AUTH_SECRET="your-existing-session-secret"
+```
+
+6. להפעיל מחדש את שרת הפיתוח
+
+חשוב:
+
+- אדמין לא יכול להתחבר דרך LinkedIn
+- סטודנטים ומתמחים יכולים להירשם ולהתחבר דרך LinkedIn
+- נציגי מחלקות עדיין נוצרים רק על ידי אדמין, ואז יכולים לחבר LinkedIn מתוך עמוד הפרופיל שלהם
 
 ## זרימות עיקריות
 

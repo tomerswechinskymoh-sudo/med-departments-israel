@@ -1,0 +1,161 @@
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { reviewerTypeLabel } from "@/lib/queries";
+import { formatDate } from "@/lib/utils";
+
+type HomeReview = {
+  id: string;
+  reviewerType: "RESIDENT" | "INTERN" | "STUDENT";
+  displayName: string | null;
+  isAnonymous: boolean;
+  teachingQuality: number;
+  workAtmosphere: number;
+  seniorsApproachability: number;
+  researchExposure: number;
+  lifestyleBalance: number;
+  overallRecommendation: number;
+  pros: string;
+  cons: string;
+  tips: string;
+  publishedAt: Date | null;
+  department: {
+    name: string;
+    slug: string;
+    institution: {
+      name: string;
+    };
+  };
+};
+
+function truncateText(text: string, maxLength = 100) {
+  if (text.length <= maxLength) {
+    return text;
+  }
+
+  return `${text.slice(0, maxLength).trim()}...`;
+}
+
+function metricTone(value: number) {
+  if (value >= 4) {
+    return "border-emerald-100 bg-emerald-50 text-emerald-900";
+  }
+
+  if (value >= 3) {
+    return "border-brand-100 bg-brand-50 text-brand-900";
+  }
+
+  return "border-amber-200 bg-amber-50 text-amber-900";
+}
+
+function getStrengthChips(review: HomeReview) {
+  const chips: string[] = [];
+
+  if (review.teachingQuality >= 4) {
+    chips.push("הוראה חזקה");
+  }
+
+  if (review.researchExposure >= 4) {
+    chips.push("מחקר פעיל", "מתאים למי שמחפש מחקר");
+  }
+
+  if (review.workAtmosphere >= 4) {
+    chips.push("אווירה טובה");
+  }
+
+  if (review.lifestyleBalance <= 2) {
+    chips.push("עומס גבוה");
+  }
+
+  if (review.seniorsApproachability >= 4 && review.researchExposure <= 3) {
+    chips.push("מתאים למי שמחפש קליניקה");
+  }
+
+  if (review.overallRecommendation >= 4) {
+    chips.push("שווה בדיקה רצינית");
+  }
+
+  return Array.from(new Set(chips)).slice(0, 4);
+}
+
+function MetricStat({ label, value }: { label: string; value: number }) {
+  return (
+    <div className={`rounded-2xl border px-3 py-3 ${metricTone(value)}`}>
+      <p className="text-[0.68rem] font-semibold tracking-wide opacity-80">{label}</p>
+      <div className="mt-2 flex items-end justify-between gap-2">
+        <p className="text-xl font-bold leading-none">{value}</p>
+        <p className="text-xs font-semibold">/5</p>
+      </div>
+    </div>
+  );
+}
+
+export function HomeReviewComparisonCard({ review }: { review: HomeReview }) {
+  const chips = getStrengthChips(review);
+
+  return (
+    <Card className="flex h-full flex-col gap-5 border border-brand-100 bg-white">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-brand-700">סקירה מהירה למחלקה</p>
+          <div>
+            <h3 className="text-xl font-bold text-ink">
+              {review.department.institution.name} · {review.department.name}
+            </h3>
+            <p className="mt-1 text-sm text-slate-600">
+              {reviewerTypeLabel(review.reviewerType)} · {formatDate(review.publishedAt)}
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <Badge tone="default">המלצה {review.overallRecommendation}/5</Badge>
+          <Badge tone={review.isAnonymous ? "warning" : "success"}>
+            {review.isAnonymous ? "בעילום שם" : review.displayName ?? "בשם מלא"}
+          </Badge>
+        </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+        <MetricStat label="הוראה" value={review.teachingQuality} />
+        <MetricStat label="איזון / עומס" value={review.lifestyleBalance} />
+        <MetricStat label="מחקר" value={review.researchExposure} />
+        <MetricStat label="זמינות בכירים" value={review.seniorsApproachability} />
+        <MetricStat label="אווירה" value={review.workAtmosphere} />
+      </div>
+
+      <div className="flex flex-wrap gap-2">
+        {chips.map((chip) => (
+          <Badge key={chip} tone="default">
+            {chip}
+          </Badge>
+        ))}
+      </div>
+
+      <div className="grid gap-4 lg:grid-cols-2">
+        <div className="rounded-[1.5rem] border border-emerald-100 bg-emerald-50/75 p-4">
+          <p className="text-sm font-semibold text-emerald-900">מה עבד טוב</p>
+          <p className="mt-2 text-sm leading-7 text-slate-700">{truncateText(review.pros)}</p>
+        </div>
+        <div className="rounded-[1.5rem] border border-amber-200 bg-amber-50/85 p-4">
+          <p className="text-sm font-semibold text-amber-900">מה כדאי לדעת</p>
+          <p className="mt-2 text-sm leading-7 text-slate-700">{truncateText(review.cons)}</p>
+        </div>
+      </div>
+
+      <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/60 p-4">
+        <p className="text-xs font-semibold text-slate-500">ציטוט קצר</p>
+        <p className="mt-2 text-base font-medium leading-8 text-ink">"{truncateText(review.tips, 120)}"</p>
+      </div>
+
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-slate-500">כרטיס השוואה מהיר למחלקה</p>
+        <Link
+          href={`/departments/${review.department.slug}`}
+          className="inline-flex items-center justify-center rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
+        >
+          לצפייה במחלקה
+        </Link>
+      </div>
+    </Card>
+  );
+}

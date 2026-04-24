@@ -5,11 +5,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { LinkedInAuthLink } from "@/components/auth/linkedin-auth-link";
 import { signupSchema } from "@/lib/validation";
 
 type FormValues = z.infer<typeof signupSchema>;
 
-export function SignupForm() {
+export function SignupForm({ linkedinError }: { linkedinError?: string }) {
   const router = useRouter();
   const [formError, setFormError] = useState<string | null>(null);
   const {
@@ -54,6 +55,11 @@ export function SignupForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
+      <div className="space-y-3">
+        <LinkedInAuthLink mode="signup" accountIntent={accountIntent} className="w-full" />
+        <div className="text-center text-xs font-semibold text-slate-400">או הרשמה עם אימייל וסיסמה</div>
+      </div>
+
       <div>
         <label className="mb-2 block text-sm font-semibold text-ink">שם מלא</label>
         <input
@@ -127,6 +133,7 @@ export function SignupForm() {
             : "החשבון מיועד לגלישה נוחה, שמירת מחלקות להשוואה, והגשת מועמדות פרטית לתקנים פתוחים מתוך אזור אישי מסודר."}
       </div>
 
+      {linkedinError ? <p className="text-sm text-rose-600">{linkedinError}</p> : null}
       {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}
 
       <button

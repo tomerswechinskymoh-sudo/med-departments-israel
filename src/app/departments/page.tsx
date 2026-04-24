@@ -9,6 +9,14 @@ import { getDirectoryData, getDirectoryFilters } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 
+function toMultiValue(value: string | string[] | undefined) {
+  if (Array.isArray(value)) {
+    return value;
+  }
+
+  return typeof value === "string" ? [value] : undefined;
+}
+
 export default async function DepartmentsPage({
   searchParams
 }: {
@@ -22,8 +30,8 @@ export default async function DepartmentsPage({
 
   const parsedFilters = departmentFilterSchema.parse({
     search: typeof rawSearchParams.search === "string" ? rawSearchParams.search : undefined,
-    institutions: rawSearchParams.institution,
-    specialties: rawSearchParams.specialty
+    institutions: toMultiValue(rawSearchParams.institution),
+    specialties: toMultiValue(rawSearchParams.specialty)
   });
 
   const departments = await getDirectoryData(parsedFilters, session?.userId);

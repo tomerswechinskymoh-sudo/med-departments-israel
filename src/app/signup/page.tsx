@@ -2,7 +2,14 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
 import { SignupForm } from "@/components/forms/signup-form";
 
-export default function SignupPage() {
+export default async function SignupPage({
+  searchParams
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = await searchParams;
+  const linkedinError = typeof params.linkedinError === "string" ? params.linkedinError : undefined;
+
   return (
     <PageShell className="py-10">
       <div className="mx-auto max-w-3xl">
@@ -15,7 +22,7 @@ export default function SignupPage() {
             באופן ידני.
           </p>
           <div className="mt-6">
-            <SignupForm />
+            <SignupForm linkedinError={linkedinError} />
           </div>
         </Card>
       </div>

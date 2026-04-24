@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { DepartmentCard } from "@/components/departments/department-card";
-import { ReviewCard } from "@/components/departments/review-card";
 import { HomeHeroImage } from "@/components/home/home-hero-image";
+import { HomeReviewComparisonCard } from "@/components/home/home-review-comparison-card";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { ExperienceCta } from "@/components/experience/experience-cta";
 import { HomeSection } from "@/components/home/home-section";
@@ -157,16 +157,11 @@ export default async function HomePage() {
         <SectionHeading
           eyebrow="מהשטח"
           title="מה באמת קורה בפנים"
-          description="מה עבד, מה פחות, ומה חשוב לדעת לפני שמגיעים"
+          description="סקירה מהירה שמקלה להשוות בין מחלקות לפי הוראה, עומס, מחקר, זמינות בכירים והמלצה כוללת"
         />
-        <div className="grid gap-4 xl:grid-cols-3">
+        <div className="grid gap-5 xl:grid-cols-2">
           {data.latestReviews.map((review) => (
-            <div key={review.id} className="space-y-2">
-              <ReviewCard review={review} canReport={false} />
-              <p className="px-2 text-xs text-slate-500">
-                {review.department.institution.name} · {review.department.name}
-              </p>
-            </div>
+            <HomeReviewComparisonCard key={review.id} review={review} />
           ))}
         </div>
       </HomeSection>

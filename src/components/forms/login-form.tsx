@@ -5,11 +5,18 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { LinkedInAuthLink } from "@/components/auth/linkedin-auth-link";
 import { loginSchema } from "@/lib/validation";
 
 type FormValues = z.infer<typeof loginSchema>;
 
-export function LoginForm({ nextPath }: { nextPath?: string }) {
+export function LoginForm({
+  nextPath,
+  linkedinError
+}: {
+  nextPath?: string;
+  linkedinError?: string;
+}) {
   const router = useRouter();
   const [formError, setFormError] = useState<string | null>(null);
   const invalidCredentialsMessage = "שם משתמש או סיסמא לא נכונים";
@@ -52,6 +59,11 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-4">
+      <div className="space-y-3">
+        <LinkedInAuthLink mode="login" nextPath={nextPath} className="w-full" />
+        <div className="text-center text-xs font-semibold text-slate-400">או התחברות עם אימייל וסיסמה</div>
+      </div>
+
       <div>
         <label className="mb-2 block text-sm font-semibold text-ink">אימייל</label>
         <input
@@ -70,6 +82,7 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
         />
       </div>
 
+      {linkedinError ? <p className="text-sm text-rose-600">{linkedinError}</p> : null}
       {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}
 
       <button

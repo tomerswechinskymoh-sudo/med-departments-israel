@@ -1,18 +1,28 @@
 "use client";
 
+import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { buildLinkedInStartPath } from "@/lib/linkedin-auth-path";
 import { representativeAccountProfileSchema } from "@/lib/validation";
 
 type FormValues = z.infer<typeof representativeAccountProfileSchema>;
 
 export function RepresentativeProfileForm({
-  initialValues
+  initialValues,
+  linkedinConnected,
+  linkedinEmail,
+  linkedinError,
+  linkedinSuccess
 }: {
   initialValues: FormValues;
+  linkedinConnected: boolean;
+  linkedinEmail?: string | null;
+  linkedinError?: string | null;
+  linkedinSuccess?: boolean;
 }) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
@@ -48,6 +58,27 @@ export function RepresentativeProfileForm({
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
+      <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/60 p-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-semibold text-ink">LinkedIn</p>
+            <p className="mt-1 text-sm leading-7 text-slate-600">
+              {linkedinConnected
+                ? `החשבון מחובר ל-LinkedIn${linkedinEmail ? ` (${linkedinEmail})` : ""}.`
+                : "אפשר לחבר LinkedIn כדי להקל על כניסה עתידית ולמשוך שם ותמונת פרופיל."}
+            </p>
+          </div>
+          <Link
+            href={buildLinkedInStartPath({ mode: "connect" })}
+            className="inline-flex items-center justify-center rounded-2xl border border-[#0a66c2]/20 bg-[#0a66c2] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#084f96]"
+          >
+            {linkedinConnected ? "חיבור מחדש ל-LinkedIn" : "Connect LinkedIn"}
+          </Link>
+        </div>
+        {linkedinSuccess ? <p className="mt-3 text-sm text-emerald-700">LinkedIn חובר בהצלחה.</p> : null}
+        {linkedinError ? <p className="mt-3 text-sm text-rose-600">{linkedinError}</p> : null}
+      </div>
+
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label className="mb-2 block text-sm font-semibold text-ink">שם מלא</label>
@@ -121,4 +152,3 @@ export function RepresentativeProfileForm({
     </form>
   );
 }
-

@@ -137,7 +137,7 @@ export async function getHomePageData() {
         orderBy: {
           publishedAt: "desc"
         },
-        take: 3
+        take: 4
       }),
       prisma.residencyOpening.findMany({
         where: {
@@ -272,16 +272,16 @@ export async function getDirectoryData(
           : {},
         filters.institutions?.length
           ? {
-              institutionId: {
-                in: filters.institutions
-              }
+              OR: filters.institutions.map((institutionId) => ({
+                institutionId
+              }))
             }
           : {},
         filters.specialties?.length
           ? {
-              specialtyId: {
-                in: filters.specialties
-              }
+              OR: filters.specialties.map((specialtyId) => ({
+                specialtyId
+              }))
             }
           : {}
       ]
