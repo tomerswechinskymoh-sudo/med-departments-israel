@@ -153,30 +153,29 @@ export function OpeningCard({
             <div className="mt-3 grid gap-3 md:grid-cols-3">
               <div>
                 <p className="text-xs text-slate-500">מחקר</p>
-                <p className="mt-1 font-semibold text-ink">
-                  {opening.acceptanceCriteria.researchImportance}/5
+                <p className="mt-1 inline-flex rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-xs font-bold text-ink">
+                  {opening.acceptanceCriteria.researchImportance}
                 </p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">אלקטיב / סטאז'</p>
-                <p className="mt-1 font-semibold text-ink">
+                <p className="mt-1 inline-flex rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-xs font-bold text-ink">
                   {Math.max(
                     opening.acceptanceCriteria.departmentElectiveImportance,
                     opening.acceptanceCriteria.departmentInternshipImportance
                   )}
-                  /5
                 </p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">התאמה אישית</p>
-                <p className="mt-1 font-semibold text-ink">
-                  {opening.acceptanceCriteria.personalFitImportance}/5
+                <p className="mt-1 inline-flex rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-xs font-bold text-ink">
+                  {opening.acceptanceCriteria.personalFitImportance}
                 </p>
               </div>
               <div>
                 <p className="text-xs text-slate-500">המלצות</p>
-                <p className="mt-1 font-semibold text-ink">
-                  {opening.acceptanceCriteria.recommendationsImportance}/5
+                <p className="mt-1 inline-flex rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-xs font-bold text-ink">
+                  {opening.acceptanceCriteria.recommendationsImportance}
                 </p>
               </div>
             </div>

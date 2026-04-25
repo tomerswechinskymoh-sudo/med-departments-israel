@@ -14,6 +14,7 @@ import {
 } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 import { average } from "@/lib/utils";
+import { resolveCanonicalDepartmentSlug } from "@/server/department-catalog";
 
 const publishedReviewSelect = {
   id: true,
@@ -111,6 +112,23 @@ function averageClinicalExposure(
   return average(numbers);
 }
 
+function canonicalDepartmentSlugForRecord(input: {
+  slug: string;
+  name: string;
+  institution: {
+    slug: string;
+  };
+  specialty: {
+    slug: string;
+  };
+}) {
+  return resolveCanonicalDepartmentSlug({
+    institutionSlug: input.institution.slug,
+    specialtySlug: input.specialty.slug,
+    departmentName: input.name
+  });
+}
+
 export async function getHomePageData() {
   const [featuredDepartments, latestReviews, featuredOpenings, latestResearchOpportunities, stats] =
     await Promise.all([
@@ -160,7 +178,13 @@ export async function getHomePageData() {
               slug: true,
               institution: {
                 select: {
-                  name: true
+                  name: true,
+                  slug: true
+                }
+              },
+              specialty: {
+                select: {
+                  slug: true
                 }
               }
             }
@@ -231,7 +255,7 @@ export async function getHomePageData() {
   return {
     featuredDepartments: featuredDepartments.map((department) => ({
       id: department.id,
-      slug: department.slug,
+      slug: canonicalDepartmentSlugForRecord(department),
       name: department.name,
       institutionName: department.institution.name,
       city: department.institution.city,
@@ -243,7 +267,22 @@ export async function getHomePageData() {
       hasResearch: department.researchOpportunities.length > 0,
       hasOpenResidency: department.residencyOpenings.length > 0
     })),
-    latestReviews,
+    latestReviews: latestReviews.map((review) => ({
+      ...review,
+      department: {
+        ...review.department,
+        slug: canonicalDepartmentSlugForRecord({
+          slug: review.department.slug,
+          name: review.department.name,
+          institution: {
+            slug: review.department.institution.slug
+          },
+          specialty: {
+            slug: review.department.specialty.slug
+          }
+        })
+      }
+    })),
     featuredOpenings,
     latestResearchOpportunities,
     stats: {
@@ -417,7 +456,7 @@ export async function getDirectoryData(
 
     return {
       id: department.id,
-      slug: department.slug,
+      slug: canonicalDepartmentSlugForRecord(department),
       name: department.name,
       institutionName: department.institution.name,
       institutionType: department.institution.type,
@@ -459,9 +498,36 @@ export async function getDirectoryData(
 }
 
 export async function getDepartmentPageData(slug: string, viewerId?: string) {
+  const departmentCandidates = await prisma.department.findMany({
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      institution: {
+        select: {
+          slug: true
+        }
+      },
+      specialty: {
+        select: {
+          slug: true
+        }
+      }
+    }
+  });
+
+  const matchedDepartment = departmentCandidates.find((department) => {
+    const canonicalSlug = canonicalDepartmentSlugForRecord(department);
+    return department.slug === slug || canonicalSlug === slug;
+  });
+
+  if (!matchedDepartment) {
+    return null;
+  }
+
   const department = await prisma.department.findUnique({
     where: {
-      slug
+      id: matchedDepartment.id
     },
     include: {
       institution: true,
@@ -535,6 +601,7 @@ export async function getDepartmentPageData(slug: string, viewerId?: string) {
 
   return {
     ...department,
+    slug: canonicalDepartmentSlugForRecord(department),
     isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
     summary: {
       reviewCount: department.reviews.length,
@@ -553,7 +620,7 @@ export async function getDepartmentPageData(slug: string, viewerId?: string) {
 }
 
 export async function getOpeningPageData(openingId: string) {
-  return prisma.residencyOpening.findFirst({
+  const opening = await prisma.residencyOpening.findFirst({
     where: {
       id: openingId,
       contentStatus: ContentStatus.PUBLISHED
@@ -580,10 +647,22 @@ export async function getOpeningPageData(openingId: string) {
       }
     }
   });
+
+  if (!opening) {
+    return null;
+  }
+
+  return {
+    ...opening,
+    department: {
+      ...opening.department,
+      slug: canonicalDepartmentSlugForRecord(opening.department)
+    }
+  };
 }
 
 export async function getOpeningApplicationPageData(openingId: string) {
-  return prisma.residencyOpening.findFirst({
+  const opening = await prisma.residencyOpening.findFirst({
     where: {
       id: openingId,
       contentStatus: ContentStatus.PUBLISHED,
@@ -604,10 +683,22 @@ export async function getOpeningApplicationPageData(openingId: string) {
       }
     }
   });
+
+  if (!opening) {
+    return null;
+  }
+
+  return {
+    ...opening,
+    department: {
+      ...opening.department,
+      slug: canonicalDepartmentSlugForRecord(opening.department)
+    }
+  };
 }
 
 export async function getDepartmentOptions() {
-  return prisma.department.findMany({
+  const departments = await prisma.department.findMany({
     select: {
       id: true,
       slug: true,
@@ -616,18 +707,25 @@ export async function getDepartmentOptions() {
         select: {
           id: true,
           name: true,
-          type: true
+          type: true,
+          slug: true
         }
       },
       specialty: {
         select: {
           id: true,
-          name: true
+          name: true,
+          slug: true
         }
       }
     },
     orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
   });
+
+  return departments.map((department) => ({
+    ...department,
+    slug: canonicalDepartmentSlugForRecord(department)
+  }));
 }
 
 export async function getInstitutionOptions() {
@@ -644,7 +742,7 @@ export async function getInstitutionOptions() {
 }
 
 export async function getUserDashboardData(userId: string) {
-  return prisma.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: {
       id: userId
     },
@@ -675,6 +773,28 @@ export async function getUserDashboardData(userId: string) {
       representativeProfile: true
     }
   });
+
+  if (!user) {
+    return null;
+  }
+
+  return {
+    ...user,
+    favorites: user.favorites.map((favorite) => ({
+      ...favorite,
+      department: {
+        ...favorite.department,
+        slug: canonicalDepartmentSlugForRecord(favorite.department)
+      }
+    })),
+    representativeAssignments: user.representativeAssignments.map((assignment) => ({
+      ...assignment,
+      department: {
+        ...assignment.department,
+        slug: canonicalDepartmentSlugForRecord(assignment.department)
+      }
+    }))
+  };
 }
 
 export async function getFavoritesData(userId: string) {
@@ -712,7 +832,7 @@ export async function getFavoritesData(userId: string) {
 
   return favorites.map((favorite) => ({
     id: favorite.department.id,
-    slug: favorite.department.slug,
+    slug: canonicalDepartmentSlugForRecord(favorite.department),
     name: favorite.department.name,
     institutionName: favorite.department.institution.name,
     city: favorite.department.institution.city,
@@ -740,7 +860,7 @@ export async function getRepresentativeDashboardData(
     return [];
   }
 
-  return prisma.department.findMany({
+  const departmentsWithContent = await prisma.department.findMany({
     where: {
       id: {
         in: managedDepartmentIds
@@ -828,6 +948,11 @@ export async function getRepresentativeDashboardData(
     },
     orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
   });
+
+  return departmentsWithContent.map((department) => ({
+    ...department,
+    slug: canonicalDepartmentSlugForRecord(department)
+  }));
 }
 
 export async function getRepresentativeOpeningFormData(

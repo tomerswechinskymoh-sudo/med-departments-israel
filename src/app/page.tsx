@@ -47,16 +47,16 @@ export default async function HomePage() {
   const [data, reviewContext] = await Promise.all([getHomePageData(), getReviewFormContext()]);
 
   return (
-    <PageShell className="space-y-10 py-8 pb-28 md:space-y-12 md:py-12 md:pb-12">
+    <PageShell className="space-y-8 py-6 pb-28 md:space-y-10 md:py-10 md:pb-12">
       <section className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/88 shadow-panel">
-        <div className="grid gap-8 lg:grid-cols-[1.02fr_0.98fr]">
-          <div className="space-y-7 p-6 md:p-8 lg:p-10">
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.92fr]">
+          <div className="space-y-6 p-5 md:p-7 lg:p-8">
             <p className="text-sm font-semibold text-brand-700">לפני שבוחרים, בודקים</p>
             <div className="space-y-4">
-              <h1 className="max-w-3xl text-4xl font-bold leading-tight text-ink md:text-6xl">
+              <h1 className="max-w-3xl text-4xl font-bold leading-tight text-ink md:text-5xl lg:text-[3.4rem]">
                 לדעת איך מחלקה באמת נראית, לפני שנכנסים אליה
               </h1>
-              <p className="max-w-2xl text-base leading-8 text-slate-700 md:text-lg">
+              <p className="max-w-2xl text-base leading-8 text-slate-700">
                 מחלקות, תקנים, מחקר ושיתופים מהשטח.
                 <br className="hidden md:block" />
                 כל מה שצריך כדי להבין אם זה מתאים לך, בלי ניחושים.
@@ -66,7 +66,7 @@ export default async function HomePage() {
             <form
               id="home-search"
               action="/departments"
-              className="rounded-[1.75rem] border border-brand-100 bg-white/96 p-3 shadow-panel"
+              className="rounded-[1.5rem] border border-brand-100 bg-white/96 p-3 shadow-panel"
             >
               <div className="flex flex-col gap-3 md:flex-row">
                 <input
@@ -101,23 +101,23 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="grid gap-4 p-6 pt-0 md:p-8 md:pt-0 lg:p-10 lg:pr-0">
+          <div className="grid gap-3 p-5 pt-0 md:p-7 md:pt-0 lg:p-8 lg:pr-0">
             <HomeHeroImage />
 
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              <Card className="bg-brand-900 text-white">
+            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              <Card className="bg-brand-900 py-5 text-white">
                 <p className="text-xs font-semibold text-brand-100">מבפנים</p>
                 <p className="mt-2 text-sm leading-7 text-brand-50">
                   להבין את המחלקה מבפנים
                 </p>
               </Card>
-              <Card>
+              <Card className="py-5">
                 <p className="text-xs font-semibold text-brand-700">ביום־יום</p>
                 <p className="mt-2 text-sm leading-7 text-slate-700">
                   לראות איך זה באמת מרגיש ביום־יום
                 </p>
               </Card>
-              <Card>
+              <Card className="py-5">
                 <p className="text-xs font-semibold text-brand-700">לפני שנכנסים</p>
                 <p className="mt-2 text-sm leading-7 text-slate-700">
                   לדעת למה לצפות לפני שנכנסים
@@ -141,7 +141,7 @@ export default async function HomePage() {
           title="מחלקות שכדאי לבדוק"
           description="מידע מספיק ברור כדי להבין אם שווה להעמיק"
         />
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-4">
           {data.featuredDepartments.map((department) => (
             <DepartmentCard key={department.id} department={department} />
           ))}
@@ -167,7 +167,7 @@ export default async function HomePage() {
           title="מה באמת קורה בפנים"
           description="סקירה מהירה שמקלה להשוות בין מחלקות לפי הוראה, עומס, מחקר, זמינות בכירים והמלצה כוללת"
         />
-        <div className="grid gap-5 xl:grid-cols-2">
+        <div className="grid gap-4 xl:grid-cols-2">
           {data.latestReviews.map((review) => (
             <HomeReviewComparisonCard key={review.id} review={review} />
           ))}
@@ -178,7 +178,7 @@ export default async function HomePage() {
         <SectionHeading eyebrow="איך משתמשים" title="3 צעדים להחלטה טובה יותר" />
         <div className="grid gap-4 md:grid-cols-3">
           {decisionSteps.map((step, index) => (
-            <Card key={step.title} className="bg-white">
+            <Card key={step.title} className="bg-white py-5">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-900">
                 <step.icon className="h-5 w-5" />
               </span>
@@ -190,8 +190,8 @@ export default async function HomePage() {
         </div>
       </HomeSection>
 
-      <section className="rounded-[2rem] border border-brand-100 bg-gradient-to-l from-brand-900 via-brand-800 to-brand-700 p-6 text-white shadow-panel md:p-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <section className="rounded-[2rem] border border-brand-100 bg-gradient-to-l from-brand-900 via-brand-800 to-brand-700 p-5 text-white shadow-panel md:p-6">
+        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold text-brand-100">ממשיכים מכאן</p>
             <h2 className="mt-2 text-3xl font-bold">יש לך כמה כיוונים בראש?</h2>

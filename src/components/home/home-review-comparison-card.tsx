@@ -87,9 +87,13 @@ function MetricStat({ label, value }: { label: string; value: number }) {
   return (
     <div className={`rounded-2xl border px-3 py-3 ${metricTone(value)}`}>
       <p className="text-[0.68rem] font-semibold tracking-wide opacity-80">{label}</p>
-      <div className="mt-2 flex items-end justify-between gap-2">
-        <p className="text-xl font-bold leading-none">{value}</p>
-        <p className="text-xs font-semibold">/5</p>
+      <div className="mt-3 flex items-center gap-3">
+        <div className="flex h-2.5 flex-1 overflow-hidden rounded-full bg-white/70">
+          <div className="rounded-full bg-current" style={{ width: `${(value / 5) * 100}%` }} />
+        </div>
+        <span className="inline-flex min-w-11 items-center justify-center rounded-full border border-current/15 bg-white/70 px-2.5 py-1 text-xs font-bold">
+          {value.toFixed(1)}
+        </span>
       </div>
     </div>
   );
@@ -99,7 +103,7 @@ export function HomeReviewComparisonCard({ review }: { review: HomeReview }) {
   const chips = getStrengthChips(review);
 
   return (
-    <Card className="flex h-full flex-col gap-5 border border-brand-100 bg-white">
+    <Card className="flex h-full flex-col gap-4 border border-brand-100 bg-white">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-brand-700">
@@ -118,7 +122,7 @@ export function HomeReviewComparisonCard({ review }: { review: HomeReview }) {
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Badge tone="default">המלצה {review.overallRecommendation}/5</Badge>
+          <Badge tone="default">המלצה כללית {review.overallRecommendation.toFixed(1)}</Badge>
           <Badge tone={review.isAnonymous ? "warning" : "success"}>
             {review.isAnonymous ? "בעילום שם" : review.displayName ?? "בשם מלא"}
           </Badge>

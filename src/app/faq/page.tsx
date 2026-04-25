@@ -1,3 +1,4 @@
+import { FaqAccordion } from "@/components/content/faq-accordion";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
@@ -120,38 +121,7 @@ export default function FaqPage() {
           ) : null}
         </Card>
 
-        <div className="space-y-4">
-          {page.sections.map((section, index) => (
-            <details
-              key={section.title}
-              id={`faq-${index + 1}`}
-              open={index === 0}
-              className="group rounded-[1.75rem] border border-brand-100/80 bg-white/95 p-5 shadow-panel"
-            >
-              <summary className="flex cursor-pointer items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-900">
-                    <QuestionSparkIcon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <p className="text-lg font-bold text-ink">{section.title}</p>
-                    <p className="mt-1 text-xs leading-6 text-slate-500">
-                      תשובה קצרה וברורה בלי טקסט מיותר.
-                    </p>
-                  </div>
-                </div>
-                <span className="rounded-full border border-brand-100 bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-800">
-                  {index === 0 ? "פתוח" : "לפתיחה"}
-                </span>
-              </summary>
-              <div className="mt-5 space-y-3 text-sm leading-8 text-slate-700">
-                {section.body.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            </details>
-          ))}
-        </div>
+        <FaqAccordion items={page.sections} />
       </section>
     </PageShell>
   );

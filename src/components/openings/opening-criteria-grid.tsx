@@ -64,7 +64,9 @@ export function OpeningCriteriaGrid({
                     style={{ width: `${value * 20}%` }}
                   />
                 </div>
-                <span className="text-sm font-bold text-ink">{value}/5</span>
+                <span className="inline-flex min-w-10 items-center justify-center rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-xs font-bold text-ink">
+                  {value}
+                </span>
               </div>
             </div>
           );

@@ -349,6 +349,16 @@ export function slugifyValue(value: string) {
     .replace(/--+/g, "-");
 }
 
+export function normalizeCatalogLookupValue(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/["'׳״]/g, "")
+    .replace(/[()]/g, "")
+    .replace(/\s*-\s*/g, " ")
+    .replace(/\s+/g, " ");
+}
+
 export function buildDepartmentSlug(input: {
   institutionSlug: string;
   specialtySlug: string;
@@ -362,6 +372,14 @@ export function buildDepartmentSlug(input: {
   }
 
   return `${input.institutionSlug}-${input.specialtySlug}-${normalizedDepartmentName}`;
+}
+
+export function resolveCanonicalDepartmentSlug(input: {
+  institutionSlug: string;
+  specialtySlug: string;
+  departmentName: string;
+}) {
+  return buildDepartmentSlug(input);
 }
 
 export function buildDepartmentCopy(input: {
@@ -396,6 +414,24 @@ export function getInstitutionBySlug(slug: string) {
 
 export function getSpecialtyBySlug(slug: string) {
   return SPECIALTY_CATALOG.find((specialty) => specialty.slug === slug) ?? null;
+}
+
+export function getInstitutionByName(name: string) {
+  const normalizedName = normalizeCatalogLookupValue(name);
+  return (
+    INSTITUTION_CATALOG.find(
+      (institution) => normalizeCatalogLookupValue(institution.name) === normalizedName
+    ) ?? null
+  );
+}
+
+export function getSpecialtyByName(name: string) {
+  const normalizedName = normalizeCatalogLookupValue(name);
+  return (
+    SPECIALTY_CATALOG.find(
+      (specialty) => normalizeCatalogLookupValue(specialty.name) === normalizedName
+    ) ?? null
+  );
 }
 
 export function getInstitutionSpecialtySlugs(institution: InstitutionCatalogItem) {
@@ -448,7 +484,7 @@ export async function ensureInstitution(
   const normalizedName = input.name.trim();
   const existing = await db.institution.findFirst({
     where: {
-      name: normalizedName
+      OR: [{ name: normalizedName }, { slug: slugifyValue(normalizedName) }]
     }
   });
 
@@ -456,7 +492,7 @@ export async function ensureInstitution(
     return existing;
   }
 
-  const catalogMatch = INSTITUTION_CATALOG.find((institution) => institution.name === normalizedName);
+  const catalogMatch = getInstitutionByName(normalizedName);
 
   return db.institution.create({
     data: {
@@ -482,7 +518,7 @@ export async function ensureSpecialty(
   const normalizedName = input.name.trim();
   const existing = await db.specialty.findFirst({
     where: {
-      name: normalizedName
+      OR: [{ name: normalizedName }, { slug: slugifyValue(normalizedName) }]
     }
   });
 
@@ -490,7 +526,7 @@ export async function ensureSpecialty(
     return existing;
   }
 
-  const catalogMatch = SPECIALTY_CATALOG.find((specialty) => specialty.name === normalizedName);
+  const catalogMatch = getSpecialtyByName(normalizedName);
 
   return db.specialty.create({
     data: {
@@ -518,7 +554,7 @@ export async function ensureDepartmentPage(
   }
 ) {
   const departmentName = input.departmentName?.trim() || input.specialtyName;
-  const existing = await db.department.findFirst({
+  const exactExisting = await db.department.findFirst({
     where: {
       institutionId: input.institutionId,
       specialtyId: input.specialtyId,
@@ -526,8 +562,47 @@ export async function ensureDepartmentPage(
     }
   });
 
-  if (existing) {
-    return existing;
+  const existingByNormalizedName =
+    exactExisting ??
+    (
+      await db.department.findMany({
+        where: {
+          institutionId: input.institutionId
+        }
+      })
+    ).find(
+      (department) =>
+        normalizeCatalogLookupValue(department.name) ===
+        normalizeCatalogLookupValue(departmentName)
+    );
+
+  if (existingByNormalizedName) {
+    const existingSpecialty = await db.specialty.findUnique({
+      where: {
+        id: existingByNormalizedName.specialtyId
+      },
+      select: {
+        slug: true
+      }
+    });
+    const canonicalSlug = resolveCanonicalDepartmentSlug({
+      institutionSlug: input.institutionSlug,
+      specialtySlug: existingSpecialty?.slug ?? input.specialtySlug,
+      departmentName: existingByNormalizedName.name
+    });
+
+    if (existingByNormalizedName.slug !== canonicalSlug) {
+      return db.department.update({
+        where: {
+          id: existingByNormalizedName.id
+        },
+        data: {
+          slug: canonicalSlug
+        }
+      });
+    }
+
+    return existingByNormalizedName;
   }
 
   const copy = buildDepartmentCopy({
@@ -541,7 +616,7 @@ export async function ensureDepartmentPage(
     data: {
       institutionId: input.institutionId,
       specialtyId: input.specialtyId,
-      slug: buildDepartmentSlug({
+      slug: resolveCanonicalDepartmentSlug({
         institutionSlug: input.institutionSlug,
         specialtySlug: input.specialtySlug,
         departmentName

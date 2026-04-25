@@ -34,6 +34,10 @@ export default async function DepartmentDetailsPage({
 
   const visibleReviews = session ? department.reviews : department.reviews.slice(0, 3);
   const departmentHref = buildDepartmentHref(department.slug);
+  const contactEmails = (department.publicContactEmail ?? "")
+    .split(/[\n,;]+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
   const hasOfficialDepartmentContent =
     department.heads.length > 0 ||
     department.officialUpdates.length > 0 ||
@@ -166,12 +170,26 @@ export default async function DepartmentDetailsPage({
         </Card>
 
         <Card>
-          <SectionHeading title="פרטי קשר בעמוד" description="מופיעים רק אם המחלקה בחרה לשתף אותם." />
+          <SectionHeading title="פרטי קשר בעמוד" description="מופיעים אם הוזנו על ידי המחלקה או נקלטו בייבוא רשמי." />
           <div className="mt-5 space-y-3 text-sm leading-7 text-slate-700">
-            <p>
+            <div>
               <span className="font-semibold text-ink">אימייל: </span>
-              {department.publicContactEmail ?? "לא פורסם"}
-            </p>
+              {contactEmails.length > 0 ? (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {contactEmails.map((email) => (
+                    <a
+                      key={email}
+                      href={`mailto:${email}`}
+                      className="rounded-full border border-brand-100 bg-brand-50/70 px-3 py-1.5 text-xs font-semibold text-brand-900"
+                    >
+                      {email}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <span>לא פורסם</span>
+              )}
+            </div>
             <p>
               <span className="font-semibold text-ink">טלפון: </span>
               {department.publicContactPhone ?? "לא פורסם"}

@@ -36,7 +36,18 @@ function MetricChip({
         <span className="text-[0.68rem] font-semibold tracking-wide opacity-80">{label}</span>
         <span className="opacity-80">{icon}</span>
       </div>
-      <p className="mt-2 text-lg font-bold leading-none">{value ? `${value.toFixed(1)}/5` : "אין עדיין"}</p>
+      {value ? (
+        <div className="mt-3 flex items-center gap-3">
+          <div className="flex h-2.5 flex-1 overflow-hidden rounded-full bg-white/70">
+            <div className="rounded-full bg-current" style={{ width: `${(value / 5) * 100}%` }} />
+          </div>
+          <span className="inline-flex min-w-11 items-center justify-center rounded-full border border-current/15 bg-white/75 px-2.5 py-1 text-xs font-bold">
+            {value.toFixed(1)}
+          </span>
+        </div>
+      ) : (
+        <p className="mt-3 text-sm font-semibold text-slate-500">אין עדיין</p>
+      )}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function HomeHeroImage() {
   return (
-    <div className="relative isolate min-h-[420px] overflow-hidden rounded-[2rem] border border-brand-100/70 bg-gradient-to-br from-[#071426] via-[#0b2a45] to-[#1a4f79] shadow-panel">
+    <div className="relative isolate min-h-[340px] overflow-hidden rounded-[2rem] border border-brand-100/70 bg-gradient-to-br from-[#071426] via-[#0b2a45] to-[#1a4f79] shadow-panel md:min-h-[380px]">
       <Image
         src="/homepage-hero-doctor.png"
         alt="רופאה צעירה במסדרון בית חולים"
@@ -16,11 +16,11 @@ export function HomeHeroImage() {
       <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(7,20,38,0.82),rgba(7,20,38,0.18),transparent)]" />
       <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-brand-900/85 to-transparent" />
 
-      <div className="absolute inset-x-6 bottom-6 flex max-w-sm flex-col gap-3 text-white">
+      <div className="absolute inset-x-5 bottom-5 flex max-w-sm flex-col gap-2 text-white md:inset-x-6 md:bottom-6">
         <span className="inline-flex w-fit rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-semibold backdrop-blur-xl">
           לבחור עם יותר ביטחון ופחות ניחושים
         </span>
-        <h2 className="text-2xl font-bold leading-tight">
+        <h2 className="text-xl font-bold leading-tight md:text-2xl">
           תמונה ברורה יותר של המחלקה לפני שמתחייבים
         </h2>
       </div>
