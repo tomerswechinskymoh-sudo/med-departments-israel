@@ -5,14 +5,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { ExperienceGuidancePanels } from "@/components/forms/experience-guidance-panels";
 import {
-  EXPERIENCE_LEGAL_WARNING,
   EXPERIENCE_PHONE_TRUST_COPY,
   EXPERIENCE_PRIVACY_COPY,
   EXPERIENCE_RATING_HELPER_TEXT,
   MAINLY_TAUGHT_BY_OPTIONS,
-  MEDICAL_FACULTY_OPTIONS,
-  REVIEW_GUIDELINES
+  MEDICAL_FACULTY_OPTIONS
 } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { reviewSubmissionSchema } from "@/lib/validation";
@@ -158,6 +157,7 @@ export function ReviewForm({
   selectedDepartmentId,
   initialReviewerType = "INTERN",
   compact = false,
+  showGuidancePanels = compact,
   onSubmitted
 }: {
   departments: {
@@ -177,6 +177,7 @@ export function ReviewForm({
   selectedDepartmentId?: string;
   initialReviewerType?: ReviewerType;
   compact?: boolean;
+  showGuidancePanels?: boolean;
   onSubmitted?: () => void;
 }) {
   const router = useRouter();
@@ -392,7 +393,7 @@ export function ReviewForm({
         </div>
       ) : null}
 
-      <div className={compact ? "grid gap-5 lg:grid-cols-[1.08fr_0.92fr]" : "space-y-5"}>
+      <div className={showGuidancePanels ? "grid gap-5 lg:grid-cols-[1.08fr_0.92fr]" : "space-y-5"}>
         <div className="space-y-5">
           <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
             <div className="flex items-start justify-between gap-4">
@@ -441,13 +442,21 @@ export function ReviewForm({
 
           <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
             <p className="text-sm font-semibold text-brand-700">איפה זה היה?</p>
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">מוסד</label>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              קודם בוחרים מוסד, ואז עוברים למחלקה או למסלול הרלוונטי מתוך אותו מקום בלבד.
+            </p>
+            <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-start">
+              <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/45 p-4">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-900 text-sm font-bold text-white">
+                    1
+                  </span>
+                  <label className="block text-sm font-semibold text-ink">מוסד</label>
+                </div>
                 <select
                   value={selectedInstitutionId}
                   onChange={(event) => setSelectedInstitutionId(event.target.value)}
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                  className="mt-3 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
                 >
                   <option value="">בחירת מוסד</option>
                   {institutions.map((institution) => (
@@ -458,15 +467,24 @@ export function ReviewForm({
                   ))}
                 </select>
                 <p className="mt-2 text-xs leading-6 text-slate-500">
-                  קודם בוחרים מוסד, ואז רואים רק מחלקות שמתאימות לו.
+                  הבחירה כאן מסננת מיד את השלב הבא ומשאירה רק אפשרויות רלוונטיות.
                 </p>
               </div>
 
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">מחלקה / מסלול</label>
+              <div className="hidden lg:flex lg:min-h-[88px] lg:items-center lg:justify-center">
+                <div className="h-px w-10 bg-brand-200" />
+              </div>
+
+              <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/45 p-4">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-teal-600 text-sm font-bold text-white">
+                    2
+                  </span>
+                  <label className="block text-sm font-semibold text-ink">מחלקה / מסלול</label>
+                </div>
                 <select
                   {...register("departmentId")}
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                  className="mt-3 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
                 >
                   <option value="">בחירת מחלקה</option>
                   {availableDepartments.map((department) => (
@@ -799,25 +817,60 @@ export function ReviewForm({
           </section>
         </div>
 
-        <div className="space-y-5">
-          <section className="rounded-[1.75rem] border border-brand-100/80 bg-gradient-to-b from-brand-50/95 to-white p-5 shadow-panel">
-            <p className="text-sm font-semibold text-brand-700">איך לגרום לזה באמת לעזור</p>
-            <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-700">
-              {REVIEW_GUIDELINES.map((guideline) => (
-                <li key={guideline}>{guideline}</li>
-              ))}
-            </ul>
-          </section>
+        {showGuidancePanels ? (
+          <div className="space-y-5">
+            <ExperienceGuidancePanels compact={compact} />
 
-          <section className="rounded-[1.75rem] border border-rose-200 bg-rose-50/80 p-5 shadow-panel">
-            <p className="text-sm font-semibold text-rose-800">לפני שכותבים טקסט חופשי</p>
-            <ul className="mt-4 space-y-2 text-sm leading-7 text-rose-900">
-              {EXPERIENCE_LEGAL_WARNING.map((warning) => (
-                <li key={warning}>{warning}</li>
-              ))}
-            </ul>
-          </section>
+            <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
+              <p className="text-sm font-semibold text-brand-700">כמה מילים על החוויה</p>
+              <div className="mt-4 grid gap-4">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-ink">מה עבד טוב בשבילך?</label>
+                  <textarea
+                    {...register("pros")}
+                    className="min-h-32 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                    placeholder="למשל: הוראה טובה, חשיפה טובה, תחושת תמיכה או קצב עבודה שעבד טוב."
+                  />
+                  {errors.pros ? <p className="mt-2 text-xs text-rose-600">{errors.pros.message}</p> : null}
+                </div>
 
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-ink">מה היה מאתגר או כדאי לדעת מראש?</label>
+                  <textarea
+                    {...register("cons")}
+                    className="min-h-32 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                    placeholder="למשל: עומס, ליווי פחות צמוד, קצב מהיר או משהו שהיה עוזר לדעת מראש."
+                  />
+                  {errors.cons ? <p className="mt-2 text-xs text-rose-600">{errors.cons.message}</p> : null}
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-ink">{tipsLabelForType(reviewerType)}</label>
+                  <textarea
+                    {...register("tips")}
+                    className="min-h-32 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                    placeholder="טיפ אחד או שניים שהיו עוזרים גם לך בתחילת הדרך."
+                  />
+                  {errors.tips ? <p className="mt-2 text-xs text-rose-600">{errors.tips.message}</p> : null}
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-ink">למי המחלקה מתאימה לדעתך?</label>
+                  <textarea
+                    {...register("roleDetails.fitForWho")}
+                    className="min-h-28 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                    placeholder={fitPlaceholderForType(reviewerType)}
+                  />
+                  {errors.roleDetails?.fitForWho ? (
+                    <p className="mt-2 text-xs text-rose-600">{errors.roleDetails.fitForWho.message}</p>
+                  ) : null}
+                </div>
+              </div>
+            </section>
+          </div>
+        ) : null}
+
+        {!showGuidancePanels ? (
           <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
             <p className="text-sm font-semibold text-brand-700">כמה מילים על החוויה</p>
             <div className="mt-4 grid gap-4">
@@ -864,7 +917,7 @@ export function ReviewForm({
               </div>
             </div>
           </section>
-        </div>
+        ) : null}
       </div>
 
       <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">

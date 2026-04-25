@@ -62,21 +62,31 @@ export function SignupForm({
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
-      <div className="space-y-3">
-        <SocialAuthLink
-          provider="google"
-          mode="signup"
-          accountIntent={accountIntent}
-          className="w-full"
-        />
-        <SocialAuthLink
-          provider="facebook"
-          mode="signup"
-          accountIntent={accountIntent}
-          className="w-full"
-        />
-        <LinkedInAuthLink mode="signup" accountIntent={accountIntent} className="w-full" />
-        <div className="text-center text-xs font-semibold text-slate-400">או הרשמה עם אימייל וסיסמה</div>
+      <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/55 p-4">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-semibold text-ink">פתיחה מהירה</p>
+            <p className="mt-1 text-xs leading-6 text-slate-500">
+              אפשר להתחיל עם Google, Facebook או LinkedIn, או להמשיך בהרשמה רגילה.
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <SocialAuthLink
+              provider="google"
+              mode="signup"
+              accountIntent={accountIntent}
+              iconOnly
+            />
+            <SocialAuthLink
+              provider="facebook"
+              mode="signup"
+              accountIntent={accountIntent}
+              iconOnly
+            />
+            <LinkedInAuthLink mode="signup" accountIntent={accountIntent} iconOnly />
+          </div>
+        </div>
+        <div className="mt-4 text-center text-xs font-semibold text-slate-400">או הרשמה עם אימייל וסיסמה</div>
       </div>
 
       <div>

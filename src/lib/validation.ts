@@ -61,6 +61,43 @@ const queryStringArray = (value: unknown) => {
   return undefined;
 };
 
+const queryBoolean = (value: unknown) => {
+  if (typeof value === "boolean") {
+    return value;
+  }
+
+  if (typeof value === "string") {
+    const normalized = value.trim().toLowerCase();
+    if (normalized === "1" || normalized === "true" || normalized === "on") {
+      return true;
+    }
+
+    if (normalized === "0" || normalized === "false" || normalized === "") {
+      return false;
+    }
+  }
+
+  return false;
+};
+
+const queryScaleValue = (value: unknown) => {
+  if (typeof value === "number") {
+    return value;
+  }
+
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    if (!trimmed) {
+      return undefined;
+    }
+
+    const parsed = Number(trimmed);
+    return Number.isFinite(parsed) ? parsed : value;
+  }
+
+  return undefined;
+};
+
 const scaleSchema = z.coerce.number().int().min(1).max(5);
 const parseJsonString = (value: unknown) => {
   if (typeof value !== "string") {
@@ -106,7 +143,15 @@ export const signupSchema = z
 export const departmentFilterSchema = z.object({
   search: z.preprocess(emptyToUndefined, z.string().optional()),
   institutions: z.preprocess(queryStringArray, z.array(z.string()).optional()),
-  specialties: z.preprocess(queryStringArray, z.array(z.string()).optional())
+  specialties: z.preprocess(queryStringArray, z.array(z.string()).optional()),
+  prioritizeOpenings: z.preprocess(queryBoolean, z.boolean().default(false)),
+  prioritizeCommittee: z.preprocess(queryBoolean, z.boolean().default(false)),
+  researchPriority: z.preprocess(queryScaleValue, scaleSchema.optional()),
+  electivePriority: z.preprocess(queryScaleValue, scaleSchema.optional()),
+  lifestylePriority: z.preprocess(queryScaleValue, scaleSchema.optional()),
+  teachingPriority: z.preprocess(queryScaleValue, scaleSchema.optional()),
+  seniorsPriority: z.preprocess(queryScaleValue, scaleSchema.optional()),
+  clinicalPriority: z.preprocess(queryScaleValue, scaleSchema.optional())
 });
 
 const reviewRoleDetailsSchema = z.object({

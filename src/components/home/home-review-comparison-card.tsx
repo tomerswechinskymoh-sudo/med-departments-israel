@@ -1,8 +1,9 @@
 import Link from "next/link";
+import { ReviewBubbleIcon } from "@/components/ui/med-icons";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { reviewerTypeLabel } from "@/lib/queries";
-import { formatDate } from "@/lib/utils";
+import { buildDepartmentHref, formatDate } from "@/lib/utils";
 
 type HomeReview = {
   id: string;
@@ -101,7 +102,12 @@ export function HomeReviewComparisonCard({ review }: { review: HomeReview }) {
     <Card className="flex h-full flex-col gap-5 border border-brand-100 bg-white">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="space-y-2">
-          <p className="text-xs font-semibold text-brand-700">סקירה מהירה למחלקה</p>
+          <div className="flex items-center gap-2 text-brand-700">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-brand-50 text-brand-900">
+              <ReviewBubbleIcon className="h-4 w-4" />
+            </span>
+            <p className="text-xs font-semibold text-brand-700">סקירה מהירה למחלקה</p>
+          </div>
           <div>
             <h3 className="text-xl font-bold text-ink">
               {review.department.institution.name} · {review.department.name}
@@ -162,7 +168,7 @@ export function HomeReviewComparisonCard({ review }: { review: HomeReview }) {
       <div className="mt-auto flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm text-slate-500">כרטיס השוואה מהיר למחלקה</p>
         <Link
-          href={`/departments/${review.department.slug}`}
+          href={buildDepartmentHref(review.department.slug)}
           className="inline-flex items-center justify-center rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
         >
           לצפייה במחלקה

@@ -32,3 +32,7 @@ export function average(numbers: number[]) {
 
   return numbers.reduce((sum, value) => sum + value, 0) / numbers.length;
 }
+
+export function buildDepartmentHref(slug: string) {
+  return `/departments/${encodeURIComponent(slug)}`;
+}

@@ -9,6 +9,11 @@ import { HomeStickyActions } from "@/components/home/home-sticky-actions";
 import { PageShell } from "@/components/layout/page-shell";
 import { OpeningCard } from "@/components/openings/opening-card";
 import { Card } from "@/components/ui/card";
+import {
+  ClipboardHeartIcon,
+  DepartmentDirectoryIcon,
+  SearchPulseIcon
+} from "@/components/ui/med-icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getHomePageData, getReviewFormContext } from "@/lib/queries";
 
@@ -23,15 +28,18 @@ const trustItems = [
 const decisionSteps = [
   {
     title: "מחפשים",
-    description: "לפי מוסד, תחום או שם מחלקה"
+    description: "לפי מוסד, תחום או שם מחלקה",
+    icon: SearchPulseIcon
   },
   {
     title: "משווים",
-    description: "אווירה, עומס, תקנים פתוחים ומחקר"
+    description: "אווירה, עומס, תקנים פתוחים ומחקר",
+    icon: DepartmentDirectoryIcon
   },
   {
     title: "שומרים וחוזרים",
-    description: "בונים רשימה קצרה בלי ללכת לאיבוד"
+    description: "בונים רשימה קצרה בלי ללכת לאיבוד",
+    icon: ClipboardHeartIcon
   }
 ];
 
@@ -171,6 +179,9 @@ export default async function HomePage() {
         <div className="grid gap-4 md:grid-cols-3">
           {decisionSteps.map((step, index) => (
             <Card key={step.title} className="bg-white">
+              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-900">
+                <step.icon className="h-5 w-5" />
+              </span>
               <p className="text-sm font-semibold text-brand-600">צעד {index + 1}</p>
               <h3 className="mt-2 text-xl font-bold text-ink">{step.title}</h3>
               <p className="mt-3 text-sm leading-7 text-slate-700">{step.description}</p>

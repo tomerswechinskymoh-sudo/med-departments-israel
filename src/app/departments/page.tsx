@@ -31,7 +31,33 @@ export default async function DepartmentsPage({
   const parsedFilters = departmentFilterSchema.parse({
     search: typeof rawSearchParams.search === "string" ? rawSearchParams.search : undefined,
     institutions: toMultiValue(rawSearchParams.institution),
-    specialties: toMultiValue(rawSearchParams.specialty)
+    specialties: toMultiValue(rawSearchParams.specialty),
+    prioritizeOpenings: rawSearchParams.prioritizeOpenings,
+    prioritizeCommittee: rawSearchParams.prioritizeCommittee,
+    researchPriority:
+      typeof rawSearchParams.researchPriority === "string"
+        ? rawSearchParams.researchPriority
+        : undefined,
+    electivePriority:
+      typeof rawSearchParams.electivePriority === "string"
+        ? rawSearchParams.electivePriority
+        : undefined,
+    lifestylePriority:
+      typeof rawSearchParams.lifestylePriority === "string"
+        ? rawSearchParams.lifestylePriority
+        : undefined,
+    teachingPriority:
+      typeof rawSearchParams.teachingPriority === "string"
+        ? rawSearchParams.teachingPriority
+        : undefined,
+    seniorsPriority:
+      typeof rawSearchParams.seniorsPriority === "string"
+        ? rawSearchParams.seniorsPriority
+        : undefined,
+    clinicalPriority:
+      typeof rawSearchParams.clinicalPriority === "string"
+        ? rawSearchParams.clinicalPriority
+        : undefined
   });
 
   const departments = await getDirectoryData(parsedFilters, session?.userId);
@@ -41,7 +67,7 @@ export default async function DepartmentsPage({
       <SectionHeading
         eyebrow="חיפוש מחלקות"
         title="חיפוש מחלקות, מסלולים וקהילה במקום אחד"
-        description="סננו לפי מוסד ותחום, והשוו בין מה שאומרים מהשטח, מחקר, תקנים ומידע פרקטי."
+        description="חיפוש בסיסי נשאר פשוט, ובחיפוש המתקדם אפשר לדרג מה חשוב לך יותר כדי לסדר את התוצאות בהתאם."
       />
 
       <DepartmentFilters

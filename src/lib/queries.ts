@@ -29,7 +29,12 @@ const publishedReviewSelect = {
   pros: true,
   cons: true,
   tips: true,
-  publishedAt: true
+  publishedAt: true,
+  submission: {
+    select: {
+      roleDetails: true
+    }
+  }
 } satisfies Prisma.ReviewSelect;
 
 const openingCriteriaSelect = {
@@ -77,6 +82,33 @@ async function getManagedDepartments(userId: string) {
       institutionId: true
     }
   });
+}
+
+function numberFromRoleDetails(
+  roleDetails: Prisma.JsonValue | null | undefined,
+  key: string
+) {
+  if (!roleDetails || typeof roleDetails !== "object" || Array.isArray(roleDetails)) {
+    return 0;
+  }
+
+  const jsonObject = roleDetails as Record<string, unknown>;
+  const value = jsonObject[key];
+  return typeof value === "number" ? value : 0;
+}
+
+function averageClinicalExposure(
+  reviews: Array<{
+    submission?: {
+      roleDetails: Prisma.JsonValue | null;
+    } | null;
+  }>
+) {
+  const numbers = reviews
+    .map((review) => numberFromRoleDetails(review.submission?.roleDetails, "clinicalExposure"))
+    .filter((value) => value > 0);
+
+  return average(numbers);
 }
 
 export async function getHomePageData() {
@@ -254,6 +286,14 @@ export async function getDirectoryData(
     search?: string;
     institutions?: string[];
     specialties?: string[];
+    prioritizeOpenings?: boolean;
+    prioritizeCommittee?: boolean;
+    researchPriority?: number;
+    electivePriority?: number;
+    lifestylePriority?: number;
+    teachingPriority?: number;
+    seniorsPriority?: number;
+    clinicalPriority?: number;
   },
   userId?: string
 ) {
@@ -290,15 +330,23 @@ export async function getDirectoryData(
       institution: true,
       specialty: true,
       reviews: {
-        select: {
-          overallRecommendation: true
-        }
+        select: publishedReviewSelect
       },
       residencyOpenings: {
         where: {
           contentStatus: ContentStatus.PUBLISHED,
           status: {
             in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+          }
+        },
+        select: {
+          committeeDate: true,
+          acceptanceCriteria: {
+            select: {
+              researchImportance: true,
+              departmentElectiveImportance: true,
+              departmentInternshipImportance: true
+            }
           }
         }
       },
@@ -321,22 +369,93 @@ export async function getDirectoryData(
     orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
   });
 
-  return departments.map((department) => ({
-    id: department.id,
-    slug: department.slug,
-    name: department.name,
-    institutionName: department.institution.name,
-    institutionType: department.institution.type,
-    city: department.institution.city,
-    specialtyName: department.specialty.name,
-    coverImageUrl: department.coverImageUrl ?? department.institution.coverImageUrl,
-    shortSummary: department.shortSummary,
-    reviewCount: department.reviews.length,
-    averageOverall: average(department.reviews.map((review) => review.overallRecommendation)),
-    hasOpenResidency: department.residencyOpenings.length > 0,
-    hasResearch: department.researchOpportunities.length > 0,
-    isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0
-  }));
+  const now = new Date();
+  const hasAdvancedRanking = Boolean(
+    filters.prioritizeOpenings ||
+      filters.prioritizeCommittee ||
+      filters.researchPriority ||
+      filters.electivePriority ||
+      filters.lifestylePriority ||
+      filters.teachingPriority ||
+      filters.seniorsPriority ||
+      filters.clinicalPriority
+  );
+
+  const rankedDepartments = departments.map((department) => {
+    const teachingQuality = average(department.reviews.map((review) => review.teachingQuality));
+    const lifestyleBalance = average(department.reviews.map((review) => review.lifestyleBalance));
+    const researchExposure = average(department.reviews.map((review) => review.researchExposure));
+    const seniorsApproachability = average(
+      department.reviews.map((review) => review.seniorsApproachability)
+    );
+    const averageOverall = average(
+      department.reviews.map((review) => review.overallRecommendation)
+    );
+    const clinicalExposure = averageClinicalExposure(department.reviews);
+    const electiveImportance = Math.max(
+      ...department.residencyOpenings.map((opening) =>
+        Math.max(
+          opening.acceptanceCriteria?.departmentElectiveImportance ?? 0,
+          opening.acceptanceCriteria?.departmentInternshipImportance ?? 0
+        )
+      ),
+      0
+    );
+    const hasUpcomingCommittee = department.residencyOpenings.some(
+      (opening) => opening.committeeDate && new Date(opening.committeeDate) >= now
+    );
+
+    const rankingScore =
+      (filters.prioritizeOpenings && department.residencyOpenings.length > 0 ? 7 : 0) +
+      (filters.prioritizeCommittee && hasUpcomingCommittee ? 6 : 0) +
+      (filters.researchPriority ?? 0) * researchExposure +
+      (filters.electivePriority ?? 0) * electiveImportance +
+      (filters.lifestylePriority ?? 0) * lifestyleBalance +
+      (filters.teachingPriority ?? 0) * teachingQuality +
+      (filters.seniorsPriority ?? 0) * seniorsApproachability +
+      (filters.clinicalPriority ?? 0) * clinicalExposure;
+
+    return {
+      id: department.id,
+      slug: department.slug,
+      name: department.name,
+      institutionName: department.institution.name,
+      institutionType: department.institution.type,
+      city: department.institution.city,
+      specialtyName: department.specialty.name,
+      coverImageUrl: department.coverImageUrl ?? department.institution.coverImageUrl,
+      shortSummary: department.shortSummary,
+      reviewCount: department.reviews.length,
+      averageOverall,
+      teachingQuality,
+      lifestyleBalance,
+      researchExposure,
+      seniorsApproachability,
+      clinicalExposure,
+      hasOpenResidency: department.residencyOpenings.length > 0,
+      hasUpcomingCommittee,
+      hasResearch: department.researchOpportunities.length > 0,
+      isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
+      rankingScore
+    };
+  });
+
+  return rankedDepartments.sort((left, right) => {
+    if (hasAdvancedRanking && right.rankingScore !== left.rankingScore) {
+      return right.rankingScore - left.rankingScore;
+    }
+
+    if (right.averageOverall !== left.averageOverall) {
+      return right.averageOverall - left.averageOverall;
+    }
+
+    const institutionCompare = left.institutionName.localeCompare(right.institutionName, "he");
+    if (institutionCompare !== 0) {
+      return institutionCompare;
+    }
+
+    return left.name.localeCompare(right.name, "he");
+  });
 }
 
 export async function getDepartmentPageData(slug: string, viewerId?: string) {

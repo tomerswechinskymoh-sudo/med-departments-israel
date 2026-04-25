@@ -1,6 +1,7 @@
 import { ReportReviewButton } from "@/components/departments/report-review-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { DoctorAvatarIcon, ReviewBubbleIcon } from "@/components/ui/med-icons";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { reviewerTypeLabel } from "@/lib/queries";
 import { formatDate } from "@/lib/utils";
@@ -34,11 +35,20 @@ export function ReviewCard({
   return (
     <Card className="border border-white/90 bg-white/90">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="default">{reviewerTypeLabel(review.reviewerType)}</Badge>
-          <Badge tone={review.isAnonymous ? "warning" : "success"}>
-            {review.isAnonymous ? "בעילום שם" : review.displayName ?? "בשם מלא"}
-          </Badge>
+        <div className="flex items-center gap-3">
+          <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-900">
+            {review.isAnonymous ? (
+              <ReviewBubbleIcon className="h-5 w-5" />
+            ) : (
+              <DoctorAvatarIcon className="h-8 w-8" />
+            )}
+          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge tone="default">{reviewerTypeLabel(review.reviewerType)}</Badge>
+            <Badge tone={review.isAnonymous ? "warning" : "success"}>
+              {review.isAnonymous ? "בעילום שם" : review.displayName ?? "בשם מלא"}
+            </Badge>
+          </div>
         </div>
         <span className="text-xs text-slate-500">{formatDate(review.publishedAt)}</span>
       </div>

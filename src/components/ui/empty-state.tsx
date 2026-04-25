@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
+import { ClipboardHeartIcon } from "@/components/ui/med-icons";
 
 export function EmptyState({
   title,
@@ -14,6 +15,9 @@ export function EmptyState({
 }) {
   return (
     <Card className="text-center">
+      <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-[1.25rem] bg-brand-50 text-brand-900">
+        <ClipboardHeartIcon className="h-6 w-6" />
+      </span>
       <h3 className="text-xl font-bold text-ink">{title}</h3>
       <p className="mt-3 text-sm leading-7 text-slate-600">{description}</p>
       {ctaHref && ctaLabel ? (

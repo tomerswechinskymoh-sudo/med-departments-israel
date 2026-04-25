@@ -11,9 +11,11 @@ import { OpeningCriteriaGrid } from "@/components/openings/opening-criteria-grid
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/empty-state";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getDepartmentPageData, getReviewFormContext } from "@/lib/queries";
+import { buildDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -31,6 +33,7 @@ export default async function DepartmentDetailsPage({
   }
 
   const visibleReviews = session ? department.reviews : department.reviews.slice(0, 3);
+  const departmentHref = buildDepartmentHref(department.slug);
   const hasOfficialDepartmentContent =
     department.heads.length > 0 ||
     department.officialUpdates.length > 0 ||
@@ -98,7 +101,7 @@ export default async function DepartmentDetailsPage({
                 />
               ) : (
                 <Link
-                  href={`/login?next=/departments/${department.slug}`}
+                  href={`/login?next=${encodeURIComponent(departmentHref)}`}
                   className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800"
                 >
                   התחברות לשמירה להשוואה
@@ -110,14 +113,47 @@ export default async function DepartmentDetailsPage({
       </section>
 
       {!hasOfficialDepartmentContent ? (
-        <Card className="border border-brand-100 bg-brand-50/70">
-          <p className="text-sm font-semibold text-brand-700">עמוד מחלקה בסיסי</p>
-          <p className="mt-2 text-sm leading-7 text-slate-700">
-            העמוד הזה כבר קיים כדי לאפשר חיפוש, השוואה ושיתופי חוויה גם לפני שנציג/ת המחלקה
-            הוסיפ/ה תוכן רשמי. כרגע מוצגים פרטי הבסיס של המוסד והתחום, ובהמשך יתווספו עדכונים,
-            אנשי קשר ותוכן רשמי נוסף.
-          </p>
-        </Card>
+        <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+          <Card className="border border-brand-100 bg-gradient-to-b from-brand-50/85 to-white">
+            <p className="text-sm font-semibold text-brand-700">עדיין אין מידע רשמי</p>
+            <h2 className="mt-2 text-2xl font-bold text-ink">עמוד המחלקה כבר פעיל, גם לפני שתוכן רשמי עלה</h2>
+            <p className="mt-3 text-sm leading-8 text-slate-700">
+              אפשר כבר להבין באיזה מוסד ובאיזה תחום מדובר, לשתף חוויה אישית מהמחלקה, ולחזור
+              לכאן כשתתווסף בהמשך נוכחות רשמית של המחלקה.
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <div className="rounded-2xl border border-brand-100 bg-white px-4 py-4">
+                <p className="text-xs font-semibold text-slate-500">מוסד</p>
+                <p className="mt-2 font-semibold text-ink">{department.institution.name}</p>
+              </div>
+              <div className="rounded-2xl border border-brand-100 bg-white px-4 py-4">
+                <p className="text-xs font-semibold text-slate-500">תחום</p>
+                <p className="mt-2 font-semibold text-ink">{department.specialty.name}</p>
+              </div>
+              <div className="rounded-2xl border border-brand-100 bg-white px-4 py-4">
+                <p className="text-xs font-semibold text-slate-500">שם העמוד</p>
+                <p className="mt-2 font-semibold text-ink">{department.name}</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="bg-white/94">
+            <p className="text-sm font-semibold text-brand-700">אפשר לעשות כבר עכשיו</p>
+            <div className="mt-4 space-y-3 text-sm leading-7 text-slate-700">
+              <p>לקרוא את פרטי הבסיס של המחלקה והמוסד.</p>
+              <p>לשתף חוויה אישית כדי לעזור לאחרים להבין איך זה נראה מבפנים.</p>
+              <p>לחזור לכאן בהמשך כשתתווסף נוכחות רשמית, עדכונים או תקנים פתוחים.</p>
+            </div>
+            <div className="mt-5">
+              <ExperienceCta
+                departments={reviewContext.departments}
+                selectedDepartmentId={department.id}
+                className="w-full"
+                buttonClassName="inline-flex w-full items-center justify-center rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-6 py-4 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-200/50 transition hover:-translate-y-0.5"
+              />
+            </div>
+          </Card>
+        </section>
       ) : null}
 
       <section className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
@@ -152,7 +188,13 @@ export default async function DepartmentDetailsPage({
         <div className="space-y-6">
           <SectionHeading title="ראשי המחלקה" />
           <div className="grid gap-4">
-            {department.heads.map((head) => (
+            {department.heads.length === 0 ? (
+              <EmptyState
+                title="עדיין לא פורסמו ראשי מחלקה"
+                description="כשהעמוד יתעדכן בתוכן רשמי, כאן יוצגו ראשי המחלקה או בעלי תפקיד רלוונטיים."
+              />
+            ) : (
+              department.heads.map((head) => (
               <Card key={head.id} className="grid gap-4 md:grid-cols-[116px_1fr] md:items-center">
                 <PlaceholderVisual
                   label={head.name}
@@ -168,7 +210,8 @@ export default async function DepartmentDetailsPage({
                   <p className="mt-3 text-sm leading-7 text-slate-700">{head.bio}</p>
                 </div>
               </Card>
-            ))}
+              ))
+            )}
           </div>
         </div>
 
@@ -316,7 +359,7 @@ export default async function DepartmentDetailsPage({
                 שימוש, לא כתנאי לקריאת עיקר המידע.
               </p>
               <Link
-                href={`/login?next=/departments/${department.slug}`}
+                href={`/login?next=${encodeURIComponent(departmentHref)}`}
                 className="mt-4 inline-flex rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white"
               >
                 התחברות
