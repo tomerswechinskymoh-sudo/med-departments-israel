@@ -74,6 +74,7 @@ export default async function DepartmentsPage({
         filters={parsedFilters}
         institutions={availableFilters.institutions}
         specialties={availableFilters.specialties}
+        departments={availableFilters.departments}
       />
 
       {departments.length === 0 ? (

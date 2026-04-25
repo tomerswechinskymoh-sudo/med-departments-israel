@@ -1,8 +1,13 @@
+"use client";
+
+import { useDeferredValue, useMemo, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
   ClipboardHeartIcon,
   DepartmentDirectoryIcon,
+  HospitalBuildingIcon,
   SearchPulseIcon,
   ShieldCheckIcon,
   StethoscopeIcon
@@ -16,6 +21,29 @@ const priorityOptions = [
   { value: "4", label: "4" },
   { value: "5", label: "5 · חשוב מאוד" }
 ];
+
+type SuggestionItem =
+  | {
+      key: string;
+      type: "institution";
+      value: string;
+      title: string;
+      subtitle: string;
+    }
+  | {
+      key: string;
+      type: "specialty";
+      value: string;
+      title: string;
+      subtitle: string;
+    }
+  | {
+      key: string;
+      type: "department";
+      value: string;
+      title: string;
+      subtitle: string;
+    };
 
 function buildAdvancedSummary(filters: {
   prioritizeOpenings?: boolean;
@@ -64,10 +92,124 @@ function buildAdvancedSummary(filters: {
   return chips;
 }
 
+function normalizeSearchValue(value: string) {
+  return value.trim().toLocaleLowerCase("he");
+}
+
+function highlightMatch(text: string, query: string) {
+  const normalizedQuery = query.trim();
+
+  if (!normalizedQuery) {
+    return text;
+  }
+
+  const lowerText = text.toLocaleLowerCase("he");
+  const lowerQuery = normalizedQuery.toLocaleLowerCase("he");
+  const matchIndex = lowerText.indexOf(lowerQuery);
+
+  if (matchIndex === -1) {
+    return text;
+  }
+
+  const before = text.slice(0, matchIndex);
+  const match = text.slice(matchIndex, matchIndex + normalizedQuery.length);
+  const after = text.slice(matchIndex + normalizedQuery.length);
+
+  return (
+    <>
+      {before}
+      <mark className="rounded bg-amber-100 px-0.5 text-inherit">{match}</mark>
+      {after}
+    </>
+  );
+}
+
+function buildSearchParams(formData: FormData) {
+  const params = new URLSearchParams();
+
+  for (const [key, value] of formData.entries()) {
+    if (typeof value !== "string") {
+      continue;
+    }
+
+    const trimmed = value.trim();
+    if (!trimmed) {
+      continue;
+    }
+
+    params.append(key, trimmed);
+  }
+
+  return params;
+}
+
+function SuggestionGroup({
+  title,
+  suggestions,
+  query,
+  activeIndex,
+  offset,
+  onSelect
+}: {
+  title: string;
+  suggestions: SuggestionItem[];
+  query: string;
+  activeIndex: number;
+  offset: number;
+  onSelect: (suggestion: SuggestionItem) => void;
+}) {
+  if (suggestions.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className="space-y-1">
+      <p className="px-3 text-[0.7rem] font-bold tracking-wide text-slate-400">{title}</p>
+      <div className="space-y-1">
+        {suggestions.map((suggestion, index) => {
+          const absoluteIndex = offset + index;
+          const isActive = absoluteIndex === activeIndex;
+
+          return (
+            <button
+              key={suggestion.key}
+              type="button"
+              onMouseDown={(event) => {
+                event.preventDefault();
+                onSelect(suggestion);
+              }}
+              className={`flex w-full items-start justify-between gap-3 rounded-2xl px-3 py-3 text-right transition ${
+                isActive ? "bg-brand-50 text-brand-900" : "hover:bg-slate-50"
+              }`}
+            >
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-ink">
+                  {highlightMatch(suggestion.title, query)}
+                </p>
+                <p className="mt-1 text-xs leading-6 text-slate-500">
+                  {highlightMatch(suggestion.subtitle, query)}
+                </p>
+              </div>
+              <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[0.68rem] font-semibold text-slate-500">
+                {suggestion.type === "institution"
+                  ? "מוסד"
+                  : suggestion.type === "specialty"
+                    ? "תחום"
+                    : "מחלקה"}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function DepartmentFilters({
   filters,
   institutions,
-  specialties
+  specialties,
+  departments
 }: {
   filters: {
     search?: string;
@@ -84,13 +226,190 @@ export function DepartmentFilters({
   };
   institutions: { id: string; name: string; type: "HOSPITAL" | "HMO" }[];
   specialties: { id: string; name: string }[];
+  departments: {
+    id: string;
+    name: string;
+    institution: { id: string; name: string };
+    specialty: { id: string; name: string };
+  }[];
 }) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [searchValue, setSearchValue] = useState(filters.search ?? "");
+  const [suggestionsOpen, setSuggestionsOpen] = useState(false);
+  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
+  const deferredSearchValue = useDeferredValue(searchValue);
   const summaryChips = buildAdvancedSummary(filters);
   const hasAdvancedFilters = summaryChips.length > 0;
 
+  const suggestionGroups = useMemo(() => {
+    const normalizedQuery = normalizeSearchValue(deferredSearchValue);
+
+    if (!normalizedQuery) {
+      return {
+        institutions: [] as SuggestionItem[],
+        specialties: [] as SuggestionItem[],
+        departments: [] as SuggestionItem[],
+        flat: [] as SuggestionItem[]
+      };
+    }
+
+    const institutionSuggestions = institutions
+      .filter((institution) => normalizeSearchValue(institution.name).includes(normalizedQuery))
+      .slice(0, 3)
+      .map(
+        (institution): SuggestionItem => ({
+          key: `institution-${institution.id}`,
+          type: "institution",
+          value: institution.id,
+          title: institution.name,
+          subtitle: institution.type === "HOSPITAL" ? "בית חולים" : "קהילה / קופה"
+        })
+      );
+
+    const specialtySuggestions = specialties
+      .filter((specialty) => normalizeSearchValue(specialty.name).includes(normalizedQuery))
+      .slice(0, 3)
+      .map(
+        (specialty): SuggestionItem => ({
+          key: `specialty-${specialty.id}`,
+          type: "specialty",
+          value: specialty.id,
+          title: specialty.name,
+          subtitle: "תחום התמחות"
+        })
+      );
+
+    const departmentSuggestions = departments
+      .filter((department) => {
+        const haystack = `${department.name} ${department.institution.name} ${department.specialty.name}`;
+        return normalizeSearchValue(haystack).includes(normalizedQuery);
+      })
+      .slice(0, 4)
+      .map(
+        (department): SuggestionItem => ({
+          key: `department-${department.id}`,
+          type: "department",
+          value: department.name,
+          title: department.name,
+          subtitle: `${department.institution.name} · ${department.specialty.name}`
+        })
+      );
+
+    const flat = [...institutionSuggestions, ...specialtySuggestions, ...departmentSuggestions].slice(
+      0,
+      10
+    );
+
+    return {
+      institutions: institutionSuggestions,
+      specialties: specialtySuggestions,
+      departments: departmentSuggestions,
+      flat
+    };
+  }, [deferredSearchValue, departments, institutions, specialties]);
+
+  const hasSuggestions = suggestionGroups.flat.length > 0 && searchValue.trim().length > 0;
+
+  const submitWithFormData = (formData: FormData) => {
+    const params = buildSearchParams(formData);
+    const nextUrl = params.toString() ? `${pathname}?${params.toString()}` : pathname;
+    router.push(nextUrl);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!formRef.current) {
+      return;
+    }
+
+    submitWithFormData(new FormData(formRef.current));
+    setSuggestionsOpen(false);
+    setActiveSuggestionIndex(-1);
+  };
+
+  const applySuggestion = (suggestion: SuggestionItem) => {
+    if (!formRef.current) {
+      return;
+    }
+
+    const formData = new FormData(formRef.current);
+
+    if (suggestion.type === "department") {
+      formData.set("search", suggestion.value);
+      setSearchValue(suggestion.value);
+    }
+
+    if (suggestion.type === "institution") {
+      const currentValues = formData.getAll("institution").map(String);
+      if (!currentValues.includes(suggestion.value)) {
+        formData.append("institution", suggestion.value);
+      }
+      formData.set("search", suggestion.title);
+      setSearchValue(suggestion.title);
+    }
+
+    if (suggestion.type === "specialty") {
+      const currentValues = formData.getAll("specialty").map(String);
+      if (!currentValues.includes(suggestion.value)) {
+        formData.append("specialty", suggestion.value);
+      }
+      formData.set("search", suggestion.title);
+      setSearchValue(suggestion.title);
+    }
+
+    setSuggestionsOpen(false);
+    setActiveSuggestionIndex(-1);
+    submitWithFormData(formData);
+  };
+
+  const handleSearchKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!hasSuggestions) {
+      if (event.key === "Escape") {
+        setSuggestionsOpen(false);
+      }
+      return;
+    }
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setSuggestionsOpen(true);
+      setActiveSuggestionIndex((currentIndex) =>
+        currentIndex + 1 >= suggestionGroups.flat.length ? 0 : currentIndex + 1
+      );
+      return;
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setSuggestionsOpen(true);
+      setActiveSuggestionIndex((currentIndex) =>
+        currentIndex <= 0 ? suggestionGroups.flat.length - 1 : currentIndex - 1
+      );
+      return;
+    }
+
+    if (event.key === "Enter" && suggestionsOpen && activeSuggestionIndex >= 0) {
+      event.preventDefault();
+      const activeSuggestion = suggestionGroups.flat[activeSuggestionIndex];
+      if (activeSuggestion) {
+        applySuggestion(activeSuggestion);
+      }
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setSuggestionsOpen(false);
+      setActiveSuggestionIndex(-1);
+    }
+  };
+
   return (
     <Card className="overflow-hidden rounded-[2rem] border border-brand-100/80 bg-white/96 p-0">
-      <form className="space-y-5 p-5 md:p-6">
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-5 p-5 md:p-6">
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-900 text-white">
@@ -104,13 +423,71 @@ export function DepartmentFilters({
             </div>
           </div>
 
-          <input
-            type="text"
-            name="search"
-            defaultValue={filters.search}
-            placeholder="חיפוש לפי מחלקה, מוסד או תחום"
-            className="w-full rounded-[1.5rem] border border-brand-100 bg-surface px-4 py-3 text-sm outline-none ring-0 transition focus:border-brand-300"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              name="search"
+              value={searchValue}
+              onChange={(event) => {
+                setSearchValue(event.target.value);
+                setSuggestionsOpen(event.target.value.trim().length > 0);
+                setActiveSuggestionIndex(-1);
+              }}
+              onFocus={() => {
+                if (searchValue.trim()) {
+                  setSuggestionsOpen(true);
+                }
+              }}
+              onBlur={() => {
+                window.setTimeout(() => {
+                  setSuggestionsOpen(false);
+                  setActiveSuggestionIndex(-1);
+                }, 120);
+              }}
+              onKeyDown={handleSearchKeyDown}
+              placeholder="חיפוש לפי מחלקה, מוסד או תחום"
+              autoComplete="off"
+              aria-expanded={hasSuggestions && suggestionsOpen}
+              aria-controls="department-search-suggestions"
+              className="w-full rounded-[1.5rem] border border-brand-100 bg-surface px-4 py-3 text-sm outline-none ring-0 transition focus:border-brand-300"
+            />
+
+            {hasSuggestions && suggestionsOpen ? (
+              <div
+                id="department-search-suggestions"
+                className="absolute inset-x-0 top-[calc(100%+0.6rem)] z-30 rounded-[1.5rem] border border-brand-100 bg-white p-3 shadow-panel"
+              >
+                <div className="space-y-3">
+                  <SuggestionGroup
+                    title="מוסדות"
+                    suggestions={suggestionGroups.institutions}
+                    query={searchValue}
+                    activeIndex={activeSuggestionIndex}
+                    offset={0}
+                    onSelect={applySuggestion}
+                  />
+                  <SuggestionGroup
+                    title="תחומים"
+                    suggestions={suggestionGroups.specialties}
+                    query={searchValue}
+                    activeIndex={activeSuggestionIndex}
+                    offset={suggestionGroups.institutions.length}
+                    onSelect={applySuggestion}
+                  />
+                  <SuggestionGroup
+                    title="מחלקות"
+                    suggestions={suggestionGroups.departments}
+                    query={searchValue}
+                    activeIndex={activeSuggestionIndex}
+                    offset={
+                      suggestionGroups.institutions.length + suggestionGroups.specialties.length
+                    }
+                    onSelect={applySuggestion}
+                  />
+                </div>
+              </div>
+            ) : null}
+          </div>
 
           <div className="grid gap-4 lg:grid-cols-2">
             <fieldset className="rounded-[1.5rem] border border-brand-100 bg-brand-50/45 p-4">
@@ -317,7 +694,7 @@ export function DepartmentFilters({
 
               <div className="rounded-[1.25rem] border border-brand-100 bg-white p-4">
                 <div className="flex items-center gap-2 text-brand-700">
-                  <DepartmentDirectoryIcon className="h-4 w-4" />
+                  <HospitalBuildingIcon className="h-4 w-4" />
                   <label className="text-sm font-semibold text-ink" htmlFor="electivePriority">
                     חשיבות אלקטיב / סבב
                   </label>

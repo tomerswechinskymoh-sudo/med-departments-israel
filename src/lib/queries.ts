@@ -376,7 +376,7 @@ export async function getHomePageData() {
 }
 
 export async function getDirectoryFilters() {
-  const [institutions, specialties] = await Promise.all([
+  const [institutions, specialties, departments] = await Promise.all([
     prisma.institution.findMany({
       select: {
         id: true,
@@ -395,10 +395,29 @@ export async function getDirectoryFilters() {
       orderBy: {
         name: "asc"
       }
+    }),
+    prisma.department.findMany({
+      select: {
+        id: true,
+        name: true,
+        institution: {
+          select: {
+            id: true,
+            name: true
+          }
+        },
+        specialty: {
+          select: {
+            id: true,
+            name: true
+          }
+        }
+      },
+      orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
     })
   ]);
 
-  return { institutions, specialties };
+  return { institutions, specialties, departments };
 }
 
 export async function getDirectoryData(
