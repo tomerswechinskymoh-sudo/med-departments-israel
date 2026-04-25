@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getOpeningPageData, openingTypeLabel } from "@/lib/queries";
-import { buildDepartmentHref, formatDate } from "@/lib/utils";
+import { formatDate, getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -98,7 +98,7 @@ export default async function OpeningDetailsPage({
                 </Link>
               ) : null}
               <Link
-                href={buildDepartmentHref(opening.department.slug)}
+                href={getDepartmentHref(opening.department)}
                 className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800"
               >
                 לעמוד המחלקה

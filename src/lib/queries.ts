@@ -129,6 +129,87 @@ function canonicalDepartmentSlugForRecord(input: {
   });
 }
 
+function getDepartmentSlugVariants(slug: string) {
+  const decodedSlug = decodeURIComponent(slug).trim().replace(/^\/+|\/+$/g, "");
+  const normalizedHyphenSlug = decodedSlug.replace(/-+/g, "-");
+
+  return Array.from(new Set([decodedSlug, normalizedHyphenSlug])).filter(Boolean);
+}
+
+export async function resolveDepartmentBySlugOrFallback(
+  slug: string,
+  departmentId?: string | null
+) {
+  const slugVariants = getDepartmentSlugVariants(slug);
+
+  const departmentCandidates = await prisma.department.findMany({
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      institution: {
+        select: {
+          slug: true
+        }
+      },
+      specialty: {
+        select: {
+          slug: true
+        }
+      }
+    }
+  });
+
+  const matchedDepartment = departmentCandidates.find((department) => {
+    const canonicalSlug = canonicalDepartmentSlugForRecord(department);
+
+    return slugVariants.some(
+      (variant) => variant === department.slug || variant === canonicalSlug
+    );
+  });
+
+  if (!matchedDepartment) {
+    if (!departmentId) {
+      return null;
+    }
+
+    const departmentById = await prisma.department.findUnique({
+      where: {
+        id: departmentId
+      },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        institution: {
+          select: {
+            slug: true
+          }
+        },
+        specialty: {
+          select: {
+            slug: true
+          }
+        }
+      }
+    });
+
+    if (!departmentById) {
+      return null;
+    }
+
+    return {
+      ...departmentById,
+      slug: canonicalDepartmentSlugForRecord(departmentById)
+    };
+  }
+
+  return {
+    ...matchedDepartment,
+    slug: canonicalDepartmentSlugForRecord(matchedDepartment)
+  };
+}
+
 export async function getHomePageData() {
   const [featuredDepartments, latestReviews, featuredOpenings, latestResearchOpportunities, stats] =
     await Promise.all([
@@ -497,29 +578,12 @@ export async function getDirectoryData(
   });
 }
 
-export async function getDepartmentPageData(slug: string, viewerId?: string) {
-  const departmentCandidates = await prisma.department.findMany({
-    select: {
-      id: true,
-      slug: true,
-      name: true,
-      institution: {
-        select: {
-          slug: true
-        }
-      },
-      specialty: {
-        select: {
-          slug: true
-        }
-      }
-    }
-  });
-
-  const matchedDepartment = departmentCandidates.find((department) => {
-    const canonicalSlug = canonicalDepartmentSlugForRecord(department);
-    return department.slug === slug || canonicalSlug === slug;
-  });
+export async function getDepartmentPageData(
+  slug: string,
+  viewerId?: string,
+  departmentId?: string | null
+) {
+  const matchedDepartment = await resolveDepartmentBySlugOrFallback(slug, departmentId);
 
   if (!matchedDepartment) {
     return null;

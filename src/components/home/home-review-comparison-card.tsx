@@ -3,7 +3,7 @@ import { ReviewBubbleIcon } from "@/components/ui/med-icons";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { reviewerTypeLabel } from "@/lib/queries";
-import { buildDepartmentHref, formatDate } from "@/lib/utils";
+import { formatDate, getDepartmentHref } from "@/lib/utils";
 
 type HomeReview = {
   id: string;
@@ -21,6 +21,7 @@ type HomeReview = {
   tips: string;
   publishedAt: Date | null;
   department: {
+    id: string;
     name: string;
     slug: string;
     institution: {
@@ -172,7 +173,7 @@ export function HomeReviewComparisonCard({ review }: { review: HomeReview }) {
       <div className="mt-auto flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm text-slate-500">כרטיס השוואה מהיר למחלקה</p>
         <Link
-          href={buildDepartmentHref(review.department.slug)}
+          href={getDepartmentHref(review.department)}
           className="inline-flex items-center justify-center rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
         >
           לצפייה במחלקה

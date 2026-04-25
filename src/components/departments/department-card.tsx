@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { FavoriteToggleButton } from "@/components/departments/favorite-toggle-button";
-import { PlaceholderVisual } from "@/components/media/placeholder-visual";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import {
@@ -12,7 +11,7 @@ import {
   ShieldCheckIcon
 } from "@/components/ui/med-icons";
 import { RatingStars } from "@/components/ui/rating-stars";
-import { buildDepartmentHref } from "@/lib/utils";
+import { getDepartmentHref } from "@/lib/utils";
 
 function MetricChip({
   label,
@@ -79,26 +78,17 @@ export function DepartmentCard({
   };
   showFavoriteButton?: boolean;
 }) {
-  const departmentHref = buildDepartmentHref(department.slug);
+  const departmentHref = getDepartmentHref(department);
 
   return (
-    <Card className="group relative flex h-full flex-col justify-between overflow-hidden border border-white/90 bg-white/94 p-0 transition hover:-translate-y-0.5 hover:shadow-panel">
+    <Card className="group relative flex h-full flex-col justify-between overflow-hidden border border-white/90 bg-white/96 p-0 transition hover:-translate-y-0.5 hover:shadow-panel">
       <Link
         href={departmentHref}
         aria-label={`לצפייה בעמוד המחלקה ${department.name}`}
         className="absolute inset-0 z-10 rounded-[2rem]"
       />
 
-      <div className="relative z-0 p-3">
-        <PlaceholderVisual
-          label={department.name}
-          caption={`${department.institutionName}${department.city ? ` · ${department.city}` : ""}`}
-          variant="department"
-          className="aspect-[1.48/1] w-full"
-        />
-      </div>
-
-      <div className="relative z-20 flex flex-1 flex-col justify-between px-6 pb-6">
+      <div className="relative z-20 flex flex-1 flex-col justify-between p-6">
         <div className="pointer-events-none">
           <div className="flex flex-wrap items-center gap-2">
             <Badge tone={department.hasOpenResidency ? "success" : "warning"}>
@@ -112,7 +102,16 @@ export function DepartmentCard({
             </Badge>
           </div>
 
-          <h3 className="mt-4 text-2xl font-bold text-ink">{department.name}</h3>
+          <div className="mt-5 rounded-[1.6rem] border border-slate-100 bg-slate-50/90 px-4 py-4">
+            <p className="text-xs font-semibold tracking-wide text-slate-500">עמוד מחלקה</p>
+            <h3 className="mt-2 break-words text-2xl font-bold leading-tight text-ink">
+              {department.name}
+            </h3>
+            <p className="mt-2 text-sm font-medium leading-6 text-slate-600">
+              {department.institutionName}
+              {department.city ? ` · ${department.city}` : ""}
+            </p>
+          </div>
 
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl bg-brand-50/70 p-3">
@@ -134,7 +133,7 @@ export function DepartmentCard({
             </div>
           </div>
 
-          <p className="mt-4 max-h-14 overflow-hidden text-sm leading-7 text-slate-600">
+          <p className="mt-4 min-h-[3.5rem] text-sm leading-7 text-slate-600">
             {department.shortSummary}
           </p>
 

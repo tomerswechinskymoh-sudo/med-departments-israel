@@ -15,25 +15,35 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getDepartmentPageData, getReviewFormContext } from "@/lib/queries";
-import { buildDepartmentHref } from "@/lib/utils";
+import { getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
 export default async function DepartmentDetailsPage({
-  params
+  params,
+  searchParams
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const [{ slug }, session] = await Promise.all([params, getSession()]);
-  const reviewContext = await getReviewFormContext(slug);
-  const department = await getDepartmentPageData(slug, session?.userId);
+  const [{ slug }, resolvedSearchParams, session] = await Promise.all([
+    params,
+    searchParams,
+    getSession()
+  ]);
+  const departmentId =
+    typeof resolvedSearchParams.departmentId === "string"
+      ? resolvedSearchParams.departmentId
+      : null;
+  const department = await getDepartmentPageData(slug, session?.userId, departmentId);
 
   if (!department) {
     notFound();
   }
 
+  const reviewContext = await getReviewFormContext(department.slug);
   const visibleReviews = session ? department.reviews : department.reviews.slice(0, 3);
-  const departmentHref = buildDepartmentHref(department.slug);
+  const departmentHref = getDepartmentHref(department);
   const contactEmails = (department.publicContactEmail ?? "")
     .split(/[\n,;]+/)
     .map((item) => item.trim())

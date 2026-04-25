@@ -2,7 +2,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
 import { requireAuth } from "@/lib/auth-guards";
 import { getUserDashboardData, userRoleLabel } from "@/lib/queries";
-import { buildDepartmentHref } from "@/lib/utils";
+import { getDepartmentHref } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Badge } from "@/components/ui/badge";
@@ -71,7 +71,10 @@ export default async function DashboardPage() {
             ) : (
               data.favorites.slice(0, 4).map((favorite) => (
                 <div key={favorite.departmentId} className="rounded-2xl bg-brand-50 p-4">
-                  <Link href={buildDepartmentHref(favorite.department.slug)} className="font-semibold text-ink">
+                  <Link
+                    href={getDepartmentHref(favorite.department)}
+                    className="font-semibold text-ink"
+                  >
                     {favorite.department.institution.name} · {favorite.department.name}
                   </Link>
                   <p className="mt-1 text-sm text-slate-600">{favorite.department.shortSummary}</p>

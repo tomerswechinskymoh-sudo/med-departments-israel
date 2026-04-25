@@ -10,7 +10,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { buildDepartmentHref } from "@/lib/utils";
+import { getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -166,7 +166,7 @@ export default async function RepresentativePage({
                       תקן פתוח חדש
                     </Link>
                     <Link
-                      href={buildDepartmentHref(assignment.slug)}
+                      href={getDepartmentHref(assignment)}
                       className="rounded-full border border-white/25 px-5 py-3 text-sm font-semibold text-white"
                     >
                       לעמוד הציבורי

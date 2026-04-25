@@ -33,6 +33,16 @@ export function average(numbers: number[]) {
   return numbers.reduce((sum, value) => sum + value, 0) / numbers.length;
 }
 
+export function getDepartmentHref(department: { slug: string; id?: string | null }) {
+  const basePath = `/departments/${encodeURIComponent(department.slug)}`;
+
+  if (!department.id) {
+    return basePath;
+  }
+
+  return `${basePath}?departmentId=${encodeURIComponent(department.id)}`;
+}
+
 export function buildDepartmentHref(slug: string) {
-  return `/departments/${encodeURIComponent(slug)}`;
+  return getDepartmentHref({ slug });
 }
