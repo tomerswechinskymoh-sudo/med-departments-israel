@@ -53,6 +53,7 @@ export async function applyDepartmentChangePayload(
       departmentId: parsed.departmentId,
       name: head.name,
       title: head.title,
+      role: head.role,
       bio: head.bio,
       profileImageUrl: head.profileImageUrl,
       displayOrder: index

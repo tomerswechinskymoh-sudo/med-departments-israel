@@ -17,6 +17,11 @@ export async function GET(
   const file = await prisma.uploadedFile.findUnique({
     where: { id: fileId },
     include: {
+      reviewSubmission: {
+        select: {
+          departmentId: true
+        }
+      },
       opening: {
         select: {
           departmentId: true
@@ -38,8 +43,16 @@ export async function GET(
     return NextResponse.json({ error: "הקובץ לא נמצא." }, { status: 404 });
   }
 
+  if (file.reviewSubmissionId && session.role !== "admin") {
+    return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
+  }
+
   const departmentId =
-    file.departmentId ?? file.opening?.departmentId ?? file.application?.opening.departmentId ?? null;
+    file.departmentId ??
+    file.reviewSubmission?.departmentId ??
+    file.opening?.departmentId ??
+    file.application?.opening.departmentId ??
+    null;
 
   if (session.role !== "admin") {
     if (!departmentId || session.role !== "representative") {

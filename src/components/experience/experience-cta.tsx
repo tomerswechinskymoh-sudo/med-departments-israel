@@ -9,18 +9,18 @@ type ReviewerType = "RESIDENT" | "INTERN" | "STUDENT";
 const roleChoices: Array<{ value: ReviewerType; label: string; description: string }> = [
   {
     value: "RESIDENT",
-    label: "מתמחה/ה",
+    label: "מתמחה",
     description: "לשתף איך המחלקה נראית מבפנים ביום־יום."
   },
   {
     value: "INTERN",
-    label: "סטאז׳ר/ית",
-    description: "לספר איך נראה הסבב באמת, מה לומדים ומה הקצב."
+    label: "סטאז׳ר",
+    description: "לספר איך האלקטיב / הסבב במחלקה באמת נראה."
   },
   {
     value: "STUDENT",
-    label: "סטודנט/ית",
-    description: "לשתף סבב, אלקטיב או יום חשיפה שעזר להבין את המקום."
+    label: "סטודנט",
+    description: "לשתף איך החוויה במחלקה נראתה בפועל."
   }
 ];
 
@@ -35,7 +35,8 @@ export function ExperienceCta({
     id: string;
     slug: string;
     name: string;
-    institution: { name: string };
+    institution: { id: string; name: string; type: "HOSPITAL" | "HMO" };
+    specialty: { id: string; name: string };
   }[];
   selectedDepartmentId?: string;
   className?: string;
@@ -74,7 +75,7 @@ export function ExperienceCta({
         title="רוצה לספר על החוויה שלך?"
         description={
           description ??
-          "אפשר לשתף גם בלי לפתוח חשבון. הטלפון נשמר רק לאימות, ומה שיעלה לאתר תלוי בבחירה שלך ובעמידה בבדיקה."
+          "אפשר לשתף גם בלי לפתוח חשבון. אפשר לאמת עם טלפון או עם מסמך רשמי, וכל שיתוף עובר בדיקה לפני פרסום."
         }
         className="max-w-5xl"
       >

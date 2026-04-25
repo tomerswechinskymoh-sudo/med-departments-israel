@@ -29,6 +29,10 @@ type HomeReview = {
 };
 
 function truncateText(text: string, maxLength = 100) {
+  if (!text.trim()) {
+    return "";
+  }
+
   if (text.length <= maxLength) {
     return text;
   }
@@ -134,17 +138,25 @@ export function HomeReviewComparisonCard({ review }: { review: HomeReview }) {
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="rounded-[1.5rem] border border-emerald-100 bg-emerald-50/75 p-4">
           <p className="text-sm font-semibold text-emerald-900">מה עבד טוב</p>
-          <p className="mt-2 text-sm leading-7 text-slate-700">{truncateText(review.pros)}</p>
+          <p className="mt-2 text-sm leading-7 text-slate-700">
+            {truncateText(review.pros) || "לא הושאר פירוט נוסף בשדה הזה."}
+          </p>
         </div>
         <div className="rounded-[1.5rem] border border-amber-200 bg-amber-50/85 p-4">
           <p className="text-sm font-semibold text-amber-900">מה כדאי לדעת</p>
-          <p className="mt-2 text-sm leading-7 text-slate-700">{truncateText(review.cons)}</p>
+          <p className="mt-2 text-sm leading-7 text-slate-700">
+            {truncateText(review.cons) || "לא נכתב כאן טקסט חופשי."}
+          </p>
         </div>
       </div>
 
       <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/60 p-4">
         <p className="text-xs font-semibold text-slate-500">ציטוט קצר</p>
-        <p className="mt-2 text-base font-medium leading-8 text-ink">"{truncateText(review.tips, 120)}"</p>
+        <p className="mt-2 text-base font-medium leading-8 text-ink">
+          {truncateText(review.tips, 120)
+            ? `"${truncateText(review.tips, 120)}"`
+            : "לא הושאר ציטוט קצר לחלק הזה."}
+        </p>
       </div>
 
       <div className="mt-auto flex flex-wrap items-center justify-between gap-3">

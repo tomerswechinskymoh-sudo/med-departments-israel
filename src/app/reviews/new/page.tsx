@@ -37,7 +37,8 @@ export default async function SubmitReviewPage({
                 <div className="rounded-[1.5rem] border border-amber-200 bg-amber-50/90 p-4">
                   <p className="text-sm font-semibold text-amber-900">שומרים עלייך</p>
                   <p className="mt-2 text-sm leading-7 text-slate-700">
-                    הטלפון נשמר רק לאימות. אם בוחרים בעילום שם, לא מציגים שום פרט מזהה באתר.
+                    אפשר לאמת עם טלפון או מסמך הוכחה רשמי. אם בוחרים בעילום שם, לא מציגים
+                    שום פרט מזהה באתר.
                   </p>
                 </div>
               </div>
@@ -47,8 +48,8 @@ export default async function SubmitReviewPage({
               <p className="text-sm font-semibold text-brand-600">שיתוף חוויה מהמחלקה</p>
               <h1 className="mt-2 text-3xl font-bold text-ink">רוצה לספר על החוויה שלך?</h1>
               <p className="mt-3 text-sm leading-7 text-slate-600">
-                אם היית שם כסטודנט/ית, סטאז&apos;ר/ית או מתמחה/ה, זה המקום לשתף מה באמת
-                קורה שם. קצר, אישי, ועוזר למי שבודק/ת עכשיו את הצעד הבא.
+                אם היית שם כסטודנט, סטאז׳ר או מתמחה, זה המקום לשתף איך החוויה במחלקה
+                נראתה בפועל. קצר, אישי, ועוזר למי שבודק עכשיו את הצעד הבא.
               </p>
               {selectedDepartment ? (
                 <p className="mt-3 text-sm font-medium text-brand-700">

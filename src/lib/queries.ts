@@ -495,6 +495,14 @@ export async function getDepartmentOptions() {
       name: true,
       institution: {
         select: {
+          id: true,
+          name: true,
+          type: true
+        }
+      },
+      specialty: {
+        select: {
+          id: true,
           name: true
         }
       }
@@ -915,6 +923,11 @@ export async function getAdminDashboardData() {
           include: {
             institution: true
           }
+        },
+        verificationFiles: {
+          orderBy: {
+            createdAt: "desc"
+          }
         }
       },
       orderBy: {
@@ -1024,10 +1037,24 @@ export async function getAdminDashboardData() {
     prisma.department.findMany({
       include: {
         institution: true,
-        specialty: true
+        specialty: true,
+        heads: {
+          orderBy: {
+            displayOrder: "asc"
+          }
+        },
+        officialUpdates: {
+          orderBy: {
+            createdAt: "desc"
+          }
+        },
+        researchOpportunities: {
+          orderBy: {
+            createdAt: "desc"
+          }
+        }
       },
-      orderBy: [{ institution: { name: "asc" } }, { name: "asc" }],
-      take: 15
+      orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
     }),
     prisma.institution.findMany({
       orderBy: {
@@ -1081,6 +1108,33 @@ export async function getReviewFormContext(departmentSlug?: string) {
       ? departments.find((department) => department.slug === departmentSlug) ?? null
       : null
   };
+}
+
+export async function getDepartmentEditorPageData(departmentId: string) {
+  return prisma.department.findUnique({
+    where: {
+      id: departmentId
+    },
+    include: {
+      institution: true,
+      specialty: true,
+      heads: {
+        orderBy: {
+          displayOrder: "asc"
+        }
+      },
+      officialUpdates: {
+        orderBy: {
+          createdAt: "desc"
+        }
+      },
+      researchOpportunities: {
+        orderBy: {
+          createdAt: "desc"
+        }
+      }
+    }
+  });
 }
 
 export async function getPublisherRequestFormContext() {

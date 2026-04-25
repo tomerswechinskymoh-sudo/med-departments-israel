@@ -166,6 +166,7 @@ export default async function OpeningDetailsPage({
             <Card key={head.id}>
               <p className="text-lg font-bold text-ink">{head.name}</p>
               <p className="mt-1 text-sm font-semibold text-brand-700">{head.title}</p>
+              {head.role ? <p className="mt-1 text-sm text-slate-600">{head.role}</p> : null}
               <p className="mt-3 text-sm leading-7 text-slate-700">{head.bio}</p>
             </Card>
           ))}

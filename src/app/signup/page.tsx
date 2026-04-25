@@ -9,6 +9,7 @@ export default async function SignupPage({
 }) {
   const params = await searchParams;
   const linkedinError = typeof params.linkedinError === "string" ? params.linkedinError : undefined;
+  const socialError = typeof params.socialError === "string" ? params.socialError : undefined;
 
   return (
     <PageShell className="py-10">
@@ -22,7 +23,7 @@ export default async function SignupPage({
             באופן ידני.
           </p>
           <div className="mt-6">
-            <SignupForm linkedinError={linkedinError} />
+            <SignupForm linkedinError={linkedinError} socialError={socialError} />
           </div>
         </Card>
       </div>

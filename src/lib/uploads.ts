@@ -33,6 +33,7 @@ export async function storeUploadedFile(
     departmentId?: string | null;
     openingId?: string | null;
     openingApplicationId?: string | null;
+    reviewSubmissionId?: string | null;
     uploadedByUserId?: string | null;
     isPublic?: boolean;
   }
@@ -48,6 +49,7 @@ export async function storeUploadedFile(
       departmentId: input.departmentId ?? null,
       openingId: input.openingId ?? null,
       openingApplicationId: input.openingApplicationId ?? null,
+      reviewSubmissionId: input.reviewSubmissionId ?? null,
       uploadedByUserId: input.uploadedByUserId ?? null,
       category: input.category,
       isPublic: input.isPublic ?? false,

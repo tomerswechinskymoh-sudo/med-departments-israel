@@ -9,13 +9,21 @@ import { departmentEditorSchema } from "@/lib/validation";
 type FormValues = z.infer<typeof departmentEditorSchema>;
 
 export function DepartmentEditorForm({
-  initialValues
+  initialValues,
+  endpoint,
+  submitLabel = "שליחת השינויים לאישור",
+  submittingLabel = "שומר/ת...",
+  successPrefix
 }: {
   initialValues: FormValues & {
     departmentName: string;
     institutionName: string;
     specialtyName: string;
   };
+  endpoint?: string;
+  submitLabel?: string;
+  submittingLabel?: string;
+  successPrefix?: string;
 }) {
   const [message, setMessage] = useState<string | null>(null);
   const {
@@ -35,7 +43,7 @@ export function DepartmentEditorForm({
   const onSubmit = handleSubmit(async (values) => {
     setMessage(null);
 
-    const response = await fetch(`/api/representative/departments/${values.departmentId}`, {
+    const response = await fetch(endpoint ?? `/api/representative/departments/${values.departmentId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -46,7 +54,11 @@ export function DepartmentEditorForm({
     const payload = (await response.json().catch(() => null)) as
       | { message?: string; error?: string }
       | null;
-    setMessage(payload?.message ?? payload?.error ?? null);
+    setMessage(
+      response.ok && successPrefix
+        ? `${successPrefix}${payload?.message ? ` · ${payload.message}` : ""}`
+        : payload?.message ?? payload?.error ?? null
+    );
   });
 
   return (
@@ -103,7 +115,9 @@ export function DepartmentEditorForm({
           <h4 className="text-lg font-bold text-ink">ראשי המחלקה</h4>
           <button
             type="button"
-            onClick={() => heads.append({ name: "", title: "", bio: "", profileImageUrl: "" })}
+            onClick={() =>
+              heads.append({ name: "", title: "", role: "", bio: "", profileImageUrl: "" })
+            }
             className="rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-800"
           >
             הוספת ראש/ת מחלקה
@@ -115,15 +129,20 @@ export function DepartmentEditorForm({
               <div className="grid gap-4 md:grid-cols-2">
                 <input
                   {...register(`heads.${index}.name`)}
-                  placeholder="שם"
+                  placeholder="שם מלא"
                   className="rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
                 />
                 <input
                   {...register(`heads.${index}.title`)}
-                  placeholder="תפקיד"
+                  placeholder="תואר"
                   className="rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
                 />
               </div>
+              <input
+                {...register(`heads.${index}.role`)}
+                placeholder="תפקיד"
+                className="mt-4 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
+              />
               <textarea
                 {...register(`heads.${index}.bio`)}
                 placeholder="ביוגרפיה קצרה"
@@ -248,7 +267,7 @@ export function DepartmentEditorForm({
         disabled={isSubmitting}
         className="w-full rounded-2xl bg-brand-700 px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
       >
-        {isSubmitting ? "שומר/ת..." : "שליחת השינויים לאישור"}
+        {isSubmitting ? submittingLabel : submitLabel}
       </button>
     </form>
   );

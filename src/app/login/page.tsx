@@ -11,6 +11,7 @@ export default async function LoginPage({
   const params = await searchParams;
   const nextPath = typeof params.next === "string" ? params.next : undefined;
   const linkedinError = typeof params.linkedinError === "string" ? params.linkedinError : undefined;
+  const socialError = typeof params.socialError === "string" ? params.socialError : undefined;
 
   return (
     <PageShell className="flex min-h-[70vh] items-center justify-center">
@@ -23,7 +24,7 @@ export default async function LoginPage({
           אדמין.
         </p>
         <div className="mt-6">
-          <LoginForm nextPath={nextPath} linkedinError={linkedinError} />
+          <LoginForm nextPath={nextPath} linkedinError={linkedinError} socialError={socialError} />
         </div>
         <p className="mt-6 text-sm text-slate-600">
           אין לכם חשבון?{" "}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Prisma } from "@prisma/client";
 import { requireAdmin } from "@/lib/auth-guards";
 import {
   getAdminDashboardData,
@@ -22,6 +23,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { MAINLY_TAUGHT_BY_OPTIONS } from "@/lib/constants";
 import { formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -36,6 +38,70 @@ function openingStatusLabel(status: "OPEN" | "UPCOMING" | "CLOSED") {
   }
 
   return { label: "סגור", tone: "default" as const };
+}
+
+function readJsonRecord(value: Prisma.JsonValue | null | undefined) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return null;
+  }
+
+  return value as Record<string, Prisma.JsonValue>;
+}
+
+function readJsonString(value: Prisma.JsonValue | undefined) {
+  return typeof value === "string" ? value : null;
+}
+
+function readJsonNumber(value: Prisma.JsonValue | undefined) {
+  return typeof value === "number" ? value : null;
+}
+
+function mainlyTaughtByLabel(value: Prisma.JsonValue | undefined) {
+  const typedValue = typeof value === "string" ? value : null;
+  return MAINLY_TAUGHT_BY_OPTIONS.find((option) => option.value === typedValue)?.label ?? null;
+}
+
+function roleDetailsRows(value: Prisma.JsonValue | null | undefined, reviewerType: string) {
+  const details = readJsonRecord(value);
+
+  if (!details) {
+    return [];
+  }
+
+  const rows: Array<[string, string | number | null]> = [
+    ["פקולטה לרפואה", readJsonString(details.medicalSchool)],
+    ["דירוג כללי", readJsonNumber(details.overallRating)],
+    ["עידוד למחקר", readJsonNumber(details.researchEncouragement)],
+    ["מי הוביל את הלמידה", mainlyTaughtByLabel(details.mainlyTaughtBy)],
+    ["חשיפה קלינית", readJsonNumber(details.clinicalExposure)]
+  ];
+
+  if (reviewerType === "STUDENT") {
+    rows.push(["אורך הסבב / האלקטיב", readJsonString(details.rotationLength)]);
+    rows.push(["שנת ההתרחשות", readJsonString(details.yearOfExperience)]);
+  }
+
+  if (reviewerType === "INTERN") {
+    rows.push(["משך במחלקה (שבועות)", readJsonNumber(details.durationWeeks)]);
+    rows.push(["שנת ההתרחשות", readJsonString(details.yearOfExperience)]);
+  }
+
+  if (reviewerType !== "STUDENT") {
+    rows.push(["יחס מהמתמחים", readJsonNumber(details.attitudeFromResidents)]);
+    rows.push(["יחס מהבכירים", readJsonNumber(details.attitudeFromSeniors)]);
+    rows.push(["עומס ואיזון חיים", readJsonNumber(details.workloadBalance)]);
+  }
+
+  return rows.filter((row) => row[1] !== null && row[1] !== undefined && row[1] !== "");
+}
+
+function roleFitText(value: Prisma.JsonValue | null | undefined) {
+  const details = readJsonRecord(value);
+  return readJsonString(details?.fitForWho);
+}
+
+function textOrFallback(value: string, fallback: string) {
+  return value.trim() ? value : fallback;
 }
 
 export default async function AdminPage() {
@@ -87,7 +153,8 @@ export default async function AdminPage() {
                         {submission.department.institution.name} · {submission.department.name}
                       </p>
                       <p className="text-sm text-slate-600">
-                        {reviewerTypeLabel(submission.reviewerType)} · {submission.phone}
+                        {reviewerTypeLabel(submission.reviewerType)}
+                        {submission.phone ? ` · ${submission.phone}` : ""}
                         {submission.email ? ` · ${submission.email}` : ""}
                       </p>
                     </div>
@@ -95,16 +162,53 @@ export default async function AdminPage() {
                   </div>
                   <p className="mt-3 text-sm leading-7 text-slate-600">
                     <span className="font-semibold text-ink">מה עבד טוב: </span>
-                    {submission.pros}
+                    {textOrFallback(submission.pros, "לא נכתב טקסט חופשי בשדה הזה.")}
                   </p>
                   <p className="mt-2 text-sm leading-7 text-slate-600">
                     <span className="font-semibold text-ink">מה פחות עבד: </span>
-                    {submission.cons}
+                    {textOrFallback(submission.cons, "לא נכתב טקסט חופשי בשדה הזה.")}
                   </p>
                   <p className="mt-2 text-sm leading-7 text-slate-600">
                     <span className="font-semibold text-ink">טיפ למי שמגיע/ה: </span>
-                    {submission.tips}
+                    {textOrFallback(submission.tips, "לא הושאר טיפ נוסף.")}
                   </p>
+                  {roleDetailsRows(submission.roleDetails, submission.reviewerType).length > 0 ? (
+                    <div className="mt-4 grid gap-3 md:grid-cols-2">
+                      {roleDetailsRows(submission.roleDetails, submission.reviewerType).map(
+                        ([label, value]) => (
+                          <div
+                            key={label}
+                            className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm"
+                          >
+                            <p className="text-xs font-semibold text-slate-500">{label}</p>
+                            <p className="mt-1 font-semibold text-ink">{String(value)}</p>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  ) : null}
+                  {roleFitText(submission.roleDetails) ? (
+                    <p className="mt-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm leading-7 text-slate-700">
+                      <span className="font-semibold text-ink">למי המחלקה מתאימה: </span>
+                      {roleFitText(submission.roleDetails)}
+                    </p>
+                  ) : null}
+                  <div className="mt-4 flex flex-wrap gap-3 text-xs">
+                    {submission.phone ? (
+                      <span className="rounded-full border border-brand-100 bg-white px-3 py-2 font-semibold text-brand-900">
+                        אימות טלפוני זמין
+                      </span>
+                    ) : null}
+                    {submission.verificationFiles.map((file) => (
+                      <Link
+                        key={file.id}
+                        href={`/api/files/${file.id}`}
+                        className="rounded-full border border-brand-200 px-3 py-2 font-semibold text-brand-800"
+                      >
+                        מסמך הוכחה: {file.originalName}
+                      </Link>
+                    ))}
+                  </div>
                   <ReviewModerationForm reviewId={submission.id} />
                 </div>
               ))
@@ -249,7 +353,12 @@ export default async function AdminPage() {
               departments={data.departments.map((department) => ({
                 id: department.id,
                 name: department.name,
+                specialty: {
+                  name: department.specialty.name
+                },
                 institution: {
+                  id: department.institution.id,
+                  type: department.institution.type,
                   name: department.institution.name
                 }
               }))}
@@ -380,6 +489,14 @@ export default async function AdminPage() {
                 </p>
                 <p className="mt-1 text-sm text-slate-600">{department.specialty.name}</p>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{department.shortSummary}</p>
+                <div className="mt-4">
+                  <Link
+                    href={`/admin/departments/${department.id}`}
+                    className="inline-flex rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-800"
+                  >
+                    עריכת עמוד מחלקה
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

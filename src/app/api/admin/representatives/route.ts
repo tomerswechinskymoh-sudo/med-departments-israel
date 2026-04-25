@@ -37,6 +37,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "כבר קיים חשבון עם האימייל הזה." }, { status: 409 });
   }
 
+  const institutionDepartments = await prisma.department.findMany({
+    where: {
+      institutionId: parsed.data.institutionId
+    },
+    select: {
+      id: true
+    }
+  });
+  const institutionDepartmentIds = institutionDepartments.map((department) => department.id);
+  const invalidDepartmentIds = parsed.data.departmentIds.filter(
+    (departmentId) => !institutionDepartmentIds.includes(departmentId)
+  );
+
+  if (invalidDepartmentIds.length > 0) {
+    return NextResponse.json(
+      { error: "אפשר לשייך רק מחלקות ששייכות למוסד שנבחר." },
+      { status: 400 }
+    );
+  }
+
   const passwordHash = await hashPassword(parsed.data.password);
 
   const user = await prisma.$transaction(async (tx) => {
@@ -77,6 +97,7 @@ export async function POST(request: Request) {
     entityType: "User",
     entityId: user.id,
     metadata: {
+      institutionId: parsed.data.institutionId,
       departmentIds: parsed.data.departmentIds
     }
   });

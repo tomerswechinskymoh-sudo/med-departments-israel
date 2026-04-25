@@ -31,6 +31,12 @@ export default async function DepartmentDetailsPage({
   }
 
   const visibleReviews = session ? department.reviews : department.reviews.slice(0, 3);
+  const hasOfficialDepartmentContent =
+    department.heads.length > 0 ||
+    department.officialUpdates.length > 0 ||
+    department.researchOpportunities.length > 0 ||
+    department.representativeAssignments.length > 0 ||
+    department.residencyOpenings.length > 0;
 
   return (
     <PageShell className="space-y-8 py-10">
@@ -103,6 +109,17 @@ export default async function DepartmentDetailsPage({
         </div>
       </section>
 
+      {!hasOfficialDepartmentContent ? (
+        <Card className="border border-brand-100 bg-brand-50/70">
+          <p className="text-sm font-semibold text-brand-700">עמוד מחלקה בסיסי</p>
+          <p className="mt-2 text-sm leading-7 text-slate-700">
+            העמוד הזה כבר קיים כדי לאפשר חיפוש, השוואה ושיתופי חוויה גם לפני שנציג/ת המחלקה
+            הוסיפ/ה תוכן רשמי. כרגע מוצגים פרטי הבסיס של המוסד והתחום, ובהמשך יתווספו עדכונים,
+            אנשי קשר ותוכן רשמי נוסף.
+          </p>
+        </Card>
+      ) : null}
+
       <section className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
         <Card>
           <SectionHeading
@@ -139,7 +156,7 @@ export default async function DepartmentDetailsPage({
               <Card key={head.id} className="grid gap-4 md:grid-cols-[116px_1fr] md:items-center">
                 <PlaceholderVisual
                   label={head.name}
-                  caption={head.title}
+                  caption={head.role ?? head.title}
                   variant="head"
                   circle
                   className="mx-auto w-28"
@@ -147,6 +164,7 @@ export default async function DepartmentDetailsPage({
                 <div>
                   <p className="text-lg font-bold text-ink">{head.name}</p>
                   <p className="mt-1 text-sm font-semibold text-brand-700">{head.title}</p>
+                  {head.role ? <p className="mt-1 text-sm text-slate-600">{head.role}</p> : null}
                   <p className="mt-3 text-sm leading-7 text-slate-700">{head.bio}</p>
                 </div>
               </Card>

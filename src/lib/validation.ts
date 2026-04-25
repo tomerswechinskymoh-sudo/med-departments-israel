@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { MAINLY_TAUGHT_BY_OPTIONS, MEDICAL_FACULTY_OPTIONS } from "@/lib/constants";
 
 export const reviewerTypeValues = ["RESIDENT", "INTERN", "STUDENT"] as const;
 export const submissionStatusValues = [
@@ -61,6 +62,22 @@ const queryStringArray = (value: unknown) => {
 };
 
 const scaleSchema = z.coerce.number().int().min(1).max(5);
+const parseJsonString = (value: unknown) => {
+  if (typeof value !== "string") {
+    return value;
+  }
+
+  try {
+    return JSON.parse(value);
+  } catch {
+    return value;
+  }
+};
+const medicalFacultyValues = MEDICAL_FACULTY_OPTIONS;
+const mainlyTaughtByValues = MAINLY_TAUGHT_BY_OPTIONS.map((option) => option.value) as [
+  (typeof MAINLY_TAUGHT_BY_OPTIONS)[number]["value"],
+  ...(typeof MAINLY_TAUGHT_BY_OPTIONS)[number]["value"][]
+];
 
 export const loginSchema = z.object({
   email: z.string().email("יש להזין כתובת אימייל תקינה."),
@@ -92,13 +109,42 @@ export const departmentFilterSchema = z.object({
   specialties: z.preprocess(queryStringArray, z.array(z.string()).optional())
 });
 
+const reviewRoleDetailsSchema = z.object({
+  medicalSchool: z.enum(medicalFacultyValues, {
+    errorMap: () => ({ message: "יש לבחור פקולטה לרפואה." })
+  }),
+  overallRating: scaleSchema,
+  researchEncouragement: scaleSchema,
+  mainlyTaughtBy: z.enum(mainlyTaughtByValues, {
+    errorMap: () => ({ message: "יש לבחור מי הוביל את הלמידה בפועל." })
+  }),
+  clinicalExposure: scaleSchema,
+  fitForWho: z.preprocess(emptyToUndefined, z.string().optional()),
+  rotationLength: z.preprocess(emptyToUndefined, z.string().optional()),
+  durationWeeks: z.preprocess(
+    emptyToUndefined,
+    z.coerce.number().int().min(1, "יש להזין מספר שבועות תקין.").max(52).optional()
+  ),
+  yearOfExperience: z.preprocess(
+    emptyToUndefined,
+    z
+      .string()
+      .regex(/^20\d{2}$/, "יש לבחור שנה קלנדרית תקינה.")
+      .optional()
+  ),
+  attitudeFromResidents: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  attitudeFromSeniors: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  workloadBalance: z.preprocess(emptyToUndefined, scaleSchema.optional())
+});
+
 export const reviewSubmissionSchema = z
   .object({
     departmentId: z.string().min(1, "יש לבחור מחלקה."),
     reviewerType: z.enum(reviewerTypeValues),
     fullName: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
-    phone: z.string().min(9, "יש להזין מספר טלפון לצורך אימות."),
+    phone: z.preprocess(emptyToUndefined, z.string().min(9, "יש להזין מספר טלפון תקין.").optional()),
     email: z.preprocess(emptyToUndefined, z.string().email("יש להזין אימייל תקין.").optional()),
+    hasVerificationDocument: z.boolean().default(false),
     isAnonymous: z.boolean(),
     teachingQuality: scaleSchema,
     workAtmosphere: scaleSchema,
@@ -106,9 +152,10 @@ export const reviewSubmissionSchema = z
     researchExposure: scaleSchema,
     lifestyleBalance: scaleSchema,
     overallRecommendation: scaleSchema,
-    pros: z.string().min(15, "יש לכתוב בקצרה מה עבד טוב בשבילך."),
-    cons: z.string().min(15, "יש לכתוב מה פחות עבד או מה כדאי לדעת מראש."),
-    tips: z.string().min(15, "יש להוסיף טיפ קצר למי שמגיע/ה אחריך."),
+    pros: z.preprocess(emptyToUndefined, z.string().optional()),
+    cons: z.preprocess(emptyToUndefined, z.string().optional()),
+    tips: z.preprocess(emptyToUndefined, z.string().optional()),
+    roleDetails: z.preprocess(parseJsonString, reviewRoleDetailsSchema),
     consentToContact: z.literal(true, {
       errorMap: () => ({ message: "צריך לאשר יצירת קשר לצורך אימות." })
     }),
@@ -126,6 +173,100 @@ export const reviewSubmissionSchema = z
         path: ["fullName"],
         message: "אם בחרת לפרסם בשם, צריך למלא שם מלא."
       });
+    }
+
+    if (!data.phone && !data.hasVerificationDocument) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["phone"],
+        message: "צריך להשאיר טלפון לאימות או לצרף מסמך רשמי."
+      });
+    }
+
+    if (data.reviewerType === "STUDENT") {
+      if (!data.roleDetails.rotationLength) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "rotationLength"],
+          message: "יש לבחור את אורך הסבב / האלקטיב."
+        });
+      }
+
+      if (!data.roleDetails.yearOfExperience) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "yearOfExperience"],
+          message: "יש לבחור באיזו שנה זה התרחש."
+        });
+      }
+    }
+
+    if (data.reviewerType === "INTERN") {
+      if (!data.roleDetails.durationWeeks) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "durationWeeks"],
+          message: "יש להזין כמה שבועות היית במחלקה."
+        });
+      }
+
+      if (!data.roleDetails.yearOfExperience) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "yearOfExperience"],
+          message: "יש לבחור מתי היה הסבב או האלקטיב."
+        });
+      }
+
+      if (!data.roleDetails.attitudeFromResidents) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "attitudeFromResidents"],
+          message: "יש לדרג את היחס מהמתמחים."
+        });
+      }
+
+      if (!data.roleDetails.attitudeFromSeniors) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "attitudeFromSeniors"],
+          message: "יש לדרג את היחס מהבכירים."
+        });
+      }
+
+      if (!data.roleDetails.workloadBalance) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "workloadBalance"],
+          message: "יש לדרג את העומס והאיזון."
+        });
+      }
+    }
+
+    if (data.reviewerType === "RESIDENT") {
+      if (!data.roleDetails.attitudeFromResidents) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "attitudeFromResidents"],
+          message: "יש לדרג את היחס מהמתמחים."
+        });
+      }
+
+      if (!data.roleDetails.attitudeFromSeniors) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "attitudeFromSeniors"],
+          message: "יש לדרג את היחס מהבכירים."
+        });
+      }
+
+      if (!data.roleDetails.workloadBalance) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "workloadBalance"],
+          message: "יש לדרג את העומס והאיזון."
+        });
+      }
     }
   });
 
@@ -188,9 +329,10 @@ export const adminRepresentativeCreateSchema = z.object({
   password: z
     .string()
     .min(8, "יש להזין סיסמה זמנית של לפחות 8 תווים.")
-    .regex(/[A-Z]/, "יש לכלול אות גדולה אחת לפחות.")
-    .regex(/[a-z]/, "יש לכלול אות קטנה אחת לפחות.")
-    .regex(/[0-9]/, "יש לכלול ספרה אחת לפחות."),
+      .regex(/[A-Z]/, "יש לכלול אות גדולה אחת לפחות.")
+      .regex(/[a-z]/, "יש לכלול אות קטנה אחת לפחות.")
+      .regex(/[0-9]/, "יש לכלול ספרה אחת לפחות."),
+  institutionId: z.string().min(1, "יש לבחור מוסד."),
   departmentIds: z.array(z.string().min(1)).min(1, "יש לשייך לפחות מחלקה אחת."),
   profile: representativeProfileSchema
 });
@@ -213,7 +355,8 @@ export const departmentChangeReviewSchema = z.object({
 export const departmentHeadSchema = z.object({
   id: z.preprocess(emptyToUndefined, z.string().optional()),
   name: z.string().min(2, "יש להזין שם."),
-  title: z.string().min(2, "יש להזין תפקיד."),
+  title: z.string().min(1, "יש להזין תואר."),
+  role: z.preprocess(emptyToUndefined, z.string().max(120, "יש לקצר את התפקיד.").optional()),
   bio: z.string().min(10, "יש להזין ביוגרפיה קצרה."),
   profileImageUrl: z.preprocess(emptyToUndefined, z.string().url().optional())
 });

@@ -72,6 +72,7 @@ enum UploadedFileCategory {
   APPLICATION_CV
   APPLICATION_PROFILE_PHOTO
   APPLICATION_SUPPORTING
+  REVIEW_VERIFICATION_PROOF
 }
 
 model Role {
@@ -88,6 +89,8 @@ model User {
   fullName                    String                  @map("full_name")
   phone                       String?
   linkedinId                  String?                 @unique @map("linkedin_id")
+  googleId                    String?                 @unique @map("google_id")
+  facebookId                  String?                 @unique @map("facebook_id")
   profileImageUrl             String?                 @map("profile_image_url")
   linkedinConnectedAt         DateTime?               @map("linkedin_connected_at")
   roleKey                     RoleKey                 @default(STUDENT) @map("role_key")
@@ -208,6 +211,7 @@ model DepartmentHead {
   departmentId    String      @map("department_id")
   name            String
   title           String
+  role            String?
   bio             String
   profileImageUrl String?     @map("profile_image_url")
   displayOrder    Int         @default(0) @map("display_order")
@@ -395,6 +399,7 @@ model ReviewSubmission {
   pros                   String
   cons                   String
   tips                   String
+  roleDetails            Json?             @map("role_details")
   consentToContact       Boolean           @map("consent_to_contact")
   consentToTerms         Boolean           @map("consent_to_terms")
   consentNoPatientInfo   Boolean           @map("consent_no_patient_info")
@@ -407,6 +412,7 @@ model ReviewSubmission {
   department             Department        @relation(fields: [departmentId], references: [id], onDelete: Cascade)
   reviewedBy             User?             @relation("ReviewSubmissionModerator", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
   publishedReview        Review?
+  verificationFiles      UploadedFile[]    @relation("ReviewSubmissionFiles")
 
   @@index([departmentId, status])
   @@index([reviewerType, status])
@@ -478,6 +484,7 @@ model UploadedFile {
   departmentId         String?              @map("department_id")
   openingId            String?              @map("opening_id")
   openingApplicationId String?              @map("opening_application_id")
+  reviewSubmissionId   String?              @map("review_submission_id")
   uploadedByUserId     String?              @map("uploaded_by_user_id")
   category             UploadedFileCategory
   isPublic             Boolean              @default(false) @map("is_public")
@@ -489,11 +496,13 @@ model UploadedFile {
   department           Department?          @relation(fields: [departmentId], references: [id], onDelete: SetNull)
   opening              ResidencyOpening?    @relation("OpeningFiles", fields: [openingId], references: [id], onDelete: SetNull)
   application          OpeningApplication?  @relation("ApplicationFiles", fields: [openingApplicationId], references: [id], onDelete: SetNull)
+  reviewSubmission     ReviewSubmission?    @relation("ReviewSubmissionFiles", fields: [reviewSubmissionId], references: [id], onDelete: SetNull)
   uploadedBy           User?                @relation("UploadedFileOwner", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
 
   @@index([departmentId])
   @@index([openingId, category])
   @@index([openingApplicationId, category])
+  @@index([reviewSubmissionId, category])
 }
 
 model FavoriteDepartment {

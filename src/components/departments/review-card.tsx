@@ -5,6 +5,10 @@ import { RatingStars } from "@/components/ui/rating-stars";
 import { reviewerTypeLabel } from "@/lib/queries";
 import { formatDate } from "@/lib/utils";
 
+function textOrFallback(text: string, fallback: string) {
+  return text.trim() ? text : fallback;
+}
+
 export function ReviewCard({
   review,
   canReport
@@ -69,15 +73,21 @@ export function ReviewCard({
       <div className="mt-5 grid gap-4 md:grid-cols-3">
         <div className="rounded-2xl bg-brand-50/60 p-4">
           <p className="text-sm font-semibold text-ink">מה עבד טוב</p>
-          <p className="mt-2 text-sm leading-7 text-slate-600">{review.pros}</p>
+          <p className="mt-2 text-sm leading-7 text-slate-600">
+            {textOrFallback(review.pros, "לא הושאר פירוט נוסף בשדה הזה.")}
+          </p>
         </div>
         <div className="rounded-2xl bg-brand-50/60 p-4">
           <p className="text-sm font-semibold text-ink">מה פחות עבד</p>
-          <p className="mt-2 text-sm leading-7 text-slate-600">{review.cons}</p>
+          <p className="mt-2 text-sm leading-7 text-slate-600">
+            {textOrFallback(review.cons, "לא נכתב כאן טקסט חופשי.")}
+          </p>
         </div>
         <div className="rounded-2xl bg-brand-50/60 p-4">
           <p className="text-sm font-semibold text-ink">מה הייתי אומר/ת למי שמגיע/ה</p>
-          <p className="mt-2 text-sm leading-7 text-slate-600">{review.tips}</p>
+          <p className="mt-2 text-sm leading-7 text-slate-600">
+            {textOrFallback(review.tips, "לא הושאר טיפ נוסף.")}
+          </p>
         </div>
       </div>
 

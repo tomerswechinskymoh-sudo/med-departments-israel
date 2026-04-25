@@ -6,11 +6,18 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { LinkedInAuthLink } from "@/components/auth/linkedin-auth-link";
+import { SocialAuthLink } from "@/components/auth/social-auth-link";
 import { signupSchema } from "@/lib/validation";
 
 type FormValues = z.infer<typeof signupSchema>;
 
-export function SignupForm({ linkedinError }: { linkedinError?: string }) {
+export function SignupForm({
+  linkedinError,
+  socialError
+}: {
+  linkedinError?: string;
+  socialError?: string;
+}) {
   const router = useRouter();
   const [formError, setFormError] = useState<string | null>(null);
   const {
@@ -56,6 +63,18 @@ export function SignupForm({ linkedinError }: { linkedinError?: string }) {
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       <div className="space-y-3">
+        <SocialAuthLink
+          provider="google"
+          mode="signup"
+          accountIntent={accountIntent}
+          className="w-full"
+        />
+        <SocialAuthLink
+          provider="facebook"
+          mode="signup"
+          accountIntent={accountIntent}
+          className="w-full"
+        />
         <LinkedInAuthLink mode="signup" accountIntent={accountIntent} className="w-full" />
         <div className="text-center text-xs font-semibold text-slate-400">או הרשמה עם אימייל וסיסמה</div>
       </div>
@@ -133,6 +152,7 @@ export function SignupForm({ linkedinError }: { linkedinError?: string }) {
             : "החשבון מיועד לגלישה נוחה, שמירת מחלקות להשוואה, והגשת מועמדות פרטית לתקנים פתוחים מתוך אזור אישי מסודר."}
       </div>
 
+      {socialError ? <p className="text-sm text-rose-600">{socialError}</p> : null}
       {linkedinError ? <p className="text-sm text-rose-600">{linkedinError}</p> : null}
       {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}
 

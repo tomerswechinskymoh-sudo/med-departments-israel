@@ -9,7 +9,8 @@ export function HomeStickyActions({
     id: string;
     slug: string;
     name: string;
-    institution: { name: string };
+    institution: { id: string; name: string; type: "HOSPITAL" | "HMO" };
+    specialty: { id: string; name: string };
   }[];
 }) {
   return (

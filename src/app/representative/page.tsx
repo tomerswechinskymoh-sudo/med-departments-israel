@@ -73,6 +73,7 @@ function resolveDepartmentFormValues(assignment: Awaited<ReturnType<typeof getRe
       id: head.id,
       name: head.name,
       title: head.title,
+      role: head.role ?? "",
       bio: head.bio,
       profileImageUrl: head.profileImageUrl ?? ""
     })),
