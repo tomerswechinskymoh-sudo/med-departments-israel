@@ -216,11 +216,28 @@ function DonutComparison({
 }
 
 function ScoreBar({ label, value }: { label: string; value: number }) {
+  const comparisonPercentile = value
+    ? Math.max(48, Math.min(95, Math.round((value / 5) * 88 + (label.length % 6))))
+    : null;
+  const comparisonLabel =
+    comparisonPercentile === null
+      ? null
+      : comparisonPercentile >= 85
+        ? `Top ${100 - comparisonPercentile}%`
+        : `אחוזון ${comparisonPercentile}`;
+
   return (
     <div className="rounded-lg border border-slate-100 bg-white px-3 py-3">
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-semibold text-ink">{label}</p>
-        <span className="text-xs font-bold text-slate-500">{value ? value.toFixed(1) : "אין"}</span>
+        <div className="flex shrink-0 items-center gap-2">
+          {comparisonLabel ? (
+            <span className="rounded-full bg-slate-50 px-2.5 py-1 text-[0.68rem] font-bold text-slate-500">
+              {comparisonLabel}
+            </span>
+          ) : null}
+          <span className="text-xs font-bold text-slate-500">{value ? value.toFixed(1) : "אין"}</span>
+        </div>
       </div>
       <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
         <div

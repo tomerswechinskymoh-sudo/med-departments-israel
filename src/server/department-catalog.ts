@@ -1,4 +1,5 @@
 import { InstitutionType, Prisma, PrismaClient } from "@prisma/client";
+import { formatDepartmentDisplayName } from "@/lib/utils";
 
 type DbClient = PrismaClient | Prisma.TransactionClient;
 
@@ -388,10 +389,7 @@ export function buildDepartmentCopy(input: {
   departmentName: string;
   institutionType: InstitutionType;
 }) {
-  const baseName =
-    input.departmentName === input.specialtyName
-      ? input.specialtyName
-      : `${input.specialtyName} · ${input.departmentName}`;
+  const baseName = formatDepartmentDisplayName(input.departmentName, input.specialtyName);
 
   if (input.institutionType === InstitutionType.HMO) {
     return {

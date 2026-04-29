@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { DepartmentCard } from "@/components/departments/department-card";
 import { HomeHeroImage } from "@/components/home/home-hero-image";
 import { HomeReviewComparisonCard } from "@/components/home/home-review-comparison-card";
 import { StatCard } from "@/components/dashboard/stat-card";
@@ -8,7 +7,9 @@ import { HomeSection } from "@/components/home/home-section";
 import { HomeStickyActions } from "@/components/home/home-sticky-actions";
 import { PageShell } from "@/components/layout/page-shell";
 import { OpeningCard } from "@/components/openings/opening-card";
+import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { RatingStars } from "@/components/ui/rating-stars";
 import {
   ClipboardHeartIcon,
   DepartmentDirectoryIcon,
@@ -16,6 +17,7 @@ import {
 } from "@/components/ui/med-icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getHomePageData, getReviewFormContext } from "@/lib/queries";
+import { getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -27,24 +29,25 @@ const trustItems = [
 
 const decisionSteps = [
   {
-    title: "מחפשים",
-    description: "לפי מוסד, תחום או שם מחלקה",
+    title: "בוחרים תחום התמחות",
+    description: "מתחילים מהתחום שרוצים להשוות",
     icon: SearchPulseIcon
   },
   {
-    title: "משווים",
-    description: "אווירה, עומס, תקנים פתוחים ומחקר",
+    title: "משווים בין מחלקות",
+    description: "רואים תוכניות, ביקורות, תקנים ומחקר",
     icon: DepartmentDirectoryIcon
   },
   {
-    title: "שומרים וחוזרים",
-    description: "בונים רשימה קצרה בלי ללכת לאיבוד",
+    title: "נכנסים לפרופיל מלא",
+    description: "פותחים עמוד מחלקה עם תמונה מלאה",
     icon: ClipboardHeartIcon
   }
 ];
 
 export default async function HomePage() {
   const [data, reviewContext] = await Promise.all([getHomePageData(), getReviewFormContext()]);
+  const showcaseDepartment = data.featuredDepartments[0];
 
   return (
     <PageShell className="space-y-8 py-6 pb-28 md:space-y-10 md:py-10 md:pb-12">
@@ -83,6 +86,19 @@ export default async function HomePage() {
                 </button>
               </div>
             </form>
+
+            <div className="grid gap-2 md:grid-cols-3">
+              {decisionSteps.map((step, index) => (
+                <div
+                  key={step.title}
+                  className="rounded-2xl border border-brand-100 bg-brand-50/60 px-4 py-3"
+                >
+                  <p className="text-xs font-black text-brand-700">שלב {index + 1}</p>
+                  <p className="mt-1 text-sm font-bold text-ink">{step.title}</p>
+                  <p className="mt-1 text-xs leading-5 text-slate-600">{step.description}</p>
+                </div>
+              ))}
+            </div>
 
             <ExperienceCta
               departments={reviewContext.departments}
@@ -137,15 +153,76 @@ export default async function HomePage() {
 
       <HomeSection tone="plain" className="space-y-6">
         <SectionHeading
-          eyebrow="להתחיל מכאן"
-          title="מחלקות שכדאי לבדוק"
-          description="מידע מספיק ברור כדי להבין אם שווה להעמיק"
+          eyebrow="כך נראה עמוד מחלקה"
+          title="דוגמה אחת שמראה את עומק המוצר"
+          description="במקום להציף רשימה בעמוד הבית, מציגים איך נראה פרופיל מחלקה שאפשר לפתוח, להשוות ולשמור."
         />
-        <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-4">
-          {data.featuredDepartments.map((department) => (
-            <DepartmentCard key={department.id} department={department} />
-          ))}
-        </div>
+        {showcaseDepartment ? (
+          <Card className="overflow-hidden rounded-[2rem] border border-brand-100 bg-white p-0 shadow-panel">
+            <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="space-y-5 p-5 md:p-7">
+                <div className="flex flex-wrap gap-2">
+                  <Badge>{showcaseDepartment.specialtyName}</Badge>
+                  {showcaseDepartment.region ? <Badge tone="default">{showcaseDepartment.region}</Badge> : null}
+                  {showcaseDepartment.hasOpenResidency ? <Badge tone="success">תקנים פתוחים</Badge> : null}
+                  {showcaseDepartment.hasResearch ? <Badge tone="success">מחקר פתוח</Badge> : null}
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-brand-700">תצוגת פרופיל לדוגמה</p>
+                  <h3 className="mt-2 text-3xl font-black leading-tight text-ink">
+                    {showcaseDepartment.name}
+                  </h3>
+                  <p className="mt-2 text-sm font-semibold text-slate-600">
+                    {showcaseDepartment.institutionName}
+                    {showcaseDepartment.city ? ` · ${showcaseDepartment.city}` : ""}
+                    {showcaseDepartment.region ? ` · ${showcaseDepartment.region}` : ""}
+                  </p>
+                </div>
+                <p className="max-w-2xl text-sm leading-8 text-slate-700">
+                  {showcaseDepartment.shortSummary}
+                </p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <RatingStars value={showcaseDepartment.averageOverall || 0} />
+                  <span className="text-sm font-bold text-slate-600">
+                    {showcaseDepartment.reviewCount} שיתופים מאושרים
+                  </span>
+                </div>
+                <Link
+                  href={getDepartmentHref(showcaseDepartment)}
+                  className="inline-flex rounded-full bg-brand-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-800"
+                >
+                  לפתיחת עמוד המחלקה
+                </Link>
+              </div>
+              <div className="border-t border-brand-100 bg-gradient-to-br from-brand-50 via-white to-amber-50/60 p-5 md:p-7 lg:border-r lg:border-t-0">
+                <p className="text-sm font-black text-ink">מה רואים בפרופיל מלא?</p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-white bg-white/86 px-4 py-4 shadow-sm">
+                    <p className="text-xs font-bold text-slate-500">נתונים אובייקטיביים</p>
+                    <p className="mt-2 text-2xl font-black text-ink">
+                      {showcaseDepartment.residentsCount ?? 18}
+                    </p>
+                    <p className="mt-1 text-xs text-slate-500">מתמחים פעילים</p>
+                  </div>
+                  <div className="rounded-2xl border border-white bg-white/86 px-4 py-4 shadow-sm">
+                    <p className="text-xs font-bold text-slate-500">מעבר שלב א׳</p>
+                    <p className="mt-2 text-2xl font-black text-ink">
+                      {showcaseDepartment.shlavAlephPassRate ?? 82}%
+                    </p>
+                    <p className="mt-1 text-xs text-slate-500">נתון להשוואה מהירה</p>
+                  </div>
+                  <div className="rounded-2xl border border-white bg-white/86 px-4 py-4 shadow-sm sm:col-span-2">
+                    <p className="text-xs font-bold text-slate-500">מה המחלקה מחפשת</p>
+                    <p className="mt-2 text-sm font-semibold leading-7 text-slate-700">
+                      {showcaseDepartment.candidatePreferences ??
+                        "מועמדים עם אחריות קלינית, סקרנות, עבודת צוות ועניין במחקר."}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        ) : null}
       </HomeSection>
 
       <HomeSection tone="soft" className="space-y-6">

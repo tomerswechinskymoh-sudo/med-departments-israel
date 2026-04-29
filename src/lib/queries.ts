@@ -13,7 +13,7 @@ import {
   OPENING_TYPE_LABELS
 } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
-import { average } from "@/lib/utils";
+import { average, formatDepartmentDisplayName } from "@/lib/utils";
 import { resolveCanonicalDepartmentSlug } from "@/server/department-catalog";
 
 const publishedReviewSelect = {
@@ -291,6 +291,7 @@ export async function getHomePageData() {
               },
               specialty: {
                 select: {
+                  name: true,
                   slug: true
                 }
               }
@@ -363,7 +364,7 @@ export async function getHomePageData() {
     featuredDepartments: featuredDepartments.map((department) => ({
       id: department.id,
       slug: canonicalDepartmentSlugForRecord(department),
-      name: department.name,
+      name: formatDepartmentDisplayName(department.name, department.specialty.name),
       institutionName: department.institution.name,
       city: department.institution.city,
       region: resolveInstitutionRegion(department.institution),
@@ -383,6 +384,7 @@ export async function getHomePageData() {
       ...review,
       department: {
         ...review.department,
+        name: formatDepartmentDisplayName(review.department.name, review.department.specialty.name),
         slug: canonicalDepartmentSlugForRecord({
           slug: review.department.slug,
           name: review.department.name,
@@ -456,7 +458,10 @@ export async function getDirectoryFilters() {
       region: resolveInstitutionRegion(institution)
     })),
     specialties,
-    departments,
+    departments: departments.map((department) => ({
+      ...department,
+      name: formatDepartmentDisplayName(department.name, department.specialty.name)
+    })),
     regions: ISRAEL_REGIONS
   };
 }
@@ -492,16 +497,6 @@ export async function getDirectoryData(
   const departments = await prisma.department.findMany({
     where: {
       AND: [
-        filters.search
-          ? {
-              OR: [
-                { name: { contains: filters.search, mode: "insensitive" } },
-                { shortSummary: { contains: filters.search, mode: "insensitive" } },
-                { institution: { name: { contains: filters.search, mode: "insensitive" } } },
-                { specialty: { name: { contains: filters.search, mode: "insensitive" } } }
-              ]
-            }
-          : {},
         filters.institutions?.length
           ? {
               OR: filters.institutions.map((institutionId) => ({
@@ -594,11 +589,28 @@ export async function getDirectoryData(
     orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
   });
 
+  const searchedDepartments = filters.search
+    ? departments.filter((department) => {
+        const displayName = formatDepartmentDisplayName(department.name, department.specialty.name);
+        const haystack = [
+          department.name,
+          displayName,
+          department.shortSummary,
+          department.institution.name,
+          department.specialty.name
+        ]
+          .join(" ")
+          .toLocaleLowerCase("he");
+
+        return haystack.includes(filters.search!.toLocaleLowerCase("he"));
+      })
+    : departments;
+
   const filteredDepartments = filters.regions?.length
-    ? departments.filter((department) =>
+    ? searchedDepartments.filter((department) =>
         filters.regions?.includes(resolveInstitutionRegion(department.institution))
       )
-    : departments;
+    : searchedDepartments;
 
   const now = new Date();
   const hasAdvancedRanking = Boolean(
@@ -649,7 +661,7 @@ export async function getDirectoryData(
     return {
       id: department.id,
       slug: canonicalDepartmentSlugForRecord(department),
-      name: department.name,
+      name: formatDepartmentDisplayName(department.name, department.specialty.name),
       institutionName: department.institution.name,
       institutionType: department.institution.type,
       city: department.institution.city,
@@ -797,6 +809,7 @@ export async function getDepartmentPageData(
 
   return {
     ...department,
+    name: formatDepartmentDisplayName(department.name, department.specialty.name),
     slug: canonicalDepartmentSlugForRecord(department),
     isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
     summary: {
@@ -1030,7 +1043,7 @@ export async function getFavoritesData(userId: string) {
   return favorites.map((favorite) => ({
     id: favorite.department.id,
     slug: canonicalDepartmentSlugForRecord(favorite.department),
-    name: favorite.department.name,
+    name: formatDepartmentDisplayName(favorite.department.name, favorite.department.specialty.name),
     institutionName: favorite.department.institution.name,
     city: favorite.department.institution.city,
     specialtyName: favorite.department.specialty.name,

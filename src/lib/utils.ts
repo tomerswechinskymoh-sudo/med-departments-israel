@@ -33,6 +33,79 @@ export function average(numbers: number[]) {
   return numbers.reduce((sum, value) => sum + value, 0) / numbers.length;
 }
 
+function normalizeHebrewDepartmentText(value: string) {
+  return value
+    .trim()
+    .replace(/[׳’`]/g, "'")
+    .replace(/\s+/g, " ");
+}
+
+function specialtyAliases(specialtyName: string) {
+  const aliases = new Set<string>();
+  const normalizedSpecialty = normalizeHebrewDepartmentText(specialtyName);
+  const words = normalizedSpecialty.split(" ").filter(Boolean);
+
+  aliases.add(normalizedSpecialty);
+
+  if (words.length > 1) {
+    aliases.add(words[words.length - 1]);
+  }
+
+  if (normalizedSpecialty.includes("גינקולוגיה")) {
+    aliases.add("נשים");
+  }
+
+  if (normalizedSpecialty.includes("ילדים")) {
+    aliases.add("ילדים");
+  }
+
+  if (normalizedSpecialty.includes("פנימית")) {
+    aliases.add("פנימית");
+  }
+
+  if (normalizedSpecialty.includes("כירורגיה כללית")) {
+    aliases.add("כללית");
+  }
+
+  return Array.from(aliases).sort((left, right) => right.length - left.length);
+}
+
+function normalizeSubDepartmentIdentifier(value: string) {
+  return normalizeHebrewDepartmentText(value.replace(/^מחלקה\s+/, "")).replace(/'/g, "׳");
+}
+
+export function formatDepartmentDisplayName(departmentName: string, specialtyName: string) {
+  const normalizedDepartment = normalizeHebrewDepartmentText(departmentName);
+  const normalizedSpecialty = normalizeHebrewDepartmentText(specialtyName);
+
+  if (!normalizedDepartment || normalizedDepartment === normalizedSpecialty) {
+    return specialtyName;
+  }
+
+  if (normalizedDepartment.includes(normalizedSpecialty)) {
+    return departmentName;
+  }
+
+  const standaloneIdentifierPattern = /^(?:מחלקה\s+)?[א-ת](?:'|׳)?$/;
+
+  if (standaloneIdentifierPattern.test(normalizedDepartment)) {
+    return `${specialtyName} ${normalizeSubDepartmentIdentifier(normalizedDepartment)}`;
+  }
+
+  for (const alias of specialtyAliases(specialtyName)) {
+    if (normalizedDepartment === alias) {
+      return specialtyName;
+    }
+
+    if (normalizedDepartment.startsWith(`${alias} `)) {
+      const suffix = normalizeSubDepartmentIdentifier(normalizedDepartment.slice(alias.length).trim());
+      return suffix ? `${specialtyName} ${suffix}` : specialtyName;
+    }
+  }
+
+  return departmentName;
+}
+
 export function getDepartmentHref(department: { slug: string; id?: string | null }) {
   const basePath = `/departments/${encodeURIComponent(department.slug)}`;
 
