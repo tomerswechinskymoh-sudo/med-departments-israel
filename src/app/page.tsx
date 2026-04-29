@@ -6,7 +6,6 @@ import { ExperienceCta } from "@/components/experience/experience-cta";
 import { HomeSection } from "@/components/home/home-section";
 import { HomeStickyActions } from "@/components/home/home-sticky-actions";
 import { PageShell } from "@/components/layout/page-shell";
-import { OpeningCard } from "@/components/openings/opening-card";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
@@ -16,8 +15,8 @@ import {
   SearchPulseIcon
 } from "@/components/ui/med-icons";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { getHomePageData, getReviewFormContext } from "@/lib/queries";
-import { getDepartmentHref } from "@/lib/utils";
+import { getHomePageData, getReviewFormContext, openingTypeLabel } from "@/lib/queries";
+import { formatDate, getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -44,6 +43,18 @@ const decisionSteps = [
     icon: ClipboardHeartIcon
   }
 ];
+
+function openingStatusLabel(status: "OPEN" | "UPCOMING" | "CLOSED") {
+  if (status === "OPEN") {
+    return { label: "פתוח", tone: "success" as const };
+  }
+
+  if (status === "UPCOMING") {
+    return { label: "בקרוב", tone: "warning" as const };
+  }
+
+  return { label: "סגור", tone: "default" as const };
+}
 
 export default async function HomePage() {
   const [data, reviewContext] = await Promise.all([getHomePageData(), getReviewFormContext()]);
@@ -231,10 +242,56 @@ export default async function HomePage() {
           title="מה פתוח עכשיו, ומה הסיכוי שלך להיכנס"
           description="תקנים פתוחים, מועדי ועדה ומה באמת חשוב למחלקה"
         />
-        <div className="grid gap-4 xl:grid-cols-2">
-          {data.featuredOpenings.map((opening) => (
-            <OpeningCard key={opening.id} opening={opening} />
-          ))}
+        <div className="overflow-hidden rounded-[1.5rem] border border-brand-100 bg-white shadow-sm">
+          {data.featuredOpenings.map((opening, index) => {
+            const status = openingStatusLabel(opening.status);
+            const relevantDate = opening.applicationDeadline ?? opening.committeeDate;
+
+            return (
+              <div
+                key={opening.id}
+                className={`grid gap-3 px-4 py-4 md:grid-cols-[1.1fr_1.2fr_0.9fr_auto] md:items-center ${
+                  index > 0 ? "border-t border-slate-100" : ""
+                }`}
+              >
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Badge tone={status.tone}>{status.label}</Badge>
+                    <Badge tone="default">{openingTypeLabel(opening.openingType)}</Badge>
+                  </div>
+                  <p className="mt-2 text-sm font-black text-ink">
+                    {opening.department.specialty.name}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm font-bold text-ink">{opening.department.institution.name}</p>
+                  <p className="mt-1 text-xs font-semibold text-slate-500">
+                    {opening.department.name}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-slate-500">
+                    {opening.applicationDeadline ? "דדליין" : "מועד ועדה צפוי"}
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-ink">{formatDate(relevantDate)}</p>
+                </div>
+                <div className="flex flex-wrap gap-2 md:justify-end">
+                  <Link
+                    href={`/openings/${opening.id}/apply`}
+                    className="rounded-full bg-brand-700 px-4 py-2 text-xs font-bold text-white transition hover:bg-brand-800"
+                  >
+                    להגשת מועמדות
+                  </Link>
+                  <Link
+                    href={`/openings/${opening.id}`}
+                    className="rounded-full border border-brand-200 px-4 py-2 text-xs font-bold text-brand-800 transition hover:bg-brand-50"
+                  >
+                    פרטי התקן
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </HomeSection>
 

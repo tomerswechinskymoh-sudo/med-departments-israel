@@ -44,6 +44,7 @@ export default async function OpeningDetailsPage({
       : statusLabel(opening.status);
   const canApply = opening.status !== "CLOSED" && !deadlinePassed;
   const showApplicationCount = session?.role === "admin";
+  const departmentHref = getDepartmentHref(opening.department);
 
   return (
     <PageShell className="space-y-8 py-10">
@@ -85,6 +86,21 @@ export default async function OpeningDetailsPage({
                 <p className="mt-2 font-semibold text-ink">{formatDate(opening.expectedStartDate)}</p>
               </div>
             </div>
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-brand-100 bg-white p-4">
+                <p className="text-xs font-bold text-slate-500">כמה מועמדים מובילים יישלחו למחלקה</p>
+                <p className="mt-2 text-2xl font-black text-ink">{opening.topApplicantsToEmail}</p>
+                <p className="mt-1 text-xs leading-5 text-slate-500">
+                  לאחר הדדליין, המערכת מסמנת למחלקה את ההתאמות החזקות ביותר.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-brand-100 bg-white p-4">
+                <p className="text-xs font-bold text-slate-500">דרישות הגשה</p>
+                <p className="mt-2 text-sm font-semibold leading-7 text-ink">
+                  חשבון מחובר, פרטים אישיים, ניסיון רלוונטי וקבצים תומכים אם נדרשים.
+                </p>
+              </div>
+            </div>
 
             <div className="mt-6 flex flex-wrap gap-3">
               {canApply ? (
@@ -98,7 +114,7 @@ export default async function OpeningDetailsPage({
                 </Link>
               ) : null}
               <Link
-                href={getDepartmentHref(opening.department)}
+                href={departmentHref}
                 className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800"
               >
                 לעמוד המחלקה
@@ -111,10 +127,16 @@ export default async function OpeningDetailsPage({
       <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <Card>
           <SectionHeading
-            title="מה המחלקה פרסמה על התקן"
-            description="מידע רשמי שמגיע מאזור נציגים מאושר בלבד."
+            title="מה המחלקה מחפשת"
+            description="מידע רשמי שמגיע מאזור נציגים מאושר בלבד ומסביר מה חשוב בתקן הזה."
           />
           <div className="mt-5 space-y-4 text-sm leading-8 text-slate-700">
+            {opening.acceptanceCriteria?.whatWeAreLookingFor ? (
+              <div className="rounded-2xl border border-brand-100 bg-slate-900 px-4 py-4 text-white">
+                <span className="font-semibold text-white">מה אנחנו מחפשים: </span>
+                {opening.acceptanceCriteria.whatWeAreLookingFor}
+              </div>
+            ) : null}
             {opening.notes ? (
               <p>
                 <span className="font-semibold text-ink">הערות: </span>
@@ -133,25 +155,41 @@ export default async function OpeningDetailsPage({
                 {opening._count.applications}
               </p>
             ) : null}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl bg-brand-50/70 p-4">
+                <p className="text-xs font-bold text-slate-500">דדליין</p>
+                <p className="mt-2 font-bold text-ink">{formatDate(opening.applicationDeadline)}</p>
+              </div>
+              <div className="rounded-2xl bg-brand-50/70 p-4">
+                <p className="text-xs font-bold text-slate-500">ועדה צפויה</p>
+                <p className="mt-2 font-bold text-ink">{formatDate(opening.committeeDate)}</p>
+              </div>
+            </div>
           </div>
         </Card>
 
         <Card>
           <SectionHeading
-            title="חומר למחשבה לפני הגשה"
+            title="איך להגיש נכון"
             description="המועמדות נשלחת ישירות למחלקה מתוך חשבון מחובר. קורות חיים ותמונה לא מופיעים באתר."
           />
           <div className="mt-5 space-y-3 text-sm leading-7 text-slate-700">
             <p>שווה להיעזר בשדות הייעודיים כדי להסביר אם עשית אלקטיב, סטאז' או מחקר רלוונטי.</p>
             <p>אם אין עדיין ניסיון קודם במחלקה, אפשר לכתוב בכנות מה מושך אותך ולמה זה מתאים למסלול שלך.</p>
             <p>המחלקה לא רואה כאן פוסט, אלא מועמדות פרטית מסודרת.</p>
+            <Link
+              href={departmentHref}
+              className="inline-flex rounded-full border border-brand-200 px-4 py-2 text-xs font-bold text-brand-800 transition hover:bg-brand-50"
+            >
+              לעמוד המחלקה
+            </Link>
           </div>
         </Card>
       </section>
 
       <section className="space-y-6">
         <SectionHeading
-          title="מה חשוב למחלקה בבחירה"
+          title="קריטריונים והעדפות מובנות"
           description="השקיפות הזו נועדה לעזור להבין מה באמת משפיע בתקן הספציפי הזה."
         />
         <Card>

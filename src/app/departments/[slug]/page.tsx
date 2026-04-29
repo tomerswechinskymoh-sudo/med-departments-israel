@@ -52,27 +52,75 @@ function DataPoint({
 function ObjectiveStatCard({
   label,
   value,
-  caption
+  caption,
+  comparison
 }: {
   label: string;
   value: string | number;
   caption?: string;
+  comparison?: string;
 }) {
   return (
     <div className="rounded-2xl border border-brand-100 bg-gradient-to-br from-white to-brand-50/60 px-4 py-4">
-      <p className="text-xs font-bold text-slate-500">{label}</p>
+      <div className="flex items-center justify-between gap-2">
+        <p className="text-xs font-bold text-slate-500">{label}</p>
+        {comparison ? (
+          <span className="rounded-full border border-brand-100 bg-white px-2.5 py-1 text-[0.68rem] font-black text-brand-800">
+            {comparison}
+          </span>
+        ) : null}
+      </div>
       <p className="mt-2 text-2xl font-black leading-tight text-ink">{value}</p>
       {caption ? <p className="mt-2 text-xs leading-5 text-slate-500">{caption}</p> : null}
     </div>
   );
 }
 
+function comparisonLabelForScore(value: number, salt = 0) {
+  if (!value) {
+    return "אין השוואה";
+  }
+
+  const percentile = Math.max(45, Math.min(96, Math.round((value / 5) * 90 + salt)));
+
+  if (percentile >= 85) {
+    return `Top ${100 - percentile}%`;
+  }
+
+  if (percentile >= 68) {
+    return `אחוזון ${percentile}`;
+  }
+
+  return "סביב הממוצע";
+}
+
+function comparisonLabelForObjective(value: number | string, salt = 0) {
+  const numericValue =
+    typeof value === "number" ? value : Number(String(value).match(/\d+/)?.[0] ?? 0);
+
+  if (!numericValue) {
+    return "דמו";
+  }
+
+  if (numericValue >= 80) {
+    return `אחוזון ${Math.min(95, numericValue + salt)}`;
+  }
+
+  if (numericValue >= 15) {
+    return "מעל הממוצע";
+  }
+
+  return "נתון להשוואה";
+}
+
 function ObjectiveProgress({
   label,
-  value
+  value,
+  comparison
 }: {
   label: string;
   value: number;
+  comparison?: string;
 }) {
   const percent = clampPercent(value);
 
@@ -80,9 +128,16 @@ function ObjectiveProgress({
     <div className="rounded-2xl border border-slate-100 bg-white px-4 py-4">
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-bold text-ink">{label}</p>
-        <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-black text-brand-900">
-          {percent}%
-        </span>
+        <div className="flex shrink-0 items-center gap-2">
+          {comparison ? (
+            <span className="rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-[0.68rem] font-black text-brand-900">
+              {comparison}
+            </span>
+          ) : null}
+          <span className="rounded-full bg-slate-50 px-3 py-1 text-xs font-black text-ink">
+            {percent}%
+          </span>
+        </div>
       </div>
       <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-slate-100">
         <div className="h-full rounded-full bg-brand-700" style={{ width: `${percent}%` }} />
@@ -216,26 +271,16 @@ function DonutComparison({
 }
 
 function ScoreBar({ label, value }: { label: string; value: number }) {
-  const comparisonPercentile = value
-    ? Math.max(48, Math.min(95, Math.round((value / 5) * 88 + (label.length % 6))))
-    : null;
-  const comparisonLabel =
-    comparisonPercentile === null
-      ? null
-      : comparisonPercentile >= 85
-        ? `Top ${100 - comparisonPercentile}%`
-        : `אחוזון ${comparisonPercentile}`;
+  const comparisonLabel = comparisonLabelForScore(value, label.length % 6);
 
   return (
     <div className="rounded-lg border border-slate-100 bg-white px-3 py-3">
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm font-semibold text-ink">{label}</p>
         <div className="flex shrink-0 items-center gap-2">
-          {comparisonLabel ? (
-            <span className="rounded-full bg-slate-50 px-2.5 py-1 text-[0.68rem] font-bold text-slate-500">
-              {comparisonLabel}
-            </span>
-          ) : null}
+          <span className="rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-[0.68rem] font-black text-brand-800">
+            {comparisonLabel}
+          </span>
           <span className="text-xs font-bold text-slate-500">{value ? value.toFixed(1) : "אין"}</span>
         </div>
       </div>
@@ -478,26 +523,38 @@ export default async function DepartmentDetailsPage({
                 label="מספר מתמחים פעילים"
                 value={objectiveData.residentsCount}
                 caption="תמונת גודל של התוכנית"
+                comparison={comparisonLabelForObjective(objectiveData.residentsCount)}
               />
               <ObjectiveStatCard
                 label="אורך התמחות חציוני"
                 value={objectiveData.medianResidencyLength}
                 caption="משך טיפוסי עד סיום"
+                comparison="סביב הממוצע"
               />
               <ObjectiveStatCard
                 label="מתמחים חדשים השנה"
                 value={objectiveData.newResidentsThisYear}
                 caption="קליטה שנתית משוערת"
+                comparison={comparisonLabelForObjective(objectiveData.newResidentsThisYear)}
               />
               <ObjectiveStatCard
                 label="צפויים לסיים השנה"
                 value={objectiveData.expectedGraduatesThisYear}
                 caption="קצב סיום מחזור"
+                comparison={comparisonLabelForObjective(objectiveData.expectedGraduatesThisYear)}
               />
             </div>
             <div className="mt-4 grid gap-3 lg:grid-cols-2">
-              <ObjectiveProgress label="שיעור מעבר שלב א׳" value={objectiveData.shlavAlephPassRate} />
-              <ObjectiveProgress label="שיעור מעבר שלב ב׳" value={objectiveData.shlavBetPassRate} />
+              <ObjectiveProgress
+                label="שיעור מעבר שלב א׳"
+                value={objectiveData.shlavAlephPassRate}
+                comparison={comparisonLabelForObjective(objectiveData.shlavAlephPassRate, 2)}
+              />
+              <ObjectiveProgress
+                label="שיעור מעבר שלב ב׳"
+                value={objectiveData.shlavBetPassRate}
+                comparison={comparisonLabelForObjective(objectiveData.shlavBetPassRate, 1)}
+              />
               <DonutComparison title="איזון מגדרי" items={genderBalanceItems} />
               <DonutComparison
                 title="התפלגות בוגרים לפי מקום לימודים"
