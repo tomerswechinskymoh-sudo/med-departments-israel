@@ -1,26 +1,16 @@
-import type { ReactNode } from "react";
 import Link from "next/link";
 import { FavoriteToggleButton } from "@/components/departments/favorite-toggle-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import {
-  ClipboardHeartIcon,
-  DepartmentDirectoryIcon,
-  HospitalBuildingIcon,
-  SearchPulseIcon,
-  ShieldCheckIcon
-} from "@/components/ui/med-icons";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { getDepartmentHref } from "@/lib/utils";
 
 function MetricChip({
   label,
-  value,
-  icon
+  value
 }: {
   label: string;
   value: number;
-  icon: ReactNode;
 }) {
   const tone =
     value >= 4
@@ -30,17 +20,14 @@ function MetricChip({
         : "border-amber-200 bg-amber-50 text-amber-900";
 
   return (
-    <div className={`rounded-2xl border px-3 py-3 ${tone}`}>
-      <div className="flex items-center justify-between gap-2">
-        <span className="text-[0.68rem] font-semibold tracking-wide opacity-80">{label}</span>
-        <span className="opacity-80">{icon}</span>
-      </div>
+    <div className={`min-w-0 rounded-xl border px-3 py-2.5 ${tone}`}>
+      <span className="block truncate text-[0.68rem] font-semibold opacity-80">{label}</span>
       {value ? (
-        <div className="mt-3 flex items-center gap-3">
+        <div className="mt-2 flex min-w-0 items-center gap-2">
           <div className="flex h-2.5 flex-1 overflow-hidden rounded-full bg-white/70">
             <div className="rounded-full bg-current" style={{ width: `${(value / 5) * 100}%` }} />
           </div>
-          <span className="inline-flex min-w-11 items-center justify-center rounded-full border border-current/15 bg-white/75 px-2.5 py-1 text-xs font-bold">
+          <span className="inline-flex shrink-0 items-center justify-center rounded-full border border-current/15 bg-white/75 px-2 py-0.5 text-xs font-bold">
             {value.toFixed(1)}
           </span>
         </div>
@@ -53,7 +40,8 @@ function MetricChip({
 
 export function DepartmentCard({
   department,
-  showFavoriteButton = false
+  showFavoriteButton = false,
+  variant = "card"
 }: {
   department: {
     id: string;
@@ -61,6 +49,8 @@ export function DepartmentCard({
     name: string;
     institutionName: string;
     city?: string | null;
+    region?: string | null;
+    institutionType?: "HOSPITAL" | "HMO";
     specialtyName: string;
     shortSummary: string;
     reviewCount: number;
@@ -73,94 +63,111 @@ export function DepartmentCard({
     hasOpenResidency: boolean;
     hasUpcomingCommittee?: boolean;
     hasResearch: boolean;
+    residentsCount?: number | null;
+    shlavAlephPassRate?: number | null;
+    shlavBetPassRate?: number | null;
+    candidatePreferences?: string | null;
     isFavorite?: boolean;
     coverImageUrl?: string | null;
   };
   showFavoriteButton?: boolean;
+  variant?: "card" | "row";
 }) {
   const departmentHref = getDepartmentHref(department);
+  const isRow = variant === "row";
 
   return (
-    <Card className="group relative flex h-full flex-col justify-between overflow-hidden border border-white/90 bg-white/96 p-0 transition hover:-translate-y-0.5 hover:shadow-panel">
+    <Card
+      className={`group relative overflow-hidden border border-white/90 bg-white/96 p-0 transition hover:-translate-y-0.5 hover:shadow-panel ${
+        isRow ? "rounded-[1.25rem]" : "flex h-full flex-col justify-between"
+      }`}
+    >
       <Link
         href={departmentHref}
         aria-label={`לצפייה בעמוד המחלקה ${department.name}`}
-        className="absolute inset-0 z-10 rounded-[2rem]"
+        className="absolute inset-0 z-10 rounded-[1.25rem]"
       />
 
-      <div className="relative z-20 flex flex-1 flex-col justify-between p-6">
+      <div
+        className={`relative z-20 flex flex-1 flex-col justify-between ${
+          isRow ? "gap-4 p-4 md:p-5 lg:grid lg:grid-cols-[1fr_220px] lg:items-center" : "p-6"
+        }`}
+      >
         <div className="pointer-events-none">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge tone={department.hasOpenResidency ? "success" : "warning"}>
-              {department.hasOpenResidency ? "יש תקנים פתוחים" : "אין תקנים פתוחים כרגע"}
-            </Badge>
+            {department.hasOpenResidency ? <Badge tone="success">תקנים פתוחים</Badge> : null}
             {department.hasUpcomingCommittee ? (
               <Badge tone="default">ועדה מתוכננת</Badge>
             ) : null}
-            <Badge tone={department.hasResearch ? "success" : "default"}>
-              {department.hasResearch ? "מחקר פעיל" : "ללא מחקר פתוח"}
-            </Badge>
+            {department.hasResearch ? <Badge tone="success">מחקר פתוח</Badge> : null}
+            {department.region ? <Badge tone="default">{department.region}</Badge> : null}
+            {!isRow && !department.hasOpenResidency ? (
+              <Badge tone="warning">אין תקנים פתוחים כרגע</Badge>
+            ) : null}
+            {!isRow && !department.hasResearch ? <Badge tone="default">ללא מחקר פתוח</Badge> : null}
           </div>
 
-          <div className="mt-5 rounded-[1.6rem] border border-slate-100 bg-slate-50/90 px-4 py-4">
-            <p className="text-xs font-semibold tracking-wide text-slate-500">עמוד מחלקה</p>
-            <h3 className="mt-2 break-words text-2xl font-bold leading-tight text-ink">
+          <div className={isRow ? "mt-3" : "mt-5 rounded-[1.25rem] border border-slate-100 bg-slate-50/90 px-4 py-4"}>
+            <p className="text-xs font-semibold text-slate-500">
+              {department.specialtyName}
+            </p>
+            <h3 className={`${isRow ? "text-xl" : "mt-2 text-2xl"} break-words font-bold leading-tight text-ink`}>
               {department.name}
             </h3>
             <p className="mt-2 text-sm font-medium leading-6 text-slate-600">
               {department.institutionName}
               {department.city ? ` · ${department.city}` : ""}
+              {department.region ? ` · ${department.region}` : ""}
             </p>
           </div>
 
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-2xl bg-brand-50/70 p-3">
-              <div className="flex items-center gap-2 text-slate-500">
-                <HospitalBuildingIcon className="h-4 w-4" />
-                <p className="text-xs font-semibold">מוסד</p>
-              </div>
-              <p className="mt-1 text-sm font-semibold text-ink">
-                {department.institutionName}
-                {department.city ? ` · ${department.city}` : ""}
+          {!isRow ? (
+            <>
+              <p className="mt-4 min-h-[3.5rem] text-sm leading-7 text-slate-600">
+                {department.shortSummary}
               </p>
-            </div>
-            <div className="rounded-2xl bg-brand-50/70 p-3">
-              <div className="flex items-center gap-2 text-slate-500">
-                <DepartmentDirectoryIcon className="h-4 w-4" />
-                <p className="text-xs font-semibold">תחום</p>
+
+              <div className="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                <MetricChip label="הוראה" value={department.teachingQuality ?? 0} />
+                <MetricChip label="איזון" value={department.lifestyleBalance ?? 0} />
+                <MetricChip label="קליניקה" value={department.clinicalExposure ?? 0} />
               </div>
-              <p className="mt-1 text-sm font-semibold text-ink">{department.specialtyName}</p>
-            </div>
-          </div>
-
-          <p className="mt-4 min-h-[3.5rem] text-sm leading-7 text-slate-600">
-            {department.shortSummary}
-          </p>
-
-          <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-            <MetricChip
-              label="הוראה"
-              value={department.teachingQuality ?? 0}
-              icon={<ShieldCheckIcon className="h-4 w-4" />}
-            />
-            <MetricChip
-              label="עומס / איזון"
-              value={department.lifestyleBalance ?? 0}
-              icon={<ClipboardHeartIcon className="h-4 w-4" />}
-            />
-            <MetricChip
-              label="חשיפה קלינית"
-              value={department.clinicalExposure ?? 0}
-              icon={<SearchPulseIcon className="h-4 w-4" />}
-            />
-          </div>
+            </>
+          ) : null}
         </div>
 
-        <div className="relative z-30 mt-6 space-y-4">
-          <div className="flex items-center justify-between text-sm text-slate-600">
-            <span>{department.reviewCount} שיתופים מהשטח</span>
-            <RatingStars value={department.averageOverall || 0} />
+        <div className={`relative z-30 ${isRow ? "space-y-3 lg:border-r lg:border-slate-100 lg:pr-4" : "mt-6 space-y-4"}`}>
+          <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-slate-600">
+            {department.reviewCount > 0 ? (
+              <>
+                <span>{department.reviewCount} ביקורות</span>
+                <div className="shrink-0">
+                  <RatingStars value={department.averageOverall || 0} />
+                </div>
+              </>
+            ) : (
+              <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-500">
+                אין עדיין ביקורות
+              </span>
+            )}
           </div>
+
+          {!isRow ? (
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
+                <p className="text-slate-500">מתמחים</p>
+                <p className="mt-1 font-bold text-ink">{department.residentsCount ?? "אין נתונים"}</p>
+              </div>
+              <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
+                <p className="text-slate-500">שלב א׳</p>
+                <p className="mt-1 font-bold text-ink">
+                  {typeof department.shlavAlephPassRate === "number"
+                    ? `${department.shlavAlephPassRate}%`
+                    : "אין נתונים"}
+                </p>
+              </div>
+            </div>
+          ) : null}
 
           <div className="flex flex-wrap gap-3">
             <Link

@@ -1,6 +1,7 @@
 "use client";
 
 import { useDeferredValue, useMemo, useRef, useState } from "react";
+import type { ChangeEvent, FormEvent, KeyboardEvent } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -209,12 +210,19 @@ export function DepartmentFilters({
   filters,
   institutions,
   specialties,
-  departments
+  departments,
+  regions
 }: {
   filters: {
     search?: string;
     institutions?: string[];
     specialties?: string[];
+    regions?: string[];
+    institutionTypes?: Array<"HOSPITAL" | "HMO">;
+    hasOpenPositions?: boolean;
+    hasResearch?: boolean;
+    hasReviews?: boolean;
+    sort?: "recommended" | "rating" | "reviews" | "openings" | "research";
     prioritizeOpenings?: boolean;
     prioritizeCommittee?: boolean;
     researchPriority?: number;
@@ -224,7 +232,7 @@ export function DepartmentFilters({
     seniorsPriority?: number;
     clinicalPriority?: number;
   };
-  institutions: { id: string; name: string; type: "HOSPITAL" | "HMO" }[];
+  institutions: { id: string; name: string; type: "HOSPITAL" | "HMO"; region: string }[];
   specialties: { id: string; name: string }[];
   departments: {
     id: string;
@@ -232,6 +240,7 @@ export function DepartmentFilters({
     institution: { id: string; name: string };
     specialty: { id: string; name: string };
   }[];
+  regions: readonly string[];
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -242,9 +251,16 @@ export function DepartmentFilters({
   const deferredSearchValue = useDeferredValue(searchValue);
   const summaryChips = buildAdvancedSummary(filters);
   const hasAdvancedFilters = summaryChips.length > 0;
+  const selectedSpecialtyId = filters.specialties?.[0];
 
   const suggestionGroups = useMemo(() => {
     const normalizedQuery = normalizeSearchValue(deferredSearchValue);
+    const departmentsForSelectedSpecialty = selectedSpecialtyId
+      ? departments.filter((department) => department.specialty.id === selectedSpecialtyId)
+      : [];
+    const institutionIdsForSelectedSpecialty = new Set(
+      departmentsForSelectedSpecialty.map((department) => department.institution.id)
+    );
 
     if (!normalizedQuery) {
       return {
@@ -256,7 +272,11 @@ export function DepartmentFilters({
     }
 
     const institutionSuggestions = institutions
-      .filter((institution) => normalizeSearchValue(institution.name).includes(normalizedQuery))
+      .filter(
+        (institution) =>
+          institutionIdsForSelectedSpecialty.has(institution.id) &&
+          normalizeSearchValue(institution.name).includes(normalizedQuery)
+      )
       .slice(0, 3)
       .map(
         (institution): SuggestionItem => ({
@@ -281,7 +301,7 @@ export function DepartmentFilters({
         })
       );
 
-    const departmentSuggestions = departments
+    const departmentSuggestions = departmentsForSelectedSpecialty
       .filter((department) => {
         const haystack = `${department.name} ${department.institution.name} ${department.specialty.name}`;
         return normalizeSearchValue(haystack).includes(normalizedQuery);
@@ -308,7 +328,7 @@ export function DepartmentFilters({
       departments: departmentSuggestions,
       flat
     };
-  }, [deferredSearchValue, departments, institutions, specialties]);
+  }, [deferredSearchValue, departments, institutions, selectedSpecialtyId, specialties]);
 
   const hasSuggestions = suggestionGroups.flat.length > 0 && searchValue.trim().length > 0;
 
@@ -318,9 +338,7 @@ export function DepartmentFilters({
     router.push(nextUrl);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
+  const submitCurrentForm = () => {
     if (!formRef.current) {
       return;
     }
@@ -328,6 +346,21 @@ export function DepartmentFilters({
     submitWithFormData(new FormData(formRef.current));
     setSuggestionsOpen(false);
     setActiveSuggestionIndex(-1);
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    submitCurrentForm();
+  };
+
+  const handleFormChange = (event: ChangeEvent<HTMLFormElement>) => {
+    const target = event.target as unknown as HTMLInputElement | HTMLSelectElement;
+
+    if (target.name === "search") {
+      return;
+    }
+
+    window.requestAnimationFrame(submitCurrentForm);
   };
 
   const applySuggestion = (suggestion: SuggestionItem) => {
@@ -347,17 +380,15 @@ export function DepartmentFilters({
       if (!currentValues.includes(suggestion.value)) {
         formData.append("institution", suggestion.value);
       }
-      formData.set("search", suggestion.title);
-      setSearchValue(suggestion.title);
+      formData.delete("search");
+      setSearchValue("");
     }
 
     if (suggestion.type === "specialty") {
-      const currentValues = formData.getAll("specialty").map(String);
-      if (!currentValues.includes(suggestion.value)) {
-        formData.append("specialty", suggestion.value);
-      }
-      formData.set("search", suggestion.title);
-      setSearchValue(suggestion.title);
+      formData.delete("specialty");
+      formData.set("specialty", suggestion.value);
+      formData.delete("search");
+      setSearchValue("");
     }
 
     setSuggestionsOpen(false);
@@ -365,7 +396,7 @@ export function DepartmentFilters({
     submitWithFormData(formData);
   };
 
-  const handleSearchKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleSearchKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (!hasSuggestions) {
       if (event.key === "Escape") {
         setSuggestionsOpen(false);
@@ -408,21 +439,29 @@ export function DepartmentFilters({
   };
 
   return (
-    <Card className="overflow-hidden rounded-[2rem] border border-brand-100/80 bg-white/96 p-0">
-      <form ref={formRef} onSubmit={handleSubmit} className="space-y-5 p-5 md:p-6">
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-900 text-white">
-              <SearchPulseIcon className="h-5 w-5" />
-            </span>
-            <div>
-              <p className="text-sm font-semibold text-brand-700">חיפוש בסיסי</p>
-              <p className="mt-1 text-xs leading-6 text-slate-500">
-                מוסדות ותחומים נשמרים פשוטים. בתוך כל קבוצה יש OR, ובין קבוצות יש AND.
-              </p>
-            </div>
+    <Card className="sticky top-24 overflow-visible rounded-[1.25rem] border border-brand-100/80 bg-white/96 p-0">
+      <form ref={formRef} onSubmit={handleSubmit} onChange={handleFormChange} className="space-y-4 p-4">
+        <div className="rounded-[1.15rem] border border-brand-200 bg-gradient-to-br from-brand-900 to-brand-700 p-4 text-white shadow-sm">
+          <div>
+            <p className="text-xs font-bold text-brand-100">בחירת התמחות</p>
+            <p className="mt-1 text-lg font-bold leading-7">
+              קודם בוחרים תחום, ואז משווים תוכניות.
+            </p>
           </div>
+          <select
+            name="specialty"
+            defaultValue={filters.specialties?.[0] ?? specialties[0]?.id ?? ""}
+            className="mt-4 w-full rounded-xl border border-white/30 bg-white px-3 py-3 text-sm font-semibold text-ink outline-none transition focus:border-brand-200 focus:ring-2 focus:ring-white/35"
+          >
+            {specialties.map((specialty) => (
+              <option key={specialty.id} value={specialty.id}>
+                {specialty.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
+        <div className="space-y-3">
           <div className="relative">
             <input
               type="text"
@@ -449,7 +488,7 @@ export function DepartmentFilters({
               autoComplete="off"
               aria-expanded={hasSuggestions && suggestionsOpen}
               aria-controls="department-search-suggestions"
-              className="w-full rounded-[1.5rem] border border-brand-100 bg-surface px-4 py-3 text-sm outline-none ring-0 transition focus:border-brand-300"
+              className="w-full rounded-xl border border-brand-100 bg-surface px-3 py-3 text-sm outline-none ring-0 transition focus:border-brand-300"
             />
 
             {hasSuggestions && suggestionsOpen ? (
@@ -489,14 +528,102 @@ export function DepartmentFilters({
             ) : null}
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-2">
-            <fieldset className="rounded-[1.5rem] border border-brand-100 bg-brand-50/45 p-4">
+          <div>
+            <label htmlFor="department-sort" className="mb-2 block text-xs font-bold text-slate-500">
+              סידור תוצאות
+            </label>
+            <select
+              id="department-sort"
+              name="sort"
+              defaultValue={filters.sort ?? "recommended"}
+              className="w-full rounded-xl border border-brand-100 bg-white px-3 py-3 text-sm font-semibold text-ink outline-none transition focus:border-brand-300"
+            >
+              <option value="recommended">מומלץ</option>
+              <option value="rating">דירוג גבוה</option>
+              <option value="reviews">יותר ביקורות</option>
+              <option value="openings">תקנים פתוחים קודם</option>
+              <option value="research">מחקר פעיל קודם</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="grid gap-3">
+            <fieldset className="rounded-xl border border-brand-100 bg-brand-50/45 p-3">
+              <legend className="px-2 text-sm font-semibold text-ink">אזור</legend>
+              <div className="mt-2 grid gap-2">
+                {regions.map((region) => (
+                  <label
+                    key={region}
+                    className="flex items-center gap-2 rounded-lg border border-brand-100 bg-white px-3 py-2 text-sm text-slate-700"
+                  >
+                    <input
+                      type="checkbox"
+                      name="region"
+                      value={region}
+                      defaultChecked={filters.regions?.includes(region)}
+                    />
+                    <span>{region}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <fieldset className="rounded-xl border border-brand-100 bg-brand-50/45 p-3">
+              <legend className="px-2 text-sm font-semibold text-ink">סוג מוסד</legend>
+              <div className="mt-2 grid gap-2">
+                {[
+                  { value: "HOSPITAL", label: "בתי חולים" },
+                  { value: "HMO", label: "קופות / קהילה" }
+                ].map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center gap-2 rounded-lg border border-brand-100 bg-white px-3 py-2 text-sm text-slate-700"
+                  >
+                    <input
+                      type="checkbox"
+                      name="institutionType"
+                      value={option.value}
+                      defaultChecked={filters.institutionTypes?.includes(
+                        option.value as "HOSPITAL" | "HMO"
+                      )}
+                    />
+                    <span>{option.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <fieldset className="rounded-xl border border-brand-100 bg-brand-50/45 p-3">
+              <legend className="px-2 text-sm font-semibold text-ink">סימני תוכנית</legend>
+              <div className="mt-2 grid gap-2">
+                {[
+                  { name: "hasOpenPositions", label: "יש תקנים פתוחים", checked: filters.hasOpenPositions },
+                  { name: "hasResearch", label: "יש מחקר פעיל", checked: filters.hasResearch },
+                  { name: "hasReviews", label: "יש ביקורות", checked: filters.hasReviews }
+                ].map((option) => (
+                  <label
+                    key={option.name}
+                    className="flex items-center gap-2 rounded-lg border border-brand-100 bg-white px-3 py-2 text-sm text-slate-700"
+                  >
+                    <input
+                      type="checkbox"
+                      name={option.name}
+                      value="1"
+                      defaultChecked={option.checked}
+                    />
+                    <span>{option.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+
+            <fieldset className="rounded-xl border border-brand-100 bg-brand-50/45 p-3">
               <legend className="px-2 text-sm font-semibold text-ink">מוסדות</legend>
-              <div className="mt-3 grid max-h-56 gap-2 overflow-y-auto pr-1">
+              <div className="mt-2 grid max-h-52 gap-2 overflow-y-auto pr-1">
                 {institutions.map((institution) => (
                   <label
                     key={institution.id}
-                    className="flex items-start gap-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm text-slate-700"
+                    className="flex items-start gap-2 rounded-lg border border-brand-100 bg-white px-3 py-2 text-sm text-slate-700"
                   >
                     <input
                       type="checkbox"
@@ -506,8 +633,8 @@ export function DepartmentFilters({
                     />
                     <span>
                       {institution.name}
-                      <span className="mr-2 text-xs text-slate-500">
-                        {institution.type === "HOSPITAL" ? "בית חולים" : "קהילה / קופה"}
+                      <span className="mr-2 block text-xs text-slate-500">
+                        {institution.type === "HOSPITAL" ? "בית חולים" : "קהילה / קופה"} · {institution.region}
                       </span>
                     </span>
                   </label>
@@ -515,33 +642,13 @@ export function DepartmentFilters({
               </div>
             </fieldset>
 
-            <fieldset className="rounded-[1.5rem] border border-brand-100 bg-brand-50/45 p-4">
-              <legend className="px-2 text-sm font-semibold text-ink">תחומים</legend>
-              <div className="mt-3 grid max-h-56 gap-2 overflow-y-auto pr-1">
-                {specialties.map((specialty) => (
-                  <label
-                    key={specialty.id}
-                    className="flex items-start gap-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm text-slate-700"
-                  >
-                    <input
-                      type="checkbox"
-                      name="specialty"
-                      value={specialty.id}
-                      defaultChecked={filters.specialties?.includes(specialty.id)}
-                    />
-                    <span>{specialty.name}</span>
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-          </div>
         </div>
 
-        <details open={hasAdvancedFilters} className="rounded-[1.5rem] border border-brand-100 bg-white">
-          <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-3 px-4 py-3">
+        <details open={hasAdvancedFilters} className="rounded-xl border border-brand-100 bg-white">
+          <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-3 px-3 py-3">
             <div className="flex items-center gap-3">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-brand-50 text-brand-900">
-                <DepartmentDirectoryIcon className="h-5 w-5" />
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-900">
+                <DepartmentDirectoryIcon className="h-4 w-4" />
               </span>
               <div>
                 <p className="text-sm font-semibold text-ink">חיפוש מתקדם</p>
@@ -572,9 +679,9 @@ export function DepartmentFilters({
             </div>
           </summary>
 
-          <div className="border-t border-brand-100/80 px-4 py-4">
+          <div className="border-t border-brand-100/80 px-3 py-3">
             <div className="grid gap-3 sm:grid-cols-2">
-              <label className="flex items-start gap-3 rounded-[1.25rem] border border-brand-100 bg-brand-50/35 px-4 py-4 text-sm text-slate-700">
+              <label className="flex items-start gap-3 rounded-xl border border-brand-100 bg-brand-50/35 px-3 py-3 text-sm text-slate-700">
                 <input
                   type="checkbox"
                   name="prioritizeOpenings"
@@ -590,7 +697,7 @@ export function DepartmentFilters({
                 </span>
               </label>
 
-              <label className="flex items-start gap-3 rounded-[1.25rem] border border-brand-100 bg-brand-50/35 px-4 py-4 text-sm text-slate-700">
+              <label className="flex items-start gap-3 rounded-xl border border-brand-100 bg-brand-50/35 px-3 py-3 text-sm text-slate-700">
                 <input
                   type="checkbox"
                   name="prioritizeCommittee"
@@ -608,7 +715,7 @@ export function DepartmentFilters({
             </div>
 
             <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              <div className="rounded-[1.25rem] border border-brand-100 bg-white p-4">
+              <div className="rounded-xl border border-brand-100 bg-white p-3">
                 <div className="flex items-center gap-2 text-brand-700">
                   <ShieldCheckIcon className="h-4 w-4" />
                   <label className="text-sm font-semibold text-ink" htmlFor="teachingPriority">
@@ -629,7 +736,7 @@ export function DepartmentFilters({
                 </select>
               </div>
 
-              <div className="rounded-[1.25rem] border border-brand-100 bg-white p-4">
+              <div className="rounded-xl border border-brand-100 bg-white p-3">
                 <div className="flex items-center gap-2 text-brand-700">
                   <StethoscopeIcon className="h-4 w-4" />
                   <label className="text-sm font-semibold text-ink" htmlFor="seniorsPriority">
@@ -650,7 +757,7 @@ export function DepartmentFilters({
                 </select>
               </div>
 
-              <div className="rounded-[1.25rem] border border-brand-100 bg-white p-4">
+              <div className="rounded-xl border border-brand-100 bg-white p-3">
                 <div className="flex items-center gap-2 text-brand-700">
                   <ClipboardHeartIcon className="h-4 w-4" />
                   <label className="text-sm font-semibold text-ink" htmlFor="lifestylePriority">
@@ -671,7 +778,7 @@ export function DepartmentFilters({
                 </select>
               </div>
 
-              <div className="rounded-[1.25rem] border border-brand-100 bg-white p-4">
+              <div className="rounded-xl border border-brand-100 bg-white p-3">
                 <div className="flex items-center gap-2 text-brand-700">
                   <DepartmentDirectoryIcon className="h-4 w-4" />
                   <label className="text-sm font-semibold text-ink" htmlFor="researchPriority">
@@ -692,7 +799,7 @@ export function DepartmentFilters({
                 </select>
               </div>
 
-              <div className="rounded-[1.25rem] border border-brand-100 bg-white p-4">
+              <div className="rounded-xl border border-brand-100 bg-white p-3">
                 <div className="flex items-center gap-2 text-brand-700">
                   <HospitalBuildingIcon className="h-4 w-4" />
                   <label className="text-sm font-semibold text-ink" htmlFor="electivePriority">
@@ -713,7 +820,7 @@ export function DepartmentFilters({
                 </select>
               </div>
 
-              <div className="rounded-[1.25rem] border border-brand-100 bg-white p-4">
+              <div className="rounded-xl border border-brand-100 bg-white p-3">
                 <div className="flex items-center gap-2 text-brand-700">
                   <SearchPulseIcon className="h-4 w-4" />
                   <label className="text-sm font-semibold text-ink" htmlFor="clinicalPriority">
@@ -740,7 +847,7 @@ export function DepartmentFilters({
         <div className="flex flex-wrap gap-3">
           <Button type="submit">חפש מחלקות</Button>
           <a
-            href="/departments"
+            href={filters.specialties?.[0] ? `/departments?specialty=${filters.specialties[0]}` : "/departments"}
             className="inline-flex items-center rounded-2xl border border-brand-200 px-4 py-2.5 text-sm font-semibold text-brand-800"
           >
             איפוס

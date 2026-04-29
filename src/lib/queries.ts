@@ -129,6 +129,32 @@ function canonicalDepartmentSlugForRecord(input: {
   });
 }
 
+export const ISRAEL_REGIONS = ["צפון", "דרום", "מרכז", "חיפה", "ירושלים"] as const;
+
+function inferRegionFromCity(city?: string | null) {
+  if (!city) {
+    return "מרכז";
+  }
+
+  if (["חיפה", "נהריה", "צפת", "טבריה", "עפולה", "חדרה", "נצרת"].some((item) => city.includes(item))) {
+    return city.includes("חיפה") ? "חיפה" : "צפון";
+  }
+
+  if (["ירושלים"].some((item) => city.includes(item))) {
+    return "ירושלים";
+  }
+
+  if (["באר שבע", "אשקלון", "אילת", "אשדוד"].some((item) => city.includes(item))) {
+    return "דרום";
+  }
+
+  return "מרכז";
+}
+
+export function resolveInstitutionRegion(institution: { city?: string | null; region?: string | null }) {
+  return institution.region ?? inferRegionFromCity(institution.city);
+}
+
 function getDepartmentSlugVariants(slug: string) {
   const decodedSlug = decodeURIComponent(slug).trim().replace(/^\/+|\/+$/g, "");
   const normalizedHyphenSlug = decodedSlug.replace(/-+/g, "-");
@@ -340,13 +366,18 @@ export async function getHomePageData() {
       name: department.name,
       institutionName: department.institution.name,
       city: department.institution.city,
+      region: resolveInstitutionRegion(department.institution),
       coverImageUrl: department.coverImageUrl ?? department.institution.coverImageUrl,
       specialtyName: department.specialty.name,
       shortSummary: department.shortSummary,
       reviewCount: department.reviews.length,
       averageOverall: average(department.reviews.map((review) => review.overallRecommendation)),
       hasResearch: department.researchOpportunities.length > 0,
-      hasOpenResidency: department.residencyOpenings.length > 0
+      hasOpenResidency: department.residencyOpenings.length > 0,
+      residentsCount: department.residentsCount,
+      shlavAlephPassRate: department.shlavAlephPassRate,
+      shlavBetPassRate: department.shlavBetPassRate,
+      candidatePreferences: department.candidatePreferences
     })),
     latestReviews: latestReviews.map((review) => ({
       ...review,
@@ -381,7 +412,9 @@ export async function getDirectoryFilters() {
       select: {
         id: true,
         name: true,
-        type: true
+        type: true,
+        city: true,
+        region: true
       },
       orderBy: {
         name: "asc"
@@ -417,7 +450,15 @@ export async function getDirectoryFilters() {
     })
   ]);
 
-  return { institutions, specialties, departments };
+  return {
+    institutions: institutions.map((institution) => ({
+      ...institution,
+      region: resolveInstitutionRegion(institution)
+    })),
+    specialties,
+    departments,
+    regions: ISRAEL_REGIONS
+  };
 }
 
 export async function getDirectoryData(
@@ -425,6 +466,12 @@ export async function getDirectoryData(
     search?: string;
     institutions?: string[];
     specialties?: string[];
+    regions?: string[];
+    institutionTypes?: Array<"HOSPITAL" | "HMO">;
+    hasOpenPositions?: boolean;
+    hasResearch?: boolean;
+    hasReviews?: boolean;
+    sort?: "recommended" | "rating" | "reviews" | "openings" | "research";
     prioritizeOpenings?: boolean;
     prioritizeCommittee?: boolean;
     researchPriority?: number;
@@ -436,6 +483,12 @@ export async function getDirectoryData(
   },
   userId?: string
 ) {
+  const selectedSpecialtyId = filters.specialties?.[0];
+
+  if (!selectedSpecialtyId) {
+    return [];
+  }
+
   const departments = await prisma.department.findMany({
     where: {
       AND: [
@@ -456,11 +509,44 @@ export async function getDirectoryData(
               }))
             }
           : {},
-        filters.specialties?.length
+        {
+          specialtyId: selectedSpecialtyId
+        },
+        filters.institutionTypes?.length
           ? {
-              OR: filters.specialties.map((specialtyId) => ({
-                specialtyId
-              }))
+              institution: {
+                type: {
+                  in: filters.institutionTypes
+                }
+              }
+            }
+          : {},
+        filters.hasOpenPositions
+          ? {
+              residencyOpenings: {
+                some: {
+                  contentStatus: ContentStatus.PUBLISHED,
+                  status: {
+                    in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+                  }
+                }
+              }
+            }
+          : {},
+        filters.hasResearch
+          ? {
+              researchOpportunities: {
+                some: {
+                  contentStatus: ContentStatus.PUBLISHED
+                }
+              }
+            }
+          : {},
+        filters.hasReviews
+          ? {
+              reviews: {
+                some: {}
+              }
             }
           : {}
       ]
@@ -508,6 +594,12 @@ export async function getDirectoryData(
     orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
   });
 
+  const filteredDepartments = filters.regions?.length
+    ? departments.filter((department) =>
+        filters.regions?.includes(resolveInstitutionRegion(department.institution))
+      )
+    : departments;
+
   const now = new Date();
   const hasAdvancedRanking = Boolean(
     filters.prioritizeOpenings ||
@@ -520,7 +612,7 @@ export async function getDirectoryData(
       filters.clinicalPriority
   );
 
-  const rankedDepartments = departments.map((department) => {
+  const rankedDepartments = filteredDepartments.map((department) => {
     const teachingQuality = average(department.reviews.map((review) => review.teachingQuality));
     const lifestyleBalance = average(department.reviews.map((review) => review.lifestyleBalance));
     const researchExposure = average(department.reviews.map((review) => review.researchExposure));
@@ -561,6 +653,7 @@ export async function getDirectoryData(
       institutionName: department.institution.name,
       institutionType: department.institution.type,
       city: department.institution.city,
+      region: resolveInstitutionRegion(department.institution),
       specialtyName: department.specialty.name,
       coverImageUrl: department.coverImageUrl ?? department.institution.coverImageUrl,
       shortSummary: department.shortSummary,
@@ -574,12 +667,32 @@ export async function getDirectoryData(
       hasOpenResidency: department.residencyOpenings.length > 0,
       hasUpcomingCommittee,
       hasResearch: department.researchOpportunities.length > 0,
+      residentsCount: department.residentsCount,
+      shlavAlephPassRate: department.shlavAlephPassRate,
+      shlavBetPassRate: department.shlavBetPassRate,
+      candidatePreferences: department.candidatePreferences,
       isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
       rankingScore
     };
   });
 
   return rankedDepartments.sort((left, right) => {
+    if (filters.sort === "rating" && right.averageOverall !== left.averageOverall) {
+      return right.averageOverall - left.averageOverall;
+    }
+
+    if (filters.sort === "reviews" && right.reviewCount !== left.reviewCount) {
+      return right.reviewCount - left.reviewCount;
+    }
+
+    if (filters.sort === "openings" && Number(right.hasOpenResidency) !== Number(left.hasOpenResidency)) {
+      return Number(right.hasOpenResidency) - Number(left.hasOpenResidency);
+    }
+
+    if (filters.sort === "research" && Number(right.hasResearch) !== Number(left.hasResearch)) {
+      return Number(right.hasResearch) - Number(left.hasResearch);
+    }
+
     if (hasAdvancedRanking && right.rankingScore !== left.rankingScore) {
       return right.rankingScore - left.rankingScore;
     }
@@ -695,6 +808,7 @@ export async function getDepartmentPageData(
       ),
       researchExposure: average(department.reviews.map((review) => review.researchExposure)),
       lifestyleBalance: average(department.reviews.map((review) => review.lifestyleBalance)),
+      clinicalExposure: averageClinicalExposure(department.reviews),
       overallRecommendation: average(
         department.reviews.map((review) => review.overallRecommendation)
       )

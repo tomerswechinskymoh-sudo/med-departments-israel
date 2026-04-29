@@ -144,6 +144,14 @@ export const departmentFilterSchema = z.object({
   search: z.preprocess(emptyToUndefined, z.string().optional()),
   institutions: z.preprocess(queryStringArray, z.array(z.string()).optional()),
   specialties: z.preprocess(queryStringArray, z.array(z.string()).optional()),
+  regions: z.preprocess(queryStringArray, z.array(z.string()).optional()),
+  institutionTypes: z.preprocess(queryStringArray, z.array(z.enum(["HOSPITAL", "HMO"])).optional()),
+  hasOpenPositions: z.preprocess(queryBoolean, z.boolean().default(false)),
+  hasResearch: z.preprocess(queryBoolean, z.boolean().default(false)),
+  hasReviews: z.preprocess(queryBoolean, z.boolean().default(false)),
+  sort: z
+    .preprocess(emptyToUndefined, z.enum(["recommended", "rating", "reviews", "openings", "research"]).optional())
+    .default("recommended"),
   prioritizeOpenings: z.preprocess(queryBoolean, z.boolean().default(false)),
   prioritizeCommittee: z.preprocess(queryBoolean, z.boolean().default(false)),
   researchPriority: z.preprocess(queryScaleValue, scaleSchema.optional()),

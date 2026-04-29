@@ -126,6 +126,7 @@ model Institution {
   slug              String             @unique
   type              InstitutionType
   city              String?
+  region            String?
   summary           String
   websiteUrl        String?            @map("website_url")
   coverImageUrl     String?            @map("cover_image_url")
@@ -136,6 +137,7 @@ model Institution {
 
   @@index([type])
   @@index([city])
+  @@index([region])
 }
 
 model Specialty {
@@ -157,6 +159,18 @@ model Department {
   practicalInfo           String                   @map("practical_info")
   publicContactEmail      String?                  @map("public_contact_email")
   publicContactPhone      String?                  @map("public_contact_phone")
+  websiteUrl              String?                  @map("website_url")
+  contactName             String?                  @map("contact_name")
+  residentsCount          Int?                     @map("residents_count")
+  medianResidencyLength   String?                  @map("median_residency_length")
+  shlavAlephPassRate      Float?                   @map("shlav_aleph_pass_rate")
+  shlavBetPassRate        Float?                   @map("shlav_bet_pass_rate")
+  newResidentsThisYear    Int?                     @map("new_residents_this_year")
+  expectedGraduatesThisYear Int?                   @map("expected_graduates_this_year")
+  genderBalance           String?                  @map("gender_balance")
+  perks                   String?
+  candidatePreferences    String?                  @map("candidate_preferences")
+  educationLocationBreakdown Json?                 @map("education_location_breakdown")
   coverImageUrl           String?                  @map("cover_image_url")
   futureEnrichmentEnabled Boolean                  @default(false) @map("future_enrichment_enabled")
   createdAt               DateTime                 @default(now()) @map("created_at")

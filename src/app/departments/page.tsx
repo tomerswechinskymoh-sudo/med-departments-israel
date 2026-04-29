@@ -17,6 +17,13 @@ function toMultiValue(value: string | string[] | undefined) {
   return typeof value === "string" ? [value] : undefined;
 }
 
+function getDefaultSpecialtyId(specialties: { id: string; name: string }[]) {
+  return (
+    specialties.find((specialty) => specialty.name === "רפואה פנימית")?.id ??
+    specialties[0]?.id
+  );
+}
+
 export default async function DepartmentsPage({
   searchParams
 }: {
@@ -28,10 +35,24 @@ export default async function DepartmentsPage({
     searchParams
   ]);
 
+  const defaultSpecialtyId = getDefaultSpecialtyId(availableFilters.specialties);
+  const requestedSpecialtyId = toMultiValue(rawSearchParams.specialty)?.[0];
+  const selectedSpecialtyId = availableFilters.specialties.some(
+    (specialty) => specialty.id === requestedSpecialtyId
+  )
+    ? requestedSpecialtyId
+    : defaultSpecialtyId;
+
   const parsedFilters = departmentFilterSchema.parse({
     search: typeof rawSearchParams.search === "string" ? rawSearchParams.search : undefined,
     institutions: toMultiValue(rawSearchParams.institution),
-    specialties: toMultiValue(rawSearchParams.specialty),
+    specialties: selectedSpecialtyId ? [selectedSpecialtyId] : undefined,
+    regions: toMultiValue(rawSearchParams.region),
+    institutionTypes: toMultiValue(rawSearchParams.institutionType),
+    hasOpenPositions: rawSearchParams.hasOpenPositions,
+    hasResearch: rawSearchParams.hasResearch,
+    hasReviews: rawSearchParams.hasReviews,
+    sort: typeof rawSearchParams.sort === "string" ? rawSearchParams.sort : undefined,
     prioritizeOpenings: rawSearchParams.prioritizeOpenings,
     prioritizeCommittee: rawSearchParams.prioritizeCommittee,
     researchPriority:
@@ -61,40 +82,65 @@ export default async function DepartmentsPage({
   });
 
   const departments = await getDirectoryData(parsedFilters, session?.userId);
+  const selectedSpecialty = availableFilters.specialties.find(
+    (specialty) => specialty.id === selectedSpecialtyId
+  );
+  const filtersKey = JSON.stringify(parsedFilters);
 
   return (
-    <PageShell className="space-y-8 py-10">
-      <SectionHeading
-        eyebrow="חיפוש מחלקות"
-        title="חיפוש מחלקות, מסלולים וקהילה במקום אחד"
-        description="חיפוש בסיסי נשאר פשוט, ובחיפוש המתקדם אפשר לדרג מה חשוב לך יותר כדי לסדר את התוצאות בהתאם."
-      />
-
-      <DepartmentFilters
-        filters={parsedFilters}
-        institutions={availableFilters.institutions}
-        specialties={availableFilters.specialties}
-        departments={availableFilters.departments}
-      />
-
-      {departments.length === 0 ? (
-        <EmptyState
-          title="לא נמצאו מחלקות תואמות"
-          description="נסו להסיר חלק מהסינונים או לחפש לפי שם מחלקה, מוסד או תחום."
-          ctaHref="/departments"
-          ctaLabel="איפוס סינון"
+    <div className="min-h-screen bg-[#f3f7fa]">
+      <PageShell className="space-y-7 py-8">
+        <SectionHeading
+          eyebrow="Residency Navigator"
+          title="בחרו תחום התמחות והשוו תוכניות"
+          description="מתחילים מההתמחות, ואז משווים בתי חולים לפי ביקורות, תקנים, מחקר וסימנים פרקטיים."
         />
-      ) : (
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {departments.map((department) => (
-            <DepartmentCard
-              key={department.id}
-              department={department}
-              showFavoriteButton={Boolean(session)}
-            />
-          ))}
+
+        <div className="grid gap-6 lg:grid-cols-[320px_1fr] lg:items-start">
+          <DepartmentFilters
+            key={filtersKey}
+            filters={parsedFilters}
+            institutions={availableFilters.institutions}
+            specialties={availableFilters.specialties}
+            departments={availableFilters.departments}
+            regions={availableFilters.regions}
+          />
+
+          <div className="min-w-0 space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-[1.25rem] border border-brand-100 bg-white/94 px-4 py-3">
+              <div>
+                <p className="text-sm font-bold text-ink">{departments.length} תוכניות נמצאו</p>
+                <p className="mt-1 text-xs text-slate-500">
+                  מוצגות תוכניות בתחום {selectedSpecialty?.name ?? "ההתמחות שנבחרה"} בלבד.
+                </p>
+              </div>
+              <p className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
+                סידור: {parsedFilters.sort === "rating" ? "דירוג" : parsedFilters.sort === "reviews" ? "ביקורות" : parsedFilters.sort === "openings" ? "תקנים" : parsedFilters.sort === "research" ? "מחקר" : "מומלץ"}
+              </p>
+            </div>
+
+            {departments.length === 0 ? (
+              <EmptyState
+                title="לא נמצאו תוכניות תואמות"
+                description="נסו לבחור תחום התמחות אחר, להסיר אזור או לפתוח את הסינון."
+                ctaHref={selectedSpecialtyId ? `/departments?specialty=${selectedSpecialtyId}` : "/departments"}
+                ctaLabel="איפוס סינון"
+              />
+            ) : (
+              <div className="grid gap-4">
+                {departments.map((department) => (
+                  <DepartmentCard
+                    key={department.id}
+                    department={department}
+                    showFavoriteButton={Boolean(session)}
+                    variant="row"
+                  />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      )}
-    </PageShell>
+      </PageShell>
+    </div>
   );
 }
