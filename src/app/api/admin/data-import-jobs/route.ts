@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { createAuditLog } from "@/lib/audit";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
+import { hasValidSameOrigin } from "@/lib/security";
 import { runDuns100CrawlerJob } from "@/lib/server/duns-crawler";
 
 const crawlSchema = z.object({
@@ -24,6 +27,16 @@ export async function POST(request: Request) {
   if (session?.role !== "admin") {
     return NextResponse.json({ error: "אין הרשאה." }, { status: 403 });
   }
+  if (!hasValidSameOrigin(request)) {
+    return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
+  }
+  const rateLimit = checkRateLimit(request, "admin:data-import-jobs", {
+    limit: 6,
+    windowMs: 60 * 60 * 1000
+  });
+  if (!rateLimit.ok) {
+    return rateLimitResponse(rateLimit.retryAfter);
+  }
 
   const body = await request.json().catch(() => null);
   const parsed = crawlSchema.safeParse(body);
@@ -39,6 +52,17 @@ export async function POST(request: Request) {
       allowedDomains: splitDomains(parsed.data.allowedDomains),
       resumeJobId: parsed.data.resumeJobId,
       createdById: session.userId
+    });
+
+    await createAuditLog({
+      actorUserId: session.userId,
+      action: "data_import.job_completed",
+      entityType: "DataImportJob",
+      entityId: result.job.id,
+      metadata: {
+        batchId: result.batch?.id ?? null,
+        rootUrl: parsed.data.rootUrl
+      }
     });
 
     return NextResponse.json({

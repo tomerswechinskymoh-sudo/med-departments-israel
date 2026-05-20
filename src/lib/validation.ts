@@ -205,9 +205,9 @@ export const reviewSubmissionSchema = z
     researchExposure: scaleSchema,
     lifestyleBalance: scaleSchema,
     overallRecommendation: scaleSchema,
-    pros: z.preprocess(emptyToUndefined, z.string().optional()),
-    cons: z.preprocess(emptyToUndefined, z.string().optional()),
-    tips: z.preprocess(emptyToUndefined, z.string().optional()),
+    pros: z.preprocess(emptyToUndefined, z.string().max(1500, "הטקסט ארוך מדי.").optional()),
+    cons: z.preprocess(emptyToUndefined, z.string().max(1500, "הטקסט ארוך מדי.").optional()),
+    tips: z.preprocess(emptyToUndefined, z.string().max(1500, "הטקסט ארוך מדי.").optional()),
     roleDetails: z.preprocess(parseJsonString, reviewRoleDetailsSchema),
     consentToContact: z.literal(true, {
       errorMap: () => ({ message: "צריך לאשר יצירת קשר לצורך אימות." })

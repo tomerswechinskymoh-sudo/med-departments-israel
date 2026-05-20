@@ -9,6 +9,30 @@ function getMaxUploadBytes() {
     : 4 * 1024 * 1024;
 }
 
+const allowedUploadMimeTypes = new Set([
+  "application/pdf",
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/vnd.oasis.opendocument.text",
+  "text/plain"
+]);
+
+const allowedUploadExtensions = new Set(["pdf", "jpg", "jpeg", "png", "webp", "doc", "docx", "odt", "txt"]);
+
+function assertAllowedUploadType(file: File) {
+  const mimeType = file.type || "application/octet-stream";
+  const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
+
+  if (allowedUploadMimeTypes.has(mimeType) || allowedUploadExtensions.has(extension)) {
+    return;
+  }
+
+  throw new Error("סוג הקובץ אינו נתמך. ניתן להעלות PDF, תמונה או מסמך Word.");
+}
+
 export function getMaxUploadMbLabel() {
   return Math.round(getMaxUploadBytes() / (1024 * 1024));
 }
@@ -41,6 +65,7 @@ export async function storeUploadedFile(
   if (input.file.size > getMaxUploadBytes()) {
     throw new Error(`הקובץ גדול מדי. אפשר להעלות עד ${getMaxUploadMbLabel()}MB לקובץ.`);
   }
+  assertAllowedUploadType(input.file);
 
   const arrayBuffer = await input.file.arrayBuffer();
 

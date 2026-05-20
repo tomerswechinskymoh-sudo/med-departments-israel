@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { RoleKey } from "@prisma/client";
+import { RoleKey, VerificationStatus } from "@prisma/client";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { createAuditLog } from "@/lib/audit";
@@ -116,7 +116,10 @@ export async function GET(request: Request) {
           email: linkedinProfile.email,
           linkedinId: linkedinProfile.linkedinId,
           profileImageUrl: linkedinProfile.profileImageUrl,
-          linkedinConnectedAt: new Date()
+          linkedinConnectedAt: new Date(),
+          emailVerified: true,
+          verificationStatus: VerificationStatus.VERIFIED,
+          verifiedAt: new Date()
         }
       });
 
@@ -149,7 +152,10 @@ export async function GET(request: Request) {
         data: {
           fullName: linkedinProfile.fullName,
           profileImageUrl: linkedinProfile.profileImageUrl,
-          linkedinConnectedAt: new Date()
+          linkedinConnectedAt: new Date(),
+          emailVerified: true,
+          verificationStatus: VerificationStatus.VERIFIED,
+          verifiedAt: new Date()
         }
       });
 
@@ -190,7 +196,10 @@ export async function GET(request: Request) {
           fullName: linkedinProfile.fullName,
           linkedinId: linkedinProfile.linkedinId,
           profileImageUrl: linkedinProfile.profileImageUrl,
-          linkedinConnectedAt: new Date()
+          linkedinConnectedAt: new Date(),
+          emailVerified: true,
+          verificationStatus: VerificationStatus.VERIFIED,
+          verifiedAt: new Date()
         }
       });
 
@@ -218,7 +227,10 @@ export async function GET(request: Request) {
         roleKey,
         linkedinId: linkedinProfile.linkedinId,
         profileImageUrl: linkedinProfile.profileImageUrl,
-        linkedinConnectedAt: new Date()
+        linkedinConnectedAt: new Date(),
+        emailVerified: true,
+        verificationStatus: VerificationStatus.VERIFIED,
+        verifiedAt: new Date()
       }
     });
 

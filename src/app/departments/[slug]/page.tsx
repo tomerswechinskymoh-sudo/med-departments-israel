@@ -26,30 +26,41 @@ import { getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
-function EmptyValue() {
-  return <span className="text-slate-400">אין עדיין נתונים</span>;
+type MetricSource = "moh" | "hospital" | "duns100" | "demo" | "missing";
+
+function EmptyValue({ text = "אין עדיין נתונים" }: { text?: string }) {
+  return <span className="text-slate-400">{text}</span>;
 }
 
-function formatPercent(value: number | null | undefined) {
-  return typeof value === "number" ? `${value}%` : null;
-}
+function SourceBadge({ source }: { source: MetricSource }) {
+  const config: Record<MetricSource, { label: string; className: string }> = {
+    moh: {
+      label: "משרד הבריאות",
+      className: "border-blue-100 bg-blue-50 text-blue-800"
+    },
+    hospital: {
+      label: "בי״ח",
+      className: "border-brand-100 bg-brand-50 text-brand-800"
+    },
+    duns100: {
+      label: "DUNS100",
+      className: "border-slate-200 bg-white text-slate-700"
+    },
+    demo: {
+      label: "דמו",
+      className: "border-amber-200 bg-amber-50 text-amber-800"
+    },
+    missing: {
+      label: "טרם סופק",
+      className: "border-slate-200 bg-slate-50 text-slate-500"
+    }
+  };
+  const item = config[source];
 
-function clampPercent(value: number) {
-  return Math.max(0, Math.min(100, value));
-}
-
-function DataPoint({
-  label,
-  value
-}: {
-  label: string;
-  value: string | number | null | undefined;
-}) {
   return (
-    <div className="rounded-lg border border-slate-100 bg-white px-3 py-3">
-      <p className="text-xs font-semibold text-slate-500">{label}</p>
-      <p className="mt-1 text-sm font-bold leading-6 text-ink">{value ?? <EmptyValue />}</p>
-    </div>
+    <span className={`rounded-full border px-2.5 py-1 text-[0.68rem] font-black ${item.className}`}>
+      {item.label}
+    </span>
   );
 }
 
@@ -76,6 +87,41 @@ function ObjectiveStatCard({
       </div>
       <p className="mt-2 text-2xl font-black leading-tight text-ink">{value}</p>
       {caption ? <p className="mt-2 text-xs leading-5 text-slate-500">{caption}</p> : null}
+    </div>
+  );
+}
+
+function CompactDataCard({
+  label,
+  value,
+  source,
+  caption
+}: {
+  label: string;
+  value: string | number;
+  source: MetricSource;
+  caption?: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-slate-100 bg-white px-4 py-3">
+      <div className="flex items-start justify-between gap-2">
+        <p className="text-xs font-bold text-slate-500">{label}</p>
+        <SourceBadge source={source} />
+      </div>
+      <p className="mt-2 text-xl font-black text-ink">{value}</p>
+      {caption ? <p className="mt-1 text-xs leading-5 text-slate-500">{caption}</p> : null}
+    </div>
+  );
+}
+
+function DataUnavailable({ label, text }: { label?: string; text: string }) {
+  return (
+    <div className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+      <div className="flex items-start justify-between gap-2">
+        {label ? <p className="text-xs font-bold text-slate-500">{label}</p> : null}
+        <SourceBadge source="missing" />
+      </div>
+      <p className="mt-2 text-sm font-bold leading-6 text-slate-500">{text}</p>
     </div>
   );
 }
@@ -117,158 +163,144 @@ function comparisonLabelForObjective(value: number | string, salt = 0) {
   return "נתון להשוואה";
 }
 
-function ObjectiveProgress({
-  label,
+function numericRecordFromJson(value: unknown) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return [];
+  }
+
+  return Object.entries(value as Record<string, unknown>)
+    .map(([key, entryValue]) => ({
+      key,
+      value: typeof entryValue === "number" ? entryValue : Number(entryValue)
+    }))
+    .filter((item) => Number.isFinite(item.value))
+    .sort((left, right) => left.key.localeCompare(right.key));
+}
+
+function ArrayYearlyResidentsTable({
   value,
-  comparison
+  missingText,
+  source = "hospital"
 }: {
-  label: string;
-  value: number;
-  comparison?: string;
+  value: unknown;
+  missingText: string;
+  source?: MetricSource;
 }) {
-  const percent = clampPercent(value);
+  const rows = numericRecordFromJson(value);
 
   return (
     <div className="rounded-2xl border border-slate-100 bg-white px-4 py-4">
-      <div className="flex items-center justify-between gap-3">
-        <p className="text-sm font-bold text-ink">{label}</p>
-        <div className="flex shrink-0 items-center gap-2">
-          {comparison ? (
-            <span className="rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-[0.68rem] font-black text-brand-900">
-              {comparison}
-            </span>
-          ) : null}
-          <span className="rounded-full bg-slate-50 px-3 py-1 text-xs font-black text-ink">
-            {percent}%
-          </span>
+      <div className="flex items-start justify-between gap-2">
+        <p className="text-sm font-black text-ink">מתמחים שנקלטו לפי שנה</p>
+        <SourceBadge source={rows.length === 0 ? "missing" : source} />
+      </div>
+      {rows.length === 0 ? (
+        <p className="mt-3 text-sm font-bold leading-6 text-slate-500">{missingText}</p>
+      ) : (
+        <div className="mt-4 overflow-hidden rounded-xl border border-slate-100">
+          {rows.map((row) => (
+            <div key={row.key} className="flex items-center justify-between gap-4 border-b border-slate-100 px-3 py-2 last:border-b-0">
+              <span className="text-sm font-bold text-slate-600">{row.key}</span>
+              <span className="text-sm font-black text-ink">{row.value}</span>
+            </div>
+          ))}
         </div>
-      </div>
-      <div className="mt-3 h-2.5 overflow-hidden rounded-full bg-slate-100">
-        <div className="h-full rounded-full bg-brand-700" style={{ width: `${percent}%` }} />
-      </div>
+      )}
     </div>
   );
 }
 
-function percentPairsFromText(
-  value: string,
-  fallbackLabels: [string, string]
-) {
-  const matches = Array.from(value.matchAll(/([^·:,]+?)\s*(\d{1,3})%/g))
-    .map((match) => ({
-      label: match[1]?.trim() || fallbackLabels[0],
-      value: clampPercent(Number(match[2] ?? 0))
-    }))
-    .filter((item) => item.value > 0);
+function ArrayPublicationMetrics({
+  total,
+  residentTotal,
+  years,
+  sourceUrl,
+  missingText
+}: {
+  total: number | null | undefined;
+  residentTotal: number | null | undefined;
+  years: unknown;
+  sourceUrl: string | null | undefined;
+  missingText: string;
+}) {
+  const yearRows = numericRecordFromJson(years);
+  const hasData = typeof total === "number" || typeof residentTotal === "number" || yearRows.length > 0;
+  const source: MetricSource = sourceUrl === "DEMO" ? "demo" : hasData ? "hospital" : "missing";
 
-  if (matches.length >= 2) {
-    return matches.slice(0, 2);
-  }
-
-  const firstPercent = clampPercent(Number(value.match(/(\d{1,3})%/)?.[1] ?? 50));
-
-  return [
-    { label: fallbackLabels[0], value: firstPercent },
-    { label: fallbackLabels[1], value: 100 - firstPercent }
-  ];
+  return (
+    <div className="rounded-2xl border border-slate-100 bg-white px-4 py-4">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <p className="text-sm font-black text-ink">פרסומים במערך</p>
+        <div className="flex items-center gap-2">
+          <SourceBadge source={source} />
+          {sourceUrl && sourceUrl !== "DEMO" ? (
+            <a href={sourceUrl} className="text-xs font-bold text-brand-800">
+              מקור
+            </a>
+          ) : null}
+        </div>
+      </div>
+      {!hasData ? (
+        <p className="mt-3 text-sm font-bold leading-6 text-slate-500">{missingText}</p>
+      ) : (
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          {typeof total === "number" ? (
+            <ObjectiveStatCard label="מספר פרסומים במערך" value={total} />
+          ) : null}
+          {typeof residentTotal === "number" ? (
+            <ObjectiveStatCard label="פרסומי מתמחים במערך" value={residentTotal} />
+          ) : null}
+          {yearRows.length > 0 ? (
+            <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-3 sm:col-span-2">
+              <p className="text-xs font-bold text-slate-500">שנות פרסום</p>
+              <p className="mt-2 text-sm font-black text-ink">
+                {yearRows.map((row) => `${row.key}: ${row.value}`).join(" · ")}
+              </p>
+            </div>
+          ) : null}
+        </div>
+      )}
+    </div>
+  );
 }
 
-function percentForLabel(value: string, label: string) {
-  const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const numberBeforeLabel = value.match(new RegExp(`(\\d{1,3})\\s*%\\s*${escapedLabel}`, "i"));
-  const labelBeforeNumber = value.match(new RegExp(`${escapedLabel}\\s*(\\d{1,3})\\s*%`, "i"));
-  const rawValue = numberBeforeLabel?.[1] ?? labelBeforeNumber?.[1];
+function DunsTrend({ people }: { people: Array<{ id: string; rankingYear: number | null }> }) {
+  const rows = Object.entries(
+    people.reduce<Record<string, number>>((accumulator, person) => {
+      if (!person.rankingYear) return accumulator;
+      const key = String(person.rankingYear);
+      accumulator[key] = (accumulator[key] ?? 0) + 1;
+      return accumulator;
+    }, {})
+  ).sort(([left], [right]) => left.localeCompare(right));
 
-  if (!rawValue) {
+  if (rows.length === 0) {
     return null;
   }
 
-  const percent = Number(rawValue);
-  return Number.isFinite(percent) && percent >= 0 && percent <= 100 ? percent : null;
-}
-
-function genderBalancePairsFromText(value: string | null | undefined) {
-  const fallback = [
-    { label: "נשים", value: 54 },
-    { label: "גברים", value: 46 }
-  ];
-
-  if (!value) {
-    return fallback;
-  }
-
-  const womenPercent = percentForLabel(value, "נשים");
-  const menPercent = percentForLabel(value, "גברים");
-
-  if (womenPercent !== null && menPercent !== null && womenPercent + menPercent === 100) {
-    return [
-      { label: "נשים", value: womenPercent },
-      { label: "גברים", value: menPercent }
-    ];
-  }
-
-  if (womenPercent !== null) {
-    return [
-      { label: "נשים", value: womenPercent },
-      { label: "גברים", value: 100 - womenPercent }
-    ];
-  }
-
-  if (menPercent !== null) {
-    return [
-      { label: "נשים", value: 100 - menPercent },
-      { label: "גברים", value: menPercent }
-    ];
-  }
-
-  return fallback;
-}
-
-function DonutComparison({
-  title,
-  items
-}: {
-  title: string;
-  items: Array<{ label: string; value: number }>;
-}) {
-  const first = items[0] ?? { label: "", value: 50 };
-  const second = items[1] ?? { label: "", value: 50 };
-  const firstPercent = clampPercent(first.value);
-  const secondPercent = clampPercent(second.value);
+  const max = Math.max(...rows.map(([, count]) => count), 1);
 
   return (
-    <div className="rounded-2xl border border-slate-100 bg-white px-4 py-4 shadow-sm">
-      <p className="text-sm font-bold text-ink">{title}</p>
-      <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div
-          className="relative h-24 w-24 shrink-0 rounded-full shadow-inner"
-          style={{
-            background: `conic-gradient(#0f766e 0 ${firstPercent}%, #f59e0b ${firstPercent}% 100%)`
-          }}
-        >
-          <div className="absolute inset-[0.72rem] flex flex-col items-center justify-center rounded-full bg-white text-center shadow-sm ring-1 ring-slate-100">
-            <span className="text-[1.35rem] font-black leading-none text-ink">{firstPercent}%</span>
-            <span className="mt-1 max-w-[4.5rem] truncate text-[0.68rem] font-bold leading-none text-slate-500">
-              {first.label}
-            </span>
+    <div className="rounded-2xl border border-slate-100 bg-white px-4 py-4">
+      <div className="flex items-start justify-between gap-2">
+        <p className="text-sm font-black text-ink">מגמת DUNS לפי שנים</p>
+        <SourceBadge source="duns100" />
+      </div>
+      <div className="mt-4 space-y-2">
+        {rows.map(([year, count]) => (
+          <div key={year}>
+            <div className="flex items-center justify-between text-xs font-bold text-slate-600">
+              <span>{year}</span>
+              <span>{count}</span>
+            </div>
+            <div className="mt-1 h-2 overflow-hidden rounded-full bg-slate-100">
+              <div
+                className="h-full rounded-full bg-brand-700"
+                style={{ width: `${Math.round((count / max) * 100)}%` }}
+              />
+            </div>
           </div>
-        </div>
-        <div className="w-full min-w-0 flex-1 space-y-2">
-          <div className="flex items-center justify-between gap-3 rounded-xl bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700">
-            <span className="inline-flex min-w-0 items-center gap-2">
-              <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-teal-700" />
-              <span className="truncate">{first.label}</span>
-            </span>
-            <span className="shrink-0 text-ink">{firstPercent}%</span>
-          </div>
-          <div className="flex items-center justify-between gap-3 rounded-xl bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700">
-            <span className="inline-flex min-w-0 items-center gap-2">
-              <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-amber-500" />
-              <span className="truncate">{second.label}</span>
-            </span>
-            <span className="shrink-0 text-ink">{secondPercent}%</span>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
@@ -298,18 +330,6 @@ function ScoreBar({ label, value }: { label: string; value: number }) {
   );
 }
 
-function jsonSummary(value: unknown) {
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    return null;
-  }
-
-  const entries = Object.entries(value as Record<string, unknown>)
-    .filter(([, entryValue]) => entryValue !== null && entryValue !== undefined && String(entryValue).trim())
-    .map(([key, entryValue]) => `${key}: ${String(entryValue)}`);
-
-  return entries.length > 0 ? entries.join(" · ") : null;
-}
-
 function splitList(value: string | null | undefined) {
   const items = (value ?? "")
     .split(/[\n,;]+/)
@@ -330,6 +350,20 @@ function getPerkIcon(perk: string) {
   if (perk.includes("חדר")) return "🛋️";
 
   return "✦";
+}
+
+function sourceFromName(sourceName: string | null | undefined): MetricSource {
+  const normalized = (sourceName ?? "").toUpperCase();
+
+  if (normalized === "DUNS100") return "duns100";
+  if (normalized === "DEMO") return "demo";
+  if (normalized.includes("MOH") || normalized.includes("MINISTRY")) return "moh";
+
+  return "hospital";
+}
+
+function isPresentNumber(value: unknown): value is number {
+  return typeof value === "number" && Number.isFinite(value);
 }
 
 export default async function DepartmentDetailsPage({
@@ -358,6 +392,20 @@ export default async function DepartmentDetailsPage({
   const visibleReviews = session ? department.reviews : department.reviews.slice(0, 3);
   const departmentHref = getDepartmentHref(department);
   const region = resolveInstitutionRegion(department.institution);
+  const isMedicalArrayProfile = Boolean(department.specialty.groupAsArray && department.medicalArray);
+  const profileTerm = isMedicalArrayProfile ? "מערך" : "מחלקה";
+  const profileMissingText = "הנתון לא סופק ע״י בי״ח";
+  const profileTitle = isMedicalArrayProfile ? `מערך ${department.specialty.name}` : department.name;
+  const profileDescription = isMedicalArrayProfile
+    ? department.medicalArray?.description || department.about || department.shortSummary
+    : department.about || department.shortSummary;
+  const profileExternalMetrics = isMedicalArrayProfile
+    ? department.medicalArray?.externalMetrics ?? []
+    : department.externalMetrics;
+  const profileExternalPeople = isMedicalArrayProfile
+    ? department.medicalArray?.externalPeople ?? []
+    : department.externalPeople;
+  const arrayDepartments = isMedicalArrayProfile ? department.medicalArray?.departments ?? [] : [];
   const contactEmails = (department.publicContactEmail ?? "")
     .split(/[\n,;]+/)
     .map((item) => item.trim())
@@ -381,52 +429,74 @@ export default async function DepartmentDetailsPage({
         : 0
     };
   });
-  const objectiveFieldValues = [
-    department.residentsCount,
-    department.medianResidencyLength,
-    department.shlavAlephPassRate,
-    department.shlavBetPassRate,
-    department.newResidentsThisYear,
-    department.expectedGraduatesThisYear,
-    department.genderBalance,
-    jsonSummary(department.educationLocationBreakdown)
-  ];
-  const usesDemoObjectiveData = objectiveFieldValues.some(
-    (value) => value === null || value === undefined || value === ""
-  );
-  const objectiveData = {
-    residentsCount: department.residentsCount ?? 18,
-    medianResidencyLength: department.medianResidencyLength ?? "5 שנים",
-    shlavAlephPassRate: department.shlavAlephPassRate ?? 82,
-    shlavBetPassRate: department.shlavBetPassRate ?? 88,
-    newResidentsThisYear: department.newResidentsThisYear ?? 4,
-    expectedGraduatesThisYear: department.expectedGraduatesThisYear ?? 3,
-    genderBalance: department.genderBalance ?? "54% נשים · 46% גברים",
-    educationLocationBreakdown:
-      jsonSummary(department.educationLocationBreakdown) ?? "ישראל 72% · חו״ל מוכר 28%"
-  };
-  const perkItems = splitList(department.perks) ?? [
-    "אוכל",
-    "חניה",
-    "כנסים בארץ",
-    "כנסים בחו״ל",
-    "יום מחקר",
-    "תמיכה במחקר",
-    "גמישות",
-    "חדר מתמחים"
-  ];
-  const usesDemoPerks = !department.perks;
-  const genderBalanceItems = genderBalancePairsFromText(objectiveData.genderBalance);
-  const educationLocationItems = percentPairsFromText(objectiveData.educationLocationBreakdown, [
-    "ישראל",
-    "חו״ל מוכר"
-  ]);
-  const duns100PhysiciansCount = department.externalMetrics.find(
+  const perkItems = splitList(department.perks) ?? [];
+  const duns100PhysiciansCount = profileExternalMetrics.find(
     (metric) => metric.metricKey === "duns100PhysiciansCount" && metric.sourceName === "DUNS100"
   )?.value;
-  const duns100Physicians = department.externalPeople.filter(
+  const metricRecord = (metricKey: string) =>
+    profileExternalMetrics.find((metric) => metric.metricKey === metricKey && metric.sourceName !== "DEMO");
+  const isMedicalArrayDemo = department.medicalArray?.publicationSourceUrl === "DEMO";
+  const activeResidentsMetric = metricRecord("activeResidentsCount");
+  const activeResidents =
+    department.residentsCount !== null && department.residentsCount !== undefined
+      ? { value: department.residentsCount, source: "hospital" as MetricSource }
+      : activeResidentsMetric
+        ? { value: activeResidentsMetric.value, source: sourceFromName(activeResidentsMetric.sourceName) }
+        : null;
+  const specialistsMetric = metricRecord("seniorPhysiciansCount");
+  const specialists =
+    isMedicalArrayProfile && !isMedicalArrayDemo && isPresentNumber(department.medicalArray?.specialistsCount)
+      ? { value: department.medicalArray.specialistsCount, source: "hospital" as MetricSource }
+      : specialistsMetric
+        ? { value: specialistsMetric.value, source: sourceFromName(specialistsMetric.sourceName) }
+        : null;
+  const medianDurationMetric = metricRecord("medianResidencyDurationMonths");
+  const medianDuration =
+    department.medianResidencyLength
+      ? { value: department.medianResidencyLength, source: "hospital" as MetricSource }
+      : medianDurationMetric
+        ? { value: `${medianDurationMetric.value} חודשים`, source: sourceFromName(medianDurationMetric.sourceName) }
+        : null;
+  const boardStageAMetric = metricRecord("boardStageAPassRate");
+  const boardStageA =
+    department.shlavAlephPassRate !== null && department.shlavAlephPassRate !== undefined
+      ? { value: `${department.shlavAlephPassRate}%`, source: "hospital" as MetricSource }
+      : boardStageAMetric
+        ? { value: `${boardStageAMetric.value}%`, source: sourceFromName(boardStageAMetric.sourceName) }
+        : null;
+  const boardStageBMetric = metricRecord("boardStageBPassRate");
+  const boardStageB =
+    department.shlavBetPassRate !== null && department.shlavBetPassRate !== undefined
+      ? { value: `${department.shlavBetPassRate}%`, source: "hospital" as MetricSource }
+      : boardStageBMetric
+        ? { value: `${boardStageBMetric.value}%`, source: sourceFromName(boardStageBMetric.sourceName) }
+        : null;
+  const newResidents =
+    department.newResidentsThisYear !== null && department.newResidentsThisYear !== undefined
+      ? { value: department.newResidentsThisYear, source: "hospital" as MetricSource }
+      : null;
+  const expectedGraduates =
+    department.expectedGraduatesThisYear !== null && department.expectedGraduatesThisYear !== undefined
+      ? { value: department.expectedGraduatesThisYear, source: "hospital" as MetricSource }
+      : null;
+  const openingsCount = department.residencyOpenings.reduce(
+    (sum, opening) => sum + (opening.openingsCount ?? 0),
+    0
+  );
+  const duns100Physicians = profileExternalPeople.filter(
     (person) => person.sourceName === "DUNS100" && person.approved
   );
+  const profileHeads = isMedicalArrayProfile
+    ? arrayDepartments.flatMap((arrayDepartment) =>
+        arrayDepartment.heads.map((head) => ({
+          ...head,
+          departmentName: arrayDepartment.name
+        }))
+      )
+    : department.heads.map((head) => ({
+        ...head,
+        departmentName: department.name
+      }));
 
   return (
     <PageShell className="space-y-7 py-8">
@@ -446,23 +516,30 @@ export default async function DepartmentDetailsPage({
           <div className="min-w-0 pe-12">
             <div className="flex flex-wrap gap-2">
               <Badge>{department.specialty.name}</Badge>
+              <Badge tone="default">{profileTerm}</Badge>
               <Badge tone="default">{region}</Badge>
               <Badge tone={department.residencyOpenings.length > 0 ? "success" : "warning"}>
                 {department.residencyOpenings.length > 0 ? "תקנים פתוחים" : "אין תקנים כרגע"}
               </Badge>
             </div>
             <h1 className="mt-4 break-words text-3xl font-bold leading-tight text-ink md:text-4xl">
-              {department.institution.name} · {department.name}
+              {profileTitle}
             </h1>
-            <p className="mt-3 text-sm font-semibold text-slate-600">
-              {department.institution.city ?? "עיר לא פורסמה"} · {region} · {department.specialty.name}
+            <p className="mt-3 text-lg font-bold leading-7 text-slate-700">
+              {department.institution.name}
             </p>
+            <p className="mt-1 text-sm font-semibold text-slate-600">{region}</p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
               <RatingStars value={department.summary.overallRecommendation || 0} />
               <span className="text-sm font-semibold text-slate-600">
                 {department.summary.reviewCount} ביקורות מאושרות
               </span>
             </div>
+            {isMedicalArrayProfile && arrayDepartments.length > 1 ? (
+              <p className="mt-3 inline-flex rounded-full border border-brand-100 bg-brand-50 px-3 py-1.5 text-xs font-black text-brand-900">
+                מספר מחלקות במערך: {arrayDepartments.length}
+              </p>
+            ) : null}
             <div className="mt-4">
               <DepartmentPageActions
                 departmentId={department.id}
@@ -518,8 +595,8 @@ export default async function DepartmentDetailsPage({
           <Card className="rounded-xl">
             <SectionHeading title="פרופיל התוכנית" />
             <p className="mt-4 text-sm leading-8 text-slate-700">
-              {department.about || department.shortSummary || (
-                "עמוד המחלקה פעיל ומוכן לאיסוף מידע. כשיתווספו נתונים רשמיים, הם יוצגו כאן לצד ביקורות ותקנים."
+              {profileDescription || (
+                `עמוד ה${profileTerm} פעיל ומוכן לאיסוף מידע. כשיתווספו נתונים רשמיים, הם יוצגו כאן לצד ביקורות ותקנים.`
               )}
             </p>
             {!hasOfficialDescription ? (
@@ -534,66 +611,103 @@ export default async function DepartmentDetailsPage({
           <Card className="rounded-xl">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <SectionHeading
-                title="נתונים אובייקטיביים"
-                description="מדדי תוכנית שמאפשרים להשוות בין מחלקות לצד חוויות מהשטח."
+                title={isMedicalArrayProfile ? "נתוני המערך" : "נתוני המחלקה"}
               />
-              {usesDemoObjectiveData ? (
+              {isMedicalArrayDemo ? (
                 <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-bold text-amber-800">
-                  כולל נתוני דמו לתצוגה
+                  כולל נתוני דמו מסומנים
                 </span>
               ) : null}
             </div>
+
             <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {isMedicalArrayProfile && arrayDepartments.length > 1 ? (
+                <CompactDataCard label="מספר מחלקות במערך" value={arrayDepartments.length} source="hospital" />
+              ) : null}
+              {specialists ? (
+                <CompactDataCard
+                  label="מספר מומחים"
+                  value={specialists.value}
+                  source={specialists.source}
+                  caption={isMedicalArrayProfile ? "נתון מערכי" : "לפי מידע זמין במערכת"}
+                />
+              ) : (
+                <DataUnavailable label="מספר מומחים" text={profileMissingText} />
+              )}
+              {activeResidents ? (
+                <CompactDataCard label="מספר מתמחים" value={activeResidents.value} source={activeResidents.source} />
+              ) : (
+                <DataUnavailable label="מספר מתמחים" text={profileMissingText} />
+              )}
+              {newResidents ? (
+                <CompactDataCard label="מתמחים חדשים השנה" value={newResidents.value} source={newResidents.source} />
+              ) : (
+                <DataUnavailable label="מתמחים חדשים השנה" text={profileMissingText} />
+              )}
+              {expectedGraduates ? (
+                <CompactDataCard label="צפויים לסיים השנה" value={expectedGraduates.value} source={expectedGraduates.source} />
+              ) : (
+                <DataUnavailable label="צפויים לסיים השנה" text={profileMissingText} />
+              )}
               {typeof duns100PhysiciansCount === "number" ? (
-                <ObjectiveStatCard
-                  label="מספר רופאים ב-DUNS100"
+                <CompactDataCard
+                  label={isMedicalArrayProfile ? "מומחי DUNS100" : "רופאי DUNS100"}
                   value={duns100PhysiciansCount}
+                  source="duns100"
                   caption="מבוסס על ייבוא DUNS100 מאושר"
-                  comparison="מידע חיצוני מאושר"
+                />
+              ) : (
+                <DataUnavailable
+                  label={isMedicalArrayProfile ? "מומחי DUNS100" : "רופאי DUNS100"}
+                  text={profileMissingText}
+                />
+              )}
+              {medianDuration ? (
+                <CompactDataCard label="משך התמחות" value={medianDuration.value} source={medianDuration.source} />
+              ) : (
+                <DataUnavailable label="משך התמחות" text={profileMissingText} />
+              )}
+              {boardStageA ? (
+                <CompactDataCard label="מעבר שלב א׳" value={boardStageA.value} source={boardStageA.source} />
+              ) : (
+                <DataUnavailable label="מעבר שלב א׳" text={profileMissingText} />
+              )}
+              {boardStageB ? (
+                <CompactDataCard label="מעבר שלב ב׳" value={boardStageB.value} source={boardStageB.source} />
+              ) : (
+                <DataUnavailable label="מעבר שלב ב׳" text={profileMissingText} />
+              )}
+              {openingsCount > 0 ? (
+                <CompactDataCard
+                  label="מספר תקנים"
+                  value={openingsCount}
+                  source="hospital"
+                  caption="תקנים פעילים שפורסמו באתר"
                 />
               ) : null}
-              <ObjectiveStatCard
-                label="מספר מתמחים פעילים"
-                value={objectiveData.residentsCount}
-                caption="תמונת גודל של התוכנית"
-                comparison={comparisonLabelForObjective(objectiveData.residentsCount)}
-              />
-              <ObjectiveStatCard
-                label="אורך התמחות חציוני"
-                value={objectiveData.medianResidencyLength}
-                caption="משך טיפוסי עד סיום"
-                comparison="סביב הממוצע"
-              />
-              <ObjectiveStatCard
-                label="מתמחים חדשים השנה"
-                value={objectiveData.newResidentsThisYear}
-                caption="קליטה שנתית משוערת"
-                comparison={comparisonLabelForObjective(objectiveData.newResidentsThisYear)}
-              />
-              <ObjectiveStatCard
-                label="צפויים לסיים השנה"
-                value={objectiveData.expectedGraduatesThisYear}
-                caption="קצב סיום מחזור"
-                comparison={comparisonLabelForObjective(objectiveData.expectedGraduatesThisYear)}
-              />
             </div>
-            <div className="mt-4 grid gap-3 lg:grid-cols-2">
-              <ObjectiveProgress
-                label="שיעור מעבר שלב א׳"
-                value={objectiveData.shlavAlephPassRate}
-                comparison={comparisonLabelForObjective(objectiveData.shlavAlephPassRate, 2)}
-              />
-              <ObjectiveProgress
-                label="שיעור מעבר שלב ב׳"
-                value={objectiveData.shlavBetPassRate}
-                comparison={comparisonLabelForObjective(objectiveData.shlavBetPassRate, 1)}
-              />
-              <DonutComparison title="איזון מגדרי" items={genderBalanceItems} />
-              <DonutComparison
-                title="התפלגות בוגרים לפי מקום לימודים"
-                items={educationLocationItems}
-              />
-            </div>
+
+            {isMedicalArrayProfile ? (
+              <div className="mt-5 grid gap-3 lg:grid-cols-2">
+                <ArrayYearlyResidentsTable
+                  value={isMedicalArrayDemo ? null : department.medicalArray?.recruitedResidentsByYear}
+                  missingText={profileMissingText}
+                />
+                <ArrayPublicationMetrics
+                  total={department.medicalArray?.totalPublicationsCount}
+                  residentTotal={department.medicalArray?.residentPublicationsCount}
+                  years={department.medicalArray?.publicationYears}
+                  sourceUrl={department.medicalArray?.publicationSourceUrl}
+                  missingText={profileMissingText}
+                />
+                <DunsTrend people={duns100Physicians} />
+              </div>
+            ) : duns100Physicians.length > 0 ? (
+              <div className="mt-5">
+                <DunsTrend people={duns100Physicians} />
+              </div>
+            ) : null}
+
             {duns100Physicians.length > 0 ? (
               <details className="mt-4 rounded-2xl border border-brand-100 bg-white px-4 py-4">
                 <summary className="cursor-pointer text-sm font-black text-ink">
@@ -611,6 +725,9 @@ export default async function DepartmentDetailsPage({
                       {person.roleTitle ? (
                         <p className="mt-1 text-xs leading-6 text-slate-600">{person.roleTitle}</p>
                       ) : null}
+                      {person.rankingYear ? (
+                        <p className="mt-1 text-xs font-bold text-slate-500">שנת דירוג: {person.rankingYear}</p>
+                      ) : null}
                       {person.sourceUrl ? (
                         <a href={person.sourceUrl} className="mt-2 inline-flex text-xs font-bold text-brand-800">
                           מקור
@@ -621,6 +738,7 @@ export default async function DepartmentDetailsPage({
                 </div>
               </details>
             ) : null}
+
           </Card>
 
           <Card className="rounded-xl">
@@ -688,27 +806,13 @@ export default async function DepartmentDetailsPage({
 
         <aside className="space-y-5">
           <Card className="rounded-xl">
-            <SectionHeading title="תקציר אובייקטיבי" />
-            <div className="mt-5 grid gap-3">
-              <DataPoint label="מספר מתמחים נוכחי" value={objectiveData.residentsCount} />
-              <DataPoint label="משך התמחות חציוני" value={objectiveData.medianResidencyLength} />
-              <DataPoint label="מעבר שלב א׳" value={formatPercent(objectiveData.shlavAlephPassRate)} />
-              <DataPoint label="מעבר שלב ב׳" value={formatPercent(objectiveData.shlavBetPassRate)} />
-              <DataPoint label="העדפות מועמדים" value={department.candidatePreferences} />
-              <DataPoint label="איש קשר" value={department.contactName} />
-            </div>
-          </Card>
-
-          <Card className="rounded-xl">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <SectionHeading title="יתרונות המחלקה" />
-              {usesDemoPerks ? (
-                <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-bold text-amber-800">
-                  דמו
-                </span>
-              ) : null}
-            </div>
+            <SectionHeading title={`יתרונות ה${profileTerm}`} />
             <div className="mt-5 flex flex-wrap gap-2">
+              {perkItems.length === 0 ? (
+                <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-bold text-slate-500">
+                  {profileMissingText}
+                </p>
+              ) : null}
               {perkItems.map((perk) => (
                 <span
                   key={perk}
@@ -724,11 +828,11 @@ export default async function DepartmentDetailsPage({
           </Card>
 
           <Card className="rounded-xl">
-            <SectionHeading title="רשת המחלקה" />
+            <SectionHeading title={isMedicalArrayProfile ? "מנהלי מחלקות במערך" : "רשת המחלקה"} />
             <div className="mt-5 space-y-3">
-              {department.representativeAssignments.length === 0 && department.heads.length === 0 ? (
+              {department.representativeAssignments.length === 0 && profileHeads.length === 0 ? (
                 <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600">
-                  אין עדיין נתונים
+                  {profileMissingText}
                 </p>
               ) : null}
               {department.representativeAssignments.map((assignment) => (
@@ -758,10 +862,12 @@ export default async function DepartmentDetailsPage({
                   </div>
                 </div>
               ))}
-              {department.heads.slice(0, 3).map((head) => (
+              {profileHeads.map((head) => (
                 <div key={head.id} className="rounded-lg border border-slate-100 bg-white px-3 py-3">
                   <p className="text-sm font-bold text-ink">{head.name}</p>
-                  <p className="mt-1 text-xs text-slate-500">{head.role ?? head.title}</p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {[head.title, head.role, head.departmentName].filter(Boolean).join(" · ")}
+                  </p>
                 </div>
               ))}
             </div>
@@ -799,14 +905,7 @@ export default async function DepartmentDetailsPage({
       </section>
 
       <section className="space-y-5">
-        <SectionHeading
-          title="שיתופים מהשטח"
-          description={
-            session
-              ? "כל השיתופים שאושרו לעלייה."
-              : "ללא התחברות מוצגת טעימה קצרה. חשבון עוזר לשמור מחלקות להשוואה ולעקוב בנוחות."
-          }
-        />
+        <SectionHeading title="שיתופים מהשטח" />
         <div className="grid gap-4">
           {visibleReviews.length === 0 ? (
             <Card className="rounded-xl">

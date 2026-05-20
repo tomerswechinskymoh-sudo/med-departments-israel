@@ -3,14 +3,34 @@ import {
   Prisma,
   SubmissionStatus,
   UploadedFileCategory,
+  VerificationStatus,
   type ReviewSourceType
 } from "@prisma/client";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
+import { hasValidSameOrigin, sanitizePlainText } from "@/lib/security";
 import { readOptionalFormFile, storeUploadedFile } from "@/lib/uploads";
 import { reviewSubmissionSchema } from "@/lib/validation";
+import {
+  createTokenExpiry,
+  createVerificationToken,
+  sendReviewProofRequestEmail
+} from "@/lib/verification";
 
 export async function POST(request: Request) {
+  if (!hasValidSameOrigin(request)) {
+    return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
+  }
+
+  const rateLimit = checkRateLimit(request, "reviews:submit", {
+    limit: 4,
+    windowMs: 60 * 60 * 1000
+  });
+  if (!rateLimit.ok) {
+    return rateLimitResponse(rateLimit.retryAfter);
+  }
+
   const formData = await request.formData().catch(() => null);
 
   if (!formData) {
@@ -46,12 +66,35 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "קלט לא תקין." }, { status: 400 });
   }
 
+  if (!verificationDocument && !parsed.data.email) {
+    return NextResponse.json(
+      { error: "כדי להשלים אימות ללא מסמך, צריך להזין כתובת אימייל." },
+      { status: 400 }
+    );
+  }
+
   const department = await prisma.department.findUnique({
     where: {
       id: parsed.data.departmentId
     },
     select: {
-      id: true
+      id: true,
+      name: true,
+      specialty: {
+        select: {
+          name: true
+        }
+      },
+      institution: {
+        select: {
+          name: true
+        }
+      },
+      medicalArray: {
+        select: {
+          name: true
+        }
+      }
     }
   });
 
@@ -59,6 +102,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "המחלקה שנבחרה לא נמצאה." }, { status: 404 });
   }
 
+  const verificationToken = verificationDocument ? null : createVerificationToken();
   const submission = await prisma.$transaction(async (tx) => {
     const createdSubmission = await tx.reviewSubmission.create({
       data: {
@@ -74,13 +118,19 @@ export async function POST(request: Request) {
         researchExposure: parsed.data.researchExposure,
         lifestyleBalance: parsed.data.lifestyleBalance,
         overallRecommendation: parsed.data.overallRecommendation,
-        pros: parsed.data.pros ?? "",
-        cons: parsed.data.cons ?? "",
-        tips: parsed.data.tips ?? "",
+        pros: sanitizePlainText(parsed.data.pros),
+        cons: sanitizePlainText(parsed.data.cons),
+        tips: sanitizePlainText(parsed.data.tips),
         roleDetails: parsed.data.roleDetails as Prisma.InputJsonValue,
         consentToContact: parsed.data.consentToContact,
         consentToTerms: parsed.data.consentToTerms,
         consentNoPatientInfo: parsed.data.consentNoPatientInfo,
+        verificationStatus: verificationDocument
+          ? VerificationStatus.PENDING_ADMIN_REVIEW
+          : VerificationStatus.PENDING_PROOF,
+        verificationToken,
+        tokenExpiry: verificationToken ? createTokenExpiry() : null,
+        proofUploadedAt: verificationDocument ? new Date() : null,
         status: SubmissionStatus.PENDING_REVIEW
       }
     });
@@ -100,10 +150,51 @@ export async function POST(request: Request) {
 
   await createAuditLog({
     actorUserId: null,
-    action: "review_submission.created_public",
+    action: "review.submitted",
     entityType: "ReviewSubmission",
-    entityId: submission.id
+    entityId: submission.id,
+    metadata: {
+      verificationStatus: verificationDocument ? "PENDING_ADMIN_REVIEW" : "PENDING_PROOF",
+      hasProof: Boolean(verificationDocument)
+    }
   });
+
+  if (verificationDocument) {
+    await createAuditLog({
+      actorUserId: null,
+      action: "review.proof_uploaded",
+      entityType: "ReviewSubmission",
+      entityId: submission.id
+    });
+  } else if (verificationToken && parsed.data.email) {
+    const departmentLabel = [
+      department.medicalArray?.name ?? department.name,
+      department.institution.name,
+      department.specialty.name
+    ]
+      .filter(Boolean)
+      .join(" · ");
+    const emailDelivery = await sendReviewProofRequestEmail({
+      to: parsed.data.email,
+      fullName: parsed.data.fullName,
+      departmentLabel,
+      token: verificationToken
+    }).catch((error) => {
+      console.error("[reviews] proof request email failed", error);
+      return { delivered: false, skipped: false };
+    });
+
+    await createAuditLog({
+      actorUserId: null,
+      action: "verification.email_sent",
+      entityType: "ReviewSubmission",
+      entityId: submission.id,
+      metadata: {
+        delivered: emailDelivery.delivered,
+        skipped: emailDelivery.skipped
+      }
+    });
+  }
 
   return NextResponse.json({ message: "השיתוף נשמר. הוא יעלה רק אחרי בדיקה קצרה." });
 }

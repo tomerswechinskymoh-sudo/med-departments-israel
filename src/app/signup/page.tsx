@@ -12,16 +12,13 @@ export default async function SignupPage({
   const socialError = typeof params.socialError === "string" ? params.socialError : undefined;
 
   return (
-    <PageShell className="py-10">
-      <div className="mx-auto max-w-3xl">
-        <Card>
-          <p className="text-sm font-semibold text-brand-600">פתיחת חשבון</p>
-          <h1 className="mt-2 text-3xl font-bold text-ink">הצטרפות לפלטפורמת המחלקות</h1>
-          <p className="mt-3 text-sm leading-7 text-slate-600">
-            פתיחת חשבון מיועדת בעיקר לסטודנטים ולסטאז&apos;רים שרוצים לשמור מחלקות להשוואה
-            ולעבוד בצורה מסודרת. חשבונות נציגי מחלקות נוצרים רק ע״י אדמין ומקבלים שיוך למחלקות
-            באופן ידני.
-          </p>
+    <PageShell className="flex min-h-[76vh] items-center justify-center bg-[radial-gradient(circle_at_top_left,#dff4ff,transparent_34%),linear-gradient(180deg,#f8fbff_0%,#eef6f8_100%)] px-4 py-12">
+      <div className="mx-auto w-full max-w-2xl">
+        <Card className="rounded-[2rem] border border-white/80 bg-white/92 p-7 shadow-2xl shadow-brand-900/10 backdrop-blur md:p-9">
+          <div className="text-center">
+            <p className="text-sm font-bold text-brand-600">פתיחת חשבון</p>
+            <h1 className="mt-2 text-4xl font-black tracking-tight text-ink">הצטרפות לפלטפורמה</h1>
+          </div>
           <div className="mt-6">
             <SignupForm linkedinError={linkedinError} socialError={socialError} />
           </div>

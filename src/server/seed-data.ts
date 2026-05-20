@@ -30,6 +30,8 @@ type SeedUser = {
   isApprovedPublisher?: boolean;
 };
 
+const GROUPED_SPECIALTY_NAMES = new Set(["רפואה פנימית", "כירורגיה כללית", "רפואת ילדים"]);
+
 function reviewRoleDetails(input: {
   medicalSchool: string;
   overallRating: number;
@@ -67,6 +69,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
     await prisma.dunsPhysicianRecord.deleteMany();
     await prisma.dunsImportBatch.deleteMany();
     await prisma.specialtyDashboardConfig.deleteMany();
+    await prisma.salaryAssumption.deleteMany();
     await prisma.representativeAssignment.deleteMany();
     await prisma.representativeProfile.deleteMany();
     await prisma.publisherRequest.deleteMany();
@@ -74,6 +77,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
     await prisma.researchOpportunity.deleteMany();
     await prisma.departmentHead.deleteMany();
     await prisma.department.deleteMany();
+    await prisma.medicalArray.deleteMany();
     await prisma.specialty.deleteMany();
     await prisma.institution.deleteMany();
     await prisma.auditLog.deleteMany();
@@ -174,7 +178,8 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
     data: SPECIALTY_CATALOG.map((specialty) => ({
       slug: specialty.slug,
       name: specialty.name,
-      description: specialty.description
+      description: specialty.description,
+      groupAsArray: GROUPED_SPECIALTY_NAMES.has(specialty.name)
     }))
   });
 
@@ -209,6 +214,75 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
     include: {
       institution: true,
       specialty: true
+    }
+  });
+
+  const medicalArrayByKey = new Map<string, { id: string }>();
+
+  for (const department of departments) {
+    if (!department.specialty.groupAsArray) continue;
+
+    const key = `${department.institutionId}:${department.specialtyId}`;
+    let medicalArray = medicalArrayByKey.get(key);
+
+    if (!medicalArray) {
+      medicalArray = await prisma.medicalArray.upsert({
+        where: {
+          hospitalId_specialtyId: {
+            hospitalId: department.institutionId,
+            specialtyId: department.specialtyId
+          }
+        },
+        create: {
+          hospitalId: department.institutionId,
+          specialtyId: department.specialtyId,
+          name: `מערך ${department.specialty.name} · ${department.institution.name}`,
+          slug: `array-${department.institution.slug}-${department.specialty.slug}`,
+          description: `מערך ${department.specialty.name} בבית החולים ${department.institution.name}`
+        },
+        update: {
+          name: `מערך ${department.specialty.name} · ${department.institution.name}`,
+          description: `מערך ${department.specialty.name} בבית החולים ${department.institution.name}`
+        }
+      });
+      medicalArrayByKey.set(key, medicalArray);
+    }
+
+    await prisma.department.update({
+      where: {
+        id: department.id
+      },
+      data: {
+        medicalArrayId: medicalArray.id
+      }
+    });
+  }
+
+  await prisma.salaryAssumption.upsert({
+    where: {
+      key: "default-resident-salary"
+    },
+    create: {
+      key: "default-resident-salary",
+      label: "סימולציית שכר בסיסית למתמחים",
+      centerMonthlySalary: 12800,
+      peripheryMonthlySalary: 15100,
+      seniorityIncrement: 0,
+      assumptionsJson: {
+        note: "נתוני דמו ניתנים לעריכה בהמשך דרך ממשק אדמין.",
+        formula: "השוואת שכר בסיס משוער בין פריפריה למרכז/אזורים אחרים"
+      },
+      active: true
+    },
+    update: {
+      centerMonthlySalary: 12800,
+      peripheryMonthlySalary: 15100,
+      seniorityIncrement: 0,
+      assumptionsJson: {
+        note: "נתוני דמו ניתנים לעריכה בהמשך דרך ממשק אדמין.",
+        formula: "השוואת שכר בסיס משוער בין פריפריה למרכז/אזורים אחרים"
+      },
+      active: true
     }
   });
 

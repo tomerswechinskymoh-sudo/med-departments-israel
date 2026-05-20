@@ -1,8 +1,11 @@
 import { NextResponse } from "next/server";
 import { Prisma } from "@prisma/client";
 import { z } from "zod";
+import { createAuditLog } from "@/lib/audit";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
+import { hasValidSameOrigin } from "@/lib/security";
 import {
   AssistedImportRequiredError,
   getDataImportPages,
@@ -37,6 +40,16 @@ export async function POST(request: Request) {
   const session = await getSession();
   if (session?.role !== "admin") {
     return NextResponse.json({ error: "אין הרשאה." }, { status: 403 });
+  }
+  if (!hasValidSameOrigin(request)) {
+    return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
+  }
+  const rateLimit = checkRateLimit(request, "admin:data-imports", {
+    limit: 12,
+    windowMs: 60 * 60 * 1000
+  });
+  if (!rateLimit.ok) {
+    return rateLimitResponse(rateLimit.retryAfter);
   }
 
   const body = await request.json().catch(() => null);
@@ -125,6 +138,18 @@ export async function POST(request: Request) {
       }
     });
 
+    await createAuditLog({
+      actorUserId: session.userId,
+      action: "data_import.batch_created",
+      entityType: "DataImportBatch",
+      entityId: batch.id,
+      metadata: {
+        sourceType: parsed.data.sourceType,
+        target: parsed.data.target,
+        records: parsedResult.records.length
+      }
+    });
+
     return NextResponse.json({
       message: `המערכת חילצה ${parsedResult.records.length} רשומות, מתוכן ${parsedResult.records.length - parsedResult.unmatchedCount} שויכו אוטומטית.`,
       batch
@@ -154,6 +179,18 @@ export async function POST(request: Request) {
         }),
         createdById: session.userId,
         status: needsAssistedImport ? "FAILED_NEEDS_ASSISTED_IMPORT" : "FAILED"
+      }
+    });
+
+    await createAuditLog({
+      actorUserId: session.userId,
+      action: "data_import.batch_failed",
+      entityType: "DataImportBatch",
+      entityId: batch.id,
+      metadata: {
+        sourceType: parsed.data.sourceType,
+        target: parsed.data.target,
+        assistedImportSuggested: needsAssistedImport
       }
     });
 

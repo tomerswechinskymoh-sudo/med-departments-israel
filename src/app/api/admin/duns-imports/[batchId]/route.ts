@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
+import { createAuditLog } from "@/lib/audit";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { hasValidSameOrigin } from "@/lib/security";
 import { approveDataImportBatch } from "@/lib/server/data-import-engine";
 
 const reviewSchema = z.discriminatedUnion("action", [
@@ -27,6 +29,9 @@ export async function PATCH(
   const session = await getSession();
   if (session?.role !== "admin") {
     return NextResponse.json({ error: "אין הרשאה." }, { status: 403 });
+  }
+  if (!hasValidSameOrigin(request)) {
+    return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
   }
 
   const body = await request.json().catch(() => null);
@@ -100,6 +105,12 @@ export async function PATCH(
         reviewedById: session.userId
       }
     });
+    await createAuditLog({
+      actorUserId: session.userId,
+      action: "data_import.batch_rejected",
+      entityType: "DataImportBatch",
+      entityId: batchId
+    });
     return NextResponse.json({ message: "הייבוא נדחה.", batch: rejected });
   }
 
@@ -112,6 +123,16 @@ export async function PATCH(
       status: "APPROVED",
       reviewedAt: new Date(),
       reviewedById: session.userId
+    }
+  });
+
+  await createAuditLog({
+    actorUserId: session.userId,
+    action: "data_import.batch_approved",
+    entityType: "DataImportBatch",
+    entityId: batchId,
+    metadata: {
+      affectedDepartmentIds
     }
   });
 

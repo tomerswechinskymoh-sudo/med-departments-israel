@@ -3,6 +3,7 @@ import { RoleKey } from "@prisma/client";
 import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
+import { hasValidSameOrigin } from "@/lib/security";
 import { adminUserRoleSchema } from "@/lib/validation";
 
 export async function POST(
@@ -13,6 +14,9 @@ export async function POST(
 
   if (!session || session.role !== "admin") {
     return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
+  }
+  if (!hasValidSameOrigin(request)) {
+    return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
   }
 
   const { userId } = await params;

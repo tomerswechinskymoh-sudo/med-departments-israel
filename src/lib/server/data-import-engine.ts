@@ -470,42 +470,109 @@ export async function approveDataImportBatch(prisma: PrismaClient, batchId: stri
   }
 
   const affectedDepartmentIds = new Set<string>();
+  const affectedMedicalArrayIds = new Set<string>();
 
   for (const record of batch.records) {
     if (!record.normalizedDepartmentId) continue;
+    const department = await prisma.department.findUnique({
+      where: {
+        id: record.normalizedDepartmentId
+      },
+      select: {
+        id: true,
+        medicalArrayId: true,
+        specialty: {
+          select: {
+            groupAsArray: true
+          }
+        }
+      }
+    });
+    const medicalArrayId = department?.specialty.groupAsArray ? department.medicalArrayId : null;
 
     if (record.target === "DUNS100_PHYSICIANS" && record.physicianName) {
-      await prisma.departmentExternalPerson.upsert({
+      const existingPerson = await prisma.departmentExternalPerson.findFirst({
         where: {
-          departmentId_sourceName_personName_rankingYear: {
-            departmentId: record.normalizedDepartmentId,
-            sourceName: "DUNS100",
-            personName: record.physicianName,
-            rankingYear: record.rankingYear ?? 0
-          }
-        },
-        create: {
-          departmentId: record.normalizedDepartmentId,
+          departmentId: medicalArrayId ? null : record.normalizedDepartmentId,
+          medicalArrayId,
           sourceName: "DUNS100",
           personName: record.physicianName,
-          roleTitle: record.roleTitle,
-          description: record.sourceSnippet,
-          sourceUrl: record.sourceUrl,
-          rankingYear: record.rankingYear ?? 0,
-          sourceRecordId: record.id,
-          approved: true
+          rankingYear: record.rankingYear ?? 0
+        }
+      });
+      if (existingPerson) {
+        await prisma.departmentExternalPerson.update({
+          where: {
+            id: existingPerson.id
+          },
+          data: {
+            roleTitle: record.roleTitle,
+            description: record.sourceSnippet,
+            sourceUrl: record.sourceUrl,
+            sourceRecordId: record.id,
+            approved: true
+          }
+        });
+      } else {
+        await prisma.departmentExternalPerson.create({
+          data: {
+            departmentId: medicalArrayId ? null : record.normalizedDepartmentId,
+            medicalArrayId,
+            sourceName: "DUNS100",
+            personName: record.physicianName,
+            roleTitle: record.roleTitle,
+            description: record.sourceSnippet,
+            sourceUrl: record.sourceUrl,
+            rankingYear: record.rankingYear ?? 0,
+            sourceRecordId: record.id,
+            approved: true
+          }
+        });
+      }
+    }
+
+    if (medicalArrayId) {
+      affectedMedicalArrayIds.add(medicalArrayId);
+    } else {
+      affectedDepartmentIds.add(record.normalizedDepartmentId);
+    }
+  }
+
+  async function upsertDunsMetric(input: { departmentId?: string | null; medicalArrayId?: string | null; count: number }) {
+    const existingMetric = await prisma.departmentExternalMetric.findFirst({
+      where: {
+        departmentId: input.departmentId ?? null,
+        medicalArrayId: input.medicalArrayId ?? null,
+        metricKey: "duns100PhysiciansCount",
+        sourceName: "DUNS100"
+      }
+    });
+
+    if (existingMetric) {
+      await prisma.departmentExternalMetric.update({
+        where: {
+          id: existingMetric.id
         },
-        update: {
-          roleTitle: record.roleTitle,
-          description: record.sourceSnippet,
-          sourceUrl: record.sourceUrl,
-          sourceRecordId: record.id,
+        data: {
+          value: input.count,
+          confidenceScore: 0.8,
           approved: true
         }
       });
+      return;
     }
 
-    affectedDepartmentIds.add(record.normalizedDepartmentId);
+    await prisma.departmentExternalMetric.create({
+      data: {
+        departmentId: input.departmentId ?? null,
+        medicalArrayId: input.medicalArrayId ?? null,
+        metricKey: "duns100PhysiciansCount",
+        value: input.count,
+        sourceName: "DUNS100",
+        confidenceScore: 0.8,
+        approved: true
+      }
+    });
   }
 
   await prisma.dataImportRecord.updateMany({
@@ -527,29 +594,26 @@ export async function approveDataImportBatch(prisma: PrismaClient, batchId: stri
       }
     });
 
-    await prisma.departmentExternalMetric.upsert({
-      where: {
-        departmentId_metricKey_sourceName: {
-          departmentId,
-          metricKey: "duns100PhysiciansCount",
-          sourceName: "DUNS100"
-        }
-      },
-      create: {
-        departmentId,
-        metricKey: "duns100PhysiciansCount",
-        value: count,
-        sourceName: "DUNS100",
-        confidenceScore: 0.8,
-        approved: true
-      },
-      update: {
-        value: count,
-        confidenceScore: 0.8,
-        approved: true
-      }
+    await upsertDunsMetric({
+      departmentId,
+      count
     });
   }
 
-  return Array.from(affectedDepartmentIds);
+  for (const medicalArrayId of affectedMedicalArrayIds) {
+    const count = await prisma.departmentExternalPerson.count({
+      where: {
+        medicalArrayId,
+        sourceName: "DUNS100",
+        approved: true
+      }
+    });
+
+    await upsertDunsMetric({
+      medicalArrayId,
+      count
+    });
+  }
+
+  return [...Array.from(affectedDepartmentIds), ...Array.from(affectedMedicalArrayIds)];
 }

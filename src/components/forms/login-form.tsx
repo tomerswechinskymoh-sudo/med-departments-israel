@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { LinkedInAuthLink } from "@/components/auth/linkedin-auth-link";
 import { SocialAuthLink } from "@/components/auth/social-auth-link";
+import { safeInternalPath } from "@/lib/security";
 import { loginSchema } from "@/lib/validation";
 
 type FormValues = z.infer<typeof loginSchema>;
@@ -52,7 +53,7 @@ export function LoginForm({
         return;
       }
 
-      router.push(nextPath || "/dashboard");
+      router.push(safeInternalPath(nextPath, "/dashboard"));
       router.refresh();
     },
     () => {
@@ -62,23 +63,6 @@ export function LoginForm({
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-4">
-      <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/55 p-4">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-sm font-semibold text-ink">כניסה מהירה</p>
-            <p className="mt-1 text-xs leading-6 text-slate-500">
-              Google, Facebook או LinkedIn. אדמין ממשיך עם אימייל וסיסמה.
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <SocialAuthLink provider="google" mode="login" nextPath={nextPath} iconOnly />
-            <SocialAuthLink provider="facebook" mode="login" nextPath={nextPath} iconOnly />
-            <LinkedInAuthLink mode="login" nextPath={nextPath} iconOnly />
-          </div>
-        </div>
-        <div className="mt-4 text-center text-xs font-semibold text-slate-400">או התחברות עם אימייל וסיסמה</div>
-      </div>
-
       <div>
         <label className="mb-2 block text-sm font-semibold text-ink">אימייל</label>
         <input
@@ -108,6 +92,18 @@ export function LoginForm({
       >
         {isSubmitting ? "מתחבר/ת..." : "התחברות"}
       </button>
+
+      <div className="flex items-center gap-3 py-1">
+        <span className="h-px flex-1 bg-slate-200" />
+        <span className="text-xs font-bold text-slate-400">או</span>
+        <span className="h-px flex-1 bg-slate-200" />
+      </div>
+
+      <div className="flex justify-center gap-3">
+        <SocialAuthLink provider="google" mode="login" nextPath={nextPath} iconOnly className="shadow-sm" />
+        <SocialAuthLink provider="facebook" mode="login" nextPath={nextPath} iconOnly className="shadow-sm" />
+        <LinkedInAuthLink mode="login" nextPath={nextPath} iconOnly className="shadow-sm" />
+      </div>
     </form>
   );
 }

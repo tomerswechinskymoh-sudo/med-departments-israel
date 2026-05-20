@@ -6,7 +6,12 @@ import { SpecialtyDashboardMetrics } from "@/components/departments/specialty-da
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageShell } from "@/components/layout/page-shell";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { getDirectoryData, getDirectoryFilters, getSpecialtyDashboardMetrics } from "@/lib/queries";
+import {
+  getActiveSalaryAssumption,
+  getDirectoryData,
+  getDirectoryFilters,
+  getSpecialtyDashboardMetrics
+} from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 
@@ -82,9 +87,10 @@ export default async function DepartmentsPage({
         : undefined
   });
 
-  const [departments, specialtyDashboard] = await Promise.all([
+  const [departments, specialtyDashboard, salaryAssumption] = await Promise.all([
     getDirectoryData(parsedFilters, session?.userId),
-    getSpecialtyDashboardMetrics(selectedSpecialtyId)
+    getSpecialtyDashboardMetrics(selectedSpecialtyId),
+    getActiveSalaryAssumption()
   ]);
   const selectedSpecialty = availableFilters.specialties.find(
     (specialty) => specialty.id === selectedSpecialtyId
@@ -117,6 +123,7 @@ export default async function DepartmentsPage({
               <SpecialtyDashboardMetrics
                 specialtyName={selectedSpecialty.name}
                 metrics={specialtyDashboard.metrics}
+                salaryAssumption={salaryAssumption}
               />
             ) : null}
 

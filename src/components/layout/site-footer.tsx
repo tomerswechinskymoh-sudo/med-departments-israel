@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function SiteFooter() {
@@ -21,6 +22,22 @@ export function SiteFooter() {
           <p className="mt-2 max-w-2xl leading-7 text-brand-50/88">
             הדרך להתמחות, מקום אחד להבין איך מחלקות באמת נראות לפני שבוחרים סבב, מחקר
             או התמחות.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-3 rounded-[1.25rem] border border-white/10 bg-white/5 p-4 md:flex-row md:items-center md:justify-between">
+          <div className="inline-flex w-fit items-center gap-3 rounded-full border border-white/15 bg-white px-4 py-2 text-brand-950">
+            <Image
+              src="/logos/ministry-of-health-logo-he.jpg"
+              alt="לוגו משרד הבריאות"
+              width={132}
+              height={42}
+              className="h-9 w-auto object-contain"
+            />
+          </div>
+          <p className="max-w-2xl text-xs leading-6 text-brand-50/78">
+            הפלטפורמה פועלת בשיתוף משרד הבריאות ובשילוב נתונים ציבוריים ונתונים שיימסרו ע״י
+            בתי החולים. אין באמור כדי להציג את האתר כאתר רשמי של משרד הבריאות.
           </p>
         </div>
 

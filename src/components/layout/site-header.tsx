@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getSession } from "@/lib/auth";
 import { LogoutButton } from "@/components/layout/logout-button";
 
@@ -24,6 +25,16 @@ export async function SiteHeader() {
           >
             הדרך להתמחות
           </Link>
+          <div className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white/80 px-2.5 py-1.5 text-xs font-bold text-brand-900 shadow-sm">
+            <Image
+              src="/logos/ministry-of-health-logo-he.jpg"
+              alt="לוגו משרד הבריאות"
+              width={72}
+              height={24}
+              className="h-6 w-auto object-contain"
+            />
+            <span className="hidden xl:inline">בשיתוף משרד הבריאות</span>
+          </div>
           <nav className="hidden items-center gap-4 text-sm text-slate-700 md:flex">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="transition hover:text-brand-700">

@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import { SubmissionStatus } from "@prisma/client";
+import { SubmissionStatus, VerificationStatus } from "@prisma/client";
 import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
+import { hasValidSameOrigin } from "@/lib/security";
 import { reviewSubmissionModerationSchema } from "@/lib/validation";
 
 export async function POST(
@@ -13,6 +14,9 @@ export async function POST(
 
   if (!session || session.role !== "admin") {
     return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
+  }
+  if (!hasValidSameOrigin(request)) {
+    return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
   }
 
   const { reviewId } = await params;
@@ -26,6 +30,13 @@ export async function POST(
   const submission = await prisma.reviewSubmission.findUnique({
     where: {
       id: reviewId
+    },
+    include: {
+      verificationFiles: {
+        select: {
+          id: true
+        }
+      }
     }
   });
 
@@ -33,9 +44,23 @@ export async function POST(
     return NextResponse.json({ error: "הגשת הביקורת לא נמצאה." }, { status: 404 });
   }
 
+  const hasProof = submission.verificationFiles.length > 0 || Boolean(submission.proofUploadedAt);
+  const canPublish =
+    submission.verificationStatus === VerificationStatus.VERIFIED ||
+    (submission.verificationStatus === VerificationStatus.PENDING_ADMIN_REVIEW && hasProof);
+
+  if (parsed.data.status === "APPROVED" && !canPublish) {
+    return NextResponse.json(
+      { error: "אי אפשר לפרסם לפני השלמת אימות זהות/אסמכתא." },
+      { status: 409 }
+    );
+  }
+
   await prisma.$transaction(async (tx) => {
     const nextStatus =
       parsed.data.status === "APPROVED" ? SubmissionStatus.PUBLISHED : SubmissionStatus.REJECTED;
+    const nextVerificationStatus =
+      parsed.data.status === "APPROVED" ? VerificationStatus.VERIFIED : VerificationStatus.REJECTED;
 
     await tx.reviewSubmission.update({
       where: {
@@ -43,6 +68,9 @@ export async function POST(
       },
       data: {
         status: nextStatus,
+        verificationStatus: nextVerificationStatus,
+        verifiedByAdminId: parsed.data.status === "APPROVED" ? session.userId : submission.verifiedByAdminId,
+        verifiedAt: parsed.data.status === "APPROVED" ? new Date() : submission.verifiedAt,
         adminNote: parsed.data.adminNote,
         reviewedAt: new Date(),
         reviewedByUserId: session.userId
@@ -67,6 +95,7 @@ export async function POST(
           pros: submission.pros,
           cons: submission.cons,
           tips: submission.tips,
+          verificationStatus: VerificationStatus.VERIFIED,
           publishedAt: new Date()
         },
         create: {
@@ -84,6 +113,7 @@ export async function POST(
           pros: submission.pros,
           cons: submission.cons,
           tips: submission.tips,
+          verificationStatus: VerificationStatus.VERIFIED,
           publishedAt: new Date()
         }
       });
@@ -97,7 +127,12 @@ export async function POST(
         ? "review_submission.published"
         : "review_submission.rejected",
     entityType: "ReviewSubmission",
-    entityId: reviewId
+    entityId: reviewId,
+    metadata: {
+      verificationStatus:
+        parsed.data.status === "APPROVED" ? VerificationStatus.VERIFIED : VerificationStatus.REJECTED,
+      hasProof
+    }
   });
 
   return NextResponse.json({ message: "סטטוס הגשת הביקורת עודכן." });

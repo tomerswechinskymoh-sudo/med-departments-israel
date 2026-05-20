@@ -882,6 +882,49 @@ export async function getDepartmentPageData(
           createdAt: "asc"
         }
       },
+      medicalArray: {
+        include: {
+          departments: {
+            include: {
+              heads: {
+                orderBy: {
+                  displayOrder: "asc"
+                }
+              }
+            },
+            orderBy: {
+              name: "asc"
+            }
+          },
+          externalMetrics: {
+            where: {
+              approved: true
+            },
+            select: {
+              metricKey: true,
+              value: true,
+              sourceName: true,
+              approved: true
+            }
+          },
+          externalPeople: {
+            where: {
+              approved: true
+            },
+            orderBy: [{ rankingYear: "desc" }, { personName: "asc" }],
+            select: {
+              id: true,
+              sourceName: true,
+              personName: true,
+              roleTitle: true,
+              description: true,
+              sourceUrl: true,
+              rankingYear: true,
+              approved: true
+            }
+          }
+        }
+      },
       externalMetrics: {
         where: {
           approved: true
@@ -936,6 +979,17 @@ export async function getDepartmentPageData(
       )
     }
   };
+}
+
+export async function getActiveSalaryAssumption() {
+  return prisma.salaryAssumption.findFirst({
+    where: {
+      active: true
+    },
+    orderBy: {
+      updatedAt: "desc"
+    }
+  });
 }
 
 export async function getOpeningPageData(openingId: string) {

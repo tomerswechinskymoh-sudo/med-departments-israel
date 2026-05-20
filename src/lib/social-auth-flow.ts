@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { RoleKey } from "@prisma/client";
+import { RoleKey, VerificationStatus } from "@prisma/client";
 import { createAuditLog } from "@/lib/audit";
 import { setSessionCookie, toAppSession } from "@/lib/auth";
 import { hashPassword } from "@/lib/password";
@@ -49,7 +49,10 @@ export async function completeSocialAuth(input: {
       },
       data: {
         fullName: input.profile.fullName,
-        profileImageUrl: input.profile.profileImageUrl
+        profileImageUrl: input.profile.profileImageUrl,
+        emailVerified: true,
+        verificationStatus: VerificationStatus.VERIFIED,
+        verifiedAt: new Date()
       }
     });
 
@@ -106,6 +109,9 @@ export async function completeSocialAuth(input: {
       data: {
         fullName: input.profile.fullName,
         profileImageUrl: input.profile.profileImageUrl,
+        emailVerified: true,
+        verificationStatus: VerificationStatus.VERIFIED,
+        verifiedAt: new Date(),
         ...providerData(input.provider, input.profile.providerUserId)
       }
     });
@@ -134,6 +140,9 @@ export async function completeSocialAuth(input: {
       passwordHash,
       roleKey,
       profileImageUrl: input.profile.profileImageUrl,
+      emailVerified: true,
+      verificationStatus: VerificationStatus.VERIFIED,
+      verifiedAt: new Date(),
       ...providerData(input.provider, input.profile.providerUserId)
     }
   });

@@ -62,33 +62,6 @@ export function SignupForm({
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
-      <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/55 p-4">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-sm font-semibold text-ink">פתיחה מהירה</p>
-            <p className="mt-1 text-xs leading-6 text-slate-500">
-              אפשר להתחיל עם Google, Facebook או LinkedIn, או להמשיך בהרשמה רגילה.
-            </p>
-          </div>
-          <div className="flex items-center gap-3">
-            <SocialAuthLink
-              provider="google"
-              mode="signup"
-              accountIntent={accountIntent}
-              iconOnly
-            />
-            <SocialAuthLink
-              provider="facebook"
-              mode="signup"
-              accountIntent={accountIntent}
-              iconOnly
-            />
-            <LinkedInAuthLink mode="signup" accountIntent={accountIntent} iconOnly />
-          </div>
-        </div>
-        <div className="mt-4 text-center text-xs font-semibold text-slate-400">או הרשמה עם אימייל וסיסמה</div>
-      </div>
-
       <div>
         <label className="mb-2 block text-sm font-semibold text-ink">שם מלא</label>
         <input
@@ -156,12 +129,6 @@ export function SignupForm({
         </div>
       </div>
 
-      <div className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-600">
-        {accountIntent === "resident"
-            ? "החשבון מאפשר לשמור מחלקות להשוואה ולעקוב אחרי מחלקות. שיתוף חוויה פתוח גם בלי הרשמה, ויאומת בנפרד מול צוות האתר."
-            : "החשבון מיועד לגלישה נוחה, שמירת מחלקות להשוואה, והגשת מועמדות פרטית לתקנים פתוחים מתוך אזור אישי מסודר."}
-      </div>
-
       {socialError ? <p className="text-sm text-rose-600">{socialError}</p> : null}
       {linkedinError ? <p className="text-sm text-rose-600">{linkedinError}</p> : null}
       {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}
@@ -173,6 +140,30 @@ export function SignupForm({
       >
         {isSubmitting ? "יוצר/ת חשבון..." : "יצירת חשבון"}
       </button>
+
+      <div className="flex items-center gap-3 py-1">
+        <span className="h-px flex-1 bg-slate-200" />
+        <span className="text-xs font-bold text-slate-400">או</span>
+        <span className="h-px flex-1 bg-slate-200" />
+      </div>
+
+      <div className="flex justify-center gap-3">
+        <SocialAuthLink
+          provider="google"
+          mode="signup"
+          accountIntent={accountIntent}
+          iconOnly
+          className="shadow-sm"
+        />
+        <SocialAuthLink
+          provider="facebook"
+          mode="signup"
+          accountIntent={accountIntent}
+          iconOnly
+          className="shadow-sm"
+        />
+        <LinkedInAuthLink mode="signup" accountIntent={accountIntent} iconOnly className="shadow-sm" />
+      </div>
     </form>
   );
 }

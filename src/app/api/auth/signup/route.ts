@@ -3,10 +3,29 @@ import { RoleKey } from "@prisma/client";
 import { createAuditLog } from "@/lib/audit";
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
+import { hasValidSameOrigin } from "@/lib/security";
 import { setSessionCookie } from "@/lib/auth";
 import { signupSchema } from "@/lib/validation";
+import {
+  createTokenExpiry,
+  createVerificationToken,
+  sendUserVerificationEmail
+} from "@/lib/verification";
 
 export async function POST(request: Request) {
+  if (!hasValidSameOrigin(request)) {
+    return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
+  }
+
+  const rateLimit = checkRateLimit(request, "auth:signup", {
+    limit: 5,
+    windowMs: 60 * 60 * 1000
+  });
+  if (!rateLimit.ok) {
+    return rateLimitResponse(rateLimit.retryAfter);
+  }
+
   const body = await request.json().catch(() => null);
   const parsed = signupSchema.safeParse(body);
 
@@ -28,23 +47,46 @@ export async function POST(request: Request) {
   const passwordHash = await hashPassword(parsed.data.password);
   const roleKey =
     parsed.data.accountIntent === "resident" ? RoleKey.RESIDENT : RoleKey.STUDENT;
+  const verificationToken = createVerificationToken();
   const user = await prisma.user.create({
     data: {
       fullName: parsed.data.fullName,
       email,
       phone: parsed.data.phone,
       passwordHash,
-      roleKey
+      roleKey,
+      verificationToken,
+      tokenExpiry: createTokenExpiry()
     }
   });
 
   await createAuditLog({
     actorUserId: user.id,
-    action: "auth.signup",
+    action: "auth.registration",
     entityType: "User",
     entityId: user.id,
     metadata: {
       accountIntent: parsed.data.accountIntent
+    }
+  });
+
+  const emailDelivery = await sendUserVerificationEmail({
+    to: user.email,
+    fullName: user.fullName,
+    token: verificationToken
+  }).catch((error) => {
+    console.error("[signup] verification email failed", error);
+    return { delivered: false, skipped: false };
+  });
+
+  await createAuditLog({
+    actorUserId: user.id,
+    action: "verification.email_sent",
+    entityType: "User",
+    entityId: user.id,
+    metadata: {
+      delivered: emailDelivery.delivered,
+      skipped: emailDelivery.skipped
     }
   });
 
