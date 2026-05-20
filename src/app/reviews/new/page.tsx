@@ -23,10 +23,10 @@ export default async function SubmitReviewPage({
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="p-6 lg:p-8">
               <p className="text-sm font-semibold text-brand-600">שיתוף חוויה מהמחלקה</p>
-              <h1 className="mt-2 text-3xl font-bold text-ink">רוצה לספר על החוויה שלך?</h1>
+              <h1 className="mt-2 text-3xl font-bold text-ink">שתפו חוויה מהמחלקה</h1>
               <p className="mt-3 text-sm leading-7 text-slate-600">
-                אם היית שם כסטודנט, סטאז׳ר או מתמחה, זה המקום לשתף איך החוויה במחלקה
-                נראתה בפועל. קצר, אישי, ועוזר למי שבודק עכשיו את הצעד הבא.
+                ספרו מה עבד טוב במחלקה, מה היה משמעותי בלמידה, ומה כדאי לשפר.
+                נשמח לשמוע גם חוויות חיוביות, יחס אישי, הוראה טובה או חשיפה קלינית משמעותית.
               </p>
               {selectedDepartment ? (
                 <p className="mt-3 text-sm font-medium text-brand-700">

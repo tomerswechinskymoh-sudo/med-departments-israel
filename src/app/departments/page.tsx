@@ -2,10 +2,11 @@ import { getSession } from "@/lib/auth";
 import { departmentFilterSchema } from "@/lib/validation";
 import { DepartmentCard } from "@/components/departments/department-card";
 import { DepartmentFilters } from "@/components/departments/department-filters";
+import { SpecialtyDashboardMetrics } from "@/components/departments/specialty-dashboard-metrics";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageShell } from "@/components/layout/page-shell";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { getDirectoryData, getDirectoryFilters } from "@/lib/queries";
+import { getDirectoryData, getDirectoryFilters, getSpecialtyDashboardMetrics } from "@/lib/queries";
 
 export const dynamic = "force-dynamic";
 
@@ -81,7 +82,10 @@ export default async function DepartmentsPage({
         : undefined
   });
 
-  const departments = await getDirectoryData(parsedFilters, session?.userId);
+  const [departments, specialtyDashboard] = await Promise.all([
+    getDirectoryData(parsedFilters, session?.userId),
+    getSpecialtyDashboardMetrics(selectedSpecialtyId)
+  ]);
   const selectedSpecialty = availableFilters.specialties.find(
     (specialty) => specialty.id === selectedSpecialtyId
   );
@@ -97,16 +101,25 @@ export default async function DepartmentsPage({
         />
 
         <div className="grid gap-6 lg:grid-cols-[320px_1fr] lg:items-start">
-          <DepartmentFilters
-            key={filtersKey}
-            filters={parsedFilters}
-            institutions={availableFilters.institutions}
-            specialties={availableFilters.specialties}
-            departments={availableFilters.departments}
-            regions={availableFilters.regions}
-          />
+          <aside className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:overscroll-contain lg:pe-1">
+            <DepartmentFilters
+              key={filtersKey}
+              filters={parsedFilters}
+              institutions={availableFilters.institutions}
+              specialties={availableFilters.specialties}
+              departments={availableFilters.departments}
+              regions={availableFilters.regions}
+            />
+          </aside>
 
           <div className="min-w-0 space-y-4">
+            {selectedSpecialty ? (
+              <SpecialtyDashboardMetrics
+                specialtyName={selectedSpecialty.name}
+                metrics={specialtyDashboard.metrics}
+              />
+            ) : null}
+
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-[1.25rem] border border-brand-100 bg-white/94 px-4 py-3">
               <div>
                 <p className="text-sm font-bold text-ink">{departments.length} תוכניות נמצאו</p>

@@ -8,14 +8,18 @@ import {
   userRoleLabel
 } from "@/lib/queries";
 import { DepartmentChangeReviewForm } from "@/components/admin/department-change-review-form";
+import { AdminDepartmentDirectory } from "@/components/admin/admin-department-directory";
 import { DepartmentManagementForm } from "@/components/admin/department-management-form";
+import { DunsImportPanel } from "@/components/admin/duns-import-panel";
 import { InstitutionManagementForm } from "@/components/admin/hospital-management-form";
 import { OpeningApplicationModerationForm } from "@/components/admin/opening-application-moderation-form";
 import { OpeningReviewForm } from "@/components/admin/opening-review-form";
 import { RepresentativeAssignmentForm } from "@/components/admin/representative-assignment-form";
 import { RepresentativeCreationForm } from "@/components/admin/representative-creation-form";
+import { RepresentativeRequestReviewForm } from "@/components/admin/representative-request-review-form";
 import { ReviewModerationForm } from "@/components/admin/review-moderation-form";
 import { SeedDemoButton } from "@/components/admin/seed-demo-button";
+import { SpecialtyDashboardConfigForm } from "@/components/admin/specialty-dashboard-config-form";
 import { SpecialtyManagementForm } from "@/components/admin/specialty-management-form";
 import { UserRoleForm } from "@/components/admin/user-role-form";
 import { StatCard } from "@/components/dashboard/stat-card";
@@ -123,6 +127,9 @@ export default async function AdminPage() {
         <StatCard label="תקנים לאישור" value={data.stats.pendingOpeningApprovals} />
         <StatCard label="שינויי מחלקה" value={data.stats.pendingDepartmentChangeRequests} />
         <StatCard label="מועמדויות פעילות" value={data.stats.pendingOpeningApplications} />
+        <StatCard label="דיווחי טעות" value={data.stats.pendingMistakeReports} />
+        <StatCard label="בקשות נציגות" value={data.stats.pendingRepresentativeRequests} />
+        <StatCard label="דראפטים מסריקה" value={data.stats.pendingScrapeRevisions} />
       </div>
 
       <Card>
@@ -137,6 +144,60 @@ export default async function AdminPage() {
           <SeedDemoButton />
         </div>
       </Card>
+
+      <section className="grid gap-6 xl:grid-cols-3">
+        <Card>
+          <h2 className="text-xl font-bold text-ink">דיווחי טעות פתוחים</h2>
+          <div className="mt-4 space-y-3">
+            {data.pendingMistakeReports.length === 0 ? (
+              <p className="text-sm text-slate-600">אין כרגע דיווחי טעות פתוחים.</p>
+            ) : (
+              data.pendingMistakeReports.map((report) => (
+                <div key={report.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
+                  <p className="font-bold text-ink">{report.department.institution.name} · {report.department.name}</p>
+                  <p>{report.explanation}</p>
+                  <p className="text-xs font-semibold text-slate-500">{report.reporterName} · {report.reporterEmail}</p>
+                </div>
+              ))
+            )}
+          </div>
+        </Card>
+
+        <Card>
+          <h2 className="text-xl font-bold text-ink">בקשות נציגות מחלקה</h2>
+          <div className="mt-4 space-y-3">
+            {data.pendingRepresentativeRequests.length === 0 ? (
+              <p className="text-sm text-slate-600">אין כרגע בקשות נציגות ממתינות.</p>
+            ) : (
+              data.pendingRepresentativeRequests.map((request) => (
+                <div key={request.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
+                  <p className="font-bold text-ink">{request.department.institution.name} · {request.department.name}</p>
+                  <p>{request.requesterName} · {request.requesterEmail} · {request.requesterPhone}</p>
+                  <Badge tone="warning">ממתין לאישור</Badge>
+                  <RepresentativeRequestReviewForm requestId={request.id} />
+                </div>
+              ))
+            )}
+          </div>
+        </Card>
+
+        <Card>
+          <h2 className="text-xl font-bold text-ink">דראפטים מסריקת אתרים</h2>
+          <div className="mt-4 space-y-3">
+            {data.pendingScrapeRevisions.length === 0 ? (
+              <p className="text-sm text-slate-600">אין כרגע דראפטים מסריקה.</p>
+            ) : (
+              data.pendingScrapeRevisions.map((revision) => (
+                <div key={revision.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
+                  <p className="font-bold text-ink">{revision.department.institution.name} · {revision.department.name}</p>
+                  <p className="truncate text-xs text-slate-500">{revision.sourceUrl}</p>
+                  <p className="text-xs font-semibold text-slate-500">{formatDate(revision.createdAt)}</p>
+                </div>
+              ))
+            )}
+          </div>
+        </Card>
+      </section>
 
       <section className="grid gap-6 xl:grid-cols-2">
         <Card>
@@ -462,6 +523,86 @@ export default async function AdminPage() {
       </section>
 
       <section className="grid gap-6 xl:grid-cols-2">
+        <Card className="xl:col-span-2">
+          <h2 className="text-xl font-bold text-ink">ניהול דשבורד תחום התמחות</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">
+            לכל תחום אפשר לבחור אילו מדדים יוצגו למשתמשים ובאיזה סדר. מדדים שלא נבחרו לא
+            יוצגו בציבור.
+          </p>
+          <div className="mt-5">
+            <SpecialtyDashboardConfigForm
+              specialties={data.specialties.map((specialty) => ({
+                id: specialty.id,
+                name: specialty.name
+              }))}
+              configs={data.specialtyDashboardConfigs.map((config) => ({
+                specialtyId: config.specialtyId,
+                enabledMetricsJson: config.enabledMetricsJson,
+                displayOrderJson: config.displayOrderJson
+              }))}
+            />
+          </div>
+        </Card>
+
+        <Card className="xl:col-span-2">
+          <h2 className="text-xl font-bold text-ink">ייבוא נתונים</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">
+            ייבוא גלובלי מתוך סורק DUNS100 או ממקורות אחרים. הנתונים נשמרים כדראפט לבדיקה ולא מתפרסמים
+            לפני אישור אדמין.
+          </p>
+          <div className="mt-5">
+            <DunsImportPanel
+              jobs={data.dataImportJobs.map((job) => ({
+                id: job.id,
+                rootUrl: job.rootUrl,
+                status: job.status,
+                maxPages: job.maxPages,
+                yearsDepth: job.yearsDepth,
+                progressJson: job.progressJson,
+                errorMessage: job.errorMessage,
+                batchId: job.batchId
+              }))}
+              institutions={data.institutions.map((institution) => ({
+                id: institution.id,
+                name: institution.name
+              }))}
+              specialties={data.specialties.map((specialty) => ({
+                id: specialty.id,
+                name: specialty.name
+              }))}
+              departments={data.departments.map((department) => ({
+                id: department.id,
+                name: `${department.institution.name} · ${department.specialty.name} · ${department.name}`,
+                institutionId: department.institutionId,
+                specialtyId: department.specialtyId
+              }))}
+              batches={data.dunsImportBatches.map((batch) => ({
+                id: batch.id,
+                sourceUrl: batch.sourceUrl,
+                sourceType: batch.sourceType,
+                target: batch.target,
+                extractionInstruction: batch.extractionInstruction,
+                status: batch.status,
+                parsedJson: batch.parsedJson,
+                createdAt: batch.createdAt,
+                records: batch.records.map((record) => ({
+                  id: record.id,
+                  physicianName: record.physicianName,
+                  roleTitle: record.roleTitle,
+                  hospitalNameRaw: record.hospitalNameRaw,
+                  specialtyRaw: record.specialtyRaw,
+                  sourceSnippet: record.sourceSnippet,
+                  sourceLabel: record.sourceLabel,
+                  confidenceScore: record.confidenceScore,
+                  normalizedHospitalId: record.normalizedHospitalId,
+                  normalizedSpecialtyId: record.normalizedSpecialtyId,
+                  normalizedDepartmentId: record.normalizedDepartmentId
+                }))
+              }))}
+            />
+          </div>
+        </Card>
+
         <Card>
           <h2 className="text-xl font-bold text-ink">מחלקות פעילות</h2>
           <p className="mt-2 text-sm text-slate-600">
@@ -481,25 +622,24 @@ export default async function AdminPage() {
               }))}
             />
           </div>
-          <div className="mt-4 grid gap-4">
-            {data.departments.map((department) => (
-              <div key={department.id} className="rounded-2xl bg-brand-50 p-4">
-                <p className="font-semibold text-ink">
-                  {department.institution.name} · {department.name}
-                </p>
-                <p className="mt-1 text-sm text-slate-600">{department.specialty.name}</p>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{department.shortSummary}</p>
-                <div className="mt-4">
-                  <Link
-                    href={`/admin/departments/${department.id}`}
-                    className="inline-flex rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-800"
-                  >
-                    עריכת עמוד מחלקה
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
+          <AdminDepartmentDirectory
+            departments={data.departments.map((department) => ({
+              id: department.id,
+              name: department.name,
+              shortSummary: department.shortSummary,
+              institution: {
+                name: department.institution.name
+              },
+              specialty: {
+                id: department.specialty.id,
+                name: department.specialty.name
+              }
+            }))}
+            specialties={data.specialties.map((specialty) => ({
+              id: specialty.id,
+              name: specialty.name
+            }))}
+          />
         </Card>
 
         <Card>

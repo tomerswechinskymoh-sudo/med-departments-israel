@@ -1,0 +1,2 @@
+-- RenameIndex
+ALTER INDEX "DepartmentRepresentativeRequest_requester_email_department_id_s" RENAME TO "DepartmentRepresentativeRequest_requester_email_department__idx";

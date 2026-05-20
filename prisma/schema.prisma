@@ -73,6 +73,77 @@ enum UploadedFileCategory {
   APPLICATION_PROFILE_PHOTO
   APPLICATION_SUPPORTING
   REVIEW_VERIFICATION_PROOF
+  REPRESENTATIVE_REQUEST_PROOF
+}
+
+enum DepartmentScrapeRevisionStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  FAILED
+}
+
+enum DepartmentMistakeReportStatus {
+  OPEN
+  REVIEWED
+  RESOLVED
+  DISMISSED
+}
+
+enum DepartmentRepresentativeRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum DepartmentRepresentativeRequesterRole {
+  RESIDENT
+  SPECIALIST
+  DEPARTMENT_STAFF
+}
+
+enum DunsImportBatchStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  FAILED
+}
+
+enum DataImportBatchStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  FAILED
+  FAILED_NEEDS_ASSISTED_IMPORT
+}
+
+enum ImportRecordStatus {
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+}
+
+enum DataSourceType {
+  DUNS100
+  HOSPITAL_WEBSITE
+  MINISTRY_REPORT
+  MANUAL_PASTE
+  OTHER
+}
+
+enum DataImportTarget {
+  DUNS100_PHYSICIANS
+  DEPARTMENT_METRICS
+  DEPARTMENT_LEADERSHIP
+  RESIDENCY_OPENINGS
+  CUSTOM
+}
+
+enum DataImportJobStatus {
+  RUNNING
+  FAILED
+  PARTIAL
+  COMPLETED
 }
 
 model Role {
@@ -115,6 +186,12 @@ model User {
   reviewReports               ReviewReport[]
   uploadedFiles               UploadedFile[]          @relation("UploadedFileOwner")
   auditEntries                AuditLog[]              @relation("AuditActor")
+  reviewedDepartmentScrapeRevisions DepartmentScrapeRevision[] @relation("DepartmentScrapeRevisionReviewer")
+  reviewedDepartmentRepresentativeRequests DepartmentRepresentativeRequest[] @relation("DepartmentRepresentativeRequestReviewer")
+  reviewedDunsImportBatches DunsImportBatch[] @relation("DunsImportBatchReviewer")
+  createdDataImportBatches DataImportBatch[] @relation("DataImportBatchCreator")
+  reviewedDataImportBatches DataImportBatch[] @relation("DataImportBatchReviewer")
+  createdDataImportJobs DataImportJob[] @relation("DataImportJobCreator")
 
   @@index([roleKey])
   @@index([isApprovedPublisher])
@@ -134,6 +211,7 @@ model Institution {
   updatedAt         DateTime           @updatedAt @map("updated_at")
   departments       Department[]
   publisherRequests PublisherRequest[]
+  dunsPhysicianRecords DunsPhysicianRecord[] @relation("DunsPhysicianRecordInstitution")
 
   @@index([type])
   @@index([city])
@@ -141,11 +219,23 @@ model Institution {
 }
 
 model Specialty {
-  id          String       @id @default(cuid())
-  name        String
-  slug        String       @unique
-  description String
-  departments Department[]
+  id                      String                    @id @default(cuid())
+  name                    String
+  slug                    String                    @unique
+  description             String
+  departments             Department[]
+  dashboardConfig         SpecialtyDashboardConfig?
+  dunsPhysicianRecords    DunsPhysicianRecord[] @relation("DunsPhysicianRecordSpecialty")
+}
+
+model SpecialtyDashboardConfig {
+  id                 String    @id @default(cuid())
+  specialtyId        String    @unique @map("specialty_id")
+  enabledMetricsJson Json      @map("enabled_metrics_json")
+  displayOrderJson   Json      @map("display_order_json")
+  createdAt          DateTime  @default(now()) @map("created_at")
+  updatedAt          DateTime  @updatedAt @map("updated_at")
+  specialty          Specialty @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
 }
 
 model Department {
@@ -188,6 +278,13 @@ model Department {
   uploadedFiles           UploadedFile[]
   representativeAssignments RepresentativeAssignment[]
   departmentChangeRequests DepartmentChangeRequest[]
+  scrapeRevisions        DepartmentScrapeRevision[]
+  mistakeReports         DepartmentMistakeReport[]
+  representativeRequests DepartmentRepresentativeRequest[]
+  externalMetrics        DepartmentExternalMetric[]
+  externalPeople         DepartmentExternalPerson[]
+  dataImportRecords      DataImportRecord[]
+  dunsPhysicianRecords   DunsPhysicianRecord[] @relation("DunsPhysicianRecordDepartment")
 
   @@unique([institutionId, name])
   @@index([institutionId])
@@ -394,6 +491,257 @@ model DepartmentChangeRequest {
 
   @@index([departmentId, status])
   @@index([submittedByUserId, status])
+}
+
+model DepartmentScrapeRevision {
+  id                            String                         @id @default(cuid())
+  departmentId                  String                         @map("department_id")
+  sourceUrl                     String                         @map("source_url")
+  status                        DepartmentScrapeRevisionStatus @default(PENDING_REVIEW)
+  confidenceScore               Float?                         @map("confidence_score")
+  rawText                       String?                        @map("raw_text")
+  extractedJson                 Json?                          @map("extracted_json")
+  proposedDepartmentHeadTitle   String?                        @map("proposed_department_head_title")
+  proposedDepartmentHeadName    String?                        @map("proposed_department_head_name")
+  proposedDepartmentHeadEmail   String?                        @map("proposed_department_head_email")
+  proposedDepartmentHeadPhone   String?                        @map("proposed_department_head_phone")
+  proposedContactTitle          String?                        @map("proposed_contact_title")
+  proposedContactRole           String?                        @map("proposed_contact_role")
+  proposedContactName           String?                        @map("proposed_contact_name")
+  proposedContactEmail          String?                        @map("proposed_contact_email")
+  proposedContactPhone          String?                        @map("proposed_contact_phone")
+  proposedDescription           String?                        @map("proposed_description")
+  proposedSeniorPhysiciansCount Int?                           @map("proposed_senior_physicians_count")
+  proposedSubSpecialtiesJson    Json?                          @map("proposed_sub_specialties_json")
+  proposedApplicationUrl        String?                        @map("proposed_application_url")
+  suggestedEmailsJson           Json?                          @map("suggested_emails_json")
+  adminNotes                    String?                        @map("admin_notes")
+  createdAt                     DateTime                       @default(now()) @map("created_at")
+  reviewedAt                    DateTime?                      @map("reviewed_at")
+  reviewedById                  String?                        @map("reviewed_by_id")
+  department                    Department                     @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  reviewedBy                    User?                          @relation("DepartmentScrapeRevisionReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([departmentId, status])
+  @@index([createdAt])
+}
+
+model DepartmentMistakeReport {
+  id             String                         @id @default(cuid())
+  departmentId   String                         @map("department_id")
+  explanation    String
+  reporterName   String                         @map("reporter_name")
+  reporterEmail  String                         @map("reporter_email")
+  reporterPhone  String?                        @map("reporter_phone")
+  status         DepartmentMistakeReportStatus  @default(OPEN)
+  adminNotes     String?                        @map("admin_notes")
+  createdAt      DateTime                       @default(now()) @map("created_at")
+  resolvedAt     DateTime?                      @map("resolved_at")
+  department     Department                     @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@index([departmentId, status])
+  @@index([reporterEmail, createdAt])
+}
+
+model DepartmentRepresentativeRequest {
+  id              String                                @id @default(cuid())
+  departmentId    String                                @map("department_id")
+  requesterName   String                                @map("requester_name")
+  requesterEmail  String                                @map("requester_email")
+  requesterPhone  String                                @map("requester_phone")
+  requesterRole   DepartmentRepresentativeRequesterRole @map("requester_role")
+  note            String?
+  proofFileId     String?                               @map("proof_file_id")
+  status          DepartmentRepresentativeRequestStatus @default(PENDING)
+  adminNotes      String?                               @map("admin_notes")
+  createdAt       DateTime                              @default(now()) @map("created_at")
+  reviewedAt      DateTime?                             @map("reviewed_at")
+  reviewedById    String?                               @map("reviewed_by_id")
+  department      Department                            @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  reviewedBy      User?                                 @relation("DepartmentRepresentativeRequestReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([departmentId, status])
+  @@index([requesterEmail, departmentId, status])
+}
+
+model DunsImportBatch {
+  id          String                @id @default(cuid())
+  sourceUrl   String?               @map("source_url")
+  rawText     String?               @map("raw_text")
+  parsedJson  Json?                 @map("parsed_json")
+  status      DunsImportBatchStatus @default(PENDING_REVIEW)
+  createdAt   DateTime              @default(now()) @map("created_at")
+  reviewedAt  DateTime?             @map("reviewed_at")
+  reviewedById String?              @map("reviewed_by_id")
+  records     DunsPhysicianRecord[]
+  metrics     DepartmentExternalMetric[]
+  reviewedBy  User?                 @relation("DunsImportBatchReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+}
+
+model DunsPhysicianRecord {
+  id                    String       @id @default(cuid())
+  batchId               String       @map("batch_id")
+  physicianName         String       @map("physician_name")
+  roleTitle             String?      @map("role_title")
+  hospitalNameRaw       String       @map("hospital_name_raw")
+  specialtyRaw          String       @map("specialty_raw")
+  rawText               String?      @map("raw_text")
+  sourceUrl             String?      @map("source_url")
+  rankingYear           Int?         @map("ranking_year")
+  dedupeKey             String?      @unique @map("dedupe_key")
+  normalizedHospitalId  String?      @map("normalized_hospital_id")
+  normalizedSpecialtyId String?      @map("normalized_specialty_id")
+  normalizedDepartmentId String?     @map("normalized_department_id")
+  confidenceScore       Float?       @map("confidence_score")
+  batch                 DunsImportBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  normalizedHospital    Institution? @relation("DunsPhysicianRecordInstitution", fields: [normalizedHospitalId], references: [id], onDelete: SetNull)
+  normalizedSpecialty   Specialty?   @relation("DunsPhysicianRecordSpecialty", fields: [normalizedSpecialtyId], references: [id], onDelete: SetNull)
+  normalizedDepartment  Department?  @relation("DunsPhysicianRecordDepartment", fields: [normalizedDepartmentId], references: [id], onDelete: SetNull)
+
+  @@index([batchId])
+  @@index([normalizedHospitalId, normalizedSpecialtyId])
+  @@index([normalizedDepartmentId])
+  @@index([rankingYear])
+}
+
+model DepartmentExternalMetric {
+  id              String           @id @default(cuid())
+  departmentId    String           @map("department_id")
+  metricKey       String           @map("metric_key")
+  value           Float
+  sourceName      String           @map("source_name")
+  sourceBatchId   String?          @map("source_batch_id")
+  confidenceScore Float?           @map("confidence_score")
+  approved        Boolean          @default(false)
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+  department      Department       @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  sourceBatch     DunsImportBatch? @relation(fields: [sourceBatchId], references: [id], onDelete: SetNull)
+
+  @@unique([departmentId, metricKey, sourceName])
+  @@index([metricKey, approved])
+  @@index([sourceBatchId])
+}
+
+model DepartmentExternalPerson {
+  id              String            @id @default(cuid())
+  departmentId    String            @map("department_id")
+  sourceName      String            @map("source_name")
+  personName      String            @map("person_name")
+  roleTitle       String?           @map("role_title")
+  description     String?
+  sourceUrl       String?           @map("source_url")
+  rankingYear     Int?              @map("ranking_year")
+  sourceRecordId  String?           @map("source_record_id")
+  approved        Boolean           @default(false)
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime          @updatedAt @map("updated_at")
+  department      Department        @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  sourceRecord    DataImportRecord? @relation(fields: [sourceRecordId], references: [id], onDelete: SetNull)
+
+  @@unique([departmentId, sourceName, personName, rankingYear])
+  @@index([departmentId, sourceName, approved])
+  @@index([sourceRecordId])
+}
+
+model DataImportBatch {
+  id                    String                @id @default(cuid())
+  sourceType            DataSourceType        @map("source_type")
+  target                DataImportTarget
+  sourceUrl             String?               @map("source_url")
+  extractionInstruction String                @map("extraction_instruction")
+  rawText               String?               @map("raw_text")
+  rawHtml               String?               @map("raw_html")
+  parsedJson            Json?                 @map("parsed_json")
+  status                DataImportBatchStatus @default(PENDING_REVIEW)
+  createdById           String?               @map("created_by_id")
+  reviewedById          String?               @map("reviewed_by_id")
+  createdAt             DateTime              @default(now()) @map("created_at")
+  reviewedAt            DateTime?             @map("reviewed_at")
+  sources               DataImportSource[]
+  records               DataImportRecord[]
+  jobs                  DataImportJob[]
+  createdBy             User?                 @relation("DataImportBatchCreator", fields: [createdById], references: [id], onDelete: SetNull)
+  reviewedBy            User?                 @relation("DataImportBatchReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+  @@index([sourceType, target])
+}
+
+model DataImportJob {
+  id                 String              @id @default(cuid())
+  sourceType         DataSourceType      @default(DUNS100) @map("source_type")
+  target             DataImportTarget    @default(DUNS100_PHYSICIANS)
+  status             DataImportJobStatus @default(RUNNING)
+  rootUrl            String              @map("root_url")
+  maxPages           Int                 @default(80) @map("max_pages")
+  yearsDepth         Int                 @default(5) @map("years_depth")
+  allowedDomainsJson Json?               @map("allowed_domains_json")
+  progressJson       Json?               @map("progress_json")
+  errorMessage       String?             @map("error_message")
+  batchId            String?             @map("batch_id")
+  createdById        String?             @map("created_by_id")
+  startedAt          DateTime?           @map("started_at")
+  finishedAt         DateTime?           @map("finished_at")
+  createdAt          DateTime            @default(now()) @map("created_at")
+  updatedAt          DateTime            @updatedAt @map("updated_at")
+  batch              DataImportBatch?    @relation(fields: [batchId], references: [id], onDelete: SetNull)
+  createdBy          User?               @relation("DataImportJobCreator", fields: [createdById], references: [id], onDelete: SetNull)
+
+  @@index([status, updatedAt])
+  @@index([sourceType, target])
+  @@index([batchId])
+}
+
+model DataImportSource {
+  id          String          @id @default(cuid())
+  batchId     String          @map("batch_id")
+  sourceUrl   String?         @map("source_url")
+  sourceLabel String?         @map("source_label")
+  finalUrl    String?         @map("final_url")
+  rawText     String?         @map("raw_text")
+  rawHtml     String?         @map("raw_html")
+  diagnostics Json?
+  createdAt   DateTime        @default(now()) @map("created_at")
+  batch       DataImportBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  @@index([batchId])
+}
+
+model DataImportRecord {
+  id                    String                 @id @default(cuid())
+  batchId               String                 @map("batch_id")
+  sourceType            DataSourceType         @map("source_type")
+  target                DataImportTarget
+  status                ImportRecordStatus     @default(PENDING_REVIEW)
+  recordType            String                 @map("record_type")
+  payloadJson           Json                   @map("payload_json")
+  rawText               String?                @map("raw_text")
+  sourceSnippet         String?                @map("source_snippet")
+  sourceUrl             String?                @map("source_url")
+  sourceLabel           String?                @map("source_label")
+  rankingYear           Int?                   @map("ranking_year")
+  physicianName         String?                @map("physician_name")
+  roleTitle             String?                @map("role_title")
+  hospitalNameRaw       String?                @map("hospital_name_raw")
+  specialtyRaw          String?                @map("specialty_raw")
+  normalizedHospitalId  String?                @map("normalized_hospital_id")
+  normalizedSpecialtyId String?                @map("normalized_specialty_id")
+  normalizedDepartmentId String?               @map("normalized_department_id")
+  confidenceScore       Float?                 @map("confidence_score")
+  dedupeKey             String?                @unique @map("dedupe_key")
+  createdAt             DateTime               @default(now()) @map("created_at")
+  updatedAt             DateTime               @updatedAt @map("updated_at")
+  batch                 DataImportBatch        @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  normalizedDepartment  Department?            @relation(fields: [normalizedDepartmentId], references: [id], onDelete: SetNull)
+  externalPeople        DepartmentExternalPerson[]
+
+  @@index([batchId, status])
+  @@index([normalizedDepartmentId])
+  @@index([sourceType, target])
+  @@index([rankingYear])
 }
 
 model ReviewSubmission {

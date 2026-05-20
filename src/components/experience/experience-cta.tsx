@@ -10,17 +10,17 @@ const roleChoices: Array<{ value: ReviewerType; label: string; description: stri
   {
     value: "RESIDENT",
     label: "מתמחה",
-    description: "לשתף איך המחלקה נראית מבפנים ביום־יום."
+    description: "ספרו מה עבד טוב, מה היה משמעותי בלמידה ומה כדאי לשפר."
   },
   {
     value: "INTERN",
     label: "סטאז׳ר",
-    description: "לספר איך האלקטיב / הסבב במחלקה באמת נראה."
+    description: "שתפו גם נקודות חוזק, יחס אישי, הוראה טובה או חשיפה קלינית."
   },
   {
     value: "STUDENT",
     label: "סטודנט",
-    description: "לשתף איך החוויה במחלקה נראתה בפועל."
+    description: "חוויה קצרה ומאוזנת יכולה לעזור למי שבוחר עכשיו מחלקה."
   }
 ];
 
@@ -66,16 +66,16 @@ export function ExperienceCta({
           "inline-flex items-center justify-center rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-6 py-3 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-200/50 transition hover:-translate-y-0.5 hover:shadow-xl"
         }
       >
-        רוצה לספר על החוויה שלך?
+        שתפו חוויה מהמחלקה
       </button>
 
       <Modal
         open={open}
         onClose={closeModal}
-        title="רוצה לספר על החוויה שלך?"
+        title="מה היה טוב ומה כדאי לשפר?"
         description={
           description ??
-          "אפשר לשתף גם בלי לפתוח חשבון. אפשר לאמת עם טלפון או עם מסמך רשמי, וכל שיתוף עובר בדיקה לפני פרסום."
+          "ספרו מה עבד טוב במחלקה, מה היה משמעותי בלמידה, ומה כדאי לשפר. נשמח גם לחוויות חיוביות ונקודות חוזק."
         }
         className="max-w-5xl"
       >

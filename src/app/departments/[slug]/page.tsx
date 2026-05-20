@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getSession } from "@/lib/auth";
-import { FavoriteToggleButton } from "@/components/departments/favorite-toggle-button";
+import { DepartmentPageActions } from "@/components/departments/department-page-actions";
+import {
+  FavoriteToggleButton,
+  LoginRequiredBookmarkButton
+} from "@/components/departments/favorite-toggle-button";
 import { OfficialUpdatesList } from "@/components/departments/official-updates-list";
 import { ReviewCard } from "@/components/departments/review-card";
 import { ExperienceCta } from "@/components/experience/experience-cta";
@@ -417,12 +421,29 @@ export default async function DepartmentDetailsPage({
     "ישראל",
     "חו״ל מוכר"
   ]);
+  const duns100PhysiciansCount = department.externalMetrics.find(
+    (metric) => metric.metricKey === "duns100PhysiciansCount" && metric.sourceName === "DUNS100"
+  )?.value;
+  const duns100Physicians = department.externalPeople.filter(
+    (person) => person.sourceName === "DUNS100" && person.approved
+  );
 
   return (
     <PageShell className="space-y-7 py-8">
-      <section className="rounded-xl border border-brand-100 bg-white px-5 py-5 shadow-panel md:px-6">
+      <section className="relative rounded-xl border border-brand-100 bg-white px-5 py-5 shadow-panel md:px-6">
+        <div className="absolute left-5 top-5 z-10">
+          {session ? (
+            <FavoriteToggleButton
+              departmentId={department.id}
+              initialFavorite={department.isFavorite}
+              variant="icon"
+            />
+          ) : (
+            <LoginRequiredBookmarkButton />
+          )}
+        </div>
         <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
-          <div className="min-w-0">
+          <div className="min-w-0 pe-12">
             <div className="flex flex-wrap gap-2">
               <Badge>{department.specialty.name}</Badge>
               <Badge tone="default">{region}</Badge>
@@ -442,27 +463,22 @@ export default async function DepartmentDetailsPage({
                 {department.summary.reviewCount} ביקורות מאושרות
               </span>
             </div>
+            <div className="mt-4">
+              <DepartmentPageActions
+                departmentId={department.id}
+                isAdmin={false}
+                showClaim
+              />
+            </div>
           </div>
 
           <div className="w-full space-y-3 rounded-lg border border-slate-100 bg-slate-50 p-4 lg:w-[320px]">
-            <div className="flex flex-wrap gap-2">
-              {session ? (
-                <FavoriteToggleButton
-                  departmentId={department.id}
-                  initialFavorite={department.isFavorite}
-                />
-              ) : (
-                <Link
-                  href={`/login?next=${encodeURIComponent(departmentHref)}`}
-                  className="rounded-full border border-brand-200 bg-white px-4 py-2 text-sm font-semibold text-brand-800"
-                >
-                  שמירה אחרי התחברות
-                </Link>
-              )}
+            <div>
               <ExperienceCta
                 departments={reviewContext.departments}
                 selectedDepartmentId={department.id}
-                buttonClassName="inline-flex items-center justify-center rounded-full bg-brand-700 px-4 py-2 text-sm font-semibold text-white"
+                className="w-full"
+                buttonClassName="inline-flex w-full items-center justify-center rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-5 py-3 text-sm font-bold text-amber-950 shadow-lg shadow-amber-200/50 transition hover:-translate-y-0.5 hover:shadow-xl"
               />
             </div>
             <div className="space-y-2 text-sm text-slate-700">
@@ -484,9 +500,18 @@ export default async function DepartmentDetailsPage({
               )}
               <p>טלפון: {department.publicContactPhone ?? <EmptyValue />}</p>
             </div>
+            <DepartmentPageActions
+              departmentId={department.id}
+              isAdmin={false}
+              showMistake
+            />
           </div>
         </div>
       </section>
+
+      {session?.role === "admin" ? (
+        <DepartmentPageActions departmentId={department.id} isAdmin showAdminScrape />
+      ) : null}
 
       <section className="grid gap-5 lg:grid-cols-[1fr_360px]">
         <div className="space-y-5">
@@ -519,6 +544,14 @@ export default async function DepartmentDetailsPage({
               ) : null}
             </div>
             <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              {typeof duns100PhysiciansCount === "number" ? (
+                <ObjectiveStatCard
+                  label="מספר רופאים ב-DUNS100"
+                  value={duns100PhysiciansCount}
+                  caption="מבוסס על ייבוא DUNS100 מאושר"
+                  comparison="מידע חיצוני מאושר"
+                />
+              ) : null}
               <ObjectiveStatCard
                 label="מספר מתמחים פעילים"
                 value={objectiveData.residentsCount}
@@ -561,6 +594,33 @@ export default async function DepartmentDetailsPage({
                 items={educationLocationItems}
               />
             </div>
+            {duns100Physicians.length > 0 ? (
+              <details className="mt-4 rounded-2xl border border-brand-100 bg-white px-4 py-4">
+                <summary className="cursor-pointer text-sm font-black text-ink">
+                  רופאים שמופיעים ב-DUNS100 ({duns100Physicians.length})
+                </summary>
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  {duns100Physicians.map((person) => (
+                    <div key={person.id} className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-3">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="text-sm font-bold text-ink">{person.personName}</p>
+                        <span className="rounded-full bg-white px-2.5 py-1 text-[0.68rem] font-black text-brand-800">
+                          DUNS100
+                        </span>
+                      </div>
+                      {person.roleTitle ? (
+                        <p className="mt-1 text-xs leading-6 text-slate-600">{person.roleTitle}</p>
+                      ) : null}
+                      {person.sourceUrl ? (
+                        <a href={person.sourceUrl} className="mt-2 inline-flex text-xs font-bold text-brand-800">
+                          מקור
+                        </a>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+              </details>
+            ) : null}
           </Card>
 
           <Card className="rounded-xl">

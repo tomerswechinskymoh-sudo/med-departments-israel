@@ -58,6 +58,15 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
     await prisma.openingAcceptanceCriteria.deleteMany();
     await prisma.residencyOpening.deleteMany();
     await prisma.departmentChangeRequest.deleteMany();
+    await prisma.departmentExternalMetric.deleteMany();
+    await prisma.departmentExternalPerson.deleteMany();
+    await prisma.dataImportRecord.deleteMany();
+    await prisma.dataImportSource.deleteMany();
+    await prisma.dataImportJob.deleteMany();
+    await prisma.dataImportBatch.deleteMany();
+    await prisma.dunsPhysicianRecord.deleteMany();
+    await prisma.dunsImportBatch.deleteMany();
+    await prisma.specialtyDashboardConfig.deleteMany();
     await prisma.representativeAssignment.deleteMany();
     await prisma.representativeProfile.deleteMany();
     await prisma.publisherRequest.deleteMany();
@@ -216,6 +225,125 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
   const wolfsonOrthopedics = departmentMap["wolfson:orthopedic-surgery:כירורגיה אורתופדית"];
   const clalitFamilyMedicine = departmentMap["clalit:family-medicine:רפואת משפחה"];
   const ichilovEmergency = departmentMap["ichilov:emergency-medicine:רפואה דחופה"];
+
+  const demoSpecialtyStats: Record<
+    string,
+    {
+      activeResidentsCount: number;
+      estimatedGraduatingResidentsCount: number;
+      medianResidencyDurationMonths: number;
+      boardStageAPassRate: number;
+      boardStageBPassRate: number;
+      maleResidentsPercent: number;
+      femaleResidentsPercent: number;
+      israelGraduatesPercent: number;
+      foreignGraduatesPercent: number;
+      seniorPhysiciansCount: number;
+    }
+  > = {
+    "רפואה פנימית": {
+      activeResidentsCount: 19,
+      estimatedGraduatingResidentsCount: 5,
+      medianResidencyDurationMonths: 48,
+      boardStageAPassRate: 86,
+      boardStageBPassRate: 91,
+      maleResidentsPercent: 44,
+      femaleResidentsPercent: 56,
+      israelGraduatesPercent: 72,
+      foreignGraduatesPercent: 28,
+      seniorPhysiciansCount: 17
+    },
+    "רפואת ילדים": {
+      activeResidentsCount: 15,
+      estimatedGraduatingResidentsCount: 4,
+      medianResidencyDurationMonths: 54,
+      boardStageAPassRate: 88,
+      boardStageBPassRate: 93,
+      maleResidentsPercent: 38,
+      femaleResidentsPercent: 62,
+      israelGraduatesPercent: 76,
+      foreignGraduatesPercent: 24,
+      seniorPhysiciansCount: 19
+    },
+    "כירורגיה כללית": {
+      activeResidentsCount: 13,
+      estimatedGraduatingResidentsCount: 3,
+      medianResidencyDurationMonths: 72,
+      boardStageAPassRate: 81,
+      boardStageBPassRate: 87,
+      maleResidentsPercent: 61,
+      femaleResidentsPercent: 39,
+      israelGraduatesPercent: 69,
+      foreignGraduatesPercent: 31,
+      seniorPhysiciansCount: 14
+    },
+    "כירורגיה אורתופדית": {
+      activeResidentsCount: 11,
+      estimatedGraduatingResidentsCount: 3,
+      medianResidencyDurationMonths: 72,
+      boardStageAPassRate: 83,
+      boardStageBPassRate: 89,
+      maleResidentsPercent: 68,
+      femaleResidentsPercent: 32,
+      israelGraduatesPercent: 74,
+      foreignGraduatesPercent: 26,
+      seniorPhysiciansCount: 12
+    },
+    "פסיכיאטריה": {
+      activeResidentsCount: 10,
+      estimatedGraduatingResidentsCount: 3,
+      medianResidencyDurationMonths: 54,
+      boardStageAPassRate: 84,
+      boardStageBPassRate: 90,
+      maleResidentsPercent: 43,
+      femaleResidentsPercent: 57,
+      israelGraduatesPercent: 71,
+      foreignGraduatesPercent: 29,
+      seniorPhysiciansCount: 11
+    },
+    "יילוד וגינקולוגיה": {
+      activeResidentsCount: 14,
+      estimatedGraduatingResidentsCount: 4,
+      medianResidencyDurationMonths: 72,
+      boardStageAPassRate: 85,
+      boardStageBPassRate: 92,
+      maleResidentsPercent: 35,
+      femaleResidentsPercent: 65,
+      israelGraduatesPercent: 78,
+      foreignGraduatesPercent: 22,
+      seniorPhysiciansCount: 15
+    }
+  };
+
+  for (const department of departments) {
+    const stats = demoSpecialtyStats[department.specialty.name];
+    if (!stats) continue;
+
+    for (const [metricKey, value] of Object.entries(stats)) {
+      await prisma.departmentExternalMetric.upsert({
+        where: {
+          departmentId_metricKey_sourceName: {
+            departmentId: department.id,
+            metricKey,
+            sourceName: "DEMO"
+          }
+        },
+        create: {
+          departmentId: department.id,
+          metricKey,
+          value,
+          sourceName: "DEMO",
+          approved: true,
+          confidenceScore: 0.5
+        },
+        update: {
+          value,
+          approved: true,
+          confidenceScore: 0.5
+        }
+      });
+    }
+  }
 
   await prisma.representativeProfile.create({
     data: {

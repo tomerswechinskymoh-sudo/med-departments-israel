@@ -13,6 +13,11 @@ import {
   OPENING_TYPE_LABELS
 } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
+import {
+  calculateSpecialtyMetrics,
+  defaultSpecialtyDashboardMetrics,
+  normalizeMetricKeys
+} from "@/lib/specialty-metrics";
 import { average, formatDepartmentDisplayName } from "@/lib/utils";
 import { resolveCanonicalDepartmentSlug } from "@/server/department-catalog";
 
@@ -376,6 +381,9 @@ export async function getHomePageData() {
       hasResearch: department.researchOpportunities.length > 0,
       hasOpenResidency: department.residencyOpenings.length > 0,
       residentsCount: department.residentsCount,
+      medianResidencyLength: department.medianResidencyLength,
+      genderBalance: department.genderBalance,
+      educationLocationBreakdown: department.educationLocationBreakdown,
       shlavAlephPassRate: department.shlavAlephPassRate,
       shlavBetPassRate: department.shlavBetPassRate,
       candidatePreferences: department.candidatePreferences
@@ -722,6 +730,80 @@ export async function getDirectoryData(
   });
 }
 
+export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) {
+  if (!specialtyId) {
+    return {
+      metrics: [],
+      hasConfig: false
+    };
+  }
+
+  const [config, departments] = await Promise.all([
+    prisma.specialtyDashboardConfig.findUnique({
+      where: {
+        specialtyId
+      }
+    }),
+    prisma.department.findMany({
+      where: {
+        specialtyId
+      },
+      include: {
+        reviews: {
+          select: publishedReviewSelect
+        },
+        researchOpportunities: {
+          where: {
+            contentStatus: ContentStatus.PUBLISHED
+          },
+          select: {
+            id: true
+          }
+        },
+        externalMetrics: {
+          where: {
+            approved: true
+          },
+          select: {
+            metricKey: true,
+            value: true,
+            sourceName: true,
+            approved: true
+          }
+        }
+      }
+    })
+  ]);
+
+  const enabledMetrics = normalizeMetricKeys(
+    config?.enabledMetricsJson,
+    defaultSpecialtyDashboardMetrics
+  );
+  const displayOrder = normalizeMetricKeys(
+    config?.displayOrderJson,
+    enabledMetrics
+  );
+  const metricInput = departments.map((department) => ({
+    residentsCount: department.residentsCount,
+    medianResidencyLength: department.medianResidencyLength,
+    shlavAlephPassRate: department.shlavAlephPassRate,
+    shlavBetPassRate: department.shlavBetPassRate,
+    genderBalance: department.genderBalance,
+    educationLocationBreakdown: department.educationLocationBreakdown,
+    reviewCount: department.reviews.length,
+    averageOverall: average(department.reviews.map((review) => review.overallRecommendation)),
+    lifestyleBalance: average(department.reviews.map((review) => review.lifestyleBalance)),
+    researchExposure: average(department.reviews.map((review) => review.researchExposure)),
+    hasResearch: department.researchOpportunities.length > 0,
+    externalMetrics: department.externalMetrics
+  }));
+
+  return {
+    metrics: calculateSpecialtyMetrics(metricInput, enabledMetrics, displayOrder),
+    hasConfig: Boolean(config)
+  };
+}
+
 export async function getDepartmentPageData(
   slug: string,
   viewerId?: string,
@@ -798,6 +880,33 @@ export async function getDepartmentPageData(
         },
         orderBy: {
           createdAt: "asc"
+        }
+      },
+      externalMetrics: {
+        where: {
+          approved: true
+        },
+        select: {
+          metricKey: true,
+          value: true,
+          sourceName: true,
+          approved: true
+        }
+      },
+      externalPeople: {
+        where: {
+          approved: true
+        },
+        orderBy: [{ rankingYear: "desc" }, { personName: "asc" }],
+        select: {
+          id: true,
+          sourceName: true,
+          personName: true,
+          roleTitle: true,
+          description: true,
+          sourceUrl: true,
+          rankingYear: true,
+          approved: true
         }
       }
     }
@@ -1340,6 +1449,12 @@ export async function getAdminDashboardData() {
     departments,
     institutions,
     specialties,
+    pendingMistakeReports,
+    pendingRepresentativeRequests,
+    pendingScrapeRevisions,
+    specialtyDashboardConfigs,
+    dunsImportBatches,
+    dataImportJobs,
     auditLogs
   ] = await Promise.all([
     prisma.$transaction([
@@ -1365,6 +1480,21 @@ export async function getAdminDashboardData() {
           status: {
             in: [OpeningApplicationStatus.SUBMITTED, OpeningApplicationStatus.UNDER_REVIEW]
           }
+        }
+      }),
+      prisma.departmentMistakeReport.count({
+        where: {
+          status: "OPEN"
+        }
+      }),
+      prisma.departmentRepresentativeRequest.count({
+        where: {
+          status: "PENDING"
+        }
+      }),
+      prisma.departmentScrapeRevision.count({
+        where: {
+          status: "PENDING_REVIEW"
         }
       })
     ]),
@@ -1520,6 +1650,87 @@ export async function getAdminDashboardData() {
         name: "asc"
       }
     }),
+    prisma.departmentMistakeReport.findMany({
+      where: {
+        status: "OPEN"
+      },
+      include: {
+        department: {
+          include: {
+            institution: true
+          }
+        }
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 8
+    }),
+    prisma.departmentRepresentativeRequest.findMany({
+      where: {
+        status: "PENDING"
+      },
+      include: {
+        department: {
+          include: {
+            institution: true
+          }
+        }
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 8
+    }),
+    prisma.departmentScrapeRevision.findMany({
+      where: {
+        status: "PENDING_REVIEW"
+      },
+      include: {
+        department: {
+          include: {
+            institution: true
+          }
+        }
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 8
+    }),
+    prisma.specialtyDashboardConfig.findMany(),
+    prisma.dataImportBatch.findMany({
+      include: {
+        records: {
+          take: 12,
+          orderBy: {
+            physicianName: "asc"
+          }
+        }
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 8
+    }),
+    prisma.dataImportJob.findMany({
+      include: {
+        batch: {
+          include: {
+            records: {
+              take: 4,
+              orderBy: {
+                physicianName: "asc"
+              }
+            }
+          }
+        }
+      },
+      orderBy: {
+        updatedAt: "desc"
+      },
+      take: 8
+    }),
     prisma.auditLog.findMany({
       include: {
         actor: true
@@ -1538,7 +1749,10 @@ export async function getAdminDashboardData() {
       pendingReviewSubmissions: stats[2],
       pendingOpeningApprovals: stats[3],
       pendingDepartmentChangeRequests: stats[4],
-      pendingOpeningApplications: stats[5]
+      pendingOpeningApplications: stats[5],
+      pendingMistakeReports: stats[6],
+      pendingRepresentativeRequests: stats[7],
+      pendingScrapeRevisions: stats[8]
     },
     pendingReviewSubmissions,
     pendingDepartmentChangeRequests,
@@ -1549,6 +1763,12 @@ export async function getAdminDashboardData() {
     departments,
     institutions,
     specialties,
+    pendingMistakeReports,
+    pendingRepresentativeRequests,
+    pendingScrapeRevisions,
+    specialtyDashboardConfigs,
+    dunsImportBatches,
+    dataImportJobs,
     auditLogs
   };
 }
