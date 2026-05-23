@@ -6,51 +6,6 @@ function iconClassName(className?: string) {
   return className ?? "h-5 w-5";
 }
 
-export function GoogleLogoIcon({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClassName(className)}>
-      <path
-        fill="#4285F4"
-        d="M21.8 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.5a4.7 4.7 0 0 1-2 3.1v2.6h3.2c1.9-1.8 3.1-4.4 3.1-7.4Z"
-      />
-      <path
-        fill="#34A853"
-        d="M12 22c2.8 0 5.1-.9 6.8-2.4l-3.2-2.6c-.9.6-2.1 1-3.6 1-2.8 0-5.1-1.9-5.9-4.4H2.8v2.8A10 10 0 0 0 12 22Z"
-      />
-      <path
-        fill="#FBBC04"
-        d="M6.1 13.6A6 6 0 0 1 5.8 12c0-.6.1-1.1.3-1.6V7.6H2.8A10 10 0 0 0 2 12c0 1.6.4 3.2 1.1 4.4l3-2.8Z"
-      />
-      <path
-        fill="#EA4335"
-        d="M12 6a5.4 5.4 0 0 1 3.8 1.5l2.8-2.8A9.9 9.9 0 0 0 2.8 7.6l3.3 2.8C6.9 7.9 9.2 6 12 6Z"
-      />
-    </svg>
-  );
-}
-
-export function FacebookLogoIcon({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClassName(className)}>
-      <path
-        fill="currentColor"
-        d="M24 12a12 12 0 1 0-13.9 11.8v-8.3H7v-3.4h3.1V9.6c0-3.1 1.9-4.8 4.6-4.8 1.3 0 2.6.2 2.6.2v3h-1.5c-1.5 0-2 .9-2 1.8v2.2h3.4l-.5 3.4h-2.9v8.3A12 12 0 0 0 24 12Z"
-      />
-    </svg>
-  );
-}
-
-export function LinkedInLogoIcon({ className }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClassName(className)}>
-      <path
-        fill="currentColor"
-        d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3.1-1.9-3.1s-2.2 1.5-2.2 3v5.7H9.1V9h3.5v1.6h.1c.5-.9 1.7-1.9 3.5-1.9 3.8 0 4.5 2.5 4.5 5.8v6Zm-15.4-13a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1Zm1.8 13H3.2V9h3.6v11.5Z"
-      />
-    </svg>
-  );
-}
-
 export function SearchPulseIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className={iconClassName(className)} fill="none">

@@ -366,6 +366,36 @@ function isPresentNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
 }
 
+function departmentLockCopy(session: Awaited<ReturnType<typeof getSession>>) {
+  if (!session) {
+    return {
+      title: "העמוד המלא פתוח למשתמשים מאומתים",
+      description:
+        "כדי לצפות בנתוני המחלקה, ביקורות, תקנים ופרטי קשר יש להתחבר או לפתוח חשבון עם אימות סטטוס מקצועי.",
+      ctaHref: "/login",
+      ctaLabel: "התחברות"
+    };
+  }
+
+  if (session.verificationStatus === "REJECTED") {
+    return {
+      title: "אימות הסטטוס לא אושר",
+      description:
+        "הגישה המלאה לעמודי המחלקות נעולה כרגע. אפשר לבדוק את סטטוס החשבון באזור האישי או ליצור קשר עם צוות האתר.",
+      ctaHref: "/dashboard",
+      ctaLabel: "לאזור האישי"
+    };
+  }
+
+  return {
+    title: "הסטטוס המקצועי ממתין לאישור",
+    description:
+      "כתובת המייל אומתה, והמסמך שהעלית נמצא בבדיקת אדמין. לאחר אישור הסטטוס תיפתח הגישה המלאה לעמודי המחלקות.",
+    ctaHref: "/dashboard",
+    ctaLabel: "בדיקת סטטוס"
+  };
+}
+
 export default async function DepartmentDetailsPage({
   params,
   searchParams
@@ -417,6 +447,56 @@ export default async function DepartmentDetailsPage({
     department.researchOpportunities.length > 0 ||
     department.representativeAssignments.length > 0 ||
     department.residencyOpenings.length > 0;
+  const canViewDepartmentDetails =
+    session?.role === "admin" ||
+    session?.role === "representative" ||
+    session?.verificationStatus === "VERIFIED";
+
+  if (!canViewDepartmentDetails) {
+    const lock = departmentLockCopy(session);
+
+    return (
+      <PageShell className="space-y-7 py-8">
+        <section className="rounded-xl border border-brand-100 bg-white px-5 py-6 shadow-panel md:px-6">
+          <div className="flex flex-wrap gap-2">
+            <Badge>{department.specialty.name}</Badge>
+            <Badge tone="default">{profileTerm}</Badge>
+            <Badge tone="default">{region}</Badge>
+          </div>
+          <h1 className="mt-4 break-words text-3xl font-bold leading-tight text-ink md:text-4xl">
+            {profileTitle}
+          </h1>
+          <p className="mt-3 text-lg font-bold leading-7 text-slate-700">
+            {department.institution.name}
+          </p>
+          <p className="mt-1 text-sm font-semibold text-slate-600">{region}</p>
+        </section>
+
+        <Card className="mx-auto max-w-2xl rounded-xl text-center">
+          <p className="text-sm font-bold text-brand-600">גישה מוגנת</p>
+          <h2 className="mt-2 text-2xl font-black text-ink">{lock.title}</h2>
+          <p className="mt-3 text-sm leading-7 text-slate-600">{lock.description}</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link
+              href={lock.ctaHref}
+              className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white"
+            >
+              {lock.ctaLabel}
+            </Link>
+            {!session ? (
+              <Link
+                href="/signup"
+                className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800"
+              >
+                הרשמה ואימות
+              </Link>
+            ) : null}
+          </div>
+        </Card>
+      </PageShell>
+    );
+  }
+
   const roleSummaries = ["RESIDENT", "INTERN", "STUDENT"].map((reviewerType) => {
     const reviews = department.reviews.filter((review) => review.reviewerType === reviewerType);
 

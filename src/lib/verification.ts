@@ -9,6 +9,14 @@ export function createTokenExpiry(hours = 72) {
   return new Date(Date.now() + hours * 60 * 60 * 1000);
 }
 
+export function isDevelopmentEnvironment() {
+  return process.env.NODE_ENV !== "production";
+}
+
+export function getUserEmailVerificationUrl(token: string, baseUrl = getBaseUrl()) {
+  return `${baseUrl.replace(/\/$/, "")}/api/verification/email?token=${encodeURIComponent(token)}`;
+}
+
 function supportContact() {
   return process.env.SUPPORT_EMAIL?.trim() || process.env.EMAIL_FROM?.trim() || "support@example.com";
 }
@@ -17,29 +25,30 @@ export async function sendUserVerificationEmail(input: {
   to: string;
   fullName: string;
   token: string;
+  baseUrl?: string;
 }) {
-  const verificationUrl = `${getBaseUrl()}/api/verification/email?token=${encodeURIComponent(input.token)}`;
+  const verificationUrl = getUserEmailVerificationUrl(input.token, input.baseUrl);
   const safeName = escapeHtml(input.fullName);
   const html = `
     <div dir="rtl" style="font-family:Arial,sans-serif;background:#f5f8fb;padding:32px;">
       <div style="max-width:640px;margin:auto;background:white;border:1px solid #d7e4f0;border-radius:26px;padding:30px;">
         <p style="margin:0;color:#0b5fb5;font-weight:700;">הדרך להתמחות</p>
         <h1 style="margin:12px 0 0;color:#0f172a;">אימות כתובת אימייל</h1>
-        <p style="line-height:1.8;color:#334155;">${safeName}, תודה שנרשמת. לחצו על הכפתור כדי לאמת את כתובת האימייל ולשמור על חשבון מאובטח.</p>
+        <p style="line-height:1.8;color:#334155;">כדי להשלים את ההרשמה ולאמת את החשבון שלך, לחץ על הקישור הבא.</p>
         <a href="${verificationUrl}" style="display:inline-block;margin-top:18px;padding:13px 20px;border-radius:999px;background:#0b5fb5;color:white;text-decoration:none;font-weight:700;">אימות אימייל</a>
         <p style="margin-top:24px;color:#64748b;font-size:13px;line-height:1.7;">אם לא נרשמת לאתר, אפשר להתעלם מההודעה.</p>
       </div>
     </div>
   `;
   const text = [
-    `${input.fullName}, תודה שנרשמת לדרך להתמחות.`,
-    `לאימות האימייל: ${verificationUrl}`,
+    `${input.fullName}, כדי להשלים את ההרשמה ולאמת את החשבון שלך, לחץ על הקישור הבא:`,
+    verificationUrl,
     "אם לא נרשמת לאתר, אפשר להתעלם מההודעה."
   ].join("\n");
 
   return sendTransactionalEmail({
     to: input.to,
-    subject: "הדרך להתמחות | אימות כתובת אימייל",
+    subject: "אישור כתובת מייל | הדרך להתמחות",
     html,
     text
   });
@@ -50,8 +59,10 @@ export async function sendReviewProofRequestEmail(input: {
   fullName?: string | null;
   departmentLabel: string;
   token: string;
+  baseUrl?: string;
 }) {
-  const uploadUrl = `${getBaseUrl()}/reviews/verify/${encodeURIComponent(input.token)}`;
+  const baseUrl = input.baseUrl ?? getBaseUrl();
+  const uploadUrl = `${baseUrl.replace(/\/$/, "")}/reviews/verify/${encodeURIComponent(input.token)}`;
   const safeName = escapeHtml(input.fullName || "שלום");
   const safeDepartment = escapeHtml(input.departmentLabel);
   const safeSupport = escapeHtml(supportContact());

@@ -25,6 +25,7 @@ export const openingApplicationStatusValues = [
   "CONTACTED",
   "ARCHIVED"
 ] as const;
+export const professionalRoleStatusValues = ["medical_student", "intern", "resident", "specialist", "other"] as const;
 
 const emptyToUndefined = (value: unknown) => {
   if (typeof value !== "string") {
@@ -133,7 +134,16 @@ export const signupSchema = z
       .regex(/[a-z]/, "יש לכלול אות קטנה אחת לפחות.")
       .regex(/[0-9]/, "יש לכלול ספרה אחת לפחות."),
     confirmPassword: z.string(),
-    accountIntent: z.enum(["student", "resident"]).default("student")
+    roleStatus: z.enum(professionalRoleStatusValues, {
+      errorMap: () => ({ message: "יש לבחור סטטוס מקצועי." })
+    }),
+    proofConfirmed: z.literal(true, {
+      errorMap: () => ({ message: "יש לאשר שהמסמך נכון ומשמש לצורכי אימות בלבד." })
+    }),
+    marketingConsent: z.boolean().default(false),
+    privacyVerificationConsent: z.literal(true, {
+      errorMap: () => ({ message: "יש לאשר את תנאי השימוש, מדיניות הפרטיות ושמירת המידע לצורכי אימות." })
+    })
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
@@ -225,14 +235,6 @@ export const reviewSubmissionSchema = z
         code: z.ZodIssueCode.custom,
         path: ["fullName"],
         message: "אם בחרת לפרסם בשם, צריך למלא שם מלא."
-      });
-    }
-
-    if (!data.phone && !data.hasVerificationDocument) {
-      ctx.addIssue({
-        code: z.ZodIssueCode.custom,
-        path: ["phone"],
-        message: "צריך להשאיר טלפון לאימות או לצרף מסמך רשמי."
       });
     }
 
@@ -350,6 +352,11 @@ export const publisherRequestModerationSchema = z.object({
 });
 
 export const reviewSubmissionModerationSchema = z.object({
+  status: z.enum(["APPROVED", "REJECTED"]),
+  adminNote: z.preprocess(emptyToUndefined, z.string().max(600).optional())
+});
+
+export const userVerificationModerationSchema = z.object({
   status: z.enum(["APPROVED", "REJECTED"]),
   adminNote: z.preprocess(emptyToUndefined, z.string().max(600).optional())
 });

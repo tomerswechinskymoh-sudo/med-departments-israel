@@ -11,6 +11,42 @@ type InstitutionCatalogItem = {
   summary: string;
 };
 
+const INSTITUTION_COORDINATES: Record<string, { latitude: number; longitude: number }> = {
+  sheba: { latitude: 32.0463, longitude: 34.8428 },
+  ichilov: { latitude: 32.0805, longitude: 34.7892 },
+  wolfson: { latitude: 32.035, longitude: 34.762 },
+  "hillel-yaffe": { latitude: 32.451, longitude: 34.912 },
+  rambam: { latitude: 32.833, longitude: 34.985 },
+  "bnai-zion": { latitude: 32.805, longitude: 34.99 },
+  galilee: { latitude: 33.009, longitude: 35.094 },
+  ziv: { latitude: 32.966, longitude: 35.496 },
+  poria: { latitude: 32.748, longitude: 35.539 },
+  barzilai: { latitude: 31.668, longitude: 34.574 },
+  shamir: { latitude: 31.966, longitude: 34.841 },
+  soroka: { latitude: 31.258, longitude: 34.801 },
+  "rabin-beilinson": { latitude: 32.091, longitude: 34.868 },
+  "rabin-hasharon": { latitude: 32.087, longitude: 34.881 },
+  schneider: { latitude: 32.092, longitude: 34.868 },
+  carmel: { latitude: 32.785, longitude: 34.966 },
+  emek: { latitude: 32.622, longitude: 35.319 },
+  meir: { latitude: 32.181, longitude: 34.904 },
+  kaplan: { latitude: 31.876, longitude: 34.809 },
+  yoseftal: { latitude: 29.557, longitude: 34.949 },
+  "hadassah-ein-kerem": { latitude: 31.765, longitude: 35.149 },
+  "hadassah-mount-scopus": { latitude: 31.797, longitude: 35.242 },
+  "shaare-zedek": { latitude: 31.773, longitude: 35.205 },
+  laniado: { latitude: 32.332, longitude: 34.856 },
+  "assuta-ashdod": { latitude: 31.815, longitude: 34.666 },
+  "maayanei-hayeshua": { latitude: 32.089, longitude: 34.834 },
+  "nazareth-english": { latitude: 32.702, longitude: 35.298 },
+  "holy-family": { latitude: 32.704, longitude: 35.303 },
+  "saint-vincent": { latitude: 32.704, longitude: 35.306 }
+};
+
+export function getInstitutionCoordinates(slug: string) {
+  return INSTITUTION_COORDINATES[slug] ?? null;
+}
+
 type SpecialtyCatalogItem = {
   slug: string;
   name: string;

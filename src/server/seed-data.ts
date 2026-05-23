@@ -7,12 +7,14 @@ import {
   PrismaClient,
   ReviewSourceType,
   RoleKey,
-  SubmissionStatus
+  SubmissionStatus,
+  VerificationStatus
 } from "@prisma/client";
 import { hashPassword } from "../lib/password";
 import {
   buildCatalogDepartmentBlueprints,
   ensureDepartmentPage,
+  getInstitutionCoordinates,
   INSTITUTION_CATALOG,
   SPECIALTY_CATALOG
 } from "./department-catalog";
@@ -152,7 +154,16 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
           fullName: user.fullName,
           phone: user.phone,
           roleKey: user.roleKey,
-          isApprovedPublisher: user.isApprovedPublisher ?? false
+          isApprovedPublisher: user.isApprovedPublisher ?? false,
+          emailVerified: true,
+          emailVerifiedAt: new Date(),
+          roleStatus:
+            user.roleKey === RoleKey.RESIDENT || user.roleKey === RoleKey.REPRESENTATIVE
+              ? "specialist"
+              : "medical_student",
+          marketingConsent: false,
+          verificationStatus: VerificationStatus.VERIFIED,
+          verifiedAt: new Date()
         }
       })
     )
@@ -165,13 +176,18 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
   const representativeUser = userMap["representative@example.com"];
 
   await prisma.institution.createMany({
-    data: INSTITUTION_CATALOG.map((institution) => ({
-      slug: institution.slug,
-      name: institution.name,
-      type: institution.type,
-      city: institution.city,
-      summary: institution.summary
-    }))
+    data: INSTITUTION_CATALOG.map((institution) => {
+      const coordinates = getInstitutionCoordinates(institution.slug);
+      return {
+        slug: institution.slug,
+        name: institution.name,
+        type: institution.type,
+        city: institution.city,
+        latitude: coordinates?.latitude ?? null,
+        longitude: coordinates?.longitude ?? null,
+        summary: institution.summary
+      };
+    })
   });
 
   await prisma.specialty.createMany({

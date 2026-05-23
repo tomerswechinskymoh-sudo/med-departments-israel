@@ -2,15 +2,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
 import { SignupForm } from "@/components/forms/signup-form";
 
-export default async function SignupPage({
-  searchParams
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
-  const params = await searchParams;
-  const linkedinError = typeof params.linkedinError === "string" ? params.linkedinError : undefined;
-  const socialError = typeof params.socialError === "string" ? params.socialError : undefined;
-
+export default async function SignupPage() {
   return (
     <PageShell className="flex min-h-[76vh] items-center justify-center bg-[radial-gradient(circle_at_top_left,#dff4ff,transparent_34%),linear-gradient(180deg,#f8fbff_0%,#eef6f8_100%)] px-4 py-12">
       <div className="mx-auto w-full max-w-2xl">
@@ -20,7 +12,7 @@ export default async function SignupPage({
             <h1 className="mt-2 text-4xl font-black tracking-tight text-ink">הצטרפות לפלטפורמה</h1>
           </div>
           <div className="mt-6">
-            <SignupForm linkedinError={linkedinError} socialError={socialError} />
+            <SignupForm />
           </div>
         </Card>
       </div>

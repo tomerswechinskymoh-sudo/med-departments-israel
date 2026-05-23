@@ -4,8 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
+import type { UseFormRegisterReturn } from "react-hook-form";
 import { z } from "zod";
-import { ExperienceGuidancePanels } from "@/components/forms/experience-guidance-panels";
 import {
   EXPERIENCE_PHONE_TRUST_COPY,
   EXPERIENCE_PRIVACY_COPY,
@@ -19,35 +19,31 @@ import { reviewSubmissionSchema } from "@/lib/validation";
 type FormValues = z.infer<typeof reviewSubmissionSchema>;
 type ReviewerType = FormValues["reviewerType"];
 
-const roleOptions: Array<{
-  value: ReviewerType;
-  label: string;
-  description: string;
-}> = [
+const roleOptions: Array<{ value: ReviewerType; label: string; description: string }> = [
   {
     value: "STUDENT",
     label: "סטודנט",
-    description: "לשתף איך החוויה במחלקה נראתה בפועל במהלך הסבב או האלקטיב."
+    description: "חוויה מסבב, אלקטיב או חשיפה קצרה במחלקה."
   },
   {
     value: "INTERN",
     label: "סטאז׳ר",
-    description: "להסביר איך האלקטיב או הסבב במחלקה באמת הרגיש ביום־יום."
+    description: "מה הרגיש בפועל ביום־יום של הסבב או האלקטיב."
   },
   {
     value: "RESIDENT",
     label: "מתמחה",
-    description: "לתאר איך המחלקה נראית מבפנים לאורך העבודה השוטפת."
+    description: "מבט מבפנים על העבודה, הלמידה והצוות."
   }
 ];
 
 const sharedRatingFields = [
-  { name: "teachingQuality", label: "איכות ההוראה" },
-  { name: "workAtmosphere", label: "אווירה במחלקה" },
-  { name: "seniorsApproachability", label: "נגישות בכירים" },
-  { name: "researchExposure", label: "חשיפה למחקר" },
-  { name: "lifestyleBalance", label: "עומס ואיזון חיים" },
-  { name: "overallRecommendation", label: "האם היית ממליץ?" }
+  { name: "teachingQuality", label: "הוראה" },
+  { name: "workAtmosphere", label: "אווירה" },
+  { name: "researchExposure", label: "מחקר" },
+  { name: "lifestyleBalance", label: "עומס" },
+  { name: "seniorsApproachability", label: "זמינות בכירים" },
+  { name: "overallRecommendation", label: "המלצה" }
 ] as const;
 
 const rotationLengthOptions = [
@@ -61,6 +57,14 @@ const rotationLengthOptions = [
 const yearOfExperienceOptions = Array.from({ length: 8 }, (_, index) =>
   String(new Date().getFullYear() - index)
 );
+
+const finalGuidelines = [
+  "בלי פרטים מזהים",
+  "כתיבה עניינית ומכבדת",
+  "אפשר לשתף גם חוויות חיוביות וגם קשיים",
+  "תוכן עובר בדיקה לפני פרסום",
+  "אין לציין מטופלים או אנשי צוות"
+];
 
 function isCommunityDepartment(input: { name: string; specialtyName: string }) {
   const haystack = `${input.name} ${input.specialtyName}`.toLowerCase();
@@ -94,26 +98,14 @@ function getRoleDetailsDefaults(reviewerType: ReviewerType): FormValues["roleDet
 
 function verificationCopyForType(reviewerType: ReviewerType) {
   if (reviewerType === "STUDENT") {
-    return {
-      label: "כרטיס סטודנט או מסמך שמראה שהיית בסבב",
-      description:
-        "אפשר לצרף כרטיס סטודנט יחד עם הוכחת סבב, או פשוט להשאיר טלפון לאימות ידני."
-    };
+    return "כרטיס סטודנט, אישור סבב או מסמך אחר, רק אם נוח לך.";
   }
 
   if (reviewerType === "INTERN") {
-    return {
-      label: "אישור סטאז׳ / אלקטיב / סבב",
-      description:
-        "אפשר לצרף אישור רשמי, מייל אלקטיב או מסמך מהמחלקה. אם נוח יותר, אפשר להשאיר טלפון במקום."
-    };
+    return "אישור סטאז׳, אלקטיב או סבב, רק אם נוח לך.";
   }
 
-  return {
-    label: "אישור רשמי על התמחות במחלקה",
-    description:
-      "אפשר לצרף מסמך רשמי מהמחלקה או מבית החולים. לחלופין, אפשר להשאיר טלפון לאימות ידני."
-  };
+  return "אישור רשמי על התמחות במחלקה, רק אם נוח לך.";
 }
 
 function tipsLabelForType(reviewerType: ReviewerType) {
@@ -134,30 +126,46 @@ function fitPlaceholderForType(reviewerType: ReviewerType) {
   }
 
   if (reviewerType === "INTERN") {
-    return "למשל: מתאים למי שרוצה אחריות, עומס, הרבה מגע קליני או דווקא סביבה יותר תומכת.";
+    return "למשל: מתאים למי שרוצה אחריות, הרבה מגע קליני או דווקא סביבה תומכת.";
   }
 
-  return "למשל: מתאים למי שמחפש קליניקה חזקה, מחקר, סגנון ניהולי מסוים או חיי צוות מסוימים.";
+  return "למשל: מתאים למי שמחפש קליניקה חזקה, מחקר, צוות מסוים או סגנון עבודה מסוים.";
 }
 
 function ratingSelectLabel(value: number) {
-  if (value === 1) {
-    return `${value} · חלש מאוד`;
-  }
-
-  if (value === 5) {
-    return `${value} · מצוין`;
-  }
-
+  if (value === 1) return `${value} · חלש`;
+  if (value === 5) return `${value} · מצוין`;
   return String(value);
+}
+
+function RatingSelect({
+  label,
+  registration
+}: {
+  label: string;
+  registration: UseFormRegisterReturn;
+}) {
+  return (
+    <label className="block">
+      <span className="block text-sm font-bold text-ink">{label}</span>
+      <select
+        {...registration}
+        className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
+      >
+        {[1, 2, 3, 4, 5].map((value) => (
+          <option key={value} value={value}>
+            {ratingSelectLabel(value)}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
 }
 
 export function ReviewForm({
   departments,
   selectedDepartmentId,
   initialReviewerType = "INTERN",
-  compact = false,
-  showGuidancePanels = compact,
   onSubmitted
 }: {
   departments: {
@@ -181,6 +189,7 @@ export function ReviewForm({
   onSubmitted?: () => void;
 }) {
   const router = useRouter();
+  const [step, setStep] = useState<1 | 2 | 3>(1);
   const [message, setMessage] = useState<string | null>(null);
   const [verificationDocument, setVerificationDocument] = useState<File | null>(null);
   const institutions = useMemo(
@@ -249,7 +258,6 @@ export function ReviewForm({
   const isAnonymous = watch("isAnonymous");
   const selectedDepartmentIdValue = watch("departmentId");
   const selectedInstitution = institutions.find((institution) => institution.id === selectedInstitutionId) ?? null;
-  const verificationCopy = verificationCopyForType(reviewerType);
   const availableDepartments = useMemo(() => {
     const institutionDepartments = departments.filter(
       (department) => department.institution.id === selectedInstitutionId
@@ -356,7 +364,7 @@ export function ReviewForm({
       return;
     }
 
-    setMessage(payload?.message ?? "השיתוף נשמר.");
+    setMessage(payload?.message ?? "השיתוף נשמר ונשלח לבדיקה.");
     reset({
       departmentId: selectedDepartmentId ?? "",
       reviewerType: initialReviewerType,
@@ -379,11 +387,18 @@ export function ReviewForm({
       consentToTerms: true,
       consentNoPatientInfo: true
     });
+    setStep(1);
     setSelectedInstitutionId(initialInstitutionId);
     setVerificationDocument(null);
     router.refresh();
     onSubmitted?.();
   });
+
+  const stepItems = [
+    { value: 1, label: "זהות והקשר" },
+    { value: 2, label: "החוויה" },
+    { value: 3, label: "בדיקה ושליחה" }
+  ] as const;
 
   return (
     <form onSubmit={onSubmit} className="space-y-6">
@@ -393,558 +408,386 @@ export function ReviewForm({
         </div>
       ) : null}
 
-      <div className={showGuidancePanels ? "grid gap-5 lg:grid-cols-[1.08fr_0.92fr]" : "space-y-5"}>
-        <div className="space-y-5">
-          <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-sm font-semibold text-brand-700">מאיפה נקודת המבט שלך?</p>
-                <p className="mt-2 text-sm leading-7 text-slate-600">
-                  בוחרים מסלול אחד, ואז השאלות מתעדכנות כך שיתאימו למה שבאמת חווית.
+      <div className="grid gap-2 sm:grid-cols-3">
+        {stepItems.map((item) => (
+          <button
+            key={item.value}
+            type="button"
+            onClick={() => setStep(item.value)}
+            className={cn(
+              "rounded-full border px-4 py-2.5 text-sm font-bold transition",
+              step === item.value
+                ? "border-brand-300 bg-brand-900 text-white shadow-panel"
+                : "border-brand-100 bg-white text-slate-600 hover:bg-brand-50"
+            )}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      <input type="hidden" {...register("reviewerType")} />
+      <input type="hidden" {...register("hasVerificationDocument")} />
+
+      {step === 1 ? (
+        <section className="space-y-8 rounded-[1.75rem] bg-white p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
+          <div>
+            <p className="text-sm font-semibold text-brand-700">שלב 1</p>
+            <h3 className="mt-1 text-3xl font-black text-ink">מאיפה נקודת המבט שלך?</h3>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {roleOptions.map((role) => (
+              <button
+                key={role.value}
+                type="button"
+                onClick={() => {
+                  setValue("reviewerType", role.value, { shouldValidate: true });
+                  setValue("roleDetails", getRoleDetailsDefaults(role.value), {
+                    shouldValidate: true
+                  });
+                }}
+                className={cn(
+                  "min-h-36 rounded-[1.5rem] border p-5 text-right transition",
+                  reviewerType === role.value
+                    ? "border-brand-300 bg-brand-900 text-white shadow-panel"
+                    : "border-slate-200 bg-white text-ink shadow-sm hover:-translate-y-0.5 hover:border-brand-200"
+                )}
+              >
+                <p className="text-xl font-black">{role.label}</p>
+                <p className={cn("mt-2 text-sm leading-7", reviewerType === role.value ? "text-white/82" : "text-slate-600")}>
+                  {role.description}
                 </p>
-              </div>
-            </div>
+              </button>
+            ))}
+          </div>
 
-            <input type="hidden" {...register("reviewerType")} />
-            <input type="hidden" {...register("hasVerificationDocument")} />
+          <div className="grid gap-4 md:grid-cols-2">
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold text-ink">מוסד</span>
+              <select
+                value={selectedInstitutionId}
+                onChange={(event) => setSelectedInstitutionId(event.target.value)}
+                className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+              >
+                <option value="">בחירת מוסד</option>
+                {institutions.map((institution) => (
+                  <option key={institution.id} value={institution.id}>
+                    {institution.name}
+                  </option>
+                ))}
+              </select>
+            </label>
 
-            <div className="mt-4 grid gap-3 md:grid-cols-3">
-              {roleOptions.map((role) => (
-                <button
-                  key={role.value}
-                  type="button"
-                  onClick={() => {
-                    setValue("reviewerType", role.value, { shouldValidate: true });
-                    setValue("roleDetails", getRoleDetailsDefaults(role.value), {
-                      shouldValidate: true
-                    });
-                  }}
-                  className={cn(
-                    "rounded-[1.5rem] border p-4 text-right transition",
-                    reviewerType === role.value
-                      ? "border-brand-300 bg-brand-900 text-white shadow-panel"
-                      : "border-brand-100 bg-brand-50/50 text-ink hover:-translate-y-0.5 hover:border-brand-200 hover:bg-white"
-                  )}
-                >
-                  <p className="text-base font-bold">{role.label}</p>
-                  <p
-                    className={cn(
-                      "mt-2 text-sm leading-7",
-                      reviewerType === role.value ? "text-white/82" : "text-slate-600"
-                    )}
-                  >
-                    {role.description}
-                  </p>
-                </button>
-              ))}
-            </div>
-          </section>
-
-          <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
-            <p className="text-sm font-semibold text-brand-700">איפה זה היה?</p>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              קודם בוחרים מוסד, ואז עוברים למחלקה או למסלול הרלוונטי מתוך אותו מקום בלבד.
-            </p>
-            <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-start">
-              <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/45 p-4">
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-900 text-sm font-bold text-white">
-                    1
-                  </span>
-                  <label className="block text-sm font-semibold text-ink">מוסד</label>
-                </div>
-                <select
-                  value={selectedInstitutionId}
-                  onChange={(event) => setSelectedInstitutionId(event.target.value)}
-                  className="mt-3 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
-                >
-                  <option value="">בחירת מוסד</option>
-                  {institutions.map((institution) => (
-                    <option key={institution.id} value={institution.id}>
-                      {institution.name} ·{" "}
-                      {institution.type === "HOSPITAL" ? "בית חולים" : "קופת חולים / קהילה"}
-                    </option>
-                  ))}
-                </select>
-                <p className="mt-2 text-xs leading-6 text-slate-500">
-                  הבחירה כאן מסננת מיד את השלב הבא ומשאירה רק אפשרויות רלוונטיות.
-                </p>
-              </div>
-
-              <div className="hidden lg:flex lg:min-h-[88px] lg:items-center lg:justify-center">
-                <div className="h-px w-10 bg-brand-200" />
-              </div>
-
-              <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/45 p-4">
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-teal-600 text-sm font-bold text-white">
-                    2
-                  </span>
-                  <label className="block text-sm font-semibold text-ink">מחלקה / מסלול</label>
-                </div>
-                <select
-                  {...register("departmentId")}
-                  className="mt-3 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
-                >
-                  <option value="">בחירת מחלקה</option>
-                  {availableDepartments.map((department) => (
-                    <option key={department.id} value={department.id}>
-                      {department.name} · {department.specialty.name}
-                    </option>
-                  ))}
-                </select>
-                {selectedInstitution?.type === "HOSPITAL" ? (
-                  <p className="mt-2 text-xs leading-6 text-slate-500">
-                    בבתי חולים לא מוצגות כאן מחלקות קהילה כמו רפואת משפחה.
-                  </p>
-                ) : selectedInstitution?.type === "HMO" ? (
-                  <p className="mt-2 text-xs leading-6 text-slate-500">
-                    בקופות חולים מוצגים בעיקר תחומי קהילה, ובמיוחד רפואת משפחה.
-                  </p>
-                ) : null}
-              </div>
-            </div>
-
-            <div className="mt-4">
-              {availableDepartments.length === 0 && selectedInstitutionId ? (
-                <p className="text-xs text-slate-500">לא נמצאו מחלקות זמינות למוסד שנבחר.</p>
-              ) : null}
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold text-ink">מחלקה</span>
+              <select
+                {...register("departmentId")}
+                className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+              >
+                <option value="">בחירת מחלקה</option>
+                {availableDepartments.map((department) => (
+                  <option key={department.id} value={department.id}>
+                    {department.name} · {department.specialty.name}
+                  </option>
+                ))}
+              </select>
               {errors.departmentId ? (
-                <p className="mt-2 text-xs text-rose-600">{errors.departmentId.message}</p>
+                <span className="mt-2 block text-xs text-rose-600">{errors.departmentId.message}</span>
               ) : null}
-            </div>
-          </section>
+            </label>
+          </div>
 
-          <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
-            <p className="text-sm font-semibold text-brand-700">איך זה יופיע באתר?</p>
-            <div className="mt-4 grid gap-4 md:grid-cols-3">
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">שם מלא</label>
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm font-bold text-ink">פרטים אופציונליים</p>
+              <p className="mt-1 text-xs leading-6 text-slate-500">
+                אפשר להשאיר פרטים לאימות, ואפשר גם לשלוח בעילום שם.
+              </p>
+            </div>
+            <div className="grid gap-3 md:grid-cols-3">
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold text-ink">שם</span>
                 <input
                   {...register("fullName")}
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  placeholder={isAnonymous ? "רק אם תרצה להופיע בשם" : "זה השם שיופיע באתר"}
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
+                  placeholder={isAnonymous ? "לא חובה" : "שם לפרסום"}
                 />
-                {!isAnonymous ? (
-                  <p className="mt-2 text-xs leading-6 text-slate-500">
-                    אם בחרת לפרסם בשם, זה השם שיופיע אחרי אישור.
-                  </p>
-                ) : null}
-                {errors.fullName ? (
-                  <p className="mt-2 text-xs text-rose-600">{errors.fullName.message}</p>
-                ) : null}
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">טלפון לאימות</label>
+              </label>
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold text-ink">טלפון</span>
                 <input
                   {...register("phone")}
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  placeholder="אפשר להשאיר אם נוח לך"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
+                  placeholder="לא חובה"
                 />
-                <p className="mt-2 text-xs leading-6 text-slate-500">{EXPERIENCE_PHONE_TRUST_COPY}</p>
-                {errors.phone ? (
-                  <p className="mt-2 text-xs text-rose-600">{errors.phone.message}</p>
-                ) : null}
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">אימייל</label>
+                <span className="mt-2 block text-xs leading-6 text-slate-500">{EXPERIENCE_PHONE_TRUST_COPY}</span>
+              </label>
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold text-ink">אימייל</span>
                 <input
                   {...register("email")}
                   type="email"
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
                   placeholder="לא חובה"
                 />
-                <p className="mt-2 text-xs leading-6 text-slate-500">{EXPERIENCE_PRIVACY_COPY}</p>
-                {errors.email ? <p className="mt-2 text-xs text-rose-600">{errors.email.message}</p> : null}
-              </div>
+                <span className="mt-2 block text-xs leading-6 text-slate-500">{EXPERIENCE_PRIVACY_COPY}</span>
+              </label>
             </div>
+          </div>
 
-            <div className="mt-4 rounded-[1.5rem] border border-brand-100 bg-brand-50/60 p-4">
-              <label className="mb-2 block text-sm font-semibold text-ink">{verificationCopy.label}</label>
+          <div className="grid gap-4 md:grid-cols-[1fr_0.9fr]">
+            <div>
+              <label className="mb-2 block text-sm font-semibold text-ink">העלאת הוכחה</label>
               <input
                 type="file"
                 accept=".pdf,.jpg,.jpeg,.png,.webp,.heic"
                 onChange={(event) => setVerificationDocument(event.target.files?.[0] ?? null)}
                 className="block w-full text-sm text-slate-700"
               />
-              <p className="mt-2 text-xs leading-6 text-slate-500">{verificationCopy.description}</p>
+              <p className="mt-2 text-xs leading-6 text-slate-500">{verificationCopyForType(reviewerType)}</p>
             </div>
 
-            <label className="mt-5 flex items-start gap-3 rounded-[1.5rem] border border-amber-200 bg-amber-50/95 px-4 py-4 text-sm text-slate-700">
+            <label className="flex items-start gap-3 rounded-2xl bg-slate-50 px-4 py-4 text-sm text-slate-700">
               <input type="checkbox" className="mt-1" {...register("isAnonymous")} />
               <span>
-                <span className="block font-semibold text-amber-950">אני רוצה להישאר בעילום שם</span>
+                <span className="block font-semibold text-ink">שליחה בעילום שם</span>
                 <span className="mt-1 block leading-6">
-                  אם בחרת בעילום שם, לא נציג באתר שם, טלפון או כל פרט מזהה אחר.
+                  אם בחרת בעילום שם, לא נציג באתר שם, טלפון או פרט מזהה אחר.
                 </span>
               </span>
             </label>
-          </section>
+          </div>
+        </section>
+      ) : null}
 
-          <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <div>
-                <p className="text-sm font-semibold text-brand-700">פרטים שמתאימים למסלול שלך</p>
-                <p className="mt-2 text-sm leading-7 text-slate-600">
-                  כאן אוספים את הפרטים שמיוחדים לחוויה במסלול {reviewerTypeLabel}.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">פקולטה לרפואה</label>
-                <select
-                  {...register("roleDetails.medicalSchool")}
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                >
-                  {MEDICAL_FACULTY_OPTIONS.map((faculty) => (
-                    <option key={faculty} value={faculty}>
-                      {faculty}
-                    </option>
-                  ))}
-                </select>
-                {errors.roleDetails?.medicalSchool ? (
-                  <p className="mt-2 text-xs text-rose-600">{errors.roleDetails.medicalSchool.message}</p>
-                ) : null}
-              </div>
-
-              {reviewerType === "STUDENT" ? (
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-ink">אורך הסבב / האלקטיב</label>
-                  <select
-                    {...register("roleDetails.rotationLength")}
-                    className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  >
-                    <option value="">בחירת אורך</option>
-                    {rotationLengthOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.roleDetails?.rotationLength ? (
-                    <p className="mt-2 text-xs text-rose-600">{errors.roleDetails.rotationLength.message}</p>
-                  ) : null}
-                </div>
-              ) : reviewerType === "INTERN" ? (
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-ink">משך הזמן במחלקה (בשבועות)</label>
-                  <input
-                    {...register("roleDetails.durationWeeks")}
-                    type="number"
-                    min={1}
-                    max={52}
-                    className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  />
-                  {errors.roleDetails?.durationWeeks ? (
-                    <p className="mt-2 text-xs text-rose-600">{errors.roleDetails.durationWeeks.message}</p>
-                  ) : null}
-                </div>
-              ) : (
-                <div className="rounded-[1.5rem] border border-brand-100 bg-brand-50/60 px-4 py-4 text-sm leading-7 text-slate-700">
-                  במילוי כמתמחה אין צורך לציין אורך סבב, אבל כן נשמור את דירוגי הקליניקה, ההוראה,
-                  היחס והאיזון כדי שאפשר יהיה להשוות טוב יותר בין מחלקות.
-                </div>
-              )}
-
-              {reviewerType === "STUDENT" || reviewerType === "INTERN" ? (
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-ink">באיזו שנה זה התרחש?</label>
-                  <select
-                    {...register("roleDetails.yearOfExperience")}
-                    className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  >
-                    <option value="">בחירת שנה</option>
-                    {yearOfExperienceOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.roleDetails?.yearOfExperience ? (
-                    <p className="mt-2 text-xs text-rose-600">{errors.roleDetails.yearOfExperience.message}</p>
-                  ) : null}
-                </div>
-              ) : null}
-            </div>
-
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">דירוג כללי</label>
-                <select
-                  {...register("roleDetails.overallRating", { valueAsNumber: true })}
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                >
-                  {[1, 2, 3, 4, 5].map((value) => (
-                    <option key={value} value={value}>
-                      {ratingSelectLabel(value)}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">עידוד למחקר</label>
-                <select
-                  {...register("roleDetails.researchEncouragement", { valueAsNumber: true })}
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                >
-                  {[1, 2, 3, 4, 5].map((value) => (
-                    <option key={value} value={value}>
-                      {ratingSelectLabel(value)}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">מי הוביל את הלמידה בפועל?</label>
-                <select
-                  {...register("roleDetails.mainlyTaughtBy")}
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                >
-                  {MAINLY_TAUGHT_BY_OPTIONS.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-                {errors.roleDetails?.mainlyTaughtBy ? (
-                  <p className="mt-2 text-xs text-rose-600">{errors.roleDetails.mainlyTaughtBy.message}</p>
-                ) : null}
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">חשיפה קלינית</label>
-                <select
-                  {...register("roleDetails.clinicalExposure", { valueAsNumber: true })}
-                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                >
-                  {[1, 2, 3, 4, 5].map((value) => (
-                    <option key={value} value={value}>
-                      {ratingSelectLabel(value)}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {reviewerType !== "STUDENT" ? (
-                <>
-                  <div>
-                    <label className="mb-2 block text-sm font-semibold text-ink">יחס מהמתמחים</label>
-                    <select
-                      {...register("roleDetails.attitudeFromResidents", { valueAsNumber: true })}
-                      className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                    >
-                      {[1, 2, 3, 4, 5].map((value) => (
-                        <option key={value} value={value}>
-                          {ratingSelectLabel(value)}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.roleDetails?.attitudeFromResidents ? (
-                      <p className="mt-2 text-xs text-rose-600">
-                        {errors.roleDetails.attitudeFromResidents.message}
-                      </p>
-                    ) : null}
-                  </div>
-
-                  <div>
-                    <label className="mb-2 block text-sm font-semibold text-ink">יחס מהבכירים</label>
-                    <select
-                      {...register("roleDetails.attitudeFromSeniors", { valueAsNumber: true })}
-                      className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                    >
-                      {[1, 2, 3, 4, 5].map((value) => (
-                        <option key={value} value={value}>
-                          {ratingSelectLabel(value)}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.roleDetails?.attitudeFromSeniors ? (
-                      <p className="mt-2 text-xs text-rose-600">
-                        {errors.roleDetails.attitudeFromSeniors.message}
-                      </p>
-                    ) : null}
-                  </div>
-
-                  <div>
-                    <label className="mb-2 block text-sm font-semibold text-ink">עומס ואיזון חיים</label>
-                    <select
-                      {...register("roleDetails.workloadBalance", { valueAsNumber: true })}
-                      className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                    >
-                      {[1, 2, 3, 4, 5].map((value) => (
-                        <option key={value} value={value}>
-                          {ratingSelectLabel(value)}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.roleDetails?.workloadBalance ? (
-                      <p className="mt-2 text-xs text-rose-600">
-                        {errors.roleDetails.workloadBalance.message}
-                      </p>
-                    ) : null}
-                  </div>
-                </>
-              ) : null}
-            </div>
-          </section>
-
-          <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
-            <p className="text-sm font-semibold text-brand-700">בכמה מילים ובכמה מספרים</p>
+      {step === 2 ? (
+        <section className="space-y-7 rounded-[1.75rem] bg-white p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
+          <div>
+            <p className="text-sm font-semibold text-brand-700">שלב 2 · {reviewerTypeLabel}</p>
+            <h3 className="mt-1 text-2xl font-black text-ink">ספרו על החוויה בקצרה</h3>
             <p className="mt-2 text-sm leading-7 text-slate-600">{EXPERIENCE_RATING_HELPER_TEXT}</p>
-            <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {sharedRatingFields.map((field) => (
-                <div key={field.name}>
-                  <label className="mb-2 block text-sm font-semibold text-ink">{field.label}</label>
-                  <select
-                    {...register(field.name, { valueAsNumber: true })}
-                    className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  >
-                    {[1, 2, 3, 4, 5].map((value) => (
-                      <option key={value} value={value}>
-                        {ratingSelectLabel(value)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold text-ink">פקולטה</span>
+              <select
+                {...register("roleDetails.medicalSchool")}
+                className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+              >
+                {MEDICAL_FACULTY_OPTIONS.map((faculty) => (
+                  <option key={faculty} value={faculty}>
+                    {faculty}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            {reviewerType === "STUDENT" ? (
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold text-ink">משך הסבב</span>
+                <select
+                  {...register("roleDetails.rotationLength")}
+                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                >
+                  <option value="">בחירת אורך</option>
+                  {rotationLengthOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ) : reviewerType === "INTERN" ? (
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold text-ink">משך בשבועות</span>
+                <input
+                  {...register("roleDetails.durationWeeks")}
+                  type="number"
+                  min={1}
+                  max={52}
+                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                />
+              </label>
+            ) : (
+              <div className="rounded-2xl border border-brand-100 bg-brand-50/60 px-4 py-3 text-sm leading-7 text-slate-700">
+                במילוי כמתמחה אין צורך לציין אורך סבב.
+              </div>
+            )}
+
+            {reviewerType === "STUDENT" || reviewerType === "INTERN" ? (
+              <label className="block">
+                <span className="mb-2 block text-sm font-semibold text-ink">שנה</span>
+                <select
+                  {...register("roleDetails.yearOfExperience")}
+                  className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                >
+                  <option value="">בחירת שנה</option>
+                  {yearOfExperienceOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
+          </div>
+
+          <div className="grid gap-x-5 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
+            <RatingSelect
+              label="דירוג כללי"
+              registration={register("roleDetails.overallRating", { valueAsNumber: true })}
+            />
+            {sharedRatingFields.map((field) => (
+              <RatingSelect
+                key={field.name}
+                label={field.label}
+                registration={register(field.name, { valueAsNumber: true })}
+              />
+            ))}
+            <RatingSelect
+              label="חשיפה קלינית"
+              registration={register("roleDetails.clinicalExposure", { valueAsNumber: true })}
+            />
+            <RatingSelect
+              label="עידוד למחקר"
+              registration={register("roleDetails.researchEncouragement", { valueAsNumber: true })}
+            />
+            <label className="block">
+              <span className="block text-sm font-bold text-ink">מי לימד בפועל?</span>
+              <select
+                {...register("roleDetails.mainlyTaughtBy")}
+                className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
+              >
+                {MAINLY_TAUGHT_BY_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            {reviewerType !== "STUDENT" ? (
+              <>
+                <RatingSelect
+                  label="יחס מהמתמחים"
+                  registration={register("roleDetails.attitudeFromResidents", { valueAsNumber: true })}
+                />
+                <RatingSelect
+                  label="יחס מהבכירים"
+                  registration={register("roleDetails.attitudeFromSeniors", { valueAsNumber: true })}
+                />
+                <RatingSelect
+                  label="עומס ואיזון"
+                  registration={register("roleDetails.workloadBalance", { valueAsNumber: true })}
+                />
+              </>
+            ) : null}
+          </div>
+
+          <div className="grid gap-5">
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold text-ink">מה עבד טוב?</span>
+              <textarea
+                {...register("pros")}
+                className="min-h-28 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                placeholder="הוראה, יחס, חשיפה, או כל דבר שעזר לך."
+              />
+            </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold text-ink">מה היה מאתגר?</span>
+              <textarea
+                {...register("cons")}
+                className="min-h-28 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                placeholder="עומס, ליווי פחות צמוד, קצב מהיר או משהו שכדאי לדעת מראש."
+              />
+            </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold text-ink">{tipsLabelForType(reviewerType)}</span>
+              <textarea
+                {...register("tips")}
+                className="min-h-28 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                placeholder="טיפ אחד או שניים שהיו עוזרים גם לך."
+              />
+            </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold text-ink">למי המחלקה מתאימה?</span>
+              <textarea
+                {...register("roleDetails.fitForWho")}
+                className="min-h-24 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+                placeholder={fitPlaceholderForType(reviewerType)}
+              />
+            </label>
+          </div>
+        </section>
+      ) : null}
+
+      {step === 3 ? (
+        <section className="space-y-6 rounded-[1.75rem] bg-white p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
+          <div>
+            <p className="text-sm font-semibold text-brand-700">שלב 3</p>
+            <h3 className="mt-1 text-2xl font-black text-ink">מבט אחרון לפני שליחה</h3>
+          </div>
+
+          <div className="rounded-[1.5rem] border border-amber-300 bg-amber-50 px-5 py-5 text-amber-950 shadow-sm">
+            <p className="text-lg font-black">חשוב לפני שליחה</p>
+            <div className="mt-4 space-y-2 text-sm font-bold leading-7">
+              {finalGuidelines.map((item) => (
+                <p key={item}>✓ {item}</p>
               ))}
             </div>
-          </section>
-        </div>
 
-        {showGuidancePanels ? (
-          <div className="space-y-5">
-            <ExperienceGuidancePanels compact={compact} />
-
-            <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
-              <p className="text-sm font-semibold text-brand-700">כמה מילים על החוויה</p>
-              <div className="mt-4 grid gap-4">
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-ink">מה עבד טוב בשבילך?</label>
-                  <textarea
-                    {...register("pros")}
-                    className="min-h-32 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                    placeholder="למשל: הוראה טובה, חשיפה טובה, תחושת תמיכה או קצב עבודה שעבד טוב."
-                  />
-                  {errors.pros ? <p className="mt-2 text-xs text-rose-600">{errors.pros.message}</p> : null}
-                </div>
-
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-ink">מה היה מאתגר או כדאי לדעת מראש?</label>
-                  <textarea
-                    {...register("cons")}
-                    className="min-h-32 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                    placeholder="למשל: עומס, ליווי פחות צמוד, קצב מהיר או משהו שהיה עוזר לדעת מראש."
-                  />
-                  {errors.cons ? <p className="mt-2 text-xs text-rose-600">{errors.cons.message}</p> : null}
-                </div>
-
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-ink">{tipsLabelForType(reviewerType)}</label>
-                  <textarea
-                    {...register("tips")}
-                    className="min-h-32 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                    placeholder="טיפ אחד או שניים שהיו עוזרים גם לך בתחילת הדרך."
-                  />
-                  {errors.tips ? <p className="mt-2 text-xs text-rose-600">{errors.tips.message}</p> : null}
-                </div>
-
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-ink">למי המחלקה מתאימה לדעתך?</label>
-                  <textarea
-                    {...register("roleDetails.fitForWho")}
-                    className="min-h-28 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                    placeholder={fitPlaceholderForType(reviewerType)}
-                  />
-                  {errors.roleDetails?.fitForWho ? (
-                    <p className="mt-2 text-xs text-rose-600">{errors.roleDetails.fitForWho.message}</p>
-                  ) : null}
-                </div>
-              </div>
-            </section>
-          </div>
-        ) : null}
-
-        {!showGuidancePanels ? (
-          <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
-            <p className="text-sm font-semibold text-brand-700">כמה מילים על החוויה</p>
-            <div className="mt-4 grid gap-4">
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">מה עבד טוב בשבילך?</label>
-                <textarea
-                  {...register("pros")}
-                  className="min-h-32 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  placeholder="למשל: הוראה טובה, חשיפה טובה, תחושת תמיכה או קצב עבודה שעבד טוב."
-                />
-                {errors.pros ? <p className="mt-2 text-xs text-rose-600">{errors.pros.message}</p> : null}
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">מה היה מאתגר או כדאי לדעת מראש?</label>
-                <textarea
-                  {...register("cons")}
-                  className="min-h-32 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  placeholder="למשל: עומס, ליווי פחות צמוד, קצב מהיר או משהו שהיה עוזר לדעת מראש."
-                />
-                {errors.cons ? <p className="mt-2 text-xs text-rose-600">{errors.cons.message}</p> : null}
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">{tipsLabelForType(reviewerType)}</label>
-                <textarea
-                  {...register("tips")}
-                  className="min-h-32 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  placeholder="טיפ אחד או שניים שהיו עוזרים גם לך בתחילת הדרך."
-                />
-                {errors.tips ? <p className="mt-2 text-xs text-rose-600">{errors.tips.message}</p> : null}
-              </div>
-
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">למי המחלקה מתאימה לדעתך?</label>
-                <textarea
-                  {...register("roleDetails.fitForWho")}
-                  className="min-h-28 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                  placeholder={fitPlaceholderForType(reviewerType)}
-                />
-                {errors.roleDetails?.fitForWho ? (
-                  <p className="mt-2 text-xs text-rose-600">{errors.roleDetails.fitForWho.message}</p>
-                ) : null}
-              </div>
+            <div className="mt-5 space-y-3 border-t border-amber-200 pt-4">
+              <label className="flex items-start gap-3 text-sm font-semibold leading-7 text-amber-950">
+                <input type="checkbox" className="mt-1" {...register("consentToContact")} />
+                <span>אפשר ליצור איתי קשר רק אם השארתי פרטי קשר ורק לצורך אימות.</span>
+              </label>
+              <label className="flex items-start gap-3 text-sm font-semibold leading-7 text-amber-950">
+                <input type="checkbox" className="mt-1" {...register("consentToTerms")} />
+                <span>ברור לי שהשיתוף עובר בדיקה לפני פרסום.</span>
+              </label>
+              <label className="flex items-start gap-3 text-sm font-semibold leading-7 text-amber-950">
+                <input type="checkbox" className="mt-1" {...register("consentNoPatientInfo")} />
+                <span>לא כללתי מידע מזהה על מטופלים, אנשי צוות או פרטים רגישים.</span>
+              </label>
             </div>
-          </section>
-        ) : null}
+          </div>
+
+          {Object.keys(errors).length > 0 ? (
+            <div className="rounded-2xl border border-rose-100 bg-rose-50 px-4 py-3 text-sm leading-7 text-rose-700">
+              יש כמה שדות שצריך להשלים לפני השליחה. אפשר לחזור לשלבים הקודמים ולתקן.
+            </div>
+          ) : null}
+        </section>
+      ) : null}
+
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        {step < 3 ? (
+          <button
+            type="button"
+            onClick={() => setStep((current) => (current === 1 ? 2 : 3))}
+            className="rounded-full bg-brand-700 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-800"
+          >
+            המשך
+          </button>
+        ) : (
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="rounded-full bg-gradient-to-l from-brand-700 to-teal-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-brand-300/40 transition hover:from-brand-800 hover:to-teal-700 disabled:opacity-60"
+          >
+            {isSubmitting ? "שולח/ת..." : "שליחה"}
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => setStep((current) => (current === 1 ? 1 : ((current - 1) as 1 | 2 | 3)))}
+          disabled={step === 1}
+          className="rounded-full border border-brand-100 px-5 py-3 text-sm font-bold text-brand-800 transition hover:bg-brand-50 disabled:opacity-40"
+        >
+          חזרה
+        </button>
       </div>
-
-      <section className="rounded-[1.75rem] border border-brand-100/80 bg-white/92 p-5 shadow-panel">
-        <p className="text-sm font-semibold text-ink">רק לאשר ואפשר לשלוח</p>
-        <div className="mt-4 space-y-3">
-          <label className="flex items-start gap-3 text-sm leading-7 text-slate-700">
-            <input type="checkbox" className="mt-1" {...register("consentToContact")} />
-            <span>אפשר ליצור איתי קשר רק אם השארתי טלפון ורק כדי לאמת את השיתוף.</span>
-          </label>
-          <label className="flex items-start gap-3 text-sm leading-7 text-slate-700">
-            <input type="checkbox" className="mt-1" {...register("consentToTerms")} />
-            <span>ברור לי שהשיתוף לא עולה אוטומטית ועובר בדיקה לפני פרסום.</span>
-          </label>
-          <label className="flex items-start gap-3 text-sm leading-7 text-slate-700">
-            <input type="checkbox" className="mt-1" {...register("consentNoPatientInfo")} />
-            <span>לא כללתי מידע מזהה על מטופלים, אנשי צוות או פרטים רגישים.</span>
-          </label>
-        </div>
-      </section>
-
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="w-full rounded-[1.5rem] bg-gradient-to-l from-brand-700 to-teal-600 px-4 py-4 text-sm font-semibold text-white shadow-lg shadow-brand-300/40 transition hover:from-brand-800 hover:to-teal-700 disabled:opacity-60"
-      >
-        {isSubmitting ? "שולח/ת..." : "שליחת החוויה"}
-      </button>
     </form>
   );
 }

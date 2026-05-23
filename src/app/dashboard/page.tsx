@@ -1,17 +1,55 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
 import { requireAuth } from "@/lib/auth-guards";
-import { getUserDashboardData, userRoleLabel } from "@/lib/queries";
+import { getDepartmentOptions, getUserDashboardData, userRoleLabel } from "@/lib/queries";
 import { getDepartmentHref } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Badge } from "@/components/ui/badge";
+import { ExperienceCta } from "@/components/experience/experience-cta";
 
 export const dynamic = "force-dynamic";
 
+function verificationStatusLabel(status: string) {
+  switch (status) {
+    case "PENDING_EMAIL_VERIFICATION":
+      return "ממתין לאימות מייל";
+    case "PENDING_ADMIN_REVIEW":
+      return "ממתין לאישור אדמין";
+    case "VERIFIED":
+      return "מאומת";
+    case "REJECTED":
+      return "נדחה";
+    case "PENDING_PROOF":
+      return "ממתין למסמך";
+    default:
+      return "בבדיקה";
+  }
+}
+
+function professionalRoleStatusLabel(value: string | null) {
+  switch (value) {
+    case "medical_student":
+      return "סטודנט/ית לרפואה";
+    case "intern":
+      return "סטאז'ר/ית";
+    case "resident":
+      return "מתמחה";
+    case "specialist":
+      return "מומחה/ית";
+    case "other":
+      return "אחר";
+    default:
+      return "לא צוין";
+  }
+}
+
 export default async function DashboardPage() {
   const session = await requireAuth();
-  const data = await getUserDashboardData(session.userId);
+  const [data, reviewDepartments] = await Promise.all([
+    getUserDashboardData(session.userId),
+    getDepartmentOptions()
+  ]);
 
   if (!data) {
     return null;
@@ -91,6 +129,22 @@ export default async function DashboardPage() {
               <span className="font-semibold text-ink">תפקיד נוכחי: </span>
               {userRoleLabel(data.roleKey)}
             </p>
+            <div className="rounded-2xl border border-brand-100 bg-brand-50/70 px-4 py-3">
+              <p>
+                <span className="font-semibold text-ink">סטטוס מקצועי: </span>
+                {professionalRoleStatusLabel(data.roleStatus)}
+              </p>
+              <p>
+                <span className="font-semibold text-ink">אימות חשבון: </span>
+                {verificationStatusLabel(data.verificationStatus)}
+              </p>
+              {data.verificationStatus === "REJECTED" && data.verificationRejectionReason ? (
+                <p>
+                  <span className="font-semibold text-ink">סיבת דחייה: </span>
+                  {data.verificationRejectionReason}
+                </p>
+              ) : null}
+            </div>
             <p>
               חשבון רגיל מספיק כדי לגלוש, לשמור מחלקות להשוואה ולהגיש מועמדות מתוך חשבון
               מחובר. תפקיד נציג/ת מחלקה לא נפתח בהרשמה עצמית ונוצר רק על ידי אדמין.
@@ -120,12 +174,17 @@ export default async function DashboardPage() {
         <Card>
           <h2 className="text-xl font-bold text-ink">קיצורי דרך</h2>
           <div className="mt-4 grid gap-4">
-            <Link href="/reviews/new" className="rounded-2xl bg-brand-50 p-4 transition hover:bg-brand-100">
+            <div className="rounded-2xl bg-brand-50 p-4">
               <p className="font-semibold text-ink">רוצה לספר על החוויה שלך?</p>
               <p className="mt-1 text-sm text-slate-600">
-                לשתף מהשטח בלי חשבון, עם אימות קצר לפני שזה עולה.
+                לשתף מהשטח, באותו עמוד, עם בדיקה לפני שזה עולה.
               </p>
-            </Link>
+              <ExperienceCta
+                departments={reviewDepartments}
+                className="mt-3"
+                buttonClassName="rounded-full bg-brand-700 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-brand-800"
+              />
+            </div>
             <Link href="/faq" className="rounded-2xl bg-brand-50 p-4 transition hover:bg-brand-100">
               <p className="font-semibold text-ink">איך משתמשים באתר</p>
               <p className="mt-1 text-sm text-slate-600">

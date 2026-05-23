@@ -93,15 +93,8 @@ function resolveDepartmentFormValues(assignment: Awaited<ReturnType<typeof getRe
   };
 }
 
-export default async function RepresentativePage({
-  searchParams
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
+export default async function RepresentativePage() {
   const session = await requireRepresentative();
-  const params = await searchParams;
-  const linkedinError = typeof params.linkedinError === "string" ? params.linkedinError : null;
-  const linkedinSuccess = params.linkedin === "connected";
   const [assignments, profile] = await Promise.all([
     getRepresentativeDashboardData(session.userId),
     getUserDashboardData(session.userId)
@@ -132,10 +125,6 @@ export default async function RepresentativePage({
                 note: profile?.representativeProfile?.note ?? ""
               }
             }}
-            linkedinConnected={Boolean(profile?.linkedinId)}
-            linkedinEmail={profile?.email ?? session.email}
-            linkedinError={linkedinError}
-            linkedinSuccess={linkedinSuccess}
           />
         </div>
       </Card>

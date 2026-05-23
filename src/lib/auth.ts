@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import { RoleKey } from "@prisma/client";
+import { RoleKey, VerificationStatus } from "@prisma/client";
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { verifyPassword } from "@/lib/password";
@@ -11,6 +11,9 @@ export type AppSession = {
   fullName: string;
   role: AppRole;
   isApprovedPublisher: boolean;
+  emailVerified: boolean;
+  verificationStatus: VerificationStatus;
+  roleStatus: string | null;
 };
 
 type SessionPayload = {
@@ -68,13 +71,19 @@ export function toAppSession(user: {
   fullName: string;
   roleKey: RoleKey;
   isApprovedPublisher: boolean;
+  emailVerified: boolean;
+  verificationStatus: VerificationStatus;
+  roleStatus: string | null;
 }) {
   return {
     userId: user.id,
     email: user.email,
     fullName: user.fullName,
     role: mapRole(user.roleKey),
-    isApprovedPublisher: user.roleKey === RoleKey.REPRESENTATIVE || user.isApprovedPublisher
+    isApprovedPublisher: user.roleKey === RoleKey.REPRESENTATIVE || user.isApprovedPublisher,
+    emailVerified: user.emailVerified,
+    verificationStatus: user.verificationStatus,
+    roleStatus: user.roleStatus
   } satisfies AppSession;
 }
 
@@ -113,6 +122,11 @@ export function parseSessionToken(token?: string) {
 }
 
 export async function authenticateUser(email: string, password: string) {
+  const result = await authenticateUserWithStatus(email, password);
+  return result.status === "ok" ? result.session : null;
+}
+
+export async function authenticateUserWithStatus(email: string, password: string) {
   const normalizedEmail = email.trim().toLowerCase();
 
   const user = await prisma.user.findUnique({
@@ -122,16 +136,20 @@ export async function authenticateUser(email: string, password: string) {
   });
 
   if (!user) {
-    return null;
+    return { status: "invalid" as const };
   }
 
   const isValid = await verifyPassword(password, user.passwordHash);
 
   if (!isValid) {
-    return null;
+    return { status: "invalid" as const };
   }
 
-  return toAppSession(user);
+  if (!user.emailVerified) {
+    return { status: "email_unverified" as const };
+  }
+
+  return { status: "ok" as const, session: toAppSession(user) };
 }
 
 export async function getSession() {

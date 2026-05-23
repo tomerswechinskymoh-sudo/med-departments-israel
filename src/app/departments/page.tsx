@@ -2,14 +2,16 @@ import { getSession } from "@/lib/auth";
 import { departmentFilterSchema } from "@/lib/validation";
 import { DepartmentCard } from "@/components/departments/department-card";
 import { DepartmentFilters } from "@/components/departments/department-filters";
+import { SpecialtySelector } from "@/components/departments/specialty-selector";
 import { SpecialtyDashboardMetrics } from "@/components/departments/specialty-dashboard-metrics";
+import { ExperienceCta } from "@/components/experience/experience-cta";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageShell } from "@/components/layout/page-shell";
-import { SectionHeading } from "@/components/ui/section-heading";
 import {
   getActiveSalaryAssumption,
   getDirectoryData,
   getDirectoryFilters,
+  getDepartmentOptions,
   getSpecialtyDashboardMetrics
 } from "@/lib/queries";
 
@@ -30,15 +32,34 @@ function getDefaultSpecialtyId(specialties: { id: string; name: string }[]) {
   );
 }
 
+function toParamEntries(searchParams: Record<string, string | string[] | undefined>) {
+  const entries: Array<[string, string]> = [];
+
+  for (const [key, value] of Object.entries(searchParams)) {
+    if (key === "specialty") {
+      continue;
+    }
+
+    if (Array.isArray(value)) {
+      value.forEach((item) => entries.push([key, item]));
+    } else if (typeof value === "string") {
+      entries.push([key, value]);
+    }
+  }
+
+  return entries;
+}
+
 export default async function DepartmentsPage({
   searchParams
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const [session, availableFilters, rawSearchParams] = await Promise.all([
+  const [session, availableFilters, rawSearchParams, reviewDepartments] = await Promise.all([
     getSession(),
     getDirectoryFilters(),
-    searchParams
+    searchParams,
+    getDepartmentOptions()
   ]);
 
   const defaultSpecialtyId = getDefaultSpecialtyId(availableFilters.specialties);
@@ -100,64 +121,81 @@ export default async function DepartmentsPage({
   return (
     <div className="min-h-screen bg-[#f3f7fa]">
       <PageShell className="space-y-7 py-8">
-        <SectionHeading
-          eyebrow="Residency Navigator"
-          title="בחרו תחום התמחות והשוו תוכניות"
-          description="מתחילים מההתמחות, ואז משווים בתי חולים לפי ביקורות, תקנים, מחקר וסימנים פרקטיים."
-        />
+        <section className="rounded-[1.5rem] border border-brand-100 bg-white/95 p-5 shadow-sm md:p-6">
+          <SpecialtySelector
+            specialties={availableFilters.specialties}
+            selectedSpecialtyId={selectedSpecialtyId}
+            preservedParams={toParamEntries(rawSearchParams)}
+          />
+          <div className="mt-5 max-w-3xl">
+            <h1 className="text-3xl font-black leading-tight text-ink md:text-4xl">
+              בחרו תחום התמחות והשוו תוכניות
+            </h1>
+            <p className="mt-3 text-base leading-8 text-slate-600 md:text-lg">
+              מתחילים מנתונים לאומיים על תחום ההתמחות וממשיכים להשוואה בין המערכים השונים.
+            </p>
+          </div>
+        </section>
 
-        <div className="grid gap-6 lg:grid-cols-[320px_1fr] lg:items-start">
-          <aside className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:overscroll-contain lg:pe-1">
-            <DepartmentFilters
-              key={filtersKey}
-              filters={parsedFilters}
-              institutions={availableFilters.institutions}
-              specialties={availableFilters.specialties}
-              departments={availableFilters.departments}
-              regions={availableFilters.regions}
+        <div className="space-y-4">
+          {selectedSpecialty ? (
+            <SpecialtyDashboardMetrics
+              specialtyName={selectedSpecialty.name}
+              metrics={specialtyDashboard.metrics}
+              salaryAssumption={salaryAssumption}
             />
-          </aside>
+          ) : null}
 
-          <div className="min-w-0 space-y-4">
-            {selectedSpecialty ? (
-              <SpecialtyDashboardMetrics
-                specialtyName={selectedSpecialty.name}
-                metrics={specialtyDashboard.metrics}
-                salaryAssumption={salaryAssumption}
+          <div className="grid gap-6 lg:grid-cols-[320px_1fr] lg:items-start">
+            <aside className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:overscroll-contain lg:pe-1">
+              <DepartmentFilters
+                key={filtersKey}
+                filters={parsedFilters}
+                institutions={availableFilters.institutions}
+                specialties={availableFilters.specialties}
+                departments={availableFilters.departments}
               />
-            ) : null}
+            </aside>
 
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-[1.25rem] border border-brand-100 bg-white/94 px-4 py-3">
-              <div>
-                <p className="text-sm font-bold text-ink">{departments.length} תוכניות נמצאו</p>
-                <p className="mt-1 text-xs text-slate-500">
-                  מוצגות תוכניות בתחום {selectedSpecialty?.name ?? "ההתמחות שנבחרה"} בלבד.
-                </p>
-              </div>
-              <p className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                סידור: {parsedFilters.sort === "rating" ? "דירוג" : parsedFilters.sort === "reviews" ? "ביקורות" : parsedFilters.sort === "openings" ? "תקנים" : parsedFilters.sort === "research" ? "מחקר" : "מומלץ"}
-              </p>
-            </div>
-
-            {departments.length === 0 ? (
-              <EmptyState
-                title="לא נמצאו תוכניות תואמות"
-                description="נסו לבחור תחום התמחות אחר, להסיר אזור או לפתוח את הסינון."
-                ctaHref={selectedSpecialtyId ? `/departments?specialty=${selectedSpecialtyId}` : "/departments"}
-                ctaLabel="איפוס סינון"
-              />
-            ) : (
-              <div className="grid gap-4">
-                {departments.map((department) => (
-                  <DepartmentCard
-                    key={department.id}
-                    department={department}
-                    showFavoriteButton={Boolean(session)}
-                    variant="row"
+            <div className="min-w-0 space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-3 rounded-[1.25rem] border border-brand-100 bg-white/94 px-4 py-3">
+                <div>
+                  <p className="text-sm font-bold text-ink">{departments.length} תוכניות נמצאו</p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    מוצגות תוכניות בתחום {selectedSpecialty?.name ?? "ההתמחות שנבחרה"} בלבד.
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
+                    סידור: {parsedFilters.sort === "rating" ? "דירוג" : parsedFilters.sort === "reviews" ? "ביקורות" : parsedFilters.sort === "openings" ? "תקנים" : parsedFilters.sort === "research" ? "מחקר" : "מומלץ"}
+                  </p>
+                  <ExperienceCta
+                    departments={reviewDepartments}
+                    buttonClassName="inline-flex rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-4 py-2 text-xs font-bold text-amber-950 shadow-sm shadow-amber-200/40 transition hover:-translate-y-0.5"
                   />
-                ))}
+                </div>
               </div>
-            )}
+
+              {departments.length === 0 ? (
+                <EmptyState
+                  title="לא נמצאו תוכניות תואמות"
+                  description="נסו לבחור תחום התמחות אחר, להסיר אזור או לפתוח את הסינון."
+                  ctaHref={selectedSpecialtyId ? `/departments?specialty=${selectedSpecialtyId}` : "/departments"}
+                  ctaLabel="איפוס סינון"
+                />
+              ) : (
+                <div className="grid gap-4">
+                  {departments.map((department) => (
+                    <DepartmentCard
+                      key={department.id}
+                      department={department}
+                      showFavoriteButton={Boolean(session)}
+                      variant="row"
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </PageShell>

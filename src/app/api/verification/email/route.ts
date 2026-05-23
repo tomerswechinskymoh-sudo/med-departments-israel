@@ -22,11 +22,11 @@ export async function GET(request: Request) {
 
   const user = await prisma.user.findUnique({
     where: {
-      verificationToken: token
+      emailVerificationToken: token
     }
   });
 
-  if (!user || (user.tokenExpiry && user.tokenExpiry < new Date())) {
+  if (!user || (user.emailVerificationExpiresAt && user.emailVerificationExpiresAt < new Date())) {
     return NextResponse.redirect(new URL("/login?verificationError=expired", request.url));
   }
 
@@ -36,10 +36,10 @@ export async function GET(request: Request) {
     },
     data: {
       emailVerified: true,
-      verificationStatus: VerificationStatus.VERIFIED,
-      verificationToken: null,
-      tokenExpiry: null,
-      verifiedAt: new Date()
+      emailVerifiedAt: new Date(),
+      emailVerificationToken: null,
+      emailVerificationExpiresAt: null,
+      verificationStatus: VerificationStatus.PENDING_ADMIN_REVIEW
     }
   });
 
@@ -50,5 +50,5 @@ export async function GET(request: Request) {
     entityId: user.id
   });
 
-  return NextResponse.redirect(new URL("/dashboard?verified=1", request.url));
+  return NextResponse.redirect(new URL("/login?verified=1", request.url));
 }

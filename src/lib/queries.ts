@@ -6,7 +6,9 @@ import {
   Prisma,
   ReviewSourceType,
   RoleKey,
-  SubmissionStatus
+  SubmissionStatus,
+  UploadedFileCategory,
+  VerificationStatus
 } from "@prisma/client";
 import {
   APPLICATION_STATUS_LABELS,
@@ -1494,6 +1496,7 @@ export async function getOpeningManagementData(
 export async function getAdminDashboardData() {
   const [
     stats,
+    pendingUserVerifications,
     pendingReviewSubmissions,
     pendingDepartmentChangeRequests,
     pendingOpeningApprovals,
@@ -1550,8 +1553,41 @@ export async function getAdminDashboardData() {
         where: {
           status: "PENDING_REVIEW"
         }
+      }),
+      prisma.user.count({
+        where: {
+          verificationStatus: VerificationStatus.PENDING_ADMIN_REVIEW
+        }
       })
     ]),
+    prisma.user.findMany({
+      where: {
+        verificationStatus: VerificationStatus.PENDING_ADMIN_REVIEW
+      },
+      select: {
+        id: true,
+        fullName: true,
+        email: true,
+        phone: true,
+        roleStatus: true,
+        emailVerified: true,
+        verificationStatus: true,
+        verificationSubmittedAt: true,
+        uploadedFiles: {
+          where: {
+            category: UploadedFileCategory.USER_VERIFICATION_PROOF
+          },
+          orderBy: {
+            createdAt: "desc"
+          },
+          take: 1
+        }
+      },
+      orderBy: {
+        verificationSubmittedAt: "asc"
+      },
+      take: 20
+    }),
     prisma.reviewSubmission.findMany({
       where: {
         status: SubmissionStatus.PENDING_REVIEW
@@ -1806,8 +1842,10 @@ export async function getAdminDashboardData() {
       pendingOpeningApplications: stats[5],
       pendingMistakeReports: stats[6],
       pendingRepresentativeRequests: stats[7],
-      pendingScrapeRevisions: stats[8]
+      pendingScrapeRevisions: stats[8],
+      pendingUserVerifications: stats[9]
     },
+    pendingUserVerifications,
     pendingReviewSubmissions,
     pendingDepartmentChangeRequests,
     pendingOpeningApprovals,

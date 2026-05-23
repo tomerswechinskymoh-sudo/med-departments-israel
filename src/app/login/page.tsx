@@ -13,8 +13,10 @@ export default async function LoginPage({
     typeof params.next === "string" && params.next.startsWith("/") && !params.next.startsWith("//")
       ? params.next
       : undefined;
-  const linkedinError = typeof params.linkedinError === "string" ? params.linkedinError : undefined;
-  const socialError = typeof params.socialError === "string" ? params.socialError : undefined;
+  const verificationError =
+    typeof params.verificationError === "string" ? params.verificationError : undefined;
+  const verified = params.verified === "1";
+  const signupCheckEmail = params.signup === "checkEmail";
 
   return (
     <PageShell className="flex min-h-[76vh] items-center justify-center bg-[radial-gradient(circle_at_top_left,#dff4ff,transparent_34%),linear-gradient(180deg,#f8fbff_0%,#eef6f8_100%)] px-4 py-12">
@@ -23,8 +25,23 @@ export default async function LoginPage({
           <p className="text-sm font-bold text-brand-600">כניסה מאובטחת</p>
           <h1 className="mt-2 text-4xl font-black tracking-tight text-ink">ברוכים הבאים</h1>
         </div>
+        {signupCheckEmail ? (
+          <p className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">
+            ההרשמה התקבלה. בדקו את המייל ולחצו על קישור האימות לפני התחברות.
+          </p>
+        ) : null}
+        {verified ? (
+          <p className="mt-5 rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-900">
+            כתובת המייל אומתה. אפשר להתחבר; הגישה המלאה תיפתח לאחר אישור הסטטוס המקצועי.
+          </p>
+        ) : null}
+        {verificationError ? (
+          <p className="mt-5 rounded-2xl border border-rose-100 bg-rose-50 px-4 py-3 text-sm leading-6 text-rose-800">
+            קישור האימות חסר או שפג תוקפו. אפשר להתחבר שוב ולבקש קישור חדש.
+          </p>
+        ) : null}
         <div className="mt-6">
-          <LoginForm nextPath={nextPath} linkedinError={linkedinError} socialError={socialError} />
+          <LoginForm nextPath={nextPath} />
         </div>
         <p className="mt-6 text-center text-sm text-slate-600">
           אין לכם חשבון?{" "}

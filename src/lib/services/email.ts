@@ -5,10 +5,20 @@ export type TransactionalEmailInput = {
   text: string;
 };
 
+export type TransactionalEmailResult = {
+  delivered: boolean;
+  skipped: boolean;
+};
+
 export function getBaseUrl() {
+  const vercelUrl =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim() ||
+    process.env.VERCEL_URL?.trim();
+
   return (
     process.env.NEXTAUTH_URL?.trim() ||
     process.env.APP_URL?.trim() ||
+    (vercelUrl ? `https://${vercelUrl.replace(/^https?:\/\//, "")}` : undefined) ||
     "http://localhost:3000"
   );
 }
@@ -27,7 +37,17 @@ export async function sendTransactionalEmail(input: TransactionalEmailInput) {
   const emailFrom = process.env.EMAIL_FROM?.trim();
 
   if (!resendApiKey || !emailFrom) {
-    console.warn("[email] RESEND_API_KEY or EMAIL_FROM is missing. Skipping delivery.");
+    const missing = [
+      !resendApiKey ? "RESEND_API_KEY" : null,
+      !emailFrom ? "EMAIL_FROM" : null
+    ].filter(Boolean);
+    const message = `[email] Missing ${missing.join(" and ")}.`;
+
+    if (process.env.NODE_ENV === "production") {
+      throw new Error(`${message} Email delivery is required in production.`);
+    }
+
+    console.warn(`${message} Skipping delivery in development.`);
     return {
       delivered: false,
       skipped: true
@@ -50,8 +70,10 @@ export async function sendTransactionalEmail(input: TransactionalEmailInput) {
   });
 
   if (!response.ok) {
-    const payload = (await response.json().catch(() => null)) as { message?: string } | null;
-    throw new Error(payload?.message ?? "שליחת האימייל נכשלה.");
+    const payload = (await response.json().catch(() => null)) as
+      | { message?: string; error?: string }
+      | null;
+    throw new Error(payload?.message ?? payload?.error ?? "שליחת האימייל נכשלה.");
   }
 
   return {

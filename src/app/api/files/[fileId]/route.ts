@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { UploadedFileCategory } from "@prisma/client";
 import { getSession } from "@/lib/auth";
 import { canUserPublishDepartment } from "@/lib/queries";
 import { prisma } from "@/lib/prisma";
@@ -41,6 +42,21 @@ export async function GET(
 
   if (!file) {
     return NextResponse.json({ error: "הקובץ לא נמצא." }, { status: 404 });
+  }
+
+  if (file.category === UploadedFileCategory.USER_VERIFICATION_PROOF) {
+    if (session.role === "admin" || file.uploadedByUserId === session.userId) {
+      return new NextResponse(new Uint8Array(file.bytes), {
+        headers: {
+          "Content-Type": file.mimeType,
+          "Content-Length": String(file.sizeBytes),
+          "Content-Disposition": `attachment; filename="${encodeURIComponent(file.originalName)}"`,
+          "Cache-Control": "private, no-store"
+        }
+      });
+    }
+
+    return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
   }
 
   if (file.reviewSubmissionId && session.role !== "admin") {

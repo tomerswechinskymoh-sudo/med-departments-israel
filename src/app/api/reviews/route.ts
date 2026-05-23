@@ -15,6 +15,7 @@ import { reviewSubmissionSchema } from "@/lib/validation";
 import {
   createTokenExpiry,
   createVerificationToken,
+  isDevelopmentEnvironment,
   sendReviewProofRequestEmail
 } from "@/lib/verification";
 
@@ -178,7 +179,8 @@ export async function POST(request: Request) {
       to: parsed.data.email,
       fullName: parsed.data.fullName,
       departmentLabel,
-      token: verificationToken
+      token: verificationToken,
+      baseUrl: new URL(request.url).origin
     }).catch((error) => {
       console.error("[reviews] proof request email failed", error);
       return { delivered: false, skipped: false };
@@ -194,6 +196,21 @@ export async function POST(request: Request) {
         skipped: emailDelivery.skipped
       }
     });
+
+    if (!isDevelopmentEnvironment() && !emailDelivery.delivered) {
+      console.error("[reviews] proof request email was not delivered", {
+        submissionId: submission.id,
+        email: parsed.data.email,
+        skipped: emailDelivery.skipped
+      });
+      return NextResponse.json(
+        {
+          error:
+            "השיתוף נשמר, אבל לא הצלחנו לשלוח קישור אימות. נסו שוב מאוחר יותר או פנו לתמיכה."
+        },
+        { status: 502 }
+      );
+    }
   }
 
   return NextResponse.json({ message: "השיתוף נשמר. הוא יעלה רק אחרי בדיקה קצרה." });

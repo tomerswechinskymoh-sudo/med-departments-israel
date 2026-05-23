@@ -22,6 +22,23 @@ const allowedUploadMimeTypes = new Set([
 
 const allowedUploadExtensions = new Set(["pdf", "jpg", "jpeg", "png", "webp", "doc", "docx", "odt", "txt"]);
 
+export function assertUserVerificationProofFile(file: File) {
+  const maxBytes = Math.min(5 * 1024 * 1024, getMaxUploadBytes());
+  const mimeType = file.type || "application/octet-stream";
+  const extension = file.name.split(".").pop()?.toLowerCase() ?? "";
+  const isAllowed =
+    ["application/pdf", "image/jpeg", "image/png"].includes(mimeType) ||
+    ["pdf", "jpg", "jpeg", "png"].includes(extension);
+
+  if (file.size > maxBytes) {
+    throw new Error(`הקובץ גדול מדי. אפשר להעלות עד ${Math.round(maxBytes / (1024 * 1024))}MB.`);
+  }
+
+  if (!isAllowed) {
+    throw new Error("אפשר להעלות רק PDF, JPG או PNG לצורך אימות.");
+  }
+}
+
 function assertAllowedUploadType(file: File) {
   const mimeType = file.type || "application/octet-stream";
   const extension = file.name.split(".").pop()?.toLowerCase() ?? "";

@@ -5,24 +5,22 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { LinkedInAuthLink } from "@/components/auth/linkedin-auth-link";
-import { SocialAuthLink } from "@/components/auth/social-auth-link";
 import { safeInternalPath } from "@/lib/security";
 import { loginSchema } from "@/lib/validation";
 
 type FormValues = z.infer<typeof loginSchema>;
 
 export function LoginForm({
-  nextPath,
-  linkedinError,
-  socialError
+  nextPath
 }: {
   nextPath?: string;
-  linkedinError?: string;
-  socialError?: string;
 }) {
   const router = useRouter();
   const [formError, setFormError] = useState<string | null>(null);
+  const [resendMessage, setResendMessage] = useState<string | null>(null);
+  const [devVerificationUrl, setDevVerificationUrl] = useState<string | null>(null);
+  const [emailForResend, setEmailForResend] = useState<string | null>(null);
+  const [isResending, setIsResending] = useState(false);
   const invalidCredentialsMessage = "שם משתמש או סיסמא לא נכונים";
   const {
     register,
@@ -39,6 +37,9 @@ export function LoginForm({
   const onSubmit = handleSubmit(
     async (values) => {
       setFormError(null);
+      setResendMessage(null);
+      setDevVerificationUrl(null);
+      setEmailForResend(null);
 
       const response = await fetch("/api/auth/login", {
         method: "POST",
@@ -49,7 +50,18 @@ export function LoginForm({
       });
 
       if (!response.ok) {
-        setFormError(invalidCredentialsMessage);
+        const payload = (await response.json().catch(() => null)) as {
+          error?: string;
+          code?: string;
+        } | null;
+
+        if (payload?.code === "EMAIL_UNVERIFIED") {
+          setFormError(payload.error ?? "יש לאמת את כתובת המייל לפני התחברות.");
+          setEmailForResend(values.email);
+          return;
+        }
+
+        setFormError(payload?.error ?? invalidCredentialsMessage);
         return;
       }
 
@@ -60,6 +72,33 @@ export function LoginForm({
       setFormError(invalidCredentialsMessage);
     }
   );
+
+  async function resendVerificationEmail() {
+    if (!emailForResend) {
+      return;
+    }
+
+    setIsResending(true);
+    setResendMessage(null);
+    setDevVerificationUrl(null);
+
+    const response = await fetch("/api/verification/resend", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email: emailForResend })
+    });
+
+    const payload = (await response.json().catch(() => null)) as {
+      error?: string;
+      message?: string;
+      verificationUrl?: string;
+    } | null;
+    setResendMessage(payload?.message ?? payload?.error ?? "אם החשבון קיים, נשלח קישור אימות חדש.");
+    setDevVerificationUrl(payload?.verificationUrl ?? null);
+    setIsResending(false);
+  }
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-4">
@@ -81,9 +120,28 @@ export function LoginForm({
         />
       </div>
 
-      {socialError ? <p className="text-sm text-rose-600">{socialError}</p> : null}
-      {linkedinError ? <p className="text-sm text-rose-600">{linkedinError}</p> : null}
       {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}
+      {emailForResend ? (
+        <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">
+          <button
+            type="button"
+            onClick={resendVerificationEmail}
+            disabled={isResending}
+            className="font-bold text-amber-950 underline underline-offset-4 disabled:opacity-60"
+          >
+            {isResending ? "שולח/ת קישור..." : "שליחת קישור אימות חדש"}
+          </button>
+          {resendMessage ? <p className="mt-2">{resendMessage}</p> : null}
+          {devVerificationUrl ? (
+            <a
+              href={devVerificationUrl}
+              className="mt-2 block break-all font-semibold text-amber-950 underline underline-offset-4"
+            >
+              {devVerificationUrl}
+            </a>
+          ) : null}
+        </div>
+      ) : null}
 
       <button
         type="submit"
@@ -92,18 +150,6 @@ export function LoginForm({
       >
         {isSubmitting ? "מתחבר/ת..." : "התחברות"}
       </button>
-
-      <div className="flex items-center gap-3 py-1">
-        <span className="h-px flex-1 bg-slate-200" />
-        <span className="text-xs font-bold text-slate-400">או</span>
-        <span className="h-px flex-1 bg-slate-200" />
-      </div>
-
-      <div className="flex justify-center gap-3">
-        <SocialAuthLink provider="google" mode="login" nextPath={nextPath} iconOnly className="shadow-sm" />
-        <SocialAuthLink provider="facebook" mode="login" nextPath={nextPath} iconOnly className="shadow-sm" />
-        <LinkedInAuthLink mode="login" nextPath={nextPath} iconOnly className="shadow-sm" />
-      </div>
     </form>
   );
 }

@@ -94,32 +94,48 @@ export function DepartmentCard({
         }`}
       >
         <div className="pointer-events-none">
-          <div className="flex flex-wrap items-center gap-2">
-            {department.hasOpenResidency ? <Badge tone="success">תקנים פתוחים</Badge> : null}
-            {department.hasUpcomingCommittee ? (
-              <Badge tone="default">ועדה מתוכננת</Badge>
-            ) : null}
-            {department.hasResearch ? <Badge tone="success">מחקר פתוח</Badge> : null}
-            {department.region ? <Badge tone="default">{department.region}</Badge> : null}
-            {!isRow && !department.hasOpenResidency ? (
-              <Badge tone="warning">אין תקנים פתוחים כרגע</Badge>
-            ) : null}
-            {!isRow && !department.hasResearch ? <Badge tone="default">ללא מחקר פתוח</Badge> : null}
-          </div>
+          {isRow ? (
+            <div className="space-y-2">
+              {department.region ? (
+                <p className="text-xs font-bold text-brand-700">{department.region}</p>
+              ) : null}
+              <p className="text-base font-semibold leading-7 text-slate-700">
+                {department.institutionName}
+              </p>
+              <h3 className="break-words text-2xl font-black leading-tight text-ink">
+                {department.specialtyName}
+              </h3>
+            </div>
+          ) : (
+            <>
+              <div className="flex flex-wrap items-center gap-2">
+                {department.hasOpenResidency ? <Badge tone="success">תקנים פתוחים</Badge> : null}
+                {department.hasUpcomingCommittee ? (
+                  <Badge tone="default">ועדה מתוכננת</Badge>
+                ) : null}
+                {department.hasResearch ? <Badge tone="success">מחקר פתוח</Badge> : null}
+                {department.region ? <Badge tone="default">{department.region}</Badge> : null}
+                {!department.hasOpenResidency ? (
+                  <Badge tone="warning">אין תקנים פתוחים כרגע</Badge>
+                ) : null}
+                {!department.hasResearch ? <Badge tone="default">ללא מחקר פתוח</Badge> : null}
+              </div>
 
-          <div className={isRow ? "mt-3" : "mt-5 rounded-[1.25rem] border border-slate-100 bg-slate-50/90 px-4 py-4"}>
-            <p className="text-xs font-semibold text-slate-500">
-              {department.specialtyName}
-            </p>
-            <h3 className={`${isRow ? "text-xl" : "mt-2 text-2xl"} break-words font-bold leading-tight text-ink`}>
-              {department.name}
-            </h3>
-            <p className="mt-2 text-sm font-medium leading-6 text-slate-600">
-              {department.institutionName}
-              {department.city ? ` · ${department.city}` : ""}
-              {department.region ? ` · ${department.region}` : ""}
-            </p>
-          </div>
+              <div className="mt-5 rounded-[1.25rem] border border-slate-100 bg-slate-50/90 px-4 py-4">
+                <p className="text-xs font-semibold text-slate-500">
+                  {department.specialtyName}
+                </p>
+                <h3 className="mt-2 break-words text-2xl font-bold leading-tight text-ink">
+                  {department.name}
+                </h3>
+                <p className="mt-2 text-sm font-medium leading-6 text-slate-600">
+                  {department.institutionName}
+                  {department.city ? ` · ${department.city}` : ""}
+                  {department.region ? ` · ${department.region}` : ""}
+                </p>
+              </div>
+            </>
+          )}
 
           {!isRow ? (
             <>
@@ -137,6 +153,14 @@ export function DepartmentCard({
         </div>
 
         <div className={`relative z-30 ${isRow ? "space-y-3 lg:border-r lg:border-slate-100 lg:pr-4" : "mt-6 space-y-4"}`}>
+          {isRow ? (
+            <div className="flex flex-wrap gap-2">
+              {department.hasOpenResidency ? <Badge tone="success">תקנים פתוחים</Badge> : null}
+              {department.hasUpcomingCommittee ? <Badge tone="default">ועדה מתוכננת</Badge> : null}
+              {department.hasResearch ? <Badge tone="success">מחקר פתוח</Badge> : null}
+            </div>
+          ) : null}
+
           <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-slate-600">
             {department.reviewCount > 0 ? (
               <>

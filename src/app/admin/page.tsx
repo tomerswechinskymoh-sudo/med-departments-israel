@@ -22,6 +22,7 @@ import { SeedDemoButton } from "@/components/admin/seed-demo-button";
 import { SpecialtyDashboardConfigForm } from "@/components/admin/specialty-dashboard-config-form";
 import { SpecialtyManagementForm } from "@/components/admin/specialty-management-form";
 import { UserRoleForm } from "@/components/admin/user-role-form";
+import { UserVerificationReviewForm } from "@/components/admin/user-verification-review-form";
 import { StatCard } from "@/components/dashboard/stat-card";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
@@ -108,6 +109,23 @@ function textOrFallback(value: string, fallback: string) {
   return value.trim() ? value : fallback;
 }
 
+function professionalRoleStatusLabel(value: string | null) {
+  switch (value) {
+    case "medical_student":
+      return "סטודנט/ית לרפואה";
+    case "intern":
+      return "סטאז'ר/ית";
+    case "resident":
+      return "מתמחה";
+    case "specialist":
+      return "מומחה/ית";
+    case "other":
+      return "אחר";
+    default:
+      return "לא צוין";
+  }
+}
+
 export default async function AdminPage() {
   await requireAdmin();
   const data = await getAdminDashboardData();
@@ -130,6 +148,7 @@ export default async function AdminPage() {
         <StatCard label="דיווחי טעות" value={data.stats.pendingMistakeReports} />
         <StatCard label="בקשות נציגות" value={data.stats.pendingRepresentativeRequests} />
         <StatCard label="דראפטים מסריקה" value={data.stats.pendingScrapeRevisions} />
+        <StatCard label="אימותי משתמשים" value={data.stats.pendingUserVerifications} />
       </div>
 
       <Card>
@@ -146,6 +165,45 @@ export default async function AdminPage() {
       </Card>
 
       <section className="grid gap-6 xl:grid-cols-3">
+        <Card>
+          <h2 className="text-xl font-bold text-ink">אימות סטטוס מקצועי</h2>
+          <div className="mt-4 space-y-3">
+            {data.pendingUserVerifications.length === 0 ? (
+              <p className="text-sm text-slate-600">אין כרגע משתמשים שממתינים לאימות.</p>
+            ) : (
+              data.pendingUserVerifications.map((user) => (
+                <div key={user.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <p className="font-bold text-ink">{user.fullName}</p>
+                      <p>{user.email}{user.phone ? ` · ${user.phone}` : ""}</p>
+                      <p className="text-xs font-semibold text-slate-500">
+                        {professionalRoleStatusLabel(user.roleStatus)}
+                        {user.verificationSubmittedAt ? ` · ${formatDate(user.verificationSubmittedAt)}` : ""}
+                      </p>
+                    </div>
+                    <Badge tone={user.emailVerified ? "success" : "warning"}>
+                      {user.emailVerified ? "מייל אומת" : "ממתין למייל"}
+                    </Badge>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                    {user.uploadedFiles.map((file) => (
+                      <Link
+                        key={file.id}
+                        href={`/api/files/${file.id}`}
+                        className="rounded-full border border-brand-200 bg-white px-3 py-2 font-semibold text-brand-800"
+                      >
+                        מסמך אימות: {file.originalName}
+                      </Link>
+                    ))}
+                  </div>
+                  <UserVerificationReviewForm userId={user.id} />
+                </div>
+              ))
+            )}
+          </div>
+        </Card>
+
         <Card>
           <h2 className="text-xl font-bold text-ink">דיווחי טעות פתוחים</h2>
           <div className="mt-4 space-y-3">

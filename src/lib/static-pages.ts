@@ -125,7 +125,7 @@ export const staticPages = {
         ]
       }
     ],
-    cta: { href: "/reviews/new", label: "לשתף חוויה" }
+    cta: { href: "/departments", label: "חיפוש מחלקות" }
   },
   terms: {
     kind: "policy",
@@ -311,7 +311,7 @@ export const staticPages = {
       eyebrow: "קיצור דרך",
       title: "המסלולים הכי שימושיים באתר",
       body: "חיפוש מחלקות, שיתוף חוויה, הרשימה האישית והעמודים שמסבירים איך הכול עובד.",
-      items: ["/departments", "/reviews/new", "/favorites", "/faq"]
+      items: ["/departments", "/favorites", "/faq"]
     },
     sections: [
       {
@@ -319,7 +319,6 @@ export const staticPages = {
         body: [
           "/",
           "/departments",
-          "/reviews/new",
           "/login",
           "/signup",
           "/dashboard",

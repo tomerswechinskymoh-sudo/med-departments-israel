@@ -1,29 +1,21 @@
 import Link from "next/link";
 import { HomeHeroImage } from "@/components/home/home-hero-image";
-import { HomeReviewComparisonCard } from "@/components/home/home-review-comparison-card";
-import { StatCard } from "@/components/dashboard/stat-card";
-import { ExperienceCta } from "@/components/experience/experience-cta";
 import { HomeSection } from "@/components/home/home-section";
-import { HomeStickyActions } from "@/components/home/home-sticky-actions";
 import { PageShell } from "@/components/layout/page-shell";
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { RatingStars } from "@/components/ui/rating-stars";
 import {
   ClipboardHeartIcon,
   DepartmentDirectoryIcon,
   SearchPulseIcon
 } from "@/components/ui/med-icons";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { getHomePageData, getReviewFormContext, openingTypeLabel } from "@/lib/queries";
-import { formatDate, getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
 const trustItems = [
-  "חוויות מאומתות בלבד",
-  "תקנים פתוחים רשמיים בלבד",
-  "שמור להשוואה"
+  "מקורות רשמיים",
+  "שיתופי קהילה מאומתים",
+  "מידע מתעדכן לאורך זמן"
 ];
 
 const decisionSteps = [
@@ -34,7 +26,7 @@ const decisionSteps = [
   },
   {
     title: "משווים בין מחלקות",
-    description: "רואים תוכניות, ביקורות, תקנים ומחקר",
+    description: "רואים תוכניות, נתונים ומידע שימושי",
     icon: DepartmentDirectoryIcon
   },
   {
@@ -44,24 +36,33 @@ const decisionSteps = [
   }
 ];
 
-function openingStatusLabel(status: "OPEN" | "UPCOMING" | "CLOSED") {
-  if (status === "OPEN") {
-    return { label: "פתוח", tone: "success" as const };
+const dataCollectionCards = [
+  {
+    icon: "🏥",
+    title: "מקורות רשמיים",
+    description: "משרד הבריאות, נתוני התמחות, מידע ציבורי ופרסומים רשמיים"
+  },
+  {
+    icon: "🌐",
+    title: "אתרי בתי חולים ומחלקות",
+    description:
+      "מידע על מחלקות, צוותים, תחומי עניין, דרכי יצירת קשר ונתונים המתפרסמים באתרי בתי החולים"
+  },
+  {
+    icon: "👩‍⚕️",
+    title: "הקהילה הרפואית",
+    description: "חוויות מאומתות של סטודנטים, סטאז׳רים ומתמחים לאחר אימות"
+  },
+  {
+    icon: "📊",
+    title: "נתונים משלימים",
+    description: "מחקר, פרסומים, מדדים אקדמיים ונתונים המתעדכנים לאורך זמן"
   }
+];
 
-  if (status === "UPCOMING") {
-    return { label: "בקרוב", tone: "warning" as const };
-  }
-
-  return { label: "סגור", tone: "default" as const };
-}
-
-export default async function HomePage() {
-  const [data, reviewContext] = await Promise.all([getHomePageData(), getReviewFormContext()]);
-  const showcaseDepartment = data.featuredDepartments[0];
-
+export default function HomePage() {
   return (
-    <PageShell className="space-y-8 py-6 pb-28 md:space-y-10 md:py-10 md:pb-12">
+    <PageShell className="space-y-8 py-6 md:space-y-10 md:py-10">
       <section className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/88 shadow-panel">
         <div className="grid gap-6 lg:grid-cols-[1fr_0.92fr]">
           <div className="space-y-6 p-5 md:p-7 lg:p-8">
@@ -71,9 +72,9 @@ export default async function HomePage() {
                 לדעת איך מחלקה באמת נראית, לפני שנכנסים אליה
               </h1>
               <p className="max-w-2xl text-base leading-8 text-slate-700">
-                מחלקות, תקנים, מחקר ושיתופים מהשטח.
+                מחלקות, מסלולים, מידע רשמי וניסיון מצטבר מהשטח.
                 <br className="hidden md:block" />
-                כל מה שצריך כדי להבין אם זה מתאים לך, בלי ניחושים.
+                מקום אחד להתחיל ממנו לפני שמשווים ובוחרים לאן להעמיק.
               </p>
             </div>
 
@@ -110,11 +111,6 @@ export default async function HomePage() {
                 </div>
               ))}
             </div>
-
-            <ExperienceCta
-              departments={reviewContext.departments}
-              buttonClassName="inline-flex items-center justify-center rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-6 py-3 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-200/50 transition hover:-translate-y-0.5"
-            />
 
             <div className="flex flex-wrap gap-2">
               {trustItems.map((item) => (
@@ -155,194 +151,38 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="מוסדות" value={data.stats.institutions} />
-        <StatCard label="מחלקות" value={data.stats.departments} />
-        <StatCard label="שיתופים שעלו" value={data.stats.publishedReviews} />
-        <StatCard label="תקנים פתוחים" value={data.stats.officialOpenings} />
-      </section>
-
       <HomeSection tone="plain" className="space-y-6">
-        <SectionHeading
-          eyebrow="כך נראה עמוד מחלקה"
-          title="דוגמה אחת שמראה את עומק המוצר"
-          description="במקום להציף רשימה בעמוד הבית, מציגים איך נראה פרופיל מחלקה שאפשר לפתוח, להשוות ולשמור."
-        />
-        {showcaseDepartment ? (
-          <Card className="overflow-hidden rounded-[2rem] border border-brand-100 bg-white p-0 shadow-panel">
-            <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-              <div className="space-y-5 p-5 md:p-7">
-                <div className="flex flex-wrap gap-2">
-                  <Badge>{showcaseDepartment.specialtyName}</Badge>
-                  {showcaseDepartment.region ? <Badge tone="default">{showcaseDepartment.region}</Badge> : null}
-                  {showcaseDepartment.hasOpenResidency ? <Badge tone="success">תקנים פתוחים</Badge> : null}
-                  {showcaseDepartment.hasResearch ? <Badge tone="success">מחקר פתוח</Badge> : null}
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-brand-700">תצוגת פרופיל לדוגמה</p>
-                  <h3 className="mt-2 text-3xl font-black leading-tight text-ink">
-                    {showcaseDepartment.name}
-                  </h3>
-                  <p className="mt-2 text-sm font-semibold text-slate-600">
-                    {showcaseDepartment.institutionName}
-                    {showcaseDepartment.city ? ` · ${showcaseDepartment.city}` : ""}
-                    {showcaseDepartment.region ? ` · ${showcaseDepartment.region}` : ""}
-                  </p>
-                </div>
-                <p className="max-w-2xl text-sm leading-8 text-slate-700">
-                  {showcaseDepartment.shortSummary}
-                </p>
-                <div className="flex flex-wrap items-center gap-3">
-                  <RatingStars value={showcaseDepartment.averageOverall || 0} />
-                  <span className="text-sm font-bold text-slate-600">
-                    {showcaseDepartment.reviewCount} שיתופים מאושרים
-                  </span>
-                </div>
-                <Link
-                  href={getDepartmentHref(showcaseDepartment)}
-                  className="inline-flex rounded-full bg-brand-700 px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-800"
-                >
-                  לפתיחת עמוד המחלקה
-                </Link>
-              </div>
-              <div className="border-t border-brand-100 bg-gradient-to-br from-brand-50 via-white to-amber-50/60 p-5 md:p-7 lg:border-r lg:border-t-0">
-                <p className="text-sm font-black text-ink">מה רואים בפרופיל מלא?</p>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl border border-white bg-white/86 px-4 py-4 shadow-sm">
-                    <p className="text-xs font-bold text-slate-500">נתונים אובייקטיביים</p>
-                    <p className="mt-2 text-2xl font-black text-ink">
-                      {showcaseDepartment.residentsCount ?? 18}
-                    </p>
-                    <p className="mt-1 text-xs text-slate-500">מתמחים פעילים</p>
-                  </div>
-                  <div className="rounded-2xl border border-white bg-white/86 px-4 py-4 shadow-sm">
-                    <p className="text-xs font-bold text-slate-500">מעבר שלב א׳</p>
-                    <p className="mt-2 text-2xl font-black text-ink">
-                      {showcaseDepartment.shlavAlephPassRate ?? 82}%
-                    </p>
-                    <p className="mt-1 text-xs text-slate-500">נתון להשוואה מהירה</p>
-                  </div>
-                  <div className="rounded-2xl border border-white bg-white/86 px-4 py-4 shadow-sm sm:col-span-2">
-                    <p className="text-xs font-bold text-slate-500">מה המחלקה מחפשת</p>
-                    <p className="mt-2 text-sm font-semibold leading-7 text-slate-700">
-                      {showcaseDepartment.candidatePreferences ??
-                        "מועמדים עם אחריות קלינית, סקרנות, עבודת צוות ועניין במחקר."}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        ) : null}
-      </HomeSection>
-
-      <HomeSection tone="soft" className="space-y-6">
-        <SectionHeading
-          eyebrow="פתוח עכשיו"
-          title="מה פתוח עכשיו, ומה הסיכוי שלך להיכנס"
-          description="תקנים פתוחים, מועדי ועדה ומה באמת חשוב למחלקה"
-        />
-        <div className="overflow-hidden rounded-[1.5rem] border border-brand-100 bg-white shadow-sm">
-          {data.featuredOpenings.map((opening, index) => {
-            const status = openingStatusLabel(opening.status);
-            const relevantDate = opening.applicationDeadline ?? opening.committeeDate;
-
-            return (
-              <div
-                key={opening.id}
-                className={`grid gap-3 px-4 py-4 md:grid-cols-[1.1fr_1.2fr_0.9fr_auto] md:items-center ${
-                  index > 0 ? "border-t border-slate-100" : ""
-                }`}
-              >
-                <div>
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge tone={status.tone}>{status.label}</Badge>
-                    <Badge tone="default">{openingTypeLabel(opening.openingType)}</Badge>
-                  </div>
-                  <p className="mt-2 text-sm font-black text-ink">
-                    {opening.department.specialty.name}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-ink">{opening.department.institution.name}</p>
-                  <p className="mt-1 text-xs font-semibold text-slate-500">
-                    {opening.department.name}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-slate-500">
-                    {opening.applicationDeadline ? "דדליין" : "מועד ועדה צפוי"}
-                  </p>
-                  <p className="mt-1 text-sm font-bold text-ink">{formatDate(relevantDate)}</p>
-                </div>
-                <div className="flex flex-wrap gap-2 md:justify-end">
-                  <Link
-                    href={`/openings/${opening.id}/apply`}
-                    className="rounded-full bg-brand-700 px-4 py-2 text-xs font-bold text-white transition hover:bg-brand-800"
-                  >
-                    להגשת מועמדות
-                  </Link>
-                  <Link
-                    href={`/openings/${opening.id}`}
-                    className="rounded-full border border-brand-200 px-4 py-2 text-xs font-bold text-brand-800 transition hover:bg-brand-50"
-                  >
-                    פרטי התקן
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionHeading
+            eyebrow="אמון ושקיפות"
+            title="איך נאסף המידע?"
+            description="המידע באתר משלב מקורות רשמיים יחד עם ניסיון מהשטח כדי לעזור לקבל החלטות מושכלות."
+          />
         </div>
-      </HomeSection>
-
-      <HomeSection tone="contrast" className="space-y-6">
-        <SectionHeading
-          eyebrow="מהשטח"
-          title="מה באמת קורה בפנים"
-          description="סקירה מהירה שמקלה להשוות בין מחלקות לפי הוראה, עומס, מחקר, זמינות בכירים והמלצה כוללת"
-        />
-        <div className="grid gap-4 xl:grid-cols-2">
-          {data.latestReviews.map((review) => (
-            <HomeReviewComparisonCard key={review.id} review={review} />
-          ))}
-        </div>
-      </HomeSection>
-
-      <HomeSection tone="soft" className="space-y-6">
-        <SectionHeading eyebrow="איך משתמשים" title="3 צעדים להחלטה טובה יותר" />
-        <div className="grid gap-4 md:grid-cols-3">
-          {decisionSteps.map((step, index) => (
-            <Card key={step.title} className="bg-white py-5">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-900">
-                <step.icon className="h-5 w-5" />
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {dataCollectionCards.map((card) => (
+            <Card key={card.title} className="bg-white py-5">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-2xl">
+                {card.icon}
               </span>
-              <p className="text-sm font-semibold text-brand-600">צעד {index + 1}</p>
-              <h3 className="mt-2 text-xl font-bold text-ink">{step.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-700">{step.description}</p>
+              <h3 className="mt-4 text-lg font-bold text-ink">{card.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-700">{card.description}</p>
             </Card>
           ))}
         </div>
-      </HomeSection>
-
-      <section className="rounded-[2rem] border border-brand-100 bg-gradient-to-l from-brand-900 via-brand-800 to-brand-700 p-5 text-white shadow-panel md:p-6">
-        <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold text-brand-100">ממשיכים מכאן</p>
-            <h2 className="mt-2 text-3xl font-bold">יש לך כמה כיוונים בראש?</h2>
-            <p className="mt-3 text-sm leading-7 text-brand-50 md:text-base">
-              תתחיל בחיפוש. תוך דקה כבר רואים תמונה הרבה יותר ברורה
-            </p>
-          </div>
+        <p className="mx-auto max-w-3xl rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 text-center text-sm leading-7 text-slate-600">
+          המידע באתר נאסף ממקורות ציבוריים ומשיתופי קהילה מאומתים. ייתכנו פערים או שינויים
+          בין פרסומים רשמיים לעדכונים בשטח.
+        </p>
+        <div className="flex justify-center">
           <Link
             href="/departments"
-            className="inline-flex min-h-14 items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-900 transition hover:bg-brand-50"
+            className="inline-flex min-h-14 items-center justify-center rounded-full bg-brand-700 px-7 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
           >
-            חפש מחלקה
+            התחל להשוות מחלקות
           </Link>
         </div>
-      </section>
-
-      <HomeStickyActions departments={reviewContext.departments} />
+      </HomeSection>
     </PageShell>
   );
 }

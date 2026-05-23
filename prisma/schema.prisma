@@ -74,6 +74,7 @@ enum UploadedFileCategory {
   APPLICATION_SUPPORTING
   REVIEW_VERIFICATION_PROOF
   REPRESENTATIVE_REQUEST_PROOF
+  USER_VERIFICATION_PROOF
 }
 
 enum DepartmentScrapeRevisionStatus {
@@ -175,7 +176,16 @@ model User {
   roleKey                     RoleKey                 @default(STUDENT) @map("role_key")
   isApprovedPublisher         Boolean                 @default(false) @map("is_approved_publisher")
   emailVerified               Boolean                 @default(false) @map("email_verified")
+  emailVerifiedAt             DateTime?               @map("email_verified_at")
+  emailVerificationToken      String?                 @unique @map("email_verification_token")
+  emailVerificationExpiresAt  DateTime?               @map("email_verification_expires_at")
+  roleStatus                  String?                 @map("role_status")
   verificationStatus          VerificationStatus      @default(PENDING_EMAIL_VERIFICATION) @map("verification_status")
+  verificationProofUrl        String?                 @map("verification_proof_url")
+  verificationSubmittedAt     DateTime?               @map("verification_submitted_at")
+  verificationRejectionReason String?                 @map("verification_rejection_reason")
+  marketingConsent            Boolean                 @default(false) @map("marketing_consent")
+  marketingConsentAt          DateTime?               @map("marketing_consent_at")
   verificationToken           String?                 @unique @map("verification_token")
   tokenExpiry                 DateTime?               @map("token_expiry")
   verifiedByAdminId           String?                 @map("verified_by_admin_id")
@@ -213,6 +223,7 @@ model User {
   @@index([roleKey])
   @@index([isApprovedPublisher])
   @@index([verificationStatus])
+  @@index([roleStatus])
 }
 
 model Institution {
@@ -222,6 +233,8 @@ model Institution {
   type              InstitutionType
   city              String?
   region            String?
+  latitude          Float?
+  longitude         Float?
   summary           String
   websiteUrl        String?            @map("website_url")
   coverImageUrl     String?            @map("cover_image_url")

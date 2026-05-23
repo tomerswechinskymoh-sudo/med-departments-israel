@@ -1,5 +1,46 @@
 import type { SpecialtyMetricResult } from "@/lib/specialty-metrics";
 
+function parseFirstNumber(value: string) {
+  const match = value.match(/\d+(?:[.,]\d+)?/);
+  if (!match) {
+    return null;
+  }
+
+  const parsed = Number(match[0].replace(",", "."));
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function GenderDonut({ value }: { value: string }) {
+  const women = Math.max(0, Math.min(100, parseFirstNumber(value) ?? 0));
+  const men = Math.max(0, 100 - women);
+
+  return (
+    <div className="mt-3 flex items-center gap-4">
+      <div
+        className="grid h-20 w-20 shrink-0 place-items-center rounded-full"
+        style={{
+          background: `conic-gradient(#0f766e 0 ${women}%, #dbeafe ${women}% 100%)`
+        }}
+        aria-label={`נשים ${women}%, גברים ${men}%`}
+      >
+        <div className="grid h-12 w-12 place-items-center rounded-full bg-white text-sm font-black text-ink">
+          {Math.round(women)}%
+        </div>
+      </div>
+      <div className="space-y-2 text-xs font-bold text-slate-600">
+        <div className="flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-full bg-teal-700" />
+          <span>נשים {Math.round(women)}%</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="h-2.5 w-2.5 rounded-full bg-blue-100" />
+          <span>גברים {Math.round(men)}%</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function SpecialtyDashboardMetrics({
   specialtyName,
   metrics,
@@ -43,25 +84,29 @@ export function SpecialtyDashboardMetrics({
         {metrics.map((metric, index) => (
           <div
             key={metric.key}
-            className={`rounded-[1.25rem] border p-4 ${
+            className={`flex min-h-[9rem] flex-col rounded-[1.25rem] border p-4 ${
               index === 0
                 ? "border-brand-200 bg-gradient-to-l from-brand-50 to-white"
                 : "border-slate-100 bg-slate-50/70"
             }`}
           >
             <p className="text-xs font-bold text-slate-500">{metric.label}</p>
-            <p className={`mt-2 text-2xl font-black ${metric.isPlaceholder ? "text-slate-400" : "text-ink"}`}>
-              {metric.value}
-            </p>
+            {metric.key === "genderDistribution" && !metric.isPlaceholder ? (
+              <GenderDonut value={metric.value} />
+            ) : (
+              <p className={`mt-2 text-2xl font-black ${metric.isPlaceholder ? "text-slate-400" : "text-ink"}`}>
+                {metric.value}
+              </p>
+            )}
             <p className="mt-2 text-xs leading-6 text-slate-600">{metric.description}</p>
           </div>
         ))}
         {salaryAssumption ? (
-          <div className="rounded-[1.25rem] border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-4">
+          <div className="flex min-h-[9rem] flex-col rounded-[1.25rem] border border-amber-200 bg-amber-50/75 p-4">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-xs font-bold text-slate-500">שכר בסיס משוער</p>
-                <p className="mt-2 text-sm font-black text-ink">פער לטובת פריפריה</p>
+                <p className="mt-2 text-lg font-black text-ink">פער לטובת פריפריה</p>
               </div>
               <span className="rounded-full bg-white px-3 py-1 text-sm font-black text-amber-900">
                 +{salaryGapPercent}%
@@ -74,7 +119,7 @@ export function SpecialtyDashboardMetrics({
                   <span>מרכז</span>
                   <span>₪{salaryAssumption.centerMonthlySalary.toLocaleString("he-IL")}</span>
                 </div>
-                <div className="mt-1 h-2 overflow-hidden rounded-full bg-white">
+                <div className="mt-1 h-2.5 overflow-hidden rounded-full bg-white">
                   <div
                     className="h-full rounded-full bg-slate-400"
                     style={{
@@ -88,7 +133,7 @@ export function SpecialtyDashboardMetrics({
                   <span>פריפריה</span>
                   <span>₪{salaryAssumption.peripheryMonthlySalary.toLocaleString("he-IL")}</span>
                 </div>
-                <div className="mt-1 h-2 overflow-hidden rounded-full bg-white">
+                <div className="mt-1 h-2.5 overflow-hidden rounded-full bg-white">
                   <div
                     className="h-full rounded-full bg-amber-500"
                     style={{
@@ -99,8 +144,8 @@ export function SpecialtyDashboardMetrics({
               </div>
             </div>
 
-            <p className="mt-3 text-xs leading-6 text-slate-600">
-              פער: +{salaryGapPercent}% · נתון משוער המבוסס על הבדלי שכר מקובלים
+            <p className="mt-auto pt-3 text-xs leading-6 text-slate-600">
+              נתון משוער המבוסס על הבדלי שכר מקובלים
             </p>
           </div>
         ) : null}

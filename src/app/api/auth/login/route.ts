@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { authenticateUser, setSessionCookie } from "@/lib/auth";
+import { authenticateUserWithStatus, setSessionCookie } from "@/lib/auth";
 import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin } from "@/lib/security";
 import { loginSchema } from "@/lib/validation";
@@ -25,12 +25,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: invalidCredentialsMessage }, { status: 400 });
   }
 
-  const session = await authenticateUser(parsed.data.email, parsed.data.password);
+  const result = await authenticateUserWithStatus(parsed.data.email, parsed.data.password);
 
-  if (!session) {
+  if (result.status === "email_unverified") {
+    return NextResponse.json(
+      {
+        error: "יש לאמת את כתובת המייל לפני התחברות",
+        code: "EMAIL_UNVERIFIED"
+      },
+      { status: 403 }
+    );
+  }
+
+  if (result.status !== "ok") {
     return NextResponse.json({ error: invalidCredentialsMessage }, { status: 401 });
   }
 
-  await setSessionCookie(session);
+  await setSessionCookie(result.session);
   return NextResponse.json({ ok: true });
 }

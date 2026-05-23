@@ -1,11 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getSession } from "@/lib/auth";
+import { getDepartmentOptions } from "@/lib/queries";
+import { ExperienceCta } from "@/components/experience/experience-cta";
 import { LogoutButton } from "@/components/layout/logout-button";
 
 export async function SiteHeader() {
   const session = await getSession();
   const isAdmin = session?.role === "admin";
+  const reviewDepartments = isAdmin ? [] : await getDepartmentOptions();
   const navItems = isAdmin
     ? [{ href: "/admin", label: "אדמין" }]
     : [
@@ -56,12 +59,11 @@ export async function SiteHeader() {
 
         <div className="flex items-center gap-3">
           {!isAdmin ? (
-            <Link
-              href="/reviews/new"
-              className="hidden rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-4 py-2 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-200/45 transition hover:-translate-y-0.5 md:inline-flex"
-            >
-              רוצה לספר על החוויה שלך?
-            </Link>
+            <ExperienceCta
+              departments={reviewDepartments}
+              className="hidden md:block"
+              buttonClassName="inline-flex rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-4 py-2 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-200/45 transition hover:-translate-y-0.5"
+            />
           ) : null}
           {session ? (
             <>
