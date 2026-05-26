@@ -62,6 +62,13 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
     await prisma.openingAcceptanceCriteria.deleteMany();
     await prisma.residencyOpening.deleteMany();
     await prisma.departmentChangeRequest.deleteMany();
+    await prisma.departmentResearchMetric.deleteMany();
+    await prisma.departmentYearlyMetric.deleteMany();
+    await prisma.departmentMetric.deleteMany();
+    await prisma.specialtyYearlyMetric.deleteMany();
+    await prisma.specialtyMetric.deleteMany();
+    await prisma.dataImportRowLog.deleteMany();
+    await prisma.openAlexAliasMapping.deleteMany();
     await prisma.departmentExternalMetric.deleteMany();
     await prisma.departmentExternalPerson.deleteMany();
     await prisma.dataImportRecord.deleteMany();

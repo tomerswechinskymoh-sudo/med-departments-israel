@@ -20,6 +20,7 @@ import {
   defaultSpecialtyDashboardMetrics,
   normalizeMetricKeys
 } from "@/lib/specialty-metrics";
+import { getOpenAlexMappingStatus } from "@/lib/server/openalex-research";
 import { average, formatDepartmentDisplayName } from "@/lib/utils";
 import { resolveCanonicalDepartmentSlug } from "@/server/department-catalog";
 
@@ -953,6 +954,15 @@ export async function getDepartmentPageData(
           rankingYear: true,
           approved: true
         }
+      },
+      researchMetrics: {
+        where: {
+          source: "OpenAlex"
+        },
+        orderBy: {
+          year: "desc"
+        },
+        take: 5
       }
     }
   });
@@ -1512,6 +1522,9 @@ export async function getAdminDashboardData() {
     specialtyDashboardConfigs,
     dunsImportBatches,
     dataImportJobs,
+    masterImportRowLogs,
+    researchMetrics,
+    openAlexMappingStatus,
     auditLogs
   ] = await Promise.all([
     prisma.$transaction([
@@ -1821,6 +1834,27 @@ export async function getAdminDashboardData() {
       },
       take: 8
     }),
+    prisma.dataImportRowLog.findMany({
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 24
+    }),
+    prisma.departmentResearchMetric.findMany({
+      include: {
+        department: {
+          include: {
+            institution: true,
+            specialty: true
+          }
+        }
+      },
+      orderBy: {
+        lastUpdated: "desc"
+      },
+      take: 16
+    }),
+    getOpenAlexMappingStatus(prisma, 16),
     prisma.auditLog.findMany({
       include: {
         actor: true
@@ -1861,6 +1895,9 @@ export async function getAdminDashboardData() {
     specialtyDashboardConfigs,
     dunsImportBatches,
     dataImportJobs,
+    masterImportRowLogs,
+    researchMetrics,
+    openAlexMappingStatus,
     auditLogs
   };
 }

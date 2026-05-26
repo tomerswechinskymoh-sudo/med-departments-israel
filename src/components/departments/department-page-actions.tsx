@@ -21,10 +21,25 @@ type ScrapeRevision = {
   proposedContactPhone?: string | null;
   proposedDescription?: string | null;
   proposedSeniorPhysiciansCount?: number | null;
+  proposedBedsCount?: number | null;
+  proposedResearchActivity?: string | null;
   proposedApplicationUrl?: string | null;
   suggestedEmailsJson?: unknown;
   extractedJson?: unknown;
   createdAt: string;
+};
+
+type CurrentDepartmentSnapshot = {
+  about?: string | null;
+  contactName?: string | null;
+  publicContactEmail?: string | null;
+  publicContactPhone?: string | null;
+  applicationUrl?: string | null;
+  metrics?: Array<{
+    metricKey: string;
+    value?: number | null;
+    rawValue?: string | null;
+  }>;
 };
 
 const requesterRoleLabels = [
@@ -101,6 +116,7 @@ export function DepartmentPageActions({
   const [loading, setLoading] = useState(false);
   const [scrapeUrl, setScrapeUrl] = useState("");
   const [revisions, setRevisions] = useState<ScrapeRevision[]>([]);
+  const [currentSnapshot, setCurrentSnapshot] = useState<CurrentDepartmentSnapshot | null>(null);
   const [selectedRevisionId, setSelectedRevisionId] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState<string | null>(null);
   const revisionFormRef = useRef<HTMLFormElement | null>(null);
@@ -126,8 +142,12 @@ export function DepartmentPageActions({
     const response = await fetch(`/api/admin/departments/${departmentId}/scrape-revisions`);
     if (!response.ok) return;
 
-    const data = (await response.json()) as { revisions: ScrapeRevision[] };
+    const data = (await response.json()) as {
+      revisions: ScrapeRevision[];
+      current?: CurrentDepartmentSnapshot | null;
+    };
     setRevisions(data.revisions);
+    setCurrentSnapshot(data.current ?? null);
     setSelectedRevisionId(data.revisions[0]?.id ?? null);
   }
 
@@ -250,6 +270,25 @@ export function DepartmentPageActions({
       input.dispatchEvent(new Event("input", { bubbles: true }));
       input.focus();
     }
+  }
+
+  function currentMetric(metricKey: string) {
+    const metric = currentSnapshot?.metrics?.find((item) => item.metricKey === metricKey);
+    if (!metric) return "";
+    return metric.rawValue ?? (typeof metric.value === "number" ? String(metric.value) : "");
+  }
+
+  function comparisonRows(revision: ScrapeRevision) {
+    return [
+      ["תיאור", currentSnapshot?.about, revision.proposedDescription],
+      ["איש קשר", currentSnapshot?.contactName, revision.proposedContactName],
+      ["אימייל ציבורי", currentSnapshot?.publicContactEmail, revision.proposedContactEmail ?? revision.proposedDepartmentHeadEmail],
+      ["טלפון ציבורי", currentSnapshot?.publicContactPhone, revision.proposedContactPhone ?? revision.proposedDepartmentHeadPhone],
+      ["מספר בכירים", currentMetric("seniorPhysiciansCount"), revision.proposedSeniorPhysiciansCount?.toString()],
+      ["מספר מיטות", currentMetric("bedsCount"), revision.proposedBedsCount?.toString()],
+      ["פעילות מחקרית", currentMetric("researchActivityText"), revision.proposedResearchActivity],
+      ["קישור הגשה", currentSnapshot?.applicationUrl, revision.proposedApplicationUrl]
+    ].filter(([, current, proposed]) => cleanInputValue(current) || cleanInputValue(proposed));
   }
 
   function normalizeRevisionEmailInputs(form: HTMLFormElement) {
@@ -382,6 +421,24 @@ export function DepartmentPageActions({
                   void patchRevision("update", new FormData(event.currentTarget));
                 }}
               >
+                {comparisonRows(selectedRevision).length > 0 ? (
+                  <div className="overflow-hidden rounded-[1.25rem] border border-slate-100 bg-slate-50">
+                    <div className="grid grid-cols-[0.8fr_1fr_1fr] gap-2 bg-white px-3 py-2 text-xs font-black text-slate-600">
+                      <span>שדה</span>
+                      <span>קיים</span>
+                      <span>מוצע</span>
+                    </div>
+                    <div className="divide-y divide-slate-100 text-xs text-slate-700">
+                      {comparisonRows(selectedRevision).map(([label, current, proposed]) => (
+                        <div key={label} className="grid grid-cols-[0.8fr_1fr_1fr] gap-2 px-3 py-2">
+                          <span className="font-bold text-ink">{label}</span>
+                          <span className="line-clamp-3">{cleanInputValue(current) || "אין"}</span>
+                          <span className="line-clamp-3 font-bold text-brand-900">{cleanInputValue(proposed) || "אין"}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
                 <div className="rounded-[1.25rem] border border-amber-200 bg-amber-50/75 p-4">
                   <p className="text-sm font-bold text-amber-950">אימיילים שנמצאו בעמוד</p>
                   <p className="mt-1 text-xs leading-6 text-amber-900/80">
@@ -443,9 +500,11 @@ export function DepartmentPageActions({
                   <input name="proposedContactEmail" defaultValue={cleanInputValue(selectedRevision.proposedContactEmail)} placeholder="אימייל איש קשר" className="rounded-2xl border border-brand-100 px-4 py-3 text-sm" />
                   <input name="proposedContactPhone" defaultValue={cleanInputValue(selectedRevision.proposedContactPhone)} placeholder="טלפון איש קשר" className="rounded-2xl border border-brand-100 px-4 py-3 text-sm" />
                   <input name="proposedSeniorPhysiciansCount" defaultValue={selectedRevision.proposedSeniorPhysiciansCount ?? ""} placeholder="מספר בכירים לפי האתר" className="rounded-2xl border border-brand-100 px-4 py-3 text-sm" />
+                  <input name="proposedBedsCount" defaultValue={selectedRevision.proposedBedsCount ?? ""} placeholder="מספר מיטות אם נמצא" className="rounded-2xl border border-brand-100 px-4 py-3 text-sm" />
                   <input name="proposedApplicationUrl" defaultValue={cleanInputValue(selectedRevision.proposedApplicationUrl)} placeholder="קישור הגשה אם נמצא" className="rounded-2xl border border-brand-100 px-4 py-3 text-sm md:col-span-2" />
                 </div>
                 <textarea name="proposedDescription" defaultValue={cleanInputValue(selectedRevision.proposedDescription)} rows={5} placeholder="תיאור מוצע בעברית" className="rounded-2xl border border-brand-100 px-4 py-3 text-sm" />
+                <textarea name="proposedResearchActivity" defaultValue={cleanInputValue(selectedRevision.proposedResearchActivity)} rows={4} placeholder="פעילות מחקרית / אקדמית לפי האתר" className="rounded-2xl border border-brand-100 px-4 py-3 text-sm" />
                 <textarea name="adminNotes" defaultValue={cleanInputValue(selectedRevision.adminNotes)} rows={3} placeholder="הערות מנהל" className="rounded-2xl border border-brand-100 px-4 py-3 text-sm" />
                 <div className="flex flex-wrap gap-2">
                   <button type="submit" disabled={loading} className="rounded-full border border-brand-200 px-4 py-2 text-sm font-bold text-brand-800">שמירת עריכה</button>

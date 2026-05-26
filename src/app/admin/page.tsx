@@ -9,6 +9,7 @@ import {
 } from "@/lib/queries";
 import { DepartmentChangeReviewForm } from "@/components/admin/department-change-review-form";
 import { AdminDepartmentDirectory } from "@/components/admin/admin-department-directory";
+import { DataRefreshPanels } from "@/components/admin/data-refresh-panels";
 import { DepartmentManagementForm } from "@/components/admin/department-management-form";
 import { DunsImportPanel } from "@/components/admin/duns-import-panel";
 import { InstitutionManagementForm } from "@/components/admin/hospital-management-form";
@@ -656,6 +657,45 @@ export default async function AdminPage() {
                   normalizedSpecialtyId: record.normalizedSpecialtyId,
                   normalizedDepartmentId: record.normalizedDepartmentId
                 }))
+              }))}
+            />
+          </div>
+        </Card>
+
+        <Card className="xl:col-span-2">
+          <h2 className="text-xl font-bold text-ink">ייבוא CSV, ריענון אתרים ו-OpenAlex</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">
+            ייבוא MASTER_Spec ו-Master_Dept מתבצע דרך הפקודה npm run import:master-csv.
+            מכאן אפשר לראות לוגים, לפתוח דראפטים מריענון אתרים ולעדכן מדדי מחקר משוערים.
+          </p>
+          <div className="mt-5">
+            <DataRefreshPanels
+              rowLogs={data.masterImportRowLogs.map((log) => ({
+                id: log.id,
+                sourceFile: log.sourceFile,
+                target: log.target,
+                rowNumber: log.rowNumber,
+                status: log.status,
+                warningsJson: log.warningsJson,
+                errorsJson: log.errorsJson
+              }))}
+              mappingRows={data.openAlexMappingStatus}
+              researchMetrics={data.researchMetrics.map((metric) => ({
+                id: metric.id,
+                year: metric.year,
+                publicationsCount: metric.publicationsCount,
+                confidenceScore: metric.confidenceScore,
+                needsMapping: metric.needsMapping,
+                isAmbiguous: metric.isAmbiguous,
+                department: {
+                  name: metric.department.name,
+                  institution: {
+                    name: metric.department.institution.name
+                  },
+                  specialty: {
+                    name: metric.department.specialty.name
+                  }
+                }
               }))}
             />
           </div>

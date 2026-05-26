@@ -22,11 +22,11 @@ import {
   resolveInstitutionRegion,
   reviewerTypeLabel
 } from "@/lib/queries";
-import { getDepartmentHref } from "@/lib/utils";
+import { formatDate, getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
-type MetricSource = "moh" | "hospital" | "duns100" | "demo" | "missing";
+type MetricSource = "moh" | "hospital" | "duns100" | "openalex" | "demo" | "missing";
 
 function EmptyValue({ text = "אין עדיין נתונים" }: { text?: string }) {
   return <span className="text-slate-400">{text}</span>;
@@ -45,6 +45,10 @@ function SourceBadge({ source }: { source: MetricSource }) {
     duns100: {
       label: "DUNS100",
       className: "border-slate-200 bg-white text-slate-700"
+    },
+    openalex: {
+      label: "OpenAlex משוער",
+      className: "border-cyan-100 bg-cyan-50 text-cyan-800"
     },
     demo: {
       label: "דמו",
@@ -260,6 +264,51 @@ function ArrayPublicationMetrics({
           ) : null}
         </div>
       )}
+    </div>
+  );
+}
+
+function EstimatedOpenAlexResearch({
+  metrics
+}: {
+  metrics: Array<{
+    year: number;
+    publicationsCount: number | null;
+    confidenceScore: number | null;
+    needsMapping: boolean;
+    isAmbiguous: boolean;
+  }>;
+}) {
+  const availableMetrics = metrics.filter((metric) => !metric.needsMapping);
+  const latest = availableMetrics[0];
+
+  if (!latest) {
+    return null;
+  }
+
+  return (
+    <div className="rounded-2xl border border-cyan-100 bg-cyan-50/60 px-4 py-4">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <p className="text-sm font-black text-ink">פעילות מחקרית משוערת</p>
+        <SourceBadge source="openalex" />
+      </div>
+      <p className="mt-2 text-2xl font-black text-ink">
+        {latest.publicationsCount ?? 0}
+        <span className="me-2 text-sm font-bold text-slate-600">פרסומים בשנת {latest.year}</span>
+      </p>
+      <p className="mt-2 text-xs leading-5 text-slate-600">
+        הערכה לפי שאילתת OpenAlex, לא ספירה רשמית של המחלקה.
+        {latest.isAmbiguous || (latest.confidenceScore ?? 0) < 0.55 ? " רמת הביטחון נמוכה ויש להתייחס בזהירות." : ""}
+      </p>
+      {availableMetrics.length > 1 ? (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {availableMetrics.slice(0, 5).map((metric) => (
+            <span key={metric.year} className="rounded-full bg-white px-3 py-1.5 text-xs font-bold text-cyan-900">
+              {metric.year}: {metric.publicationsCount ?? 0}
+            </span>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -566,6 +615,7 @@ export default async function DepartmentDetailsPage({
   const duns100Physicians = profileExternalPeople.filter(
     (person) => person.sourceName === "DUNS100" && person.approved
   );
+  const openAlexResearchMetrics = department.researchMetrics.filter((metric) => metric.source === "OpenAlex");
   const profileHeads = isMedicalArrayProfile
     ? arrayDepartments.flatMap((arrayDepartment) =>
         arrayDepartment.heads.map((head) => ({
@@ -648,6 +698,11 @@ export default async function DepartmentDetailsPage({
                   אתר: <EmptyValue />
                 </p>
               )}
+              {department.applicationUrl ? (
+                <a href={department.applicationUrl} className="block font-semibold text-brand-800">
+                  קישור להגשת מועמדות
+                </a>
+              ) : null}
               {contactEmails.length > 0 ? (
                 <p className="leading-7">אימייל: {contactEmails.join(", ")}</p>
               ) : (
@@ -679,6 +734,13 @@ export default async function DepartmentDetailsPage({
                 `עמוד ה${profileTerm} פעיל ומוכן לאיסוף מידע. כשיתווספו נתונים רשמיים, הם יוצגו כאן לצד ביקורות ותקנים.`
               )}
             </p>
+            {department.dataSourceNotes || department.dataLastUpdated ? (
+              <p className="mt-3 rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-xs leading-6 text-slate-600">
+                מקור/עדכון נתונים: {department.dataSourceNotes ?? "מקור CSV"}
+                {" · "}
+                עודכן: {formatDate(department.dataLastUpdated)}
+              </p>
+            ) : null}
             {!hasOfficialDescription ? (
               <div className="mt-4 rounded-lg border border-brand-100 bg-brand-50/70 px-4 py-3 text-sm leading-7 text-brand-900">
                 עדיין אין מידע רשמי מלא מהמחלקה. אפשר כבר לשמור את העמוד, לשתף חוויה ולחזור
@@ -766,6 +828,12 @@ export default async function DepartmentDetailsPage({
                 />
               ) : null}
             </div>
+
+            {openAlexResearchMetrics.length > 0 ? (
+              <div className="mt-5">
+                <EstimatedOpenAlexResearch metrics={openAlexResearchMetrics} />
+              </div>
+            ) : null}
 
             {isMedicalArrayProfile ? (
               <div className="mt-5 grid gap-3 lg:grid-cols-2">

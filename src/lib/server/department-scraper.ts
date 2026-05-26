@@ -10,9 +10,12 @@ type ScrapeExtraction = {
   contactEmail: string | null;
   contactPhone: string | null;
   seniorPhysiciansCount: number | null;
+  bedsCount: number | null;
   subSpecialties: string[] | null;
   applicationUrl: string | null;
+  researchActivity: string | null;
   description: string | null;
+  warnings: string[] | null;
 };
 
 export type ScrapeDiagnostics = {
@@ -515,9 +518,14 @@ function normalizeExtraction(value: Record<string, unknown>): ScrapeExtraction {
     contactEmail: nullableString(value.contactEmail),
     contactPhone: nullableString(value.contactPhone),
     seniorPhysiciansCount: nullableNumber(value.seniorPhysiciansCount),
+    bedsCount: nullableNumber(value.bedsCount),
     subSpecialties,
     applicationUrl: nullableString(value.applicationUrl),
-    description: nullableString(value.description)
+    researchActivity: nullableString(value.researchActivity),
+    description: nullableString(value.description),
+    warnings: Array.isArray(value.warnings)
+      ? value.warnings.map((item) => nullableString(item)).filter((item): item is string => Boolean(item))
+      : null
   };
 }
 
@@ -569,8 +577,11 @@ export async function extractDepartmentScrape(input: {
               "contactEmail",
               "contactPhone",
               "seniorPhysiciansCount",
+              "bedsCount",
               "subSpecialties",
               "applicationUrl",
+              "researchActivity",
+              "warnings",
               "description"
             ],
             rawText: input.rawText

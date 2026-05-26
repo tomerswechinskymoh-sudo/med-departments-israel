@@ -48,6 +48,8 @@ const revisionPatchSchema = z.object({
   proposedContactPhone: z.string().trim().max(60).optional().nullable(),
   proposedDescription: z.string().trim().max(1600).optional().nullable(),
   proposedSeniorPhysiciansCount: z.coerce.number().int().min(0).max(500).optional().nullable(),
+  proposedBedsCount: z.coerce.number().int().min(0).max(5000).optional().nullable(),
+  proposedResearchActivity: z.string().trim().max(1600).optional().nullable(),
   proposedApplicationUrl: z.string().trim().url().max(1000).optional().nullable().or(z.literal("")),
   adminNotes: z.string().trim().max(1000).optional().nullable()
 });
@@ -69,9 +71,50 @@ function patchData(parsed: z.infer<typeof revisionPatchSchema>) {
     proposedContactPhone: cleanString(parsed.proposedContactPhone),
     proposedDescription: cleanString(parsed.proposedDescription),
     proposedSeniorPhysiciansCount: parsed.proposedSeniorPhysiciansCount ?? null,
+    proposedBedsCount: parsed.proposedBedsCount ?? null,
+    proposedResearchActivity: cleanString(parsed.proposedResearchActivity),
     proposedApplicationUrl: cleanString(parsed.proposedApplicationUrl),
     adminNotes: cleanString(parsed.adminNotes)
   };
+}
+
+async function upsertApprovedMetric(
+  tx: Prisma.TransactionClient,
+  input: {
+    departmentId: string;
+    metricKey: string;
+    label: string;
+    value?: number | null;
+    rawValue?: string | null;
+    sourceUrl: string;
+  }
+) {
+  if (input.value === null && !input.rawValue) return;
+
+  await tx.departmentMetric.upsert({
+    where: {
+      departmentId_metricKey: {
+        departmentId: input.departmentId,
+        metricKey: input.metricKey
+      }
+    },
+    create: {
+      departmentId: input.departmentId,
+      metricKey: input.metricKey,
+      label: input.label,
+      value: input.value ?? null,
+      rawValue: input.rawValue ?? null,
+      sourceNotes: `סריקת אתר מאושרת: ${input.sourceUrl}`,
+      lastUpdated: new Date()
+    },
+    update: {
+      label: input.label,
+      value: input.value ?? null,
+      rawValue: input.rawValue ?? null,
+      sourceNotes: `סריקת אתר מאושרת: ${input.sourceUrl}`,
+      lastUpdated: new Date()
+    }
+  });
 }
 
 export async function PATCH(
@@ -143,6 +186,7 @@ export async function PATCH(
       where: { id: existing.departmentId },
       data: {
         about: approved.proposedDescription ?? existing.department.about,
+        applicationUrl: approved.proposedApplicationUrl ?? existing.department.applicationUrl,
         contactName: approved.proposedContactName ?? existing.department.contactName,
         publicContactEmail:
           approved.proposedContactEmail ??
@@ -153,6 +197,28 @@ export async function PATCH(
           approved.proposedDepartmentHeadPhone ??
           existing.department.publicContactPhone
       }
+    });
+
+    await upsertApprovedMetric(tx, {
+      departmentId: existing.departmentId,
+      metricKey: "seniorPhysiciansCount",
+      label: "מספר בכירים",
+      value: approved.proposedSeniorPhysiciansCount,
+      sourceUrl: approved.sourceUrl
+    });
+    await upsertApprovedMetric(tx, {
+      departmentId: existing.departmentId,
+      metricKey: "bedsCount",
+      label: "מספר מיטות",
+      value: approved.proposedBedsCount,
+      sourceUrl: approved.sourceUrl
+    });
+    await upsertApprovedMetric(tx, {
+      departmentId: existing.departmentId,
+      metricKey: "researchActivityText",
+      label: "פעילות מחקרית",
+      rawValue: approved.proposedResearchActivity,
+      sourceUrl: approved.sourceUrl
     });
 
     if (approved.proposedDepartmentHeadName) {

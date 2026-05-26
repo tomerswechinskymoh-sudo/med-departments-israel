@@ -256,10 +256,50 @@ model Specialty {
   slug                    String                    @unique
   description             String
   groupAsArray            Boolean                   @default(false) @map("group_as_array")
+  dataSourceNotes         String?                   @map("data_source_notes")
+  dataLastUpdated         DateTime?                 @map("data_last_updated")
   departments             Department[]
   medicalArrays           MedicalArray[]
   dashboardConfig         SpecialtyDashboardConfig?
+  metrics                 SpecialtyMetric[]
+  yearlyMetrics           SpecialtyYearlyMetric[]
   dunsPhysicianRecords    DunsPhysicianRecord[] @relation("DunsPhysicianRecordSpecialty")
+}
+
+model SpecialtyMetric {
+  id              String    @id @default(cuid())
+  specialtyId     String    @map("specialty_id")
+  metricKey       String    @map("metric_key")
+  label           String
+  value           Float?
+  rawValue        String?   @map("raw_value")
+  unit            String?
+  sourceNotes     String?   @map("source_notes")
+  lastUpdated     DateTime? @map("last_updated")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+  specialty       Specialty @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+
+  @@unique([specialtyId, metricKey])
+  @@index([metricKey])
+}
+
+model SpecialtyYearlyMetric {
+  id              String    @id @default(cuid())
+  specialtyId     String    @map("specialty_id")
+  metricKey       String    @map("metric_key")
+  year            Int
+  value           Float?
+  rawValue        String?   @map("raw_value")
+  unit            String?
+  sourceNotes     String?   @map("source_notes")
+  lastUpdated     DateTime? @map("last_updated")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+  specialty       Specialty @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+
+  @@unique([specialtyId, metricKey, year])
+  @@index([metricKey, year])
 }
 
 model SpecialtyDashboardConfig {
@@ -278,6 +318,7 @@ model Department {
   specialtyId             String                   @map("specialty_id")
   medicalArrayId          String?                  @map("medical_array_id")
   slug                    String                   @unique
+  importStableKey         String?                  @unique @map("import_stable_key")
   name                    String
   shortSummary            String                   @map("short_summary")
   about                   String
@@ -285,6 +326,9 @@ model Department {
   publicContactEmail      String?                  @map("public_contact_email")
   publicContactPhone      String?                  @map("public_contact_phone")
   websiteUrl              String?                  @map("website_url")
+  applicationUrl          String?                  @map("application_url")
+  dataSourceNotes         String?                  @map("data_source_notes")
+  dataLastUpdated         DateTime?                @map("data_last_updated")
   contactName             String?                  @map("contact_name")
   residentsCount          Int?                     @map("residents_count")
   medianResidencyLength   String?                  @map("median_residency_length")
@@ -319,7 +363,11 @@ model Department {
   representativeRequests DepartmentRepresentativeRequest[]
   externalMetrics        DepartmentExternalMetric[]
   externalPeople         DepartmentExternalPerson[]
+  metrics                DepartmentMetric[]
+  yearlyMetrics          DepartmentYearlyMetric[]
+  researchMetrics        DepartmentResearchMetric[]
   dataImportRecords      DataImportRecord[]
+  dataImportRowLogs      DataImportRowLog[]
   dunsPhysicianRecords   DunsPhysicianRecord[] @relation("DunsPhysicianRecordDepartment")
 
   @@unique([institutionId, name])
@@ -327,6 +375,77 @@ model Department {
   @@index([specialtyId])
   @@index([medicalArrayId])
   @@index([name])
+}
+
+model DepartmentMetric {
+  id              String     @id @default(cuid())
+  departmentId    String     @map("department_id")
+  metricKey       String     @map("metric_key")
+  label           String
+  value           Float?
+  rawValue        String?    @map("raw_value")
+  unit            String?
+  sourceNotes     String?    @map("source_notes")
+  lastUpdated     DateTime?  @map("last_updated")
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+  department      Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@unique([departmentId, metricKey])
+  @@index([metricKey])
+}
+
+model DepartmentYearlyMetric {
+  id              String     @id @default(cuid())
+  departmentId    String     @map("department_id")
+  metricKey       String     @map("metric_key")
+  year            Int
+  value           Float?
+  rawValue        String?    @map("raw_value")
+  unit            String?
+  sourceNotes     String?    @map("source_notes")
+  lastUpdated     DateTime?  @map("last_updated")
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+  department      Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@unique([departmentId, metricKey, year])
+  @@index([metricKey, year])
+}
+
+model DepartmentResearchMetric {
+  id                String     @id @default(cuid())
+  departmentId      String     @map("department_id")
+  year              Int
+  publicationsCount Int?       @map("publications_count")
+  source            String     @default("OpenAlex")
+  queryUsed         String?    @map("query_used")
+  confidenceScore   Float?     @map("confidence_score")
+  needsMapping      Boolean    @default(false) @map("needs_mapping")
+  isAmbiguous       Boolean    @default(false) @map("is_ambiguous")
+  rawResponseJson   Json?      @map("raw_response_json")
+  warningsJson      Json?      @map("warnings_json")
+  lastUpdated       DateTime   @default(now()) @updatedAt @map("last_updated")
+  createdAt         DateTime   @default(now()) @map("created_at")
+  department        Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@unique([departmentId, year, source])
+  @@index([needsMapping, confidenceScore])
+  @@index([year, source])
+}
+
+model OpenAlexAliasMapping {
+  id           String   @id @default(cuid())
+  entityType   String   @map("entity_type")
+  hebrewName   String   @map("hebrew_name")
+  aliasesJson  Json     @map("aliases_json")
+  keywordsJson Json?    @map("keywords_json")
+  notes        String?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  @@unique([entityType, hebrewName])
+  @@index([entityType])
 }
 
 model MedicalArray {
@@ -574,8 +693,10 @@ model DepartmentScrapeRevision {
   sourceUrl                     String                         @map("source_url")
   status                        DepartmentScrapeRevisionStatus @default(PENDING_REVIEW)
   confidenceScore               Float?                         @map("confidence_score")
+  scrapedAt                     DateTime                       @default(now()) @map("scraped_at")
   rawText                       String?                        @map("raw_text")
   extractedJson                 Json?                          @map("extracted_json")
+  extractionWarningsJson        Json?                          @map("extraction_warnings_json")
   proposedDepartmentHeadTitle   String?                        @map("proposed_department_head_title")
   proposedDepartmentHeadName    String?                        @map("proposed_department_head_name")
   proposedDepartmentHeadEmail   String?                        @map("proposed_department_head_email")
@@ -587,6 +708,8 @@ model DepartmentScrapeRevision {
   proposedContactPhone          String?                        @map("proposed_contact_phone")
   proposedDescription           String?                        @map("proposed_description")
   proposedSeniorPhysiciansCount Int?                           @map("proposed_senior_physicians_count")
+  proposedBedsCount             Int?                           @map("proposed_beds_count")
+  proposedResearchActivity      String?                        @map("proposed_research_activity")
   proposedSubSpecialtiesJson    Json?                          @map("proposed_sub_specialties_json")
   proposedApplicationUrl        String?                        @map("proposed_application_url")
   suggestedEmailsJson           Json?                          @map("suggested_emails_json")
@@ -745,12 +868,35 @@ model DataImportBatch {
   reviewedAt            DateTime?             @map("reviewed_at")
   sources               DataImportSource[]
   records               DataImportRecord[]
+  rowLogs               DataImportRowLog[]
   jobs                  DataImportJob[]
   createdBy             User?                 @relation("DataImportBatchCreator", fields: [createdById], references: [id], onDelete: SetNull)
   reviewedBy            User?                 @relation("DataImportBatchReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
 
   @@index([status, createdAt])
   @@index([sourceType, target])
+}
+
+model DataImportRowLog {
+  id                    String           @id @default(cuid())
+  batchId               String?          @map("batch_id")
+  sourceFile            String           @map("source_file")
+  target                String
+  rowNumber             Int              @map("row_number")
+  stableKey             String?          @map("stable_key")
+  status                String
+  warningsJson          Json?            @map("warnings_json")
+  errorsJson            Json?            @map("errors_json")
+  payloadJson           Json?            @map("payload_json")
+  normalizedSpecialtyId String?          @map("normalized_specialty_id")
+  normalizedDepartmentId String?         @map("normalized_department_id")
+  createdAt             DateTime         @default(now()) @map("created_at")
+  batch                 DataImportBatch? @relation(fields: [batchId], references: [id], onDelete: SetNull)
+  normalizedDepartment  Department?      @relation(fields: [normalizedDepartmentId], references: [id], onDelete: SetNull)
+
+  @@index([batchId, status])
+  @@index([target, status])
+  @@index([normalizedDepartmentId])
 }
 
 model DataImportJob {
