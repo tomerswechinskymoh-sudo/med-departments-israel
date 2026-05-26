@@ -761,7 +761,7 @@ export function ReviewForm({
         </section>
       ) : null}
 
-      <div className="flex flex-wrap items-center justify-between gap-3">
+      <div className="sticky bottom-0 z-10 -mx-2 flex flex-wrap items-center justify-between gap-3 bg-white/95 px-2 py-4 backdrop-blur">
         {step < 3 ? (
           <button
             type="button"
