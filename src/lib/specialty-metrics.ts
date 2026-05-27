@@ -5,6 +5,8 @@ export const specialtyMetricKeys = [
   "residencyDuration",
   "boardPassA",
   "boardPassB",
+  "burnoutIndex",
+  "salaryGap",
   "newResidentsTrend",
   "expectedOpenings",
   "israelVsAbroad",
@@ -27,6 +29,8 @@ export type SpecialtyMetricResult = {
   description: string;
   value: string;
   unit: SpecialtyMetricUnit;
+  sourceLabel?: string;
+  tooltip?: string;
   isPlaceholder?: boolean;
 };
 
@@ -63,6 +67,8 @@ export type SpecialtyImportedMetric = {
   value: number | null;
   rawValue?: string | null;
   unit?: string | null;
+  sourceNotes?: string | null;
+  lastUpdated?: string | Date | null;
 };
 
 export type SpecialtyImportedYearlyMetric = {
@@ -71,6 +77,8 @@ export type SpecialtyImportedYearlyMetric = {
   value: number | null;
   rawValue?: string | null;
   unit?: string | null;
+  sourceNotes?: string | null;
+  lastUpdated?: string | Date | null;
 };
 
 export type SpecialtyMetricContext = {
@@ -78,15 +86,25 @@ export type SpecialtyMetricContext = {
   specialtyYearlyMetrics?: SpecialtyImportedYearlyMetric[];
 };
 
+type SpecialtyMetricCalculation =
+  | string
+  | {
+      value: string;
+      sourceLabel?: string;
+      tooltip?: string;
+    }
+  | null;
+
 type SpecialtyMetricDefinition = {
   key: SpecialtyMetricKey;
   label: string;
   description: string;
   unit: SpecialtyMetricUnit;
+  sourceLabel?: string;
   calculate: (
     departments: SpecialtyMetricDepartment[],
     context: SpecialtyMetricContext
-  ) => string | null;
+  ) => SpecialtyMetricCalculation;
 };
 
 export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
@@ -96,10 +114,14 @@ export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
   "residencyDuration",
   "boardPassA",
   "boardPassB",
+  "burnoutIndex",
+  "salaryGap",
   "newResidentsTrend",
   "expectedOpenings",
   "duns100PhysiciansCount"
 ];
+
+const missingMetricValue = "הנתון עדיין לא סופק";
 
 function average(values: Array<number | null | undefined>) {
   const valid = values.filter((value): value is number => typeof value === "number" && Number.isFinite(value));
@@ -124,6 +146,7 @@ function formatNumberWithUnit(value: number, unit?: string | null) {
   if (unit === "currency") return `${formatted} ₪`;
   if (unit === "months") return `${formatted} חודשים`;
   if (unit === "years") return `${formatted} שנים`;
+  if (unit === "score") return formatted;
   if (unit && unit !== "count") return `${formatted} ${unit}`;
 
   return formatted;
@@ -144,6 +167,26 @@ function formatMetricValue(metric: SpecialtyImportedMetric | SpecialtyImportedYe
   }
 
   return formatNumberWithUnit(metric.value, metric.unit);
+}
+
+function sourceLabelFromNotes(sourceNotes?: string | null) {
+  const normalized = sourceNotes?.trim();
+  if (!normalized) return null;
+
+  if (/openalex/i.test(normalized)) return "OpenAlex";
+  if (/הר[״"׳']?י|ima/i.test(normalized)) return "הר״י";
+  if (/דיווח|מתמחים/i.test(normalized)) return "דיווחי מתמחים משרד הבריאות";
+  if (/משרד הבריאות|moh|ministry/i.test(normalized)) return "משרד הבריאות";
+  if (normalized.length <= 42) return normalized;
+
+  return null;
+}
+
+function sourceLabelForMetric(
+  metric: SpecialtyImportedMetric | SpecialtyImportedYearlyMetric | null | undefined,
+  fallback: string
+) {
+  return sourceLabelFromNotes(metric?.sourceNotes) ?? fallback;
 }
 
 function parsePercentForLabel(value: string | null | undefined, label: string) {
@@ -246,6 +289,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "מספר תוכניות",
     description: "מספר המחלקות והתוכניות שמוצגות בתחום ההתמחות",
     unit: "count",
+    sourceLabel: "נתוני ייבוא האתר",
     calculate: (departments) => formatNumber(departments.length)
   },
   {
@@ -253,6 +297,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "מספר מתמחים פעילים",
     description: "סך מתמחים פעילים במחלקות התחום",
     unit: "count",
+    sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
       const total =
         sumMetric(departments, "activeResidentsCount") ??
@@ -267,11 +312,17 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "איזון מגדרי",
     description: "ממוצע נשים/גברים מתוך מחלקות עם נתון זמין",
     unit: "%",
+    sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
       const specialtyWomenMetric = contextMetric(context, "womenPercent", "femaleResidentsPercent");
       if (specialtyWomenMetric) {
         const displayValue = formatMetricValue(specialtyWomenMetric);
-        return displayValue ? `${displayValue} נשים` : null;
+        return displayValue
+          ? {
+              value: `${displayValue} נשים`,
+              sourceLabel: sourceLabelForMetric(specialtyWomenMetric, "משרד הבריאות")
+            }
+          : null;
       }
 
       const womenAverage =
@@ -287,6 +338,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "אורך התמחות חציוני",
     description: "משך התמחות טיפוסי לפי נתונים זמינים",
     unit: "months",
+    sourceLabel: "הר״י",
     calculate: (departments, context) => {
       const specialtyDurationMetric = contextMetric(
         context,
@@ -295,7 +347,13 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
         "medianResidencyDurationMonths"
       );
       if (specialtyDurationMetric) {
-        return formatMetricValue(specialtyDurationMetric);
+        const displayValue = formatMetricValue(specialtyDurationMetric);
+        return displayValue
+          ? {
+              value: displayValue,
+              sourceLabel: sourceLabelForMetric(specialtyDurationMetric, "הר״י")
+            }
+          : null;
       }
 
       const duration =
@@ -311,10 +369,17 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "שיעור מעבר שלב א׳",
     description: "ממוצע מעבר בחינות שלב א׳",
     unit: "%",
+    sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
       const specialtyBoardMetric = contextMetric(context, "boardStageAPassRate");
       if (specialtyBoardMetric) {
-        return formatMetricValue(specialtyBoardMetric);
+        const displayValue = formatMetricValue(specialtyBoardMetric);
+        return displayValue
+          ? {
+              value: displayValue,
+              sourceLabel: sourceLabelForMetric(specialtyBoardMetric, "משרד הבריאות")
+            }
+          : null;
       }
 
       const value =
@@ -329,10 +394,17 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "שיעור מעבר שלב ב׳",
     description: "ממוצע מעבר בחינות שלב ב׳",
     unit: "%",
+    sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
       const specialtyBoardMetric = contextMetric(context, "boardStageBPassRate");
       if (specialtyBoardMetric) {
-        return formatMetricValue(specialtyBoardMetric);
+        const displayValue = formatMetricValue(specialtyBoardMetric);
+        return displayValue
+          ? {
+              value: displayValue,
+              sourceLabel: sourceLabelForMetric(specialtyBoardMetric, "משרד הבריאות")
+            }
+          : null;
       }
 
       const value =
@@ -343,10 +415,73 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     }
   },
   {
+    key: "burnoutIndex",
+    label: "מדד שחיקה",
+    description: "מדד שחיקה מיובא ברמת תחום ההתמחות",
+    unit: "score",
+    sourceLabel: "דיווחי מתמחים משרד הבריאות",
+    calculate: (departments, context) => {
+      const specialtyBurnoutMetric = contextMetric(context, "burnoutIndex");
+      if (specialtyBurnoutMetric) {
+        const displayValue = formatMetricValue(specialtyBurnoutMetric);
+        return displayValue
+          ? {
+              value: displayValue,
+              sourceLabel: sourceLabelForMetric(specialtyBurnoutMetric, "דיווחי מתמחים משרד הבריאות")
+            }
+          : null;
+      }
+
+      const value = averageMetric(departments, "burnoutIndex");
+      return value !== null
+        ? {
+            value: formatNumber(value),
+            sourceLabel: "דיווחי מתמחים משרד הבריאות"
+          }
+        : null;
+    }
+  },
+  {
+    key: "salaryGap",
+    label: "פער שכר פריפריה",
+    description: "פער השכר המיובא בין מסלול פריפריה למסלול שאינו פריפריה",
+    unit: "text",
+    sourceLabel: "דיווחי מתמחים משרד הבריאות",
+    calculate: (_departments, context) => {
+      const gapMetric = contextMetric(context, "peripherySalaryGap");
+      const centerMetric = contextMetric(context, "centerSalary");
+      const peripheryMetric = contextMetric(context, "peripherySalary");
+      const displayGap =
+        (gapMetric ? formatMetricValue(gapMetric) : null) ??
+        (typeof centerMetric?.value === "number" && typeof peripheryMetric?.value === "number"
+          ? formatNumberWithUnit(peripheryMetric.value - centerMetric.value, gapMetric?.unit ?? "currency")
+          : null);
+
+      if (!displayGap) {
+        return null;
+      }
+
+      const details = [
+        centerMetric ? `שכר לא פריפריה: ${formatMetricValue(centerMetric) ?? missingMetricValue}` : null,
+        peripheryMetric ? `שכר פריפריה: ${formatMetricValue(peripheryMetric) ?? missingMetricValue}` : null
+      ].filter(Boolean);
+
+      return {
+        value: displayGap,
+        sourceLabel: sourceLabelForMetric(
+          gapMetric ?? peripheryMetric ?? centerMetric,
+          "דיווחי מתמחים משרד הבריאות"
+        ),
+        tooltip: details.length > 0 ? details.join(" · ") : undefined
+      };
+    }
+  },
+  {
     key: "newResidentsTrend",
     label: "מתמחים חדשים",
     description: "מספר מתמחים חדשים לפי שנים 2020-2024",
     unit: "count",
+    sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
       const rows = yearlyValueRows(departments, context, 2020, 2024);
       return rows.length > 0
@@ -359,10 +494,17 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "צפי תקנים",
     description: "צפי תקנים חדשים לפי נתוני ייבוא זמינים",
     unit: "count",
+    sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
       const specialtyExpected = contextMetric(context, "expectedNationalOpenings");
       if (specialtyExpected) {
-        return formatMetricValue(specialtyExpected);
+        const displayValue = formatMetricValue(specialtyExpected);
+        return displayValue
+          ? {
+              value: displayValue,
+              sourceLabel: sourceLabelForMetric(specialtyExpected, "משרד הבריאות")
+            }
+          : null;
       }
 
       const departmentExpectedTotal = sumMetric(departments, "expectedOpenings2026");
@@ -387,6 +529,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "בוגרי ישראל / חו״ל",
     description: "התפלגות מקום לימודים כשקיימים נתונים",
     unit: "%",
+    sourceLabel: "משרד הבריאות",
     calculate: (departments) => {
       const israelAverage =
         averageMetric(departments, "israelGraduatesPercent") ??
@@ -399,6 +542,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "עומס ואיזון חיים",
     description: "ממוצע חוויות משתמשים לגבי עומס ואיזון",
     unit: "score",
+    sourceLabel: "חוויות משתמשים",
     calculate: (departments) => {
       const value = average(departments.map((department) => department.lifestyleBalance));
       return value !== null ? `${formatNumber(value)} / 5` : null;
@@ -409,6 +553,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "חשיפה למחקר",
     description: "ממוצע חשיפה למחקר ושיוך הזדמנויות מחקר",
     unit: "score",
+    sourceLabel: "חוויות משתמשים",
     calculate: (departments) => {
       const value = average(departments.map((department) => department.researchExposure));
       if (value !== null) return `${formatNumber(value)} / 5`;
@@ -421,6 +566,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "יחס מתמחים לבכירים",
     description: "יחס משוער בין מספר מתמחים פעילים לבכירים",
     unit: "ratio",
+    sourceLabel: "משרד הבריאות",
     calculate: (departments) => {
       const residents =
         sumMetric(departments, "activeResidentsCount") ??
@@ -437,6 +583,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "מספר רופאים ב-DUNS100",
     description: "רופאים שנספרו מייבוא DUNS100 מאושר",
     unit: "count",
+    sourceLabel: "DUNS100",
     calculate: (departments) => {
       const total = sumMetric(departments, "duns100PhysiciansCount");
       return total !== null ? formatNumber(total) : null;
@@ -447,6 +594,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "דירוג משתמשים",
     description: "ממוצע המלצה כללית מחוויות מאושרות",
     unit: "score",
+    sourceLabel: "חוויות משתמשים",
     calculate: (departments) => {
       const reviewedDepartments = departments.filter((department) => (department.reviewCount ?? 0) > 0);
       const value = average(reviewedDepartments.map((department) => department.averageOverall));
@@ -458,6 +606,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "מועמדויות לכל תקן",
     description: "יוצג כשנתוני תקנים ומועמדויות יהיו זמינים לציבור",
     unit: "ratio",
+    sourceLabel: "נתוני האתר",
     calculate: () => null
   },
   {
@@ -465,6 +614,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "מדד מותאם",
     description: "שמירה למדדים עתידיים לפי תחום",
     unit: "text",
+    sourceLabel: "נתוני האתר",
     calculate: () => null
   }
 ];
@@ -497,18 +647,25 @@ export function calculateSpecialtyMetrics(
     const definition = specialtyMetricDefinitions.find((metric) => metric.key === key);
     if (!definition) return results;
 
-    const value = definition.calculate(departments, context);
-
-    if (value === null && key === "duns100PhysiciansCount") {
-      return results;
-    }
+    const calculated = definition.calculate(departments, context);
+    const value = typeof calculated === "string" || calculated === null ? calculated : calculated.value;
+    const sourceLabel =
+      typeof calculated === "string" || calculated === null
+        ? definition.sourceLabel
+        : calculated.sourceLabel ?? definition.sourceLabel;
+    const tooltip =
+      typeof calculated === "string" || calculated === null
+        ? undefined
+        : calculated.tooltip;
 
     results.push({
       key: definition.key,
       label: definition.label,
       description: definition.description,
-      value: value ?? "אין מספיק נתונים",
+      value: value ?? missingMetricValue,
       unit: definition.unit,
+      sourceLabel,
+      tooltip,
       isPlaceholder: value === null
     });
 

@@ -8,7 +8,6 @@ import { ExperienceCta } from "@/components/experience/experience-cta";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageShell } from "@/components/layout/page-shell";
 import {
-  getActiveSalaryAssumption,
   getDirectoryData,
   getDirectoryFilters,
   getDepartmentOptions,
@@ -113,10 +112,9 @@ export default async function DepartmentsPage({
     searchAcrossSpecialties
   };
 
-  const [departments, specialtyDashboard, salaryAssumption] = await Promise.all([
+  const [departments, specialtyDashboard] = await Promise.all([
     getDirectoryData(effectiveFilters, session?.userId),
-    getSpecialtyDashboardMetrics(selectedSpecialtyId),
-    getActiveSalaryAssumption()
+    getSpecialtyDashboardMetrics(selectedSpecialtyId)
   ]);
   const selectedSpecialty = availableFilters.specialties.find(
     (specialty) => specialty.id === selectedSpecialtyId
@@ -147,7 +145,6 @@ export default async function DepartmentsPage({
             <SpecialtyDashboardMetrics
               specialtyName={selectedSpecialty.name}
               metrics={specialtyDashboard.metrics}
-              salaryAssumption={salaryAssumption}
             />
           ) : null}
 

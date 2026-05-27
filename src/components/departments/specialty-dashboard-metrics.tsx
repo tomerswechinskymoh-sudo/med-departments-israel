@@ -88,32 +88,39 @@ function YearTrend({ value }: { value: string }) {
   );
 }
 
+function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
+  const source = metric.sourceLabel ?? "מקור נתונים לא צוין";
+  const text = [metric.tooltip ?? metric.description, `מקור נתונים: ${source}`]
+    .filter(Boolean)
+    .join(" · ");
+
+  return (
+    <span className="relative inline-flex">
+      <span
+        tabIndex={0}
+        title={text}
+        aria-label={text}
+        className="group grid h-7 w-7 cursor-help place-items-center rounded-full border border-slate-200 bg-white text-[0.72rem] font-black text-slate-500 transition hover:border-brand-200 hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-200"
+      >
+        i
+        <span className="pointer-events-none absolute left-0 top-9 z-20 hidden w-64 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
+          {text}
+        </span>
+      </span>
+    </span>
+  );
+}
+
 export function SpecialtyDashboardMetrics({
   specialtyName,
-  metrics,
-  salaryAssumption
+  metrics
 }: {
   specialtyName: string;
   metrics: SpecialtyMetricResult[];
-  salaryAssumption?: {
-    centerMonthlySalary: number;
-    peripheryMonthlySalary: number;
-  } | null;
 }) {
-  if (metrics.length === 0 && !salaryAssumption) {
+  if (metrics.length === 0) {
     return null;
   }
-
-  const salaryGap = salaryAssumption
-    ? salaryAssumption.peripheryMonthlySalary - salaryAssumption.centerMonthlySalary
-    : 0;
-  const salaryGapPercent =
-    salaryAssumption && salaryAssumption.centerMonthlySalary > 0
-      ? Math.round((salaryGap / salaryAssumption.centerMonthlySalary) * 100)
-      : 0;
-  const maxSalary = salaryAssumption
-    ? Math.max(salaryAssumption.centerMonthlySalary, salaryAssumption.peripheryMonthlySalary)
-    : 1;
 
   return (
     <section className="rounded-[1.5rem] border border-brand-100 bg-white/95 p-4 shadow-sm">
@@ -131,13 +138,16 @@ export function SpecialtyDashboardMetrics({
         {metrics.map((metric, index) => (
           <div
             key={metric.key}
-            className={`flex min-h-[9rem] flex-col rounded-[1.25rem] border p-4 ${
+            className={`flex min-h-[8rem] flex-col rounded-[1.25rem] border p-4 ${
               index === 0
                 ? "border-brand-200 bg-gradient-to-l from-brand-50 to-white"
                 : "border-slate-100 bg-slate-50/70"
             }`}
           >
-            <p className="text-xs font-bold text-slate-500">{metric.label}</p>
+            <div className="flex items-start justify-between gap-3">
+              <p className="text-xs font-bold text-slate-500">{metric.label}</p>
+              <MetricInfo metric={metric} />
+            </div>
             {metric.key === "genderDistribution" && !metric.isPlaceholder ? (
               <GenderDonut value={metric.value} />
             ) : metric.key === "newResidentsTrend" && !metric.isPlaceholder ? (
@@ -147,57 +157,14 @@ export function SpecialtyDashboardMetrics({
                 {metric.value}
               </p>
             )}
-            <p className="mt-2 text-xs leading-6 text-slate-600">{metric.description}</p>
+            <div className="mt-auto flex items-center gap-2 pt-3 text-[0.68rem] font-black text-slate-400">
+              <span className="grid h-5 w-5 place-items-center rounded-full border border-slate-200 bg-white">
+                i
+              </span>
+              <span>מקור נתונים</span>
+            </div>
           </div>
         ))}
-        {salaryAssumption ? (
-          <div className="flex min-h-[9rem] flex-col rounded-[1.25rem] border border-amber-200 bg-amber-50/75 p-4">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-xs font-bold text-slate-500">שכר בסיס משוער</p>
-                <p className="mt-2 text-lg font-black text-ink">פער לטובת פריפריה</p>
-              </div>
-              <span className="rounded-full bg-white px-3 py-1 text-sm font-black text-amber-900">
-                +{salaryGapPercent}%
-              </span>
-            </div>
-
-            <div className="mt-4 space-y-3">
-              <div>
-                <div className="flex items-center justify-between text-xs font-bold text-slate-600">
-                  <span>מרכז</span>
-                  <span>₪{salaryAssumption.centerMonthlySalary.toLocaleString("he-IL")}</span>
-                </div>
-                <div className="mt-1 h-2.5 overflow-hidden rounded-full bg-white">
-                  <div
-                    className="h-full rounded-full bg-slate-400"
-                    style={{
-                      width: `${Math.round((salaryAssumption.centerMonthlySalary / maxSalary) * 100)}%`
-                    }}
-                  />
-                </div>
-              </div>
-              <div>
-                <div className="flex items-center justify-between text-xs font-bold text-slate-600">
-                  <span>פריפריה</span>
-                  <span>₪{salaryAssumption.peripheryMonthlySalary.toLocaleString("he-IL")}</span>
-                </div>
-                <div className="mt-1 h-2.5 overflow-hidden rounded-full bg-white">
-                  <div
-                    className="h-full rounded-full bg-amber-500"
-                    style={{
-                      width: `${Math.round((salaryAssumption.peripheryMonthlySalary / maxSalary) * 100)}%`
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <p className="mt-auto pt-3 text-xs leading-6 text-slate-600">
-              נתון משוער המבוסס על הבדלי שכר מקובלים
-            </p>
-          </div>
-        ) : null}
       </div>
     </section>
   );

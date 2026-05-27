@@ -68,26 +68,52 @@ async function main() {
           importStableKey: {
             not: null
           },
-          OR: [
+          about: {
+            not: ""
+          },
+          AND: [
             {
-              metrics: {
-                some: {}
-              }
+              OR: [
+                {
+                  heads: {
+                    some: {}
+                  }
+                },
+                {
+                  contactName: {
+                    not: null
+                  }
+                },
+                {
+                  publicContactEmail: {
+                    not: null
+                  }
+                },
+                {
+                  publicContactPhone: {
+                    not: null
+                  }
+                }
+              ]
             },
             {
-              yearlyMetrics: {
-                some: {}
-              }
-            },
-            {
-              heads: {
-                some: {}
-              }
-            },
-            {
-              researchMetrics: {
-                some: {}
-              }
+              OR: [
+                {
+                  metrics: {
+                    some: {}
+                  }
+                },
+                {
+                  yearlyMetrics: {
+                    some: {}
+                  }
+                },
+                {
+                  researchMetrics: {
+                    some: {}
+                  }
+                }
+              ]
             }
           ]
         },
@@ -146,6 +172,10 @@ async function main() {
           specialtyMetrics: detail.specialty.metrics.length,
           specialtyYearlyMetrics: detail.specialty.yearlyMetrics.length,
           heads: detail.heads.length,
+          hasDescription: Boolean(detail.about),
+          hasContact: Boolean(
+            detail.contactName || detail.publicContactEmail || detail.publicContactPhone
+          ),
           researchMetrics: detail.researchMetrics.length,
           hasSource: Boolean(detail.dataSourceNotes || detail.dataLastUpdated)
         }
@@ -160,6 +190,10 @@ async function main() {
 
   if (sampleImportedDepartment && !detail) {
     throw new Error("Public detail query did not return the imported sample department.");
+  }
+
+  if (detail && (!detail.about || (detail.heads.length === 0 && !detail.contactName && !detail.publicContactEmail && !detail.publicContactPhone))) {
+    throw new Error("Imported detail sample is missing description or head/contact fields.");
   }
 }
 

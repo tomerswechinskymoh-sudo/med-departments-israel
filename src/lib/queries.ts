@@ -166,6 +166,15 @@ export function resolveInstitutionRegion(institution: { city?: string | null; re
   return institution.region ?? inferRegionFromCity(institution.city);
 }
 
+function normalizeHebrewCatalogName(value: string) {
+  return value
+    .normalize("NFKC")
+    .replace(/[\u0591-\u05C7]/g, "")
+    .replace(/[״"׳']/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function getDepartmentSlugVariants(slug: string) {
   const decodedSlug = decodeURIComponent(slug).trim().replace(/^\/+|\/+$/g, "");
   const normalizedHyphenSlug = decodedSlug.replace(/-+/g, "-");
@@ -460,6 +469,47 @@ export async function getDirectoryFilters() {
       }
     }),
     prisma.specialty.findMany({
+      where: {
+        OR: [
+          {
+            metrics: {
+              some: {}
+            }
+          },
+          {
+            yearlyMetrics: {
+              some: {}
+            }
+          },
+          {
+            departments: {
+              some: {
+                importStableKey: {
+                  not: null
+                }
+              }
+            }
+          },
+          {
+            departments: {
+              some: {
+                metrics: {
+                  some: {}
+                }
+              }
+            }
+          },
+          {
+            departments: {
+              some: {
+                yearlyMetrics: {
+                  some: {}
+                }
+              }
+            }
+          }
+        ]
+      },
       select: {
         id: true,
         name: true
@@ -494,7 +544,18 @@ export async function getDirectoryFilters() {
       ...institution,
       region: resolveInstitutionRegion(institution)
     })),
-    specialties,
+    specialties: Array.from(
+      specialties
+        .reduce<Map<string, (typeof specialties)[number]>>((unique, specialty) => {
+          const normalizedName = normalizeHebrewCatalogName(specialty.name);
+          if (!unique.has(normalizedName)) {
+            unique.set(normalizedName, specialty);
+          }
+
+          return unique;
+        }, new Map())
+        .values()
+    ),
     departments: departments.map((department) => ({
       ...department,
       name: formatDepartmentDisplayName(department.name, department.specialty.name)
@@ -854,7 +915,9 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
             label: true,
             value: true,
             rawValue: true,
-            unit: true
+            unit: true,
+            sourceNotes: true,
+            lastUpdated: true
           },
           orderBy: {
             metricKey: "asc"
@@ -866,7 +929,9 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
             year: true,
             value: true,
             rawValue: true,
-            unit: true
+            unit: true,
+            sourceNotes: true,
+            lastUpdated: true
           },
           orderBy: [{ year: "asc" }, { metricKey: "asc" }]
         }

@@ -48,7 +48,9 @@ type ImportedYearlyMetric = {
   lastUpdated?: string | Date | null;
 };
 
-function EmptyValue({ text = "אין עדיין נתונים" }: { text?: string }) {
+const MISSING_IMPORTED_VALUE = "הנתון עדיין לא סופק";
+
+function EmptyValue({ text = MISSING_IMPORTED_VALUE }: { text?: string }) {
   return <span className="text-slate-400">{text}</span>;
 }
 
@@ -85,6 +87,92 @@ function SourceBadge({ source }: { source: MetricSource }) {
     <span className={`rounded-full border px-2.5 py-1 text-[0.68rem] font-black ${item.className}`}>
       {item.label}
     </span>
+  );
+}
+
+function MetricInfoTip({
+  sourceLabel,
+  text
+}: {
+  sourceLabel: string;
+  text?: string;
+}) {
+  const tooltipText = [text, `מקור נתונים: ${sourceLabel}`].filter(Boolean).join(" · ");
+
+  return (
+    <span className="relative inline-flex">
+      <span
+        tabIndex={0}
+        title={tooltipText}
+        aria-label={tooltipText}
+        className="group grid h-7 w-7 cursor-help place-items-center rounded-full border border-slate-200 bg-white text-[0.72rem] font-black text-slate-500 transition hover:border-brand-200 hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-200"
+      >
+        i
+        <span className="pointer-events-none absolute left-0 top-9 z-20 hidden w-72 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
+          {tooltipText}
+        </span>
+      </span>
+    </span>
+  );
+}
+
+function DataMetricCard({
+  label,
+  value,
+  sourceLabel,
+  tooltip,
+  lastUpdated
+}: {
+  label: string;
+  value: string | number | null | undefined;
+  sourceLabel: string;
+  tooltip?: string;
+  lastUpdated?: string | Date | null;
+}) {
+  const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
+
+  return (
+    <div className="flex min-h-[8.5rem] flex-col rounded-2xl border border-slate-100 bg-white px-4 py-4">
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-xs font-bold leading-5 text-slate-500">{label}</p>
+        <MetricInfoTip sourceLabel={sourceLabel} text={tooltip} />
+      </div>
+      <p className={`mt-3 text-xl font-black leading-tight ${hasValue ? "text-ink" : "text-slate-400"}`}>
+        {hasValue ? value : MISSING_IMPORTED_VALUE}
+      </p>
+      <div className="mt-auto flex items-center gap-2 pt-4 text-[0.68rem] font-black text-slate-400">
+        <span className="grid h-5 w-5 place-items-center rounded-full border border-slate-200 bg-slate-50">
+          i
+        </span>
+        <span>מקור נתונים</span>
+      </div>
+      {lastUpdated ? (
+        <p className="mt-1 text-[0.68rem] font-semibold text-slate-400">
+          עודכן: {formatDate(lastUpdated)}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function DataMetricGrid({
+  metrics
+}: {
+  metrics: Array<{
+    id: string;
+    label: string;
+    value: string | number | null | undefined;
+    sourceLabel: string;
+    tooltip?: string;
+    lastUpdated?: string | Date | null;
+  }>;
+}) {
+  return (
+    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      {metrics.map((metric) => (
+        <DataMetricCard key={metric.id} {...metric} />
+      ))}
+    </div>
   );
 }
 
@@ -169,9 +257,30 @@ function formatImportedMetricValue(metric: ImportedMetric | ImportedYearlyMetric
   if (metric.unit === "currency") return `${formattedValue} ₪`;
   if (metric.unit === "months") return `${formattedValue} חודשים`;
   if (metric.unit === "years") return `${formattedValue} שנים`;
+  if (metric.unit === "score") return formattedValue;
   if (metric.unit && metric.unit !== "count") return `${formattedValue} ${metric.unit}`;
 
   return formattedValue;
+}
+
+function sourceLabelFromNotes(sourceNotes?: string | null) {
+  const normalized = sourceNotes?.trim();
+  if (!normalized) return null;
+
+  if (/openalex/i.test(normalized)) return "OpenAlex";
+  if (/הר[״"׳']?י|ima/i.test(normalized)) return "הר״י";
+  if (/דיווח|מתמחים/i.test(normalized)) return "דיווחי מתמחים משרד הבריאות";
+  if (/משרד הבריאות|moh|ministry/i.test(normalized)) return "משרד הבריאות";
+  if (normalized.length <= 42) return normalized;
+
+  return null;
+}
+
+function importedSourceLabel(
+  metric: ImportedMetric | ImportedYearlyMetric | null | undefined,
+  fallback: string
+) {
+  return sourceLabelFromNotes(metric?.sourceNotes) ?? fallback;
 }
 
 function findImportedMetric(metrics: ImportedMetric[], ...metricKeys: string[]) {
@@ -201,6 +310,55 @@ function latestYearlyMetric(
       .filter((metric) => typeof metric.value === "number" || Boolean(metric.rawValue))
       .sort((left, right) => right.year - left.year)[0] ?? null
   );
+}
+
+function metricCardFromImported(
+  metrics: ImportedMetric[],
+  input: {
+    id: string;
+    label: string;
+    keys: string[];
+    sourceLabel: string;
+    tooltip?: string;
+    valueOverride?: string | number | null;
+  }
+) {
+  const metric = findImportedMetric(metrics, ...input.keys);
+  const value = input.valueOverride ?? (metric ? formatImportedMetricValue(metric) : null);
+
+  return {
+    id: input.id,
+    label: input.label,
+    value,
+    sourceLabel: importedSourceLabel(metric, input.sourceLabel),
+    tooltip: input.tooltip,
+    lastUpdated: metric?.lastUpdated
+  };
+}
+
+function metricCardFromYear(
+  metrics: ImportedYearlyMetric[],
+  input: {
+    id: string;
+    label: string;
+    metricKey: string;
+    year: number;
+    sourceLabel: string;
+    tooltip?: string;
+    valueOverride?: string | number | null;
+  }
+) {
+  const metric = latestYearlyMetric(metrics, input.metricKey, { year: input.year });
+  const value = input.valueOverride ?? (metric ? formatImportedMetricValue(metric) : null);
+
+  return {
+    id: input.id,
+    label: input.label,
+    value,
+    sourceLabel: importedSourceLabel(metric, input.sourceLabel),
+    tooltip: input.tooltip,
+    lastUpdated: metric?.lastUpdated
+  };
 }
 
 function yearlyMetricLabel(metric: ImportedYearlyMetric) {
@@ -647,7 +805,7 @@ export default async function DepartmentDetailsPage({
   const region = resolveInstitutionRegion(department.institution);
   const isMedicalArrayProfile = Boolean(department.specialty.groupAsArray && department.medicalArray);
   const profileTerm = isMedicalArrayProfile ? "מערך" : "מחלקה";
-  const profileMissingText = "הנתון לא סופק ע״י בי״ח";
+  const profileMissingText = MISSING_IMPORTED_VALUE;
   const profileTitle = isMedicalArrayProfile ? `מערך ${department.specialty.name}` : department.name;
   const profileDescription = isMedicalArrayProfile
     ? department.medicalArray?.description || department.about || department.shortSummary
@@ -770,9 +928,7 @@ export default async function DepartmentDetailsPage({
         ? { value: specialistsMetric.value, source: sourceFromName(specialistsMetric.sourceName) }
         : null;
   const medianDurationMetric = metricRecord("medianResidencyDurationMonths");
-  const importedMedianDuration =
-    findImportedMetric(importedSpecialtyMetrics, "actualAverageDuration", "officialResidencyDuration") ??
-    findImportedMetric(importedDepartmentMetrics, "medianResidencyDurationMonths");
+  const importedMedianDuration = findImportedMetric(importedDepartmentMetrics, "medianResidencyDurationMonths");
   const medianDuration =
     department.medianResidencyLength
       ? { value: department.medianResidencyLength, source: "hospital" as MetricSource }
@@ -782,9 +938,11 @@ export default async function DepartmentDetailsPage({
         ? { value: `${medianDurationMetric.value} חודשים`, source: sourceFromName(medianDurationMetric.sourceName) }
         : null;
   const boardStageAMetric = metricRecord("boardStageAPassRate");
-  const importedBoardStageA =
-    findImportedMetric(importedDepartmentMetrics, "boardStageAPassRate", "inherited_boardStageAPassRate") ??
-    findImportedMetric(importedSpecialtyMetrics, "boardStageAPassRate");
+  const importedBoardStageA = findImportedMetric(
+    importedDepartmentMetrics,
+    "boardStageAPassRate",
+    "inherited_boardStageAPassRate"
+  );
   const boardStageA =
     department.shlavAlephPassRate !== null && department.shlavAlephPassRate !== undefined
       ? { value: `${department.shlavAlephPassRate}%`, source: "hospital" as MetricSource }
@@ -794,9 +952,11 @@ export default async function DepartmentDetailsPage({
         ? { value: `${boardStageAMetric.value}%`, source: sourceFromName(boardStageAMetric.sourceName) }
         : null;
   const boardStageBMetric = metricRecord("boardStageBPassRate");
-  const importedBoardStageB =
-    findImportedMetric(importedDepartmentMetrics, "boardStageBPassRate", "inherited_boardStageBPassRate") ??
-    findImportedMetric(importedSpecialtyMetrics, "boardStageBPassRate");
+  const importedBoardStageB = findImportedMetric(
+    importedDepartmentMetrics,
+    "boardStageBPassRate",
+    "inherited_boardStageBPassRate"
+  );
   const boardStageB =
     department.shlavBetPassRate !== null && department.shlavBetPassRate !== undefined
       ? { value: `${department.shlavBetPassRate}%`, source: "hospital" as MetricSource }
@@ -844,6 +1004,219 @@ export default async function DepartmentDetailsPage({
         ...head,
         departmentName: department.name
       }));
+  const latestOpenAlexResearchMetric = openAlexResearchMetrics.find((metric) => !metric.needsMapping) ?? null;
+  const publicationMetric = findImportedMetric(importedDepartmentMetrics, "departmentalPublicationsCount");
+  const expectedOpeningsDepartmentMetric = findImportedMetric(importedDepartmentMetrics, "expectedOpenings2026");
+  const expectedOpeningsYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "newResidents", { year: 2026 });
+  const departmentDataMetrics = [
+    {
+      id: "department-residents-count",
+      label: "מספר_מתמחים",
+      value: activeResidents?.value ?? null,
+      sourceLabel: "משרד הבריאות",
+      tooltip: "נתון מחלקתי מתוך Master_Dept.csv כאשר קיים."
+    },
+    {
+      id: "department-stage-a",
+      label: "מעבר_שלב_א",
+      value: boardStageA?.value ?? null,
+      sourceLabel: "משרד הבריאות",
+      tooltip: "נתון מחלקתי מתוך שורת המחלקה ב-Master_Dept.csv."
+    },
+    {
+      id: "department-stage-b",
+      label: "מעבר_שלב_ב",
+      value: boardStageB?.value ?? null,
+      sourceLabel: "משרד הבריאות",
+      tooltip: "נתון מחלקתי מתוך שורת המחלקה ב-Master_Dept.csv."
+    },
+    {
+      id: "department-senior-physicians",
+      label: "מספר בכירים",
+      value: specialists?.value ?? null,
+      sourceLabel: "משרד הבריאות",
+      tooltip: "מספר רופאים בכירים כפי שיובא עבור המחלקה."
+    },
+    metricCardFromImported(importedDepartmentMetrics, {
+      id: "department-duns100",
+      label: "מספר רופאים ב-DUNS100",
+      keys: ["duns100PhysiciansCount"],
+      sourceLabel: "DUNS100",
+      tooltip: "רופאים שנספרו מנתוני DUNS100 מיובאים."
+    }),
+    {
+      id: "department-publications",
+      label: "מספר פרסומים מחלקתי",
+      value: publicationMetric
+        ? formatImportedMetricValue(publicationMetric)
+        : latestOpenAlexResearchMetric
+          ? latestOpenAlexResearchMetric.publicationsCount
+          : null,
+      sourceLabel: publicationMetric
+        ? importedSourceLabel(publicationMetric, "משרד הבריאות")
+        : latestOpenAlexResearchMetric
+          ? "OpenAlex"
+          : "OpenAlex",
+      tooltip: latestOpenAlexResearchMetric
+        ? "פעילות מחקרית משוערת לפי OpenAlex, לא ספירה רשמית של המחלקה."
+        : "מספר פרסומים מחלקתי מיובא כאשר קיים."
+    },
+    ...[2020, 2021, 2022, 2023, 2024].map((year) =>
+      metricCardFromYear(importedDepartmentYearlyMetrics, {
+        id: `department-new-residents-${year}`,
+        label: `מספר מתמחים חדשים ${year}`,
+        metricKey: "newResidents",
+        year,
+        sourceLabel: "משרד הבריאות",
+        tooltip: "מתמחים חדשים לפי שנה מתוך Master_Dept.csv."
+      })
+    ),
+    {
+      id: "department-expected-openings-2026",
+      label: "צפי תקנים חדשים ב2026",
+      value: expectedOpeningsDepartmentMetric
+        ? formatImportedMetricValue(expectedOpeningsDepartmentMetric)
+        : expectedOpeningsYearlyMetric
+          ? formatImportedMetricValue(expectedOpeningsYearlyMetric)
+          : null,
+      sourceLabel: importedSourceLabel(
+        expectedOpeningsDepartmentMetric ?? expectedOpeningsYearlyMetric,
+        "מספר המתמחים שאמורים לסיים השנה ע״ב אורך ההתמחות החציוני"
+      ),
+      tooltip: "צפי תקנים המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
+    },
+    metricCardFromImported(importedDepartmentMetrics, {
+      id: "department-median-elective-demand",
+      label: "מספר אלקטיביסטים חציוני",
+      keys: ["medianElectiveDemand"],
+      sourceLabel: "מצביע על ביקוש המחלקה",
+      tooltip: "מדד ביקוש למחלקה לפי מספר אלקטיביסטים חציוני."
+    })
+  ];
+  const specialtyGeneralMetrics = [
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-official-duration",
+      label: "משך_התמחות_רשמי",
+      keys: ["officialResidencyDuration"],
+      sourceLabel: "הר״י",
+      tooltip: "משך ההתמחות הרשמי לפי הר״י."
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-actual-average-duration",
+      label: "משך_ממוצע_בפועל",
+      keys: ["actualAverageDuration"],
+      sourceLabel: "משרד הבריאות",
+      tooltip: "משך התמחות ממוצע בפועל לפי נתוני ייבוא ארציים."
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-median-wait",
+      label: "זמן_המתנה_חציוני_לתקן",
+      keys: ["medianWaitingTime"],
+      sourceLabel: "משרד הבריאות",
+      tooltip: "זמן ההמתנה החציוני לתקן בתחום ההתמחות."
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-accepted-immediate",
+      label: "מספר המתקבלים שדיווחו שמצאו מיד התמחות",
+      keys: ["acceptedImmediatelyReports"],
+      sourceLabel: "דיווחי מתמחים משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-accepted-six-months",
+      label: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה",
+      keys: ["acceptedWithinSixMonthsReports"],
+      sourceLabel: "דיווחי מתמחים משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-accepted-one-year",
+      label: "מספר המתקבלים שדיווחו שמצאו עד שנה",
+      keys: ["acceptedWithinOneYearReports"],
+      sourceLabel: "דיווחי מתמחים משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-accepted-two-years",
+      label: "מספר המתקבלים שדיווחו שמצאו עד שנתיים",
+      keys: ["acceptedWithinTwoYearsReports"],
+      sourceLabel: "דיווחי מתמחים משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-accepted-after-two-years",
+      label: "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים",
+      keys: ["acceptedAfterTwoYearsReports"],
+      sourceLabel: "דיווחי מתמחים משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-center-salary",
+      label: "שכר_לא_פריפריה",
+      keys: ["centerSalary"],
+      sourceLabel: "דיווחי מתמחים משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-periphery-salary",
+      label: "שכר_פריפריה",
+      keys: ["peripherySalary"],
+      sourceLabel: "דיווחי מתמחים משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-periphery-salary-gap",
+      label: "פער_שכר_פריפריה",
+      keys: ["peripherySalaryGap"],
+      sourceLabel: "דיווחי מתמחים משרד הבריאות",
+      tooltip: "פער בין שכר פריפריה לשכר לא פריפריה."
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-residents-count",
+      label: "מספר_מתמחים",
+      keys: ["residentsCount"],
+      sourceLabel: "משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-women-percent",
+      label: "אחוז_נשים",
+      keys: ["womenPercent"],
+      sourceLabel: "משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-men-percent",
+      label: "אחוז_גברים",
+      keys: ["menPercent"],
+      sourceLabel: "משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-stage-a",
+      label: "מעבר_שלב_א",
+      keys: ["boardStageAPassRate"],
+      sourceLabel: "משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-burnout-index",
+      label: "מדד_שחיקה",
+      keys: ["burnoutIndex"],
+      sourceLabel: "דיווחי מתמחים משרד הבריאות"
+    }),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-stage-b",
+      label: "מעבר_שלב_ב",
+      keys: ["boardStageBPassRate"],
+      sourceLabel: "משרד הבריאות"
+    }),
+    ...[2020, 2021, 2022, 2023, 2024].map((year) =>
+      metricCardFromYear(importedSpecialtyYearlyMetrics, {
+        id: `specialty-new-residents-${year}`,
+        label: `מספר מתמחים חדשים ${year}`,
+        metricKey: "newResidents",
+        year,
+        sourceLabel: "משרד הבריאות",
+        tooltip: "מתמחים חדשים בתחום ההתמחות לפי שנה."
+      })
+    ),
+    metricCardFromImported(importedSpecialtyMetrics, {
+      id: "specialty-expected-national-openings",
+      label: "צפי תקנים ארצי",
+      keys: ["expectedNationalOpenings"],
+      sourceLabel: "משרד הבריאות"
+    })
+  ];
 
   return (
     <PageShell className="space-y-7 py-8">
@@ -948,11 +1321,9 @@ export default async function DepartmentDetailsPage({
       <section className="grid gap-5 lg:grid-cols-[1fr_360px]">
         <div className="space-y-5">
           <Card className="rounded-xl">
-            <SectionHeading title="פרופיל התוכנית" />
+            <SectionHeading title="פרופיל המחלקה" />
             <p className="mt-4 text-sm leading-8 text-slate-700">
-              {profileDescription || (
-                `עמוד ה${profileTerm} פעיל ומוכן לאיסוף מידע. כשיתווספו נתונים רשמיים, הם יוצגו כאן לצד ביקורות ותקנים.`
-              )}
+              {profileDescription || MISSING_IMPORTED_VALUE}
             </p>
             {department.dataSourceNotes || department.dataLastUpdated ? (
               <p className="mt-3 rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-xs leading-6 text-slate-600">
@@ -982,95 +1353,14 @@ export default async function DepartmentDetailsPage({
               ) : null}
             </div>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {isMedicalArrayProfile && arrayDepartments.length > 1 ? (
-                <CompactDataCard label="מספר מחלקות במערך" value={arrayDepartments.length} source="hospital" />
-              ) : null}
-              {specialists ? (
-                <CompactDataCard
-                  label="מספר מומחים"
-                  value={specialists.value}
-                  source={specialists.source}
-                  caption={isMedicalArrayProfile ? "נתון מערכי" : "לפי מידע זמין במערכת"}
-                />
-              ) : (
-                <DataUnavailable label="מספר מומחים" text={profileMissingText} />
-              )}
-              {activeResidents ? (
-                <CompactDataCard label="מספר מתמחים" value={activeResidents.value} source={activeResidents.source} />
-              ) : (
-                <DataUnavailable label="מספר מתמחים" text={profileMissingText} />
-              )}
-              {newResidents ? (
-                <CompactDataCard label="מתמחים חדשים השנה" value={newResidents.value} source={newResidents.source} />
-              ) : (
-                <DataUnavailable label="מתמחים חדשים השנה" text={profileMissingText} />
-              )}
-              {expectedGraduates ? (
-                <CompactDataCard label="צפויים לסיים השנה" value={expectedGraduates.value} source={expectedGraduates.source} />
-              ) : (
-                <DataUnavailable label="צפויים לסיים השנה" text={profileMissingText} />
-              )}
-              {typeof duns100PhysiciansCount === "number" ? (
-                <CompactDataCard
-                  label={isMedicalArrayProfile ? "מומחי DUNS100" : "רופאי DUNS100"}
-                  value={duns100PhysiciansCount}
-                  source="duns100"
-                  caption="מבוסס על ייבוא DUNS100 מאושר"
-                />
-              ) : (
-                <DataUnavailable
-                  label={isMedicalArrayProfile ? "מומחי DUNS100" : "רופאי DUNS100"}
-                  text={profileMissingText}
-                />
-              )}
-              {medianDuration ? (
-                <CompactDataCard label="משך התמחות" value={medianDuration.value} source={medianDuration.source} />
-              ) : (
-                <DataUnavailable label="משך התמחות" text={profileMissingText} />
-              )}
-              {boardStageA ? (
-                <CompactDataCard label="מעבר שלב א׳" value={boardStageA.value} source={boardStageA.source} />
-              ) : (
-                <DataUnavailable label="מעבר שלב א׳" text={profileMissingText} />
-              )}
-              {boardStageB ? (
-                <CompactDataCard label="מעבר שלב ב׳" value={boardStageB.value} source={boardStageB.source} />
-              ) : (
-                <DataUnavailable label="מעבר שלב ב׳" text={profileMissingText} />
-              )}
-              {openingsCount > 0 ? (
-                <CompactDataCard
-                  label="מספר תקנים"
-                  value={openingsCount}
-                  source="hospital"
-                  caption="תקנים פעילים שפורסמו באתר"
-                />
-              ) : null}
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              המדדים כאן נקראים ממודל המחלקה ומטבלאות DepartmentMetric / DepartmentYearlyMetric בלבד.
+              נתונים כלליים של תחום ההתמחות מופיעים בסעיף נפרד בהמשך.
+            </p>
+
+            <div className="mt-5">
+              <DataMetricGrid metrics={departmentDataMetrics} />
             </div>
-
-            {importedDepartmentMetrics.length > 0 || importedDepartmentYearlyMetrics.length > 0 ? (
-              <div className="mt-5 grid gap-3 lg:grid-cols-2">
-                <ImportedMetricGrid
-                  title="מדדים מיובאים למחלקה"
-                  metrics={importedDepartmentMetrics}
-                  source="hospital"
-                  emptyText={profileMissingText}
-                />
-                <YearlyMetricsTable
-                  title="מדדים שנתיים למחלקה"
-                  metrics={importedDepartmentYearlyMetrics}
-                  source="hospital"
-                  emptyText={profileMissingText}
-                />
-              </div>
-            ) : null}
-
-            {openAlexResearchMetrics.length > 0 ? (
-              <div className="mt-5">
-                <EstimatedOpenAlexResearch metrics={openAlexResearchMetrics} />
-              </div>
-            ) : null}
 
             {isMedicalArrayProfile ? (
               <div className="mt-5 grid gap-3 lg:grid-cols-2">
@@ -1128,7 +1418,7 @@ export default async function DepartmentDetailsPage({
 
           {importedSpecialtyMetrics.length > 0 || importedSpecialtyYearlyMetrics.length > 0 ? (
             <Card className="rounded-xl">
-              <SectionHeading title="נתונים ארציים על תחום ההתמחות" />
+              <SectionHeading title="נתונים כלליים על תחום ההתמחות" />
               {department.specialty.dataSourceNotes || department.specialty.dataLastUpdated ? (
                 <p className="mt-3 rounded-lg border border-blue-100 bg-blue-50/60 px-4 py-3 text-xs leading-6 text-blue-900">
                   מקור/עדכון תחום: {department.specialty.dataSourceNotes ?? "MASTER_Spec.csv"}
@@ -1136,26 +1426,65 @@ export default async function DepartmentDetailsPage({
                   עודכן: {formatDate(department.specialty.dataLastUpdated)}
                 </p>
               ) : null}
-              <div className="mt-5 grid gap-3 lg:grid-cols-2">
-                <ImportedMetricGrid
-                  title="מדדי התמחות"
-                  metrics={importedSpecialtyMetrics}
-                  source="moh"
-                  emptyText="אין עדיין נתונים ארציים זמינים"
-                  maxItems={24}
-                />
-                <YearlyMetricsTable
-                  title="מתמחים חדשים לפי שנה"
-                  metrics={importedSpecialtyYearlyMetrics}
-                  source="moh"
-                  emptyText="אין עדיין נתונים שנתיים זמינים"
-                />
+              <p className="mt-3 text-sm leading-7 text-slate-600">
+                אלה נתונים ארציים של תחום ההתמחות, ולכן הם אינם מוצגים כנתוני המחלקה עצמה.
+              </p>
+              <div className="mt-5">
+                <DataMetricGrid metrics={specialtyGeneralMetrics} />
               </div>
             </Card>
           ) : null}
 
           <Card className="rounded-xl">
-            <SectionHeading title="דירוגים וחוויות" />
+            <SectionHeading title="מחקר ופרסומים" />
+            <div className="mt-5 grid gap-3 lg:grid-cols-2">
+              <DataMetricCard
+                label="מספר פרסומים מחלקתי"
+                value={
+                  publicationMetric
+                    ? formatImportedMetricValue(publicationMetric)
+                    : latestOpenAlexResearchMetric?.publicationsCount
+                }
+                sourceLabel={publicationMetric ? importedSourceLabel(publicationMetric, "משרד הבריאות") : "OpenAlex"}
+                tooltip={
+                  latestOpenAlexResearchMetric
+                    ? "פעילות מחקרית משוערת לפי OpenAlex, לא ספירה רשמית של המחלקה."
+                    : "מספר פרסומים מחלקתי מיובא כאשר קיים."
+                }
+                lastUpdated={publicationMetric?.lastUpdated}
+              />
+              {openAlexResearchMetrics.length > 0 ? (
+                <EstimatedOpenAlexResearch metrics={openAlexResearchMetrics} />
+              ) : (
+                <DataMetricCard
+                  label="פעילות מחקרית משוערת"
+                  value={null}
+                  sourceLabel="OpenAlex"
+                  tooltip="יוצג לאחר רענון מדדי OpenAlex על ידי אדמין."
+                />
+              )}
+            </div>
+            <div className="mt-5">
+              <p className="text-sm font-bold text-ink">הזדמנויות מחקר</p>
+              <div className="mt-3 space-y-3">
+                {department.researchOpportunities.length === 0 ? (
+                  <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600">
+                    {MISSING_IMPORTED_VALUE}
+                  </p>
+                ) : (
+                  department.researchOpportunities.map((opportunity) => (
+                    <div key={opportunity.id} className="rounded-lg border border-brand-100 bg-brand-50/60 px-3 py-3">
+                      <p className="text-sm font-bold text-ink">{opportunity.title}</p>
+                      <p className="mt-2 text-xs leading-6 text-slate-700">{opportunity.summary}</p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          </Card>
+
+          <Card className="rounded-xl">
+            <SectionHeading title="חוויות מהשטח" />
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <ScoreBar label="דירוג כללי" value={department.summary.overallRecommendation} />
               <ScoreBar label="איכות הוראה" value={department.summary.teachingQuality} />
@@ -1241,13 +1570,28 @@ export default async function DepartmentDetailsPage({
           </Card>
 
           <Card className="rounded-xl">
-            <SectionHeading title={isMedicalArrayProfile ? "מנהלי מחלקות במערך" : "רשת המחלקה"} />
+            <SectionHeading title="הנהלה ויצירת קשר" />
             <div className="mt-5 space-y-3">
-              {department.representativeAssignments.length === 0 && profileHeads.length === 0 ? (
+              {department.representativeAssignments.length === 0 && profileHeads.length === 0 && !department.contactName && contactEmails.length === 0 && !department.publicContactPhone ? (
                 <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600">
                   {profileMissingText}
                 </p>
               ) : null}
+              <div className="rounded-lg border border-slate-100 bg-white px-3 py-3">
+                <p className="text-xs font-black text-slate-500">איש קשר</p>
+                <p className="mt-2 text-sm font-bold text-ink">
+                  {department.contactName || <EmptyValue />}
+                </p>
+                <p className="mt-1 text-xs leading-6 text-slate-600">
+                  תפקיד: <EmptyValue />
+                </p>
+                <p className="text-xs leading-6 text-slate-600">
+                  אימייל: {contactEmails.length > 0 ? contactEmails.join(", ") : <EmptyValue />}
+                </p>
+                <p className="text-xs leading-6 text-slate-600">
+                  טלפון: {department.publicContactPhone || <EmptyValue />}
+                </p>
+              </div>
               {department.representativeAssignments.map((assignment) => (
                 <div key={assignment.id} className="flex items-center gap-3 rounded-lg border border-slate-100 bg-white px-3 py-3">
                   {assignment.user.profileImageUrl ? (
@@ -1277,9 +1621,16 @@ export default async function DepartmentDetailsPage({
               ))}
               {profileHeads.map((head) => (
                 <div key={head.id} className="rounded-lg border border-slate-100 bg-white px-3 py-3">
-                  <p className="text-sm font-bold text-ink">{head.name}</p>
+                  <p className="text-xs font-black text-slate-500">מנהל/ת מחלקה</p>
+                  <p className="mt-2 text-sm font-bold text-ink">{head.name || <EmptyValue />}</p>
                   <p className="mt-1 text-xs text-slate-500">
                     {[head.title, head.role, head.departmentName].filter(Boolean).join(" · ")}
+                  </p>
+                  <p className="mt-2 text-xs leading-6 text-slate-600">
+                    אימייל: <EmptyValue />
+                  </p>
+                  <p className="text-xs leading-6 text-slate-600">
+                    טלפון: <EmptyValue />
                   </p>
                 </div>
               ))}
@@ -1287,29 +1638,12 @@ export default async function DepartmentDetailsPage({
           </Card>
 
           <Card className="rounded-xl">
-            <SectionHeading title="עדכונים ומחקר" />
+            <SectionHeading title="עדכונים רשמיים" />
             <div className="mt-5 space-y-5">
               <div>
                 <p className="text-sm font-bold text-ink">עדכונים רשמיים</p>
                 <div className="mt-3">
                   <OfficialUpdatesList updates={department.officialUpdates} />
-                </div>
-              </div>
-              <div>
-                <p className="text-sm font-bold text-ink">מחקר</p>
-                <div className="mt-3 space-y-3">
-                  {department.researchOpportunities.length === 0 ? (
-                    <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600">
-                      אין עדיין נתונים
-                    </p>
-                  ) : (
-                    department.researchOpportunities.map((opportunity) => (
-                      <div key={opportunity.id} className="rounded-lg border border-brand-100 bg-brand-50/60 px-3 py-3">
-                        <p className="text-sm font-bold text-ink">{opportunity.title}</p>
-                        <p className="mt-2 text-xs leading-6 text-slate-700">{opportunity.summary}</p>
-                      </div>
-                    ))
-                  )}
                 </div>
               </div>
             </div>
