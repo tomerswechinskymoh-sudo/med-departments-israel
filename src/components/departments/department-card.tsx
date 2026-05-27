@@ -3,7 +3,7 @@ import { FavoriteToggleButton } from "@/components/departments/favorite-toggle-b
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
-import { getDepartmentHref } from "@/lib/utils";
+import { formatDate, getDepartmentHref } from "@/lib/utils";
 
 function MetricChip({
   label,
@@ -38,6 +38,15 @@ function MetricChip({
   );
 }
 
+function DataPill({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
+      <p className="text-[0.68rem] font-bold text-slate-500">{label}</p>
+      <p className="mt-1 text-sm font-black text-ink">{value}</p>
+    </div>
+  );
+}
+
 export function DepartmentCard({
   department,
   showFavoriteButton = false,
@@ -64,9 +73,16 @@ export function DepartmentCard({
     hasUpcomingCommittee?: boolean;
     hasResearch: boolean;
     residentsCount?: number | null;
+    newResidentsLatest?: number | null;
+    seniorPhysiciansCount?: number | null;
+    duns100PhysiciansCount?: number | null;
+    estimatedPublicationsCount?: number | null;
+    estimatedPublicationsYear?: number | null;
     shlavAlephPassRate?: number | null;
     shlavBetPassRate?: number | null;
     candidatePreferences?: string | null;
+    sourceNotes?: string | null;
+    dataLastUpdated?: string | Date | null;
     isFavorite?: boolean;
     coverImageUrl?: string | null;
   };
@@ -75,6 +91,25 @@ export function DepartmentCard({
 }) {
   const departmentHref = getDepartmentHref(department);
   const isRow = variant === "row";
+  const rowStats = [
+    typeof department.residentsCount === "number"
+      ? { label: "מתמחים", value: department.residentsCount }
+      : null,
+    typeof department.newResidentsLatest === "number"
+      ? { label: "חדשים", value: department.newResidentsLatest }
+      : null,
+    typeof department.seniorPhysiciansCount === "number"
+      ? { label: "בכירים", value: department.seniorPhysiciansCount }
+      : null,
+    typeof department.estimatedPublicationsCount === "number"
+      ? {
+          label: department.estimatedPublicationsYear
+            ? `פרסומים ${department.estimatedPublicationsYear}`
+            : "פרסומים",
+          value: department.estimatedPublicationsCount
+        }
+      : null
+  ].filter((item): item is { label: string; value: number } => Boolean(item));
 
   return (
     <Card
@@ -90,12 +125,12 @@ export function DepartmentCard({
 
       <div
         className={`relative z-20 flex flex-1 flex-col justify-between ${
-          isRow ? "gap-4 p-4 md:p-5 lg:grid lg:grid-cols-[1fr_220px] lg:items-center" : "p-6"
+          isRow ? "gap-4 p-4 md:p-5 lg:grid lg:grid-cols-[1fr_260px] lg:items-center" : "p-6"
         }`}
       >
         <div className="pointer-events-none">
           {isRow ? (
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               {department.region ? (
                 <p className="text-xs font-bold text-brand-700">{department.region}</p>
               ) : null}
@@ -103,8 +138,16 @@ export function DepartmentCard({
                 {department.institutionName}
               </p>
               <h3 className="break-words text-2xl font-black leading-tight text-ink">
-                {department.specialtyName}
+                {department.name}
               </h3>
+              <p className="inline-flex rounded-full border border-slate-100 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-600">
+                {department.specialtyName}
+              </p>
+              {department.shortSummary ? (
+                <p className="max-w-3xl text-sm leading-7 text-slate-600">
+                  {department.shortSummary}
+                </p>
+              ) : null}
             </div>
           ) : (
             <>
@@ -157,7 +200,24 @@ export function DepartmentCard({
             <div className="flex flex-wrap gap-2">
               {department.hasOpenResidency ? <Badge tone="success">תקנים פתוחים</Badge> : null}
               {department.hasUpcomingCommittee ? <Badge tone="default">ועדה מתוכננת</Badge> : null}
-              {department.hasResearch ? <Badge tone="success">מחקר פתוח</Badge> : null}
+              {department.hasResearch ? (
+                <Badge tone="success">
+                  {typeof department.estimatedPublicationsCount === "number"
+                    ? "מחקר משוער"
+                    : "מחקר פתוח"}
+                </Badge>
+              ) : null}
+              {typeof department.duns100PhysiciansCount === "number" ? (
+                <Badge tone="default">DUNS100: {department.duns100PhysiciansCount}</Badge>
+              ) : null}
+            </div>
+          ) : null}
+
+          {isRow && rowStats.length > 0 ? (
+            <div className="grid grid-cols-2 gap-2">
+              {rowStats.slice(0, 4).map((stat) => (
+                <DataPill key={stat.label} label={stat.label} value={stat.value} />
+              ))}
             </div>
           ) : null}
 
@@ -190,7 +250,25 @@ export function DepartmentCard({
                     : "אין נתונים"}
                 </p>
               </div>
+              {typeof department.newResidentsLatest === "number" ? (
+                <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-slate-500">חדשים</p>
+                  <p className="mt-1 font-bold text-ink">{department.newResidentsLatest}</p>
+                </div>
+              ) : null}
+              {typeof department.estimatedPublicationsCount === "number" ? (
+                <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
+                  <p className="text-slate-500">פרסומים משוערים</p>
+                  <p className="mt-1 font-bold text-ink">{department.estimatedPublicationsCount}</p>
+                </div>
+              ) : null}
             </div>
+          ) : null}
+
+          {department.dataLastUpdated ? (
+            <p className="text-[0.68rem] font-semibold leading-5 text-slate-400">
+              עודכן: {formatDate(department.dataLastUpdated)}
+            </p>
           ) : null}
 
           <div className="flex flex-wrap gap-3">

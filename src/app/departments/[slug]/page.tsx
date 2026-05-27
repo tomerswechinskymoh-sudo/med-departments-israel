@@ -28,6 +28,26 @@ export const dynamic = "force-dynamic";
 
 type MetricSource = "moh" | "hospital" | "duns100" | "openalex" | "demo" | "missing";
 
+type ImportedMetric = {
+  metricKey: string;
+  label?: string | null;
+  value: number | null;
+  rawValue?: string | null;
+  unit?: string | null;
+  sourceNotes?: string | null;
+  lastUpdated?: string | Date | null;
+};
+
+type ImportedYearlyMetric = {
+  metricKey: string;
+  year: number;
+  value: number | null;
+  rawValue?: string | null;
+  unit?: string | null;
+  sourceNotes?: string | null;
+  lastUpdated?: string | Date | null;
+};
+
 function EmptyValue({ text = "אין עדיין נתונים" }: { text?: string }) {
   return <span className="text-slate-400">{text}</span>;
 }
@@ -126,6 +146,160 @@ function DataUnavailable({ label, text }: { label?: string; text: string }) {
         <SourceBadge source="missing" />
       </div>
       <p className="mt-2 text-sm font-bold leading-6 text-slate-500">{text}</p>
+    </div>
+  );
+}
+
+function formatImportedNumber(value: number) {
+  return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 1 }).format(value);
+}
+
+function formatImportedMetricValue(metric: ImportedMetric | ImportedYearlyMetric) {
+  if (metric.rawValue) {
+    return metric.rawValue;
+  }
+
+  if (typeof metric.value !== "number" || !Number.isFinite(metric.value)) {
+    return "נשמר כטקסט";
+  }
+
+  const formattedValue = formatImportedNumber(metric.value);
+
+  if (metric.unit === "%") return `${formattedValue}%`;
+  if (metric.unit === "currency") return `${formattedValue} ₪`;
+  if (metric.unit === "months") return `${formattedValue} חודשים`;
+  if (metric.unit === "years") return `${formattedValue} שנים`;
+  if (metric.unit && metric.unit !== "count") return `${formattedValue} ${metric.unit}`;
+
+  return formattedValue;
+}
+
+function findImportedMetric(metrics: ImportedMetric[], ...metricKeys: string[]) {
+  return (
+    metrics.find(
+      (metric) =>
+        metricKeys.includes(metric.metricKey) &&
+        (typeof metric.value === "number" || Boolean(metric.rawValue))
+    ) ?? null
+  );
+}
+
+function importedMetricNumber(metrics: ImportedMetric[], ...metricKeys: string[]) {
+  return findImportedMetric(metrics, ...metricKeys)?.value ?? null;
+}
+
+function latestYearlyMetric(
+  metrics: ImportedYearlyMetric[],
+  metricKey: string,
+  options: { beforeYear?: number; year?: number } = {}
+) {
+  return (
+    metrics
+      .filter((metric) => metric.metricKey === metricKey)
+      .filter((metric) => (options.year ? metric.year === options.year : true))
+      .filter((metric) => (options.beforeYear ? metric.year < options.beforeYear : true))
+      .filter((metric) => typeof metric.value === "number" || Boolean(metric.rawValue))
+      .sort((left, right) => right.year - left.year)[0] ?? null
+  );
+}
+
+function yearlyMetricLabel(metric: ImportedYearlyMetric) {
+  if (metric.metricKey === "newResidents" && metric.year === 2026) {
+    return "צפי תקנים חדשים";
+  }
+
+  if (metric.metricKey === "newResidents") {
+    return "מתמחים חדשים";
+  }
+
+  return metric.metricKey;
+}
+
+function ImportedMetricGrid({
+  title,
+  metrics,
+  source,
+  emptyText,
+  maxItems
+}: {
+  title: string;
+  metrics: ImportedMetric[];
+  source: MetricSource;
+  emptyText: string;
+  maxItems?: number;
+}) {
+  const visibleMetrics = metrics
+    .filter((metric) => typeof metric.value === "number" || Boolean(metric.rawValue))
+    .slice(0, maxItems ?? metrics.length);
+
+  return (
+    <div className="rounded-2xl border border-slate-100 bg-white px-4 py-4">
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <p className="text-sm font-black text-ink">{title}</p>
+        <SourceBadge source={visibleMetrics.length > 0 ? source : "missing"} />
+      </div>
+      {visibleMetrics.length === 0 ? (
+        <p className="mt-3 text-sm font-bold leading-6 text-slate-500">{emptyText}</p>
+      ) : (
+        <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+          {visibleMetrics.map((metric) => (
+            <div key={metric.metricKey} className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-3">
+              <p className="text-xs font-bold leading-5 text-slate-500">
+                {metric.label ?? metric.metricKey}
+              </p>
+              <p className="mt-1 text-lg font-black text-ink">
+                {formatImportedMetricValue(metric)}
+              </p>
+              {metric.lastUpdated ? (
+                <p className="mt-1 text-[0.68rem] font-semibold text-slate-400">
+                  עודכן: {formatDate(metric.lastUpdated)}
+                </p>
+              ) : null}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function YearlyMetricsTable({
+  title,
+  metrics,
+  source,
+  emptyText
+}: {
+  title: string;
+  metrics: ImportedYearlyMetric[];
+  source: MetricSource;
+  emptyText: string;
+}) {
+  const visibleMetrics = metrics.filter(
+    (metric) => typeof metric.value === "number" || Boolean(metric.rawValue)
+  );
+
+  return (
+    <div className="rounded-2xl border border-slate-100 bg-white px-4 py-4">
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <p className="text-sm font-black text-ink">{title}</p>
+        <SourceBadge source={visibleMetrics.length > 0 ? source : "missing"} />
+      </div>
+      {visibleMetrics.length === 0 ? (
+        <p className="mt-3 text-sm font-bold leading-6 text-slate-500">{emptyText}</p>
+      ) : (
+        <div className="mt-4 overflow-hidden rounded-xl border border-slate-100">
+          {visibleMetrics.map((metric) => (
+            <div
+              key={`${metric.metricKey}-${metric.year}`}
+              className="grid grid-cols-[1fr_auto_auto] items-center gap-3 border-b border-slate-100 px-3 py-2 last:border-b-0"
+            >
+              <span className="text-sm font-bold text-slate-600">{yearlyMetricLabel(metric)}</span>
+              <span className="text-sm font-semibold text-slate-500">{metric.year}</span>
+              <span className="text-sm font-black text-ink">{formatImportedMetricValue(metric)}</span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -485,6 +659,10 @@ export default async function DepartmentDetailsPage({
     ? department.medicalArray?.externalPeople ?? []
     : department.externalPeople;
   const arrayDepartments = isMedicalArrayProfile ? department.medicalArray?.departments ?? [] : [];
+  const importedDepartmentMetrics = department.metrics;
+  const importedDepartmentYearlyMetrics = department.yearlyMetrics;
+  const importedSpecialtyMetrics = department.specialty.metrics;
+  const importedSpecialtyYearlyMetrics = department.specialty.yearlyMetrics;
   const contactEmails = (department.publicContactEmail ?? "")
     .split(/[\n,;]+/)
     .map((item) => item.trim())
@@ -559,54 +737,93 @@ export default async function DepartmentDetailsPage({
     };
   });
   const perkItems = splitList(department.perks) ?? [];
-  const duns100PhysiciansCount = profileExternalMetrics.find(
-    (metric) => metric.metricKey === "duns100PhysiciansCount" && metric.sourceName === "DUNS100"
-  )?.value;
   const metricRecord = (metricKey: string) =>
     profileExternalMetrics.find((metric) => metric.metricKey === metricKey && metric.sourceName !== "DEMO");
   const isMedicalArrayDemo = department.medicalArray?.publicationSourceUrl === "DEMO";
+  const duns100PhysiciansCount =
+    importedMetricNumber(importedDepartmentMetrics, "duns100PhysiciansCount") ??
+    profileExternalMetrics.find(
+      (metric) => metric.metricKey === "duns100PhysiciansCount" && metric.sourceName === "DUNS100"
+    )?.value;
   const activeResidentsMetric = metricRecord("activeResidentsCount");
+  const importedActiveResidents = importedMetricNumber(
+    importedDepartmentMetrics,
+    "residentsCount",
+    "activeResidentsCount"
+  );
   const activeResidents =
     department.residentsCount !== null && department.residentsCount !== undefined
       ? { value: department.residentsCount, source: "hospital" as MetricSource }
+      : importedActiveResidents !== null
+        ? { value: importedActiveResidents, source: "hospital" as MetricSource }
       : activeResidentsMetric
         ? { value: activeResidentsMetric.value, source: sourceFromName(activeResidentsMetric.sourceName) }
         : null;
   const specialistsMetric = metricRecord("seniorPhysiciansCount");
+  const importedSpecialists = importedMetricNumber(importedDepartmentMetrics, "seniorPhysiciansCount");
   const specialists =
     isMedicalArrayProfile && !isMedicalArrayDemo && isPresentNumber(department.medicalArray?.specialistsCount)
       ? { value: department.medicalArray.specialistsCount, source: "hospital" as MetricSource }
+      : importedSpecialists !== null
+        ? { value: importedSpecialists, source: "hospital" as MetricSource }
       : specialistsMetric
         ? { value: specialistsMetric.value, source: sourceFromName(specialistsMetric.sourceName) }
         : null;
   const medianDurationMetric = metricRecord("medianResidencyDurationMonths");
+  const importedMedianDuration =
+    findImportedMetric(importedSpecialtyMetrics, "actualAverageDuration", "officialResidencyDuration") ??
+    findImportedMetric(importedDepartmentMetrics, "medianResidencyDurationMonths");
   const medianDuration =
     department.medianResidencyLength
       ? { value: department.medianResidencyLength, source: "hospital" as MetricSource }
+      : importedMedianDuration
+        ? { value: formatImportedMetricValue(importedMedianDuration), source: "moh" as MetricSource }
       : medianDurationMetric
         ? { value: `${medianDurationMetric.value} חודשים`, source: sourceFromName(medianDurationMetric.sourceName) }
         : null;
   const boardStageAMetric = metricRecord("boardStageAPassRate");
+  const importedBoardStageA =
+    findImportedMetric(importedDepartmentMetrics, "boardStageAPassRate", "inherited_boardStageAPassRate") ??
+    findImportedMetric(importedSpecialtyMetrics, "boardStageAPassRate");
   const boardStageA =
     department.shlavAlephPassRate !== null && department.shlavAlephPassRate !== undefined
       ? { value: `${department.shlavAlephPassRate}%`, source: "hospital" as MetricSource }
+      : importedBoardStageA
+        ? { value: formatImportedMetricValue(importedBoardStageA), source: "moh" as MetricSource }
       : boardStageAMetric
         ? { value: `${boardStageAMetric.value}%`, source: sourceFromName(boardStageAMetric.sourceName) }
         : null;
   const boardStageBMetric = metricRecord("boardStageBPassRate");
+  const importedBoardStageB =
+    findImportedMetric(importedDepartmentMetrics, "boardStageBPassRate", "inherited_boardStageBPassRate") ??
+    findImportedMetric(importedSpecialtyMetrics, "boardStageBPassRate");
   const boardStageB =
     department.shlavBetPassRate !== null && department.shlavBetPassRate !== undefined
       ? { value: `${department.shlavBetPassRate}%`, source: "hospital" as MetricSource }
+      : importedBoardStageB
+        ? { value: formatImportedMetricValue(importedBoardStageB), source: "moh" as MetricSource }
       : boardStageBMetric
         ? { value: `${boardStageBMetric.value}%`, source: sourceFromName(boardStageBMetric.sourceName) }
         : null;
+  const latestNewResidentsMetric = latestYearlyMetric(
+    importedDepartmentYearlyMetrics,
+    "newResidents",
+    { beforeYear: 2026 }
+  );
   const newResidents =
     department.newResidentsThisYear !== null && department.newResidentsThisYear !== undefined
       ? { value: department.newResidentsThisYear, source: "hospital" as MetricSource }
+      : latestNewResidentsMetric
+        ? { value: formatImportedMetricValue(latestNewResidentsMetric), source: "hospital" as MetricSource }
       : null;
+  const expectedOpeningsMetric =
+    findImportedMetric(importedDepartmentMetrics, "expectedOpenings2026") ??
+    latestYearlyMetric(importedDepartmentYearlyMetrics, "newResidents", { year: 2026 });
   const expectedGraduates =
     department.expectedGraduatesThisYear !== null && department.expectedGraduatesThisYear !== undefined
       ? { value: department.expectedGraduatesThisYear, source: "hospital" as MetricSource }
+      : expectedOpeningsMetric
+        ? { value: formatImportedMetricValue(expectedOpeningsMetric), source: "hospital" as MetricSource }
       : null;
   const openingsCount = department.residencyOpenings.reduce(
     (sum, opening) => sum + (opening.openingsCount ?? 0),
@@ -702,6 +919,9 @@ export default async function DepartmentDetailsPage({
                 <a href={department.applicationUrl} className="block font-semibold text-brand-800">
                   קישור להגשת מועמדות
                 </a>
+              ) : null}
+              {department.contactName ? (
+                <p className="leading-7">איש קשר: {department.contactName}</p>
               ) : null}
               {contactEmails.length > 0 ? (
                 <p className="leading-7">אימייל: {contactEmails.join(", ")}</p>
@@ -829,6 +1049,23 @@ export default async function DepartmentDetailsPage({
               ) : null}
             </div>
 
+            {importedDepartmentMetrics.length > 0 || importedDepartmentYearlyMetrics.length > 0 ? (
+              <div className="mt-5 grid gap-3 lg:grid-cols-2">
+                <ImportedMetricGrid
+                  title="מדדים מיובאים למחלקה"
+                  metrics={importedDepartmentMetrics}
+                  source="hospital"
+                  emptyText={profileMissingText}
+                />
+                <YearlyMetricsTable
+                  title="מדדים שנתיים למחלקה"
+                  metrics={importedDepartmentYearlyMetrics}
+                  source="hospital"
+                  emptyText={profileMissingText}
+                />
+              </div>
+            ) : null}
+
             {openAlexResearchMetrics.length > 0 ? (
               <div className="mt-5">
                 <EstimatedOpenAlexResearch metrics={openAlexResearchMetrics} />
@@ -888,6 +1125,34 @@ export default async function DepartmentDetailsPage({
             ) : null}
 
           </Card>
+
+          {importedSpecialtyMetrics.length > 0 || importedSpecialtyYearlyMetrics.length > 0 ? (
+            <Card className="rounded-xl">
+              <SectionHeading title="נתונים ארציים על תחום ההתמחות" />
+              {department.specialty.dataSourceNotes || department.specialty.dataLastUpdated ? (
+                <p className="mt-3 rounded-lg border border-blue-100 bg-blue-50/60 px-4 py-3 text-xs leading-6 text-blue-900">
+                  מקור/עדכון תחום: {department.specialty.dataSourceNotes ?? "MASTER_Spec.csv"}
+                  {" · "}
+                  עודכן: {formatDate(department.specialty.dataLastUpdated)}
+                </p>
+              ) : null}
+              <div className="mt-5 grid gap-3 lg:grid-cols-2">
+                <ImportedMetricGrid
+                  title="מדדי התמחות"
+                  metrics={importedSpecialtyMetrics}
+                  source="moh"
+                  emptyText="אין עדיין נתונים ארציים זמינים"
+                  maxItems={24}
+                />
+                <YearlyMetricsTable
+                  title="מתמחים חדשים לפי שנה"
+                  metrics={importedSpecialtyYearlyMetrics}
+                  source="moh"
+                  emptyText="אין עדיין נתונים שנתיים זמינים"
+                />
+              </div>
+            </Card>
+          ) : null}
 
           <Card className="rounded-xl">
             <SectionHeading title="דירוגים וחוויות" />

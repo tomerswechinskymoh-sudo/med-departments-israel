@@ -121,6 +121,7 @@ function averageClinicalExposure(
 }
 
 function canonicalDepartmentSlugForRecord(input: {
+  id?: string | null;
   slug: string;
   name: string;
   institution: {
@@ -130,11 +131,13 @@ function canonicalDepartmentSlugForRecord(input: {
     slug: string;
   };
 }) {
-  return resolveCanonicalDepartmentSlug({
+  const canonicalSlug = resolveCanonicalDepartmentSlug({
     institutionSlug: input.institution.slug,
     specialtySlug: input.specialty.slug,
     departmentName: input.name
   });
+
+  return canonicalSlug || input.slug || (input.id ? `department-${input.id}` : "department");
 }
 
 export const ISRAEL_REGIONS = ["צפון", "דרום", "מרכז", "חיפה", "ירושלים"] as const;
@@ -168,6 +171,26 @@ function getDepartmentSlugVariants(slug: string) {
   const normalizedHyphenSlug = decodedSlug.replace(/-+/g, "-");
 
   return Array.from(new Set([decodedSlug, normalizedHyphenSlug])).filter(Boolean);
+}
+
+function importedMetricValue(
+  metrics: Array<{ metricKey: string; value: number | null; rawValue?: string | null }>,
+  ...metricKeys: string[]
+) {
+  const metric = metrics.find(
+    (item) => metricKeys.includes(item.metricKey) && typeof item.value === "number" && Number.isFinite(item.value)
+  );
+
+  return metric?.value ?? null;
+}
+
+function latestYearlyMetricValue(
+  metrics: Array<{ metricKey: string; year: number; value: number | null }>,
+  metricKey: string
+) {
+  return metrics
+    .filter((metric) => metric.metricKey === metricKey && typeof metric.value === "number")
+    .sort((left, right) => right.year - left.year)[0]?.value ?? null;
 }
 
 export async function resolveDepartmentBySlugOrFallback(
@@ -496,12 +519,13 @@ export async function getDirectoryData(
     teachingPriority?: number;
     seniorsPriority?: number;
     clinicalPriority?: number;
+    searchAcrossSpecialties?: boolean;
   },
   userId?: string
 ) {
   const selectedSpecialtyId = filters.specialties?.[0];
 
-  if (!selectedSpecialtyId) {
+  if (!selectedSpecialtyId && !filters.searchAcrossSpecialties) {
     return [];
   }
 
@@ -515,9 +539,11 @@ export async function getDirectoryData(
               }))
             }
           : {},
-        {
-          specialtyId: selectedSpecialtyId
-        },
+        selectedSpecialtyId && !filters.searchAcrossSpecialties
+          ? {
+              specialtyId: selectedSpecialtyId
+            }
+          : {},
         filters.institutionTypes?.length
           ? {
               institution: {
@@ -585,6 +611,44 @@ export async function getDirectoryData(
         where: {
           contentStatus: ContentStatus.PUBLISHED
         }
+      },
+      metrics: {
+        select: {
+          metricKey: true,
+          value: true,
+          rawValue: true,
+          unit: true,
+          label: true,
+          lastUpdated: true
+        }
+      },
+      yearlyMetrics: {
+        select: {
+          metricKey: true,
+          year: true,
+          value: true,
+          rawValue: true,
+          unit: true
+        },
+        orderBy: {
+          year: "desc"
+        }
+      },
+      researchMetrics: {
+        where: {
+          source: "OpenAlex",
+          needsMapping: false
+        },
+        select: {
+          year: true,
+          publicationsCount: true,
+          confidenceScore: true,
+          isAmbiguous: true
+        },
+        orderBy: {
+          year: "desc"
+        },
+        take: 1
       },
       favorites: userId
         ? {
@@ -658,6 +722,24 @@ export async function getDirectoryData(
     const hasUpcomingCommittee = department.residencyOpenings.some(
       (opening) => opening.committeeDate && new Date(opening.committeeDate) >= now
     );
+    const residentsCount =
+      department.residentsCount ??
+      importedMetricValue(department.metrics, "residentsCount", "activeResidentsCount");
+    const shlavAlephPassRate =
+      department.shlavAlephPassRate ??
+      importedMetricValue(department.metrics, "boardStageAPassRate", "inherited_boardStageAPassRate");
+    const shlavBetPassRate =
+      department.shlavBetPassRate ??
+      importedMetricValue(department.metrics, "boardStageBPassRate", "inherited_boardStageBPassRate");
+    const newResidentsLatest =
+      department.newResidentsThisYear ??
+      latestYearlyMetricValue(department.yearlyMetrics, "newResidents");
+    const duns100PhysiciansCount = importedMetricValue(department.metrics, "duns100PhysiciansCount");
+    const seniorPhysiciansCount = importedMetricValue(department.metrics, "seniorPhysiciansCount");
+    const latestResearchMetric = department.researchMetrics[0] ?? null;
+    const hasImportedResearch =
+      department.metrics.some((metric) => metric.metricKey === "departmentalPublicationsCount" && metric.value) ||
+      Boolean(latestResearchMetric?.publicationsCount);
 
     const rankingScore =
       (filters.prioritizeOpenings && department.residencyOpenings.length > 0 ? 7 : 0) +
@@ -689,11 +771,18 @@ export async function getDirectoryData(
       clinicalExposure,
       hasOpenResidency: department.residencyOpenings.length > 0,
       hasUpcomingCommittee,
-      hasResearch: department.researchOpportunities.length > 0,
-      residentsCount: department.residentsCount,
-      shlavAlephPassRate: department.shlavAlephPassRate,
-      shlavBetPassRate: department.shlavBetPassRate,
+      hasResearch: department.researchOpportunities.length > 0 || hasImportedResearch,
+      residentsCount,
+      newResidentsLatest,
+      seniorPhysiciansCount,
+      duns100PhysiciansCount,
+      estimatedPublicationsCount: latestResearchMetric?.publicationsCount ?? null,
+      estimatedPublicationsYear: latestResearchMetric?.year ?? null,
+      shlavAlephPassRate,
+      shlavBetPassRate,
       candidatePreferences: department.candidatePreferences,
+      sourceNotes: department.dataSourceNotes,
+      dataLastUpdated: department.dataLastUpdated,
       isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
       rankingScore
     };
@@ -773,6 +862,15 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
             sourceName: true,
             approved: true
           }
+        },
+        metrics: {
+          select: {
+            metricKey: true,
+            value: true,
+            rawValue: true,
+            label: true,
+            unit: true
+          }
         }
       }
     })
@@ -786,20 +884,39 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
     config?.displayOrderJson,
     enabledMetrics
   );
-  const metricInput = departments.map((department) => ({
-    residentsCount: department.residentsCount,
-    medianResidencyLength: department.medianResidencyLength,
-    shlavAlephPassRate: department.shlavAlephPassRate,
-    shlavBetPassRate: department.shlavBetPassRate,
-    genderBalance: department.genderBalance,
-    educationLocationBreakdown: department.educationLocationBreakdown,
-    reviewCount: department.reviews.length,
-    averageOverall: average(department.reviews.map((review) => review.overallRecommendation)),
-    lifestyleBalance: average(department.reviews.map((review) => review.lifestyleBalance)),
-    researchExposure: average(department.reviews.map((review) => review.researchExposure)),
-    hasResearch: department.researchOpportunities.length > 0,
-    externalMetrics: department.externalMetrics
-  }));
+  const metricInput = departments.map((department) => {
+    const importedExternalMetrics = department.metrics
+      .filter((metric) => typeof metric.value === "number" && Number.isFinite(metric.value))
+      .map((metric) => ({
+        metricKey: metric.metricKey === "residentsCount" ? "activeResidentsCount" : metric.metricKey,
+        value: metric.value ?? 0,
+        sourceName: "MASTER_CSV",
+        approved: true
+      }));
+
+    return {
+      residentsCount:
+        department.residentsCount ??
+        importedMetricValue(department.metrics, "residentsCount", "activeResidentsCount"),
+      medianResidencyLength: department.medianResidencyLength,
+      shlavAlephPassRate:
+        department.shlavAlephPassRate ??
+        importedMetricValue(department.metrics, "boardStageAPassRate", "inherited_boardStageAPassRate"),
+      shlavBetPassRate:
+        department.shlavBetPassRate ??
+        importedMetricValue(department.metrics, "boardStageBPassRate", "inherited_boardStageBPassRate"),
+      genderBalance: department.genderBalance,
+      educationLocationBreakdown: department.educationLocationBreakdown,
+      reviewCount: department.reviews.length,
+      averageOverall: average(department.reviews.map((review) => review.overallRecommendation)),
+      lifestyleBalance: average(department.reviews.map((review) => review.lifestyleBalance)),
+      researchExposure: average(department.reviews.map((review) => review.researchExposure)),
+      hasResearch:
+        department.researchOpportunities.length > 0 ||
+        importedMetricValue(department.metrics, "departmentalPublicationsCount") !== null,
+      externalMetrics: [...department.externalMetrics, ...importedExternalMetrics]
+    };
+  });
 
   return {
     metrics: calculateSpecialtyMetrics(metricInput, enabledMetrics, displayOrder),
@@ -824,7 +941,18 @@ export async function getDepartmentPageData(
     },
     include: {
       institution: true,
-      specialty: true,
+      specialty: {
+        include: {
+          metrics: {
+            orderBy: {
+              metricKey: "asc"
+            }
+          },
+          yearlyMetrics: {
+            orderBy: [{ year: "desc" }, { metricKey: "asc" }]
+          }
+        }
+      },
       heads: {
         orderBy: {
           displayOrder: "asc"
@@ -954,6 +1082,14 @@ export async function getDepartmentPageData(
           rankingYear: true,
           approved: true
         }
+      },
+      metrics: {
+        orderBy: {
+          metricKey: "asc"
+        }
+      },
+      yearlyMetrics: {
+        orderBy: [{ year: "desc" }, { metricKey: "asc" }]
       },
       researchMetrics: {
         where: {

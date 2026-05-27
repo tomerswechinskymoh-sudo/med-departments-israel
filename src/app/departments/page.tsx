@@ -107,16 +107,21 @@ export default async function DepartmentsPage({
         ? rawSearchParams.clinicalPriority
         : undefined
   });
+  const searchAcrossSpecialties = Boolean(rawSearchParams.search) && !rawSearchParams.specialty;
+  const effectiveFilters = {
+    ...parsedFilters,
+    searchAcrossSpecialties
+  };
 
   const [departments, specialtyDashboard, salaryAssumption] = await Promise.all([
-    getDirectoryData(parsedFilters, session?.userId),
+    getDirectoryData(effectiveFilters, session?.userId),
     getSpecialtyDashboardMetrics(selectedSpecialtyId),
     getActiveSalaryAssumption()
   ]);
   const selectedSpecialty = availableFilters.specialties.find(
     (specialty) => specialty.id === selectedSpecialtyId
   );
-  const filtersKey = JSON.stringify(parsedFilters);
+  const filtersKey = JSON.stringify(effectiveFilters);
 
   return (
     <div className="min-h-screen bg-[#f3f7fa]">
@@ -162,7 +167,9 @@ export default async function DepartmentsPage({
                 <div>
                   <p className="text-sm font-bold text-ink">{departments.length} תוכניות נמצאו</p>
                   <p className="mt-1 text-xs text-slate-500">
-                    מוצגות תוכניות בתחום {selectedSpecialty?.name ?? "ההתמחות שנבחרה"} בלבד.
+                    {searchAcrossSpecialties
+                      ? "החיפוש מתבצע בכל תחומי ההתמחות."
+                      : `מוצגות תוכניות בתחום ${selectedSpecialty?.name ?? "ההתמחות שנבחרה"} בלבד.`}
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
