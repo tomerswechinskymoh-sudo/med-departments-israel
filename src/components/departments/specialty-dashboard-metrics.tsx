@@ -157,12 +157,6 @@ export function SpecialtyDashboardMetrics({
                 {metric.value}
               </p>
             )}
-            <div className="mt-auto flex items-center gap-2 pt-3 text-[0.68rem] font-black text-slate-400">
-              <span className="grid h-5 w-5 place-items-center rounded-full border border-slate-200 bg-white">
-                i
-              </span>
-              <span>מקור נתונים</span>
-            </div>
           </div>
         ))}
       </div>
