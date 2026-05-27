@@ -41,6 +41,53 @@ function GenderDonut({ value }: { value: string }) {
   );
 }
 
+function parseYearValues(value: string) {
+  return value
+    .split("·")
+    .map((item) => {
+      const [yearPart, valuePart] = item.split(":").map((part) => part.trim());
+      const year = Number(yearPart);
+      const numericValue = Number((valuePart ?? "").replace(/[^\d.-]/g, ""));
+
+      return Number.isFinite(year) && Number.isFinite(numericValue)
+        ? { year, value: numericValue }
+        : null;
+    })
+    .filter((item): item is { year: number; value: number } => Boolean(item));
+}
+
+function YearTrend({ value }: { value: string }) {
+  const rows = parseYearValues(value);
+  const max = Math.max(...rows.map((row) => row.value), 1);
+
+  if (rows.length === 0) {
+    return (
+      <p className="mt-2 text-2xl font-black text-ink">
+        {value}
+      </p>
+    );
+  }
+
+  return (
+    <div className="mt-3 space-y-2">
+      {rows.map((row) => (
+        <div key={row.year}>
+          <div className="flex items-center justify-between text-xs font-bold text-slate-600">
+            <span>{row.year}</span>
+            <span>{row.value.toLocaleString("he-IL")}</span>
+          </div>
+          <div className="mt-1 h-2 overflow-hidden rounded-full bg-white">
+            <div
+              className="h-full rounded-full bg-brand-700"
+              style={{ width: `${Math.round((row.value / max) * 100)}%` }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function SpecialtyDashboardMetrics({
   specialtyName,
   metrics,
@@ -93,6 +140,8 @@ export function SpecialtyDashboardMetrics({
             <p className="text-xs font-bold text-slate-500">{metric.label}</p>
             {metric.key === "genderDistribution" && !metric.isPlaceholder ? (
               <GenderDonut value={metric.value} />
+            ) : metric.key === "newResidentsTrend" && !metric.isPlaceholder ? (
+              <YearTrend value={metric.value} />
             ) : (
               <p className={`mt-2 text-2xl font-black ${metric.isPlaceholder ? "text-slate-400" : "text-ink"}`}>
                 {metric.value}

@@ -186,10 +186,13 @@ function importedMetricValue(
 
 function latestYearlyMetricValue(
   metrics: Array<{ metricKey: string; year: number; value: number | null }>,
-  metricKey: string
+  metricKey: string,
+  options: { beforeYear?: number; year?: number } = {}
 ) {
   return metrics
     .filter((metric) => metric.metricKey === metricKey && typeof metric.value === "number")
+    .filter((metric) => (options.year ? metric.year === options.year : true))
+    .filter((metric) => (options.beforeYear ? metric.year < options.beforeYear : true))
     .sort((left, right) => right.year - left.year)[0]?.value ?? null;
 }
 
@@ -733,7 +736,10 @@ export async function getDirectoryData(
       importedMetricValue(department.metrics, "boardStageBPassRate", "inherited_boardStageBPassRate");
     const newResidentsLatest =
       department.newResidentsThisYear ??
-      latestYearlyMetricValue(department.yearlyMetrics, "newResidents");
+      latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { beforeYear: 2026 });
+    const expectedOpeningsCount =
+      importedMetricValue(department.metrics, "expectedOpenings2026") ??
+      latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { year: 2026 });
     const duns100PhysiciansCount = importedMetricValue(department.metrics, "duns100PhysiciansCount");
     const seniorPhysiciansCount = importedMetricValue(department.metrics, "seniorPhysiciansCount");
     const latestResearchMetric = department.researchMetrics[0] ?? null;
@@ -776,6 +782,7 @@ export async function getDirectoryData(
       newResidentsLatest,
       seniorPhysiciansCount,
       duns100PhysiciansCount,
+      expectedOpeningsCount,
       estimatedPublicationsCount: latestResearchMetric?.publicationsCount ?? null,
       estimatedPublicationsYear: latestResearchMetric?.year ?? null,
       shlavAlephPassRate,
@@ -830,10 +837,39 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
     };
   }
 
-  const [config, departments] = await Promise.all([
+  const [config, specialty, departments] = await Promise.all([
     prisma.specialtyDashboardConfig.findUnique({
       where: {
         specialtyId
+      }
+    }),
+    prisma.specialty.findUnique({
+      where: {
+        id: specialtyId
+      },
+      include: {
+        metrics: {
+          select: {
+            metricKey: true,
+            label: true,
+            value: true,
+            rawValue: true,
+            unit: true
+          },
+          orderBy: {
+            metricKey: "asc"
+          }
+        },
+        yearlyMetrics: {
+          select: {
+            metricKey: true,
+            year: true,
+            value: true,
+            rawValue: true,
+            unit: true
+          },
+          orderBy: [{ year: "asc" }, { metricKey: "asc" }]
+        }
       }
     }),
     prisma.department.findMany({
@@ -869,6 +905,15 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
             value: true,
             rawValue: true,
             label: true,
+            unit: true
+          }
+        },
+        yearlyMetrics: {
+          select: {
+            metricKey: true,
+            year: true,
+            value: true,
+            rawValue: true,
             unit: true
           }
         }
@@ -914,12 +959,16 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
       hasResearch:
         department.researchOpportunities.length > 0 ||
         importedMetricValue(department.metrics, "departmentalPublicationsCount") !== null,
-      externalMetrics: [...department.externalMetrics, ...importedExternalMetrics]
+      externalMetrics: [...department.externalMetrics, ...importedExternalMetrics],
+      yearlyMetrics: department.yearlyMetrics
     };
   });
 
   return {
-    metrics: calculateSpecialtyMetrics(metricInput, enabledMetrics, displayOrder),
+    metrics: calculateSpecialtyMetrics(metricInput, enabledMetrics, displayOrder, {
+      specialtyMetrics: specialty?.metrics ?? [],
+      specialtyYearlyMetrics: specialty?.yearlyMetrics ?? []
+    }),
     hasConfig: Boolean(config)
   };
 }

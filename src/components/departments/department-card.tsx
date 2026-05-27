@@ -76,6 +76,7 @@ export function DepartmentCard({
     newResidentsLatest?: number | null;
     seniorPhysiciansCount?: number | null;
     duns100PhysiciansCount?: number | null;
+    expectedOpeningsCount?: number | null;
     estimatedPublicationsCount?: number | null;
     estimatedPublicationsYear?: number | null;
     shlavAlephPassRate?: number | null;
@@ -100,6 +101,9 @@ export function DepartmentCard({
       : null,
     typeof department.seniorPhysiciansCount === "number"
       ? { label: "בכירים", value: department.seniorPhysiciansCount }
+      : null,
+    typeof department.expectedOpeningsCount === "number"
+      ? { label: "צפי 2026", value: department.expectedOpeningsCount }
       : null,
     typeof department.estimatedPublicationsCount === "number"
       ? {
