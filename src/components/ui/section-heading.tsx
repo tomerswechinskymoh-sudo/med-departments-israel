@@ -9,9 +9,9 @@ export function SectionHeading({
 }) {
   return (
     <div className="max-w-3xl">
-      {eyebrow ? <p className="text-sm font-semibold text-brand-600">{eyebrow}</p> : null}
-      <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink md:text-3xl">{title}</h2>
-      {description ? <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">{description}</p> : null}
+      {eyebrow ? <p className="text-xs font-semibold text-brand-600">{eyebrow}</p> : null}
+      <h2 className="mt-1 text-xl font-bold tracking-tight text-ink md:text-2xl">{title}</h2>
+      {description ? <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p> : null}
     </div>
   );
 }

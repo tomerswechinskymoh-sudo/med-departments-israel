@@ -122,6 +122,26 @@ export const loginSchema = z.object({
   password: z.string().min(8, "הסיסמה חייבת להכיל לפחות 8 תווים.")
 });
 
+export const forgotPasswordSchema = z.object({
+  email: z.string().email("יש להזין כתובת אימייל תקינה.")
+});
+
+export const resetPasswordSchema = z
+  .object({
+    token: z.string().min(16, "קישור האיפוס אינו תקין."),
+    password: z
+      .string()
+      .min(8, "הסיסמה חייבת להכיל לפחות 8 תווים.")
+      .regex(/[A-Z]/, "יש לכלול אות גדולה אחת לפחות.")
+      .regex(/[a-z]/, "יש לכלול אות קטנה אחת לפחות.")
+      .regex(/[0-9]/, "יש לכלול ספרה אחת לפחות."),
+    confirmPassword: z.string()
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+    message: "הסיסמאות אינן תואמות."
+  });
+
 export const signupSchema = z
   .object({
     fullName: z.string().min(2, "יש להזין שם מלא."),

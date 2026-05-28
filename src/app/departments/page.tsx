@@ -123,18 +123,23 @@ export default async function DepartmentsPage({
 
   return (
     <div className="min-h-screen bg-[#f3f7fa]">
-      <PageShell className="space-y-7 py-8">
-        <section className="rounded-[1.5rem] border border-brand-100 bg-white/95 p-5 shadow-sm md:p-6">
+      <PageShell className="space-y-5 py-5">
+        {rawSearchParams.signup === "checkEmail" ? (
+          <section className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold leading-6 text-amber-900">
+            ההרשמה התקבלה. בדקו את המייל ולחצו על קישור האימות לפני התחברות.
+          </section>
+        ) : null}
+        <section className="rounded-2xl border border-brand-100 bg-white/95 p-4 shadow-sm md:p-5">
           <SpecialtySelector
             specialties={availableFilters.specialties}
             selectedSpecialtyId={selectedSpecialtyId}
             preservedParams={toParamEntries(rawSearchParams)}
           />
-          <div className="mt-5 max-w-3xl">
-            <h1 className="text-3xl font-black leading-tight text-ink md:text-4xl">
+          <div className="mt-4 max-w-3xl">
+            <h1 className="text-2xl font-black leading-tight text-ink md:text-3xl">
               בחרו תחום התמחות והשוו תוכניות
             </h1>
-            <p className="mt-3 text-base leading-8 text-slate-600 md:text-lg">
+            <p className="mt-2 text-sm leading-7 text-slate-600 md:text-base">
               מתחילים מנתונים לאומיים על תחום ההתמחות וממשיכים להשוואה בין המערכים השונים.
             </p>
           </div>
@@ -148,7 +153,7 @@ export default async function DepartmentsPage({
             />
           ) : null}
 
-          <div className="grid gap-6 lg:grid-cols-[320px_1fr] lg:items-start">
+          <div className="grid gap-4 lg:grid-cols-[280px_1fr] lg:items-start">
             <aside className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:overscroll-contain lg:pe-1">
               <DepartmentFilters
                 key={filtersKey}

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -65,7 +66,7 @@ export function LoginForm({
         return;
       }
 
-      router.push(safeInternalPath(nextPath, "/dashboard"));
+      router.push(safeInternalPath(nextPath, "/departments"));
       router.refresh();
     },
     () => {
@@ -112,7 +113,12 @@ export function LoginForm({
       </div>
 
       <div>
-        <label className="mb-2 block text-sm font-semibold text-ink">סיסמה</label>
+        <div className="mb-2 flex items-center justify-between gap-3">
+          <label className="block text-sm font-semibold text-ink">סיסמה</label>
+          <Link href="/forgot-password" className="text-xs font-bold text-brand-700">
+            שכחת סיסמה?
+          </Link>
+        </div>
         <input
           {...register("password")}
           type="password"

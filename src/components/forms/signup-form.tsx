@@ -91,11 +91,17 @@ export function SignupForm() {
       return;
     }
 
+    if (!payload?.verificationUrl) {
+      router.push("/departments?signup=checkEmail");
+      router.refresh();
+      return;
+    }
+
     setSuccessMessage(
-      payload?.message ??
+      payload.message ??
         "ההרשמה התקבלה. בדקו את המייל כדי לאמת את החשבון, ולאחר מכן הבקשה תעבור לאישור."
     );
-    setDevVerificationUrl(payload?.verificationUrl ?? null);
+    setDevVerificationUrl(payload.verificationUrl);
     router.refresh();
   });
 

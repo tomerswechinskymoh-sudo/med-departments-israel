@@ -17,6 +17,7 @@ export default async function LoginPage({
     typeof params.verificationError === "string" ? params.verificationError : undefined;
   const verified = params.verified === "1";
   const signupCheckEmail = params.signup === "checkEmail";
+  const resetDone = params.reset === "1";
 
   return (
     <PageShell className="flex min-h-[76vh] items-center justify-center bg-[radial-gradient(circle_at_top_left,#dff4ff,transparent_34%),linear-gradient(180deg,#f8fbff_0%,#eef6f8_100%)] px-4 py-12">
@@ -33,6 +34,11 @@ export default async function LoginPage({
         {verified ? (
           <p className="mt-5 rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-900">
             כתובת המייל אומתה. אפשר להתחבר; הגישה המלאה תיפתח לאחר אישור הסטטוס המקצועי.
+          </p>
+        ) : null}
+        {resetDone ? (
+          <p className="mt-5 rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm leading-6 text-emerald-900">
+            הסיסמה עודכנה. אפשר להתחבר עם הסיסמה החדשה.
           </p>
         ) : null}
         {verificationError ? (

@@ -373,6 +373,172 @@ function GenderBalanceCard({
   );
 }
 
+function ClockMetricCard({
+  label,
+  value,
+  sourceLabel,
+  tooltip,
+  lastUpdated
+}: {
+  label: string;
+  value: string | number | null | undefined;
+  sourceLabel: string;
+  tooltip: string;
+  lastUpdated?: string | Date | null;
+}) {
+  const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
+
+  return (
+    <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-brand-50 text-sm font-black text-brand-800">
+            ◷
+          </span>
+          <p className="text-sm font-bold leading-5 text-slate-600">{label}</p>
+        </div>
+        <MetricInfoTip
+          sourceLabel={sourceLabel}
+          text={tooltip}
+          metricType="נתון מחלקתי"
+          lastUpdated={lastUpdated}
+        />
+      </div>
+      <p className={`mt-2 text-base font-black ${hasValue ? "text-ink" : "text-slate-400"}`}>
+        {hasValue ? value : MISSING_IMPORTED_VALUE}
+      </p>
+    </div>
+  );
+}
+
+function AcceptanceDistributionCard({
+  rows,
+  sourceLabel,
+  tooltip,
+  metricType,
+  lastUpdated
+}: {
+  rows: Array<{ label: string; value: number; displayValue: string }>;
+  sourceLabel: string;
+  tooltip: string;
+  metricType: string;
+  lastUpdated?: string | Date | null;
+}) {
+  const maxValue = Math.max(...rows.map((row) => row.value), 1);
+
+  return (
+    <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-sm font-bold leading-5 text-slate-600">התפלגות מצאו התמחות</p>
+          {metricType === "נתון כללי לתחום" ? (
+            <span className="mt-1 inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[0.68rem] font-black text-blue-800">
+              נתון כללי לתחום
+            </span>
+          ) : null}
+        </div>
+        <MetricInfoTip
+          sourceLabel={sourceLabel}
+          text={tooltip}
+          metricType={metricType}
+          lastUpdated={lastUpdated}
+        />
+      </div>
+      {rows.length === 0 ? (
+        <p className="mt-2 text-base font-black text-slate-400">{MISSING_IMPORTED_VALUE}</p>
+      ) : (
+        <div className="mt-2 space-y-1.5">
+          {rows.map((row) => (
+            <div key={row.label} className="grid grid-cols-[5.6rem_1fr_2.4rem] items-center gap-2">
+              <span className="truncate text-[0.68rem] font-bold text-slate-500">{row.label}</span>
+              <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+                <div
+                  className="h-full rounded-full bg-teal-600"
+                  style={{ width: `${Math.max(8, Math.round((row.value / maxValue) * 100))}%` }}
+                />
+              </div>
+              <span className="text-left text-xs font-black text-ink">{row.displayValue}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function QuickHighlightCard({
+  label,
+  value,
+  sourceLabel,
+  tooltip,
+  metricType,
+  lastUpdated
+}: {
+  label: string;
+  value: string | number | null | undefined;
+  sourceLabel: string;
+  tooltip: string;
+  metricType?: string;
+  lastUpdated?: string | Date | null;
+}) {
+  const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
+
+  return (
+    <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2">
+      <div className="flex items-start justify-between gap-2">
+        <p className="text-[0.68rem] font-black text-slate-500">{label}</p>
+        <MetricInfoTip
+          sourceLabel={sourceLabel}
+          text={tooltip}
+          metricType={metricType}
+          lastUpdated={lastUpdated}
+        />
+      </div>
+      <p className={`mt-1 text-sm font-black leading-tight ${hasValue ? "text-ink" : "text-slate-400"}`}>
+        {hasValue ? value : "לא זמין"}
+      </p>
+    </div>
+  );
+}
+
+function SalaryGapHighlight() {
+  const centerSalary = 16954;
+  const peripherySalary = 19965.92;
+  const gap = peripherySalary - centerSalary;
+  const max = peripherySalary;
+  const tooltip = "שכר מרכז: 16,954.00 ₪ · שכר פריפריה: 19,965.92 ₪ · פער לטובת פריפריה.";
+
+  return (
+    <div className="rounded-xl border border-amber-200 bg-gradient-to-l from-amber-50 to-white px-3 py-2">
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-[0.68rem] font-black text-amber-900">פער שכר</p>
+        <MetricInfoTip
+          sourceLabel="קבוע שכר מערכת"
+          text={tooltip}
+          metricType="נתון כללי לתחום"
+        />
+      </div>
+      <p className="mt-1 text-sm font-black text-ink">
+        +{formatImportedNumber(gap)} ₪
+      </p>
+      <div className="mt-2 space-y-1">
+        <div className="grid grid-cols-[3.8rem_1fr] items-center gap-2">
+          <span className="text-[0.65rem] font-bold text-slate-500">מרכז</span>
+          <div className="h-1.5 overflow-hidden rounded-full bg-white">
+            <div className="h-full rounded-full bg-brand-500" style={{ width: `${(centerSalary / max) * 100}%` }} />
+          </div>
+        </div>
+        <div className="grid grid-cols-[3.8rem_1fr] items-center gap-2">
+          <span className="text-[0.65rem] font-bold text-slate-500">פריפריה</span>
+          <div className="h-1.5 overflow-hidden rounded-full bg-white">
+            <div className="h-full rounded-full bg-amber-500" style={{ width: "100%" }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const acceptanceMetricInputs = [
   {
     id: "accepted-immediately",
@@ -601,6 +767,37 @@ function sourceLabelFromExternalMetricSource(sourceName: string | null | undefin
   if (normalized.includes("MOH") || normalized.includes("MINISTRY")) return "משרד הבריאות";
 
   return "נתוני המחלקה";
+}
+
+function numberFromUnknown(value: unknown) {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function rawJsonObject(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : null;
+}
+
+function hIndexEstimateFromRaw(rawValue: unknown) {
+  const raw = rawJsonObject(rawValue);
+  if (!raw) return null;
+
+  const direct =
+    numberFromUnknown(raw.hIndexEstimate) ??
+    numberFromUnknown(raw.h_index_estimate) ??
+    numberFromUnknown(raw.hIndex) ??
+    numberFromUnknown(raw.h_index);
+
+  if (direct !== null) return direct;
+
+  const meta = rawJsonObject(raw.meta);
+  return (
+    numberFromUnknown(meta?.hIndexEstimate) ??
+    numberFromUnknown(meta?.h_index_estimate) ??
+    numberFromUnknown(meta?.hIndex) ??
+    numberFromUnknown(meta?.h_index)
+  );
 }
 
 function departmentLockCopy(session: Awaited<ReturnType<typeof getSession>>) {
@@ -867,7 +1064,19 @@ export default async function DepartmentDetailsPage({
         ...head,
         departmentName: department.name
       }));
-  const latestOpenAlexResearchMetric = openAlexResearchMetrics.find((metric) => !metric.needsMapping) ?? null;
+  const latestAnyOpenAlexResearchMetric = openAlexResearchMetrics[0] ?? null;
+  const latestOpenAlexResearchMetric =
+    openAlexResearchMetrics.find(
+      (metric) => !metric.needsMapping && typeof metric.publicationsCount === "number"
+    ) ??
+    openAlexResearchMetrics.find((metric) => !metric.needsMapping) ??
+    null;
+  const hIndexEstimate = hIndexEstimateFromRaw(latestOpenAlexResearchMetric?.rawResponseJson);
+  const openAlexDebugTooltip = latestOpenAlexResearchMetric
+    ? `הערכת פעילות מחקרית לפי OpenAlex. רמת ביטחון: ${latestOpenAlexResearchMetric.confidenceScore ?? "לא צוינה"}.`
+    : latestAnyOpenAlexResearchMetric?.needsMapping
+      ? "חסר מיפוי OpenAlex למחלקה או לתחום. ניתן להשלים מיפוי ולרענן מדדי מחקר באדמין."
+      : "לא נמצאה רשומת OpenAlex למחלקה. ניתן להריץ רענון מדדי מחקר מהאדמין.";
   const publicationMetric = findImportedMetric(importedDepartmentMetrics, "departmentalPublicationsCount");
   const expectedOpeningsDepartmentMetric = findImportedMetric(importedDepartmentMetrics, "expectedOpenings2026");
   const expectedOpeningsYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "newResidents", { year: 2026 });
@@ -880,6 +1089,10 @@ export default async function DepartmentDetailsPage({
   const medianWaitingMetric = findImportedMetric(importedDepartmentMetrics, "medianWaitingTime");
   const womenPercentMetric = findImportedMetric(importedDepartmentMetrics, "womenPercent");
   const menPercentMetric = findImportedMetric(importedDepartmentMetrics, "menPercent");
+  const burnoutDepartmentMetric = findImportedMetric(importedDepartmentMetrics, "burnoutIndex");
+  const burnoutSpecialtyMetric = findImportedMetric(importedSpecialtyMetrics, "burnoutIndex");
+  const burnoutMetric = burnoutDepartmentMetric ?? burnoutSpecialtyMetric;
+  const burnoutMetricType = burnoutDepartmentMetric ? "נתון מחלקתי" : "נתון כללי לתחום";
   const womenPercent =
     (typeof womenPercentMetric?.value === "number" ? womenPercentMetric.value : null) ??
     genderPercentFromText(department.genderBalance, "women");
@@ -917,6 +1130,37 @@ export default async function DepartmentDetailsPage({
       })
     )
     .filter(hasDisplayValue);
+  const acceptanceDepartmentRows = acceptanceMetricInputs
+    .map((input) => {
+      const metric = findImportedMetric(importedDepartmentMetrics, ...input.keys);
+      if (!metric || typeof metric.value !== "number") return null;
+
+      return {
+        label: input.label.replace("מצאו ", ""),
+        value: metric.value,
+        displayValue: formatImportedMetricValue(metric),
+        lastUpdated: metric.lastUpdated
+      };
+    })
+    .filter((row): row is NonNullable<typeof row> => Boolean(row));
+  const acceptanceSpecialtyRows = acceptanceMetricInputs
+    .map((input) => {
+      const metric = findImportedMetric(importedSpecialtyMetrics, ...input.keys);
+      if (!metric || typeof metric.value !== "number") return null;
+
+      return {
+        label: input.label.replace("מצאו ", ""),
+        value: metric.value,
+        displayValue: formatImportedMetricValue(metric),
+        lastUpdated: metric.lastUpdated
+      };
+    })
+    .filter((row): row is NonNullable<typeof row> => Boolean(row));
+  const acceptanceDistributionRows =
+    acceptanceDepartmentRows.length > 0 ? acceptanceDepartmentRows : acceptanceSpecialtyRows;
+  const acceptanceDistributionType =
+    acceptanceDepartmentRows.length > 0 ? "נתון מחלקתי" : "נתון כללי לתחום";
+  const acceptanceDistributionLastUpdated = acceptanceDistributionRows.find((row) => row.lastUpdated)?.lastUpdated;
   const workforceMetrics: DisplayMetric[] = [
     {
       id: "department-residents-count",
@@ -960,19 +1204,33 @@ export default async function DepartmentDetailsPage({
       lowPriority: true
     }
   ];
+  const expectedOpeningsValue = expectedOpeningsDepartmentMetric
+    ? formatImportedMetricValue(expectedOpeningsDepartmentMetric)
+    : expectedOpeningsYearlyMetric
+      ? formatImportedMetricValue(expectedOpeningsYearlyMetric)
+      : null;
+  const expectedOpeningsSourceLabel = importedSourceLabel(
+    expectedOpeningsDepartmentMetric ?? expectedOpeningsYearlyMetric,
+    "מספר המתמחים שאמורים לסיים השנה ע״ב אורך ההתמחות החציוני"
+  );
+  const electiveDemandMetric = findImportedMetric(importedDepartmentMetrics, "medianElectiveDemand");
+  const duns100Metric = findImportedMetric(importedDepartmentMetrics, "duns100PhysiciansCount");
+  const publicationsValue =
+    latestOpenAlexResearchMetric?.publicationsCount ??
+    (publicationMetric ? formatImportedMetricValue(publicationMetric) : null);
+  const publicationsSourceLabel = latestOpenAlexResearchMetric
+    ? "OpenAlex"
+    : importedSourceLabel(publicationMetric, "משרד הבריאות");
+  const publicationsLastUpdated =
+    latestOpenAlexResearchMetric?.lastUpdated ??
+    latestAnyOpenAlexResearchMetric?.lastUpdated ??
+    publicationMetric?.lastUpdated;
   const demandMetrics: DisplayMetric[] = [
     {
       id: "department-expected-openings-2026",
-      label: "צפי תקנים חדשים ב-2026",
-      value: expectedOpeningsDepartmentMetric
-        ? formatImportedMetricValue(expectedOpeningsDepartmentMetric)
-        : expectedOpeningsYearlyMetric
-          ? formatImportedMetricValue(expectedOpeningsYearlyMetric)
-          : null,
-      sourceLabel: importedSourceLabel(
-        expectedOpeningsDepartmentMetric ?? expectedOpeningsYearlyMetric,
-        "מספר המתמחים שאמורים לסיים השנה ע״ב אורך ההתמחות החציוני"
-      ),
+      label: "מספר תקנים צפויים להתפנות",
+      value: expectedOpeningsValue,
+      sourceLabel: expectedOpeningsSourceLabel,
       tooltip: "צפי תקנים המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
     },
     ...acceptanceMetrics,
@@ -1023,16 +1281,14 @@ export default async function DepartmentDetailsPage({
     {
       id: "department-publications",
       label: latestOpenAlexResearchMetric ? `מספר פרסומים מחלקתי ${latestOpenAlexResearchMetric.year}` : "מספר פרסומים מחלקתי",
-      value: latestOpenAlexResearchMetric?.publicationsCount ?? (publicationMetric ? formatImportedMetricValue(publicationMetric) : null),
-      sourceLabel: latestOpenAlexResearchMetric ? "OpenAlex" : importedSourceLabel(publicationMetric, "משרד הבריאות"),
-      tooltip: latestOpenAlexResearchMetric
-        ? `הערכת פעילות מחקרית לפי OpenAlex. רמת ביטחון: ${latestOpenAlexResearchMetric.confidenceScore ?? "לא צוינה"}.`
-        : "מספר פרסומים מחלקתי מיובא כאשר קיים.",
-      lastUpdated: latestOpenAlexResearchMetric?.lastUpdated ?? publicationMetric?.lastUpdated,
+      value: publicationsValue,
+      sourceLabel: publicationsSourceLabel,
+      tooltip: openAlexDebugTooltip,
+      lastUpdated: publicationsLastUpdated,
       metricType: latestOpenAlexResearchMetric ? "הערכה מחלקתית" : "נתון מחלקתי",
       caption:
-        latestOpenAlexResearchMetric?.lastUpdated || publicationMetric?.lastUpdated
-          ? `עודכן: ${formatDate(latestOpenAlexResearchMetric?.lastUpdated ?? publicationMetric?.lastUpdated)}`
+        publicationsLastUpdated
+          ? `עודכן: ${formatDate(publicationsLastUpdated)}`
           : undefined
     },
     metricCardFromImported(importedDepartmentMetrics, {
@@ -1171,7 +1427,47 @@ export default async function DepartmentDetailsPage({
             </div>
 
             <div className="mt-4 space-y-3">
-              <MetricGroup title="כוח אדם" metrics={workforceMetrics}>
+              <div className="grid gap-2 md:grid-cols-3">
+                <DataMetricCard {...workforceMetrics[0]} />
+                <DataMetricCard
+                  label="מספר תקנים צפויים להתפנות"
+                  value={expectedOpeningsValue}
+                  sourceLabel={expectedOpeningsSourceLabel}
+                  tooltip="צפי תקנים המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
+                  className="border-amber-200 bg-amber-50/70"
+                />
+                <DataMetricCard {...workforceMetrics[1]} />
+              </div>
+
+              <div className="grid gap-2 lg:grid-cols-3">
+                <ClockMetricCard
+                  label="זמן המתנה חציוני לתקן"
+                  value={medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null}
+                  sourceLabel={importedSourceLabel(medianWaitingMetric, "משרד הבריאות")}
+                  tooltip="זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא."
+                  lastUpdated={medianWaitingMetric?.lastUpdated}
+                />
+                <AcceptanceDistributionCard
+                  rows={acceptanceDistributionRows}
+                  sourceLabel="דיווחי מתמחים משרד הבריאות"
+                  tooltip={
+                    acceptanceDistributionType === "נתון כללי לתחום"
+                      ? "התפלגות כללית לתחום ההתמחות ולא למחלקה ספציפית."
+                      : "התפלגות מחלקתית לפי נתונים מיובאים, אם סופקה."
+                  }
+                  metricType={acceptanceDistributionType}
+                  lastUpdated={acceptanceDistributionLastUpdated}
+                />
+                <DataMetricCard
+                  label="מספר אלקטיביסטים חציוני"
+                  value={electiveDemandMetric ? formatImportedMetricValue(electiveDemandMetric) : null}
+                  sourceLabel={importedSourceLabel(electiveDemandMetric, "מצביע על ביקוש המחלקה")}
+                  tooltip="מדד ביקוש למחלקה לפי מספר אלקטיביסטים חציוני."
+                  lastUpdated={electiveDemandMetric?.lastUpdated}
+                />
+              </div>
+
+              <div className="grid gap-2 lg:grid-cols-3">
                 <GenderBalanceCard
                   womenPercent={womenPercent}
                   menPercent={menPercent}
@@ -1179,17 +1475,24 @@ export default async function DepartmentDetailsPage({
                   tooltip="התפלגות מגדרית מחלקתית, אם סופקה."
                   lastUpdated={genderLastUpdated}
                 />
-              </MetricGroup>
-              <MetricGroup title="התמחות וזמן" metrics={trainingMetrics}>
-                <YearlyResidentsChart
-                  rows={departmentNewResidentsRows}
-                  sourceLabel={newResidentsSourceLabel}
-                  lastUpdated={firstDepartmentYearlyMetric?.lastUpdated}
-                />
-              </MetricGroup>
-              <MetricGroup title="בחינות" metrics={examMetrics} />
-              <MetricGroup title="מחקר" metrics={researchMetrics} />
-              <MetricGroup title="ביקוש ותקנים" metrics={demandMetrics} />
+                <DataMetricCard {...trainingMetrics[0]} />
+                <DataMetricCard {...trainingMetrics[1]} />
+              </div>
+
+              <details className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
+                <summary className="cursor-pointer text-sm font-black text-brand-800">
+                  הצג עוד נתונים
+                </summary>
+                <div className="mt-3 space-y-3">
+                  <YearlyResidentsChart
+                    rows={departmentNewResidentsRows}
+                    sourceLabel={newResidentsSourceLabel}
+                    lastUpdated={firstDepartmentYearlyMetric?.lastUpdated}
+                  />
+                  <MetricGroup title="ביקוש ותקנים" metrics={demandMetrics.filter((metric) => metric.id !== "department-expected-openings-2026")} />
+                  <MetricGroup title="מחקר" metrics={researchMetrics} />
+                </div>
+              </details>
             </div>
           </Card>
 
@@ -1334,6 +1637,92 @@ export default async function DepartmentDetailsPage({
               ))}
             </div>
           </Card>
+
+          <div className="rounded-2xl border border-brand-100 bg-white/95 p-3 shadow-sm">
+            <p className="text-sm font-black text-ink">מדדים מהירים</p>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <QuickHighlightCard
+                label="מעבר שלב א׳"
+                value={boardStageA?.value ?? null}
+                sourceLabel={boardStageA?.sourceLabel ?? "משרד הבריאות"}
+                tooltip={
+                  boardStageA?.metricType === "נתון כללי לתחום"
+                    ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
+                    : "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי."
+                }
+                metricType={boardStageA?.metricType}
+                lastUpdated={boardStageA?.lastUpdated}
+              />
+              <QuickHighlightCard
+                label="מעבר שלב ב׳"
+                value={boardStageB?.value ?? null}
+                sourceLabel={boardStageB?.sourceLabel ?? "משרד הבריאות"}
+                tooltip={
+                  boardStageB?.metricType === "נתון כללי לתחום"
+                    ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
+                    : "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי."
+                }
+                metricType={boardStageB?.metricType}
+                lastUpdated={boardStageB?.lastUpdated}
+              />
+              <QuickHighlightCard
+                label="מספר פרסומים"
+                value={publicationsValue}
+                sourceLabel={publicationsSourceLabel}
+                tooltip={openAlexDebugTooltip}
+                metricType={latestOpenAlexResearchMetric ? "הערכה מחלקתית" : "נתון מחלקתי"}
+                lastUpdated={publicationsLastUpdated}
+              />
+              <QuickHighlightCard
+                label="h-index"
+                value={hIndexEstimate}
+                sourceLabel="OpenAlex"
+                tooltip={
+                  hIndexEstimate !== null
+                    ? "אומדן h-index מחלקתי לפי נתונים זמינים ב-OpenAlex."
+                    : "לא קיים h-index ברשומת OpenAlex הנוכחית. מוצג רק כאשר הערך נשמר בנתוני המחקר."
+                }
+                metricType="הערכה מחלקתית"
+                lastUpdated={publicationsLastUpdated}
+              />
+              <QuickHighlightCard
+                label="DUNS100"
+                value={duns100Metric ? formatImportedMetricValue(duns100Metric) : null}
+                sourceLabel="DUNS100"
+                tooltip="רופאים שנספרו מנתוני DUNS100 מיובאים."
+                lastUpdated={duns100Metric?.lastUpdated}
+              />
+              <QuickHighlightCard
+                label="שכר מרכז"
+                value="16,954.00 ₪"
+                sourceLabel="קבוע שכר מערכת"
+                tooltip="שכר בסיס להשוואה באזור מרכז."
+                metricType="נתון כללי לתחום"
+              />
+              <QuickHighlightCard
+                label="שכר פריפריה"
+                value="19,965.92 ₪"
+                sourceLabel="קבוע שכר מערכת"
+                tooltip="שכר בסיס להשוואה באזור פריפריה."
+                metricType="נתון כללי לתחום"
+              />
+              <QuickHighlightCard
+                label="מדד שחיקה"
+                value={burnoutMetric ? formatImportedMetricValue(burnoutMetric) : null}
+                sourceLabel={importedSourceLabel(burnoutMetric, "דיווחי מתמחים משרד הבריאות")}
+                tooltip={
+                  burnoutMetricType === "נתון כללי לתחום"
+                    ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית."
+                    : "מדד שחיקה מחלקתי, אם סופק."
+                }
+                metricType={burnoutMetricType}
+                lastUpdated={burnoutMetric?.lastUpdated}
+              />
+            </div>
+            <div className="mt-2">
+              <SalaryGapHighlight />
+            </div>
+          </div>
         </aside>
       </section>
     </PageShell>

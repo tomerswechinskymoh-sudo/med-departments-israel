@@ -140,7 +140,7 @@ function canonicalDepartmentSlugForRecord(input: {
   return canonicalSlug || input.slug || (input.id ? `department-${input.id}` : "department");
 }
 
-export const ISRAEL_REGIONS = ["מרכז", "צפון", "דרום", "ירושלים", "חיפה", "שרון", "שפלה"] as const;
+export const ISRAEL_REGIONS = ["מרכז", "צפון", "דרום", "ירושלים", "חיפה"] as const;
 
 function inferRegionFromCity(city?: string | null) {
   if (!city) {
@@ -189,14 +189,6 @@ function inferRegionFromInstitutionName(name?: string | null) {
 
   if (["הדסה", "שערי צדק", "ירושלים", "הרצוג", "כפר שאול", "איתנים"].some((item) => name.includes(item))) {
     return "ירושלים";
-  }
-
-  if (["לניאדו", "מאיר", "הלל יפה", "השרון", "שלוותה", "לב השרון", "שער מנשה"].some((item) => name.includes(item))) {
-    return "שרון";
-  }
-
-  if (["קפלן", "שמיר", "באר יעקב", "הרצפלד", "ראשון לציון", "נס ציונה"].some((item) => name.includes(item))) {
-    return "שפלה";
   }
 
   if (["זיו", "גליל", "פוריה", "נצרת", "העמק", "עפולה", "מזור"].some((item) => name.includes(item))) {

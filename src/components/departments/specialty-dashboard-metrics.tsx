@@ -134,11 +134,11 @@ export function SpecialtyDashboardMetrics({
         </p>
       </div>
 
-      <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {metrics.map((metric, index) => (
           <div
             key={metric.key}
-            className={`flex min-h-[6.75rem] flex-col rounded-2xl border p-3 ${
+            className={`flex min-h-[5.75rem] flex-col rounded-2xl border p-2.5 ${
               index === 0
                 ? "border-brand-200 bg-gradient-to-l from-brand-50 to-white"
                 : "border-slate-100 bg-slate-50/70"
