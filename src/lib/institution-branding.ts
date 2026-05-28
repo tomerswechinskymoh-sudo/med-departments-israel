@@ -24,6 +24,30 @@ const LOCAL_LOGOS = [
   {
     src: "/logos/hospitals/rambam.ico",
     match: ["rambam", "רמבם", "רמב\"ם"]
+  },
+  {
+    src: "/logos/hospitals/shaare-zedek.ico",
+    match: ["shaare-zedek", "שערי צדק"]
+  },
+  {
+    src: "/logos/hospitals/shamir.ico",
+    match: ["shamir", "יצחק שמיר", "שמיר", "אסף הרופא"]
+  },
+  {
+    src: "/logos/hospitals/laniado.ico",
+    match: ["laniado", "לניאדו", "צאנז"]
+  },
+  {
+    src: "/logos/hospitals/ziv.ico",
+    match: ["ziv", "זיו", "צפת"]
+  },
+  {
+    src: "/logos/hospitals/meuhedet.ico",
+    match: ["meuhedet", "מאוחדת"]
+  },
+  {
+    src: "/logos/hospitals/leumit.ico",
+    match: ["leumit", "לאומית"]
   }
 ];
 

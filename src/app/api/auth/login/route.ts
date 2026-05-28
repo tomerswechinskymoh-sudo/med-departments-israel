@@ -37,6 +37,16 @@ export async function POST(request: Request) {
     );
   }
 
+  if (result.status === "rejected") {
+    return NextResponse.json(
+      {
+        error: "בקשת האימות נדחתה. יש להירשם מחדש או ליצור קשר עם contact@hitmachut.org.",
+        code: "ACCOUNT_REJECTED"
+      },
+      { status: 403 }
+    );
+  }
+
   if (result.status !== "ok") {
     return NextResponse.json({ error: invalidCredentialsMessage }, { status: 401 });
   }

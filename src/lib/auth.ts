@@ -149,6 +149,10 @@ export async function authenticateUserWithStatus(email: string, password: string
     return { status: "email_unverified" as const };
   }
 
+  if (user.verificationStatus === VerificationStatus.REJECTED) {
+    return { status: "rejected" as const };
+  }
+
   return { status: "ok" as const, session: toAppSession(user) };
 }
 
@@ -168,6 +172,10 @@ export async function getSession() {
   });
 
   if (!user) {
+    return null;
+  }
+
+  if (user.verificationStatus === VerificationStatus.REJECTED) {
     return null;
   }
 

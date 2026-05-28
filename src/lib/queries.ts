@@ -61,6 +61,12 @@ const openingCriteriaSelect = {
   whatWeAreLookingFor: true
 } satisfies Prisma.OpeningAcceptanceCriteriaSelect;
 
+const publicImportedDepartmentWhere = {
+  importStableKey: {
+    not: null
+  }
+} satisfies Prisma.DepartmentWhereInput;
+
 async function getManagedDepartments(userId: string) {
   const assignments = await prisma.representativeAssignment.findMany({
     where: {
@@ -248,10 +254,12 @@ export async function resolveDepartmentBySlugOrFallback(
   const slugVariants = getDepartmentSlugVariants(slug);
 
   const departmentCandidates = await prisma.department.findMany({
+    where: publicImportedDepartmentWhere,
     select: {
       id: true,
       slug: true,
       name: true,
+      importStableKey: true,
       institution: {
         select: {
           slug: true
@@ -286,6 +294,7 @@ export async function resolveDepartmentBySlugOrFallback(
         id: true,
         slug: true,
         name: true,
+        importStableKey: true,
         institution: {
           select: {
             slug: true
@@ -300,6 +309,10 @@ export async function resolveDepartmentBySlugOrFallback(
     });
 
     if (!departmentById) {
+      return null;
+    }
+
+    if (!departmentById.importStableKey) {
       return null;
     }
 
@@ -319,6 +332,7 @@ export async function getHomePageData() {
   const [featuredDepartments, latestReviews, featuredOpenings, latestResearchOpportunities, stats] =
     await Promise.all([
       prisma.department.findMany({
+        where: publicImportedDepartmentWhere,
         include: {
           institution: true,
           specialty: true,
@@ -355,6 +369,11 @@ export async function getHomePageData() {
         take: 4
       }),
       prisma.review.findMany({
+        where: {
+          department: {
+            is: publicImportedDepartmentWhere
+          }
+        },
         select: {
           ...publishedReviewSelect,
           department: {
@@ -387,6 +406,9 @@ export async function getHomePageData() {
           contentStatus: ContentStatus.PUBLISHED,
           status: {
             in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+          },
+          department: {
+            is: publicImportedDepartmentWhere
           }
         },
         include: {
@@ -410,7 +432,10 @@ export async function getHomePageData() {
       }),
       prisma.researchOpportunity.findMany({
         where: {
-          contentStatus: ContentStatus.PUBLISHED
+          contentStatus: ContentStatus.PUBLISHED,
+          department: {
+            is: publicImportedDepartmentWhere
+          }
         },
         include: {
           department: {
@@ -425,8 +450,16 @@ export async function getHomePageData() {
         take: 4
       }),
       prisma.$transaction([
-        prisma.institution.count(),
-        prisma.department.count(),
+        prisma.institution.count({
+          where: {
+            departments: {
+              some: publicImportedDepartmentWhere
+            }
+          }
+        }),
+        prisma.department.count({
+          where: publicImportedDepartmentWhere
+        }),
         prisma.review.count(),
         prisma.residencyOpening.count({
           where: {
@@ -493,6 +526,11 @@ export async function getHomePageData() {
 export async function getDirectoryFilters() {
   const [institutions, specialties, departments] = await Promise.all([
     prisma.institution.findMany({
+      where: {
+        departments: {
+          some: publicImportedDepartmentWhere
+        }
+      },
       select: {
         id: true,
         name: true,
@@ -521,16 +559,13 @@ export async function getDirectoryFilters() {
           },
           {
             departments: {
-              some: {
-                importStableKey: {
-                  not: null
-                }
-              }
+              some: publicImportedDepartmentWhere
             }
           },
           {
             departments: {
               some: {
+                ...publicImportedDepartmentWhere,
                 metrics: {
                   some: {}
                 }
@@ -540,6 +575,7 @@ export async function getDirectoryFilters() {
           {
             departments: {
               some: {
+                ...publicImportedDepartmentWhere,
                 yearlyMetrics: {
                   some: {}
                 }
@@ -557,17 +593,18 @@ export async function getDirectoryFilters() {
       }
     }),
     prisma.department.findMany({
+      where: publicImportedDepartmentWhere,
       select: {
         id: true,
         name: true,
-      institution: {
-        select: {
-          id: true,
-          name: true,
-          slug: true,
-          coverImageUrl: true
-        }
-      },
+        institution: {
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            coverImageUrl: true
+          }
+        },
         specialty: {
           select: {
             id: true,
@@ -636,6 +673,7 @@ export async function getDirectoryData(
   const departments = await prisma.department.findMany({
     where: {
       AND: [
+        publicImportedDepartmentWhere,
         filters.institutions?.length
           ? {
               OR: filters.institutions.map((institutionId) => ({
@@ -981,7 +1019,8 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
     }),
     prisma.department.findMany({
       where: {
-        specialtyId
+        specialtyId,
+        ...publicImportedDepartmentWhere
       },
       include: {
         reviews: {
@@ -1376,6 +1415,7 @@ export async function getOpeningApplicationPageData(openingId: string) {
 
 export async function getDepartmentOptions() {
   const departments = await prisma.department.findMany({
+    where: publicImportedDepartmentWhere,
     select: {
       id: true,
       slug: true,
@@ -1407,6 +1447,11 @@ export async function getDepartmentOptions() {
 
 export async function getInstitutionOptions() {
   return prisma.institution.findMany({
+    where: {
+      departments: {
+        some: publicImportedDepartmentWhere
+      }
+    },
     select: {
       id: true,
       name: true,

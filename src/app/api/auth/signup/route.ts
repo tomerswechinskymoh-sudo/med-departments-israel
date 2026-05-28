@@ -70,7 +70,10 @@ export async function POST(request: Request) {
     }
   });
 
-  if (existingUser) {
+  const isRejectedReregistration =
+    existingUser?.verificationStatus === VerificationStatus.REJECTED;
+
+  if (existingUser && !isRejectedReregistration) {
     return NextResponse.json({ error: "כבר קיים חשבון עם האימייל הזה." }, { status: 409 });
   }
 
@@ -84,34 +87,57 @@ export async function POST(request: Request) {
   const requestOrigin = new URL(request.url).origin;
   const verificationUrl = getUserEmailVerificationUrl(verificationToken, requestOrigin);
   const user = await prisma.$transaction(async (tx) => {
-    const created = await tx.user.create({
-      data: {
-        fullName: parsed.data.fullName,
-        email,
-        phone: parsed.data.phone,
-        passwordHash,
-        roleKey,
-        roleStatus: parsed.data.roleStatus,
-        emailVerified: false,
-        emailVerificationToken: verificationToken,
-        emailVerificationExpiresAt: createTokenExpiry(24),
-        verificationStatus: VerificationStatus.PENDING_EMAIL_VERIFICATION,
-        verificationSubmittedAt: new Date(),
-        marketingConsent: parsed.data.marketingConsent,
-        marketingConsentAt: parsed.data.marketingConsent ? new Date() : null
-      }
-    });
+    const userRecord = existingUser
+      ? await tx.user.update({
+          where: {
+            id: existingUser.id
+          },
+          data: {
+            fullName: parsed.data.fullName,
+            phone: parsed.data.phone,
+            passwordHash,
+            roleKey,
+            roleStatus: parsed.data.roleStatus,
+            emailVerified: false,
+            emailVerificationToken: verificationToken,
+            emailVerificationExpiresAt: createTokenExpiry(24),
+            verificationStatus: VerificationStatus.PENDING_EMAIL_VERIFICATION,
+            verificationSubmittedAt: new Date(),
+            verificationRejectionReason: null,
+            verifiedByAdminId: null,
+            verifiedAt: null,
+            marketingConsent: parsed.data.marketingConsent,
+            marketingConsentAt: parsed.data.marketingConsent ? new Date() : null
+          }
+        })
+      : await tx.user.create({
+          data: {
+            fullName: parsed.data.fullName,
+            email,
+            phone: parsed.data.phone,
+            passwordHash,
+            roleKey,
+            roleStatus: parsed.data.roleStatus,
+            emailVerified: false,
+            emailVerificationToken: verificationToken,
+            emailVerificationExpiresAt: createTokenExpiry(24),
+            verificationStatus: VerificationStatus.PENDING_EMAIL_VERIFICATION,
+            verificationSubmittedAt: new Date(),
+            marketingConsent: parsed.data.marketingConsent,
+            marketingConsentAt: parsed.data.marketingConsent ? new Date() : null
+          }
+        });
 
     const proof = await storeUploadedFile(tx, {
       file: proofFile,
       category: UploadedFileCategory.USER_VERIFICATION_PROOF,
-      uploadedByUserId: created.id,
+      uploadedByUserId: userRecord.id,
       isPublic: false
     });
 
     return tx.user.update({
       where: {
-        id: created.id
+        id: userRecord.id
       },
       data: {
         verificationProofUrl: `/api/files/${proof.id}`
@@ -126,7 +152,8 @@ export async function POST(request: Request) {
     entityId: user.id,
     metadata: {
       roleStatus: parsed.data.roleStatus,
-      marketingConsent: parsed.data.marketingConsent
+      marketingConsent: parsed.data.marketingConsent,
+      rejectedReregistration: isRejectedReregistration
     }
   });
 

@@ -815,9 +815,9 @@ function departmentLockCopy(session: Awaited<ReturnType<typeof getSession>>) {
     return {
       title: "אימות הסטטוס לא אושר",
       description:
-        "הגישה המלאה לעמודי המחלקות נעולה כרגע. אפשר לבדוק את סטטוס החשבון באזור האישי או ליצור קשר עם צוות האתר.",
-      ctaHref: "/dashboard",
-      ctaLabel: "לאזור האישי"
+        "הגישה לחשבון נחסמה. אפשר להירשם מחדש עם אסמכתא מתאימה או ליצור קשר עם contact@hitmachut.org.",
+      ctaHref: "/signup",
+      ctaLabel: "הרשמה מחדש"
     };
   }
 
@@ -883,10 +883,7 @@ export default async function DepartmentDetailsPage({
     .map((item) => item.trim())
     .filter(Boolean);
   const websiteUrl = department.websiteUrl ?? department.institution.websiteUrl;
-  const canViewDepartmentDetails =
-    session?.role === "admin" ||
-    session?.role === "representative" ||
-    session?.verificationStatus === "VERIFIED";
+  const canViewDepartmentDetails = Boolean(session && session.verificationStatus !== "REJECTED");
 
   if (!canViewDepartmentDetails) {
     const lock = departmentLockCopy(session);
@@ -1277,29 +1274,6 @@ export default async function DepartmentDetailsPage({
       lastUpdated: boardStageB?.lastUpdated
     }
   ];
-  const researchMetrics: DisplayMetric[] = [
-    {
-      id: "department-publications",
-      label: latestOpenAlexResearchMetric ? `מספר פרסומים מחלקתי ${latestOpenAlexResearchMetric.year}` : "מספר פרסומים מחלקתי",
-      value: publicationsValue,
-      sourceLabel: publicationsSourceLabel,
-      tooltip: openAlexDebugTooltip,
-      lastUpdated: publicationsLastUpdated,
-      metricType: latestOpenAlexResearchMetric ? "הערכה מחלקתית" : "נתון מחלקתי",
-      caption:
-        publicationsLastUpdated
-          ? `עודכן: ${formatDate(publicationsLastUpdated)}`
-          : undefined
-    },
-    metricCardFromImported(importedDepartmentMetrics, {
-      id: "department-duns100",
-      label: "רופאים ב-DUNS100",
-      keys: ["duns100PhysiciansCount"],
-      sourceLabel: "DUNS100",
-      tooltip: "רופאים שנספרו מנתוני DUNS100 מיובאים.",
-      lowPriority: true
-    })
-  ];
   const newResidentsSourceLabel = importedSourceLabel(firstDepartmentYearlyMetric, "משרד הבריאות");
   const specialtyOverviewHref = `/departments?specialty=${department.specialty.id}`;
 
@@ -1479,41 +1453,20 @@ export default async function DepartmentDetailsPage({
                 <DataMetricCard {...trainingMetrics[1]} />
               </div>
 
+              <YearlyResidentsChart
+                rows={departmentNewResidentsRows}
+                sourceLabel={newResidentsSourceLabel}
+                lastUpdated={firstDepartmentYearlyMetric?.lastUpdated}
+              />
+
               <details className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
                 <summary className="cursor-pointer text-sm font-black text-brand-800">
                   הצג עוד נתונים
                 </summary>
                 <div className="mt-3 space-y-3">
-                  <YearlyResidentsChart
-                    rows={departmentNewResidentsRows}
-                    sourceLabel={newResidentsSourceLabel}
-                    lastUpdated={firstDepartmentYearlyMetric?.lastUpdated}
-                  />
                   <MetricGroup title="ביקוש ותקנים" metrics={demandMetrics.filter((metric) => metric.id !== "department-expected-openings-2026")} />
-                  <MetricGroup title="מחקר" metrics={researchMetrics} />
                 </div>
               </details>
-            </div>
-          </Card>
-
-          <Card className="rounded-xl !p-4">
-            <SectionHeading title="מחקר ופרסומים" />
-            <div className="mt-5">
-              <p className="text-sm font-bold text-ink">הזדמנויות מחקר</p>
-              <div className="mt-3 space-y-3">
-                {department.researchOpportunities.length === 0 ? (
-                  <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600">
-                    {MISSING_IMPORTED_VALUE}
-                  </p>
-                ) : (
-                  department.researchOpportunities.map((opportunity) => (
-                    <div key={opportunity.id} className="rounded-lg border border-brand-100 bg-brand-50/60 px-3 py-3">
-                      <p className="text-sm font-bold text-ink">{opportunity.title}</p>
-                      <p className="mt-2 text-xs leading-6 text-slate-700">{opportunity.summary}</p>
-                    </div>
-                  ))
-                )}
-              </div>
             </div>
           </Card>
 
@@ -1638,8 +1591,51 @@ export default async function DepartmentDetailsPage({
             </div>
           </Card>
 
+          <Card className="rounded-xl !p-4">
+            <SectionHeading title="מחקר ופרסומים" />
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              <QuickHighlightCard
+                label="מספר פרסומים"
+                value={publicationsValue}
+                sourceLabel={publicationsSourceLabel}
+                tooltip={openAlexDebugTooltip}
+                metricType={latestOpenAlexResearchMetric ? "הערכה מחלקתית" : "נתון מחלקתי"}
+                lastUpdated={publicationsLastUpdated}
+              />
+              <QuickHighlightCard
+                label="h-index"
+                value={hIndexEstimate}
+                sourceLabel="OpenAlex"
+                tooltip={
+                  hIndexEstimate !== null
+                    ? "אומדן h-index מחלקתי לפי נתונים זמינים ב-OpenAlex."
+                    : "לא קיים h-index ברשומת OpenAlex הנוכחית. מוצג רק כאשר הערך נשמר בנתוני המחקר."
+                }
+                metricType="הערכה מחלקתית"
+                lastUpdated={publicationsLastUpdated}
+              />
+            </div>
+            <div className="mt-5">
+              <p className="text-sm font-bold text-ink">הזדמנויות מחקר</p>
+              <div className="mt-3 space-y-2">
+                {department.researchOpportunities.length === 0 ? (
+                  <p className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2 text-sm text-slate-600">
+                    {MISSING_IMPORTED_VALUE}
+                  </p>
+                ) : (
+                  department.researchOpportunities.map((opportunity) => (
+                    <div key={opportunity.id} className="rounded-lg border border-brand-100 bg-brand-50/60 px-3 py-3">
+                      <p className="text-sm font-bold text-ink">{opportunity.title}</p>
+                      <p className="mt-2 text-xs leading-6 text-slate-700">{opportunity.summary}</p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          </Card>
+
           <div className="rounded-2xl border border-brand-100 bg-white/95 p-3 shadow-sm">
-            <p className="text-sm font-black text-ink">מדדים מהירים</p>
+            <p className="text-sm font-black text-ink">נתונים מקצועיים</p>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <QuickHighlightCard
                 label="מעבר שלב א׳"
@@ -1664,26 +1660,6 @@ export default async function DepartmentDetailsPage({
                 }
                 metricType={boardStageB?.metricType}
                 lastUpdated={boardStageB?.lastUpdated}
-              />
-              <QuickHighlightCard
-                label="מספר פרסומים"
-                value={publicationsValue}
-                sourceLabel={publicationsSourceLabel}
-                tooltip={openAlexDebugTooltip}
-                metricType={latestOpenAlexResearchMetric ? "הערכה מחלקתית" : "נתון מחלקתי"}
-                lastUpdated={publicationsLastUpdated}
-              />
-              <QuickHighlightCard
-                label="h-index"
-                value={hIndexEstimate}
-                sourceLabel="OpenAlex"
-                tooltip={
-                  hIndexEstimate !== null
-                    ? "אומדן h-index מחלקתי לפי נתונים זמינים ב-OpenAlex."
-                    : "לא קיים h-index ברשומת OpenAlex הנוכחית. מוצג רק כאשר הערך נשמר בנתוני המחקר."
-                }
-                metricType="הערכה מחלקתית"
-                lastUpdated={publicationsLastUpdated}
               />
               <QuickHighlightCard
                 label="DUNS100"

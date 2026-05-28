@@ -50,7 +50,7 @@ export const staticPages = {
     theme: "teal",
     eyebrow: "יצירת קשר",
     title: "רוצים לדבר איתנו?",
-    description: "לתיקון תוכן, שיתוף פעולה, שאלה על האתר או משהו שלא מרגיש נכון.",
+    description: "לתיקון תוכן, שיתוף פעולה, שאלה על האתר או משהו שלא מרגיש נכון: contact@hitmachut.org",
     heroChips: ["תיקוני תוכן", "פניות רגישות", "שיתופי פעולה"],
     heroPanel: {
       eyebrow: "איך הכי טוב לפנות",
@@ -68,7 +68,8 @@ export const staticPages = {
         title: "על מה אפשר לפנות",
         body: [
           "אפשר לפנות אלינו בכל שאלה שקשורה לתוכן, לפרטיות, לבעיות שימוש או לשיתופי פעולה.",
-          "אם צריך לפתוח גישת נציג/ה למחלקה, זה נעשה ידנית על ידי אדמין ולא דרך טופס הרשמה ציבורי."
+          "אם צריך לפתוח גישת נציג/ה למחלקה, זה נעשה ידנית על ידי אדמין ולא דרך טופס הרשמה ציבורי.",
+          "כתובת הפנייה הציבורית היא contact@hitmachut.org."
         ]
       },
       {
@@ -80,7 +81,7 @@ export const staticPages = {
         ]
       }
     ],
-    cta: { href: "/report-abuse", label: "לדיווח על תוכן בעייתי" }
+    cta: { href: "mailto:contact@hitmachut.org", label: "contact@hitmachut.org" }
   },
   faq: {
     kind: "faq",

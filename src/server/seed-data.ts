@@ -521,7 +521,7 @@ export async function seedDatabase(prisma: PrismaClient, context: SeedContext = 
       id: shebaInternalMedicine.id
     },
     data: {
-      shortSummary: "מחלקה פנימית עם תשתית הוראה חזקה, צוות נגיש ועמוד בסיסי מלא.",
+      shortSummary: "מחלקה פנימית עם תשתית הוראה חזקה, צוות נגיש ומידע שימושי להשוואה.",
       about:
         "מחלקת רפואה פנימית בשיבא משלבת קבלות, אשפוז, דיוני בוקר ועבודה קלינית מורכבת. יש מקום טוב ללמידה מסודרת ולשילוב לומדים לאורך היום.",
       practicalInfo:

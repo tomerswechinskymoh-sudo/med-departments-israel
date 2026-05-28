@@ -4,6 +4,7 @@ import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
 import { userVerificationModerationSchema } from "@/lib/validation";
+import { sendUserVerificationRejectionEmail } from "@/lib/verification";
 
 export async function POST(
   request: Request,
@@ -34,6 +35,27 @@ export async function POST(
   }
 
   const approved = parsed.data.status === "APPROVED";
+
+  if (!approved) {
+    try {
+      await sendUserVerificationRejectionEmail({
+        to: user.email,
+        fullName: user.fullName,
+        reason: parsed.data.adminNote
+      });
+    } catch (error) {
+      console.error("[user-verification] rejection email failed", {
+        userId,
+        error
+      });
+
+      return NextResponse.json(
+        { error: "בקשת האימות לא נדחתה כי שליחת מייל הדחייה נכשלה." },
+        { status: 502 }
+      );
+    }
+  }
+
   await prisma.user.update({
     where: {
       id: userId
