@@ -145,15 +145,18 @@ export function DepartmentFilters({
   filters,
   institutions,
   specialties,
-  departments
+  departments,
+  regions
 }: {
   filters: {
     search?: string;
+    regions?: string[];
     specialties?: string[];
     sort?: "recommended" | "rating" | "reviews" | "openings" | "research";
   };
   institutions: { id: string; name: string; type: "HOSPITAL" | "HMO"; region: string }[];
   specialties: { id: string; name: string }[];
+  regions: readonly string[];
   departments: {
     id: string;
     name: string;
@@ -419,6 +422,38 @@ export function DepartmentFilters({
               </div>
             </div>
           ) : null}
+        </div>
+
+        <div>
+          <p className="mb-2 text-xs font-bold text-slate-500">אזור</p>
+          <div className="flex flex-wrap gap-2">
+            {regions.map((region) => {
+              const inputId = `region-${region}`;
+              const checked = filters.regions?.includes(region) ?? false;
+
+              return (
+                <label
+                  key={region}
+                  htmlFor={inputId}
+                  className={`cursor-pointer rounded-full border px-3 py-2 text-xs font-bold transition ${
+                    checked
+                      ? "border-brand-300 bg-brand-700 text-white shadow-sm"
+                      : "border-slate-200 bg-white text-slate-600 hover:border-brand-200 hover:bg-brand-50"
+                  }`}
+                >
+                  <input
+                    id={inputId}
+                    type="checkbox"
+                    name="region"
+                    value={region}
+                    defaultChecked={checked}
+                    className="sr-only"
+                  />
+                  {region}
+                </label>
+              );
+            })}
+          </div>
         </div>
 
         <div>

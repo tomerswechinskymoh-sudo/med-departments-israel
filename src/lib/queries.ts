@@ -140,15 +140,15 @@ function canonicalDepartmentSlugForRecord(input: {
   return canonicalSlug || input.slug || (input.id ? `department-${input.id}` : "department");
 }
 
-export const ISRAEL_REGIONS = ["צפון", "דרום", "מרכז", "חיפה", "ירושלים"] as const;
+export const ISRAEL_REGIONS = ["מרכז", "צפון", "דרום", "ירושלים", "חיפה", "שרון", "שפלה"] as const;
 
 function inferRegionFromCity(city?: string | null) {
   if (!city) {
     return "מרכז";
   }
 
-  if (["חיפה", "נהריה", "צפת", "טבריה", "עפולה", "חדרה", "נצרת"].some((item) => city.includes(item))) {
-    return city.includes("חיפה") ? "חיפה" : "צפון";
+  if (["חיפה"].some((item) => city.includes(item))) {
+    return "חיפה";
   }
 
   if (["ירושלים"].some((item) => city.includes(item))) {
@@ -159,11 +159,55 @@ function inferRegionFromCity(city?: string | null) {
     return "דרום";
   }
 
+  if (["נתניה", "כפר סבא", "חדרה", "רעננה", "הרצליה"].some((item) => city.includes(item))) {
+    return "שרון";
+  }
+
+  if (["רחובות", "באר יעקב", "ראשון לציון", "נס ציונה", "רמלה", "לוד", "גדרה"].some((item) => city.includes(item))) {
+    return "שפלה";
+  }
+
+  if (["נהריה", "צפת", "טבריה", "עפולה", "נצרת"].some((item) => city.includes(item))) {
+    return "צפון";
+  }
+
   return "מרכז";
 }
 
-export function resolveInstitutionRegion(institution: { city?: string | null; region?: string | null }) {
-  return institution.region ?? inferRegionFromCity(institution.city);
+function inferRegionFromInstitutionName(name?: string | null) {
+  if (!name) {
+    return null;
+  }
+
+  if (["אסותא אשדוד", "אשדוד", "סורוקה", "ברזילי", "יוספטל", "באר שבע", "אשקלון", "אילת", "עדי נגב"].some((item) => name.includes(item))) {
+    return "דרום";
+  }
+
+  if (["רמב", "כרמל", "בני ציון", "פלימן", "מעלה הכרמל"].some((item) => name.includes(item))) {
+    return "חיפה";
+  }
+
+  if (["הדסה", "שערי צדק", "ירושלים", "הרצוג", "כפר שאול", "איתנים"].some((item) => name.includes(item))) {
+    return "ירושלים";
+  }
+
+  if (["לניאדו", "מאיר", "הלל יפה", "השרון", "שלוותה", "לב השרון", "שער מנשה"].some((item) => name.includes(item))) {
+    return "שרון";
+  }
+
+  if (["קפלן", "שמיר", "באר יעקב", "הרצפלד", "ראשון לציון", "נס ציונה"].some((item) => name.includes(item))) {
+    return "שפלה";
+  }
+
+  if (["זיו", "גליל", "פוריה", "נצרת", "העמק", "עפולה", "מזור"].some((item) => name.includes(item))) {
+    return "צפון";
+  }
+
+  return null;
+}
+
+export function resolveInstitutionRegion(institution: { name?: string | null; city?: string | null; region?: string | null }) {
+  return institution.region ?? inferRegionFromInstitutionName(institution.name) ?? inferRegionFromCity(institution.city);
 }
 
 function normalizeHebrewCatalogName(value: string) {
@@ -460,9 +504,11 @@ export async function getDirectoryFilters() {
       select: {
         id: true,
         name: true,
+        slug: true,
         type: true,
         city: true,
-        region: true
+        region: true,
+        coverImageUrl: true
       },
       orderBy: {
         name: "asc"
@@ -522,12 +568,14 @@ export async function getDirectoryFilters() {
       select: {
         id: true,
         name: true,
-        institution: {
-          select: {
-            id: true,
-            name: true
-          }
-        },
+      institution: {
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          coverImageUrl: true
+        }
+      },
         specialty: {
           select: {
             id: true,
@@ -823,6 +871,8 @@ export async function getDirectoryData(
       slug: canonicalDepartmentSlugForRecord(department),
       name: formatDepartmentDisplayName(department.name, department.specialty.name),
       institutionName: department.institution.name,
+      institutionSlug: department.institution.slug,
+      institutionCoverImageUrl: department.institution.coverImageUrl,
       institutionType: department.institution.type,
       city: department.institution.city,
       region: resolveInstitutionRegion(department.institution),

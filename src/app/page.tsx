@@ -78,26 +78,20 @@ export default function HomePage() {
               </p>
             </div>
 
-            <form
-              id="home-search"
-              action="/departments"
-              className="rounded-[1.5rem] border border-brand-100 bg-white/96 p-3 shadow-panel"
-            >
-              <div className="flex flex-col gap-3 md:flex-row">
-                <input
-                  type="text"
-                  name="search"
-                  placeholder="חפשו מחלקה, בית חולים או תחום"
-                  className="min-h-14 w-full rounded-full border border-brand-100 bg-surface px-5 py-3 text-sm outline-none transition focus:border-brand-300 md:flex-1"
-                />
-                <button
-                  type="submit"
-                  className="inline-flex min-h-14 items-center justify-center rounded-full bg-brand-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
-                >
-                  חפש מחלקה
-                </button>
-              </div>
-            </form>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link
+                href="/departments"
+                className="inline-flex min-h-14 items-center justify-center rounded-full bg-brand-700 px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800"
+              >
+                למאגר המחלקות
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex min-h-14 items-center justify-center rounded-full border border-brand-200 bg-white px-6 py-3 text-sm font-semibold text-brand-800 transition hover:bg-brand-50"
+              >
+                איך נאסף המידע
+              </Link>
+            </div>
 
             <div className="grid gap-2 md:grid-cols-3">
               {decisionSteps.map((step, index) => (

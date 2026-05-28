@@ -7,6 +7,7 @@ import {
   FavoriteToggleButton,
   LoginRequiredBookmarkButton
 } from "@/components/departments/favorite-toggle-button";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { ReviewCard } from "@/components/departments/review-card";
 import { ExperienceCta } from "@/components/experience/experience-cta";
 import { PageShell } from "@/components/layout/page-shell";
@@ -110,7 +111,7 @@ function DataMetricCard({
   const isGeneralSpecialtyMetric = metricType === "נתון כללי לתחום";
 
   return (
-    <div className={`flex min-h-[6.75rem] flex-col rounded-xl border border-slate-100 bg-white px-3 py-3 ${className}`}>
+    <div className={`flex min-h-[5.75rem] flex-col rounded-xl border border-slate-100 bg-white px-2.5 py-2.5 ${className}`}>
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-bold leading-5 text-slate-600">{label}</p>
@@ -127,7 +128,7 @@ function DataMetricCard({
           metricType={metricType}
         />
       </div>
-      <p className={`mt-2 text-lg font-black leading-tight ${hasValue ? "text-ink" : "text-slate-400"}`}>
+      <p className={`mt-1.5 text-base font-black leading-tight ${hasValue ? "text-ink" : "text-slate-400"}`}>
         {hasValue ? value : MISSING_IMPORTED_VALUE}
       </p>
       {caption ? <p className="mt-1 text-xs font-semibold text-slate-500">{caption}</p> : null}
@@ -157,7 +158,7 @@ function DataMetricGrid({
   metrics: DisplayMetric[];
 }) {
   return (
-    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
       {metrics.map((metric) => (
         <DataMetricCard key={metric.id} {...metric} />
       ))}
@@ -182,7 +183,7 @@ function MetricGroup({
   }
 
   return (
-    <section className="rounded-2xl border border-slate-100 bg-slate-50/70 p-3">
+    <section className="rounded-2xl border border-slate-100 bg-slate-50/70 p-2.5">
       <h3 className="text-sm font-black text-ink">{title}</h3>
       {children ? <div className="mt-3">{children}</div> : null}
       {visibleMetrics.length > 0 ? (
@@ -216,7 +217,7 @@ function YearlyResidentsChart({
   const maxValue = Math.max(...rows.map((row) => row.value), 1);
 
   return (
-    <div className="rounded-xl border border-slate-100 bg-white px-3 py-3">
+    <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
       <div className="flex items-start justify-between gap-3">
         <p className="text-sm font-bold text-slate-600">מתמחים חדשים לפי שנה</p>
         <MetricInfoTip
@@ -229,11 +230,11 @@ function YearlyResidentsChart({
       {rows.length === 0 ? (
         <p className="mt-2 text-lg font-black text-slate-400">{MISSING_IMPORTED_VALUE}</p>
       ) : (
-        <div className="mt-3 space-y-2">
+        <div className="mt-2 space-y-1.5">
           {rows.map((row) => (
-            <div key={row.year} className="grid grid-cols-[3.5rem_1fr_3rem] items-center gap-3">
+            <div key={row.year} className="grid grid-cols-[3.5rem_1fr_3rem] items-center gap-2">
               <span className="text-xs font-black text-slate-500">{row.year}</span>
-              <div className="h-3 overflow-hidden rounded-full bg-slate-100">
+              <div className="h-2.5 overflow-hidden rounded-full bg-slate-100">
                 <div
                   className="h-full rounded-full bg-brand-700"
                   style={{ width: `${Math.max(8, Math.round((row.value / maxValue) * 100))}%` }}
@@ -261,6 +262,40 @@ function sanitizedProfileText(value?: string | null) {
   }
 
   return text;
+}
+
+function formatDepartmentHeaderTitle(
+  departmentName: string,
+  specialtyName: string,
+  institutionName: string
+) {
+  const withGeresh = (value: string) => (/^[א-ת]$/.test(value) ? `${value}׳` : value);
+  const normalized = departmentName
+    .replace(institutionName, "")
+    .replace(/[״"`']/g, "׳")
+    .replace(/\s+/g, " ")
+    .trim();
+  const standaloneSubDepartment = normalized.match(/^(?:מחלקה\s*)?([א-ת]׳?)$/);
+
+  if (standaloneSubDepartment) {
+    return `מחלקה ${withGeresh(standaloneSubDepartment[1])}`;
+  }
+
+  if (normalized.startsWith(`${specialtyName} `)) {
+    const suffix = normalized.slice(specialtyName.length).trim();
+    const simpleSuffix = suffix.match(/^(?:מחלקה\s*)?([א-ת]׳?)$/);
+
+    if (simpleSuffix) {
+      return `מחלקה ${withGeresh(simpleSuffix[1])}`;
+    }
+  }
+
+  const embeddedSubDepartment = normalized.match(/מחלקה\s+([א-ת]׳?)/);
+  if (embeddedSubDepartment) {
+    return `מחלקה ${withGeresh(embeddedSubDepartment[1])}`;
+  }
+
+  return normalized || departmentName;
 }
 
 function clampPercent(value: number) {
@@ -297,7 +332,7 @@ function GenderBalanceCard({
   const men = clampPercent(menPercent ?? (womenPercent !== null ? 100 - womenPercent : 0));
 
   return (
-    <div className="rounded-xl border border-slate-100 bg-white px-3 py-3">
+    <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
       <div className="flex items-start justify-between gap-3">
         <p className="text-sm font-bold leading-5 text-slate-600">איזון מגדרי</p>
         <MetricInfoTip
@@ -312,13 +347,13 @@ function GenderBalanceCard({
       ) : (
         <div className="mt-3 flex items-center gap-4">
           <div
-            className="grid h-20 w-20 shrink-0 place-items-center rounded-full"
+            className="grid h-16 w-16 shrink-0 place-items-center rounded-full"
             style={{
               background: `conic-gradient(#0f766e 0 ${women}%, #dbeafe ${women}% 100%)`
             }}
             aria-label={`נשים ${Math.round(women)}%, גברים ${Math.round(men)}%`}
           >
-            <div className="grid h-12 w-12 place-items-center rounded-full bg-white text-sm font-black text-ink">
+            <div className="grid h-10 w-10 place-items-center rounded-full bg-white text-xs font-black text-ink">
               {Math.round(women)}%
             </div>
           </div>
@@ -627,7 +662,13 @@ export default async function DepartmentDetailsPage({
   const isMedicalArrayProfile = Boolean(department.specialty.groupAsArray && department.medicalArray);
   const profileTerm = isMedicalArrayProfile ? "מערך" : "מחלקה";
   const profileMissingText = MISSING_IMPORTED_VALUE;
-  const profileTitle = isMedicalArrayProfile ? `מערך ${department.specialty.name}` : department.name;
+  const profileTitle = isMedicalArrayProfile
+    ? `מערך ${department.specialty.name}`
+    : formatDepartmentHeaderTitle(
+        department.name,
+        department.specialty.name,
+        department.institution.name
+      );
   const rawProfileDescription = isMedicalArrayProfile
     ? department.medicalArray?.description || department.about || department.shortSummary
     : department.about || department.shortSummary;
@@ -654,20 +695,24 @@ export default async function DepartmentDetailsPage({
     const lock = departmentLockCopy(session);
 
     return (
-      <PageShell className="space-y-7 py-8">
-        <section className="rounded-xl border border-brand-100 bg-white px-5 py-6 shadow-panel md:px-6">
-          <div className="flex flex-wrap gap-2">
-            <Badge>{department.specialty.name}</Badge>
-            <Badge tone="default">{profileTerm}</Badge>
-            <Badge tone="default">{region}</Badge>
+      <PageShell className="space-y-5 py-6">
+        <section className="rounded-xl border border-brand-100 bg-white px-4 py-5 shadow-panel md:px-5">
+          <div className="flex gap-4">
+            <InstitutionLogo institution={department.institution} size="lg" />
+            <div className="min-w-0">
+              <div className="flex flex-wrap gap-2">
+                <Badge>{department.specialty.name}</Badge>
+                <Badge tone="default">{profileTerm}</Badge>
+                <Badge tone="default">{region}</Badge>
+              </div>
+              <h1 className="mt-3 break-words text-3xl font-bold leading-tight text-ink md:text-4xl">
+                {profileTitle}
+              </h1>
+              <p className="mt-2 text-lg font-bold leading-7 text-slate-700">
+                {department.institution.name}
+              </p>
+            </div>
           </div>
-          <h1 className="mt-4 break-words text-3xl font-bold leading-tight text-ink md:text-4xl">
-            {profileTitle}
-          </h1>
-          <p className="mt-3 text-lg font-bold leading-7 text-slate-700">
-            {department.institution.name}
-          </p>
-          <p className="mt-1 text-sm font-semibold text-slate-600">{region}</p>
         </section>
 
         <Card className="mx-auto max-w-2xl rounded-xl text-center">
@@ -954,7 +999,10 @@ export default async function DepartmentDetailsPage({
       label: "מעבר שלב א׳",
       value: boardStageA?.value ?? null,
       sourceLabel: boardStageA?.sourceLabel ?? "משרד הבריאות",
-      tooltip: "שיעור מעבר שלב א׳. אם אין נתון מחלקתי, מוצג נתון כללי לתחום.",
+      tooltip:
+        boardStageA?.metricType === "נתון כללי לתחום"
+          ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
+          : "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי.",
       metricType: boardStageA?.metricType,
       lastUpdated: boardStageA?.lastUpdated
     },
@@ -963,7 +1011,10 @@ export default async function DepartmentDetailsPage({
       label: "מעבר שלב ב׳",
       value: boardStageB?.value ?? null,
       sourceLabel: boardStageB?.sourceLabel ?? "משרד הבריאות",
-      tooltip: "שיעור מעבר שלב ב׳. אם אין נתון מחלקתי, מוצג נתון כללי לתחום.",
+      tooltip:
+        boardStageB?.metricType === "נתון כללי לתחום"
+          ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
+          : "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי.",
       metricType: boardStageB?.metricType,
       lastUpdated: boardStageB?.lastUpdated
     }
@@ -997,8 +1048,8 @@ export default async function DepartmentDetailsPage({
   const specialtyOverviewHref = `/departments?specialty=${department.specialty.id}`;
 
   return (
-    <PageShell className="space-y-7 py-8">
-      <section className="relative rounded-xl border border-brand-100 bg-white px-5 py-5 shadow-panel md:px-6">
+    <PageShell className="space-y-5 py-6">
+      <section className="relative rounded-xl border border-brand-100 bg-white px-4 py-4 shadow-panel md:px-5">
         <div className="absolute left-5 top-5 z-10">
           {session ? (
             <FavoriteToggleButton
@@ -1010,24 +1061,25 @@ export default async function DepartmentDetailsPage({
             <LoginRequiredBookmarkButton />
           )}
         </div>
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
-          <div className="min-w-0 pe-12">
-            <div className="flex flex-wrap gap-2">
-              <Badge>{department.specialty.name}</Badge>
-              <Badge tone="default">{profileTerm}</Badge>
-              <Badge tone="default">{region}</Badge>
-              <Badge tone={department.residencyOpenings.length > 0 ? "success" : "warning"}>
-                {department.residencyOpenings.length > 0 ? "תקנים פתוחים" : "אין תקנים כרגע"}
-              </Badge>
-            </div>
-            <h1 className="mt-4 break-words text-3xl font-bold leading-tight text-ink md:text-4xl">
-              {profileTitle}
-            </h1>
-            <p className="mt-3 text-lg font-bold leading-7 text-slate-700">
-              {department.institution.name}
-            </p>
-            <p className="mt-1 text-sm font-semibold text-slate-600">{region}</p>
-            <div className="mt-4 flex flex-wrap items-center gap-3">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div className="flex min-w-0 gap-4 pe-12">
+            <InstitutionLogo institution={department.institution} size="lg" className="mt-1" />
+            <div className="min-w-0">
+              <div className="flex flex-wrap gap-2">
+                <Badge>{department.specialty.name}</Badge>
+                <Badge tone="default">{profileTerm}</Badge>
+                <Badge tone="default">{region}</Badge>
+                <Badge tone={department.residencyOpenings.length > 0 ? "success" : "warning"}>
+                  {department.residencyOpenings.length > 0 ? "תקנים פתוחים" : "אין תקנים כרגע"}
+                </Badge>
+              </div>
+              <h1 className="mt-3 break-words text-3xl font-bold leading-tight text-ink md:text-4xl">
+                {profileTitle}
+              </h1>
+              <p className="mt-2 text-lg font-bold leading-7 text-slate-700">
+                {department.institution.name}
+              </p>
+            <div className="mt-3 flex flex-wrap items-center gap-3">
               <RatingStars value={department.summary.overallRecommendation || 0} />
               <span className="text-sm font-semibold text-slate-600">
                 {department.summary.reviewCount} ביקורות מאושרות
@@ -1038,16 +1090,17 @@ export default async function DepartmentDetailsPage({
                 מספר מחלקות במערך: {arrayDepartments.length}
               </p>
             ) : null}
-            <div className="mt-4">
+            <div className="mt-3">
               <DepartmentPageActions
                 departmentId={department.id}
                 isAdmin={false}
                 showClaim
               />
             </div>
+            </div>
           </div>
 
-          <div className="w-full space-y-3 rounded-lg border border-slate-100 bg-slate-50 p-4 lg:w-[320px]">
+          <div className="w-full space-y-3 rounded-lg border border-slate-100 bg-slate-50 p-3 lg:w-[300px]">
             <div>
               <ExperienceCta
                 departments={reviewContext.departments}
@@ -1085,9 +1138,9 @@ export default async function DepartmentDetailsPage({
         <DepartmentPageActions departmentId={department.id} isAdmin showAdminScrape />
       ) : null}
 
-      <section className="grid gap-5 lg:grid-cols-[1fr_360px]">
-        <div className="space-y-5">
-          <Card className="rounded-xl">
+      <section className="grid gap-4 lg:grid-cols-[1fr_320px]">
+        <div className="space-y-4">
+          <Card className="rounded-xl !p-4">
             <SectionHeading title="קצת על המחלקה" />
             {profileDescription || practicalInfo ? (
               <div className="mt-4 space-y-3 text-sm leading-8 text-slate-700">
@@ -1105,7 +1158,7 @@ export default async function DepartmentDetailsPage({
             </Link>
           </Card>
 
-          <Card className="rounded-xl">
+          <Card className="rounded-xl !p-4">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <SectionHeading
                 title={isMedicalArrayProfile ? "נתוני המערך" : "נתוני המחלקה"}
@@ -1117,7 +1170,7 @@ export default async function DepartmentDetailsPage({
               ) : null}
             </div>
 
-            <div className="mt-5 space-y-4">
+            <div className="mt-4 space-y-3">
               <MetricGroup title="כוח אדם" metrics={workforceMetrics}>
                 <GenderBalanceCard
                   womenPercent={womenPercent}
@@ -1140,7 +1193,7 @@ export default async function DepartmentDetailsPage({
             </div>
           </Card>
 
-          <Card className="rounded-xl">
+          <Card className="rounded-xl !p-4">
             <SectionHeading title="מחקר ופרסומים" />
             <div className="mt-5">
               <p className="text-sm font-bold text-ink">הזדמנויות מחקר</p>
@@ -1161,7 +1214,7 @@ export default async function DepartmentDetailsPage({
             </div>
           </Card>
 
-          <Card className="rounded-xl">
+          <Card className="rounded-xl !p-4">
             <SectionHeading title="חוויות מהשטח" />
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <ScoreBar label="דירוג כללי" value={department.summary.overallRecommendation} />
@@ -1210,8 +1263,8 @@ export default async function DepartmentDetailsPage({
           </Card>
         </div>
 
-        <aside className="space-y-5">
-          <Card className="rounded-xl">
+        <aside className="space-y-4">
+          <Card className="rounded-xl !p-4">
             <SectionHeading title="הנהלה ויצירת קשר" />
             <div className="mt-5 space-y-3">
               {department.representativeAssignments.length === 0 && profileHeads.length === 0 && !hasContactPerson ? (

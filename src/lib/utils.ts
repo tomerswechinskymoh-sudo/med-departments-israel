@@ -71,7 +71,13 @@ function specialtyAliases(specialtyName: string) {
 }
 
 function normalizeSubDepartmentIdentifier(value: string) {
-  return normalizeHebrewDepartmentText(value.replace(/^מחלקה\s+/, "")).replace(/'/g, "׳");
+  const normalized = normalizeHebrewDepartmentText(
+    value
+      .replace(/^בית\s*חולים-?\s*/, "")
+      .replace(/^מחלקה\s+/, "")
+  ).replace(/'/g, "׳");
+
+  return /^[א-ת]$/.test(normalized) ? `${normalized}׳` : normalized;
 }
 
 export function formatDepartmentDisplayName(departmentName: string, specialtyName: string) {
@@ -82,8 +88,11 @@ export function formatDepartmentDisplayName(departmentName: string, specialtyNam
     return specialtyName;
   }
 
-  if (normalizedDepartment.includes(normalizedSpecialty)) {
-    return departmentName;
+  if (normalizedDepartment.startsWith(`${normalizedSpecialty} `)) {
+    const suffix = normalizeSubDepartmentIdentifier(
+      normalizedDepartment.slice(normalizedSpecialty.length).trim()
+    );
+    return suffix ? `${specialtyName} ${suffix}` : specialtyName;
   }
 
   const standaloneIdentifierPattern = /^(?:מחלקה\s+)?[א-ת](?:'|׳)?$/;
@@ -101,6 +110,10 @@ export function formatDepartmentDisplayName(departmentName: string, specialtyNam
       const suffix = normalizeSubDepartmentIdentifier(normalizedDepartment.slice(alias.length).trim());
       return suffix ? `${specialtyName} ${suffix}` : specialtyName;
     }
+  }
+
+  if (normalizedDepartment.includes(normalizedSpecialty)) {
+    return departmentName;
   }
 
   return departmentName;

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FavoriteToggleButton } from "@/components/departments/favorite-toggle-button";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
@@ -38,11 +39,20 @@ function MetricChip({
   );
 }
 
-function DataPill({ label, value }: { label: string; value: string | number }) {
+function DataPill({
+  label,
+  value,
+  helper
+}: {
+  label: string;
+  value: string | number;
+  helper?: string;
+}) {
   return (
-    <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
+    <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2" title={helper}>
       <p className="text-[0.68rem] font-bold text-slate-500">{label}</p>
       <p className="mt-1 text-sm font-black text-ink">{value}</p>
+      {helper ? <p className="mt-0.5 truncate text-[0.65rem] font-semibold text-slate-400">{helper}</p> : null}
     </div>
   );
 }
@@ -57,6 +67,8 @@ export function DepartmentCard({
     slug: string;
     name: string;
     institutionName: string;
+    institutionSlug?: string | null;
+    institutionCoverImageUrl?: string | null;
     city?: string | null;
     region?: string | null;
     institutionType?: "HOSPITAL" | "HMO";
@@ -97,7 +109,11 @@ export function DepartmentCard({
       ? { label: "מתמחים", value: department.residentsCount }
       : null,
     typeof department.newResidentsLatest === "number"
-      ? { label: "חדשים", value: department.newResidentsLatest }
+      ? {
+          label: "חדשים",
+          value: department.newResidentsLatest,
+          helper: "מתמחים חדשים בשנה האחרונה הזמינה"
+        }
       : null,
     typeof department.seniorPhysiciansCount === "number"
       ? { label: "בכירים", value: department.seniorPhysiciansCount }
@@ -113,7 +129,7 @@ export function DepartmentCard({
           value: department.estimatedPublicationsCount
         }
       : null
-  ].filter((item): item is { label: string; value: number } => Boolean(item));
+  ].filter((item): item is { label: string; value: number; helper?: string } => Boolean(item));
 
   return (
     <Card
@@ -134,24 +150,35 @@ export function DepartmentCard({
       >
         <div className="pointer-events-none">
           {isRow ? (
-            <div className="space-y-2.5">
-              {department.region ? (
-                <p className="text-xs font-bold text-brand-700">{department.region}</p>
-              ) : null}
-              <p className="text-base font-semibold leading-7 text-slate-700">
-                {department.institutionName}
-              </p>
-              <h3 className="break-words text-2xl font-black leading-tight text-ink">
-                {department.name}
-              </h3>
-              <p className="inline-flex rounded-full border border-slate-100 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-600">
-                {department.specialtyName}
-              </p>
-              {department.shortSummary ? (
-                <p className="max-w-3xl text-sm leading-7 text-slate-600">
-                  {department.shortSummary}
+            <div className="flex gap-4">
+              <InstitutionLogo
+                institution={{
+                  name: department.institutionName,
+                  slug: department.institutionSlug,
+                  coverImageUrl: department.institutionCoverImageUrl
+                }}
+                size="md"
+                className="mt-0.5"
+              />
+              <div className="min-w-0 space-y-2">
+                {department.region ? (
+                  <p className="text-xs font-black text-brand-700">{department.region}</p>
+                ) : null}
+                <p className="text-base font-bold leading-7 text-slate-700">
+                  {department.institutionName}
                 </p>
-              ) : null}
+                <h3 className="break-words text-2xl font-black leading-tight text-ink">
+                  {department.name}
+                </h3>
+                <p className="inline-flex rounded-full border border-teal-100 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-900">
+                  {department.specialtyName}
+                </p>
+                {department.shortSummary ? (
+                  <p className="max-w-3xl text-sm leading-7 text-slate-600">
+                    {department.shortSummary}
+                  </p>
+                ) : null}
+              </div>
             </div>
           ) : (
             <>
@@ -168,18 +195,28 @@ export function DepartmentCard({
                 {!department.hasResearch ? <Badge tone="default">ללא מחקר פתוח</Badge> : null}
               </div>
 
-              <div className="mt-5 rounded-[1.25rem] border border-slate-100 bg-slate-50/90 px-4 py-4">
-                <p className="text-xs font-semibold text-slate-500">
-                  {department.specialtyName}
-                </p>
-                <h3 className="mt-2 break-words text-2xl font-bold leading-tight text-ink">
-                  {department.name}
-                </h3>
-                <p className="mt-2 text-sm font-medium leading-6 text-slate-600">
-                  {department.institutionName}
-                  {department.city ? ` · ${department.city}` : ""}
-                  {department.region ? ` · ${department.region}` : ""}
-                </p>
+              <div className="mt-5 flex gap-3 rounded-[1.25rem] border border-slate-100 bg-slate-50/90 px-4 py-4">
+                <InstitutionLogo
+                  institution={{
+                    name: department.institutionName,
+                    slug: department.institutionSlug,
+                    coverImageUrl: department.institutionCoverImageUrl
+                  }}
+                  size="sm"
+                />
+                <div className="min-w-0">
+                  <p className="text-xs font-semibold text-slate-500">
+                    {department.specialtyName}
+                  </p>
+                  <h3 className="mt-2 break-words text-2xl font-bold leading-tight text-ink">
+                    {department.name}
+                  </h3>
+                  <p className="mt-2 text-sm font-medium leading-6 text-slate-600">
+                    {department.institutionName}
+                    {department.city ? ` · ${department.city}` : ""}
+                    {department.region ? ` · ${department.region}` : ""}
+                  </p>
+                </div>
               </div>
             </>
           )}
@@ -220,7 +257,12 @@ export function DepartmentCard({
           {isRow && rowStats.length > 0 ? (
             <div className="grid grid-cols-2 gap-2">
               {rowStats.slice(0, 4).map((stat) => (
-                <DataPill key={stat.label} label={stat.label} value={stat.value} />
+                <DataPill
+                  key={stat.label}
+                  label={stat.label}
+                  value={stat.value}
+                  helper={stat.helper}
+                />
               ))}
             </div>
           ) : null}

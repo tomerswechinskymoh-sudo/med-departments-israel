@@ -15,19 +15,19 @@ function GenderDonut({ value }: { value: string }) {
   const men = Math.max(0, 100 - women);
 
   return (
-    <div className="mt-3 flex items-center gap-4">
+    <div className="mt-2 flex items-center gap-3">
       <div
-        className="grid h-20 w-20 shrink-0 place-items-center rounded-full"
+        className="grid h-16 w-16 shrink-0 place-items-center rounded-full"
         style={{
           background: `conic-gradient(#0f766e 0 ${women}%, #dbeafe ${women}% 100%)`
         }}
         aria-label={`נשים ${women}%, גברים ${men}%`}
       >
-        <div className="grid h-12 w-12 place-items-center rounded-full bg-white text-sm font-black text-ink">
+        <div className="grid h-10 w-10 place-items-center rounded-full bg-white text-xs font-black text-ink">
           {Math.round(women)}%
         </div>
       </div>
-      <div className="space-y-2 text-xs font-bold text-slate-600">
+      <div className="space-y-1.5 text-xs font-bold text-slate-600">
         <div className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-teal-700" />
           <span>נשים {Math.round(women)}%</span>
@@ -69,14 +69,14 @@ function YearTrend({ value }: { value: string }) {
   }
 
   return (
-    <div className="mt-3 space-y-2">
+    <div className="mt-2 space-y-1.5">
       {rows.map((row) => (
         <div key={row.year}>
           <div className="flex items-center justify-between text-xs font-bold text-slate-600">
             <span>{row.year}</span>
             <span>{row.value.toLocaleString("he-IL")}</span>
           </div>
-          <div className="mt-1 h-2 overflow-hidden rounded-full bg-white">
+          <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-white">
             <div
               className="h-full rounded-full bg-brand-700"
               style={{ width: `${Math.round((row.value / max) * 100)}%` }}
@@ -123,22 +123,22 @@ export function SpecialtyDashboardMetrics({
   }
 
   return (
-    <section className="rounded-[1.5rem] border border-brand-100 bg-white/95 p-4 shadow-sm">
+    <section className="rounded-[1.25rem] border border-brand-100 bg-white/95 p-3 shadow-sm">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-sm font-bold text-brand-700">דשבורד {specialtyName}</p>
-          <h2 className="mt-1 text-xl font-bold text-ink">תמונת מצב כללית של תחום ההתמחות</h2>
+          <h2 className="mt-1 text-lg font-bold text-ink">תמונת מצב כללית של תחום ההתמחות</h2>
         </div>
         <p className="max-w-md text-xs leading-6 text-slate-500">
           הנתונים מבוססים על מידע זמין במערכת ועשויים להיות חלקיים
         </p>
       </div>
 
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
         {metrics.map((metric, index) => (
           <div
             key={metric.key}
-            className={`flex min-h-[8rem] flex-col rounded-[1.25rem] border p-4 ${
+            className={`flex min-h-[6.75rem] flex-col rounded-2xl border p-3 ${
               index === 0
                 ? "border-brand-200 bg-gradient-to-l from-brand-50 to-white"
                 : "border-slate-100 bg-slate-50/70"
@@ -153,7 +153,7 @@ export function SpecialtyDashboardMetrics({
             ) : metric.key === "newResidentsTrend" && !metric.isPlaceholder ? (
               <YearTrend value={metric.value} />
             ) : (
-              <p className={`mt-2 text-2xl font-black ${metric.isPlaceholder ? "text-slate-400" : "text-ink"}`}>
+              <p className={`mt-2 text-xl font-black ${metric.isPlaceholder ? "text-slate-400" : "text-ink"}`}>
                 {metric.value}
               </p>
             )}

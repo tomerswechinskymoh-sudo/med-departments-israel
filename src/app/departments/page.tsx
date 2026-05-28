@@ -156,6 +156,7 @@ export default async function DepartmentsPage({
                 institutions={availableFilters.institutions}
                 specialties={availableFilters.specialties}
                 departments={availableFilters.departments}
+                regions={availableFilters.regions}
               />
             </aside>
 
