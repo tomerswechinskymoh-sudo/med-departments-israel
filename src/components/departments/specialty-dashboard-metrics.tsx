@@ -196,10 +196,8 @@ function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
   const source = metric.sourceLabel ?? "מקור נתונים לא צוין";
   const lines = [
     metric.tooltip ?? metric.description,
-    metric.displayAction ? `Display/action: ${metric.displayAction}` : null,
-    `Source: ${source}`,
-    metric.sourceUrl ? `Source link: ${metric.sourceUrl}` : null,
-    `Metric level: ${metric.metricLevel ?? "ארצי לתחום"}`
+    `מקור: ${source}`,
+    metric.sourceUrl ? `קישור מקור: ${metric.sourceUrl}` : null
   ].filter((line): line is string => Boolean(line));
   const text = lines.join("\n");
 
@@ -227,7 +225,7 @@ function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
               rel="noreferrer"
               className="pointer-events-auto mt-2 block font-black text-brand-800 underline"
             >
-              Source link
+              קישור מקור
             </a>
           ) : null}
         </span>

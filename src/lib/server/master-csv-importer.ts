@@ -621,11 +621,15 @@ function normalizedDataExpCells(row: CsvRow) {
 
   if (!sheet) return null;
 
-  if (sheet === "Master_Dept" && criterion === "Master_Dept" && /בכירים|רופאים בכירים/.test(sourceLabel)) {
+  if (
+    sheet === "Master_Dept" &&
+    criterion === "Master_Dept" &&
+    /בכירים|רופאים בכירים/.test(`${explanation} ${sourceLabel}`)
+  ) {
     criterion = "מספר_בכירים";
-    explanation = sourceLabel;
-    sourceLabel = sourceLinkPolicy;
-    sourceLinkPolicy = displayAction;
+    explanation = explanation || sourceLabel;
+    sourceLabel = sourceLabel && sourceLabel !== explanation ? sourceLabel : sourceLinkPolicy;
+    sourceLinkPolicy = sourceLabel === sourceLinkPolicy ? displayAction : sourceLinkPolicy;
     displayAction = "";
   }
 
@@ -656,6 +660,8 @@ async function importDataExpCsv(db: DbClient, filePath: string) {
   let imported = 0;
   let failed = 0;
   let skipped = 0;
+  let staleRemoved = 0;
+  const currentKeys = new Set<string>();
 
   for (const row of table.rows) {
     const warnings: string[] = [];
@@ -705,6 +711,7 @@ async function importDataExpCsv(db: DbClient, filePath: string) {
         }
       });
 
+      currentKeys.add(`${metadata.sheet}:${metadata.normalizedCriterion}`);
       imported += 1;
       await logRow(db, {
         batchId: batch.id,
@@ -732,6 +739,23 @@ async function importDataExpCsv(db: DbClient, filePath: string) {
     }
   }
 
+  if (failed === 0 && currentKeys.size > 0) {
+    const staleResult = await db.dataExplanation.deleteMany({
+      where: {
+        NOT: {
+          OR: Array.from(currentKeys).map((key) => {
+            const [sheet, ...normalizedParts] = key.split(":");
+            return {
+              sheet,
+              normalizedCriterion: normalizedParts.join(":")
+            };
+          })
+        }
+      }
+    });
+    staleRemoved = staleResult.count;
+  }
+
   await db.dataImportBatch.update({
     where: { id: batch.id },
     data: {
@@ -740,13 +764,14 @@ async function importDataExpCsv(db: DbClient, filePath: string) {
         imported,
         failed,
         skipped,
+        staleRemoved,
         rowLogs: table.rows.length
       }),
       status: failed > 0 ? "PENDING_REVIEW" : "APPROVED"
     }
   });
 
-  return { batchId: batch.id, imported, failed, skipped, rows: table.rows.length };
+  return { batchId: batch.id, imported, failed, skipped, staleRemoved, rows: table.rows.length };
 }
 
 async function loadDataExplanations(db: DbClient) {

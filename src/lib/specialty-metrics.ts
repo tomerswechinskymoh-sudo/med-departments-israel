@@ -17,6 +17,8 @@ export const specialtyMetricKeys = [
   "boardPassA",
   "boardPassB",
   "burnoutIndex",
+  "centerSalary",
+  "peripherySalary",
   "salaryGap",
   "newResidentsTrend",
   "expectedOpenings",
@@ -136,6 +138,8 @@ export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
   "boardPassA",
   "boardPassB",
   "burnoutIndex",
+  "centerSalary",
+  "peripherySalary",
   "salaryGap",
   "newResidentsTrend",
   "expectedOpenings",
@@ -153,6 +157,8 @@ const dashboardMetricDataExpKeys: Partial<Record<SpecialtyMetricKey, string[]>> 
   boardPassA: ["boardStageAPassRate", "מעבר_שלב_א"],
   boardPassB: ["boardStageBPassRate", "מעבר_שלב_ב"],
   burnoutIndex: ["burnoutIndex", "מדד_שחיקה"],
+  centerSalary: ["centerSalary", "שכר_לא_פריפריה"],
+  peripherySalary: ["peripherySalary", "שכר_פריפריה"],
   salaryGap: ["peripherySalaryGap", "פער_שכר_פריפריה"],
   newResidentsTrend: ["newResidents", "מספר מתמחים חדשים 2024"],
   expectedOpenings: ["expectedNationalOpenings", "מספר_תקנים_שצפויים להיפתח_ארצי"],
@@ -612,6 +618,44 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     }
   },
   {
+    key: "centerSalary",
+    label: "שכר מרכז",
+    description: "שכר למתמחה במסלול שאינו מוגדר פריפריה",
+    unit: "text",
+    sourceLabel: "סימולטור שכר של הר״י",
+    calculate: (_departments, context) => {
+      const centerMetric = contextMetric(context, "centerSalary");
+      const displayValue = centerMetric ? formatMetricValue(centerMetric) : null;
+
+      return displayValue
+        ? {
+            value: displayValue,
+            sourceLabel: sourceLabelForMetric(centerMetric, "סימולטור שכר של הר״י"),
+            metricLevel: "ארצי לתחום"
+          }
+        : null;
+    }
+  },
+  {
+    key: "peripherySalary",
+    label: "שכר פריפריה",
+    description: "שכר למתמחה במסלול שמוגדר פריפריה",
+    unit: "text",
+    sourceLabel: "סימולטור שכר של הר״י",
+    calculate: (_departments, context) => {
+      const peripheryMetric = contextMetric(context, "peripherySalary");
+      const displayValue = peripheryMetric ? formatMetricValue(peripheryMetric) : null;
+
+      return displayValue
+        ? {
+            value: displayValue,
+            sourceLabel: sourceLabelForMetric(peripheryMetric, "סימולטור שכר של הר״י"),
+            metricLevel: "ארצי לתחום"
+          }
+        : null;
+    }
+  },
+  {
     key: "newResidentsTrend",
     label: "מתמחים חדשים",
     description: "מספר מתמחים חדשים לפי שנים 2020-2024",
@@ -795,14 +839,7 @@ export function calculateSpecialtyMetrics(
       typeof calculated === "string" || calculated === null
         ? definition.sourceLabel
         : calculated.sourceLabel ?? definition.sourceLabel;
-    const calculatedTooltip =
-      typeof calculated === "string" || calculated === null
-        ? undefined
-        : calculated.tooltip;
     const metadataExplanation = metadataTooltip(metadata, definition.description);
-    const tooltip = [metadataExplanation, calculatedTooltip]
-      .filter((item, index, list): item is string => Boolean(item) && list.indexOf(item) === index)
-      .join(" · ");
 
     results.push({
       key: definition.key,
@@ -814,7 +851,7 @@ export function calculateSpecialtyMetrics(
       unit: definition.unit,
       sourceLabel: metadataSourceLabel(metadata, calculatedSourceLabel ?? "מקור נתונים לא צוין"),
       sourceUrl: metadata?.sourceUrl,
-      tooltip: tooltip || undefined,
+      tooltip: metadataExplanation,
       displayAction: metadataDisplayAction(metadata),
       metricLevel:
         typeof calculated === "object" && calculated !== null && calculated.metricLevel

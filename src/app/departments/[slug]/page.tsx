@@ -75,14 +75,10 @@ function MetricInfoTip({
   sourceUrl?: string | null;
   displayAction?: string | null;
 }) {
-  const rawMetricLevel = metricType?.replace(/^נתון\s+/, "").replace(/^הערכה\s+.+$/, "מחושב");
-  const metricLevel = rawMetricLevel === "כללי לתחום" ? "ארצי לתחום" : rawMetricLevel;
   const tooltipLines = [
     text,
-    displayAction ? `Display/action: ${displayAction}` : null,
-    `Source: ${sourceLabel}`,
-    sourceUrl ? `Source link: ${sourceUrl}` : null,
-    metricLevel ? `Metric level: ${metricLevel}` : null,
+    `מקור: ${sourceLabel}`,
+    sourceUrl ? `קישור מקור: ${sourceUrl}` : null,
     lastUpdated ? `עודכן: ${formatDate(lastUpdated)}` : null
   ].filter((line): line is string => Boolean(line));
   const tooltipText = tooltipLines.join("\n");
@@ -106,7 +102,7 @@ function MetricInfoTip({
           </span>
           {sourceUrl ? (
             <a href={sourceUrl} target="_blank" rel="noreferrer" className="mt-2 block font-black text-brand-800 underline">
-              Source link
+              קישור מקור
             </a>
           ) : null}
         </span>
@@ -517,11 +513,7 @@ function SalaryGapHighlight({ metadata }: { metadata?: MetricDisplayMetadata | n
   const peripherySalary = 19965.92;
   const gap = peripherySalary - centerSalary;
   const max = peripherySalary;
-  const tooltip = [
-    metadataTooltip(metadata, "פער שכר לטובת פריפריה לפי סימולטור שכר הר״י."),
-    "שכר מרכז: 16,954.00 ₪",
-    "שכר פריפריה: 19,965.92 ₪"
-  ].join(" · ");
+  const tooltip = metadataTooltip(metadata, "פער שכר לטובת פריפריה לפי סימולטור שכר הר״י.");
 
   return (
     <div className="rounded-xl border border-amber-200 bg-gradient-to-l from-amber-50 to-white px-3 py-2">
@@ -662,10 +654,6 @@ function metricTypeFromMetadata(
   fallback = "נתון מחלקתי"
 ) {
   return metadata?.isNationalMetric ? "נתון ארצי לתחום" : fallback;
-}
-
-function isNationalMetricType(metricType?: string | null) {
-  return metricType === "נתון כללי לתחום" || metricType === "נתון ארצי לתחום";
 }
 
 function highlightedCardClass(metadata: MetricDisplayMetadata | null | undefined) {
@@ -1014,10 +1002,10 @@ export default async function DepartmentDetailsPage({
     "activeResidentsCount"
   );
   const activeResidents =
-    department.residentsCount !== null && department.residentsCount !== undefined
-      ? { value: department.residentsCount, source: "hospital" as MetricSource }
-      : importedActiveResidents !== null
+    importedActiveResidents !== null
         ? { value: importedActiveResidents, source: "hospital" as MetricSource }
+      : department.residentsCount !== null && department.residentsCount !== undefined
+        ? { value: department.residentsCount, source: "hospital" as MetricSource }
       : activeResidentsMetric
         ? { value: activeResidentsMetric.value, source: sourceFromName(activeResidentsMetric.sourceName) }
         : null;
@@ -1323,32 +1311,6 @@ export default async function DepartmentDetailsPage({
     latestOpenAlexResearchMetric?.lastUpdated ??
     latestAnyOpenAlexResearchMetric?.lastUpdated ??
     publicationMetric?.lastUpdated;
-  const examMetrics: DisplayMetric[] = [
-    {
-      id: "department-stage-a",
-      label: "מעבר שלב א׳",
-      value: boardStageA?.value ?? null,
-      sourceLabel: boardStageA?.sourceLabel ?? "משרד הבריאות",
-      tooltip:
-        isNationalMetricType(boardStageA?.metricType)
-          ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
-          : "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי.",
-      metricType: boardStageA?.metricType,
-      lastUpdated: boardStageA?.lastUpdated
-    },
-    {
-      id: "department-stage-b",
-      label: "מעבר שלב ב׳",
-      value: boardStageB?.value ?? null,
-      sourceLabel: boardStageB?.sourceLabel ?? "משרד הבריאות",
-      tooltip:
-        isNationalMetricType(boardStageB?.metricType)
-          ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
-          : "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי.",
-      metricType: boardStageB?.metricType,
-      lastUpdated: boardStageB?.lastUpdated
-    }
-  ];
   const newResidentsSourceLabel = importedSourceLabel(firstDepartmentYearlyMetric, "משרד הבריאות");
   const specialtyOverviewHref = `/departments?specialty=${department.specialty.id}`;
 
@@ -1730,11 +1692,7 @@ export default async function DepartmentDetailsPage({
                 label={metricLabelFromMetadata(boardStageAMeta, "מעבר שלב א׳")}
                 value={boardStageA?.value ?? null}
                 sourceLabel={metadataSourceLabel(boardStageAMeta, boardStageA?.sourceLabel ?? "משרד הבריאות")}
-                tooltip={
-                  isNationalMetricType(stageAMetricType)
-                    ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
-                    : metadataTooltip(boardStageAMeta, "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי.")
-                }
+                tooltip={metadataTooltip(boardStageAMeta, "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי.")}
                 metricType={stageAMetricType}
                 lastUpdated={boardStageA?.lastUpdated}
                 sourceUrl={boardStageAMeta?.sourceUrl}
@@ -1744,11 +1702,7 @@ export default async function DepartmentDetailsPage({
                 label={metricLabelFromMetadata(boardStageBMeta, "מעבר שלב ב׳")}
                 value={boardStageB?.value ?? null}
                 sourceLabel={metadataSourceLabel(boardStageBMeta, boardStageB?.sourceLabel ?? "משרד הבריאות")}
-                tooltip={
-                  isNationalMetricType(stageBMetricType)
-                    ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
-                    : metadataTooltip(boardStageBMeta, "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי.")
-                }
+                tooltip={metadataTooltip(boardStageBMeta, "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי.")}
                 metricType={stageBMetricType}
                 lastUpdated={boardStageB?.lastUpdated}
                 sourceUrl={boardStageBMeta?.sourceUrl}
@@ -1763,6 +1717,7 @@ export default async function DepartmentDetailsPage({
                   "רופאים שנספרו מנתוני DUNS100 ומוצגים כאינדיקציה לפעילות/בולטות מקצועית."
                 )}
                 lastUpdated={duns100LastUpdated}
+                missingText={MISSING_IMPORTED_VALUE}
                 sourceUrl={duns100Meta?.sourceUrl}
                 displayAction={metadataDisplayAction(duns100Meta)}
               />
@@ -1788,11 +1743,7 @@ export default async function DepartmentDetailsPage({
                 label={metricLabelFromMetadata(burnoutMeta, "מדד שחיקה")}
                 value={burnoutMetric ? formatImportedMetricValue(burnoutMetric) : null}
                 sourceLabel={metadataSourceLabel(burnoutMeta, importedSourceLabel(burnoutMetric, "דיווחי מתמחים משרד הבריאות"))}
-                tooltip={
-                  isNationalMetricType(metricTypeFromMetadata(burnoutMeta, burnoutMetricType))
-                    ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית."
-                    : metadataTooltip(burnoutMeta, "מדד שחיקה מחלקתי, אם סופק.")
-                }
+                tooltip={metadataTooltip(burnoutMeta, "מדד שחיקה מחלקתי, אם סופק.")}
                 metricType={metricTypeFromMetadata(burnoutMeta, burnoutMetricType)}
                 lastUpdated={burnoutMetric?.lastUpdated}
                 sourceUrl={burnoutMeta?.sourceUrl}
