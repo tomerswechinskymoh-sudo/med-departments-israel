@@ -1,11 +1,15 @@
 import {
-  findMetricDisplayMetadata,
   metadataDisplayAction,
   metadataSourceLabel,
   metadataTooltip,
   type MetricDisplayMetadata,
   type MetricVisualType
 } from "@/lib/metric-display";
+import {
+  resolveImportedMetric,
+  resolveImportedYearlyMetric,
+  resolveMetricDisplayMetadata
+} from "@/lib/imported-metric-resolver";
 
 export const specialtyMetricKeys = [
   "programsCount",
@@ -149,20 +153,20 @@ export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
 const missingMetricValue = "הנתון עדיין לא סופק";
 
 const dashboardMetricDataExpKeys: Partial<Record<SpecialtyMetricKey, string[]>> = {
-  activeResidents: ["residentsCount", "activeResidentsCount", "מספר_מתמחים"],
-  genderDistribution: ["womenPercent", "menPercent", "אחוז_נשים", "אחוז_גברים"],
-  residencyDuration: ["actualAverageDuration", "officialResidencyDuration"],
-  medianWaitingTime: ["medianWaitingTime", "זמן_המתנה_חציוני_לתקן"],
-  acceptanceDistribution: ["acceptedImmediatelyReports", "מספר המתקבלים שדיווחו שמצאו מיד התמחות"],
-  boardPassA: ["boardStageAPassRate", "מעבר_שלב_א"],
-  boardPassB: ["boardStageBPassRate", "מעבר_שלב_ב"],
-  burnoutIndex: ["burnoutIndex", "מדד_שחיקה"],
-  centerSalary: ["centerSalary", "שכר_לא_פריפריה"],
-  peripherySalary: ["peripherySalary", "שכר_פריפריה"],
-  salaryGap: ["peripherySalaryGap", "פער_שכר_פריפריה"],
-  newResidentsTrend: ["newResidents", "מספר מתמחים חדשים 2024"],
-  expectedOpenings: ["expectedNationalOpenings", "מספר_תקנים_שצפויים להיפתח_ארצי"],
-  duns100PhysiciansCount: ["duns100PhysiciansCount", "DUNS100"]
+  activeResidents: ["מספר_מתמחים", "residentsCount", "activeResidentsCount"],
+  genderDistribution: ["אחוז_נשים", "אחוז_גברים", "womenPercent", "menPercent"],
+  residencyDuration: ["משך_ממוצע_בפועל", "משך_התמחות_רשמי", "actualAverageDuration", "officialResidencyDuration"],
+  medianWaitingTime: ["זמן_המתנה_חציוני_לתקן", "medianWaitingTime"],
+  acceptanceDistribution: ["מספר המתקבלים שדיווחו שמצאו מיד התמחות", "acceptedImmediatelyReports"],
+  boardPassA: ["מעבר_שלב_א", "boardStageAPassRate"],
+  boardPassB: ["מעבר_שלב_ב", "boardStageBPassRate"],
+  burnoutIndex: ["מדד_שחיקה", "burnoutIndex"],
+  centerSalary: ["שכר_לא_פריפריה", "centerSalary"],
+  peripherySalary: ["שכר_פריפריה", "שכר_פריפריה 1", "peripherySalary"],
+  salaryGap: ["פער_שכר_פריפריה", "peripherySalaryGap"],
+  newResidentsTrend: ["מספר מתמחים חדשים 2024", "newResidents"],
+  expectedOpenings: ["מספר_תקנים_שצפויים להיפתח_ארצי", "expectedNationalOpenings"],
+  duns100PhysiciansCount: ["DUNS100", "duns100PhysiciansCount"]
 };
 
 const compositeDashboardLabels = new Set<SpecialtyMetricKey>([
@@ -270,13 +274,13 @@ function contextMetric(
   context: SpecialtyMetricContext,
   ...metricKeys: string[]
 ) {
-  return (
-    context.specialtyMetrics?.find(
-      (metric) =>
-        metricKeys.includes(metric.metricKey) &&
-        (typeof metric.value === "number" || Boolean(metric.rawValue))
-    ) ?? null
-  );
+  const [fieldOrKey, ...aliases] = metricKeys;
+  if (!fieldOrKey) return null;
+
+  return resolveImportedMetric(context.specialtyMetrics ?? [], fieldOrKey, {
+    aliases,
+    entityLabel: "specialty dashboard"
+  });
 }
 
 function contextMetricValue(context: SpecialtyMetricContext, ...metricKeys: string[]) {
@@ -290,9 +294,14 @@ function yearlyValueRows(
   endYear: number
 ) {
   const specialtyRows = (context.specialtyYearlyMetrics ?? [])
-    .filter((metric) => metric.metricKey === "newResidents")
     .filter((metric) => metric.year >= startYear && metric.year <= endYear)
-    .filter((metric) => typeof metric.value === "number" || Boolean(metric.rawValue))
+    .map((metric) =>
+      resolveImportedYearlyMetric([metric], `מספר מתמחים חדשים ${metric.year}`, {
+        aliases: ["newResidents"],
+        year: metric.year
+      })
+    )
+    .filter((metric): metric is SpecialtyImportedYearlyMetric => Boolean(metric))
     .sort((left, right) => left.year - right.year);
 
   if (specialtyRows.length > 0) {
@@ -324,11 +333,31 @@ function yearlyValueRows(
 }
 
 const acceptanceMetricRows = [
-  { key: "acceptedImmediatelyReports", label: "מיד" },
-  { key: "acceptedWithinSixMonthsReports", label: "עד חצי שנה" },
-  { key: "acceptedWithinOneYearReports", label: "עד שנה" },
-  { key: "acceptedWithinTwoYearsReports", label: "עד שנתיים" },
-  { key: "acceptedAfterTwoYearsReports", label: "אחרי שנתיים" }
+  {
+    key: "מספר המתקבלים שדיווחו שמצאו מיד התמחות",
+    alias: "acceptedImmediatelyReports",
+    label: "מיד"
+  },
+  {
+    key: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה",
+    alias: "acceptedWithinSixMonthsReports",
+    label: "עד חצי שנה"
+  },
+  {
+    key: "מספר המתקבלים שדיווחו שמצאו עד שנה",
+    alias: "acceptedWithinOneYearReports",
+    label: "עד שנה"
+  },
+  {
+    key: "מספר המתקבלים שדיווחו שמצאו עד שנתיים",
+    alias: "acceptedWithinTwoYearsReports",
+    label: "עד שנתיים"
+  },
+  {
+    key: "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים",
+    alias: "acceptedAfterTwoYearsReports",
+    label: "אחרי שנתיים"
+  }
 ];
 
 function acceptanceDistributionRows(
@@ -337,7 +366,7 @@ function acceptanceDistributionRows(
 ) {
   const specialtyRows = acceptanceMetricRows
     .map((input) => {
-      const metric = contextMetric(context, input.key);
+      const metric = contextMetric(context, input.key, input.alias);
       if (!metric) return null;
       const displayValue = formatMetricValue(metric);
       const numericValue = typeof metric.value === "number" ? metric.value : null;
@@ -358,7 +387,7 @@ function acceptanceDistributionRows(
 
   return acceptanceMetricRows
     .map((input) => {
-      const total = sumMetric(departments, input.key);
+      const total = sumMetric(departments, input.alias);
       return total === null
         ? null
         : {
@@ -397,7 +426,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
       const total =
         sumMetric(departments, "activeResidentsCount") ??
         sumMetric(departments, "residentsCount") ??
-        contextMetricValue(context, "residentsCount", "activeResidentsCount") ??
+        contextMetricValue(context, "מספר_מתמחים", "residentsCount", "activeResidentsCount") ??
         sum(departments.map((department) => department.residentsCount));
       return total !== null ? formatNumber(total) : null;
     }
@@ -409,7 +438,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "%",
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
-      const specialtyWomenMetric = contextMetric(context, "womenPercent", "femaleResidentsPercent");
+      const specialtyWomenMetric = contextMetric(context, "אחוז_נשים", "womenPercent", "femaleResidentsPercent");
       if (specialtyWomenMetric) {
         const displayValue = formatMetricValue(specialtyWomenMetric);
         return displayValue
@@ -437,6 +466,8 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     calculate: (departments, context) => {
       const specialtyDurationMetric = contextMetric(
         context,
+        "משך_ממוצע_בפועל",
+        "משך_התמחות_רשמי",
         "actualAverageDuration",
         "officialResidencyDuration",
         "medianResidencyDurationMonths"
@@ -466,7 +497,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "months",
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
-      const specialtyWaitingMetric = contextMetric(context, "medianWaitingTime");
+      const specialtyWaitingMetric = contextMetric(context, "זמן_המתנה_חציוני_לתקן", "medianWaitingTime");
       if (specialtyWaitingMetric) {
         const displayValue = formatMetricValue(specialtyWaitingMetric);
         return displayValue
@@ -512,7 +543,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "%",
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
-      const specialtyBoardMetric = contextMetric(context, "boardStageAPassRate");
+      const specialtyBoardMetric = contextMetric(context, "מעבר_שלב_א", "boardStageAPassRate");
       if (specialtyBoardMetric) {
         const displayValue = formatMetricValue(specialtyBoardMetric);
         return displayValue
@@ -537,7 +568,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "%",
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
-      const specialtyBoardMetric = contextMetric(context, "boardStageBPassRate");
+      const specialtyBoardMetric = contextMetric(context, "מעבר_שלב_ב", "boardStageBPassRate");
       if (specialtyBoardMetric) {
         const displayValue = formatMetricValue(specialtyBoardMetric);
         return displayValue
@@ -562,7 +593,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "score",
     sourceLabel: "דיווחי מתמחים משרד הבריאות",
     calculate: (departments, context) => {
-      const specialtyBurnoutMetric = contextMetric(context, "burnoutIndex");
+      const specialtyBurnoutMetric = contextMetric(context, "מדד_שחיקה", "burnoutIndex");
       if (specialtyBurnoutMetric) {
         const displayValue = formatMetricValue(specialtyBurnoutMetric);
         return displayValue
@@ -589,9 +620,9 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "text",
     sourceLabel: "דיווחי מתמחים משרד הבריאות",
     calculate: (_departments, context) => {
-      const gapMetric = contextMetric(context, "peripherySalaryGap");
-      const centerMetric = contextMetric(context, "centerSalary");
-      const peripheryMetric = contextMetric(context, "peripherySalary");
+      const gapMetric = contextMetric(context, "פער_שכר_פריפריה", "peripherySalaryGap");
+      const centerMetric = contextMetric(context, "שכר_לא_פריפריה", "centerSalary");
+      const peripheryMetric = contextMetric(context, "שכר_פריפריה", "שכר_פריפריה 1", "peripherySalary");
       const displayGap =
         (gapMetric ? formatMetricValue(gapMetric) : null) ??
         (typeof centerMetric?.value === "number" && typeof peripheryMetric?.value === "number"
@@ -624,7 +655,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "text",
     sourceLabel: "סימולטור שכר של הר״י",
     calculate: (_departments, context) => {
-      const centerMetric = contextMetric(context, "centerSalary");
+      const centerMetric = contextMetric(context, "שכר_לא_פריפריה", "centerSalary");
       const displayValue = centerMetric ? formatMetricValue(centerMetric) : null;
 
       return displayValue
@@ -643,7 +674,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "text",
     sourceLabel: "סימולטור שכר של הר״י",
     calculate: (_departments, context) => {
-      const peripheryMetric = contextMetric(context, "peripherySalary");
+      const peripheryMetric = contextMetric(context, "שכר_פריפריה", "שכר_פריפריה 1", "peripherySalary");
       const displayValue = peripheryMetric ? formatMetricValue(peripheryMetric) : null;
 
       return displayValue
@@ -675,7 +706,11 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "count",
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
-      const specialtyExpected = contextMetric(context, "expectedNationalOpenings");
+      const specialtyExpected = contextMetric(
+        context,
+        "מספר_תקנים_שצפויים להיפתח_ארצי",
+        "expectedNationalOpenings"
+      );
       if (specialtyExpected) {
         const displayValue = formatMetricValue(specialtyExpected);
         return displayValue
@@ -825,10 +860,12 @@ export function calculateSpecialtyMetrics(
   return orderedKeys.reduce<SpecialtyMetricResult[]>((results, key) => {
     const definition = specialtyMetricDefinitions.find((metric) => metric.key === key);
     if (!definition) return results;
-    const metadata = findMetricDisplayMetadata(
+    const metadataKeys = definition.metadataKeys ?? dashboardMetricDataExpKeys[key] ?? [definition.key];
+    const metadata = resolveMetricDisplayMetadata(
       context.dataExplanations ?? [],
       "MASTER_Spec",
-      ...(definition.metadataKeys ?? dashboardMetricDataExpKeys[key] ?? [definition.key])
+      metadataKeys[0] ?? definition.key,
+      metadataKeys.slice(1)
     );
 
     if (metadata?.isHidden) return results;

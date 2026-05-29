@@ -4,8 +4,20 @@ import {
   metadataDisplayAction,
   metadataSourceLabel,
   metadataTooltip,
+  normalizeCriterion,
+  readableLabelFromCriterion,
   type MetricDisplayMetadata
 } from "@/lib/metric-display";
+import {
+  availableImportedMetricKeys,
+  metricFieldLabel,
+  metricKeyCandidates,
+  resolveImportedMetric,
+  resolveImportedYearlyMetric,
+  resolveMetricDisplayMetadata,
+  type ImportedMetricLike,
+  type ImportedYearlyMetricLike
+} from "@/lib/imported-metric-resolver";
 import { prisma } from "@/lib/prisma";
 
 type AuditStatus = "Implemented" | "Partially implemented" | "Missing";
@@ -79,6 +91,133 @@ function countByStatus(rows: Array<{ status: AuditStatus }>) {
 
 function hasValue(row?: { value: number | null; rawValue?: string | null } | null) {
   return Boolean(row && (typeof row.value === "number" || row.rawValue));
+}
+
+const requiredMetricCards = [
+  { id: "centerSalary", label: "שכר מרכז", field: "שכר_לא_פריפריה" },
+  { id: "peripherySalary", label: "שכר פריפריה", field: "שכר_פריפריה" },
+  { id: "peripherySalaryGap", label: "פער שכר", field: "פער_שכר_פריפריה" },
+  { id: "residentsCount", label: "מספר מתמחים", field: "מספר_מתמחים" },
+  { id: "medianWaitingTime", label: "זמן המתנה חציוני לתקן", field: "זמן_המתנה_חציוני_לתקן" },
+  { id: "officialResidencyDuration", label: "משך התמחות רשמי", field: "משך_התמחות_רשמי" },
+  { id: "actualAverageDuration", label: "משך ממוצע בפועל", field: "משך_ממוצע_בפועל" },
+  { id: "seniorPhysiciansCount", label: "מספר בכירים", field: "מספר_בכירים" },
+  { id: "duns100PhysiciansCount", label: "DUNS100", field: "DUNS100" },
+  { id: "departmentalPublicationsCount", label: "מספר פרסומים מחלקתי", field: "מספר פרסומים מחלקתי" },
+  {
+    id: "acceptedImmediatelyReports",
+    label: "מצאו התמחות מיד",
+    field: "מספר המתקבלים שדיווחו שמצאו מיד התמחות"
+  },
+  {
+    id: "acceptedWithinSixMonthsReports",
+    label: "מצאו עד חצי שנה",
+    field: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה"
+  },
+  {
+    id: "acceptedWithinOneYearReports",
+    label: "מצאו עד שנה",
+    field: "מספר המתקבלים שדיווחו שמצאו עד שנה"
+  },
+  {
+    id: "acceptedWithinTwoYearsReports",
+    label: "מצאו עד שנתיים",
+    field: "מספר המתקבלים שדיווחו שמצאו עד שנתיים"
+  },
+  {
+    id: "acceptedAfterTwoYearsReports",
+    label: "מצאו אחרי שנתיים",
+    field: "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים"
+  },
+  { id: "womenPercent", label: "אחוז נשים", field: "אחוז_נשים" },
+  { id: "menPercent", label: "אחוז גברים", field: "אחוז_גברים" }
+];
+
+const requiredYearlyCards = [2020, 2021, 2022, 2023, 2024].map((year) => ({
+  id: `newResidents${year}`,
+  label: `מספר מתמחים חדשים ${year}`,
+  field: `מספר מתמחים חדשים ${year}`,
+  year
+}));
+
+function normalizedValueCandidates(value: string) {
+  return [value, readableLabelFromCriterion(value)].map(normalizeCriterion);
+}
+
+function metricCanMatch(
+  metric: ImportedMetricLike | ImportedYearlyMetricLike,
+  field: string
+) {
+  const candidates = metricKeyCandidates(field);
+  const normalizedCandidates = [...candidates.exact, ...candidates.aliases].flatMap(normalizedValueCandidates);
+  const metricValues = [
+    metric.metricKey,
+    "label" in metric && metric.label ? metric.label : null,
+    readableLabelFromCriterion(metric.metricKey)
+  ].filter((value): value is string => Boolean(value));
+
+  return metricValues.some((value) => normalizedCandidates.includes(normalizeCriterion(value)));
+}
+
+function dbHasResolvableValue(
+  metrics: Array<ImportedMetricLike | ImportedYearlyMetricLike>,
+  field: string,
+  year?: number
+) {
+  return metrics.some(
+    (metric) =>
+      (year === undefined || ("year" in metric && metric.year === year)) &&
+      hasValue(metric) &&
+      metricCanMatch(metric, field)
+  );
+}
+
+function resolverCardReport(input: {
+  metrics: ImportedMetricLike[];
+  yearlyMetrics?: ImportedYearlyMetricLike[];
+  metadata: MetricDisplayMetadata[];
+  sheet: "MASTER_Spec" | "Master_Dept";
+  includeDepartmentOnly?: boolean;
+}) {
+  const metricReports = requiredMetricCards
+    .filter((card) => !input.includeDepartmentOnly || !["duns100PhysiciansCount", "departmentalPublicationsCount"].includes(card.id))
+    .map((card) => {
+      const resolved = resolveImportedMetric(input.metrics, card.field);
+      const metadata = resolveMetricDisplayMetadata(input.metadata, input.sheet, card.field);
+      const valueExistsInDb = dbHasResolvableValue(input.metrics, card.field);
+
+      return {
+        id: card.id,
+        importedKey: card.field,
+        renderedLabel: metadata?.readableLabel ?? card.label ?? metricFieldLabel(card.field),
+        resolvedValue: resolved?.rawValue ?? resolved?.value ?? null,
+        dataExpMatched: Boolean(metadata),
+        tooltip: metadata?.explanation ?? null,
+        tooltipSource: metadata?.sourceLabel ?? null,
+        valueExistsInDb,
+        resolvesAsMissing: valueExistsInDb && !resolved
+      };
+    });
+
+  const yearlyReports = requiredYearlyCards.map((card) => {
+    const resolved = resolveImportedYearlyMetric(input.yearlyMetrics ?? [], card.field, { year: card.year });
+    const metadata = resolveMetricDisplayMetadata(input.metadata, input.sheet, card.field);
+    const valueExistsInDb = dbHasResolvableValue(input.yearlyMetrics ?? [], card.field, card.year);
+
+    return {
+      id: card.id,
+      importedKey: card.field,
+      renderedLabel: metadata?.readableLabel ?? card.label,
+      resolvedValue: resolved?.rawValue ?? resolved?.value ?? null,
+      dataExpMatched: Boolean(metadata),
+      tooltip: metadata?.explanation ?? null,
+      tooltipSource: metadata?.sourceLabel ?? null,
+      valueExistsInDb,
+      resolvesAsMissing: valueExistsInDb && !resolved
+    };
+  });
+
+  return [...metricReports, ...yearlyReports];
 }
 
 function auditDataExpRow(input: {
@@ -180,11 +319,11 @@ async function main() {
     }),
     prisma.specialtyMetric.findMany({
       where: { specialtyId: specialty.id },
-      select: { metricKey: true, value: true, rawValue: true, sourceNotes: true }
+      select: { metricKey: true, label: true, value: true, rawValue: true, unit: true, sourceNotes: true, lastUpdated: true }
     }),
     prisma.specialtyYearlyMetric.findMany({
       where: { specialtyId: specialty.id },
-      select: { metricKey: true, year: true, value: true, rawValue: true, sourceNotes: true }
+      select: { metricKey: true, year: true, value: true, rawValue: true, unit: true, sourceNotes: true, lastUpdated: true }
     }),
     prisma.departmentMetric.groupBy({
       by: ["metricKey"],
@@ -235,6 +374,76 @@ async function main() {
   const detail = detailCandidate
     ? await getDepartmentPageData(detailCandidate.slug, undefined, detailCandidate.id)
     : null;
+  const resolverSampleDepartment =
+    (await prisma.department.findFirst({
+      where: {
+        importStableKey: { not: null },
+        institution: { name: { contains: "אסיא" } },
+        specialty: { name: { contains: "רפואת משפחה" } }
+      },
+      select: {
+        id: true,
+        name: true,
+        institution: { select: { name: true } },
+        specialty: { select: { name: true } },
+        metrics: {
+          select: {
+            metricKey: true,
+            label: true,
+            value: true,
+            rawValue: true,
+            unit: true,
+            sourceNotes: true,
+            lastUpdated: true
+          }
+        },
+        yearlyMetrics: {
+          select: {
+            metricKey: true,
+            year: true,
+            value: true,
+            rawValue: true,
+            unit: true,
+            sourceNotes: true,
+            lastUpdated: true
+          }
+        }
+      }
+    })) ??
+    (await prisma.department.findFirst({
+      where: {
+        importStableKey: { not: null },
+        OR: [{ name: { contains: "אסיא" } }, { institution: { name: { contains: "אסיא" } } }]
+      },
+      select: {
+        id: true,
+        name: true,
+        institution: { select: { name: true } },
+        specialty: { select: { name: true } },
+        metrics: {
+          select: {
+            metricKey: true,
+            label: true,
+            value: true,
+            rawValue: true,
+            unit: true,
+            sourceNotes: true,
+            lastUpdated: true
+          }
+        },
+        yearlyMetrics: {
+          select: {
+            metricKey: true,
+            year: true,
+            value: true,
+            rawValue: true,
+            unit: true,
+            sourceNotes: true,
+            lastUpdated: true
+          }
+        }
+      }
+    }));
 
   const auditRows = metadata.map((item) => {
     const displayedAs =
@@ -297,6 +506,29 @@ async function main() {
   const openAlexCoverage = await prisma.departmentResearchMetric.count({
     where: { department: { specialtyId: specialty.id }, source: "OpenAlex", needsMapping: false }
   });
+  const specialtyResolverCards = resolverCardReport({
+    metrics: specialtyMetricRows,
+    yearlyMetrics: specialtyYearlyRows,
+    metadata,
+    sheet: "MASTER_Spec"
+  });
+  const departmentResolverCards = resolverSampleDepartment
+    ? resolverCardReport({
+        metrics: resolverSampleDepartment.metrics,
+        yearlyMetrics: resolverSampleDepartment.yearlyMetrics,
+        metadata,
+        sheet: "Master_Dept"
+      })
+    : [];
+  const resolverFailures = [
+    ...specialtyResolverCards
+      .filter((card) => card.resolvesAsMissing)
+      .map((card) => `specialty resolver missed ${card.importedKey}`),
+    ...departmentResolverCards
+      .filter((card) => card.resolvesAsMissing)
+      .map((card) => `department resolver missed ${card.importedKey}`),
+    !resolverSampleDepartment ? "resolver sample department אסיא רפואת המשפחה not found" : null
+  ].filter((item): item is string => Boolean(item));
 
   const failedChecks = [
     !dashboardCenterSalary || dashboardCenterSalary.isPlaceholder ? "missing center salary card" : null,
@@ -321,7 +553,8 @@ async function main() {
       : null,
     !detail || !detail.about || detail.metrics.length === 0 || detail.yearlyMetrics.length === 0
       ? "detail sample missing imported data"
-      : null
+      : null,
+    ...resolverFailures
   ].filter((item): item is string => Boolean(item));
 
   const report = {
@@ -352,6 +585,24 @@ async function main() {
         importedPublicationCoverage > 0 || openAlexCoverage > 0 || "no current imported/OpenAlex publication values",
       nullFallbackText: "הנתון עדיין לא סופק",
       futureCrawlerFields: ["duns100PhysiciansCount", "departmentalPublicationsCount", "OpenAlex researchMetrics"]
+    },
+    resolverAudit: {
+      specialtySample: {
+        name: specialty.name,
+        availableMetricKeys: availableImportedMetricKeys(specialtyMetricRows),
+        availableYearlyKeys: availableImportedMetricKeys(specialtyYearlyRows),
+        cards: specialtyResolverCards
+      },
+      departmentSample: resolverSampleDepartment
+        ? {
+            institution: resolverSampleDepartment.institution.name,
+            department: resolverSampleDepartment.name,
+            specialty: resolverSampleDepartment.specialty.name,
+            availableMetricKeys: availableImportedMetricKeys(resolverSampleDepartment.metrics),
+            availableYearlyKeys: availableImportedMetricKeys(resolverSampleDepartment.yearlyMetrics),
+            cards: departmentResolverCards
+          }
+        : null
     },
     audit: {
       ...countByStatus(auditRows),

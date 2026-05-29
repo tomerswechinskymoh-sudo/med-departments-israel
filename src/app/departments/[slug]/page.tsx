@@ -15,12 +15,18 @@ import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
-  findMetricDisplayMetadata,
   metadataDisplayAction,
   metadataSourceLabel,
   metadataTooltip,
   type MetricDisplayMetadata
 } from "@/lib/metric-display";
+import {
+  metricFieldLabel,
+  resolveImportedMetric,
+  resolveImportedMetricNumber,
+  resolveImportedYearlyMetric,
+  resolveMetricDisplayMetadata
+} from "@/lib/imported-metric-resolver";
 import {
   getDepartmentPageData,
   getDataExplanations,
@@ -508,12 +514,28 @@ function QuickHighlightCard({
   );
 }
 
-function SalaryGapHighlight({ metadata }: { metadata?: MetricDisplayMetadata | null }) {
-  const centerSalary = 16954;
-  const peripherySalary = 19965.92;
-  const gap = peripherySalary - centerSalary;
-  const max = peripherySalary;
+function SalaryGapHighlight({
+  metadata,
+  centerMetric,
+  peripheryMetric,
+  gapMetric
+}: {
+  metadata?: MetricDisplayMetadata | null;
+  centerMetric?: ImportedMetric | null;
+  peripheryMetric?: ImportedMetric | null;
+  gapMetric?: ImportedMetric | null;
+}) {
+  const centerSalary = typeof centerMetric?.value === "number" ? centerMetric.value : null;
+  const peripherySalary = typeof peripheryMetric?.value === "number" ? peripheryMetric.value : null;
+  const calculatedGap =
+    typeof centerSalary === "number" && typeof peripherySalary === "number"
+      ? peripherySalary - centerSalary
+      : null;
+  const gap = typeof gapMetric?.value === "number" ? gapMetric.value : calculatedGap;
+  const maxSalary = Math.max(centerSalary ?? 0, peripherySalary ?? 0, 1);
   const tooltip = metadataTooltip(metadata, "פער שכר לטובת פריפריה לפי סימולטור שכר הר״י.");
+  const hasSalaryComparison =
+    typeof centerSalary === "number" && typeof peripherySalary === "number" && typeof gap === "number";
 
   return (
     <div className="rounded-xl border border-amber-200 bg-gradient-to-l from-amber-50 to-white px-3 py-2">
@@ -530,22 +552,27 @@ function SalaryGapHighlight({ metadata }: { metadata?: MetricDisplayMetadata | n
         />
       </div>
       <p className="mt-1 text-sm font-black text-ink">
-        +{formatImportedNumber(gap)} ₪
+        {gapMetric ? formatImportedMetricValue(gapMetric) : hasSalaryComparison ? `+${formatImportedNumber(gap)} ₪` : MISSING_IMPORTED_VALUE}
       </p>
-      <div className="mt-2 space-y-1">
-        <div className="grid grid-cols-[3.8rem_1fr] items-center gap-2">
-          <span className="text-[0.65rem] font-bold text-slate-500">מרכז</span>
-          <div className="h-1.5 overflow-hidden rounded-full bg-white">
-            <div className="h-full rounded-full bg-brand-500" style={{ width: `${(centerSalary / max) * 100}%` }} />
+      {hasSalaryComparison ? (
+        <div className="mt-2 space-y-1">
+          <div className="grid grid-cols-[3.8rem_1fr] items-center gap-2">
+            <span className="text-[0.65rem] font-bold text-slate-500">מרכז</span>
+            <div className="h-1.5 overflow-hidden rounded-full bg-white">
+              <div
+                className="h-full rounded-full bg-brand-500"
+                style={{ width: `${((centerSalary ?? 0) / maxSalary) * 100}%` }}
+              />
+            </div>
+          </div>
+          <div className="grid grid-cols-[3.8rem_1fr] items-center gap-2">
+            <span className="text-[0.65rem] font-bold text-slate-500">פריפריה</span>
+            <div className="h-1.5 overflow-hidden rounded-full bg-white">
+              <div className="h-full rounded-full bg-amber-500" style={{ width: "100%" }} />
+            </div>
           </div>
         </div>
-        <div className="grid grid-cols-[3.8rem_1fr] items-center gap-2">
-          <span className="text-[0.65rem] font-bold text-slate-500">פריפריה</span>
-          <div className="h-1.5 overflow-hidden rounded-full bg-white">
-            <div className="h-full rounded-full bg-amber-500" style={{ width: "100%" }} />
-          </div>
-        </div>
-      </div>
+      ) : null}
     </div>
   );
 }
@@ -554,31 +581,31 @@ const acceptanceMetricInputs = [
   {
     id: "accepted-immediately",
     label: "מצאו התמחות מיד",
-    keys: ["acceptedImmediatelyReports"],
+    keys: ["מספר המתקבלים שדיווחו שמצאו מיד התמחות", "acceptedImmediatelyReports"],
     tooltip: "מספר דיווחים על מציאת התמחות מיד, רק כאשר קיים נתון מחלקתי."
   },
   {
     id: "accepted-within-six-months",
     label: "מצאו עד חצי שנה",
-    keys: ["acceptedWithinSixMonthsReports"],
+    keys: ["מספר המתקבלים שדיווחו שמצאו עד חצי שנה", "acceptedWithinSixMonthsReports"],
     tooltip: "מספר דיווחים על מציאת התמחות עד חצי שנה, רק כאשר קיים נתון מחלקתי."
   },
   {
     id: "accepted-within-one-year",
     label: "מצאו עד שנה",
-    keys: ["acceptedWithinOneYearReports"],
+    keys: ["מספר המתקבלים שדיווחו שמצאו עד שנה", "acceptedWithinOneYearReports"],
     tooltip: "מספר דיווחים על מציאת התמחות עד שנה, רק כאשר קיים נתון מחלקתי."
   },
   {
     id: "accepted-within-two-years",
     label: "מצאו עד שנתיים",
-    keys: ["acceptedWithinTwoYearsReports"],
+    keys: ["מספר המתקבלים שדיווחו שמצאו עד שנתיים", "acceptedWithinTwoYearsReports"],
     tooltip: "מספר דיווחים על מציאת התמחות עד שנתיים, רק כאשר קיים נתון מחלקתי."
   },
   {
     id: "accepted-after-two-years",
     label: "מצאו אחרי שנתיים",
-    keys: ["acceptedAfterTwoYearsReports"],
+    keys: ["מספר המתקבלים שדיווחו שמצאו אחרי שנתיים", "acceptedAfterTwoYearsReports"],
     tooltip: "מספר דיווחים על מציאת התמחות אחרי שנתיים, רק כאשר קיים נתון מחלקתי."
   }
 ];
@@ -632,14 +659,20 @@ function departmentMetricMetadata(
   metadata: MetricDisplayMetadata[],
   ...metricKeysOrCriteria: string[]
 ) {
-  return findMetricDisplayMetadata(metadata, "Master_Dept", ...metricKeysOrCriteria);
+  const [fieldOrKey, ...aliases] = metricKeysOrCriteria;
+  if (!fieldOrKey) return null;
+
+  return resolveMetricDisplayMetadata(metadata, "Master_Dept", fieldOrKey, aliases);
 }
 
 function specialtyMetricMetadata(
   metadata: MetricDisplayMetadata[],
   ...metricKeysOrCriteria: string[]
 ) {
-  return findMetricDisplayMetadata(metadata, "MASTER_Spec", ...metricKeysOrCriteria);
+  const [fieldOrKey, ...aliases] = metricKeysOrCriteria;
+  if (!fieldOrKey) return null;
+
+  return resolveMetricDisplayMetadata(metadata, "MASTER_Spec", fieldOrKey, aliases);
 }
 
 function metricLabelFromMetadata(
@@ -680,28 +713,27 @@ const readableMetricLabels: Record<string, string> = {
 };
 
 function readableMetricLabel(value: string) {
-  return (
-    readableMetricLabels[value] ??
-    value
-      .replace(/_/g, " ")
-      .replace(/שלב א\b/g, "שלב א׳")
-      .replace(/שלב ב\b/g, "שלב ב׳")
-      .replace(/ב2026/g, "ב-2026")
-  );
+  return readableMetricLabels[value] ?? metricFieldLabel(value);
 }
 
 function findImportedMetric(metrics: ImportedMetric[], ...metricKeys: string[]) {
-  return (
-    metrics.find(
-      (metric) =>
-        metricKeys.includes(metric.metricKey) &&
-        (typeof metric.value === "number" || Boolean(metric.rawValue))
-    ) ?? null
-  );
+  const [fieldOrKey, ...aliases] = metricKeys;
+  if (!fieldOrKey) return null;
+
+  return resolveImportedMetric(metrics, fieldOrKey, {
+    aliases,
+    entityLabel: "department page"
+  });
 }
 
 function importedMetricNumber(metrics: ImportedMetric[], ...metricKeys: string[]) {
-  return findImportedMetric(metrics, ...metricKeys)?.value ?? null;
+  const [fieldOrKey, ...aliases] = metricKeys;
+  if (!fieldOrKey) return null;
+
+  return resolveImportedMetricNumber(metrics, fieldOrKey, {
+    aliases,
+    entityLabel: "department page"
+  });
 }
 
 function latestYearlyMetric(
@@ -709,14 +741,7 @@ function latestYearlyMetric(
   metricKey: string,
   options: { beforeYear?: number; year?: number } = {}
 ) {
-  return (
-    metrics
-      .filter((metric) => metric.metricKey === metricKey)
-      .filter((metric) => (options.year ? metric.year === options.year : true))
-      .filter((metric) => (options.beforeYear ? metric.year < options.beforeYear : true))
-      .filter((metric) => typeof metric.value === "number" || Boolean(metric.rawValue))
-      .sort((left, right) => right.year - left.year)[0] ?? null
-  );
+  return resolveImportedYearlyMetric(metrics, metricKey, options);
 }
 
 function metricCardFromImported(
@@ -998,6 +1023,7 @@ export default async function DepartmentDetailsPage({
   const activeResidentsMetric = metricRecord("activeResidentsCount");
   const importedActiveResidents = importedMetricNumber(
     importedDepartmentMetrics,
+    "מספר_מתמחים",
     "residentsCount",
     "activeResidentsCount"
   );
@@ -1010,7 +1036,7 @@ export default async function DepartmentDetailsPage({
         ? { value: activeResidentsMetric.value, source: sourceFromName(activeResidentsMetric.sourceName) }
         : null;
   const specialistsMetric = metricRecord("seniorPhysiciansCount");
-  const importedSpecialists = importedMetricNumber(importedDepartmentMetrics, "seniorPhysiciansCount");
+  const importedSpecialists = importedMetricNumber(importedDepartmentMetrics, "מספר_בכירים", "seniorPhysiciansCount");
   const specialists =
     isMedicalArrayProfile && !isMedicalArrayDemo && isPresentNumber(department.medicalArray?.specialistsCount)
       ? { value: department.medicalArray.specialistsCount, source: "hospital" as MetricSource }
@@ -1020,7 +1046,12 @@ export default async function DepartmentDetailsPage({
         ? { value: specialistsMetric.value, source: sourceFromName(specialistsMetric.sourceName) }
         : null;
   const medianDurationMetric = metricRecord("medianResidencyDurationMonths");
-  const importedMedianDuration = findImportedMetric(importedDepartmentMetrics, "medianResidencyDurationMonths");
+  const importedMedianDuration = findImportedMetric(
+    importedDepartmentMetrics,
+    "משך_ממוצע_בפועל",
+    "actualAverageDuration",
+    "medianResidencyDurationMonths"
+  );
   const medianDuration =
     department.medianResidencyLength
       ? { value: department.medianResidencyLength, source: "hospital" as MetricSource }
@@ -1032,10 +1063,11 @@ export default async function DepartmentDetailsPage({
   const boardStageAMetric = metricRecord("boardStageAPassRate");
   const importedBoardStageA = findImportedMetric(
     importedDepartmentMetrics,
+    "מעבר_שלב_א",
     "boardStageAPassRate",
     "inherited_boardStageAPassRate"
   );
-  const specialtyBoardStageA = findImportedMetric(importedSpecialtyMetrics, "boardStageAPassRate");
+  const specialtyBoardStageA = findImportedMetric(importedSpecialtyMetrics, "מעבר_שלב_א", "boardStageAPassRate");
   const boardStageA =
     department.shlavAlephPassRate !== null && department.shlavAlephPassRate !== undefined
       ? { value: `${department.shlavAlephPassRate}%`, sourceLabel: "משרד הבריאות", metricType: "נתון מחלקתי" }
@@ -1063,10 +1095,11 @@ export default async function DepartmentDetailsPage({
   const boardStageBMetric = metricRecord("boardStageBPassRate");
   const importedBoardStageB = findImportedMetric(
     importedDepartmentMetrics,
+    "מעבר_שלב_ב",
     "boardStageBPassRate",
     "inherited_boardStageBPassRate"
   );
-  const specialtyBoardStageB = findImportedMetric(importedSpecialtyMetrics, "boardStageBPassRate");
+  const specialtyBoardStageB = findImportedMetric(importedSpecialtyMetrics, "מעבר_שלב_ב", "boardStageBPassRate");
   const boardStageB =
     department.shlavBetPassRate !== null && department.shlavBetPassRate !== undefined
       ? { value: `${department.shlavBetPassRate}%`, sourceLabel: "משרד הבריאות", metricType: "נתון מחלקתי" }
@@ -1120,20 +1153,40 @@ export default async function DepartmentDetailsPage({
     : latestAnyOpenAlexResearchMetric?.needsMapping
       ? "חסר מיפוי OpenAlex למחלקה או לתחום. ניתן להשלים מיפוי ולרענן מדדי מחקר באדמין."
       : "לא נמצאה רשומת OpenAlex למחלקה. ניתן להריץ רענון מדדי מחקר מהאדמין.";
-  const publicationMetric = findImportedMetric(importedDepartmentMetrics, "departmentalPublicationsCount");
-  const expectedOpeningsDepartmentMetric = findImportedMetric(importedDepartmentMetrics, "expectedOpenings2026");
-  const expectedOpeningsYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "newResidents", { year: 2026 });
-  const officialDurationMetric = findImportedMetric(importedDepartmentMetrics, "officialResidencyDuration");
+  const publicationMetric = findImportedMetric(
+    importedDepartmentMetrics,
+    "מספר פרסומים מחלקתי",
+    "departmentalPublicationsCount"
+  );
+  const expectedOpeningsDepartmentMetric = findImportedMetric(
+    importedDepartmentMetrics,
+    "צפי תקנים חדשים ב2026",
+    "expectedOpenings2026"
+  );
+  const expectedOpeningsYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "מספר מתמחים חדשים 2026", {
+    year: 2026
+  });
+  const officialDurationMetric = findImportedMetric(
+    importedDepartmentMetrics,
+    "משך_התמחות_רשמי",
+    "משך_התמחות_רשמי (שנים)",
+    "officialResidencyDuration"
+  );
   const actualDurationMetric = findImportedMetric(
     importedDepartmentMetrics,
+    "משך_ממוצע_בפועל",
     "actualAverageDuration",
     "medianResidencyDurationMonths"
   );
-  const medianWaitingMetric = findImportedMetric(importedDepartmentMetrics, "medianWaitingTime");
-  const womenPercentMetric = findImportedMetric(importedDepartmentMetrics, "womenPercent");
-  const menPercentMetric = findImportedMetric(importedDepartmentMetrics, "menPercent");
-  const burnoutDepartmentMetric = findImportedMetric(importedDepartmentMetrics, "burnoutIndex");
-  const burnoutSpecialtyMetric = findImportedMetric(importedSpecialtyMetrics, "burnoutIndex");
+  const medianWaitingMetric = findImportedMetric(
+    importedDepartmentMetrics,
+    "זמן_המתנה_חציוני_לתקן",
+    "medianWaitingTime"
+  );
+  const womenPercentMetric = findImportedMetric(importedDepartmentMetrics, "אחוז_נשים", "womenPercent");
+  const menPercentMetric = findImportedMetric(importedDepartmentMetrics, "אחוז_גברים", "menPercent");
+  const burnoutDepartmentMetric = findImportedMetric(importedDepartmentMetrics, "מדד_שחיקה", "burnoutIndex");
+  const burnoutSpecialtyMetric = findImportedMetric(importedSpecialtyMetrics, "מדד_שחיקה", "burnoutIndex");
   const burnoutMetric = burnoutDepartmentMetric ?? burnoutSpecialtyMetric;
   const burnoutMetricType = burnoutDepartmentMetric ? "נתון מחלקתי" : "נתון ארצי לתחום";
   const womenPercent =
@@ -1146,7 +1199,7 @@ export default async function DepartmentDetailsPage({
   const hasContactPerson = Boolean(department.contactName || contactEmails.length > 0 || department.publicContactPhone);
   const departmentNewResidentsRows = [2020, 2021, 2022, 2023, 2024]
     .map((year) => {
-      const metric = latestYearlyMetric(importedDepartmentYearlyMetrics, "newResidents", { year });
+      const metric = latestYearlyMetric(importedDepartmentYearlyMetrics, `מספר מתמחים חדשים ${year}`, { year });
       if (!metric) return null;
       const parsedRawValue =
         metric.rawValue && Number.isFinite(Number(metric.rawValue))
@@ -1163,7 +1216,9 @@ export default async function DepartmentDetailsPage({
           };
     })
     .filter((row): row is { year: number; value: number; rawValue: string | null | undefined } => Boolean(row));
-  const firstDepartmentYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "newResidents", { beforeYear: 2026 });
+  const firstDepartmentYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "מספר מתמחים חדשים 2024", {
+    beforeYear: 2026
+  });
   const acceptanceDepartmentRows = acceptanceMetricInputs
     .map((input) => {
       const metric = findImportedMetric(importedDepartmentMetrics, ...input.keys);
@@ -1195,29 +1250,73 @@ export default async function DepartmentDetailsPage({
   const acceptanceDistributionType =
     acceptanceDepartmentRows.length > 0 ? "נתון מחלקתי" : "נתון ארצי לתחום";
   const acceptanceDistributionLastUpdated = acceptanceDistributionRows.find((row) => row.lastUpdated)?.lastUpdated;
-  const residentsMeta = departmentMetricMetadata(dataExplanations, "residentsCount");
-  const seniorPhysiciansMeta = departmentMetricMetadata(dataExplanations, "seniorPhysiciansCount");
-  const expectedOpeningsMeta = departmentMetricMetadata(dataExplanations, "expectedOpenings2026");
-  const officialDurationMeta = departmentMetricMetadata(dataExplanations, "officialResidencyDuration");
-  const actualDurationMeta = departmentMetricMetadata(dataExplanations, "actualAverageDuration");
-  const medianWaitingMeta = departmentMetricMetadata(dataExplanations, "medianWaitingTime");
-  const acceptanceDepartmentMeta = departmentMetricMetadata(dataExplanations, "acceptedImmediatelyReports");
-  const acceptanceSpecialtyMeta = specialtyMetricMetadata(dataExplanations, "acceptedImmediatelyReports");
+  const residentsMeta = departmentMetricMetadata(dataExplanations, "מספר_מתמחים", "residentsCount");
+  const seniorPhysiciansMeta = departmentMetricMetadata(dataExplanations, "מספר_בכירים", "seniorPhysiciansCount");
+  const expectedOpeningsMeta = departmentMetricMetadata(dataExplanations, "צפי תקנים חדשים ב2026", "expectedOpenings2026");
+  const officialDurationMeta = departmentMetricMetadata(
+    dataExplanations,
+    "משך_התמחות_רשמי",
+    "משך_התמחות_רשמי (שנים)",
+    "officialResidencyDuration"
+  );
+  const actualDurationMeta = departmentMetricMetadata(dataExplanations, "משך_ממוצע_בפועל", "actualAverageDuration");
+  const medianWaitingMeta = departmentMetricMetadata(dataExplanations, "זמן_המתנה_חציוני_לתקן", "medianWaitingTime");
+  const acceptanceDepartmentMeta = departmentMetricMetadata(
+    dataExplanations,
+    "מספר המתקבלים שדיווחו שמצאו מיד התמחות",
+    "acceptedImmediatelyReports"
+  );
+  const acceptanceSpecialtyMeta = specialtyMetricMetadata(
+    dataExplanations,
+    "מספר המתקבלים שדיווחו שמצאו מיד התמחות",
+    "acceptedImmediatelyReports"
+  );
   const acceptanceDisplayMeta =
     acceptanceDepartmentRows.length > 0
       ? acceptanceDepartmentMeta
       : acceptanceSpecialtyMeta ?? acceptanceDepartmentMeta;
-  const genderMeta = departmentMetricMetadata(dataExplanations, "womenPercent");
-  const newResidentsMeta = departmentMetricMetadata(dataExplanations, "newResidents");
-  const electiveDemandMeta = departmentMetricMetadata(dataExplanations, "medianElectiveDemand");
-  const boardStageAMeta = departmentMetricMetadata(dataExplanations, "boardStageAPassRate");
-  const boardStageBMeta = departmentMetricMetadata(dataExplanations, "boardStageBPassRate");
-  const duns100Meta = departmentMetricMetadata(dataExplanations, "duns100PhysiciansCount");
-  const publicationMeta = departmentMetricMetadata(dataExplanations, "departmentalPublicationsCount");
-  const burnoutMeta = departmentMetricMetadata(dataExplanations, "burnoutIndex");
-  const centerSalaryMeta = departmentMetricMetadata(dataExplanations, "centerSalary");
-  const peripherySalaryMeta = departmentMetricMetadata(dataExplanations, "peripherySalary");
-  const salaryGapMeta = departmentMetricMetadata(dataExplanations, "peripherySalaryGap");
+  const genderMeta = departmentMetricMetadata(dataExplanations, "אחוז_נשים", "womenPercent");
+  const newResidentsMeta = departmentMetricMetadata(dataExplanations, "מספר מתמחים חדשים 2024", "newResidents");
+  const electiveDemandMeta = departmentMetricMetadata(dataExplanations, "מספר אלקטיביסטים חציוני", "medianElectiveDemand");
+  const boardStageAMeta = departmentMetricMetadata(dataExplanations, "מעבר_שלב_א", "boardStageAPassRate");
+  const boardStageBMeta = departmentMetricMetadata(dataExplanations, "מעבר_שלב_ב", "boardStageBPassRate");
+  const duns100Meta = departmentMetricMetadata(dataExplanations, "DUNS100", "duns100PhysiciansCount");
+  const publicationMeta = departmentMetricMetadata(
+    dataExplanations,
+    "מספר פרסומים מחלקתי",
+    "departmentalPublicationsCount"
+  );
+  const burnoutMeta = departmentMetricMetadata(dataExplanations, "מדד_שחיקה", "burnoutIndex");
+  const centerSalaryMeta = departmentMetricMetadata(dataExplanations, "שכר_לא_פריפריה", "centerSalary");
+  const peripherySalaryMeta = departmentMetricMetadata(dataExplanations, "שכר_פריפריה", "peripherySalary");
+  const salaryGapMeta = departmentMetricMetadata(dataExplanations, "פער_שכר_פריפריה", "peripherySalaryGap");
+  const departmentCenterSalaryMetric = findImportedMetric(
+    importedDepartmentMetrics,
+    "שכר_לא_פריפריה",
+    "centerSalary"
+  );
+  const departmentPeripherySalaryMetric = findImportedMetric(
+    importedDepartmentMetrics,
+    "שכר_פריפריה",
+    "שכר_פריפריה 1",
+    "peripherySalary"
+  );
+  const departmentSalaryGapMetric = findImportedMetric(
+    importedDepartmentMetrics,
+    "פער_שכר_פריפריה",
+    "peripherySalaryGap"
+  );
+  const centerSalaryMetric =
+    departmentCenterSalaryMetric ?? findImportedMetric(importedSpecialtyMetrics, "שכר_לא_פריפריה", "centerSalary");
+  const peripherySalaryMetric =
+    departmentPeripherySalaryMetric ??
+    findImportedMetric(importedSpecialtyMetrics, "שכר_פריפריה", "שכר_פריפריה 1", "peripherySalary");
+  const salaryGapMetric =
+    departmentSalaryGapMetric ?? findImportedMetric(importedSpecialtyMetrics, "פער_שכר_פריפריה", "peripherySalaryGap");
+  const salaryMetricType =
+    departmentCenterSalaryMetric || departmentPeripherySalaryMetric || departmentSalaryGapMetric
+      ? "נתון מחלקתי"
+      : "נתון כללי לתחום";
   const stageAMetricType = metricTypeFromMetadata(boardStageAMeta, boardStageA?.metricType);
   const stageBMetricType = metricTypeFromMetadata(boardStageBMeta, boardStageB?.metricType);
   const workforceMetrics: DisplayMetric[] = [
@@ -1287,8 +1386,12 @@ export default async function DepartmentDetailsPage({
     expectedOpeningsDepartmentMetric ?? expectedOpeningsYearlyMetric,
     "מספר המתמחים שאמורים לסיים השנה ע״ב אורך ההתמחות החציוני"
   );
-  const electiveDemandMetric = findImportedMetric(importedDepartmentMetrics, "medianElectiveDemand");
-  const importedDuns100Metric = findImportedMetric(importedDepartmentMetrics, "duns100PhysiciansCount");
+  const electiveDemandMetric = findImportedMetric(
+    importedDepartmentMetrics,
+    "מספר אלקטיביסטים חציוני",
+    "medianElectiveDemand"
+  );
+  const importedDuns100Metric = findImportedMetric(importedDepartmentMetrics, "DUNS100", "duns100PhysiciansCount");
   const externalDuns100Metric = metricRecord("duns100PhysiciansCount");
   const duns100Value = importedDuns100Metric
     ? formatImportedMetricValue(importedDuns100Metric)
@@ -1723,19 +1826,23 @@ export default async function DepartmentDetailsPage({
               />
               <QuickHighlightCard
                 label={metricLabelFromMetadata(centerSalaryMeta, "שכר מרכז")}
-                value="16,954.00 ₪"
-                sourceLabel={metadataSourceLabel(centerSalaryMeta, "סימולטור שכר של הר״י")}
+                value={centerSalaryMetric ? formatImportedMetricValue(centerSalaryMetric) : null}
+                sourceLabel={metadataSourceLabel(centerSalaryMeta, importedSourceLabel(centerSalaryMetric, "סימולטור שכר של הר״י"))}
                 tooltip={metadataTooltip(centerSalaryMeta, "שכר בסיס להשוואה באזור מרכז.")}
-                metricType="נתון כללי לתחום"
+                metricType={salaryMetricType}
+                lastUpdated={centerSalaryMetric?.lastUpdated}
+                missingText={MISSING_IMPORTED_VALUE}
                 sourceUrl={centerSalaryMeta?.sourceUrl}
                 displayAction={metadataDisplayAction(centerSalaryMeta)}
               />
               <QuickHighlightCard
                 label={metricLabelFromMetadata(peripherySalaryMeta, "שכר פריפריה")}
-                value="19,965.92 ₪"
-                sourceLabel={metadataSourceLabel(peripherySalaryMeta, "סימולטור שכר של הר״י")}
+                value={peripherySalaryMetric ? formatImportedMetricValue(peripherySalaryMetric) : null}
+                sourceLabel={metadataSourceLabel(peripherySalaryMeta, importedSourceLabel(peripherySalaryMetric, "סימולטור שכר של הר״י"))}
                 tooltip={metadataTooltip(peripherySalaryMeta, "שכר בסיס להשוואה באזור פריפריה.")}
-                metricType="נתון כללי לתחום"
+                metricType={salaryMetricType}
+                lastUpdated={peripherySalaryMetric?.lastUpdated}
+                missingText={MISSING_IMPORTED_VALUE}
                 sourceUrl={peripherySalaryMeta?.sourceUrl}
                 displayAction={metadataDisplayAction(peripherySalaryMeta)}
               />
@@ -1751,7 +1858,12 @@ export default async function DepartmentDetailsPage({
               />
             </div>
             <div className="mt-2">
-              <SalaryGapHighlight metadata={salaryGapMeta} />
+              <SalaryGapHighlight
+                metadata={salaryGapMeta}
+                centerMetric={centerSalaryMetric}
+                peripheryMetric={peripherySalaryMetric}
+                gapMetric={salaryGapMetric}
+              />
             </div>
           </div>
         </aside>
