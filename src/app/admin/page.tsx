@@ -697,6 +697,17 @@ export default async function AdminPage() {
                   }
                 }
               }))}
+              openAlexRunLogs={data.openAlexRunLogs.map((log) => ({
+                id: log.id,
+                action: log.action,
+                createdAt: log.createdAt,
+                metadata: log.metadata,
+                actor: log.actor
+                  ? {
+                      fullName: log.actor.fullName
+                    }
+                  : null
+              }))}
             />
           </div>
         </Card>

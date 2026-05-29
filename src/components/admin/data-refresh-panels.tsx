@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -46,6 +47,28 @@ type ResearchMetric = {
   };
 };
 
+type OpenAlexRunLog = {
+  id: string;
+  action: string;
+  createdAt: string | Date;
+  metadata?: unknown;
+  actor?: {
+    fullName: string;
+  } | null;
+};
+
+type OpenAlexBulkResponse = {
+  error?: string;
+  message?: string;
+  processed?: number;
+  totalImportedDepartments?: number;
+  nextCursor?: string | null;
+  done?: boolean;
+  results?: Array<{
+    status?: string;
+  }>;
+};
+
 function toneForStatus(status: string) {
   if (/imported|updated|APPROVED/i.test(status)) return "success" as const;
   if (/warning|pending|mapping|PENDING/i.test(status)) return "warning" as const;
@@ -57,33 +80,53 @@ function warningCount(value: unknown) {
   return Array.isArray(value) ? value.length : 0;
 }
 
+function objectValue(value: unknown) {
+  return value && typeof value === "object" && !Array.isArray(value)
+    ? (value as Record<string, unknown>)
+    : {};
+}
+
+function formatRunDate(value: string | Date) {
+  return new Intl.DateTimeFormat("he-IL", {
+    dateStyle: "short",
+    timeStyle: "short"
+  }).format(new Date(value));
+}
+
 export function DataRefreshPanels({
   rowLogs,
   mappingRows,
-  researchMetrics
+  researchMetrics,
+  openAlexRunLogs = []
 }: {
   rowLogs: RowLog[];
   mappingRows: MappingRow[];
   researchMetrics: ResearchMetric[];
+  openAlexRunLogs?: OpenAlexRunLog[];
 }) {
+  const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busyAction, setBusyAction] = useState<"websites" | "openalex" | null>(null);
+  const [openAlexProgress, setOpenAlexProgress] = useState<{
+    processed: number;
+    total: number;
+    batches: number;
+    failed: number;
+  } | null>(null);
 
-  async function runAction(action: "websites" | "openalex") {
-    setBusyAction(action);
+  async function runWebsiteRefresh() {
+    setBusyAction("websites");
     setMessage(null);
     setError(null);
-    const response = await fetch(
-      action === "websites" ? "/api/admin/department-website-refresh" : "/api/admin/research-metrics",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json"
-        },
-        body: JSON.stringify({ limit: 5 })
-      }
-    );
+    setOpenAlexProgress(null);
+    const response = await fetch("/api/admin/department-website-refresh", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ limit: 5 })
+    });
     const payload = await response.json().catch(() => ({}));
     setBusyAction(null);
 
@@ -93,6 +136,70 @@ export function DataRefreshPanels({
     }
 
     setMessage(payload.message ?? "הפעולה הסתיימה.");
+    router.refresh();
+  }
+
+  async function runOpenAlexRefreshAll() {
+    const batchSize = 3;
+    let cursor: string | null = null;
+    let done = false;
+    let processed = 0;
+    let failed = 0;
+    let total = 0;
+    let batches = 0;
+
+    setBusyAction("openalex");
+    setMessage(null);
+    setError(null);
+    setOpenAlexProgress({ processed: 0, total: 0, batches: 0, failed: 0 });
+
+    while (!done) {
+      const response: Response = await fetch("/api/admin/research-metrics", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          mode: "all",
+          limit: batchSize,
+          cursor,
+          delayMs: 500
+        })
+      });
+      const payload: OpenAlexBulkResponse = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setBusyAction(null);
+        setError(payload.error ?? "ריענון OpenAlex נכשל.");
+        return;
+      }
+
+      batches += 1;
+      processed += Number(payload.processed ?? 0);
+      total = Number(payload.totalImportedDepartments ?? total);
+      failed += Array.isArray(payload.results)
+        ? payload.results.filter((result: { status?: string }) => result.status === "failed").length
+        : 0;
+      cursor = typeof payload.nextCursor === "string" ? payload.nextCursor : null;
+      done = Boolean(payload.done) || !cursor;
+      setOpenAlexProgress({ processed, total, batches, failed });
+
+      if (done) {
+        setMessage(`ריענון OpenAlex הסתיים: ${processed}/${total || processed} מחלקות עובדו.`);
+        break;
+      }
+    }
+
+    setBusyAction(null);
+    router.refresh();
+  }
+
+  async function runAction(action: "websites" | "openalex") {
+    if (action === "websites") {
+      await runWebsiteRefresh();
+      return;
+    }
+    await runOpenAlexRefreshAll();
   }
 
   return (
@@ -121,9 +228,36 @@ export function DataRefreshPanels({
               </p>
             </div>
             <Button type="button" onClick={() => runAction("openalex")} disabled={busyAction !== null}>
-              {busyAction === "openalex" ? "מרענן..." : "ריענון 5 מחלקות"}
+              {busyAction === "openalex" ? "מעדכן..." : "עדכן נתוני מחקר לכל המחלקות"}
             </Button>
           </div>
+          {openAlexProgress ? (
+            <div className="mt-4 rounded-2xl border border-brand-100 bg-white px-4 py-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
+                <span className="font-black text-ink">
+                  {openAlexProgress.total
+                    ? `${openAlexProgress.processed}/${openAlexProgress.total} מחלקות`
+                    : `${openAlexProgress.processed} מחלקות`}
+                </span>
+                <span className="text-slate-600">
+                  {openAlexProgress.batches} באצ׳ים · {openAlexProgress.failed} כשלונות
+                </span>
+              </div>
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                <div
+                  className="h-full rounded-full bg-brand-700 transition-all"
+                  style={{
+                    width: `${Math.min(
+                      100,
+                      openAlexProgress.total
+                        ? (openAlexProgress.processed / openAlexProgress.total) * 100
+                        : 5
+                    )}%`
+                  }}
+                />
+              </div>
+            </div>
+          ) : null}
         </section>
       </div>
 
@@ -206,6 +340,40 @@ export function DataRefreshPanels({
               ))
             )}
           </div>
+        </div>
+      </section>
+
+      <section className="rounded-[1.5rem] border border-brand-100 bg-white p-4">
+        <p className="text-sm font-black text-ink">לוג ריענוני OpenAlex</p>
+        <div className="mt-4 grid gap-2 md:grid-cols-2">
+          {openAlexRunLogs.length === 0 ? (
+            <p className="text-sm text-slate-600">אין עדיין ריענוני OpenAlex בלוג.</p>
+          ) : (
+            openAlexRunLogs.slice(0, 8).map((log) => {
+              const metadata = objectValue(log.metadata);
+              const results = Array.isArray(metadata.results) ? metadata.results : [];
+              const failures = results.filter(
+                (result) => objectValue(result).status === "failed"
+              ).length;
+
+              return (
+                <div key={log.id} className="rounded-2xl bg-slate-50 px-3 py-3 text-xs text-slate-700">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="font-bold text-ink">{formatRunDate(log.createdAt)}</span>
+                    <Badge tone={failures > 0 ? "warning" : "success"}>
+                      {metadata.done ? "completed" : "batch"}
+                    </Badge>
+                  </div>
+                  <p className="mt-1">
+                    עובדו {String(metadata.requested ?? results.length ?? 0)} מחלקות · כשלונות {failures}
+                  </p>
+                  {typeof metadata.totalImportedDepartments === "number" ? (
+                    <p className="mt-1">סה״כ מיובאות: {metadata.totalImportedDepartments}</p>
+                  ) : null}
+                </div>
+              );
+            })
+          )}
         </div>
       </section>
     </div>

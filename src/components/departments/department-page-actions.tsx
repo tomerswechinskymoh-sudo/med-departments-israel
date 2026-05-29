@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { Modal } from "@/components/ui/modal";
 import { cn } from "@/lib/utils";
 
@@ -110,6 +111,7 @@ export function DepartmentPageActions({
   showClaim?: boolean;
   className?: string;
 }) {
+  const router = useRouter();
   const [activeModal, setActiveModal] = useState<"scrape" | "mistake" | "claim" | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -180,6 +182,28 @@ export function DepartmentPageActions({
     setScrapeUrl("");
     setMessage("הסריקה נשמרה כדראפט לבדיקה.");
     await loadRevisions();
+  }
+
+  async function refreshResearchMetrics() {
+    if (!isAdmin) return;
+
+    resetState();
+    setLoading(true);
+    const response = await fetch(`/api/admin/departments/${departmentId}/research-metrics`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({})
+    });
+    const data = await response.json().catch(() => ({}));
+    setLoading(false);
+
+    if (!response.ok) {
+      setError(data.error ?? "ריענון OpenAlex נכשל.");
+      return;
+    }
+
+    setMessage(data.message ?? "מדדי OpenAlex עודכנו.");
+    router.refresh();
   }
 
   async function patchRevision(action: "update" | "approve" | "reject", formData: FormData) {
@@ -325,7 +349,17 @@ export function DepartmentPageActions({
             >
               סריקת מידע מאתר המחלקה
             </button>
+            <button
+              type="button"
+              onClick={refreshResearchMetrics}
+              disabled={loading}
+              className="inline-flex items-center justify-center rounded-full border border-brand-200 bg-white px-5 py-3 text-sm font-bold text-brand-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-brand-50 disabled:opacity-60"
+            >
+              {loading ? "מעדכן..." : "עדכון OpenAlex למחלקה"}
+            </button>
           </div>
+          {message ? <p className="mt-3 rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800">{message}</p> : null}
+          {error ? <p className="mt-3 rounded-2xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-800">{error}</p> : null}
         </section>
       ) : null}
 

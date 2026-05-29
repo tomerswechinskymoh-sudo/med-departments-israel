@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import type { ReactNode } from "react";
 import { getSession } from "@/lib/auth";
 import { DepartmentPageActions } from "@/components/departments/department-page-actions";
 import {
@@ -147,63 +146,6 @@ type DisplayMetric = {
   caption?: string;
   lowPriority?: boolean;
 };
-
-function hasDisplayValue(metric: DisplayMetric) {
-  return metric.value !== null && metric.value !== undefined && String(metric.value).trim().length > 0;
-}
-
-function DataMetricGrid({
-  metrics
-}: {
-  metrics: DisplayMetric[];
-}) {
-  return (
-    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
-      {metrics.map((metric) => (
-        <DataMetricCard key={metric.id} {...metric} />
-      ))}
-    </div>
-  );
-}
-
-function MetricGroup({
-  title,
-  metrics,
-  children
-}: {
-  title: string;
-  metrics?: DisplayMetric[];
-  children?: ReactNode;
-}) {
-  const visibleMetrics = (metrics ?? []).filter((metric) => hasDisplayValue(metric) || !metric.lowPriority);
-  const hiddenMetrics = (metrics ?? []).filter((metric) => !hasDisplayValue(metric) && metric.lowPriority);
-
-  if (visibleMetrics.length === 0 && hiddenMetrics.length === 0 && !children) {
-    return null;
-  }
-
-  return (
-    <section className="rounded-2xl border border-slate-100 bg-slate-50/70 p-2.5">
-      <h3 className="text-sm font-black text-ink">{title}</h3>
-      {children ? <div className="mt-3">{children}</div> : null}
-      {visibleMetrics.length > 0 ? (
-        <div className="mt-3">
-          <DataMetricGrid metrics={visibleMetrics} />
-        </div>
-      ) : null}
-      {hiddenMetrics.length > 0 ? (
-        <details className="mt-3 rounded-xl border border-slate-200 bg-white px-3 py-2">
-          <summary className="cursor-pointer text-sm font-black text-brand-800">
-            הצג עוד נתונים
-          </summary>
-          <div className="mt-3">
-            <DataMetricGrid metrics={hiddenMetrics} />
-          </div>
-        </details>
-      ) : null}
-    </section>
-  );
-}
 
 function YearlyResidentsChart({
   rows,
@@ -472,7 +414,8 @@ function QuickHighlightCard({
   sourceLabel,
   tooltip,
   metricType,
-  lastUpdated
+  lastUpdated,
+  missingText = "לא זמין"
 }: {
   label: string;
   value: string | number | null | undefined;
@@ -480,6 +423,7 @@ function QuickHighlightCard({
   tooltip: string;
   metricType?: string;
   lastUpdated?: string | Date | null;
+  missingText?: string;
 }) {
   const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
 
@@ -495,7 +439,7 @@ function QuickHighlightCard({
         />
       </div>
       <p className={`mt-1 text-sm font-black leading-tight ${hasValue ? "text-ink" : "text-slate-400"}`}>
-        {hasValue ? value : "לא זמין"}
+        {hasValue ? value : missingText}
       </p>
     </div>
   );
@@ -1118,15 +1062,6 @@ export default async function DepartmentDetailsPage({
     })
     .filter((row): row is { year: number; value: number; rawValue: string | null | undefined } => Boolean(row));
   const firstDepartmentYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "newResidents", { beforeYear: 2026 });
-  const acceptanceMetrics = acceptanceMetricInputs
-    .map((input) =>
-      metricCardFromImported(importedDepartmentMetrics, {
-        ...input,
-        sourceLabel: "דיווחי מתמחים משרד הבריאות",
-        lowPriority: true
-      })
-    )
-    .filter(hasDisplayValue);
   const acceptanceDepartmentRows = acceptanceMetricInputs
     .map((input) => {
       const metric = findImportedMetric(importedDepartmentMetrics, ...input.keys);
@@ -1222,32 +1157,6 @@ export default async function DepartmentDetailsPage({
     latestOpenAlexResearchMetric?.lastUpdated ??
     latestAnyOpenAlexResearchMetric?.lastUpdated ??
     publicationMetric?.lastUpdated;
-  const demandMetrics: DisplayMetric[] = [
-    {
-      id: "department-expected-openings-2026",
-      label: "מספר תקנים צפויים להתפנות",
-      value: expectedOpeningsValue,
-      sourceLabel: expectedOpeningsSourceLabel,
-      tooltip: "צפי תקנים המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
-    },
-    ...acceptanceMetrics,
-    metricCardFromImported(importedDepartmentMetrics, {
-      id: "department-median-elective-demand",
-      label: "מספר אלקטיביסטים חציוני",
-      keys: ["medianElectiveDemand"],
-      sourceLabel: "מצביע על ביקוש המחלקה",
-      tooltip: "מדד ביקוש למחלקה לפי מספר אלקטיביסטים חציוני.",
-      lowPriority: true
-    }),
-    {
-      id: "department-openings-on-site",
-      label: "תקנים פתוחים באתר",
-      value: openingsCount > 0 ? openingsCount : null,
-      sourceLabel: "נתוני האתר",
-      tooltip: "תקנים פעילים שפורסמו באתר.",
-      lowPriority: true
-    }
-  ];
   const examMetrics: DisplayMetric[] = [
     {
       id: "department-stage-a",
@@ -1432,13 +1341,15 @@ export default async function DepartmentDetailsPage({
                   metricType={acceptanceDistributionType}
                   lastUpdated={acceptanceDistributionLastUpdated}
                 />
-                <DataMetricCard
-                  label="מספר אלקטיביסטים חציוני"
-                  value={electiveDemandMetric ? formatImportedMetricValue(electiveDemandMetric) : null}
-                  sourceLabel={importedSourceLabel(electiveDemandMetric, "מצביע על ביקוש המחלקה")}
-                  tooltip="מדד ביקוש למחלקה לפי מספר אלקטיביסטים חציוני."
-                  lastUpdated={electiveDemandMetric?.lastUpdated}
-                />
+                {electiveDemandMetric ? (
+                  <DataMetricCard
+                    label="מספר אלקטיביסטים חציוני"
+                    value={formatImportedMetricValue(electiveDemandMetric)}
+                    sourceLabel={importedSourceLabel(electiveDemandMetric, "מצביע על ביקוש המחלקה")}
+                    tooltip="מדד ביקוש למחלקה לפי מספר אלקטיביסטים חציוני."
+                    lastUpdated={electiveDemandMetric.lastUpdated}
+                  />
+                ) : null}
               </div>
 
               <div className="grid gap-2 lg:grid-cols-3">
@@ -1459,14 +1370,6 @@ export default async function DepartmentDetailsPage({
                 lastUpdated={firstDepartmentYearlyMetric?.lastUpdated}
               />
 
-              <details className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2">
-                <summary className="cursor-pointer text-sm font-black text-brand-800">
-                  הצג עוד נתונים
-                </summary>
-                <div className="mt-3 space-y-3">
-                  <MetricGroup title="ביקוש ותקנים" metrics={demandMetrics.filter((metric) => metric.id !== "department-expected-openings-2026")} />
-                </div>
-              </details>
             </div>
           </Card>
 
@@ -1601,6 +1504,7 @@ export default async function DepartmentDetailsPage({
                 tooltip={openAlexDebugTooltip}
                 metricType={latestOpenAlexResearchMetric ? "הערכה מחלקתית" : "נתון מחלקתי"}
                 lastUpdated={publicationsLastUpdated}
+                missingText={MISSING_IMPORTED_VALUE}
               />
               <QuickHighlightCard
                 label="h-index"
@@ -1613,6 +1517,7 @@ export default async function DepartmentDetailsPage({
                 }
                 metricType="הערכה מחלקתית"
                 lastUpdated={publicationsLastUpdated}
+                missingText={MISSING_IMPORTED_VALUE}
               />
             </div>
             <div className="mt-5">

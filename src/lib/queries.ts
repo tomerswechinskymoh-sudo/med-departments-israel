@@ -1862,6 +1862,7 @@ export async function getAdminDashboardData() {
     masterImportRowLogs,
     researchMetrics,
     openAlexMappingStatus,
+    openAlexRunLogs,
     auditLogs
   ] = await Promise.all([
     prisma.$transaction([
@@ -2178,6 +2179,13 @@ export async function getAdminDashboardData() {
       take: 24
     }),
     prisma.departmentResearchMetric.findMany({
+      where: {
+        department: {
+          importStableKey: {
+            not: null
+          }
+        }
+      },
       include: {
         department: {
           include: {
@@ -2192,6 +2200,20 @@ export async function getAdminDashboardData() {
       take: 16
     }),
     getOpenAlexMappingStatus(prisma, 16),
+    prisma.auditLog.findMany({
+      where: {
+        action: {
+          startsWith: "openalex."
+        }
+      },
+      include: {
+        actor: true
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 12
+    }),
     prisma.auditLog.findMany({
       include: {
         actor: true
@@ -2235,6 +2257,7 @@ export async function getAdminDashboardData() {
     masterImportRowLogs,
     researchMetrics,
     openAlexMappingStatus,
+    openAlexRunLogs,
     auditLogs
   };
 }

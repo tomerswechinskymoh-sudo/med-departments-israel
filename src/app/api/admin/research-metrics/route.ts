@@ -8,10 +8,12 @@ import { hasValidSameOrigin } from "@/lib/security";
 import { refreshOpenAlexDepartmentMetrics } from "@/lib/server/openalex-research";
 
 const bulkRefreshSchema = z.object({
-  departmentIds: z.array(z.string().cuid()).max(50).optional(),
+  departmentIds: z.array(z.string().cuid()).max(100).optional(),
   years: z.array(z.coerce.number().int().min(1990).max(2100)).max(20).optional(),
-  limit: z.coerce.number().int().min(1).max(50).default(10),
-  delayMs: z.coerce.number().int().min(250).max(10000).default(1200)
+  limit: z.coerce.number().int().min(1).max(100).default(5),
+  delayMs: z.coerce.number().int().min(100).max(10000).default(500),
+  cursor: z.string().cuid().optional(),
+  mode: z.enum(["batch", "all"]).default("batch")
 });
 
 function wait(ms: number) {
@@ -27,7 +29,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
   }
   const rateLimit = checkRateLimit(request, "admin:openalex-bulk-refresh", {
-    limit: 4,
+    limit: 600,
     windowMs: 60 * 60 * 1000
   });
   if (!rateLimit.ok) {
@@ -40,22 +42,43 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "קלט ריענון OpenAlex לא תקין." }, { status: 400 });
   }
 
-  const departments = await prisma.department.findMany({
-    where: parsed.data.departmentIds?.length
-      ? {
-          id: {
-            in: parsed.data.departmentIds
-          }
-        }
-      : undefined,
-    select: {
-      id: true
-    },
-    orderBy: {
-      updatedAt: "desc"
-    },
-    take: parsed.data.limit
-  });
+  const importedWhere = {
+    importStableKey: {
+      not: null
+    }
+  } as const;
+  const departmentWhere = parsed.data.departmentIds?.length
+    ? {
+        id: {
+          in: parsed.data.departmentIds
+        },
+        ...importedWhere
+      }
+    : {
+        ...importedWhere,
+        ...(parsed.data.cursor
+          ? {
+              id: {
+                gt: parsed.data.cursor
+              }
+            }
+          : {})
+      };
+  const [totalImportedDepartments, departments] = await Promise.all([
+    prisma.department.count({
+      where: importedWhere
+    }),
+    prisma.department.findMany({
+      where: departmentWhere,
+      select: {
+        id: true
+      },
+      orderBy: {
+        id: "asc"
+      },
+      take: parsed.data.limit
+    })
+  ]);
   const results: Array<{ departmentId: string; status: string; needsMapping?: boolean; error?: string }> = [];
 
   for (const [index, department] of departments.entries()) {
@@ -89,13 +112,26 @@ export async function POST(request: Request) {
     entityId: null,
     metadata: {
       requested: departments.length,
+      totalImportedDepartments,
+      cursor: parsed.data.cursor ?? null,
+      nextCursor: departments.at(-1)?.id ?? null,
+      done: departments.length < parsed.data.limit || Boolean(parsed.data.departmentIds?.length),
+      mode: parsed.data.mode,
       years: parsed.data.years ?? null,
       results
     }
   });
+  const nextCursor = departments.at(-1)?.id ?? null;
+  const done = departments.length < parsed.data.limit || Boolean(parsed.data.departmentIds?.length);
 
   return NextResponse.json({
-    message: `רועננו ${results.length} מחלקות מול OpenAlex.`,
-    results
+    message: done
+      ? `ריענון OpenAlex הסתיים. עובדו ${results.length} מחלקות בבקשה האחרונה.`
+      : `רועננו ${results.length} מחלקות מול OpenAlex. אפשר להמשיך לבאצ׳ הבא.`,
+    results,
+    processed: results.length,
+    totalImportedDepartments,
+    nextCursor,
+    done
   });
 }

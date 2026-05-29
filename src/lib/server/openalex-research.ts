@@ -14,6 +14,7 @@ type RefreshInput = {
 
 const OPENALEX_WORKS_URL = "https://api.openalex.org/works";
 const DEFAULT_YEAR_WINDOW = 5;
+const OPENALEX_PER_PAGE = 50;
 
 const INSTITUTION_ALIASES: Record<string, string[]> = {
   "המרכז הרפואי ע\"ש חיים שיבא - תל השומר": ["Sheba Medical Center", "Chaim Sheba Medical Center", "Tel Hashomer"],
@@ -82,6 +83,71 @@ const SPECIALTY_ALIASES: Record<string, AliasSet> = {
   "בריאות הציבור": { aliases: ["public health"] }
 };
 
+const INSTITUTION_ALIAS_RULES: Array<{ match: string[]; aliases: string[] }> = [
+  { match: ["שיבא", "תל השומר"], aliases: ["Sheba Medical Center", "Chaim Sheba Medical Center", "Tel Hashomer"] },
+  { match: ["איכילוב", "סוראסקי", "תא סוראסקי"], aliases: ["Tel Aviv Sourasky Medical Center", "Ichilov Hospital"] },
+  { match: ["רמבם", "רמב\"ם"], aliases: ["Rambam Health Care Campus", "Rambam Medical Center"] },
+  { match: ["סורוקה"], aliases: ["Soroka University Medical Center", "Soroka Medical Center"] },
+  { match: ["רבין", "בילינסון", "השרון"], aliases: ["Rabin Medical Center", "Beilinson Hospital", "Hasharon Hospital"] },
+  { match: ["שניידר"], aliases: ["Schneider Children's Medical Center of Israel", "Schneider Children's Medical Center"] },
+  { match: ["הדסה", "עין כרם", "הר הצופים"], aliases: ["Hadassah Medical Center", "Hadassah Ein Kerem", "Hadassah Mount Scopus"] },
+  { match: ["שערי צדק"], aliases: ["Shaare Zedek Medical Center"] },
+  { match: ["שמיר", "אסף הרופא"], aliases: ["Shamir Medical Center", "Assaf Harofeh Medical Center"] },
+  { match: ["ברזילי"], aliases: ["Barzilai Medical Center"] },
+  { match: ["אסותא אשדוד"], aliases: ["Assuta Ashdod University Hospital", "Assuta Ashdod"] },
+  { match: ["הלל יפה"], aliases: ["Hillel Yaffe Medical Center"] },
+  { match: ["לגליל", "גליל"], aliases: ["Galilee Medical Center"] },
+  { match: ["זיו", "צפת"], aliases: ["Ziv Medical Center"] },
+  { match: ["פוריה", "ברוך פדה"], aliases: ["Poriya Medical Center", "Baruch Padeh Medical Center"] },
+  { match: ["בני ציון"], aliases: ["Bnai Zion Medical Center"] },
+  { match: ["כרמל"], aliases: ["Carmel Medical Center"] },
+  { match: ["העמק"], aliases: ["Emek Medical Center"] },
+  { match: ["מאיר"], aliases: ["Meir Medical Center"] },
+  { match: ["קפלן"], aliases: ["Kaplan Medical Center"] },
+  { match: ["לניאדו"], aliases: ["Laniado Hospital", "Sanz Medical Center"] },
+  { match: ["מעיני הישועה"], aliases: ["Mayanei Hayeshua Medical Center"] },
+  { match: ["וולפסון"], aliases: ["Wolfson Medical Center"] },
+  { match: ["יוספטל"], aliases: ["Yoseftal Medical Center"] },
+  { match: ["נצרת", "סקוטי", "אנגלי"], aliases: ["Nazareth Hospital EMMS", "English Hospital Nazareth"] },
+  { match: ["משפחה הקדושה"], aliases: ["Holy Family Hospital Nazareth"] },
+  { match: ["צרפתי", "סן ונסן"], aliases: ["Saint Vincent de Paul Hospital Nazareth", "French Hospital Nazareth"] },
+  { match: ["כללית"], aliases: ["Clalit Health Services"] },
+  { match: ["מכבי"], aliases: ["Maccabi Healthcare Services"] },
+  { match: ["מאוחדת"], aliases: ["Meuhedet Health Services"] },
+  { match: ["לאומית"], aliases: ["Leumit Health Services"] }
+];
+
+const SPECIALTY_ALIAS_RULES: Array<{ match: string[]; aliases: string[] }> = [
+  { match: ["מינהל רפואי"], aliases: ["health administration", "hospital administration", "healthcare management"] },
+  { match: ["אונקולוג"], aliases: ["oncology", "medical oncology", "radiation oncology"] },
+  { match: ["הרדמה"], aliases: ["anesthesiology", "anaesthesia", "anesthesia"] },
+  { match: ["גינקולוג", "יילוד"], aliases: ["obstetrics", "gynecology", "obstetrics and gynecology"] },
+  { match: ["אורולוג"], aliases: ["urology", "urologic surgery"] },
+  { match: ["אורתופד"], aliases: ["orthopedics", "orthopaedics", "orthopedic surgery"] },
+  { match: ["כירורגיה כללית"], aliases: ["general surgery", "surgery"] },
+  { match: ["פלסטית"], aliases: ["plastic surgery", "reconstructive surgery"] },
+  { match: ["א.א.ג", "ראש וצוואר"], aliases: ["otolaryngology", "head and neck surgery", "ENT"] },
+  { match: ["עור"], aliases: ["dermatology"] },
+  { match: ["עיניים"], aliases: ["ophthalmology"] },
+  { match: ["נוירולוג"], aliases: ["neurology"] },
+  { match: ["נוירוכירורג"], aliases: ["neurosurgery"] },
+  { match: ["פתולוג"], aliases: ["pathology", "diagnostic pathology"] },
+  { match: ["רדיולוג"], aliases: ["radiology", "diagnostic imaging", "medical imaging"] },
+  { match: ["דחופה"], aliases: ["emergency medicine"] },
+  { match: ["פנימית"], aliases: ["internal medicine"] },
+  { match: ["ילדים"], aliases: ["pediatrics", "paediatrics"] },
+  { match: ["משפחה"], aliases: ["family medicine", "primary care"] },
+  { match: ["פסיכיאטריה של הילד", "מתבגר"], aliases: ["child psychiatry", "adolescent psychiatry", "child and adolescent psychiatry"] },
+  { match: ["פסיכיאטר"], aliases: ["psychiatry"] },
+  { match: ["בית החזה"], aliases: ["thoracic surgery", "cardiothoracic surgery"] },
+  { match: ["כלי-דם", "כלי דם"], aliases: ["vascular surgery"] },
+  { match: ["גריאטר"], aliases: ["geriatrics", "geriatric medicine"] },
+  { match: ["קרדיולוג"], aliases: ["cardiology"] },
+  { match: ["שיקום", "פיזיקלית"], aliases: ["physical medicine", "rehabilitation medicine", "physiatry"] },
+  { match: ["גרעינית"], aliases: ["nuclear medicine"] },
+  { match: ["בריאות הציבור"], aliases: ["public health"] }
+];
+
 function jsonValue(value: unknown) {
   return value === null || value === undefined ? Prisma.JsonNull : (value as Prisma.InputJsonValue);
 }
@@ -94,6 +160,52 @@ function stringArrayFromJson(value: Prisma.JsonValue | null | undefined) {
 
 function uniqueStrings(values: string[]) {
   return Array.from(new Set(values.map((value) => value.trim()).filter(Boolean)));
+}
+
+function normalizeAliasKey(value: string) {
+  return value
+    .toLocaleLowerCase("he")
+    .replace(/[״"׳']/g, "")
+    .replace(/[-–—()]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function ruleAliases(
+  value: string,
+  rules: Array<{ match: string[]; aliases: string[] }>
+) {
+  const normalized = normalizeAliasKey(value);
+
+  return rules.flatMap((rule) =>
+    rule.match.some((token) => normalized.includes(normalizeAliasKey(token))) ? rule.aliases : []
+  );
+}
+
+function dictionaryAliases(value: string, dictionary: Record<string, string[]>) {
+  const normalized = normalizeAliasKey(value);
+  const direct = dictionary[value] ?? dictionary[normalized];
+  if (direct) return direct;
+
+  const match = Object.entries(dictionary).find(([key]) => {
+    const normalizedKey = normalizeAliasKey(key);
+    return normalized === normalizedKey || normalized.includes(normalizedKey) || normalizedKey.includes(normalized);
+  });
+
+  return match?.[1] ?? [];
+}
+
+function specialtyDictionaryAliases(value: string) {
+  const normalized = normalizeAliasKey(value);
+  const direct = SPECIALTY_ALIASES[value] ?? SPECIALTY_ALIASES[normalized];
+  if (direct) return direct;
+
+  const match = Object.entries(SPECIALTY_ALIASES).find(([key]) => {
+    const normalizedKey = normalizeAliasKey(key);
+    return normalized === normalizedKey || normalized.includes(normalizedKey) || normalizedKey.includes(normalized);
+  });
+
+  return match?.[1] ?? null;
 }
 
 function defaultYears() {
@@ -132,14 +244,16 @@ export async function resolveOpenAlexAliases(
   ]);
   const institutionAliases = uniqueStrings([
     ...(institutionDb?.aliases ?? []),
-    ...(INSTITUTION_ALIASES[input.institutionName] ?? [])
+    ...dictionaryAliases(input.institutionName, INSTITUTION_ALIASES),
+    ...ruleAliases(input.institutionName, INSTITUTION_ALIAS_RULES)
   ]);
-  const specialtyDefaults = SPECIALTY_ALIASES[input.specialtyName];
+  const specialtyDefaults = specialtyDictionaryAliases(input.specialtyName);
   const specialtyAliases = uniqueStrings([
     ...(specialtyDb?.aliases ?? []),
     ...(specialtyDb?.keywords ?? []),
     ...(specialtyDefaults?.aliases ?? []),
-    ...(specialtyDefaults?.keywords ?? [])
+    ...(specialtyDefaults?.keywords ?? []),
+    ...ruleAliases(input.specialtyName, SPECIALTY_ALIAS_RULES)
   ]);
 
   return {
@@ -161,7 +275,8 @@ async function queryOpenAlex(input: {
     `from_publication_date:${input.year}-01-01,to_publication_date:${input.year}-12-31`
   );
   url.searchParams.set("search", query);
-  url.searchParams.set("per_page", "1");
+  url.searchParams.set("per_page", String(OPENALEX_PER_PAGE));
+  url.searchParams.set("sort", "cited_by_count:desc");
   if (process.env.OPENALEX_MAILTO) {
     url.searchParams.set("mailto", process.env.OPENALEX_MAILTO);
   }
@@ -179,13 +294,35 @@ async function queryOpenAlex(input: {
 
   const payload = (await response.json()) as {
     meta?: { count?: number };
+    results?: Array<{
+      id?: string;
+      display_name?: string;
+      publication_year?: number;
+      cited_by_count?: number;
+    }>;
   };
+  const citedByCounts = (payload.results ?? [])
+    .map((work) => (typeof work.cited_by_count === "number" ? work.cited_by_count : 0))
+    .sort((left, right) => right - left);
+  const hIndexEstimate = citedByCounts.reduce(
+    (hIndex, citations, index) => (citations >= index + 1 ? index + 1 : hIndex),
+    0
+  );
 
   return {
     query,
     count: typeof payload.meta?.count === "number" ? payload.meta.count : 0,
+    hIndexEstimate,
     raw: {
-      meta: payload.meta
+      meta: payload.meta,
+      hIndexEstimate,
+      sampleSize: citedByCounts.length,
+      topWorks: (payload.results ?? []).slice(0, 10).map((work) => ({
+        id: work.id,
+        title: work.display_name,
+        year: work.publication_year,
+        citedByCount: work.cited_by_count ?? 0
+      }))
     }
   };
 }
@@ -281,6 +418,8 @@ export async function refreshOpenAlexDepartmentMetrics(
     const queryUsed = JSON.stringify({
       query: result.query,
       year,
+      count: result.count,
+      hIndexEstimate: result.hIndexEstimate,
       institutionAliases: aliases.institutionAliases,
       specialtyAliases: aliases.specialtyAliases
     });
@@ -322,6 +461,11 @@ export async function refreshOpenAlexDepartmentMetrics(
 
 export async function getOpenAlexMappingStatus(db: DbClient, limit = 24) {
   const departments = await db.department.findMany({
+    where: {
+      importStableKey: {
+        not: null
+      }
+    },
     include: {
       institution: true,
       specialty: true,
