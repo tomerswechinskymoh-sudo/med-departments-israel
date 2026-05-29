@@ -16,6 +16,7 @@ import { RatingStars } from "@/components/ui/rating-stars";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
   findMetricDisplayMetadata,
+  metadataDisplayAction,
   metadataSourceLabel,
   metadataTooltip,
   type MetricDisplayMetadata
@@ -64,20 +65,27 @@ function MetricInfoTip({
   text,
   lastUpdated,
   metricType,
-  sourceUrl
+  sourceUrl,
+  displayAction
 }: {
   sourceLabel: string;
   text?: string;
   lastUpdated?: string | Date | null;
   metricType?: string;
   sourceUrl?: string | null;
+  displayAction?: string | null;
 }) {
-  const tooltipText = [
+  const rawMetricLevel = metricType?.replace(/^נתון\s+/, "").replace(/^הערכה\s+.+$/, "מחושב");
+  const metricLevel = rawMetricLevel === "כללי לתחום" ? "ארצי לתחום" : rawMetricLevel;
+  const tooltipLines = [
     text,
-    metricType ? `סוג נתון: ${metricType}` : null,
-    `מקור נתונים: ${sourceLabel}`,
+    displayAction ? `Display/action: ${displayAction}` : null,
+    `Source: ${sourceLabel}`,
+    sourceUrl ? `Source link: ${sourceUrl}` : null,
+    metricLevel ? `Metric level: ${metricLevel}` : null,
     lastUpdated ? `עודכן: ${formatDate(lastUpdated)}` : null
-  ].filter(Boolean).join(" · ");
+  ].filter((line): line is string => Boolean(line));
+  const tooltipText = tooltipLines.join("\n");
 
   return (
     <span className="relative inline-flex">
@@ -89,10 +97,16 @@ function MetricInfoTip({
       >
         i
         <span className="pointer-events-auto absolute left-0 top-9 z-20 hidden w-72 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
-          <span>{tooltipText}</span>
+          <span className="space-y-1">
+            {tooltipLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </span>
           {sourceUrl ? (
             <a href={sourceUrl} target="_blank" rel="noreferrer" className="mt-2 block font-black text-brand-800 underline">
-              מקור נתונים
+              Source link
             </a>
           ) : null}
         </span>
@@ -110,7 +124,8 @@ function DataMetricCard({
   metricType = "נתון מחלקתי",
   caption,
   className = "",
-  sourceUrl
+  sourceUrl,
+  displayAction
 }: {
   label: string;
   value: string | number | null | undefined;
@@ -121,9 +136,10 @@ function DataMetricCard({
   caption?: string;
   className?: string;
   sourceUrl?: string | null;
+  displayAction?: string | null;
 }) {
   const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
-  const isGeneralSpecialtyMetric = metricType === "נתון כללי לתחום";
+  const isGeneralSpecialtyMetric = metricType === "נתון כללי לתחום" || metricType === "נתון ארצי לתחום";
 
   return (
     <div className={`flex min-h-[5.75rem] flex-col rounded-xl border border-slate-100 bg-white px-2.5 py-2.5 ${className}`}>
@@ -132,7 +148,7 @@ function DataMetricCard({
           <p className="text-sm font-bold leading-5 text-slate-600">{label}</p>
           {isGeneralSpecialtyMetric ? (
             <span className="mt-1 inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[0.68rem] font-black text-blue-800">
-              נתון כללי לתחום
+              {metricType === "נתון ארצי לתחום" ? "ארצי לתחום" : "נתון כללי לתחום"}
             </span>
           ) : null}
         </div>
@@ -142,6 +158,7 @@ function DataMetricCard({
           lastUpdated={lastUpdated}
           metricType={metricType}
           sourceUrl={sourceUrl}
+          displayAction={displayAction}
         />
       </div>
       <p className={`mt-1.5 text-base font-black leading-tight ${hasValue ? "text-ink" : "text-slate-400"}`}>
@@ -163,6 +180,7 @@ type DisplayMetric = {
   caption?: string;
   lowPriority?: boolean;
   sourceUrl?: string | null;
+  displayAction?: string | null;
   className?: string;
 };
 
@@ -170,12 +188,14 @@ function YearlyResidentsChart({
   rows,
   sourceLabel,
   lastUpdated,
-  sourceUrl
+  sourceUrl,
+  displayAction
 }: {
   rows: Array<{ year: number; value: number; rawValue?: string | null }>;
   sourceLabel: string;
   lastUpdated?: string | Date | null;
   sourceUrl?: string | null;
+  displayAction?: string | null;
 }) {
   const maxValue = Math.max(...rows.map((row) => row.value), 1);
 
@@ -189,6 +209,7 @@ function YearlyResidentsChart({
           metricType="נתון מחלקתי"
           lastUpdated={lastUpdated}
           sourceUrl={sourceUrl}
+          displayAction={displayAction}
         />
       </div>
       {rows.length === 0 ? (
@@ -284,7 +305,8 @@ function GenderBalanceCard({
   sourceLabel,
   tooltip,
   lastUpdated,
-  sourceUrl
+  sourceUrl,
+  displayAction
 }: {
   womenPercent: number | null;
   menPercent: number | null;
@@ -292,6 +314,7 @@ function GenderBalanceCard({
   tooltip: string;
   lastUpdated?: string | Date | null;
   sourceUrl?: string | null;
+  displayAction?: string | null;
 }) {
   const hasValue = womenPercent !== null || menPercent !== null;
   const women = clampPercent(womenPercent ?? (menPercent !== null ? 100 - menPercent : 0));
@@ -307,6 +330,7 @@ function GenderBalanceCard({
           metricType="נתון מחלקתי"
           lastUpdated={lastUpdated}
           sourceUrl={sourceUrl}
+          displayAction={displayAction}
         />
       </div>
       {!hasValue ? (
@@ -346,7 +370,8 @@ function ClockMetricCard({
   sourceLabel,
   tooltip,
   lastUpdated,
-  sourceUrl
+  sourceUrl,
+  displayAction
 }: {
   label: string;
   value: string | number | null | undefined;
@@ -354,6 +379,7 @@ function ClockMetricCard({
   tooltip: string;
   lastUpdated?: string | Date | null;
   sourceUrl?: string | null;
+  displayAction?: string | null;
 }) {
   const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
 
@@ -372,6 +398,7 @@ function ClockMetricCard({
           metricType="נתון מחלקתי"
           lastUpdated={lastUpdated}
           sourceUrl={sourceUrl}
+          displayAction={displayAction}
         />
       </div>
       <p className={`mt-2 text-base font-black ${hasValue ? "text-ink" : "text-slate-400"}`}>
@@ -387,7 +414,8 @@ function AcceptanceDistributionCard({
   tooltip,
   metricType,
   lastUpdated,
-  sourceUrl
+  sourceUrl,
+  displayAction
 }: {
   rows: Array<{ label: string; value: number; displayValue: string }>;
   sourceLabel: string;
@@ -395,6 +423,7 @@ function AcceptanceDistributionCard({
   metricType: string;
   lastUpdated?: string | Date | null;
   sourceUrl?: string | null;
+  displayAction?: string | null;
 }) {
   const maxValue = Math.max(...rows.map((row) => row.value), 1);
 
@@ -403,9 +432,9 @@ function AcceptanceDistributionCard({
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-bold leading-5 text-slate-600">התפלגות מצאו התמחות</p>
-          {metricType === "נתון כללי לתחום" ? (
+          {metricType === "נתון כללי לתחום" || metricType === "נתון ארצי לתחום" ? (
             <span className="mt-1 inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[0.68rem] font-black text-blue-800">
-              נתון כללי לתחום
+              {metricType.replace(/^נתון\s+/, "")}
             </span>
           ) : null}
         </div>
@@ -415,6 +444,7 @@ function AcceptanceDistributionCard({
           metricType={metricType}
           lastUpdated={lastUpdated}
           sourceUrl={sourceUrl}
+          displayAction={displayAction}
         />
       </div>
       {rows.length === 0 ? (
@@ -447,7 +477,8 @@ function QuickHighlightCard({
   metricType,
   lastUpdated,
   missingText = "לא זמין",
-  sourceUrl
+  sourceUrl,
+  displayAction
 }: {
   label: string;
   value: string | number | null | undefined;
@@ -457,6 +488,7 @@ function QuickHighlightCard({
   lastUpdated?: string | Date | null;
   missingText?: string;
   sourceUrl?: string | null;
+  displayAction?: string | null;
 }) {
   const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
 
@@ -470,6 +502,7 @@ function QuickHighlightCard({
           metricType={metricType}
           lastUpdated={lastUpdated}
           sourceUrl={sourceUrl}
+          displayAction={displayAction}
         />
       </div>
       <p className={`mt-1 text-sm font-black leading-tight ${hasValue ? "text-ink" : "text-slate-400"}`}>
@@ -501,6 +534,7 @@ function SalaryGapHighlight({ metadata }: { metadata?: MetricDisplayMetadata | n
           text={tooltip}
           metricType="נתון כללי לתחום"
           sourceUrl={metadata?.sourceUrl}
+          displayAction={metadataDisplayAction(metadata)}
         />
       </div>
       <p className="mt-1 text-sm font-black text-ink">
@@ -627,7 +661,11 @@ function metricTypeFromMetadata(
   metadata: MetricDisplayMetadata | null | undefined,
   fallback = "נתון מחלקתי"
 ) {
-  return metadata?.isNationalMetric ? "נתון כללי לתחום" : fallback;
+  return metadata?.isNationalMetric ? "נתון ארצי לתחום" : fallback;
+}
+
+function isNationalMetricType(metricType?: string | null) {
+  return metricType === "נתון כללי לתחום" || metricType === "נתון ארצי לתחום";
 }
 
 function highlightedCardClass(metadata: MetricDisplayMetadata | null | undefined) {
@@ -1017,7 +1055,7 @@ export default async function DepartmentDetailsPage({
         ? {
             value: formatImportedMetricValue(importedBoardStageA),
             sourceLabel: importedSourceLabel(importedBoardStageA, "משרד הבריאות"),
-            metricType: importedBoardStageA.metricKey.startsWith("inherited_") ? "נתון כללי לתחום" : "נתון מחלקתי",
+            metricType: importedBoardStageA.metricKey.startsWith("inherited_") ? "נתון ארצי לתחום" : "נתון מחלקתי",
             lastUpdated: importedBoardStageA.lastUpdated
           }
       : boardStageAMetric
@@ -1030,7 +1068,7 @@ export default async function DepartmentDetailsPage({
           ? {
               value: formatImportedMetricValue(specialtyBoardStageA),
               sourceLabel: importedSourceLabel(specialtyBoardStageA, "משרד הבריאות"),
-              metricType: "נתון כללי לתחום",
+              metricType: "נתון ארצי לתחום",
               lastUpdated: specialtyBoardStageA.lastUpdated
             }
           : null;
@@ -1048,7 +1086,7 @@ export default async function DepartmentDetailsPage({
         ? {
             value: formatImportedMetricValue(importedBoardStageB),
             sourceLabel: importedSourceLabel(importedBoardStageB, "משרד הבריאות"),
-            metricType: importedBoardStageB.metricKey.startsWith("inherited_") ? "נתון כללי לתחום" : "נתון מחלקתי",
+            metricType: importedBoardStageB.metricKey.startsWith("inherited_") ? "נתון ארצי לתחום" : "נתון מחלקתי",
             lastUpdated: importedBoardStageB.lastUpdated
           }
       : boardStageBMetric
@@ -1061,7 +1099,7 @@ export default async function DepartmentDetailsPage({
           ? {
               value: formatImportedMetricValue(specialtyBoardStageB),
               sourceLabel: importedSourceLabel(specialtyBoardStageB, "משרד הבריאות"),
-              metricType: "נתון כללי לתחום",
+              metricType: "נתון ארצי לתחום",
               lastUpdated: specialtyBoardStageB.lastUpdated
             }
           : null;
@@ -1109,7 +1147,7 @@ export default async function DepartmentDetailsPage({
   const burnoutDepartmentMetric = findImportedMetric(importedDepartmentMetrics, "burnoutIndex");
   const burnoutSpecialtyMetric = findImportedMetric(importedSpecialtyMetrics, "burnoutIndex");
   const burnoutMetric = burnoutDepartmentMetric ?? burnoutSpecialtyMetric;
-  const burnoutMetricType = burnoutDepartmentMetric ? "נתון מחלקתי" : "נתון כללי לתחום";
+  const burnoutMetricType = burnoutDepartmentMetric ? "נתון מחלקתי" : "נתון ארצי לתחום";
   const womenPercent =
     (typeof womenPercentMetric?.value === "number" ? womenPercentMetric.value : null) ??
     genderPercentFromText(department.genderBalance, "women");
@@ -1167,7 +1205,7 @@ export default async function DepartmentDetailsPage({
   const acceptanceDistributionRows =
     acceptanceDepartmentRows.length > 0 ? acceptanceDepartmentRows : acceptanceSpecialtyRows;
   const acceptanceDistributionType =
-    acceptanceDepartmentRows.length > 0 ? "נתון מחלקתי" : "נתון כללי לתחום";
+    acceptanceDepartmentRows.length > 0 ? "נתון מחלקתי" : "נתון ארצי לתחום";
   const acceptanceDistributionLastUpdated = acceptanceDistributionRows.find((row) => row.lastUpdated)?.lastUpdated;
   const residentsMeta = departmentMetricMetadata(dataExplanations, "residentsCount");
   const seniorPhysiciansMeta = departmentMetricMetadata(dataExplanations, "seniorPhysiciansCount");
@@ -1175,7 +1213,12 @@ export default async function DepartmentDetailsPage({
   const officialDurationMeta = departmentMetricMetadata(dataExplanations, "officialResidencyDuration");
   const actualDurationMeta = departmentMetricMetadata(dataExplanations, "actualAverageDuration");
   const medianWaitingMeta = departmentMetricMetadata(dataExplanations, "medianWaitingTime");
-  const acceptanceMeta = departmentMetricMetadata(dataExplanations, "acceptedImmediatelyReports");
+  const acceptanceDepartmentMeta = departmentMetricMetadata(dataExplanations, "acceptedImmediatelyReports");
+  const acceptanceSpecialtyMeta = specialtyMetricMetadata(dataExplanations, "acceptedImmediatelyReports");
+  const acceptanceDisplayMeta =
+    acceptanceDepartmentRows.length > 0
+      ? acceptanceDepartmentMeta
+      : acceptanceSpecialtyMeta ?? acceptanceDepartmentMeta;
   const genderMeta = departmentMetricMetadata(dataExplanations, "womenPercent");
   const newResidentsMeta = departmentMetricMetadata(dataExplanations, "newResidents");
   const electiveDemandMeta = departmentMetricMetadata(dataExplanations, "medianElectiveDemand");
@@ -1200,6 +1243,7 @@ export default async function DepartmentDetailsPage({
         "מספר מתמחים פעילים כרגע במחלקה אשר דיווחו למשרד על התמחותם"
       ),
       sourceUrl: residentsMeta?.sourceUrl,
+      displayAction: metadataDisplayAction(residentsMeta),
       className: highlightedCardClass(residentsMeta)
     },
     {
@@ -1209,6 +1253,7 @@ export default async function DepartmentDetailsPage({
       sourceLabel: metadataSourceLabel(seniorPhysiciansMeta, "משרד הבריאות"),
       tooltip: metadataTooltip(seniorPhysiciansMeta, "מספר הבכירים במחלקה כפי שדווח מהמחלקה"),
       sourceUrl: seniorPhysiciansMeta?.sourceUrl,
+      displayAction: metadataDisplayAction(seniorPhysiciansMeta),
       className: highlightedCardClass(seniorPhysiciansMeta)
     }
   ];
@@ -1220,16 +1265,18 @@ export default async function DepartmentDetailsPage({
       sourceLabel: metadataSourceLabel(officialDurationMeta, importedSourceLabel(officialDurationMetric, "הר״י")),
       tooltip: metadataTooltip(officialDurationMeta, "משך התמחות ע״פ הרשום באתר הר״י"),
       lastUpdated: officialDurationMetric?.lastUpdated,
-      sourceUrl: officialDurationMeta?.sourceUrl
+      sourceUrl: officialDurationMeta?.sourceUrl,
+      displayAction: metadataDisplayAction(officialDurationMeta)
     },
     {
       id: "residency-average-duration",
       label: metricLabelFromMetadata(actualDurationMeta, medianDuration ? "משך התמחות במחלקה" : "משך ממוצע בפועל"),
-      value: medianDuration?.value ?? (actualDurationMetric ? formatImportedMetricValue(actualDurationMetric) : null),
+      value: actualDurationMetric ? formatImportedMetricValue(actualDurationMetric) : medianDuration?.value ?? null,
       sourceLabel: metadataSourceLabel(actualDurationMeta, importedSourceLabel(actualDurationMetric, "משרד הבריאות")),
       tooltip: metadataTooltip(actualDurationMeta, "משך התמחות מחלקתי, אם סופק ברמת המחלקה."),
       lastUpdated: actualDurationMetric?.lastUpdated,
-      sourceUrl: actualDurationMeta?.sourceUrl
+      sourceUrl: actualDurationMeta?.sourceUrl,
+      displayAction: metadataDisplayAction(actualDurationMeta)
     },
     {
       id: "residency-median-waiting-time",
@@ -1239,6 +1286,7 @@ export default async function DepartmentDetailsPage({
       tooltip: metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא."),
       lastUpdated: medianWaitingMetric?.lastUpdated,
       sourceUrl: medianWaitingMeta?.sourceUrl,
+      displayAction: metadataDisplayAction(medianWaitingMeta),
       lowPriority: true
     }
   ];
@@ -1282,7 +1330,7 @@ export default async function DepartmentDetailsPage({
       value: boardStageA?.value ?? null,
       sourceLabel: boardStageA?.sourceLabel ?? "משרד הבריאות",
       tooltip:
-        boardStageA?.metricType === "נתון כללי לתחום"
+        isNationalMetricType(boardStageA?.metricType)
           ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
           : "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי.",
       metricType: boardStageA?.metricType,
@@ -1294,7 +1342,7 @@ export default async function DepartmentDetailsPage({
       value: boardStageB?.value ?? null,
       sourceLabel: boardStageB?.sourceLabel ?? "משרד הבריאות",
       tooltip:
-        boardStageB?.metricType === "נתון כללי לתחום"
+        isNationalMetricType(boardStageB?.metricType)
           ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
           : "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי.",
       metricType: boardStageB?.metricType,
@@ -1439,6 +1487,7 @@ export default async function DepartmentDetailsPage({
                     "צפי תקנים המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
                   )}
                   sourceUrl={expectedOpeningsMeta?.sourceUrl}
+                  displayAction={metadataDisplayAction(expectedOpeningsMeta)}
                   className={`border-amber-200 bg-amber-50/70 ${highlightedCardClass(expectedOpeningsMeta)}`}
                 />
                 <DataMetricCard {...workforceMetrics[1]} />
@@ -1452,18 +1501,21 @@ export default async function DepartmentDetailsPage({
                   tooltip={metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא.")}
                   lastUpdated={medianWaitingMetric?.lastUpdated}
                   sourceUrl={medianWaitingMeta?.sourceUrl}
+                  displayAction={metadataDisplayAction(medianWaitingMeta)}
                 />
                 <AcceptanceDistributionCard
                   rows={acceptanceDistributionRows}
-                  sourceLabel={metadataSourceLabel(acceptanceMeta, "דיווחי מתמחים משרד הבריאות")}
-                  tooltip={
-                    acceptanceDistributionType === "נתון כללי לתחום"
+                  sourceLabel={metadataSourceLabel(acceptanceDisplayMeta, "משרד הבריאות")}
+                  tooltip={metadataTooltip(
+                    acceptanceDisplayMeta,
+                    acceptanceDistributionType === "נתון ארצי לתחום"
                       ? "התפלגות כללית לתחום ההתמחות ולא למחלקה ספציפית."
-                      : metadataTooltip(acceptanceMeta, "התפלגות מחלקתית לפי נתונים מיובאים, אם סופקה.")
-                  }
+                      : "התפלגות מחלקתית לפי נתונים מיובאים, אם סופקה."
+                  )}
                   metricType={acceptanceDistributionType}
                   lastUpdated={acceptanceDistributionLastUpdated}
-                  sourceUrl={acceptanceMeta?.sourceUrl}
+                  sourceUrl={acceptanceDisplayMeta?.sourceUrl}
+                  displayAction={metadataDisplayAction(acceptanceDisplayMeta)}
                 />
                 {electiveDemandMetric && !electiveDemandMeta?.isHidden ? (
                   <DataMetricCard
@@ -1473,6 +1525,7 @@ export default async function DepartmentDetailsPage({
                     tooltip={metadataTooltip(electiveDemandMeta, "מדד ביקוש למחלקה לפי מספר אלקטיביסטים חציוני.")}
                     lastUpdated={electiveDemandMetric.lastUpdated}
                     sourceUrl={electiveDemandMeta?.sourceUrl}
+                    displayAction={metadataDisplayAction(electiveDemandMeta)}
                   />
                 ) : null}
               </div>
@@ -1485,6 +1538,7 @@ export default async function DepartmentDetailsPage({
                   tooltip={metadataTooltip(genderMeta, "התפלגות מגדרית מחלקתית, אם סופקה.")}
                   lastUpdated={genderLastUpdated}
                   sourceUrl={genderMeta?.sourceUrl}
+                  displayAction={metadataDisplayAction(genderMeta)}
                 />
                 <DataMetricCard {...trainingMetrics[0]} />
                 <DataMetricCard {...trainingMetrics[1]} />
@@ -1495,6 +1549,7 @@ export default async function DepartmentDetailsPage({
                 sourceLabel={metadataSourceLabel(newResidentsMeta, newResidentsSourceLabel)}
                 lastUpdated={firstDepartmentYearlyMetric?.lastUpdated}
                 sourceUrl={newResidentsMeta?.sourceUrl}
+                displayAction={metadataDisplayAction(newResidentsMeta)}
               />
 
             </div>
@@ -1633,6 +1688,7 @@ export default async function DepartmentDetailsPage({
                 lastUpdated={publicationsLastUpdated}
                 missingText={MISSING_IMPORTED_VALUE}
                 sourceUrl={publicationMeta?.sourceUrl}
+                displayAction={metadataDisplayAction(publicationMeta)}
               />
               <QuickHighlightCard
                 label="h-index"
@@ -1675,26 +1731,28 @@ export default async function DepartmentDetailsPage({
                 value={boardStageA?.value ?? null}
                 sourceLabel={metadataSourceLabel(boardStageAMeta, boardStageA?.sourceLabel ?? "משרד הבריאות")}
                 tooltip={
-                  stageAMetricType === "נתון כללי לתחום"
+                  isNationalMetricType(stageAMetricType)
                     ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
                     : metadataTooltip(boardStageAMeta, "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי.")
                 }
                 metricType={stageAMetricType}
                 lastUpdated={boardStageA?.lastUpdated}
                 sourceUrl={boardStageAMeta?.sourceUrl}
+                displayAction={metadataDisplayAction(boardStageAMeta)}
               />
               <QuickHighlightCard
                 label={metricLabelFromMetadata(boardStageBMeta, "מעבר שלב ב׳")}
                 value={boardStageB?.value ?? null}
                 sourceLabel={metadataSourceLabel(boardStageBMeta, boardStageB?.sourceLabel ?? "משרד הבריאות")}
                 tooltip={
-                  stageBMetricType === "נתון כללי לתחום"
+                  isNationalMetricType(stageBMetricType)
                     ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
                     : metadataTooltip(boardStageBMeta, "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי.")
                 }
                 metricType={stageBMetricType}
                 lastUpdated={boardStageB?.lastUpdated}
                 sourceUrl={boardStageBMeta?.sourceUrl}
+                displayAction={metadataDisplayAction(boardStageBMeta)}
               />
               <QuickHighlightCard
                 label={metricLabelFromMetadata(duns100Meta, "DUNS100")}
@@ -1706,6 +1764,7 @@ export default async function DepartmentDetailsPage({
                 )}
                 lastUpdated={duns100LastUpdated}
                 sourceUrl={duns100Meta?.sourceUrl}
+                displayAction={metadataDisplayAction(duns100Meta)}
               />
               <QuickHighlightCard
                 label={metricLabelFromMetadata(centerSalaryMeta, "שכר מרכז")}
@@ -1714,6 +1773,7 @@ export default async function DepartmentDetailsPage({
                 tooltip={metadataTooltip(centerSalaryMeta, "שכר בסיס להשוואה באזור מרכז.")}
                 metricType="נתון כללי לתחום"
                 sourceUrl={centerSalaryMeta?.sourceUrl}
+                displayAction={metadataDisplayAction(centerSalaryMeta)}
               />
               <QuickHighlightCard
                 label={metricLabelFromMetadata(peripherySalaryMeta, "שכר פריפריה")}
@@ -1722,19 +1782,21 @@ export default async function DepartmentDetailsPage({
                 tooltip={metadataTooltip(peripherySalaryMeta, "שכר בסיס להשוואה באזור פריפריה.")}
                 metricType="נתון כללי לתחום"
                 sourceUrl={peripherySalaryMeta?.sourceUrl}
+                displayAction={metadataDisplayAction(peripherySalaryMeta)}
               />
               <QuickHighlightCard
                 label={metricLabelFromMetadata(burnoutMeta, "מדד שחיקה")}
                 value={burnoutMetric ? formatImportedMetricValue(burnoutMetric) : null}
                 sourceLabel={metadataSourceLabel(burnoutMeta, importedSourceLabel(burnoutMetric, "דיווחי מתמחים משרד הבריאות"))}
                 tooltip={
-                  metricTypeFromMetadata(burnoutMeta, burnoutMetricType) === "נתון כללי לתחום"
+                  isNationalMetricType(metricTypeFromMetadata(burnoutMeta, burnoutMetricType))
                     ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית."
                     : metadataTooltip(burnoutMeta, "מדד שחיקה מחלקתי, אם סופק.")
                 }
                 metricType={metricTypeFromMetadata(burnoutMeta, burnoutMetricType)}
                 lastUpdated={burnoutMetric?.lastUpdated}
                 sourceUrl={burnoutMeta?.sourceUrl}
+                displayAction={metadataDisplayAction(burnoutMeta)}
               />
             </div>
             <div className="mt-2">

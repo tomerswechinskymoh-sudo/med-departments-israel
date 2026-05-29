@@ -1,5 +1,11 @@
 import { getDepartmentPageData, getDirectoryData, getSpecialtyDashboardMetrics } from "@/lib/queries";
-import { findMetricDisplayMetadata } from "@/lib/metric-display";
+import {
+  findMetricDisplayMetadata,
+  metadataDisplayAction,
+  metadataSourceLabel,
+  metadataTooltip,
+  type MetricDisplayMetadata
+} from "@/lib/metric-display";
 import { prisma } from "@/lib/prisma";
 
 function argValue(name: string) {
@@ -31,7 +37,8 @@ async function main() {
     specialtyMetricCount,
     specialtyYearlyMetricCount,
     dataExplanations,
-    importedSpecialtyDepartments
+    importedSpecialtyDepartments,
+    specialtyMetricRows
   ] = await Promise.all([
     getDirectoryData({
       specialties: [specialty.id]
@@ -120,12 +127,30 @@ async function main() {
         }
       },
       orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
+    }),
+    prisma.specialtyMetric.findMany({
+      where: {
+        specialtyId: specialty.id
+      },
+      select: {
+        metricKey: true,
+        label: true,
+        value: true,
+        rawValue: true,
+        unit: true,
+        sourceNotes: true
+      },
+      orderBy: {
+        metricKey: "asc"
+      }
     })
   ]);
   const dashboardBurnout = summary.metrics.find((metric) => metric.key === "burnoutIndex");
   const dashboardSalaryGap = summary.metrics.find((metric) => metric.key === "salaryGap");
+  const dashboardWaitingTime = summary.metrics.find((metric) => metric.key === "medianWaitingTime");
+  const dashboardAcceptanceDistribution = summary.metrics.find((metric) => metric.key === "acceptanceDistribution");
   const dashboardExpectedOpenings = summary.metrics.find((metric) => metric.key === "expectedOpenings");
-  const metadata = dataExplanations.map((row) => ({
+  const metadata: MetricDisplayMetadata[] = dataExplanations.map((row) => ({
     ...row,
     sheet: row.sheet as "MASTER_Spec" | "Master_Dept",
     visualType: row.visualType as "badge" | "clock" | "distribution" | "donut" | "salaryComparison" | "trend" | null
@@ -161,6 +186,61 @@ async function main() {
   const detail = detailCandidate
     ? await getDepartmentPageData(detailCandidate.slug, undefined, detailCandidate.id)
     : null;
+  const auditMetricKeys = [
+    "peripherySalaryGap",
+    "medianWaitingTime",
+    "acceptedImmediatelyReports",
+    "acceptedWithinSixMonthsReports",
+    "acceptedWithinOneYearReports",
+    "acceptedWithinTwoYearsReports",
+    "acceptedAfterTwoYearsReports",
+    "residentsCount",
+    "officialResidencyDuration",
+    "actualAverageDuration",
+    "burnoutIndex"
+  ];
+  const auditMetric = (
+    sheet: "MASTER_Spec" | "Master_Dept",
+    key: string,
+    row:
+      | { value: number | null; rawValue?: string | null; sourceNotes?: string | null }
+      | null
+      | undefined,
+    metricLevel: "מחלקתי" | "ארצי לתחום"
+  ) => {
+    const displayMetadata = findMetricDisplayMetadata(metadata, sheet, key);
+    const value = row?.rawValue ?? row?.value ?? null;
+
+    return {
+      key,
+      value,
+      dataExpMatched: Boolean(displayMetadata),
+      tooltip: metadataTooltip(displayMetadata, "NO_DATA_EXP_TOOLTIP"),
+      source: metadataSourceLabel(displayMetadata, row?.sourceNotes ?? "NO_SOURCE"),
+      displayAction: metadataDisplayAction(displayMetadata),
+      metricLevel
+    };
+  };
+  const specialtyMetricAudit = auditMetricKeys
+    .filter((key) => key !== "residentsCount" && key !== "officialResidencyDuration" && key !== "actualAverageDuration")
+    .map((key) =>
+      auditMetric(
+        "MASTER_Spec",
+        key,
+        specialtyMetricRows.find((metric) => metric.metricKey === key),
+        "ארצי לתחום"
+      )
+    );
+  const departmentMetricAudit = detail
+    ? auditMetricKeys.map((key) =>
+        auditMetric(
+          "Master_Dept",
+          key,
+          detail.metrics.find((metric) => metric.metricKey === key),
+          findMetricDisplayMetadata(metadata, "Master_Dept", key)?.isNationalMetric ? "ארצי לתחום" : "מחלקתי"
+        )
+      )
+    : [];
 
   const result = {
     specialty,
@@ -206,7 +286,31 @@ async function main() {
             tooltip: dashboardSalaryGap.tooltip
           }
         : null,
+      hasWaitingTime: Boolean(dashboardWaitingTime && !dashboardWaitingTime.isPlaceholder),
+      waitingTime: dashboardWaitingTime
+        ? {
+            value: dashboardWaitingTime.value,
+            sourceLabel: dashboardWaitingTime.sourceLabel,
+            tooltip: dashboardWaitingTime.tooltip,
+            displayAction: dashboardWaitingTime.displayAction
+          }
+        : null,
+      hasAcceptanceDistribution: Boolean(
+        dashboardAcceptanceDistribution && !dashboardAcceptanceDistribution.isPlaceholder
+      ),
+      acceptanceDistribution: dashboardAcceptanceDistribution
+        ? {
+            value: dashboardAcceptanceDistribution.value,
+            sourceLabel: dashboardAcceptanceDistribution.sourceLabel,
+            tooltip: dashboardAcceptanceDistribution.tooltip,
+            displayAction: dashboardAcceptanceDistribution.displayAction
+          }
+        : null,
       hiddenExpectedOpeningsHidden: Boolean(hiddenExpectedNationalOpenings?.isHidden && !dashboardExpectedOpenings)
+    },
+    metricDisplayAudit: {
+      specialty: specialtyMetricAudit,
+      department: departmentMetricAudit
     },
     dataExpChecks: {
       loaded: dataExplanations.length,
@@ -275,6 +379,22 @@ async function main() {
 
   if (!dashboardSalaryGap) {
     throw new Error("Specialty dashboard is missing salary gap card.");
+  }
+
+  if (!dashboardWaitingTime || dashboardWaitingTime.isPlaceholder) {
+    throw new Error("Specialty dashboard is missing waiting time card.");
+  }
+
+  if (!dashboardAcceptanceDistribution || dashboardAcceptanceDistribution.isPlaceholder) {
+    throw new Error("Specialty dashboard is missing acceptance distribution chart.");
+  }
+
+  if (dashboardSalaryGap.sourceLabel !== "סימולטור שכר של הר׳׳י") {
+    throw new Error("Salary gap source does not match Data_Exp.");
+  }
+
+  if (dashboardWaitingTime.sourceLabel !== "משרד הבריאות") {
+    throw new Error("Waiting time source does not match Data_Exp.");
   }
 
   if (dataExplanations.length < 40) {

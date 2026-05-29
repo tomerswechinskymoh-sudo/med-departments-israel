@@ -1,5 +1,6 @@
 import {
   findMetricDisplayMetadata,
+  metadataDisplayAction,
   metadataSourceLabel,
   metadataTooltip,
   type MetricDisplayMetadata,
@@ -11,6 +12,8 @@ export const specialtyMetricKeys = [
   "activeResidents",
   "genderDistribution",
   "residencyDuration",
+  "medianWaitingTime",
+  "acceptanceDistribution",
   "boardPassA",
   "boardPassB",
   "burnoutIndex",
@@ -40,6 +43,8 @@ export type SpecialtyMetricResult = {
   sourceLabel?: string;
   sourceUrl?: string | null;
   tooltip?: string;
+  displayAction?: string | null;
+  metricLevel?: "מחלקתי" | "ארצי לתחום" | "מחושב";
   isPlaceholder?: boolean;
   isHighlighted?: boolean;
   visualType?: MetricVisualType | null;
@@ -104,6 +109,7 @@ type SpecialtyMetricCalculation =
       value: string;
       sourceLabel?: string;
       tooltip?: string;
+      metricLevel?: "מחלקתי" | "ארצי לתחום" | "מחושב";
     }
   | null;
 
@@ -125,6 +131,8 @@ export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
   "activeResidents",
   "genderDistribution",
   "residencyDuration",
+  "medianWaitingTime",
+  "acceptanceDistribution",
   "boardPassA",
   "boardPassB",
   "burnoutIndex",
@@ -140,6 +148,8 @@ const dashboardMetricDataExpKeys: Partial<Record<SpecialtyMetricKey, string[]>> 
   activeResidents: ["residentsCount", "activeResidentsCount", "מספר_מתמחים"],
   genderDistribution: ["womenPercent", "menPercent", "אחוז_נשים", "אחוז_גברים"],
   residencyDuration: ["actualAverageDuration", "officialResidencyDuration"],
+  medianWaitingTime: ["medianWaitingTime", "זמן_המתנה_חציוני_לתקן"],
+  acceptanceDistribution: ["acceptedImmediatelyReports", "מספר המתקבלים שדיווחו שמצאו מיד התמחות"],
   boardPassA: ["boardStageAPassRate", "מעבר_שלב_א"],
   boardPassB: ["boardStageBPassRate", "מעבר_שלב_ב"],
   burnoutIndex: ["burnoutIndex", "מדד_שחיקה"],
@@ -148,6 +158,12 @@ const dashboardMetricDataExpKeys: Partial<Record<SpecialtyMetricKey, string[]>> 
   expectedOpenings: ["expectedNationalOpenings", "מספר_תקנים_שצפויים להיפתח_ארצי"],
   duns100PhysiciansCount: ["duns100PhysiciansCount", "DUNS100"]
 };
+
+const compositeDashboardLabels = new Set<SpecialtyMetricKey>([
+  "genderDistribution",
+  "acceptanceDistribution",
+  "newResidentsTrend"
+]);
 
 function average(values: Array<number | null | undefined>) {
   const valid = values.filter((value): value is number => typeof value === "number" && Number.isFinite(value));
@@ -301,6 +317,53 @@ function yearlyValueRows(
     .filter((row): row is { year: number; displayValue: string } => Boolean(row));
 }
 
+const acceptanceMetricRows = [
+  { key: "acceptedImmediatelyReports", label: "מיד" },
+  { key: "acceptedWithinSixMonthsReports", label: "עד חצי שנה" },
+  { key: "acceptedWithinOneYearReports", label: "עד שנה" },
+  { key: "acceptedWithinTwoYearsReports", label: "עד שנתיים" },
+  { key: "acceptedAfterTwoYearsReports", label: "אחרי שנתיים" }
+];
+
+function acceptanceDistributionRows(
+  departments: SpecialtyMetricDepartment[],
+  context: SpecialtyMetricContext
+) {
+  const specialtyRows = acceptanceMetricRows
+    .map((input) => {
+      const metric = contextMetric(context, input.key);
+      if (!metric) return null;
+      const displayValue = formatMetricValue(metric);
+      const numericValue = typeof metric.value === "number" ? metric.value : null;
+
+      return displayValue && numericValue !== null
+        ? {
+            label: input.label,
+            value: numericValue,
+            displayValue
+          }
+        : null;
+    })
+    .filter((row): row is { label: string; value: number; displayValue: string } => Boolean(row));
+
+  if (specialtyRows.length > 0) {
+    return specialtyRows;
+  }
+
+  return acceptanceMetricRows
+    .map((input) => {
+      const total = sumMetric(departments, input.key);
+      return total === null
+        ? null
+        : {
+            label: input.label,
+            value: total,
+            displayValue: formatNumber(total)
+          };
+    })
+    .filter((row): row is { label: string; value: number; displayValue: string } => Boolean(row));
+}
+
 function averageMetric(departments: SpecialtyMetricDepartment[], metricKey: string) {
   return average(departments.map((department) => externalMetricValue(department, metricKey)));
 }
@@ -388,6 +451,52 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
         averageMetric(departments, "officialResidencyDuration") ??
         average(departments.map((department) => parseMonths(department.medianResidencyLength)));
       return duration !== null ? `${formatNumber(duration)} חודשים` : null;
+    }
+  },
+  {
+    key: "medianWaitingTime",
+    label: "זמן המתנה חציוני לתקן",
+    description: "הזמן החציוני מקבלת רישיון ועד לתחילת התמחות בכלל הארץ",
+    unit: "months",
+    sourceLabel: "משרד הבריאות",
+    calculate: (departments, context) => {
+      const specialtyWaitingMetric = contextMetric(context, "medianWaitingTime");
+      if (specialtyWaitingMetric) {
+        const displayValue = formatMetricValue(specialtyWaitingMetric);
+        return displayValue
+          ? {
+              value: displayValue,
+              sourceLabel: sourceLabelForMetric(specialtyWaitingMetric, "משרד הבריאות"),
+              metricLevel: "ארצי לתחום"
+            }
+          : null;
+      }
+
+      const value = averageMetric(departments, "medianWaitingTime");
+      return value !== null
+        ? {
+            value: formatNumberWithUnit(value, "months"),
+            sourceLabel: "משרד הבריאות",
+            metricLevel: "מחושב"
+          }
+        : null;
+    }
+  },
+  {
+    key: "acceptanceDistribution",
+    label: "התפלגות מציאת התמחות",
+    description: "התפלגות דיווחי מציאת התמחות לפי משך המתנה",
+    unit: "count",
+    sourceLabel: "משרד הבריאות",
+    calculate: (departments, context) => {
+      const rows = acceptanceDistributionRows(departments, context);
+      return rows.length > 0
+        ? {
+            value: rows.map((row) => `${row.label}: ${row.displayValue}`).join(" · "),
+            sourceLabel: "משרד הבריאות",
+            metricLevel: "ארצי לתחום"
+          }
+        : null;
     }
   },
   {
@@ -697,13 +806,22 @@ export function calculateSpecialtyMetrics(
 
     results.push({
       key: definition.key,
-      label: metadata?.readableLabel ?? definition.label,
+      label: compositeDashboardLabels.has(definition.key)
+        ? definition.label
+        : metadata?.readableLabel ?? definition.label,
       description: metadataExplanation,
       value: value ?? missingMetricValue,
       unit: definition.unit,
       sourceLabel: metadataSourceLabel(metadata, calculatedSourceLabel ?? "מקור נתונים לא צוין"),
       sourceUrl: metadata?.sourceUrl,
       tooltip: tooltip || undefined,
+      displayAction: metadataDisplayAction(metadata),
+      metricLevel:
+        typeof calculated === "object" && calculated !== null && calculated.metricLevel
+          ? calculated.metricLevel
+          : metadata
+            ? "ארצי לתחום"
+            : "מחושב",
       isPlaceholder: value === null,
       isHighlighted: metadata?.isHighlighted,
       visualType: metadata?.visualType

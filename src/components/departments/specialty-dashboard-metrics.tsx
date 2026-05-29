@@ -88,11 +88,120 @@ function YearTrend({ value }: { value: string }) {
   );
 }
 
+function ClockVisual({ value }: { value: string }) {
+  return (
+    <div className="mt-2 flex items-center gap-3">
+      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand-50 text-xl font-black text-brand-800">
+        ◷
+      </span>
+      <p className="text-xl font-black text-ink">{value}</p>
+    </div>
+  );
+}
+
+function parseDistributionValues(value: string) {
+  return value
+    .split("·")
+    .map((item) => {
+      const [label, rawValue] = item.split(":").map((part) => part.trim());
+      const numericValue = Number((rawValue ?? "").replace(/[^\d.-]/g, ""));
+
+      return label && Number.isFinite(numericValue)
+        ? { label, value: numericValue, displayValue: rawValue ?? "" }
+        : null;
+    })
+    .filter((item): item is { label: string; value: number; displayValue: string } => Boolean(item));
+}
+
+function DistributionChart({ value }: { value: string }) {
+  const rows = parseDistributionValues(value);
+  const max = Math.max(...rows.map((row) => row.value), 1);
+
+  if (rows.length === 0) {
+    return <p className="mt-2 text-xl font-black text-ink">{value}</p>;
+  }
+
+  return (
+    <div className="mt-2 space-y-1.5">
+      {rows.map((row) => (
+        <div key={row.label} className="grid grid-cols-[4.8rem_1fr_2.8rem] items-center gap-2">
+          <span className="truncate text-[0.68rem] font-bold text-slate-500">{row.label}</span>
+          <div className="h-2 overflow-hidden rounded-full bg-white">
+            <div
+              className="h-full rounded-full bg-teal-600"
+              style={{ width: `${Math.max(8, Math.round((row.value / max) * 100))}%` }}
+            />
+          </div>
+          <span className="text-left text-xs font-black text-ink">{row.displayValue}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function SalaryComparison({ value, tooltip }: { value: string; tooltip?: string }) {
+  const numbers = [...(tooltip ?? "").matchAll(/([\d,.]+)\s*₪/g)].map((match) =>
+    Number(match[1]?.replace(/,/g, ""))
+  );
+  const center = Number.isFinite(numbers[0]) ? numbers[0] : 16954;
+  const periphery = Number.isFinite(numbers[1]) ? numbers[1] : 19965.92;
+  const max = Math.max(center, periphery, 1);
+
+  return (
+    <div className="mt-2 space-y-1.5">
+      <p className="text-xl font-black text-ink">{value}</p>
+      <div className="grid grid-cols-[4rem_1fr] items-center gap-2">
+        <span className="text-[0.68rem] font-bold text-slate-500">מרכז</span>
+        <div className="h-2 overflow-hidden rounded-full bg-white">
+          <div className="h-full rounded-full bg-brand-500" style={{ width: `${(center / max) * 100}%` }} />
+        </div>
+      </div>
+      <div className="grid grid-cols-[4rem_1fr] items-center gap-2">
+        <span className="text-[0.68rem] font-bold text-slate-500">פריפריה</span>
+        <div className="h-2 overflow-hidden rounded-full bg-white">
+          <div className="h-full rounded-full bg-amber-500" style={{ width: `${(periphery / max) * 100}%` }} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BurnoutComparison({ value }: { value: string }) {
+  const burnout = parseFirstNumber(value) ?? 0;
+  const nationalAverage = 4.5;
+  const max = 6;
+
+  return (
+    <div className="mt-2 space-y-2">
+      <p className="text-xl font-black text-ink">{value}</p>
+      <div className="space-y-1.5">
+        <div className="grid grid-cols-[4rem_1fr] items-center gap-2">
+          <span className="text-[0.68rem] font-bold text-slate-500">תחום</span>
+          <div className="h-2 overflow-hidden rounded-full bg-white">
+            <div className="h-full rounded-full bg-rose-500" style={{ width: `${(burnout / max) * 100}%` }} />
+          </div>
+        </div>
+        <div className="grid grid-cols-[4rem_1fr] items-center gap-2">
+          <span className="text-[0.68rem] font-bold text-slate-500">ארצי 4.5</span>
+          <div className="h-2 overflow-hidden rounded-full bg-white">
+            <div className="h-full rounded-full bg-slate-400" style={{ width: `${(nationalAverage / max) * 100}%` }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
   const source = metric.sourceLabel ?? "מקור נתונים לא צוין";
-  const text = [metric.tooltip ?? metric.description, `מקור נתונים: ${source}`]
-    .filter(Boolean)
-    .join(" · ");
+  const lines = [
+    metric.tooltip ?? metric.description,
+    metric.displayAction ? `Display/action: ${metric.displayAction}` : null,
+    `Source: ${source}`,
+    metric.sourceUrl ? `Source link: ${metric.sourceUrl}` : null,
+    `Metric level: ${metric.metricLevel ?? "ארצי לתחום"}`
+  ].filter((line): line is string => Boolean(line));
+  const text = lines.join("\n");
 
   return (
     <span className="relative inline-flex">
@@ -104,7 +213,13 @@ function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
       >
         i
         <span className="pointer-events-auto absolute left-0 top-9 z-20 hidden w-64 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
-          <span>{text}</span>
+          <span className="space-y-1">
+            {lines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
+          </span>
           {metric.sourceUrl ? (
             <a
               href={metric.sourceUrl}
@@ -112,7 +227,7 @@ function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
               rel="noreferrer"
               className="pointer-events-auto mt-2 block font-black text-brand-800 underline"
             >
-              מקור נתונים
+              Source link
             </a>
           ) : null}
         </span>
@@ -162,6 +277,14 @@ export function SpecialtyDashboardMetrics({
             </div>
             {(metric.visualType === "donut" || metric.key === "genderDistribution") && !metric.isPlaceholder ? (
               <GenderDonut value={metric.value} />
+            ) : (metric.visualType === "clock" || metric.key === "medianWaitingTime") && !metric.isPlaceholder ? (
+              <ClockVisual value={metric.value} />
+            ) : (metric.visualType === "distribution" || metric.key === "acceptanceDistribution") && !metric.isPlaceholder ? (
+              <DistributionChart value={metric.value} />
+            ) : (metric.visualType === "salaryComparison" || metric.key === "salaryGap") && !metric.isPlaceholder ? (
+              <SalaryComparison value={metric.value} tooltip={metric.tooltip} />
+            ) : metric.key === "burnoutIndex" && !metric.isPlaceholder ? (
+              <BurnoutComparison value={metric.value} />
             ) : (metric.visualType === "trend" || metric.key === "newResidentsTrend") && !metric.isPlaceholder ? (
               <YearTrend value={metric.value} />
             ) : (

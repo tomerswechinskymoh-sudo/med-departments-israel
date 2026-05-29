@@ -79,7 +79,11 @@ function normalizedSource(value: string) {
   return normalizeCriterion(value).replace(/\s+/g, "");
 }
 
-function sourceUrlForSource(source: string | null | undefined) {
+function sourceUrlForSource(source: string | null | undefined, linkPolicy?: string | null) {
+  const normalizedPolicy = normalizeCriterion(linkPolicy ?? "");
+  if (normalizedPolicy === "לא") return null;
+  if (/^https?:\/\//i.test(linkPolicy ?? "")) return linkPolicy?.trim() ?? null;
+
   const normalized = normalizedSource(source ?? "");
   if (!normalized) return null;
 
@@ -204,7 +208,7 @@ export function buildMetricDisplayMetadata(input: {
     explanation: input.explanation?.trim() || null,
     sourceLabel: input.sourceLabel?.trim() || null,
     sourceLinkPolicy: input.sourceLinkPolicy?.trim() || null,
-    sourceUrl: sourceUrlForSource(input.sourceLabel),
+    sourceUrl: sourceUrlForSource(input.sourceLabel, input.sourceLinkPolicy),
     displayAction,
     displayMode: displayModeFromAction(displayAction),
     visualType: visualTypeFromAction(displayAction),
@@ -246,4 +250,8 @@ export function metadataTooltip(
   fallback: string
 ) {
   return metadata?.explanation?.trim() || fallback;
+}
+
+export function metadataDisplayAction(metadata: MetricDisplayMetadata | null | undefined) {
+  return metadata?.displayAction?.trim() || null;
 }

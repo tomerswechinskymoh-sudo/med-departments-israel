@@ -17,6 +17,7 @@
     "import:master-csv": "tsx src/server/jobs/import-master-csv.ts",
     "verify:public-imports": "tsx src/server/jobs/verify-public-imported-departments.ts",
     "verify:department-summary": "tsx src/server/jobs/debug-departments-summary.ts",
+    "verify:metric-display": "tsx src/server/jobs/debug-departments-summary.ts",
     "enrichment:mock": "tsx src/server/jobs/run-department-enrichment.ts",
     "openings:process-expired": "tsx src/server/jobs/run-expired-openings.ts"
   },
