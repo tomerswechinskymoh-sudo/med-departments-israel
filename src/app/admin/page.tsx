@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { Prisma } from "@prisma/client";
 import { requireAdmin } from "@/lib/auth-guards";
 import {
@@ -19,7 +20,6 @@ import { RepresentativeAssignmentForm } from "@/components/admin/representative-
 import { RepresentativeCreationForm } from "@/components/admin/representative-creation-form";
 import { RepresentativeRequestReviewForm } from "@/components/admin/representative-request-review-form";
 import { ReviewModerationForm } from "@/components/admin/review-moderation-form";
-import { SeedDemoButton } from "@/components/admin/seed-demo-button";
 import { SpecialtyDashboardConfigForm } from "@/components/admin/specialty-dashboard-config-form";
 import { SpecialtyManagementForm } from "@/components/admin/specialty-management-form";
 import { UserRoleForm } from "@/components/admin/user-role-form";
@@ -127,19 +127,144 @@ function professionalRoleStatusLabel(value: string | null) {
   }
 }
 
+function AdminAccordionSection({
+  title,
+  description,
+  actionCount = 0,
+  children
+}: {
+  title: string;
+  description?: string;
+  actionCount?: number;
+  children: ReactNode;
+}) {
+  return (
+    <details className="group rounded-[1.35rem] border border-brand-100 bg-white/95 shadow-sm">
+      <summary className="flex cursor-pointer list-none flex-wrap items-center justify-between gap-3 px-4 py-4 md:px-5">
+        <div>
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="text-lg font-black text-ink">{title}</h2>
+            {actionCount > 0 ? <Badge tone="warning">{actionCount} דורש טיפול</Badge> : null}
+          </div>
+          {description ? <p className="mt-1 text-sm leading-6 text-slate-600">{description}</p> : null}
+        </div>
+        <span className="rounded-full border border-brand-100 bg-brand-50 px-3 py-1 text-xs font-black text-brand-900 group-open:hidden">
+          פתיחה
+        </span>
+        <span className="hidden rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-black text-slate-600 group-open:inline-flex">
+          סגירה
+        </span>
+      </summary>
+      <div className="border-t border-brand-100/70 px-4 py-5 md:px-5">{children}</div>
+    </details>
+  );
+}
+
+function QueueEmpty({ children }: { children: ReactNode }) {
+  return <p className="rounded-2xl bg-slate-50 px-4 py-4 text-sm text-slate-600">{children}</p>;
+}
+
 export default async function AdminPage() {
   await requireAdmin();
   const data = await getAdminDashboardData();
+  const pendingContentActions =
+    data.stats.pendingReviewSubmissions +
+    data.stats.pendingOpeningApprovals +
+    data.stats.pendingDepartmentChangeRequests +
+    data.stats.pendingRepresentativeRequests +
+    data.stats.pendingScrapeRevisions;
+  const hasVerificationAction = data.pendingUserVerifications.length > 0;
+  const hasMistakeAction = data.pendingMistakeReports.length > 0;
 
   return (
-    <PageShell className="space-y-8 py-10">
+    <PageShell className="space-y-6 py-8">
       <SectionHeading
         eyebrow="דשבורד אדמין"
-        title="אישורים, שיוכים ופיקוח על התוכן"
-        description="כאן מנהלים נציגים, משייכים מחלקות, מאשרים תוכן רשמי ומטפלים בשיתופים ובמועמדויות."
+        title="אישורים, נתונים ופיקוח"
+        description="העמוד מסודר לפי דחיפות: קודם אימותים ודיווחי טעות, אחר כך כלים ותורים נוספים."
       />
 
-      <div className="grid gap-4 md:grid-cols-3 xl:grid-cols-6">
+      <Card className={`rounded-[1.35rem] ${hasVerificationAction ? "border-amber-200 bg-amber-50/60" : ""}`}>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-2xl font-black text-ink">אימות סטטוס מקצועי</h2>
+              {hasVerificationAction ? (
+                <Badge tone="warning">{data.pendingUserVerifications.length} ממתינים לפעולה</Badge>
+              ) : (
+                <Badge tone="success">אין פעולה נדרשת</Badge>
+              )}
+            </div>
+            <p className="mt-2 text-sm leading-7 text-slate-700">
+              כל בקשות האימות שממתינות לאדמין. אישור כאן פותח גישה מלאה לפי מודל ההרשאות הנוכחי.
+            </p>
+          </div>
+        </div>
+        <div className="mt-5 grid gap-3 xl:grid-cols-2">
+          {data.pendingUserVerifications.length === 0 ? (
+            <QueueEmpty>אין כרגע משתמשים שממתינים לאימות.</QueueEmpty>
+          ) : (
+            data.pendingUserVerifications.map((user) => (
+              <div key={user.id} className="rounded-2xl border border-amber-200 bg-white p-4 text-sm leading-7 text-slate-700">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className="font-bold text-ink">{user.fullName}</p>
+                    <p>{user.email}{user.phone ? ` · ${user.phone}` : ""}</p>
+                    <p className="text-xs font-semibold text-slate-500">
+                      {professionalRoleStatusLabel(user.roleStatus)}
+                      {user.verificationSubmittedAt ? ` · ${formatDate(user.verificationSubmittedAt)}` : ""}
+                    </p>
+                  </div>
+                  <Badge tone={user.emailVerified ? "success" : "warning"}>
+                    {user.emailVerified ? "מייל אומת" : "ממתין למייל"}
+                  </Badge>
+                </div>
+                <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                  {user.uploadedFiles.map((file) => (
+                    <Link
+                      key={file.id}
+                      href={`/api/files/${file.id}`}
+                      className="rounded-full border border-brand-200 bg-white px-3 py-2 font-semibold text-brand-800"
+                    >
+                      מסמך אימות: {file.originalName}
+                    </Link>
+                  ))}
+                </div>
+                <UserVerificationReviewForm userId={user.id} />
+              </div>
+            ))
+          )}
+        </div>
+      </Card>
+
+      <Card className={`rounded-[1.35rem] ${hasMistakeAction ? "border-red-200 bg-red-50/50" : ""}`}>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-xl font-black text-ink">דיווחי טעות פתוחים</h2>
+              {hasMistakeAction ? <Badge tone="warning">{data.pendingMistakeReports.length} פתוחים</Badge> : <Badge tone="success">נקי</Badge>}
+            </div>
+            <p className="mt-2 text-sm leading-7 text-slate-700">
+              דיווחים מהציבור על מידע חסר או שגוי במחלקות.
+            </p>
+          </div>
+        </div>
+        <div className="mt-4 grid gap-3 xl:grid-cols-2">
+          {data.pendingMistakeReports.length === 0 ? (
+            <QueueEmpty>אין כרגע דיווחי טעות פתוחים.</QueueEmpty>
+          ) : (
+            data.pendingMistakeReports.map((report) => (
+              <div key={report.id} className="rounded-2xl border border-red-100 bg-white p-4 text-sm leading-7 text-slate-700">
+                <p className="font-bold text-ink">{report.department.institution.name} · {report.department.name}</p>
+                <p>{report.explanation}</p>
+                <p className="text-xs font-semibold text-slate-500">{report.reporterName} · {report.reporterEmail}</p>
+              </div>
+            ))
+          )}
+        </div>
+      </Card>
+
+      <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-5">
         <StatCard label="משתמשים" value={data.stats.users} />
         <StatCard label="מחלקות" value={data.stats.departments} />
         <StatCard label="חוויות ממתינות" value={data.stats.pendingReviewSubmissions} />
@@ -152,268 +277,454 @@ export default async function AdminPage() {
         <StatCard label="אימותי משתמשים" value={data.stats.pendingUserVerifications} />
       </div>
 
-      <Card>
-        <div className="flex items-center justify-between gap-4">
-          <div>
-            <h2 className="text-xl font-bold text-ink">סביבת דמו</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              טוען מחדש את נתוני הדוגמה בעברית: מוסדות, מחלקות, תקנים פתוחים, שיתופים,
-              נציגים, שיוכים ומועמדויות.
-            </p>
-          </div>
-          <SeedDemoButton />
-        </div>
-      </Card>
-
-      <section className="grid gap-6 xl:grid-cols-3">
-        <Card>
-          <h2 className="text-xl font-bold text-ink">אימות סטטוס מקצועי</h2>
-          <div className="mt-4 space-y-3">
-            {data.pendingUserVerifications.length === 0 ? (
-              <p className="text-sm text-slate-600">אין כרגע משתמשים שממתינים לאימות.</p>
-            ) : (
-              data.pendingUserVerifications.map((user) => (
-                <div key={user.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                      <p className="font-bold text-ink">{user.fullName}</p>
-                      <p>{user.email}{user.phone ? ` · ${user.phone}` : ""}</p>
-                      <p className="text-xs font-semibold text-slate-500">
-                        {professionalRoleStatusLabel(user.roleStatus)}
-                        {user.verificationSubmittedAt ? ` · ${formatDate(user.verificationSubmittedAt)}` : ""}
-                      </p>
+      <AdminAccordionSection
+        title="תורים שממתינים לאישור"
+        description="חוויות, תקנים, שינויי מחלקה, בקשות נציגות ודראפטים מסריקת אתרים."
+        actionCount={pendingContentActions}
+      >
+        <div className="grid gap-5 xl:grid-cols-2">
+          <section>
+            <h3 className="text-base font-black text-ink">חוויות ממתינות לאישור</h3>
+            <div className="mt-4 space-y-5">
+              {data.pendingReviewSubmissions.length === 0 ? (
+                <QueueEmpty>אין כרגע חוויות שממתינות לטיפול.</QueueEmpty>
+              ) : (
+                data.pendingReviewSubmissions.map((submission) => (
+                  <div key={submission.id} className="rounded-2xl bg-brand-50 p-4">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
+                      <div>
+                        <p className="font-semibold text-ink">
+                          {submission.department.institution.name} · {submission.department.name}
+                        </p>
+                        <p className="text-sm text-slate-600">
+                          {reviewerTypeLabel(submission.reviewerType)}
+                          {submission.phone ? ` · ${submission.phone}` : ""}
+                          {submission.email ? ` · ${submission.email}` : ""}
+                        </p>
+                      </div>
+                      <Badge tone="warning">ממתין</Badge>
                     </div>
-                    <Badge tone={user.emailVerified ? "success" : "warning"}>
-                      {user.emailVerified ? "מייל אומת" : "ממתין למייל"}
-                    </Badge>
-                  </div>
-                  <div className="mt-3 flex flex-wrap gap-2 text-xs">
-                    {user.uploadedFiles.map((file) => (
-                      <Link
-                        key={file.id}
-                        href={`/api/files/${file.id}`}
-                        className="rounded-full border border-brand-200 bg-white px-3 py-2 font-semibold text-brand-800"
-                      >
-                        מסמך אימות: {file.originalName}
-                      </Link>
-                    ))}
-                  </div>
-                  <UserVerificationReviewForm userId={user.id} />
-                </div>
-              ))
-            )}
-          </div>
-        </Card>
-
-        <Card>
-          <h2 className="text-xl font-bold text-ink">דיווחי טעות פתוחים</h2>
-          <div className="mt-4 space-y-3">
-            {data.pendingMistakeReports.length === 0 ? (
-              <p className="text-sm text-slate-600">אין כרגע דיווחי טעות פתוחים.</p>
-            ) : (
-              data.pendingMistakeReports.map((report) => (
-                <div key={report.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
-                  <p className="font-bold text-ink">{report.department.institution.name} · {report.department.name}</p>
-                  <p>{report.explanation}</p>
-                  <p className="text-xs font-semibold text-slate-500">{report.reporterName} · {report.reporterEmail}</p>
-                </div>
-              ))
-            )}
-          </div>
-        </Card>
-
-        <Card>
-          <h2 className="text-xl font-bold text-ink">בקשות נציגות מחלקה</h2>
-          <div className="mt-4 space-y-3">
-            {data.pendingRepresentativeRequests.length === 0 ? (
-              <p className="text-sm text-slate-600">אין כרגע בקשות נציגות ממתינות.</p>
-            ) : (
-              data.pendingRepresentativeRequests.map((request) => (
-                <div key={request.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
-                  <p className="font-bold text-ink">{request.department.institution.name} · {request.department.name}</p>
-                  <p>{request.requesterName} · {request.requesterEmail} · {request.requesterPhone}</p>
-                  <Badge tone="warning">ממתין לאישור</Badge>
-                  <RepresentativeRequestReviewForm requestId={request.id} />
-                </div>
-              ))
-            )}
-          </div>
-        </Card>
-
-        <Card>
-          <h2 className="text-xl font-bold text-ink">דראפטים מסריקת אתרים</h2>
-          <div className="mt-4 space-y-3">
-            {data.pendingScrapeRevisions.length === 0 ? (
-              <p className="text-sm text-slate-600">אין כרגע דראפטים מסריקה.</p>
-            ) : (
-              data.pendingScrapeRevisions.map((revision) => (
-                <div key={revision.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
-                  <p className="font-bold text-ink">{revision.department.institution.name} · {revision.department.name}</p>
-                  <p className="truncate text-xs text-slate-500">{revision.sourceUrl}</p>
-                  <p className="text-xs font-semibold text-slate-500">{formatDate(revision.createdAt)}</p>
-                </div>
-              ))
-            )}
-          </div>
-        </Card>
-      </section>
-
-      <section className="grid gap-6 xl:grid-cols-2">
-        <Card>
-          <h2 className="text-xl font-bold text-ink">חוויות ממתינות לאישור</h2>
-          <div className="mt-4 space-y-5">
-            {data.pendingReviewSubmissions.length === 0 ? (
-              <p className="text-sm text-slate-600">אין כרגע חוויות שממתינות לטיפול.</p>
-            ) : (
-              data.pendingReviewSubmissions.map((submission) => (
-                <div key={submission.id} className="rounded-2xl bg-brand-50 p-4">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <p className="font-semibold text-ink">
-                        {submission.department.institution.name} · {submission.department.name}
-                      </p>
-                      <p className="text-sm text-slate-600">
-                        {reviewerTypeLabel(submission.reviewerType)}
-                        {submission.phone ? ` · ${submission.phone}` : ""}
-                        {submission.email ? ` · ${submission.email}` : ""}
-                      </p>
-                    </div>
-                    <Badge tone="warning">ממתין</Badge>
-                  </div>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    <span className="font-semibold text-ink">מה עבד טוב: </span>
-                    {textOrFallback(submission.pros, "לא נכתב טקסט חופשי בשדה הזה.")}
-                  </p>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">
-                    <span className="font-semibold text-ink">מה פחות עבד: </span>
-                    {textOrFallback(submission.cons, "לא נכתב טקסט חופשי בשדה הזה.")}
-                  </p>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">
-                    <span className="font-semibold text-ink">טיפ למי שמגיע/ה: </span>
-                    {textOrFallback(submission.tips, "לא הושאר טיפ נוסף.")}
-                  </p>
-                  {roleDetailsRows(submission.roleDetails, submission.reviewerType).length > 0 ? (
-                    <div className="mt-4 grid gap-3 md:grid-cols-2">
-                      {roleDetailsRows(submission.roleDetails, submission.reviewerType).map(
-                        ([label, value]) => (
-                          <div
-                            key={label}
-                            className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm"
-                          >
+                    <p className="mt-3 text-sm leading-7 text-slate-600">
+                      <span className="font-semibold text-ink">מה עבד טוב: </span>
+                      {textOrFallback(submission.pros, "לא נכתב טקסט חופשי בשדה הזה.")}
+                    </p>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">
+                      <span className="font-semibold text-ink">מה פחות עבד: </span>
+                      {textOrFallback(submission.cons, "לא נכתב טקסט חופשי בשדה הזה.")}
+                    </p>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">
+                      <span className="font-semibold text-ink">טיפ למי שמגיע/ה: </span>
+                      {textOrFallback(submission.tips, "לא הושאר טיפ נוסף.")}
+                    </p>
+                    {roleDetailsRows(submission.roleDetails, submission.reviewerType).length > 0 ? (
+                      <div className="mt-4 grid gap-3 md:grid-cols-2">
+                        {roleDetailsRows(submission.roleDetails, submission.reviewerType).map(([label, value]) => (
+                          <div key={label} className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm">
                             <p className="text-xs font-semibold text-slate-500">{label}</p>
                             <p className="mt-1 font-semibold text-ink">{String(value)}</p>
                           </div>
-                        )
-                      )}
-                    </div>
-                  ) : null}
-                  {roleFitText(submission.roleDetails) ? (
-                    <p className="mt-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm leading-7 text-slate-700">
-                      <span className="font-semibold text-ink">למי המחלקה מתאימה: </span>
-                      {roleFitText(submission.roleDetails)}
-                    </p>
-                  ) : null}
-                  <div className="mt-4 flex flex-wrap gap-3 text-xs">
-                    {submission.phone ? (
-                      <span className="rounded-full border border-brand-100 bg-white px-3 py-2 font-semibold text-brand-900">
-                        אימות טלפוני זמין
-                      </span>
+                        ))}
+                      </div>
                     ) : null}
-                    {submission.verificationFiles.map((file) => (
-                      <Link
-                        key={file.id}
-                        href={`/api/files/${file.id}`}
-                        className="rounded-full border border-brand-200 px-3 py-2 font-semibold text-brand-800"
-                      >
-                        מסמך הוכחה: {file.originalName}
-                      </Link>
-                    ))}
+                    {roleFitText(submission.roleDetails) ? (
+                      <p className="mt-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm leading-7 text-slate-700">
+                        <span className="font-semibold text-ink">למי המחלקה מתאימה: </span>
+                        {roleFitText(submission.roleDetails)}
+                      </p>
+                    ) : null}
+                    <div className="mt-4 flex flex-wrap gap-3 text-xs">
+                      {submission.phone ? (
+                        <span className="rounded-full border border-brand-100 bg-white px-3 py-2 font-semibold text-brand-900">
+                          אימות טלפוני זמין
+                        </span>
+                      ) : null}
+                      {submission.verificationFiles.map((file) => (
+                        <Link key={file.id} href={`/api/files/${file.id}`} className="rounded-full border border-brand-200 px-3 py-2 font-semibold text-brand-800">
+                          מסמך הוכחה: {file.originalName}
+                        </Link>
+                      ))}
+                    </div>
+                    <ReviewModerationForm reviewId={submission.id} />
                   </div>
-                  <ReviewModerationForm reviewId={submission.id} />
-                </div>
-              ))
-            )}
-          </div>
-        </Card>
+                ))
+              )}
+            </div>
+          </section>
 
-        <Card>
-          <h2 className="text-xl font-bold text-ink">תקנים פתוחים שממתינים לאישור</h2>
-          <div className="mt-4 space-y-5">
-            {data.pendingOpeningApprovals.length === 0 ? (
-              <p className="text-sm text-slate-600">אין כרגע תקנים פתוחים שממתינים לאישור.</p>
-            ) : (
-              data.pendingOpeningApprovals.map((opening) => {
-                const status = openingStatusLabel(opening.status);
-                return (
-                  <div key={opening.id} className="rounded-2xl bg-brand-50 p-4">
+          <section>
+            <h3 className="text-base font-black text-ink">תקנים פתוחים שממתינים לאישור</h3>
+            <div className="mt-4 space-y-5">
+              {data.pendingOpeningApprovals.length === 0 ? (
+                <QueueEmpty>אין כרגע תקנים פתוחים שממתינים לאישור.</QueueEmpty>
+              ) : (
+                data.pendingOpeningApprovals.map((opening) => {
+                  const status = openingStatusLabel(opening.status);
+                  return (
+                    <div key={opening.id} className="rounded-2xl bg-brand-50 p-4">
+                      <div className="flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                          <p className="font-semibold text-ink">{opening.title}</p>
+                          <p className="text-sm text-slate-600">
+                            {opening.department.institution.name} · {opening.department.name}
+                          </p>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge tone="warning">ממתין</Badge>
+                          <Badge tone={status.tone}>{status.label}</Badge>
+                        </div>
+                      </div>
+                      <p className="mt-3 text-sm leading-7 text-slate-700">{opening.summary}</p>
+                      <div className="mt-4 grid gap-3 md:grid-cols-2">
+                        <div className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm">
+                          <p className="text-xs font-semibold text-slate-500">מועד ועדה</p>
+                          <p className="mt-1 font-semibold text-ink">{formatDate(opening.committeeDate)}</p>
+                        </div>
+                        <div className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm">
+                          <p className="text-xs font-semibold text-slate-500">נוצר על ידי</p>
+                          <p className="mt-1 font-semibold text-ink">
+                            {opening.createdBy?.fullName ?? "נציג/ה לא זמין/ה"}
+                          </p>
+                        </div>
+                      </div>
+                      <OpeningReviewForm openingId={opening.id} />
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          </section>
+
+          <section>
+            <h3 className="text-base font-black text-ink">שינויי מחלקה שממתינים לאישור</h3>
+            <div className="mt-4 space-y-5">
+              {data.pendingDepartmentChangeRequests.length === 0 ? (
+                <QueueEmpty>אין כרגע שינויי מחלקה שממתינים לטיפול.</QueueEmpty>
+              ) : (
+                data.pendingDepartmentChangeRequests.map((request) => (
+                  <div key={request.id} className="rounded-2xl bg-brand-50 p-4">
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <div>
-                        <p className="font-semibold text-ink">{opening.title}</p>
-                        <p className="text-sm text-slate-600">
-                          {opening.department.institution.name} · {opening.department.name}
+                        <p className="font-semibold text-ink">
+                          {request.department.institution.name} · {request.department.name}
                         </p>
+                        <p className="text-sm text-slate-600">נשלח על ידי {request.submittedBy.fullName}</p>
                       </div>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge tone="warning">ממתין</Badge>
-                        <Badge tone={status.tone}>{status.label}</Badge>
-                      </div>
+                      <Badge tone="warning">ממתין</Badge>
                     </div>
-                    <p className="mt-3 text-sm leading-7 text-slate-700">{opening.summary}</p>
-                    <div className="mt-4 grid gap-3 md:grid-cols-2">
-                      <div className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm">
-                        <p className="text-xs font-semibold text-slate-500">מועד ועדה</p>
-                        <p className="mt-1 font-semibold text-ink">{formatDate(opening.committeeDate)}</p>
-                      </div>
-                      <div className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm">
-                        <p className="text-xs font-semibold text-slate-500">נוצר על ידי</p>
-                        <p className="mt-1 font-semibold text-ink">
-                          {opening.createdBy?.fullName ?? "נציג/ה לא זמין/ה"}
-                        </p>
-                      </div>
-                    </div>
-                    <OpeningReviewForm openingId={opening.id} />
+                    <p className="mt-3 text-sm leading-7 text-slate-700">{request.summary ?? "עדכון עמוד מחלקה"}</p>
+                    <DepartmentChangeReviewForm requestId={request.id} />
                   </div>
-                );
-              })
-            )}
-          </div>
-        </Card>
-      </section>
+                ))
+              )}
+            </div>
+          </section>
 
-      <section className="grid gap-6 xl:grid-cols-2">
-        <Card>
-          <h2 className="text-xl font-bold text-ink">שינויי מחלקה שממתינים לאישור</h2>
-          <div className="mt-4 space-y-5">
-            {data.pendingDepartmentChangeRequests.length === 0 ? (
-              <p className="text-sm text-slate-600">אין כרגע שינויי מחלקה שממתינים לטיפול.</p>
-            ) : (
-              data.pendingDepartmentChangeRequests.map((request) => (
-                <div key={request.id} className="rounded-2xl bg-brand-50 p-4">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <p className="font-semibold text-ink">
-                        {request.department.institution.name} · {request.department.name}
-                      </p>
-                      <p className="text-sm text-slate-600">
-                        נשלח על ידי {request.submittedBy.fullName}
-                      </p>
+          <section className="space-y-5">
+            <div>
+              <h3 className="text-base font-black text-ink">בקשות נציגות מחלקה</h3>
+              <div className="mt-4 space-y-3">
+                {data.pendingRepresentativeRequests.length === 0 ? (
+                  <QueueEmpty>אין כרגע בקשות נציגות ממתינות.</QueueEmpty>
+                ) : (
+                  data.pendingRepresentativeRequests.map((request) => (
+                    <div key={request.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
+                      <p className="font-bold text-ink">{request.department.institution.name} · {request.department.name}</p>
+                      <p>{request.requesterName} · {request.requesterEmail} · {request.requesterPhone}</p>
+                      <Badge tone="warning">ממתין לאישור</Badge>
+                      <RepresentativeRequestReviewForm requestId={request.id} />
                     </div>
-                    <Badge tone="warning">ממתין</Badge>
-                  </div>
-                  <p className="mt-3 text-sm leading-7 text-slate-700">
-                    {request.summary ?? "עדכון עמוד מחלקה"}
-                  </p>
-                  <DepartmentChangeReviewForm requestId={request.id} />
+                  ))
+                )}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-base font-black text-ink">דראפטים מסריקת אתרים</h3>
+              <div className="mt-4 space-y-3">
+                {data.pendingScrapeRevisions.length === 0 ? (
+                  <QueueEmpty>אין כרגע דראפטים מסריקה.</QueueEmpty>
+                ) : (
+                  data.pendingScrapeRevisions.map((revision) => (
+                    <div key={revision.id} className="rounded-2xl bg-brand-50 p-4 text-sm leading-7 text-slate-700">
+                      <p className="font-bold text-ink">{revision.department.institution.name} · {revision.department.name}</p>
+                      <p className="truncate text-xs text-slate-500">{revision.sourceUrl}</p>
+                      <p className="text-xs font-semibold text-slate-500">{formatDate(revision.createdAt)}</p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          </section>
+        </div>
+      </AdminAccordionSection>
+
+      <AdminAccordionSection
+        title="ייבוא וריענון נתונים"
+        description="CSV, ריענון אתרי מחלקות, DUNS100 ו-OpenAlex. הסורקים אינם רצים בטעינת עמודים ציבוריים."
+      >
+        <div className="space-y-5">
+          <DataRefreshPanels
+            rowLogs={data.masterImportRowLogs.map((log) => ({
+              id: log.id,
+              sourceFile: log.sourceFile,
+              target: log.target,
+              rowNumber: log.rowNumber,
+              status: log.status,
+              warningsJson: log.warningsJson,
+              errorsJson: log.errorsJson
+            }))}
+            mappingRows={data.openAlexMappingStatus}
+            researchMetrics={data.researchMetrics.map((metric) => ({
+              id: metric.id,
+              year: metric.year,
+              publicationsCount: metric.publicationsCount,
+              confidenceScore: metric.confidenceScore,
+              needsMapping: metric.needsMapping,
+              isAmbiguous: metric.isAmbiguous,
+              department: {
+                name: metric.department.name,
+                institution: {
+                  name: metric.department.institution.name
+                },
+                specialty: {
+                  name: metric.department.specialty.name
+                }
+              }
+            }))}
+            openAlexRunLogs={data.openAlexRunLogs.map((log) => ({
+              id: log.id,
+              action: log.action,
+              createdAt: log.createdAt,
+              metadata: log.metadata,
+              actor: log.actor ? { fullName: log.actor.fullName } : null
+            }))}
+            duns100RunLogs={data.duns100RunLogs.map((log) => ({
+              id: log.id,
+              action: log.action,
+              createdAt: log.createdAt,
+              metadata: log.metadata,
+              actor: log.actor ? { fullName: log.actor.fullName } : null
+            }))}
+            crawlerCoverage={data.crawlerCoverage}
+          />
+
+          <DunsImportPanel
+            jobs={data.dataImportJobs.map((job) => ({
+              id: job.id,
+              rootUrl: job.rootUrl,
+              status: job.status,
+              maxPages: job.maxPages,
+              yearsDepth: job.yearsDepth,
+              progressJson: job.progressJson,
+              errorMessage: job.errorMessage,
+              batchId: job.batchId
+            }))}
+            institutions={data.institutions.map((institution) => ({
+              id: institution.id,
+              name: institution.name
+            }))}
+            specialties={data.specialties.map((specialty) => ({
+              id: specialty.id,
+              name: specialty.name
+            }))}
+            departments={data.departments.map((department) => ({
+              id: department.id,
+              name: `${department.institution.name} · ${department.specialty.name} · ${department.name}`,
+              institutionId: department.institutionId,
+              specialtyId: department.specialtyId
+            }))}
+            batches={data.dunsImportBatches.map((batch) => ({
+              id: batch.id,
+              sourceUrl: batch.sourceUrl,
+              sourceType: batch.sourceType,
+              target: batch.target,
+              extractionInstruction: batch.extractionInstruction,
+              status: batch.status,
+              parsedJson: batch.parsedJson,
+              createdAt: batch.createdAt,
+              records: batch.records.map((record) => ({
+                id: record.id,
+                physicianName: record.physicianName,
+                roleTitle: record.roleTitle,
+                hospitalNameRaw: record.hospitalNameRaw,
+                specialtyRaw: record.specialtyRaw,
+                sourceSnippet: record.sourceSnippet,
+                sourceLabel: record.sourceLabel,
+                confidenceScore: record.confidenceScore,
+                normalizedHospitalId: record.normalizedHospitalId,
+                normalizedSpecialtyId: record.normalizedSpecialtyId,
+                normalizedDepartmentId: record.normalizedDepartmentId
+              }))
+            }))}
+          />
+        </div>
+      </AdminAccordionSection>
+
+      <AdminAccordionSection title="ניהול מחלקות, מוסדות ותחומים">
+        <div className="grid gap-6 xl:grid-cols-2">
+          <Card className="xl:col-span-2">
+            <h2 className="text-xl font-bold text-ink">ניהול דשבורד תחום התמחות</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              לכל תחום אפשר לבחור אילו מדדים יוצגו למשתמשים ובאיזה סדר.
+            </p>
+            <div className="mt-5">
+              <SpecialtyDashboardConfigForm
+                specialties={data.specialties.map((specialty) => ({
+                  id: specialty.id,
+                  name: specialty.name
+                }))}
+                configs={data.specialtyDashboardConfigs.map((config) => ({
+                  specialtyId: config.specialtyId,
+                  enabledMetricsJson: config.enabledMetricsJson,
+                  displayOrderJson: config.displayOrderJson
+                }))}
+              />
+            </div>
+          </Card>
+
+          <Card>
+            <h2 className="text-xl font-bold text-ink">מחלקות פעילות</h2>
+            <p className="mt-2 text-sm text-slate-600">
+              יצירת מחלקה חדשה עדיין נעשית מכאן; שינויים ציבוריים מנציג/ה עוברים אישור.
+            </p>
+            <div className="mt-4">
+              <DepartmentManagementForm
+                institutions={data.institutions.map((institution) => ({
+                  id: institution.id,
+                  name: institution.name,
+                  type: institution.type
+                }))}
+                specialties={data.specialties.map((specialty) => ({
+                  id: specialty.id,
+                  name: specialty.name
+                }))}
+              />
+            </div>
+            <AdminDepartmentDirectory
+              departments={data.departments.map((department) => ({
+                id: department.id,
+                name: department.name,
+                shortSummary: department.shortSummary,
+                institution: {
+                  name: department.institution.name
+                },
+                specialty: {
+                  id: department.specialty.id,
+                  name: department.specialty.name
+                }
+              }))}
+              specialties={data.specialties.map((specialty) => ({
+                id: specialty.id,
+                name: specialty.name
+              }))}
+            />
+          </Card>
+
+          <Card>
+            <h2 className="text-xl font-bold text-ink">ניהול מוסדות ותחומים</h2>
+            <div className="mt-5 space-y-6">
+              <div>
+                <p className="text-sm font-semibold text-ink">מוסדות</p>
+                <p className="mt-1 text-sm text-slate-600">בתי חולים, קופות חולים ומסגרות קהילה.</p>
+                <div className="mt-4">
+                  <InstitutionManagementForm />
                 </div>
-              ))
-            )}
-          </div>
-        </Card>
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-ink">תחומים</p>
+                <p className="mt-1 text-sm text-slate-600">מופיעים בחיפוש, בטפסים ובדפי המחלקות.</p>
+                <div className="mt-4">
+                  <SpecialtyManagementForm />
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </AdminAccordionSection>
 
-        <Card>
-          <h2 className="text-xl font-bold text-ink">מועמדויות אחרונות</h2>
-          <div className="mt-4 space-y-4">
-            {data.recentOpeningApplications.map((application) => (
+      <AdminAccordionSection title="נציגים ושיוכי מחלקות">
+        <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
+          <Card>
+            <SectionHeading
+              title="יצירת נציג/ת מחלקה"
+              description="נציגים נוצרים רק מכאן. אין מסלול הרשמה עצמי לתפקיד הזה."
+            />
+            <div className="mt-6">
+              <RepresentativeCreationForm
+                departments={data.departments.map((department) => ({
+                  id: department.id,
+                  name: department.name,
+                  specialty: {
+                    name: department.specialty.name
+                  },
+                  institution: {
+                    id: department.institution.id,
+                    type: department.institution.type,
+                    name: department.institution.name
+                  }
+                }))}
+              />
+            </div>
+          </Card>
+
+          <Card>
+            <SectionHeading
+              title="נציגים ושיוכי מחלקות"
+              description="לכל נציג/ה בוחרים קודם מוסד, ואז מחלקות מתוך אותו מוסד."
+            />
+            <div className="mt-6 space-y-5">
+              {data.representativeUsers.length === 0 ? (
+                <QueueEmpty>עדיין לא נוצרו נציגי מחלקה.</QueueEmpty>
+              ) : (
+                data.representativeUsers.map((user) => (
+                  <div key={user.id} className="rounded-2xl border border-brand-100 bg-brand-50/70 p-4">
+                    <div className="flex flex-wrap items-start justify-between gap-3">
+                      <div>
+                        <p className="font-semibold text-ink">{user.fullName}</p>
+                        <p className="text-sm text-slate-600">{user.email}</p>
+                        <p className="mt-1 text-sm text-slate-600">
+                          {user.representativeProfile?.title ?? "ללא טייטל ציבורי"}
+                        </p>
+                      </div>
+                      <Badge tone="success">נציג/ת מחלקה</Badge>
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {user.representativeAssignments.map((assignment) => (
+                        <span key={assignment.id} className="rounded-full border border-brand-100 bg-white px-3 py-2 text-xs font-semibold text-brand-900">
+                          {assignment.department.institution.name} · {assignment.department.name}
+                        </span>
+                      ))}
+                    </div>
+                    <RepresentativeAssignmentForm
+                      userId={user.id}
+                      initialDepartmentIds={user.representativeAssignments.map((assignment) => assignment.departmentId)}
+                      departments={data.departments.map((department) => ({
+                        id: department.id,
+                        name: department.name,
+                        institution: {
+                          id: department.institution.id,
+                          name: department.institution.name
+                        }
+                      }))}
+                    />
+                  </div>
+                ))
+              )}
+            </div>
+          </Card>
+        </div>
+      </AdminAccordionSection>
+
+      <AdminAccordionSection
+        title="מועמדויות אחרונות"
+        description="מועמדויות לתקנים נשארות נמוך יותר בעמוד בשלב הזה."
+        actionCount={data.stats.pendingOpeningApplications}
+      >
+        <div className="space-y-4">
+          {data.recentOpeningApplications.length === 0 ? (
+            <QueueEmpty>אין עדיין מועמדויות.</QueueEmpty>
+          ) : (
+            data.recentOpeningApplications.map((application) => (
               <div key={application.id} className="rounded-2xl bg-brand-50 p-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
@@ -424,9 +735,7 @@ export default async function AdminPage() {
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
                     {application.isTopMatch ? <Badge tone="warning">Top match</Badge> : null}
-                    {application.matchScore !== null ? (
-                      <Badge tone="success">התאמה {application.matchScore}/100</Badge>
-                    ) : null}
+                    {application.matchScore !== null ? <Badge tone="success">התאמה {application.matchScore}/100</Badge> : null}
                     <Badge tone="default">{openingApplicationStatusLabel(application.status)}</Badge>
                   </div>
                 </div>
@@ -442,11 +751,7 @@ export default async function AdminPage() {
                 ) : null}
                 <div className="mt-4 flex flex-wrap gap-3 text-xs">
                   {application.files.map((file) => (
-                    <Link
-                      key={file.id}
-                      href={`/api/files/${file.id}`}
-                      className="rounded-full border border-brand-200 px-3 py-2 font-semibold text-brand-800"
-                    >
+                    <Link key={file.id} href={`/api/files/${file.id}`} className="rounded-full border border-brand-200 px-3 py-2 font-semibold text-brand-800">
                       {file.originalName}
                     </Link>
                   ))}
@@ -457,320 +762,46 @@ export default async function AdminPage() {
                   currentStatus={application.status}
                 />
               </div>
-            ))}
-          </div>
-        </Card>
-      </section>
+            ))
+          )}
+        </div>
+      </AdminAccordionSection>
 
-      <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-        <Card>
-          <SectionHeading
-            title="יצירת נציג/ת מחלקה"
-            description="נציגים נוצרים רק מכאן. אין מסלול הרשמה עצמי לתפקיד הזה."
-          />
-          <div className="mt-6">
-            <RepresentativeCreationForm
-              departments={data.departments.map((department) => ({
-                id: department.id,
-                name: department.name,
-                specialty: {
-                  name: department.specialty.name
-                },
-                institution: {
-                  id: department.institution.id,
-                  type: department.institution.type,
-                  name: department.institution.name
-                }
-              }))}
-            />
-          </div>
-        </Card>
-
-        <Card>
-          <SectionHeading
-            title="נציגים ושיוכי מחלקות"
-            description="לכל נציג/ה בוחרים קודם מוסד, ואז מחלקות מתוך אותו מוסד. רק המחלקות האלו יהיו זמינות לפרסום ולהגשת שינויים."
-          />
-          <div className="mt-6 space-y-5">
-            {data.representativeUsers.length === 0 ? (
-              <p className="text-sm text-slate-600">עדיין לא נוצרו נציגי מחלקה.</p>
-            ) : (
-              data.representativeUsers.map((user) => (
-                <div key={user.id} className="rounded-2xl border border-brand-100 bg-brand-50/70 p-4">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div>
-                      <p className="font-semibold text-ink">{user.fullName}</p>
-                      <p className="text-sm text-slate-600">{user.email}</p>
-                      <p className="mt-1 text-sm text-slate-600">
-                        {user.representativeProfile?.title ?? "ללא טייטל ציבורי"}
-                      </p>
-                    </div>
-                    <Badge tone="success">נציג/ת מחלקה</Badge>
+      <AdminAccordionSection title="משתמשים אחרונים">
+        <div className="space-y-3">
+          {data.users
+            .filter((user) => user.roleKey !== "REPRESENTATIVE")
+            .map((user) => (
+              <div key={user.id} className="rounded-2xl bg-brand-50 p-4">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="font-semibold text-ink">{user.fullName}</p>
+                    <p className="text-sm text-slate-600">{user.email}</p>
                   </div>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {user.representativeAssignments.map((assignment) => (
-                      <span
-                        key={assignment.id}
-                        className="rounded-full border border-brand-100 bg-white px-3 py-2 text-xs font-semibold text-brand-900"
-                      >
-                        {assignment.department.institution.name} · {assignment.department.name}
-                      </span>
-                    ))}
+                  <div className="text-left">
+                    <Badge>{userRoleLabel(user.roleKey)}</Badge>
+                    <p className="mt-2 text-xs text-slate-500">{formatDate(user.createdAt)}</p>
                   </div>
-                  <RepresentativeAssignmentForm
-                    userId={user.id}
-                    initialDepartmentIds={user.representativeAssignments.map(
-                      (assignment) => assignment.departmentId
-                    )}
-                    departments={data.departments.map((department) => ({
-                      id: department.id,
-                      name: department.name,
-                      institution: {
-                        id: department.institution.id,
-                        name: department.institution.name
-                      }
-                    }))}
-                  />
                 </div>
-              ))
-            )}
-          </div>
-        </Card>
-      </section>
-
-      <section className="grid gap-6 xl:grid-cols-2">
-        <Card>
-          <h2 className="text-xl font-bold text-ink">משתמשים אחרונים</h2>
-          <div className="mt-4 space-y-3">
-            {data.users
-              .filter((user) => user.roleKey !== "REPRESENTATIVE")
-              .map((user) => (
-                <div key={user.id} className="rounded-2xl bg-brand-50 p-4">
-                  <div className="flex items-center justify-between gap-4">
-                    <div>
-                      <p className="font-semibold text-ink">{user.fullName}</p>
-                      <p className="text-sm text-slate-600">{user.email}</p>
-                    </div>
-                    <div className="text-left">
-                      <Badge>{userRoleLabel(user.roleKey)}</Badge>
-                      <p className="mt-2 text-xs text-slate-500">{formatDate(user.createdAt)}</p>
-                    </div>
-                  </div>
-                  <UserRoleForm
-                    userId={user.id}
-                    currentRole={user.roleKey as "STUDENT" | "RESIDENT" | "ADMIN"}
-                  />
-                </div>
-              ))}
-          </div>
-        </Card>
-
-        <Card>
-          <h2 className="text-xl font-bold text-ink">לוג פעילות</h2>
-          <div className="mt-4 space-y-3">
-            {data.auditLogs.map((log) => (
-              <div key={log.id} className="rounded-2xl bg-brand-50 p-4">
-                <p className="font-semibold text-ink">{log.action}</p>
-                <p className="mt-1 text-sm text-slate-600">
-                  {log.actor?.fullName ?? "מערכת"} · {log.entityType}
-                </p>
-                <p className="mt-2 text-xs text-slate-500">{formatDate(log.createdAt)}</p>
+                <UserRoleForm userId={user.id} currentRole={user.roleKey as "STUDENT" | "RESIDENT" | "ADMIN"} />
               </div>
             ))}
-          </div>
-        </Card>
-      </section>
+        </div>
+      </AdminAccordionSection>
 
-      <section className="grid gap-6 xl:grid-cols-2">
-        <Card className="xl:col-span-2">
-          <h2 className="text-xl font-bold text-ink">ניהול דשבורד תחום התמחות</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-600">
-            לכל תחום אפשר לבחור אילו מדדים יוצגו למשתמשים ובאיזה סדר. מדדים שלא נבחרו לא
-            יוצגו בציבור.
-          </p>
-          <div className="mt-5">
-            <SpecialtyDashboardConfigForm
-              specialties={data.specialties.map((specialty) => ({
-                id: specialty.id,
-                name: specialty.name
-              }))}
-              configs={data.specialtyDashboardConfigs.map((config) => ({
-                specialtyId: config.specialtyId,
-                enabledMetricsJson: config.enabledMetricsJson,
-                displayOrderJson: config.displayOrderJson
-              }))}
-            />
-          </div>
-        </Card>
-
-        <Card className="xl:col-span-2">
-          <h2 className="text-xl font-bold text-ink">ייבוא נתונים</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-600">
-            ייבוא גלובלי מתוך סורק DUNS100 או ממקורות אחרים. הנתונים נשמרים כדראפט לבדיקה ולא מתפרסמים
-            לפני אישור אדמין.
-          </p>
-          <div className="mt-5">
-            <DunsImportPanel
-              jobs={data.dataImportJobs.map((job) => ({
-                id: job.id,
-                rootUrl: job.rootUrl,
-                status: job.status,
-                maxPages: job.maxPages,
-                yearsDepth: job.yearsDepth,
-                progressJson: job.progressJson,
-                errorMessage: job.errorMessage,
-                batchId: job.batchId
-              }))}
-              institutions={data.institutions.map((institution) => ({
-                id: institution.id,
-                name: institution.name
-              }))}
-              specialties={data.specialties.map((specialty) => ({
-                id: specialty.id,
-                name: specialty.name
-              }))}
-              departments={data.departments.map((department) => ({
-                id: department.id,
-                name: `${department.institution.name} · ${department.specialty.name} · ${department.name}`,
-                institutionId: department.institutionId,
-                specialtyId: department.specialtyId
-              }))}
-              batches={data.dunsImportBatches.map((batch) => ({
-                id: batch.id,
-                sourceUrl: batch.sourceUrl,
-                sourceType: batch.sourceType,
-                target: batch.target,
-                extractionInstruction: batch.extractionInstruction,
-                status: batch.status,
-                parsedJson: batch.parsedJson,
-                createdAt: batch.createdAt,
-                records: batch.records.map((record) => ({
-                  id: record.id,
-                  physicianName: record.physicianName,
-                  roleTitle: record.roleTitle,
-                  hospitalNameRaw: record.hospitalNameRaw,
-                  specialtyRaw: record.specialtyRaw,
-                  sourceSnippet: record.sourceSnippet,
-                  sourceLabel: record.sourceLabel,
-                  confidenceScore: record.confidenceScore,
-                  normalizedHospitalId: record.normalizedHospitalId,
-                  normalizedSpecialtyId: record.normalizedSpecialtyId,
-                  normalizedDepartmentId: record.normalizedDepartmentId
-                }))
-              }))}
-            />
-          </div>
-        </Card>
-
-        <Card className="xl:col-span-2">
-          <h2 className="text-xl font-bold text-ink">ייבוא CSV, ריענון אתרים ו-OpenAlex</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-600">
-            ייבוא MASTER_Spec ו-Master_Dept מתבצע דרך הפקודה npm run import:master-csv.
-            מכאן אפשר לראות לוגים, לפתוח דראפטים מריענון אתרים ולעדכן מדדי מחקר משוערים.
-          </p>
-          <div className="mt-5">
-            <DataRefreshPanels
-              rowLogs={data.masterImportRowLogs.map((log) => ({
-                id: log.id,
-                sourceFile: log.sourceFile,
-                target: log.target,
-                rowNumber: log.rowNumber,
-                status: log.status,
-                warningsJson: log.warningsJson,
-                errorsJson: log.errorsJson
-              }))}
-              mappingRows={data.openAlexMappingStatus}
-              researchMetrics={data.researchMetrics.map((metric) => ({
-                id: metric.id,
-                year: metric.year,
-                publicationsCount: metric.publicationsCount,
-                confidenceScore: metric.confidenceScore,
-                needsMapping: metric.needsMapping,
-                isAmbiguous: metric.isAmbiguous,
-                department: {
-                  name: metric.department.name,
-                  institution: {
-                    name: metric.department.institution.name
-                  },
-                  specialty: {
-                    name: metric.department.specialty.name
-                  }
-                }
-              }))}
-              openAlexRunLogs={data.openAlexRunLogs.map((log) => ({
-                id: log.id,
-                action: log.action,
-                createdAt: log.createdAt,
-                metadata: log.metadata,
-                actor: log.actor
-                  ? {
-                      fullName: log.actor.fullName
-                    }
-                  : null
-              }))}
-            />
-          </div>
-        </Card>
-
-        <Card>
-          <h2 className="text-xl font-bold text-ink">מחלקות פעילות</h2>
-          <p className="mt-2 text-sm text-slate-600">
-            יצירת מחלקה חדשה עדיין נעשית מכאן, אבל כל שינוי ציבורי שמגיע מנציג/ה יעבור קודם
-            לאישור אדמין.
-          </p>
-          <div className="mt-4">
-            <DepartmentManagementForm
-              institutions={data.institutions.map((institution) => ({
-                id: institution.id,
-                name: institution.name,
-                type: institution.type
-              }))}
-              specialties={data.specialties.map((specialty) => ({
-                id: specialty.id,
-                name: specialty.name
-              }))}
-            />
-          </div>
-          <AdminDepartmentDirectory
-            departments={data.departments.map((department) => ({
-              id: department.id,
-              name: department.name,
-              shortSummary: department.shortSummary,
-              institution: {
-                name: department.institution.name
-              },
-              specialty: {
-                id: department.specialty.id,
-                name: department.specialty.name
-              }
-            }))}
-            specialties={data.specialties.map((specialty) => ({
-              id: specialty.id,
-              name: specialty.name
-            }))}
-          />
-        </Card>
-
-        <Card>
-          <h2 className="text-xl font-bold text-ink">ניהול מוסדות ותחומים</h2>
-          <div className="mt-5 space-y-6">
-            <div>
-              <p className="text-sm font-semibold text-ink">מוסדות</p>
-              <p className="mt-1 text-sm text-slate-600">בתי חולים, קופות חולים ומסגרות קהילה.</p>
-              <div className="mt-4">
-                <InstitutionManagementForm />
-              </div>
+      <AdminAccordionSection title="לוג פעילות">
+        <div className="space-y-3">
+          {data.auditLogs.map((log) => (
+            <div key={log.id} className="rounded-2xl bg-brand-50 p-4">
+              <p className="font-semibold text-ink">{log.action}</p>
+              <p className="mt-1 text-sm text-slate-600">
+                {log.actor?.fullName ?? "מערכת"} · {log.entityType}
+              </p>
+              <p className="mt-2 text-xs text-slate-500">{formatDate(log.createdAt)}</p>
             </div>
-            <div>
-              <p className="text-sm font-semibold text-ink">תחומים</p>
-              <p className="mt-1 text-sm text-slate-600">מופיעים בחיפוש, בטפסים ובדפי המחלקות.</p>
-              <div className="mt-4">
-                <SpecialtyManagementForm />
-              </div>
-            </div>
-          </div>
-        </Card>
-      </section>
+          ))}
+        </div>
+      </AdminAccordionSection>
     </PageShell>
   );
 }

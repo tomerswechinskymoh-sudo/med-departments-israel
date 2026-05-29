@@ -47,7 +47,7 @@ type ResearchMetric = {
   };
 };
 
-type OpenAlexRunLog = {
+type CrawlerRunLog = {
   id: string;
   action: string;
   createdAt: string | Date;
@@ -57,7 +57,7 @@ type OpenAlexRunLog = {
   } | null;
 };
 
-type OpenAlexBulkResponse = {
+type CrawlerBulkResponse = {
   error?: string;
   message?: string;
   processed?: number;
@@ -67,6 +67,19 @@ type OpenAlexBulkResponse = {
   results?: Array<{
     status?: string;
   }>;
+};
+
+type CrawlerProgress = {
+  processed: number;
+  total: number;
+  batches: number;
+  failed: number;
+};
+
+type CrawlerCoverage = {
+  totalImportedDepartments: number;
+  duns100Covered: number;
+  openAlexCovered: number;
 };
 
 function toneForStatus(status: string) {
@@ -97,29 +110,31 @@ export function DataRefreshPanels({
   rowLogs,
   mappingRows,
   researchMetrics,
-  openAlexRunLogs = []
+  openAlexRunLogs = [],
+  duns100RunLogs = [],
+  crawlerCoverage
 }: {
   rowLogs: RowLog[];
   mappingRows: MappingRow[];
   researchMetrics: ResearchMetric[];
-  openAlexRunLogs?: OpenAlexRunLog[];
+  openAlexRunLogs?: CrawlerRunLog[];
+  duns100RunLogs?: CrawlerRunLog[];
+  crawlerCoverage: CrawlerCoverage;
 }) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [busyAction, setBusyAction] = useState<"websites" | "openalex" | null>(null);
-  const [openAlexProgress, setOpenAlexProgress] = useState<{
-    processed: number;
-    total: number;
-    batches: number;
-    failed: number;
-  } | null>(null);
+  const [busyAction, setBusyAction] = useState<"websites" | "openalex" | "duns100" | null>(null);
+  const [crawlerProgress, setCrawlerProgress] = useState<{
+    openalex?: CrawlerProgress;
+    duns100?: CrawlerProgress;
+  }>({});
 
   async function runWebsiteRefresh() {
     setBusyAction("websites");
     setMessage(null);
     setError(null);
-    setOpenAlexProgress(null);
+    setCrawlerProgress({});
     const response = await fetch("/api/admin/department-website-refresh", {
       method: "POST",
       headers: {
@@ -139,7 +154,14 @@ export function DataRefreshPanels({
     router.refresh();
   }
 
-  async function runOpenAlexRefreshAll() {
+  async function runCrawlerRefreshAll(input: {
+    key: "openalex" | "duns100";
+    url: string;
+    label: string;
+    failedLabel: string;
+    delayMs: number;
+    years?: number[];
+  }) {
     const batchSize = 3;
     let cursor: string | null = null;
     let done = false;
@@ -148,13 +170,16 @@ export function DataRefreshPanels({
     let total = 0;
     let batches = 0;
 
-    setBusyAction("openalex");
+    setBusyAction(input.key === "openalex" ? "openalex" : "duns100");
     setMessage(null);
     setError(null);
-    setOpenAlexProgress({ processed: 0, total: 0, batches: 0, failed: 0 });
+    setCrawlerProgress((current) => ({
+      ...current,
+      [input.key]: { processed: 0, total: 0, batches: 0, failed: 0 }
+    }));
 
     while (!done) {
-      const response: Response = await fetch("/api/admin/research-metrics", {
+      const response: Response = await fetch(input.url, {
         method: "POST",
         headers: {
           "content-type": "application/json"
@@ -163,14 +188,15 @@ export function DataRefreshPanels({
           mode: "all",
           limit: batchSize,
           cursor,
-          delayMs: 500
+          delayMs: input.delayMs,
+          ...(input.years ? { years: input.years } : {})
         })
       });
-      const payload: OpenAlexBulkResponse = await response.json().catch(() => ({}));
+      const payload: CrawlerBulkResponse = await response.json().catch(() => ({}));
 
       if (!response.ok) {
         setBusyAction(null);
-        setError(payload.error ?? "ריענון OpenAlex נכשל.");
+        setError(payload.error ?? input.failedLabel);
         return;
       }
 
@@ -182,10 +208,13 @@ export function DataRefreshPanels({
         : 0;
       cursor = typeof payload.nextCursor === "string" ? payload.nextCursor : null;
       done = Boolean(payload.done) || !cursor;
-      setOpenAlexProgress({ processed, total, batches, failed });
+      setCrawlerProgress((current) => ({
+        ...current,
+        [input.key]: { processed, total, batches, failed }
+      }));
 
       if (done) {
-        setMessage(`ריענון OpenAlex הסתיים: ${processed}/${total || processed} מחלקות עובדו.`);
+        setMessage(`${input.label} הסתיים: ${processed}/${total || processed} מחלקות עובדו.`);
         break;
       }
     }
@@ -199,7 +228,99 @@ export function DataRefreshPanels({
       await runWebsiteRefresh();
       return;
     }
-    await runOpenAlexRefreshAll();
+    await runCrawlerRefreshAll({
+      key: "openalex",
+      url: "/api/admin/research-metrics",
+      label: "ריענון OpenAlex",
+      failedLabel: "ריענון OpenAlex נכשל.",
+      delayMs: 500
+    });
+  }
+
+  async function runDuns100RefreshAll() {
+    await runCrawlerRefreshAll({
+      key: "duns100",
+      url: "/api/admin/duns100-metrics",
+      label: "ריענון DUNS100",
+      failedLabel: "ריענון DUNS100 נכשל.",
+      delayMs: 700
+    });
+  }
+
+  function ProgressBlock({ progress }: { progress?: CrawlerProgress }) {
+    if (!progress) return null;
+
+    return (
+      <div className="mt-4 rounded-2xl border border-brand-100 bg-white px-4 py-3">
+        <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
+          <span className="font-black text-ink">
+            {progress.total
+              ? `${progress.processed}/${progress.total} מחלקות`
+              : `${progress.processed} מחלקות`}
+          </span>
+          <span className="text-slate-600">
+            {progress.batches} באצ׳ים · {progress.failed} כשלונות
+          </span>
+        </div>
+        <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+          <div
+            className="h-full rounded-full bg-brand-700 transition-all"
+            style={{
+              width: `${Math.min(
+                100,
+                progress.total ? (progress.processed / progress.total) * 100 : 5
+              )}%`
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  function RunLogSection({
+    title,
+    emptyText,
+    logs
+  }: {
+    title: string;
+    emptyText: string;
+    logs: CrawlerRunLog[];
+  }) {
+    return (
+      <section className="rounded-[1.5rem] border border-brand-100 bg-white p-4">
+        <p className="text-sm font-black text-ink">{title}</p>
+        <div className="mt-4 grid gap-2 md:grid-cols-2">
+          {logs.length === 0 ? (
+            <p className="text-sm text-slate-600">{emptyText}</p>
+          ) : (
+            logs.slice(0, 8).map((log) => {
+              const metadata = objectValue(log.metadata);
+              const results = Array.isArray(metadata.results) ? metadata.results : [];
+              const failures = results.filter(
+                (result) => objectValue(result).status === "failed"
+              ).length;
+
+              return (
+                <div key={log.id} className="rounded-2xl bg-slate-50 px-3 py-3 text-xs text-slate-700">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="font-bold text-ink">{formatRunDate(log.createdAt)}</span>
+                    <Badge tone={failures > 0 ? "warning" : "success"}>
+                      {metadata.done ? "completed" : "batch"}
+                    </Badge>
+                  </div>
+                  <p className="mt-1">
+                    עובדו {String(metadata.requested ?? results.length ?? 0)} מחלקות · כשלונות {failures}
+                  </p>
+                  {typeof metadata.totalImportedDepartments === "number" ? (
+                    <p className="mt-1">סה״כ מיובאות: {metadata.totalImportedDepartments}</p>
+                  ) : null}
+                </div>
+              );
+            })
+          )}
+        </div>
+      </section>
+    );
   }
 
   return (
@@ -226,38 +347,33 @@ export function DataRefreshPanels({
               <p className="mt-1 text-sm leading-6 text-slate-600">
                 שומר ספירת פרסומים שנתית משוערת בלבד, עם סטטוס מיפוי וביטחון.
               </p>
+              <p className="mt-2 text-xs font-black text-brand-900">
+                OpenAlex coverage {crawlerCoverage.openAlexCovered}/{crawlerCoverage.totalImportedDepartments}
+              </p>
             </div>
             <Button type="button" onClick={() => runAction("openalex")} disabled={busyAction !== null}>
-              {busyAction === "openalex" ? "מעדכן..." : "עדכן נתוני מחקר לכל המחלקות"}
+              {busyAction === "openalex" ? "מעדכן..." : "עדכן OpenAlex לכל המחלקות"}
             </Button>
           </div>
-          {openAlexProgress ? (
-            <div className="mt-4 rounded-2xl border border-brand-100 bg-white px-4 py-3">
-              <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
-                <span className="font-black text-ink">
-                  {openAlexProgress.total
-                    ? `${openAlexProgress.processed}/${openAlexProgress.total} מחלקות`
-                    : `${openAlexProgress.processed} מחלקות`}
-                </span>
-                <span className="text-slate-600">
-                  {openAlexProgress.batches} באצ׳ים · {openAlexProgress.failed} כשלונות
-                </span>
-              </div>
-              <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
-                <div
-                  className="h-full rounded-full bg-brand-700 transition-all"
-                  style={{
-                    width: `${Math.min(
-                      100,
-                      openAlexProgress.total
-                        ? (openAlexProgress.processed / openAlexProgress.total) * 100
-                        : 5
-                    )}%`
-                  }}
-                />
-              </div>
+          <ProgressBlock progress={crawlerProgress.openalex} />
+        </section>
+
+        <section className="rounded-[1.5rem] border border-slate-100 bg-slate-50 p-4 xl:col-span-2">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-base font-black text-ink">ריענון DUNS100</p>
+              <p className="mt-1 text-sm leading-6 text-slate-600">
+                סורק דפי DUNS100 ציבוריים, מתאים מוסד ותחום ושומר ספירת רופאים משוערת למחלקות מיובאות.
+              </p>
+              <p className="mt-2 text-xs font-black text-brand-900">
+                DUNS100 coverage {crawlerCoverage.duns100Covered}/{crawlerCoverage.totalImportedDepartments}
+              </p>
             </div>
-          ) : null}
+            <Button type="button" onClick={runDuns100RefreshAll} disabled={busyAction !== null}>
+              {busyAction === "duns100" ? "מעדכן..." : "עדכן DUNS100 לכל המחלקות"}
+            </Button>
+          </div>
+          <ProgressBlock progress={crawlerProgress.duns100} />
         </section>
       </div>
 
@@ -343,39 +459,16 @@ export function DataRefreshPanels({
         </div>
       </section>
 
-      <section className="rounded-[1.5rem] border border-brand-100 bg-white p-4">
-        <p className="text-sm font-black text-ink">לוג ריענוני OpenAlex</p>
-        <div className="mt-4 grid gap-2 md:grid-cols-2">
-          {openAlexRunLogs.length === 0 ? (
-            <p className="text-sm text-slate-600">אין עדיין ריענוני OpenAlex בלוג.</p>
-          ) : (
-            openAlexRunLogs.slice(0, 8).map((log) => {
-              const metadata = objectValue(log.metadata);
-              const results = Array.isArray(metadata.results) ? metadata.results : [];
-              const failures = results.filter(
-                (result) => objectValue(result).status === "failed"
-              ).length;
-
-              return (
-                <div key={log.id} className="rounded-2xl bg-slate-50 px-3 py-3 text-xs text-slate-700">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="font-bold text-ink">{formatRunDate(log.createdAt)}</span>
-                    <Badge tone={failures > 0 ? "warning" : "success"}>
-                      {metadata.done ? "completed" : "batch"}
-                    </Badge>
-                  </div>
-                  <p className="mt-1">
-                    עובדו {String(metadata.requested ?? results.length ?? 0)} מחלקות · כשלונות {failures}
-                  </p>
-                  {typeof metadata.totalImportedDepartments === "number" ? (
-                    <p className="mt-1">סה״כ מיובאות: {metadata.totalImportedDepartments}</p>
-                  ) : null}
-                </div>
-              );
-            })
-          )}
-        </div>
-      </section>
+      <RunLogSection
+        title="לוג ריענוני OpenAlex"
+        emptyText="אין עדיין ריענוני OpenAlex בלוג."
+        logs={openAlexRunLogs}
+      />
+      <RunLogSection
+        title="לוג ריענוני DUNS100"
+        emptyText="אין עדיין ריענוני DUNS100 בלוג."
+        logs={duns100RunLogs}
+      />
     </div>
   );
 }

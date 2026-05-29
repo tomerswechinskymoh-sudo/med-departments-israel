@@ -235,6 +235,23 @@ function importedMetricValue(
   return metric?.value ?? null;
 }
 
+function externalMetricValue(
+  metrics: Array<{ metricKey: string; value: number | null; sourceName?: string | null; approved?: boolean }>,
+  sourceName: string,
+  ...metricKeys: string[]
+) {
+  const metric = metrics.find(
+    (item) =>
+      metricKeys.includes(item.metricKey) &&
+      item.sourceName === sourceName &&
+      item.approved !== false &&
+      typeof item.value === "number" &&
+      Number.isFinite(item.value)
+  );
+
+  return metric?.value ?? null;
+}
+
 function latestYearlyMetricValue(
   metrics: Array<{ metricKey: string; year: number; value: number | null }>,
   metricKey: string,
@@ -754,6 +771,17 @@ export async function getDirectoryData(
           contentStatus: ContentStatus.PUBLISHED
         }
       },
+      externalMetrics: {
+        where: {
+          approved: true
+        },
+        select: {
+          metricKey: true,
+          value: true,
+          sourceName: true,
+          approved: true
+        }
+      },
       metrics: {
         select: {
           metricKey: true,
@@ -879,7 +907,9 @@ export async function getDirectoryData(
     const expectedOpeningsCount =
       importedMetricValue(department.metrics, "expectedOpenings2026") ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { year: 2026 });
-    const duns100PhysiciansCount = importedMetricValue(department.metrics, "duns100PhysiciansCount");
+    const duns100PhysiciansCount =
+      importedMetricValue(department.metrics, "duns100PhysiciansCount") ??
+      externalMetricValue(department.externalMetrics, "DUNS100", "duns100PhysiciansCount");
     const seniorPhysiciansCount = importedMetricValue(department.metrics, "seniorPhysiciansCount");
     const latestResearchMetric = department.researchMetrics[0] ?? null;
     const hasImportedResearch =
@@ -1042,7 +1072,8 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
             metricKey: true,
             value: true,
             sourceName: true,
-            approved: true
+            approved: true,
+            updatedAt: true
           }
         },
         metrics: {
@@ -1230,7 +1261,8 @@ export async function getDepartmentPageData(
               metricKey: true,
               value: true,
               sourceName: true,
-              approved: true
+              approved: true,
+              updatedAt: true
             }
           },
           externalPeople: {
@@ -1259,7 +1291,8 @@ export async function getDepartmentPageData(
           metricKey: true,
           value: true,
           sourceName: true,
-          approved: true
+          approved: true,
+          updatedAt: true
         }
       },
       externalPeople: {
@@ -1863,6 +1896,8 @@ export async function getAdminDashboardData() {
     researchMetrics,
     openAlexMappingStatus,
     openAlexRunLogs,
+    duns100RunLogs,
+    crawlerCoverage,
     auditLogs
   ] = await Promise.all([
     prisma.$transaction([
@@ -1936,8 +1971,7 @@ export async function getAdminDashboardData() {
       },
       orderBy: {
         verificationSubmittedAt: "asc"
-      },
-      take: 20
+      }
     }),
     prisma.reviewSubmission.findMany({
       where: {
@@ -2104,8 +2138,7 @@ export async function getAdminDashboardData() {
       },
       orderBy: {
         createdAt: "desc"
-      },
-      take: 8
+      }
     }),
     prisma.departmentRepresentativeRequest.findMany({
       where: {
@@ -2215,6 +2248,62 @@ export async function getAdminDashboardData() {
       take: 12
     }),
     prisma.auditLog.findMany({
+      where: {
+        action: {
+          startsWith: "duns100."
+        }
+      },
+      include: {
+        actor: true
+      },
+      orderBy: {
+        createdAt: "desc"
+      },
+      take: 12
+    }),
+    (async () => {
+      const importedWhere = {
+        importStableKey: {
+          not: null
+        }
+      } as const;
+      const [totalImportedDepartments, dunsCovered, openAlexCovered] = await Promise.all([
+        prisma.department.count({
+          where: importedWhere
+        }),
+        prisma.departmentExternalMetric.count({
+          where: {
+            metricKey: "duns100PhysiciansCount",
+            sourceName: "DUNS100",
+            approved: true,
+            department: {
+              is: importedWhere
+            }
+          }
+        }),
+        prisma.departmentResearchMetric.findMany({
+          where: {
+            source: "OpenAlex",
+            needsMapping: false,
+            publicationsCount: {
+              not: null
+            },
+            department: importedWhere
+          },
+          distinct: ["departmentId"],
+          select: {
+            departmentId: true
+          }
+        })
+      ]);
+
+      return {
+        totalImportedDepartments,
+        duns100Covered: dunsCovered,
+        openAlexCovered: openAlexCovered.length
+      };
+    })(),
+    prisma.auditLog.findMany({
       include: {
         actor: true
       },
@@ -2258,6 +2347,8 @@ export async function getAdminDashboardData() {
     researchMetrics,
     openAlexMappingStatus,
     openAlexRunLogs,
+    duns100RunLogs,
+    crawlerCoverage,
     auditLogs
   };
 }

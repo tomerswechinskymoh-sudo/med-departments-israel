@@ -812,6 +812,8 @@ model DepartmentExternalMetric {
   value           Float
   sourceName      String           @map("source_name")
   sourceBatchId   String?          @map("source_batch_id")
+  sourceUrl       String?          @map("source_url")
+  queryUsed       String?          @map("query_used")
   confidenceScore Float?           @map("confidence_score")
   approved        Boolean          @default(false)
   createdAt       DateTime         @default(now()) @map("created_at")

@@ -1146,7 +1146,19 @@ export default async function DepartmentDetailsPage({
     "מספר המתמחים שאמורים לסיים השנה ע״ב אורך ההתמחות החציוני"
   );
   const electiveDemandMetric = findImportedMetric(importedDepartmentMetrics, "medianElectiveDemand");
-  const duns100Metric = findImportedMetric(importedDepartmentMetrics, "duns100PhysiciansCount");
+  const importedDuns100Metric = findImportedMetric(importedDepartmentMetrics, "duns100PhysiciansCount");
+  const externalDuns100Metric = metricRecord("duns100PhysiciansCount");
+  const duns100Value = importedDuns100Metric
+    ? formatImportedMetricValue(importedDuns100Metric)
+    : externalDuns100Metric
+      ? externalDuns100Metric.value
+      : null;
+  const duns100LastUpdated = importedDuns100Metric?.lastUpdated ?? externalDuns100Metric?.updatedAt;
+  const duns100SourceLabel = importedDuns100Metric
+    ? importedSourceLabel(importedDuns100Metric, "DUNS100")
+    : externalDuns100Metric
+      ? sourceLabelFromExternalMetricSource(externalDuns100Metric.sourceName)
+      : "DUNS100";
   const publicationsValue =
     latestOpenAlexResearchMetric?.publicationsCount ??
     (publicationMetric ? formatImportedMetricValue(publicationMetric) : null);
@@ -1568,10 +1580,10 @@ export default async function DepartmentDetailsPage({
               />
               <QuickHighlightCard
                 label="DUNS100"
-                value={duns100Metric ? formatImportedMetricValue(duns100Metric) : null}
-                sourceLabel="DUNS100"
-                tooltip="רופאים שנספרו מנתוני DUNS100 מיובאים."
-                lastUpdated={duns100Metric?.lastUpdated}
+                value={duns100Value}
+                sourceLabel={duns100SourceLabel}
+                tooltip="רופאים שנספרו מנתוני DUNS100 ומוצגים כאינדיקציה לפעילות/בולטות מקצועית."
+                lastUpdated={duns100LastUpdated}
               />
               <QuickHighlightCard
                 label="שכר מרכז"
