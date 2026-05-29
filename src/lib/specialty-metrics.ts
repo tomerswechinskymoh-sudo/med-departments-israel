@@ -7,6 +7,7 @@ import {
 } from "@/lib/metric-display";
 import {
   resolveImportedMetric,
+  resolveImportedSalaryMetrics,
   resolveImportedYearlyMetric,
   resolveMetricDisplayMetadata
 } from "@/lib/imported-metric-resolver";
@@ -219,6 +220,17 @@ function formatMetricValue(metric: SpecialtyImportedMetric | SpecialtyImportedYe
   }
 
   return formatNumberWithUnit(metric.value, metric.unit);
+}
+
+function formatSalaryMetricValue(metric: SpecialtyImportedMetric | null | undefined) {
+  if (!metric) return null;
+  if (metric.rawValue?.trim()) return metric.rawValue.trim();
+  if (typeof metric.value !== "number" || !Number.isFinite(metric.value)) return null;
+
+  return new Intl.NumberFormat("he-IL", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(metric.value);
 }
 
 function sourceLabelFromNotes(sourceNotes?: string | null) {
@@ -620,13 +632,23 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "text",
     sourceLabel: "דיווחי מתמחים משרד הבריאות",
     calculate: (_departments, context) => {
-      const gapMetric = contextMetric(context, "פער_שכר_פריפריה", "peripherySalaryGap");
-      const centerMetric = contextMetric(context, "שכר_לא_פריפריה", "centerSalary");
-      const peripheryMetric = contextMetric(context, "שכר_פריפריה", "שכר_פריפריה 1", "peripherySalary");
+      const {
+        centerSalary: centerMetric,
+        peripherySalary: peripheryMetric,
+        salaryGap: gapMetric
+      } = resolveImportedSalaryMetrics(context.specialtyMetrics ?? [], {
+        entityLabel: "specialty salary dashboard",
+        logMissing: true
+      });
       const displayGap =
-        (gapMetric ? formatMetricValue(gapMetric) : null) ??
+        formatSalaryMetricValue(gapMetric) ??
         (typeof centerMetric?.value === "number" && typeof peripheryMetric?.value === "number"
-          ? formatNumberWithUnit(peripheryMetric.value - centerMetric.value, gapMetric?.unit ?? "currency")
+          ? formatSalaryMetricValue({
+              metricKey: "פער_שכר_פריפריה",
+              value: peripheryMetric.value - centerMetric.value,
+              rawValue: null,
+              unit: "currency"
+            })
           : null);
 
       if (!displayGap) {
@@ -655,8 +677,11 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "text",
     sourceLabel: "סימולטור שכר של הר״י",
     calculate: (_departments, context) => {
-      const centerMetric = contextMetric(context, "שכר_לא_פריפריה", "centerSalary");
-      const displayValue = centerMetric ? formatMetricValue(centerMetric) : null;
+      const { centerSalary: centerMetric } = resolveImportedSalaryMetrics(context.specialtyMetrics ?? [], {
+        entityLabel: "specialty center salary",
+        logMissing: true
+      });
+      const displayValue = formatSalaryMetricValue(centerMetric);
 
       return displayValue
         ? {
@@ -674,8 +699,11 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     unit: "text",
     sourceLabel: "סימולטור שכר של הר״י",
     calculate: (_departments, context) => {
-      const peripheryMetric = contextMetric(context, "שכר_פריפריה", "שכר_פריפריה 1", "peripherySalary");
-      const displayValue = peripheryMetric ? formatMetricValue(peripheryMetric) : null;
+      const { peripherySalary: peripheryMetric } = resolveImportedSalaryMetrics(context.specialtyMetrics ?? [], {
+        entityLabel: "specialty periphery salary",
+        logMissing: true
+      });
+      const displayValue = formatSalaryMetricValue(peripheryMetric);
 
       return displayValue
         ? {

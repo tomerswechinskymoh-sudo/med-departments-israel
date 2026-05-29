@@ -24,6 +24,7 @@ import {
   metricFieldLabel,
   resolveImportedMetric,
   resolveImportedMetricNumber,
+  resolveImportedSalaryMetrics,
   resolveImportedYearlyMetric,
   resolveMetricDisplayMetadata
 } from "@/lib/imported-metric-resolver";
@@ -1290,29 +1291,23 @@ export default async function DepartmentDetailsPage({
   const centerSalaryMeta = departmentMetricMetadata(dataExplanations, "שכר_לא_פריפריה", "centerSalary");
   const peripherySalaryMeta = departmentMetricMetadata(dataExplanations, "שכר_פריפריה", "peripherySalary");
   const salaryGapMeta = departmentMetricMetadata(dataExplanations, "פער_שכר_פריפריה", "peripherySalaryGap");
-  const departmentCenterSalaryMetric = findImportedMetric(
-    importedDepartmentMetrics,
-    "שכר_לא_פריפריה",
-    "centerSalary"
-  );
-  const departmentPeripherySalaryMetric = findImportedMetric(
-    importedDepartmentMetrics,
-    "שכר_פריפריה",
-    "שכר_פריפריה 1",
-    "peripherySalary"
-  );
-  const departmentSalaryGapMetric = findImportedMetric(
-    importedDepartmentMetrics,
-    "פער_שכר_פריפריה",
-    "peripherySalaryGap"
-  );
+  const departmentSalaryMetrics = resolveImportedSalaryMetrics(importedDepartmentMetrics, {
+    entityLabel: `${department.institution.name} ${department.name}`,
+    logMissing: true
+  });
+  const specialtySalaryMetrics = resolveImportedSalaryMetrics(importedSpecialtyMetrics, {
+    entityLabel: department.specialty.name,
+    logMissing: true
+  });
+  const departmentCenterSalaryMetric = departmentSalaryMetrics.centerSalary;
+  const departmentPeripherySalaryMetric = departmentSalaryMetrics.peripherySalary;
+  const departmentSalaryGapMetric = departmentSalaryMetrics.salaryGap;
   const centerSalaryMetric =
-    departmentCenterSalaryMetric ?? findImportedMetric(importedSpecialtyMetrics, "שכר_לא_פריפריה", "centerSalary");
+    departmentCenterSalaryMetric ?? specialtySalaryMetrics.centerSalary;
   const peripherySalaryMetric =
-    departmentPeripherySalaryMetric ??
-    findImportedMetric(importedSpecialtyMetrics, "שכר_פריפריה", "שכר_פריפריה 1", "peripherySalary");
+    departmentPeripherySalaryMetric ?? specialtySalaryMetrics.peripherySalary;
   const salaryGapMetric =
-    departmentSalaryGapMetric ?? findImportedMetric(importedSpecialtyMetrics, "פער_שכר_פריפריה", "peripherySalaryGap");
+    departmentSalaryGapMetric ?? specialtySalaryMetrics.salaryGap;
   const salaryMetricType =
     departmentCenterSalaryMetric || departmentPeripherySalaryMetric || departmentSalaryGapMetric
       ? "נתון מחלקתי"

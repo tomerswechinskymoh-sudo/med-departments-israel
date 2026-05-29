@@ -13,6 +13,7 @@ import {
   metricFieldLabel,
   metricKeyCandidates,
   resolveImportedMetric,
+  resolveImportedSalaryMetrics,
   resolveImportedYearlyMetric,
   resolveMetricDisplayMetadata,
   type ImportedMetricLike,
@@ -140,6 +141,12 @@ const requiredYearlyCards = [2020, 2021, 2022, 2023, 2024].map((year) => ({
   year
 }));
 
+const expectedSalaryValues = {
+  centerSalary: "16,954.00",
+  peripherySalary: "19,965.92",
+  salaryGap: "3,011.92"
+};
+
 function normalizedValueCandidates(value: string) {
   return [value, readableLabelFromCriterion(value)].map(normalizeCriterion);
 }
@@ -218,6 +225,58 @@ function resolverCardReport(input: {
   });
 
   return [...metricReports, ...yearlyReports];
+}
+
+function salaryValue(metric: ImportedMetricLike | null | undefined) {
+  return metric?.rawValue?.trim() ?? (typeof metric?.value === "number" ? String(metric.value) : null);
+}
+
+function salaryVerificationReport(input: {
+  label: string;
+  metrics: ImportedMetricLike[];
+  dashboard?: Awaited<ReturnType<typeof getSpecialtyDashboardMetrics>> | null;
+}) {
+  const salaryMetrics = resolveImportedSalaryMetrics(input.metrics);
+  const dashboardValues = input.dashboard
+    ? {
+        centerSalary: input.dashboard.metrics.find((metric) => metric.key === "centerSalary")?.value ?? null,
+        peripherySalary: input.dashboard.metrics.find((metric) => metric.key === "peripherySalary")?.value ?? null,
+        salaryGap: input.dashboard.metrics.find((metric) => metric.key === "salaryGap")?.value ?? null
+      }
+    : null;
+
+  return {
+    label: input.label,
+    centerSalary: {
+      dbValue: salaryValue(salaryMetrics.centerSalary),
+      uiValue: dashboardValues?.centerSalary ?? salaryValue(salaryMetrics.centerSalary),
+      expected: expectedSalaryValues.centerSalary
+    },
+    peripherySalary: {
+      dbValue: salaryValue(salaryMetrics.peripherySalary),
+      uiValue: dashboardValues?.peripherySalary ?? salaryValue(salaryMetrics.peripherySalary),
+      expected: expectedSalaryValues.peripherySalary
+    },
+    salaryGap: {
+      dbValue: salaryValue(salaryMetrics.salaryGap),
+      uiValue: dashboardValues?.salaryGap ?? salaryValue(salaryMetrics.salaryGap),
+      expected: expectedSalaryValues.salaryGap
+    }
+  };
+}
+
+function salaryVerificationFailures(
+  report: ReturnType<typeof salaryVerificationReport>
+) {
+  return (["centerSalary", "peripherySalary", "salaryGap"] as const)
+    .map((key) => {
+      const row = report[key];
+      if (row.dbValue && !row.uiValue) return `${report.label} ${key} resolves missing`;
+      if (row.dbValue !== row.expected) return `${report.label} ${key} DB value mismatch`;
+      if (row.uiValue !== row.expected) return `${report.label} ${key} UI value mismatch`;
+      return null;
+    })
+    .filter((item): item is string => Boolean(item));
 }
 
 function auditDataExpRow(input: {
@@ -444,6 +503,28 @@ async function main() {
         }
       }
     }));
+  const salarySpecialty = await prisma.specialty.findFirst({
+    where: { name: "רפואת משפחה" },
+    select: {
+      id: true,
+      name: true,
+      metrics: {
+        where: {
+          metricKey: { in: ["centerSalary", "peripherySalary", "peripherySalaryGap"] }
+        },
+        select: {
+          metricKey: true,
+          label: true,
+          value: true,
+          rawValue: true,
+          unit: true,
+          sourceNotes: true,
+          lastUpdated: true
+        }
+      }
+    }
+  });
+  const salaryDashboard = salarySpecialty ? await getSpecialtyDashboardMetrics(salarySpecialty.id) : null;
 
   const auditRows = metadata.map((item) => {
     const displayedAs =
@@ -529,6 +610,24 @@ async function main() {
       .map((card) => `department resolver missed ${card.importedKey}`),
     !resolverSampleDepartment ? "resolver sample department אסיא רפואת המשפחה not found" : null
   ].filter((item): item is string => Boolean(item));
+  const salarySpecialtyReport = salarySpecialty
+    ? salaryVerificationReport({
+        label: "רפואת משפחה",
+        metrics: salarySpecialty.metrics,
+        dashboard: salaryDashboard
+      })
+    : null;
+  const salaryDepartmentReport = resolverSampleDepartment
+    ? salaryVerificationReport({
+        label: "אסיא רפואת משפחה",
+        metrics: resolverSampleDepartment.metrics
+      })
+    : null;
+  const salaryFailures = [
+    !salarySpecialtyReport ? "salary specialty רפואת משפחה not found" : null,
+    ...(salarySpecialtyReport ? salaryVerificationFailures(salarySpecialtyReport) : []),
+    ...(salaryDepartmentReport ? salaryVerificationFailures(salaryDepartmentReport) : [])
+  ].filter((item): item is string => Boolean(item));
 
   const failedChecks = [
     !dashboardCenterSalary || dashboardCenterSalary.isPlaceholder ? "missing center salary card" : null,
@@ -554,7 +653,8 @@ async function main() {
     !detail || !detail.about || detail.metrics.length === 0 || detail.yearlyMetrics.length === 0
       ? "detail sample missing imported data"
       : null,
-    ...resolverFailures
+    ...resolverFailures,
+    ...salaryFailures
   ].filter((item): item is string => Boolean(item));
 
   const report = {
@@ -585,6 +685,10 @@ async function main() {
         importedPublicationCoverage > 0 || openAlexCoverage > 0 || "no current imported/OpenAlex publication values",
       nullFallbackText: "הנתון עדיין לא סופק",
       futureCrawlerFields: ["duns100PhysiciansCount", "departmentalPublicationsCount", "OpenAlex researchMetrics"]
+    },
+    salaryVerification: {
+      specialty: salarySpecialtyReport,
+      department: salaryDepartmentReport
     },
     resolverAudit: {
       specialtySample: {

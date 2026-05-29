@@ -197,6 +197,12 @@ export const metricFieldDefinitions = {
 
 export type CanonicalMetricField = keyof typeof metricFieldDefinitions;
 
+export const salaryMetricFields = {
+  centerSalary: "שכר_לא_פריפריה",
+  peripherySalary: "שכר_פריפריה",
+  salaryGap: "פער_שכר_פריפריה"
+} as const;
+
 const normalizedFieldByImportedKey = Object.entries(metricFieldDefinitions).reduce<Record<string, CanonicalMetricField>>(
   (map, [field, definition]) => {
     for (const key of definition.importedKeys) {
@@ -342,6 +348,29 @@ export function resolveImportedMetricNumber(
 ) {
   const metric = resolveImportedMetric(metrics, fieldOrKey, options);
   return typeof metric?.value === "number" && Number.isFinite(metric.value) ? metric.value : null;
+}
+
+export function resolveImportedSalaryMetrics(
+  metrics: ImportedMetricLike[],
+  options: { entityLabel?: string; logMissing?: boolean } = {}
+) {
+  return {
+    centerSalary: resolveImportedMetric(metrics, salaryMetricFields.centerSalary, {
+      aliases: ["centerSalary"],
+      entityLabel: options.entityLabel,
+      logMissing: options.logMissing
+    }),
+    peripherySalary: resolveImportedMetric(metrics, salaryMetricFields.peripherySalary, {
+      aliases: ["שכר_פריפריה 1", "peripherySalary"],
+      entityLabel: options.entityLabel,
+      logMissing: options.logMissing
+    }),
+    salaryGap: resolveImportedMetric(metrics, salaryMetricFields.salaryGap, {
+      aliases: ["peripherySalaryGap", "salaryGap"],
+      entityLabel: options.entityLabel,
+      logMissing: options.logMissing
+    })
+  };
 }
 
 export function resolveImportedYearlyMetric(
