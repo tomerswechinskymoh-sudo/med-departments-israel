@@ -1,3 +1,11 @@
+import {
+  findMetricDisplayMetadata,
+  metadataSourceLabel,
+  metadataTooltip,
+  type MetricDisplayMetadata,
+  type MetricVisualType
+} from "@/lib/metric-display";
+
 export const specialtyMetricKeys = [
   "programsCount",
   "activeResidents",
@@ -30,8 +38,11 @@ export type SpecialtyMetricResult = {
   value: string;
   unit: SpecialtyMetricUnit;
   sourceLabel?: string;
+  sourceUrl?: string | null;
   tooltip?: string;
   isPlaceholder?: boolean;
+  isHighlighted?: boolean;
+  visualType?: MetricVisualType | null;
 };
 
 export type SpecialtyMetricDepartment = {
@@ -84,6 +95,7 @@ export type SpecialtyImportedYearlyMetric = {
 export type SpecialtyMetricContext = {
   specialtyMetrics?: SpecialtyImportedMetric[];
   specialtyYearlyMetrics?: SpecialtyImportedYearlyMetric[];
+  dataExplanations?: MetricDisplayMetadata[];
 };
 
 type SpecialtyMetricCalculation =
@@ -101,6 +113,7 @@ type SpecialtyMetricDefinition = {
   description: string;
   unit: SpecialtyMetricUnit;
   sourceLabel?: string;
+  metadataKeys?: string[];
   calculate: (
     departments: SpecialtyMetricDepartment[],
     context: SpecialtyMetricContext
@@ -122,6 +135,19 @@ export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
 ];
 
 const missingMetricValue = "הנתון עדיין לא סופק";
+
+const dashboardMetricDataExpKeys: Partial<Record<SpecialtyMetricKey, string[]>> = {
+  activeResidents: ["residentsCount", "activeResidentsCount", "מספר_מתמחים"],
+  genderDistribution: ["womenPercent", "menPercent", "אחוז_נשים", "אחוז_גברים"],
+  residencyDuration: ["actualAverageDuration", "officialResidencyDuration"],
+  boardPassA: ["boardStageAPassRate", "מעבר_שלב_א"],
+  boardPassB: ["boardStageBPassRate", "מעבר_שלב_ב"],
+  burnoutIndex: ["burnoutIndex", "מדד_שחיקה"],
+  salaryGap: ["peripherySalaryGap", "פער_שכר_פריפריה"],
+  newResidentsTrend: ["newResidents", "מספר מתמחים חדשים 2024"],
+  expectedOpenings: ["expectedNationalOpenings", "מספר_תקנים_שצפויים להיפתח_ארצי"],
+  duns100PhysiciansCount: ["duns100PhysiciansCount", "DUNS100"]
+};
 
 function average(values: Array<number | null | undefined>) {
   const valid = values.filter((value): value is number => typeof value === "number" && Number.isFinite(value));
@@ -646,27 +672,41 @@ export function calculateSpecialtyMetrics(
   return orderedKeys.reduce<SpecialtyMetricResult[]>((results, key) => {
     const definition = specialtyMetricDefinitions.find((metric) => metric.key === key);
     if (!definition) return results;
+    const metadata = findMetricDisplayMetadata(
+      context.dataExplanations ?? [],
+      "MASTER_Spec",
+      ...(definition.metadataKeys ?? dashboardMetricDataExpKeys[key] ?? [definition.key])
+    );
+
+    if (metadata?.isHidden) return results;
 
     const calculated = definition.calculate(departments, context);
     const value = typeof calculated === "string" || calculated === null ? calculated : calculated.value;
-    const sourceLabel =
+    const calculatedSourceLabel =
       typeof calculated === "string" || calculated === null
         ? definition.sourceLabel
         : calculated.sourceLabel ?? definition.sourceLabel;
-    const tooltip =
+    const calculatedTooltip =
       typeof calculated === "string" || calculated === null
         ? undefined
         : calculated.tooltip;
+    const metadataExplanation = metadataTooltip(metadata, definition.description);
+    const tooltip = [metadataExplanation, calculatedTooltip]
+      .filter((item, index, list): item is string => Boolean(item) && list.indexOf(item) === index)
+      .join(" · ");
 
     results.push({
       key: definition.key,
-      label: definition.label,
-      description: definition.description,
+      label: metadata?.readableLabel ?? definition.label,
+      description: metadataExplanation,
       value: value ?? missingMetricValue,
       unit: definition.unit,
-      sourceLabel,
-      tooltip,
-      isPlaceholder: value === null
+      sourceLabel: metadataSourceLabel(metadata, calculatedSourceLabel ?? "מקור נתונים לא צוין"),
+      sourceUrl: metadata?.sourceUrl,
+      tooltip: tooltip || undefined,
+      isPlaceholder: value === null,
+      isHighlighted: metadata?.isHighlighted,
+      visualType: metadata?.visualType
     });
 
     return results;

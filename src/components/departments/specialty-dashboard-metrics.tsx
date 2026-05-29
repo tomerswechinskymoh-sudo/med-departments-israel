@@ -103,8 +103,18 @@ function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
         className="group grid h-7 w-7 cursor-help place-items-center rounded-full border border-slate-200 bg-white text-[0.72rem] font-black text-slate-500 transition hover:border-brand-200 hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-200"
       >
         i
-        <span className="pointer-events-none absolute left-0 top-9 z-20 hidden w-64 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
-          {text}
+        <span className="pointer-events-auto absolute left-0 top-9 z-20 hidden w-64 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
+          <span>{text}</span>
+          {metric.sourceUrl ? (
+            <a
+              href={metric.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="pointer-events-auto mt-2 block font-black text-brand-800 underline"
+            >
+              מקור נתונים
+            </a>
+          ) : null}
         </span>
       </span>
     </span>
@@ -139,7 +149,9 @@ export function SpecialtyDashboardMetrics({
           <div
             key={metric.key}
             className={`flex min-h-[5.75rem] flex-col rounded-2xl border p-2.5 ${
-              index === 0
+              metric.isHighlighted
+                ? "border-amber-200 bg-gradient-to-l from-amber-50 to-white"
+                : index === 0
                 ? "border-brand-200 bg-gradient-to-l from-brand-50 to-white"
                 : "border-slate-100 bg-slate-50/70"
             }`}
@@ -148,9 +160,9 @@ export function SpecialtyDashboardMetrics({
               <p className="text-xs font-bold text-slate-500">{metric.label}</p>
               <MetricInfo metric={metric} />
             </div>
-            {metric.key === "genderDistribution" && !metric.isPlaceholder ? (
+            {(metric.visualType === "donut" || metric.key === "genderDistribution") && !metric.isPlaceholder ? (
               <GenderDonut value={metric.value} />
-            ) : metric.key === "newResidentsTrend" && !metric.isPlaceholder ? (
+            ) : (metric.visualType === "trend" || metric.key === "newResidentsTrend") && !metric.isPlaceholder ? (
               <YearTrend value={metric.value} />
             ) : (
               <p className={`mt-2 text-xl font-black ${metric.isPlaceholder ? "text-slate-400" : "text-ink"}`}>

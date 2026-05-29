@@ -11,7 +11,8 @@ function argValue(name: string) {
 async function main() {
   const result = await importMasterCsvFiles(prisma, {
     specialtyCsvPath: argValue("--spec"),
-    departmentCsvPath: argValue("--dept")
+    departmentCsvPath: argValue("--dept"),
+    dataExpCsvPath: argValue("--data-exp")
   });
 
   console.log("Master CSV import completed.");

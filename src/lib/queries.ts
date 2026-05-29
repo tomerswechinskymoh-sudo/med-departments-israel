@@ -20,6 +20,7 @@ import {
   defaultSpecialtyDashboardMetrics,
   normalizeMetricKeys
 } from "@/lib/specialty-metrics";
+import type { MetricDisplayMetadata } from "@/lib/metric-display";
 import { getOpenAlexMappingStatus } from "@/lib/server/openalex-research";
 import { average, formatDepartmentDisplayName } from "@/lib/utils";
 import { resolveCanonicalDepartmentSlug } from "@/server/department-catalog";
@@ -66,6 +67,46 @@ const publicImportedDepartmentWhere = {
     not: null
   }
 } satisfies Prisma.DepartmentWhereInput;
+
+const dataExplanationSelect = {
+  sheet: true,
+  criterion: true,
+  normalizedCriterion: true,
+  metricKey: true,
+  readableLabel: true,
+  explanation: true,
+  sourceLabel: true,
+  sourceLinkPolicy: true,
+  sourceUrl: true,
+  displayAction: true,
+  displayMode: true,
+  visualType: true,
+  isHidden: true,
+  isHighlighted: true,
+  isNationalMetric: true
+} satisfies Prisma.DataExplanationSelect;
+
+function toMetricDisplayMetadata(
+  row: Prisma.DataExplanationGetPayload<{ select: typeof dataExplanationSelect }>
+): MetricDisplayMetadata {
+  return {
+    sheet: row.sheet as MetricDisplayMetadata["sheet"],
+    criterion: row.criterion,
+    normalizedCriterion: row.normalizedCriterion,
+    metricKey: row.metricKey,
+    readableLabel: row.readableLabel,
+    explanation: row.explanation,
+    sourceLabel: row.sourceLabel,
+    sourceLinkPolicy: row.sourceLinkPolicy,
+    sourceUrl: row.sourceUrl,
+    displayAction: row.displayAction,
+    displayMode: row.displayMode,
+    visualType: row.visualType as MetricDisplayMetadata["visualType"],
+    isHidden: row.isHidden,
+    isHighlighted: row.isHighlighted,
+    isNationalMetric: row.isNationalMetric
+  };
+}
 
 async function getManagedDepartments(userId: string) {
   const assignments = await prisma.representativeAssignment.findMany({
@@ -1008,7 +1049,7 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
     };
   }
 
-  const [config, specialty, departments] = await Promise.all([
+  const [config, specialty, departments, dataExplanations] = await Promise.all([
     prisma.specialtyDashboardConfig.findUnique({
       where: {
         specialtyId
@@ -1095,6 +1136,9 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
           }
         }
       }
+    }),
+    prisma.dataExplanation.findMany({
+      select: dataExplanationSelect
     })
   ]);
 
@@ -1144,10 +1188,20 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
   return {
     metrics: calculateSpecialtyMetrics(metricInput, enabledMetrics, displayOrder, {
       specialtyMetrics: specialty?.metrics ?? [],
-      specialtyYearlyMetrics: specialty?.yearlyMetrics ?? []
+      specialtyYearlyMetrics: specialty?.yearlyMetrics ?? [],
+      dataExplanations: dataExplanations.map(toMetricDisplayMetadata)
     }),
     hasConfig: Boolean(config)
   };
+}
+
+export async function getDataExplanations() {
+  const rows = await prisma.dataExplanation.findMany({
+    select: dataExplanationSelect,
+    orderBy: [{ sheet: "asc" }, { criterion: "asc" }]
+  });
+
+  return rows.map(toMetricDisplayMetadata);
 }
 
 export async function getDepartmentPageData(

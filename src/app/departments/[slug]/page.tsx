@@ -15,7 +15,14 @@ import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
+  findMetricDisplayMetadata,
+  metadataSourceLabel,
+  metadataTooltip,
+  type MetricDisplayMetadata
+} from "@/lib/metric-display";
+import {
   getDepartmentPageData,
+  getDataExplanations,
   getReviewFormContext,
   resolveInstitutionRegion,
   reviewerTypeLabel
@@ -56,12 +63,14 @@ function MetricInfoTip({
   sourceLabel,
   text,
   lastUpdated,
-  metricType
+  metricType,
+  sourceUrl
 }: {
   sourceLabel: string;
   text?: string;
   lastUpdated?: string | Date | null;
   metricType?: string;
+  sourceUrl?: string | null;
 }) {
   const tooltipText = [
     text,
@@ -79,8 +88,13 @@ function MetricInfoTip({
         className="group grid h-7 w-7 cursor-help place-items-center rounded-full border border-slate-200 bg-white text-[0.72rem] font-black text-slate-500 transition hover:border-brand-200 hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-200"
       >
         i
-        <span className="pointer-events-none absolute left-0 top-9 z-20 hidden w-72 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
-          {tooltipText}
+        <span className="pointer-events-auto absolute left-0 top-9 z-20 hidden w-72 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
+          <span>{tooltipText}</span>
+          {sourceUrl ? (
+            <a href={sourceUrl} target="_blank" rel="noreferrer" className="mt-2 block font-black text-brand-800 underline">
+              מקור נתונים
+            </a>
+          ) : null}
         </span>
       </span>
     </span>
@@ -95,7 +109,8 @@ function DataMetricCard({
   lastUpdated,
   metricType = "נתון מחלקתי",
   caption,
-  className = ""
+  className = "",
+  sourceUrl
 }: {
   label: string;
   value: string | number | null | undefined;
@@ -105,6 +120,7 @@ function DataMetricCard({
   metricType?: string;
   caption?: string;
   className?: string;
+  sourceUrl?: string | null;
 }) {
   const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
   const isGeneralSpecialtyMetric = metricType === "נתון כללי לתחום";
@@ -125,6 +141,7 @@ function DataMetricCard({
           text={tooltip}
           lastUpdated={lastUpdated}
           metricType={metricType}
+          sourceUrl={sourceUrl}
         />
       </div>
       <p className={`mt-1.5 text-base font-black leading-tight ${hasValue ? "text-ink" : "text-slate-400"}`}>
@@ -145,16 +162,20 @@ type DisplayMetric = {
   metricType?: string;
   caption?: string;
   lowPriority?: boolean;
+  sourceUrl?: string | null;
+  className?: string;
 };
 
 function YearlyResidentsChart({
   rows,
   sourceLabel,
-  lastUpdated
+  lastUpdated,
+  sourceUrl
 }: {
   rows: Array<{ year: number; value: number; rawValue?: string | null }>;
   sourceLabel: string;
   lastUpdated?: string | Date | null;
+  sourceUrl?: string | null;
 }) {
   const maxValue = Math.max(...rows.map((row) => row.value), 1);
 
@@ -167,6 +188,7 @@ function YearlyResidentsChart({
           text="מספר מתמחים חדשים שנקלטו במחלקה לפי שנה."
           metricType="נתון מחלקתי"
           lastUpdated={lastUpdated}
+          sourceUrl={sourceUrl}
         />
       </div>
       {rows.length === 0 ? (
@@ -261,13 +283,15 @@ function GenderBalanceCard({
   menPercent,
   sourceLabel,
   tooltip,
-  lastUpdated
+  lastUpdated,
+  sourceUrl
 }: {
   womenPercent: number | null;
   menPercent: number | null;
   sourceLabel: string;
   tooltip: string;
   lastUpdated?: string | Date | null;
+  sourceUrl?: string | null;
 }) {
   const hasValue = womenPercent !== null || menPercent !== null;
   const women = clampPercent(womenPercent ?? (menPercent !== null ? 100 - menPercent : 0));
@@ -282,6 +306,7 @@ function GenderBalanceCard({
           text={tooltip}
           metricType="נתון מחלקתי"
           lastUpdated={lastUpdated}
+          sourceUrl={sourceUrl}
         />
       </div>
       {!hasValue ? (
@@ -320,13 +345,15 @@ function ClockMetricCard({
   value,
   sourceLabel,
   tooltip,
-  lastUpdated
+  lastUpdated,
+  sourceUrl
 }: {
   label: string;
   value: string | number | null | undefined;
   sourceLabel: string;
   tooltip: string;
   lastUpdated?: string | Date | null;
+  sourceUrl?: string | null;
 }) {
   const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
 
@@ -344,6 +371,7 @@ function ClockMetricCard({
           text={tooltip}
           metricType="נתון מחלקתי"
           lastUpdated={lastUpdated}
+          sourceUrl={sourceUrl}
         />
       </div>
       <p className={`mt-2 text-base font-black ${hasValue ? "text-ink" : "text-slate-400"}`}>
@@ -358,13 +386,15 @@ function AcceptanceDistributionCard({
   sourceLabel,
   tooltip,
   metricType,
-  lastUpdated
+  lastUpdated,
+  sourceUrl
 }: {
   rows: Array<{ label: string; value: number; displayValue: string }>;
   sourceLabel: string;
   tooltip: string;
   metricType: string;
   lastUpdated?: string | Date | null;
+  sourceUrl?: string | null;
 }) {
   const maxValue = Math.max(...rows.map((row) => row.value), 1);
 
@@ -384,6 +414,7 @@ function AcceptanceDistributionCard({
           text={tooltip}
           metricType={metricType}
           lastUpdated={lastUpdated}
+          sourceUrl={sourceUrl}
         />
       </div>
       {rows.length === 0 ? (
@@ -415,7 +446,8 @@ function QuickHighlightCard({
   tooltip,
   metricType,
   lastUpdated,
-  missingText = "לא זמין"
+  missingText = "לא זמין",
+  sourceUrl
 }: {
   label: string;
   value: string | number | null | undefined;
@@ -424,6 +456,7 @@ function QuickHighlightCard({
   metricType?: string;
   lastUpdated?: string | Date | null;
   missingText?: string;
+  sourceUrl?: string | null;
 }) {
   const hasValue = value !== null && value !== undefined && String(value).trim().length > 0;
 
@@ -436,6 +469,7 @@ function QuickHighlightCard({
           text={tooltip}
           metricType={metricType}
           lastUpdated={lastUpdated}
+          sourceUrl={sourceUrl}
         />
       </div>
       <p className={`mt-1 text-sm font-black leading-tight ${hasValue ? "text-ink" : "text-slate-400"}`}>
@@ -445,21 +479,28 @@ function QuickHighlightCard({
   );
 }
 
-function SalaryGapHighlight() {
+function SalaryGapHighlight({ metadata }: { metadata?: MetricDisplayMetadata | null }) {
   const centerSalary = 16954;
   const peripherySalary = 19965.92;
   const gap = peripherySalary - centerSalary;
   const max = peripherySalary;
-  const tooltip = "שכר מרכז: 16,954.00 ₪ · שכר פריפריה: 19,965.92 ₪ · פער לטובת פריפריה.";
+  const tooltip = [
+    metadataTooltip(metadata, "פער שכר לטובת פריפריה לפי סימולטור שכר הר״י."),
+    "שכר מרכז: 16,954.00 ₪",
+    "שכר פריפריה: 19,965.92 ₪"
+  ].join(" · ");
 
   return (
     <div className="rounded-xl border border-amber-200 bg-gradient-to-l from-amber-50 to-white px-3 py-2">
       <div className="flex items-start justify-between gap-3">
-        <p className="text-[0.68rem] font-black text-amber-900">פער שכר</p>
+        <p className="text-[0.68rem] font-black text-amber-900">
+          {metricLabelFromMetadata(metadata, "פער שכר")}
+        </p>
         <MetricInfoTip
-          sourceLabel="קבוע שכר מערכת"
+          sourceLabel={metadataSourceLabel(metadata, "סימולטור שכר של הר״י")}
           text={tooltip}
           metricType="נתון כללי לתחום"
+          sourceUrl={metadata?.sourceUrl}
         />
       </div>
       <p className="mt-1 text-sm font-black text-ink">
@@ -559,6 +600,38 @@ function importedSourceLabel(
   fallback: string
 ) {
   return sourceLabelFromNotes(metric?.sourceNotes) ?? fallback;
+}
+
+function departmentMetricMetadata(
+  metadata: MetricDisplayMetadata[],
+  ...metricKeysOrCriteria: string[]
+) {
+  return findMetricDisplayMetadata(metadata, "Master_Dept", ...metricKeysOrCriteria);
+}
+
+function specialtyMetricMetadata(
+  metadata: MetricDisplayMetadata[],
+  ...metricKeysOrCriteria: string[]
+) {
+  return findMetricDisplayMetadata(metadata, "MASTER_Spec", ...metricKeysOrCriteria);
+}
+
+function metricLabelFromMetadata(
+  metadata: MetricDisplayMetadata | null | undefined,
+  fallback: string
+) {
+  return metadata?.readableLabel || fallback;
+}
+
+function metricTypeFromMetadata(
+  metadata: MetricDisplayMetadata | null | undefined,
+  fallback = "נתון מחלקתי"
+) {
+  return metadata?.isNationalMetric ? "נתון כללי לתחום" : fallback;
+}
+
+function highlightedCardClass(metadata: MetricDisplayMetadata | null | undefined) {
+  return metadata?.isHighlighted ? "border-amber-200 bg-amber-50/70" : "";
 }
 
 const readableMetricLabels: Record<string, string> = {
@@ -790,7 +863,10 @@ export default async function DepartmentDetailsPage({
     typeof resolvedSearchParams.departmentId === "string"
       ? resolvedSearchParams.departmentId
       : null;
-  const department = await getDepartmentPageData(slug, session?.userId, departmentId);
+  const [department, dataExplanations] = await Promise.all([
+    getDepartmentPageData(slug, session?.userId, departmentId),
+    getDataExplanations()
+  ]);
 
   if (!department) {
     notFound();
@@ -1093,46 +1169,76 @@ export default async function DepartmentDetailsPage({
   const acceptanceDistributionType =
     acceptanceDepartmentRows.length > 0 ? "נתון מחלקתי" : "נתון כללי לתחום";
   const acceptanceDistributionLastUpdated = acceptanceDistributionRows.find((row) => row.lastUpdated)?.lastUpdated;
+  const residentsMeta = departmentMetricMetadata(dataExplanations, "residentsCount");
+  const seniorPhysiciansMeta = departmentMetricMetadata(dataExplanations, "seniorPhysiciansCount");
+  const expectedOpeningsMeta = departmentMetricMetadata(dataExplanations, "expectedOpenings2026");
+  const officialDurationMeta = departmentMetricMetadata(dataExplanations, "officialResidencyDuration");
+  const actualDurationMeta = departmentMetricMetadata(dataExplanations, "actualAverageDuration");
+  const medianWaitingMeta = departmentMetricMetadata(dataExplanations, "medianWaitingTime");
+  const acceptanceMeta = departmentMetricMetadata(dataExplanations, "acceptedImmediatelyReports");
+  const genderMeta = departmentMetricMetadata(dataExplanations, "womenPercent");
+  const newResidentsMeta = departmentMetricMetadata(dataExplanations, "newResidents");
+  const electiveDemandMeta = departmentMetricMetadata(dataExplanations, "medianElectiveDemand");
+  const boardStageAMeta = departmentMetricMetadata(dataExplanations, "boardStageAPassRate");
+  const boardStageBMeta = departmentMetricMetadata(dataExplanations, "boardStageBPassRate");
+  const duns100Meta = departmentMetricMetadata(dataExplanations, "duns100PhysiciansCount");
+  const publicationMeta = departmentMetricMetadata(dataExplanations, "departmentalPublicationsCount");
+  const burnoutMeta = departmentMetricMetadata(dataExplanations, "burnoutIndex");
+  const centerSalaryMeta = departmentMetricMetadata(dataExplanations, "centerSalary");
+  const peripherySalaryMeta = departmentMetricMetadata(dataExplanations, "peripherySalary");
+  const salaryGapMeta = departmentMetricMetadata(dataExplanations, "peripherySalaryGap");
+  const stageAMetricType = metricTypeFromMetadata(boardStageAMeta, boardStageA?.metricType);
+  const stageBMetricType = metricTypeFromMetadata(boardStageBMeta, boardStageB?.metricType);
   const workforceMetrics: DisplayMetric[] = [
     {
       id: "department-residents-count",
-      label: "מספר מתמחים",
+      label: metricLabelFromMetadata(residentsMeta, "מספר מתמחים"),
       value: activeResidents?.value ?? null,
-      sourceLabel: "משרד הבריאות",
-      tooltip: "מספר מתמחים פעילים כרגע במחלקה אשר דיווחו למשרד על התמחותם"
+      sourceLabel: metadataSourceLabel(residentsMeta, "משרד הבריאות"),
+      tooltip: metadataTooltip(
+        residentsMeta,
+        "מספר מתמחים פעילים כרגע במחלקה אשר דיווחו למשרד על התמחותם"
+      ),
+      sourceUrl: residentsMeta?.sourceUrl,
+      className: highlightedCardClass(residentsMeta)
     },
     {
       id: "department-senior-physicians",
-      label: "מספר בכירים",
+      label: metricLabelFromMetadata(seniorPhysiciansMeta, "מספר בכירים"),
       value: specialists?.value ?? null,
-      sourceLabel: "משרד הבריאות",
-      tooltip: "מספר הבכירים במחלקה כפי שדווח מהמחלקה"
+      sourceLabel: metadataSourceLabel(seniorPhysiciansMeta, "משרד הבריאות"),
+      tooltip: metadataTooltip(seniorPhysiciansMeta, "מספר הבכירים במחלקה כפי שדווח מהמחלקה"),
+      sourceUrl: seniorPhysiciansMeta?.sourceUrl,
+      className: highlightedCardClass(seniorPhysiciansMeta)
     }
   ];
   const trainingMetrics: DisplayMetric[] = [
     {
       id: "residency-official-duration",
-      label: "משך התמחות רשמי",
+      label: metricLabelFromMetadata(officialDurationMeta, "משך התמחות רשמי"),
       value: officialDurationMetric ? formatImportedMetricValue(officialDurationMetric) : null,
-      sourceLabel: importedSourceLabel(officialDurationMetric, "הר״י"),
-      tooltip: "משך התמחות ע״פ הרשום באתר הר״י",
-      lastUpdated: officialDurationMetric?.lastUpdated
+      sourceLabel: metadataSourceLabel(officialDurationMeta, importedSourceLabel(officialDurationMetric, "הר״י")),
+      tooltip: metadataTooltip(officialDurationMeta, "משך התמחות ע״פ הרשום באתר הר״י"),
+      lastUpdated: officialDurationMetric?.lastUpdated,
+      sourceUrl: officialDurationMeta?.sourceUrl
     },
     {
       id: "residency-average-duration",
-      label: medianDuration ? "משך התמחות במחלקה" : "משך ממוצע בפועל",
+      label: metricLabelFromMetadata(actualDurationMeta, medianDuration ? "משך התמחות במחלקה" : "משך ממוצע בפועל"),
       value: medianDuration?.value ?? (actualDurationMetric ? formatImportedMetricValue(actualDurationMetric) : null),
-      sourceLabel: importedSourceLabel(actualDurationMetric, "משרד הבריאות"),
-      tooltip: "משך התמחות מחלקתי, אם סופק ברמת המחלקה.",
-      lastUpdated: actualDurationMetric?.lastUpdated
+      sourceLabel: metadataSourceLabel(actualDurationMeta, importedSourceLabel(actualDurationMetric, "משרד הבריאות")),
+      tooltip: metadataTooltip(actualDurationMeta, "משך התמחות מחלקתי, אם סופק ברמת המחלקה."),
+      lastUpdated: actualDurationMetric?.lastUpdated,
+      sourceUrl: actualDurationMeta?.sourceUrl
     },
     {
       id: "residency-median-waiting-time",
-      label: "זמן המתנה חציוני לתקן",
+      label: metricLabelFromMetadata(medianWaitingMeta, "זמן המתנה חציוני לתקן"),
       value: medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null,
-      sourceLabel: importedSourceLabel(medianWaitingMetric, "משרד הבריאות"),
-      tooltip: "זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא.",
+      sourceLabel: metadataSourceLabel(medianWaitingMeta, importedSourceLabel(medianWaitingMetric, "משרד הבריאות")),
+      tooltip: metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא."),
       lastUpdated: medianWaitingMetric?.lastUpdated,
+      sourceUrl: medianWaitingMeta?.sourceUrl,
       lowPriority: true
     }
   ];
@@ -1325,41 +1431,48 @@ export default async function DepartmentDetailsPage({
               <div className="grid gap-2 md:grid-cols-3">
                 <DataMetricCard {...workforceMetrics[0]} />
                 <DataMetricCard
-                  label="מספר תקנים צפויים להתפנות"
+                  label={metricLabelFromMetadata(expectedOpeningsMeta, "מספר תקנים צפויים להתפנות")}
                   value={expectedOpeningsValue}
-                  sourceLabel={expectedOpeningsSourceLabel}
-                  tooltip="צפי תקנים המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
-                  className="border-amber-200 bg-amber-50/70"
+                  sourceLabel={metadataSourceLabel(expectedOpeningsMeta, expectedOpeningsSourceLabel)}
+                  tooltip={metadataTooltip(
+                    expectedOpeningsMeta,
+                    "צפי תקנים המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
+                  )}
+                  sourceUrl={expectedOpeningsMeta?.sourceUrl}
+                  className={`border-amber-200 bg-amber-50/70 ${highlightedCardClass(expectedOpeningsMeta)}`}
                 />
                 <DataMetricCard {...workforceMetrics[1]} />
               </div>
 
               <div className="grid gap-2 lg:grid-cols-3">
                 <ClockMetricCard
-                  label="זמן המתנה חציוני לתקן"
+                  label={metricLabelFromMetadata(medianWaitingMeta, "זמן המתנה חציוני לתקן")}
                   value={medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null}
-                  sourceLabel={importedSourceLabel(medianWaitingMetric, "משרד הבריאות")}
-                  tooltip="זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא."
+                  sourceLabel={metadataSourceLabel(medianWaitingMeta, importedSourceLabel(medianWaitingMetric, "משרד הבריאות"))}
+                  tooltip={metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא.")}
                   lastUpdated={medianWaitingMetric?.lastUpdated}
+                  sourceUrl={medianWaitingMeta?.sourceUrl}
                 />
                 <AcceptanceDistributionCard
                   rows={acceptanceDistributionRows}
-                  sourceLabel="דיווחי מתמחים משרד הבריאות"
+                  sourceLabel={metadataSourceLabel(acceptanceMeta, "דיווחי מתמחים משרד הבריאות")}
                   tooltip={
                     acceptanceDistributionType === "נתון כללי לתחום"
                       ? "התפלגות כללית לתחום ההתמחות ולא למחלקה ספציפית."
-                      : "התפלגות מחלקתית לפי נתונים מיובאים, אם סופקה."
+                      : metadataTooltip(acceptanceMeta, "התפלגות מחלקתית לפי נתונים מיובאים, אם סופקה.")
                   }
                   metricType={acceptanceDistributionType}
                   lastUpdated={acceptanceDistributionLastUpdated}
+                  sourceUrl={acceptanceMeta?.sourceUrl}
                 />
-                {electiveDemandMetric ? (
+                {electiveDemandMetric && !electiveDemandMeta?.isHidden ? (
                   <DataMetricCard
-                    label="מספר אלקטיביסטים חציוני"
+                    label={metricLabelFromMetadata(electiveDemandMeta, "מספר אלקטיביסטים חציוני")}
                     value={formatImportedMetricValue(electiveDemandMetric)}
-                    sourceLabel={importedSourceLabel(electiveDemandMetric, "מצביע על ביקוש המחלקה")}
-                    tooltip="מדד ביקוש למחלקה לפי מספר אלקטיביסטים חציוני."
+                    sourceLabel={metadataSourceLabel(electiveDemandMeta, importedSourceLabel(electiveDemandMetric, "מצביע על ביקוש המחלקה"))}
+                    tooltip={metadataTooltip(electiveDemandMeta, "מדד ביקוש למחלקה לפי מספר אלקטיביסטים חציוני.")}
                     lastUpdated={electiveDemandMetric.lastUpdated}
+                    sourceUrl={electiveDemandMeta?.sourceUrl}
                   />
                 ) : null}
               </div>
@@ -1368,9 +1481,10 @@ export default async function DepartmentDetailsPage({
                 <GenderBalanceCard
                   womenPercent={womenPercent}
                   menPercent={menPercent}
-                  sourceLabel={importedSourceLabel(womenPercentMetric ?? menPercentMetric, "משרד הבריאות")}
-                  tooltip="התפלגות מגדרית מחלקתית, אם סופקה."
+                  sourceLabel={metadataSourceLabel(genderMeta, importedSourceLabel(womenPercentMetric ?? menPercentMetric, "משרד הבריאות"))}
+                  tooltip={metadataTooltip(genderMeta, "התפלגות מגדרית מחלקתית, אם סופקה.")}
                   lastUpdated={genderLastUpdated}
+                  sourceUrl={genderMeta?.sourceUrl}
                 />
                 <DataMetricCard {...trainingMetrics[0]} />
                 <DataMetricCard {...trainingMetrics[1]} />
@@ -1378,8 +1492,9 @@ export default async function DepartmentDetailsPage({
 
               <YearlyResidentsChart
                 rows={departmentNewResidentsRows}
-                sourceLabel={newResidentsSourceLabel}
+                sourceLabel={metadataSourceLabel(newResidentsMeta, newResidentsSourceLabel)}
                 lastUpdated={firstDepartmentYearlyMetric?.lastUpdated}
+                sourceUrl={newResidentsMeta?.sourceUrl}
               />
 
             </div>
@@ -1510,13 +1625,14 @@ export default async function DepartmentDetailsPage({
             <SectionHeading title="מחקר ופרסומים" />
             <div className="mt-4 grid grid-cols-2 gap-2">
               <QuickHighlightCard
-                label="מספר פרסומים"
+                label={metricLabelFromMetadata(publicationMeta, "מספר פרסומים")}
                 value={publicationsValue}
-                sourceLabel={publicationsSourceLabel}
-                tooltip={openAlexDebugTooltip}
+                sourceLabel={metadataSourceLabel(publicationMeta, publicationsSourceLabel)}
+                tooltip={metadataTooltip(publicationMeta, openAlexDebugTooltip)}
                 metricType={latestOpenAlexResearchMetric ? "הערכה מחלקתית" : "נתון מחלקתי"}
                 lastUpdated={publicationsLastUpdated}
                 missingText={MISSING_IMPORTED_VALUE}
+                sourceUrl={publicationMeta?.sourceUrl}
               />
               <QuickHighlightCard
                 label="h-index"
@@ -1555,65 +1671,74 @@ export default async function DepartmentDetailsPage({
             <p className="text-sm font-black text-ink">נתונים מקצועיים</p>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <QuickHighlightCard
-                label="מעבר שלב א׳"
+                label={metricLabelFromMetadata(boardStageAMeta, "מעבר שלב א׳")}
                 value={boardStageA?.value ?? null}
-                sourceLabel={boardStageA?.sourceLabel ?? "משרד הבריאות"}
+                sourceLabel={metadataSourceLabel(boardStageAMeta, boardStageA?.sourceLabel ?? "משרד הבריאות")}
                 tooltip={
-                  boardStageA?.metricType === "נתון כללי לתחום"
+                  stageAMetricType === "נתון כללי לתחום"
                     ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
-                    : "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי."
+                    : metadataTooltip(boardStageAMeta, "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי.")
                 }
-                metricType={boardStageA?.metricType}
+                metricType={stageAMetricType}
                 lastUpdated={boardStageA?.lastUpdated}
+                sourceUrl={boardStageAMeta?.sourceUrl}
               />
               <QuickHighlightCard
-                label="מעבר שלב ב׳"
+                label={metricLabelFromMetadata(boardStageBMeta, "מעבר שלב ב׳")}
                 value={boardStageB?.value ?? null}
-                sourceLabel={boardStageB?.sourceLabel ?? "משרד הבריאות"}
+                sourceLabel={metadataSourceLabel(boardStageBMeta, boardStageB?.sourceLabel ?? "משרד הבריאות")}
                 tooltip={
-                  boardStageB?.metricType === "נתון כללי לתחום"
+                  stageBMetricType === "נתון כללי לתחום"
                     ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית"
-                    : "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי."
+                    : metadataTooltip(boardStageBMeta, "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי.")
                 }
-                metricType={boardStageB?.metricType}
+                metricType={stageBMetricType}
                 lastUpdated={boardStageB?.lastUpdated}
+                sourceUrl={boardStageBMeta?.sourceUrl}
               />
               <QuickHighlightCard
-                label="DUNS100"
+                label={metricLabelFromMetadata(duns100Meta, "DUNS100")}
                 value={duns100Value}
-                sourceLabel={duns100SourceLabel}
-                tooltip="רופאים שנספרו מנתוני DUNS100 ומוצגים כאינדיקציה לפעילות/בולטות מקצועית."
+                sourceLabel={metadataSourceLabel(duns100Meta, duns100SourceLabel)}
+                tooltip={metadataTooltip(
+                  duns100Meta,
+                  "רופאים שנספרו מנתוני DUNS100 ומוצגים כאינדיקציה לפעילות/בולטות מקצועית."
+                )}
                 lastUpdated={duns100LastUpdated}
+                sourceUrl={duns100Meta?.sourceUrl}
               />
               <QuickHighlightCard
-                label="שכר מרכז"
+                label={metricLabelFromMetadata(centerSalaryMeta, "שכר מרכז")}
                 value="16,954.00 ₪"
-                sourceLabel="קבוע שכר מערכת"
-                tooltip="שכר בסיס להשוואה באזור מרכז."
+                sourceLabel={metadataSourceLabel(centerSalaryMeta, "סימולטור שכר של הר״י")}
+                tooltip={metadataTooltip(centerSalaryMeta, "שכר בסיס להשוואה באזור מרכז.")}
                 metricType="נתון כללי לתחום"
+                sourceUrl={centerSalaryMeta?.sourceUrl}
               />
               <QuickHighlightCard
-                label="שכר פריפריה"
+                label={metricLabelFromMetadata(peripherySalaryMeta, "שכר פריפריה")}
                 value="19,965.92 ₪"
-                sourceLabel="קבוע שכר מערכת"
-                tooltip="שכר בסיס להשוואה באזור פריפריה."
+                sourceLabel={metadataSourceLabel(peripherySalaryMeta, "סימולטור שכר של הר״י")}
+                tooltip={metadataTooltip(peripherySalaryMeta, "שכר בסיס להשוואה באזור פריפריה.")}
                 metricType="נתון כללי לתחום"
+                sourceUrl={peripherySalaryMeta?.sourceUrl}
               />
               <QuickHighlightCard
-                label="מדד שחיקה"
+                label={metricLabelFromMetadata(burnoutMeta, "מדד שחיקה")}
                 value={burnoutMetric ? formatImportedMetricValue(burnoutMetric) : null}
-                sourceLabel={importedSourceLabel(burnoutMetric, "דיווחי מתמחים משרד הבריאות")}
+                sourceLabel={metadataSourceLabel(burnoutMeta, importedSourceLabel(burnoutMetric, "דיווחי מתמחים משרד הבריאות"))}
                 tooltip={
-                  burnoutMetricType === "נתון כללי לתחום"
+                  metricTypeFromMetadata(burnoutMeta, burnoutMetricType) === "נתון כללי לתחום"
                     ? "נתון כללי לתחום ההתמחות ולא למחלקה ספציפית."
-                    : "מדד שחיקה מחלקתי, אם סופק."
+                    : metadataTooltip(burnoutMeta, "מדד שחיקה מחלקתי, אם סופק.")
                 }
-                metricType={burnoutMetricType}
+                metricType={metricTypeFromMetadata(burnoutMeta, burnoutMetricType)}
                 lastUpdated={burnoutMetric?.lastUpdated}
+                sourceUrl={burnoutMeta?.sourceUrl}
               />
             </div>
             <div className="mt-2">
-              <SalaryGapHighlight />
+              <SalaryGapHighlight metadata={salaryGapMeta} />
             </div>
           </div>
         </aside>

@@ -3,6 +3,14 @@ import fs from "fs/promises";
 import path from "path";
 import { InstitutionType, Prisma, type PrismaClient } from "@prisma/client";
 import {
+  buildMetricDisplayMetadata,
+  canonicalSheet,
+  criterionCandidatesForMetric,
+  findMetricDisplayMetadata,
+  normalizeCriterion,
+  type MetricDisplayMetadata
+} from "@/lib/metric-display";
+import {
   ensureDepartmentPage,
   ensureInstitution,
   ensureSpecialty,
@@ -22,6 +30,7 @@ type MetricInput = {
   key: string;
   label: string;
   header: string;
+  headers?: string[];
   unit?: string;
   occurrence?: number;
 };
@@ -30,6 +39,7 @@ type TextMetricInput = {
   key: string;
   label: string;
   header: string;
+  headers?: string[];
   occurrence?: number;
 };
 
@@ -49,6 +59,7 @@ type CsvTable = {
 
 const MASTER_SPEC_FILE = "MASTER_Spec.csv";
 const MASTER_DEPT_FILE = "Master_Dept.csv";
+const DATA_EXP_FILE = "Data_Exp.csv";
 const OPENING_YEAR = 2026;
 
 const SPECIALTY_NAME_ALIASES: Record<string, string> = {
@@ -64,7 +75,13 @@ const SPECIALTY_NAME_ALIASES: Record<string, string> = {
 };
 
 const SPECIALTY_NUMERIC_METRICS: MetricInput[] = [
-  { key: "officialResidencyDuration", label: "משך התמחות רשמי", header: "משך_התמחות_רשמי (חודשים)", unit: "years" },
+  {
+    key: "officialResidencyDuration",
+    label: "משך התמחות רשמי",
+    header: "משך_התמחות_רשמי (שנים)",
+    headers: ["משך_התמחות_רשמי (חודשים)", "משך_התמחות_רשמי"],
+    unit: "years"
+  },
   { key: "actualAverageDuration", label: "משך ממוצע בפועל", header: "משך_ממוצע_בפועל", unit: "years" },
   { key: "medianWaitingTime", label: "זמן המתנה חציוני לתקן", header: "זמן_המתנה_חציוני_לתקן", unit: "months" },
   { key: "acceptedImmediatelyReports", label: "דיווחי מציאת התמחות מיד", header: "מספר המתקבלים שדיווחו שמצאו מיד התמחות", unit: "count" },
@@ -73,7 +90,7 @@ const SPECIALTY_NUMERIC_METRICS: MetricInput[] = [
   { key: "acceptedWithinTwoYearsReports", label: "דיווחי מציאת התמחות עד שנתיים", header: "מספר המתקבלים שדיווחו שמצאו עד שנתיים", unit: "count" },
   { key: "acceptedAfterTwoYearsReports", label: "דיווחי מציאת התמחות אחרי שנתיים", header: "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים", unit: "count" },
   { key: "centerSalary", label: "שכר לא פריפריה", header: "שכר_לא_פריפריה", unit: "currency" },
-  { key: "peripherySalary", label: "שכר פריפריה", header: "שכר_פריפריה", unit: "currency" },
+  { key: "peripherySalary", label: "שכר פריפריה", header: "שכר_פריפריה", headers: ["שכר_פריפריה 1"], unit: "currency" },
   { key: "peripherySalaryGap", label: "פער שכר פריפריה", header: "פער_שכר_פריפריה", unit: "currency" },
   { key: "residentsCount", label: "מספר מתמחים", header: "מספר_מתמחים", unit: "count" },
   { key: "womenCount", label: "מספר נשים", header: "מספר נשים", unit: "count" },
@@ -93,6 +110,25 @@ const SPECIALTY_TEXT_METRICS: TextMetricInput[] = [
 ];
 
 const DEPARTMENT_NUMERIC_METRICS: MetricInput[] = [
+  { key: "officialResidencyDuration", label: "משך התמחות רשמי", header: "משך_התמחות_רשמי", unit: "years" },
+  { key: "actualAverageDuration", label: "משך ממוצע בפועל", header: "משך_ממוצע_בפועל", unit: "years" },
+  { key: "medianWaitingTime", label: "זמן המתנה חציוני לתקן", header: "זמן_המתנה_חציוני_לתקן", unit: "months" },
+  { key: "acceptedImmediatelyReports", label: "דיווחי מציאת התמחות מיד", header: "מספר המתקבלים שדיווחו שמצאו מיד התמחות", unit: "count" },
+  { key: "acceptedWithinSixMonthsReports", label: "דיווחי מציאת התמחות עד חצי שנה", header: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה", unit: "count" },
+  { key: "acceptedWithinOneYearReports", label: "דיווחי מציאת התמחות עד שנה", header: "מספר המתקבלים שדיווחו שמצאו עד שנה", unit: "count" },
+  { key: "acceptedWithinTwoYearsReports", label: "דיווחי מציאת התמחות עד שנתיים", header: "מספר המתקבלים שדיווחו שמצאו עד שנתיים", unit: "count" },
+  { key: "acceptedAfterTwoYearsReports", label: "דיווחי מציאת התמחות אחרי שנתיים", header: "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים", unit: "count" },
+  { key: "centerSalary", label: "שכר לא פריפריה", header: "שכר_לא_פריפריה", unit: "currency" },
+  { key: "peripherySalary", label: "שכר פריפריה", header: "שכר_פריפריה", unit: "currency" },
+  { key: "peripherySalaryGap", label: "פער שכר פריפריה", header: "פער_שכר_פריפריה", unit: "currency" },
+  { key: "residentsCount", label: "מספר מתמחים", header: "מספר_מתמחים", unit: "count" },
+  { key: "womenCount", label: "מספר נשים", header: "מספר נשים", unit: "count" },
+  { key: "womenPercent", label: "אחוז נשים", header: "אחוז_נשים", unit: "%" },
+  { key: "menCount", label: "מספר גברים", header: "מספר גברים", unit: "count" },
+  { key: "menPercent", label: "אחוז גברים", header: "אחוז_גברים", unit: "%" },
+  { key: "boardStageAPassRate", label: "מעבר שלב א", header: "מעבר_שלב_א", unit: "%" },
+  { key: "boardStageBPassRate", label: "מעבר שלב ב", header: "מעבר_שלב_ב", unit: "%" },
+  { key: "burnoutIndex", label: "מדד שחיקה", header: "מדד_שחיקה", unit: "score" },
   { key: "seniorPhysiciansCount", label: "מספר בכירים", header: "מספר_בכירים", unit: "count" },
   { key: "duns100PhysiciansCount", label: "מספר רופאים ב-DUNS100", header: "DUNS100", unit: "count" },
   { key: "departmentalPublicationsCount", label: "מספר פרסומים מחלקתי", header: "מספר פרסומים מחלקתי", unit: "count" },
@@ -173,7 +209,7 @@ function parseCsv(text: string) {
   return rows.filter((csvRow) => csvRow.some((cell) => cleanCell(cell).length > 0));
 }
 
-function createCsvTable(text: string): CsvTable {
+function createCsvTable(text: string, options: { hasSourceNotesRow?: boolean } = {}): CsvTable {
   const parsedRows = parseCsv(text);
   const headers = (parsedRows[0] ?? []).map(cleanCell);
   const indexByHeader = headers.reduce<Map<string, number[]>>((map, header, index) => {
@@ -215,11 +251,12 @@ function createCsvTable(text: string): CsvTable {
   }
 
   const dataRows = parsedRows.slice(1).map((values, index) => makeRow(values, index + 2));
+  const hasSourceNotesRow = options.hasSourceNotesRow ?? true;
 
   return {
     headers,
-    sourceNotes: dataRows[0] ?? null,
-    rows: dataRows.slice(1)
+    sourceNotes: hasSourceNotesRow ? dataRows[0] ?? null : null,
+    rows: hasSourceNotesRow ? dataRows.slice(1) : dataRows
   };
 }
 
@@ -284,8 +321,52 @@ function sourceNoteFor(table: CsvTable, header: string, occurrence = 0) {
   return table.sourceNotes?.get(header, occurrence) || null;
 }
 
-function hasCell(row: CsvRow, header: string, occurrence = 0) {
-  return cleanCell(row.get(header, occurrence)).length > 0;
+function metricHeaders(metric: MetricInput | TextMetricInput) {
+  return [metric.header, ...(metric.headers ?? [])];
+}
+
+function rowMetricValue(row: CsvRow, metric: MetricInput | TextMetricInput) {
+  for (const header of metricHeaders(metric)) {
+    const value = row.get(header, metric.occurrence);
+    if (value) return value;
+  }
+
+  return row.get(metric.header, metric.occurrence);
+}
+
+function sourceNoteForMetric(table: CsvTable, metric: MetricInput | TextMetricInput) {
+  for (const header of metricHeaders(metric)) {
+    const value = sourceNoteFor(table, header, metric.occurrence);
+    if (value) return value;
+  }
+
+  return null;
+}
+
+function metadataForMetric(
+  dataExplanations: MetricDisplayMetadata[],
+  sheet: "MASTER_Spec" | "Master_Dept",
+  metric: MetricInput | TextMetricInput
+) {
+  return findMetricDisplayMetadata(
+    dataExplanations,
+    sheet,
+    metric.key,
+    ...metricHeaders(metric),
+    ...criterionCandidatesForMetric(metric.key)
+  );
+}
+
+function labelForMetric(metric: MetricInput | TextMetricInput, metadata?: MetricDisplayMetadata | null) {
+  return metadata?.readableLabel || metric.label;
+}
+
+function sourceForMetric(
+  table: CsvTable,
+  metric: MetricInput | TextMetricInput,
+  metadata?: MetricDisplayMetadata | null
+) {
+  return metadata?.sourceLabel || sourceNoteForMetric(table, metric);
 }
 
 function nonEmptyValues(values: Array<string | null | undefined>) {
@@ -312,6 +393,7 @@ async function upsertSpecialtyMetric(
     unit?: string;
     sourceNotes?: string | null;
     lastUpdated?: Date | null;
+    displayMetadata?: MetricDisplayMetadata | null;
   }
 ) {
   if (input.value === null && !input.rawValue) return;
@@ -326,7 +408,7 @@ async function upsertSpecialtyMetric(
     create: {
       specialtyId: input.specialtyId,
       metricKey: input.metric.key,
-      label: input.metric.label,
+      label: labelForMetric(input.metric, input.displayMetadata),
       value: input.value ?? null,
       rawValue: input.rawValue,
       unit: input.unit ?? ("unit" in input.metric ? input.metric.unit : null),
@@ -334,7 +416,7 @@ async function upsertSpecialtyMetric(
       lastUpdated: input.lastUpdated
     },
     update: {
-      label: input.metric.label,
+      label: labelForMetric(input.metric, input.displayMetadata),
       value: input.value ?? null,
       rawValue: input.rawValue,
       unit: input.unit ?? ("unit" in input.metric ? input.metric.unit : null),
@@ -353,6 +435,7 @@ async function upsertSpecialtyYearlyMetric(
     rawValue: string | null;
     sourceNotes?: string | null;
     lastUpdated?: Date | null;
+    displayMetadata?: MetricDisplayMetadata | null;
   }
 ) {
   if (input.value === null && !input.rawValue) return;
@@ -393,6 +476,7 @@ async function upsertDepartmentMetric(
     rawValue: string | null;
     sourceNotes?: string | null;
     lastUpdated?: Date | null;
+    displayMetadata?: MetricDisplayMetadata | null;
   }
 ) {
   if (input.value === null && !input.rawValue) return;
@@ -407,7 +491,7 @@ async function upsertDepartmentMetric(
     create: {
       departmentId: input.departmentId,
       metricKey: input.metric.key,
-      label: input.metric.label,
+      label: labelForMetric(input.metric, input.displayMetadata),
       value: input.value,
       rawValue: input.rawValue,
       unit: input.metric.unit,
@@ -415,7 +499,7 @@ async function upsertDepartmentMetric(
       lastUpdated: input.lastUpdated
     },
     update: {
-      label: input.metric.label,
+      label: labelForMetric(input.metric, input.displayMetadata),
       value: input.value,
       rawValue: input.rawValue,
       unit: input.metric.unit,
@@ -514,7 +598,179 @@ async function logRow(
   });
 }
 
-async function importSpecialtyCsv(db: DbClient, filePath: string) {
+function isKnownSource(value: string) {
+  const normalized = normalizeCriterion(value);
+  return (
+    normalized.includes("משרד הבריאות") ||
+    normalized.includes("הריי") ||
+    normalized.includes("הרי") ||
+    normalized.includes("openalex") ||
+    normalized.includes("duns100") ||
+    normalized.includes("אתר") ||
+    normalized.includes("סימולטור")
+  );
+}
+
+function normalizedDataExpCells(row: CsvRow) {
+  const sheet = canonicalSheet(row.get("גליון"));
+  let criterion = row.get("קרטריון");
+  let explanation = row.get("הסבר");
+  let sourceLabel = row.get("מקור");
+  let sourceLinkPolicy = row.get("קישור(כן/לא)");
+  let displayAction = row.get("פעולות עבור מידע זה");
+
+  if (!sheet) return null;
+
+  if (sheet === "Master_Dept" && criterion === "Master_Dept" && /בכירים|רופאים בכירים/.test(sourceLabel)) {
+    criterion = "מספר_בכירים";
+    explanation = sourceLabel;
+    sourceLabel = sourceLinkPolicy;
+    sourceLinkPolicy = displayAction;
+    displayAction = "";
+  }
+
+  if (!explanation && sourceLabel && sourceLabel.length > 20 && isKnownSource(sourceLinkPolicy)) {
+    explanation = sourceLabel;
+    sourceLabel = sourceLinkPolicy;
+    sourceLinkPolicy = "";
+  }
+
+  return {
+    sheet,
+    criterion,
+    explanation,
+    sourceLabel,
+    sourceLinkPolicy,
+    displayAction
+  };
+}
+
+async function importDataExpCsv(db: DbClient, filePath: string) {
+  const rawText = await fs.readFile(filePath, "utf8");
+  const table = createCsvTable(rawText, { hasSourceNotesRow: false });
+  const batch = await createBatch(db, {
+    sourceFile: filePath,
+    rawText,
+    targetLabel: "Import Data_Exp.csv into display metadata"
+  });
+  let imported = 0;
+  let failed = 0;
+  let skipped = 0;
+
+  for (const row of table.rows) {
+    const warnings: string[] = [];
+    const errors: string[] = [];
+    const normalized = normalizedDataExpCells(row);
+
+    if (!normalized?.criterion) {
+      skipped += 1;
+      await logRow(db, {
+        batchId: batch.id,
+        sourceFile: filePath,
+        target: "DATA_EXPLANATION",
+        row,
+        stableKey: null,
+        status: "skipped",
+        warnings: ["שורה ללא גליון או קריטריון"],
+        errors
+      });
+      continue;
+    }
+
+    try {
+      const metadata = buildMetricDisplayMetadata(normalized);
+
+      await db.dataExplanation.upsert({
+        where: {
+          sheet_normalizedCriterion: {
+            sheet: metadata.sheet,
+            normalizedCriterion: metadata.normalizedCriterion
+          }
+        },
+        create: metadata,
+        update: {
+          criterion: metadata.criterion,
+          metricKey: metadata.metricKey,
+          readableLabel: metadata.readableLabel,
+          explanation: metadata.explanation,
+          sourceLabel: metadata.sourceLabel,
+          sourceLinkPolicy: metadata.sourceLinkPolicy,
+          sourceUrl: metadata.sourceUrl,
+          displayAction: metadata.displayAction,
+          displayMode: metadata.displayMode,
+          visualType: metadata.visualType,
+          isHidden: metadata.isHidden,
+          isHighlighted: metadata.isHighlighted,
+          isNationalMetric: metadata.isNationalMetric
+        }
+      });
+
+      imported += 1;
+      await logRow(db, {
+        batchId: batch.id,
+        sourceFile: filePath,
+        target: "DATA_EXPLANATION",
+        row,
+        stableKey: `${metadata.sheet}:${metadata.normalizedCriterion}`,
+        status: "imported",
+        warnings,
+        errors
+      });
+    } catch (error) {
+      failed += 1;
+      errors.push(error instanceof Error ? error.message : "Unknown Data_Exp import error");
+      await logRow(db, {
+        batchId: batch.id,
+        sourceFile: filePath,
+        target: "DATA_EXPLANATION",
+        row,
+        stableKey: null,
+        status: "failed",
+        warnings,
+        errors
+      });
+    }
+  }
+
+  await db.dataImportBatch.update({
+    where: { id: batch.id },
+    data: {
+      parsedJson: jsonValue({
+        sourceFile: path.basename(filePath),
+        imported,
+        failed,
+        skipped,
+        rowLogs: table.rows.length
+      }),
+      status: failed > 0 ? "PENDING_REVIEW" : "APPROVED"
+    }
+  });
+
+  return { batchId: batch.id, imported, failed, skipped, rows: table.rows.length };
+}
+
+async function loadDataExplanations(db: DbClient) {
+  const rows = await db.dataExplanation.findMany();
+  return rows.map((row) => ({
+    sheet: row.sheet as "MASTER_Spec" | "Master_Dept",
+    criterion: row.criterion,
+    normalizedCriterion: row.normalizedCriterion,
+    metricKey: row.metricKey,
+    readableLabel: row.readableLabel,
+    explanation: row.explanation,
+    sourceLabel: row.sourceLabel,
+    sourceLinkPolicy: row.sourceLinkPolicy,
+    sourceUrl: row.sourceUrl,
+    displayAction: row.displayAction,
+    displayMode: row.displayMode,
+    visualType: row.visualType as MetricDisplayMetadata["visualType"],
+    isHidden: row.isHidden,
+    isHighlighted: row.isHighlighted,
+    isNationalMetric: row.isNationalMetric
+  }));
+}
+
+async function importSpecialtyCsv(db: DbClient, filePath: string, dataExplanations: MetricDisplayMetadata[]) {
   const rawText = await fs.readFile(filePath, "utf8");
   const table = createCsvTable(rawText);
   const batch = await createBatch(db, {
@@ -565,27 +821,31 @@ async function importSpecialtyCsv(db: DbClient, filePath: string) {
       });
 
       for (const metric of SPECIALTY_TEXT_METRICS) {
-        const rawValue = row.get(metric.header, metric.occurrence);
+        const metadata = metadataForMetric(dataExplanations, "MASTER_Spec", metric);
+        const rawValue = rowMetricValue(row, metric);
         await upsertSpecialtyMetric(db, {
           specialtyId: specialty.id,
           metric,
           value: null,
           rawValue: rawValue || null,
-          sourceNotes: sourceNoteFor(table, metric.header, metric.occurrence),
-          lastUpdated
+          sourceNotes: sourceForMetric(table, metric, metadata),
+          lastUpdated,
+          displayMetadata: metadata
         });
       }
 
       for (const metric of SPECIALTY_NUMERIC_METRICS) {
-        const parsed = parseNumberCell(row.get(metric.header, metric.occurrence));
+        const metadata = metadataForMetric(dataExplanations, "MASTER_Spec", metric);
+        const parsed = parseNumberCell(rowMetricValue(row, metric));
         if (parsed.warning) warnings.push(`${metric.label}: ${parsed.warning}`);
         await upsertSpecialtyMetric(db, {
           specialtyId: specialty.id,
           metric,
           value: parsed.value,
           rawValue: parsed.rawValue,
-          sourceNotes: sourceNoteFor(table, metric.header, metric.occurrence),
-          lastUpdated
+          sourceNotes: sourceForMetric(table, metric, metadata),
+          lastUpdated,
+          displayMetadata: metadata
         });
       }
 
@@ -598,7 +858,9 @@ async function importSpecialtyCsv(db: DbClient, filePath: string) {
           year,
           value: parsed.value,
           rawValue: parsed.rawValue,
-          sourceNotes: sourceNoteFor(table, header),
+          sourceNotes:
+            findMetricDisplayMetadata(dataExplanations, "MASTER_Spec", header, "newResidents")?.sourceLabel ??
+            sourceNoteFor(table, header),
           lastUpdated
         });
       }
@@ -723,7 +985,7 @@ async function ensureDepartmentFromCsv(
   return { institution, specialty, department: updated };
 }
 
-async function importDepartmentCsv(db: DbClient, filePath: string) {
+async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanations: MetricDisplayMetadata[]) {
   const rawText = await fs.readFile(filePath, "utf8");
   const table = createCsvTable(rawText);
   const batch = await createBatch(db, {
@@ -733,6 +995,8 @@ async function importDepartmentCsv(db: DbClient, filePath: string) {
   });
   let imported = 0;
   let failed = 0;
+  let staleHidden = 0;
+  const currentStableKeys = new Set<string>();
 
   for (const row of table.rows) {
     const warnings: string[] = [];
@@ -837,14 +1101,16 @@ async function importDepartmentCsv(db: DbClient, filePath: string) {
       }
 
       for (const metric of DEPARTMENT_NUMERIC_METRICS) {
-        const parsed = parseNumberCell(row.get(metric.header, metric.occurrence));
+        const metadata = metadataForMetric(dataExplanations, "Master_Dept", metric);
+        const parsed = parseNumberCell(rowMetricValue(row, metric));
         if (parsed.warning) warnings.push(`${metric.label}: ${parsed.warning}`);
         await upsertDepartmentMetric(db, {
           departmentId: department.id,
           metric,
           value: parsed.value,
           rawValue: parsed.rawValue,
-          sourceNotes: sourceNoteFor(table, metric.header, metric.occurrence)
+          sourceNotes: sourceForMetric(table, metric, metadata),
+          displayMetadata: metadata
         });
       }
 
@@ -861,7 +1127,9 @@ async function importDepartmentCsv(db: DbClient, filePath: string) {
           year,
           value: parsed.value,
           rawValue: parsed.rawValue,
-          sourceNotes: sourceNoteFor(table, header, Math.max(values.length - 1, 0))
+          sourceNotes:
+            findMetricDisplayMetadata(dataExplanations, "Master_Dept", header, "newResidents")?.sourceLabel ??
+            sourceNoteFor(table, header, Math.max(values.length - 1, 0))
         });
       }
 
@@ -873,11 +1141,14 @@ async function importDepartmentCsv(db: DbClient, filePath: string) {
           year: OPENING_YEAR,
           value: parsed.value,
           rawValue: parsed.rawValue,
-          sourceNotes: sourceNoteFor(table, "צפי תקנים חדשים ב2026")
+          sourceNotes:
+            findMetricDisplayMetadata(dataExplanations, "Master_Dept", "expectedOpenings2026")?.sourceLabel ??
+            sourceNoteFor(table, "צפי תקנים חדשים ב2026")
         });
       }
 
       imported += 1;
+      currentStableKeys.add(rowKey ?? stableKey([institutionName, specialtyName, subDepartment || specialtyName]));
       await logRow(db, {
         batchId: batch.id,
         sourceFile: filePath,
@@ -906,6 +1177,29 @@ async function importDepartmentCsv(db: DbClient, filePath: string) {
     }
   }
 
+  if (failed === 0 && currentStableKeys.size > 0) {
+    const staleResult = await db.department.updateMany({
+      where: {
+        AND: [
+          {
+            importStableKey: {
+              not: null
+            }
+          },
+          {
+            importStableKey: {
+              notIn: Array.from(currentStableKeys)
+            }
+          }
+        ]
+      },
+      data: {
+        importStableKey: null
+      }
+    });
+    staleHidden = staleResult.count;
+  }
+
   await db.dataImportBatch.update({
     where: { id: batch.id },
     data: {
@@ -913,13 +1207,14 @@ async function importDepartmentCsv(db: DbClient, filePath: string) {
         sourceFile: path.basename(filePath),
         imported,
         failed,
+        staleHidden,
         rowLogs: table.rows.length
       }),
       status: failed > 0 ? "PENDING_REVIEW" : "APPROVED"
     }
   });
 
-  return { batchId: batch.id, imported, failed, rows: table.rows.length };
+  return { batchId: batch.id, imported, failed, staleHidden, rows: table.rows.length };
 }
 
 export async function importMasterCsvFiles(
@@ -927,13 +1222,17 @@ export async function importMasterCsvFiles(
   input: {
     specialtyCsvPath?: string;
     departmentCsvPath?: string;
+    dataExpCsvPath?: string;
   } = {}
 ) {
   const cwd = process.cwd();
+  const dataExpCsvPath = input.dataExpCsvPath ?? path.join(cwd, DATA_EXP_FILE);
   const specialtyCsvPath = input.specialtyCsvPath ?? path.join(cwd, MASTER_SPEC_FILE);
   const departmentCsvPath = input.departmentCsvPath ?? path.join(cwd, MASTER_DEPT_FILE);
-  const specialty = await importSpecialtyCsv(prisma, specialtyCsvPath);
-  const department = await importDepartmentCsv(prisma, departmentCsvPath);
+  const dataExp = await importDataExpCsv(prisma, dataExpCsvPath);
+  const dataExplanations = await loadDataExplanations(prisma);
+  const specialty = await importSpecialtyCsv(prisma, specialtyCsvPath, dataExplanations);
+  const department = await importDepartmentCsv(prisma, departmentCsvPath, dataExplanations);
 
-  return { specialty, department };
+  return { dataExp, specialty, department };
 }

@@ -312,6 +312,31 @@ model SpecialtyDashboardConfig {
   specialty          Specialty @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
 }
 
+model DataExplanation {
+  id                  String   @id @default(cuid())
+  sheet               String
+  criterion           String
+  normalizedCriterion String   @map("normalized_criterion")
+  metricKey           String?  @map("metric_key")
+  readableLabel       String   @map("readable_label")
+  explanation         String?
+  sourceLabel         String?  @map("source_label")
+  sourceLinkPolicy    String?  @map("source_link_policy")
+  sourceUrl           String?  @map("source_url")
+  displayAction       String?  @map("display_action")
+  displayMode         String?  @map("display_mode")
+  visualType          String?  @map("visual_type")
+  isHidden            Boolean  @default(false) @map("is_hidden")
+  isHighlighted       Boolean  @default(false) @map("is_highlighted")
+  isNationalMetric    Boolean  @default(false) @map("is_national_metric")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  @@unique([sheet, normalizedCriterion])
+  @@index([sheet, metricKey])
+  @@index([isHidden, isHighlighted])
+}
+
 model Department {
   id                      String                   @id @default(cuid())
   institutionId           String                   @map("institution_id")

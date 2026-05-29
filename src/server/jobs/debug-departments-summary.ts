@@ -1,4 +1,5 @@
 import { getDepartmentPageData, getDirectoryData, getSpecialtyDashboardMetrics } from "@/lib/queries";
+import { findMetricDisplayMetadata } from "@/lib/metric-display";
 import { prisma } from "@/lib/prisma";
 
 function argValue(name: string) {
@@ -29,6 +30,7 @@ async function main() {
     departmentYearlyMetricCount,
     specialtyMetricCount,
     specialtyYearlyMetricCount,
+    dataExplanations,
     importedSpecialtyDepartments
   ] = await Promise.all([
     getDirectoryData({
@@ -57,6 +59,25 @@ async function main() {
     prisma.specialtyYearlyMetric.count({
       where: {
         specialtyId: specialty.id
+      }
+    }),
+    prisma.dataExplanation.findMany({
+      select: {
+        sheet: true,
+        criterion: true,
+        normalizedCriterion: true,
+        metricKey: true,
+        readableLabel: true,
+        explanation: true,
+        sourceLabel: true,
+        sourceLinkPolicy: true,
+        sourceUrl: true,
+        displayAction: true,
+        displayMode: true,
+        visualType: true,
+        isHidden: true,
+        isHighlighted: true,
+        isNationalMetric: true
       }
     }),
     prisma.department.findMany({
@@ -103,6 +124,21 @@ async function main() {
   ]);
   const dashboardBurnout = summary.metrics.find((metric) => metric.key === "burnoutIndex");
   const dashboardSalaryGap = summary.metrics.find((metric) => metric.key === "salaryGap");
+  const dashboardExpectedOpenings = summary.metrics.find((metric) => metric.key === "expectedOpenings");
+  const metadata = dataExplanations.map((row) => ({
+    ...row,
+    sheet: row.sheet as "MASTER_Spec" | "Master_Dept",
+    visualType: row.visualType as "badge" | "clock" | "distribution" | "donut" | "salaryComparison" | "trend" | null
+  }));
+  const waitingMetadata = findMetricDisplayMetadata(metadata, "Master_Dept", "medianWaitingTime");
+  const waitingVisualMetadata =
+    waitingMetadata?.visualType
+      ? waitingMetadata
+      : findMetricDisplayMetadata(metadata, "MASTER_Spec", "medianWaitingTime");
+  const womenCountMetadata = findMetricDisplayMetadata(metadata, "Master_Dept", "womenCount");
+  const residentsMetadata = findMetricDisplayMetadata(metadata, "Master_Dept", "residentsCount");
+  const expectedOpeningsMetadata = findMetricDisplayMetadata(metadata, "Master_Dept", "expectedOpenings2026");
+  const hiddenExpectedNationalOpenings = findMetricDisplayMetadata(metadata, "MASTER_Spec", "expectedNationalOpenings");
   const groupedByInstitution = importedSpecialtyDepartments.reduce<
     Record<string, typeof importedSpecialtyDepartments>
   >((groups, department) => {
@@ -133,7 +169,8 @@ async function main() {
       departmentMetricCount,
       departmentYearlyMetricCount,
       specialtyMetricCount,
-      specialtyYearlyMetricCount
+      specialtyYearlyMetricCount,
+      dataExplanationCount: dataExplanations.length
     },
     sampleDepartmentCards: departments.slice(0, 5).map((department) => ({
       id: department.id,
@@ -167,6 +204,36 @@ async function main() {
             value: dashboardSalaryGap.value,
             sourceLabel: dashboardSalaryGap.sourceLabel,
             tooltip: dashboardSalaryGap.tooltip
+          }
+        : null,
+      hiddenExpectedOpeningsHidden: Boolean(hiddenExpectedNationalOpenings?.isHidden && !dashboardExpectedOpenings)
+    },
+    dataExpChecks: {
+      loaded: dataExplanations.length,
+      waitingTooltip: waitingMetadata
+        ? {
+            label: waitingMetadata.readableLabel,
+            sourceLabel: waitingMetadata.sourceLabel,
+            visualType: waitingVisualMetadata?.visualType ?? waitingMetadata.visualType,
+            explanation: waitingMetadata.explanation
+          }
+        : null,
+      hiddenWomenCount: womenCountMetadata
+        ? {
+            isHidden: womenCountMetadata.isHidden,
+            displayAction: womenCountMetadata.displayAction
+          }
+        : null,
+      highlightedResidents: residentsMetadata
+        ? {
+            isHighlighted: residentsMetadata.isHighlighted,
+            displayAction: residentsMetadata.displayAction
+          }
+        : null,
+      highlightedExpectedOpenings: expectedOpeningsMetadata
+        ? {
+            isHighlighted: expectedOpeningsMetadata.isHighlighted,
+            displayAction: expectedOpeningsMetadata.displayAction
           }
         : null
     },
@@ -208,6 +275,22 @@ async function main() {
 
   if (!dashboardSalaryGap) {
     throw new Error("Specialty dashboard is missing salary gap card.");
+  }
+
+  if (dataExplanations.length < 40) {
+    throw new Error("Data_Exp metadata was not loaded.");
+  }
+
+  if (!waitingMetadata || waitingVisualMetadata?.visualType !== "clock" || waitingMetadata.sourceLabel !== "משרד הבריאות") {
+    throw new Error("Data_Exp sample tooltip/source/action for waiting time is incorrect.");
+  }
+
+  if (!womenCountMetadata?.isHidden || !hiddenExpectedNationalOpenings?.isHidden || dashboardExpectedOpenings) {
+    throw new Error("Data_Exp hidden display rules are not applied.");
+  }
+
+  if (!residentsMetadata?.isHighlighted || !expectedOpeningsMetadata?.isHighlighted) {
+    throw new Error("Data_Exp highlighted display rules are not loaded.");
   }
 
   if (!multiSubdepartmentSample) {
