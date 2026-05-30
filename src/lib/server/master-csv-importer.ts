@@ -31,6 +31,7 @@ type MetricInput = {
   label: string;
   header: string;
   headers?: string[];
+  legacyKeys?: string[];
   unit?: string;
   occurrence?: number;
 };
@@ -40,6 +41,7 @@ type TextMetricInput = {
   label: string;
   header: string;
   headers?: string[];
+  legacyKeys?: string[];
   occurrence?: number;
 };
 
@@ -76,23 +78,24 @@ const SPECIALTY_NAME_ALIASES: Record<string, string> = {
 
 const SPECIALTY_NUMERIC_METRICS: MetricInput[] = [
   {
-    key: "officialResidencyDuration",
+    key: "משך_התמחות_רשמי (שנים)",
     label: "משך התמחות רשמי",
     header: "משך_התמחות_רשמי (שנים)",
     headers: ["משך_התמחות_רשמי (חודשים)", "משך_התמחות_רשמי"],
+    legacyKeys: ["officialResidencyDuration"],
     unit: "years"
   },
-  { key: "actualAverageDuration", label: "משך ממוצע בפועל", header: "משך_ממוצע_בפועל", unit: "years" },
-  { key: "medianWaitingTime", label: "זמן המתנה חציוני לתקן", header: "זמן_המתנה_חציוני_לתקן", unit: "months" },
+  { key: "משך_ממוצע_בפועל", label: "משך ממוצע בפועל", header: "משך_ממוצע_בפועל", legacyKeys: ["actualAverageDuration", "medianResidencyDurationMonths"], unit: "years" },
+  { key: "זמן_המתנה_חציוני_לתקן", label: "זמן המתנה חציוני לתקן", header: "זמן_המתנה_חציוני_לתקן", legacyKeys: ["medianWaitingTime"], unit: "months" },
   { key: "acceptedImmediatelyReports", label: "דיווחי מציאת התמחות מיד", header: "מספר המתקבלים שדיווחו שמצאו מיד התמחות", unit: "count" },
   { key: "acceptedWithinSixMonthsReports", label: "דיווחי מציאת התמחות עד חצי שנה", header: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה", unit: "count" },
   { key: "acceptedWithinOneYearReports", label: "דיווחי מציאת התמחות עד שנה", header: "מספר המתקבלים שדיווחו שמצאו עד שנה", unit: "count" },
   { key: "acceptedWithinTwoYearsReports", label: "דיווחי מציאת התמחות עד שנתיים", header: "מספר המתקבלים שדיווחו שמצאו עד שנתיים", unit: "count" },
   { key: "acceptedAfterTwoYearsReports", label: "דיווחי מציאת התמחות אחרי שנתיים", header: "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים", unit: "count" },
-  { key: "centerSalary", label: "שכר לא פריפריה", header: "שכר_לא_פריפריה", unit: "currency" },
-  { key: "peripherySalary", label: "שכר פריפריה", header: "שכר_פריפריה", headers: ["שכר_פריפריה 1"], unit: "currency" },
-  { key: "peripherySalaryGap", label: "פער שכר פריפריה", header: "פער_שכר_פריפריה", unit: "currency" },
-  { key: "residentsCount", label: "מספר מתמחים", header: "מספר_מתמחים", unit: "count" },
+  { key: "שכר_לא_פריפריה", label: "שכר לא פריפריה", header: "שכר_לא_פריפריה", legacyKeys: ["centerSalary"], unit: "currency" },
+  { key: "שכר_פריפריה 1", label: "שכר פריפריה", header: "שכר_פריפריה 1", headers: ["שכר_פריפריה"], legacyKeys: ["peripherySalary"], unit: "currency" },
+  { key: "פער_שכר_פריפריה", label: "פער שכר פריפריה", header: "פער_שכר_פריפריה", legacyKeys: ["peripherySalaryGap"], unit: "currency" },
+  { key: "מספר_מתמחים", label: "מספר מתמחים", header: "מספר_מתמחים", legacyKeys: ["residentsCount", "activeResidentsCount"], unit: "count" },
   { key: "womenCount", label: "מספר נשים", header: "מספר נשים", unit: "count" },
   { key: "womenPercent", label: "אחוז נשים", header: "אחוז_נשים", unit: "%" },
   { key: "menCount", label: "מספר גברים", header: "מספר גברים", unit: "count" },
@@ -110,18 +113,18 @@ const SPECIALTY_TEXT_METRICS: TextMetricInput[] = [
 ];
 
 const DEPARTMENT_NUMERIC_METRICS: MetricInput[] = [
-  { key: "officialResidencyDuration", label: "משך התמחות רשמי", header: "משך_התמחות_רשמי", unit: "years" },
-  { key: "actualAverageDuration", label: "משך ממוצע בפועל", header: "משך_ממוצע_בפועל", unit: "years" },
-  { key: "medianWaitingTime", label: "זמן המתנה חציוני לתקן", header: "זמן_המתנה_חציוני_לתקן", unit: "months" },
+  { key: "משך_התמחות_רשמי", label: "משך התמחות רשמי", header: "משך_התמחות_רשמי", legacyKeys: ["officialResidencyDuration"], unit: "years" },
+  { key: "משך_ממוצע_בפועל", label: "משך ממוצע בפועל", header: "משך_ממוצע_בפועל", legacyKeys: ["actualAverageDuration", "medianResidencyDurationMonths"], unit: "years" },
+  { key: "זמן_המתנה_חציוני_לתקן", label: "זמן המתנה חציוני לתקן", header: "זמן_המתנה_חציוני_לתקן", legacyKeys: ["medianWaitingTime"], unit: "months" },
   { key: "acceptedImmediatelyReports", label: "דיווחי מציאת התמחות מיד", header: "מספר המתקבלים שדיווחו שמצאו מיד התמחות", unit: "count" },
   { key: "acceptedWithinSixMonthsReports", label: "דיווחי מציאת התמחות עד חצי שנה", header: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה", unit: "count" },
   { key: "acceptedWithinOneYearReports", label: "דיווחי מציאת התמחות עד שנה", header: "מספר המתקבלים שדיווחו שמצאו עד שנה", unit: "count" },
   { key: "acceptedWithinTwoYearsReports", label: "דיווחי מציאת התמחות עד שנתיים", header: "מספר המתקבלים שדיווחו שמצאו עד שנתיים", unit: "count" },
   { key: "acceptedAfterTwoYearsReports", label: "דיווחי מציאת התמחות אחרי שנתיים", header: "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים", unit: "count" },
-  { key: "centerSalary", label: "שכר לא פריפריה", header: "שכר_לא_פריפריה", unit: "currency" },
-  { key: "peripherySalary", label: "שכר פריפריה", header: "שכר_פריפריה", unit: "currency" },
-  { key: "peripherySalaryGap", label: "פער שכר פריפריה", header: "פער_שכר_פריפריה", unit: "currency" },
-  { key: "residentsCount", label: "מספר מתמחים", header: "מספר_מתמחים", unit: "count" },
+  { key: "שכר_לא_פריפריה", label: "שכר לא פריפריה", header: "שכר_לא_פריפריה", legacyKeys: ["centerSalary"], unit: "currency" },
+  { key: "שכר_פריפריה", label: "שכר פריפריה", header: "שכר_פריפריה", legacyKeys: ["peripherySalary"], unit: "currency" },
+  { key: "פער_שכר_פריפריה", label: "פער שכר פריפריה", header: "פער_שכר_פריפריה", legacyKeys: ["peripherySalaryGap"], unit: "currency" },
+  { key: "מספר_מתמחים", label: "מספר מתמחים", header: "מספר_מתמחים", legacyKeys: ["residentsCount", "activeResidentsCount"], unit: "count" },
   { key: "womenCount", label: "מספר נשים", header: "מספר נשים", unit: "count" },
   { key: "womenPercent", label: "אחוז נשים", header: "אחוז_נשים", unit: "%" },
   { key: "menCount", label: "מספר גברים", header: "מספר גברים", unit: "count" },
@@ -398,6 +401,51 @@ async function upsertSpecialtyMetric(
 ) {
   if (input.value === null && !input.rawValue) return;
 
+  if (input.metric.legacyKeys?.length) {
+    const existingTarget = await db.specialtyMetric.findUnique({
+      where: {
+        specialtyId_metricKey: {
+          specialtyId: input.specialtyId,
+          metricKey: input.metric.key
+        }
+      }
+    });
+
+    if (existingTarget) {
+      await db.specialtyMetric.deleteMany({
+        where: {
+          specialtyId: input.specialtyId,
+          metricKey: {
+            in: input.metric.legacyKeys
+          }
+        }
+      });
+    } else {
+      const legacyMetric = await db.specialtyMetric.findFirst({
+        where: {
+          specialtyId: input.specialtyId,
+          metricKey: {
+            in: input.metric.legacyKeys
+          }
+        },
+        orderBy: {
+          updatedAt: "desc"
+        }
+      });
+
+      if (legacyMetric) {
+        await db.specialtyMetric.update({
+          where: {
+            id: legacyMetric.id
+          },
+          data: {
+            metricKey: input.metric.key
+          }
+        });
+      }
+    }
+  }
+
   await db.specialtyMetric.upsert({
     where: {
       specialtyId_metricKey: {
@@ -480,6 +528,51 @@ async function upsertDepartmentMetric(
   }
 ) {
   if (input.value === null && !input.rawValue) return;
+
+  if (input.metric.legacyKeys?.length) {
+    const existingTarget = await db.departmentMetric.findUnique({
+      where: {
+        departmentId_metricKey: {
+          departmentId: input.departmentId,
+          metricKey: input.metric.key
+        }
+      }
+    });
+
+    if (existingTarget) {
+      await db.departmentMetric.deleteMany({
+        where: {
+          departmentId: input.departmentId,
+          metricKey: {
+            in: input.metric.legacyKeys
+          }
+        }
+      });
+    } else {
+      const legacyMetric = await db.departmentMetric.findFirst({
+        where: {
+          departmentId: input.departmentId,
+          metricKey: {
+            in: input.metric.legacyKeys
+          }
+        },
+        orderBy: {
+          updatedAt: "desc"
+        }
+      });
+
+      if (legacyMetric) {
+        await db.departmentMetric.update({
+          where: {
+            id: legacyMetric.id
+          },
+          data: {
+            metricKey: input.metric.key
+          }
+        });
+      }
+    }
+  }
 
   await db.departmentMetric.upsert({
     where: {

@@ -39,47 +39,51 @@ export const metricFieldDefinitions = {
   centerSalary: {
     label: "שכר מרכז",
     importedKeys: ["שכר_לא_פריפריה"],
-    dbKeys: ["centerSalary"],
-    uiCards: ["specialtyDashboard.centerSalary", "departmentSidebar.centerSalary", "departmentSidebar.salaryGap"]
+    dbKeys: ["שכר_לא_פריפריה"],
+    uiCards: ["specialtyDashboard.centerSalary", "departmentSidebar.centerSalary", "departmentSidebar.salaryGap"],
+    legacyKeys: ["centerSalary"]
   },
   peripherySalary: {
     label: "שכר פריפריה",
     importedKeys: ["שכר_פריפריה", "שכר_פריפריה 1"],
-    dbKeys: ["peripherySalary"],
-    uiCards: ["specialtyDashboard.peripherySalary", "departmentSidebar.peripherySalary", "departmentSidebar.salaryGap"]
+    dbKeys: ["שכר_פריפריה", "שכר_פריפריה 1"],
+    uiCards: ["specialtyDashboard.peripherySalary", "departmentSidebar.peripherySalary", "departmentSidebar.salaryGap"],
+    legacyKeys: ["peripherySalary"]
   },
   peripherySalaryGap: {
     label: "פער שכר",
     importedKeys: ["פער_שכר_פריפריה"],
-    dbKeys: ["peripherySalaryGap"],
+    dbKeys: ["פער_שכר_פריפריה"],
     uiCards: ["specialtyDashboard.salaryGap", "departmentSidebar.salaryGap"],
-    legacyKeys: ["salaryGap"]
+    legacyKeys: ["peripherySalaryGap", "salaryGap"]
   },
   residentsCount: {
     label: "מספר מתמחים",
     importedKeys: ["מספר_מתמחים"],
-    dbKeys: ["residentsCount"],
+    dbKeys: ["מספר_מתמחים"],
     uiCards: ["specialtyDashboard.activeResidents", "departmentMain.residentsCount"],
-    legacyKeys: ["activeResidentsCount"]
+    legacyKeys: ["residentsCount", "activeResidentsCount"]
   },
   medianWaitingTime: {
     label: "זמן המתנה חציוני לתקן",
     importedKeys: ["זמן_המתנה_חציוני_לתקן"],
-    dbKeys: ["medianWaitingTime"],
-    uiCards: ["specialtyDashboard.medianWaitingTime", "departmentMain.medianWaitingTime"]
+    dbKeys: ["זמן_המתנה_חציוני_לתקן"],
+    uiCards: ["specialtyDashboard.medianWaitingTime", "departmentMain.medianWaitingTime"],
+    legacyKeys: ["medianWaitingTime"]
   },
   officialResidencyDuration: {
     label: "משך התמחות רשמי",
     importedKeys: ["משך_התמחות_רשמי", "משך_התמחות_רשמי (שנים)"],
-    dbKeys: ["officialResidencyDuration"],
-    uiCards: ["specialtyDashboard.residencyDuration", "departmentMain.officialResidencyDuration"]
+    dbKeys: ["משך_התמחות_רשמי", "משך_התמחות_רשמי (שנים)"],
+    uiCards: ["specialtyDashboard.residencyDuration", "departmentMain.officialResidencyDuration"],
+    legacyKeys: ["officialResidencyDuration"]
   },
   actualAverageDuration: {
     label: "משך ממוצע בפועל",
     importedKeys: ["משך_ממוצע_בפועל"],
-    dbKeys: ["actualAverageDuration"],
+    dbKeys: ["משך_ממוצע_בפועל"],
     uiCards: ["specialtyDashboard.residencyDuration", "departmentMain.actualAverageDuration"],
-    legacyKeys: ["medianResidencyDurationMonths"]
+    legacyKeys: ["actualAverageDuration", "medianResidencyDurationMonths"]
   },
   seniorPhysiciansCount: {
     label: "מספר בכירים",

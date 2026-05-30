@@ -21,6 +21,7 @@ import {
   normalizeMetricKeys
 } from "@/lib/specialty-metrics";
 import type { MetricDisplayMetadata } from "@/lib/metric-display";
+import { resolveImportedMetric } from "@/lib/imported-metric-resolver";
 import { getOpenAlexMappingStatus } from "@/lib/server/openalex-research";
 import { average, formatDepartmentDisplayName } from "@/lib/utils";
 import { resolveCanonicalDepartmentSlug } from "@/server/department-catalog";
@@ -269,10 +270,10 @@ function importedMetricValue(
   metrics: Array<{ metricKey: string; value: number | null; rawValue?: string | null }>,
   ...metricKeys: string[]
 ) {
-  const metric = metrics.find(
-    (item) => metricKeys.includes(item.metricKey) && typeof item.value === "number" && Number.isFinite(item.value)
-  );
+  const [fieldOrKey, ...aliases] = metricKeys;
+  if (!fieldOrKey) return null;
 
+  const metric = resolveImportedMetric(metrics, fieldOrKey, { aliases });
   return metric?.value ?? null;
 }
 

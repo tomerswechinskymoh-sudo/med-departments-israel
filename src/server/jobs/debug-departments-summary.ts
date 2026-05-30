@@ -568,9 +568,6 @@ async function main() {
       id: true,
       name: true,
       metrics: {
-        where: {
-          metricKey: { in: ["centerSalary", "peripherySalary", "peripherySalaryGap"] }
-        },
         select: {
           metricKey: true,
           label: true,
@@ -637,7 +634,7 @@ async function main() {
   const detailDepartmentChecks = detail
     ? requiredDepartmentKeys.map((key) => ({
         key,
-        departmentValueExists: Boolean(detail.metrics.find((metric) => metric.metricKey === key && hasValue(metric)))
+        departmentValueExists: Boolean(resolveImportedMetric(detail.metrics, key))
       }))
     : [];
   const dunsCoverage = departmentMetricCoverage.find((row) => row.metricKey === "duns100PhysiciansCount")?._count._all ?? 0;

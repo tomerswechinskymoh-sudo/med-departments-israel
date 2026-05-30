@@ -471,27 +471,34 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   },
   {
     key: "residencyDuration",
-    label: "אורך התמחות חציוני",
-    description: "משך התמחות טיפוסי לפי נתונים זמינים",
+    label: "משך התמחות",
+    description: "משך התמחות רשמי מול משך ממוצע בפועל לפי נתונים זמינים",
     unit: "months",
     sourceLabel: "הר״י",
     calculate: (departments, context) => {
-      const specialtyDurationMetric = contextMetric(
+      const officialDurationMetric = contextMetric(
+        context,
+        "משך_התמחות_רשמי",
+        "officialResidencyDuration",
+        "משך_התמחות_רשמי (שנים)"
+      );
+      const actualDurationMetric = contextMetric(
         context,
         "משך_ממוצע_בפועל",
-        "משך_התמחות_רשמי",
         "actualAverageDuration",
-        "officialResidencyDuration",
         "medianResidencyDurationMonths"
       );
-      if (specialtyDurationMetric) {
-        const displayValue = formatMetricValue(specialtyDurationMetric);
-        return displayValue
-          ? {
-              value: displayValue,
-              sourceLabel: sourceLabelForMetric(specialtyDurationMetric, "הר״י")
-            }
-          : null;
+      const officialValue = officialDurationMetric ? formatMetricValue(officialDurationMetric) : null;
+      const actualValue = actualDurationMetric ? formatMetricValue(actualDurationMetric) : null;
+
+      if (officialValue || actualValue) {
+        return {
+          value: [
+            officialValue ? `רשמי: ${officialValue}` : null,
+            actualValue ? `בפועל: ${actualValue}` : null
+          ].filter(Boolean).join(" · "),
+          sourceLabel: sourceLabelForMetric(actualDurationMetric ?? officialDurationMetric, "הר״י")
+        };
       }
 
       const duration =
