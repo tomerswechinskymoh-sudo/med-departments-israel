@@ -12,6 +12,7 @@ import {
   availableImportedMetricKeys,
   metricFieldLabel,
   metricKeyCandidates,
+  metricRegistryEntries,
   resolveImportedMetric,
   resolveImportedSalaryMetrics,
   resolveImportedYearlyMetric,
@@ -277,6 +278,64 @@ function salaryVerificationFailures(
       return null;
     })
     .filter((item): item is string => Boolean(item));
+}
+
+function strictMetricRegistryReport(input: {
+  scope: "specialty" | "department";
+  metrics: ImportedMetricLike[];
+  yearlyMetrics: ImportedYearlyMetricLike[];
+  metadata: MetricDisplayMetadata[];
+  dashboard?: Awaited<ReturnType<typeof getSpecialtyDashboardMetrics>> | null;
+}) {
+  const uiPrefix = input.scope === "specialty" ? "specialtyDashboard." : "department";
+
+  return metricRegistryEntries()
+    .filter((entry) => entry.uiCards.some((card) => card.startsWith(uiPrefix)))
+    .map((entry) => {
+      const csvKey = entry.importedKeys[0] ?? entry.id;
+      const year = entry.years?.[0];
+      const metadataSheet = input.scope === "specialty" ? "MASTER_Spec" : "Master_Dept";
+      const metadata = resolveMetricDisplayMetadata(input.metadata, metadataSheet, csvKey);
+      const resolved =
+        typeof year === "number"
+          ? resolveImportedYearlyMetric(input.yearlyMetrics, csvKey, { year })
+          : resolveImportedMetric(input.metrics, csvKey);
+      const valueExistsInDb =
+        typeof year === "number"
+          ? dbHasResolvableValue(input.yearlyMetrics, csvKey, year)
+          : dbHasResolvableValue(input.metrics, csvKey);
+      const dashboardValues = input.scope === "specialty"
+        ? entry.uiCards
+            .filter((card) => card.startsWith("specialtyDashboard."))
+            .map((card) => card.replace("specialtyDashboard.", ""))
+            .map((cardKey) => input.dashboard?.metrics.find((metric) => metric.key === cardKey) ?? null)
+            .filter((metric): metric is NonNullable<typeof metric> => Boolean(metric))
+        : [];
+      const renderedMissing =
+        metadata?.isHidden
+          ? false
+          : dashboardValues.length > 0
+            ? dashboardValues.every((metric) => metric.isPlaceholder)
+            : valueExistsInDb && !resolved;
+
+      return {
+        id: entry.id,
+        csvKeys: entry.importedKeys,
+        dbKeys: entry.dbKeys,
+        uiCards: entry.uiCards,
+        year: year ?? null,
+        dataExpMatched: Boolean(metadata),
+        hiddenByDataExp: Boolean(metadata?.isHidden),
+        valueExistsInDb,
+        resolvedValue: resolved?.rawValue ?? resolved?.value ?? null,
+        renderedValues: dashboardValues.map((metric) => ({
+          key: metric.key,
+          value: metric.value,
+          isPlaceholder: metric.isPlaceholder
+        })),
+        rendersAsMissing: valueExistsInDb && renderedMissing
+      };
+    });
 }
 
 function auditDataExpRow(input: {
@@ -628,6 +687,29 @@ async function main() {
     ...(salarySpecialtyReport ? salaryVerificationFailures(salarySpecialtyReport) : []),
     ...(salaryDepartmentReport ? salaryVerificationFailures(salaryDepartmentReport) : [])
   ].filter((item): item is string => Boolean(item));
+  const specialtyStrictRegistryReport = strictMetricRegistryReport({
+    scope: "specialty",
+    metrics: specialtyMetricRows,
+    yearlyMetrics: specialtyYearlyRows,
+    metadata,
+    dashboard: summary
+  });
+  const departmentStrictRegistryReport = resolverSampleDepartment
+    ? strictMetricRegistryReport({
+        scope: "department",
+        metrics: resolverSampleDepartment.metrics,
+        yearlyMetrics: resolverSampleDepartment.yearlyMetrics,
+        metadata
+      })
+    : [];
+  const strictRegistryFailures = [
+    ...specialtyStrictRegistryReport
+      .filter((row) => row.rendersAsMissing)
+      .map((row) => `strict registry specialty UI missing ${row.id}`),
+    ...departmentStrictRegistryReport
+      .filter((row) => row.rendersAsMissing)
+      .map((row) => `strict registry department UI missing ${row.id}`)
+  ];
 
   const failedChecks = [
     !dashboardCenterSalary || dashboardCenterSalary.isPlaceholder ? "missing center salary card" : null,
@@ -654,7 +736,8 @@ async function main() {
       ? "detail sample missing imported data"
       : null,
     ...resolverFailures,
-    ...salaryFailures
+    ...salaryFailures,
+    ...strictRegistryFailures
   ].filter((item): item is string => Boolean(item));
 
   const report = {
@@ -689,6 +772,13 @@ async function main() {
     salaryVerification: {
       specialty: salarySpecialtyReport,
       department: salaryDepartmentReport
+    },
+    strictMetricRegistry: {
+      mappedUiCards: Array.from(
+        new Set(metricRegistryEntries().flatMap((entry) => entry.uiCards))
+      ).sort(),
+      specialtyFailures: specialtyStrictRegistryReport.filter((row) => row.rendersAsMissing),
+      departmentFailures: departmentStrictRegistryReport.filter((row) => row.rendersAsMissing)
     },
     resolverAudit: {
       specialtySample: {

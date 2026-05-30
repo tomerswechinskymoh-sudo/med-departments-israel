@@ -29,173 +29,222 @@ export type ImportedYearlyMetricLike = {
 type MetricFieldDefinition = {
   label: string;
   importedKeys: string[];
-  aliases?: string[];
+  dbKeys: string[];
+  uiCards: string[];
+  legacyKeys?: string[];
+  years?: number[];
 };
 
 export const metricFieldDefinitions = {
   centerSalary: {
     label: "שכר מרכז",
     importedKeys: ["שכר_לא_פריפריה"],
-    aliases: ["centerSalary", "שכר לא פריפריה"]
+    dbKeys: ["centerSalary"],
+    uiCards: ["specialtyDashboard.centerSalary", "departmentSidebar.centerSalary", "departmentSidebar.salaryGap"]
   },
   peripherySalary: {
     label: "שכר פריפריה",
     importedKeys: ["שכר_פריפריה", "שכר_פריפריה 1"],
-    aliases: ["peripherySalary", "שכר פריפריה"]
+    dbKeys: ["peripherySalary"],
+    uiCards: ["specialtyDashboard.peripherySalary", "departmentSidebar.peripherySalary", "departmentSidebar.salaryGap"]
   },
   peripherySalaryGap: {
     label: "פער שכר",
     importedKeys: ["פער_שכר_פריפריה"],
-    aliases: ["salaryGap", "peripherySalaryGap", "פער שכר פריפריה"]
+    dbKeys: ["peripherySalaryGap"],
+    uiCards: ["specialtyDashboard.salaryGap", "departmentSidebar.salaryGap"],
+    legacyKeys: ["salaryGap"]
   },
   residentsCount: {
     label: "מספר מתמחים",
     importedKeys: ["מספר_מתמחים"],
-    aliases: ["residentsCount", "activeResidentsCount", "מספר מתמחים"]
+    dbKeys: ["residentsCount"],
+    uiCards: ["specialtyDashboard.activeResidents", "departmentMain.residentsCount"],
+    legacyKeys: ["activeResidentsCount"]
   },
   medianWaitingTime: {
     label: "זמן המתנה חציוני לתקן",
     importedKeys: ["זמן_המתנה_חציוני_לתקן"],
-    aliases: ["medianWaitingTime", "זמן המתנה חציוני לתקן"]
+    dbKeys: ["medianWaitingTime"],
+    uiCards: ["specialtyDashboard.medianWaitingTime", "departmentMain.medianWaitingTime"]
   },
   officialResidencyDuration: {
     label: "משך התמחות רשמי",
     importedKeys: ["משך_התמחות_רשמי", "משך_התמחות_רשמי (שנים)"],
-    aliases: ["officialResidencyDuration", "משך התמחות רשמי"]
+    dbKeys: ["officialResidencyDuration"],
+    uiCards: ["specialtyDashboard.residencyDuration", "departmentMain.officialResidencyDuration"]
   },
   actualAverageDuration: {
     label: "משך ממוצע בפועל",
     importedKeys: ["משך_ממוצע_בפועל"],
-    aliases: ["actualAverageDuration", "medianResidencyDurationMonths", "משך ממוצע בפועל"]
+    dbKeys: ["actualAverageDuration"],
+    uiCards: ["specialtyDashboard.residencyDuration", "departmentMain.actualAverageDuration"],
+    legacyKeys: ["medianResidencyDurationMonths"]
   },
   seniorPhysiciansCount: {
     label: "מספר בכירים",
     importedKeys: ["מספר_בכירים"],
-    aliases: ["seniorPhysiciansCount", "מספר בכירים"]
+    dbKeys: ["seniorPhysiciansCount"],
+    uiCards: ["departmentMain.seniorPhysiciansCount"]
   },
   duns100PhysiciansCount: {
     label: "DUNS100",
     importedKeys: ["DUNS100"],
-    aliases: ["duns100PhysiciansCount", "רופאים ב-DUNS100"]
+    dbKeys: ["duns100PhysiciansCount"],
+    uiCards: ["specialtyDashboard.duns100PhysiciansCount", "departmentSidebar.duns100PhysiciansCount"]
   },
   departmentalPublicationsCount: {
     label: "מספר פרסומים מחלקתי",
     importedKeys: ["מספר פרסומים מחלקתי"],
-    aliases: ["departmentalPublicationsCount"]
+    dbKeys: ["departmentalPublicationsCount"],
+    uiCards: ["departmentResearch.publicationsCount"]
   },
   acceptedImmediatelyReports: {
     label: "מצאו התמחות מיד",
     importedKeys: ["מספר המתקבלים שדיווחו שמצאו מיד התמחות"],
-    aliases: ["acceptedImmediatelyReports"]
+    dbKeys: ["acceptedImmediatelyReports"],
+    uiCards: ["specialtyDashboard.acceptanceDistribution", "departmentMain.acceptanceDistribution"]
   },
   acceptedWithinSixMonthsReports: {
     label: "מצאו עד חצי שנה",
     importedKeys: ["מספר המתקבלים שדיווחו שמצאו עד חצי שנה"],
-    aliases: ["acceptedWithinSixMonthsReports"]
+    dbKeys: ["acceptedWithinSixMonthsReports"],
+    uiCards: ["specialtyDashboard.acceptanceDistribution", "departmentMain.acceptanceDistribution"]
   },
   acceptedWithinOneYearReports: {
     label: "מצאו עד שנה",
     importedKeys: ["מספר המתקבלים שדיווחו שמצאו עד שנה"],
-    aliases: ["acceptedWithinOneYearReports"]
+    dbKeys: ["acceptedWithinOneYearReports"],
+    uiCards: ["specialtyDashboard.acceptanceDistribution", "departmentMain.acceptanceDistribution"]
   },
   acceptedWithinTwoYearsReports: {
     label: "מצאו עד שנתיים",
     importedKeys: ["מספר המתקבלים שדיווחו שמצאו עד שנתיים"],
-    aliases: ["acceptedWithinTwoYearsReports"]
+    dbKeys: ["acceptedWithinTwoYearsReports"],
+    uiCards: ["specialtyDashboard.acceptanceDistribution", "departmentMain.acceptanceDistribution"]
   },
   acceptedAfterTwoYearsReports: {
     label: "מצאו אחרי שנתיים",
     importedKeys: ["מספר המתקבלים שדיווחו שמצאו אחרי שנתיים"],
-    aliases: ["acceptedAfterTwoYearsReports"]
+    dbKeys: ["acceptedAfterTwoYearsReports"],
+    uiCards: ["specialtyDashboard.acceptanceDistribution", "departmentMain.acceptanceDistribution"]
   },
   newResidents2020: {
     label: "מספר מתמחים חדשים 2020",
     importedKeys: ["מספר מתמחים חדשים 2020"],
-    aliases: ["newResidents"]
+    dbKeys: ["newResidents"],
+    uiCards: ["specialtyDashboard.newResidentsTrend", "departmentMain.newResidentsTrend"],
+    years: [2020]
   },
   newResidents2021: {
     label: "מספר מתמחים חדשים 2021",
     importedKeys: ["מספר מתמחים חדשים 2021"],
-    aliases: ["newResidents"]
+    dbKeys: ["newResidents"],
+    uiCards: ["specialtyDashboard.newResidentsTrend", "departmentMain.newResidentsTrend"],
+    years: [2021]
   },
   newResidents2022: {
     label: "מספר מתמחים חדשים 2022",
     importedKeys: ["מספר מתמחים חדשים 2022"],
-    aliases: ["newResidents"]
+    dbKeys: ["newResidents"],
+    uiCards: ["specialtyDashboard.newResidentsTrend", "departmentMain.newResidentsTrend"],
+    years: [2022]
   },
   newResidents2023: {
     label: "מספר מתמחים חדשים 2023",
     importedKeys: ["מספר מתמחים חדשים 2023"],
-    aliases: ["newResidents"]
+    dbKeys: ["newResidents"],
+    uiCards: ["specialtyDashboard.newResidentsTrend", "departmentMain.newResidentsTrend"],
+    years: [2023]
   },
   newResidents2024: {
     label: "מספר מתמחים חדשים 2024",
     importedKeys: ["מספר מתמחים חדשים 2024"],
-    aliases: ["newResidents"]
+    dbKeys: ["newResidents"],
+    uiCards: ["specialtyDashboard.newResidentsTrend", "departmentMain.newResidentsTrend"],
+    years: [2024]
   },
   newResidents2026: {
     label: "מספר מתמחים חדשים 2026",
     importedKeys: ["מספר מתמחים חדשים 2026"],
-    aliases: ["newResidents"]
+    dbKeys: ["newResidents"],
+    uiCards: ["departmentMain.expectedOpenings"],
+    years: [2026]
   },
   newResidents: {
     label: "מספר מתמחים חדשים",
     importedKeys: ["מספר מתמחים חדשים"],
-    aliases: ["newResidents"]
+    dbKeys: ["newResidents"],
+    uiCards: ["specialtyDashboard.newResidentsTrend", "departmentMain.newResidentsTrend"]
   },
   womenPercent: {
     label: "אחוז נשים",
     importedKeys: ["אחוז_נשים"],
-    aliases: ["womenPercent", "femaleResidentsPercent", "אחוז נשים"]
+    dbKeys: ["womenPercent"],
+    uiCards: ["specialtyDashboard.genderDistribution", "departmentMain.genderBalance"],
+    legacyKeys: ["femaleResidentsPercent"]
   },
   menPercent: {
     label: "אחוז גברים",
     importedKeys: ["אחוז_גברים"],
-    aliases: ["menPercent", "maleResidentsPercent", "אחוז גברים"]
+    dbKeys: ["menPercent"],
+    uiCards: ["specialtyDashboard.genderDistribution", "departmentMain.genderBalance"],
+    legacyKeys: ["maleResidentsPercent"]
   },
   womenCount: {
     label: "מספר נשים",
     importedKeys: ["מספר נשים"],
-    aliases: ["womenCount"]
+    dbKeys: ["womenCount"],
+    uiCards: ["specialtyDashboard.genderDistribution", "departmentMain.genderBalance"]
   },
   menCount: {
     label: "מספר גברים",
     importedKeys: ["מספר גברים"],
-    aliases: ["menCount"]
+    dbKeys: ["menCount"],
+    uiCards: ["specialtyDashboard.genderDistribution", "departmentMain.genderBalance"]
   },
   boardStageAPassRate: {
     label: "מעבר שלב א׳",
     importedKeys: ["מעבר_שלב_א"],
-    aliases: ["boardStageAPassRate", "inherited_boardStageAPassRate", "מעבר שלב א"]
+    dbKeys: ["boardStageAPassRate"],
+    uiCards: ["specialtyDashboard.boardPassA", "departmentSidebar.boardStageA"],
+    legacyKeys: ["inherited_boardStageAPassRate"]
   },
   boardStageBPassRate: {
     label: "מעבר שלב ב׳",
     importedKeys: ["מעבר_שלב_ב"],
-    aliases: ["boardStageBPassRate", "inherited_boardStageBPassRate", "מעבר שלב ב"]
+    dbKeys: ["boardStageBPassRate"],
+    uiCards: ["specialtyDashboard.boardPassB", "departmentSidebar.boardStageB"],
+    legacyKeys: ["inherited_boardStageBPassRate"]
   },
   burnoutIndex: {
     label: "מדד שחיקה",
     importedKeys: ["מדד_שחיקה"],
-    aliases: ["burnoutIndex"]
+    dbKeys: ["burnoutIndex"],
+    uiCards: ["specialtyDashboard.burnoutIndex", "departmentSidebar.burnoutIndex"]
   },
   expectedNationalOpenings: {
     label: "מספר תקנים שצפויים להיפתח ארצי",
     importedKeys: ["מספר_תקנים_שצפויים להיפתח_ארצי"],
-    aliases: ["expectedNationalOpenings"]
+    dbKeys: ["expectedNationalOpenings"],
+    uiCards: ["specialtyDashboard.expectedOpenings"]
   },
   expectedOpenings2026: {
     label: "צפי תקנים חדשים ב-2026",
     importedKeys: ["צפי תקנים חדשים ב2026"],
-    aliases: ["expectedOpenings2026"]
+    dbKeys: ["expectedOpenings2026"],
+    uiCards: ["departmentMain.expectedOpenings"]
   },
   medianElectiveDemand: {
     label: "מספר אלקטיביסטים חציוני",
     importedKeys: ["מספר אלקטיביסטים חציוני"],
-    aliases: ["medianElectiveDemand"]
+    dbKeys: ["medianElectiveDemand"],
+    uiCards: ["departmentMain.electiveDemand"]
   }
 } satisfies Record<string, MetricFieldDefinition>;
 
 export type CanonicalMetricField = keyof typeof metricFieldDefinitions;
+export type MetricRegistryEntry = MetricFieldDefinition & { id: CanonicalMetricField };
 
 export const salaryMetricFields = {
   centerSalary: "שכר_לא_פריפריה",
@@ -223,6 +272,23 @@ function unique(values: string[]) {
   return Array.from(new Set(values.filter(Boolean)));
 }
 
+export function metricRegistryEntries(): MetricRegistryEntry[] {
+  return Object.entries(metricFieldDefinitions).map(([id, definition]) => ({
+    id: id as CanonicalMetricField,
+    ...definition
+  }));
+}
+
+export function metricRegistryEntryFor(fieldOrKey: string): MetricRegistryEntry | null {
+  const field = canonicalMetricFieldFor(fieldOrKey);
+  return field
+    ? {
+        id: field,
+        ...metricFieldDefinitions[field]
+      }
+    : null;
+}
+
 export function canonicalMetricFieldFor(value: string) {
   if (isCanonicalMetricField(value)) return value;
 
@@ -238,14 +304,14 @@ export function metricFieldLabel(fieldOrKey: string) {
 
 export function metricKeyCandidates(fieldOrKey: string, aliases: string[] = []) {
   const field = canonicalMetricFieldFor(fieldOrKey);
-  const definition = field ? metricFieldDefinitions[field] : null;
+  const definition: MetricFieldDefinition | null = field ? metricFieldDefinitions[field] : null;
   const exact = definition?.importedKeys ?? [fieldOrKey];
   const readableExact = exact.map(readableLabelFromCriterion);
-  const knownAliases = definition ? [field, ...(definition.aliases ?? [])] : [];
+  const registeredDbKeys = definition ? [...definition.dbKeys, ...(definition.legacyKeys ?? [])] : [];
 
   return {
     exact: unique([...exact, ...readableExact]),
-    aliases: unique([...aliases, ...knownAliases, fieldOrKey])
+    aliases: definition ? unique([...registeredDbKeys]) : unique([fieldOrKey, ...aliases])
   };
 }
 
