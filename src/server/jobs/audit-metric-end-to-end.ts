@@ -3,6 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 import { prisma } from "@/lib/prisma";
 import { getDepartmentPageData, getDirectoryData, getSpecialtyDashboardMetrics } from "@/lib/queries";
+import { getDepartmentHref } from "@/lib/utils";
 import {
   metricRegistryEntryFor,
   resolveImportedMetric,
@@ -89,6 +90,7 @@ type DepartmentCoverageAudit = {
 
 type StrictDepartmentSample = {
   departmentId: string;
+  url: string;
   subject: string;
   checks: Array<{
     metric: string;
@@ -928,7 +930,11 @@ async function buildStrictDepartmentSamples(input: {
 
   const strictSamples: StrictDepartmentSample[] = [];
   for (const sample of samples.slice(0, 10)) {
-    const detail = await getDepartmentPageData(sample.department.slug, undefined, sample.department.id);
+    const url = getDepartmentHref({ slug: sample.department.slug, id: sample.department.id });
+    const parsedUrl = new URL(url, "https://hitmachut.org");
+    const routeSlug = decodeURIComponent(parsedUrl.pathname.split("/").pop() ?? sample.department.slug);
+    const routeDepartmentId = parsedUrl.searchParams.get("departmentId");
+    const detail = await getDepartmentPageData(routeSlug, undefined, routeDepartmentId);
     const checks = strictDepartmentMetricKeys.map((metricKey) => {
       const coverage = coverageMetricValue({
         table: input.masterDept,
@@ -971,6 +977,7 @@ async function buildStrictDepartmentSamples(input: {
 
     strictSamples.push({
       departmentId: sample.department.id,
+      url,
       subject: `${sample.department.institution.name} → ${sample.department.specialty.name} → ${sample.department.name}`,
       checks
     });

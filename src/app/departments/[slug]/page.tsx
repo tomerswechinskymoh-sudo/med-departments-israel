@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { DepartmentPageActions } from "@/components/departments/department-page-actions";
@@ -38,6 +39,7 @@ import {
 import { getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 type MetricSource = "moh" | "hospital" | "duns100" | "openalex" | "demo" | "missing";
 
@@ -908,14 +910,18 @@ export default async function DepartmentDetailsPage({
   params: Promise<{ slug: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  noStore();
   const [{ slug }, resolvedSearchParams, session] = await Promise.all([
     params,
     searchParams,
     getSession()
   ]);
+  const requestedDepartmentId = resolvedSearchParams.departmentId;
   const departmentId =
-    typeof resolvedSearchParams.departmentId === "string"
-      ? resolvedSearchParams.departmentId
+    typeof requestedDepartmentId === "string"
+      ? requestedDepartmentId
+      : Array.isArray(requestedDepartmentId)
+        ? requestedDepartmentId[0] ?? null
       : null;
   const [department, dataExplanations] = await Promise.all([
     getDepartmentPageData(slug, session?.userId, departmentId),
@@ -924,6 +930,12 @@ export default async function DepartmentDetailsPage({
 
   if (!department) {
     notFound();
+  }
+
+  if (process.env.NODE_ENV !== "production" && departmentId && department.id !== departmentId) {
+    console.warn(
+      `[department-page] requested departmentId ${departmentId} rendered ${department.id} for slug ${slug}`
+    );
   }
 
   const reviewContext = await getReviewFormContext(department.slug);
