@@ -608,7 +608,16 @@ function formatImportedNumber(value: number) {
   return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 1 }).format(value);
 }
 
+function isInvalidImportedRawValue(value: string | null | undefined) {
+  const rawValue = value?.trim();
+  return Boolean(rawValue && /^#(?:DIV\/0!|N\/A|VALUE!|REF!|NUM!)/i.test(rawValue));
+}
+
 function formatImportedMetricValue(metric: ImportedMetric | ImportedYearlyMetric) {
+  if (isInvalidImportedRawValue(metric.rawValue)) {
+    return null;
+  }
+
   if (metric.rawValue) {
     return metric.rawValue;
   }
@@ -1217,11 +1226,13 @@ export default async function DepartmentDetailsPage({
     .map((input) => {
       const metric = findImportedMetric(importedDepartmentMetrics, ...input.keys);
       if (!metric || typeof metric.value !== "number") return null;
+      const displayValue = formatImportedMetricValue(metric);
+      if (displayValue === null) return null;
 
       return {
         label: input.label.replace("מצאו ", ""),
         value: metric.value,
-        displayValue: formatImportedMetricValue(metric),
+        displayValue,
         lastUpdated: metric.lastUpdated
       };
     })
@@ -1230,11 +1241,13 @@ export default async function DepartmentDetailsPage({
     .map((input) => {
       const metric = findImportedMetric(importedSpecialtyMetrics, ...input.keys);
       if (!metric || typeof metric.value !== "number") return null;
+      const displayValue = formatImportedMetricValue(metric);
+      if (displayValue === null) return null;
 
       return {
         label: input.label.replace("מצאו ", ""),
         value: metric.value,
-        displayValue: formatImportedMetricValue(metric),
+        displayValue,
         lastUpdated: metric.lastUpdated
       };
     })

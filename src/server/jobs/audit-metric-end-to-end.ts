@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import fs from "fs/promises";
 import path from "path";
 import { prisma } from "@/lib/prisma";
@@ -44,6 +45,61 @@ type DepartmentPageAuditSummary = {
     renderedValue: string | number | null;
     status: AuditStatus;
   }>;
+  globalCoverage?: DepartmentCoverageAudit;
+  strictSamples?: StrictDepartmentSample[];
+};
+
+type DepartmentCoverageAudit = {
+  totalImportedDepartments: number;
+  departmentsWithDepartmentMetricRows: number;
+  staleImportedDepartments: number;
+  duplicateSlugDepartments: number;
+  perMetric: Array<{
+    metric: string;
+    type: "DepartmentMetric" | "DepartmentYearlyMetric";
+    csvWithValue: number;
+    csvBlank: number;
+    csvInvalid: number;
+    dbWithValue: number;
+    coveragePct: number | null;
+    importFailure: number;
+    wrongKey: number;
+    dbMissing: number;
+  }>;
+  topMissingDepartments: Array<{
+    departmentId: string | null;
+    institution: string;
+    specialty: string;
+    department: string;
+    missingCount: number;
+    causes: string[];
+  }>;
+  causeSummary: {
+    csvBlank: number;
+    csvInvalid: number;
+    importFailure: number;
+    wrongKey: number;
+    dbMissing: number;
+    wrongDepartmentId: number;
+    queryResolverIssue: number;
+    staleRow: number;
+    duplicateSlug: number;
+  };
+};
+
+type StrictDepartmentSample = {
+  departmentId: string;
+  subject: string;
+  checks: Array<{
+    metric: string;
+    csvValue: string | null;
+    dbValue: string | number | null;
+    queryValue: string | number | null;
+    resolverValue: string | number | null;
+    renderedValue: string | number | null;
+    status: AuditStatus;
+    failure?: string;
+  }>;
 };
 
 const specialtyNames = ["רפואה פנימית", "רפואת ילדים", "רפואת המשפחה", "פסיכיאטריה"];
@@ -73,6 +129,32 @@ const departmentMetricKeys = [
   "מספר המתקבלים שדיווחו שמצאו עד שנתיים",
   "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים"
 ];
+
+const yearlyResidentMetricKeys = [2020, 2021, 2022, 2023, 2024].map((year) => `מספר מתמחים חדשים ${year}`);
+
+const strictDepartmentMetricKeys = [
+  "מספר_מתמחים",
+  "זמן_המתנה_חציוני_לתקן",
+  "משך_התמחות_רשמי",
+  "משך_ממוצע_בפועל",
+  "מספר המתקבלים שדיווחו שמצאו מיד התמחות",
+  "מספר המתקבלים שדיווחו שמצאו עד חצי שנה",
+  "מספר המתקבלים שדיווחו שמצאו עד שנה",
+  "מספר המתקבלים שדיווחו שמצאו עד שנתיים",
+  "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים"
+];
+
+const departmentSpecialtyAliases: Record<string, string> = {
+  "רפואת המשפחה": "רפואת משפחה",
+  "פנימית": "רפואה פנימית",
+  "אורתופדיה": "כירורגיה אורתופדית",
+  "אף אוזן גרון": "מחלות א.א.ג וכירורגיה של ראש וצוואר",
+  "רדיולוגיה (דימות)": "רדיולוגיה אבחנתית",
+  "פתולוגיה": "פתולוגיה אבחנתית",
+  "רפואת עור": "מחלות עור ומין",
+  "פסיכיאטריה של הילד והמתבגר": "פסיכיאטריה של הילד ומתבגר",
+  "כירורגית כלי דם": "כירורגית כלי-דם"
+};
 
 function cleanCell(value: string | null | undefined) {
   return (value ?? "")
@@ -144,6 +226,11 @@ function rowObject(table: CsvTable, row: string[]) {
 function hasCsvValue(value: string | null | undefined) {
   const normalized = cleanCell(value);
   return Boolean(normalized && normalized !== "#DIV/0!" && normalized !== "#N/A");
+}
+
+function isInvalidCsvValue(value: string | null | undefined) {
+  const normalized = cleanCell(value);
+  return Boolean(normalized && /^#(?:DIV\/0!|N\/A|VALUE!|REF!|NUM!)/i.test(normalized));
 }
 
 function metricHasValue(metric: ImportedMetricLike | null | undefined) {
@@ -223,6 +310,37 @@ function specialtyCandidates(name: string) {
   return Array.from(candidates);
 }
 
+function canonicalDepartmentSpecialtyName(name: string) {
+  const cleaned = cleanCell(name);
+  return departmentSpecialtyAliases[cleaned] ?? cleaned;
+}
+
+function normalizeStablePart(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/["'׳״]/g, "")
+    .replace(/[()]/g, "")
+    .replace(/\s*-\s*/g, " ")
+    .replace(/\s+/g, " ")
+    .replace(/[׳’`]/g, "'")
+    .trim();
+}
+
+function departmentStableKey(input: {
+  institutionName: string;
+  specialtyName: string;
+  subDepartment: string;
+}) {
+  const specialtyName = canonicalDepartmentSpecialtyName(input.specialtyName);
+  const subDepartment = cleanCell(input.subDepartment) || specialtyName;
+
+  return crypto
+    .createHash("sha1")
+    .update([input.institutionName, specialtyName, subDepartment].map(normalizeStablePart).join("|"))
+    .digest("hex");
+}
+
 function findColumn(table: CsvTable, candidates: string[]) {
   return candidates.find((candidate) => table.headers.includes(candidate)) ?? null;
 }
@@ -235,8 +353,16 @@ function csvValueFor(table: CsvTable, row: string[], fieldOrKey: string) {
   const column = findColumn(table, candidates);
   return {
     column,
-    value: column ? rowObject(table, row)[column] ?? null : null
+    value: column ? csvValueForColumn(table, row, column) : null
   };
+}
+
+function csvValueForColumn(table: CsvTable, row: string[], column: string) {
+  const values = table.headers
+    .map((header, index) => (header === column ? cleanCell(row[index]) : null))
+    .filter((value): value is string => value !== null);
+  const nonEmptyValues = values.filter(Boolean);
+  return nonEmptyValues[nonEmptyValues.length - 1] ?? values[values.length - 1] ?? null;
 }
 
 function findSpecialtyCsvRow(table: CsvTable, specialtyName: string) {
@@ -473,6 +599,386 @@ function availableMetricKeys(metrics: ImportedMetricLike[]) {
     .sort((left, right) => left.localeCompare(right, "he"));
 }
 
+function departmentMetricEntry(fieldOrKey: string) {
+  const registry = metricRegistryEntryFor(fieldOrKey);
+  return {
+    importedKeys: registry?.importedKeys ?? [fieldOrKey],
+    aliases: registry ? [...registry.dbKeys, ...(registry.legacyKeys ?? [])] : []
+  };
+}
+
+function exactDepartmentMetric(metrics: ImportedMetricLike[], fieldOrKey: string) {
+  const entry = departmentMetricEntry(fieldOrKey);
+  return metrics.find((metric) => entry.importedKeys.includes(metric.metricKey) && metricHasValue(metric)) ?? null;
+}
+
+function aliasDepartmentMetric(metrics: ImportedMetricLike[], fieldOrKey: string) {
+  const entry = departmentMetricEntry(fieldOrKey);
+  return metrics.find((metric) => entry.aliases.includes(metric.metricKey) && metricHasValue(metric)) ?? null;
+}
+
+function metricValueForCoverage(input: {
+  department: DepartmentForCoverage | null;
+  fieldOrKey: string;
+}) {
+  if (!input.department) return null;
+  return exactDepartmentMetric(input.department.metrics, input.fieldOrKey);
+}
+
+type DepartmentForCoverage = {
+  id: string;
+  slug: string;
+  name: string;
+  importStableKey: string | null;
+  institution: { name: string };
+  specialty: { name: string };
+  metrics: ImportedMetricLike[];
+  yearlyMetrics: Array<ImportedMetricLike & { year: number }>;
+};
+
+type CsvDepartmentRow = {
+  stableKey: string;
+  row: string[];
+  institutionName: string;
+  specialtyName: string;
+  subDepartment: string;
+};
+
+function csvDepartmentRows(table: CsvTable): CsvDepartmentRow[] {
+  return table.rows
+    .map((row) => {
+      const record = rowObject(table, row);
+      const institutionName = cleanCell(record["שם_מרכז_רפואי"]);
+      const specialtyName = canonicalDepartmentSpecialtyName(record["תחום התמחות"]);
+      const subDepartment = cleanCell(record["תת מחלקה"]);
+
+      if (!institutionName || !specialtyName) return null;
+
+      return {
+        stableKey: departmentStableKey({ institutionName, specialtyName, subDepartment }),
+        row,
+        institutionName,
+        specialtyName,
+        subDepartment
+      };
+    })
+    .filter((row): row is CsvDepartmentRow => Boolean(row));
+}
+
+function percentage(numerator: number, denominator: number) {
+  if (denominator === 0) return null;
+  return Math.round((numerator / denominator) * 1000) / 10;
+}
+
+function yearlyMetricHasValue(
+  department: DepartmentForCoverage | null,
+  year: number
+) {
+  return Boolean(
+    department?.yearlyMetrics.some((metric) => metric.metricKey === "newResidents" && metric.year === year && metricHasValue(metric))
+  );
+}
+
+function yearlyMetricValue(
+  department: DepartmentForCoverage | null,
+  year: number
+) {
+  const metric = department?.yearlyMetrics.find(
+    (row) => row.metricKey === "newResidents" && row.year === year && metricHasValue(row)
+  );
+  return formatMetricValue(metric);
+}
+
+function coverageMetricValue(input: {
+  table: CsvTable;
+  csvRow: string[];
+  department: DepartmentForCoverage | null;
+  metricKey: string;
+}) {
+  const yearlyMatch = input.metricKey.match(/^מספר מתמחים חדשים (\d{4})$/);
+  if (yearlyMatch) {
+    const year = Number(yearlyMatch[1]);
+    const csvValue = csvValueForColumn(input.table, input.csvRow, input.metricKey);
+    return {
+      csvColumn: input.metricKey,
+      csvValue,
+      dbValue: yearlyMetricValue(input.department, year),
+      hasDbValue: yearlyMetricHasValue(input.department, year),
+      hasWrongKeyValue: false
+    };
+  }
+
+  const csv = csvValueFor(input.table, input.csvRow, input.metricKey);
+  const exactMetric = metricValueForCoverage({ department: input.department, fieldOrKey: input.metricKey });
+  const aliasMetric = input.department ? aliasDepartmentMetric(input.department.metrics, input.metricKey) : null;
+
+  return {
+    csvColumn: csv.column,
+    csvValue: csv.value,
+    dbValue: formatMetricValue(exactMetric),
+    hasDbValue: Boolean(exactMetric),
+    hasWrongKeyValue: Boolean(aliasMetric),
+    wrongKey: aliasMetric?.metricKey ?? null
+  };
+}
+
+async function buildDepartmentCoverageAudit(masterDept: CsvTable) {
+  const csvRows = csvDepartmentRows(masterDept);
+  const dbDepartments = await prisma.department.findMany({
+    where: { importStableKey: { not: null } },
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      importStableKey: true,
+      institution: { select: { name: true } },
+      specialty: { select: { name: true } },
+      metrics: {
+        select: {
+          metricKey: true,
+          label: true,
+          value: true,
+          rawValue: true,
+          unit: true,
+          sourceNotes: true,
+          lastUpdated: true
+        }
+      },
+      yearlyMetrics: {
+        select: {
+          metricKey: true,
+          year: true,
+          value: true,
+          rawValue: true,
+          unit: true,
+          sourceNotes: true,
+          lastUpdated: true
+        }
+      }
+    }
+  });
+  const departmentByStableKey = new Map(dbDepartments.map((department) => [department.importStableKey, department]));
+  const csvStableKeys = new Set(csvRows.map((row) => row.stableKey));
+  const duplicateSlugDepartments = dbDepartments.length - new Set(dbDepartments.map((department) => department.slug)).size;
+  const departmentsWithDepartmentMetricRows = dbDepartments.filter((department) =>
+    department.metrics.some(metricHasValue)
+  ).length;
+  const auditedMetricKeys = [...departmentMetricKeys, ...yearlyResidentMetricKeys];
+  const causeSummary = {
+    csvBlank: 0,
+    csvInvalid: 0,
+    importFailure: 0,
+    wrongKey: 0,
+    dbMissing: 0,
+    wrongDepartmentId: 0,
+    queryResolverIssue: 0,
+    staleRow: dbDepartments.filter((department) => department.importStableKey && !csvStableKeys.has(department.importStableKey)).length,
+    duplicateSlug: duplicateSlugDepartments
+  };
+  const missingByDepartment = new Map<string, {
+    departmentId: string | null;
+    institution: string;
+    specialty: string;
+    department: string;
+    causes: string[];
+  }>();
+
+  const perMetric = auditedMetricKeys.map((metricKey) => {
+    let csvWithValue = 0;
+    let csvBlank = 0;
+    let csvInvalid = 0;
+    let dbWithValue = 0;
+    let importFailure = 0;
+    let wrongKey = 0;
+    let dbMissing = 0;
+
+    for (const csvRow of csvRows) {
+      const department = departmentByStableKey.get(csvRow.stableKey) ?? null;
+      const value = coverageMetricValue({
+        table: masterDept,
+        csvRow: csvRow.row,
+        department,
+        metricKey
+      });
+      const invalidCsv = isInvalidCsvValue(value.csvValue);
+      const validCsv = hasCsvValue(value.csvValue);
+
+      if (invalidCsv) {
+        csvInvalid += 1;
+        causeSummary.csvInvalid += 1;
+        continue;
+      }
+
+      if (!validCsv) {
+        csvBlank += 1;
+        causeSummary.csvBlank += 1;
+        continue;
+      }
+
+      csvWithValue += 1;
+      if (!department) {
+        importFailure += 1;
+        causeSummary.importFailure += 1;
+      } else if (value.hasDbValue) {
+        dbWithValue += 1;
+      } else if (value.hasWrongKeyValue) {
+        wrongKey += 1;
+        causeSummary.wrongKey += 1;
+      } else {
+        dbMissing += 1;
+        causeSummary.dbMissing += 1;
+      }
+
+      if (validCsv && (!department || !value.hasDbValue)) {
+        const id = department?.id ?? csvRow.stableKey;
+        const existing = missingByDepartment.get(id) ?? {
+          departmentId: department?.id ?? null,
+          institution: department?.institution.name ?? csvRow.institutionName,
+          specialty: department?.specialty.name ?? csvRow.specialtyName,
+          department: department?.name ?? (csvRow.subDepartment || csvRow.specialtyName),
+          causes: []
+        };
+        const cause = !department
+          ? `${metricKey}:import failure`
+          : value.hasWrongKeyValue
+            ? `${metricKey}:wrong key`
+            : `${metricKey}:db missing`;
+        existing.causes.push(cause);
+        missingByDepartment.set(id, existing);
+      }
+    }
+
+    return {
+      metric: metricKey,
+      type: metricKey.startsWith("מספר מתמחים חדשים") ? "DepartmentYearlyMetric" as const : "DepartmentMetric" as const,
+      csvWithValue,
+      csvBlank,
+      csvInvalid,
+      dbWithValue,
+      coveragePct: percentage(dbWithValue, csvWithValue),
+      importFailure,
+      wrongKey,
+      dbMissing
+    };
+  });
+
+  const topMissingDepartments = Array.from(missingByDepartment.values())
+    .map((department) => ({
+      ...department,
+      missingCount: department.causes.length,
+      causes: department.causes.slice(0, 8)
+    }))
+    .sort((left, right) => right.missingCount - left.missingCount)
+    .slice(0, 20);
+
+  return {
+    audit: {
+      totalImportedDepartments: dbDepartments.length,
+      departmentsWithDepartmentMetricRows,
+      staleImportedDepartments: causeSummary.staleRow,
+      duplicateSlugDepartments,
+      perMetric,
+      topMissingDepartments,
+      causeSummary
+    } satisfies DepartmentCoverageAudit,
+    csvRows,
+    departmentByStableKey
+  };
+}
+
+async function buildStrictDepartmentSamples(input: {
+  masterDept: CsvTable;
+  csvRows: CsvDepartmentRow[];
+  departmentByStableKey: Map<string | null, DepartmentForCoverage>;
+}) {
+  const candidates = input.csvRows
+    .map((csvRow) => {
+      const department = input.departmentByStableKey.get(csvRow.stableKey) ?? null;
+      if (!department) return null;
+      const hasAllStrictCsvValues = strictDepartmentMetricKeys.every((metricKey) =>
+        hasCsvValue(coverageMetricValue({
+          table: input.masterDept,
+          csvRow: csvRow.row,
+          department,
+          metricKey
+        }).csvValue)
+      );
+
+      return hasAllStrictCsvValues ? { csvRow, department } : null;
+    })
+    .filter((item): item is { csvRow: CsvDepartmentRow; department: DepartmentForCoverage } => Boolean(item));
+  const samples: typeof candidates = [];
+  const usedInstitutions = new Set<string>();
+  const usedSpecialties = new Set<string>();
+
+  for (const candidate of candidates) {
+    const institutionKey = candidate.department.institution.name;
+    const specialtyKey = candidate.department.specialty.name;
+    if (usedInstitutions.has(institutionKey) && usedSpecialties.has(specialtyKey)) continue;
+    samples.push(candidate);
+    usedInstitutions.add(institutionKey);
+    usedSpecialties.add(specialtyKey);
+    if (samples.length >= 10) break;
+  }
+  for (const candidate of candidates) {
+    if (samples.length >= 10) break;
+    if (samples.some((sample) => sample.department.id === candidate.department.id)) continue;
+    samples.push(candidate);
+  }
+
+  const strictSamples: StrictDepartmentSample[] = [];
+  for (const sample of samples.slice(0, 10)) {
+    const detail = await getDepartmentPageData(sample.department.slug, undefined, sample.department.id);
+    const checks = strictDepartmentMetricKeys.map((metricKey) => {
+      const coverage = coverageMetricValue({
+        table: input.masterDept,
+        csvRow: sample.csvRow.row,
+        department: sample.department,
+        metricKey
+      });
+      const dbMetric = exactDepartmentMetric(sample.department.metrics, metricKey);
+      const queryMetric = detail ? resolveImportedMetric(detail.metrics, metricKey) : null;
+      const specialtyFallbackMetric = detail ? resolveImportedMetric(detail.specialty.metrics, metricKey) : null;
+      const resolverMetric = queryMetric ?? specialtyFallbackMetric;
+      const dbValue = coverage.dbValue;
+      const queryValue = formatMetricValue(queryMetric);
+      const resolverValue = formatMetricValue(resolverMetric);
+      const renderedValue = queryValue ?? resolverValue;
+      const baseResult = statusFor({
+        csvValue: coverage.csvValue,
+        dbValue,
+        resolverValue,
+        renderedValue,
+        dbMustExist: true
+      });
+      const status =
+        detail?.id !== sample.department.id
+          ? { status: "FAIL" as const, failure: "wrong departmentId returned" }
+          : metricHasValue(dbMetric) && !queryMetric
+            ? { status: "FAIL" as const, failure: "DepartmentMetric exists; query/resolver missing by departmentId" }
+            : baseResult;
+
+      return {
+        metric: metricKey,
+        csvValue: coverage.csvValue,
+        dbValue,
+        queryValue,
+        resolverValue,
+        renderedValue,
+        ...status
+      };
+    });
+
+    strictSamples.push({
+      departmentId: sample.department.id,
+      subject: `${sample.department.institution.name} → ${sample.department.specialty.name} → ${sample.department.name}`,
+      checks
+    });
+  }
+
+  return strictSamples;
+}
+
 async function auditDepartmentMetric(input: {
   metricKey: string;
   masterDept: CsvTable;
@@ -583,6 +1089,7 @@ export async function runMetricEndToEndAudit() {
     readCsv("MASTER_Spec.csv"),
     readCsv("Master_Dept.csv")
   ]);
+  const coverage = await buildDepartmentCoverageAudit(masterDept);
 
   const specialtyRows: AuditRow[] = [];
   for (const specialtyName of specialtyNames) {
@@ -608,13 +1115,29 @@ export async function runMetricEndToEndAudit() {
       resolverValue: row.resolverValue,
       renderedValue: row.renderedValue,
       status: row.status
-    }))
+    })),
+    globalCoverage: coverage.audit,
+    strictSamples: await buildStrictDepartmentSamples({
+      masterDept,
+      csvRows: coverage.csvRows,
+      departmentByStableKey: coverage.departmentByStableKey
+    })
   };
 
   const checks = [...specialtyRows, ...departmentRows];
+  const strictSampleFailures = departmentPageAudit.strictSamples
+    ?.flatMap((sample) =>
+      sample.checks
+        .filter((check) => check.status === "FAIL")
+        .map((check) => `STRICT:${sample.subject}:${check.metric}:${check.failure ?? "failed"}`)
+    ) ?? [];
+  const coverageFailures = coverage.audit.perMetric
+    .filter((metric) => metric.csvWithValue > 0 && metric.coveragePct !== 100)
+    .map((metric) => `COVERAGE:${metric.metric}:${metric.coveragePct ?? 0}%`);
   const failedChecks = checks
     .filter((row) => row.status === "FAIL")
-    .map((row) => `${row.scope}:${row.subject}:${row.metric}:${row.failure ?? "failed"}`);
+    .map((row) => `${row.scope}:${row.subject}:${row.metric}:${row.failure ?? "failed"}`)
+    .concat(strictSampleFailures, coverageFailures);
 
   return {
     status: failedChecks.length > 0 ? "FAIL" as const : "PASS" as const,
