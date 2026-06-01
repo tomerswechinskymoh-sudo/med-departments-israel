@@ -63,6 +63,8 @@ type CsvTable = {
   sourceNotes: CsvRow | null;
 };
 
+type ImportOnlyMode = "all" | "data-exp" | "spec" | "dept";
+
 const MASTER_SPEC_FILE = "MASTER_Spec.csv";
 const MASTER_DEPT_FILE = "Master_Dept.csv";
 const DATA_EXP_FILE = "Data_Exp.csv";
@@ -640,6 +642,87 @@ async function upsertDepartmentYearlyMetric(
   });
 }
 
+function buildDepartmentMetricRows(input: {
+  departmentId: string;
+  row: CsvRow;
+  table: CsvTable;
+  dataExplanations: MetricDisplayMetadata[];
+  warnings: string[];
+}) {
+  const rows: Prisma.DepartmentMetricCreateManyInput[] = [];
+
+  for (const metric of DEPARTMENT_NUMERIC_METRICS) {
+    const metadata = metadataForMetric(input.dataExplanations, "Master_Dept", metric);
+    const parsed = parseNumberCell(rowMetricValue(input.row, metric));
+    if (parsed.warning) input.warnings.push(`${metric.label}: ${parsed.warning}`);
+    if (parsed.value === null && !parsed.rawValue) continue;
+
+    rows.push({
+      departmentId: input.departmentId,
+      metricKey: metric.key,
+      label: labelForMetric(metric, metadata),
+      value: parsed.value,
+      rawValue: parsed.rawValue,
+      unit: metric.unit,
+      sourceNotes: sourceForMetric(input.table, metric, metadata)
+    });
+  }
+
+  return rows;
+}
+
+function buildDepartmentYearlyMetricRows(input: {
+  departmentId: string;
+  row: CsvRow;
+  table: CsvTable;
+  dataExplanations: MetricDisplayMetadata[];
+  warnings: string[];
+}) {
+  const rows: Prisma.DepartmentYearlyMetricCreateManyInput[] = [];
+
+  for (const year of [2020, 2021, 2022, 2023, 2024]) {
+    const header = `מספר מתמחים חדשים ${year}`;
+    const values = input.row.getAll(header).filter(Boolean);
+    if (values.length > 1) {
+      input.warnings.push(`${header}: קיימות ${values.length} עמודות, נשמר הערך האחרון שאינו ריק`);
+    }
+    const parsed = parseNumberCell(values[values.length - 1] ?? "");
+    if (parsed.warning) input.warnings.push(`${header}: ${parsed.warning}`);
+    if (parsed.value !== null || parsed.rawValue) {
+      rows.push({
+        departmentId: input.departmentId,
+        metricKey: "newResidents",
+        year,
+        value: parsed.value,
+        rawValue: parsed.rawValue,
+        unit: "count",
+        sourceNotes:
+          findMetricDisplayMetadata(input.dataExplanations, "Master_Dept", header, "newResidents")?.sourceLabel ??
+          sourceNoteFor(input.table, header, Math.max(values.length - 1, 0))
+      });
+    }
+  }
+
+  const expectedOpeningsRaw = input.row.get("צפי תקנים חדשים ב2026");
+  if (expectedOpeningsRaw) {
+    const parsed = parseNumberCell(expectedOpeningsRaw);
+    if (parsed.warning) input.warnings.push(`צפי תקנים חדשים ב2026: ${parsed.warning}`);
+    rows.push({
+      departmentId: input.departmentId,
+      metricKey: "newResidents",
+      year: OPENING_YEAR,
+      value: parsed.value,
+      rawValue: parsed.rawValue,
+      unit: "count",
+      sourceNotes:
+        findMetricDisplayMetadata(input.dataExplanations, "Master_Dept", "expectedOpenings2026")?.sourceLabel ??
+        sourceNoteFor(input.table, "צפי תקנים חדשים ב2026")
+    });
+  }
+
+  return rows;
+}
+
 async function createBatch(db: DbClient, input: { sourceFile: string; rawText: string; targetLabel: string }) {
   return db.dataImportBatch.create({
     data: {
@@ -1101,7 +1184,12 @@ async function ensureDepartmentFromCsv(
   return { institution, specialty, department: updated };
 }
 
-async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanations: MetricDisplayMetadata[]) {
+async function importDepartmentCsv(
+  db: PrismaClient,
+  filePath: string,
+  dataExplanations: MetricDisplayMetadata[],
+  options: { limit?: number; fromRow?: number } = {}
+) {
   const rawText = await fs.readFile(filePath, "utf8");
   const table = createCsvTable(rawText);
   const batch = await createBatch(db, {
@@ -1112,8 +1200,18 @@ async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanati
   let imported = 0;
   let failed = 0;
   const staleHidden = 0;
+  const startedAt = Date.now();
+  const selectedRows = table.rows
+    .filter((row) => options.fromRow === undefined || row.rowNumber >= options.fromRow)
+    .slice(0, options.limit);
 
-  for (const row of table.rows) {
+  console.log(
+    `[import:master-csv] Master_Dept rows: selected=${selectedRows.length}/${table.rows.length}` +
+    `${options.fromRow !== undefined ? ` fromRow=${options.fromRow}` : ""}` +
+    `${options.limit !== undefined ? ` limit=${options.limit}` : ""}`
+  );
+
+  for (const [index, row] of selectedRows.entries()) {
     const warnings: string[] = [];
     const errors: string[] = [];
     const institutionName = row.get("שם_מרכז_רפואי");
@@ -1139,142 +1237,121 @@ async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanati
     }
 
     try {
-      const { department, specialty } = await ensureDepartmentFromCsv(db, {
-        institutionName,
-        institutionType: parseInstitutionType(row.get("סוג_מוסד")),
-        specialtyName,
-        subDepartment,
-        stableKey: rowKey ?? stableKey([institutionName, specialtyName, subDepartment || specialtyName])
-      });
-      const websiteUrl = row.get("אתר_מחלקה") || null;
-      const applicationUrl = row.get("לינק להגשת מועמדות") || null;
-      const description = row.get("כמה מילים על המערך") || null;
-      const headTitle = row.get("תואר (ד׳׳ר/פרופסור) מנהל המחלקה") || null;
-      const headName = row.get("שם מנהל/ת המערך/מחלקה") || null;
-      const headEmail = row.get("מייל מנהל/ת המערך/מחלקה") || null;
-      const headPhone = row.get("מספר טלפון מנהל/ת המערך/מחלקה") || null;
-      const contactName = row.get("שם איש קשר") || headName || null;
-      const contactEmail = row.get("מייל איש קשר") || headEmail || null;
-      const contactPhone = row.get("מספר טלפון איש קשר") || headPhone || null;
-      const seniorPhysicians = parseNumberCell(row.get("מספר_בכירים"));
-      const residentsCount = parseNumberCell(row.get("מספר_מתמחים"));
-      const newResidents2024Values = row.getAll("מספר מתמחים חדשים 2024").filter(Boolean);
-      const newResidents2024 = parseNumberCell(newResidents2024Values[newResidents2024Values.length - 1] ?? "");
-      const stageA = parseNumberCell(row.get("מעבר_שלב_א"));
-      const stageB = parseNumberCell(row.get("מעבר_שלב_ב"));
+      await db.$transaction(async (tx) => {
+        const { department, specialty } = await ensureDepartmentFromCsv(tx, {
+          institutionName,
+          institutionType: parseInstitutionType(row.get("סוג_מוסד")),
+          specialtyName,
+          subDepartment,
+          stableKey: rowKey ?? stableKey([institutionName, specialtyName, subDepartment || specialtyName])
+        });
+        const websiteUrl = row.get("אתר_מחלקה") || null;
+        const applicationUrl = row.get("לינק להגשת מועמדות") || null;
+        const description = row.get("כמה מילים על המערך") || null;
+        const headTitle = row.get("תואר (ד׳׳ר/פרופסור) מנהל המחלקה") || null;
+        const headName = row.get("שם מנהל/ת המערך/מחלקה") || null;
+        const headEmail = row.get("מייל מנהל/ת המערך/מחלקה") || null;
+        const headPhone = row.get("מספר טלפון מנהל/ת המערך/מחלקה") || null;
+        const contactName = row.get("שם איש קשר") || headName || null;
+        const contactEmail = row.get("מייל איש קשר") || headEmail || null;
+        const contactPhone = row.get("מספר טלפון איש קשר") || headPhone || null;
+        const seniorPhysicians = parseNumberCell(row.get("מספר_בכירים"));
+        const residentsCount = parseNumberCell(row.get("מספר_מתמחים"));
+        const newResidents2024Values = row.getAll("מספר מתמחים חדשים 2024").filter(Boolean);
+        const newResidents2024 = parseNumberCell(newResidents2024Values[newResidents2024Values.length - 1] ?? "");
+        const stageA = parseNumberCell(row.get("מעבר_שלב_א"));
+        const stageB = parseNumberCell(row.get("מעבר_שלב_ב"));
 
-      for (const parsed of [seniorPhysicians, residentsCount, newResidents2024, stageA, stageB]) {
-        if (parsed.warning) warnings.push(parsed.warning);
-      }
-
-      await db.department.update({
-        where: { id: department.id },
-        data: {
-          websiteUrl: websiteUrl ?? department.websiteUrl,
-          applicationUrl: applicationUrl ?? department.applicationUrl,
-          about: description ?? department.about,
-          shortSummary: description ? description.slice(0, 220) : department.shortSummary,
-          publicContactEmail: contactEmail ?? department.publicContactEmail,
-          publicContactPhone: contactPhone ?? department.publicContactPhone,
-          contactName: contactName ?? department.contactName,
-          residentsCount: residentsCount.value !== null ? Math.round(residentsCount.value) : department.residentsCount,
-          newResidentsThisYear:
-            newResidents2024.value !== null ? Math.round(newResidents2024.value) : department.newResidentsThisYear,
-          shlavAlephPassRate: stageA.value ?? department.shlavAlephPassRate,
-          shlavBetPassRate: stageB.value ?? department.shlavBetPassRate,
-          dataSourceNotes: nonEmptyValues(table.headers.map((header, index) => table.sourceNotes?.values[index])).join(" | ") || department.dataSourceNotes
+        for (const parsed of [seniorPhysicians, residentsCount, newResidents2024, stageA, stageB]) {
+          if (parsed.warning) warnings.push(parsed.warning);
         }
-      });
 
-      if (headName) {
-        const existingHead = await db.departmentHead.findFirst({
-          where: {
-            departmentId: department.id,
-            name: headName
+        await tx.department.update({
+          where: { id: department.id },
+          data: {
+            websiteUrl: websiteUrl ?? department.websiteUrl,
+            applicationUrl: applicationUrl ?? department.applicationUrl,
+            about: description ?? department.about,
+            shortSummary: description ? description.slice(0, 220) : department.shortSummary,
+            publicContactEmail: contactEmail ?? department.publicContactEmail,
+            publicContactPhone: contactPhone ?? department.publicContactPhone,
+            contactName: contactName ?? department.contactName,
+            residentsCount: residentsCount.value !== null ? Math.round(residentsCount.value) : department.residentsCount,
+            newResidentsThisYear:
+              newResidents2024.value !== null ? Math.round(newResidents2024.value) : department.newResidentsThisYear,
+            shlavAlephPassRate: stageA.value ?? department.shlavAlephPassRate,
+            shlavBetPassRate: stageB.value ?? department.shlavBetPassRate,
+            dataSourceNotes: nonEmptyValues(table.headers.map((header, index) => table.sourceNotes?.values[index])).join(" | ") || department.dataSourceNotes
           }
         });
-        const headData = {
-          title: headTitle ?? "ד״ר",
-          role: "מנהל/ת מחלקה",
-          bio: `${headTitle ? `${headTitle} ` : ""}${headName} משמש/ת כמנהל/ת מחלקה.`
-        };
 
-        if (existingHead) {
-          await db.departmentHead.update({
-            where: { id: existingHead.id },
-            data: headData
-          });
-        } else {
-          await db.departmentHead.create({
-            data: {
+        if (headName) {
+          const existingHead = await tx.departmentHead.findFirst({
+            where: {
               departmentId: department.id,
-              name: headName,
-              ...headData
+              name: headName
             }
           });
+          const headData = {
+            title: headTitle ?? "ד״ר",
+            role: "מנהל/ת מחלקה",
+            bio: `${headTitle ? `${headTitle} ` : ""}${headName} משמש/ת כמנהל/ת מחלקה.`
+          };
+
+          if (existingHead) {
+            await tx.departmentHead.update({
+              where: { id: existingHead.id },
+              data: headData
+            });
+          } else {
+            await tx.departmentHead.create({
+              data: {
+                departmentId: department.id,
+                name: headName,
+                ...headData
+              }
+            });
+          }
         }
-      }
 
-      for (const metric of DEPARTMENT_NUMERIC_METRICS) {
-        const metadata = metadataForMetric(dataExplanations, "Master_Dept", metric);
-        const parsed = parseNumberCell(rowMetricValue(row, metric));
-        if (parsed.warning) warnings.push(`${metric.label}: ${parsed.warning}`);
-        await upsertDepartmentMetric(db, {
+        const metricRows = buildDepartmentMetricRows({
           departmentId: department.id,
-          metric,
-          value: parsed.value,
-          rawValue: parsed.rawValue,
-          sourceNotes: sourceForMetric(table, metric, metadata),
-          displayMetadata: metadata
+          row,
+          table,
+          dataExplanations,
+          warnings
         });
-      }
+        const yearlyRows = buildDepartmentYearlyMetricRows({
+          departmentId: department.id,
+          row,
+          table,
+          dataExplanations,
+          warnings
+        });
 
-      for (const year of [2020, 2021, 2022, 2023, 2024]) {
-        const header = `מספר מתמחים חדשים ${year}`;
-        const values = row.getAll(header).filter(Boolean);
-        if (values.length > 1) {
-          warnings.push(`${header}: קיימות ${values.length} עמודות, נשמר הערך האחרון שאינו ריק`);
+        await tx.departmentMetric.deleteMany({ where: { departmentId: department.id } });
+        if (metricRows.length > 0) {
+          await tx.departmentMetric.createMany({ data: metricRows });
         }
-        const parsed = parseNumberCell(values[values.length - 1] ?? "");
-        if (parsed.warning) warnings.push(`${header}: ${parsed.warning}`);
-        await upsertDepartmentYearlyMetric(db, {
-          departmentId: department.id,
-          year,
-          value: parsed.value,
-          rawValue: parsed.rawValue,
-          sourceNotes:
-            findMetricDisplayMetadata(dataExplanations, "Master_Dept", header, "newResidents")?.sourceLabel ??
-            sourceNoteFor(table, header, Math.max(values.length - 1, 0))
-        });
-      }
+        await tx.departmentYearlyMetric.deleteMany({ where: { departmentId: department.id } });
+        if (yearlyRows.length > 0) {
+          await tx.departmentYearlyMetric.createMany({ data: yearlyRows });
+        }
 
-      const expectedOpeningsRaw = row.get("צפי תקנים חדשים ב2026");
-      if (expectedOpeningsRaw) {
-        const parsed = parseNumberCell(expectedOpeningsRaw);
-        await upsertDepartmentYearlyMetric(db, {
-          departmentId: department.id,
-          year: OPENING_YEAR,
-          value: parsed.value,
-          rawValue: parsed.rawValue,
-          sourceNotes:
-            findMetricDisplayMetadata(dataExplanations, "Master_Dept", "expectedOpenings2026")?.sourceLabel ??
-            sourceNoteFor(table, "צפי תקנים חדשים ב2026")
+        imported += 1;
+        await logRow(tx, {
+          batchId: batch.id,
+          sourceFile: filePath,
+          target: "DEPARTMENT",
+          row,
+          stableKey: rowKey,
+          status: warnings.length > 0 ? "imported_with_warnings" : "imported",
+          warnings,
+          errors,
+          normalizedSpecialtyId: specialty.id,
+          normalizedDepartmentId: department.id
         });
-      }
-
-      imported += 1;
-      await logRow(db, {
-        batchId: batch.id,
-        sourceFile: filePath,
-        target: "DEPARTMENT",
-        row,
-        stableKey: rowKey,
-        status: warnings.length > 0 ? "imported_with_warnings" : "imported",
-        warnings,
-        errors,
-        normalizedSpecialtyId: specialty.id,
-        normalizedDepartmentId: department.id
-      });
+      }, { timeout: 15000 });
     } catch (error) {
       failed += 1;
       errors.push(error instanceof Error ? error.message : "Unknown department import error");
@@ -1289,6 +1366,16 @@ async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanati
         errors
       });
     }
+
+    const processed = index + 1;
+    if (processed === 1 || processed % 25 === 0 || processed === selectedRows.length) {
+      console.log(
+        `[import:master-csv] Master_Dept row ${processed}/${selectedRows.length}` +
+        ` csvRow=${row.rowNumber}` +
+        ` hospital="${institutionName}" specialty="${specialtyName}" subDepartment="${subDepartment || "-"}"` +
+        ` elapsed=${Date.now() - startedAt}ms`
+      );
+    }
   }
 
   await db.dataImportBatch.update({
@@ -1299,13 +1386,15 @@ async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanati
         imported,
         failed,
         staleHidden,
-        rowLogs: table.rows.length
+        rowLogs: selectedRows.length,
+        fromRow: options.fromRow ?? null,
+        limit: options.limit ?? null
       }),
       status: failed > 0 ? "PENDING_REVIEW" : "APPROVED"
     }
   });
 
-  return { batchId: batch.id, imported, failed, staleHidden, rows: table.rows.length };
+  return { batchId: batch.id, imported, failed, staleHidden, rows: selectedRows.length, totalRows: table.rows.length };
 }
 
 export async function importMasterCsvFiles(
@@ -1314,12 +1403,16 @@ export async function importMasterCsvFiles(
     specialtyCsvPath?: string;
     departmentCsvPath?: string;
     dataExpCsvPath?: string;
+    only?: ImportOnlyMode;
+    departmentLimit?: number;
+    departmentFromRow?: number;
   } = {}
 ) {
   const cwd = process.cwd();
   const dataExpCsvPath = input.dataExpCsvPath ?? path.join(cwd, DATA_EXP_FILE);
   const specialtyCsvPath = input.specialtyCsvPath ?? path.join(cwd, MASTER_SPEC_FILE);
   const departmentCsvPath = input.departmentCsvPath ?? path.join(cwd, MASTER_DEPT_FILE);
+  const only = input.only ?? "all";
 
   const runPhase = async <Result>(label: string, run: () => Promise<Result>) => {
     const startedAt = Date.now();
@@ -1328,11 +1421,24 @@ export async function importMasterCsvFiles(
     console.log(`[import:master-csv] ${label}: done in ${Date.now() - startedAt}ms`);
     return result;
   };
+  const skipped = (label: string) => {
+    console.log(`[import:master-csv] ${label}: skipped`);
+    return { skipped: true };
+  };
 
-  const dataExp = await runPhase("Data_Exp", () => importDataExpCsv(prisma, dataExpCsvPath));
+  const dataExp = only === "all" || only === "data-exp"
+    ? await runPhase("Data_Exp", () => importDataExpCsv(prisma, dataExpCsvPath))
+    : skipped("Data_Exp");
   const dataExplanations = await runPhase("Data_Exp metadata", () => loadDataExplanations(prisma));
-  const specialty = await runPhase("MASTER_Spec", () => importSpecialtyCsv(prisma, specialtyCsvPath, dataExplanations));
-  const department = await runPhase("Master_Dept", () => importDepartmentCsv(prisma, departmentCsvPath, dataExplanations));
+  const specialty = only === "all" || only === "spec"
+    ? await runPhase("MASTER_Spec", () => importSpecialtyCsv(prisma, specialtyCsvPath, dataExplanations))
+    : skipped("MASTER_Spec");
+  const department = only === "all" || only === "dept"
+    ? await runPhase("Master_Dept", () => importDepartmentCsv(prisma, departmentCsvPath, dataExplanations, {
+      limit: input.departmentLimit,
+      fromRow: input.departmentFromRow
+    }))
+    : skipped("Master_Dept");
   console.log("[import:master-csv] stale repair: skipped (run npm run repair:stale-departments)");
 
   return { dataExp, specialty, department, staleDepartmentRepair: { skipped: true } };
