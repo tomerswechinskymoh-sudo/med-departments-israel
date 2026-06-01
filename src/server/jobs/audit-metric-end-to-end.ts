@@ -34,6 +34,18 @@ type AuditRow = {
   failure?: string;
 };
 
+type DepartmentPageAuditSummary = {
+  departmentId: string | null;
+  availableDepartmentMetricKeys: string[];
+  fields: Array<{
+    metric: string;
+    queryValue: string | number | null;
+    resolverValue: string | number | null;
+    renderedValue: string | number | null;
+    status: AuditStatus;
+  }>;
+};
+
 const specialtyNames = ["רפואה פנימית", "רפואת ילדים", "רפואת המשפחה", "פסיכיאטריה"];
 
 const specialtyMetricKeys = [
@@ -48,11 +60,13 @@ const specialtyMetricKeys = [
 
 const departmentMetricKeys = [
   "מספר_מתמחים",
+  "מספר_בכירים",
   "זמן_המתנה_חציוני_לתקן",
   "אחוז_נשים",
   "אחוז_גברים",
   "משך_התמחות_רשמי",
   "משך_ממוצע_בפועל",
+  "צפי תקנים חדשים ב2026",
   "מספר המתקבלים שדיווחו שמצאו מיד התמחות",
   "מספר המתקבלים שדיווחו שמצאו עד חצי שנה",
   "מספר המתקבלים שדיווחו שמצאו עד שנה",
@@ -452,6 +466,13 @@ async function findAssutaInternalMedicineDepartment(csvRow: Record<string, strin
   );
 }
 
+function availableMetricKeys(metrics: ImportedMetricLike[]) {
+  return metrics
+    .filter(metricHasValue)
+    .map((metric) => metric.metricKey)
+    .sort((left, right) => left.localeCompare(right, "he"));
+}
+
 async function auditDepartmentMetric(input: {
   metricKey: string;
   masterDept: CsvTable;
@@ -575,6 +596,21 @@ export async function runMetricEndToEndAudit() {
     departmentRows.push(await auditDepartmentMetric({ metricKey, masterDept, masterSpec }));
   }
 
+  const departmentCsvRow = findAssutaInternalMedicineCsvRow(masterDept);
+  const departmentRecord = departmentCsvRow ? rowObject(masterDept, departmentCsvRow) : null;
+  const auditedDepartment = departmentRecord ? await findAssutaInternalMedicineDepartment(departmentRecord) : null;
+  const departmentPageAudit: DepartmentPageAuditSummary = {
+    departmentId: auditedDepartment?.id ?? null,
+    availableDepartmentMetricKeys: auditedDepartment ? availableMetricKeys(auditedDepartment.metrics) : [],
+    fields: departmentRows.map((row) => ({
+      metric: row.metric,
+      queryValue: row.queryValue,
+      resolverValue: row.resolverValue,
+      renderedValue: row.renderedValue,
+      status: row.status
+    }))
+  };
+
   const checks = [...specialtyRows, ...departmentRows];
   const failedChecks = checks
     .filter((row) => row.status === "FAIL")
@@ -589,6 +625,7 @@ export async function runMetricEndToEndAudit() {
       failed: failedChecks.length
     },
     checks,
+    departmentPageAudit,
     failedChecks
   };
 }

@@ -312,6 +312,40 @@ export async function resolveDepartmentBySlugOrFallback(
 ) {
   const slugVariants = getDepartmentSlugVariants(slug);
 
+  if (departmentId) {
+    const departmentById = await prisma.department.findFirst({
+      where: {
+        id: departmentId,
+        ...publicImportedDepartmentWhere
+      },
+      select: {
+        id: true,
+        slug: true,
+        name: true,
+        importStableKey: true,
+        institution: {
+          select: {
+            slug: true
+          }
+        },
+        specialty: {
+          select: {
+            slug: true
+          }
+        }
+      }
+    });
+
+    if (!departmentById) {
+      return null;
+    }
+
+    return {
+      ...departmentById,
+      slug: canonicalDepartmentSlugForRecord(departmentById)
+    };
+  }
+
   const departmentCandidates = await prisma.department.findMany({
     where: publicImportedDepartmentWhere,
     select: {
@@ -340,46 +374,7 @@ export async function resolveDepartmentBySlugOrFallback(
     );
   });
 
-  if (!matchedDepartment) {
-    if (!departmentId) {
-      return null;
-    }
-
-    const departmentById = await prisma.department.findUnique({
-      where: {
-        id: departmentId
-      },
-      select: {
-        id: true,
-        slug: true,
-        name: true,
-        importStableKey: true,
-        institution: {
-          select: {
-            slug: true
-          }
-        },
-        specialty: {
-          select: {
-            slug: true
-          }
-        }
-      }
-    });
-
-    if (!departmentById) {
-      return null;
-    }
-
-    if (!departmentById.importStableKey) {
-      return null;
-    }
-
-    return {
-      ...departmentById,
-      slug: canonicalDepartmentSlugForRecord(departmentById)
-    };
-  }
+  if (!matchedDepartment) return null;
 
   return {
     ...matchedDepartment,

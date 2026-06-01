@@ -841,7 +841,8 @@ async function main() {
     },
     endToEndAudit: {
       status: endToEndAudit.status,
-      counts: endToEndAudit.counts
+      counts: endToEndAudit.counts,
+      departmentPageAudit: endToEndAudit.departmentPageAudit
     },
     dataExpAudit: report.audit,
     failedChecks
