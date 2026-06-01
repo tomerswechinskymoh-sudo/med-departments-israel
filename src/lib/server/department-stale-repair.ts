@@ -68,8 +68,8 @@ function chooseCanonical(departments: DepartmentForRepair[]) {
     })[0] ?? null;
 }
 
-async function mergeDepartmentMetrics(tx: Prisma.TransactionClient, staleId: string, canonicalId: string) {
-  const staleMetrics = await tx.departmentMetric.findMany({
+async function mergeDepartmentMetrics(db: DbClient, staleId: string, canonicalId: string) {
+  const staleMetrics = await db.departmentMetric.findMany({
     where: { departmentId: staleId },
     select: { id: true, metricKey: true }
   });
@@ -84,7 +84,7 @@ async function mergeDepartmentMetrics(tx: Prisma.TransactionClient, staleId: str
       ...(registry?.dbKeys ?? []),
       ...(registry?.legacyKeys ?? [])
     ]));
-    const existing = await tx.departmentMetric.findFirst({
+    const existing = await db.departmentMetric.findFirst({
       where: {
         departmentId: canonicalId,
         metricKey: { in: equivalentKeys }
@@ -93,10 +93,10 @@ async function mergeDepartmentMetrics(tx: Prisma.TransactionClient, staleId: str
     });
 
     if (existing) {
-      await tx.departmentMetric.delete({ where: { id: metric.id } });
+      await db.departmentMetric.delete({ where: { id: metric.id } });
       dropped += 1;
     } else {
-      await tx.departmentMetric.update({
+      await db.departmentMetric.update({
         where: { id: metric.id },
         data: { departmentId: canonicalId }
       });
@@ -107,8 +107,8 @@ async function mergeDepartmentMetrics(tx: Prisma.TransactionClient, staleId: str
   return { moved, dropped };
 }
 
-async function mergeDepartmentYearlyMetrics(tx: Prisma.TransactionClient, staleId: string, canonicalId: string) {
-  const staleRows = await tx.departmentYearlyMetric.findMany({
+async function mergeDepartmentYearlyMetrics(db: DbClient, staleId: string, canonicalId: string) {
+  const staleRows = await db.departmentYearlyMetric.findMany({
     where: { departmentId: staleId },
     select: { id: true, metricKey: true, year: true }
   });
@@ -116,7 +116,7 @@ async function mergeDepartmentYearlyMetrics(tx: Prisma.TransactionClient, staleI
   let dropped = 0;
 
   for (const row of staleRows) {
-    const existing = await tx.departmentYearlyMetric.findUnique({
+    const existing = await db.departmentYearlyMetric.findUnique({
       where: {
         departmentId_metricKey_year: {
           departmentId: canonicalId,
@@ -128,10 +128,10 @@ async function mergeDepartmentYearlyMetrics(tx: Prisma.TransactionClient, staleI
     });
 
     if (existing) {
-      await tx.departmentYearlyMetric.delete({ where: { id: row.id } });
+      await db.departmentYearlyMetric.delete({ where: { id: row.id } });
       dropped += 1;
     } else {
-      await tx.departmentYearlyMetric.update({
+      await db.departmentYearlyMetric.update({
         where: { id: row.id },
         data: { departmentId: canonicalId }
       });
@@ -142,8 +142,8 @@ async function mergeDepartmentYearlyMetrics(tx: Prisma.TransactionClient, staleI
   return { moved, dropped };
 }
 
-async function mergeDepartmentResearchMetrics(tx: Prisma.TransactionClient, staleId: string, canonicalId: string) {
-  const staleRows = await tx.departmentResearchMetric.findMany({
+async function mergeDepartmentResearchMetrics(db: DbClient, staleId: string, canonicalId: string) {
+  const staleRows = await db.departmentResearchMetric.findMany({
     where: { departmentId: staleId },
     select: { id: true, year: true, source: true }
   });
@@ -151,7 +151,7 @@ async function mergeDepartmentResearchMetrics(tx: Prisma.TransactionClient, stal
   let dropped = 0;
 
   for (const row of staleRows) {
-    const existing = await tx.departmentResearchMetric.findUnique({
+    const existing = await db.departmentResearchMetric.findUnique({
       where: {
         departmentId_year_source: {
           departmentId: canonicalId,
@@ -163,10 +163,10 @@ async function mergeDepartmentResearchMetrics(tx: Prisma.TransactionClient, stal
     });
 
     if (existing) {
-      await tx.departmentResearchMetric.delete({ where: { id: row.id } });
+      await db.departmentResearchMetric.delete({ where: { id: row.id } });
       dropped += 1;
     } else {
-      await tx.departmentResearchMetric.update({
+      await db.departmentResearchMetric.update({
         where: { id: row.id },
         data: { departmentId: canonicalId }
       });
@@ -177,8 +177,8 @@ async function mergeDepartmentResearchMetrics(tx: Prisma.TransactionClient, stal
   return { moved, dropped };
 }
 
-async function mergeFavorites(tx: Prisma.TransactionClient, staleId: string, canonicalId: string) {
-  const staleRows = await tx.favoriteDepartment.findMany({
+async function mergeFavorites(db: DbClient, staleId: string, canonicalId: string) {
+  const staleRows = await db.favoriteDepartment.findMany({
     where: { departmentId: staleId },
     select: { userId: true, departmentId: true }
   });
@@ -186,7 +186,7 @@ async function mergeFavorites(tx: Prisma.TransactionClient, staleId: string, can
   let dropped = 0;
 
   for (const row of staleRows) {
-    const existing = await tx.favoriteDepartment.findUnique({
+    const existing = await db.favoriteDepartment.findUnique({
       where: {
         userId_departmentId: {
           userId: row.userId,
@@ -196,7 +196,7 @@ async function mergeFavorites(tx: Prisma.TransactionClient, staleId: string, can
     });
 
     if (existing) {
-      await tx.favoriteDepartment.delete({
+      await db.favoriteDepartment.delete({
         where: {
           userId_departmentId: {
             userId: row.userId,
@@ -206,7 +206,7 @@ async function mergeFavorites(tx: Prisma.TransactionClient, staleId: string, can
       });
       dropped += 1;
     } else {
-      await tx.favoriteDepartment.update({
+      await db.favoriteDepartment.update({
         where: {
           userId_departmentId: {
             userId: row.userId,
@@ -222,8 +222,8 @@ async function mergeFavorites(tx: Prisma.TransactionClient, staleId: string, can
   return { moved, dropped };
 }
 
-async function mergeRepresentativeAssignments(tx: Prisma.TransactionClient, staleId: string, canonicalId: string) {
-  const staleRows = await tx.representativeAssignment.findMany({
+async function mergeRepresentativeAssignments(db: DbClient, staleId: string, canonicalId: string) {
+  const staleRows = await db.representativeAssignment.findMany({
     where: { departmentId: staleId },
     select: { id: true, userId: true }
   });
@@ -231,7 +231,7 @@ async function mergeRepresentativeAssignments(tx: Prisma.TransactionClient, stal
   let dropped = 0;
 
   for (const row of staleRows) {
-    const existing = await tx.representativeAssignment.findUnique({
+    const existing = await db.representativeAssignment.findUnique({
       where: {
         userId_departmentId: {
           userId: row.userId,
@@ -241,10 +241,10 @@ async function mergeRepresentativeAssignments(tx: Prisma.TransactionClient, stal
     });
 
     if (existing) {
-      await tx.representativeAssignment.delete({ where: { id: row.id } });
+      await db.representativeAssignment.delete({ where: { id: row.id } });
       dropped += 1;
     } else {
-      await tx.representativeAssignment.update({
+      await db.representativeAssignment.update({
         where: { id: row.id },
         data: { departmentId: canonicalId }
       });
@@ -255,8 +255,8 @@ async function mergeRepresentativeAssignments(tx: Prisma.TransactionClient, stal
   return { moved, dropped };
 }
 
-async function mergeExternalMetrics(tx: Prisma.TransactionClient, staleId: string, canonicalId: string) {
-  const staleRows = await tx.departmentExternalMetric.findMany({
+async function mergeExternalMetrics(db: DbClient, staleId: string, canonicalId: string) {
+  const staleRows = await db.departmentExternalMetric.findMany({
     where: { departmentId: staleId },
     select: { id: true, metricKey: true, sourceName: true }
   });
@@ -264,7 +264,7 @@ async function mergeExternalMetrics(tx: Prisma.TransactionClient, staleId: strin
   let dropped = 0;
 
   for (const row of staleRows) {
-    const existing = await tx.departmentExternalMetric.findFirst({
+    const existing = await db.departmentExternalMetric.findFirst({
       where: {
         departmentId: canonicalId,
         metricKey: row.metricKey,
@@ -274,10 +274,10 @@ async function mergeExternalMetrics(tx: Prisma.TransactionClient, staleId: strin
     });
 
     if (existing) {
-      await tx.departmentExternalMetric.delete({ where: { id: row.id } });
+      await db.departmentExternalMetric.delete({ where: { id: row.id } });
       dropped += 1;
     } else {
-      await tx.departmentExternalMetric.update({
+      await db.departmentExternalMetric.update({
         where: { id: row.id },
         data: { departmentId: canonicalId }
       });
@@ -288,8 +288,8 @@ async function mergeExternalMetrics(tx: Prisma.TransactionClient, staleId: strin
   return { moved, dropped };
 }
 
-async function mergeExternalPeople(tx: Prisma.TransactionClient, staleId: string, canonicalId: string) {
-  const staleRows = await tx.departmentExternalPerson.findMany({
+async function mergeExternalPeople(db: DbClient, staleId: string, canonicalId: string) {
+  const staleRows = await db.departmentExternalPerson.findMany({
     where: { departmentId: staleId },
     select: { id: true, sourceName: true, personName: true, rankingYear: true }
   });
@@ -297,7 +297,7 @@ async function mergeExternalPeople(tx: Prisma.TransactionClient, staleId: string
   let dropped = 0;
 
   for (const row of staleRows) {
-    const existing = await tx.departmentExternalPerson.findFirst({
+    const existing = await db.departmentExternalPerson.findFirst({
       where: {
         departmentId: canonicalId,
         sourceName: row.sourceName,
@@ -308,10 +308,10 @@ async function mergeExternalPeople(tx: Prisma.TransactionClient, staleId: string
     });
 
     if (existing) {
-      await tx.departmentExternalPerson.delete({ where: { id: row.id } });
+      await db.departmentExternalPerson.delete({ where: { id: row.id } });
       dropped += 1;
     } else {
-      await tx.departmentExternalPerson.update({
+      await db.departmentExternalPerson.update({
         where: { id: row.id },
         data: { departmentId: canonicalId }
       });
@@ -362,40 +362,31 @@ function preservedDepartmentData(canonical: DepartmentForRepair, stale: Departme
   return data;
 }
 
-async function mergeSimpleRelations(tx: Prisma.TransactionClient, staleId: string, canonicalId: string) {
-  const heads = await tx.departmentHead.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const openings = await tx.residencyOpening.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const researchOpportunities = await tx.researchOpportunity.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const officialUpdates = await tx.officialDepartmentUpdate.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const reviewSubmissions = await tx.reviewSubmission.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const reviews = await tx.review.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const publisherRequests = await tx.publisherRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const uploadedFiles = await tx.uploadedFile.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const changeRequests = await tx.departmentChangeRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const scrapeRevisions = await tx.departmentScrapeRevision.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const mistakeReports = await tx.departmentMistakeReport.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const representativeRequests = await tx.departmentRepresentativeRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
-  const dataImportRecords = await tx.dataImportRecord.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } });
-  const dataImportRowLogs = await tx.dataImportRowLog.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } });
-  const dunsPhysicianRecords = await tx.dunsPhysicianRecord.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } });
+function errorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
+}
 
-  return {
-    heads: heads.count,
-    openings: openings.count,
-    researchOpportunities: researchOpportunities.count,
-    officialUpdates: officialUpdates.count,
-    reviewSubmissions: reviewSubmissions.count,
-    reviews: reviews.count,
-    publisherRequests: publisherRequests.count,
-    uploadedFiles: uploadedFiles.count,
-    changeRequests: changeRequests.count,
-    scrapeRevisions: scrapeRevisions.count,
-    mistakeReports: mistakeReports.count,
-    representativeRequests: representativeRequests.count,
-    dataImportRecords: dataImportRecords.count,
-    dataImportRowLogs: dataImportRowLogs.count,
-    dunsPhysicianRecords: dunsPhysicianRecords.count
-  };
+async function mergeSimpleRelations(
+  db: PrismaClient,
+  staleId: string,
+  canonicalId: string,
+  runStep: (label: string, run: () => Promise<number | { moved: number; dropped: number }>) => Promise<void>
+) {
+  await runStep("heads", async () => (await db.departmentHead.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("openings", async () => (await db.residencyOpening.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("researchOpportunities", async () => (await db.researchOpportunity.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("officialUpdates", async () => (await db.officialDepartmentUpdate.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("reviewSubmissions", async () => (await db.reviewSubmission.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("reviews", async () => (await db.review.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("publisherRequests", async () => (await db.publisherRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("uploadedFiles", async () => (await db.uploadedFile.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("changeRequests", async () => (await db.departmentChangeRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("scrapeRevisions", async () => (await db.departmentScrapeRevision.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("mistakeReports", async () => (await db.departmentMistakeReport.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("representativeRequests", async () => (await db.departmentRepresentativeRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } })).count);
+  await runStep("dataImportRecords", async () => (await db.dataImportRecord.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } })).count);
+  await runStep("dataImportRowLogs", async () => (await db.dataImportRowLog.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } })).count);
+  await runStep("dunsPhysicianRecords", async () => (await db.dunsPhysicianRecord.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } })).count);
 }
 
 export async function findStaleDepartmentRepairPairs(db: DbClient) {
@@ -468,7 +459,13 @@ export async function findStaleDepartmentRepairPairs(db: DbClient) {
 
 export async function repairStaleDepartmentRows(
   db: PrismaClient,
-  options: { dryRun?: boolean; onProgress?: (message: string) => void } = {}
+  options: {
+    dryRun?: boolean;
+    limit?: number;
+    fromPair?: number;
+    skipRelations?: boolean;
+    onProgress?: (message: string) => void;
+  } = {}
 ) {
   const activeDepartmentCount = await db.department.count({
     where: {
@@ -484,6 +481,9 @@ export async function repairStaleDepartmentRows(
     }
   });
   const pairs = await findStaleDepartmentRepairPairs(db);
+  const selectedPairs = pairs
+    .filter((_, index) => options.fromPair === undefined || index + 1 >= options.fromPair)
+    .slice(0, options.limit);
   const repaired: Array<{
     staleId: string;
     canonicalId: string;
@@ -491,15 +491,22 @@ export async function repairStaleDepartmentRows(
     specialty: string;
     normalizedSubDepartment: string;
     moved: Record<string, number | { moved: number; dropped: number }>;
+    failures: Array<{ step: string; error: string }>;
+    hidden: boolean;
   }> = [];
 
   options.onProgress?.(
-    `active=${activeDepartmentCount} alreadyRepairedAliases=${alreadyRepairedAliasCount} pairs=${pairs.length}`
+    `active=${activeDepartmentCount} alreadyRepairedAliases=${alreadyRepairedAliasCount}` +
+    ` pairs=${pairs.length} selected=${selectedPairs.length}` +
+    `${options.fromPair !== undefined ? ` fromPair=${options.fromPair}` : ""}` +
+    `${options.limit !== undefined ? ` limit=${options.limit}` : ""}` +
+    `${options.skipRelations ? " skipRelations=true" : ""}`
   );
 
-  for (const [index, pair] of pairs.entries()) {
+  for (const [index, pair] of selectedPairs.entries()) {
+    const pairNumber = (options.fromPair ?? 1) + index;
     options.onProgress?.(
-      `${options.dryRun ? "dry-run" : "repair"} ${index + 1}/${pairs.length}: ${pair.stale.id} -> ${pair.canonical.id}`
+      `${options.dryRun ? "dry-run" : "repair"} ${pairNumber}/${pairs.length}: ${pair.stale.id} -> ${pair.canonical.id}`
     );
 
     if (options.dryRun) {
@@ -509,46 +516,69 @@ export async function repairStaleDepartmentRows(
         hospital: pair.canonical.institution.name,
         specialty: pair.canonical.specialty.name,
         normalizedSubDepartment: pair.normalizedSubDepartment,
-        moved: {}
+        moved: {},
+        failures: [],
+        hidden: false
       });
       continue;
     }
 
-    const moved = await db.$transaction(async (tx) => {
-      const metrics = await mergeDepartmentMetrics(tx, pair.stale.id, pair.canonical.id);
-      const yearlyMetrics = await mergeDepartmentYearlyMetrics(tx, pair.stale.id, pair.canonical.id);
-      const researchMetrics = await mergeDepartmentResearchMetrics(tx, pair.stale.id, pair.canonical.id);
-      const favorites = await mergeFavorites(tx, pair.stale.id, pair.canonical.id);
-      const assignments = await mergeRepresentativeAssignments(tx, pair.stale.id, pair.canonical.id);
-      const externalMetrics = await mergeExternalMetrics(tx, pair.stale.id, pair.canonical.id);
-      const externalPeople = await mergeExternalPeople(tx, pair.stale.id, pair.canonical.id);
-      const simple = await mergeSimpleRelations(tx, pair.stale.id, pair.canonical.id);
-      const preservedData = preservedDepartmentData(pair.canonical, pair.stale);
-      if (Object.keys(preservedData).length > 0) {
-        await tx.department.update({
+    const moved: Record<string, number | { moved: number; dropped: number }> = {};
+    const failures: Array<{ step: string; error: string }> = [];
+    const runStep = async (
+      label: string,
+      run: () => Promise<number | { moved: number; dropped: number }>
+    ) => {
+      try {
+        const result = await run();
+        moved[label] = result;
+        options.onProgress?.(`pair ${pairNumber}/${pairs.length} ${label}: ok ${JSON.stringify(result)}`);
+      } catch (error) {
+        const message = errorMessage(error);
+        failures.push({ step: label, error: message });
+        options.onProgress?.(`pair ${pairNumber}/${pairs.length} ${label}: FAIL ${message}`);
+      }
+    };
+
+    if (options.skipRelations) {
+      moved.relationsSkipped = 1;
+      options.onProgress?.(`pair ${pairNumber}/${pairs.length} relations: skipped by flag`);
+    } else {
+      await runStep("metrics", () => mergeDepartmentMetrics(db, pair.stale.id, pair.canonical.id));
+      await runStep("yearlyMetrics", () => mergeDepartmentYearlyMetrics(db, pair.stale.id, pair.canonical.id));
+      await runStep("researchMetrics", () => mergeDepartmentResearchMetrics(db, pair.stale.id, pair.canonical.id));
+      await runStep("favorites", () => mergeFavorites(db, pair.stale.id, pair.canonical.id));
+      await runStep("assignments", () => mergeRepresentativeAssignments(db, pair.stale.id, pair.canonical.id));
+      await runStep("externalMetrics", () => mergeExternalMetrics(db, pair.stale.id, pair.canonical.id));
+      await runStep("externalPeople", () => mergeExternalPeople(db, pair.stale.id, pair.canonical.id));
+      await mergeSimpleRelations(db, pair.stale.id, pair.canonical.id, runStep);
+    }
+
+    if (failures.length === 0) {
+      await runStep("preserveCanonicalData", async () => {
+        const preservedData = preservedDepartmentData(pair.canonical, pair.stale);
+        if (Object.keys(preservedData).length === 0) return 0;
+
+        await db.department.update({
           where: { id: pair.canonical.id },
           data: preservedData
         });
-      }
-      await tx.department.update({
-        where: { id: pair.stale.id },
-        data: {
-          importStableKey: null,
-          medicalArrayId: null
-        }
+        return 1;
       });
+    }
 
-      return {
-        metrics,
-        yearlyMetrics,
-        researchMetrics,
-        favorites,
-        assignments,
-        externalMetrics,
-        externalPeople,
-        ...simple
-      };
-    }, { timeout: 15000 });
+    if (failures.length === 0) {
+      await runStep("markStaleHidden", async () => {
+        await db.department.update({
+          where: { id: pair.stale.id },
+          data: {
+            importStableKey: null,
+            medicalArrayId: null
+          }
+        });
+        return 1;
+      });
+    }
 
     repaired.push({
       staleId: pair.stale.id,
@@ -556,16 +586,21 @@ export async function repairStaleDepartmentRows(
       hospital: pair.canonical.institution.name,
       specialty: pair.canonical.specialty.name,
       normalizedSubDepartment: pair.normalizedSubDepartment,
-      moved
+      moved,
+      failures,
+      hidden: failures.length === 0
     });
   }
 
   return {
     scannedPairs: pairs.length,
-    repairedPairs: options.dryRun ? 0 : repaired.length,
+    selectedPairs: selectedPairs.length,
+    repairedPairs: options.dryRun ? 0 : repaired.filter((pair) => pair.hidden).length,
+    failedPairs: repaired.filter((pair) => pair.failures.length > 0).length,
     skippedAlreadyRepairedAliases: alreadyRepairedAliasCount,
     activeDepartmentCount,
     dryRun: Boolean(options.dryRun),
+    skipRelations: Boolean(options.skipRelations),
     pairs: repaired
   };
 }
