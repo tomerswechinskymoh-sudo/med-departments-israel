@@ -363,39 +363,21 @@ function preservedDepartmentData(canonical: DepartmentForRepair, stale: Departme
 }
 
 async function mergeSimpleRelations(tx: Prisma.TransactionClient, staleId: string, canonicalId: string) {
-  const [
-    heads,
-    openings,
-    researchOpportunities,
-    officialUpdates,
-    reviewSubmissions,
-    reviews,
-    publisherRequests,
-    uploadedFiles,
-    changeRequests,
-    scrapeRevisions,
-    mistakeReports,
-    representativeRequests,
-    dataImportRecords,
-    dataImportRowLogs,
-    dunsPhysicianRecords
-  ] = await Promise.all([
-    tx.departmentHead.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.residencyOpening.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.researchOpportunity.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.officialDepartmentUpdate.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.reviewSubmission.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.review.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.publisherRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.uploadedFile.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.departmentChangeRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.departmentScrapeRevision.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.departmentMistakeReport.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.departmentRepresentativeRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } }),
-    tx.dataImportRecord.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } }),
-    tx.dataImportRowLog.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } }),
-    tx.dunsPhysicianRecord.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } })
-  ]);
+  const heads = await tx.departmentHead.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const openings = await tx.residencyOpening.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const researchOpportunities = await tx.researchOpportunity.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const officialUpdates = await tx.officialDepartmentUpdate.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const reviewSubmissions = await tx.reviewSubmission.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const reviews = await tx.review.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const publisherRequests = await tx.publisherRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const uploadedFiles = await tx.uploadedFile.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const changeRequests = await tx.departmentChangeRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const scrapeRevisions = await tx.departmentScrapeRevision.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const mistakeReports = await tx.departmentMistakeReport.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const representativeRequests = await tx.departmentRepresentativeRequest.updateMany({ where: { departmentId: staleId }, data: { departmentId: canonicalId } });
+  const dataImportRecords = await tx.dataImportRecord.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } });
+  const dataImportRowLogs = await tx.dataImportRowLog.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } });
+  const dunsPhysicianRecords = await tx.dunsPhysicianRecord.updateMany({ where: { normalizedDepartmentId: staleId }, data: { normalizedDepartmentId: canonicalId } });
 
   return {
     heads: heads.count,
@@ -418,6 +400,11 @@ async function mergeSimpleRelations(tx: Prisma.TransactionClient, staleId: strin
 
 export async function findStaleDepartmentRepairPairs(db: DbClient) {
   const departments = await db.department.findMany({
+    where: {
+      importStableKey: {
+        not: null
+      }
+    },
     select: {
       id: true,
       institutionId: true,
@@ -479,7 +466,23 @@ export async function findStaleDepartmentRepairPairs(db: DbClient) {
   return pairs;
 }
 
-export async function repairStaleDepartmentRows(db: PrismaClient, options: { dryRun?: boolean } = {}) {
+export async function repairStaleDepartmentRows(
+  db: PrismaClient,
+  options: { dryRun?: boolean; onProgress?: (message: string) => void } = {}
+) {
+  const activeDepartmentCount = await db.department.count({
+    where: {
+      importStableKey: {
+        not: null
+      }
+    }
+  });
+  const alreadyRepairedAliasCount = await db.department.count({
+    where: {
+      importStableKey: null,
+      medicalArrayId: null
+    }
+  });
   const pairs = await findStaleDepartmentRepairPairs(db);
   const repaired: Array<{
     staleId: string;
@@ -490,7 +493,15 @@ export async function repairStaleDepartmentRows(db: PrismaClient, options: { dry
     moved: Record<string, number | { moved: number; dropped: number }>;
   }> = [];
 
-  for (const pair of pairs) {
+  options.onProgress?.(
+    `active=${activeDepartmentCount} alreadyRepairedAliases=${alreadyRepairedAliasCount} pairs=${pairs.length}`
+  );
+
+  for (const [index, pair] of pairs.entries()) {
+    options.onProgress?.(
+      `${options.dryRun ? "dry-run" : "repair"} ${index + 1}/${pairs.length}: ${pair.stale.id} -> ${pair.canonical.id}`
+    );
+
     if (options.dryRun) {
       repaired.push({
         staleId: pair.stale.id,
@@ -504,23 +515,13 @@ export async function repairStaleDepartmentRows(db: PrismaClient, options: { dry
     }
 
     const moved = await db.$transaction(async (tx) => {
-      const [
-        metrics,
-        yearlyMetrics,
-        researchMetrics,
-        favorites,
-        assignments,
-        externalMetrics,
-        externalPeople
-      ] = await Promise.all([
-        mergeDepartmentMetrics(tx, pair.stale.id, pair.canonical.id),
-        mergeDepartmentYearlyMetrics(tx, pair.stale.id, pair.canonical.id),
-        mergeDepartmentResearchMetrics(tx, pair.stale.id, pair.canonical.id),
-        mergeFavorites(tx, pair.stale.id, pair.canonical.id),
-        mergeRepresentativeAssignments(tx, pair.stale.id, pair.canonical.id),
-        mergeExternalMetrics(tx, pair.stale.id, pair.canonical.id),
-        mergeExternalPeople(tx, pair.stale.id, pair.canonical.id)
-      ]);
+      const metrics = await mergeDepartmentMetrics(tx, pair.stale.id, pair.canonical.id);
+      const yearlyMetrics = await mergeDepartmentYearlyMetrics(tx, pair.stale.id, pair.canonical.id);
+      const researchMetrics = await mergeDepartmentResearchMetrics(tx, pair.stale.id, pair.canonical.id);
+      const favorites = await mergeFavorites(tx, pair.stale.id, pair.canonical.id);
+      const assignments = await mergeRepresentativeAssignments(tx, pair.stale.id, pair.canonical.id);
+      const externalMetrics = await mergeExternalMetrics(tx, pair.stale.id, pair.canonical.id);
+      const externalPeople = await mergeExternalPeople(tx, pair.stale.id, pair.canonical.id);
       const simple = await mergeSimpleRelations(tx, pair.stale.id, pair.canonical.id);
       const preservedData = preservedDepartmentData(pair.canonical, pair.stale);
       if (Object.keys(preservedData).length > 0) {
@@ -547,7 +548,7 @@ export async function repairStaleDepartmentRows(db: PrismaClient, options: { dry
         externalPeople,
         ...simple
       };
-    }, { timeout: 60000 });
+    }, { timeout: 15000 });
 
     repaired.push({
       staleId: pair.stale.id,
@@ -562,6 +563,8 @@ export async function repairStaleDepartmentRows(db: PrismaClient, options: { dry
   return {
     scannedPairs: pairs.length,
     repairedPairs: options.dryRun ? 0 : repaired.length,
+    skippedAlreadyRepairedAliases: alreadyRepairedAliasCount,
+    activeDepartmentCount,
     dryRun: Boolean(options.dryRun),
     pairs: repaired
   };

@@ -21,7 +21,6 @@ import {
   normalizeCatalogLookupValue,
   slugifyValue
 } from "@/server/department-catalog";
-import { repairStaleDepartmentRows } from "@/lib/server/department-stale-repair";
 
 type DbClient = PrismaClient | Prisma.TransactionClient;
 
@@ -1112,8 +1111,7 @@ async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanati
   });
   let imported = 0;
   let failed = 0;
-  let staleHidden = 0;
-  const currentStableKeys = new Set<string>();
+  const staleHidden = 0;
 
   for (const row of table.rows) {
     const warnings: string[] = [];
@@ -1265,7 +1263,6 @@ async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanati
       }
 
       imported += 1;
-      currentStableKeys.add(rowKey ?? stableKey([institutionName, specialtyName, subDepartment || specialtyName]));
       await logRow(db, {
         batchId: batch.id,
         sourceFile: filePath,
@@ -1292,29 +1289,6 @@ async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanati
         errors
       });
     }
-  }
-
-  if (failed === 0 && currentStableKeys.size > 0) {
-    const staleResult = await db.department.updateMany({
-      where: {
-        AND: [
-          {
-            importStableKey: {
-              not: null
-            }
-          },
-          {
-            importStableKey: {
-              notIn: Array.from(currentStableKeys)
-            }
-          }
-        ]
-      },
-      data: {
-        importStableKey: null
-      }
-    });
-    staleHidden = staleResult.count;
   }
 
   await db.dataImportBatch.update({
@@ -1346,11 +1320,20 @@ export async function importMasterCsvFiles(
   const dataExpCsvPath = input.dataExpCsvPath ?? path.join(cwd, DATA_EXP_FILE);
   const specialtyCsvPath = input.specialtyCsvPath ?? path.join(cwd, MASTER_SPEC_FILE);
   const departmentCsvPath = input.departmentCsvPath ?? path.join(cwd, MASTER_DEPT_FILE);
-  const dataExp = await importDataExpCsv(prisma, dataExpCsvPath);
-  const dataExplanations = await loadDataExplanations(prisma);
-  const specialty = await importSpecialtyCsv(prisma, specialtyCsvPath, dataExplanations);
-  const department = await importDepartmentCsv(prisma, departmentCsvPath, dataExplanations);
-  const staleDepartmentRepair = await repairStaleDepartmentRows(prisma);
 
-  return { dataExp, specialty, department, staleDepartmentRepair };
+  const runPhase = async <Result>(label: string, run: () => Promise<Result>) => {
+    const startedAt = Date.now();
+    console.log(`[import:master-csv] ${label}: start`);
+    const result = await run();
+    console.log(`[import:master-csv] ${label}: done in ${Date.now() - startedAt}ms`);
+    return result;
+  };
+
+  const dataExp = await runPhase("Data_Exp", () => importDataExpCsv(prisma, dataExpCsvPath));
+  const dataExplanations = await runPhase("Data_Exp metadata", () => loadDataExplanations(prisma));
+  const specialty = await runPhase("MASTER_Spec", () => importSpecialtyCsv(prisma, specialtyCsvPath, dataExplanations));
+  const department = await runPhase("Master_Dept", () => importDepartmentCsv(prisma, departmentCsvPath, dataExplanations));
+  console.log("[import:master-csv] stale repair: skipped (run npm run repair:stale-departments)");
+
+  return { dataExp, specialty, department, staleDepartmentRepair: { skipped: true } };
 }

@@ -15,6 +15,7 @@
     "db:seed": "tsx prisma/seed.ts",
     "import:department-heads": "tsx src/server/jobs/import-department-heads.ts",
     "import:master-csv": "tsx src/server/jobs/import-master-csv.ts",
+    "repair:stale-departments": "tsx src/server/jobs/repair-stale-departments.ts",
     "verify:public-imports": "tsx src/server/jobs/verify-public-imported-departments.ts",
     "verify:department-summary": "tsx src/server/jobs/debug-departments-summary.ts",
     "verify:metric-display": "tsx src/server/jobs/debug-departments-summary.ts",
