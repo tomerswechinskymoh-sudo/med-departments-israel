@@ -8,11 +8,22 @@ import { hasValidSameOrigin } from "@/lib/security";
 import { refreshDuns100DepartmentMetric } from "@/lib/server/duns100-enrichment";
 
 const bulkRefreshSchema = z.object({
+  departmentId: z.string().cuid().optional(),
   departmentIds: z.array(z.string().cuid()).max(100).optional(),
   limit: z.coerce.number().int().min(1).max(100).default(5),
   delayMs: z.coerce.number().int().min(100).max(10000).default(700),
-  cursor: z.string().cuid().optional(),
-  mode: z.enum(["batch", "all"]).default("batch")
+  cursor: z.preprocess((value) => (value === null || value === "" ? undefined : value), z.string().cuid().optional()),
+  mode: z.enum(["single", "bulk", "batch", "all"]).optional()
+}).superRefine((data, ctx) => {
+  const mode = data.mode ?? (data.departmentId ? "single" : "bulk");
+
+  if (mode === "single" && !data.departmentId) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ["departmentId"],
+      message: "departmentId is required for single refresh."
+    });
+  }
 });
 
 function wait(ms: number) {
@@ -38,18 +49,39 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => ({}));
   const parsed = bulkRefreshSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json({ error: "קלט ריענון DUNS100 לא תקין." }, { status: 400 });
+    console.error("Invalid DUNS100 refresh payload", {
+      issues: parsed.error.flatten(),
+      body
+    });
+    return NextResponse.json({
+      ok: false,
+      error: "קלט ריענון DUNS100 לא תקין.",
+      processed: 0,
+      succeeded: 0,
+      failed: 0,
+      nextCursor: null,
+      done: true,
+      errors: parsed.error.issues.map((issue) => ({
+        path: issue.path.join("."),
+        message: issue.message
+      }))
+    }, { status: 400 });
   }
 
+  const mode = parsed.data.mode ?? (parsed.data.departmentId ? "single" : "bulk");
+  const isSingle = mode === "single";
   const importedWhere = {
     importStableKey: {
       not: null
     }
   } as const;
-  const departmentWhere = parsed.data.departmentIds?.length
+  const departmentIds = isSingle && parsed.data.departmentId
+    ? [parsed.data.departmentId]
+    : parsed.data.departmentIds;
+  const departmentWhere = departmentIds?.length
     ? {
         id: {
-          in: parsed.data.departmentIds
+          in: departmentIds
         },
         ...importedWhere
       }
@@ -112,8 +144,24 @@ export async function POST(request: Request) {
     }
   }
 
-  const nextCursor = departments.at(-1)?.id ?? null;
-  const done = departments.length < parsed.data.limit || Boolean(parsed.data.departmentIds?.length);
+  if (isSingle && departments.length === 0 && parsed.data.departmentId) {
+    results.push({
+      departmentId: parsed.data.departmentId,
+      status: "failed",
+      error: "המחלקה לא נמצאה או אינה מחלקה מיובאת."
+    });
+  }
+
+  const nextCursor = isSingle ? null : departments.at(-1)?.id ?? null;
+  const done = isSingle || departments.length < parsed.data.limit || Boolean(departmentIds?.length);
+  const failed = results.filter((result) => result.status === "failed").length;
+  const succeeded = results.length - failed;
+  const errors = results
+    .filter((result) => result.status === "failed")
+    .map((result) => ({
+      departmentId: result.departmentId,
+      message: result.error ?? "ריענון DUNS100 נכשל."
+    }));
 
   await createAuditLog({
     actorUserId: session.userId,
@@ -126,19 +174,23 @@ export async function POST(request: Request) {
       cursor: parsed.data.cursor ?? null,
       nextCursor,
       done,
-      mode: parsed.data.mode,
+      mode,
       results
     }
   });
 
   return NextResponse.json({
+    ok: true,
     message: done
       ? `ריענון DUNS100 הסתיים. עובדו ${results.length} מחלקות בבקשה האחרונה.`
       : `רועננו ${results.length} מחלקות מול DUNS100. אפשר להמשיך לבאצ׳ הבא.`,
     results,
     processed: results.length,
+    succeeded,
+    failed,
     totalImportedDepartments,
     nextCursor,
-    done
+    done,
+    errors
   });
 }

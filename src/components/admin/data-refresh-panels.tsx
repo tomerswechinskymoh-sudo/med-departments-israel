@@ -185,7 +185,7 @@ export function DataRefreshPanels({
           "content-type": "application/json"
         },
         body: JSON.stringify({
-          mode: "all",
+          mode: "bulk",
           limit: batchSize,
           cursor,
           delayMs: input.delayMs,
