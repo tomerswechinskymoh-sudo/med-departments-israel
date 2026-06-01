@@ -5,6 +5,10 @@ import { prisma } from "@/lib/prisma";
 import { getDepartmentPageData, getDirectoryData, getSpecialtyDashboardMetrics } from "@/lib/queries";
 import { getDepartmentHref } from "@/lib/utils";
 import {
+  normalizeDepartmentNameSubDepartment,
+  normalizeDepartmentSubDepartment
+} from "@/lib/department-normalization";
+import {
   metricRegistryEntryFor,
   resolveImportedMetric,
   type ImportedMetricLike
@@ -74,6 +78,19 @@ type DepartmentCoverageAudit = {
     department: string;
     missingCount: number;
     causes: string[];
+  }>;
+  duplicateNormalizedActiveGroups: Array<{
+    institution: string;
+    specialty: string;
+    normalizedSubDepartment: string;
+    departmentIds: string[];
+    names: string[];
+  }>;
+  staleAliasChecks: Array<{
+    staleDepartmentId: string;
+    canonicalDepartmentId: string | null;
+    slug: string;
+    status: "PASS" | "FAIL";
   }>;
   causeSummary: {
     csvBlank: number;
@@ -335,7 +352,7 @@ function departmentStableKey(input: {
   subDepartment: string;
 }) {
   const specialtyName = canonicalDepartmentSpecialtyName(input.specialtyName);
-  const subDepartment = cleanCell(input.subDepartment) || specialtyName;
+  const subDepartment = normalizeDepartmentSubDepartment(input.subDepartment) || specialtyName;
 
   return crypto
     .createHash("sha1")
@@ -629,6 +646,8 @@ function metricValueForCoverage(input: {
 
 type DepartmentForCoverage = {
   id: string;
+  institutionId: string;
+  specialtyId: string;
   slug: string;
   name: string;
   importStableKey: string | null;
@@ -652,7 +671,7 @@ function csvDepartmentRows(table: CsvTable): CsvDepartmentRow[] {
       const record = rowObject(table, row);
       const institutionName = cleanCell(record["שם_מרכז_רפואי"]);
       const specialtyName = canonicalDepartmentSpecialtyName(record["תחום התמחות"]);
-      const subDepartment = cleanCell(record["תת מחלקה"]);
+      const subDepartment = normalizeDepartmentSubDepartment(record["תת מחלקה"]);
 
       if (!institutionName || !specialtyName) return null;
 
@@ -730,6 +749,8 @@ async function buildDepartmentCoverageAudit(masterDept: CsvTable) {
     where: { importStableKey: { not: null } },
     select: {
       id: true,
+      institutionId: true,
+      specialtyId: true,
       slug: true,
       name: true,
       importStableKey: true,
@@ -873,6 +894,28 @@ async function buildDepartmentCoverageAudit(masterDept: CsvTable) {
     .sort((left, right) => right.missingCount - left.missingCount)
     .slice(0, 20);
 
+  const activeGroups = new Map<string, DepartmentForCoverage[]>();
+  for (const department of dbDepartments) {
+    const normalizedSubDepartment = normalizeDepartmentNameSubDepartment(department.name, department.specialty.name);
+    const key = [department.institution.name, department.specialty.name, normalizedSubDepartment || "__base__"].join("|");
+    const rows = activeGroups.get(key) ?? [];
+    rows.push(department);
+    activeGroups.set(key, rows);
+  }
+  const duplicateNormalizedActiveGroups = Array.from(activeGroups.entries())
+    .filter(([, rows]) => rows.length > 1)
+    .map(([key, rows]) => {
+      const [institution, specialty, normalizedSubDepartment] = key.split("|");
+      return {
+        institution,
+        specialty,
+        normalizedSubDepartment: normalizedSubDepartment === "__base__" ? "" : normalizedSubDepartment,
+        departmentIds: rows.map((row) => row.id),
+        names: rows.map((row) => row.name)
+      };
+    });
+  const staleAliasChecks = await buildStaleAliasChecks();
+
   return {
     audit: {
       totalImportedDepartments: dbDepartments.length,
@@ -881,11 +924,65 @@ async function buildDepartmentCoverageAudit(masterDept: CsvTable) {
       duplicateSlugDepartments,
       perMetric,
       topMissingDepartments,
+      duplicateNormalizedActiveGroups,
+      staleAliasChecks,
       causeSummary
     } satisfies DepartmentCoverageAudit,
     csvRows,
     departmentByStableKey
   };
+}
+
+async function buildStaleAliasChecks() {
+  const hiddenDepartments = await prisma.department.findMany({
+    where: {
+      importStableKey: null
+    },
+    select: {
+      id: true,
+      institutionId: true,
+      specialtyId: true,
+      slug: true,
+      name: true,
+      institution: { select: { name: true } },
+      specialty: { select: { name: true } },
+      _count: { select: { metrics: true } }
+    }
+  });
+  const checks: DepartmentCoverageAudit["staleAliasChecks"] = [];
+
+  for (const hidden of hiddenDepartments) {
+    const normalizedSubDepartment = normalizeDepartmentNameSubDepartment(hidden.name, hidden.specialty.name);
+    const canonicalCandidates = await prisma.department.findMany({
+      where: {
+        institutionId: hidden.institutionId,
+        specialtyId: hidden.specialtyId,
+        importStableKey: { not: null }
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        metrics: { select: { id: true }, take: 2 },
+        specialty: { select: { name: true } }
+      }
+    });
+    const canonical = canonicalCandidates.find((candidate) =>
+      normalizeDepartmentNameSubDepartment(candidate.name, candidate.specialty.name) === normalizedSubDepartment
+    );
+
+    if (!canonical) continue;
+
+    const detail = await getDepartmentPageData(hidden.slug, undefined, hidden.id);
+    checks.push({
+      staleDepartmentId: hidden.id,
+      canonicalDepartmentId: detail?.id ?? null,
+      slug: hidden.slug,
+      status: detail?.id === canonical.id && detail.metrics.length > 1 ? "PASS" : "FAIL"
+    });
+  }
+
+  return checks.slice(0, 50);
 }
 
 async function buildStrictDepartmentSamples(input: {
@@ -1141,10 +1238,16 @@ export async function runMetricEndToEndAudit() {
   const coverageFailures = coverage.audit.perMetric
     .filter((metric) => metric.csvWithValue > 0 && metric.coveragePct !== 100)
     .map((metric) => `COVERAGE:${metric.metric}:${metric.coveragePct ?? 0}%`);
+  const duplicateNormalizedFailures = coverage.audit.duplicateNormalizedActiveGroups.map((group) =>
+    `DUPLICATE_NORMALIZED:${group.institution}:${group.specialty}:${group.normalizedSubDepartment}:${group.departmentIds.join(",")}`
+  );
+  const staleAliasFailures = coverage.audit.staleAliasChecks
+    .filter((check) => check.status === "FAIL")
+    .map((check) => `STALE_ALIAS:${check.staleDepartmentId}:${check.slug}`);
   const failedChecks = checks
     .filter((row) => row.status === "FAIL")
     .map((row) => `${row.scope}:${row.subject}:${row.metric}:${row.failure ?? "failed"}`)
-    .concat(strictSampleFailures, coverageFailures);
+    .concat(strictSampleFailures, coverageFailures, duplicateNormalizedFailures, staleAliasFailures);
 
   return {
     status: failedChecks.length > 0 ? "FAIL" as const : "PASS" as const,

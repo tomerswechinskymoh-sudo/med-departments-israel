@@ -11,12 +11,17 @@ import {
   type MetricDisplayMetadata
 } from "@/lib/metric-display";
 import {
+  departmentDisplayNameFromSubDepartment,
+  normalizeDepartmentSubDepartment
+} from "@/lib/department-normalization";
+import {
   ensureDepartmentPage,
   ensureInstitution,
   ensureSpecialty,
   normalizeCatalogLookupValue,
   slugifyValue
 } from "@/server/department-catalog";
+import { repairStaleDepartmentRows } from "@/lib/server/department-stale-repair";
 
 type DbClient = PrismaClient | Prisma.TransactionClient;
 
@@ -377,13 +382,7 @@ function nonEmptyValues(values: Array<string | null | undefined>) {
 }
 
 function departmentDisplayName(specialtyName: string, subDepartment: string) {
-  const specialty = canonicalSpecialtyName(specialtyName);
-  const sub = cleanCell(subDepartment);
-
-  if (!sub) return specialty;
-  if (normalizeHebrewKey(sub).includes(normalizeHebrewKey(specialty))) return sub;
-
-  return `${specialty} ${sub}`.trim();
+  return departmentDisplayNameFromSubDepartment(canonicalSpecialtyName(specialtyName), subDepartment);
 }
 
 async function upsertSpecialtyMetric(
@@ -1122,7 +1121,7 @@ async function importDepartmentCsv(db: DbClient, filePath: string, dataExplanati
     const institutionName = row.get("שם_מרכז_רפואי");
     const specialtyNameRaw = row.get("תחום התמחות");
     const specialtyName = canonicalSpecialtyName(specialtyNameRaw);
-    const subDepartment = row.get("תת מחלקה");
+    const subDepartment = normalizeDepartmentSubDepartment(row.get("תת מחלקה"));
     const rowKey = institutionName && specialtyName
       ? stableKey([institutionName, specialtyName, subDepartment || specialtyName])
       : null;
@@ -1351,6 +1350,7 @@ export async function importMasterCsvFiles(
   const dataExplanations = await loadDataExplanations(prisma);
   const specialty = await importSpecialtyCsv(prisma, specialtyCsvPath, dataExplanations);
   const department = await importDepartmentCsv(prisma, departmentCsvPath, dataExplanations);
+  const staleDepartmentRepair = await repairStaleDepartmentRows(prisma);
 
-  return { dataExp, specialty, department };
+  return { dataExp, specialty, department, staleDepartmentRepair };
 }

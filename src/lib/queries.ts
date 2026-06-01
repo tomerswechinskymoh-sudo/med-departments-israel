@@ -21,6 +21,7 @@ import {
   normalizeMetricKeys
 } from "@/lib/specialty-metrics";
 import type { MetricDisplayMetadata } from "@/lib/metric-display";
+import { normalizeDepartmentNameSubDepartment } from "@/lib/department-normalization";
 import { resolveImportedMetric } from "@/lib/imported-metric-resolver";
 import { getOpenAlexMappingStatus } from "@/lib/server/openalex-research";
 import { average, formatDepartmentDisplayName } from "@/lib/utils";
@@ -311,6 +312,66 @@ export async function resolveDepartmentBySlugOrFallback(
   departmentId?: string | null
 ) {
   const slugVariants = getDepartmentSlugVariants(slug);
+  const departmentSelect = {
+    id: true,
+    slug: true,
+    name: true,
+    importStableKey: true,
+    institutionId: true,
+    specialtyId: true,
+    institution: {
+      select: {
+        slug: true
+      }
+    },
+    specialty: {
+      select: {
+        name: true,
+        slug: true
+      }
+    }
+  } satisfies Prisma.DepartmentSelect;
+
+  async function canonicalForHiddenDepartment(input: {
+    id: string;
+    institutionId: string;
+    specialtyId: string;
+    name: string;
+    specialty: { name: string; slug: string };
+  }) {
+    const normalizedSubDepartment = normalizeDepartmentNameSubDepartment(input.name, input.specialty.name);
+    const candidates = await prisma.department.findMany({
+      where: {
+        institutionId: input.institutionId,
+        specialtyId: input.specialtyId,
+        ...publicImportedDepartmentWhere
+      },
+      select: {
+        ...departmentSelect,
+        _count: {
+          select: {
+            metrics: true,
+            yearlyMetrics: true
+          }
+        }
+      }
+    });
+    const canonical = candidates
+      .filter((candidate) =>
+        normalizeDepartmentNameSubDepartment(candidate.name, candidate.specialty.name) === normalizedSubDepartment
+      )
+      .sort((left, right) =>
+        (right._count.metrics * 10 + right._count.yearlyMetrics) -
+        (left._count.metrics * 10 + left._count.yearlyMetrics)
+      )[0];
+
+    if (!canonical || canonical.id === input.id) return null;
+
+    return {
+      ...canonical,
+      slug: canonicalDepartmentSlugForRecord(canonical)
+    };
+  }
 
   if (departmentId) {
     const departmentById = await prisma.department.findFirst({
@@ -318,52 +379,29 @@ export async function resolveDepartmentBySlugOrFallback(
         id: departmentId,
         ...publicImportedDepartmentWhere
       },
-      select: {
-        id: true,
-        slug: true,
-        name: true,
-        importStableKey: true,
-        institution: {
-          select: {
-            slug: true
-          }
-        },
-        specialty: {
-          select: {
-            slug: true
-          }
-        }
-      }
+      select: departmentSelect
     });
 
-    if (!departmentById) {
-      return null;
+    if (departmentById) {
+      return {
+        ...departmentById,
+        slug: canonicalDepartmentSlugForRecord(departmentById)
+      };
     }
 
-    return {
-      ...departmentById,
-      slug: canonicalDepartmentSlugForRecord(departmentById)
-    };
+    const hiddenDepartmentById = await prisma.department.findUnique({
+      where: {
+        id: departmentId
+      },
+      select: departmentSelect
+    });
+
+    return hiddenDepartmentById ? canonicalForHiddenDepartment(hiddenDepartmentById) : null;
   }
 
   const departmentCandidates = await prisma.department.findMany({
     where: publicImportedDepartmentWhere,
-    select: {
-      id: true,
-      slug: true,
-      name: true,
-      importStableKey: true,
-      institution: {
-        select: {
-          slug: true
-        }
-      },
-      specialty: {
-        select: {
-          slug: true
-        }
-      }
-    }
+    select: departmentSelect
   });
 
   const matchedDepartment = departmentCandidates.find((department) => {
@@ -374,7 +412,17 @@ export async function resolveDepartmentBySlugOrFallback(
     );
   });
 
-  if (!matchedDepartment) return null;
+  if (!matchedDepartment) {
+    const hiddenDepartmentBySlug = await prisma.department.findFirst({
+      where: {
+        importStableKey: null,
+        OR: slugVariants.map((variant) => ({ slug: variant }))
+      },
+      select: departmentSelect
+    });
+
+    return hiddenDepartmentBySlug ? canonicalForHiddenDepartment(hiddenDepartmentBySlug) : null;
+  }
 
   return {
     ...matchedDepartment,
