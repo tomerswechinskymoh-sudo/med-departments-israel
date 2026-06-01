@@ -40,14 +40,14 @@ export const metricFieldDefinitions = {
     label: "שכר מרכז",
     importedKeys: ["שכר_לא_פריפריה"],
     dbKeys: ["שכר_לא_פריפריה"],
-    uiCards: ["specialtyDashboard.centerSalary", "departmentSidebar.centerSalary", "departmentSidebar.salaryGap"],
+    uiCards: ["specialtyDashboard.salaryGap", "departmentSidebar.centerSalary", "departmentSidebar.salaryGap"],
     legacyKeys: ["centerSalary"]
   },
   peripherySalary: {
     label: "שכר פריפריה",
     importedKeys: ["שכר_פריפריה", "שכר_פריפריה 1"],
     dbKeys: ["שכר_פריפריה", "שכר_פריפריה 1"],
-    uiCards: ["specialtyDashboard.peripherySalary", "departmentSidebar.peripherySalary", "departmentSidebar.salaryGap"],
+    uiCards: ["specialtyDashboard.salaryGap", "departmentSidebar.peripherySalary", "departmentSidebar.salaryGap"],
     legacyKeys: ["peripherySalary"]
   },
   peripherySalaryGap: {

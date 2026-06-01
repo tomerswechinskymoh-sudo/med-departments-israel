@@ -55,6 +55,10 @@ export type SpecialtyMetricResult = {
   isPlaceholder?: boolean;
   isHighlighted?: boolean;
   visualType?: MetricVisualType | null;
+  comparisonValues?: {
+    centerSalary?: string | null;
+    peripherySalary?: string | null;
+  };
 };
 
 export type SpecialtyMetricDepartment = {
@@ -117,6 +121,7 @@ type SpecialtyMetricCalculation =
       sourceLabel?: string;
       tooltip?: string;
       metricLevel?: "מחלקתי" | "ארצי לתחום" | "מחושב";
+      comparisonValues?: SpecialtyMetricResult["comparisonValues"];
     }
   | null;
 
@@ -143,8 +148,6 @@ export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
   "boardPassA",
   "boardPassB",
   "burnoutIndex",
-  "centerSalary",
-  "peripherySalary",
   "salaryGap",
   "newResidentsTrend",
   "expectedOpenings",
@@ -436,9 +439,9 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
       const total =
+        contextMetricValue(context, "מספר_מתמחים", "residentsCount", "activeResidentsCount") ??
         sumMetric(departments, "activeResidentsCount") ??
         sumMetric(departments, "residentsCount") ??
-        contextMetricValue(context, "מספר_מתמחים", "residentsCount", "activeResidentsCount") ??
         sum(departments.map((department) => department.residentsCount));
       return total !== null ? formatNumber(total) : null;
     }
@@ -673,7 +676,11 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
           gapMetric ?? peripheryMetric ?? centerMetric,
           "דיווחי מתמחים משרד הבריאות"
         ),
-        tooltip: details.length > 0 ? details.join(" · ") : undefined
+        tooltip: details.length > 0 ? details.join(" · ") : undefined,
+        comparisonValues: {
+          centerSalary: centerMetric ? formatMetricValue(centerMetric) : null,
+          peripherySalary: peripheryMetric ? formatMetricValue(peripheryMetric) : null
+        }
       };
     }
   },
@@ -890,7 +897,9 @@ export function calculateSpecialtyMetrics(
   displayOrder: SpecialtyMetricKey[],
   context: SpecialtyMetricContext = {}
 ): SpecialtyMetricResult[] {
-  const orderedKeys = orderedMetricKeys(enabledMetrics, displayOrder);
+  const orderedKeys = orderedMetricKeys(enabledMetrics, displayOrder).filter(
+    (key) => key !== "centerSalary" && key !== "peripherySalary"
+  );
 
   return orderedKeys.reduce<SpecialtyMetricResult[]>((results, key) => {
     const definition = specialtyMetricDefinitions.find((metric) => metric.key === key);
@@ -934,6 +943,11 @@ export function calculateSpecialtyMetrics(
       isPlaceholder: value === null,
       isHighlighted: metadata?.isHighlighted,
       visualType: metadata?.visualType
+        ?? (definition.key === "residencyDuration" ? "badge" : null),
+      comparisonValues:
+        typeof calculated === "object" && calculated !== null
+          ? calculated.comparisonValues
+          : undefined
     });
 
     return results;

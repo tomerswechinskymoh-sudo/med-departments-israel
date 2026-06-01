@@ -21,6 +21,7 @@ import {
   type ImportedYearlyMetricLike
 } from "@/lib/imported-metric-resolver";
 import { prisma } from "@/lib/prisma";
+import { runMetricEndToEndAudit } from "./audit-metric-end-to-end";
 
 type AuditStatus = "Implemented" | "Partially implemented" | "Missing";
 
@@ -34,14 +35,14 @@ const specialtyDisplayMap: Record<string, string> = {
   boardStageAPassRate: "boardPassA",
   boardStageBPassRate: "boardPassB",
   burnoutIndex: "burnoutIndex",
-  centerSalary: "centerSalary",
+  centerSalary: "salaryGap",
   expectedNationalOpenings: "expectedOpenings",
   menCount: "genderDistribution",
   menPercent: "genderDistribution",
   medianWaitingTime: "medianWaitingTime",
   newResidents: "newResidentsTrend",
   officialResidencyDuration: "residencyDuration",
-  peripherySalary: "peripherySalary",
+  peripherySalary: "salaryGap",
   peripherySalaryGap: "salaryGap",
   residentsCount: "activeResidents",
   womenCount: "genderDistribution",
@@ -232,17 +233,29 @@ function salaryValue(metric: ImportedMetricLike | null | undefined) {
   return metric?.rawValue?.trim() ?? (typeof metric?.value === "number" ? String(metric.value) : null);
 }
 
+function salaryComparable(value: string | null) {
+  const numeric = Number((value ?? "").replace(/,/g, "").replace(/[^\d.-]/g, ""));
+  return Number.isFinite(numeric) ? numeric : null;
+}
+
+function salaryMatches(value: string | null, expected: string) {
+  const left = salaryComparable(value);
+  const right = salaryComparable(expected);
+  return left !== null && right !== null && Math.abs(left - right) < 0.02;
+}
+
 function salaryVerificationReport(input: {
   label: string;
   metrics: ImportedMetricLike[];
   dashboard?: Awaited<ReturnType<typeof getSpecialtyDashboardMetrics>> | null;
 }) {
   const salaryMetrics = resolveImportedSalaryMetrics(input.metrics);
+  const salaryGapDashboardMetric = input.dashboard?.metrics.find((metric) => metric.key === "salaryGap") ?? null;
   const dashboardValues = input.dashboard
     ? {
-        centerSalary: input.dashboard.metrics.find((metric) => metric.key === "centerSalary")?.value ?? null,
-        peripherySalary: input.dashboard.metrics.find((metric) => metric.key === "peripherySalary")?.value ?? null,
-        salaryGap: input.dashboard.metrics.find((metric) => metric.key === "salaryGap")?.value ?? null
+        centerSalary: salaryGapDashboardMetric?.comparisonValues?.centerSalary ?? null,
+        peripherySalary: salaryGapDashboardMetric?.comparisonValues?.peripherySalary ?? null,
+        salaryGap: salaryGapDashboardMetric?.value ?? null
       }
     : null;
 
@@ -273,8 +286,8 @@ function salaryVerificationFailures(
     .map((key) => {
       const row = report[key];
       if (row.dbValue && !row.uiValue) return `${report.label} ${key} resolves missing`;
-      if (row.dbValue !== row.expected) return `${report.label} ${key} DB value mismatch`;
-      if (row.uiValue !== row.expected) return `${report.label} ${key} UI value mismatch`;
+      if (!salaryMatches(row.dbValue, row.expected)) return `${report.label} ${key} DB value mismatch`;
+      if (!salaryMatches(row.uiValue, row.expected)) return `${report.label} ${key} UI value mismatch`;
       return null;
     })
     .filter((item): item is string => Boolean(item));
@@ -603,8 +616,6 @@ async function main() {
     });
   });
 
-  const dashboardCenterSalary = summary.metrics.find((metric) => metric.key === "centerSalary");
-  const dashboardPeripherySalary = summary.metrics.find((metric) => metric.key === "peripherySalary");
   const dashboardSalaryGap = summary.metrics.find((metric) => metric.key === "salaryGap");
   const dashboardWaitingTime = summary.metrics.find((metric) => metric.key === "medianWaitingTime");
   const dashboardAcceptanceDistribution = summary.metrics.find((metric) => metric.key === "acceptanceDistribution");
@@ -707,11 +718,12 @@ async function main() {
       .filter((row) => row.rendersAsMissing)
       .map((row) => `strict registry department UI missing ${row.id}`)
   ];
+  const endToEndAudit = await runMetricEndToEndAudit();
 
   const failedChecks = [
-    !dashboardCenterSalary || dashboardCenterSalary.isPlaceholder ? "missing center salary card" : null,
-    !dashboardPeripherySalary || dashboardPeripherySalary.isPlaceholder ? "missing periphery salary card" : null,
     !dashboardSalaryGap || dashboardSalaryGap.isPlaceholder ? "missing salary gap card" : null,
+    !dashboardSalaryGap?.comparisonValues?.centerSalary ? "missing center salary in salary gap comparison" : null,
+    !dashboardSalaryGap?.comparisonValues?.peripherySalary ? "missing periphery salary in salary gap comparison" : null,
     !dashboardWaitingTime || dashboardWaitingTime.isPlaceholder ? "missing waiting time card" : null,
     !dashboardAcceptanceDistribution || dashboardAcceptanceDistribution.isPlaceholder
       ? "missing acceptance distribution chart"
@@ -734,7 +746,8 @@ async function main() {
       : null,
     ...resolverFailures,
     ...salaryFailures,
-    ...strictRegistryFailures
+    ...strictRegistryFailures,
+    ...endToEndAudit.failedChecks
   ].filter((item): item is string => Boolean(item));
 
   const report = {
@@ -751,8 +764,8 @@ async function main() {
       openAlexRows: openAlexCoverage
     },
     dashboardChecks: {
-      centerSalary: Boolean(dashboardCenterSalary && !dashboardCenterSalary.isPlaceholder),
-      peripherySalary: Boolean(dashboardPeripherySalary && !dashboardPeripherySalary.isPlaceholder),
+      centerSalary: Boolean(dashboardSalaryGap?.comparisonValues?.centerSalary),
+      peripherySalary: Boolean(dashboardSalaryGap?.comparisonValues?.peripherySalary),
       salaryGap: Boolean(dashboardSalaryGap && !dashboardSalaryGap.isPlaceholder),
       waitingTime: Boolean(dashboardWaitingTime && !dashboardWaitingTime.isPlaceholder),
       acceptanceDistribution: Boolean(dashboardAcceptanceDistribution && !dashboardAcceptanceDistribution.isPlaceholder),
@@ -776,6 +789,12 @@ async function main() {
       ).sort(),
       specialtyFailures: specialtyStrictRegistryReport.filter((row) => row.rendersAsMissing),
       departmentFailures: departmentStrictRegistryReport.filter((row) => row.rendersAsMissing)
+    },
+    endToEndAudit: {
+      status: endToEndAudit.status,
+      counts: endToEndAudit.counts,
+      checks: endToEndAudit.checks,
+      failedChecks: endToEndAudit.failedChecks
     },
     resolverAudit: {
       specialtySample: {
@@ -807,7 +826,28 @@ async function main() {
     failedChecks
   };
 
-  console.log(JSON.stringify(report, null, 2));
+  const distillReport = {
+    status: failedChecks.length > 0 ? "FAIL" : "PASS",
+    specialty: report.specialty,
+    counts: report.counts,
+    dashboardChecks: report.dashboardChecks,
+    salaryVerification: {
+      specialty: salarySpecialtyReport ? salaryVerificationFailures(salarySpecialtyReport).length === 0 : false,
+      department: salaryDepartmentReport ? salaryVerificationFailures(salaryDepartmentReport).length === 0 : false
+    },
+    strictMetricRegistry: {
+      specialtyFailures: report.strictMetricRegistry.specialtyFailures.length,
+      departmentFailures: report.strictMetricRegistry.departmentFailures.length
+    },
+    endToEndAudit: {
+      status: endToEndAudit.status,
+      counts: endToEndAudit.counts
+    },
+    dataExpAudit: report.audit,
+    failedChecks
+  };
+
+  console.log(JSON.stringify(distillReport, null, 2));
 
   if (failedChecks.length > 0) {
     throw new Error(`Metric display verification failed: ${failedChecks.join(", ")}`);

@@ -35,7 +35,7 @@ import {
   resolveInstitutionRegion,
   reviewerTypeLabel
 } from "@/lib/queries";
-import { formatDate, getDepartmentHref } from "@/lib/utils";
+import { getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -84,9 +84,7 @@ function MetricInfoTip({
 }) {
   const tooltipLines = [
     text,
-    `מקור: ${sourceLabel}`,
-    sourceUrl ? `קישור מקור: ${sourceUrl}` : null,
-    lastUpdated ? `עודכן: ${formatDate(lastUpdated)}` : null
+    `מקור נתונים: ${sourceLabel}`
   ].filter((line): line is string => Boolean(line));
   const tooltipText = tooltipLines.join("\n");
 
@@ -107,11 +105,6 @@ function MetricInfoTip({
               </span>
             ))}
           </span>
-          {sourceUrl ? (
-            <a href={sourceUrl} target="_blank" rel="noreferrer" className="mt-2 block font-black text-brand-800 underline">
-              קישור מקור
-            </a>
-          ) : null}
         </span>
       </span>
     </span>

@@ -139,8 +139,22 @@ function DistributionChart({ value }: { value: string }) {
   );
 }
 
-function SalaryComparison({ value, tooltip }: { value: string; tooltip?: string }) {
-  const numbers = [...(tooltip ?? "").matchAll(/([\d,.]+)\s*₪/g)].map((match) =>
+function SalaryComparison({
+  value,
+  comparisonValues
+}: {
+  value: string;
+  comparisonValues?: SpecialtyMetricResult["comparisonValues"];
+}) {
+  const withCurrency = (input: string | null | undefined) => {
+    if (!input) return null;
+    return input.includes("₪") ? input : `${input} ₪`;
+  };
+  const detailText = [
+    comparisonValues?.centerSalary ? `מרכז: ${withCurrency(comparisonValues.centerSalary)}` : null,
+    comparisonValues?.peripherySalary ? `פריפריה: ${withCurrency(comparisonValues.peripherySalary)}` : null
+  ].filter(Boolean).join(" · ");
+  const numbers = [...detailText.matchAll(/([\d,.]+)\s*₪/g)].map((match) =>
     Number(match[1]?.replace(/,/g, ""))
   );
   const center = Number.isFinite(numbers[0]) ? numbers[0] : 16954;
@@ -149,12 +163,17 @@ function SalaryComparison({ value, tooltip }: { value: string; tooltip?: string 
 
   return (
     <div className="mt-2 space-y-1.5">
-      <p className="text-xl font-black text-ink">{value}</p>
-      <div className="grid grid-cols-[4rem_1fr] items-center gap-2">
+      <p className="text-xl font-black text-ink" title={detailText || undefined}>{value}</p>
+      <div className="group relative grid grid-cols-[4rem_1fr] items-center gap-2">
         <span className="text-[0.68rem] font-bold text-slate-500">מרכז</span>
         <div className="h-2 overflow-hidden rounded-full bg-white">
           <div className="h-full rounded-full bg-brand-500" style={{ width: `${(center / max) * 100}%` }} />
         </div>
+        {detailText ? (
+          <span className="absolute left-0 top-6 z-10 hidden rounded-lg border border-slate-200 bg-white px-2 py-1 text-[0.68rem] font-black text-slate-700 shadow-lg group-hover:block">
+            {detailText}
+          </span>
+        ) : null}
       </div>
       <div className="grid grid-cols-[4rem_1fr] items-center gap-2">
         <span className="text-[0.68rem] font-bold text-slate-500">פריפריה</span>
@@ -162,6 +181,40 @@ function SalaryComparison({ value, tooltip }: { value: string; tooltip?: string 
           <div className="h-full rounded-full bg-amber-500" style={{ width: `${(periphery / max) * 100}%` }} />
         </div>
       </div>
+    </div>
+  );
+}
+
+function DurationComparison({ value }: { value: string }) {
+  const officialMatch = value.match(/רשמי:\s*([\d,.]+)/);
+  const actualMatch = value.match(/בפועל:\s*([\d,.]+)/);
+  const official = officialMatch?.[1] ? Number(officialMatch[1].replace(",", ".")) : null;
+  const actual = actualMatch?.[1] ? Number(actualMatch[1].replace(",", ".")) : null;
+  const max = Math.max(official ?? 0, actual ?? 0, 1);
+
+  if (official === null && actual === null) {
+    return <p className="mt-2 text-xl font-black text-ink">{value}</p>;
+  }
+
+  return (
+    <div className="mt-2 space-y-2">
+      {[
+        { label: "רשמי", value: official, tone: "bg-brand-600" },
+        { label: "בפועל", value: actual, tone: "bg-teal-600" }
+      ].map((row) => (
+        <div key={row.label} className="grid grid-cols-[3.5rem_1fr_4.5rem] items-center gap-2">
+          <span className="text-[0.68rem] font-bold text-slate-500">{row.label}</span>
+          <div className="h-2 overflow-hidden rounded-full bg-white">
+            <div
+              className={`h-full rounded-full ${row.tone}`}
+              style={{ width: `${(((row.value ?? 0) / max) * 100).toFixed(1)}%` }}
+            />
+          </div>
+          <span className="text-left text-xs font-black text-ink">
+            {row.value !== null ? `${row.value.toLocaleString("he-IL")} שנים` : "אין"}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -196,8 +249,7 @@ function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
   const source = metric.sourceLabel ?? "מקור נתונים לא צוין";
   const lines = [
     metric.tooltip ?? metric.description,
-    `מקור: ${source}`,
-    metric.sourceUrl ? `קישור מקור: ${metric.sourceUrl}` : null
+    `מקור נתונים: ${source}`
   ].filter((line): line is string => Boolean(line));
   const text = lines.join("\n");
 
@@ -218,16 +270,6 @@ function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
               </span>
             ))}
           </span>
-          {metric.sourceUrl ? (
-            <a
-              href={metric.sourceUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="pointer-events-auto mt-2 block font-black text-brand-800 underline"
-            >
-              קישור מקור
-            </a>
-          ) : null}
         </span>
       </span>
     </span>
@@ -275,12 +317,14 @@ export function SpecialtyDashboardMetrics({
             </div>
             {(metric.visualType === "donut" || metric.key === "genderDistribution") && !metric.isPlaceholder ? (
               <GenderDonut value={metric.value} />
+            ) : metric.key === "residencyDuration" && !metric.isPlaceholder ? (
+              <DurationComparison value={metric.value} />
             ) : (metric.visualType === "clock" || metric.key === "medianWaitingTime") && !metric.isPlaceholder ? (
               <ClockVisual value={metric.value} />
             ) : (metric.visualType === "distribution" || metric.key === "acceptanceDistribution") && !metric.isPlaceholder ? (
               <DistributionChart value={metric.value} />
             ) : (metric.visualType === "salaryComparison" || metric.key === "salaryGap") && !metric.isPlaceholder ? (
-              <SalaryComparison value={metric.value} tooltip={metric.tooltip} />
+              <SalaryComparison value={metric.value} comparisonValues={metric.comparisonValues} />
             ) : metric.key === "burnoutIndex" && !metric.isPlaceholder ? (
               <BurnoutComparison value={metric.value} />
             ) : (metric.visualType === "trend" || metric.key === "newResidentsTrend") && !metric.isPlaceholder ? (
