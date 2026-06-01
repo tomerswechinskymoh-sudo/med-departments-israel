@@ -64,7 +64,9 @@ type ImportedYearlyMetric = {
 };
 
 const MISSING_IMPORTED_VALUE = "הנתון עדיין לא סופק";
-const NEW_RESIDENTS_TOOLTIP = "גרף המציג את מספר המתמחים החדשים בתחום בכלל הארץ בשנים האחרונות.";
+const NEW_RESIDENTS_TOOLTIP =
+  "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות.";
+const BURNOUT_TOOLTIP_SENTENCE = "ככל שהערך גבוה יותר, רמת השחיקה בתחום גבוהה יותר.";
 
 function EmptyValue({ text = MISSING_IMPORTED_VALUE }: { text?: string }) {
   return <span className="text-slate-400">{text}</span>;
@@ -716,6 +718,10 @@ function importedSourceLabel(
   fallback: string
 ) {
   return sourceLabelFromNotes(metric?.sourceNotes) ?? fallback;
+}
+
+function appendTooltipSentence(text: string, sentence: string) {
+  return text.includes(sentence) ? text : `${text} ${sentence}`;
 }
 
 function departmentMetricMetadata(
@@ -1908,7 +1914,10 @@ export default async function DepartmentDetailsPage({
                 label={metricLabelFromMetadata(burnoutMeta, "מדד שחיקה")}
                 value={burnoutMetric ? formatImportedMetricValue(burnoutMetric) : null}
                 sourceLabel={metadataSourceLabel(burnoutMeta, importedSourceLabel(burnoutMetric, "דיווחי מתמחים משרד הבריאות"))}
-                tooltip={metadataTooltip(burnoutMeta, "מדד שחיקה מחלקתי, אם סופק.")}
+                tooltip={appendTooltipSentence(
+                  metadataTooltip(burnoutMeta, "מדד שחיקה מחלקתי, אם סופק."),
+                  BURNOUT_TOOLTIP_SENTENCE
+                )}
                 metricType={metricTypeFromMetadata(burnoutMeta, burnoutMetricType)}
                 lastUpdated={burnoutMetric?.lastUpdated}
                 sourceUrl={burnoutMeta?.sourceUrl}

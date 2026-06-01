@@ -155,6 +155,9 @@ export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
 ];
 
 const missingMetricValue = "הנתון עדיין לא סופק";
+const burnoutTooltipSentence = "ככל שהערך גבוה יותר, רמת השחיקה בתחום גבוהה יותר.";
+const newResidentsTrendTooltip =
+  "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות.";
 
 const dashboardMetricDataExpKeys: Partial<Record<SpecialtyMetricKey, string[]>> = {
   activeResidents: ["מספר_מתמחים", "residentsCount", "activeResidentsCount"],
@@ -254,6 +257,10 @@ function sourceLabelForMetric(
   fallback: string
 ) {
   return sourceLabelFromNotes(metric?.sourceNotes) ?? fallback;
+}
+
+function appendTooltipSentence(text: string, sentence: string) {
+  return text.includes(sentence) ? text : `${text} ${sentence}`;
 }
 
 function parsePercentForLabel(value: string | null | undefined, label: string) {
@@ -611,7 +618,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   {
     key: "burnoutIndex",
     label: "מדד שחיקה",
-    description: "מדד שחיקה מיובא ברמת תחום ההתמחות",
+    description: `מדד שחיקה מיובא ברמת תחום ההתמחות. ${burnoutTooltipSentence}`,
     unit: "score",
     sourceLabel: "דיווחי מתמחים משרד הבריאות",
     calculate: (departments, context) => {
@@ -731,7 +738,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   {
     key: "newResidentsTrend",
     label: "מתמחים חדשים",
-    description: "גרף המציג את מספר המתמחים החדשים בתחום בכלל הארץ בשנים האחרונות.",
+    description: newResidentsTrendTooltip,
     unit: "count",
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
@@ -920,7 +927,12 @@ export function calculateSpecialtyMetrics(
       typeof calculated === "string" || calculated === null
         ? definition.sourceLabel
         : calculated.sourceLabel ?? definition.sourceLabel;
-    const metadataExplanation = metadataTooltip(metadata, definition.description);
+    const metadataExplanation =
+      definition.key === "newResidentsTrend"
+        ? newResidentsTrendTooltip
+        : definition.key === "burnoutIndex"
+          ? appendTooltipSentence(metadataTooltip(metadata, definition.description), burnoutTooltipSentence)
+          : metadataTooltip(metadata, definition.description);
 
     results.push({
       key: definition.key,

@@ -112,7 +112,7 @@ export function DepartmentCard({
       ? {
           label: "חדשים",
           value: department.newResidentsLatest,
-          helper: "מתמחים חדשים בשנה האחרונה הזמינה"
+          helper: "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות."
         }
       : null,
     typeof department.seniorPhysiciansCount === "number"
