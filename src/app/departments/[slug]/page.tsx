@@ -67,6 +67,9 @@ const MISSING_IMPORTED_VALUE = "הנתון עדיין לא סופק";
 const NEW_RESIDENTS_TOOLTIP =
   "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות.";
 const BURNOUT_TOOLTIP_SENTENCE = "ככל שהערך גבוה יותר, רמת השחיקה בתחום גבוהה יותר.";
+const ACCEPTANCE_DISTRIBUTION_TITLE = "התפלגות קצב מציאת ההתמחות על פי דיווחי המתקבלים";
+const ACCEPTANCE_DISTRIBUTION_TOOLTIP =
+  "מספר הרופאים שדיווחו כי החלו התמחות בתחום, לפי משך הזמן שעבר עד תחילת ההתמחות. הדיווח עבור נתון זה אינו חובה ולכן הנתונים עשויים להיות חלקיים ואינם מייצגים בהכרח את כלל המתקבלים לתחום.";
 
 function EmptyValue({ text = MISSING_IMPORTED_VALUE }: { text?: string }) {
   return <span className="text-slate-400">{text}</span>;
@@ -432,7 +435,7 @@ function AcceptanceDistributionCard({
     <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-bold leading-5 text-slate-600">התפלגות מצאו התמחות</p>
+          <p className="text-sm font-bold leading-5 text-slate-600">{ACCEPTANCE_DISTRIBUTION_TITLE}</p>
           {metricType === "נתון כללי לתחום" || metricType === "נתון ארצי לתחום" ? (
             <span className="mt-1 inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[0.68rem] font-black text-blue-800">
               {metricType.replace(/^נתון\s+/, "")}
@@ -587,31 +590,31 @@ const acceptanceMetricInputs = [
     id: "accepted-immediately",
     label: "מצאו התמחות מיד",
     keys: ["מספר המתקבלים שדיווחו שמצאו מיד התמחות", "acceptedImmediatelyReports"],
-    tooltip: "מספר דיווחים על מציאת התמחות מיד, רק כאשר קיים נתון מחלקתי."
+    tooltip: ACCEPTANCE_DISTRIBUTION_TOOLTIP
   },
   {
     id: "accepted-within-six-months",
     label: "מצאו עד חצי שנה",
     keys: ["מספר המתקבלים שדיווחו שמצאו עד חצי שנה", "acceptedWithinSixMonthsReports"],
-    tooltip: "מספר דיווחים על מציאת התמחות עד חצי שנה, רק כאשר קיים נתון מחלקתי."
+    tooltip: ACCEPTANCE_DISTRIBUTION_TOOLTIP
   },
   {
     id: "accepted-within-one-year",
     label: "מצאו עד שנה",
     keys: ["מספר המתקבלים שדיווחו שמצאו עד שנה", "acceptedWithinOneYearReports"],
-    tooltip: "מספר דיווחים על מציאת התמחות עד שנה, רק כאשר קיים נתון מחלקתי."
+    tooltip: ACCEPTANCE_DISTRIBUTION_TOOLTIP
   },
   {
     id: "accepted-within-two-years",
     label: "מצאו עד שנתיים",
     keys: ["מספר המתקבלים שדיווחו שמצאו עד שנתיים", "acceptedWithinTwoYearsReports"],
-    tooltip: "מספר דיווחים על מציאת התמחות עד שנתיים, רק כאשר קיים נתון מחלקתי."
+    tooltip: ACCEPTANCE_DISTRIBUTION_TOOLTIP
   },
   {
     id: "accepted-after-two-years",
     label: "מצאו אחרי שנתיים",
     keys: ["מספר המתקבלים שדיווחו שמצאו אחרי שנתיים", "acceptedAfterTwoYearsReports"],
-    tooltip: "מספר דיווחים על מציאת התמחות אחרי שנתיים, רק כאשר קיים נתון מחלקתי."
+    tooltip: ACCEPTANCE_DISTRIBUTION_TOOLTIP
   }
 ];
 
@@ -1657,12 +1660,7 @@ export default async function DepartmentDetailsPage({
                 <AcceptanceDistributionCard
                   rows={acceptanceDistributionRows}
                   sourceLabel={metadataSourceLabel(acceptanceDisplayMeta, "משרד הבריאות")}
-                  tooltip={metadataTooltip(
-                    acceptanceDisplayMeta,
-                    acceptanceDistributionType === "נתון ארצי לתחום"
-                      ? "התפלגות כללית לתחום ההתמחות ולא למחלקה ספציפית."
-                      : "התפלגות מחלקתית לפי נתונים מיובאים, אם סופקה."
-                  )}
+                  tooltip={ACCEPTANCE_DISTRIBUTION_TOOLTIP}
                   metricType={acceptanceDistributionType}
                   lastUpdated={acceptanceDistributionLastUpdated}
                   sourceUrl={acceptanceDisplayMeta?.sourceUrl}

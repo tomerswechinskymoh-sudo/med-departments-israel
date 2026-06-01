@@ -158,6 +158,9 @@ const missingMetricValue = "הנתון עדיין לא סופק";
 const burnoutTooltipSentence = "ככל שהערך גבוה יותר, רמת השחיקה בתחום גבוהה יותר.";
 const newResidentsTrendTooltip =
   "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות.";
+const acceptanceDistributionTitle = "התפלגות קצב מציאת ההתמחות על פי דיווחי המתקבלים";
+const acceptanceDistributionTooltip =
+  "מספר הרופאים שדיווחו כי החלו התמחות בתחום, לפי משך הזמן שעבר עד תחילת ההתמחות. הדיווח עבור נתון זה אינו חובה ולכן הנתונים עשויים להיות חלקיים ואינם מייצגים בהכרח את כלל המתקבלים לתחום.";
 
 const dashboardMetricDataExpKeys: Partial<Record<SpecialtyMetricKey, string[]>> = {
   activeResidents: ["מספר_מתמחים", "residentsCount", "activeResidentsCount"],
@@ -550,8 +553,8 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   },
   {
     key: "acceptanceDistribution",
-    label: "התפלגות מציאת התמחות",
-    description: "התפלגות דיווחי מציאת התמחות לפי משך המתנה",
+    label: acceptanceDistributionTitle,
+    description: acceptanceDistributionTooltip,
     unit: "count",
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
@@ -932,6 +935,8 @@ export function calculateSpecialtyMetrics(
         ? newResidentsTrendTooltip
         : definition.key === "burnoutIndex"
           ? appendTooltipSentence(metadataTooltip(metadata, definition.description), burnoutTooltipSentence)
+          : definition.key === "acceptanceDistribution"
+            ? acceptanceDistributionTooltip
           : metadataTooltip(metadata, definition.description);
 
     results.push({
