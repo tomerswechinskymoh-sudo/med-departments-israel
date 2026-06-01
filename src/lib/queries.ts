@@ -1433,10 +1433,19 @@ export async function getDepartmentPageData(
     return null;
   }
 
+  const siblingDepartmentCount = await prisma.department.count({
+    where: {
+      institutionId: department.institutionId,
+      specialtyId: department.specialtyId,
+      ...publicImportedDepartmentWhere
+    }
+  });
+
   return {
     ...department,
     name: formatDepartmentDisplayName(department.name, department.specialty.name),
     slug: canonicalDepartmentSlugForRecord(department),
+    siblingDepartmentCount,
     isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
     summary: {
       reviewCount: department.reviews.length,

@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
-import type { UseFormRegisterReturn } from "react-hook-form";
+import type { UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
 import { z } from "zod";
 import {
   EXPERIENCE_PHONE_TRUST_COPY,
@@ -32,7 +32,7 @@ const roleOptions: Array<{ value: ReviewerType; label: string; description: stri
   },
   {
     value: "RESIDENT",
-    label: "מתמחה",
+    label: "מתמחה / לאחר סיום התמחות",
     description: "מבט מבפנים על העבודה, הלמידה והצוות."
   }
 ];
@@ -58,6 +58,27 @@ const yearOfExperienceOptions = Array.from({ length: 8 }, (_, index) =>
   String(new Date().getFullYear() - index)
 );
 
+const residentCompletionTimingOptions = [
+  { value: "last_3_years", label: "ב-3 השנים האחרונות" },
+  { value: "3_to_5_years", label: "לפני 3–5 שנים" },
+  { value: "more_than_5_years", label: "לפני יותר מ-5 שנים" }
+] as const;
+
+const monthlyDutyRangeOptions = ["0–2", "3–5", "6–8", "9–11", "12 ומעלה"] as const;
+
+const yesNoUnknownOptions = [
+  { value: "yes", label: "כן" },
+  { value: "no", label: "לא" },
+  { value: "unknown", label: "לא יודע" }
+] as const;
+
+const yesNoPartialUnknownOptions = [
+  { value: "yes", label: "כן" },
+  { value: "partial", label: "חלקית" },
+  { value: "no", label: "לא" },
+  { value: "unknown", label: "לא יודע" }
+] as const;
+
 const finalGuidelines = [
   "בלי פרטים מזהים",
   "כתיבה עניינית ומכבדת",
@@ -76,6 +97,21 @@ function isCommunityDepartment(input: { name: string; specialtyName: string }) {
   );
 }
 
+function isValidInstitutionName(name: string) {
+  const normalized = name.trim();
+  const digits = normalized.replace(/\D/g, "").length;
+  const hasHebrewOrLatin = /[A-Za-zא-ת]/.test(normalized);
+  const looksLikePhone = digits >= 7 && digits >= normalized.replace(/\s/g, "").length * 0.55;
+
+  return normalized.length >= 2 && hasHebrewOrLatin && !looksLikePhone;
+}
+
+function isSurgicalSpecialtyName(name?: string | null) {
+  const normalized = name ?? "";
+
+  return /כירורג|אורתופד|אורולוג|נשים|עיניים|אף|אוזן|פה ולסת|פלסטי|נוירוכירורג/.test(normalized);
+}
+
 function getRoleDetailsDefaults(reviewerType: ReviewerType): FormValues["roleDetails"] {
   return {
     medicalSchool: MEDICAL_FACULTY_OPTIONS[0],
@@ -92,7 +128,28 @@ function getRoleDetailsDefaults(reviewerType: ReviewerType): FormValues["roleDet
         : undefined,
     attitudeFromResidents: reviewerType === "STUDENT" ? undefined : 4,
     attitudeFromSeniors: reviewerType === "STUDENT" ? undefined : 4,
-    workloadBalance: reviewerType === "STUDENT" ? undefined : 3
+    workloadBalance: reviewerType === "STUDENT" ? undefined : 3,
+    residentCurrentStatus: reviewerType === "RESIDENT" ? "active" : undefined,
+    residencyCompletedTiming: undefined,
+    departmentElectiveImportance: reviewerType === "RESIDENT" ? 3 : undefined,
+    departmentObservationImportance: reviewerType === "RESIDENT" ? 3 : undefined,
+    outsideShiftsImportance: reviewerType === "RESIDENT" ? 3 : undefined,
+    researchImportance: reviewerType === "RESIDENT" ? 3 : undefined,
+    medicalSchoolInfluence: reviewerType === "RESIDENT" ? 3 : undefined,
+    departmentHeadInfluence: reviewerType === "RESIDENT" ? 3 : undefined,
+    seniorDecisionInfluence: reviewerType === "RESIDENT" ? 3 : undefined,
+    wholeDepartmentSelectionInfluence: reviewerType === "RESIDENT" ? 3 : undefined,
+    hasAdmissionCommittee: reviewerType === "RESIDENT" ? "unknown" : undefined,
+    monthlyDutyRange: reviewerType === "RESIDENT" ? monthlyDutyRangeOptions[1] : undefined,
+    parentPositionAvailable: reviewerType === "RESIDENT" ? "unknown" : undefined,
+    averageArrivalTime: undefined,
+    personalNeedsConsideration: reviewerType === "RESIDENT" ? 3 : undefined,
+    teamwork: reviewerType === "RESIDENT" ? 4 : undefined,
+    belonging: reviewerType === "RESIDENT" ? 4 : undefined,
+    stageAVacation: reviewerType === "RESIDENT" ? "unknown" : undefined,
+    stageBVacation: reviewerType === "RESIDENT" ? "unknown" : undefined,
+    conferenceFunding: reviewerType === "RESIDENT" ? "unknown" : undefined,
+    surgicalAutonomy: undefined
   };
 }
 
@@ -162,6 +219,185 @@ function RatingSelect({
   );
 }
 
+function ResidentQuestionnaire({
+  register,
+  selectedSpecialtyName
+}: {
+  register: UseFormRegister<FormValues>;
+  selectedSpecialtyName?: string | null;
+}) {
+  const isSurgical = isSurgicalSpecialtyName(selectedSpecialtyName);
+
+  return (
+    <div className="space-y-7">
+      <div className="grid gap-4 md:grid-cols-2">
+        <label className="block">
+          <span className="mb-2 block text-sm font-semibold text-ink">פקולטה</span>
+          <select
+            {...register("roleDetails.medicalSchool")}
+            className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+          >
+            {MEDICAL_FACULTY_OPTIONS.map((faculty) => (
+              <option key={faculty} value={faculty}>
+                {faculty}
+              </option>
+            ))}
+          </select>
+        </label>
+        <RatingSelect
+          label="המלצה כללית"
+          registration={register("overallRecommendation", { valueAsNumber: true })}
+        />
+      </div>
+
+      <section className="space-y-4">
+        <h4 className="text-xl font-black text-ink">1. תהליך הקבלה למחלקה</h4>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <RatingSelect label="חשיבות אלקטיב במחלקה" registration={register("roleDetails.departmentElectiveImportance", { valueAsNumber: true })} />
+          <RatingSelect label="חשיבות הסתכלות במחלקה" registration={register("roleDetails.departmentObservationImportance", { valueAsNumber: true })} />
+          <RatingSelect label="חשיבות תורנויות חוץ במחלקה" registration={register("roleDetails.outsideShiftsImportance", { valueAsNumber: true })} />
+          <RatingSelect label="חשיבות פרסומים ומחקר" registration={register("roleDetails.researchImportance", { valueAsNumber: true })} />
+          <RatingSelect label="חשיבות מוסד הלימוד" registration={register("roleDetails.medicalSchoolInfluence", { valueAsNumber: true })} />
+          <RatingSelect label="מנהל המחלקה קובע מי מתקבל" registration={register("roleDetails.departmentHeadInfluence", { valueAsNumber: true })} />
+          <RatingSelect label="מנהל המחלקה והבכירים קובעים מי מתקבל" registration={register("roleDetails.seniorDecisionInfluence", { valueAsNumber: true })} />
+          <RatingSelect label="כלל המחלקה משתתפת בבחירה" registration={register("roleDetails.wholeDepartmentSelectionInfluence", { valueAsNumber: true })} />
+          <label className="block">
+            <span className="block text-sm font-bold text-ink">האם מתקיימת ועדת קבלה לפני בחירת מתמחים?</span>
+            <select
+              {...register("roleDetails.hasAdmissionCommittee")}
+              className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
+            >
+              {yesNoUnknownOptions.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <label className="block">
+          <span className="mb-2 block text-sm font-semibold text-ink">מה היית ממליץ למועמד שמעוניין להתקבל למחלקה?</span>
+          <textarea
+            {...register("tips")}
+            className="min-h-24 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+          />
+        </label>
+      </section>
+
+      <section className="space-y-4">
+        <h4 className="text-xl font-black text-ink">2. עומס ואיזון חיים</h4>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <label className="block">
+            <span className="block text-sm font-bold text-ink">טווח תורנויות בחודש</span>
+            <select
+              {...register("roleDetails.monthlyDutyRange")}
+              className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
+            >
+              {monthlyDutyRangeOptions.map((option) => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </label>
+          <RatingSelect label="מידת שחיקה" registration={register("lifestyleBalance", { valueAsNumber: true })} />
+          <label className="block">
+            <span className="block text-sm font-bold text-ink">האם קיימת משרת הורה?</span>
+            <select
+              {...register("roleDetails.parentPositionAvailable")}
+              className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
+            >
+              {yesNoUnknownOptions.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          </label>
+          <label className="block">
+            <span className="block text-sm font-bold text-ink">שעת הגעה ממוצעת בבוקר</span>
+            <input
+              {...register("roleDetails.averageArrivalTime")}
+              placeholder="למשל 07:30"
+              className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
+            />
+          </label>
+          <RatingSelect
+            label="מידת ההתחשבות במקרים אישיים"
+            registration={register("roleDetails.personalNeedsConsideration", { valueAsNumber: true })}
+          />
+          <RatingSelect label="עומס ואיזון" registration={register("roleDetails.workloadBalance", { valueAsNumber: true })} />
+        </div>
+        <label className="block">
+          <span className="mb-2 block text-sm font-semibold text-ink">האם יש משהו נוסף שחשוב לדעת על עומס העבודה במחלקה?</span>
+          <textarea
+            {...register("cons")}
+            className="min-h-24 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+          />
+        </label>
+      </section>
+
+      <section className="space-y-4">
+        <h4 className="text-xl font-black text-ink">3. אווירה ויחסים במחלקה</h4>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <RatingSelect label="היחס בין המתמחים" registration={register("roleDetails.attitudeFromResidents", { valueAsNumber: true })} />
+          <RatingSelect label="היחס של הבכירים למתמחים" registration={register("roleDetails.attitudeFromSeniors", { valueAsNumber: true })} />
+          <RatingSelect label="תחושת עבודת צוות" registration={register("roleDetails.teamwork", { valueAsNumber: true })} />
+          <RatingSelect label="תחושת שייכות למחלקה" registration={register("roleDetails.belonging", { valueAsNumber: true })} />
+        </div>
+        <label className="block">
+          <span className="mb-2 block text-sm font-semibold text-ink">כיצד היית מתאר/ת את האווירה במחלקה?</span>
+          <textarea
+            {...register("pros")}
+            className="min-h-24 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
+          />
+        </label>
+      </section>
+
+      <section className="space-y-4">
+        <h4 className="text-xl font-black text-ink">4. מקצועיות והכשרה</h4>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <label className="block">
+            <span className="block text-sm font-bold text-ink">האם קיימת חופשה לקראת מבחני שלב א׳?</span>
+            <select
+              {...register("roleDetails.stageAVacation")}
+              className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
+            >
+              {yesNoPartialUnknownOptions.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          </label>
+          <label className="block">
+            <span className="block text-sm font-bold text-ink">האם קיימת חופשה לקראת מבחני שלב ב׳?</span>
+            <select
+              {...register("roleDetails.stageBVacation")}
+              className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
+            >
+              {yesNoPartialUnknownOptions.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          </label>
+          <RatingSelect label="דירוג איכות ההוראה במחלקה" registration={register("teachingQuality", { valueAsNumber: true })} />
+          <RatingSelect label="דירוג הציפייה למחקר ופרסום" registration={register("researchExposure", { valueAsNumber: true })} />
+          <label className="block">
+            <span className="block text-sm font-bold text-ink">מימון כנסים וקורסים</span>
+            <select
+              {...register("roleDetails.conferenceFunding")}
+              className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
+            >
+              {yesNoPartialUnknownOptions.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
+          </label>
+          {isSurgical ? (
+            <RatingSelect
+              label="הזדמנויות ניתוחיות ועצמאות"
+              registration={register("roleDetails.surgicalAutonomy", { valueAsNumber: true })}
+            />
+          ) : null}
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export function ReviewForm({
   departments,
   selectedDepartmentId,
@@ -196,14 +432,16 @@ export function ReviewForm({
     () =>
       Array.from(
         new Map(
-          departments.map((department) => [
-            department.institution.id,
-            {
-              id: department.institution.id,
-              name: department.institution.name,
-              type: department.institution.type
-            }
-          ])
+          departments
+            .filter((department) => isValidInstitutionName(department.institution.name))
+            .map((department) => [
+              department.institution.id,
+              {
+                id: department.institution.id,
+                name: department.institution.name,
+                type: department.institution.type
+              }
+            ])
         ).values()
       ),
     [departments]
@@ -257,7 +495,9 @@ export function ReviewForm({
   const reviewerTypeLabel = roleOptions.find((role) => role.value === reviewerType)?.label ?? "משתף";
   const isAnonymous = watch("isAnonymous");
   const selectedDepartmentIdValue = watch("departmentId");
+  const residentCurrentStatus = watch("roleDetails.residentCurrentStatus");
   const selectedInstitution = institutions.find((institution) => institution.id === selectedInstitutionId) ?? null;
+  const selectedDepartment = departments.find((department) => department.id === selectedDepartmentIdValue) ?? null;
   const availableDepartments = useMemo(() => {
     const institutionDepartments = departments.filter(
       (department) => department.institution.id === selectedInstitutionId
@@ -462,6 +702,47 @@ export function ReviewForm({
             ))}
           </div>
 
+          {reviewerType === "RESIDENT" ? (
+            <div className="rounded-2xl border border-brand-100 bg-brand-50/60 p-4">
+              <p className="text-sm font-black text-ink">מצב נוכחי</p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                {[
+                  { value: "active", label: "מתמחה פעיל" },
+                  { value: "completed", label: "סיימתי התמחות" }
+                ].map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center gap-3 rounded-xl border border-white bg-white px-4 py-3 text-sm font-bold text-slate-700"
+                  >
+                    <input
+                      type="radio"
+                      value={option.value}
+                      {...register("roleDetails.residentCurrentStatus")}
+                    />
+                    <span>{option.label}</span>
+                  </label>
+                ))}
+              </div>
+              {residentCurrentStatus === "completed" ? (
+                <div className="mt-4 grid gap-2 sm:grid-cols-3">
+                  {residentCompletionTimingOptions.map((option) => (
+                    <label
+                      key={option.value}
+                      className="flex items-center gap-3 rounded-xl border border-white bg-white px-4 py-3 text-sm font-bold text-slate-700"
+                    >
+                      <input
+                        type="radio"
+                        value={option.value}
+                        {...register("roleDetails.residencyCompletedTiming")}
+                      />
+                      <span>{option.label}</span>
+                    </label>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+
           <div className="grid gap-4 md:grid-cols-2">
             <label className="block">
               <span className="mb-2 block text-sm font-semibold text-ink">מוסד</span>
@@ -569,6 +850,13 @@ export function ReviewForm({
             <p className="mt-2 text-sm leading-7 text-slate-600">{EXPERIENCE_RATING_HELPER_TEXT}</p>
           </div>
 
+          {reviewerType === "RESIDENT" ? (
+            <ResidentQuestionnaire
+              register={register}
+              selectedSpecialtyName={selectedDepartment?.specialty.name}
+            />
+          ) : (
+            <>
           <div className="grid gap-4 md:grid-cols-3">
             <label className="block">
               <span className="mb-2 block text-sm font-semibold text-ink">פקולטה</span>
@@ -715,10 +1003,12 @@ export function ReviewForm({
               <textarea
                 {...register("roleDetails.fitForWho")}
                 className="min-h-24 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-                placeholder={fitPlaceholderForType(reviewerType)}
+              placeholder={fitPlaceholderForType(reviewerType)}
               />
             </label>
           </div>
+            </>
+          )}
         </section>
       ) : null}
 
@@ -761,12 +1051,22 @@ export function ReviewForm({
         </section>
       ) : null}
 
-      <div className="sticky bottom-0 z-10 -mx-2 flex flex-wrap items-center justify-between gap-3 bg-white/95 px-2 py-4 backdrop-blur">
+      <div dir="ltr" className="sticky bottom-0 z-10 -mx-2 flex flex-wrap items-center justify-between gap-3 bg-white/95 px-2 py-4 backdrop-blur">
+        <button
+          type="button"
+          onClick={() => setStep((current) => (current === 1 ? 1 : ((current - 1) as 1 | 2 | 3)))}
+          disabled={step === 1}
+          className="rounded-full border border-brand-100 px-5 py-3 text-sm font-bold text-brand-800 transition hover:bg-brand-50 disabled:opacity-40"
+          dir="rtl"
+        >
+          חזרה
+        </button>
         {step < 3 ? (
           <button
             type="button"
             onClick={() => setStep((current) => (current === 1 ? 2 : 3))}
             className="rounded-full bg-brand-700 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-800"
+            dir="rtl"
           >
             המשך
           </button>
@@ -775,18 +1075,11 @@ export function ReviewForm({
             type="submit"
             disabled={isSubmitting}
             className="rounded-full bg-gradient-to-l from-brand-700 to-teal-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-brand-300/40 transition hover:from-brand-800 hover:to-teal-700 disabled:opacity-60"
+            dir="rtl"
           >
             {isSubmitting ? "שולח/ת..." : "שליחה"}
           </button>
         )}
-        <button
-          type="button"
-          onClick={() => setStep((current) => (current === 1 ? 1 : ((current - 1) as 1 | 2 | 3)))}
-          disabled={step === 1}
-          className="rounded-full border border-brand-100 px-5 py-3 text-sm font-bold text-brand-800 transition hover:bg-brand-50 disabled:opacity-40"
-        >
-          חזרה
-        </button>
       </div>
     </form>
   );

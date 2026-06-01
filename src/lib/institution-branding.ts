@@ -59,6 +59,13 @@ function normalizeBrandText(value?: string | null) {
     .trim();
 }
 
+function hospitalLogoFilenameCandidate(name?: string | null) {
+  const cleanName = name?.trim();
+  if (!cleanName) return null;
+
+  return `/logos/hospitals/${encodeURIComponent(cleanName)}.png`;
+}
+
 export function getInstitutionLogo(institution: InstitutionBrandingInput) {
   const haystack = normalizeBrandText(`${institution.slug ?? ""} ${institution.name ?? ""}`);
   const localLogo = LOCAL_LOGOS.find((logo) =>
@@ -69,7 +76,7 @@ export function getInstitutionLogo(institution: InstitutionBrandingInput) {
     return localLogo.src;
   }
 
-  return institution.coverImageUrl ?? null;
+  return institution.coverImageUrl ?? hospitalLogoFilenameCandidate(institution.name);
 }
 
 export function getInstitutionInitials(name?: string | null) {

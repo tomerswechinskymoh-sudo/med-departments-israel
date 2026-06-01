@@ -36,9 +36,6 @@ export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
                 </span>
                 <div>
                   <p className="text-lg font-bold text-ink">{item.title}</p>
-                  <p className="mt-1 text-xs leading-6 text-slate-500">
-                    תשובה קצרה וברורה בלי טקסט מיותר.
-                  </p>
                 </div>
               </div>
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-100 bg-brand-50 text-lg font-semibold text-brand-900">
@@ -54,7 +51,21 @@ export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
                 <div className="border-t border-brand-100/70 px-5 pb-5 pt-4">
                   <div className="space-y-3 text-sm leading-8 text-slate-700">
                     {item.body.map((paragraph) => (
-                      <p key={paragraph}>{paragraph}</p>
+                      <p key={paragraph}>
+                        {paragraph.includes("contact@hitmachut.org") ? (
+                          <>
+                            {paragraph.replace("contact@hitmachut.org", "")}
+                            <a
+                              href="mailto:contact@hitmachut.org"
+                              className="font-bold text-brand-800 underline underline-offset-4"
+                            >
+                              contact@hitmachut.org
+                            </a>
+                          </>
+                        ) : (
+                          paragraph
+                        )}
+                      </p>
                     ))}
                   </div>
                 </div>

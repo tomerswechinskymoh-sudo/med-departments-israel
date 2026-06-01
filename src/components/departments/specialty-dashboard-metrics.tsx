@@ -150,36 +150,47 @@ function SalaryComparison({
     if (!input) return null;
     return input.includes("₪") ? input : `${input} ₪`;
   };
-  const detailText = [
-    comparisonValues?.centerSalary ? `מרכז: ${withCurrency(comparisonValues.centerSalary)}` : null,
-    comparisonValues?.peripherySalary ? `פריפריה: ${withCurrency(comparisonValues.peripherySalary)}` : null
-  ].filter(Boolean).join(" · ");
-  const numbers = [...detailText.matchAll(/([\d,.]+)\s*₪/g)].map((match) =>
-    Number(match[1]?.replace(/,/g, ""))
-  );
-  const center = Number.isFinite(numbers[0]) ? numbers[0] : 16954;
-  const periphery = Number.isFinite(numbers[1]) ? numbers[1] : 19965.92;
+  const centerLabel = withCurrency(comparisonValues?.centerSalary);
+  const peripheryLabel = withCurrency(comparisonValues?.peripherySalary);
+  const parseSalary = (input: string | null) => {
+    const match = input?.match(/([\d,.]+)/);
+    const parsed = Number(match?.[1]?.replace(/,/g, ""));
+    return Number.isFinite(parsed) ? parsed : null;
+  };
+  const center = parseSalary(centerLabel) ?? 16954;
+  const periphery = parseSalary(peripheryLabel) ?? 19965.92;
   const max = Math.max(center, periphery, 1);
 
   return (
     <div className="mt-2 space-y-1.5">
-      <p className="text-xl font-black text-ink" title={detailText || undefined}>{value}</p>
-      <div className="group relative grid grid-cols-[4rem_1fr] items-center gap-2">
+      <p className="text-xl font-black text-ink">{value}</p>
+      <div
+        className="group relative grid grid-cols-[4rem_1fr] items-center gap-2"
+        title={centerLabel ? `שכר במרכז: ${centerLabel}` : undefined}
+      >
         <span className="text-[0.68rem] font-bold text-slate-500">מרכז</span>
         <div className="h-2 overflow-hidden rounded-full bg-white">
           <div className="h-full rounded-full bg-brand-500" style={{ width: `${(center / max) * 100}%` }} />
         </div>
-        {detailText ? (
+        {centerLabel ? (
           <span className="absolute left-0 top-6 z-10 hidden rounded-lg border border-slate-200 bg-white px-2 py-1 text-[0.68rem] font-black text-slate-700 shadow-lg group-hover:block">
-            {detailText}
+            שכר במרכז: {centerLabel}
           </span>
         ) : null}
       </div>
-      <div className="grid grid-cols-[4rem_1fr] items-center gap-2">
+      <div
+        className="group relative grid grid-cols-[4rem_1fr] items-center gap-2"
+        title={peripheryLabel ? `שכר בפריפריה: ${peripheryLabel}` : undefined}
+      >
         <span className="text-[0.68rem] font-bold text-slate-500">פריפריה</span>
         <div className="h-2 overflow-hidden rounded-full bg-white">
           <div className="h-full rounded-full bg-amber-500" style={{ width: `${(periphery / max) * 100}%` }} />
         </div>
+        {peripheryLabel ? (
+          <span className="absolute left-0 top-6 z-10 hidden rounded-lg border border-slate-200 bg-white px-2 py-1 text-[0.68rem] font-black text-slate-700 shadow-lg group-hover:block">
+            שכר בפריפריה: {peripheryLabel}
+          </span>
+        ) : null}
       </div>
     </div>
   );
@@ -283,7 +294,11 @@ export function SpecialtyDashboardMetrics({
   specialtyName: string;
   metrics: SpecialtyMetricResult[];
 }) {
-  if (metrics.length === 0) {
+  const visibleMetrics = metrics.filter(
+    (metric) => metric.key !== "centerSalary" && metric.key !== "peripherySalary"
+  );
+
+  if (visibleMetrics.length === 0) {
     return null;
   }
 
@@ -300,7 +315,7 @@ export function SpecialtyDashboardMetrics({
       </div>
 
       <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {metrics.map((metric, index) => (
+        {visibleMetrics.map((metric, index) => (
           <div
             key={metric.key}
             className={`flex min-h-[5.75rem] flex-col rounded-2xl border p-2.5 ${

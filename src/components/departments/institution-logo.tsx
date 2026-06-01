@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { getInstitutionInitials, getInstitutionLogo } from "@/lib/institution-branding";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +26,13 @@ export function InstitutionLogo({
   className
 }: InstitutionLogoProps) {
   const logoSrc = getInstitutionLogo(institution);
+  const [failedLogoSrc, setFailedLogoSrc] = useState<string | null>(null);
   const initials = getInstitutionInitials(institution.name);
+  const renderedLogoSrc = logoSrc && logoSrc !== failedLogoSrc ? logoSrc : null;
+
+  useEffect(() => {
+    setFailedLogoSrc(null);
+  }, [logoSrc]);
 
   return (
     <span
@@ -33,13 +42,14 @@ export function InstitutionLogo({
         className
       )}
     >
-      {logoSrc ? (
+      {renderedLogoSrc ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={logoSrc}
+          src={renderedLogoSrc}
           alt={institution.name ? `לוגו ${institution.name}` : "לוגו מוסד רפואי"}
           className="h-full w-full object-contain p-1.5"
           loading="lazy"
+          onError={() => setFailedLogoSrc(renderedLogoSrc)}
         />
       ) : (
         <span className="grid h-full w-full place-items-center bg-gradient-to-br from-brand-50 via-white to-teal-50 text-base font-black text-brand-800">

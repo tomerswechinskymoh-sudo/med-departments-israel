@@ -731,7 +731,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   {
     key: "newResidentsTrend",
     label: "מתמחים חדשים",
-    description: "מספר מתמחים חדשים לפי שנים 2020-2024",
+    description: "גרף המציג את מספר המתמחים החדשים בתחום בכלל הארץ בשנים האחרונות.",
     unit: "count",
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {

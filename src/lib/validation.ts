@@ -217,7 +217,31 @@ const reviewRoleDetailsSchema = z.object({
   ),
   attitudeFromResidents: z.preprocess(emptyToUndefined, scaleSchema.optional()),
   attitudeFromSeniors: z.preprocess(emptyToUndefined, scaleSchema.optional()),
-  workloadBalance: z.preprocess(emptyToUndefined, scaleSchema.optional())
+  workloadBalance: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  residentCurrentStatus: z.preprocess(emptyToUndefined, z.enum(["active", "completed"]).optional()),
+  residencyCompletedTiming: z.preprocess(
+    emptyToUndefined,
+    z.enum(["last_3_years", "3_to_5_years", "more_than_5_years"]).optional()
+  ),
+  departmentElectiveImportance: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  departmentObservationImportance: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  outsideShiftsImportance: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  researchImportance: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  medicalSchoolInfluence: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  departmentHeadInfluence: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  seniorDecisionInfluence: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  wholeDepartmentSelectionInfluence: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  hasAdmissionCommittee: z.preprocess(emptyToUndefined, z.enum(["yes", "no", "unknown"]).optional()),
+  monthlyDutyRange: z.preprocess(emptyToUndefined, z.string().optional()),
+  parentPositionAvailable: z.preprocess(emptyToUndefined, z.enum(["yes", "no", "unknown"]).optional()),
+  averageArrivalTime: z.preprocess(emptyToUndefined, z.string().optional()),
+  personalNeedsConsideration: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  teamwork: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  belonging: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  stageAVacation: z.preprocess(emptyToUndefined, z.enum(["yes", "no", "partial", "unknown"]).optional()),
+  stageBVacation: z.preprocess(emptyToUndefined, z.enum(["yes", "no", "partial", "unknown"]).optional()),
+  conferenceFunding: z.preprocess(emptyToUndefined, z.enum(["yes", "no", "partial", "unknown"]).optional()),
+  surgicalAutonomy: z.preprocess(emptyToUndefined, scaleSchema.optional())
 });
 
 export const reviewSubmissionSchema = z
@@ -319,6 +343,22 @@ export const reviewSubmissionSchema = z
     }
 
     if (data.reviewerType === "RESIDENT") {
+      if (!data.roleDetails.residentCurrentStatus) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "residentCurrentStatus"],
+          message: "יש לבחור מצב נוכחי."
+        });
+      }
+
+      if (data.roleDetails.residentCurrentStatus === "completed" && !data.roleDetails.residencyCompletedTiming) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["roleDetails", "residencyCompletedTiming"],
+          message: "יש לבחור מתי סיימת התמחות."
+        });
+      }
+
       if (!data.roleDetails.attitudeFromResidents) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,

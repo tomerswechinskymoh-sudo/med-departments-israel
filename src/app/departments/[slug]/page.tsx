@@ -64,6 +64,7 @@ type ImportedYearlyMetric = {
 };
 
 const MISSING_IMPORTED_VALUE = "הנתון עדיין לא סופק";
+const NEW_RESIDENTS_TOOLTIP = "גרף המציג את מספר המתמחים החדשים בתחום בכלל הארץ בשנים האחרונות.";
 
 function EmptyValue({ text = MISSING_IMPORTED_VALUE }: { text?: string }) {
   return <span className="text-slate-400">{text}</span>;
@@ -203,7 +204,7 @@ function YearlyResidentsChart({
         <p className="text-sm font-bold text-slate-600">מתמחים חדשים לפי שנה</p>
         <MetricInfoTip
           sourceLabel={sourceLabel}
-          text="מספר מתמחים חדשים שנקלטו במחלקה לפי שנה."
+          text={NEW_RESIDENTS_TOOLTIP}
           metricType="נתון מחלקתי"
           lastUpdated={lastUpdated}
           sourceUrl={sourceUrl}
@@ -552,7 +553,10 @@ function SalaryGapHighlight({
       </p>
       {hasSalaryComparison ? (
         <div className="mt-2 space-y-1">
-          <div className="grid grid-cols-[3.8rem_1fr] items-center gap-2">
+          <div
+            className="grid grid-cols-[3.8rem_1fr] items-center gap-2"
+            title={`שכר במרכז: ${formatImportedNumber(centerSalary)} ₪`}
+          >
             <span className="text-[0.65rem] font-bold text-slate-500">מרכז</span>
             <div className="h-1.5 overflow-hidden rounded-full bg-white">
               <div
@@ -561,7 +565,10 @@ function SalaryGapHighlight({
               />
             </div>
           </div>
-          <div className="grid grid-cols-[3.8rem_1fr] items-center gap-2">
+          <div
+            className="grid grid-cols-[3.8rem_1fr] items-center gap-2"
+            title={`שכר בפריפריה: ${formatImportedNumber(peripherySalary)} ₪`}
+          >
             <span className="text-[0.65rem] font-bold text-slate-500">פריפריה</span>
             <div className="h-1.5 overflow-hidden rounded-full bg-white">
               <div className="h-full rounded-full bg-amber-500" style={{ width: "100%" }} />
@@ -638,6 +645,57 @@ function formatImportedMetricValue(metric: ImportedMetric | ImportedYearlyMetric
   if (metric.unit && metric.unit !== "count") return `${formattedValue} ${metric.unit}`;
 
   return formattedValue;
+}
+
+function formatDurationMetricInYears(metric: ImportedMetric | ImportedYearlyMetric | null | undefined) {
+  if (!metric || isInvalidImportedRawValue(metric.rawValue)) {
+    return null;
+  }
+
+  const rawText = metric.rawValue?.trim();
+  const numericText = rawText ?? (typeof metric.value === "number" ? String(metric.value) : "");
+  const numberMatches = numericText.match(/\d+(?:[.,]\d+)?/g) ?? [];
+  const values = numberMatches
+    .map((item) => Number(item.replace(",", ".")))
+    .filter((value) => Number.isFinite(value));
+
+  if (values.length === 0) {
+    return formatImportedMetricValue(metric);
+  }
+
+  const shouldConvertFromMonths =
+    metric.unit === "months" ||
+    /חודש/.test(rawText ?? "") ||
+    values.some((value) => value > 12 && value <= 180);
+
+  const formattedValues = values.map((value) => {
+    const years = shouldConvertFromMonths ? value / 12 : value;
+    return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 1 }).format(years);
+  });
+
+  return `${formattedValues.join(" - ")} שנים`;
+}
+
+function formatDurationTextInYears(value: string | number | null | undefined) {
+  if (value === null || value === undefined) return null;
+
+  const text = String(value).trim();
+  if (!text) return null;
+
+  const numberMatches = text.match(/\d+(?:[.,]\d+)?/g) ?? [];
+  const values = numberMatches
+    .map((item) => Number(item.replace(",", ".")))
+    .filter((item) => Number.isFinite(item));
+
+  if (values.length === 0) return text;
+
+  const shouldConvertFromMonths = /חודש/.test(text) || values.some((item) => item > 12 && item <= 180);
+  const formattedValues = values.map((item) => {
+    const years = shouldConvertFromMonths ? item / 12 : item;
+    return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 1 }).format(years);
+  });
+
+  return `${formattedValues.join(" - ")} שנים`;
 }
 
 function sourceLabelFromNotes(sourceNotes?: string | null) {
@@ -1360,8 +1418,8 @@ export default async function DepartmentDetailsPage({
   const trainingMetrics: DisplayMetric[] = [
     {
       id: "residency-official-duration",
-      label: metricLabelFromMetadata(officialDurationMeta, "משך התמחות רשמי"),
-      value: officialDurationMetric ? formatImportedMetricValue(officialDurationMetric) : null,
+      label: "משך התמחות רשמי (שנים)",
+      value: formatDurationMetricInYears(officialDurationMetric),
       sourceLabel: metadataSourceLabel(officialDurationMeta, importedSourceLabel(officialDurationMetric, "הר״י")),
       tooltip: metadataTooltip(officialDurationMeta, "משך התמחות ע״פ הרשום באתר הר״י"),
       lastUpdated: officialDurationMetric?.lastUpdated,
@@ -1370,8 +1428,10 @@ export default async function DepartmentDetailsPage({
     },
     {
       id: "residency-average-duration",
-      label: metricLabelFromMetadata(actualDurationMeta, medianDuration ? "משך התמחות במחלקה" : "משך ממוצע בפועל"),
-      value: actualDurationMetric ? formatImportedMetricValue(actualDurationMetric) : medianDuration?.value ?? null,
+      label: "משך התמחות ממוצע בפועל (שנים)",
+      value: actualDurationMetric
+        ? formatDurationMetricInYears(actualDurationMetric)
+        : formatDurationTextInYears(medianDuration?.value),
       sourceLabel: metadataSourceLabel(actualDurationMeta, importedSourceLabel(actualDurationMetric, "משרד הבריאות")),
       tooltip: metadataTooltip(actualDurationMeta, "משך התמחות מחלקתי, אם סופק ברמת המחלקה."),
       lastUpdated: actualDurationMetric?.lastUpdated,
@@ -1380,7 +1440,7 @@ export default async function DepartmentDetailsPage({
     },
     {
       id: "residency-median-waiting-time",
-      label: metricLabelFromMetadata(medianWaitingMeta, "זמן המתנה חציוני לתקן"),
+      label: "זמן המתנה חציוני לתקן (חודשים)",
       value: medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null,
       sourceLabel: metadataSourceLabel(medianWaitingMeta, importedSourceLabel(medianWaitingMetric, "משרד הבריאות")),
       tooltip: metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא."),
@@ -1429,6 +1489,7 @@ export default async function DepartmentDetailsPage({
     publicationMetric?.lastUpdated;
   const newResidentsSourceLabel = importedSourceLabel(firstDepartmentYearlyMetric, "משרד הבריאות");
   const specialtyOverviewHref = `/departments?specialty=${department.specialty.id}`;
+  const hasMultipleDepartmentsInHospitalSpecialty = department.siblingDepartmentCount > 1;
 
   return (
     <PageShell className="space-y-5 py-6">
@@ -1554,6 +1615,12 @@ export default async function DepartmentDetailsPage({
             </div>
 
             <div className="mt-4 space-y-3">
+              {hasMultipleDepartmentsInHospitalSpecialty ? (
+                <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold leading-7 text-amber-950">
+                  חלק מהנתונים בעמוד זה מוצגים ברמת כלל המערך ולא ברמת המחלקה הספציפית.
+                </div>
+              ) : null}
+
               <div className="grid gap-2 md:grid-cols-3">
                 <DataMetricCard {...workforceMetrics[0]} />
                 <DataMetricCard
@@ -1573,7 +1640,7 @@ export default async function DepartmentDetailsPage({
 
               <div className="grid gap-2 lg:grid-cols-3">
                 <ClockMetricCard
-                  label={metricLabelFromMetadata(medianWaitingMeta, "זמן המתנה חציוני לתקן")}
+                  label="זמן המתנה חציוני לתקן (חודשים)"
                   value={medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null}
                   sourceLabel={metadataSourceLabel(medianWaitingMeta, importedSourceLabel(medianWaitingMetric, "משרד הבריאות"))}
                   tooltip={metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא.")}
@@ -1836,28 +1903,6 @@ export default async function DepartmentDetailsPage({
                 missingText={MISSING_IMPORTED_VALUE}
                 sourceUrl={duns100Meta?.sourceUrl}
                 displayAction={metadataDisplayAction(duns100Meta)}
-              />
-              <QuickHighlightCard
-                label={metricLabelFromMetadata(centerSalaryMeta, "שכר מרכז")}
-                value={centerSalaryMetric ? formatImportedMetricValue(centerSalaryMetric) : null}
-                sourceLabel={metadataSourceLabel(centerSalaryMeta, importedSourceLabel(centerSalaryMetric, "סימולטור שכר של הר״י"))}
-                tooltip={metadataTooltip(centerSalaryMeta, "שכר בסיס להשוואה באזור מרכז.")}
-                metricType={salaryMetricType}
-                lastUpdated={centerSalaryMetric?.lastUpdated}
-                missingText={MISSING_IMPORTED_VALUE}
-                sourceUrl={centerSalaryMeta?.sourceUrl}
-                displayAction={metadataDisplayAction(centerSalaryMeta)}
-              />
-              <QuickHighlightCard
-                label={metricLabelFromMetadata(peripherySalaryMeta, "שכר פריפריה")}
-                value={peripherySalaryMetric ? formatImportedMetricValue(peripherySalaryMetric) : null}
-                sourceLabel={metadataSourceLabel(peripherySalaryMeta, importedSourceLabel(peripherySalaryMetric, "סימולטור שכר של הר״י"))}
-                tooltip={metadataTooltip(peripherySalaryMeta, "שכר בסיס להשוואה באזור פריפריה.")}
-                metricType={salaryMetricType}
-                lastUpdated={peripherySalaryMetric?.lastUpdated}
-                missingText={MISSING_IMPORTED_VALUE}
-                sourceUrl={peripherySalaryMeta?.sourceUrl}
-                displayAction={metadataDisplayAction(peripherySalaryMeta)}
               />
               <QuickHighlightCard
                 label={metricLabelFromMetadata(burnoutMeta, "מדד שחיקה")}
