@@ -268,7 +268,7 @@ export default async function AdminPage() {
         <StatCard label="משתמשים" value={data.stats.users} />
         <StatCard label="מחלקות" value={data.stats.departments} />
         <StatCard label="חוויות ממתינות" value={data.stats.pendingReviewSubmissions} />
-        <StatCard label="תקנים לאישור" value={data.stats.pendingOpeningApprovals} />
+        <StatCard label="משרות לאישור" value={data.stats.pendingOpeningApprovals} />
         <StatCard label="שינויי מחלקה" value={data.stats.pendingDepartmentChangeRequests} />
         <StatCard label="מועמדויות פעילות" value={data.stats.pendingOpeningApplications} />
         <StatCard label="דיווחי טעות" value={data.stats.pendingMistakeReports} />
@@ -279,7 +279,7 @@ export default async function AdminPage() {
 
       <AdminAccordionSection
         title="תורים שממתינים לאישור"
-        description="חוויות, תקנים, שינויי מחלקה, בקשות נציגות ודראפטים מסריקת אתרים."
+        description="חוויות, משרות, שינויי מחלקה, בקשות נציגות ודראפטים מסריקת אתרים."
         actionCount={pendingContentActions}
       >
         <div className="grid gap-5 xl:grid-cols-2">
@@ -352,10 +352,10 @@ export default async function AdminPage() {
           </section>
 
           <section>
-            <h3 className="text-base font-black text-ink">תקנים פתוחים שממתינים לאישור</h3>
+            <h3 className="text-base font-black text-ink">משרות פתוחות שממתינות לאישור</h3>
             <div className="mt-4 space-y-5">
               {data.pendingOpeningApprovals.length === 0 ? (
-                <QueueEmpty>אין כרגע תקנים פתוחים שממתינים לאישור.</QueueEmpty>
+                <QueueEmpty>אין כרגע משרות פתוחות שממתינות לאישור.</QueueEmpty>
               ) : (
                 data.pendingOpeningApprovals.map((opening) => {
                   const status = openingStatusLabel(opening.status);
@@ -717,7 +717,7 @@ export default async function AdminPage() {
 
       <AdminAccordionSection
         title="מועמדויות אחרונות"
-        description="מועמדויות לתקנים נשארות נמוך יותר בעמוד בשלב הזה."
+        description="מועמדויות למשרות נשארות נמוך יותר בעמוד בשלב הזה."
         actionCount={data.stats.pendingOpeningApplications}
       >
         <div className="space-y-4">

@@ -32,7 +32,7 @@ export default async function OpeningApplyPage({
     <PageShell className="py-10">
       <div className="mx-auto max-w-5xl space-y-6">
         <Card className="bg-brand-900 text-white">
-          <p className="text-sm font-semibold text-brand-100">מועמדות פרטית לתקן פתוח</p>
+          <p className="text-sm font-semibold text-brand-100">מועמדות פרטית למשרה פתוחה</p>
           <h1 className="mt-2 text-3xl font-bold">{opening.title}</h1>
           <p className="mt-3 text-sm leading-7 text-brand-50">
             {opening.department.institution.name} · {opening.department.name} · {opening.department.specialty.name}
@@ -53,7 +53,7 @@ export default async function OpeningApplyPage({
             <p className="mt-2">
               אם תרצו, אפשר לחזור קודם ל־
               <Link href={`/openings/${opening.id}`} className="font-semibold text-brand-700">
-                עמוד התקן
+                עמוד המשרה
               </Link>
               {" "}
               ולבדוק שוב את המידע לפני ההגשה.

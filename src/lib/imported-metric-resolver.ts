@@ -65,7 +65,7 @@ export const metricFieldDefinitions = {
     legacyKeys: ["residentsCount", "activeResidentsCount"]
   },
   medianWaitingTime: {
-    label: "זמן המתנה חציוני לתקן",
+    label: "זמן המתנה חציוני למשרה",
     importedKeys: ["זמן_המתנה_חציוני_לתקן"],
     dbKeys: ["זמן_המתנה_חציוני_לתקן"],
     uiCards: ["specialtyDashboard.medianWaitingTime", "departmentMain.medianWaitingTime"],
@@ -228,13 +228,13 @@ export const metricFieldDefinitions = {
     uiCards: ["specialtyDashboard.burnoutIndex", "departmentSidebar.burnoutIndex"]
   },
   expectedNationalOpenings: {
-    label: "מספר תקנים שצפויים להיפתח ארצי",
+    label: "מספר משרות שצפויות להיפתח ארצי",
     importedKeys: ["מספר_תקנים_שצפויים להיפתח_ארצי"],
     dbKeys: ["expectedNationalOpenings"],
     uiCards: ["specialtyDashboard.expectedOpenings"]
   },
   expectedOpenings2026: {
-    label: "צפי תקנים חדשים ב-2026",
+    label: "צפי משרות חדשות ב-2026",
     importedKeys: ["צפי תקנים חדשים ב2026"],
     dbKeys: ["expectedOpenings2026"],
     uiCards: ["departmentMain.expectedOpenings"]

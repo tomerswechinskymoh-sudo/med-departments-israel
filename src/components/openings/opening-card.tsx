@@ -108,7 +108,7 @@ export function OpeningCard({
           <Badge tone={status.tone}>{status.label}</Badge>
           <Badge>{openingTypeLabel(opening.openingType)}</Badge>
           {opening.isImmediate ? <Badge tone="warning">זמינות מיידית</Badge> : null}
-          {opening.openingsCount ? <Badge>{opening.openingsCount} תקנים</Badge> : null}
+          {opening.openingsCount ? <Badge>{opening.openingsCount} משרות</Badge> : null}
         </div>
 
         <h3 className="mt-4 text-2xl font-bold text-ink">{opening.title}</h3>
@@ -130,7 +130,7 @@ export function OpeningCard({
             <p className="text-xs font-semibold text-slate-500">מה פתוח</p>
             <p className="mt-1 font-semibold text-ink">
               {openingTypeLabel(opening.openingType)}
-              {opening.openingsCount ? ` · ${opening.openingsCount} תקנים` : ""}
+              {opening.openingsCount ? ` · ${opening.openingsCount} משרות` : ""}
             </p>
           </div>
           <div className="rounded-2xl bg-brand-50/70 p-3">
@@ -188,7 +188,7 @@ export function OpeningCard({
           href={`/openings/${opening.id}`}
           className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
         >
-          לפרטי התקן
+          לפרטי המשרה
         </Link>
         {canApply ? (
           <Link

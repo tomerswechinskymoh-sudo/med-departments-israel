@@ -63,7 +63,7 @@ export default async function OpeningDetailsPage({
               <Badge tone={status.tone}>{status.label}</Badge>
               <Badge>{openingTypeLabel(opening.openingType)}</Badge>
               {opening.isImmediate ? <Badge tone="warning">זמינות מיידית</Badge> : null}
-              {opening.openingsCount ? <Badge>{opening.openingsCount} תקנים</Badge> : null}
+              {opening.openingsCount ? <Badge>{opening.openingsCount} משרות</Badge> : null}
             </div>
 
             <h1 className="mt-5 text-4xl font-bold text-ink">{opening.title}</h1>
@@ -128,7 +128,7 @@ export default async function OpeningDetailsPage({
         <Card>
           <SectionHeading
             title="מה המחלקה מחפשת"
-            description="מידע רשמי שמגיע מאזור נציגים מאושר בלבד ומסביר מה חשוב בתקן הזה."
+            description="מידע רשמי שמגיע מאזור נציגים מאושר בלבד ומסביר מה חשוב במשרה הזו."
           />
           <div className="mt-5 space-y-4 text-sm leading-8 text-slate-700">
             {opening.acceptanceCriteria?.whatWeAreLookingFor ? (
@@ -190,7 +190,7 @@ export default async function OpeningDetailsPage({
       <section className="space-y-6">
         <SectionHeading
           title="קריטריונים והעדפות מובנות"
-          description="השקיפות הזו נועדה לעזור להבין מה באמת משפיע בתקן הספציפי הזה."
+          description="השקיפות הזו נועדה לעזור להבין מה באמת משפיע במשרה הספציפית הזו."
         />
         <Card>
           <OpeningCriteriaGrid criteria={opening.acceptanceCriteria} />

@@ -28,7 +28,7 @@ export default async function NewOpeningPage({
       <div className="mx-auto max-w-5xl space-y-6">
         <Card className="bg-brand-900 text-white">
           <p className="text-sm font-semibold text-brand-100">תוכן רשמי למחלקה</p>
-          <h1 className="mt-2 text-3xl font-bold">תקן פתוח חדש למחלקה</h1>
+          <h1 className="mt-2 text-3xl font-bold">משרה פתוחה חדשה למחלקה</h1>
           <p className="mt-3 text-sm leading-7 text-brand-50">
             ההצעה תישלח קודם לאישור אדמין. רק אחרי אישור היא תעלה לציבור.
           </p>
@@ -36,7 +36,7 @@ export default async function NewOpeningPage({
 
         <Card>
           <SectionHeading
-            title="פרטי התקן הפתוח"
+            title="פרטי המשרה הפתוחה"
             description="מגדירים תוכן, לוח זמנים, דגשים לקבלה וכמה מועמדים מובילים תרצו לקבל אחרי הדדליין. הכול נשמר קודם לבדיקה."
           />
           <div className="mt-6">

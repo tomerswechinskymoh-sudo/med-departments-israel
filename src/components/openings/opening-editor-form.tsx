@@ -106,11 +106,11 @@ export function OpeningEditorForm({
     const payload = (await response.json().catch(() => null)) as { message?: string; error?: string; openingId?: string } | null;
 
     if (!response.ok) {
-      setMessage(payload?.error ?? "שמירת התקן הפתוח נכשלה.");
+      setMessage(payload?.error ?? "שמירת המשרה הפתוחה נכשלה.");
       return;
     }
 
-    setMessage(payload?.message ?? "התקן הפתוח נשמר.");
+    setMessage(payload?.message ?? "המשרה הפתוחה נשמרה.");
     router.push(`/representative/openings/${payload?.openingId ?? openingId}`);
     router.refresh();
   });
@@ -138,12 +138,12 @@ export function OpeningEditorForm({
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-semibold text-ink">סוג תקן</label>
+          <label className="mb-2 block text-sm font-semibold text-ink">סוג משרה</label>
           <select
             {...register("openingType")}
             className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
           >
-            <option value="RESIDENCY">תקן התמחות</option>
+            <option value="RESIDENCY">משרת התמחות</option>
             <option value="FELLOWSHIP">פלו / מסלול המשך</option>
             <option value="ACADEMIC_TRACK">מסלול משולב מחקר / אקדמיה</option>
             <option value="COMMUNITY_TRACK">מסלול קהילה</option>
@@ -155,7 +155,7 @@ export function OpeningEditorForm({
       <div className="grid gap-4 md:grid-cols-2">
         <input
           {...register("title")}
-          placeholder="כותרת לתקן הפתוח"
+          placeholder="כותרת למשרה הפתוחה"
           className="rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
         />
         <select
@@ -170,13 +170,13 @@ export function OpeningEditorForm({
 
       <textarea
         {...register("summary")}
-        placeholder="תקציר קצר וברור לסטודנטים וסטאז'רים: על מה התקן, למי זה מתאים, ומה חשוב לדעת."
+          placeholder="תקציר קצר וברור לסטודנטים וסטאז'רים: על מה המשרה, למי זה מתאים, ומה חשוב לדעת."
         className="min-h-28 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
       />
 
       <label className="flex items-center gap-3 rounded-2xl border border-amber-200 bg-amber-50/80 px-4 py-3 text-sm font-medium text-amber-950">
         <input type="checkbox" {...register("isImmediate")} />
-        זה תקן מיידי שכרגע רלוונטי להגשה
+        זו משרה מיידית שכרגע רלוונטית להגשה
       </label>
 
       <div className="grid gap-4 md:grid-cols-4">
@@ -184,7 +184,7 @@ export function OpeningEditorForm({
           {...register("openingsCount")}
           type="number"
           min={0}
-          placeholder="מספר תקנים"
+          placeholder="מספר משרות"
           className="rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
         />
         <div>
@@ -218,7 +218,7 @@ export function OpeningEditorForm({
           <div>
             <p className="text-sm font-semibold text-ink">אחרי שהדדליין עובר</p>
             <p className="mt-2 text-sm leading-7 text-slate-600">
-              המערכת תדרג את המועמדויות לפי מה שהגדרתם כאן, ותשלח לבעל/ת התקן רק את ההתאמות הכי חזקות.
+              המערכת תדרג את המועמדויות לפי מה שהגדרתם כאן, ותשלח לבעל/ת המשרה רק את ההתאמות הכי חזקות.
             </p>
           </div>
           <div className="min-w-[220px]">
@@ -248,7 +248,7 @@ export function OpeningEditorForm({
         />
         <textarea
           {...register("supportingInfo")}
-          placeholder="מידע משלים: איך המחלקה רואה את התקן, מה מחפשים, או מה כדאי לדעת לפני שמגישים."
+          placeholder="מידע משלים: איך המחלקה רואה את המשרה, מה מחפשים, או מה כדאי לדעת לפני שמגישים."
           className="min-h-32 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none"
         />
       </div>
@@ -313,7 +313,7 @@ export function OpeningEditorForm({
         disabled={isSubmitting}
         className="w-full rounded-2xl bg-brand-700 px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
       >
-        {isSubmitting ? "שומר/ת..." : openingId ? "שמירת שינויים לאישור" : "שליחת תקן פתוח לאישור"}
+        {isSubmitting ? "שומר/ת..." : openingId ? "שמירת שינויים לאישור" : "שליחת משרה פתוחה לאישור"}
       </button>
     </form>
   );

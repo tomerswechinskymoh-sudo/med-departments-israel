@@ -32,7 +32,7 @@ export async function POST(
   });
 
   if (!existingOpening) {
-    return NextResponse.json({ error: "התקן הפתוח לא נמצא." }, { status: 404 });
+    return NextResponse.json({ error: "המשרה הפתוחה לא נמצאה." }, { status: 404 });
   }
 
   const canAccessCurrentDepartment = await canUserPublishDepartment(
@@ -109,14 +109,14 @@ export async function POST(
 
   if (!canPublishToTargetDepartment) {
     return NextResponse.json(
-      { error: "אי אפשר לנהל תקן פתוח במחלקה שלא שויכה לחשבון הזה." },
+      { error: "אי אפשר לנהל משרה פתוחה במחלקה שלא שויכה לחשבון הזה." },
       { status: 403 }
     );
   }
 
   if (existingOpening.contentStatus === "PUBLISHED" && parsed.data.departmentId !== existingOpening.departmentId) {
     return NextResponse.json(
-      { error: "כדי לשייך תקן למחלקה אחרת צריך ליצור תקן פתוח חדש." },
+      { error: "כדי לשייך משרה למחלקה אחרת צריך ליצור משרה פתוחה חדשה." },
       { status: 400 }
     );
   }

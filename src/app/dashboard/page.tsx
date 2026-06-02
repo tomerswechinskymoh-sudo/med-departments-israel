@@ -188,7 +188,7 @@ export default async function DashboardPage() {
             <Link href="/faq" className="rounded-2xl bg-brand-50 p-4 transition hover:bg-brand-100">
               <p className="font-semibold text-ink">איך משתמשים באתר</p>
               <p className="mt-1 text-sm text-slate-600">
-                תשובות קצרות על הרשמה, שיתופים מהשטח, פרטיות ותקנים פתוחים.
+                תשובות קצרות על הרשמה, שיתופים מהשטח, פרטיות ומשרות פתוחות.
               </p>
             </Link>
           </div>
@@ -198,8 +198,8 @@ export default async function DashboardPage() {
           <h2 className="text-xl font-bold text-ink">מה חשוב לדעת</h2>
           <div className="mt-4 space-y-3 text-sm leading-7 text-slate-700">
             <p>חוויות מהמחלקה עולות רק אחרי אישור אדמין.</p>
-            <p>מועמדות לתקן פתוח דורשת חשבון מחובר, ונשמרת פרטית למחלקה.</p>
-            <p>תקנים פתוחים ועדכוני מחלקה נשלחים מאזור נציגים בלבד ורק אחרי אישור אדמין.</p>
+            <p>מועמדות למשרה פתוחה דורשת חשבון מחובר, ונשמרת פרטית למחלקה.</p>
+            <p>משרות פתוחות ועדכוני מחלקה נשלחים מאזור נציגים בלבד ורק אחרי אישור אדמין.</p>
           </div>
         </Card>
       </section>

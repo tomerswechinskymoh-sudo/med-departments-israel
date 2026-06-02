@@ -173,6 +173,82 @@ function DataMetricCard({
   );
 }
 
+function DurationBenchmarkCard({
+  departmentYears,
+  nationalYears,
+  sourceLabel,
+  tooltip,
+  lastUpdated,
+  sourceUrl,
+  displayAction
+}: {
+  departmentYears: number | null;
+  nationalYears: number | null;
+  sourceLabel: string;
+  tooltip: string;
+  lastUpdated?: string | Date | null;
+  sourceUrl?: string | null;
+  displayAction?: string | null;
+}) {
+  const values = [departmentYears, nationalYears].filter((value): value is number => typeof value === "number");
+  const maxValue = Math.max(...values, 1);
+  const difference =
+    typeof departmentYears === "number" && typeof nationalYears === "number"
+      ? departmentYears - nationalYears
+      : null;
+  const comparisonLabel =
+    difference === null
+      ? null
+      : Math.abs(difference) <= 0.25
+        ? "דומה לממוצע הארצי"
+        : difference < 0
+          ? "קצר מהממוצע הארצי"
+          : "ארוך מהממוצע הארצי";
+  const rows = [
+    { label: "מחלקה", value: departmentYears, barClassName: "bg-brand-700" },
+    { label: "ממוצע ארצי בתחום", value: nationalYears, barClassName: "bg-teal-600" }
+  ];
+
+  return (
+    <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-sm font-bold leading-5 text-slate-600">משך התמחות ממוצע בפועל (שנים)</p>
+          {comparisonLabel ? (
+            <span className="mt-1 inline-flex rounded-full bg-slate-100 px-2 py-0.5 text-[0.68rem] font-black text-slate-700">
+              {comparisonLabel}
+            </span>
+          ) : null}
+        </div>
+        <MetricInfoTip
+          sourceLabel={sourceLabel}
+          text={tooltip}
+          metricType="נתון מחלקתי מול ממוצע ארצי בתחום"
+          lastUpdated={lastUpdated}
+          sourceUrl={sourceUrl}
+          displayAction={displayAction}
+        />
+      </div>
+      <div className="mt-3 space-y-2">
+        {rows.map((row) => (
+          <div key={row.label} className="grid grid-cols-[6.5rem_1fr_4rem] items-center gap-2">
+            <span className="text-[0.68rem] font-black text-slate-500">{row.label}</span>
+            <div className="h-2 overflow-hidden rounded-full bg-slate-100">
+              <div
+                className={`h-full rounded-full ${row.barClassName}`}
+                style={{ width: `${row.value ? Math.max(8, (row.value / maxValue) * 100) : 0}%` }}
+              />
+            </div>
+            <span className={`text-left text-xs font-black ${row.value ? "text-ink" : "text-slate-400"}`}>
+              {row.value ? `${formatYearsNumber(row.value)} שנים` : "אין"}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 type DisplayMetric = {
   id: string;
   label: string;
@@ -554,7 +630,7 @@ function SalaryGapHighlight({
         />
       </div>
       <p className="mt-1 text-sm font-black text-ink">
-        {gapMetric ? formatImportedMetricValue(gapMetric) : hasSalaryComparison ? `+${formatImportedNumber(gap)} ₪` : MISSING_IMPORTED_VALUE}
+        {typeof gap === "number" ? `${formatWholeImportedNumber(gap)} ₪` : MISSING_IMPORTED_VALUE}
       </p>
       {hasSalaryComparison ? (
         <div className="mt-2 space-y-1">
@@ -622,6 +698,10 @@ function formatImportedNumber(value: number) {
   return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 1 }).format(value);
 }
 
+function formatWholeImportedNumber(value: number) {
+  return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 0 }).format(value);
+}
+
 function isInvalidImportedRawValue(value: string | null | undefined) {
   const rawValue = value?.trim();
   return Boolean(rawValue && /^#(?:DIV\/0!|N\/A|VALUE!|REF!|NUM!)/i.test(rawValue));
@@ -650,6 +730,52 @@ function formatImportedMetricValue(metric: ImportedMetric | ImportedYearlyMetric
   if (metric.unit && metric.unit !== "count") return `${formattedValue} ${metric.unit}`;
 
   return formattedValue;
+}
+
+function formatRoundedPercentMetricValue(metric: ImportedMetric | ImportedYearlyMetric | null | undefined) {
+  if (!metric || isInvalidImportedRawValue(metric.rawValue)) return null;
+  const normalizedRaw = metric.rawValue
+    ? metric.rawValue.replace(/[₪$%]/g, "").trim()
+    : null;
+  const rawNumber =
+    normalizedRaw
+      ? Number(normalizedRaw.includes(".") ? normalizedRaw.replace(/,/g, "") : normalizedRaw.replace(",", "."))
+      : null;
+  const value = typeof metric.value === "number" && Number.isFinite(metric.value) ? metric.value : rawNumber;
+
+  return typeof value === "number" && Number.isFinite(value) ? `${formatWholeImportedNumber(value)}%` : null;
+}
+
+function durationYearsFromText(value: string | number | null | undefined, unit?: string | null) {
+  if (value === null || value === undefined) return null;
+
+  const text = String(value).trim();
+  if (!text) return null;
+
+  const numberMatches = text.match(/\d+(?:[.,]\d+)?/g) ?? [];
+  const values = numberMatches
+    .map((item) => Number(item.replace(",", ".")))
+    .filter((item) => Number.isFinite(item));
+  if (values.length === 0) return null;
+
+  const shouldConvertFromMonths =
+    unit === "months" || /חודש/.test(text) || values.some((item) => item > 12 && item <= 180);
+  const years = values.map((item) => (shouldConvertFromMonths ? item / 12 : item));
+
+  return years.reduce((sum, item) => sum + item, 0) / years.length;
+}
+
+function durationYearsFromMetric(metric: ImportedMetric | ImportedYearlyMetric | null | undefined) {
+  if (!metric || isInvalidImportedRawValue(metric.rawValue)) return null;
+
+  return durationYearsFromText(
+    metric.rawValue ?? (typeof metric.value === "number" ? metric.value : null),
+    metric.unit
+  );
+}
+
+function formatYearsNumber(value: number) {
+  return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 1 }).format(value);
 }
 
 function formatDurationMetricInYears(metric: ImportedMetric | ImportedYearlyMetric | null | undefined) {
@@ -768,7 +894,7 @@ function highlightedCardClass(metadata: MetricDisplayMetadata | null | undefined
 const readableMetricLabels: Record<string, string> = {
   officialResidencyDuration: "משך התמחות רשמי",
   actualAverageDuration: "משך ממוצע בפועל",
-  medianWaitingTime: "זמן המתנה חציוני לתקן",
+  medianWaitingTime: "זמן המתנה חציוני למשרה",
   residentsCount: "מספר מתמחים",
   activeResidentsCount: "מספר מתמחים",
   boardStageAPassRate: "מעבר שלב א׳",
@@ -777,7 +903,7 @@ const readableMetricLabels: Record<string, string> = {
   departmentalPublicationsCount: "מספר פרסומים מחלקתי",
   boardStageBPassRate: "מעבר שלב ב׳",
   inherited_boardStageBPassRate: "מעבר שלב ב׳",
-  expectedOpenings2026: "צפי תקנים חדשים ב-2026",
+  expectedOpenings2026: "צפי משרות חדשות ב-2026",
   medianElectiveDemand: "מספר אלקטיביסטים חציוני",
   seniorPhysiciansCount: "מספר בכירים",
   duns100PhysiciansCount: "רופאים ב-DUNS100",
@@ -945,7 +1071,7 @@ function departmentLockCopy(session: Awaited<ReturnType<typeof getSession>>) {
     return {
       title: "העמוד המלא פתוח למשתמשים מאומתים",
       description:
-        "כדי לצפות בנתוני המחלקה, ביקורות, תקנים ופרטי קשר יש להתחבר או לפתוח חשבון עם אימות סטטוס מקצועי.",
+        "כדי לצפות בנתוני המחלקה, ביקורות, משרות ופרטי קשר יש להתחבר או לפתוח חשבון עם אימות סטטוס מקצועי.",
       ctaHref: "/login",
       ctaLabel: "התחברות"
     };
@@ -1152,23 +1278,27 @@ export default async function DepartmentDetailsPage({
   const specialtyBoardStageA = findImportedMetric(importedSpecialtyMetrics, "מעבר_שלב_א", "boardStageAPassRate");
   const boardStageA =
     department.shlavAlephPassRate !== null && department.shlavAlephPassRate !== undefined
-      ? { value: `${department.shlavAlephPassRate}%`, sourceLabel: "משרד הבריאות", metricType: "נתון מחלקתי" }
+      ? {
+          value: `${formatWholeImportedNumber(department.shlavAlephPassRate)}%`,
+          sourceLabel: "משרד הבריאות",
+          metricType: "נתון מחלקתי"
+        }
       : importedBoardStageA
         ? {
-            value: formatImportedMetricValue(importedBoardStageA),
+            value: formatRoundedPercentMetricValue(importedBoardStageA),
             sourceLabel: importedSourceLabel(importedBoardStageA, "משרד הבריאות"),
             metricType: importedBoardStageA.metricKey.startsWith("inherited_") ? "נתון ארצי לתחום" : "נתון מחלקתי",
             lastUpdated: importedBoardStageA.lastUpdated
           }
       : boardStageAMetric
         ? {
-            value: `${boardStageAMetric.value}%`,
+            value: `${formatWholeImportedNumber(boardStageAMetric.value)}%`,
             sourceLabel: sourceLabelFromExternalMetricSource(boardStageAMetric.sourceName),
             metricType: "נתון מחלקתי"
           }
         : specialtyBoardStageA
           ? {
-              value: formatImportedMetricValue(specialtyBoardStageA),
+              value: formatRoundedPercentMetricValue(specialtyBoardStageA),
               sourceLabel: importedSourceLabel(specialtyBoardStageA, "משרד הבריאות"),
               metricType: "נתון ארצי לתחום",
               lastUpdated: specialtyBoardStageA.lastUpdated
@@ -1184,23 +1314,27 @@ export default async function DepartmentDetailsPage({
   const specialtyBoardStageB = findImportedMetric(importedSpecialtyMetrics, "מעבר_שלב_ב", "boardStageBPassRate");
   const boardStageB =
     department.shlavBetPassRate !== null && department.shlavBetPassRate !== undefined
-      ? { value: `${department.shlavBetPassRate}%`, sourceLabel: "משרד הבריאות", metricType: "נתון מחלקתי" }
+      ? {
+          value: `${formatWholeImportedNumber(department.shlavBetPassRate)}%`,
+          sourceLabel: "משרד הבריאות",
+          metricType: "נתון מחלקתי"
+        }
       : importedBoardStageB
         ? {
-            value: formatImportedMetricValue(importedBoardStageB),
+            value: formatRoundedPercentMetricValue(importedBoardStageB),
             sourceLabel: importedSourceLabel(importedBoardStageB, "משרד הבריאות"),
             metricType: importedBoardStageB.metricKey.startsWith("inherited_") ? "נתון ארצי לתחום" : "נתון מחלקתי",
             lastUpdated: importedBoardStageB.lastUpdated
           }
       : boardStageBMetric
         ? {
-            value: `${boardStageBMetric.value}%`,
+            value: `${formatWholeImportedNumber(boardStageBMetric.value)}%`,
             sourceLabel: sourceLabelFromExternalMetricSource(boardStageBMetric.sourceName),
             metricType: "נתון מחלקתי"
           }
         : specialtyBoardStageB
           ? {
-              value: formatImportedMetricValue(specialtyBoardStageB),
+              value: formatRoundedPercentMetricValue(specialtyBoardStageB),
               sourceLabel: importedSourceLabel(specialtyBoardStageB, "משרד הבריאות"),
               metricType: "נתון ארצי לתחום",
               lastUpdated: specialtyBoardStageB.lastUpdated
@@ -1260,6 +1394,15 @@ export default async function DepartmentDetailsPage({
     "actualAverageDuration",
     "medianResidencyDurationMonths"
   );
+  const specialtyActualDurationMetric = findImportedMetric(
+    importedSpecialtyMetrics,
+    "משך_ממוצע_בפועל",
+    "actualAverageDuration",
+    "medianResidencyDurationMonths"
+  );
+  const departmentActualDurationYears =
+    durationYearsFromMetric(actualDurationMetric) ?? durationYearsFromText(medianDuration?.value);
+  const nationalActualDurationYears = durationYearsFromMetric(specialtyActualDurationMetric);
   const medianWaitingMetric = findImportedMetric(
     importedDepartmentMetrics,
     "זמן_המתנה_חציוני_לתקן",
@@ -1449,10 +1592,10 @@ export default async function DepartmentDetailsPage({
     },
     {
       id: "residency-median-waiting-time",
-      label: "זמן המתנה חציוני לתקן (חודשים)",
+      label: "זמן המתנה חציוני למשרה (חודשים)",
       value: medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null,
       sourceLabel: metadataSourceLabel(medianWaitingMeta, importedSourceLabel(medianWaitingMetric, "משרד הבריאות")),
-      tooltip: metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא."),
+      tooltip: metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני למשרה לפי נתון מחלקתי מיובא."),
       lastUpdated: medianWaitingMetric?.lastUpdated,
       sourceUrl: medianWaitingMeta?.sourceUrl,
       displayAction: metadataDisplayAction(medianWaitingMeta),
@@ -1523,7 +1666,7 @@ export default async function DepartmentDetailsPage({
                 <Badge tone="default">{profileTerm}</Badge>
                 <Badge tone="default">{region}</Badge>
                 <Badge tone={department.residencyOpenings.length > 0 ? "success" : "warning"}>
-                  {department.residencyOpenings.length > 0 ? "תקנים פתוחים" : "אין תקנים כרגע"}
+                  {department.residencyOpenings.length > 0 ? "משרות פתוחות" : "אין משרות כרגע"}
                 </Badge>
               </div>
               <h1 className="mt-3 break-words text-3xl font-bold leading-tight text-ink md:text-4xl">
@@ -1626,19 +1769,19 @@ export default async function DepartmentDetailsPage({
             <div className="mt-4 space-y-3">
               {hasMultipleDepartmentsInHospitalSpecialty ? (
                 <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold leading-7 text-amber-950">
-                  חלק מהנתונים בעמוד זה מוצגים ברמת כלל המערך ולא ברמת המחלקה הספציפית.
+                  חלק מהנתונים בעמוד זה מוצגים ברמת כלל המערך בבית החולים ולא ברמת המחלקה הספציפית.
                 </div>
               ) : null}
 
               <div className="grid gap-2 md:grid-cols-3">
                 <DataMetricCard {...workforceMetrics[0]} />
                 <DataMetricCard
-                  label={metricLabelFromMetadata(expectedOpeningsMeta, "מספר תקנים צפויים להתפנות")}
+                  label={metricLabelFromMetadata(expectedOpeningsMeta, "מספר משרות צפויות להתפנות")}
                   value={expectedOpeningsValue}
                   sourceLabel={metadataSourceLabel(expectedOpeningsMeta, expectedOpeningsSourceLabel)}
                   tooltip={metadataTooltip(
                     expectedOpeningsMeta,
-                    "צפי תקנים המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
+                    "צפי משרות המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
                   )}
                   sourceUrl={expectedOpeningsMeta?.sourceUrl}
                   displayAction={metadataDisplayAction(expectedOpeningsMeta)}
@@ -1649,10 +1792,10 @@ export default async function DepartmentDetailsPage({
 
               <div className="grid gap-2 lg:grid-cols-3">
                 <ClockMetricCard
-                  label="זמן המתנה חציוני לתקן (חודשים)"
+                  label="זמן המתנה חציוני למשרה (חודשים)"
                   value={medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null}
                   sourceLabel={metadataSourceLabel(medianWaitingMeta, importedSourceLabel(medianWaitingMetric, "משרד הבריאות"))}
-                  tooltip={metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני לתקן לפי נתון מחלקתי מיובא.")}
+                  tooltip={metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני למשרה לפי נתון מחלקתי מיובא.")}
                   lastUpdated={medianWaitingMetric?.lastUpdated}
                   sourceUrl={medianWaitingMeta?.sourceUrl}
                   displayAction={metadataDisplayAction(medianWaitingMeta)}
@@ -1690,7 +1833,15 @@ export default async function DepartmentDetailsPage({
                   displayAction={metadataDisplayAction(genderMeta)}
                 />
                 <DataMetricCard {...trainingMetrics[0]} />
-                <DataMetricCard {...trainingMetrics[1]} />
+                <DurationBenchmarkCard
+                  departmentYears={departmentActualDurationYears}
+                  nationalYears={nationalActualDurationYears}
+                  sourceLabel={metadataSourceLabel(actualDurationMeta, importedSourceLabel(actualDurationMetric ?? specialtyActualDurationMetric, "משרד הבריאות"))}
+                  tooltip={metadataTooltip(actualDurationMeta, "משך התמחות מחלקתי בהשוואה לממוצע הארצי בתחום.")}
+                  lastUpdated={actualDurationMetric?.lastUpdated ?? specialtyActualDurationMetric?.lastUpdated}
+                  sourceUrl={actualDurationMeta?.sourceUrl}
+                  displayAction={metadataDisplayAction(actualDurationMeta)}
+                />
               </div>
 
               <YearlyResidentsChart

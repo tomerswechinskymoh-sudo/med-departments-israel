@@ -105,7 +105,7 @@ export default async function RepresentativePage() {
       <SectionHeading
         eyebrow="אזור נציגי מחלקה"
         title="ניהול תוכן רשמי למחלקות המשויכות"
-        description="כאן מגישים שינויים לעמודי מחלקה ולתקנים פתוחים. שום דבר לא עולה לציבור לפני אישור אדמין."
+        description="כאן מגישים שינויים לעמודי מחלקה ולמשרות פתוחות. שום דבר לא עולה לציבור לפני אישור אדמין."
       />
 
       <Card>
@@ -152,7 +152,7 @@ export default async function RepresentativePage() {
                       href={`/representative/openings/new?departmentId=${assignment.id}`}
                       className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-brand-900"
                     >
-                      תקן פתוח חדש
+                      משרה פתוחה חדשה
                     </Link>
                     <Link
                       href={getDepartmentHref(assignment)}
@@ -196,20 +196,20 @@ export default async function RepresentativePage() {
                   <Card>
                     <div className="flex items-center justify-between gap-4">
                       <SectionHeading
-                        title="תקנים פתוחים"
+                        title="משרות פתוחות"
                         description="רק המחלקות המשויכות לחשבון הזה זמינות לפרסום ולעדכון."
                       />
                       <Link
                         href={`/representative/openings/new?departmentId=${assignment.id}`}
                         className="rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-800"
                       >
-                        תקן פתוח חדש
+                        משרה פתוחה חדשה
                       </Link>
                     </div>
 
                     <div className="mt-5 space-y-4">
                       {assignment.residencyOpenings.length === 0 ? (
-                        <p className="text-sm text-slate-600">עדיין לא נוצרו תקנים פתוחים למחלקה הזו.</p>
+                        <p className="text-sm text-slate-600">עדיין לא נוצרו משרות פתוחות למחלקה הזו.</p>
                       ) : (
                         assignment.residencyOpenings.map((opening) => {
                           const status = openingStatusLabel(opening.status);
@@ -260,7 +260,7 @@ export default async function RepresentativePage() {
                                   href={`/representative/openings/${pendingRevisionId ?? opening.id}`}
                                   className="rounded-full bg-brand-700 px-4 py-2 text-sm font-semibold text-white"
                                 >
-                                  ניהול תקן פתוח
+                                  ניהול משרה פתוחה
                                 </Link>
                                 {opening.contentStatus === ContentStatus.PUBLISHED ? (
                                   <Link

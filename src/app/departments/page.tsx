@@ -177,7 +177,7 @@ export default async function DepartmentsPage({
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
                   <p className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                    סידור: {parsedFilters.sort === "rating" ? "דירוג" : parsedFilters.sort === "reviews" ? "ביקורות" : parsedFilters.sort === "openings" ? "תקנים" : parsedFilters.sort === "research" ? "מחקר" : "מומלץ"}
+                    סידור: {parsedFilters.sort === "rating" ? "דירוג" : parsedFilters.sort === "reviews" ? "ביקורות" : parsedFilters.sort === "openings" ? "משרות" : parsedFilters.sort === "research" ? "מחקר" : "מומלץ"}
                   </p>
                   <ExperienceCta
                     departments={reviewDepartments}

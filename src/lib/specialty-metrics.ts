@@ -201,6 +201,10 @@ function formatNumber(value: number) {
   return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 1 }).format(value);
 }
 
+function formatWholeNumber(value: number) {
+  return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 0 }).format(value);
+}
+
 function formatNumberWithUnit(value: number, unit?: string | null) {
   const formatted = formatNumber(value);
 
@@ -231,15 +235,41 @@ function formatMetricValue(metric: SpecialtyImportedMetric | SpecialtyImportedYe
   return formatNumberWithUnit(metric.value, metric.unit);
 }
 
-function formatSalaryMetricValue(metric: SpecialtyImportedMetric | null | undefined) {
+function formatRoundedPercentMetricValue(metric: SpecialtyImportedMetric | null | undefined) {
   if (!metric) return null;
-  if (metric.rawValue?.trim()) return metric.rawValue.trim();
-  if (typeof metric.value !== "number" || !Number.isFinite(metric.value)) return null;
+  const normalizedRaw = metric.rawValue
+    ? metric.rawValue.replace(/[₪$%]/g, "").trim()
+    : null;
+  const numericValue =
+    typeof metric.value === "number" && Number.isFinite(metric.value)
+      ? metric.value
+      : normalizedRaw
+        ? Number(normalizedRaw.includes(".") ? normalizedRaw.replace(/,/g, "") : normalizedRaw.replace(",", "."))
+        : null;
+
+  return typeof numericValue === "number" && Number.isFinite(numericValue)
+    ? `${formatWholeNumber(numericValue)}%`
+    : formatMetricValue(metric);
+}
+
+function formatSalaryMetricValue(
+  metric: SpecialtyImportedMetric | null | undefined,
+  options: { maximumFractionDigits?: number } = {}
+) {
+  if (!metric) return null;
+  const numericValue =
+    typeof metric.value === "number" && Number.isFinite(metric.value)
+      ? metric.value
+      : metric.rawValue
+        ? Number(metric.rawValue.replace(/[,₪$%]/g, "").trim())
+        : null;
+  if (typeof numericValue !== "number" || !Number.isFinite(numericValue)) {
+    return metric.rawValue?.trim() ?? null;
+  }
 
   return new Intl.NumberFormat("he-IL", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  }).format(metric.value);
+    maximumFractionDigits: options.maximumFractionDigits ?? 2
+  }).format(numericValue);
 }
 
 function sourceLabelFromNotes(sourceNotes?: string | null) {
@@ -524,7 +554,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   },
   {
     key: "medianWaitingTime",
-    label: "זמן המתנה חציוני לתקן",
+    label: "זמן המתנה חציוני למשרה",
     description: "הזמן החציוני מקבלת רישיון ועד לתחילת התמחות בכלל הארץ",
     unit: "months",
     sourceLabel: "משרד הבריאות",
@@ -577,7 +607,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     calculate: (departments, context) => {
       const specialtyBoardMetric = contextMetric(context, "מעבר_שלב_א", "boardStageAPassRate");
       if (specialtyBoardMetric) {
-        const displayValue = formatMetricValue(specialtyBoardMetric);
+        const displayValue = formatRoundedPercentMetricValue(specialtyBoardMetric);
         return displayValue
           ? {
               value: displayValue,
@@ -590,7 +620,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
         averageMetric(departments, "boardStageAPassRate") ??
         averageMetric(departments, "inherited_boardStageAPassRate") ??
         average(departments.map((department) => department.shlavAlephPassRate));
-      return value !== null ? `${formatNumber(value)}%` : null;
+      return value !== null ? `${formatWholeNumber(value)}%` : null;
     }
   },
   {
@@ -602,7 +632,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     calculate: (departments, context) => {
       const specialtyBoardMetric = contextMetric(context, "מעבר_שלב_ב", "boardStageBPassRate");
       if (specialtyBoardMetric) {
-        const displayValue = formatMetricValue(specialtyBoardMetric);
+        const displayValue = formatRoundedPercentMetricValue(specialtyBoardMetric);
         return displayValue
           ? {
               value: displayValue,
@@ -615,7 +645,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
         averageMetric(departments, "boardStageBPassRate") ??
         averageMetric(departments, "inherited_boardStageBPassRate") ??
         average(departments.map((department) => department.shlavBetPassRate));
-      return value !== null ? `${formatNumber(value)}%` : null;
+      return value !== null ? `${formatWholeNumber(value)}%` : null;
     }
   },
   {
@@ -661,14 +691,14 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
         logMissing: true
       });
       const displayGap =
-        formatSalaryMetricValue(gapMetric) ??
+        formatSalaryMetricValue(gapMetric, { maximumFractionDigits: 0 }) ??
         (typeof centerMetric?.value === "number" && typeof peripheryMetric?.value === "number"
           ? formatSalaryMetricValue({
               metricKey: "פער_שכר_פריפריה",
               value: peripheryMetric.value - centerMetric.value,
               rawValue: null,
               unit: "currency"
-            })
+            }, { maximumFractionDigits: 0 })
           : null);
 
       if (!displayGap) {
@@ -753,8 +783,8 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   },
   {
     key: "expectedOpenings",
-    label: "צפי תקנים",
-    description: "צפי תקנים חדשים לפי נתוני ייבוא זמינים",
+    label: "צפי משרות",
+    description: "צפי משרות חדשות לפי נתוני ייבוא זמינים",
     unit: "count",
     sourceLabel: "משרד הבריאות",
     calculate: (departments, context) => {
@@ -869,8 +899,8 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   },
   {
     key: "applicationsPerPosition",
-    label: "מועמדויות לכל תקן",
-    description: "יוצג כשנתוני תקנים ומועמדויות יהיו זמינים לציבור",
+    label: "מועמדויות לכל משרה",
+    description: "יוצג כשנתוני משרות ומועמדויות יהיו זמינים לציבור",
     unit: "ratio",
     sourceLabel: "נתוני האתר",
     calculate: () => null

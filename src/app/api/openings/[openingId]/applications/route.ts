@@ -23,7 +23,7 @@ export async function POST(
 
   if (!session) {
     return NextResponse.json(
-      { error: "צריך להתחבר כדי לשלוח מועמדות פרטית לתקן פתוח." },
+      { error: "צריך להתחבר כדי לשלוח מועמדות פרטית למשרה פתוחה." },
       { status: 401 }
     );
   }
@@ -40,11 +40,11 @@ export async function POST(
   });
 
   if (!opening) {
-    return NextResponse.json({ error: "התקן הפתוח לא זמין להגשה כרגע." }, { status: 404 });
+    return NextResponse.json({ error: "המשרה הפתוחה לא זמינה להגשה כרגע." }, { status: 404 });
   }
 
   if (opening.applicationDeadline && new Date(opening.applicationDeadline) < new Date()) {
-    return NextResponse.json({ error: "מועד ההגשה לתקן הזה הסתיים." }, { status: 400 });
+    return NextResponse.json({ error: "מועד ההגשה למשרה הזו הסתיים." }, { status: 400 });
   }
 
   const formData = await request.formData();

@@ -524,7 +524,7 @@ export const openingAcceptanceCriteriaSchema = z.object({
 
 export const openingEditorSchema = z.object({
   departmentId: z.string().min(1, "יש לבחור מחלקה."),
-  title: z.string().min(3, "יש להזין כותרת לתקן הפתוח."),
+  title: z.string().min(3, "יש להזין כותרת למשרה הפתוחה."),
   summary: z.string().min(20, "יש להזין תקציר."),
   openingType: z.enum(openingTypeValues),
   isImmediate: z.boolean().default(false),

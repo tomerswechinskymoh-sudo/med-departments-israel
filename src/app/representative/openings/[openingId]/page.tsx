@@ -36,7 +36,7 @@ export default async function RepresentativeOpeningPage({
       <Card className="bg-brand-900 text-white">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold text-brand-100">ניהול תקן פתוח</p>
+            <p className="text-sm font-semibold text-brand-100">ניהול משרה פתוחה</p>
             <h1 className="mt-2 text-3xl font-bold">{opening.title}</h1>
             <p className="mt-3 text-sm text-brand-50">
               {opening.department.institution.name} · {opening.department.name}
@@ -64,8 +64,8 @@ export default async function RepresentativeOpeningPage({
       <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
         <Card>
           <SectionHeading
-            title="עריכת פרטי התקן"
-            description="כל שינוי כאן נשמר קודם לאישור אדמין. אם כבר קיים תקן ציבורי, הציבור ימשיך לראות את הגרסה המאושרת עד לאישור העדכון."
+            title="עריכת פרטי המשרה"
+            description="כל שינוי כאן נשמר קודם לאישור אדמין. אם כבר קיימת משרה ציבורית, הציבור ימשיך לראות את הגרסה המאושרת עד לאישור העדכון."
           />
           <div className="mt-6">
             <OpeningEditorForm
@@ -125,7 +125,7 @@ export default async function RepresentativeOpeningPage({
             />
             <div className="mt-4 flex flex-wrap gap-3">
               {opening.attachments.length === 0 ? (
-                <p className="text-sm text-slate-600">עדיין לא צורפו קבצים לתקן הזה.</p>
+                <p className="text-sm text-slate-600">עדיין לא צורפו קבצים למשרה הזו.</p>
               ) : (
                 opening.attachments.map((file) => (
                   <Link
@@ -143,7 +143,7 @@ export default async function RepresentativeOpeningPage({
           <Card>
             <SectionHeading
               title="אוטומציה אחרי הדדליין"
-              description="כשהדדליין עובר, המערכת מדרגת את המועמדויות ושולחת לבעל/ת התקן רק את ההתאמות החזקות ביותר."
+              description="כשהדדליין עובר, המערכת מדרגת את המועמדויות ושולחת לבעל/ת המשרה רק את ההתאמות החזקות ביותר."
             />
             <div className="mt-4 space-y-3 text-sm leading-7 text-slate-700">
               <p>
@@ -171,7 +171,7 @@ export default async function RepresentativeOpeningPage({
             />
             <div className="mt-4 space-y-4">
               {opening.applications.length === 0 ? (
-                <p className="text-sm text-slate-600">עדיין לא הוגשו מועמדויות לתקן הזה.</p>
+                <p className="text-sm text-slate-600">עדיין לא הוגשו מועמדויות למשרה הזו.</p>
               ) : (
                 opening.applications.map((application) => (
                   <div id={`application-${application.id}`} key={application.id} className="rounded-2xl bg-brand-50 p-4">

@@ -115,8 +115,18 @@ export function normalizeCriterion(value: string) {
     .toLocaleLowerCase("he");
 }
 
-export function readableLabelFromCriterion(value: string) {
+export function terminologyForDisplay(value: string) {
   return value
+    .replace(/לתקן/g, "למשרה")
+    .replace(/בתקן/g, "במשרה")
+    .replace(/התקנים/g, "המשרות")
+    .replace(/התקן/g, "המשרה")
+    .replace(/תקנים/g, "משרות")
+    .replace(/תקן/g, "משרה");
+}
+
+export function readableLabelFromCriterion(value: string) {
+  return terminologyForDisplay(value)
     .replace(/\s*\((?:שנים|חודשים)\)\s*/g, "")
     .replace(/_/g, " ")
     .replace(/\s+1$/g, "")
@@ -249,7 +259,7 @@ export function metadataTooltip(
   metadata: MetricDisplayMetadata | null | undefined,
   fallback: string
 ) {
-  return metadata?.explanation?.trim() || fallback;
+  return terminologyForDisplay(metadata?.explanation?.trim() || fallback);
 }
 
 export function metadataDisplayAction(metadata: MetricDisplayMetadata | null | undefined) {

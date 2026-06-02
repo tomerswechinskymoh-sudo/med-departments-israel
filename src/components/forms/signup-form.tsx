@@ -246,7 +246,7 @@ export function SignupForm() {
         <span>
           <span className="block font-semibold text-ink">אני מאשר/ת קבלת עדכונים במייל</span>
           <span className="mt-1 block text-xs leading-5 text-slate-600">
-            אני מאשר/ת לאתר לאסוף את פרטיי ולשלוח אליי עדכונים, חידושים, תקנים חדשים, הודעות מערכת ותוכן שיווקי.
+            אני מאשר/ת לאתר לאסוף את פרטיי ולשלוח אליי עדכונים, חידושים, משרות חדשות, הודעות מערכת ותוכן שיווקי.
           </span>
         </span>
       </label>

@@ -9,7 +9,7 @@ function parseOpeningPayload(payload: OpeningDraftInput) {
   const parsed = openingEditorSchema.safeParse(payload);
 
   if (!parsed.success) {
-    throw new Error(parsed.error.issues[0]?.message ?? "פרטי התקן הפתוח אינם תקינים.");
+    throw new Error(parsed.error.issues[0]?.message ?? "פרטי המשרה הפתוחה אינם תקינים.");
   }
 
   return parsed.data;
@@ -53,7 +53,7 @@ export async function submitOpeningForReview(
   const acceptanceCriteriaData = toAcceptanceCriteriaData(parsed);
 
   let targetOpeningId = input.openingId;
-  let message = "התקן הפתוח נשלח לאישור אדמין.";
+  let message = "המשרה הפתוחה נשלחה לאישור אדמין.";
 
   if (!input.openingId) {
     const created = await tx.residencyOpening.create({
@@ -79,7 +79,7 @@ export async function submitOpeningForReview(
     });
 
     if (!currentOpening) {
-      throw new Error("התקן הפתוח לא נמצא.");
+      throw new Error("המשרה הפתוחה לא נמצאה.");
     }
 
     if (
@@ -94,7 +94,7 @@ export async function submitOpeningForReview(
       currentOpening.contentStatus === ContentStatus.PUBLISHED &&
       currentOpening.departmentId !== parsed.departmentId
     ) {
-      throw new Error("כדי לשייך תקן למחלקה אחרת צריך ליצור תקן פתוח חדש.");
+      throw new Error("כדי לשייך משרה למחלקה אחרת צריך ליצור משרה פתוחה חדשה.");
     }
 
     if (currentOpening.contentStatus === ContentStatus.PENDING_REVIEW) {
@@ -119,7 +119,7 @@ export async function submitOpeningForReview(
       targetOpeningId = updated.id;
       message = currentOpening.supersedesOpeningId
         ? "טיוטת העדכון נשמרה וממשיכה להמתין לאישור אדמין."
-        : "התקן הפתוח נשמר וממשיך להמתין לאישור אדמין.";
+        : "המשרה הפתוחה נשמרה וממשיכה להמתין לאישור אדמין.";
     } else {
       const existingRevision = await tx.residencyOpening.findFirst({
         where: {
@@ -171,7 +171,7 @@ export async function submitOpeningForReview(
         targetOpeningId = createdRevision.id;
       }
 
-      message = "העדכון לתקן הפתוח נשלח לאישור אדמין.";
+      message = "העדכון למשרה הפתוחה נשלח לאישור אדמין.";
     }
   }
 
@@ -215,7 +215,7 @@ export async function reviewPendingOpening(
   });
 
   if (!pendingOpening || pendingOpening.contentStatus !== ContentStatus.PENDING_REVIEW) {
-    throw new Error("התקן הפתוח הזה לא ממתין כרגע לאישור.");
+    throw new Error("המשרה הפתוחה הזו לא ממתינה כרגע לאישור.");
   }
 
   if (input.decision === "REJECT") {
@@ -361,7 +361,7 @@ export async function reviewPendingOpening(
 
     return {
       openingId: published.id,
-      message: "העדכון אושר והוחל על התקן הפתוח."
+      message: "העדכון אושר והוחל על המשרה הפתוחה."
     };
   }
 
@@ -380,6 +380,6 @@ export async function reviewPendingOpening(
 
   return {
     openingId: approved.id,
-    message: "התקן הפתוח אושר ועלה לציבור."
+    message: "המשרה הפתוחה אושרה ועלתה לציבור."
   };
 }

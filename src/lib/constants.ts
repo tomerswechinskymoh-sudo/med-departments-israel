@@ -46,7 +46,7 @@ export const OPENING_ACCEPTANCE_CRITERIA_LABELS = [
 ] as const;
 
 export const OPENING_TYPE_LABELS = {
-  RESIDENCY: "תקן התמחות",
+  RESIDENCY: "משרת התמחות",
   FELLOWSHIP: "פלו / מסלול המשך",
   ACADEMIC_TRACK: "מסלול משולב מחקר / אקדמיה",
   COMMUNITY_TRACK: "מסלול קהילה",

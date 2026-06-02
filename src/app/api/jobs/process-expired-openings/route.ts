@@ -38,7 +38,7 @@ export async function POST(request: Request) {
   const result = await processExpiredOpenings();
 
   return NextResponse.json({
-    message: "עיבוד תקנים פתוחים שעברו את הדדליין הושלם.",
+    message: "עיבוד משרות פתוחות שעברו את הדדליין הושלם.",
     ...result
   });
 }

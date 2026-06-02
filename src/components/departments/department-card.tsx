@@ -183,14 +183,14 @@ export function DepartmentCard({
           ) : (
             <>
               <div className="flex flex-wrap items-center gap-2">
-                {department.hasOpenResidency ? <Badge tone="success">תקנים פתוחים</Badge> : null}
+                {department.hasOpenResidency ? <Badge tone="success">משרות פתוחות</Badge> : null}
                 {department.hasUpcomingCommittee ? (
                   <Badge tone="default">ועדה מתוכננת</Badge>
                 ) : null}
                 {department.hasResearch ? <Badge tone="success">מחקר פתוח</Badge> : null}
                 {department.region ? <Badge tone="default">{department.region}</Badge> : null}
                 {!department.hasOpenResidency ? (
-                  <Badge tone="warning">אין תקנים פתוחים כרגע</Badge>
+                  <Badge tone="warning">אין משרות פתוחות כרגע</Badge>
                 ) : null}
                 {!department.hasResearch ? <Badge tone="default">ללא מחקר פתוח</Badge> : null}
               </div>
@@ -239,7 +239,7 @@ export function DepartmentCard({
         <div className={`relative z-30 ${isRow ? "space-y-3 lg:border-r lg:border-slate-100 lg:pr-4" : "mt-6 space-y-4"}`}>
           {isRow ? (
             <div className="flex flex-wrap gap-2">
-              {department.hasOpenResidency ? <Badge tone="success">תקנים פתוחים</Badge> : null}
+              {department.hasOpenResidency ? <Badge tone="success">משרות פתוחות</Badge> : null}
               {department.hasUpcomingCommittee ? <Badge tone="default">ועדה מתוכננת</Badge> : null}
               {department.hasResearch ? (
                 <Badge tone="success">
@@ -292,7 +292,7 @@ export function DepartmentCard({
                 <p className="text-slate-500">שלב א׳</p>
                 <p className="mt-1 font-bold text-ink">
                   {typeof department.shlavAlephPassRate === "number"
-                    ? `${department.shlavAlephPassRate}%`
+                    ? `${Math.round(department.shlavAlephPassRate).toLocaleString("he-IL")}%`
                     : "אין נתונים"}
                 </p>
               </div>
