@@ -165,12 +165,10 @@ async function optionalImport<T>(specifier: string): Promise<T | null> {
   }
 }
 
-async function dynamicImport<T>(specifier: string): Promise<T> {
-  const importFn = new Function("specifier", "return import(specifier)") as (
-    specifier: string
-  ) => Promise<T>;
+async function importPlaywrightModule(): Promise<PlaywrightModule> {
+  const playwright = await import("playwright");
 
-  return importFn(specifier);
+  return playwright as unknown as PlaywrightModule;
 }
 
 function errorMessage(error: unknown) {
@@ -405,7 +403,7 @@ export async function loadPageWithPlaywright(
   let playwrightModule: PlaywrightModule;
 
   try {
-    playwrightModule = await dynamicImport<PlaywrightModule>("playwright");
+    playwrightModule = await importPlaywrightModule();
   } catch (error) {
     const kind = classifyPlaywrightError(error, "package_missing");
     throw new PlaywrightLoadError(
