@@ -166,6 +166,7 @@ async function optionalImport<T>(specifier: string): Promise<T | null> {
 }
 
 async function importPlaywrightModule(): Promise<PlaywrightModule> {
+  process.env.PLAYWRIGHT_BROWSERS_PATH ??= "0";
   const playwright = await import("playwright");
 
   return playwright as unknown as PlaywrightModule;

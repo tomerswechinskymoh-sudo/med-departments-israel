@@ -11,6 +11,9 @@ import {
 
 export const runtime = "nodejs";
 
+const LIVE_CRAWL_BROWSER_MISSING_MESSAGE =
+  "סריקה חיה לא זמינה בסביבת הפרודקשן כי Chromium לא מותקן.";
+
 const requestSchema = z.object({
   departmentUrl: z
     .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().url().optional()),
@@ -60,8 +63,15 @@ export async function POST(request: Request) {
   } catch (error) {
     const isCrawlerError = error instanceof ShebaEntCrawlerError;
     const stack = error instanceof Error ? error.stack : undefined;
+    const errorCode = isCrawlerError ? error.code : "unknown";
+    const errorMessage =
+      errorCode === "browser_missing"
+        ? LIVE_CRAWL_BROWSER_MISSING_MESSAGE
+        : error instanceof Error
+          ? error.message
+          : "סריקת אא״ג שיבא נכשלה.";
     console.error("[sheba-ent-fellowship-poc] crawl failed", {
-      code: isCrawlerError ? error.code : "unknown",
+      code: errorCode,
       message: error instanceof Error ? error.message : String(error),
       stack
     });
@@ -69,8 +79,9 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: false,
-        error: error instanceof Error ? error.message : "סריקת אא״ג שיבא נכשלה.",
-        errorCode: isCrawlerError ? error.code : "unknown",
+        error: errorMessage,
+        errorCode,
+        diagnosticMessage: error instanceof Error ? error.message : String(error),
         stack
       },
       { status: 500 }
