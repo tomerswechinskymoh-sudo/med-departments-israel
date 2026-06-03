@@ -40,6 +40,19 @@ type CrawlPayload = {
   physiciansProcessed?: number;
   results?: PhysicianResult[];
   warnings?: string[];
+  debug?: {
+    teamCardsFound: number;
+    physiciansFound: number;
+    seniorPhysiciansFound: number;
+    residentsFiltered: number;
+    nonPhysiciansFiltered: number;
+    profileUrlsFound: number;
+    firstEntries: Array<{
+      name: string | null;
+      title: string | null;
+      profileUrl: string | null;
+    }>;
+  };
 };
 
 function confidenceTone(confidence?: string) {
@@ -163,6 +176,49 @@ export function ShebaEntFellowshipPanel() {
             {payload.departmentUrl}
           </a>
         </p>
+      ) : null}
+
+      {payload?.debug ? (
+        <div className="mt-4 rounded-2xl border border-brand-100 bg-white p-4">
+          <div className="flex flex-wrap gap-2">
+            <Badge tone="default">כרטיסי צוות: {payload.debug.teamCardsFound}</Badge>
+            <Badge tone="default">רופאים שזוהו: {payload.debug.physiciansFound}</Badge>
+            <Badge tone="success">בכירים: {payload.debug.seniorPhysiciansFound}</Badge>
+            <Badge tone="warning">מתמחים שסוננו: {payload.debug.residentsFiltered}</Badge>
+            <Badge tone="warning">לא רופאים שסוננו: {payload.debug.nonPhysiciansFiltered}</Badge>
+            <Badge tone="default">קישורי פרופיל: {payload.debug.profileUrlsFound}</Badge>
+          </div>
+          {payload.debug.firstEntries.length ? (
+            <div className="mt-3 overflow-x-auto rounded-xl border border-slate-100">
+              <table className="min-w-[720px] w-full text-right text-xs">
+                <thead className="bg-slate-50 text-slate-500">
+                  <tr>
+                    <th className="px-3 py-2">name</th>
+                    <th className="px-3 py-2">title</th>
+                    <th className="px-3 py-2">profileUrl</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {payload.debug.firstEntries.map((entry, index) => (
+                    <tr key={`${entry.profileUrl ?? entry.name ?? "entry"}-${index}`} className="border-t border-slate-100">
+                      <td className="px-3 py-2 font-bold text-ink">{entry.name ?? "לא זוהה"}</td>
+                      <td className="px-3 py-2 text-slate-700">{entry.title ?? "לא זוהה"}</td>
+                      <td className="px-3 py-2" dir="ltr">
+                        {entry.profileUrl ? (
+                          <a href={entry.profileUrl} target="_blank" rel="noreferrer" className="text-brand-700 underline">
+                            {entry.profileUrl}
+                          </a>
+                        ) : (
+                          <span className="text-slate-500">אין</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : null}
+        </div>
       ) : null}
 
       {payload?.results?.length ? (

@@ -69,6 +69,59 @@ const candidates = shebaEntCrawlerInternals.extractPhysicianCandidates(
 assert.equal(candidates.length, 1);
 assert.equal(candidates[0]?.physicianName, "Dr. Senior ENT");
 
+const mockedShebaTeamHtml = `
+  <main>
+    <section class="team-section">
+      <h2>הצוות שלנו</h2>
+      <div class="team-grid">
+        <article class="team-card">
+          <h3>ד"ר עומרי פריד</h3>
+          <p>רופא בכיר, אף אוזן גרון</p>
+          <a href="/doctor/omri-fried/">לפרופיל</a>
+        </article>
+        <article class="team-card">
+          <h3>ד"ר עדית גבאי-נטלה</h3>
+          <p>מנהלת שירות</p>
+          <a href="/doctor/idit-gabay-netela/">לפרופיל</a>
+        </article>
+        <article class="team-card">
+          <h3>פרופ' ערן אלון</h3>
+          <p>מנהל מחלקה</p>
+          <a href="/doctor/eran-alon/">לפרופיל</a>
+        </article>
+        <article class="team-card">
+          <h3>ד"ר מתמחה לדוגמה</h3>
+          <p>מתמחה</p>
+          <a href="/doctor/resident-example/">לפרופיל</a>
+        </article>
+        <article class="team-card">
+          <h3>Dr. Fellow Example</h3>
+          <p>Fellow</p>
+          <a href="/doctor/fellow-example/">Profile</a>
+        </article>
+        <article class="team-card">
+          <h3>סוזן מולכו ניסוק</h3>
+          <p>קלינאית תקשורת</p>
+          <a href="/team/suzan-molcho/">לפרופיל</a>
+        </article>
+      </div>
+    </section>
+  </main>
+`;
+const shebaTeamReport = shebaEntCrawlerInternals.extractPhysicianCandidateReport(
+  mockedShebaTeamHtml,
+  "https://www.shebaonline.org/department/otolaryngology-head-and-neck-surgery/"
+);
+assert.equal(shebaTeamReport.debug.teamCardsFound, 6);
+assert.equal(shebaTeamReport.debug.seniorPhysiciansFound, 3);
+assert.equal(shebaTeamReport.debug.residentsFiltered, 2);
+assert.equal(shebaTeamReport.debug.nonPhysiciansFiltered, 1);
+assert.equal(shebaTeamReport.debug.profileUrlsFound, 3);
+assert.deepEqual(
+  shebaTeamReport.candidates.map((candidate) => candidate.physicianName),
+  ["ד\"ר עומרי פריד", "ד\"ר עדית גבאי-נטלה", "פרופ' ערן אלון"]
+);
+
 async function assertMissingFirecrawlKeyMessage() {
   const originalFirecrawlApiKey = process.env.FIRECRAWL_API_KEY;
   delete process.env.FIRECRAWL_API_KEY;

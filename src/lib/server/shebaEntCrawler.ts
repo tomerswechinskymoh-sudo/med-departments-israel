@@ -42,6 +42,22 @@ export type ShebaEntPhysicianResult = {
   reason: string;
 };
 
+export type ShebaEntCrawlerDebugEntry = {
+  name: string | null;
+  title: string | null;
+  profileUrl: string | null;
+};
+
+export type ShebaEntCrawlerDebug = {
+  teamCardsFound: number;
+  physiciansFound: number;
+  seniorPhysiciansFound: number;
+  residentsFiltered: number;
+  nonPhysiciansFiltered: number;
+  profileUrlsFound: number;
+  firstEntries: ShebaEntCrawlerDebugEntry[];
+};
+
 export type ShebaEntCrawlerResult = {
   ok: true;
   startUrl: string;
@@ -49,6 +65,7 @@ export type ShebaEntCrawlerResult = {
   physiciansProcessed: number;
   results: ShebaEntPhysicianResult[];
   warnings: string[];
+  debug?: ShebaEntCrawlerDebug;
 };
 
 type PhysicianCandidate = {
@@ -57,6 +74,11 @@ type PhysicianCandidate = {
   department: string | null;
   profileUrl: string | null;
   cardText: string;
+};
+
+type CandidateExtractionReport = {
+  candidates: PhysicianCandidate[];
+  debug: ShebaEntCrawlerDebug;
 };
 
 type LoadedShebaPage = {
@@ -90,13 +112,18 @@ const ALLOWED_HOSTS = new Set([
   "shebaonline.org",
   "www.shebaonline.org"
 ]);
-const SENIOR_ROLE_PATTERNS = [
+const SENIOR_PRIORITY_PATTERNS = [
+  /מנהל(?:ת)?\s+מערך/,
   /מנהל(?:ת)?\s+מחלקה/,
   /סגן(?:ית)?\s+מנהל(?:ת)?\s+מחלקה/,
+  /סגן(?:ית)?\s+מנהל(?:ת)?/,
   /מנהל(?:ת)?\s+יחידה/,
   /מנהל(?:ת)?\s+שירות/,
   /מרכז(?:ת)?\s+תחום/,
   /רופא(?:ה)?\s+בכיר(?:ה)?/,
+  /פרופ(?:'|׳|סור)?(?!יל)/,
+  /\bprof\.?\b/i,
+  /\bprofessor\b/i,
   /\bsenior physician\b/i,
   /\bchair(?:man|person)?\b/i,
   /\bdirector\b/i,
@@ -105,20 +132,49 @@ const SENIOR_ROLE_PATTERNS = [
   /\bconsultant\b/i,
   /\battending\b/i
 ];
-const IGNORE_ROLE_PATTERNS = [
-  /מתמחה/,
-  /סטאז/,
-  /אח(?:ות|ים)?/,
+const RESIDENT_FILTER_PATTERNS = [
+  /מתמחה(?:\/ית)?/,
+  /סטאז(?:'|׳)?ר(?:ית)?/,
+  /\bresident\b/i,
+  /\bfellow\b/i,
+  /\bintern\b/i,
+  /\bstudent\b/i,
+  /סטודנט(?:ית)?/
+];
+const NON_PHYSICIAN_FILTER_PATTERNS = [
+  /(?:^|\s)אח(?:\s|$)/,
+  /אחות/,
+  /צוות\s+סיעודי/,
   /פרא-?רפואי/,
+  /קלינאי(?:ת)?\s+תקשורת/,
+  /עובד(?:ת)?\s+מחקר/,
   /מזכיר(?:ה|ות)?/,
   /מתאמ(?:ת|ות)/,
+  /צוות\s+מנהלי/,
   /מנהלה/,
-  /\bresident\b/i,
-  /\bintern\b/i,
   /\bnurse\b/i,
   /\bsecretary\b/i,
   /\bcoordinator\b/i,
   /\badministrative\b/i
+];
+const IGNORE_ROLE_PATTERNS = [...RESIDENT_FILTER_PATTERNS, ...NON_PHYSICIAN_FILTER_PATTERNS];
+const PHYSICIAN_CUE_PATTERNS = [
+  /ד["״']?ר/,
+  /\bdr\.?\b/i,
+  /פרופ(?:'|׳|סור)?(?!יל)/,
+  /\bprof\.?\b/i,
+  /\bprofessor\b/i,
+  /רופא(?:ה)?/,
+  /physician/i,
+  ...SENIOR_PRIORITY_PATTERNS
+];
+const TEAM_HEADING_PATTERNS = [
+  /הצוות\s+שלנו/,
+  /הצוות\s+הרפואי/,
+  /צוות\s+המחלקה/,
+  /\bour team\b/i,
+  /\bmedical team\b/i,
+  /\bmedical staff\b/i
 ];
 
 function isAllowedShebaUrl(value: string) {
@@ -199,6 +255,10 @@ function visibleTextFromHtml(html: string) {
     .join("\n");
 }
 
+function compactText(value: string) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
 function linkRows(html: string, baseUrl: string) {
   const $ = cheerio.load(html);
 
@@ -207,9 +267,15 @@ function linkRows(html: string, baseUrl: string) {
     .map((node) => {
       const element = $(node);
       return {
-        text: element.text().replace(/\s+/g, " ").trim(),
+        text: compactText(element.text()),
         href: absoluteUrl(element.attr("href"), baseUrl),
-        cardText: element.closest("article,li,.card,.doctor,.team,.staff,.elementor-column,.elementor-widget").text().replace(/\s+/g, " ").trim()
+        cardText: compactText(
+          element
+            .closest(
+              "article,li,.card,.doctor,.team,.staff,.person,.member,.elementor-column,.elementor-widget,.jet-listing-grid__item,[class*='card'],[class*='doctor'],[class*='team'],[class*='staff'],[class*='person'],[class*='member']"
+            )
+            .text()
+        )
       };
     })
     .filter((row): row is { text: string; href: string; cardText: string } => Boolean(row.href));
@@ -242,32 +308,53 @@ async function findDepartmentUrl(inputUrl: string | null | undefined, warnings: 
 
 function maybePhysicianName(text: string) {
   const lines = text.split(/\n| {2,}/).map((line) => line.trim()).filter(Boolean);
-  const direct = lines.find((line) => /^(?:Dr\.|Prof\.|Professor|ד"ר|ד״ר|פרופ)/i.test(line));
+  const direct = lines.find((line) => /^(?:Dr\.?|Prof\.?|Professor|ד"ר|ד״ר|פרופ)/i.test(line));
   const cleanName = (value: string) =>
     value
       .replace(/\b(?:Senior Physician|Chairman|Director|Deputy|Head|Resident|Nurse|Otolaryngology|Read More)\b.*$/i, "")
-      .replace(/\b(?:מנהל|סגן|רופא|מתמחה|אח|אחות|מחלקה|קרא עוד)\b.*$/, "")
+      .replace(/\b(?:מנהל|סגן|רופא|מתמחה|אח|אחות|מחלקה|קרא עוד|למידע נוסף)\b.*$/, "")
       .replace(/\s+/g, " ")
       .trim();
 
   if (direct) return cleanName(direct);
 
-  const match = text.match(/((?:Dr\.|Prof\.|Professor|ד"ר|ד״ר|פרופ)[^,\n|]{3,80})/i);
+  const match = text.match(/((?:Dr\.?|Prof\.?|Professor|ד"ר|ד״ר|פרופ(?:'|׳|סור)?(?!יל))[^,\n|]{3,80})/i);
   return match?.[1] ? cleanName(match[1]) : null;
 }
 
 function maybeRole(text: string) {
   const lines = text.split(/\n| {2,}/).map((line) => line.trim()).filter(Boolean);
-  const roleLine = lines.find((line) => [...SENIOR_ROLE_PATTERNS, ...IGNORE_ROLE_PATTERNS].some((pattern) => pattern.test(line)));
+  const roleLine = lines.find((line) =>
+    [...SENIOR_PRIORITY_PATTERNS, ...IGNORE_ROLE_PATTERNS].some((pattern) => pattern.test(line))
+  );
+  if (roleLine) return roleLine;
+  const directPattern = [...SENIOR_PRIORITY_PATTERNS, ...IGNORE_ROLE_PATTERNS].find((pattern) =>
+    pattern.test(text)
+  );
 
-  return roleLine ?? null;
+  return directPattern ? text.match(directPattern)?.[0] ?? null : null;
+}
+
+function candidateText(candidate: PhysicianCandidate) {
+  return `${candidate.physicianName ?? ""} ${candidate.role ?? ""} ${candidate.cardText}`;
+}
+
+function isPhysicianLikeCandidate(candidate: PhysicianCandidate) {
+  return PHYSICIAN_CUE_PATTERNS.some((pattern) => pattern.test(candidateText(candidate)));
+}
+
+function classifyCandidate(candidate: PhysicianCandidate): "senior" | "resident" | "nonPhysician" {
+  const text = `${candidate.role ?? ""} ${candidate.cardText}`;
+  if (RESIDENT_FILTER_PATTERNS.some((pattern) => pattern.test(text))) return "resident";
+  if (SENIOR_PRIORITY_PATTERNS.some((pattern) => pattern.test(text))) return "senior";
+  if (isPhysicianLikeCandidate(candidate)) return "senior";
+  if (NON_PHYSICIAN_FILTER_PATTERNS.some((pattern) => pattern.test(text))) return "nonPhysician";
+
+  return "nonPhysician";
 }
 
 function isSeniorPhysicianCandidate(candidate: PhysicianCandidate) {
-  const text = `${candidate.role ?? ""} ${candidate.cardText}`;
-  if (IGNORE_ROLE_PATTERNS.some((pattern) => pattern.test(text))) return false;
-
-  return SENIOR_ROLE_PATTERNS.some((pattern) => pattern.test(text));
+  return classifyCandidate(candidate) === "senior";
 }
 
 function dedupeCandidates(candidates: PhysicianCandidate[]) {
@@ -284,40 +371,215 @@ function dedupeCandidates(candidates: PhysicianCandidate[]) {
   return deduped;
 }
 
-function extractPhysicianCandidates(html: string, departmentUrl: string) {
+function teamScopeScore(text: string, linkCount: number) {
+  const physicianCueCount = PHYSICIAN_CUE_PATTERNS.reduce(
+    (count, pattern) => count + (pattern.test(text) ? 1 : 0),
+    0
+  );
+  const teamHeadingScore = TEAM_HEADING_PATTERNS.some((pattern) => pattern.test(text)) ? 20 : 0;
+
+  return teamHeadingScore + physicianCueCount * 10 + linkCount;
+}
+
+function extractTeamScopedHtml(html: string) {
   const $ = cheerio.load(html);
-  const candidates: PhysicianCandidate[] = [];
+  const headings = $("h1,h2,h3,h4,h5,h6,[role='heading']")
+    .toArray()
+    .filter((node) => TEAM_HEADING_PATTERNS.some((pattern) => pattern.test(compactText($(node).text()))));
+  const scopes: string[] = [];
 
-  for (const row of linkRows(html, departmentUrl)) {
-    const linkContext = `${row.text} ${row.href} ${row.cardText}`;
-    const isProfileLink = /\/doctor|\/doctors|physician|profile|read more|קרא עוד|למידע נוסף/i.test(linkContext);
-    const hasPhysicianCue = /Dr\.|Prof\.|Professor|ד"ר|ד״ר|פרופ|רופא|מנהל|Senior Physician|Chairman|Director/i.test(linkContext);
-    if (!isProfileLink && !hasPhysicianCue) continue;
+  for (const heading of headings) {
+    let current = $(heading);
+    let best = current;
+    let bestScore = 0;
 
-    candidates.push({
-      physicianName: maybePhysicianName(row.cardText || row.text),
-      role: maybeRole(row.cardText),
-      department: /אף אוזן גרון|אא"?ג/i.test(row.cardText) ? "אף אוזן גרון" : "Otolaryngology - Head and Neck Surgery",
-      profileUrl: row.href,
-      cardText: row.cardText || row.text
-    });
+    for (let depth = 0; depth < 7; depth += 1) {
+      const text = compactText(current.text());
+      const score = teamScopeScore(text, current.find("a[href]").length);
+      if (score >= bestScore && text.length < 50000) {
+        best = current;
+        bestScore = score;
+      }
+      const parent = current.parent();
+      if (!parent.length || parent.is("body,html")) break;
+      current = parent;
+    }
+
+    const bestHtml = $.html(best);
+    if (bestHtml) scopes.push(bestHtml);
+
+    const siblingParts: string[] = [];
+    let sibling = $(heading).parent().next();
+    while (sibling.length && siblingParts.length < 24) {
+      const hasNextHeading = sibling
+        .find("h1,h2,h3,h4,[role='heading']")
+        .toArray()
+        .some((node) => !TEAM_HEADING_PATTERNS.some((pattern) => pattern.test(compactText($(node).text()))));
+      if (hasNextHeading) break;
+      const siblingHtml = $.html(sibling);
+      if (siblingHtml) siblingParts.push(siblingHtml);
+      sibling = sibling.next();
+    }
+    if (siblingParts.length) scopes.push(siblingParts.join("\n"));
   }
 
-  $("article,li,.card,.doctor,.team,.staff,.elementor-column,.elementor-widget").each((_, node) => {
-    const element = $(node);
-    const cardText = element.text().replace(/\s+/g, " ").trim();
-    if (!/Dr\.|Prof\.|Professor|ד"ר|ד״ר|פרופ|רופא|מנהל|Senior Physician|Chairman|Director/i.test(cardText)) return;
-    const profileUrl = absoluteUrl(element.find("a").first().attr("href"), departmentUrl);
-    candidates.push({
-      physicianName: maybePhysicianName(cardText),
-      role: maybeRole(cardText),
-      department: /אף אוזן גרון|אא"?ג/i.test(cardText) ? "אף אוזן גרון" : "Otolaryngology - Head and Neck Surgery",
-      profileUrl,
-      cardText
+  return scopes.length ? scopes.join("\n") : html;
+}
+
+function profileUrlFromCard(cardHtml: string, departmentUrl: string) {
+  const $ = cheerio.load(cardHtml);
+  const links = $("a[href]")
+    .toArray()
+    .map((node) => {
+      const element = $(node);
+      return {
+        text: compactText(element.text()),
+        href: absoluteUrl(element.attr("href"), departmentUrl)
+      };
+    })
+    .filter((row): row is { text: string; href: string } => Boolean(row.href));
+
+  return (
+    links.find((row) =>
+      /\/doctor|\/doctors|physician|profile|staff|team|קרא עוד|למידע נוסף|רופא/i.test(
+        `${row.text} ${row.href}`
+      )
+    )?.href ??
+    links.find((row) => !/mailto:|tel:|#/.test(row.href))?.href ??
+    null
+  );
+}
+
+function candidateFromCard(
+  cardText: string,
+  profileUrl: string | null,
+  preferredNameText?: string,
+  preferredTitleText?: string
+) {
+  const name = maybePhysicianName(preferredNameText ?? "") ?? maybePhysicianName(cardText);
+
+  return {
+    physicianName: name,
+    role: preferredTitleText ? compactText(preferredTitleText) : maybeRole(cardText),
+    department: /אף אוזן גרון|אא"?ג|otolaryngology|ENT/i.test(cardText)
+      ? "אף אוזן גרון"
+      : "Otolaryngology - Head and Neck Surgery",
+    profileUrl,
+    cardText
+  } satisfies PhysicianCandidate;
+}
+
+function extractMarkdownTeamCandidates(content: string, departmentUrl: string) {
+  const lines = content.split(/\n+/).map((line) => line.trim()).filter(Boolean);
+  const startIndex = lines.findIndex((line) =>
+    TEAM_HEADING_PATTERNS.some((pattern) => pattern.test(line))
+  );
+  const scopedLines = startIndex >= 0
+    ? lines.slice(startIndex + 1).filter((line) => !/^#{1,3}\s+/.test(line))
+    : lines;
+
+  return scopedLines
+    .filter((line) =>
+      [...PHYSICIAN_CUE_PATTERNS, ...IGNORE_ROLE_PATTERNS].some((pattern) => pattern.test(line))
+    )
+    .slice(0, 80)
+    .map((line) => {
+      const markdownLink = line.match(/\[([^\]]+)\]\(([^)]+)\)/);
+      const linkText = markdownLink?.[1] ?? line;
+      const profileUrl = markdownLink?.[2] ? absoluteUrl(markdownLink[2], departmentUrl) : null;
+      return candidateFromCard(line, profileUrl, linkText);
     });
+}
+
+function extractRawTeamCandidates(html: string, departmentUrl: string) {
+  const scopedHtml = extractTeamScopedHtml(html);
+  const $ = cheerio.load(scopedHtml);
+  const candidates: PhysicianCandidate[] = [];
+  const cardSelector = [
+    "article",
+    "li",
+    ".card",
+    ".doctor",
+    ".team",
+    ".staff",
+    ".person",
+    ".member",
+    ".elementor-column",
+    ".elementor-widget",
+    ".jet-listing-grid__item",
+    "[class*='card']",
+    "[class*='doctor']",
+    "[class*='team']",
+    "[class*='staff']",
+    "[class*='person']",
+    "[class*='member']"
+  ].join(",");
+
+  $(cardSelector).each((_, node) => {
+    const element = $(node);
+    if (element.find("a[href]").length > 3 || element.find(cardSelector).length > 1) return;
+    const cardText = compactText(element.text());
+    if (cardText.length < 3 || cardText.length > 4000) return;
+    const hasRelevantCue = [...PHYSICIAN_CUE_PATTERNS, ...IGNORE_ROLE_PATTERNS].some((pattern) =>
+      pattern.test(cardText)
+    );
+    if (!hasRelevantCue) return;
+    const preferredNameText = compactText(
+      element.find("h1,h2,h3,h4,h5,h6,strong,b,[class*='name']").first().text()
+    );
+    const preferredTitleText = compactText(
+      element.find("p,.title,.role,.position,[class*='title'],[class*='role'],[class*='position']").first().text()
+    );
+    const profileUrl = profileUrlFromCard($.html(element) ?? "", departmentUrl);
+    candidates.push(candidateFromCard(cardText, profileUrl, preferredNameText, preferredTitleText));
   });
 
-  return dedupeCandidates(candidates).filter(isSeniorPhysicianCandidate);
+  for (const row of linkRows(scopedHtml, departmentUrl)) {
+    const linkContext = `${row.text} ${row.href} ${row.cardText}`;
+    const hasRelevantCue = [...PHYSICIAN_CUE_PATTERNS, ...IGNORE_ROLE_PATTERNS].some((pattern) =>
+      pattern.test(linkContext)
+    );
+    if (!hasRelevantCue) continue;
+    candidates.push(candidateFromCard(row.cardText || row.text, row.href, row.text));
+  }
+
+  if (candidates.length === 0) {
+    candidates.push(...extractMarkdownTeamCandidates(html, departmentUrl));
+  }
+
+  return dedupeCandidates(candidates);
+}
+
+function extractPhysicianCandidateReport(html: string, departmentUrl: string): CandidateExtractionReport {
+  const rawCandidates = extractRawTeamCandidates(html, departmentUrl);
+  const seniorCandidates = rawCandidates.filter(isSeniorPhysicianCandidate);
+  const residentsFiltered = rawCandidates.filter(
+    (candidate) => classifyCandidate(candidate) === "resident"
+  ).length;
+  const nonPhysiciansFiltered = rawCandidates.filter(
+    (candidate) => classifyCandidate(candidate) === "nonPhysician"
+  ).length;
+
+  return {
+    candidates: seniorCandidates,
+    debug: {
+      teamCardsFound: rawCandidates.length,
+      physiciansFound: rawCandidates.filter(isPhysicianLikeCandidate).length,
+      seniorPhysiciansFound: seniorCandidates.length,
+      residentsFiltered,
+      nonPhysiciansFiltered,
+      profileUrlsFound: new Set(seniorCandidates.map((candidate) => candidate.profileUrl).filter(Boolean)).size,
+      firstEntries: rawCandidates.slice(0, 10).map((candidate) => ({
+        name: candidate.physicianName,
+        title: candidate.role,
+        profileUrl: candidate.profileUrl
+      }))
+    }
+  };
+}
+
+function extractPhysicianCandidates(html: string, departmentUrl: string) {
+  return extractPhysicianCandidateReport(html, departmentUrl).candidates;
 }
 
 function valueAfterHeading(text: string, headings: string[]) {
@@ -354,7 +616,9 @@ function needsExternalSearch(input: {
   role: string | null;
 }) {
   const hasHighEvidence = hasConfidenceAtLeast(topFellowshipConfidence(input.detectedFellowships), "High");
-  const isSeniorRole = input.role ? SENIOR_ROLE_PATTERNS.some((pattern) => pattern.test(input.role ?? "")) : false;
+  const isSeniorRole = input.role
+    ? SENIOR_PRIORITY_PATTERNS.some((pattern) => pattern.test(input.role ?? ""))
+    : false;
   const reasons: string[] = [];
 
   if (!hasHighEvidence) reasons.push("לא זוהה פלושיפ בביטחון High/Very High");
@@ -437,7 +701,11 @@ function resultFromProfile(input: {
   };
 }
 
-function resultFromCandidateOnly(candidate: PhysicianCandidate, departmentUrl: string): ShebaEntPhysicianResult {
+function resultFromCandidateOnly(
+  candidate: PhysicianCandidate,
+  departmentUrl: string,
+  options: { forceNeedsExternalSearchReason?: string } = {}
+): ShebaEntPhysicianResult {
   const text = candidate.cardText;
   const training = extractTraining(text);
   const detectedFellowships = matchEntFellowships(text);
@@ -471,8 +739,8 @@ function resultFromCandidateOnly(candidate: PhysicianCandidate, departmentUrl: s
     publicationsLink: null,
     extractedTraining: training,
     detectedFellowships,
-    needsExternalSearch: externalSearch.value,
-    reason: externalSearch.reason
+    needsExternalSearch: Boolean(options.forceNeedsExternalSearchReason) || externalSearch.value,
+    reason: options.forceNeedsExternalSearchReason ?? externalSearch.reason
   };
 }
 
@@ -505,7 +773,11 @@ export async function runShebaEntFellowshipCrawler(input: {
   const departmentUrl = await findDepartmentUrl(input.departmentUrl, warnings);
   const departmentPage = await loadShebaPage(departmentUrl);
   const departmentHtml = departmentPage.html || departmentPage.text;
-  const candidates = extractPhysicianCandidates(departmentHtml, departmentPage.finalUrl || departmentUrl);
+  const extractionReport = extractPhysicianCandidateReport(
+    departmentHtml,
+    departmentPage.finalUrl || departmentUrl
+  );
+  const candidates = extractionReport.candidates;
   const results: ShebaEntPhysicianResult[] = [];
 
   if (candidates.length === 0) {
@@ -514,7 +786,11 @@ export async function runShebaEntFellowshipCrawler(input: {
 
   for (const candidate of candidates) {
     if (!candidate.profileUrl) {
-      results.push(resultFromCandidateOnly(candidate, departmentUrl));
+      results.push(
+        resultFromCandidateOnly(candidate, departmentUrl, {
+          forceNeedsExternalSearchReason: "נמצא כרטיס רופא בכיר ללא URL פרופיל."
+        })
+      );
       continue;
     }
 
@@ -532,7 +808,11 @@ export async function runShebaEntFellowshipCrawler(input: {
           error instanceof Error ? error.message : "שגיאה לא ידועה"
         }`
       );
-      results.push(resultFromCandidateOnly(candidate, departmentUrl));
+      results.push(
+        resultFromCandidateOnly(candidate, departmentUrl, {
+          forceNeedsExternalSearchReason: "נמצא URL פרופיל אך טעינת הפרופיל נכשלה."
+        })
+      );
     }
   }
 
@@ -542,12 +822,14 @@ export async function runShebaEntFellowshipCrawler(input: {
     departmentUrl: departmentPage.finalUrl || departmentUrl,
     physiciansProcessed: results.length,
     results,
-    warnings
+    warnings,
+    debug: extractionReport.debug
   };
 }
 
 export const shebaEntCrawlerInternals = {
   extractPhysicianCandidates,
+  extractPhysicianCandidateReport,
   visibleTextFromHtml,
   isSeniorPhysicianCandidate,
   resultFromProfile
