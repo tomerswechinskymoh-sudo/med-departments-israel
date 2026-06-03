@@ -109,6 +109,28 @@ export type PlaywrightPageLoadResult = {
   finalUrl: string;
 };
 
+export type PlaywrightErrorKind =
+  | "package_missing"
+  | "browser_missing"
+  | "chromium_launch_failed"
+  | "page_navigation_failed"
+  | "timeout"
+  | "permissions"
+  | "runtime"
+  | "unknown";
+
+export class PlaywrightLoadError extends Error {
+  kind: PlaywrightErrorKind;
+  causeError: unknown;
+
+  constructor(kind: PlaywrightErrorKind, message: string, causeError?: unknown) {
+    super(message);
+    this.name = "PlaywrightLoadError";
+    this.kind = kind;
+    this.causeError = causeError;
+  }
+}
+
 function emptyEmailSourceBreakdown(): Record<EmailSourceKey, string[]> {
   return {
     rawHtml: [],
@@ -141,6 +163,43 @@ async function optionalImport<T>(specifier: string): Promise<T | null> {
   } catch {
     return null;
   }
+}
+
+async function dynamicImport<T>(specifier: string): Promise<T> {
+  const importFn = new Function("specifier", "return import(specifier)") as (
+    specifier: string
+  ) => Promise<T>;
+
+  return importFn(specifier);
+}
+
+function errorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
+}
+
+function classifyPlaywrightError(error: unknown, fallback: PlaywrightErrorKind): PlaywrightErrorKind {
+  const message = errorMessage(error).toLowerCase();
+
+  if (/cannot find package|module not found|cannot find module|err_module_not_found/.test(message)) {
+    return "package_missing";
+  }
+  if (/executable doesn't exist|browser.*not found|please run.*playwright install|install.*browsers|chromium.*not found/.test(message)) {
+    return "browser_missing";
+  }
+  if (/timeout|timed out/.test(message)) {
+    return "timeout";
+  }
+  if (/permission|eacces|eperm|sandbox/.test(message)) {
+    return "permissions";
+  }
+  if (/edge runtime|window is not defined|process is not defined/.test(message)) {
+    return "runtime";
+  }
+  if (/net::|navigation|goto|ssl|certificate|err_/.test(message)) {
+    return "page_navigation_failed";
+  }
+
+  return fallback;
 }
 
 function sanitizeText(value: string) {
@@ -343,13 +402,35 @@ export async function loadPageWithPlaywright(
   sourceUrl: string,
   options: { timeoutMs?: number } = {}
 ): Promise<PlaywrightPageLoadResult> {
-  const playwrightModule = await optionalImport<PlaywrightModule>("playwright");
+  let playwrightModule: PlaywrightModule;
 
-  if (!playwrightModule) {
-    throw new Error("Playwright לא מותקן בסביבה.");
+  try {
+    playwrightModule = await dynamicImport<PlaywrightModule>("playwright");
+  } catch (error) {
+    const kind = classifyPlaywrightError(error, "package_missing");
+    throw new PlaywrightLoadError(
+      kind,
+      kind === "package_missing"
+        ? `Playwright package missing: ${errorMessage(error)}`
+        : `Playwright dynamic import failed: ${errorMessage(error)}`,
+      error
+    );
   }
 
-  const browser = await playwrightModule.chromium.launch({ headless: true });
+  let browser: Awaited<ReturnType<PlaywrightModule["chromium"]["launch"]>>;
+
+  try {
+    browser = await playwrightModule.chromium.launch({ headless: true });
+  } catch (error) {
+    const kind = classifyPlaywrightError(error, "chromium_launch_failed");
+    throw new PlaywrightLoadError(
+      kind,
+      kind === "browser_missing"
+        ? `Playwright browser missing: ${errorMessage(error)}`
+        : `Chromium launch failed: ${errorMessage(error)}`,
+      error
+    );
+  }
 
   try {
     const context = await browser.newContext({
@@ -357,10 +438,20 @@ export async function loadPageWithPlaywright(
       extraHTTPHeaders: browserLikeHeaders
     });
     const page = await context.newPage();
-    const response = await page.goto(sourceUrl, {
-      waitUntil: "networkidle",
-      timeout: options.timeoutMs ?? PLAYWRIGHT_TIMEOUT_MS
-    });
+    let response: { status: () => number } | null;
+
+    try {
+      response = await page.goto(sourceUrl, {
+        waitUntil: "networkidle",
+        timeout: options.timeoutMs ?? PLAYWRIGHT_TIMEOUT_MS
+      });
+    } catch (error) {
+      throw new PlaywrightLoadError(
+        classifyPlaywrightError(error, "page_navigation_failed"),
+        `Page navigation failed: ${errorMessage(error)}`,
+        error
+      );
+    }
     const candidates = await Promise.allSettled(
       ["main", "article", "body"].map((selector) =>
         page.locator(selector).first().textContent({ timeout: 2000 })

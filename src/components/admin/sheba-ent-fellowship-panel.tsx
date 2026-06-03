@@ -33,6 +33,8 @@ type PhysicianResult = {
 type CrawlPayload = {
   ok?: boolean;
   error?: string;
+  errorCode?: string;
+  stack?: string;
   startUrl?: string;
   departmentUrl?: string;
   physiciansProcessed?: number;
@@ -78,6 +80,7 @@ export function ShebaEntFellowshipPanel() {
 
     if (!response.ok || nextPayload.ok === false) {
       setError(nextPayload.error ?? "סריקת אא״ג שיבא נכשלה.");
+      setPayload(nextPayload);
       return;
     }
 
@@ -136,6 +139,13 @@ export function ShebaEntFellowshipPanel() {
         <p className="mt-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-800">
           {error}
         </p>
+      ) : null}
+
+      {payload?.errorCode || payload?.stack ? (
+        <div className="mt-3 rounded-2xl border border-red-200 bg-white px-4 py-3 text-left text-xs leading-5 text-red-900" dir="ltr">
+          {payload.errorCode ? <p className="font-black">errorCode: {payload.errorCode}</p> : null}
+          {payload.stack ? <pre className="mt-2 max-h-40 overflow-auto whitespace-pre-wrap">{payload.stack}</pre> : null}
+        </div>
       ) : null}
 
       {payload?.warnings?.length ? (

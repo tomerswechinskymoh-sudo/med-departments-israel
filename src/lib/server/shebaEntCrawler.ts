@@ -1,5 +1,9 @@
 import * as cheerio from "cheerio";
-import { loadPageWithPlaywright } from "@/lib/server/department-scraper";
+import {
+  loadPageWithPlaywright,
+  PlaywrightLoadError,
+  type PlaywrightErrorKind
+} from "@/lib/server/department-scraper";
 import {
   hasConfidenceAtLeast,
   matchEntFellowships,
@@ -60,6 +64,18 @@ type LoadedShebaPage = {
   text: string;
   finalUrl: string;
 };
+
+export class ShebaEntCrawlerError extends Error {
+  code: PlaywrightErrorKind | "empty_page" | "invalid_url" | "unknown";
+  stackTrace?: string;
+
+  constructor(code: ShebaEntCrawlerError["code"], message: string, stackTrace?: string) {
+    super(message);
+    this.name = "ShebaEntCrawlerError";
+    this.code = code;
+    this.stackTrace = stackTrace;
+  }
+}
 
 const SHEBA_START_URL = "https://www.shebaonline.org/";
 const DEFAULT_DEPARTMENT_CANDIDATES = [
@@ -132,7 +148,15 @@ function absoluteUrl(href: string | undefined, baseUrl: string) {
 }
 
 async function loadShebaPage(url: string): Promise<LoadedShebaPage> {
-  assertAllowedShebaUrl(url);
+  try {
+    assertAllowedShebaUrl(url);
+  } catch (error) {
+    throw new ShebaEntCrawlerError(
+      "invalid_url",
+      error instanceof Error ? error.message : "URL לא תקין.",
+      error instanceof Error ? error.stack : undefined
+    );
+  }
 
   try {
     const rendered = await loadPageWithPlaywright(url, {
@@ -140,7 +164,7 @@ async function loadShebaPage(url: string): Promise<LoadedShebaPage> {
     });
 
     if (!rendered.html.trim() && !rendered.text.trim()) {
-      throw new Error("Playwright לא החזיר HTML או טקסט.");
+      throw new ShebaEntCrawlerError("empty_page", "Playwright לא החזיר HTML או טקסט.");
     }
 
     return {
@@ -149,7 +173,18 @@ async function loadShebaPage(url: string): Promise<LoadedShebaPage> {
       finalUrl: rendered.finalUrl || url
     };
   } catch (error) {
-    throw new Error(`טעינת Playwright נכשלה: ${error instanceof Error ? error.message : "שגיאה לא ידועה"}`);
+    if (error instanceof ShebaEntCrawlerError) {
+      throw error;
+    }
+    if (error instanceof PlaywrightLoadError) {
+      throw new ShebaEntCrawlerError(error.kind, error.message, error.stack);
+    }
+
+    throw new ShebaEntCrawlerError(
+      "unknown",
+      `טעינת Playwright נכשלה: ${error instanceof Error ? error.message : "שגיאה לא ידועה"}`,
+      error instanceof Error ? error.stack : undefined
+    );
   }
 }
 

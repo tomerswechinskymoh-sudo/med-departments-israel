@@ -5,8 +5,11 @@ import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin } from "@/lib/security";
 import {
   assertAllowedShebaUrl,
-  runShebaEntFellowshipCrawler
+  runShebaEntFellowshipCrawler,
+  ShebaEntCrawlerError
 } from "@/lib/server/shebaEntCrawler";
+
+export const runtime = "nodejs";
 
 const requestSchema = z.object({
   departmentUrl: z
@@ -55,14 +58,20 @@ export async function POST(request: Request) {
 
     return NextResponse.json(result);
   } catch (error) {
+    const isCrawlerError = error instanceof ShebaEntCrawlerError;
+    const stack = error instanceof Error ? error.stack : undefined;
     console.error("[sheba-ent-fellowship-poc] crawl failed", {
-      error
+      code: isCrawlerError ? error.code : "unknown",
+      message: error instanceof Error ? error.message : String(error),
+      stack
     });
 
     return NextResponse.json(
       {
         ok: false,
-        error: error instanceof Error ? error.message : "סריקת אא״ג שיבא נכשלה."
+        error: error instanceof Error ? error.message : "סריקת אא״ג שיבא נכשלה.",
+        errorCode: isCrawlerError ? error.code : "unknown",
+        stack
       },
       { status: 500 }
     );
