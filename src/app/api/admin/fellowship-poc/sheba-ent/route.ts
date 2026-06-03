@@ -10,7 +10,9 @@ import {
 
 const requestSchema = z.object({
   departmentUrl: z
-    .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().url().optional())
+    .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().url().optional()),
+  pastedText: z
+    .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().max(50000).optional())
 });
 
 export async function POST(request: Request) {
@@ -47,7 +49,8 @@ export async function POST(request: Request) {
     }
 
     const result = await runShebaEntFellowshipCrawler({
-      departmentUrl: parsed.data.departmentUrl
+      departmentUrl: parsed.data.departmentUrl,
+      pastedText: parsed.data.pastedText
     });
 
     return NextResponse.json(result);

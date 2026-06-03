@@ -69,9 +69,10 @@ type PlaywrightModule = {
             first: () => {
               textContent: (options: { timeout: number }) => Promise<string | null>;
             };
-            evaluateAll: (callback: (elements: Element[]) => string[]) => Promise<string[]>;
+            evaluateAll: <T>(callback: (elements: Element[]) => T[]) => Promise<T[]>;
           };
           evaluate: <T>(callback: () => T) => Promise<T>;
+          content: () => Promise<string>;
         }>;
       }>;
       close: () => Promise<void>;
@@ -94,6 +95,18 @@ const browserLikeHeaders = {
   "accept-language": "he-IL,he;q=0.9,en-US;q=0.8,en;q=0.7",
   "cache-control": "no-cache",
   pragma: "no-cache"
+};
+
+export type PlaywrightPageLoadResult = {
+  text: string;
+  bodyInnerText: string;
+  html: string;
+  mailtoLinks: string[];
+  telLinks: string[];
+  anchorHrefs: string[];
+  anchorLinks: Array<{ href: string; text: string }>;
+  statusCode: number | null;
+  finalUrl: string;
 };
 
 function emptyEmailSourceBreakdown(): Record<EmailSourceKey, string[]> {
@@ -326,7 +339,10 @@ async function extractTextWithCheerio(html: string) {
   return sanitizeText($("main").text() || $("article").text() || $("body").text() || html);
 }
 
-async function extractTextWithPlaywright(sourceUrl: string) {
+export async function loadPageWithPlaywright(
+  sourceUrl: string,
+  options: { timeoutMs?: number } = {}
+): Promise<PlaywrightPageLoadResult> {
   const playwrightModule = await optionalImport<PlaywrightModule>("playwright");
 
   if (!playwrightModule) {
@@ -343,7 +359,7 @@ async function extractTextWithPlaywright(sourceUrl: string) {
     const page = await context.newPage();
     const response = await page.goto(sourceUrl, {
       waitUntil: "networkidle",
-      timeout: PLAYWRIGHT_TIMEOUT_MS
+      timeout: options.timeoutMs ?? PLAYWRIGHT_TIMEOUT_MS
     });
     const candidates = await Promise.allSettled(
       ["main", "article", "body"].map((selector) =>
@@ -369,19 +385,35 @@ async function extractTextWithPlaywright(sourceUrl: string) {
       .locator("a[href]")
       .evaluateAll((elements) => elements.map((element) => element.getAttribute("href") ?? ""))
       .catch(() => []);
+    const anchorLinks = await page
+      .locator("a[href]")
+      .evaluateAll((elements) =>
+        elements.map((element) => ({
+          href: element.getAttribute("href") ?? "",
+          text: element.textContent?.replace(/\s+/g, " ").trim() ?? ""
+        }))
+      )
+      .catch(() => []);
+    const html = await page.content().catch(() => "");
 
     return {
       text: sanitizeText(text || bodyInnerText),
       bodyInnerText: sanitizeText(bodyInnerText),
+      html,
       mailtoLinks,
       telLinks,
       anchorHrefs,
+      anchorLinks,
       statusCode: response?.status() ?? null,
       finalUrl: page.url()
     };
   } finally {
     await browser.close();
   }
+}
+
+async function extractTextWithPlaywright(sourceUrl: string) {
+  return loadPageWithPlaywright(sourceUrl);
 }
 
 export function validateScrapeUrl(value: string) {

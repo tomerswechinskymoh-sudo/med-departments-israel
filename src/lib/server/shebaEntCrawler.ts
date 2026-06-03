@@ -1,4 +1,5 @@
 import * as cheerio from "cheerio";
+import { loadPageWithPlaywright } from "@/lib/server/department-scraper";
 import {
   hasConfidenceAtLeast,
   matchEntFellowships,
@@ -52,6 +53,12 @@ type PhysicianCandidate = {
   department: string | null;
   profileUrl: string | null;
   cardText: string;
+};
+
+type LoadedShebaPage = {
+  html: string;
+  text: string;
+  finalUrl: string;
 };
 
 const SHEBA_START_URL = "https://www.shebaonline.org/";
@@ -124,27 +131,25 @@ function absoluteUrl(href: string | undefined, baseUrl: string) {
   }
 }
 
-async function fetchHtml(url: string) {
+async function loadShebaPage(url: string): Promise<LoadedShebaPage> {
   assertAllowedShebaUrl(url);
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 15000);
 
   try {
-    const response = await fetch(url, {
-      signal: controller.signal,
-      headers: {
-        "user-agent": "HitmachutAdminPOC/1.0 (+https://hitmachut.org)",
-        accept: "text/html,application/xhtml+xml"
-      }
+    const rendered = await loadPageWithPlaywright(url, {
+      timeoutMs: 22000
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+    if (!rendered.html.trim() && !rendered.text.trim()) {
+      throw new Error("Playwright לא החזיר HTML או טקסט.");
     }
 
-    return await response.text();
-  } finally {
-    clearTimeout(timeout);
+    return {
+      html: rendered.html,
+      text: rendered.bodyInnerText || rendered.text,
+      finalUrl: rendered.finalUrl || url
+    };
+  } catch (error) {
+    throw new Error(`טעינת Playwright נכשלה: ${error instanceof Error ? error.message : "שגיאה לא ידועה"}`);
   }
 }
 
@@ -190,7 +195,8 @@ async function findDepartmentUrl(inputUrl: string | null | undefined, warnings: 
   }
 
   try {
-    const startHtml = await fetchHtml(SHEBA_START_URL);
+    const startPage = await loadShebaPage(SHEBA_START_URL);
+    const startHtml = startPage.html || startPage.text;
     const links = linkRows(startHtml, SHEBA_START_URL);
     const linkedCandidate = links.find(looksLikeEntDepartmentLink)?.href;
     if (linkedCandidate) return linkedCandidate;
@@ -354,8 +360,9 @@ function resultFromProfile(input: {
   candidate: PhysicianCandidate;
   sourceUrl: string;
   html: string;
+  renderedText?: string;
 }) {
-  const text = visibleTextFromHtml(input.html);
+  const text = input.renderedText?.trim() || visibleTextFromHtml(input.html);
   const $ = cheerio.load(input.html);
   const name = $("h1").first().text().replace(/\s+/g, " ").trim() || input.candidate.physicianName;
   const role = valueAfterHeading(text, ["Position", "Role", "תפקיד"]) ?? input.candidate.role;
@@ -438,11 +445,34 @@ function resultFromCandidateOnly(candidate: PhysicianCandidate, departmentUrl: s
 
 export async function runShebaEntFellowshipCrawler(input: {
   departmentUrl?: string | null;
+  pastedText?: string | null;
 } = {}): Promise<ShebaEntCrawlerResult> {
   const warnings: string[] = [];
+
+  if (input.pastedText?.trim()) {
+    const candidate: PhysicianCandidate = {
+      physicianName: maybePhysicianName(input.pastedText),
+      role: maybeRole(input.pastedText),
+      department: "אף אוזן גרון",
+      profileUrl: null,
+      cardText: input.pastedText.trim()
+    };
+    const result = resultFromCandidateOnly(candidate, input.departmentUrl ?? "manual:pasted-text");
+
+    return {
+      ok: true,
+      startUrl: SHEBA_START_URL,
+      departmentUrl: input.departmentUrl ?? "manual:pasted-text",
+      physiciansProcessed: 1,
+      results: [result],
+      warnings: ["בוצע ניתוח מתוך טקסט מודבק ידנית, ללא טעינת עמוד שיבא."]
+    };
+  }
+
   const departmentUrl = await findDepartmentUrl(input.departmentUrl, warnings);
-  const departmentHtml = await fetchHtml(departmentUrl);
-  const candidates = extractPhysicianCandidates(departmentHtml, departmentUrl);
+  const departmentPage = await loadShebaPage(departmentUrl);
+  const departmentHtml = departmentPage.html || departmentPage.text;
+  const candidates = extractPhysicianCandidates(departmentHtml, departmentPage.finalUrl || departmentUrl);
   const results: ShebaEntPhysicianResult[] = [];
 
   if (candidates.length === 0) {
@@ -456,11 +486,12 @@ export async function runShebaEntFellowshipCrawler(input: {
     }
 
     try {
-      const profileHtml = await fetchHtml(candidate.profileUrl);
+      const profilePage = await loadShebaPage(candidate.profileUrl);
       results.push(resultFromProfile({
         candidate,
-        sourceUrl: candidate.profileUrl,
-        html: profileHtml
+        sourceUrl: profilePage.finalUrl || candidate.profileUrl,
+        html: profilePage.html,
+        renderedText: profilePage.text
       }));
     } catch (error) {
       warnings.push(
@@ -475,7 +506,7 @@ export async function runShebaEntFellowshipCrawler(input: {
   return {
     ok: true,
     startUrl: SHEBA_START_URL,
-    departmentUrl,
+    departmentUrl: departmentPage.finalUrl || departmentUrl,
     physiciansProcessed: results.length,
     results,
     warnings

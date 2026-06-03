@@ -52,6 +52,7 @@ function bestFellowship(result: PhysicianResult) {
 
 export function ShebaEntFellowshipPanel() {
   const [departmentUrl, setDepartmentUrl] = useState("");
+  const [pastedText, setPastedText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [payload, setPayload] = useState<CrawlPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -68,7 +69,8 @@ export function ShebaEntFellowshipPanel() {
         "content-type": "application/json"
       },
       body: JSON.stringify({
-        departmentUrl: departmentUrl.trim() || undefined
+        departmentUrl: departmentUrl.trim() || undefined,
+        pastedText: pastedText.trim() || undefined
       })
     });
     const nextPayload: CrawlPayload = await response.json().catch(() => ({}));
@@ -99,7 +101,7 @@ export function ShebaEntFellowshipPanel() {
         ) : null}
       </div>
 
-      <form onSubmit={runCrawler} className="mt-4 grid gap-3 md:grid-cols-[1fr_auto]">
+      <form onSubmit={runCrawler} className="mt-4 grid gap-3">
         <label className="block">
           <span className="mb-1 block text-xs font-black text-slate-500">
             הדבק URL של מחלקת אא״ג שיבא
@@ -112,7 +114,18 @@ export function ShebaEntFellowshipPanel() {
             className="min-h-12 w-full rounded-2xl border border-brand-100 bg-white px-4 text-left text-sm outline-none focus:border-brand-300"
           />
         </label>
-        <div className="flex items-end">
+        <label className="block">
+          <span className="mb-1 block text-xs font-black text-slate-500">
+            או הדבק טקסט ביוגרפי ידנית אם Playwright נכשל
+          </span>
+          <textarea
+            value={pastedText}
+            onChange={(event) => setPastedText(event.target.value)}
+            placeholder="טקסט פרופיל / ביוגרפיה של רופא/ה בכיר/ה מאא״ג שיבא"
+            className="min-h-28 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm leading-6 outline-none focus:border-brand-300"
+          />
+        </label>
+        <div className="flex justify-start">
           <Button type="submit" disabled={isLoading} className="min-h-12 w-full md:w-auto">
             {isLoading ? "סורק..." : "סרוק אא״ג שיבא"}
           </Button>
@@ -173,9 +186,13 @@ export function ShebaEntFellowshipPanel() {
                     <td className="px-3 py-3 text-slate-700">{result.role ?? "לא זוהה"}</td>
                     <td className="px-3 py-3 text-slate-700">{result.department ?? "אא״ג"}</td>
                     <td className="px-3 py-3">
-                      <a href={result.sourceUrl} target="_blank" rel="noreferrer" className="font-bold text-brand-700 underline">
-                        מקור
-                      </a>
+                      {/^https?:\/\//i.test(result.sourceUrl) ? (
+                        <a href={result.sourceUrl} target="_blank" rel="noreferrer" className="font-bold text-brand-700 underline">
+                          מקור
+                        </a>
+                      ) : (
+                        <span className="font-bold text-slate-500">טקסט ידני</span>
+                      )}
                     </td>
                     <td className="px-3 py-3 font-bold text-slate-700">{result.bioTextLength}</td>
                     <td className="px-3 py-3">{result.residencySpecialty ?? "לא זוהה"}</td>
