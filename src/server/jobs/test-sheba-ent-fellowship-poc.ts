@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import { matchEntFellowships } from "@/lib/server/fellowshipMatcher";
-import { shebaEntCrawlerInternals } from "@/lib/server/shebaEntCrawler";
+import {
+  runShebaEntFellowshipCrawler,
+  shebaEntCrawlerInternals
+} from "@/lib/server/shebaEntCrawler";
 
 function assertTopFellowship(text: string, expectedFellowshipId: string) {
   const matches = matchEntFellowships(text);
@@ -66,4 +69,26 @@ const candidates = shebaEntCrawlerInternals.extractPhysicianCandidates(
 assert.equal(candidates.length, 1);
 assert.equal(candidates[0]?.physicianName, "Dr. Senior ENT");
 
-console.log("PASS sheba ENT fellowship POC tests");
+async function assertMissingFirecrawlKeyMessage() {
+  const originalFirecrawlApiKey = process.env.FIRECRAWL_API_KEY;
+  delete process.env.FIRECRAWL_API_KEY;
+  await assert.rejects(
+    () =>
+      runShebaEntFellowshipCrawler({
+        departmentUrl: "https://www.shebaonline.org/department/otolaryngology-head-and-neck-surgery/"
+      }),
+    /סריקה חיה דורשת FIRECRAWL_API_KEY/
+  );
+  if (originalFirecrawlApiKey) {
+    process.env.FIRECRAWL_API_KEY = originalFirecrawlApiKey;
+  }
+}
+
+assertMissingFirecrawlKeyMessage()
+  .then(() => {
+    console.log("PASS sheba ENT fellowship POC tests");
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

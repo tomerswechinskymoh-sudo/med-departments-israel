@@ -1,9 +1,9 @@
 import * as cheerio from "cheerio";
 import {
-  loadPageWithPlaywright,
-  PlaywrightLoadError,
-  type PlaywrightErrorKind
-} from "@/lib/server/department-scraper";
+  FirecrawlScrapeError,
+  type FirecrawlScrapeErrorCode,
+  scrapeUrlWithFirecrawl
+} from "@/lib/server/firecrawlClient";
 import {
   hasConfidenceAtLeast,
   matchEntFellowships,
@@ -66,7 +66,7 @@ type LoadedShebaPage = {
 };
 
 export class ShebaEntCrawlerError extends Error {
-  code: PlaywrightErrorKind | "empty_page" | "invalid_url" | "unknown";
+  code: FirecrawlScrapeErrorCode | "empty_page" | "invalid_url" | "unknown";
   stackTrace?: string;
 
   constructor(code: ShebaEntCrawlerError["code"], message: string, stackTrace?: string) {
@@ -159,30 +159,28 @@ async function loadShebaPage(url: string): Promise<LoadedShebaPage> {
   }
 
   try {
-    const rendered = await loadPageWithPlaywright(url, {
-      timeoutMs: 22000
-    });
+    const rendered = await scrapeUrlWithFirecrawl(url);
 
-    if (!rendered.html.trim() && !rendered.text.trim()) {
-      throw new ShebaEntCrawlerError("empty_page", "Playwright לא החזיר HTML או טקסט.");
+    if (!rendered.html?.trim() && !rendered.text.trim()) {
+      throw new ShebaEntCrawlerError("empty_page", "Firecrawl לא החזיר HTML או טקסט.");
     }
 
     return {
-      html: rendered.html,
-      text: rendered.bodyInnerText || rendered.text,
-      finalUrl: rendered.finalUrl || url
+      html: rendered.html ?? rendered.markdown ?? rendered.text,
+      text: rendered.text,
+      finalUrl: url
     };
   } catch (error) {
     if (error instanceof ShebaEntCrawlerError) {
       throw error;
     }
-    if (error instanceof PlaywrightLoadError) {
-      throw new ShebaEntCrawlerError(error.kind, error.message, error.stack);
+    if (error instanceof FirecrawlScrapeError) {
+      throw new ShebaEntCrawlerError(error.code, error.message, error.stack);
     }
 
     throw new ShebaEntCrawlerError(
       "unknown",
-      `טעינת Playwright נכשלה: ${error instanceof Error ? error.message : "שגיאה לא ידועה"}`,
+      `טעינת Firecrawl נכשלה: ${error instanceof Error ? error.message : "שגיאה לא ידועה"}`,
       error instanceof Error ? error.stack : undefined
     );
   }

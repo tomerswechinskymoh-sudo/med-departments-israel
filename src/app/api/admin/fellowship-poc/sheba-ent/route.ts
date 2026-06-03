@@ -11,9 +11,6 @@ import {
 
 export const runtime = "nodejs";
 
-const LIVE_CRAWL_BROWSER_MISSING_MESSAGE =
-  "סריקה חיה לא זמינה בסביבת הפרודקשן כי Chromium לא מותקן.";
-
 const requestSchema = z.object({
   departmentUrl: z
     .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().url().optional()),
@@ -64,12 +61,7 @@ export async function POST(request: Request) {
     const isCrawlerError = error instanceof ShebaEntCrawlerError;
     const stack = error instanceof Error ? error.stack : undefined;
     const errorCode = isCrawlerError ? error.code : "unknown";
-    const errorMessage =
-      errorCode === "browser_missing"
-        ? LIVE_CRAWL_BROWSER_MISSING_MESSAGE
-        : error instanceof Error
-          ? error.message
-          : "סריקת אא״ג שיבא נכשלה.";
+    const errorMessage = error instanceof Error ? error.message : "סריקת אא״ג שיבא נכשלה.";
     console.error("[sheba-ent-fellowship-poc] crawl failed", {
       code: errorCode,
       message: error instanceof Error ? error.message : String(error),

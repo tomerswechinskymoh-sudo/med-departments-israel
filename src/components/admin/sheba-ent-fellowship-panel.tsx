@@ -119,7 +119,7 @@ export function ShebaEntFellowshipPanel() {
         </label>
         <label className="block">
           <span className="mb-1 block text-xs font-black text-slate-500">
-            או הדבק טקסט ביוגרפי ידנית אם Playwright נכשל
+            או הדבק טקסט ביוגרפי ידנית אם הסריקה החיה נכשלת
           </span>
           <textarea
             value={pastedText}
