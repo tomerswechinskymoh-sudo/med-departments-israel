@@ -56,6 +56,24 @@ export type ShebaEntCrawlerDebug = {
   nonPhysiciansFiltered: number;
   profileUrlsFound: number;
   firstEntries: ShebaEntCrawlerDebugEntry[];
+  firecrawl?: {
+    metadata?: Record<string, unknown>;
+    responseKeys?: string[];
+    dataKeys?: string[];
+    statusCode?: number;
+  };
+  markdownPreview?: string;
+  htmlPreview?: string;
+  allLinks?: Array<{ text: string; href: string }>;
+  relevantLinks?: Array<{ text: string; href: string }>;
+  pageSourceAssessment?: {
+    teamSectionInHtml: boolean;
+    teamSectionInMarkdown: boolean;
+    likelyJavaScriptInjected: boolean;
+    likelySeparateApiEndpoint: boolean;
+    endpointCandidates: string[];
+    notes: string[];
+  };
 };
 
 export type ShebaEntCrawlerResult = {
@@ -84,7 +102,16 @@ type CandidateExtractionReport = {
 type LoadedShebaPage = {
   html: string;
   text: string;
+  markdown?: string;
   finalUrl: string;
+  firecrawl?: {
+    metadata?: Record<string, unknown>;
+    links?: string[];
+    responseKeys?: string[];
+    dataKeys?: string[];
+    statusCode?: number;
+    source: "firecrawl";
+  };
 };
 
 export class ShebaEntCrawlerError extends Error {
@@ -176,6 +203,11 @@ const TEAM_HEADING_PATTERNS = [
   /\bmedical team\b/i,
   /\bmedical staff\b/i
 ];
+const DEBUG_PREVIEW_LENGTH = 5000;
+const RELEVANT_LINK_PATTERN =
+  /doctor|physician|profile|staff|team|doctor card|רופא|צוות|אודות/i;
+const ENDPOINT_CANDIDATE_PATTERN =
+  /(?:https?:)?\/\/[^"'\s<>]+|\/(?:api|wp-json|wp-admin\/admin-ajax|_next\/data|graphql|umbraco|sitecore|doctors?|physicians?|staff|team)[^"'\s<>]*/gi;
 
 function isAllowedShebaUrl(value: string) {
   try {
@@ -224,7 +256,16 @@ async function loadShebaPage(url: string): Promise<LoadedShebaPage> {
     return {
       html: rendered.html ?? rendered.markdown ?? rendered.text,
       text: rendered.text,
-      finalUrl: url
+      markdown: rendered.markdown,
+      finalUrl: url,
+      firecrawl: {
+        metadata: rendered.metadata,
+        links: rendered.links,
+        responseKeys: rendered.responseKeys,
+        dataKeys: rendered.dataKeys,
+        statusCode: rendered.statusCode,
+        source: rendered.source
+      }
     };
   } catch (error) {
     if (error instanceof ShebaEntCrawlerError) {
@@ -279,6 +320,121 @@ function linkRows(html: string, baseUrl: string) {
       };
     })
     .filter((row): row is { text: string; href: string; cardText: string } => Boolean(row.href));
+}
+
+function markdownLinks(markdown: string | undefined, baseUrl: string) {
+  if (!markdown) return [];
+  const links: Array<{ text: string; href: string }> = [];
+  const markdownLinkPattern = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = markdownLinkPattern.exec(markdown))) {
+    const href = absoluteUrl(match[2], baseUrl);
+    if (href) {
+      links.push({
+        text: compactText(match[1]),
+        href
+      });
+    }
+  }
+
+  return links;
+}
+
+function firecrawlLinks(links: string[] | undefined, baseUrl: string) {
+  return (links ?? [])
+    .map((link) => absoluteUrl(link, baseUrl))
+    .filter((link): link is string => Boolean(link))
+    .map((href) => ({ text: "", href }));
+}
+
+function dedupeLinks(links: Array<{ text: string; href: string }>) {
+  const seen = new Set<string>();
+  const deduped: Array<{ text: string; href: string }> = [];
+
+  for (const link of links) {
+    const key = `${link.href}::${link.text}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    deduped.push(link);
+  }
+
+  return deduped;
+}
+
+function relevantLinkText(link: { text: string; href: string }) {
+  try {
+    return `${link.text} ${link.href} ${decodeURIComponent(link.href)}`;
+  } catch {
+    return `${link.text} ${link.href}`;
+  }
+}
+
+function extractAllPageLinks(page: LoadedShebaPage) {
+  return dedupeLinks([
+    ...linkRows(page.html, page.finalUrl).map((link) => ({
+      text: link.text || link.cardText,
+      href: link.href
+    })),
+    ...markdownLinks(page.markdown ?? page.text, page.finalUrl),
+    ...firecrawlLinks(page.firecrawl?.links, page.finalUrl)
+  ]);
+}
+
+function extractEndpointCandidates(page: LoadedShebaPage) {
+  const source = [page.html, page.markdown, page.text].filter(Boolean).join("\n");
+  const matches = source.match(ENDPOINT_CANDIDATE_PATTERN) ?? [];
+
+  return Array.from(
+    new Set(
+      matches
+        .map((candidate) => candidate.replace(/\\u002F/g, "/").replace(/&amp;/g, "&"))
+        .map((candidate) => absoluteUrl(candidate, page.finalUrl))
+        .filter((candidate): candidate is string => Boolean(candidate))
+        .filter((candidate) => {
+          const decoded = (() => {
+            try {
+              return decodeURIComponent(candidate);
+            } catch {
+              return candidate;
+            }
+          })();
+          return RELEVANT_LINK_PATTERN.test(decoded) || /api|ajax|graphql|wp-json|_next\/data/i.test(candidate);
+        })
+    )
+  ).slice(0, 80);
+}
+
+function assessPageSource(page: LoadedShebaPage, allLinks: Array<{ text: string; href: string }>) {
+  const html = page.html ?? "";
+  const markdown = page.markdown ?? page.text ?? "";
+  const teamSectionInHtml = TEAM_HEADING_PATTERNS.some((pattern) => pattern.test(html));
+  const teamSectionInMarkdown = TEAM_HEADING_PATTERNS.some((pattern) => pattern.test(markdown));
+  const endpointCandidates = extractEndpointCandidates(page);
+  const relevantLinks = allLinks.filter((link) => RELEVANT_LINK_PATTERN.test(relevantLinkText(link)));
+  const notes: string[] = [];
+
+  if (teamSectionInHtml) notes.push("team section heading appears in Firecrawl HTML.");
+  if (teamSectionInMarkdown) notes.push("team section heading appears in Firecrawl markdown/text.");
+  if (!teamSectionInHtml && !teamSectionInMarkdown) {
+    notes.push("team section heading does not appear in Firecrawl HTML/markdown.");
+  }
+  if (endpointCandidates.length > 0) {
+    notes.push("API/script-like endpoint candidates were found in page source.");
+  }
+  if (relevantLinks.length > 0) {
+    notes.push("Relevant physician/team links were found.");
+  }
+
+  return {
+    teamSectionInHtml,
+    teamSectionInMarkdown,
+    likelyJavaScriptInjected:
+      !teamSectionInHtml && !teamSectionInMarkdown && (/script/i.test(html) || endpointCandidates.length > 0),
+    likelySeparateApiEndpoint: endpointCandidates.length > 0,
+    endpointCandidates,
+    notes
+  };
 }
 
 function looksLikeEntDepartmentLink(row: { text: string; href: string }) {
@@ -550,7 +706,11 @@ function extractRawTeamCandidates(html: string, departmentUrl: string) {
   return dedupeCandidates(candidates);
 }
 
-function extractPhysicianCandidateReport(html: string, departmentUrl: string): CandidateExtractionReport {
+function extractPhysicianCandidateReport(
+  html: string,
+  departmentUrl: string,
+  options: { page?: LoadedShebaPage; includeSourceDebug?: boolean } = {}
+): CandidateExtractionReport {
   const rawCandidates = extractRawTeamCandidates(html, departmentUrl);
   const seniorCandidates = rawCandidates.filter(isSeniorPhysicianCandidate);
   const residentsFiltered = rawCandidates.filter(
@@ -559,6 +719,24 @@ function extractPhysicianCandidateReport(html: string, departmentUrl: string): C
   const nonPhysiciansFiltered = rawCandidates.filter(
     (candidate) => classifyCandidate(candidate) === "nonPhysician"
   ).length;
+  const page = options.page;
+  const allLinks = page ? extractAllPageLinks(page) : [];
+  const relevantLinks = allLinks.filter((link) => RELEVANT_LINK_PATTERN.test(relevantLinkText(link)));
+  const sourceDebug = options.includeSourceDebug && page
+    ? {
+        firecrawl: {
+          metadata: page.firecrawl?.metadata,
+          responseKeys: page.firecrawl?.responseKeys,
+          dataKeys: page.firecrawl?.dataKeys,
+          statusCode: page.firecrawl?.statusCode
+        },
+        markdownPreview: (page.markdown ?? page.text ?? "").slice(0, DEBUG_PREVIEW_LENGTH),
+        htmlPreview: (page.html ?? "").slice(0, DEBUG_PREVIEW_LENGTH),
+        allLinks: allLinks.slice(0, 300),
+        relevantLinks: relevantLinks.slice(0, 120),
+        pageSourceAssessment: assessPageSource(page, allLinks)
+      }
+    : {};
 
   return {
     candidates: seniorCandidates,
@@ -573,7 +751,8 @@ function extractPhysicianCandidateReport(html: string, departmentUrl: string): C
         name: candidate.physicianName,
         title: candidate.role,
         profileUrl: candidate.profileUrl
-      }))
+      })),
+      ...sourceDebug
     }
   };
 }
@@ -747,6 +926,7 @@ function resultFromCandidateOnly(
 export async function runShebaEntFellowshipCrawler(input: {
   departmentUrl?: string | null;
   pastedText?: string | null;
+  debug?: boolean | null;
 } = {}): Promise<ShebaEntCrawlerResult> {
   const warnings: string[] = [];
 
@@ -775,7 +955,11 @@ export async function runShebaEntFellowshipCrawler(input: {
   const departmentHtml = departmentPage.html || departmentPage.text;
   const extractionReport = extractPhysicianCandidateReport(
     departmentHtml,
-    departmentPage.finalUrl || departmentUrl
+    departmentPage.finalUrl || departmentUrl,
+    {
+      page: departmentPage,
+      includeSourceDebug: Boolean(input.debug)
+    }
   );
   const candidates = extractionReport.candidates;
   const results: ShebaEntPhysicianResult[] = [];

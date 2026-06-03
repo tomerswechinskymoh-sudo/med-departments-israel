@@ -15,7 +15,8 @@ const requestSchema = z.object({
   departmentUrl: z
     .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().url().optional()),
   pastedText: z
-    .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().max(50000).optional())
+    .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().max(50000).optional()),
+  debug: z.boolean().optional()
 });
 
 export async function POST(request: Request) {
@@ -53,7 +54,8 @@ export async function POST(request: Request) {
 
     const result = await runShebaEntFellowshipCrawler({
       departmentUrl: parsed.data.departmentUrl,
-      pastedText: parsed.data.pastedText
+      pastedText: parsed.data.pastedText,
+      debug: parsed.data.debug
     });
 
     return NextResponse.json(result);

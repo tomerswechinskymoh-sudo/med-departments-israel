@@ -2,6 +2,11 @@ export type FirecrawlScrapeResult = {
   text: string;
   markdown?: string;
   html?: string;
+  metadata?: Record<string, unknown>;
+  links?: string[];
+  responseKeys?: string[];
+  dataKeys?: string[];
+  statusCode?: number;
   source: "firecrawl";
 };
 
@@ -33,12 +38,16 @@ type FirecrawlApiResponse = {
     rawHtml?: string;
     content?: string;
     text?: string;
+    metadata?: Record<string, unknown>;
+    links?: string[];
   };
   markdown?: string;
   html?: string;
   rawHtml?: string;
   content?: string;
   text?: string;
+  metadata?: Record<string, unknown>;
+  links?: string[];
   error?: string;
   message?: string;
 };
@@ -55,11 +64,15 @@ function textFromResponse(payload: FirecrawlApiResponse) {
   const markdown = data.markdown?.trim();
   const html = (data.html ?? data.rawHtml)?.trim();
   const text = (data.text ?? data.content ?? markdown)?.trim() ?? "";
+  const metadata = data.metadata ?? payload.metadata;
+  const links = data.links ?? payload.links;
 
   return {
     text,
     markdown,
-    html
+    html,
+    metadata,
+    links
   };
 }
 
@@ -121,6 +134,11 @@ export async function scrapeUrlWithFirecrawl(url: string): Promise<FirecrawlScra
     text: extracted.text || extracted.html || "",
     markdown: extracted.markdown,
     html: extracted.html,
+    metadata: extracted.metadata,
+    links: extracted.links,
+    responseKeys: Object.keys(payload),
+    dataKeys: payload.data ? Object.keys(payload.data) : undefined,
+    statusCode: response.status,
     source: "firecrawl"
   };
 }

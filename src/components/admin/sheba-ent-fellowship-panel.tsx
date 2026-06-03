@@ -52,6 +52,24 @@ type CrawlPayload = {
       title: string | null;
       profileUrl: string | null;
     }>;
+    firecrawl?: {
+      metadata?: Record<string, unknown>;
+      responseKeys?: string[];
+      dataKeys?: string[];
+      statusCode?: number;
+    };
+    markdownPreview?: string;
+    htmlPreview?: string;
+    allLinks?: Array<{ text: string; href: string }>;
+    relevantLinks?: Array<{ text: string; href: string }>;
+    pageSourceAssessment?: {
+      teamSectionInHtml: boolean;
+      teamSectionInMarkdown: boolean;
+      likelyJavaScriptInjected: boolean;
+      likelySeparateApiEndpoint: boolean;
+      endpointCandidates: string[];
+      notes: string[];
+    };
   };
 };
 
@@ -68,6 +86,7 @@ function bestFellowship(result: PhysicianResult) {
 export function ShebaEntFellowshipPanel() {
   const [departmentUrl, setDepartmentUrl] = useState("");
   const [pastedText, setPastedText] = useState("");
+  const [debugMode, setDebugMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [payload, setPayload] = useState<CrawlPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -85,7 +104,8 @@ export function ShebaEntFellowshipPanel() {
       },
       body: JSON.stringify({
         departmentUrl: departmentUrl.trim() || undefined,
-        pastedText: pastedText.trim() || undefined
+        pastedText: pastedText.trim() || undefined,
+        debug: debugMode
       })
     });
     const nextPayload: CrawlPayload = await response.json().catch(() => ({}));
@@ -146,6 +166,15 @@ export function ShebaEntFellowshipPanel() {
             {isLoading ? "סורק..." : "סרוק אא״ג שיבא"}
           </Button>
         </div>
+        <label className="inline-flex items-center gap-2 text-sm font-bold text-slate-600">
+          <input
+            type="checkbox"
+            checked={debugMode}
+            onChange={(event) => setDebugMode(event.target.checked)}
+            className="h-4 w-4 rounded border-brand-200"
+          />
+          מצב debug: הצג Firecrawl, HTML, Markdown וקישורים
+        </label>
       </form>
 
       {error ? (
@@ -217,6 +246,98 @@ export function ShebaEntFellowshipPanel() {
                 </tbody>
               </table>
             </div>
+          ) : null}
+          {payload.debug.pageSourceAssessment ? (
+            <div className="mt-4 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs leading-5 text-slate-700">
+              <p className="font-black text-ink">Page source assessment</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <Badge tone={payload.debug.pageSourceAssessment.teamSectionInHtml ? "success" : "warning"}>
+                  HTML team section: {payload.debug.pageSourceAssessment.teamSectionInHtml ? "yes" : "no"}
+                </Badge>
+                <Badge tone={payload.debug.pageSourceAssessment.teamSectionInMarkdown ? "success" : "warning"}>
+                  Markdown team section: {payload.debug.pageSourceAssessment.teamSectionInMarkdown ? "yes" : "no"}
+                </Badge>
+                <Badge tone={payload.debug.pageSourceAssessment.likelyJavaScriptInjected ? "warning" : "default"}>
+                  JS injected: {payload.debug.pageSourceAssessment.likelyJavaScriptInjected ? "likely" : "not likely"}
+                </Badge>
+                <Badge tone={payload.debug.pageSourceAssessment.likelySeparateApiEndpoint ? "warning" : "default"}>
+                  API endpoint: {payload.debug.pageSourceAssessment.likelySeparateApiEndpoint ? "candidate found" : "not found"}
+                </Badge>
+              </div>
+              {payload.debug.pageSourceAssessment.notes.length ? (
+                <ul className="mt-2 list-inside list-disc">
+                  {payload.debug.pageSourceAssessment.notes.map((note) => (
+                    <li key={note}>{note}</li>
+                  ))}
+                </ul>
+              ) : null}
+              {payload.debug.pageSourceAssessment.endpointCandidates.length ? (
+                <div className="mt-3">
+                  <p className="font-bold">Endpoint candidates</p>
+                  <div className="mt-1 max-h-44 overflow-auto" dir="ltr">
+                    {payload.debug.pageSourceAssessment.endpointCandidates.map((url) => (
+                      <p key={url} className="break-all">
+                        {url}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+          {payload.debug.firecrawl ? (
+            <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs">
+              <summary className="cursor-pointer font-black text-ink">Raw Firecrawl metadata</summary>
+              <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap text-left" dir="ltr">
+                {JSON.stringify(payload.debug.firecrawl, null, 2)}
+              </pre>
+            </details>
+          ) : null}
+          {payload.debug.relevantLinks?.length ? (
+            <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs">
+              <summary className="cursor-pointer font-black text-ink">
+                Relevant links ({payload.debug.relevantLinks.length})
+              </summary>
+              <div className="mt-2 max-h-64 overflow-auto" dir="ltr">
+                {payload.debug.relevantLinks.map((link, index) => (
+                  <p key={`${link.href}-${index}`} className="break-all">
+                    {link.text ? `${link.text} — ` : ""}
+                    {link.href}
+                  </p>
+                ))}
+              </div>
+            </details>
+          ) : null}
+          {payload.debug.allLinks?.length ? (
+            <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs">
+              <summary className="cursor-pointer font-black text-ink">
+                All links ({payload.debug.allLinks.length})
+              </summary>
+              <div className="mt-2 max-h-64 overflow-auto" dir="ltr">
+                {payload.debug.allLinks.map((link, index) => (
+                  <p key={`${link.href}-${link.text}-${index}`} className="break-all">
+                    {link.text ? `${link.text} — ` : ""}
+                    {link.href}
+                  </p>
+                ))}
+              </div>
+            </details>
+          ) : null}
+          {payload.debug.markdownPreview ? (
+            <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs">
+              <summary className="cursor-pointer font-black text-ink">First 5000 chars of markdown</summary>
+              <pre className="mt-2 max-h-80 overflow-auto whitespace-pre-wrap text-left" dir="ltr">
+                {payload.debug.markdownPreview}
+              </pre>
+            </details>
+          ) : null}
+          {payload.debug.htmlPreview ? (
+            <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs">
+              <summary className="cursor-pointer font-black text-ink">First 5000 chars of HTML</summary>
+              <pre className="mt-2 max-h-80 overflow-auto whitespace-pre-wrap text-left" dir="ltr">
+                {payload.debug.htmlPreview}
+              </pre>
+            </details>
           ) : null}
         </div>
       ) : null}
