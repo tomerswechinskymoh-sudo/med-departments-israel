@@ -22,6 +22,7 @@ import { RepresentativeRequestReviewForm } from "@/components/admin/representati
 import { ReviewModerationForm } from "@/components/admin/review-moderation-form";
 import { SpecialtyDashboardConfigForm } from "@/components/admin/specialty-dashboard-config-form";
 import { SpecialtyManagementForm } from "@/components/admin/specialty-management-form";
+import { ShebaEntFellowshipPanel } from "@/components/admin/sheba-ent-fellowship-panel";
 import { UserRoleForm } from "@/components/admin/user-role-form";
 import { UserVerificationReviewForm } from "@/components/admin/user-verification-review-form";
 import { StatCard } from "@/components/dashboard/stat-card";
@@ -557,6 +558,8 @@ export default async function AdminPage() {
               }))
             }))}
           />
+
+          <ShebaEntFellowshipPanel />
         </div>
       </AdminAccordionSection>
 
