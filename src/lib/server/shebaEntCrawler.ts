@@ -1,4 +1,6 @@
 import * as cheerio from "cheerio";
+import fs from "node:fs/promises";
+import path from "node:path";
 import {
   loadPageWithPlaywright,
   PlaywrightLoadError,
@@ -155,6 +157,21 @@ type ShebaElasticSearchResponse = {
     total?: { value?: number } | number;
     hits?: ShebaElasticHit[];
   };
+};
+
+type ShebaElasticResponseDebug = {
+  requestUrl: string;
+  status: number;
+  contentType: string;
+  rawPreview: string;
+  rawLength: number;
+  isValidJson: boolean;
+  isEmpty: boolean;
+  isHtml: boolean;
+  isLoginPage: boolean;
+  isCloudflarePage: boolean;
+  isTruncatedJson: boolean;
+  parseError?: string;
 };
 
 export class ShebaEntCrawlerError extends Error {
@@ -445,34 +462,145 @@ async function loadShebaEndpoint(endpointUrl: string): Promise<LoadedShebaPage> 
 }
 
 async function searchShebaElasticsearch(index: string, body: Record<string, unknown>) {
-  try {
-    const response = await fetch(`${SHEBA_PUBLIC_ES_URL}/${index}/_search`, {
-      method: "POST",
-      headers: {
-        authorization: SHEBA_PUBLIC_ES_AUTH,
-        "content-type": "application/json",
-        accept: "application/json"
-      },
-      body: JSON.stringify(body),
-      signal: AbortSignal.timeout(20000)
-    });
-    const json = (await response.json()) as ShebaElasticSearchResponse & {
-      error?: unknown;
-      status?: number;
-    };
+  const postUrl = `${SHEBA_PUBLIC_ES_URL}/${index}/_search`;
+  const getUrl = `${postUrl}?source=${encodeURIComponent(JSON.stringify(body))}&source_content_type=application%2Fjson`;
+  const attempts: Array<{ method: "POST" | "GET"; url: string }> = [
+    { method: "POST", url: postUrl },
+    { method: "GET", url: getUrl }
+  ];
+  const diagnostics: ShebaElasticResponseDebug[] = [];
 
-    if (!response.ok || json.error) {
-      throw new Error(`Sheba Elasticsearch ${index} returned ${response.status}: ${JSON.stringify(json.error ?? json).slice(0, 400)}`);
+  for (const attempt of attempts) {
+    try {
+      const response = await fetch(attempt.url, {
+        method: attempt.method,
+        headers: {
+          authorization: SHEBA_PUBLIC_ES_AUTH,
+          "content-type": "application/json",
+          accept: "application/json",
+          "user-agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+        },
+        body: attempt.method === "POST" ? JSON.stringify(body) : undefined,
+        signal: AbortSignal.timeout(20000)
+      });
+      const raw = await response.text();
+      await saveShebaElasticRawResponse(raw);
+      const parsed = parseShebaElasticResponse(raw, {
+        requestUrl: attempt.url,
+        status: response.status,
+        contentType: response.headers.get("content-type") ?? ""
+      });
+      diagnostics.push(parsed.debug);
+
+      if (!parsed.json) {
+        continue;
+      }
+
+      const json = parsed.json as ShebaElasticSearchResponse & {
+        error?: unknown;
+        status?: number;
+      };
+
+      if (!response.ok || json.error) {
+        diagnostics[diagnostics.length - 1] = {
+          ...parsed.debug,
+          parseError: `Elasticsearch returned ${response.status}: ${JSON.stringify(json.error ?? json).slice(0, 400)}`
+        };
+        continue;
+      }
+
+      return {
+        response: json,
+        debug: parsed.debug
+      };
+    } catch (error) {
+      diagnostics.push({
+        requestUrl: attempt.url,
+        status: 0,
+        contentType: "",
+        rawPreview: "",
+        rawLength: 0,
+        isValidJson: false,
+        isEmpty: true,
+        isHtml: false,
+        isLoginPage: false,
+        isCloudflarePage: false,
+        isTruncatedJson: false,
+        parseError: error instanceof Error ? error.message : String(error)
+      });
     }
-
-    return json;
-  } catch (error) {
-    throw new ShebaEntCrawlerError(
-      "sheba_elasticsearch_failed",
-      `טעינת נתוני צוות מ-Sheba Elasticsearch נכשלה: ${error instanceof Error ? error.message : "שגיאה לא ידועה"}`,
-      error instanceof Error ? error.stack : undefined
-    );
   }
+
+  const diagnosticText = diagnostics.map(formatShebaElasticDiagnostic).join("\n---\n");
+  throw new ShebaEntCrawlerError(
+    "sheba_elasticsearch_failed",
+    `שגיאת ניתוח נתוני צוות מ-Sheba Elasticsearch:\n${diagnosticText}`,
+    diagnosticText
+  );
+}
+
+async function saveShebaElasticRawResponse(raw: string) {
+  try {
+    const directory = path.join(process.cwd(), "tmp", "sheba-ent");
+    await fs.mkdir(directory, { recursive: true });
+    await fs.writeFile(path.join(directory, "es-raw-response.txt"), raw, "utf8");
+  } catch {
+    // Best-effort diagnostics only. Never fail the crawler because tmp is read-only.
+  }
+}
+
+function parseShebaElasticResponse(
+  raw: string,
+  meta: { requestUrl: string; status: number; contentType: string }
+): { json: unknown | null; debug: ShebaElasticResponseDebug } {
+  const trimmed = raw.trim();
+  const debug: ShebaElasticResponseDebug = {
+    requestUrl: meta.requestUrl,
+    status: meta.status,
+    contentType: meta.contentType,
+    rawPreview: raw.slice(0, 2000),
+    rawLength: raw.length,
+    isValidJson: false,
+    isEmpty: trimmed.length === 0,
+    isHtml: /<html|<!doctype html|<body/i.test(trimmed),
+    isLoginPage: /login|sign in|authentication|unauthorized|forbidden/i.test(trimmed),
+    isCloudflarePage: /cloudflare|just a moment|cf_chl|cf-chl|challenges\.cloudflare/i.test(trimmed),
+    isTruncatedJson: false
+  };
+
+  if (!trimmed) {
+    debug.parseError = "empty response body";
+    return { json: null, debug };
+  }
+
+  try {
+    const json = JSON.parse(trimmed) as unknown;
+    debug.isValidJson = true;
+    return { json, debug };
+  } catch (error) {
+    debug.parseError = error instanceof Error ? error.message : String(error);
+    debug.isTruncatedJson = /^[\[{]/.test(trimmed) && !/[\]}]\s*$/.test(trimmed);
+    return { json: null, debug };
+  }
+}
+
+function formatShebaElasticDiagnostic(debug: ShebaElasticResponseDebug) {
+  return [
+    `url: ${debug.requestUrl}`,
+    `status: ${debug.status}`,
+    `content-type: ${debug.contentType || "unknown"}`,
+    `validJson: ${debug.isValidJson}`,
+    `empty: ${debug.isEmpty}`,
+    `html: ${debug.isHtml}`,
+    `loginPage: ${debug.isLoginPage}`,
+    `cloudflarePage: ${debug.isCloudflarePage}`,
+    `truncatedJson: ${debug.isTruncatedJson}`,
+    debug.parseError ? `parseError: ${debug.parseError}` : null,
+    `rawPreview: ${debug.rawPreview || "[empty]"}`
+  ]
+    .filter(Boolean)
+    .join("\n");
 }
 
 function elasticTotal(response: ShebaElasticSearchResponse) {
@@ -544,7 +672,7 @@ function candidateFromShebaElasticHit(hit: ShebaElasticHit): PhysicianCandidate 
 }
 
 async function loadShebaEntDoctorsFromElasticsearch() {
-  const departmentResponse = await searchShebaElasticsearch("he_internal_department_index", {
+  const departmentSearch = await searchShebaElasticsearch("he_internal_department_index", {
     size: 5,
     query: {
       bool: {
@@ -557,7 +685,7 @@ async function loadShebaEntDoctorsFromElasticsearch() {
       }
     }
   });
-  const doctorsResponse = await searchShebaElasticsearch("he_doctor_index", {
+  const doctorsSearch = await searchShebaElasticsearch("he_doctor_index", {
     size: 100,
     query: {
       bool: {
@@ -572,6 +700,8 @@ async function loadShebaEntDoctorsFromElasticsearch() {
     },
     sort: [{ "title.keyword": "asc" }]
   });
+  const departmentResponse = departmentSearch.response;
+  const doctorsResponse = doctorsSearch.response;
   const rawCandidates = (doctorsResponse.hits?.hits ?? []).map(candidateFromShebaElasticHit);
   const seniorCandidates = rawCandidates.filter(isSeniorPhysicianCandidate);
   const residentsFiltered = rawCandidates.filter(
@@ -623,13 +753,17 @@ async function loadShebaEntDoctorsFromElasticsearch() {
         provider: "sheba_elasticsearch" as const,
         metadata: {
           endpoint: SHEBA_PUBLIC_ES_URL,
-          departmentIndex: "he_internal_department_index",
-          doctorIndex: "he_doctor_index",
-          departmentId: SHEBA_ENT_DEPARTMENT_ID,
-          departmentHits: elasticTotal(departmentResponse),
-          doctorHits: elasticTotal(doctorsResponse)
-        },
-        statusCode: 200
+        departmentIndex: "he_internal_department_index",
+        doctorIndex: "he_doctor_index",
+        departmentId: SHEBA_ENT_DEPARTMENT_ID,
+        departmentHits: elasticTotal(departmentResponse),
+        doctorHits: elasticTotal(doctorsResponse),
+        elasticDiagnostics: {
+          department: departmentSearch.debug,
+          doctors: doctorsSearch.debug
+        }
+      },
+      statusCode: 200
       }
     } satisfies ShebaEntCrawlerDebug
   };
