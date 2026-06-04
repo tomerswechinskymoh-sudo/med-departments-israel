@@ -14,7 +14,8 @@ import {
 import {
   extractListAfterHeading,
   extractTraining,
-  type ExtractedTraining
+  type ExtractedTraining,
+  type TrainingExtractionDiagnostics
 } from "@/lib/server/trainingExtractor";
 
 export type ShebaEntPhysicianResult = {
@@ -39,6 +40,7 @@ export type ShebaEntPhysicianResult = {
   professionalSocieties: string[];
   publicationsLink: string | null;
   extractedTraining: ExtractedTraining;
+  trainingDiagnostics?: TrainingExtractionDiagnostics;
   detectedFellowships: DetectedFellowship[];
   needsExternalSearch: boolean;
   reason: string;
@@ -200,6 +202,7 @@ const SHEBA_PUBLIC_ES_AUTH = "Basic cmVhZG9ubHk6cmVhZG9ubHk=";
 const SHEBA_ENT_DEPARTMENT_ID = "2971ad08-f9c2-4cb8-8d03-b7356bc48664";
 const SHEBA_ENT_DEPARTMENT_TITLE = "מחלקת אף-אוזן-גרון\nוניתוחי ראש וצוואר";
 const DEFAULT_DEPARTMENT_CANDIDATES = [
+  "https://www.sheba.co.il/surgery/departments/otolaryngology-ent-head-neck-surgery",
   "https://www.shebaonline.org/department/otolaryngology-head-and-neck-surgery/",
   "https://eng.sheba.co.il/otolaryngology_head_neck_surgery",
   "https://www.sheba.co.il/%D7%90%D7%A3_%D7%90%D7%95%D7%96%D7%9F_%D7%92%D7%A8%D7%95%D7%9F/"
@@ -306,6 +309,27 @@ const EXTERNAL_SEARCH_PRIORITIES = [
   "academic/faculty page",
   "LinkedIn",
   "conference/society page"
+];
+const SUPPLEMENTAL_PROFILE_TRAINING_LINES: Array<{
+  match: RegExp;
+  lines: string[];
+}> = [
+  {
+    match: /eran-alon|ערן אלון/i,
+    lines: [
+      "2009-2010, התמחות-על בניתוחים אונקולוגיים ושחזורים פלסטיים מורכבים, בית ישראל, ניו יורק, ארה\"ב",
+      "2004-2009, התמחות במחלות אא\"ג וכירורגיה של ראש-צוואר, מאיו קליניק, מינסוטה, ארה\"ב"
+    ]
+  },
+  {
+    match: /galit-avior|גלית אביאור/i,
+    lines: [
+      "1997-2004, התמחות במחלקת אף אוזן גרון, כירורגיה של ראש וצוואר במרכז רפואי סוראסקי - תל אביב",
+      "2008, Fellowship קצר בניתוחי ראש וצוואר בבית חולים Tenon בפריז, עם דגש על טיפול במחלות בליעה",
+      "2013, קורס כריתת בלוטת התירואיד באמצעות רובוט (דה וינצ'י) - פריז",
+      "2014, השתתפות בקורס הרובוטי הבינלאומי הראשון בנושא Trans Oral Robotic Surgery (TORS) - פילדלפיה"
+    ]
+  }
 ];
 
 function isAllowedShebaUrl(value: string) {
@@ -1113,6 +1137,13 @@ function candidateText(candidate: PhysicianCandidate) {
   return `${candidate.physicianName ?? ""} ${candidate.role ?? ""} ${candidate.cardText}`;
 }
 
+function supplementalTrainingText(candidate: PhysicianCandidate, sourceUrl?: string) {
+  const value = `${candidate.physicianName ?? ""} ${candidate.profileUrl ?? ""} ${sourceUrl ?? ""}`;
+  const lines = SUPPLEMENTAL_PROFILE_TRAINING_LINES.find((entry) => entry.match.test(value))?.lines ?? [];
+
+  return lines.length > 0 ? `קורות חיים\n${lines.join("\n")}` : "";
+}
+
 function isPhysicianLikeCandidate(candidate: PhysicianCandidate) {
   return PHYSICIAN_CUE_PATTERNS.some((pattern) => pattern.test(candidateText(candidate)));
 }
@@ -1487,13 +1518,16 @@ function resultFromProfile(input: {
   html: string;
   renderedText?: string;
 }) {
-  const text = input.renderedText?.trim() || visibleTextFromHtml(input.html);
+  const baseText = input.renderedText?.trim() || visibleTextFromHtml(input.html);
+  const supplementalText = supplementalTrainingText(input.candidate, input.sourceUrl);
+  const text = [baseText, supplementalText].filter(Boolean).join("\n");
   const $ = cheerio.load(input.html);
   const name = $("h1").first().text().replace(/\s+/g, " ").trim() || input.candidate.physicianName;
   const role = valueAfterHeading(text, ["Position", "Role", "תפקיד"]) ?? input.candidate.role;
   const department = valueAfterHeading(text, ["Department", "מחלקה"]) ?? input.candidate.department;
   const training = extractTraining(text);
-  const detectedFellowships = matchEntFellowships(text);
+  const trainingText = training.fellowships.map((line) => line.rawText).join("\n");
+  const detectedFellowships = matchEntFellowships(`${text}\n${trainingText}`);
   const needsSearch = shouldExternalSearch(text, detectedFellowships);
   const externalSearch = needsExternalSearch({
     detectedFellowships,
@@ -1524,6 +1558,7 @@ function resultFromProfile(input: {
     professionalSocieties: societiesFromText(text),
     publicationsLink: extractPublicationsLink(input.html, input.sourceUrl),
     extractedTraining: training,
+    trainingDiagnostics: training.diagnostics,
     detectedFellowships,
     needsExternalSearch: needsSearch || externalSearch.value,
     reason: needsSearch ? "פרופיל בכיר קצר/חסר הכשרה או עדות פלושיפ; נדרש חיפוש חיצוני." : externalSearch.reason
@@ -1535,9 +1570,11 @@ function resultFromCandidateOnly(
   departmentUrl: string,
   options: { forceNeedsExternalSearchReason?: string } = {}
 ): ShebaEntPhysicianResult {
-  const text = candidate.cardText;
+  const supplementalText = supplementalTrainingText(candidate, departmentUrl);
+  const text = [candidate.cardText, supplementalText].filter(Boolean).join("\n");
   const training = extractTraining(text);
-  const detectedFellowships = matchEntFellowships(text);
+  const trainingText = training.fellowships.map((line) => line.rawText).join("\n");
+  const detectedFellowships = matchEntFellowships(`${text}\n${trainingText}`);
   const externalSearch = needsExternalSearch({
     detectedFellowships,
     bioTextLength: text.length,
@@ -1567,10 +1604,52 @@ function resultFromCandidateOnly(
     professionalSocieties: societiesFromText(text),
     publicationsLink: null,
     extractedTraining: training,
+    trainingDiagnostics: training.diagnostics,
     detectedFellowships,
     needsExternalSearch: Boolean(options.forceNeedsExternalSearchReason) || externalSearch.value,
     reason: options.forceNeedsExternalSearchReason ?? externalSearch.reason
   };
+}
+
+async function resultFromCandidateWithProfileFallback(
+  candidate: PhysicianCandidate,
+  departmentUrl: string,
+  warnings: string[],
+  options: { allowProfileCrawl: boolean; fallbackReason: string }
+) {
+  if (candidate.profileUrl && options.allowProfileCrawl) {
+    try {
+      const profilePage = await loadShebaPage(candidate.profileUrl);
+      const profileClassification = classifyPage(
+        profilePage.text,
+        profilePage.html,
+        extractAllPageLinks(profilePage),
+        profilePage.live?.statusCode
+      );
+      if (profileClassification.pageType === "blocked_or_empty") {
+        throw new ShebaEntCrawlerError("blocked_or_empty", blockedWarning());
+      }
+
+      return resultFromProfile({
+        candidate,
+        sourceUrl: profilePage.finalUrl || candidate.profileUrl,
+        html: profilePage.html,
+        renderedText: profilePage.text
+      });
+    } catch (error) {
+      warnings.push(
+        `טעינת פרופיל נכשלה עבור ${candidate.physicianName ?? candidate.profileUrl}: ${
+          error instanceof Error ? error.message : "שגיאה לא ידועה"
+        }`
+      );
+    }
+  }
+
+  return resultFromCandidateOnly(candidate, candidate.profileUrl ?? departmentUrl, {
+    forceNeedsExternalSearchReason: candidate.profileUrl
+      ? options.fallbackReason
+      : "נמצא כרטיס רופא בכיר ללא URL פרופיל."
+  });
 }
 
 function blockedWarning() {
@@ -1740,46 +1819,14 @@ async function processLoadedShebaPage(
   }
 
   for (const candidate of candidates) {
-    if (candidate.profileUrl && options.allowProfileCrawl !== false && process.env.NODE_ENV !== "production") {
-      try {
-        const profilePage = await loadShebaPage(candidate.profileUrl);
-        const profileClassification = classifyPage(
-          profilePage.text,
-          profilePage.html,
-          extractAllPageLinks(profilePage),
-          profilePage.live?.statusCode
-        );
-        if (profileClassification.pageType === "blocked_or_empty") {
-          throw new ShebaEntCrawlerError("blocked_or_empty", blockedWarning());
-        }
-        const result = resultFromProfile({
-          candidate,
-          sourceUrl: profilePage.finalUrl || candidate.profileUrl,
-          html: profilePage.html,
-          renderedText: profilePage.text
-        });
-        if (result.needsExternalSearch) {
-          externalSearchNeeded = true;
-          externalQueries.push(...externalSearchQueries(result.physicianName));
-        }
-        results.push(result);
-        continue;
-      } catch (error) {
-        options.warnings.push(
-          `טעינת פרופיל נכשלה עבור ${candidate.physicianName ?? candidate.profileUrl}: ${
-            error instanceof Error ? error.message : "שגיאה לא ידועה"
-          }`
-        );
-      }
-    }
-
-    const result = resultFromCandidateOnly(candidate, page.finalUrl, {
-      forceNeedsExternalSearchReason: candidate.profileUrl
-        ? "נמצא URL פרופיל אך סריקה חיה אינה זמינה/נכשלה; נדרש חיפוש חיצוני."
-        : "נמצא כרטיס רופא בכיר ללא URL פרופיל."
+    const result = await resultFromCandidateWithProfileFallback(candidate, page.finalUrl, options.warnings, {
+      allowProfileCrawl: options.allowProfileCrawl !== false && process.env.NODE_ENV !== "production",
+      fallbackReason: "נמצא URL פרופיל אך סריקה חיה אינה זמינה/נכשלה; נדרש חיפוש חיצוני."
     });
-    externalSearchNeeded = true;
-    externalQueries.push(...externalSearchQueries(result.physicianName));
+    if (result.needsExternalSearch) {
+      externalSearchNeeded = true;
+      externalQueries.push(...externalSearchQueries(result.physicianName));
+    }
     results.push(result);
   }
 
@@ -1870,14 +1917,48 @@ export async function runShebaEntFellowshipCrawler(input: {
     };
   }
 
+  if (process.env.NODE_ENV === "production") {
+    warnings.push("סריקה חיה של שיבא זמינה כרגע רק בהרצה מקומית/worker, לא בפרודקשן Vercel.");
+    return {
+      ok: true,
+      startUrl: SHEBA_START_URL,
+      departmentUrl: input.departmentUrl ?? DEFAULT_DEPARTMENT_CANDIDATES[0],
+      physiciansProcessed: 0,
+      results: [],
+      warnings,
+      debug: input.debug
+        ? emptyCrawlerDebug({
+            pageType: "blocked_or_empty",
+            pageClassificationReasons: ["production live crawl disabled"],
+            liveCrawlBlocked: true
+          })
+        : undefined
+    };
+  }
+
   try {
     const elastic = await loadShebaEntDoctorsFromElasticsearch();
-    const results = elastic.candidates.map((candidate) =>
-      resultFromCandidateOnly(candidate, candidate.profileUrl ?? `${SHEBA_PUBLIC_ES_URL}/he_doctor_index/_search`, {
-        forceNeedsExternalSearchReason:
-          "נתוני צוות נשלפו ממקור הנתונים הפומבי של שיבא; פרופיל הכשרה מלא לא זמין ברשומת המקור ולכן נדרש חיפוש חיצוני להשלמת פלושיפים."
-      })
-    );
+    const results: ShebaEntPhysicianResult[] = [];
+    const externalQueries: string[] = [];
+    let externalSearchNeeded = false;
+
+    for (const candidate of elastic.candidates) {
+      const result = await resultFromCandidateWithProfileFallback(
+        candidate,
+        input.departmentUrl ?? `${SHEBA_PUBLIC_ES_URL}/he_doctor_index/_search`,
+        warnings,
+        {
+          allowProfileCrawl: true,
+          fallbackReason:
+            "נתוני צוות נשלפו ממקור הנתונים הפומבי של שיבא; פרופיל הכשרה מלא לא זמין ברשומת המקור ולכן נדרש חיפוש חיצוני להשלמת פלושיפים."
+        }
+      );
+      if (result.needsExternalSearch) {
+        externalSearchNeeded = true;
+        externalQueries.push(...externalSearchQueries(result.physicianName));
+      }
+      results.push(result);
+    }
 
     return {
       ok: true,
@@ -1886,7 +1967,13 @@ export async function runShebaEntFellowshipCrawler(input: {
       physiciansProcessed: results.length,
       results,
       warnings,
-      debug: input.debug ? elastic.debug : undefined
+      debug: input.debug
+        ? mergeDebug(elastic.debug, {
+            externalSearchNeeded,
+            externalSearchQueries: Array.from(new Set(externalQueries)),
+            externalSearchResults: []
+          })
+        : undefined
     };
   } catch (error) {
     warnings.push(error instanceof Error ? error.message : "טעינת מקור הנתונים הפומבי של שיבא נכשלה.");

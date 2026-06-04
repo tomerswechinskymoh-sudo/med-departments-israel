@@ -8,10 +8,16 @@ import {
   runShebaEntFellowshipCrawler,
   ShebaEntCrawlerError
 } from "@/lib/server/shebaEntCrawler";
+import {
+  getLatestShebaEntFellowshipUpload,
+  saveShebaEntFellowshipExport
+} from "@/lib/server/shebaEntFellowshipStore";
 
 export const runtime = "nodejs";
 
 const requestSchema = z.object({
+  mode: z.enum(["crawl", "upload"]).optional(),
+  exportJson: z.unknown().optional(),
   departmentUrl: z
     .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().url().optional()),
   pastedText: z
@@ -22,6 +28,26 @@ const requestSchema = z.object({
     .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().url().optional()),
   debug: z.boolean().optional()
 });
+
+export async function GET() {
+  const session = await getSession();
+  if (session?.role !== "admin") {
+    return NextResponse.json({ ok: false, error: "אין הרשאה." }, { status: 403 });
+  }
+
+  const latest = await getLatestShebaEntFellowshipUpload();
+  if (!latest) {
+    return NextResponse.json({
+      ok: true,
+      message: "לא הועלו עדיין נתוני סריקה.",
+      physiciansProcessed: 0,
+      results: [],
+      warnings: ["לא הועלו עדיין נתוני סריקה."]
+    });
+  }
+
+  return NextResponse.json(latest);
+}
 
 export async function POST(request: Request) {
   const session = await getSession();
@@ -52,6 +78,45 @@ export async function POST(request: Request) {
   }
 
   try {
+    if (parsed.data.mode === "upload") {
+      const summary = await saveShebaEntFellowshipExport(
+        parsed.data.exportJson,
+        session.userId
+      );
+      const latest = await getLatestShebaEntFellowshipUpload();
+
+      return NextResponse.json({
+        ...(latest ?? {
+          ok: true,
+          physiciansProcessed: 0,
+          results: [],
+          warnings: []
+        }),
+        uploadSummary: summary
+      });
+    }
+
+    const hasManualSource = Boolean(parsed.data.pastedHtml || parsed.data.pastedText || parsed.data.endpointUrl);
+    if (process.env.NODE_ENV === "production" && !hasManualSource) {
+      const latest = await getLatestShebaEntFellowshipUpload();
+      if (!latest) {
+        return NextResponse.json({
+          ok: true,
+          message: "לא הועלו עדיין נתוני סריקה.",
+          physiciansProcessed: 0,
+          results: [],
+          warnings: ["לא הועלו עדיין נתוני סריקה."]
+        });
+      }
+      return NextResponse.json({
+        ...latest,
+        warnings: [
+          "סריקה חיה של שיבא זמינה כרגע רק בהרצה מקומית/worker, לא בפרודקשן Vercel.",
+          ...latest.warnings
+        ]
+      });
+    }
+
     if (parsed.data.departmentUrl) {
       assertAllowedShebaUrl(parsed.data.departmentUrl);
     }

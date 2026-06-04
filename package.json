@@ -20,7 +20,9 @@
     "verify:department-summary": "tsx src/server/jobs/debug-departments-summary.ts",
     "verify:metric-display": "tsx src/server/jobs/debug-departments-summary.ts",
     "enrichment:mock": "tsx src/server/jobs/run-department-enrichment.ts",
-    "openings:process-expired": "tsx src/server/jobs/run-expired-openings.ts"
+    "openings:process-expired": "tsx src/server/jobs/run-expired-openings.ts",
+    "crawl:sheba-ent": "tsx src/server/jobs/crawl-sheba-ent.ts",
+    "export:sheba-ent": "tsx src/server/jobs/export-sheba-ent.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

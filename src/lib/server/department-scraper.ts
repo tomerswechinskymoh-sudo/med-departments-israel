@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+
 type ScrapeExtraction = {
   confidenceScore: number | null;
   departmentHeadTitle: string | null;
@@ -167,7 +170,17 @@ async function optionalImport<T>(specifier: string): Promise<T | null> {
 }
 
 async function importPlaywrightModule(): Promise<PlaywrightModule> {
-  process.env.PLAYWRIGHT_BROWSERS_PATH ??= "0";
+  if (!process.env.PLAYWRIGHT_BROWSERS_PATH) {
+    const appLocalBrowsers = path.join(
+      process.cwd(),
+      "node_modules",
+      "playwright-core",
+      ".local-browsers"
+    );
+    if (fs.existsSync(appLocalBrowsers)) {
+      process.env.PLAYWRIGHT_BROWSERS_PATH = "0";
+    }
+  }
   const playwright = await import("playwright");
 
   return playwright as unknown as PlaywrightModule;

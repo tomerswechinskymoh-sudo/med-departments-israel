@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -25,6 +25,25 @@ type PhysicianResult = {
   residencyYears: string | null;
   fellowshipInstitution: string | null;
   fellowshipYears: string | null;
+  extractedTraining?: {
+    fellowships?: Array<{
+      rawText: string;
+      years?: string | null;
+      institution?: string | null;
+      country?: string | null;
+      confidenceScore?: number;
+      trainingType?: string;
+    }>;
+  };
+  trainingDiagnostics?: {
+    educationSectionLength: number;
+    clinicalExperienceSectionLength: number;
+    curriculumSectionLength: number;
+    detected: boolean;
+    extractedLines: string[];
+    rejectionReason: string | null;
+    normalizedBioPreview: string | null;
+  };
   detectedFellowships: DetectedFellowship[];
   needsExternalSearch: boolean;
   reason: string;
@@ -35,11 +54,26 @@ type CrawlPayload = {
   error?: string;
   errorCode?: string;
   stack?: string;
+  message?: string;
   startUrl?: string;
   departmentUrl?: string;
   physiciansProcessed?: number;
   results?: PhysicianResult[];
   warnings?: string[];
+  uploaded?: {
+    batchId: string;
+    uploadedAt: string;
+    physicians: number;
+    seniorPhysicians: number;
+    trainingDetected: number;
+  };
+  uploadSummary?: {
+    batchId: string;
+    uploadedAt: string;
+    physicians: number;
+    seniorPhysicians: number;
+    trainingDetected: number;
+  };
   debug?: {
     pageType?: string;
     pageClassificationReasons?: string[];
@@ -98,14 +132,18 @@ function fellowshipCount(results: PhysicianResult[] | undefined) {
 }
 
 function fellowshipText(result: PhysicianResult) {
-  return result.detectedFellowships.length > 0
-    ? result.detectedFellowships.map((item) => item.canonicalNameHe).join(", ")
-    : "לא זוהה";
+  if (result.detectedFellowships.length > 0) {
+    return result.detectedFellowships.map((item) => item.canonicalNameHe).join(", ");
+  }
+  const trainingLines = result.extractedTraining?.fellowships ?? [];
+  return trainingLines.length > 0 ? `הכשרה זוהתה (${trainingLines.length})` : "לא זוהה";
 }
 
 function evidenceText(result: PhysicianResult) {
   const snippets = result.detectedFellowships.flatMap((item) => item.evidenceSnippets);
-  return snippets.length > 0 ? snippets.slice(0, 3).join(" | ") : "אין עדות פלושיפ בטקסט המקור";
+  if (snippets.length > 0) return snippets.slice(0, 3).join(" | ");
+  const trainingLines = result.extractedTraining?.fellowships?.map((item) => item.rawText) ?? [];
+  return trainingLines.length > 0 ? trainingLines.slice(0, 3).join(" | ") : "אין עדות פלושיפ בטקסט המקור";
 }
 
 function sourceLabel(result: PhysicianResult) {
@@ -120,6 +158,7 @@ export function ShebaEntFellowshipPanel() {
   const [endpointUrl, setEndpointUrl] = useState("");
   const [debugMode, setDebugMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [payload, setPayload] = useState<CrawlPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -128,6 +167,22 @@ export function ShebaEntFellowshipPanel() {
   const totalSeniorPhysicians =
     payload?.debug?.seniorPhysiciansFound ?? payload?.results?.length ?? payload?.physiciansProcessed ?? 0;
   const totalFellowshipsDetected = fellowshipCount(payload?.results);
+
+  useEffect(() => {
+    let mounted = true;
+    fetch("/api/admin/fellowship-poc/sheba-ent")
+      .then((response) => response.json())
+      .then((nextPayload: CrawlPayload) => {
+        if (mounted) setPayload(nextPayload);
+      })
+      .catch(() => {
+        if (mounted) setError("טעינת נתוני הסריקה השמורים נכשלה.");
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   async function runCrawler(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -141,6 +196,7 @@ export function ShebaEntFellowshipPanel() {
         "content-type": "application/json"
       },
       body: JSON.stringify({
+        mode: "crawl",
         departmentUrl: departmentUrl.trim() || undefined,
         pastedText: pastedText.trim() || undefined,
         pastedHtml: pastedHtml.trim() || undefined,
@@ -158,6 +214,38 @@ export function ShebaEntFellowshipPanel() {
     }
 
     setPayload(nextPayload);
+  }
+
+  async function uploadExport(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    setError(null);
+    try {
+      const text = await file.text();
+      const exportJson = JSON.parse(text);
+      const response = await fetch("/api/admin/fellowship-poc/sheba-ent", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          mode: "upload",
+          exportJson
+        })
+      });
+      const nextPayload: CrawlPayload = await response.json().catch(() => ({}));
+      if (!response.ok || nextPayload.ok === false) {
+        throw new Error(nextPayload.error ?? "העלאת JSON נכשלה.");
+      }
+      setPayload(nextPayload);
+    } catch (uploadError) {
+      setError(uploadError instanceof Error ? uploadError.message : "העלאת JSON נכשלה.");
+    } finally {
+      setIsUploading(false);
+      event.target.value = "";
+    }
   }
 
   return (
@@ -242,9 +330,44 @@ export function ShebaEntFellowshipPanel() {
         </label>
       </form>
 
+      <div className="mt-4 rounded-2xl border border-brand-100 bg-white p-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-black text-ink">העלאת JSON מסריקה מקומית</p>
+            <p className="mt-1 text-xs leading-5 text-slate-600">
+              בפרודקשן Vercel המערכת קוראת רק נתונים שהועלו לכאן. אם אין העלאה תוצג הודעה שאין נתוני סריקה.
+            </p>
+          </div>
+          <label className="inline-flex min-h-11 cursor-pointer items-center rounded-2xl bg-ink px-4 text-sm font-black text-white">
+            {isUploading ? "מעלה..." : "העלה JSON"}
+            <input
+              type="file"
+              accept="application/json,.json"
+              className="sr-only"
+              disabled={isUploading}
+              onChange={uploadExport}
+            />
+          </label>
+        </div>
+        {payload?.uploaded || payload?.uploadSummary ? (
+          <div className="mt-3 grid gap-2 text-xs font-bold text-slate-700 md:grid-cols-4">
+            <p>תאריך העלאה: {new Date((payload.uploadSummary ?? payload.uploaded)?.uploadedAt ?? "").toLocaleString("he-IL")}</p>
+            <p>רופאים: {(payload.uploadSummary ?? payload.uploaded)?.physicians ?? 0}</p>
+            <p>בכירים: {(payload.uploadSummary ?? payload.uploaded)?.seniorPhysicians ?? 0}</p>
+            <p>הכשרה/פלושיפ זוהו: {(payload.uploadSummary ?? payload.uploaded)?.trainingDetected ?? 0}</p>
+          </div>
+        ) : null}
+      </div>
+
       {error ? (
         <p className="mt-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-800">
           {error}
+        </p>
+      ) : null}
+
+      {payload?.message ? (
+        <p className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold text-amber-900">
+          {payload.message}
         </p>
       ) : null}
 

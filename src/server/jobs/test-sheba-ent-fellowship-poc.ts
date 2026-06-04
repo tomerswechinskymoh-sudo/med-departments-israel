@@ -4,6 +4,7 @@ import {
   runShebaEntFellowshipCrawler,
   shebaEntCrawlerInternals
 } from "@/lib/server/shebaEntCrawler";
+import { extractTraining } from "@/lib/server/trainingExtractor";
 
 function assertTopFellowship(text: string, expectedFellowshipId: string) {
   const matches = matchEntFellowships(text);
@@ -41,6 +42,43 @@ const migsMatches = matchEntFellowships(
   "Dr. F completed a fellowship in MIGS and minimally invasive gynecologic surgery."
 );
 assert.equal(migsMatches.length, 0, "MIGS must not match ENT fellowship dictionary");
+
+const eranTraining = extractTraining(`
+השכלה
+2009–2010, התמחות-על בניתוחים אונקולוגיים ושחזורים פלסטיים מורכבים, בית ישראל, ניו יורק, ארה"ב
+2004–2009, התמחות במחלות אא"ג וכירורגיה של ראש-צוואר, מאיו קליניק, מינסוטה, ארה"ב
+`);
+assert.ok(
+  eranTraining.fellowships.some((line) =>
+    line.rawText.includes("2009-2010, התמחות-על בניתוחים אונקולוגיים ושחזורים פלסטיים מורכבים")
+  ),
+  "Eran Alon fellowship line must be extracted"
+);
+assert.ok(
+  eranTraining.fellowships.some((line) =>
+    line.rawText.includes("2004-2009, התמחות במחלות אא\"ג וכירורגיה של ראש-צוואר")
+  ),
+  "Eran Alon Mayo residency line must be extracted"
+);
+
+const eranMatches = matchEntFellowships(eranTraining.fellowships.map((line) => line.rawText).join("\n"));
+assert.ok(
+  eranMatches.some((match) => match.fellowshipId === "ENT_HEAD_NECK"),
+  "Eran Alon oncology/reconstruction training must match ENT head and neck"
+);
+
+const galitTraining = extractTraining(`
+השכלה
+2018-2017 השתלמות עמיתים ברינולוגיה וניתוחי סינוסים אנדוסקופיים
+2019 קורס מתקדם בניתוחי בסיס גולגולת
+`);
+assert.ok(galitTraining.fellowships.length >= 2, "Galit Avior training lines must still be extracted");
+assert.ok(
+  matchEntFellowships(galitTraining.fellowships.map((line) => line.rawText).join("\n")).some(
+    (match) => match.fellowshipId === "ENT_RHINOLOGY"
+  ),
+  "Galit Avior rhinology training must still match"
+);
 
 const mockedDepartmentHtml = `
   <main>
