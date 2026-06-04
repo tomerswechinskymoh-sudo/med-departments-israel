@@ -1186,6 +1186,36 @@ export default async function DepartmentDetailsPage({
     .map((item) => item.trim())
     .filter(Boolean);
   const websiteUrl = department.websiteUrl ?? department.institution.websiteUrl;
+  const departmentNewResidentsRows = departmentNewResidentsRowsFromYearlyMetrics(
+    importedDepartmentYearlyMetrics
+  );
+  const isAssutaAshdodEntDebugTarget =
+    department.institution.name.includes("אסותא אשדוד") &&
+    /אוזן|א\.א\.ג|ראש צוואר|ראש וצוואר/.test(`${department.name} ${department.specialty.name}`);
+  const yearlyResidentsRuntimeDebug = isAssutaAshdodEntDebugTarget
+    ? {
+        view: "department-profile-page",
+        sourceFunctionName: "getDepartmentPageData -> departmentNewResidentsRowsFromYearlyMetrics",
+        departmentId: department.id,
+        slug: department.slug,
+        departmentName: department.name,
+        institutionName: department.institution.name,
+        specialtyName: department.specialty.name,
+        rawRows: importedDepartmentYearlyMetrics
+          .filter((metric) => metric.metricKey === "newResidents")
+          .map((metric) => ({
+            metricKey: metric.metricKey,
+            year: metric.year,
+            value: metric.value,
+            rawValue: metric.rawValue,
+            unit: metric.unit,
+            sourceNotes: metric.sourceNotes,
+            lastUpdated: metric.lastUpdated,
+            updatedAt: metric.updatedAt
+          })),
+        departmentNewResidentsRows
+      }
+    : null;
   const canViewDepartmentDetails = Boolean(session && session.verificationStatus !== "REJECTED");
 
   if (!canViewDepartmentDetails) {
@@ -1211,6 +1241,10 @@ export default async function DepartmentDetailsPage({
             </div>
           </div>
         </section>
+        <RuntimeYearlyResidentsDebug
+          title="RUNTIME DEBUG: department profile yearly residents"
+          payload={yearlyResidentsRuntimeDebug}
+        />
 
         <Card className="mx-auto max-w-2xl rounded-xl text-center">
           <p className="text-sm font-bold text-brand-600">גישה מוגנת</p>
@@ -1446,36 +1480,6 @@ export default async function DepartmentDetailsPage({
     genderPercentFromText(department.genderBalance, "men");
   const genderLastUpdated = womenPercentMetric?.lastUpdated ?? menPercentMetric?.lastUpdated ?? null;
   const hasContactPerson = Boolean(department.contactName || contactEmails.length > 0 || department.publicContactPhone);
-  const departmentNewResidentsRows = departmentNewResidentsRowsFromYearlyMetrics(
-    importedDepartmentYearlyMetrics
-  );
-  const isAssutaAshdodEntDebugTarget =
-    department.institution.name.includes("אסותא אשדוד") &&
-    /אוזן|א\.א\.ג|ראש צוואר|ראש וצוואר/.test(`${department.name} ${department.specialty.name}`);
-  const yearlyResidentsRuntimeDebug = isAssutaAshdodEntDebugTarget
-    ? {
-        view: "department-profile-page",
-        sourceFunctionName: "getDepartmentPageData -> departmentNewResidentsRowsFromYearlyMetrics",
-        departmentId: department.id,
-        slug: department.slug,
-        departmentName: department.name,
-        institutionName: department.institution.name,
-        specialtyName: department.specialty.name,
-        rawRows: importedDepartmentYearlyMetrics
-          .filter((metric) => metric.metricKey === "newResidents")
-          .map((metric) => ({
-            metricKey: metric.metricKey,
-            year: metric.year,
-            value: metric.value,
-            rawValue: metric.rawValue,
-            unit: metric.unit,
-            sourceNotes: metric.sourceNotes,
-            lastUpdated: metric.lastUpdated,
-            updatedAt: metric.updatedAt
-          })),
-        departmentNewResidentsRows
-      }
-    : null;
   const firstDepartmentYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "מספר מתמחים חדשים 2024", {
     beforeYear: 2026
   });
