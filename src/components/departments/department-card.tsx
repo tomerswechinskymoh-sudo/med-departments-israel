@@ -57,6 +57,63 @@ function DataPill({
   );
 }
 
+const NEW_RESIDENTS_TREND_TOOLTIP =
+  "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות.";
+
+function MiniYearlyResidentsChart({
+  rows
+}: {
+  rows?: Array<{ year: number; value: number | null }>;
+}) {
+  const validRows = (rows ?? []).filter(
+    (row): row is { year: number; value: number } =>
+      typeof row.value === "number" && Number.isFinite(row.value)
+  );
+
+  if (validRows.length === 0) {
+    return null;
+  }
+
+  const maxValue = Math.max(...validRows.map((row) => row.value), 1);
+
+  return (
+    <div
+      className="rounded-xl border border-sky-100 bg-sky-50/70 px-3 py-2"
+      title={NEW_RESIDENTS_TREND_TOOLTIP}
+      aria-label="מספר מתמחים חדשים לאורך השנים"
+    >
+      <div className="flex items-center justify-between gap-2">
+        <p className="min-w-0 truncate text-[0.68rem] font-black text-sky-900">
+          מספר מתמחים חדשים לאורך השנים
+        </p>
+        <span className="shrink-0 rounded-full bg-white/80 px-2 py-0.5 text-[0.62rem] font-bold text-sky-800">
+          ארצי
+        </span>
+      </div>
+      <div className="mt-2 grid min-w-0 grid-cols-5 items-end gap-1.5">
+        {validRows.map((row) => {
+          const height = Math.max(12, Math.round((row.value / maxValue) * 42));
+
+          return (
+            <div key={row.year} className="min-w-0 text-center">
+              <div className="flex h-11 items-end justify-center rounded-md bg-white/70 px-1">
+                <div
+                  className="w-full max-w-5 rounded-t-md bg-sky-600"
+                  style={{ height }}
+                  title={`${row.year}: ${row.value.toLocaleString("he-IL")}`}
+                />
+              </div>
+              <p className="mt-1 truncate text-[0.58rem] font-bold text-slate-500">
+                {String(row.year).slice(-2)}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function DepartmentCard({
   department,
   showFavoriteButton = false,
@@ -86,6 +143,7 @@ export function DepartmentCard({
     hasResearch: boolean;
     residentsCount?: number | null;
     newResidentsLatest?: number | null;
+    newResidentsYearly?: Array<{ year: number; value: number | null }>;
     seniorPhysiciansCount?: number | null;
     duns100PhysiciansCount?: number | null;
     expectedOpeningsCount?: number | null;
@@ -104,32 +162,10 @@ export function DepartmentCard({
 }) {
   const departmentHref = getDepartmentHref(department);
   const isRow = variant === "row";
-  const rowStats = [
+  const activeResidentsStat =
     typeof department.residentsCount === "number"
-      ? { label: "מתמחים", value: department.residentsCount }
-      : null,
-    typeof department.newResidentsLatest === "number"
-      ? {
-          label: "חדשים",
-          value: department.newResidentsLatest,
-          helper: "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות."
-        }
-      : null,
-    typeof department.seniorPhysiciansCount === "number"
-      ? { label: "בכירים", value: department.seniorPhysiciansCount }
-      : null,
-    typeof department.expectedOpeningsCount === "number"
-      ? { label: "צפי 2026", value: department.expectedOpeningsCount }
-      : null,
-    typeof department.estimatedPublicationsCount === "number"
-      ? {
-          label: department.estimatedPublicationsYear
-            ? `פרסומים ${department.estimatedPublicationsYear}`
-            : "פרסומים",
-          value: department.estimatedPublicationsCount
-        }
-      : null
-  ].filter((item): item is { label: string; value: number; helper?: string } => Boolean(item));
+      ? { label: "מתמחים פעילים", value: department.residentsCount }
+      : null;
 
   return (
     <Card
@@ -241,29 +277,15 @@ export function DepartmentCard({
             <div className="flex flex-wrap gap-2">
               {department.hasOpenResidency ? <Badge tone="success">משרות פתוחות</Badge> : null}
               {department.hasUpcomingCommittee ? <Badge tone="default">ועדה מתוכננת</Badge> : null}
-              {department.hasResearch ? (
-                <Badge tone="success">
-                  {typeof department.estimatedPublicationsCount === "number"
-                    ? "מחקר משוער"
-                    : "מחקר פתוח"}
-                </Badge>
-              ) : null}
-              {typeof department.duns100PhysiciansCount === "number" ? (
-                <Badge tone="default">DUNS100: {department.duns100PhysiciansCount}</Badge>
-              ) : null}
             </div>
           ) : null}
 
-          {isRow && rowStats.length > 0 ? (
-            <div className="grid grid-cols-2 gap-2">
-              {rowStats.slice(0, 4).map((stat) => (
-                <DataPill
-                  key={stat.label}
-                  label={stat.label}
-                  value={stat.value}
-                  helper={stat.helper}
-                />
-              ))}
+          {isRow && (activeResidentsStat || department.newResidentsYearly?.length) ? (
+            <div className="grid gap-2">
+              {activeResidentsStat ? (
+                <DataPill label={activeResidentsStat.label} value={activeResidentsStat.value} />
+              ) : null}
+              <MiniYearlyResidentsChart rows={department.newResidentsYearly} />
             </div>
           ) : null}
 
@@ -285,7 +307,7 @@ export function DepartmentCard({
           {!isRow ? (
             <div className="grid grid-cols-2 gap-2 text-xs">
               <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                <p className="text-slate-500">מתמחים</p>
+                <p className="text-slate-500">מתמחים פעילים</p>
                 <p className="mt-1 font-bold text-ink">{department.residentsCount ?? "אין נתונים"}</p>
               </div>
               <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
@@ -296,18 +318,6 @@ export function DepartmentCard({
                     : "אין נתונים"}
                 </p>
               </div>
-              {typeof department.newResidentsLatest === "number" ? (
-                <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                  <p className="text-slate-500">חדשים</p>
-                  <p className="mt-1 font-bold text-ink">{department.newResidentsLatest}</p>
-                </div>
-              ) : null}
-              {typeof department.estimatedPublicationsCount === "number" ? (
-                <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                  <p className="text-slate-500">פרסומים משוערים</p>
-                  <p className="mt-1 font-bold text-ink">{department.estimatedPublicationsCount}</p>
-                </div>
-              ) : null}
             </div>
           ) : null}
 

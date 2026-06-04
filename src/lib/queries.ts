@@ -989,6 +989,12 @@ export async function getDirectoryData(
     const newResidentsLatest =
       department.newResidentsThisYear ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { beforeYear: 2026 });
+    const newResidentsYearly = [2020, 2021, 2022, 2023, 2024]
+      .map((year) => ({
+        year,
+        value: latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { year })
+      }))
+      .filter((row) => typeof row.value === "number");
     const expectedOpeningsCount =
       importedMetricValue(department.metrics, "expectedOpenings2026") ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { year: 2026 });
@@ -1036,6 +1042,7 @@ export async function getDirectoryData(
       hasResearch: department.researchOpportunities.length > 0 || hasImportedResearch,
       residentsCount,
       newResidentsLatest,
+      newResidentsYearly,
       seniorPhysiciansCount,
       duns100PhysiciansCount,
       expectedOpeningsCount,
