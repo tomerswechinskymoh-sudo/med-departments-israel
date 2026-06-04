@@ -57,8 +57,7 @@ function DataPill({
   );
 }
 
-const NEW_RESIDENTS_TREND_TOOLTIP =
-  "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות.";
+const DEPARTMENT_NEW_RESIDENTS_TREND_LABEL = "מתמחים חדשים במחלקה לפי שנה";
 
 function MiniYearlyResidentsChart({
   rows
@@ -71,7 +70,18 @@ function MiniYearlyResidentsChart({
   );
 
   if (validRows.length === 0) {
-    return null;
+    return (
+      <div
+        className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2"
+        title={DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+        aria-label={DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+      >
+        <p className="text-[0.68rem] font-black text-slate-600">
+          {DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+        </p>
+        <p className="mt-1 text-xs font-semibold text-slate-400">הנתון עדיין לא סופק</p>
+      </div>
+    );
   }
 
   const maxValue = Math.max(...validRows.map((row) => row.value), 1);
@@ -79,16 +89,13 @@ function MiniYearlyResidentsChart({
   return (
     <div
       className="rounded-xl border border-sky-100 bg-sky-50/70 px-3 py-2"
-      title={NEW_RESIDENTS_TREND_TOOLTIP}
-      aria-label="מספר מתמחים חדשים לאורך השנים"
+      title={DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+      aria-label={DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
     >
       <div className="flex items-center justify-between gap-2">
         <p className="min-w-0 truncate text-[0.68rem] font-black text-sky-900">
-          מספר מתמחים חדשים לאורך השנים
+          {DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
         </p>
-        <span className="shrink-0 rounded-full bg-white/80 px-2 py-0.5 text-[0.62rem] font-bold text-sky-800">
-          ארצי
-        </span>
       </div>
       <div className="mt-2 grid min-w-0 grid-cols-5 items-end gap-1.5">
         {validRows.map((row) => {
