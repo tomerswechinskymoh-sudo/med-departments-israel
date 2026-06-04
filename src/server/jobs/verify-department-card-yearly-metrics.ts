@@ -1,7 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { departmentNewResidentsRowsFromYearlyMetrics } from "@/lib/department-yearly-residents";
 import { prisma } from "@/lib/prisma";
-import { getDirectoryData } from "@/lib/queries";
+import { getDepartmentPageData, getDirectoryData } from "@/lib/queries";
 
 const YEARS = [2020, 2021, 2022, 2023, 2024] as const;
 
@@ -114,7 +115,11 @@ function valuesString(values: Array<number | null | undefined>) {
   return YEARS.map((year, index) => `${year}:${values[index] ?? "missing"}`).join(",");
 }
 
-function assertEqualValues(label: string, actual: Array<number | null | undefined>, expected: readonly number[]) {
+function assertEqualValues(
+  label: string,
+  actual: Array<number | null | undefined>,
+  expected: readonly (number | null | undefined)[]
+) {
   const failures = expected
     .map((value, index) => ({ expected: value, actual: actual[index], year: YEARS[index] }))
     .filter((item) => item.actual !== item.expected);
@@ -147,6 +152,7 @@ async function main() {
     departmentId: string;
     csvValues: string;
     dbValues: string;
+    departmentPageValues: string;
     chartPropValues: string;
   }> = [];
 
@@ -193,11 +199,31 @@ async function main() {
     );
     assertEqualValues(`${target.label} DepartmentYearlyMetric`, dbValues, target.expected);
 
+    const departmentPageData = await getDepartmentPageData(card.slug, undefined, card.id);
+    if (!departmentPageData) {
+      throw new Error(`${target.label}: department page query result not found`);
+    }
+
+    if (departmentPageData.id !== card.id) {
+      throw new Error(
+        `${target.label}: department page resolved different id. card=${card.id} detail=${departmentPageData.id}`
+      );
+    }
+
+    const departmentPageRows = departmentNewResidentsRowsFromYearlyMetrics(
+      departmentPageData.yearlyMetrics
+    );
+    const departmentPageValues = YEARS.map(
+      (year) => departmentPageRows.find((row) => row.year === year)?.value ?? null
+    );
+    assertEqualValues(`${target.label} department page`, departmentPageValues, target.expected);
+
     const propValues = YEARS.map(
       (year) =>
         card.departmentNewResidentsYearly?.find((row) => row.year === year)?.value ?? null
     );
     assertEqualValues(`${target.label} DepartmentCard prop`, propValues, target.expected);
+    assertEqualValues(`${target.label} detail/card parity`, propValues, departmentPageValues);
 
     output.push({
       label: target.label,
@@ -205,6 +231,7 @@ async function main() {
       departmentId: card.id,
       csvValues: valuesString(csvValues),
       dbValues: valuesString(dbValues),
+      departmentPageValues: valuesString(departmentPageValues),
       chartPropValues: valuesString(propValues)
     });
   }
@@ -215,7 +242,7 @@ async function main() {
         ok: true,
         specialty,
         auditedPath:
-          "Master_Dept.csv -> DepartmentYearlyMetric -> getDirectoryData -> DepartmentCard.departmentNewResidentsYearly",
+          "Master_Dept.csv -> DepartmentYearlyMetric -> getDepartmentPageData/getDirectoryData -> DepartmentCard.departmentNewResidentsYearly",
         rows: output
       },
       null,

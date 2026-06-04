@@ -21,6 +21,7 @@ import {
   metadataTooltip,
   type MetricDisplayMetadata
 } from "@/lib/metric-display";
+import { departmentNewResidentsRowsFromYearlyMetrics } from "@/lib/department-yearly-residents";
 import {
   metricFieldLabel,
   resolveImportedMetric,
@@ -1422,25 +1423,9 @@ export default async function DepartmentDetailsPage({
     genderPercentFromText(department.genderBalance, "men");
   const genderLastUpdated = womenPercentMetric?.lastUpdated ?? menPercentMetric?.lastUpdated ?? null;
   const hasContactPerson = Boolean(department.contactName || contactEmails.length > 0 || department.publicContactPhone);
-  const departmentNewResidentsRows = [2020, 2021, 2022, 2023, 2024]
-    .map((year) => {
-      const metric = latestYearlyMetric(importedDepartmentYearlyMetrics, `מספר מתמחים חדשים ${year}`, { year });
-      if (!metric) return null;
-      const parsedRawValue =
-        metric.rawValue && Number.isFinite(Number(metric.rawValue))
-          ? Number(metric.rawValue)
-          : null;
-      const value = typeof metric.value === "number" ? metric.value : parsedRawValue;
-
-      return value === null
-        ? null
-        : {
-            year,
-            value,
-            rawValue: metric.rawValue
-          };
-    })
-    .filter((row): row is { year: number; value: number; rawValue: string | null | undefined } => Boolean(row));
+  const departmentNewResidentsRows = departmentNewResidentsRowsFromYearlyMetrics(
+    importedDepartmentYearlyMetrics
+  );
   const firstDepartmentYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "מספר מתמחים חדשים 2024", {
     beforeYear: 2026
   });

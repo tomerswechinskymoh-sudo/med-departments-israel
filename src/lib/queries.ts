@@ -15,6 +15,7 @@ import {
   OPENING_TYPE_LABELS
 } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
+import { departmentNewResidentsRowsFromYearlyMetrics } from "@/lib/department-yearly-residents";
 import {
   calculateSpecialtyMetrics,
   defaultSpecialtyDashboardMetrics,
@@ -989,19 +990,9 @@ export async function getDirectoryData(
     const newResidentsLatest =
       department.newResidentsThisYear ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { beforeYear: 2026 });
-    const departmentNewResidentsYearly = [2020, 2021, 2022, 2023, 2024]
-      .map((year) => {
-        const metric = department.yearlyMetrics.find(
-          (item) =>
-            item.metricKey === "newResidents" &&
-            item.year === year &&
-            typeof item.value === "number" &&
-            Number.isFinite(item.value)
-        );
-
-        return metric ? { year, value: metric.value } : null;
-      })
-      .filter((row): row is { year: number; value: number } => Boolean(row));
+    const departmentNewResidentsYearly = departmentNewResidentsRowsFromYearlyMetrics(
+      department.yearlyMetrics
+    );
     const expectedOpeningsCount =
       importedMetricValue(department.metrics, "expectedOpenings2026") ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { year: 2026 });
