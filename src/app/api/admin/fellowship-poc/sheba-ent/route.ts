@@ -16,6 +16,10 @@ const requestSchema = z.object({
     .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().url().optional()),
   pastedText: z
     .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().max(50000).optional()),
+  pastedHtml: z
+    .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().max(500000).optional()),
+  endpointUrl: z
+    .preprocess((value) => (typeof value === "string" && value.trim() === "" ? undefined : value), z.string().url().optional()),
   debug: z.boolean().optional()
 });
 
@@ -51,10 +55,15 @@ export async function POST(request: Request) {
     if (parsed.data.departmentUrl) {
       assertAllowedShebaUrl(parsed.data.departmentUrl);
     }
+    if (parsed.data.endpointUrl) {
+      assertAllowedShebaUrl(parsed.data.endpointUrl);
+    }
 
     const result = await runShebaEntFellowshipCrawler({
       departmentUrl: parsed.data.departmentUrl,
       pastedText: parsed.data.pastedText,
+      pastedHtml: parsed.data.pastedHtml,
+      endpointUrl: parsed.data.endpointUrl,
       debug: parsed.data.debug
     });
 

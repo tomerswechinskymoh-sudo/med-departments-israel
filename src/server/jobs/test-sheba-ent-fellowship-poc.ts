@@ -122,22 +122,83 @@ assert.deepEqual(
   ["ד\"ר עומרי פריד", "ד\"ר עדית גבאי-נטלה", "פרופ' ערן אלון"]
 );
 
-async function assertMissingFirecrawlKeyMessage() {
-  const originalFirecrawlApiKey = process.env.FIRECRAWL_API_KEY;
-  delete process.env.FIRECRAWL_API_KEY;
-  await assert.rejects(
-    () =>
-      runShebaEntFellowshipCrawler({
-        departmentUrl: "https://www.shebaonline.org/department/otolaryngology-head-and-neck-surgery/"
-      }),
-    /סריקה חיה דורשת FIRECRAWL_API_KEY/
-  );
-  if (originalFirecrawlApiKey) {
-    process.env.FIRECRAWL_API_KEY = originalFirecrawlApiKey;
-  }
+const blockedClassification = shebaEntCrawlerInternals.classifyPage(
+  "אנחנו בטיפול. לא מתאפשרת גישה לאתר שיבא",
+  "<main>אנחנו בטיפול. לא מתאפשרת גישה לאתר שיבא</main>",
+  [],
+  403
+);
+assert.equal(blockedClassification.pageType, "blocked_or_empty");
+
+const profileClassification = shebaEntCrawlerInternals.classifyPage(
+  `ד"ר דוגמה
+מנהל שירות מומחה אף אוזן גרון.
+השלים fellowship in laryngology ומטפל בהפרעות קול.
+${"פרופיל ביוגרפי הכולל ניסיון קליני, הכשרה, תחומי מומחיות ופעילות אקדמית. ".repeat(8)}`,
+  "<main><img src=\"/doctor.jpg\" /><h1>ד\"ר דוגמה</h1><p>מנהל שירות מומחה אף אוזן גרון</p></main>",
+  []
+);
+assert.equal(profileClassification.pageType, "senior_physician_profile");
+
+const teamCandidateLinks = shebaEntCrawlerInternals.findTeamCandidateLinks([
+  { text: "הצוות שלנו", href: "https://www.shebaonline.org/team/" },
+  { text: "תרומות", href: "https://www.shebaonline.org/donate/" }
+]);
+assert.deepEqual(teamCandidateLinks, ["https://www.shebaonline.org/team/"]);
+
+const personCards = shebaEntCrawlerInternals.extractPersonCards(
+  "",
+  mockedShebaTeamHtml,
+  [],
+  "https://www.shebaonline.org/department/otolaryngology-head-and-neck-surgery/"
+);
+assert.equal(personCards.filter((card) => card.filterReason === "kept: senior physician").length, 3);
+
+const metadataOnlyHtml = `
+  <main>
+    <meta name="description" content="באתר תוכלו לחפש רופאים ורופאות">
+    <section><h1>עמוד לא נמצא</h1><p>לא נמצאו תוצאות.</p></section>
+  </main>
+`;
+const metadataReport = shebaEntCrawlerInternals.extractPhysicianCandidateReport(
+  metadataOnlyHtml,
+  "https://www.sheba.co.il/page-not-found"
+);
+assert.equal(metadataReport.debug.seniorPhysiciansFound, 0);
+
+async function assertBlockedManualHtmlMessage() {
+  const result = await runShebaEntFellowshipCrawler({
+    pastedHtml: "<main>אנחנו בטיפול. לא מתאפשרת גישה לאתר שיבא</main>",
+    debug: true
+  });
+  assert.equal(result.physiciansProcessed, 0);
+  assert.equal(result.debug?.pageType, "blocked_or_empty");
+  assert.equal(result.debug?.liveCrawlBlocked, true);
+  assert.equal(result.debug?.teamCardsFound, 0);
+  assert.ok(result.warnings.some((warning) => warning.includes("עמוד חסימה/תחזוקה")));
 }
 
-assertMissingFirecrawlKeyMessage()
+async function assertManualHtmlTeamExtraction() {
+  const result = await runShebaEntFellowshipCrawler({
+    pastedHtml: mockedShebaTeamHtml,
+    departmentUrl: "https://www.shebaonline.org/department/otolaryngology-head-and-neck-surgery/",
+    debug: true
+  });
+  assert.equal(result.physiciansProcessed, 3);
+  assert.equal(result.debug?.teamCardsFound, 6);
+  assert.equal(result.debug?.seniorPhysiciansFound, 3);
+}
+
+async function assertNoTeamClearRootCause() {
+  const result = await runShebaEntFellowshipCrawler({
+    pastedHtml: "<main><h1>מחלקת אף אוזן גרון</h1><p>אין בעמוד כרטיסי צוות או קישורי פרופיל.</p></main>",
+    debug: true
+  });
+  assert.equal(result.physiciansProcessed, 0);
+  assert.ok(result.warnings.some((warning) => warning.includes("לא נמצאו כרטיסי רופאים בכירים")));
+}
+
+Promise.all([assertBlockedManualHtmlMessage(), assertManualHtmlTeamExtraction(), assertNoTeamClearRootCause()])
   .then(() => {
     console.log("PASS sheba ENT fellowship POC tests");
   })

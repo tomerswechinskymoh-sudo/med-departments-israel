@@ -41,6 +41,9 @@ type CrawlPayload = {
   results?: PhysicianResult[];
   warnings?: string[];
   debug?: {
+    pageType?: string;
+    pageClassificationReasons?: string[];
+    liveCrawlBlocked?: boolean;
     teamCardsFound: number;
     physiciansFound: number;
     seniorPhysiciansFound: number;
@@ -51,13 +54,20 @@ type CrawlPayload = {
       name: string | null;
       title: string | null;
       profileUrl: string | null;
+      filterReason?: string | null;
     }>;
-    firecrawl?: {
+    liveSource?: {
+      provider?: "playwright" | "manual" | "endpoint" | "sheba_elasticsearch";
       metadata?: Record<string, unknown>;
       responseKeys?: string[];
       dataKeys?: string[];
       statusCode?: number;
     };
+    deeperCandidateUrls?: string[];
+    deeperUrlsAttempted?: string[];
+    externalSearchNeeded?: boolean;
+    externalSearchQueries?: string[];
+    externalSearchResults?: Array<{ title: string; url: string; source: string }>;
     markdownPreview?: string;
     htmlPreview?: string;
     allLinks?: Array<{ text: string; href: string }>;
@@ -83,13 +93,41 @@ function bestFellowship(result: PhysicianResult) {
   return result.detectedFellowships[0] ?? null;
 }
 
+function fellowshipCount(results: PhysicianResult[] | undefined) {
+  return (results ?? []).reduce((total, result) => total + result.detectedFellowships.length, 0);
+}
+
+function fellowshipText(result: PhysicianResult) {
+  return result.detectedFellowships.length > 0
+    ? result.detectedFellowships.map((item) => item.canonicalNameHe).join(", ")
+    : "לא זוהה";
+}
+
+function evidenceText(result: PhysicianResult) {
+  const snippets = result.detectedFellowships.flatMap((item) => item.evidenceSnippets);
+  return snippets.length > 0 ? snippets.slice(0, 3).join(" | ") : "אין עדות פלושיפ בטקסט המקור";
+}
+
+function sourceLabel(result: PhysicianResult) {
+  if (/^https?:\/\//i.test(result.sourceUrl)) return "Sheba source";
+  return "Manual input";
+}
+
 export function ShebaEntFellowshipPanel() {
   const [departmentUrl, setDepartmentUrl] = useState("");
   const [pastedText, setPastedText] = useState("");
-  const [debugMode, setDebugMode] = useState(false);
+  const [pastedHtml, setPastedHtml] = useState("");
+  const [endpointUrl, setEndpointUrl] = useState("");
+  const [debugMode, setDebugMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [payload, setPayload] = useState<CrawlPayload | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const totalPhysiciansFound =
+    payload?.debug?.teamCardsFound ?? payload?.physiciansProcessed ?? payload?.results?.length ?? 0;
+  const totalSeniorPhysicians =
+    payload?.debug?.seniorPhysiciansFound ?? payload?.results?.length ?? payload?.physiciansProcessed ?? 0;
+  const totalFellowshipsDetected = fellowshipCount(payload?.results);
 
   async function runCrawler(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -105,6 +143,8 @@ export function ShebaEntFellowshipPanel() {
       body: JSON.stringify({
         departmentUrl: departmentUrl.trim() || undefined,
         pastedText: pastedText.trim() || undefined,
+        pastedHtml: pastedHtml.trim() || undefined,
+        endpointUrl: endpointUrl.trim() || undefined,
         debug: debugMode
       })
     });
@@ -130,6 +170,7 @@ export function ShebaEntFellowshipPanel() {
           </div>
           <p className="mt-1 text-sm leading-6 text-slate-600">
             סריקה מוגבלת לשיבא ולאא״ג בלבד. התוצאות אינן נשמרות ואינן מוצגות לציבור.
+            {" "}סריקה חיה של שיבא זמינה כרגע רק בהרצה מקומית/worker, לא בפרודקשן Vercel.
           </p>
         </div>
         {payload?.physiciansProcessed !== undefined ? (
@@ -152,7 +193,31 @@ export function ShebaEntFellowshipPanel() {
         </label>
         <label className="block">
           <span className="mb-1 block text-xs font-black text-slate-500">
-            או הדבק טקסט ביוגרפי ידנית אם הסריקה החיה נכשלת
+            URL של endpoint פנימי / JSON
+          </span>
+          <input
+            value={endpointUrl}
+            onChange={(event) => setEndpointUrl(event.target.value)}
+            dir="ltr"
+            placeholder="https://www.shebaonline.org/.../api/..."
+            className="min-h-12 w-full rounded-2xl border border-brand-100 bg-white px-4 text-left text-sm outline-none focus:border-brand-300"
+          />
+        </label>
+        <label className="block">
+          <span className="mb-1 block text-xs font-black text-slate-500">
+            הדבק HTML מלא של עמוד שיבא
+          </span>
+          <textarea
+            value={pastedHtml}
+            onChange={(event) => setPastedHtml(event.target.value)}
+            placeholder="HTML מלא של עמוד מחלקה / צוות / פרופיל"
+            className="min-h-28 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm leading-6 outline-none focus:border-brand-300"
+            dir="ltr"
+          />
+        </label>
+        <label className="block">
+          <span className="mb-1 block text-xs font-black text-slate-500">
+            או הדבק טקסט ביוגרפי ידנית אם אין HTML
           </span>
           <textarea
             value={pastedText}
@@ -173,7 +238,7 @@ export function ShebaEntFellowshipPanel() {
             onChange={(event) => setDebugMode(event.target.checked)}
             className="h-4 w-4 rounded border-brand-200"
           />
-          מצב debug: הצג Firecrawl, HTML, Markdown וקישורים
+          מצב debug: הצג סיווג עמוד, מקור, HTML, Markdown וקישורים
         </label>
       </form>
 
@@ -207,9 +272,32 @@ export function ShebaEntFellowshipPanel() {
         </p>
       ) : null}
 
+      {payload?.results ? (
+        <div className="mt-4 grid gap-3 md:grid-cols-3">
+          <div className="rounded-2xl border border-brand-100 bg-white px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-wide text-slate-500">Total physicians found</p>
+            <p className="mt-1 text-2xl font-black text-ink">{totalPhysiciansFound}</p>
+          </div>
+          <div className="rounded-2xl border border-brand-100 bg-white px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-wide text-slate-500">Total senior physicians</p>
+            <p className="mt-1 text-2xl font-black text-ink">{totalSeniorPhysicians}</p>
+          </div>
+          <div className="rounded-2xl border border-brand-100 bg-white px-4 py-3">
+            <p className="text-xs font-black uppercase tracking-wide text-slate-500">Total fellowships detected</p>
+            <p className="mt-1 text-2xl font-black text-ink">{totalFellowshipsDetected}</p>
+          </div>
+        </div>
+      ) : null}
+
       {payload?.debug ? (
         <div className="mt-4 rounded-2xl border border-brand-100 bg-white p-4">
           <div className="flex flex-wrap gap-2">
+            <Badge tone={payload.debug.liveCrawlBlocked ? "warning" : "default"}>
+              סוג עמוד: {payload.debug.pageType ?? "unknown"}
+            </Badge>
+            {payload.debug.liveSource?.provider ? (
+              <Badge tone="default">מקור: {payload.debug.liveSource.provider}</Badge>
+            ) : null}
             <Badge tone="default">כרטיסי צוות: {payload.debug.teamCardsFound}</Badge>
             <Badge tone="default">רופאים שזוהו: {payload.debug.physiciansFound}</Badge>
             <Badge tone="success">בכירים: {payload.debug.seniorPhysiciansFound}</Badge>
@@ -217,6 +305,21 @@ export function ShebaEntFellowshipPanel() {
             <Badge tone="warning">לא רופאים שסוננו: {payload.debug.nonPhysiciansFiltered}</Badge>
             <Badge tone="default">קישורי פרופיל: {payload.debug.profileUrlsFound}</Badge>
           </div>
+          {payload.debug.liveCrawlBlocked ? (
+            <p className="mt-3 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-900">
+              שיבא חסם או לא החזיר תוכן תקין. השתמש בהדבקת HTML/טקסט או הזן endpoint פנימי אם נמצא.
+            </p>
+          ) : null}
+          {payload.debug.pageClassificationReasons?.length ? (
+            <div className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs leading-5 text-slate-700">
+              <p className="font-black text-ink">Classification reasons</p>
+              <ul className="mt-1 list-inside list-disc">
+                {payload.debug.pageClassificationReasons.map((reason) => (
+                  <li key={reason}>{reason}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
           {payload.debug.firstEntries.length ? (
             <div className="mt-3 overflow-x-auto rounded-xl border border-slate-100">
               <table className="min-w-[720px] w-full text-right text-xs">
@@ -225,6 +328,7 @@ export function ShebaEntFellowshipPanel() {
                     <th className="px-3 py-2">name</th>
                     <th className="px-3 py-2">title</th>
                     <th className="px-3 py-2">profileUrl</th>
+                    <th className="px-3 py-2">filterReason</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -241,6 +345,7 @@ export function ShebaEntFellowshipPanel() {
                           <span className="text-slate-500">אין</span>
                         )}
                       </td>
+                      <td className="px-3 py-2 text-slate-600">{entry.filterReason ?? "לא זוהה"}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -285,11 +390,53 @@ export function ShebaEntFellowshipPanel() {
               ) : null}
             </div>
           ) : null}
-          {payload.debug.firecrawl ? (
+          {payload.debug.deeperCandidateUrls?.length ? (
             <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs">
-              <summary className="cursor-pointer font-black text-ink">Raw Firecrawl metadata</summary>
+              <summary className="cursor-pointer font-black text-ink">
+                Deeper candidate URLs ({payload.debug.deeperCandidateUrls.length})
+              </summary>
+              <div className="mt-2 max-h-52 overflow-auto" dir="ltr">
+                {payload.debug.deeperCandidateUrls.map((url) => (
+                  <p key={url} className="break-all">
+                    {url}
+                  </p>
+                ))}
+              </div>
+            </details>
+          ) : null}
+          {payload.debug.deeperUrlsAttempted?.length ? (
+            <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs">
+              <summary className="cursor-pointer font-black text-ink">
+                Deeper URLs attempted ({payload.debug.deeperUrlsAttempted.length})
+              </summary>
+              <div className="mt-2 max-h-52 overflow-auto" dir="ltr">
+                {payload.debug.deeperUrlsAttempted.map((url) => (
+                  <p key={url} className="break-all">
+                    {url}
+                  </p>
+                ))}
+              </div>
+            </details>
+          ) : null}
+          {payload.debug.externalSearchNeeded ? (
+            <details className="mt-3 rounded-xl border border-amber-100 bg-amber-50 p-3 text-xs">
+              <summary className="cursor-pointer font-black text-amber-950">
+                External search queries ({payload.debug.externalSearchQueries?.length ?? 0})
+              </summary>
+              <div className="mt-2 max-h-52 overflow-auto" dir="rtl">
+                {(payload.debug.externalSearchQueries ?? []).map((query) => (
+                  <p key={query} className="break-all">
+                    {query}
+                  </p>
+                ))}
+              </div>
+            </details>
+          ) : null}
+          {payload.debug.liveSource ? (
+            <details className="mt-3 rounded-xl border border-slate-100 bg-slate-50 p-3 text-xs">
+              <summary className="cursor-pointer font-black text-ink">Live source metadata</summary>
               <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap text-left" dir="ltr">
-                {JSON.stringify(payload.debug.firecrawl, null, 2)}
+                {JSON.stringify(payload.debug.liveSource, null, 2)}
               </pre>
             </details>
           ) : null}
@@ -344,23 +491,16 @@ export function ShebaEntFellowshipPanel() {
 
       {payload?.results?.length ? (
         <div className="mt-4 overflow-x-auto rounded-2xl border border-brand-100 bg-white">
-          <table className="min-w-[1200px] w-full text-right text-xs">
+          <table className="min-w-[980px] w-full text-right text-xs">
             <thead className="bg-slate-50 text-slate-500">
               <tr>
-                <th className="px-3 py-3">שם רופא</th>
-                <th className="px-3 py-3">תפקיד</th>
-                <th className="px-3 py-3">מחלקה</th>
-                <th className="px-3 py-3">מקור</th>
-                <th className="px-3 py-3">אורך טקסט</th>
-                <th className="px-3 py-3">תחום התמחות</th>
-                <th className="px-3 py-3">התמחות: שנים</th>
-                <th className="px-3 py-3">התמחות: מוסד</th>
-                <th className="px-3 py-3">פלושיפים שזוהו</th>
-                <th className="px-3 py-3">Fellowship confidence</th>
-                <th className="px-3 py-3">Fellowship institution</th>
-                <th className="px-3 py-3">Fellowship years</th>
-                <th className="px-3 py-3">Evidence snippets</th>
-                <th className="px-3 py-3">Needs external search</th>
+                <th className="px-3 py-3">Physician Name</th>
+                <th className="px-3 py-3">Title</th>
+                <th className="px-3 py-3">Source</th>
+                <th className="px-3 py-3">Fellowship(s)</th>
+                <th className="px-3 py-3">Confidence</th>
+                <th className="px-3 py-3">Evidence</th>
+                <th className="px-3 py-3">Needs External Search</th>
               </tr>
             </thead>
             <tbody>
@@ -371,35 +511,22 @@ export function ShebaEntFellowshipPanel() {
                   <tr key={`${result.sourceUrl}-${result.physicianName ?? "unknown"}`} className="border-t border-slate-100 align-top">
                     <td className="px-3 py-3 font-black text-ink">{result.physicianName ?? "לא זוהה"}</td>
                     <td className="px-3 py-3 text-slate-700">{result.role ?? "לא זוהה"}</td>
-                    <td className="px-3 py-3 text-slate-700">{result.department ?? "אא״ג"}</td>
                     <td className="px-3 py-3">
                       {/^https?:\/\//i.test(result.sourceUrl) ? (
                         <a href={result.sourceUrl} target="_blank" rel="noreferrer" className="font-bold text-brand-700 underline">
-                          מקור
+                          {sourceLabel(result)}
                         </a>
                       ) : (
-                        <span className="font-bold text-slate-500">טקסט ידני</span>
+                        <span className="font-bold text-slate-500">{sourceLabel(result)}</span>
                       )}
                     </td>
-                    <td className="px-3 py-3 font-bold text-slate-700">{result.bioTextLength}</td>
-                    <td className="px-3 py-3">{result.residencySpecialty ?? "לא זוהה"}</td>
-                    <td className="px-3 py-3">{result.residencyYears ?? "לא זוהה"}</td>
-                    <td className="px-3 py-3">{result.residencyInstitution ?? "לא זוהה"}</td>
-                    <td className="px-3 py-3">
-                      {result.detectedFellowships.length > 0
-                        ? result.detectedFellowships.map((item) => item.canonicalNameHe).join(", ")
-                        : "לא זוהה"}
-                    </td>
+                    <td className="px-3 py-3">{fellowshipText(result)}</td>
                     <td className="px-3 py-3">
                       <Badge tone={confidenceTone(top?.confidence)}>
                         {top ? `${top.confidence} · ${top.totalScore}` : "None"}
                       </Badge>
                     </td>
-                    <td className="px-3 py-3">{result.fellowshipInstitution ?? "לא זוהה"}</td>
-                    <td className="px-3 py-3">{result.fellowshipYears ?? "לא זוהה"}</td>
-                    <td className="max-w-sm px-3 py-3 leading-5 text-slate-600">
-                      {top?.evidenceSnippets.length ? top.evidenceSnippets.join(" | ") : "אין"}
-                    </td>
+                    <td className="max-w-md px-3 py-3 leading-5 text-slate-600">{evidenceText(result)}</td>
                     <td className="px-3 py-3">
                       <Badge tone={result.needsExternalSearch ? "warning" : "success"}>
                         {result.needsExternalSearch ? "כן" : "לא"}
@@ -414,7 +541,7 @@ export function ShebaEntFellowshipPanel() {
         </div>
       ) : payload && !payload.results?.length ? (
         <p className="mt-4 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600">
-          לא נמצאו רופאים בכירים לעיבוד. נסה URL ידני של עמוד המחלקה.
+          לא נמצאו רופאים בכירים לעיבוד. נסה להדביק HTML מלא של עמוד שיבא, טקסט ביוגרפי או endpoint פנימי.
         </p>
       ) : null}
     </section>

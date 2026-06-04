@@ -62,8 +62,9 @@ type PlaywrightModule = {
         newPage: () => Promise<{
           goto: (
             url: string,
-            options: { waitUntil: "networkidle"; timeout: number }
+            options: { waitUntil: "networkidle" | "domcontentloaded"; timeout: number }
           ) => Promise<{ status: () => number } | null>;
+          waitForTimeout: (timeout: number) => Promise<void>;
           url: () => string;
           locator: (selector: string) => {
             first: () => {
@@ -445,11 +446,28 @@ export async function loadPageWithPlaywright(
         timeout: options.timeoutMs ?? PLAYWRIGHT_TIMEOUT_MS
       });
     } catch (error) {
-      throw new PlaywrightLoadError(
-        classifyPlaywrightError(error, "page_navigation_failed"),
-        `Page navigation failed: ${errorMessage(error)}`,
-        error
-      );
+      const kind = classifyPlaywrightError(error, "page_navigation_failed");
+      if (kind !== "timeout") {
+        throw new PlaywrightLoadError(
+          kind,
+          `Page navigation failed: ${errorMessage(error)}`,
+          error
+        );
+      }
+
+      try {
+        response = await page.goto(sourceUrl, {
+          waitUntil: "domcontentloaded",
+          timeout: Math.min(options.timeoutMs ?? PLAYWRIGHT_TIMEOUT_MS, 10000)
+        });
+        await page.waitForTimeout(2000);
+      } catch (fallbackError) {
+        throw new PlaywrightLoadError(
+          classifyPlaywrightError(fallbackError, "timeout"),
+          `Page navigation failed after networkidle timeout and domcontentloaded fallback: ${errorMessage(fallbackError)}`,
+          fallbackError
+        );
+      }
     }
     const candidates = await Promise.allSettled(
       ["main", "article", "body"].map((selector) =>
