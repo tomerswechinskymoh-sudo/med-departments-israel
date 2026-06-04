@@ -315,6 +315,29 @@ function YearlyResidentsChart({
   );
 }
 
+function RuntimeYearlyResidentsDebug({
+  title,
+  payload
+}: {
+  title: string;
+  payload?: unknown;
+}) {
+  if (!payload) return null;
+
+  return (
+    <details
+      open
+      className="rounded-xl border border-red-300 bg-red-50 p-3 text-left text-[0.68rem] text-red-950"
+      dir="ltr"
+    >
+      <summary className="cursor-pointer font-black">{title}</summary>
+      <pre className="mt-2 max-h-72 overflow-auto whitespace-pre-wrap break-words">
+        {JSON.stringify(payload, null, 2)}
+      </pre>
+    </details>
+  );
+}
+
 function sanitizedProfileText(value?: string | null) {
   const text = value?.trim();
   if (!text) return null;
@@ -1426,6 +1449,33 @@ export default async function DepartmentDetailsPage({
   const departmentNewResidentsRows = departmentNewResidentsRowsFromYearlyMetrics(
     importedDepartmentYearlyMetrics
   );
+  const isAssutaAshdodEntDebugTarget =
+    department.institution.name.includes("אסותא אשדוד") &&
+    /אוזן|א\.א\.ג|ראש צוואר|ראש וצוואר/.test(`${department.name} ${department.specialty.name}`);
+  const yearlyResidentsRuntimeDebug = isAssutaAshdodEntDebugTarget
+    ? {
+        view: "department-profile-page",
+        sourceFunctionName: "getDepartmentPageData -> departmentNewResidentsRowsFromYearlyMetrics",
+        departmentId: department.id,
+        slug: department.slug,
+        departmentName: department.name,
+        institutionName: department.institution.name,
+        specialtyName: department.specialty.name,
+        rawRows: importedDepartmentYearlyMetrics
+          .filter((metric) => metric.metricKey === "newResidents")
+          .map((metric) => ({
+            metricKey: metric.metricKey,
+            year: metric.year,
+            value: metric.value,
+            rawValue: metric.rawValue,
+            unit: metric.unit,
+            sourceNotes: metric.sourceNotes,
+            lastUpdated: metric.lastUpdated,
+            updatedAt: metric.updatedAt
+          })),
+        departmentNewResidentsRows
+      }
+    : null;
   const firstDepartmentYearlyMetric = latestYearlyMetric(importedDepartmentYearlyMetrics, "מספר מתמחים חדשים 2024", {
     beforeYear: 2026
   });
@@ -1835,6 +1885,10 @@ export default async function DepartmentDetailsPage({
                 lastUpdated={firstDepartmentYearlyMetric?.lastUpdated}
                 sourceUrl={newResidentsMeta?.sourceUrl}
                 displayAction={metadataDisplayAction(newResidentsMeta)}
+              />
+              <RuntimeYearlyResidentsDebug
+                title="RUNTIME DEBUG: department profile yearly residents"
+                payload={yearlyResidentsRuntimeDebug}
               />
 
             </div>

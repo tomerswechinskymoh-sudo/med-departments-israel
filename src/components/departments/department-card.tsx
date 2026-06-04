@@ -121,6 +121,29 @@ function MiniYearlyResidentsChart({
   );
 }
 
+function RuntimeYearlyResidentsDebug({
+  title,
+  payload
+}: {
+  title: string;
+  payload?: unknown;
+}) {
+  if (!payload) return null;
+
+  return (
+    <details
+      open
+      className="pointer-events-auto rounded-xl border border-red-300 bg-red-50 p-3 text-left text-[0.68rem] text-red-950"
+      dir="ltr"
+    >
+      <summary className="cursor-pointer font-black">{title}</summary>
+      <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap break-words">
+        {JSON.stringify(payload, null, 2)}
+      </pre>
+    </details>
+  );
+}
+
 export function DepartmentCard({
   department,
   showFavoriteButton = false,
@@ -163,6 +186,7 @@ export function DepartmentCard({
     dataLastUpdated?: string | Date | null;
     isFavorite?: boolean;
     coverImageUrl?: string | null;
+    yearlyResidentsRuntimeDebug?: unknown;
   };
   showFavoriteButton?: boolean;
   variant?: "card" | "row";
@@ -294,6 +318,13 @@ export function DepartmentCard({
               ) : null}
               <MiniYearlyResidentsChart rows={department.departmentNewResidentsYearly} />
             </div>
+          ) : null}
+
+          {isRow ? (
+            <RuntimeYearlyResidentsDebug
+              title="RUNTIME DEBUG: directory card yearly residents"
+              payload={department.yearlyResidentsRuntimeDebug}
+            />
           ) : null}
 
           <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-slate-600">
