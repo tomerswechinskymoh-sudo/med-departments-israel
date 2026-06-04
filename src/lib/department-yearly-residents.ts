@@ -13,6 +13,11 @@ export type DepartmentNewResidentsYearlyRow = {
   rawValue?: string | null;
 };
 
+export type DepartmentNewResidentsChartRow = DepartmentNewResidentsYearlyRow & {
+  height: number;
+  label: string;
+};
+
 function parseRawNumber(value: string | null | undefined) {
   if (!value) return null;
   const normalized = value.replace(/,/g, "").trim();
@@ -49,4 +54,22 @@ export function departmentNewResidentsRowsFromYearlyMetrics(
   }
 
   return rows;
+}
+
+export function departmentNewResidentsChartRows(
+  rows: Array<{ year: number; value: number | null; rawValue?: string | null }>
+): DepartmentNewResidentsChartRow[] {
+  const validRows = rows
+    .filter(
+      (row): row is DepartmentNewResidentsYearlyRow =>
+        typeof row.value === "number" && Number.isFinite(row.value)
+    )
+    .sort((left, right) => left.year - right.year);
+  const maxValue = Math.max(...validRows.map((row) => row.value), 1);
+
+  return validRows.map((row) => ({
+    ...row,
+    height: Math.max(12, Math.round((row.value / maxValue) * 42)),
+    label: String(row.year)
+  }));
 }

@@ -4,6 +4,7 @@ import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
+import { departmentNewResidentsChartRows } from "@/lib/department-yearly-residents";
 import { formatDate, getDepartmentHref } from "@/lib/utils";
 
 function MetricChip({
@@ -64,12 +65,9 @@ function MiniYearlyResidentsChart({
 }: {
   rows?: Array<{ year: number; value: number | null }>;
 }) {
-  const validRows = (rows ?? []).filter(
-    (row): row is { year: number; value: number } =>
-      typeof row.value === "number" && Number.isFinite(row.value)
-  );
+  const chartRows = departmentNewResidentsChartRows(rows ?? []);
 
-  if (validRows.length === 0) {
+  if (chartRows.length === 0) {
     return (
       <div
         className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2"
@@ -84,8 +82,6 @@ function MiniYearlyResidentsChart({
     );
   }
 
-  const maxValue = Math.max(...validRows.map((row) => row.value), 1);
-
   return (
     <div
       className="rounded-xl border border-sky-100 bg-sky-50/70 px-3 py-2"
@@ -97,50 +93,26 @@ function MiniYearlyResidentsChart({
           {DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
         </p>
       </div>
-      <div className="mt-2 grid min-w-0 grid-cols-5 items-end gap-1.5">
-        {validRows.map((row) => {
-          const height = Math.max(12, Math.round((row.value / maxValue) * 42));
-
-          return (
-            <div key={row.year} className="min-w-0 text-center">
-              <div className="flex h-11 items-end justify-center rounded-md bg-white/70 px-1">
-                <div
-                  className="w-full max-w-5 rounded-t-md bg-sky-600"
-                  style={{ height }}
-                  title={`${row.year}: ${row.value.toLocaleString("he-IL")}`}
-                />
-              </div>
-              <p className="mt-1 truncate text-[0.58rem] font-bold text-slate-500">
-                {String(row.year).slice(-2)}
-              </p>
+      <div className="mt-2 grid min-w-0 grid-cols-5 items-end gap-1.5" dir="ltr">
+        {chartRows.map((row) => (
+          <div key={row.year} className="min-w-0 text-center" dir="ltr">
+            <p className="mb-1 truncate text-[0.62rem] font-black text-sky-950">
+              {row.value.toLocaleString("he-IL")}
+            </p>
+            <div className="flex h-11 items-end justify-center rounded-md bg-white/70 px-1">
+              <div
+                className="w-full max-w-5 rounded-t-md bg-sky-600"
+                style={{ height: row.height }}
+                title={`${row.label}: ${row.value.toLocaleString("he-IL")}`}
+              />
             </div>
-          );
-        })}
+            <p className="mt-1 truncate text-[0.58rem] font-bold text-slate-500">
+              {String(row.year).slice(-2)}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
-  );
-}
-
-function RuntimeYearlyResidentsDebug({
-  title,
-  payload
-}: {
-  title: string;
-  payload?: unknown;
-}) {
-  if (!payload) return null;
-
-  return (
-    <details
-      open
-      className="pointer-events-auto rounded-xl border border-red-300 bg-red-50 p-3 text-left text-[0.68rem] text-red-950"
-      dir="ltr"
-    >
-      <summary className="cursor-pointer font-black">{title}</summary>
-      <pre className="mt-2 max-h-64 overflow-auto whitespace-pre-wrap break-words">
-        {JSON.stringify(payload, null, 2)}
-      </pre>
-    </details>
   );
 }
 
@@ -186,7 +158,6 @@ export function DepartmentCard({
     dataLastUpdated?: string | Date | null;
     isFavorite?: boolean;
     coverImageUrl?: string | null;
-    yearlyResidentsRuntimeDebug?: unknown;
   };
   showFavoriteButton?: boolean;
   variant?: "card" | "row";
@@ -318,13 +289,6 @@ export function DepartmentCard({
               ) : null}
               <MiniYearlyResidentsChart rows={department.departmentNewResidentsYearly} />
             </div>
-          ) : null}
-
-          {isRow ? (
-            <RuntimeYearlyResidentsDebug
-              title="RUNTIME DEBUG: directory card yearly residents"
-              payload={department.yearlyResidentsRuntimeDebug}
-            />
           ) : null}
 
           <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-slate-600">

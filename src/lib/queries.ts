@@ -884,10 +884,7 @@ export async function getDirectoryData(
           year: true,
           value: true,
           rawValue: true,
-          unit: true,
-          sourceNotes: true,
-          lastUpdated: true,
-          updatedAt: true
+          unit: true
         },
         orderBy: {
           year: "desc"
@@ -996,33 +993,6 @@ export async function getDirectoryData(
     const departmentNewResidentsYearly = departmentNewResidentsRowsFromYearlyMetrics(
       department.yearlyMetrics
     );
-    const isAssutaAshdodEntDebugTarget =
-      department.institution.name.includes("אסותא אשדוד") &&
-      /אוזן|א\.א\.ג|ראש צוואר|ראש וצוואר/.test(`${department.name} ${department.specialty.name}`);
-    const yearlyResidentsRuntimeDebug = isAssutaAshdodEntDebugTarget
-      ? {
-          view: "department-directory-card",
-          sourceFunctionName: "getDirectoryData -> departmentNewResidentsRowsFromYearlyMetrics",
-          departmentId: department.id,
-          slug: canonicalDepartmentSlugForRecord(department),
-          departmentName: department.name,
-          institutionName: department.institution.name,
-          specialtyName: department.specialty.name,
-          rawRows: department.yearlyMetrics
-            .filter((metric) => metric.metricKey === "newResidents")
-            .map((metric) => ({
-              metricKey: metric.metricKey,
-              year: metric.year,
-              value: metric.value,
-              rawValue: metric.rawValue,
-              unit: metric.unit,
-              sourceNotes: metric.sourceNotes,
-              lastUpdated: metric.lastUpdated,
-              updatedAt: metric.updatedAt
-            })),
-          departmentNewResidentsYearly
-        }
-      : null;
     const expectedOpeningsCount =
       importedMetricValue(department.metrics, "expectedOpenings2026") ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { year: 2026 });
@@ -1071,7 +1041,6 @@ export async function getDirectoryData(
       residentsCount,
       newResidentsLatest,
       departmentNewResidentsYearly,
-      yearlyResidentsRuntimeDebug,
       seniorPhysiciansCount,
       duns100PhysiciansCount,
       expectedOpeningsCount,
