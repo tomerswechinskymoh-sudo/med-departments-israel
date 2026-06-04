@@ -989,12 +989,19 @@ export async function getDirectoryData(
     const newResidentsLatest =
       department.newResidentsThisYear ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { beforeYear: 2026 });
-    const newResidentsYearly = [2020, 2021, 2022, 2023, 2024]
-      .map((year) => ({
-        year,
-        value: latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { year })
-      }))
-      .filter((row) => typeof row.value === "number");
+    const departmentNewResidentsYearly = [2020, 2021, 2022, 2023, 2024]
+      .map((year) => {
+        const metric = department.yearlyMetrics.find(
+          (item) =>
+            item.metricKey === "newResidents" &&
+            item.year === year &&
+            typeof item.value === "number" &&
+            Number.isFinite(item.value)
+        );
+
+        return metric ? { year, value: metric.value } : null;
+      })
+      .filter((row): row is { year: number; value: number } => Boolean(row));
     const expectedOpeningsCount =
       importedMetricValue(department.metrics, "expectedOpenings2026") ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { year: 2026 });
@@ -1042,7 +1049,7 @@ export async function getDirectoryData(
       hasResearch: department.researchOpportunities.length > 0 || hasImportedResearch,
       residentsCount,
       newResidentsLatest,
-      newResidentsYearly,
+      departmentNewResidentsYearly,
       seniorPhysiciansCount,
       duns100PhysiciansCount,
       expectedOpeningsCount,

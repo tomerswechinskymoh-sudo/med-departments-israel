@@ -150,7 +150,7 @@ export function DepartmentCard({
     hasResearch: boolean;
     residentsCount?: number | null;
     newResidentsLatest?: number | null;
-    newResidentsYearly?: Array<{ year: number; value: number | null }>;
+    departmentNewResidentsYearly?: Array<{ year: number; value: number | null }>;
     seniorPhysiciansCount?: number | null;
     duns100PhysiciansCount?: number | null;
     expectedOpeningsCount?: number | null;
@@ -287,12 +287,12 @@ export function DepartmentCard({
             </div>
           ) : null}
 
-          {isRow && (activeResidentsStat || department.newResidentsYearly?.length) ? (
+          {isRow && (activeResidentsStat || department.departmentNewResidentsYearly?.length) ? (
             <div className="grid gap-2">
               {activeResidentsStat ? (
                 <DataPill label={activeResidentsStat.label} value={activeResidentsStat.value} />
               ) : null}
-              <MiniYearlyResidentsChart rows={department.newResidentsYearly} />
+              <MiniYearlyResidentsChart rows={department.departmentNewResidentsYearly} />
             </div>
           ) : null}
 
