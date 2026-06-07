@@ -32,7 +32,13 @@ type SeedUser = {
   isApprovedPublisher?: boolean;
 };
 
-const GROUPED_SPECIALTY_NAMES = new Set(["רפואה פנימית", "כירורגיה כללית", "רפואת ילדים"]);
+const GROUPED_SPECIALTY_NAMES = new Set([
+  "רפואה פנימית",
+  "רפואת ילדים",
+  "יילוד וגינקולוגיה",
+  "כירורגיה כללית",
+  "כירורגיה אורתופדית"
+]);
 
 function reviewRoleDetails(input: {
   medicalSchool: string;

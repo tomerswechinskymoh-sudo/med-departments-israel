@@ -252,7 +252,7 @@ export function DepartmentFilters({
   const submitWithFormData = (formData: FormData) => {
     const params = buildSearchParams(formData);
     const nextUrl = params.toString() ? `${pathname}?${params.toString()}` : pathname;
-    router.push(nextUrl);
+    router.replace(nextUrl, { scroll: false });
   };
 
   const submitCurrentForm = () => {

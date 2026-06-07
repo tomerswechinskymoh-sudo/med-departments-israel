@@ -158,15 +158,27 @@ export function DepartmentCard({
     dataLastUpdated?: string | Date | null;
     isFavorite?: boolean;
     coverImageUrl?: string | null;
+    isArrayCard?: boolean;
+    arrayDepartmentCount?: number;
+    hrefDepartmentId?: string | null;
+    favoriteDepartmentId?: string | null;
   };
   showFavoriteButton?: boolean;
   variant?: "card" | "row";
 }) {
-  const departmentHref = getDepartmentHref(department);
+  const departmentHref = getDepartmentHref({
+    slug: department.slug,
+    id: department.hrefDepartmentId ?? department.id
+  });
   const isRow = variant === "row";
+  const favoriteDepartmentId =
+    department.favoriteDepartmentId ?? (department.isArrayCard ? null : department.id);
   const activeResidentsStat =
     typeof department.residentsCount === "number"
-      ? { label: "מתמחים פעילים", value: department.residentsCount }
+      ? {
+          label: department.isArrayCard ? "ממוצע מתמחים למחלקה" : "מתמחים פעילים",
+          value: department.residentsCount
+        }
       : null;
 
   return (
@@ -208,9 +220,16 @@ export function DepartmentCard({
                 <h3 className="break-words text-2xl font-black leading-tight text-ink">
                   {department.name}
                 </h3>
-                <p className="inline-flex rounded-full border border-teal-100 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-900">
-                  {department.specialtyName}
-                </p>
+                <div className="flex flex-wrap gap-2">
+                  <p className="inline-flex rounded-full border border-teal-100 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-900">
+                    {department.specialtyName}
+                  </p>
+                  {department.isArrayCard ? (
+                    <p className="inline-flex rounded-full border border-brand-100 bg-brand-50 px-3 py-1.5 text-xs font-bold text-brand-900">
+                      מערך · {department.arrayDepartmentCount} מחלקות
+                    </p>
+                  ) : null}
+                </div>
                 {department.shortSummary ? (
                   <p className="max-w-3xl text-sm leading-7 text-slate-600">
                     {department.shortSummary}
@@ -336,10 +355,10 @@ export function DepartmentCard({
             >
               לעמוד המחלקה
             </Link>
-            {showFavoriteButton ? (
+            {showFavoriteButton && favoriteDepartmentId ? (
               <div className="pointer-events-auto">
                 <FavoriteToggleButton
-                  departmentId={department.id}
+                  departmentId={favoriteDepartmentId}
                   initialFavorite={Boolean(department.isFavorite)}
                 />
               </div>

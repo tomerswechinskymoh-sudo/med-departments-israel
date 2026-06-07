@@ -37,7 +37,7 @@ import {
   resolveInstitutionRegion,
   reviewerTypeLabel
 } from "@/lib/queries";
-import { getDepartmentHref } from "@/lib/utils";
+import { formatDepartmentDisplayName, getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -62,6 +62,17 @@ type ImportedYearlyMetric = {
   unit?: string | null;
   sourceNotes?: string | null;
   lastUpdated?: string | Date | null;
+};
+
+type ProfileManagerRow = {
+  id: string;
+  name: string | null;
+  title: string | null;
+  role: string | null;
+  departmentName: string;
+  email: string | null;
+  phone: string | null;
+  singleEmailFallback: boolean;
 };
 
 const MISSING_IMPORTED_VALUE = "הנתון עדיין לא סופק";
@@ -270,24 +281,30 @@ function YearlyResidentsChart({
   sourceLabel,
   lastUpdated,
   sourceUrl,
-  displayAction
+  displayAction,
+  title = "מתמחים חדשים לפי שנה",
+  tooltip = NEW_RESIDENTS_TOOLTIP,
+  metricType = "נתון מחלקתי"
 }: {
   rows: Array<{ year: number; value: number; rawValue?: string | null }>;
   sourceLabel: string;
   lastUpdated?: string | Date | null;
   sourceUrl?: string | null;
   displayAction?: string | null;
+  title?: string;
+  tooltip?: string;
+  metricType?: string;
 }) {
   const maxValue = Math.max(...rows.map((row) => row.value), 1);
 
   return (
     <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
       <div className="flex items-start justify-between gap-3">
-        <p className="text-sm font-bold text-slate-600">מתמחים חדשים לפי שנה</p>
+        <p className="text-sm font-bold text-slate-600">{title}</p>
         <MetricInfoTip
           sourceLabel={sourceLabel}
-          text={NEW_RESIDENTS_TOOLTIP}
-          metricType="נתון מחלקתי"
+          text={tooltip}
+          metricType={metricType}
           lastUpdated={lastUpdated}
           sourceUrl={sourceUrl}
           displayAction={displayAction}
@@ -943,6 +960,45 @@ function latestYearlyMetric(
   return resolveImportedYearlyMetric(metrics, metricKey, options);
 }
 
+function averagePresentMetric(values: Array<number | null | undefined>) {
+  const presentValues = values.filter(
+    (value): value is number => typeof value === "number" && Number.isFinite(value)
+  );
+
+  if (presentValues.length === 0) {
+    return null;
+  }
+
+  return presentValues.reduce((sum, value) => sum + value, 0) / presentValues.length;
+}
+
+function sumPresentMetric(values: Array<number | null | undefined>) {
+  const presentValues = values.filter(
+    (value): value is number => typeof value === "number" && Number.isFinite(value)
+  );
+
+  return presentValues.length > 0
+    ? presentValues.reduce((sum, value) => sum + value, 0)
+    : null;
+}
+
+function formatMetricNumber(value: number | null) {
+  if (value === null) {
+    return null;
+  }
+
+  return Number.isInteger(value)
+    ? value.toLocaleString("he-IL")
+    : value.toLocaleString("he-IL", { maximumFractionDigits: 1 });
+}
+
+function splitContactEmails(value?: string | null) {
+  return (value ?? "")
+    .split(/[\n,;]+/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
 function metricCardFromImported(
   metrics: ImportedMetric[],
   input: {
@@ -1155,17 +1211,17 @@ export default async function DepartmentDetailsPage({
     ? department.medicalArray?.externalMetrics ?? []
     : department.externalMetrics;
   const arrayDepartments = isMedicalArrayProfile ? department.medicalArray?.departments ?? [] : [];
+  const arrayDepartmentCount = arrayDepartments.length;
   const importedDepartmentMetrics = department.metrics;
   const importedDepartmentYearlyMetrics = department.yearlyMetrics;
   const importedSpecialtyMetrics = department.specialty.metrics;
-  const contactEmails = (department.publicContactEmail ?? "")
-    .split(/[\n,;]+/)
-    .map((item) => item.trim())
-    .filter(Boolean);
+  const contactEmails = splitContactEmails(department.publicContactEmail);
   const websiteUrl = department.websiteUrl ?? department.institution.websiteUrl;
   const departmentNewResidentsRows = departmentNewResidentsRowsFromYearlyMetrics(
     importedDepartmentYearlyMetrics
   );
+  const arrayAverageTooltip =
+    "הנתון מחושב כממוצע למחלקה במערך: סך הערכים במערך חלקי מספר המחלקות במערך.";
   const canViewDepartmentDetails = Boolean(session && session.verificationStatus !== "REJECTED");
 
   if (!canViewDepartmentDetails) {
@@ -1232,6 +1288,67 @@ export default async function DepartmentDetailsPage({
   const metricRecord = (metricKey: string) =>
     profileExternalMetrics.find((metric) => metric.metricKey === metricKey && metric.sourceName !== "DEMO");
   const isMedicalArrayDemo = department.medicalArray?.publicationSourceUrl === "DEMO";
+  const arrayActiveResidentsAverage = isMedicalArrayProfile
+    ? averagePresentMetric(
+        arrayDepartments.map(
+          (arrayDepartment) =>
+            arrayDepartment.residentsCount ??
+            importedMetricNumber(arrayDepartment.metrics, "מספר_מתמחים", "residentsCount", "activeResidentsCount")
+        )
+      )
+    : null;
+  const arraySpecialistsAverage = isMedicalArrayProfile
+    ? averagePresentMetric(
+        arrayDepartments.map((arrayDepartment) =>
+          importedMetricNumber(arrayDepartment.metrics, "מספר_בכירים", "seniorPhysiciansCount")
+        )
+      )
+    : null;
+  const arrayExpectedOpeningsTotal = isMedicalArrayProfile
+    ? sumPresentMetric(
+        arrayDepartments.map((arrayDepartment) => {
+          const metricValue = importedMetricNumber(arrayDepartment.metrics, "צפי תקנים חדשים ב2026", "expectedOpenings2026");
+          const yearlyValue =
+            latestYearlyMetric(arrayDepartment.yearlyMetrics, "מספר מתמחים חדשים 2026", { year: 2026 })?.value ??
+            null;
+
+          return metricValue ?? yearlyValue;
+        })
+      )
+    : null;
+  const arrayNewResidentsRows = isMedicalArrayProfile
+    ? Array.from(
+        new Set(
+          arrayDepartments.flatMap((arrayDepartment) =>
+            arrayDepartment.yearlyMetrics
+              .filter((metric) => metric.metricKey === "newResidents")
+              .map((metric) => metric.year)
+          )
+        )
+      )
+        .sort((left, right) => right - left)
+        .map((year) => {
+          const totalForYear = sumPresentMetric(
+            arrayDepartments.map(
+              (arrayDepartment) =>
+                latestYearlyMetric(arrayDepartment.yearlyMetrics, "newResidents", { year })?.value ?? null
+            )
+          );
+          const value =
+            totalForYear === null || arrayDepartmentCount === 0
+              ? null
+              : Number((totalForYear / arrayDepartmentCount).toFixed(1));
+
+          return value === null
+            ? null
+            : {
+                year,
+                value,
+                rawValue: formatMetricNumber(value)
+              };
+        })
+        .filter((row): row is { year: number; value: number; rawValue: string | null } => Boolean(row))
+    : [];
   const activeResidentsMetric = metricRecord("activeResidentsCount");
   const importedActiveResidents = importedMetricNumber(
     importedDepartmentMetrics,
@@ -1240,7 +1357,9 @@ export default async function DepartmentDetailsPage({
     "activeResidentsCount"
   );
   const activeResidents =
-    importedActiveResidents !== null
+    isMedicalArrayProfile
+      ? { value: formatMetricNumber(arrayActiveResidentsAverage), source: "hospital" as MetricSource }
+      : importedActiveResidents !== null
         ? { value: importedActiveResidents, source: "hospital" as MetricSource }
       : department.residentsCount !== null && department.residentsCount !== undefined
         ? { value: department.residentsCount, source: "hospital" as MetricSource }
@@ -1250,8 +1369,8 @@ export default async function DepartmentDetailsPage({
   const specialistsMetric = metricRecord("seniorPhysiciansCount");
   const importedSpecialists = importedMetricNumber(importedDepartmentMetrics, "מספר_בכירים", "seniorPhysiciansCount");
   const specialists =
-    isMedicalArrayProfile && !isMedicalArrayDemo && isPresentNumber(department.medicalArray?.specialistsCount)
-      ? { value: department.medicalArray.specialistsCount, source: "hospital" as MetricSource }
+    isMedicalArrayProfile
+      ? { value: formatMetricNumber(arraySpecialistsAverage), source: "hospital" as MetricSource }
       : importedSpecialists !== null
         ? { value: importedSpecialists, source: "hospital" as MetricSource }
       : specialistsMetric
@@ -1349,17 +1468,45 @@ export default async function DepartmentDetailsPage({
     0
   );
   const openAlexResearchMetrics = department.researchMetrics.filter((metric) => metric.source === "OpenAlex");
-  const profileHeads = isMedicalArrayProfile
-    ? arrayDepartments.flatMap((arrayDepartment) =>
-        arrayDepartment.heads.map((head) => ({
+  const profileHeads: ProfileManagerRow[] = isMedicalArrayProfile
+    ? arrayDepartments.flatMap((arrayDepartment): ProfileManagerRow[] => {
+        const departmentEmails = splitContactEmails(arrayDepartment.publicContactEmail);
+        const departmentEmail = departmentEmails.length > 0 ? departmentEmails.join(", ") : null;
+        const departmentName = formatDepartmentDisplayName(
+          arrayDepartment.name,
+          arrayDepartment.specialty.name
+        );
+
+        if (arrayDepartment.heads.length === 0) {
+          return [
+            {
+              id: `missing-${arrayDepartment.id}`,
+              name: null,
+              title: "מנהל/ת מחלקה",
+              role: null,
+              departmentName,
+              email: departmentEmail,
+              phone: arrayDepartment.publicContactPhone,
+              singleEmailFallback: departmentEmails.length === 1
+            }
+          ];
+        }
+
+        return arrayDepartment.heads.map((head): ProfileManagerRow => ({
           ...head,
-          departmentName: arrayDepartment.name
-        }))
-      )
-    : department.heads.map((head) => ({
-        ...head,
-        departmentName: department.name
-      }));
+          departmentName,
+          email: departmentEmail,
+          phone: arrayDepartment.publicContactPhone,
+          singleEmailFallback: departmentEmails.length === 1
+        }));
+      })
+    : department.heads.map((head): ProfileManagerRow => ({
+      ...head,
+      departmentName: department.name,
+      email: contactEmails.length === 1 ? contactEmails[0] : null,
+      phone: department.publicContactPhone,
+      singleEmailFallback: contactEmails.length === 1
+    }));
   const latestAnyOpenAlexResearchMetric = openAlexResearchMetrics[0] ?? null;
   const latestOpenAlexResearchMetric =
     openAlexResearchMetrics.find(
@@ -1530,23 +1677,38 @@ export default async function DepartmentDetailsPage({
   const workforceMetrics: DisplayMetric[] = [
     {
       id: "department-residents-count",
-      label: metricLabelFromMetadata(residentsMeta, "מספר מתמחים"),
+      label: isMedicalArrayProfile
+        ? "מספר מתמחים ממוצע למחלקה במערך"
+        : metricLabelFromMetadata(residentsMeta, "מספר מתמחים"),
       value: activeResidents?.value ?? null,
       sourceLabel: metadataSourceLabel(residentsMeta, "משרד הבריאות"),
       tooltip: metadataTooltip(
         residentsMeta,
-        "מספר מתמחים פעילים כרגע במחלקה אשר דיווחו למשרד על התמחותם"
+        isMedicalArrayProfile
+          ? arrayAverageTooltip
+          : "מספר מתמחים פעילים כרגע במחלקה אשר דיווחו למשרד על התמחותם"
       ),
+      metricType: isMedicalArrayProfile ? "ממוצע למחלקה במערך" : "נתון מחלקתי",
+      caption: isMedicalArrayProfile ? `חושב על בסיס ${arrayDepartmentCount} מחלקות` : undefined,
       sourceUrl: residentsMeta?.sourceUrl,
       displayAction: metadataDisplayAction(residentsMeta),
       className: highlightedCardClass(residentsMeta)
     },
     {
       id: "department-senior-physicians",
-      label: metricLabelFromMetadata(seniorPhysiciansMeta, "מספר בכירים"),
+      label: isMedicalArrayProfile
+        ? "מספר בכירים ממוצע למחלקה במערך"
+        : metricLabelFromMetadata(seniorPhysiciansMeta, "מספר בכירים"),
       value: specialists?.value ?? null,
       sourceLabel: metadataSourceLabel(seniorPhysiciansMeta, "משרד הבריאות"),
-      tooltip: metadataTooltip(seniorPhysiciansMeta, "מספר הבכירים במחלקה כפי שדווח מהמחלקה"),
+      tooltip: metadataTooltip(
+        seniorPhysiciansMeta,
+        isMedicalArrayProfile
+          ? arrayAverageTooltip
+          : "מספר הבכירים במחלקה כפי שדווח מהמחלקה"
+      ),
+      metricType: isMedicalArrayProfile ? "ממוצע למחלקה במערך" : "נתון מחלקתי",
+      caption: isMedicalArrayProfile ? `חושב על בסיס ${arrayDepartmentCount} מחלקות` : undefined,
       sourceUrl: seniorPhysiciansMeta?.sourceUrl,
       displayAction: metadataDisplayAction(seniorPhysiciansMeta),
       className: highlightedCardClass(seniorPhysiciansMeta)
@@ -1589,9 +1751,11 @@ export default async function DepartmentDetailsPage({
   ];
   const expectedOpeningsValue = expectedOpeningsDepartmentMetric
     ? formatImportedMetricValue(expectedOpeningsDepartmentMetric)
-    : expectedOpeningsYearlyMetric
-      ? formatImportedMetricValue(expectedOpeningsYearlyMetric)
-      : null;
+    : isMedicalArrayProfile
+      ? formatMetricNumber(arrayExpectedOpeningsTotal)
+      : expectedOpeningsYearlyMetric
+        ? formatImportedMetricValue(expectedOpeningsYearlyMetric)
+        : null;
   const expectedOpeningsSourceLabel = importedSourceLabel(
     expectedOpeningsDepartmentMetric ?? expectedOpeningsYearlyMetric,
     "מספר המתמחים שאמורים לסיים השנה ע״ב אורך ההתמחות החציוני"
@@ -1722,7 +1886,7 @@ export default async function DepartmentDetailsPage({
       <section className="grid gap-4 lg:grid-cols-[1fr_320px]">
         <div className="space-y-4">
           <Card className="rounded-xl !p-4">
-            <SectionHeading title="קצת על המחלקה" />
+            <SectionHeading title={isMedicalArrayProfile ? "קצת על המערך" : "קצת על המחלקה"} />
             {profileDescription || practicalInfo ? (
               <div className="mt-4 space-y-3 text-sm leading-8 text-slate-700">
                 {profileDescription ? <p>{profileDescription}</p> : null}
@@ -1759,15 +1923,32 @@ export default async function DepartmentDetailsPage({
               ) : null}
 
               <div className="grid gap-2 md:grid-cols-3">
+                {isMedicalArrayProfile && arrayDepartmentCount > 1 ? (
+                  <DataMetricCard
+                    label="מספר מחלקות במערך"
+                    value={arrayDepartmentCount}
+                    sourceLabel="בי״ח"
+                    tooltip="סך המחלקות הכלולות במערך בבית החולים."
+                    metricType="סך הכל במערך"
+                    className="border-brand-100 bg-brand-50/70"
+                  />
+                ) : null}
                 <DataMetricCard {...workforceMetrics[0]} />
                 <DataMetricCard
-                  label={metricLabelFromMetadata(expectedOpeningsMeta, "מספר משרות צפויות להתפנות")}
+                  label={
+                    isMedicalArrayProfile
+                      ? "מספר משרות צפויות להתפנות - סך הכל במערך"
+                      : metricLabelFromMetadata(expectedOpeningsMeta, "מספר משרות צפויות להתפנות")
+                  }
                   value={expectedOpeningsValue}
                   sourceLabel={metadataSourceLabel(expectedOpeningsMeta, expectedOpeningsSourceLabel)}
                   tooltip={metadataTooltip(
                     expectedOpeningsMeta,
-                    "צפי משרות המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
+                    isMedicalArrayProfile
+                      ? "סך המשרות הצפויות להתפנות בכלל מחלקות המערך."
+                      : "צפי משרות המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
                   )}
+                  metricType={isMedicalArrayProfile ? "סך הכל במערך" : "נתון מחלקתי"}
                   sourceUrl={expectedOpeningsMeta?.sourceUrl}
                   displayAction={metadataDisplayAction(expectedOpeningsMeta)}
                   className={`border-amber-200 bg-amber-50/70 ${highlightedCardClass(expectedOpeningsMeta)}`}
@@ -1830,18 +2011,25 @@ export default async function DepartmentDetailsPage({
               </div>
 
               <YearlyResidentsChart
-                rows={departmentNewResidentsRows}
+                rows={isMedicalArrayProfile ? arrayNewResidentsRows : departmentNewResidentsRows}
                 sourceLabel={metadataSourceLabel(newResidentsMeta, newResidentsSourceLabel)}
                 lastUpdated={firstDepartmentYearlyMetric?.lastUpdated}
                 sourceUrl={newResidentsMeta?.sourceUrl}
                 displayAction={metadataDisplayAction(newResidentsMeta)}
+                title={
+                  isMedicalArrayProfile
+                    ? "מתמחים חדשים ממוצע למחלקה במערך לפי שנה"
+                    : "מתמחים חדשים לפי שנה"
+                }
+                tooltip={isMedicalArrayProfile ? arrayAverageTooltip : NEW_RESIDENTS_TOOLTIP}
+                metricType={isMedicalArrayProfile ? "ממוצע למחלקה במערך" : "נתון מחלקתי"}
               />
 
             </div>
           </Card>
 
           <Card className="rounded-xl !p-4">
-            <SectionHeading title="חוויות מהשטח" />
+            <SectionHeading title={isMedicalArrayProfile ? "חוויות מהמערך" : "חוויות מהמחלקה"} />
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <ScoreBar label="דירוג כללי" value={department.summary.overallRecommendation} />
               <ScoreBar label="איכות הוראה" value={department.summary.teachingQuality} />
@@ -1891,7 +2079,9 @@ export default async function DepartmentDetailsPage({
 
         <aside className="space-y-4">
           <Card className="rounded-xl !p-4">
-            <SectionHeading title="הנהלה ויצירת קשר" />
+            <SectionHeading
+              title={isMedicalArrayProfile ? "הנהלת המערך ויצירת קשר" : "הנהלת המחלקה ויצירת קשר"}
+            />
             <div className="mt-5 space-y-3">
               {department.representativeAssignments.length === 0 && profileHeads.length === 0 && !hasContactPerson ? (
                 <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600">
@@ -1906,7 +2096,7 @@ export default async function DepartmentDetailsPage({
                   ) : null}
                   {contactEmails.length > 0 ? (
                     <p className="mt-2 text-xs leading-6 text-slate-600">
-                      אימייל: {contactEmails.join(", ")}
+                      מייל איש קשר: {contactEmails.join(", ")}
                     </p>
                   ) : null}
                   {department.publicContactPhone ? (
@@ -1945,16 +2135,23 @@ export default async function DepartmentDetailsPage({
               ))}
               {profileHeads.map((head) => (
                 <div key={head.id} className="rounded-lg border border-slate-100 bg-white px-3 py-3">
-                  <p className="text-xs font-black text-slate-500">מנהל/ת מחלקה</p>
+                  <p className="text-xs font-black text-slate-500">
+                    {isMedicalArrayProfile ? `מנהל/ת ${head.departmentName}` : "מנהל/ת מחלקה"}
+                  </p>
                   <p className="mt-2 text-sm font-bold text-ink">{head.name || <EmptyValue />}</p>
                   <p className="mt-1 text-xs text-slate-500">
                     {[head.title, head.role, head.departmentName].filter(Boolean).join(" · ")}
                   </p>
                   <p className="mt-2 text-xs leading-6 text-slate-600">
-                    אימייל: <EmptyValue />
+                    מייל מנהל/ת מחלקה: {head.email ? head.email : <EmptyValue />}
                   </p>
+                  {head.singleEmailFallback && head.email ? (
+                    <p className="text-xs leading-6 text-slate-600">
+                      מייל איש קשר: {head.email}
+                    </p>
+                  ) : null}
                   <p className="text-xs leading-6 text-slate-600">
-                    טלפון: <EmptyValue />
+                    טלפון: {head.phone ? head.phone : <EmptyValue />}
                   </p>
                 </div>
               ))}

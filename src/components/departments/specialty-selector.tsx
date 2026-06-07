@@ -21,7 +21,7 @@ export function SpecialtySelector({
         onChange={(event) => {
           const params = new URLSearchParams(preservedParams);
           params.set("specialty", event.target.value);
-          router.push(`/departments?${params.toString()}`);
+          router.replace(`/departments?${params.toString()}`, { scroll: false });
         }}
         className="w-full rounded-2xl border border-brand-200 bg-white px-4 py-3 text-base font-bold text-ink shadow-sm outline-none transition focus:border-brand-400 focus:ring-4 focus:ring-brand-100 md:max-w-md"
       >

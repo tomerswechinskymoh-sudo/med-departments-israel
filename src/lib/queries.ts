@@ -261,6 +261,42 @@ function normalizeHebrewCatalogName(value: string) {
     .trim();
 }
 
+const DIRECTORY_ARRAY_SPECIALTY_NAMES = new Set(
+  [
+    "רפואה פנימית",
+    "רפואת ילדים",
+    "יילוד וגינקולוגיה",
+    "כירורגיה כללית",
+    "כירורגיה אורתופדית"
+  ].map(normalizeHebrewCatalogName)
+);
+
+function shouldGroupDirectorySpecialty(specialtyName: string) {
+  return DIRECTORY_ARRAY_SPECIALTY_NAMES.has(normalizeHebrewCatalogName(specialtyName));
+}
+
+function averagePresentNumber(values: Array<number | null | undefined>) {
+  const presentValues = values.filter(
+    (value): value is number => typeof value === "number" && Number.isFinite(value)
+  );
+
+  if (presentValues.length === 0) {
+    return null;
+  }
+
+  return presentValues.reduce((sum, value) => sum + value, 0) / presentValues.length;
+}
+
+function sumPresentNumber(values: Array<number | null | undefined>) {
+  const presentValues = values.filter(
+    (value): value is number => typeof value === "number" && Number.isFinite(value)
+  );
+
+  return presentValues.length > 0
+    ? presentValues.reduce((sum, value) => sum + value, 0)
+    : null;
+}
+
 function getDepartmentSlugVariants(slug: string) {
   const decodedSlug = decodeURIComponent(slug).trim().replace(/^\/+|\/+$/g, "");
   const normalizedHyphenSlug = decodedSlug.replace(/-+/g, "-");
@@ -831,6 +867,13 @@ export async function getDirectoryData(
     include: {
       institution: true,
       specialty: true,
+      medicalArray: {
+        select: {
+          id: true,
+          slug: true,
+          name: true
+        }
+      },
       reviews: {
         select: publishedReviewSelect
       },
@@ -1018,6 +1061,10 @@ export async function getDirectoryData(
     return {
       id: department.id,
       slug: canonicalDepartmentSlugForRecord(department),
+      institutionId: department.institution.id,
+      specialtyId: department.specialty.id,
+      medicalArrayId: department.medicalArray?.id ?? null,
+      medicalArraySlug: department.medicalArray?.slug ?? null,
       name: formatDepartmentDisplayName(department.name, department.specialty.name),
       institutionName: department.institution.name,
       institutionSlug: department.institution.slug,
@@ -1056,7 +1103,107 @@ export async function getDirectoryData(
     };
   });
 
-  return rankedDepartments.sort((left, right) => {
+  const groupedByHospitalSpecialty = new Map<string, typeof rankedDepartments>();
+  for (const department of rankedDepartments) {
+    if (!shouldGroupDirectorySpecialty(department.specialtyName)) {
+      continue;
+    }
+
+    const groupKey = `${department.institutionId}:${department.specialtyId}`;
+    groupedByHospitalSpecialty.set(groupKey, [
+      ...(groupedByHospitalSpecialty.get(groupKey) ?? []),
+      department
+    ]);
+  }
+
+  const emittedArrayGroups = new Set<string>();
+  type DirectoryCard = (typeof rankedDepartments)[number] & {
+    isArrayCard?: boolean;
+    arrayDepartmentCount?: number;
+    hrefDepartmentId?: string | null;
+    favoriteDepartmentId?: string | null;
+  };
+  const visibleDirectoryCards: DirectoryCard[] = rankedDepartments.flatMap((department): DirectoryCard[] => {
+    const groupKey = `${department.institutionId}:${department.specialtyId}`;
+    const group = groupedByHospitalSpecialty.get(groupKey);
+
+    if (!group || group.length <= 1) {
+      return [department];
+    }
+
+    if (emittedArrayGroups.has(groupKey)) {
+      return [];
+    }
+
+    emittedArrayGroups.add(groupKey);
+
+    const first = group[0];
+    const totalReviewCount = group.reduce((sum, item) => sum + item.reviewCount, 0);
+    const weightedOverall =
+      totalReviewCount > 0
+        ? group.reduce((sum, item) => sum + item.averageOverall * item.reviewCount, 0) / totalReviewCount
+        : average(group.map((item) => item.averageOverall));
+    const yearKeys = Array.from(
+      new Set(
+        group.flatMap((item) =>
+          item.departmentNewResidentsYearly?.map((row) => row.year) ?? []
+        )
+      )
+    ).sort((left, right) => right - left);
+    const averagedYearlyRows = yearKeys
+      .map((year) => {
+        const totalForYear = sumPresentNumber(
+          group.map((item) => item.departmentNewResidentsYearly?.find((row) => row.year === year)?.value)
+        );
+        const value =
+          totalForYear === null ? null : Number((totalForYear / group.length).toFixed(1));
+
+        return value === null
+          ? null
+          : {
+              year,
+              value,
+              rawValue: value.toLocaleString("he-IL")
+            };
+      })
+      .filter((row): row is { year: number; value: number; rawValue: string } => Boolean(row));
+    const averagedResidents = averagePresentNumber(group.map((item) => item.residentsCount));
+
+    return [
+      {
+        ...first,
+        id: first.medicalArrayId ? `array-${first.medicalArrayId}` : `array-${groupKey}`,
+        slug: first.medicalArraySlug ?? first.slug,
+        hrefDepartmentId: first.id,
+        favoriteDepartmentId: null,
+        name: `מערך ${first.specialtyName}`,
+        shortSummary: `מערך ${first.specialtyName} הכולל ${group.length} מחלקות בבית החולים ${first.institutionName}.`,
+        reviewCount: totalReviewCount,
+        averageOverall: weightedOverall,
+        teachingQuality: average(group.map((item) => item.teachingQuality)),
+        lifestyleBalance: average(group.map((item) => item.lifestyleBalance)),
+        researchExposure: average(group.map((item) => item.researchExposure)),
+        seniorsApproachability: average(group.map((item) => item.seniorsApproachability)),
+        clinicalExposure: average(group.map((item) => item.clinicalExposure)),
+        hasOpenResidency: group.some((item) => item.hasOpenResidency),
+        hasUpcomingCommittee: group.some((item) => item.hasUpcomingCommittee),
+        hasResearch: group.some((item) => item.hasResearch),
+        residentsCount: averagedResidents === null ? null : Number(averagedResidents.toFixed(1)),
+        departmentNewResidentsYearly: averagedYearlyRows,
+        seniorPhysiciansCount:
+          averagePresentNumber(group.map((item) => item.seniorPhysiciansCount)) ?? null,
+        duns100PhysiciansCount: sumPresentNumber(group.map((item) => item.duns100PhysiciansCount)),
+        expectedOpeningsCount: sumPresentNumber(group.map((item) => item.expectedOpeningsCount)),
+        estimatedPublicationsCount: sumPresentNumber(group.map((item) => item.estimatedPublicationsCount)),
+        isFavorite: false,
+        rankingScore: Math.max(...group.map((item) => item.rankingScore)),
+        isArrayCard: true,
+        arrayDepartmentCount: group.length
+      }
+    ];
+  });
+
+  return visibleDirectoryCards.sort((left, right) => {
     if (filters.sort === "rating" && right.averageOverall !== left.averageOverall) {
       return right.averageOverall - left.averageOverall;
     }
@@ -1346,6 +1493,15 @@ export async function getDepartmentPageData(
         include: {
           departments: {
             include: {
+              specialty: true,
+              metrics: {
+                orderBy: {
+                  metricKey: "asc"
+                }
+              },
+              yearlyMetrics: {
+                orderBy: [{ year: "desc" }, { metricKey: "asc" }]
+              },
               heads: {
                 orderBy: {
                   displayOrder: "asc"
