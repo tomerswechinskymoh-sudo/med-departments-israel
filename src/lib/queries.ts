@@ -332,6 +332,29 @@ function sumPresentNumber(values: Array<number | null | undefined>) {
     : null;
 }
 
+function duplicateAwareArrayMetricAverage(
+  values: Array<number | null | undefined>,
+  denominator: number
+) {
+  const normalizedValues = values.map((value) =>
+    typeof value === "number" && Number.isFinite(value) ? value : null
+  );
+  const presentValues = normalizedValues.filter((value): value is number => value !== null);
+  const total = sumPresentNumber(normalizedValues);
+
+  if (total === null || denominator === 0) {
+    return null;
+  }
+
+  const duplicatedAcrossAllRows =
+    denominator > 1 &&
+    presentValues.length === denominator &&
+    presentValues.every((value) => Math.abs(value - presentValues[0]) < 0.000001);
+  const correctedValue = duplicatedAcrossAllRows ? presentValues[0] : total;
+
+  return Number((correctedValue / denominator).toFixed(1));
+}
+
 function getDepartmentSlugVariants(slug: string) {
   const decodedSlug = decodeURIComponent(slug).trim().replace(/^\/+|\/+$/g, "");
   const normalizedHyphenSlug = decodedSlug.replace(/-+/g, "-");
@@ -1187,11 +1210,10 @@ export async function getDirectoryData(
     ).sort((left, right) => right - left);
     const averagedYearlyRows = yearKeys
       .map((year) => {
-        const totalForYear = sumPresentNumber(
-          group.map((item) => item.departmentNewResidentsYearly?.find((row) => row.year === year)?.value)
+        const value = duplicateAwareArrayMetricAverage(
+          group.map((item) => item.departmentNewResidentsYearly?.find((row) => row.year === year)?.value),
+          group.length
         );
-        const value =
-          totalForYear === null ? null : Number((totalForYear / group.length).toFixed(1));
 
         return value === null
           ? null
@@ -1202,8 +1224,18 @@ export async function getDirectoryData(
             };
       })
       .filter((row): row is { year: number; value: number; rawValue: string } => Boolean(row));
-    const totalResidents = sumPresentNumber(group.map((item) => item.residentsCount));
-    const totalSeniorPhysicians = sumPresentNumber(group.map((item) => item.seniorPhysiciansCount));
+    const averageResidents = duplicateAwareArrayMetricAverage(
+      group.map((item) => item.residentsCount),
+      group.length
+    );
+    const averageSeniorPhysicians = duplicateAwareArrayMetricAverage(
+      group.map((item) => item.seniorPhysiciansCount),
+      group.length
+    );
+    const averageExpectedOpenings = duplicateAwareArrayMetricAverage(
+      group.map((item) => item.expectedOpeningsCount),
+      group.length
+    );
     const departmentCountText = group.length === 1 ? "מחלקה אחת" : `${group.length} מחלקות`;
     const arraySpecialtyName = requiredMedicalArraySpecialtyDisplayName(first.specialtyName);
 
@@ -1227,12 +1259,11 @@ export async function getDirectoryData(
         hasOpenResidency: group.some((item) => item.hasOpenResidency),
         hasUpcomingCommittee: group.some((item) => item.hasUpcomingCommittee),
         hasResearch: group.some((item) => item.hasResearch),
-        residentsCount: totalResidents === null ? null : Number((totalResidents / group.length).toFixed(1)),
+        residentsCount: averageResidents,
         departmentNewResidentsYearly: averagedYearlyRows,
-        seniorPhysiciansCount:
-          totalSeniorPhysicians === null ? null : Number((totalSeniorPhysicians / group.length).toFixed(1)),
+        seniorPhysiciansCount: averageSeniorPhysicians,
         duns100PhysiciansCount: sumPresentNumber(group.map((item) => item.duns100PhysiciansCount)),
-        expectedOpeningsCount: sumPresentNumber(group.map((item) => item.expectedOpeningsCount)),
+        expectedOpeningsCount: averageExpectedOpenings,
         estimatedPublicationsCount: sumPresentNumber(group.map((item) => item.estimatedPublicationsCount)),
         isFavorite: false,
         rankingScore: Math.max(...group.map((item) => item.rankingScore)),

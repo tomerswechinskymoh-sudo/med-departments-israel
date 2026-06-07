@@ -971,6 +971,38 @@ function sumPresentMetric(values: Array<number | null | undefined>) {
     : null;
 }
 
+function duplicateAwareArrayMetricCalculation(
+  values: Array<number | null | undefined>,
+  denominator: number
+) {
+  const normalizedValues = values.map((value) =>
+    typeof value === "number" && Number.isFinite(value) ? value : null
+  );
+  const presentValues = normalizedValues.filter((value): value is number => value !== null);
+  const rawTotal = sumPresentMetric(normalizedValues);
+  const currentCalculation =
+    rawTotal === null || denominator === 0 ? null : rawTotal / denominator;
+  const duplicatedAcrossAllRows =
+    denominator > 1 &&
+    presentValues.length === denominator &&
+    presentValues.every((value) => Math.abs(value - presentValues[0]) < 0.000001);
+  const correctedCalculation =
+    currentCalculation === null
+      ? null
+      : duplicatedAcrossAllRows
+        ? presentValues[0] / denominator
+        : currentCalculation;
+
+  return {
+    underlyingValues: normalizedValues,
+    rawTotal,
+    denominator,
+    duplicatedAcrossAllRows,
+    currentCalculation,
+    correctedCalculation
+  };
+}
+
 function formatMetricNumber(value: number | null) {
   if (value === null) {
     return null;
@@ -1302,21 +1334,28 @@ export default async function DepartmentDetailsPage({
 
     return metricValue ?? yearlyValue;
   });
-  const arrayActiveResidentsTotal = sumPresentMetric(arrayActiveResidentValues);
-  const arraySpecialistsTotal = sumPresentMetric(arraySpecialistValues);
-  const arrayExpectedOpeningsTotal = sumPresentMetric(arrayExpectedOpeningValues);
-  const arrayMetricAverage = (values: Array<number | null | undefined>) => {
-    if (!isMedicalArrayProfile || arrayDepartmentCount === 0) {
-      return null;
-    }
-
-    const total = sumPresentMetric(values);
-    return total === null ? null : total / arrayDepartmentCount;
-  };
-  const arrayActiveResidentsAverage = arrayMetricAverage(arrayActiveResidentValues);
-  const arraySpecialistsAverage = arrayMetricAverage(arraySpecialistValues);
-  const arrayExpectedOpeningsAverage = arrayMetricAverage(arrayExpectedOpeningValues);
-  const arrayNewResidentsRows = isMedicalArrayProfile
+  const arrayActiveResidentsCalculation = duplicateAwareArrayMetricCalculation(
+    arrayActiveResidentValues,
+    arrayDepartmentCount
+  );
+  const arraySpecialistsCalculation = duplicateAwareArrayMetricCalculation(
+    arraySpecialistValues,
+    arrayDepartmentCount
+  );
+  const arrayExpectedOpeningsCalculation = duplicateAwareArrayMetricCalculation(
+    arrayExpectedOpeningValues,
+    arrayDepartmentCount
+  );
+  const arrayActiveResidentsTotal = arrayActiveResidentsCalculation.rawTotal;
+  const arraySpecialistsTotal = arraySpecialistsCalculation.rawTotal;
+  const arrayExpectedOpeningsTotal = arrayExpectedOpeningsCalculation.rawTotal;
+  const arrayActiveResidentsAverage =
+    isMedicalArrayProfile ? arrayActiveResidentsCalculation.correctedCalculation : null;
+  const arraySpecialistsAverage =
+    isMedicalArrayProfile ? arraySpecialistsCalculation.correctedCalculation : null;
+  const arrayExpectedOpeningsAverage =
+    isMedicalArrayProfile ? arrayExpectedOpeningsCalculation.correctedCalculation : null;
+  const arrayNewResidentsCalculations = isMedicalArrayProfile
     ? Array.from(
         new Set(
           arrayDepartments.flatMap((arrayDepartment) =>
@@ -1328,16 +1367,23 @@ export default async function DepartmentDetailsPage({
       )
         .sort((left, right) => right - left)
         .map((year) => {
-          const totalForYear = sumPresentMetric(
+          const calculation = duplicateAwareArrayMetricCalculation(
             arrayDepartments.map(
               (arrayDepartment) =>
                 latestYearlyMetric(arrayDepartment.yearlyMetrics, "newResidents", { year })?.value ?? null
-            )
+            ),
+            arrayDepartmentCount
           );
+
+          return { year, calculation };
+        })
+    : [];
+  const arrayNewResidentsRows = arrayNewResidentsCalculations
+        .map(({ year, calculation }) => {
           const value =
-            totalForYear === null || arrayDepartmentCount === 0
+            calculation.correctedCalculation === null
               ? null
-              : Number((totalForYear / arrayDepartmentCount).toFixed(1));
+              : Number(calculation.correctedCalculation.toFixed(1));
 
           return value === null
             ? null
@@ -1347,8 +1393,7 @@ export default async function DepartmentDetailsPage({
                 rawValue: formatMetricNumber(value)
               };
         })
-        .filter((row): row is { year: number; value: number; rawValue: string | null } => Boolean(row))
-    : [];
+        .filter((row): row is { year: number; value: number; rawValue: string | null } => Boolean(row));
   const activeResidentsMetric = metricRecord("activeResidentsCount");
   const importedActiveResidents = importedMetricNumber(
     importedDepartmentMetrics,
@@ -1813,17 +1858,23 @@ export default async function DepartmentDetailsPage({
           activeResidents: arrayActiveResidentsTotal,
           expectedOpenings2026: arrayExpectedOpeningsTotal,
           seniorPhysicians: arraySpecialistsTotal,
-          newResidentsByYear: arrayNewResidentsRows.map((row) => ({
-            year: row.year,
-            rawTotal: sumPresentMetric(
-              arrayDepartments.map(
-                (arrayDepartment) =>
-                  latestYearlyMetric(arrayDepartment.yearlyMetrics, "newResidents", { year: row.year })?.value ??
-                  null
-              )
-            ),
-            displayedAverage: row.value,
+          newResidentsByYear: arrayNewResidentsCalculations.map(({ year, calculation }) => ({
+            year,
+            rawTotal: calculation.rawTotal,
+            displayedAverage:
+              calculation.correctedCalculation === null
+                ? null
+                : Number(calculation.correctedCalculation.toFixed(1)),
             denominator: arrayDepartmentCount
+          }))
+        },
+        arrayMetricCalculations: {
+          activeResidents: arrayActiveResidentsCalculation,
+          expectedOpenings2026: arrayExpectedOpeningsCalculation,
+          seniorPhysicians: arraySpecialistsCalculation,
+          newResidentsByYear: arrayNewResidentsCalculations.map(({ year, calculation }) => ({
+            year,
+            ...calculation
           }))
         },
         displayedDividedMetrics: {
