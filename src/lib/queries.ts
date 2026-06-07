@@ -270,8 +270,44 @@ const DIRECTORY_ARRAY_SPECIALTY_NAMES = new Set(
   ].map(normalizeHebrewCatalogName)
 );
 
-function shouldGroupDirectorySpecialty(specialtyName: string) {
-  return DIRECTORY_ARRAY_SPECIALTY_NAMES.has(normalizeHebrewCatalogName(specialtyName));
+export function isRequiredMedicalArraySpecialty(specialtyName: string) {
+  const normalizedName = normalizeHebrewCatalogName(specialtyName);
+
+  return (
+    DIRECTORY_ARRAY_SPECIALTY_NAMES.has(normalizedName) ||
+    normalizedName.includes("פנימית") ||
+    normalizedName.includes("ילדים") ||
+    normalizedName.includes("יילוד") ||
+    normalizedName.includes("גינקולוגיה") ||
+    normalizedName.includes("נשים") ||
+    normalizedName.includes("כירורגיה כללית")
+  );
+}
+
+export function requiredMedicalArraySpecialtyDisplayName(specialtyName: string) {
+  const normalizedName = normalizeHebrewCatalogName(specialtyName);
+
+  if (normalizedName.includes("פנימית")) {
+    return "רפואה פנימית";
+  }
+
+  if (normalizedName.includes("ילדים")) {
+    return "רפואת ילדים";
+  }
+
+  if (
+    normalizedName.includes("יילוד") ||
+    normalizedName.includes("גינקולוגיה") ||
+    normalizedName.includes("נשים")
+  ) {
+    return "יילוד וגינקולוגיה";
+  }
+
+  if (normalizedName.includes("כירורגיה כללית")) {
+    return "כירורגיה כללית";
+  }
+
+  return specialtyName;
 }
 
 function averagePresentNumber(values: Array<number | null | undefined>) {
@@ -1104,7 +1140,7 @@ export async function getDirectoryData(
 
   const groupedByHospitalSpecialty = new Map<string, typeof rankedDepartments>();
   for (const department of rankedDepartments) {
-    if (!shouldGroupDirectorySpecialty(department.specialtyName)) {
+    if (!isRequiredMedicalArraySpecialty(department.specialtyName)) {
       continue;
     }
 
@@ -1169,6 +1205,7 @@ export async function getDirectoryData(
     const totalResidents = sumPresentNumber(group.map((item) => item.residentsCount));
     const totalSeniorPhysicians = sumPresentNumber(group.map((item) => item.seniorPhysiciansCount));
     const departmentCountText = group.length === 1 ? "מחלקה אחת" : `${group.length} מחלקות`;
+    const arraySpecialtyName = requiredMedicalArraySpecialtyDisplayName(first.specialtyName);
 
     return [
       {
@@ -1177,8 +1214,9 @@ export async function getDirectoryData(
         slug: first.medicalArraySlug ?? first.slug,
         hrefDepartmentId: first.id,
         favoriteDepartmentId: null,
-        name: `מערך ${first.specialtyName}`,
-        shortSummary: `מערך ${first.specialtyName} הכולל ${departmentCountText} בבית החולים ${first.institutionName}.`,
+        name: `מערך ${arraySpecialtyName}`,
+        specialtyName: arraySpecialtyName,
+        shortSummary: `מערך ${arraySpecialtyName} הכולל ${departmentCountText} בבית החולים ${first.institutionName}.`,
         reviewCount: totalReviewCount,
         averageOverall: weightedOverall,
         teachingQuality: average(group.map((item) => item.teachingQuality)),
@@ -1595,6 +1633,105 @@ export async function getDepartmentPageData(
     return null;
   }
 
+  const isRequiredArrayProfile = isRequiredMedicalArraySpecialty(department.specialty.name);
+  const [forcedArrayDepartments, fallbackMedicalArray] = await Promise.all([
+    isRequiredArrayProfile
+      ? prisma.department.findMany({
+          where: {
+            institutionId: department.institutionId,
+            specialtyId: department.specialtyId,
+            ...publicImportedDepartmentWhere
+          },
+          include: {
+            specialty: true,
+            metrics: {
+              orderBy: {
+                metricKey: "asc"
+              }
+            },
+            yearlyMetrics: {
+              orderBy: [{ year: "desc" }, { metricKey: "asc" }]
+            },
+            heads: {
+              orderBy: {
+                displayOrder: "asc"
+              }
+            }
+          },
+          orderBy: {
+            name: "asc"
+          }
+        })
+      : Promise.resolve(null),
+    isRequiredArrayProfile && !department.medicalArray
+      ? prisma.medicalArray.findUnique({
+          where: {
+            hospitalId_specialtyId: {
+              hospitalId: department.institutionId,
+              specialtyId: department.specialtyId
+            }
+          },
+          include: {
+            externalMetrics: {
+              where: {
+                approved: true
+              },
+              select: {
+                metricKey: true,
+                value: true,
+                sourceName: true,
+                approved: true,
+                updatedAt: true
+              }
+            },
+            externalPeople: {
+              where: {
+                approved: true
+              },
+              orderBy: [{ rankingYear: "desc" }, { personName: "asc" }],
+              select: {
+                id: true,
+                sourceName: true,
+                personName: true,
+                roleTitle: true,
+                description: true,
+                sourceUrl: true,
+                rankingYear: true,
+                approved: true
+              }
+            }
+          }
+        })
+      : Promise.resolve(null)
+  ]);
+  const profileMedicalArray = isRequiredArrayProfile
+    ? {
+        id: department.medicalArray?.id ?? fallbackMedicalArray?.id ?? `virtual-${department.institutionId}-${department.specialtyId}`,
+        hospitalId: department.institutionId,
+        specialtyId: department.specialtyId,
+        name: department.medicalArray?.name ?? fallbackMedicalArray?.name ?? `מערך ${department.specialty.name} · ${department.institution.name}`,
+        slug: department.medicalArray?.slug ?? fallbackMedicalArray?.slug ?? `array-${department.institution.slug}-${department.specialty.slug}`,
+        description:
+          department.medicalArray?.description ??
+          fallbackMedicalArray?.description ??
+          `מערך ${department.specialty.name} בבית החולים ${department.institution.name}`,
+        recruitedResidentsByYear: department.medicalArray?.recruitedResidentsByYear ?? fallbackMedicalArray?.recruitedResidentsByYear ?? null,
+        totalPublicationsCount: department.medicalArray?.totalPublicationsCount ?? fallbackMedicalArray?.totalPublicationsCount ?? null,
+        residentPublicationsCount: department.medicalArray?.residentPublicationsCount ?? fallbackMedicalArray?.residentPublicationsCount ?? null,
+        publicationYears: department.medicalArray?.publicationYears ?? fallbackMedicalArray?.publicationYears ?? null,
+        publicationSourceUrl: department.medicalArray?.publicationSourceUrl ?? fallbackMedicalArray?.publicationSourceUrl ?? null,
+        specialistsCount: department.medicalArray?.specialistsCount ?? fallbackMedicalArray?.specialistsCount ?? null,
+        createdAt: department.medicalArray?.createdAt ?? fallbackMedicalArray?.createdAt ?? department.createdAt,
+        updatedAt: department.medicalArray?.updatedAt ?? fallbackMedicalArray?.updatedAt ?? department.updatedAt,
+        departments:
+          forcedArrayDepartments && forcedArrayDepartments.length > 0
+            ? forcedArrayDepartments
+            : department.medicalArray?.departments ?? [],
+        externalMetrics: department.medicalArray?.externalMetrics ?? fallbackMedicalArray?.externalMetrics ?? [],
+        externalPeople: department.medicalArray?.externalPeople ?? fallbackMedicalArray?.externalPeople ?? []
+      }
+    : department.medicalArray;
+
   const siblingDepartmentCount = await prisma.department.count({
     where: {
       institutionId: department.institutionId,
@@ -1605,6 +1742,11 @@ export async function getDepartmentPageData(
 
   return {
     ...department,
+    specialty: {
+      ...department.specialty,
+      groupAsArray: isRequiredArrayProfile || department.specialty.groupAsArray
+    },
+    medicalArray: profileMedicalArray,
     name: formatDepartmentDisplayName(department.name, department.specialty.name),
     slug: canonicalDepartmentSlugForRecord(department),
     siblingDepartmentCount,
