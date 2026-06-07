@@ -226,7 +226,7 @@ export function DepartmentCard({
                   </p>
                   {department.isArrayCard ? (
                     <p className="inline-flex rounded-full border border-brand-100 bg-brand-50 px-3 py-1.5 text-xs font-bold text-brand-900">
-                      מערך · {department.arrayDepartmentCount} מחלקות
+                      מערך · {department.arrayDepartmentCount === 1 ? "מחלקה אחת" : `${department.arrayDepartmentCount} מחלקות`}
                     </p>
                   ) : null}
                 </div>

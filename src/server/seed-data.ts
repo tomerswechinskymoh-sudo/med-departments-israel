@@ -36,8 +36,7 @@ const GROUPED_SPECIALTY_NAMES = new Set([
   "רפואה פנימית",
   "רפואת ילדים",
   "יילוד וגינקולוגיה",
-  "כירורגיה כללית",
-  "כירורגיה אורתופדית"
+  "כירורגיה כללית"
 ]);
 
 function reviewRoleDetails(input: {

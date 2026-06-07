@@ -266,8 +266,7 @@ const DIRECTORY_ARRAY_SPECIALTY_NAMES = new Set(
     "רפואה פנימית",
     "רפואת ילדים",
     "יילוד וגינקולוגיה",
-    "כירורגיה כללית",
-    "כירורגיה אורתופדית"
+    "כירורגיה כללית"
   ].map(normalizeHebrewCatalogName)
 );
 
@@ -1127,7 +1126,7 @@ export async function getDirectoryData(
     const groupKey = `${department.institutionId}:${department.specialtyId}`;
     const group = groupedByHospitalSpecialty.get(groupKey);
 
-    if (!group || group.length <= 1) {
+    if (!group) {
       return [department];
     }
 
@@ -1167,7 +1166,9 @@ export async function getDirectoryData(
             };
       })
       .filter((row): row is { year: number; value: number; rawValue: string } => Boolean(row));
-    const averagedResidents = averagePresentNumber(group.map((item) => item.residentsCount));
+    const totalResidents = sumPresentNumber(group.map((item) => item.residentsCount));
+    const totalSeniorPhysicians = sumPresentNumber(group.map((item) => item.seniorPhysiciansCount));
+    const departmentCountText = group.length === 1 ? "מחלקה אחת" : `${group.length} מחלקות`;
 
     return [
       {
@@ -1177,7 +1178,7 @@ export async function getDirectoryData(
         hrefDepartmentId: first.id,
         favoriteDepartmentId: null,
         name: `מערך ${first.specialtyName}`,
-        shortSummary: `מערך ${first.specialtyName} הכולל ${group.length} מחלקות בבית החולים ${first.institutionName}.`,
+        shortSummary: `מערך ${first.specialtyName} הכולל ${departmentCountText} בבית החולים ${first.institutionName}.`,
         reviewCount: totalReviewCount,
         averageOverall: weightedOverall,
         teachingQuality: average(group.map((item) => item.teachingQuality)),
@@ -1188,10 +1189,10 @@ export async function getDirectoryData(
         hasOpenResidency: group.some((item) => item.hasOpenResidency),
         hasUpcomingCommittee: group.some((item) => item.hasUpcomingCommittee),
         hasResearch: group.some((item) => item.hasResearch),
-        residentsCount: averagedResidents === null ? null : Number(averagedResidents.toFixed(1)),
+        residentsCount: totalResidents === null ? null : Number((totalResidents / group.length).toFixed(1)),
         departmentNewResidentsYearly: averagedYearlyRows,
         seniorPhysiciansCount:
-          averagePresentNumber(group.map((item) => item.seniorPhysiciansCount)) ?? null,
+          totalSeniorPhysicians === null ? null : Number((totalSeniorPhysicians / group.length).toFixed(1)),
         duns100PhysiciansCount: sumPresentNumber(group.map((item) => item.duns100PhysiciansCount)),
         expectedOpeningsCount: sumPresentNumber(group.map((item) => item.expectedOpeningsCount)),
         estimatedPublicationsCount: sumPresentNumber(group.map((item) => item.estimatedPublicationsCount)),
