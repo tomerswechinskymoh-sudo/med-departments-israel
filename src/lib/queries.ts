@@ -1799,6 +1799,246 @@ export async function getDepartmentPageData(
   };
 }
 
+type ComparisonMetricInput = {
+  metricKey: string;
+  value: number | null;
+  rawValue?: string | null;
+  unit?: string | null;
+};
+
+type ComparisonYearlyMetricInput = ComparisonMetricInput & {
+  year: number;
+};
+
+const COMPARISON_MISSING_VALUE = "הנתון עדיין לא סופק";
+
+function isInvalidComparisonRawValue(value: string | null | undefined) {
+  const rawValue = value?.trim();
+  return Boolean(rawValue && /^#(?:DIV\/0!|N\/A|VALUE!|REF!|NUM!)/i.test(rawValue));
+}
+
+function formatComparisonNumber(value: number) {
+  return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 1 }).format(value);
+}
+
+function comparisonMetricDisplay(metric: ComparisonMetricInput | ComparisonYearlyMetricInput | null | undefined) {
+  if (!metric || isInvalidComparisonRawValue(metric.rawValue)) return null;
+
+  if (metric.rawValue?.trim()) {
+    return metric.rawValue.trim();
+  }
+
+  if (typeof metric.value !== "number" || !Number.isFinite(metric.value)) {
+    return null;
+  }
+
+  const formatted = formatComparisonNumber(metric.value);
+  if (metric.unit === "%") return `${formatted}%`;
+  if (metric.unit === "months") return `${formatted} חודשים`;
+  if (metric.unit === "years") return `${formatted} שנים`;
+  if (metric.unit && metric.unit !== "count") return `${formatted} ${metric.unit}`;
+
+  return formatted;
+}
+
+function durationYearsFromComparisonText(value: string | number | null | undefined, unit?: string | null) {
+  if (value === null || value === undefined) return null;
+
+  const text = String(value).trim();
+  const values = (text.match(/\d+(?:[.,]\d+)?/g) ?? [])
+    .map((item) => Number(item.replace(",", ".")))
+    .filter((item) => Number.isFinite(item));
+  if (values.length === 0) return null;
+
+  const shouldConvertFromMonths =
+    unit === "months" || /חודש/.test(text) || values.some((item) => item > 12 && item <= 180);
+  const years = values.map((item) => (shouldConvertFromMonths ? item / 12 : item));
+
+  return years.reduce((sum, item) => sum + item, 0) / years.length;
+}
+
+function durationYearsFromComparisonMetric(metric: ComparisonMetricInput | null | undefined) {
+  if (!metric || isInvalidComparisonRawValue(metric.rawValue)) return null;
+
+  return durationYearsFromComparisonText(
+    metric.rawValue ?? (typeof metric.value === "number" ? metric.value : null),
+    metric.unit
+  );
+}
+
+function formatComparisonYears(value: number | null) {
+  return typeof value === "number" && Number.isFinite(value)
+    ? `${formatComparisonNumber(value)} שנים`
+    : COMPARISON_MISSING_VALUE;
+}
+
+function comparisonImportedMetric(
+  metrics: ComparisonMetricInput[],
+  ...metricKeys: string[]
+) {
+  const [fieldOrKey, ...aliases] = metricKeys;
+  if (!fieldOrKey) return null;
+
+  return resolveImportedMetric(metrics, fieldOrKey, { aliases });
+}
+
+function comparisonYearlyMetric(
+  metrics: ComparisonYearlyMetricInput[],
+  metricKey: string,
+  options: { year?: number } = {}
+) {
+  return metrics
+    .filter((metric) => metric.metricKey === metricKey)
+    .filter((metric) => (options.year ? metric.year === options.year : true))
+    .sort((left, right) => right.year - left.year)[0] ?? null;
+}
+
+function comparisonArrayDepartments(
+  department: Awaited<ReturnType<typeof getDepartmentPageData>>
+) {
+  if (!department) return [];
+
+  return department.specialty.groupAsArray && department.medicalArray?.departments?.length
+    ? department.medicalArray.departments
+    : [department];
+}
+
+function comparisonArrayAverageValue(values: Array<number | null | undefined>, denominator: number) {
+  return duplicateAwareArrayMetricAverage(values, denominator);
+}
+
+function comparisonMetricNumber(metric: ComparisonMetricInput | ComparisonYearlyMetricInput | null) {
+  return typeof metric?.value === "number" && Number.isFinite(metric.value) ? metric.value : null;
+}
+
+function comparisonExpectedOpeningsValue(
+  department: NonNullable<Awaited<ReturnType<typeof getDepartmentPageData>>>
+) {
+  const sourceDepartments = comparisonArrayDepartments(department);
+  const isArray = sourceDepartments.length > 1 && department.specialty.groupAsArray;
+
+  if (isArray) {
+    const averaged = comparisonArrayAverageValue(
+      sourceDepartments.map((item) => {
+        const metric =
+          comparisonImportedMetric(item.metrics, "צפי תקנים חדשים ב2026", "expectedOpenings2026") ??
+          comparisonYearlyMetric(item.yearlyMetrics, "newResidents", { year: 2026 });
+
+        return comparisonMetricNumber(metric);
+      }),
+      sourceDepartments.length
+    );
+
+    return averaged === null ? COMPARISON_MISSING_VALUE : formatComparisonNumber(averaged);
+  }
+
+  const directMetric =
+    comparisonImportedMetric(department.metrics, "צפי תקנים חדשים ב2026", "expectedOpenings2026") ??
+    comparisonYearlyMetric(department.yearlyMetrics, "newResidents", { year: 2026 });
+
+  return comparisonMetricDisplay(directMetric) ?? COMPARISON_MISSING_VALUE;
+}
+
+function comparisonMedianWaitingValue(
+  department: NonNullable<Awaited<ReturnType<typeof getDepartmentPageData>>>
+) {
+  const metric = comparisonImportedMetric(department.metrics, "זמן_המתנה_חציוני_לתקן", "medianWaitingTime");
+  return comparisonMetricDisplay(metric) ?? COMPARISON_MISSING_VALUE;
+}
+
+function comparisonActualDurationValue(
+  department: NonNullable<Awaited<ReturnType<typeof getDepartmentPageData>>>
+) {
+  const metric = comparisonImportedMetric(
+    department.metrics,
+    "משך_ממוצע_בפועל",
+    "actualAverageDuration",
+    "medianResidencyDurationMonths"
+  );
+  const years =
+    durationYearsFromComparisonMetric(metric) ??
+    durationYearsFromComparisonText(department.medianResidencyLength);
+
+  return formatComparisonYears(years);
+}
+
+export async function getDepartmentComparisonData(input: {
+  departmentIds: string[];
+  specialtyId?: string | null;
+}) {
+  const departmentIds = Array.from(new Set(input.departmentIds.filter(Boolean))).slice(0, 4);
+
+  if (departmentIds.length === 0) {
+    return {
+      status: "empty" as const,
+      rows: [],
+      specialtyName: null
+    };
+  }
+
+  const baseDepartments = await prisma.department.findMany({
+    where: {
+      id: {
+        in: departmentIds
+      }
+    },
+    select: {
+      id: true,
+      slug: true
+    }
+  });
+  const baseById = new Map(baseDepartments.map((department) => [department.id, department]));
+  const orderedBaseDepartments = departmentIds
+    .map((id) => baseById.get(id))
+    .filter((department): department is NonNullable<typeof department> => Boolean(department));
+  const departments = (
+    await Promise.all(
+      orderedBaseDepartments.map((department) =>
+        getDepartmentPageData(department.slug, undefined, department.id)
+      )
+    )
+  ).filter((department): department is NonNullable<typeof department> => Boolean(department));
+
+  const specialtyIds = Array.from(new Set(departments.map((department) => department.specialty.id)));
+
+  if (
+    specialtyIds.length > 1 ||
+    (input.specialtyId && specialtyIds.some((specialtyId) => specialtyId !== input.specialtyId))
+  ) {
+    return {
+      status: "mixed-specialty" as const,
+      rows: [],
+      specialtyName: null
+    };
+  }
+
+  return {
+    status: "ok" as const,
+    specialtyName: departments[0]?.specialty.name ?? null,
+    rows: departments.map((department) => {
+      const isArray = Boolean(department.specialty.groupAsArray && department.medicalArray);
+      const arrayDepartmentCount = isArray ? department.medicalArray?.departments.length ?? 0 : 0;
+      const specialtyName = requiredMedicalArraySpecialtyDisplayName(department.specialty.name);
+      const name = isArray
+        ? `מערך ${specialtyName}`
+        : formatDepartmentDisplayName(department.name, department.specialty.name);
+
+      return {
+        id: department.id,
+        name,
+        hospitalName: department.institution.name,
+        specialtyId: department.specialty.id,
+        specialtyName,
+        isArray,
+        arrayDepartmentCount,
+        actualDuration: comparisonActualDurationValue(department),
+        expectedOpenings2026: comparisonExpectedOpeningsValue(department),
+        medianWaitingTime: comparisonMedianWaitingValue(department)
+      };
+    })
+  };
+}
+
 export async function getActiveSalaryAssumption() {
   return prisma.salaryAssumption.findFirst({
     where: {

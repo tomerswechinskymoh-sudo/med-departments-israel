@@ -2,6 +2,11 @@ import { getSession } from "@/lib/auth";
 import { unstable_noStore as noStore } from "next/cache";
 import { departmentFilterSchema } from "@/lib/validation";
 import { DepartmentCard } from "@/components/departments/department-card";
+import {
+  CompareSelectableShell,
+  DepartmentCompareProvider,
+  type DepartmentCompareOption
+} from "@/components/departments/department-comparison-selection";
 import { DepartmentFilters } from "@/components/departments/department-filters";
 import { SpecialtySelector } from "@/components/departments/specialty-selector";
 import { SpecialtyDashboardMetrics } from "@/components/departments/specialty-dashboard-metrics";
@@ -123,6 +128,23 @@ export default async function DepartmentsPage({
     (specialty) => specialty.id === selectedSpecialtyId
   );
   const filtersKey = JSON.stringify(effectiveFilters);
+  const compareOptionsByDepartmentId = new Map<string, DepartmentCompareOption>(
+    departments.map((department) => {
+      const compareId = department.hrefDepartmentId ?? department.id;
+
+      return [
+        department.id,
+        {
+          id: compareId,
+          name: department.name,
+          institutionName: department.institutionName,
+          specialtyId: department.specialtyId,
+          specialtyName: department.specialtyName,
+          isArray: department.isArrayCard
+        }
+      ];
+    })
+  );
 
   return (
     <div className="min-h-screen bg-[#f3f7fa]">
@@ -196,6 +218,34 @@ export default async function DepartmentsPage({
                   ctaHref={selectedSpecialtyId ? `/departments?specialty=${selectedSpecialtyId}` : "/departments"}
                   ctaLabel="איפוס סינון"
                 />
+              ) : selectedSpecialtyId ? (
+                <DepartmentCompareProvider
+                  specialtyId={selectedSpecialtyId}
+                  isAuthenticated={Boolean(session)}
+                >
+                  <div className="grid gap-4">
+                    {departments.map((department) => {
+                      const compareOption = compareOptionsByDepartmentId.get(department.id);
+
+                      return compareOption ? (
+                        <CompareSelectableShell key={department.id} option={compareOption}>
+                          <DepartmentCard
+                            department={department}
+                            showFavoriteButton={Boolean(session)}
+                            variant="row"
+                          />
+                        </CompareSelectableShell>
+                      ) : (
+                        <DepartmentCard
+                          key={department.id}
+                          department={department}
+                          showFavoriteButton={Boolean(session)}
+                          variant="row"
+                        />
+                      );
+                    })}
+                  </div>
+                </DepartmentCompareProvider>
               ) : (
                 <div className="grid gap-4">
                   {departments.map((department) => (

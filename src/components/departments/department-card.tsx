@@ -59,11 +59,14 @@ function DataPill({
 }
 
 const DEPARTMENT_NEW_RESIDENTS_TREND_LABEL = "מתמחים חדשים במחלקה לפי שנה";
+const ARRAY_NEW_RESIDENTS_TREND_LABEL = "מספר מתמחים חדשים בממוצע למחלקה במערך לפי שנה";
 
 function MiniYearlyResidentsChart({
-  rows
+  rows,
+  title = DEPARTMENT_NEW_RESIDENTS_TREND_LABEL
 }: {
   rows?: Array<{ year: number; value: number | null }>;
+  title?: string;
 }) {
   const chartRows = departmentNewResidentsChartRows(rows ?? []);
 
@@ -71,11 +74,11 @@ function MiniYearlyResidentsChart({
     return (
       <div
         className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2"
-        title={DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
-        aria-label={DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+        title={title}
+        aria-label={title}
       >
         <p className="text-[0.68rem] font-black text-slate-600">
-          {DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+          {title}
         </p>
         <p className="mt-1 text-xs font-semibold text-slate-400">הנתון עדיין לא סופק</p>
       </div>
@@ -85,12 +88,12 @@ function MiniYearlyResidentsChart({
   return (
     <div
       className="rounded-xl border border-sky-100 bg-sky-50/70 px-3 py-2"
-      title={DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
-      aria-label={DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+      title={title}
+      aria-label={title}
     >
       <div className="flex items-center justify-between gap-2">
         <p className="min-w-0 truncate text-[0.68rem] font-black text-sky-900">
-          {DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+          {title}
         </p>
       </div>
       <div className="mt-2 grid min-w-0 grid-cols-5 items-end gap-1.5" dir="ltr">
@@ -306,7 +309,10 @@ export function DepartmentCard({
               {activeResidentsStat ? (
                 <DataPill label={activeResidentsStat.label} value={activeResidentsStat.value} />
               ) : null}
-              <MiniYearlyResidentsChart rows={department.departmentNewResidentsYearly} />
+              <MiniYearlyResidentsChart
+                rows={department.departmentNewResidentsYearly}
+                title={department.isArrayCard ? ARRAY_NEW_RESIDENTS_TREND_LABEL : DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+              />
             </div>
           ) : null}
 

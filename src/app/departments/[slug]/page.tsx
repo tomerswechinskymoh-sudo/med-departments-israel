@@ -3,6 +3,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { DepartmentPageActions } from "@/components/departments/department-page-actions";
+import { DepartmentCompareProfileButton } from "@/components/departments/department-comparison-selection";
 import {
   FavoriteToggleButton,
   LoginRequiredBookmarkButton
@@ -1248,6 +1249,16 @@ export default async function DepartmentDetailsPage({
   );
   const arrayAverageTooltip =
     "הנתון מחושב כממוצע למחלקה במערך: סך הערכים במערך חלקי מספר המחלקות במערך.";
+  const expectedOpeningsArrayTooltip =
+    "הטווח מבוסס על רבעוני מספר המתמחים החדשים בשנים האחרונות ומוצג כהערכה למחלקה ממוצעת במערך.";
+  const compareOption = {
+    id: department.id,
+    name: profileTitle,
+    institutionName: department.institution.name,
+    specialtyId: department.specialty.id,
+    specialtyName: arraySpecialtyName,
+    isArray: isMedicalArrayProfile
+  };
   const canViewDepartmentDetails = Boolean(session && session.verificationStatus !== "REJECTED");
 
   if (!canViewDepartmentDetails) {
@@ -1278,10 +1289,14 @@ export default async function DepartmentDetailsPage({
           <p className="text-sm font-bold text-brand-600">גישה מוגנת</p>
           <h2 className="mt-2 text-2xl font-black text-ink">{lock.title}</h2>
           <p className="mt-3 text-sm leading-7 text-slate-600">{lock.description}</p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <Link
-              href={lock.ctaHref}
-              className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white"
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <DepartmentCompareProfileButton
+                option={compareOption}
+                isAuthenticated={Boolean(session)}
+              />
+              <Link
+                href={lock.ctaHref}
+                className="rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white"
             >
               {lock.ctaLabel}
             </Link>
@@ -1819,7 +1834,7 @@ export default async function DepartmentDetailsPage({
   const experienceSectionTitle = isMedicalArrayProfile ? "חוויות מהמערך" : "חוויות מהמחלקה";
   const managersSectionTitle = isMedicalArrayProfile ? "הנהלת המערך ויצירת קשר" : "הנהלת המחלקה ויצירת קשר";
   const expectedOpeningsLabel = isMedicalArrayProfile
-    ? "צפי משרות חדשות ממוצע למחלקה במערך ב-2026"
+    ? "טווח מתמחים חדשים צפוי למחלקה במערך ב-2026"
     : metricLabelFromMetadata(expectedOpeningsMeta, "מספר משרות צפויות להתפנות");
   const showProfileDebug =
     process.env.NODE_ENV !== "production" && resolvedSearchParams.debugArray === "1";
@@ -1983,6 +1998,10 @@ export default async function DepartmentDetailsPage({
                   קישור להגשת מועמדות
                 </a>
               ) : null}
+              <DepartmentCompareProfileButton
+                option={compareOption}
+                isAuthenticated={Boolean(session)}
+              />
             </div>
             <DepartmentPageActions
               departmentId={department.id}
@@ -2030,12 +2049,6 @@ export default async function DepartmentDetailsPage({
             </div>
 
             <div className="mt-4 space-y-3">
-              {hasMultipleDepartmentsInHospitalSpecialty ? (
-                <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold leading-7 text-amber-950">
-                  חלק מהנתונים בעמוד זה מוצגים ברמת כלל המערך בבית החולים ולא ברמת המחלקה הספציפית.
-                </div>
-              ) : null}
-
               <div className="grid gap-2 md:grid-cols-3">
                 {isMedicalArrayProfile ? (
                   <DataMetricCard
@@ -2052,19 +2065,18 @@ export default async function DepartmentDetailsPage({
                   label={expectedOpeningsLabel}
                   value={expectedOpeningsValue}
                   sourceLabel={metadataSourceLabel(expectedOpeningsMeta, expectedOpeningsSourceLabel)}
-                  tooltip={metadataTooltip(
-                    expectedOpeningsMeta,
-                    isMedicalArrayProfile
-                      ? arrayAverageTooltip
-                      : "צפי משרות המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
-                  )}
-                  metricType={isMedicalArrayProfile ? "ממוצע למחלקה במערך" : "נתון מחלקתי"}
-                  caption={isMedicalArrayProfile ? `חושב על בסיס ${arrayDepartmentCount} מחלקות` : undefined}
+	                  tooltip={metadataTooltip(
+	                    expectedOpeningsMeta,
+	                    isMedicalArrayProfile
+	                      ? expectedOpeningsArrayTooltip
+	                      : "צפי משרות המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
+	                  )}
+	                  metricType={isMedicalArrayProfile ? "הערכה למחלקה במערך" : "נתון מחלקתי"}
+	                  caption={isMedicalArrayProfile ? `חושב על בסיס ${arrayDepartmentCount} מחלקות` : undefined}
                   sourceUrl={expectedOpeningsMeta?.sourceUrl}
                   displayAction={metadataDisplayAction(expectedOpeningsMeta)}
                   className={`border-amber-200 bg-amber-50/70 ${highlightedCardClass(expectedOpeningsMeta)}`}
                 />
-                <DataMetricCard {...workforceMetrics[1]} />
               </div>
 
               <div className="grid gap-2 lg:grid-cols-3">
@@ -2086,6 +2098,7 @@ export default async function DepartmentDetailsPage({
                   sourceUrl={acceptanceDisplayMeta?.sourceUrl}
                   displayAction={metadataDisplayAction(acceptanceDisplayMeta)}
                 />
+                <DataMetricCard {...workforceMetrics[1]} />
                 {electiveDemandMetric && !electiveDemandMeta?.isHidden ? (
                   <DataMetricCard
                     label={metricLabelFromMetadata(electiveDemandMeta, "מספר אלקטיביסטים חציוני")}
