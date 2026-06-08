@@ -355,6 +355,64 @@ function duplicateAwareArrayMetricAverage(
   return Number((correctedValue / denominator).toFixed(1));
 }
 
+type MetricRange = {
+  min: number;
+  max: number;
+  raw: string;
+};
+
+function parseMetricRange(value: string | null | undefined): MetricRange | null {
+  if (!value) return null;
+  const normalizedValue = value
+    .trim()
+    .replace(/[–—]/g, "-")
+    .replace(/\s*-\s*/g, "-");
+  const match = normalizedValue.match(/^(\d+(?:[.,]\d+)?)-(\d+(?:[.,]\d+)?)$/);
+  if (!match) return null;
+
+  const min = Number(match[1].replace(",", "."));
+  const max = Number(match[2].replace(",", "."));
+  if (!Number.isFinite(min) || !Number.isFinite(max)) return null;
+
+  return {
+    min: Math.min(min, max),
+    max: Math.max(min, max),
+    raw: value
+  };
+}
+
+function formatRangeNumber(value: number) {
+  return value.toLocaleString("he-IL", { maximumFractionDigits: 2 });
+}
+
+function duplicateAwareArrayMetricRangeDisplay(
+  ranges: Array<MetricRange | null>,
+  denominator: number
+) {
+  const presentRanges = ranges.filter((range): range is MetricRange => Boolean(range));
+  if (presentRanges.length === 0) return null;
+
+  const duplicatedAcrossAllRows =
+    denominator > 1 &&
+    presentRanges.length === denominator &&
+    presentRanges.every(
+      (range) =>
+        Math.abs(range.min - presentRanges[0].min) < 0.000001 &&
+        Math.abs(range.max - presentRanges[0].max) < 0.000001
+    );
+  const displayedRange = duplicatedAcrossAllRows
+    ? {
+        min: presentRanges[0].min / denominator,
+        max: presentRanges[0].max / denominator
+      }
+    : {
+        min: presentRanges.reduce((sum, range) => sum + range.min, 0) / presentRanges.length,
+        max: presentRanges.reduce((sum, range) => sum + range.max, 0) / presentRanges.length
+      };
+
+  return `${formatRangeNumber(displayedRange.min)} - ${formatRangeNumber(displayedRange.max)}`;
+}
+
 function getDepartmentSlugVariants(slug: string) {
   const decodedSlug = decodeURIComponent(slug).trim().replace(/^\/+|\/+$/g, "");
   const normalizedHyphenSlug = decodedSlug.replace(/-+/g, "-");
@@ -1918,6 +1976,19 @@ function comparisonExpectedOpeningsValue(
   const isArray = sourceDepartments.length > 1 && department.specialty.groupAsArray;
 
   if (isArray) {
+    const rangeDisplay = duplicateAwareArrayMetricRangeDisplay(
+      sourceDepartments.map((item) =>
+        parseMetricRange(
+          comparisonImportedMetric(item.metrics, "צפי תקנים חדשים ב2026", "expectedOpenings2026")?.rawValue
+        )
+      ),
+      sourceDepartments.length
+    );
+
+    if (rangeDisplay) {
+      return rangeDisplay;
+    }
+
     const averaged = comparisonArrayAverageValue(
       sourceDepartments.map((item) => {
         const metric =

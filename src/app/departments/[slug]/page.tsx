@@ -1004,6 +1004,83 @@ function duplicateAwareArrayMetricCalculation(
   };
 }
 
+type MetricRange = {
+  min: number;
+  max: number;
+  raw: string;
+};
+
+function parseMetricRange(value: string | null | undefined): MetricRange | null {
+  if (!value) return null;
+  const normalizedValue = value
+    .trim()
+    .replace(/[–—]/g, "-")
+    .replace(/\s*-\s*/g, "-");
+  const match = normalizedValue.match(/^(\d+(?:[.,]\d+)?)-(\d+(?:[.,]\d+)?)$/);
+  if (!match) return null;
+
+  const min = Number(match[1].replace(",", "."));
+  const max = Number(match[2].replace(",", "."));
+  if (!Number.isFinite(min) || !Number.isFinite(max)) return null;
+
+  return {
+    min: Math.min(min, max),
+    max: Math.max(min, max),
+    raw: value
+  };
+}
+
+function formatRangeNumber(value: number) {
+  return value.toLocaleString("he-IL", { maximumFractionDigits: 2 });
+}
+
+function formatMetricRange(range: { min: number; max: number } | null) {
+  return range ? `${formatRangeNumber(range.min)} - ${formatRangeNumber(range.max)}` : null;
+}
+
+function duplicateAwareArrayRangeCalculation(
+  ranges: Array<MetricRange | null>,
+  denominator: number
+) {
+  const presentRanges = ranges.filter((range): range is MetricRange => Boolean(range));
+  const duplicatedAcrossAllRows =
+    denominator > 1 &&
+    presentRanges.length === denominator &&
+    presentRanges.every(
+      (range) =>
+        Math.abs(range.min - presentRanges[0].min) < 0.000001 &&
+        Math.abs(range.max - presentRanges[0].max) < 0.000001
+    );
+  const correctedRange =
+    presentRanges.length === 0
+      ? null
+      : duplicatedAcrossAllRows
+        ? {
+            min: presentRanges[0].min / denominator,
+            max: presentRanges[0].max / denominator
+          }
+        : {
+            min:
+              presentRanges.reduce((sum, range) => sum + range.min, 0) /
+              presentRanges.length,
+            max:
+              presentRanges.reduce((sum, range) => sum + range.max, 0) /
+              presentRanges.length
+          };
+
+  return {
+    rawRanges: ranges.map((range) => range?.raw ?? null),
+    parsedRanges: ranges.map((range) => (range ? { min: range.min, max: range.max } : null)),
+    denominator,
+    duplicatedAcrossAllRows,
+    calculationMode: duplicatedAcrossAllRows
+      ? "representative range divided by arrayDepartmentCount"
+      : "average min/max across departments with a range value",
+    correctedRange,
+    displayedRange: formatMetricRange(correctedRange)
+  };
+}
+
 function formatMetricNumber(value: number | null) {
   if (value === null) {
     return null;
@@ -1250,7 +1327,7 @@ export default async function DepartmentDetailsPage({
   const arrayAverageTooltip =
     "הנתון מחושב כממוצע למחלקה במערך: סך הערכים במערך חלקי מספר המחלקות במערך.";
   const expectedOpeningsArrayTooltip =
-    "הטווח מבוסס על רבעוני מספר המתמחים החדשים בשנים האחרונות ומוצג כהערכה למחלקה ממוצעת במערך.";
+    "הטווח מבוסס על רבעוני מספר המתמחים החדשים בשנים האחרונות ומוצג כהערכה למחלקה ממוצעת במערך. אם אותו טווח מופיע בכל מחלקות המערך, הוא מחולק במספר המחלקות; אם הטווחים שונים, מוצג ממוצע הטווחים במחלקות עם נתון.";
   const compareOption = {
     id: department.id,
     name: profileTitle,
@@ -1349,6 +1426,15 @@ export default async function DepartmentDetailsPage({
 
     return metricValue ?? yearlyValue;
   });
+  const arrayExpectedOpeningRanges = arrayDepartments.map((arrayDepartment) =>
+    parseMetricRange(
+      findImportedMetric(
+        arrayDepartment.metrics,
+        "צפי תקנים חדשים ב2026",
+        "expectedOpenings2026"
+      )?.rawValue
+    )
+  );
   const arrayActiveResidentsCalculation = duplicateAwareArrayMetricCalculation(
     arrayActiveResidentValues,
     arrayDepartmentCount
@@ -1359,6 +1445,10 @@ export default async function DepartmentDetailsPage({
   );
   const arrayExpectedOpeningsCalculation = duplicateAwareArrayMetricCalculation(
     arrayExpectedOpeningValues,
+    arrayDepartmentCount
+  );
+  const arrayExpectedOpeningsRangeCalculation = duplicateAwareArrayRangeCalculation(
+    arrayExpectedOpeningRanges,
     arrayDepartmentCount
   );
   const arrayActiveResidentsTotal = arrayActiveResidentsCalculation.rawTotal;
@@ -1801,7 +1891,7 @@ export default async function DepartmentDetailsPage({
     }
   ];
   const expectedOpeningsValue = isMedicalArrayProfile
-    ? formatMetricNumber(arrayExpectedOpeningsAverage)
+    ? arrayExpectedOpeningsRangeCalculation.displayedRange ?? formatMetricNumber(arrayExpectedOpeningsAverage)
     : expectedOpeningsDepartmentMetric
       ? formatImportedMetricValue(expectedOpeningsDepartmentMetric)
       : expectedOpeningsYearlyMetric
@@ -1886,6 +1976,7 @@ export default async function DepartmentDetailsPage({
         arrayMetricCalculations: {
           activeResidents: arrayActiveResidentsCalculation,
           expectedOpenings2026: arrayExpectedOpeningsCalculation,
+          expectedOpenings2026Range: arrayExpectedOpeningsRangeCalculation,
           seniorPhysicians: arraySpecialistsCalculation,
           newResidentsByYear: arrayNewResidentsCalculations.map(({ year, calculation }) => ({
             year,
