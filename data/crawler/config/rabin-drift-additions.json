@@ -1,0 +1,9 @@
+{
+  "name": "Rabin discovery drift additions",
+  "source": "data/crawler/discovery/rabin/discovery-drift-report.json",
+  "generatedAt": "2026-06-18T00:00:00.000Z",
+  "ids": [
+    "rabin-beilinson-heart-of-organ-transplantation",
+    "rabin-breast-health"
+  ]
+}

@@ -1,0 +1,535 @@
+[
+  {
+    "profileCompleteness": "full",
+    "fullName": "פרופ' רינת ירושלמי משאלי",
+    "hospital": "Rabin Medical Center",
+    "department": "Breast Health",
+    "isSenior": true,
+    "seniorityEvidence": "מנהלת היחידה לאונקולוגיה של השד במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+    "role": "מנהלת היחידה לאונקולוגיה של השד במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nחברת הנהלה במרכז דוידוף\nרכזת התמחות במרכז דוידוף",
+    "unit": "מחלקה אונקולוגית - יום - בילינסון",
+    "specialties": [
+      "מומחית באונקולוגיה וברדיותרפיה עם מומחיות-על בסרטן השד"
+    ],
+    "subspecialties": [
+      "נשאיות המוטציה BRCA",
+      "רפואה מותאמת אישית לסוגי סרטן השונים"
+    ],
+    "clinicalInterests": [
+      "נשאיות המוטציה BRCA",
+      "רפואה מותאמת אישית לסוגי סרטן השונים"
+    ],
+    "education": [
+      "סיימה בהצטיינות את לימודי הרפואה \"בטכניון\" ב1994"
+    ],
+    "residency": [
+      "המכון לאונקולוגיה, בית החולים בילינסון"
+    ],
+    "fellowship": [
+      {
+        "field": "string",
+        "institution": "מכון הסרטן בוונקובר",
+        "country": "קנדה",
+        "rawText": "בשנים 2007-2010 במכון הסרטן בוונקובר, בריטיש קולומביה, קנדה"
+      }
+    ],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 1,
+      "fellowship": 1,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' רינת ירושלמי משאלי",
+        "evidence": "שם:\nפרופ' רינת ירושלמי משאלי",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "role",
+        "value": "מנהלת היחידה לאונקולוגיה של השד במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nחברת הנהלה במרכז דוידוף\nרכזת התמחות במרכז דוידוף",
+        "evidence": "תפקידים ומינויים\nמנהלת היחידה לאונקולוגיה של השד במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nחברת הנהלה במרכז דוידוף\nרכזת התמחות במרכז דוידוף",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה אונקולוגית - יום - בילינסון",
+        "evidence": "שם:\nפרופ' רינת ירושלמי משאלי\nיחידה:\nמחלקה אונקולוגית - יום - בילינסון",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "specialties",
+        "value": "מומחית באונקולוגיה וברדיותרפיה עם מומחיות-על בסרטן השד",
+        "evidence": "פרופ' רינת ירושלמי משאלי\nמומחית באונקולוגיה וברדיותרפיה עם מומחיות-על בסרטן השד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "subspecialties",
+        "value": "נשאיות המוטציה BRCA",
+        "evidence": "שטחי התעניינות מיוחדים\nנשאיות המוטציה BRCA\nרפואה מותאמת אישית לסוגי סרטן השונים",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "subspecialties",
+        "value": "רפואה מותאמת אישית לסוגי סרטן השונים",
+        "evidence": "שטחי התעניינות מיוחדים\nנשאיות המוטציה BRCA\nרפואה מותאמת אישית לסוגי סרטן השונים",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "clinicalInterests",
+        "value": "נשאיות המוטציה BRCA",
+        "evidence": "שטחי התעניינות מיוחדים\nנשאיות המוטציה BRCA\nרפואה מותאמת אישית לסוגי סרטן השונים",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "clinicalInterests",
+        "value": "רפואה מותאמת אישית לסוגי סרטן השונים",
+        "evidence": "שטחי התעניינות מיוחדים\nנשאיות המוטציה BRCA\nרפואה מותאמת אישית לסוגי סרטן השונים",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "education",
+        "value": "סיימה בהצטיינות את לימודי הרפואה \"בטכניון\" ב1994",
+        "evidence": "לימודים\nסיימה בהצטיינות את לימודי הרפואה \"בטכניון\" ב1994",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "residency",
+        "value": "המכון לאונקולוגיה, בית החולים בילינסון",
+        "evidence": "מקום התמחות\nהמכון לאונקולוגיה, בית החולים בילינסון",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      },
+      {
+        "field": "fellowship",
+        "value": "בשנים 2007-2010 במכון הסרטן בוונקובר, בריטיש קולומביה, קנדה",
+        "evidence": "השתלמויות\nבשנים 2007-2010 במכון הסרטן בוונקובר, בריטיש קולומביה, קנדה",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"מחלקה אונקולוגית - יום - בילינסון\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "97e179b029dc31fbf25fa3ea",
+    "profileUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
+      "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/prof_r_yerushalmi_mishaeli.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר ערן שרון",
+    "hospital": "Rabin Medical Center",
+    "department": "Breast Health",
+    "isSenior": true,
+    "seniorityEvidence": "מנהל המרכז לבריאות השד בית חולים בילינסון.\nמנהל היחידה לכירורגיה של השד.\nמנהל מרחב השד מחוז דן פ\"ת, שירותי בריאות כללית.",
+    "role": "מנהל המרכז לבריאות השד בית חולים בילינסון.\nמנהל היחידה לכירורגיה של השד.\nמנהל מרחב השד מחוז דן פ\"ת, שירותי בריאות כללית.",
+    "unit": "מרפאת שד - בילינסון",
+    "specialties": [
+      "כירורגיה כללית. כירורגיה אונקולוגית של השד."
+    ],
+    "subspecialties": [
+      "אבחנה והטיפול הרב תחומי במחלות השד."
+    ],
+    "clinicalInterests": [
+      "אבחנה והטיפול הרב תחומי במחלות השד."
+    ],
+    "education": [
+      "לימודי רפואה MD - האוניברסיטה הקתולית, רומא, איטליה.",
+      "לימודי מנהל עסקים - MBA, אוניברסיטת תל-אביב."
+    ],
+    "residency": [
+      "מחלקה לכירורגיה כללית א' בית חולים בילינסון."
+    ],
+    "fellowship": [
+      {
+        "field": null,
+        "institution": null,
+        "country": null,
+        "rawText": "2002 - השתלמות בניתוחי שד וטכניקת בלוטת הזקיף במכון האירופאי האונקולוגי במילנו.\n2008-2010 - השתלמות עמיתים קלינית באוניברסיטה של טורונטו קנדה, בכירורגיה אונקולוגית של השד ומלנומה.\n2013 - השתלמות בטיפולי קרינה תוך ניתוחית בלונדון."
+      }
+    ],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "erans@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 1,
+      "fellowship": 1,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר ערן שרון",
+        "evidence": "שם:\nד\"ר ערן שרון\nדוא\"ל:\nerans@clalit.org.il\nיחידה:\nמרפאת שד - בילינסון\nתפקידים ומינויים: מנהל המרכז לבריאות השד בית חולים בילינסון.\nמנהל",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      },
+      {
+        "field": "role",
+        "value": "מנהל המרכז לבריאות השד בית חולים בילינסון.\nמנהל היחידה לכירורגיה של השד.\nמנהל מרחב השד מחוז דן פ\"ת, שירותי בריאות כללית.",
+        "evidence": "תפקידים ומינויים\nמנהל המרכז לבריאות השד בית חולים בילינסון.\nמנהל היחידה לכירורגיה של השד.\nמנהל מרחב השד מחוז דן פ\"ת, שירותי בריאות כללית.\nחבר הוועדה להדרכה מקצועית של האגודה למלחמה בסרטן.\nחבר הוועדה לבחינת המלצות לגיל הסקר לגילוי סרטן שד מטעם משרד הבריאות.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מרפאת שד - בילינסון",
+        "evidence": "שם:\nד\"ר ערן שרון\nדוא\"ל:\nerans@clalit.org.il\nיחידה:\nמרפאת שד - בילינסון\nתפקידים ומינויים: מנהל המרכז לבריאות השד בית חולים בילינסון.\nמנהל",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      },
+      {
+        "field": "specialties",
+        "value": "כירורגיה כללית. כירורגיה אונקולוגית של השד.",
+        "evidence": "ד\"ר ערן שרון\nכירורגיה כללית. כירורגיה אונקולוגית של השד.\nיחידה: מרפאת שד - בילינסון\nקרא עוד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      },
+      {
+        "field": "subspecialties",
+        "value": "אבחנה והטיפול הרב תחומי במחלות השד.",
+        "evidence": "שטחי התעניינות מיוחדים\nאבחנה והטיפול הרב תחומי במחלות השד.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      },
+      {
+        "field": "clinicalInterests",
+        "value": "אבחנה והטיפול הרב תחומי במחלות השד.",
+        "evidence": "שטחי התעניינות מיוחדים\nאבחנה והטיפול הרב תחומי במחלות השד.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      },
+      {
+        "field": "education",
+        "value": "לימודי רפואה MD - האוניברסיטה הקתולית, רומא, איטליה.\nלימודי מנהל עסקים - MBA, אוניברסיטת תל-אביב.",
+        "evidence": "לימודים\nלימודי רפואה MD - האוניברסיטה הקתולית, רומא, איטליה.\nלימודי מנהל עסקים - MBA, אוניברסיטת תל-אביב.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      },
+      {
+        "field": "residency",
+        "value": "מחלקה לכירורגיה כללית א' בית חולים בילינסון.",
+        "evidence": "מקום התמחות\nמחלקה לכירורגיה כללית א' בית חולים בילינסון.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      },
+      {
+        "field": "fellowship",
+        "value": "2002 - השתלמות בניתוחי שד וטכניקת בלוטת הזקיף במכון האירופאי האונקולוגי במילנו.\n2008-2010 - השתלמות עמיתים קלינית באוניברסיטה של טורונטו קנדה, בכירורגיה אונקולוגית של השד ומלנומה.\n2013 - השתלמות בטיפולי קרינה תוך ניתוחית בלונדון.",
+        "evidence": "השתלמויות\n2002 - השתלמות בניתוחי שד וטכניקת בלוטת הזקיף במכון האירופאי האונקולוגי במילנו.\n2008-2010 - השתלמות עמיתים קלינית באוניברסיטה של טורונטו קנדה, בכירורגיה אונקולוגית של השד ומלנומה.\n2013 - השתלמות בטיפולי קרינה תוך ניתוחית בלונדון.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      },
+      {
+        "field": "contact.email",
+        "value": "erans@clalit.org.il",
+        "evidence": "שם:\nד\"ר ערן שרון\nדוא\"ל:\nerans@clalit.org.il\nיחידה:\nמרפאת שד - בילינסון\nתפקידים ומינויים: מנהל המרכז לבריאות השד בית חולים בילינסון.\nמנהל",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"מרפאת שד - בילינסון\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "ae2dee9f2d5fa65e6865ee6a",
+    "profileUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
+      "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/pages/dr_e_a_sharon.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר מתן בן-ציון ברלינר",
+    "hospital": "Rabin Medical Center",
+    "department": "Breast Health",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "רופאה מומחית ביחידה לסרטן השד - המערך לאונקולוגיה, מרכז דוידוף לטיפול ולחקר הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+    "unit": "היחידה לאונקולוגיה של השד,מרכז דוידוף לטיפול ולחקר מחלות הסרטן",
+    "specialties": [
+      "אונקולוגיה רפואית"
+    ],
+    "subspecialties": [
+      "סרטן שד, גרורות מוחיות, אונקוגנטיקה."
+    ],
+    "clinicalInterests": [
+      "סרטן שד, גרורות מוחיות, אונקוגנטיקה."
+    ],
+    "education": [
+      "אוניברסיטת בן-גוריון, באר-שבע, ישראל."
+    ],
+    "residency": [
+      "מרכז רפואי רבין- בילינסון."
+    ],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "MatanBZ@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 1,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר מתן בן-ציון ברלינר",
+        "evidence": "שם:\nד\"ר מתן בן-ציון ברלינר",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+      },
+      {
+        "field": "role",
+        "value": "רופאה מומחית ביחידה לסרטן השד - המערך לאונקולוגיה, מרכז דוידוף לטיפול ולחקר הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+        "evidence": "תפקידים ומינויים\nרופאה מומחית ביחידה לסרטן השד - המערך לאונקולוגיה, מרכז דוידוף לטיפול ולחקר הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "היחידה לאונקולוגיה של השד,מרכז דוידוף לטיפול ולחקר מחלות הסרטן",
+        "evidence": "שם:\nד\"ר מתן בן-ציון ברלינר\nדוא\"ל:\nMatanBZ@clalit.org.il\nיחידה:\nהיחידה לאונקולוגיה של השד,מרכז דוידוף לטיפול ולחקר מחלות הסרטן",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+      },
+      {
+        "field": "specialties",
+        "value": "אונקולוגיה רפואית",
+        "evidence": "ד\"ר מתן בן-ציון ברלינר\nאונקולוגיה רפואית\nיחידה: היחידה לאונקולוגיה של השד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+      },
+      {
+        "field": "subspecialties",
+        "value": "סרטן שד, גרורות מוחיות, אונקוגנטיקה.",
+        "evidence": "שטחי התעניינות מיוחדים\nסרטן שד, גרורות מוחיות, אונקוגנטיקה.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+      },
+      {
+        "field": "clinicalInterests",
+        "value": "סרטן שד, גרורות מוחיות, אונקוגנטיקה.",
+        "evidence": "שטחי התעניינות מיוחדים\nסרטן שד, גרורות מוחיות, אונקוגנטיקה.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+      },
+      {
+        "field": "education",
+        "value": "אוניברסיטת בן-גוריון, באר-שבע, ישראל.",
+        "evidence": "לימודים\nאוניברסיטת בן-גוריון, באר-שבע, ישראל.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+      },
+      {
+        "field": "residency",
+        "value": "מרכז רפואי רבין- בילינסון.",
+        "evidence": "מקום התמחות\nמרכז רפואי רבין- בילינסון.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+      },
+      {
+        "field": "contact.email",
+        "value": "MatanBZ@clalit.org.il",
+        "evidence": "שם:\nד\"ר מתן בן-ציון ברלינר\nדוא\"ל:\nMatanBZ@clalit.org.il",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"היחידה לאונקולוגיה של השד,מרכז דוידוף לטיפול ולחקר מחלות הסרטן\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "1d9a2db2a4654b6527d0648c",
+    "profileUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
+      "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_m_ben_zion_berliner.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר דניאל הנדלר",
+    "hospital": "Rabin Medical Center",
+    "department": "Breast Health",
+    "isSenior": true,
+    "seniorityEvidence": "סגן מנהל המערך לאונקולוגיה במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nמנהל המרפאות במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nמנהל מרפאה לטיפול בגידולי עור ממאירים במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nרופא בכיר ביחידה לסרטן השד במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+    "role": "סגן מנהל המערך לאונקולוגיה במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nמנהל המרפאות במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nמנהל מרפאה לטיפול בגידולי עור ממאירים במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nרופא בכיר ביחידה לסרטן השד במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+    "unit": "המערך לאונקולוגיה, מרכז דוידוף, בית חולים בילינסון, מרכז רפואי רבין",
+    "specialties": [
+      "אונקולוגיה"
+    ],
+    "subspecialties": [
+      "מלנומה",
+      "גידולי עור אחרים",
+      "סרטן שד"
+    ],
+    "clinicalInterests": [
+      "מלנומה",
+      "גידולי עור אחרים",
+      "סרטן שד"
+    ],
+    "education": [
+      "תואר MD בבית הספר לרפואה, אוניברסיטה של הרפובליקה, אורוגואי"
+    ],
+    "residency": [
+      "בית חולים בילינסון – מרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין."
+    ],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 1,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר דניאל הנדלר",
+        "evidence": "שם:\nד\"ר דניאל הנדלר\nיחידה:\nהמערך לאונקולוגיה, מרכז דוידוף, בית חולים בילינסון, מרכז רפואי רבין",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "role",
+        "value": "סגן מנהל המערך לאונקולוגיה במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nמנהל המרפאות במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nמנהל מרפאה לטיפול בגידולי עור ממאירים במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nרופא בכיר ביחידה לסרטן השד במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+        "evidence": "תפקידים ומינויים\nסגן מנהל המערך לאונקולוגיה במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nמנהל המרפאות במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nמנהל מרפאה לטיפול בגידולי עור ממאירים במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.\nרופא בכיר ביחידה לסרטן השד במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המערך לאונקולוגיה, מרכז דוידוף, בית חולים בילינסון, מרכז רפואי רבין",
+        "evidence": "שם:\nד\"ר דניאל הנדלר\nיחידה:\nהמערך לאונקולוגיה, מרכז דוידוף, בית חולים בילינסון, מרכז רפואי רבין\nתפקידים ומינויים: סגן מנהל המערך לאונקולוגיה במרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "specialties",
+        "value": "אונקולוגיה",
+        "evidence": "ד\"ר דניאל הנדלר\nאונקולוגיה\nיחידה: המערך לאונקולוגיה, מרכז דוידוף, בית חולים בילינסון, מרכז רפואי רבין\nקרא עוד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "subspecialties",
+        "value": "מלנומה",
+        "evidence": "שטחי התעניינות מיוחדים\nמלנומה\nגידולי עור אחרים\nסרטן שד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "subspecialties",
+        "value": "גידולי עור אחרים",
+        "evidence": "שטחי התעניינות מיוחדים\nמלנומה\nגידולי עור אחרים\nסרטן שד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "subspecialties",
+        "value": "סרטן שד",
+        "evidence": "שטחי התעניינות מיוחדים\nמלנומה\nגידולי עור אחרים\nסרטן שד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "clinicalInterests",
+        "value": "מלנומה",
+        "evidence": "שטחי התעניינות מיוחדים\nמלנומה\nגידולי עור אחרים\nסרטן שד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "clinicalInterests",
+        "value": "גידולי עור אחרים",
+        "evidence": "שטחי התעניינות מיוחדים\nמלנומה\nגידולי עור אחרים\nסרטן שד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "clinicalInterests",
+        "value": "סרטן שד",
+        "evidence": "שטחי התעניינות מיוחדים\nמלנומה\nגידולי עור אחרים\nסרטן שד",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "education",
+        "value": "תואר MD בבית הספר לרפואה, אוניברסיטה של הרפובליקה, אורוגואי",
+        "evidence": "לימודים\nתואר MD בבית הספר לרפואה, אוניברסיטה של הרפובליקה, אורוגואי",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      },
+      {
+        "field": "residency",
+        "value": "בית חולים בילינסון – מרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+        "evidence": "מקום התמחות\nבית חולים בילינסון – מרכז דוידוף לטיפול ולמחקר מחלות הסרטן, בית חולים בילינסון, מרכז רפואי רבין.",
+        "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"המערך לאונקולוגיה, מרכז דוידוף, בית חולים בילינסון, מרכז רפואי רבין\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "0526ae64d86c5689667565aa",
+    "profileUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
+      "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/pages/dr_d_hendler.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

@@ -1,10 +1,10 @@
 {
   "ok": true,
   "hospitalSlug": "rabin",
-  "generatedAt": "2026-06-18T06:35:26.186Z",
-  "configuredCount": 37,
+  "generatedAt": "2026-06-18T06:52:51.078Z",
+  "configuredCount": 39,
   "discoveredCount": 36,
-  "unchangedCount": 34,
+  "unchangedCount": 36,
   "missingFromFreshDiscovery": [
     {
       "id": "rabin-patient-information",
@@ -15,7 +15,7 @@
         "classification": "liveButOffIndex",
         "statusCode": 200,
         "finalUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx",
-        "contentLength": 388140,
+        "contentLength": 388006,
         "doctorLikeMatches": 8,
         "error": null
       },
@@ -31,7 +31,7 @@
         "classification": "liveButOffIndex",
         "statusCode": 200,
         "finalUrl": "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
-        "contentLength": 255649,
+        "contentLength": 255516,
         "doctorLikeMatches": 3,
         "error": null
       },
@@ -47,7 +47,7 @@
         "classification": "liveButOffIndex",
         "statusCode": 200,
         "finalUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
-        "contentLength": 273074,
+        "contentLength": 272941,
         "doctorLikeMatches": 6,
         "error": null
       },
@@ -55,28 +55,7 @@
       "reason": "URL is still live but absent from current hospital index"
     }
   ],
-  "newInFreshDiscovery": [
-    {
-      "id": "rabin-beilinson-heart-of-organ-transplantation",
-      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/supportive_medical_staff.aspx",
-      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/hepatitis.aspx",
-      "departmentHebrew": "צהבת",
-      "discoveryConfidence": 0.95,
-      "classification": "newCandidate",
-      "recommendedAction": "addCandidate",
-      "reason": "new high-confidence candidate not present in configured batch"
-    },
-    {
-      "id": "rabin-breast-health",
-      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
-      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/default.aspx",
-      "departmentHebrew": "שד",
-      "discoveryConfidence": 0.95,
-      "classification": "newCandidate",
-      "recommendedAction": "addCandidate",
-      "reason": "new high-confidence candidate not present in configured batch"
-    }
-  ],
+  "newInFreshDiscovery": [],
   "staleConfiguredCandidates": [],
   "liveButOffIndexCandidates": [
     {
@@ -88,7 +67,7 @@
         "classification": "liveButOffIndex",
         "statusCode": 200,
         "finalUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx",
-        "contentLength": 388140,
+        "contentLength": 388006,
         "doctorLikeMatches": 8,
         "error": null
       },
@@ -104,7 +83,7 @@
         "classification": "liveButOffIndex",
         "statusCode": 200,
         "finalUrl": "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
-        "contentLength": 255649,
+        "contentLength": 255516,
         "doctorLikeMatches": 3,
         "error": null
       },
@@ -120,7 +99,7 @@
         "classification": "liveButOffIndex",
         "statusCode": 200,
         "finalUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
-        "contentLength": 273074,
+        "contentLength": 272941,
         "doctorLikeMatches": 6,
         "error": null
       },
@@ -149,20 +128,6 @@
       "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
       "recommendedAction": "keepConfigured",
       "reason": "URL is still live but absent from current hospital index"
-    },
-    {
-      "kind": "newDiscovery",
-      "id": "rabin-beilinson-heart-of-organ-transplantation",
-      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/supportive_medical_staff.aspx",
-      "recommendedAction": "addCandidate",
-      "reason": "new high-confidence candidate not present in configured batch"
-    },
-    {
-      "kind": "newDiscovery",
-      "id": "rabin-breast-health",
-      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
-      "recommendedAction": "addCandidate",
-      "reason": "new high-confidence candidate not present in configured batch"
     }
   ],
   "applied": {

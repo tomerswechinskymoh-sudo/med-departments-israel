@@ -18,8 +18,17 @@ async function main() {
   const args = parseArgs();
   const force = args.has("force");
   const hospitalSlug = args.get("hospital");
+  const rawIds = args.get("ids");
+  const ids = rawIds
+    ? new Set(
+        rawIds
+          .split(",")
+          .map((id) => id.trim())
+          .filter(Boolean)
+      )
+    : null;
   const configs = (await loadClalitDepartmentConfigs()).filter(
-    (config) => !hospitalSlug || config.hospitalSlug === hospitalSlug
+    (config) => (!hospitalSlug || config.hospitalSlug === hospitalSlug) && (!ids || ids.has(config.id))
   );
   const results: Array<{
     id: string;
@@ -96,6 +105,7 @@ async function main() {
       {
         force,
         hospitalSlug: hospitalSlug ?? null,
+        ids: ids ? Array.from(ids) : null,
         created: results.filter((result) => result.status === "created").length,
         overwritten: results.filter((result) => result.status === "overwritten").length,
         skippedExisting: results.filter((result) => result.status === "skipped-existing").length,

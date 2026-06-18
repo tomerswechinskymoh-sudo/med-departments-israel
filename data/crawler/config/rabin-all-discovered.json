@@ -1,7 +1,7 @@
 {
-  "name": "All discovered Rabin doctor-list pages",
-  "source": "data/crawler/discovery/rabin-department-doctor-pages.json",
-  "generatedAt": "2026-06-12T16:14:57.104Z",
+  "name": "All discovered Rabin Medical Center doctor-list pages",
+  "source": "data/crawler/discovery/rabin/department-doctor-pages.json",
+  "generatedAt": "2026-06-18T06:49:03.455Z",
   "ids": [
     "rabin-allergy-immunology",
     "rabin-anesthesiology-introduction",
@@ -39,6 +39,8 @@
     "rabin-vascular-surgery",
     "rabin-patient-information",
     "rabin-course-for-foreign-doctors",
-    "rabin-patient-information-2"
+    "rabin-patient-information-2",
+    "rabin-beilinson-heart-of-organ-transplantation",
+    "rabin-breast-health"
   ]
 }

@@ -2536,5 +2536,62 @@
     "allowSmallDepartment": true,
     "minSpecialtyEvidenceCoverage": 0,
     "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "rabin-beilinson-heart-of-organ-transplantation",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Beilinson Heart Of Organ Transplantation",
+    "departmentHebrew": "צהבת",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/supportive_medical_staff.aspx",
+    "departmentKeywordsHebrew": [
+      "צהבת"
+    ],
+    "departmentKeywordsEnglish": [
+      "Beilinson",
+      "Heart",
+      "Organ",
+      "Transplantation",
+      "hepatitis",
+      "supportive",
+      "medical",
+      "staff"
+    ],
+    "allowedCrossUnits": [],
+    "allowSmallDepartment": true,
+    "minDoctorsExpected": 0,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1,
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/hepatitis.aspx",
+    "discoveryConfidence": 0.95,
+    "parserType": "genericStaffPage"
+  },
+  {
+    "id": "rabin-breast-health",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Breast Health",
+    "departmentHebrew": "שד",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
+    "departmentKeywordsHebrew": [],
+    "departmentKeywordsEnglish": [
+      "Breast",
+      "Health",
+      "default",
+      "breast",
+      "health"
+    ],
+    "allowedCrossUnits": [],
+    "minDoctorsExpected": 1,
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1,
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/default.aspx",
+    "discoveryConfidence": 0.95,
+    "parserType": "rabinDoctorsPage"
   }
 ]
