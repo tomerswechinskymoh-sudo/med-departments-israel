@@ -71,6 +71,36 @@ const publicImportedDepartmentWhere = {
   }
 } satisfies Prisma.DepartmentWhereInput;
 
+const HIDDEN_PUBLIC_SPECIALTY_NAMES = [
+  "מינהל רפואי",
+  "המינהל הרפואי",
+  "מנהל רפואי",
+  "Medical Administration"
+];
+
+const HIDDEN_PUBLIC_SPECIALTY_NORMALIZED_NAMES = new Set(
+  HIDDEN_PUBLIC_SPECIALTY_NAMES.map(normalizeHebrewCatalogName)
+);
+
+function isPublicSpecialtyName(name: string) {
+  return !HIDDEN_PUBLIC_SPECIALTY_NORMALIZED_NAMES.has(normalizeHebrewCatalogName(name));
+}
+
+const publicVisibleDepartmentWhere = {
+  AND: [
+    publicImportedDepartmentWhere,
+    {
+      specialty: {
+        is: {
+          name: {
+            notIn: HIDDEN_PUBLIC_SPECIALTY_NAMES
+          }
+        }
+      }
+    }
+  ]
+} satisfies Prisma.DepartmentWhereInput;
+
 const dataExplanationSelect = {
   sheet: true,
   criterion: true,
@@ -587,7 +617,7 @@ export async function getHomePageData() {
   const [featuredDepartments, latestReviews, featuredOpenings, latestResearchOpportunities, stats] =
     await Promise.all([
       prisma.department.findMany({
-        where: publicImportedDepartmentWhere,
+        where: publicVisibleDepartmentWhere,
         include: {
           institution: true,
           specialty: true,
@@ -626,7 +656,7 @@ export async function getHomePageData() {
       prisma.review.findMany({
         where: {
           department: {
-            is: publicImportedDepartmentWhere
+            is: publicVisibleDepartmentWhere
           }
         },
         select: {
@@ -663,7 +693,7 @@ export async function getHomePageData() {
             in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
           },
           department: {
-            is: publicImportedDepartmentWhere
+            is: publicVisibleDepartmentWhere
           }
         },
         include: {
@@ -689,7 +719,7 @@ export async function getHomePageData() {
         where: {
           contentStatus: ContentStatus.PUBLISHED,
           department: {
-            is: publicImportedDepartmentWhere
+            is: publicVisibleDepartmentWhere
           }
         },
         include: {
@@ -708,12 +738,12 @@ export async function getHomePageData() {
         prisma.institution.count({
           where: {
             departments: {
-              some: publicImportedDepartmentWhere
+              some: publicVisibleDepartmentWhere
             }
           }
         }),
         prisma.department.count({
-          where: publicImportedDepartmentWhere
+          where: publicVisibleDepartmentWhere
         }),
         prisma.review.count(),
         prisma.residencyOpening.count({
@@ -783,7 +813,7 @@ export async function getDirectoryFilters() {
     prisma.institution.findMany({
       where: {
         departments: {
-          some: publicImportedDepartmentWhere
+          some: publicVisibleDepartmentWhere
         }
       },
       select: {
@@ -801,41 +831,50 @@ export async function getDirectoryFilters() {
     }),
     prisma.specialty.findMany({
       where: {
-        OR: [
+        AND: [
           {
-            metrics: {
-              some: {}
+            name: {
+              notIn: HIDDEN_PUBLIC_SPECIALTY_NAMES
             }
           },
           {
-            yearlyMetrics: {
-              some: {}
-            }
-          },
-          {
-            departments: {
-              some: publicImportedDepartmentWhere
-            }
-          },
-          {
-            departments: {
-              some: {
-                ...publicImportedDepartmentWhere,
+            OR: [
+              {
                 metrics: {
                   some: {}
                 }
-              }
-            }
-          },
-          {
-            departments: {
-              some: {
-                ...publicImportedDepartmentWhere,
+              },
+              {
                 yearlyMetrics: {
                   some: {}
                 }
+              },
+              {
+                departments: {
+                  some: publicVisibleDepartmentWhere
+                }
+              },
+              {
+                departments: {
+                  some: {
+                    ...publicImportedDepartmentWhere,
+                    metrics: {
+                      some: {}
+                    }
+                  }
+                }
+              },
+              {
+                departments: {
+                  some: {
+                    ...publicImportedDepartmentWhere,
+                    yearlyMetrics: {
+                      some: {}
+                    }
+                  }
+                }
               }
-            }
+            ]
           }
         ]
       },
@@ -848,7 +887,7 @@ export async function getDirectoryFilters() {
       }
     }),
     prisma.department.findMany({
-      where: publicImportedDepartmentWhere,
+      where: publicVisibleDepartmentWhere,
       select: {
         id: true,
         name: true,
@@ -878,6 +917,7 @@ export async function getDirectoryFilters() {
     })),
     specialties: Array.from(
       specialties
+        .filter((specialty) => isPublicSpecialtyName(specialty.name))
         .reduce<Map<string, (typeof specialties)[number]>>((unique, specialty) => {
           const normalizedName = normalizeHebrewCatalogName(specialty.name);
           if (!unique.has(normalizedName)) {
@@ -928,7 +968,7 @@ export async function getDirectoryData(
   const departments = await prisma.department.findMany({
     where: {
       AND: [
-        publicImportedDepartmentWhere,
+        publicVisibleDepartmentWhere,
         filters.institutions?.length
           ? {
               OR: filters.institutions.map((institutionId) => ({
@@ -2201,7 +2241,7 @@ export async function getOpeningApplicationPageData(openingId: string) {
 
 export async function getDepartmentOptions() {
   const departments = await prisma.department.findMany({
-    where: publicImportedDepartmentWhere,
+    where: publicVisibleDepartmentWhere,
     select: {
       id: true,
       slug: true,
@@ -2235,7 +2275,7 @@ export async function getInstitutionOptions() {
   return prisma.institution.findMany({
     where: {
       departments: {
-        some: publicImportedDepartmentWhere
+        some: publicVisibleDepartmentWhere
       }
     },
     select: {
