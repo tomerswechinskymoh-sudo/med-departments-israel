@@ -1,0 +1,686 @@
+[
+  {
+    "id": "rabin-allergy-immunology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Allergy Immunology",
+    "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-anesthesiology-introduction",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Anesthesiology Introduction",
+    "departmentHebrew": "מרפאת כאב - השרון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/pain_clinic_hasharon.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/pain_clinic_hasharon.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-beilinson-heart-of-organ-transplantation",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Beilinson Heart Of Organ Transplantation",
+    "departmentHebrew": "צהבת",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/supportive_medical_staff.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/hepatitis.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/hepatitis.aspx",
+      "anchorText=מומחים נוספים בהשתלות",
+      "href=/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/supportive_medical_staff.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "staffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "rabin-breast-health",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Breast Health",
+    "departmentHebrew": "שד",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/default.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/default.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-cardiology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Cardiology",
+    "departmentHebrew": "המרפאה לקרדיולוגית ספורט - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiology/Pages/cardiology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiology/Pages/sports_cardiology_clinic.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiology/Pages/sports_cardiology_clinic.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/cardiology/Pages/cardiology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-cardiothoracic-surgery",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Cardiothoracic Surgery",
+    "departmentHebrew": "מרפאה לכירורגית חזה (ריאות)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiothoracic-surgery/Pages/cardiothoracic_surgery_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiothoracic-surgery/Pages/cardiothoracic_surgery_clinic.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiothoracic-surgery/Pages/cardiothoracic_surgery_clinic.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/cardiothoracic-surgery/Pages/cardiothoracic_surgery_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-dermatology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Dermatology",
+    "departmentHebrew": "המערך לעור ומין",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dermatology/Pages/dermatology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dermatology/Pages/dermatology_department_beilinson.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dermatology/Pages/dermatology_department_beilinson.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/dermatology/Pages/dermatology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-dvidoff-center",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Dvidoff Center",
+    "departmentHebrew": "האחיות במרכז דוידוף",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/Pages/dvidoff_center_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/Pages/davidoff_center_nursing.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/Pages/davidoff_center_nursing.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/dvidoff-center/Pages/dvidoff_center_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-emergency-medicine",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Emergency Medicine",
+    "departmentHebrew": "המרכז ע\"ש חוסידמן לרפואה דחופה ולטראומה (מיון) - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_beilinson.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_beilinson.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-endocrinologi",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Endocrinologi",
+    "departmentHebrew": "המכון לאנדוקרינולוגיה, סוכרת ומחלות מטבוליות - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/endocrinologi/Pages/endocrinologi_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/endocrinologi/Pages/endocrinology_diabetes_metabolic_institute.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/endocrinologi/Pages/endocrinology_diabetes_metabolic_institute.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/endocrinologi/Pages/endocrinologi_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-family-medicine",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Family Medicine",
+    "departmentHebrew": "רפואת המשפחה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/family_medicine/Pages/family_medicine_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/family_medicine/Pages/family_medicine_department_beilinson.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/family_medicine/Pages/family_medicine_department_beilinson.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/family_medicine/Pages/family_medicine_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-gastroenterology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Gastroenterology",
+    "departmentHebrew": "מערך לגסטרואנטרולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/gastroenterology/Pages/gastroenterology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/gastroenterology/Pages/gastroenterology.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/gastroenterology/Pages/gastroenterology.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/gastroenterology/Pages/gastroenterology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-genetics",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Genetics",
+    "departmentHebrew": "מרפאת אונקוגנטיקה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/genetics/Pages/genetics_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/genetics/Pages/oncogenetics_clinic.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/genetics/Pages/oncogenetics_clinic.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/genetics/Pages/genetics_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-geriatrics",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Geriatrics",
+    "departmentHebrew": "גריאטריה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/geriatrics/Pages/geriatrics_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/geriatrics/Pages/geriatrics_department.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/geriatrics/Pages/geriatrics_department.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/geriatrics/Pages/geriatrics_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-hematology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Hematology",
+    "departmentHebrew": "המערך להמטולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/hematology/Pages/hematology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/hematology/Pages/hematology.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/hematology/Pages/hematology.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/hematology/Pages/hematology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-imaging",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Imaging",
+    "departmentHebrew": "דימות הבטן והאגן",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/abdominal_pelvis_imaging.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/abdominal_pelvis_imaging.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/imaging/Pages/imaging_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-intensive-care",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Intensive Care",
+    "departmentHebrew": "מחלקה לטיפול נמרץ כללי והמכון לחקר התזונה - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/intensive-care/Pages/intensive_care_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/intensive-care/Pages/intensive_care_beilinson.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/intensive-care/Pages/intensive_care_beilinson.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/intensive-care/Pages/intensive_care_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-liver",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Liver",
+    "departmentHebrew": "כבד",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/liver/Pages/liver_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/liver/Pages/national_liver_institute.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/liver/Pages/national_liver_institute.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/liver/Pages/liver_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-medicine",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Medicine",
+    "departmentHebrew": "המרכז לרפואה פנימית יועצת",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/medicine_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_medicine_center.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_medicine_center.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/medicine/Pages/medicine_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-nashimbeilinson",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Nashimbeilinson",
+    "departmentHebrew": "מרפאה לגינקולוגיה אונקולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nashimbeilinson/Pages/nashimbeilinson_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nashimbeilinson/Pages/oncology_gynaecology_clinic.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nashimbeilinson/Pages/oncology_gynaecology_clinic.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/nashimbeilinson/Pages/nashimbeilinson_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-nephrology-and-hypertension",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Nephrology And Hypertension",
+    "departmentHebrew": "מערך לנפרולוגיה וליתר לחץ דם",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nephrology-and-hypertension/Pages/nephrology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nephrology-and-hypertension/Pages/nephrology_and_hypertension.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nephrology-and-hypertension/Pages/nephrology_and_hypertension.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/nephrology-and-hypertension/Pages/nephrology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-neurology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Neurology",
+    "departmentHebrew": "המחלקה לנוירולוגיה - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurology/Pages/Neurology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurology/Pages/neurology_dept_beilinson.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurology/Pages/neurology_dept_beilinson.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/neurology/Pages/Neurology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-neurosurgery",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Neurosurgery",
+    "departmentHebrew": "נוירוכירורגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurosurgery/Pages/neurosurgery_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurosurgery/Pages/neurosurgery_dept.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurosurgery/Pages/neurosurgery_dept.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/neurosurgery/Pages/neurosurgery_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-nuclear-medicine",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Nuclear Medicine",
+    "departmentHebrew": "מכון לרפואה גרעינית - איזוטופים - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nuclear-medicine/Pages/nuclear_medicine_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nuclear-medicine/Pages/nuclear_medicine_inst_beilinson.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nuclear-medicine/Pages/nuclear_medicine_inst_beilinson.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/nuclear-medicine/Pages/nuclear_medicine_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-ophthalmology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מרפאות מערך עיניים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology_clinics.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology_clinics.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-oral-and-maxillofacial-surgery",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Oral And Maxillofacial Surgery",
+    "departmentHebrew": "פה ולסת",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/oral-and-maxillofacial-surgery/Pages/oral_and_maxillofacial_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/oral-and-maxillofacial-surgery/Pages/oral_and_maxillofacial_surgery_dept.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/oral-and-maxillofacial-surgery/Pages/oral_and_maxillofacial_surgery_dept.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/oral-and-maxillofacial-surgery/Pages/oral_and_maxillofacial_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-organ-transplantation",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Organ Transplantation",
+    "departmentHebrew": "מחלקת השתלות איברים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/organ-transplantation/Pages/organ_transplantation_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/organ-transplantation/Pages/organ_transplantation_department.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/organ-transplantation/Pages/organ_transplantation_department.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/organ-transplantation/Pages/organ_transplantation_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-orthopedics",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Orthopedics",
+    "departmentHebrew": "מחלקה לאורתופדיה - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedics_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedics_department_beilinson.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedics_department_beilinson.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedics_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-otolaryngology-head-and-neck-surgery",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Otolaryngology Head And Neck Surgery",
+    "departmentHebrew": "מערך אף אוזן גרון ולניתוחי ראש וצוואר",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/otolaryngology-head-and-neck-surgery/Pages/otolaryngology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/otolaryngology-head-and-neck-surgery/Pages/otolaryngology_head_and_neck_surgery_rmc.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/otolaryngology-head-and-neck-surgery/Pages/otolaryngology_head_and_neck_surgery_rmc.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/otolaryngology-head-and-neck-surgery/Pages/otolaryngology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-pathology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Pathology",
+    "departmentHebrew": "מערך לפתולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/pathology/Pages/pathology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-plastic-surgery-and-burns",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Plastic Surgery And Burns",
+    "departmentHebrew": "פלסטיקה וכוויות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/plastic-surgery-and-burns/Pages/plastic_surgery_and_burns_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/plastic-surgery-and-burns/Pages/plastic_surgery_dept_and_burns_unit.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/plastic-surgery-and-burns/Pages/plastic_surgery_dept_and_burns_unit.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/plastic-surgery-and-burns/Pages/plastic_surgery_and_burns_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-pulmonary",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Pulmonary",
+    "departmentHebrew": "המערך למחלות ריאה ולאלרגיה - בילינסון והשרון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pulmonary/Pages/pulmonary_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pulmonary/Pages/pulmonary_and_allergies_institute.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pulmonary/Pages/pulmonary_and_allergies_institute.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/pulmonary/Pages/pulmonary_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-rheumatology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Rheumatology",
+    "departmentHebrew": "מרפאה לריאומטולוגיה - השרון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/rheumatology/Pages/rheumatology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/rheumatology/Pages/rheumatology_clinic_Hasharon.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/rheumatology/Pages/rheumatology_clinic_Hasharon.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/rheumatology/Pages/rheumatology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-surgery",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Surgery",
+    "departmentHebrew": "המרכז הרב תחומי לטיפול בהשמנה ובהשלכותיה – השרון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/bariatric_surgery_center_hasharon.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/bariatric_surgery_center_hasharon.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/surgery/Pages/surgery_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-urology",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Urology",
+    "departmentHebrew": "מרפאות לאורולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology_clinics.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology_clinics.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/urology/Pages/urology_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  },
+  {
+    "id": "rabin-vascular-surgery",
+    "hospital": "Rabin Medical Center",
+    "hospitalSlug": "rabin",
+    "department": "Vascular Surgery",
+    "departmentHebrew": "מחלקה לניתוחי כלי דם - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/vascular-surgery/Pages/vascular_surgery_doctors.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/vascular-surgery/Pages/vascular_surgery_department.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/vascular-surgery/Pages/vascular_surgery_department.aspx",
+      "anchorText=הרופאים שלנו",
+      "href=/rabin/he/departments-and-clinics/vascular-surgery/Pages/vascular_surgery_doctors.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "doctorsPage",
+    "recommendedParserType": "rabinDoctorsPage"
+  }
+]

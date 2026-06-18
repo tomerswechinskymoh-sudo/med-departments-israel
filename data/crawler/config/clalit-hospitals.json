@@ -1,0 +1,21 @@
+[
+  {
+    "hospitalSlug": "rabin",
+    "hospitalName": "Rabin Medical Center",
+    "hospitalHebrew": "מרכז רפואי רבין",
+    "departmentsIndexUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+    "discoverInlineStaff": false,
+    "allowTextOnlyStaffLinks": false
+  },
+  {
+    "hospitalSlug": "carmel",
+    "hospitalName": "Carmel Medical Center",
+    "hospitalHebrew": "מרכז רפואי כרמל",
+    "departmentsIndexUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/default.aspx",
+    "discoverInlineStaff": true,
+    "allowTextOnlyStaffLinks": true,
+    "departmentPathPrefixes": [
+      "/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/"
+    ]
+  }
+]

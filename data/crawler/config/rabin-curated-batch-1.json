@@ -1,0 +1,10 @@
+{
+  "name": "Rabin curated batch 1",
+  "ids": [
+    "rabin-dermatology",
+    "rabin-gastroenterology",
+    "rabin-geriatrics",
+    "rabin-hematology",
+    "rabin-medicine"
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "ok": true,
+  "hospitalSlug": "rabin",
+  "generatedAt": "2026-06-18T06:35:26.186Z",
+  "configuredCount": 37,
+  "discoveredCount": 36,
+  "unchangedCount": 34,
+  "missingFromFreshDiscovery": [
+    {
+      "id": "rabin-patient-information",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx",
+      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+      "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+      "directStatus": {
+        "classification": "liveButOffIndex",
+        "statusCode": 200,
+        "finalUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx",
+        "contentLength": 388140,
+        "doctorLikeMatches": 8,
+        "error": null
+      },
+      "recommendedAction": "keepConfigured",
+      "reason": "URL is still live but absent from current hospital index"
+    },
+    {
+      "id": "rabin-course-for-foreign-doctors",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
+      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+      "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+      "directStatus": {
+        "classification": "liveButOffIndex",
+        "statusCode": 200,
+        "finalUrl": "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
+        "contentLength": 255649,
+        "doctorLikeMatches": 3,
+        "error": null
+      },
+      "recommendedAction": "keepConfigured",
+      "reason": "URL is still live but absent from current hospital index"
+    },
+    {
+      "id": "rabin-patient-information-2",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+      "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+      "directStatus": {
+        "classification": "liveButOffIndex",
+        "statusCode": 200,
+        "finalUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+        "contentLength": 273074,
+        "doctorLikeMatches": 6,
+        "error": null
+      },
+      "recommendedAction": "keepConfigured",
+      "reason": "URL is still live but absent from current hospital index"
+    }
+  ],
+  "newInFreshDiscovery": [
+    {
+      "id": "rabin-beilinson-heart-of-organ-transplantation",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/supportive_medical_staff.aspx",
+      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/hepatitis.aspx",
+      "departmentHebrew": "צהבת",
+      "discoveryConfidence": 0.95,
+      "classification": "newCandidate",
+      "recommendedAction": "addCandidate",
+      "reason": "new high-confidence candidate not present in configured batch"
+    },
+    {
+      "id": "rabin-breast-health",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
+      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/default.aspx",
+      "departmentHebrew": "שד",
+      "discoveryConfidence": 0.95,
+      "classification": "newCandidate",
+      "recommendedAction": "addCandidate",
+      "reason": "new high-confidence candidate not present in configured batch"
+    }
+  ],
+  "staleConfiguredCandidates": [],
+  "liveButOffIndexCandidates": [
+    {
+      "id": "rabin-patient-information",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx",
+      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+      "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+      "directStatus": {
+        "classification": "liveButOffIndex",
+        "statusCode": 200,
+        "finalUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx",
+        "contentLength": 388140,
+        "doctorLikeMatches": 8,
+        "error": null
+      },
+      "recommendedAction": "keepConfigured",
+      "reason": "URL is still live but absent from current hospital index"
+    },
+    {
+      "id": "rabin-course-for-foreign-doctors",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
+      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+      "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+      "directStatus": {
+        "classification": "liveButOffIndex",
+        "statusCode": 200,
+        "finalUrl": "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
+        "contentLength": 255649,
+        "doctorLikeMatches": 3,
+        "error": null
+      },
+      "recommendedAction": "keepConfigured",
+      "reason": "URL is still live but absent from current hospital index"
+    },
+    {
+      "id": "rabin-patient-information-2",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+      "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+      "directStatus": {
+        "classification": "liveButOffIndex",
+        "statusCode": 200,
+        "finalUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+        "contentLength": 273074,
+        "doctorLikeMatches": 6,
+        "error": null
+      },
+      "recommendedAction": "keepConfigured",
+      "reason": "URL is still live but absent from current hospital index"
+    }
+  ],
+  "recommendedActions": [
+    {
+      "kind": "missingConfigured",
+      "id": "rabin-patient-information",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx",
+      "recommendedAction": "keepConfigured",
+      "reason": "URL is still live but absent from current hospital index"
+    },
+    {
+      "kind": "missingConfigured",
+      "id": "rabin-course-for-foreign-doctors",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
+      "recommendedAction": "keepConfigured",
+      "reason": "URL is still live but absent from current hospital index"
+    },
+    {
+      "kind": "missingConfigured",
+      "id": "rabin-patient-information-2",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "recommendedAction": "keepConfigured",
+      "reason": "URL is still live but absent from current hospital index"
+    },
+    {
+      "kind": "newDiscovery",
+      "id": "rabin-beilinson-heart-of-organ-transplantation",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/beilinson_heart_of_organ_transplantation/Pages/supportive_medical_staff.aspx",
+      "recommendedAction": "addCandidate",
+      "reason": "new high-confidence candidate not present in configured batch"
+    },
+    {
+      "kind": "newDiscovery",
+      "id": "rabin-breast-health",
+      "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/breast_health/Pages/breast_health_doctors.aspx",
+      "recommendedAction": "addCandidate",
+      "reason": "new high-confidence candidate not present in configured batch"
+    }
+  ],
+  "applied": {
+    "additions": [],
+    "removals": []
+  },
+  "reportJsonPath": "/Users/tomerswechinsky/Documents/CODEX/med-departments-israel/data/crawler/discovery/rabin/discovery-drift-report.json",
+  "reportCsvPath": "/Users/tomerswechinsky/Documents/CODEX/med-departments-israel/data/crawler/discovery/rabin/discovery-drift-report.csv"
+}

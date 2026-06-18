@@ -1,0 +1,19 @@
+{
+  "ok": true,
+  "hospitalSlug": "carmel",
+  "generatedAt": "2026-06-18T06:35:35.050Z",
+  "configuredCount": 61,
+  "discoveredCount": 61,
+  "unchangedCount": 61,
+  "missingFromFreshDiscovery": [],
+  "newInFreshDiscovery": [],
+  "staleConfiguredCandidates": [],
+  "liveButOffIndexCandidates": [],
+  "recommendedActions": [],
+  "applied": {
+    "additions": [],
+    "removals": []
+  },
+  "reportJsonPath": "/Users/tomerswechinsky/Documents/CODEX/med-departments-israel/data/crawler/discovery/carmel/discovery-drift-report.json",
+  "reportCsvPath": "/Users/tomerswechinsky/Documents/CODEX/med-departments-israel/data/crawler/discovery/carmel/discovery-drift-report.csv"
+}

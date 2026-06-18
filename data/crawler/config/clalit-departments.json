@@ -1,0 +1,2540 @@
+[
+  {
+    "id": "rabin-beilinson-ent",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "ENT / Otolaryngology Head and Neck Surgery",
+    "departmentHebrew": "אף אוזן גרון וניתוחי ראש וצוואר",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/otolaryngology-head-and-neck-surgery/Pages/otolaryngology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "אף אוזן",
+      "אא\"ג",
+      "אוזן גרון",
+      "ראש וצוואר"
+    ],
+    "departmentKeywordsEnglish": [
+      "Otolaryngology",
+      "ENT",
+      "Head and Neck"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/otolaryngology-head-and-neck-surgery/Pages/otolaryngology_head_and_neck_surgery_rmc.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-beilinson-orthopedics",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Orthopedics / Orthopedic Surgery",
+    "departmentHebrew": "אורתופדיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedics_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "אורתופד",
+      "אורטופד"
+    ],
+    "departmentKeywordsEnglish": [
+      "Orthopedic",
+      "Orthopedics"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedics_department_beilinson.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-dermatology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Dermatology",
+    "departmentHebrew": "המערך לעור ומין",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dermatology/Pages/dermatology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "עור",
+      "מחלות עור",
+      "רפואת עור",
+      "מין",
+      "דרמטולוג"
+    ],
+    "departmentKeywordsEnglish": [
+      "Dermatology",
+      "Dermatologic",
+      "Skin"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dermatology/Pages/dermatology_department_beilinson.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-gastroenterology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Gastroenterology",
+    "departmentHebrew": "מערך לגסטרואנטרולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/gastroenterology/Pages/gastroenterology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "גסטרו",
+      "גסטרואנטרולוג",
+      "מערכת העיכול",
+      "כבד"
+    ],
+    "departmentKeywordsEnglish": [
+      "Gastroenterology",
+      "Gastrointestinal",
+      "Digestive",
+      "Hepatology"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/gastroenterology/Pages/gastroenterology.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-geriatrics",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Geriatrics",
+    "departmentHebrew": "גריאטריה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/geriatrics/Pages/geriatrics_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "גריאטר",
+      "גריאטריה",
+      "רפואת הגיל השלישי",
+      "קשיש"
+    ],
+    "departmentKeywordsEnglish": [
+      "Geriatrics",
+      "Geriatric",
+      "Elderly Medicine"
+    ],
+    "allowedCrossUnits": [],
+    "minDoctorsExpected": 3,
+    "allowSmallDepartment": true,
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/geriatrics/Pages/geriatrics_department.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-hematology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Hematology",
+    "departmentHebrew": "המערך להמטולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/hematology/Pages/hematology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "המטולוג",
+      "המטולוגיה",
+      "מחלות דם",
+      "השתלת מח עצם"
+    ],
+    "departmentKeywordsEnglish": [
+      "Hematology",
+      "Haematology",
+      "Blood Diseases",
+      "Bone Marrow"
+    ],
+    "allowedCrossUnits": [],
+    "maxDuplicateDoctors": 0,
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/hematology/Pages/hematology.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-medicine",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Internal Medicine",
+    "departmentHebrew": "המרכז לרפואה פנימית יועצת",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/medicine_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "רפואה פנימית",
+      "פנימית",
+      "מחלות פנימיות",
+      "רופא פנימי"
+    ],
+    "departmentKeywordsEnglish": [
+      "Internal Medicine",
+      "Medicine",
+      "Internist"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "institute",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_medicine_center.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-allergy-immunology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Allergy Immunology",
+    "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "אלרגיה",
+      "ואימונולוגיה",
+      "קלינית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Allergy",
+      "Immunology",
+      "allergy",
+      "immunology",
+      "clinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-anesthesiology-introduction",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Anesthesiology Introduction",
+    "departmentHebrew": "מרפאת כאב - השרון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאת",
+      "כאב"
+    ],
+    "departmentKeywordsEnglish": [
+      "Anesthesiology",
+      "Introduction",
+      "pain",
+      "clinic",
+      "hasharon",
+      "anesthesiology"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/pain_clinic_hasharon.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-cardiology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Cardiology",
+    "departmentHebrew": "המרפאה לקרדיולוגית ספורט - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiology/Pages/cardiology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "המרפאה",
+      "לקרדיולוגית",
+      "ספורט"
+    ],
+    "departmentKeywordsEnglish": [
+      "Cardiology",
+      "sports",
+      "cardiology",
+      "clinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiology/Pages/sports_cardiology_clinic.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-cardiothoracic-surgery",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Cardiothoracic Surgery",
+    "departmentHebrew": "מרפאה לכירורגית חזה (ריאות)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiothoracic-surgery/Pages/cardiothoracic_surgery_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "לכירורגית",
+      "חזה",
+      "ריאות"
+    ],
+    "departmentKeywordsEnglish": [
+      "Cardiothoracic",
+      "Surgery",
+      "cardiothoracic",
+      "surgery",
+      "clinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/cardiothoracic-surgery/Pages/cardiothoracic_surgery_clinic.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-dvidoff-center",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Dvidoff Center",
+    "departmentHebrew": "האחיות במרכז דוידוף",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/Pages/dvidoff_center_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "האחיות",
+      "במרכז",
+      "דוידוף"
+    ],
+    "departmentKeywordsEnglish": [
+      "Dvidoff",
+      "Center",
+      "davidoff",
+      "center",
+      "nursing",
+      "dvidoff"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "institute",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/dvidoff-center/Pages/davidoff_center_nursing.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-emergency-medicine",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Emergency Medicine",
+    "departmentHebrew": "המרכז ע\"ש חוסידמן לרפואה דחופה ולטראומה (מיון) - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "המרכז",
+      "חוסידמן",
+      "לרפואה",
+      "דחופה",
+      "ולטראומה",
+      "מיון"
+    ],
+    "departmentKeywordsEnglish": [
+      "Emergency",
+      "Medicine",
+      "emergency",
+      "medicine",
+      "department",
+      "beilinson"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_beilinson.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-endocrinologi",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Endocrinologi",
+    "departmentHebrew": "המכון לאנדוקרינולוגיה, סוכרת ומחלות מטבוליות - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/endocrinologi/Pages/endocrinologi_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "המכון",
+      "לאנדוקרינולוגיה",
+      "סוכרת",
+      "ומחלות",
+      "מטבוליות"
+    ],
+    "departmentKeywordsEnglish": [
+      "Endocrinologi",
+      "endocrinology",
+      "diabetes",
+      "metabolic",
+      "institute",
+      "endocrinologi"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "institute",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/endocrinologi/Pages/endocrinology_diabetes_metabolic_institute.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-family-medicine",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Family Medicine",
+    "departmentHebrew": "רפואת המשפחה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/family_medicine/Pages/family_medicine_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "רפואת",
+      "המשפחה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Family",
+      "Medicine",
+      "family",
+      "medicine",
+      "department",
+      "beilinson"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/family_medicine/Pages/family_medicine_department_beilinson.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-genetics",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Genetics",
+    "departmentHebrew": "מרפאת אונקוגנטיקה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/genetics/Pages/genetics_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאת",
+      "אונקוגנטיקה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Genetics",
+      "oncogenetics",
+      "clinic",
+      "genetics"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/genetics/Pages/oncogenetics_clinic.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-imaging",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Imaging",
+    "departmentHebrew": "דימות הבטן והאגן",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "דימות",
+      "הבטן",
+      "והאגן"
+    ],
+    "departmentKeywordsEnglish": [
+      "Imaging",
+      "abdominal",
+      "pelvis",
+      "imaging"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/abdominal_pelvis_imaging.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-intensive-care",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Intensive Care",
+    "departmentHebrew": "מחלקה לטיפול נמרץ כללי והמכון לחקר התזונה - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/intensive-care/Pages/intensive_care_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "לטיפול",
+      "נמרץ",
+      "כללי",
+      "והמכון",
+      "לחקר",
+      "התזונה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Intensive",
+      "Care",
+      "intensive",
+      "care",
+      "beilinson"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/intensive-care/Pages/intensive_care_beilinson.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-liver",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Liver",
+    "departmentHebrew": "כבד",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/liver/Pages/liver_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "כבד"
+    ],
+    "departmentKeywordsEnglish": [
+      "Liver",
+      "national",
+      "liver",
+      "institute"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "institute",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/liver/Pages/national_liver_institute.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-nashimbeilinson",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Nashimbeilinson",
+    "departmentHebrew": "מרפאה לגינקולוגיה אונקולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nashimbeilinson/Pages/nashimbeilinson_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "לגינקולוגיה",
+      "אונקולוגית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Nashimbeilinson",
+      "oncology",
+      "gynaecology",
+      "clinic",
+      "nashimbeilinson"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nashimbeilinson/Pages/oncology_gynaecology_clinic.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-nephrology-and-hypertension",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Nephrology And Hypertension",
+    "departmentHebrew": "מערך לנפרולוגיה וליתר לחץ דם",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nephrology-and-hypertension/Pages/nephrology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "לנפרולוגיה",
+      "וליתר",
+      "לחץ"
+    ],
+    "departmentKeywordsEnglish": [
+      "Nephrology",
+      "Hypertension",
+      "nephrology",
+      "hypertension"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nephrology-and-hypertension/Pages/nephrology_and_hypertension.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-neurology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Neurology",
+    "departmentHebrew": "המחלקה לנוירולוגיה - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurology/Pages/Neurology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "המחלקה",
+      "לנוירולוגיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Neurology",
+      "neurology",
+      "dept",
+      "beilinson"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurology/Pages/neurology_dept_beilinson.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-neurosurgery",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Neurosurgery",
+    "departmentHebrew": "נוירוכירורגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurosurgery/Pages/neurosurgery_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "נוירוכירורגיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Neurosurgery",
+      "neurosurgery",
+      "dept"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/neurosurgery/Pages/neurosurgery_dept.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-nuclear-medicine",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Nuclear Medicine",
+    "departmentHebrew": "מכון לרפואה גרעינית - איזוטופים - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nuclear-medicine/Pages/nuclear_medicine_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "מכון",
+      "לרפואה",
+      "גרעינית",
+      "איזוטופים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Nuclear",
+      "Medicine",
+      "nuclear",
+      "medicine",
+      "inst",
+      "beilinson"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "institute",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/nuclear-medicine/Pages/nuclear_medicine_inst_beilinson.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-ophthalmology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מרפאות מערך עיניים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאות",
+      "עיניים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Ophthalmology",
+      "ophthalmology"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology_clinics.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-oral-and-maxillofacial-surgery",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Oral And Maxillofacial Surgery",
+    "departmentHebrew": "פה ולסת",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/oral-and-maxillofacial-surgery/Pages/oral_and_maxillofacial_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "ולסת"
+    ],
+    "departmentKeywordsEnglish": [
+      "Oral",
+      "Maxillofacial",
+      "Surgery",
+      "oral",
+      "maxillofacial",
+      "surgery",
+      "dept"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/oral-and-maxillofacial-surgery/Pages/oral_and_maxillofacial_surgery_dept.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-organ-transplantation",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Organ Transplantation",
+    "departmentHebrew": "מחלקת השתלות איברים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/organ-transplantation/Pages/organ_transplantation_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "מחלקת",
+      "השתלות",
+      "איברים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Organ",
+      "Transplantation",
+      "organ",
+      "transplantation",
+      "department"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/organ-transplantation/Pages/organ_transplantation_department.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-pathology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Pathology",
+    "departmentHebrew": "מערך לפתולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "לפתולוגיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Pathology",
+      "pathology"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-plastic-surgery-and-burns",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Plastic Surgery And Burns",
+    "departmentHebrew": "פלסטיקה וכוויות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/plastic-surgery-and-burns/Pages/plastic_surgery_and_burns_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "פלסטיקה",
+      "וכוויות"
+    ],
+    "departmentKeywordsEnglish": [
+      "Plastic",
+      "Surgery",
+      "Burns",
+      "plastic",
+      "surgery",
+      "dept",
+      "burns",
+      "unit"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/plastic-surgery-and-burns/Pages/plastic_surgery_dept_and_burns_unit.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-pulmonary",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Pulmonary",
+    "departmentHebrew": "המערך למחלות ריאה ולאלרגיה - בילינסון והשרון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pulmonary/Pages/pulmonary_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "המערך",
+      "למחלות",
+      "ריאה",
+      "ולאלרגיה",
+      "והשרון"
+    ],
+    "departmentKeywordsEnglish": [
+      "Pulmonary",
+      "pulmonary",
+      "allergies",
+      "institute"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pulmonary/Pages/pulmonary_and_allergies_institute.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-rheumatology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Rheumatology",
+    "departmentHebrew": "מרפאה לריאומטולוגיה - השרון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/rheumatology/Pages/rheumatology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "לריאומטולוגיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Rheumatology",
+      "rheumatology",
+      "clinic",
+      "Hasharon"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/rheumatology/Pages/rheumatology_clinic_Hasharon.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-surgery",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Surgery",
+    "departmentHebrew": "המרכז הרב תחומי לטיפול בהשמנה ובהשלכותיה – השרון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "המרכז",
+      "הרב",
+      "תחומי",
+      "לטיפול",
+      "בהשמנה",
+      "ובהשלכותיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Surgery",
+      "bariatric",
+      "surgery",
+      "center",
+      "hasharon"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "institute",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/bariatric_surgery_center_hasharon.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-urology",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Urology",
+    "departmentHebrew": "מרפאות לאורולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאות",
+      "לאורולוגיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Urology",
+      "urology"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology_clinics.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-vascular-surgery",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Vascular Surgery",
+    "departmentHebrew": "מחלקה לניתוחי כלי דם - בילינסון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/vascular-surgery/Pages/vascular_surgery_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "לניתוחי",
+      "כלי"
+    ],
+    "departmentKeywordsEnglish": [
+      "Vascular",
+      "Surgery",
+      "vascular",
+      "surgery",
+      "department"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": false,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/vascular-surgery/Pages/vascular_surgery_department.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-patient-information",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Allergy Immunology",
+    "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "אלרגיה",
+      "ואימונולוגיה",
+      "קלינית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Allergy",
+      "Immunology",
+      "allergy",
+      "immunology",
+      "clinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+    "discoveryConfidence": 0.95
+  },
+  {
+    "id": "rabin-course-for-foreign-doctors",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Allergy Immunology",
+    "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
+    "departmentKeywordsHebrew": [
+      "אלרגיה",
+      "ואימונולוגיה",
+      "קלינית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Allergy",
+      "Immunology",
+      "allergy",
+      "immunology",
+      "clinic",
+      "licensing",
+      "course",
+      "hasharon"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+    "discoveryConfidence": 0.85
+  },
+  {
+    "id": "rabin-patient-information-2",
+    "hospital": "Rabin Medical Center / Beilinson",
+    "hospitalSlug": "rabin",
+    "department": "Allergy Immunology",
+    "departmentHebrew": "אלרגיה ואימונולוגיה קלינית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "departmentKeywordsHebrew": [
+      "אלרגיה",
+      "ואימונולוגיה",
+      "קלינית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Allergy",
+      "Immunology",
+      "allergy",
+      "immunology",
+      "clinic",
+      "forums"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/allergy-immunology/Pages/allergy_immunology_clinic.aspx",
+    "discoveryConfidence": 0.85
+  },
+  {
+    "id": "carmel-children",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Children",
+    "departmentHebrew": "ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/children/Pages/children-team.aspx",
+    "departmentKeywordsHebrew": [
+      "ילדים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Children",
+      "childrens",
+      "children",
+      "team"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/children/Pages/childrens-dep.aspx",
+    "discoveryConfidence": 0.95,
+    "parserType": "clalitTeamPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-earnosethroatsurgery",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "EarNoseThroatSurgery",
+    "departmentHebrew": "אף אוזן גרון - ניתוחי ראש צוואר",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/EarNoseThroatSurgery/Pages/otolaryngology-team.aspx",
+    "departmentKeywordsHebrew": [
+      "אוזן",
+      "גרון",
+      "ניתוחי",
+      "ראש",
+      "צוואר"
+    ],
+    "departmentKeywordsEnglish": [
+      "EarNoseThroatSurgery",
+      "Otolaryngology",
+      "otolaryngology",
+      "team"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/EarNoseThroatSurgery/Pages/Otolaryngology.aspx",
+    "discoveryConfidence": 0.95,
+    "parserType": "clalitTeamPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-orthopedics",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Orthopedics",
+    "departmentHebrew": "אורתופדיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/orthopedics/Pages/orthopedics-team.aspx",
+    "departmentKeywordsHebrew": [
+      "אורתופדיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Orthopedics",
+      "DepartmentOrthopedics",
+      "orthopedics",
+      "team"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/orthopedics/Pages/DepartmentOrthopedics.aspx",
+    "discoveryConfidence": 0.95,
+    "parserType": "clalitTeamPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-premature",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Premature",
+    "departmentHebrew": "פגיה – טיפול נמרץ יילודים ופגים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Premature/Pages/premature-dep-team.aspx",
+    "departmentKeywordsHebrew": [
+      "פגיה",
+      "טיפול",
+      "נמרץ",
+      "יילודים",
+      "ופגים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Premature",
+      "premature",
+      "team"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Premature/pages/premature-dep.aspx",
+    "discoveryConfidence": 0.95,
+    "parserType": "clalitTeamPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-cardiology",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Cardiology",
+    "departmentHebrew": "טיפול נמרץ לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/CardiacIntensiveCare.aspx",
+    "departmentKeywordsHebrew": [
+      "טיפול",
+      "נמרץ"
+    ],
+    "departmentKeywordsEnglish": [
+      "Cardiology",
+      "CardiacIntensiveCare"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/CardiacIntensiveCare.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-cardiology-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Cardiology",
+    "departmentHebrew": "קרדיולוגיה אשפוזית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/Cardiology-Hospitalization-Department.aspx",
+    "departmentKeywordsHebrew": [
+      "קרדיולוגיה",
+      "אשפוזית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Cardiology",
+      "Hospitalization",
+      "Department"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/Cardiology-Hospitalization-Department.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-cardiology-3",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Cardiology",
+    "departmentHebrew": "מערך קרדיולוגי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/cardiology-systems.aspx",
+    "departmentKeywordsHebrew": [
+      "קרדיולוגי"
+    ],
+    "departmentKeywordsEnglish": [
+      "Cardiology",
+      "cardiology",
+      "systems"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/cardiology-systems.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-cardiology-4",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Cardiology",
+    "departmentHebrew": "צנתורים - לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/Catheterization-heart.aspx",
+    "departmentKeywordsHebrew": [
+      "צנתורים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Cardiology",
+      "Catheterization",
+      "heart"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/Catheterization-heart.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-cardiology-5",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Cardiology",
+    "departmentHebrew": "אקו ומבחני מאמץ",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/Echocardiography.aspx",
+    "departmentKeywordsHebrew": [
+      "אקו",
+      "ומבחני",
+      "מאמץ"
+    ],
+    "departmentKeywordsEnglish": [
+      "Cardiology",
+      "Echocardiography"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Cardiology/Pages/Echocardiography.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-chest-heart-surgery",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Chest Heart Surgery",
+    "departmentHebrew": "ניתוחי לב וחזה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Chest-Heart-Surgery/Pages/ChestHeartSurgery.aspx",
+    "departmentKeywordsHebrew": [
+      "ניתוחי",
+      "וחזה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Chest",
+      "Heart",
+      "Surgery",
+      "ChestHeartSurgery"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Chest-Heart-Surgery/Pages/ChestHeartSurgery.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-chest-heart-surgery-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Chest Heart Surgery",
+    "departmentHebrew": "ניתוחי ריאות וחזה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Chest-Heart-Surgery/Pages/sts.aspx",
+    "departmentKeywordsHebrew": [
+      "ניתוחי",
+      "ריאות",
+      "וחזה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Chest",
+      "Heart",
+      "Surgery"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Chest-Heart-Surgery/Pages/sts.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-children-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Children",
+    "departmentHebrew": "נוירולוגיה ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/children/Pages/ChildNeurologyUnit.aspx",
+    "departmentKeywordsHebrew": [
+      "נוירולוגיה",
+      "ילדים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Children",
+      "ChildNeurologyUnit"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/children/Pages/ChildNeurologyUnit.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-children-3",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Children",
+    "departmentHebrew": "מחלות ריאה וציסטיק פיברוזיס - CF",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/children/Pages/KidsLungUnit.aspx",
+    "departmentKeywordsHebrew": [
+      "מחלות",
+      "ריאה",
+      "וציסטיק",
+      "פיברוזיס"
+    ],
+    "departmentKeywordsEnglish": [
+      "Children",
+      "KidsLungUnit"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/children/Pages/KidsLungUnit.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-er-world",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Er World",
+    "departmentHebrew": "מיון כללי - מחלקה לרפואה דחופה כרמל",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/er-world/Pages/Emergency-Medicine.aspx",
+    "departmentKeywordsHebrew": [
+      "מיון",
+      "כללי",
+      "לרפואה",
+      "דחופה",
+      "כרמל"
+    ],
+    "departmentKeywordsEnglish": [
+      "World",
+      "Emergency",
+      "Medicine"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/er-world/Pages/Emergency-Medicine.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-er-world-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Er World",
+    "departmentHebrew": "מיון ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/er-world/Pages/Er-Children.aspx",
+    "departmentKeywordsHebrew": [
+      "מיון",
+      "ילדים"
+    ],
+    "departmentKeywordsEnglish": [
+      "World",
+      "Children"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/er-world/Pages/Er-Children.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-eyes",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Eyes",
+    "departmentHebrew": "מרפאת אובאיטיס ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Eyes/Pages/childrens-uveitis-clinic.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאת",
+      "אובאיטיס",
+      "ילדים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Eyes",
+      "childrens",
+      "uveitis",
+      "clinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Eyes/Pages/childrens-uveitis-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-eyes-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Eyes",
+    "departmentHebrew": "עיניים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Eyes/Pages/Eyes-dep.aspx",
+    "departmentKeywordsHebrew": [
+      "עיניים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Eyes"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Eyes/Pages/Eyes-dep.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-eyes-3",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Eyes",
+    "departmentHebrew": "מרפאת אוקולופלסטיקה (פלסטיקה של העפעפיים, דרכי דמעות, ארובת העין)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Eyes/Pages/oculoplasty-clinic.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאת",
+      "אוקולופלסטיקה",
+      "פלסטיקה",
+      "העפעפיים",
+      "דרכי",
+      "דמעות",
+      "ארובת",
+      "העין"
+    ],
+    "departmentKeywordsEnglish": [
+      "Eyes",
+      "oculoplasty",
+      "clinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Eyes/Pages/oculoplasty-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-eyes-4",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Eyes",
+    "departmentHebrew": "מרפאת אובאיטיס",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Eyes/Pages/uveitis-clinic.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאת",
+      "אובאיטיס"
+    ],
+    "departmentKeywordsEnglish": [
+      "Eyes",
+      "uveitis",
+      "clinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Eyes/Pages/uveitis-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-internal-medicine",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Internal Medicine",
+    "departmentHebrew": "חטיבה פנימית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Internal-medicine/Pages/Internal-Division.aspx",
+    "departmentKeywordsHebrew": [
+      "חטיבה",
+      "פנימית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Internal",
+      "Medicine",
+      "Division"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Internal-medicine/Pages/Internal-Division.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-internal-medicine-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Internal Medicine",
+    "departmentHebrew": "פנימית א'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Internal-medicine/Pages/InternalMedicineA.aspx",
+    "departmentKeywordsHebrew": [
+      "פנימית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Internal",
+      "Medicine",
+      "InternalMedicineA"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Internal-medicine/Pages/InternalMedicineA.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-internal-medicine-3",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Internal Medicine",
+    "departmentHebrew": "פנימית ב'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Internal-medicine/Pages/InternalMedicineB.aspx",
+    "departmentKeywordsHebrew": [
+      "פנימית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Internal",
+      "Medicine",
+      "InternalMedicineB"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Internal-medicine/Pages/InternalMedicineB.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-internal-medicine-4",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Internal Medicine",
+    "departmentHebrew": "פנימית ג'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Internal-medicine/Pages/InternalMedicineC.aspx",
+    "departmentKeywordsHebrew": [
+      "פנימית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Internal",
+      "Medicine",
+      "InternalMedicineC"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Internal-medicine/Pages/InternalMedicineC.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-nephrology-hypertension",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Nephrology Hypertension",
+    "departmentHebrew": "נפרולוגיה ויתר לחץ דם ודיאליזה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/nephrology-hypertension/Pages/NephrologyHypertension.aspx",
+    "departmentKeywordsHebrew": [
+      "נפרולוגיה",
+      "ויתר",
+      "לחץ",
+      "ודיאליזה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Nephrology",
+      "Hypertension",
+      "NephrologyHypertension"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/nephrology-hypertension/Pages/NephrologyHypertension.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-neurology-world",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Neurology World",
+    "departmentHebrew": "מרפאה למחלות נוירומוסקולריות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Neurology-world/Pages/MuscularNeuroDiseasesClinic.aspx",
+    "departmentKeywordsHebrew": [
+      "למחלות",
+      "נוירומוסקולריות"
+    ],
+    "departmentKeywordsEnglish": [
+      "Neurology",
+      "World",
+      "MuscularNeuroDiseasesClinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Neurology-world/Pages/MuscularNeuroDiseasesClinic.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-neurology-world-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Neurology World",
+    "departmentHebrew": "נוירולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Neurology-world/Pages/Neurology.aspx",
+    "departmentKeywordsHebrew": [
+      "נוירולוגיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Neurology",
+      "World"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Neurology-world/Pages/Neurology.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-neurology-world-3",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Neurology World",
+    "departmentHebrew": "מרפאת פרקינסון והפרעות בתנועה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Neurology-world/Pages/ParkinsonClinic.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאת",
+      "פרקינסון",
+      "והפרעות",
+      "בתנועה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Neurology",
+      "World",
+      "ParkinsonClinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Neurology-world/Pages/ParkinsonClinic.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-newborns-infants",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Newborns Infants",
+    "departmentHebrew": "יילודים - תינוקות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Newborns-Infants/Pages/Newborns-Infants.aspx",
+    "departmentKeywordsHebrew": [
+      "יילודים",
+      "תינוקות"
+    ],
+    "departmentKeywordsEnglish": [
+      "Newborns",
+      "Infants"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Newborns-Infants/Pages/Newborns-Infants.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "מחלות צוואר הרחם ודרכי מין תחתונות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Cervical.aspx",
+    "departmentKeywordsHebrew": [
+      "מחלות",
+      "צוואר",
+      "הרחם",
+      "ודרכי",
+      "מין",
+      "תחתונות"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Cervical"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Cervical.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "גינקולוגיה אונקולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Department-of-Gynecology-and-Surgical-Oncology.aspx",
+    "departmentKeywordsHebrew": [
+      "גינקולוגיה",
+      "אונקולוגית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Department",
+      "Surgical",
+      "Oncology"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Department-of-Gynecology-and-Surgical-Oncology.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-3",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "מרכז רב-תחומי לטיפול באנדומטריוזיס",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Endometriosis-unit.aspx",
+    "departmentKeywordsHebrew": [
+      "תחומי",
+      "לטיפול",
+      "באנדומטריוזיס"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Endometriosis",
+      "unit"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "institute",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Endometriosis-unit.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-4",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "מיון נשים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/ER-Women.aspx",
+    "departmentKeywordsHebrew": [
+      "מיון",
+      "נשים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Women"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/ER-Women.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-5",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "אולטרסאונד גינקולוגי ומיילדותי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Gynecology-Ultrasound.aspx",
+    "departmentKeywordsHebrew": [
+      "אולטרסאונד",
+      "גינקולוגי",
+      "ומיילדותי"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Ultrasound"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Gynecology-Ultrasound.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-6",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "כירורגיה זעיר פולשנית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Minimally-invasive-surgery-unit.aspx",
+    "departmentKeywordsHebrew": [
+      "כירורגיה",
+      "זעיר",
+      "פולשנית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Minimally",
+      "invasive",
+      "surgery",
+      "unit"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unit",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Minimally-invasive-surgery-unit.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-7",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "אורו-גינקולוגיה ורצפת אגן",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Surgery-Pelvic-Restoration-Unit.aspx",
+    "departmentKeywordsHebrew": [
+      "אורו",
+      "גינקולוגיה",
+      "ורצפת",
+      "אגן"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Surgery",
+      "Pelvic",
+      "Restoration",
+      "Unit"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unit",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Surgery-Pelvic-Restoration-Unit.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-8",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "מחלקת אשפוז נשים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Women-Department.aspx",
+    "departmentKeywordsHebrew": [
+      "מחלקת",
+      "אשפוז",
+      "נשים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Women",
+      "Department"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Gynecology/Pages/Women-Department.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-9",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "חדר לידה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Birth/Pages/Delivery-Room.aspx",
+    "departmentKeywordsHebrew": [
+      "חדר",
+      "לידה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Delivery",
+      "Room"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Birth/Pages/Delivery-Room.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-10",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "מיון יולדות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Pregnant-and-near-birth/Pages/Emergency-Gynecology.aspx",
+    "departmentKeywordsHebrew": [
+      "מיון",
+      "יולדות"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Emergency"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Pregnant-and-near-birth/Pages/Emergency-Gynecology.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-11",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "הריון בסיכון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Pregnant-and-near-birth/Pages/Risk-Pregnancy.aspx",
+    "departmentKeywordsHebrew": [
+      "הריון",
+      "בסיכון"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Risk",
+      "Pregnancy"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Pregnant-and-near-birth/Pages/Risk-Pregnancy.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-12",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "פוריות והפריה חוץ גופית – IVF",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Towards-pregnancy/In-Vitro-Fertilization/Pages/In-Vitro-Fertilization.aspx",
+    "departmentKeywordsHebrew": [
+      "פוריות",
+      "והפריה",
+      "חוץ",
+      "גופית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Vitro",
+      "Fertilization"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Towards-pregnancy/In-Vitro-Fertilization/Pages/In-Vitro-Fertilization.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-obstetrics-and-gynecology-13",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Obstetrics And Gynecology",
+    "departmentHebrew": "בנק הזרע ומעבדת הזרע",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Towards-pregnancy/In-Vitro-Fertilization/Pages/Sperm-Bank.aspx",
+    "departmentKeywordsHebrew": [
+      "בנק",
+      "הזרע",
+      "ומעבדת"
+    ],
+    "departmentKeywordsEnglish": [
+      "Obstetrics",
+      "Gynecology",
+      "Sperm",
+      "Bank"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Obstetrics-and-Gynecology/Pregnancy-and-Birth/Towards-pregnancy/In-Vitro-Fertilization/Pages/Sperm-Bank.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-anesthesia-world",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Anesthesia World",
+    "departmentHebrew": "הרדמה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/anesthesia-world.aspx",
+    "departmentKeywordsHebrew": [
+      "הרדמה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Anesthesia",
+      "World",
+      "anesthesia",
+      "world"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/anesthesia-world.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-bloodvessel-unit",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "BloodVessel Unit",
+    "departmentHebrew": "כלי דם",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/BloodVessel-unit.aspx",
+    "departmentKeywordsHebrew": [
+      "כלי"
+    ],
+    "departmentKeywordsEnglish": [
+      "BloodVessel",
+      "Unit",
+      "unit"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unit",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/BloodVessel-unit.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-clinicalpharmacologyandtoxicology",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "ClinicalPharmacologyAndToxicology",
+    "departmentHebrew": "פרמקולוגיה וטוקסיקולוגיה קלינית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/ClinicalPharmacologyAndToxicology.aspx",
+    "departmentKeywordsHebrew": [
+      "פרמקולוגיה",
+      "וטוקסיקולוגיה",
+      "קלינית"
+    ],
+    "departmentKeywordsEnglish": [
+      "ClinicalPharmacologyAndToxicology"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/ClinicalPharmacologyAndToxicology.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-geriatrics",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Geriatrics",
+    "departmentHebrew": "גריאטריה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/geriatrics.aspx",
+    "departmentKeywordsHebrew": [
+      "גריאטריה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Geriatrics",
+      "geriatrics"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/geriatrics.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-infectiousdiseasesunit",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "InfectiousDiseasesUnit",
+    "departmentHebrew": "מניעת זיהומים ומחלות זיהומיות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/InfectiousDiseasesUnit.aspx",
+    "departmentKeywordsHebrew": [
+      "מניעת",
+      "זיהומים",
+      "ומחלות",
+      "זיהומיות"
+    ],
+    "departmentKeywordsEnglish": [
+      "InfectiousDiseasesUnit"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/InfectiousDiseasesUnit.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-intensive-care",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Intensive Care",
+    "departmentHebrew": "טיפול נמרץ כללי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/Intensive-care.aspx",
+    "departmentKeywordsHebrew": [
+      "טיפול",
+      "נמרץ",
+      "כללי"
+    ],
+    "departmentKeywordsEnglish": [
+      "Intensive",
+      "Care",
+      "care"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/Intensive-care.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-nephrologyhypertension",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "NephrologyHypertension",
+    "departmentHebrew": "נפרולוגיה ויתר לחץ דם ודיאליזה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/NephrologyHypertension.aspx",
+    "departmentKeywordsHebrew": [
+      "נפרולוגיה",
+      "ויתר",
+      "לחץ",
+      "ודיאליזה"
+    ],
+    "departmentKeywordsEnglish": [
+      "NephrologyHypertension"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/NephrologyHypertension.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-operating-rooms-and-recovery",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Operating Rooms And Recovery",
+    "departmentHebrew": "חדרי ניתוח והתאוששות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/Operating-rooms-and-recovery.aspx",
+    "departmentKeywordsHebrew": [
+      "חדרי",
+      "ניתוח",
+      "והתאוששות"
+    ],
+    "departmentKeywordsEnglish": [
+      "Operating",
+      "Rooms",
+      "Recovery",
+      "rooms",
+      "recovery"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/Operating-rooms-and-recovery.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-pain-clinic",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Pain Clinic",
+    "departmentHebrew": "רפואת כאב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/pain-clinic.aspx",
+    "departmentKeywordsHebrew": [
+      "רפואת",
+      "כאב"
+    ],
+    "departmentKeywordsEnglish": [
+      "Pain",
+      "Clinic",
+      "pain",
+      "clinic"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/pain-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-palliative-service",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Palliative Service",
+    "departmentHebrew": "שירות פליאטיבי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/palliative-service.aspx",
+    "departmentKeywordsHebrew": [
+      "שירות",
+      "פליאטיבי"
+    ],
+    "departmentKeywordsEnglish": [
+      "Palliative",
+      "Service",
+      "palliative",
+      "service"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "service",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/palliative-service.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-plastic-surgery",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Plastic Surgery",
+    "departmentHebrew": "כירורגיה פלסטית - ניתוחים פלסטיים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/Plastic-Surgery.aspx",
+    "departmentKeywordsHebrew": [
+      "כירורגיה",
+      "פלסטית",
+      "ניתוחים",
+      "פלסטיים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Plastic",
+      "Surgery"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/Plastic-Surgery.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-polysomnography-sleeplaboratory",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Polysomnography SleepLaboratory",
+    "departmentHebrew": "מעבדת שינה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/Polysomnography-SleepLaboratory.aspx",
+    "departmentKeywordsHebrew": [
+      "מעבדת",
+      "שינה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Polysomnography",
+      "SleepLaboratory"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/Polysomnography-SleepLaboratory.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-pre-surgery",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Pre Surgery",
+    "departmentHebrew": "מרפאת טרום ניתוח והרדמה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/pre-surgery.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאת",
+      "טרום",
+      "ניתוח",
+      "והרדמה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Surgery",
+      "surgery"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/pre-surgery.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-rheumatology",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Rheumatology",
+    "departmentHebrew": "ראומטולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/rheumatology.aspx",
+    "departmentKeywordsHebrew": [
+      "ראומטולוגיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Rheumatology",
+      "rheumatology"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/rheumatology.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-surgicaljawsmouth",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "SurgicalJawsMouth",
+    "departmentHebrew": "כירורגיה פה ולסתות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/SurgicalJawsMouth.aspx",
+    "departmentKeywordsHebrew": [
+      "כירורגיה",
+      "ולסתות"
+    ],
+    "departmentKeywordsEnglish": [
+      "SurgicalJawsMouth"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/SurgicalJawsMouth.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-urology",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Urology",
+    "departmentHebrew": "אורולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/urology/Pages/urology-team.aspx",
+    "departmentKeywordsHebrew": [
+      "אורולוגיה"
+    ],
+    "departmentKeywordsEnglish": [
+      "Urology",
+      "default",
+      "urology",
+      "team"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/urology/Pages/default.aspx",
+    "discoveryConfidence": 0.95,
+    "parserType": "clalitTeamPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-premature-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Premature",
+    "departmentHebrew": "מרפאת התפתחות ומעקב פגים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Premature/Pages/premature-babies.aspx",
+    "departmentKeywordsHebrew": [
+      "מרפאת",
+      "התפתחות",
+      "ומעקב",
+      "פגים"
+    ],
+    "departmentKeywordsEnglish": [
+      "Premature",
+      "premature",
+      "babies"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Premature/Pages/premature-babies.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-surgical-world",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Surgical World",
+    "departmentHebrew": "מרפאה רב מקצועית לטיפול כירורגי בהשמנת יתר",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Surgical-world/Pages/AdvancedLaparoscopicSurgeryUnit.aspx",
+    "departmentKeywordsHebrew": [
+      "מקצועית",
+      "לטיפול",
+      "כירורגי",
+      "בהשמנת",
+      "יתר"
+    ],
+    "departmentKeywordsEnglish": [
+      "Surgical",
+      "World",
+      "AdvancedLaparoscopicSurgeryUnit"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "clinic",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Surgical-world/Pages/AdvancedLaparoscopicSurgeryUnit.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-surgical-world-2",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Surgical World",
+    "departmentHebrew": "מחלקה כירורגית א'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Surgical-world/Pages/SurgicalA.aspx",
+    "departmentKeywordsHebrew": [
+      "כירורגית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Surgical",
+      "World",
+      "SurgicalA"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "coreDepartment",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Surgical-world/Pages/SurgicalA.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  },
+  {
+    "id": "carmel-surgical-world-3",
+    "hospital": "Carmel Medical Center",
+    "hospitalSlug": "carmel",
+    "department": "Surgical World",
+    "departmentHebrew": "כירורגית ב'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Surgical-world/Pages/SurgicalB.aspx",
+    "departmentKeywordsHebrew": [
+      "כירורגית"
+    ],
+    "departmentKeywordsEnglish": [
+      "Surgical",
+      "World",
+      "SurgicalB"
+    ],
+    "allowedCrossUnits": [],
+    "pageType": "unknown",
+    "needsReview": true,
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Surgical-world/Pages/SurgicalB.aspx",
+    "discoveryConfidence": 0.9,
+    "parserType": "inlineStaffPage",
+    "allowSmallDepartment": true,
+    "minSpecialtyEvidenceCoverage": 0,
+    "maxMissingProfileUrlCoverage": 1
+  }
+]
