@@ -35,6 +35,7 @@
     "discover:clalit-hospital": "tsx scripts/discover-clalit-hospital-departments.ts",
     "compare:clalit-hospital-discovery": "tsx scripts/compare-clalit-hospital-discovery.ts",
     "review:clalit-rabin-discovery": "tsx scripts/review-clalit-rabin-discovery.ts",
+    "review:clalit-soroka-discovery": "tsx scripts/review-clalit-soroka-discovery.ts",
     "import:reviewed-clalit-configs": "tsx scripts/import-reviewed-clalit-configs.ts",
     "import:all-clalit-rabin-discovery": "tsx scripts/import-all-clalit-rabin-discovery.ts",
     "import:clalit-hospital-discovery": "tsx scripts/import-all-clalit-hospital-discovery.ts",
