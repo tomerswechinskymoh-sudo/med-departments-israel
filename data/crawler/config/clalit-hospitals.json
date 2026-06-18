@@ -17,5 +17,16 @@
     "departmentPathPrefixes": [
       "/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/"
     ]
+  },
+  {
+    "hospitalSlug": "soroka",
+    "hospitalName": "Soroka Medical Center",
+    "hospitalHebrew": "המרכז הרפואי האוניברסיטאי סורוקה",
+    "departmentsIndexUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/default.aspx",
+    "discoverInlineStaff": true,
+    "allowTextOnlyStaffLinks": true,
+    "departmentPathPrefixes": [
+      "/soroka/he/med-units/"
+    ]
   }
 ]

@@ -1,0 +1,2966 @@
+[
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקה לכירורגיית כלי-דם",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery.aspx",
+    "discoveryConfidence": 0.95,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery.aspx",
+      "anchorText=מחלקה לכירורגיית כלי־דם - צוות המחלקה",
+      "href=/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx",
+      "confidenceRule=0.95"
+    ],
+    "needsReview": false,
+    "patternType": "staffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-anesthesiology-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Anesthesiology Division",
+    "departmentHebrew": "היחידה לטיפול בכאב חריף",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/acute-pain-treatment-unit.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/acute-pain-treatment-unit.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/acute-pain-treatment-unit.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=הצוות הרפואי",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-anesthesiology-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Anesthesiology Division",
+    "departmentHebrew": "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+      "inlineStaffEntries=15",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-anesthesiology-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Anesthesiology Division",
+    "departmentHebrew": "מרפאת כאב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/pain-clin.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/pain-clin.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/pain-clin.aspx",
+      "inlineStaffEntries=10",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "קרדיולוגיה התערבותית (צנתורים)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+      "inlineStaffEntries=16",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "מרפאות קרדיולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-clin.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-clin.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-clin.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "inlineStaffEntries=10",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "יחידת אקו לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/echo.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/echo.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/echo.aspx",
+      "inlineStaffEntries=16",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "מרפאת אי-ספיקת לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/heart-fail-clin.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/heart-fail-clin.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/heart-fail-clin.aspx",
+      "inlineStaffEntries=6",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "דימות הלב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/heart-imaging.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/heart-imaging.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/heart-imaging.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "שיקום לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/heart-rehabilitation.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/heart-rehabilitation.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/heart-rehabilitation.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "טיפול-נמרץ לב וטיפול-נמרץ לב ביניים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/iccu.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/iccu.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/iccu.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "קרדיולוגיית ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/ped-cardio.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/ped-cardio.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/ped-cardio.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "מרפאת טרום צנתור",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/pre.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/pre.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/pre.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "מבחני מאמץ",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/stress-test.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/stress-test.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/stress-test.aspx",
+      "inlineStaffEntries=3",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-imaging",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Imaging",
+    "departmentHebrew": "טומוגרפיה ממוחשבת –CT",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/imaging/Pages/ct.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/imaging/Pages/ct.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/imaging/Pages/ct.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=הצוות הרפואי",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-imaging",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Imaging",
+    "departmentHebrew": "הדמייה בתהודה מגנטית - MRI",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/imaging/Pages/mri.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/imaging/Pages/mri.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/imaging/Pages/mri.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=צוות רפואי",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאת אלרגיה (למבוגרים)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/allergyclinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/allergyclinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/allergyclinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאת יתר לחץ-דם",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/bloodpressure-mirpaa.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/bloodpressure-mirpaa.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/bloodpressure-mirpaa.aspx",
+      "inlineStaffEntries=10",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאת עור ומין",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatoclinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatoclinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatoclinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקת עור ומין",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatology.aspx",
+      "inlineStaffEntries=10",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאת סוכרת",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/diabetesclinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/diabetesclinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/diabetesclinic.aspx",
+      "inlineStaffEntries=13",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאה אנדוקרינולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/endoclinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/endoclinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/endoclinic.aspx",
+      "inlineStaffEntries=20",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מכון גסטרואנטרולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "inlineStaffEntries=38",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקה גריאטרית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/geriatrics.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/geriatrics.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/geriatrics.aspx",
+      "inlineStaffEntries=14",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאה לאימונולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/immunology-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/immunology-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/immunology-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "המכון למחלות זיהומיות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/infectdiseasinst.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/infectdiseasinst.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/infectdiseasinst.aspx",
+      "inlineStaffEntries=16",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקה פנימית א'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx",
+      "inlineStaffEntries=11",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקה פנימית ב'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-b.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-b.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-b.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקה פנימית ג'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-c.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-c.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-c.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקה פנימית ד'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-d.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-d.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-d.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "אשפוז-יום פנימי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-day-care.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-day-care.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-day-care.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקה פנימית ה'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-e.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-e.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-e.aspx",
+      "inlineStaffEntries=10",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקה פנימית ו'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-f.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-f.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-f.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקה פנימית ח'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-h.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-h.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-h.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "היחידה לטיפול-נמרץ פנימי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/micu.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/micu.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/micu.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאה נוירולוגית - מרפאת הפרעות בתנועה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/movement-dis-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/movement-dis-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/movement-dis-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאה נפרולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/nephroclinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/nephroclinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/nephroclinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקת נפרולוגיה ויתר לחץ דם",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/nephrology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/nephrology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/nephrology.aspx",
+      "inlineStaffEntries=14",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאה נוירולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neuroclinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neuroclinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neuroclinic.aspx",
+      "inlineStaffEntries=16",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "צנתור מוח - בדיקת אנגיוגרפיה מוחית אבחנתית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neurology-angiography.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neurology-angiography.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neurology-angiography.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=צוות רפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאה נוירולוגית - מרפאת כאבי ראש",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neurology-headache.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neurology-headache.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neurology-headache.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מחלקה נוירולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neurology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neurology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/neurology.aspx",
+      "inlineStaffEntries=18",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מכון לרפואת ריאות",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/pulmonology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/pulmonology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/pulmonology.aspx",
+      "inlineStaffEntries=18",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-medicine-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Medicine Division",
+    "departmentHebrew": "מרפאה ראומטולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/rheumatoclinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/rheumatoclinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/rheumatoclinic.aspx",
+      "inlineStaffEntries=6",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "חדר לידה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/delivery-rooms.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/delivery-rooms.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/delivery-rooms.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=הצוות הרפואי",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מחלקת נשים א'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-a.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-a.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-a.aspx",
+      "inlineStaffEntries=38",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מחלקת נשים ב'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-b.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-b.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-b.aspx",
+      "inlineStaffEntries=18",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מרפאות החוץ למיילדות וגינקולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-clin.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-clin.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-clin.aspx",
+      "inlineStaffEntries=34",
+      "sectionHeadings=רופאים בכירים",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "אשפוז-יום נשים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-day-care.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-day-care.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-day-care.aspx",
+      "inlineStaffEntries=6",
+      "sectionHeadings=צוות המחלקה",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "היחידה לגינקולוגיה אונקולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-oncolog.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-oncolog.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/gyn-oncolog.aspx",
+      "inlineStaffEntries=6",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מרפאת הריון בסיכון גבוה - HRP",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/high-risk-pregnancy.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/high-risk-pregnancy.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/high-risk-pregnancy.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "היחידה לפוריות והפריה חוץ-גופית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+      "inlineStaffEntries=14",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "המכון לאולטרה-סאונד גינקולוגי ומיילדותי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ob-gyn-us-unit.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ob-gyn-us-unit.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ob-gyn-us-unit.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מחלקת יולדות א'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-a.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-a.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-a.aspx",
+      "inlineStaffEntries=6",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מחלקת יולדות ב'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-b.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-b.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-b.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מחלקת יולדות ג'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-c.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-c.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-c.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=צוות המחלקה",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מחלקת יולדות ד'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-d.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-d.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-d.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=צוות המחלקה",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מיון יולדות וחדר לידה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-ed.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-ed.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-ed.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מחלקת יולדות ה' - מחלקת \"אפס הפרדה\"",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-he.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-he.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/obstetrics-he.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=צוות המחלקה",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ob-gyn-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ob Gyn Division",
+    "departmentHebrew": "מרפאה לאיבודי הריון חוזרים (הפלות חוזרות)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/rec-preg-loss-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/rec-preg-loss-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/rec-preg-loss-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-oncology-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Oncology Inst",
+    "departmentHebrew": "מרפאת המטולוגיה וקרישה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/coag-hema-clin.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/coag-hema-clin.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/coag-hema-clin.aspx",
+      "inlineStaffEntries=10",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-oncology-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Oncology Inst",
+    "departmentHebrew": "מחלקה המטולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hametology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hametology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hametology.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-oncology-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Oncology Inst",
+    "departmentHebrew": "אשפוז-יום המטולוגי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hema-day-care.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hema-day-care.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hema-day-care.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-oncology-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Oncology Inst",
+    "departmentHebrew": "מרפאה המטואונקולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hemato-onco-clin.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hemato-onco-clin.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hemato-onco-clin.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-oncology-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Oncology Inst",
+    "departmentHebrew": "אשפוז יום אונקולוגי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/onco-day-care1.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/onco-day-care1.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/onco-day-care1.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-oncology-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Oncology Inst",
+    "departmentHebrew": "יחידת קרינה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/onco-radiation.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/onco-radiation.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/onco-radiation.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-oncology-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Oncology Inst",
+    "departmentHebrew": "מחלקה אונקולוגית - מחלקת אשפוז",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/oncology-ward.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/oncology-ward.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/oncology-ward.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מרפאת קרנית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/cornea-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/cornea-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/cornea-clinic.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מרפאת גלאוקומה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/glaucoma-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/glaucoma-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/glaucoma-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מרפאת לייזר עיניים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/laser-eye-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/laser-eye-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/laser-eye-clinic.aspx",
+      "inlineStaffEntries=10",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מרפאת נוירו-אופתלמולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/neuro-ophthalmology-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/neuro-ophthalmology-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/neuro-ophthalmology-clinic.aspx",
+      "inlineStaffEntries=3",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מרפאת אוקולופלסטיקה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/oculoplasty-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/oculoplasty-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/oculoplasty-clinic.aspx",
+      "inlineStaffEntries=6",
+      "sectionHeadings=צוות רפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מחלקת עיניים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/ophthalmology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/ophthalmology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/ophthalmology.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=צוות המחלקה",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מרפאת ילדים ופזילה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/pediatric-eye-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/pediatric-eye-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/pediatric-eye-clinic.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "יחידת רשתית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/retinal-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/retinal-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/retinal-clinic.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מרפאת אובאיטיס",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/uveitis-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/uveitis-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/uveitis-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=צוות רפואי",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-bloodbank",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "BloodBank",
+    "departmentHebrew": "מכון בנק הדם ושירותי אפרזיס",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/BloodBank.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/BloodBank.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/BloodBank.aspx",
+      "inlineStaffEntries=3",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-er",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Er",
+    "departmentHebrew": "מלר\"ד (מיון כללי)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "inlineStaffEntries=38",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-genetic-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Genetic Inst",
+    "departmentHebrew": "מכון לגנטיקה של האדם",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-infect-prevent",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Infect Prevent",
+    "departmentHebrew": "מניעת זיהומים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/infect-prevent.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/infect-prevent.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/infect-prevent.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-isotop-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Isotop Inst",
+    "departmentHebrew": "מכון לרפואה גרעינית ודימות מולקולרי (איזוטופים)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/isotop-inst.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/isotop-inst.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/isotop-inst.aspx",
+      "inlineStaffEntries=9",
+      "sectionHeadings=צוות המכון כולל רופאים מומחים, אחות, טכנולוגים רפואיים ומזכירות | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-isotop-pet-ct",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Isotop Pet Ct",
+    "departmentHebrew": "מכון לרפואה גרעינית - מיפוי PET-CT",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/isotop-pet-ct.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/isotop-pet-ct.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/isotop-pet-ct.aspx",
+      "inlineStaffEntries=9",
+      "sectionHeadings=הצוות הרפואי | צוות המכון כולל רופאים מומחים, אחות, טכנולוגים רפואיים ומזכירות | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-neurology-angiography",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Neurology Angiography",
+    "departmentHebrew": "צנתור מוח - בדיקת אנגיוגרפיה מוחית אבחנתית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/neurology-angiography.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/neurology-angiography.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/neurology-angiography.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=צוות רפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pathology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pathology",
+    "departmentHebrew": "המכון לפתולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/pathology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/pathology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/pathology.aspx",
+      "inlineStaffEntries=17",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-rehabilitation",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Rehabilitation",
+    "departmentHebrew": "מחלקת שיקום",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/rehabilitation.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/rehabilitation.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/rehabilitation.aspx",
+      "inlineStaffEntries=11",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-sleep-lab",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Sleep Lab",
+    "departmentHebrew": "יחידה לחקר ולאבחון הפרעות שינה (מעבדת שינה)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/sleep--lab.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/sleep--lab.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/sleep--lab.aspx",
+      "inlineStaffEntries=3",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-rooms",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Rooms",
+    "departmentHebrew": "מערך חדרי ניתוח",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/surgery-rooms.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/surgery-rooms.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/surgery-rooms.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאת עור ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/child-dermato-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/child-dermato-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/child-dermato-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מחלקת פגים ויילודים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/neonatology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/neonatology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/neonatology.aspx",
+      "inlineStaffEntries=21",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאה לאלרגיה בילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-allergy-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-allergy-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-allergy-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "יחידת ברונכוסקופיה גמישה בילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-broncho-center.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-broncho-center.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-broncho-center.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=רופאים בכירים",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "אשפוז-יום ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-day-care.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-day-care.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-day-care.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מלר\"ד ילדים (מיון ילדים)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-ed.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-ed.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-ed.aspx",
+      "inlineStaffEntries=16",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאת סוכרת ואנדוקרינולוגית ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-endo-diabet-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-endo-diabet-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-endo-diabet-clinic.aspx",
+      "inlineStaffEntries=14",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאת גסטרואנטרולוגיה של הילד",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-endoscopy-center.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-endoscopy-center.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-endoscopy-center.aspx",
+      "inlineStaffEntries=10",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מחלקת המטואונקולוגיית ילדים - אשפוז ואשפוז-יום",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-hemato-onco-div.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-hemato-onco-div.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-hemato-onco-div.aspx",
+      "inlineStaffEntries=18",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאה למחלות זיהומיות בילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-infections-cinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-infections-cinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-infections-cinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=הצוות הרפואי",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "היחידה למחלות זיהומיות בילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-infections.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-infections.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-infections.aspx",
+      "inlineStaffEntries=11",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאה למחלות מטבוליות של ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-metabolic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-metabolic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-metabolic.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאה לנפרולוגיה של ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-nephro-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-nephro-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-nephro-clinic.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "היחידה לנוירולוגיה של ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-neuro-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-neuro-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-neuro-clinic.aspx",
+      "inlineStaffEntries=6",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאה ראומטולוגית ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-rheumato-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-rheumato-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-rheumato-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאה להפרעות שינה בילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-sleep-dis-center.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-sleep-dis-center.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-sleep-dis-center.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מחלקת ילדים א'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pediatrics-a.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pediatrics-a.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pediatrics-a.aspx",
+      "inlineStaffEntries=16",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מחלקת ילדים ב'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pediatrics-b.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pediatrics-b.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pediatrics-b.aspx",
+      "inlineStaffEntries=22",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מחלקת ילדים ד'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pediatrics-d.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pediatrics-d.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pediatrics-d.aspx",
+      "inlineStaffEntries=20",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מחלקה לכירורגיית ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pedsurg.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pedsurg.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pedsurg.aspx",
+      "inlineStaffEntries=13",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "היחידה לטיפול-נמרץ ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/picu.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/picu.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/picu.aspx",
+      "inlineStaffEntries=7",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "היחידה לטיפול נמרץ ביילוד ובפג",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/premature-treatment.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/premature-treatment.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/premature-treatment.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאה למחלות ריאה בילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pulmun-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pulmun-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/pulmun-clinic.aspx",
+      "inlineStaffEntries=10",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-psychiatry",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Psychiatry",
+    "departmentHebrew": "היחידה לטיפול-יום פסיכיאטרי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-day-care.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-day-care.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-day-care.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-psychiatry",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Psychiatry",
+    "departmentHebrew": "המחלקה לטיפול בהפרעות אכילה בילדים ונוער",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-eating-dis.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-eating-dis.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-eating-dis.aspx",
+      "inlineStaffEntries=7",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-psychiatry",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Psychiatry",
+    "departmentHebrew": "היחידה לפסיכיאטריה לגיל הרך",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-infancy.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-infancy.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-infancy.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-psychiatry",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Psychiatry",
+    "departmentHebrew": "מרפאת נוירו-פסיכיאטריה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-neuro-psych.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-neuro-psych.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-neuro-psych.aspx",
+      "inlineStaffEntries=5",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-psychiatry",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Psychiatry",
+    "departmentHebrew": "פסיכיאטריה לילדים ונוער",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-ped.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-ped.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psyc-ped.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-psychiatry",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Psychiatry",
+    "departmentHebrew": "מרפאת פסיכיאטריה למבוגרים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psychiatry-home-page.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psychiatry-home-page.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/psychiatry-home-page.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-psychiatry",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Psychiatry",
+    "departmentHebrew": "המרפאה לטיפול ושיקם מיני",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/sexual-therapy-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/sexual-therapy-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/psychiatry/Pages/sexual-therapy-clinic.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "כירורגיה בריאטרית - המרפאה הבריאטרית והוועדה הבריאטרית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/bariatric-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/bariatric-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/bariatric-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקת כירורגיית לב וחזה ע\"ש סמי עופר",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/cardiothoracicsurg.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/cardiothoracicsurg.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/cardiothoracicsurg.aspx",
+      "inlineStaffEntries=18",
+      "sectionHeadings=צוות המחלקה מונה כ־50 איש: | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מכון כלי-דם (דופלקס)",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/duplex.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/duplex.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/duplex.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "היחידה להשתלות כליה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/kidney-transplant-unit.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/kidney-transplant-unit.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/kidney-transplant-unit.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מרפאה נוירוכירורגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/neurosurg-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/neurosurg-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/neurosurg-clinic.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקה נוירוכירורגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/neurosurgery.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/neurosurgery.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/neurosurgery.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "היחידה לכירורגיית פה ולסת",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/oralsurgclin.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/oralsurgclin.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/oralsurgclin.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מרפאה אורתופדית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/ortho-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/ortho-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/ortho-clinic.aspx",
+      "inlineStaffEntries=4",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקה אורתופדית א'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/orthopedics-a.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/orthopedics-a.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/orthopedics-a.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=צוות המחלקה",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מרפאת אף, אוזן וגרון",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/otolaryng-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/otolaryng-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/otolaryng-clinic.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקת כירורגיית אף, אוזן וגרון וראש-צוואר",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/otolaryngology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/otolaryngology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/otolaryngology.aspx",
+      "inlineStaffEntries=20",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מרפאה לכירורגיה פלסטית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/plastics-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/plastics-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/plastics-clinic.aspx",
+      "inlineStaffEntries=16",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקה לכירורגיה פלסטית ומשחזרת",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/plastics.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/plastics.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/plastics.aspx",
+      "inlineStaffEntries=22",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "המרפאה הפרוקטולוגית והיחידה לכירורגיה קולורקטלית ופרוקטולוגיה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/proctology-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/proctology-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/proctology-clinic.aspx",
+      "inlineStaffEntries=8",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מרפאה כירורגית א'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surg-clinic-a.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surg-clinic-a.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surg-clinic-a.aspx",
+      "inlineStaffEntries=18",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מרפאה כירורגית ב'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surg-clinic-b.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surg-clinic-b.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surg-clinic-b.aspx",
+      "inlineStaffEntries=16",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "אשפוז-יום כירורגי",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surgdaycare.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surgdaycare.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surgdaycare.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=הצוות הרפואי",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקה כירורגית א'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surgery-a.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surgery-a.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surgery-a.aspx",
+      "inlineStaffEntries=18",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקה כירורגית ב'",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surgery-b.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surgery-b.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/surgery-b.aspx",
+      "inlineStaffEntries=33",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "יחידת טראומה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/trauma-unit.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/trauma-unit.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/trauma-unit.aspx",
+      "inlineStaffEntries=6",
+      "sectionHeadings=הצוות הרפואי | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מרפאה אורולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/urology-clinic.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/urology-clinic.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/urology-clinic.aspx",
+      "inlineStaffEntries=16",
+      "sectionHeadings=רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקה אורולוגית",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/urology.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/urology.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/urology.aspx",
+      "inlineStaffEntries=18",
+      "sectionHeadings=צוות המחלקה | רופאים בכירים:",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מחלקה לכירורגיית כלי-דם",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מרפאת כלי-דם",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vascclin.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vascclin.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vascclin.aspx",
+      "inlineStaffEntries=2",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-surgery-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Surgery Division",
+    "departmentHebrew": "מרכז בריאות השד",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/women-health-center.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/women-health-center.aspx",
+    "discoveryConfidence": 0.9,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/women-health-center.aspx",
+      "inlineStaffEntries=12",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.9"
+    ],
+    "needsReview": false,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-ophthalmology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Ophthalmology",
+    "departmentHebrew": "מחלקת עיניים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/eye-staff1.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/ophthalmology.aspx",
+    "discoveryConfidence": 0.85,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/ophthalmology.aspx",
+      "anchorText=צוות המערך",
+      "href=/soroka/he/med-units/Ophthalmology/Pages/eye-staff1.aspx",
+      "confidenceRule=0.85"
+    ],
+    "needsReview": false,
+    "patternType": "staffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-staff-students-vaccines",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Staff Students Vaccines",
+    "departmentHebrew": "חיסונים לעובדים ולסטודנטים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/staff-students-vaccines.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/staff-students-vaccines.aspx",
+    "discoveryConfidence": 0.85,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/staff-students-vaccines.aspx",
+      "anchorText=סורוקה פלוס",
+      "href=https://hospitals.clalit.co.il/soroka/he/med-units/Pages/staff-students-vaccines.aspx",
+      "confidenceRule=0.85"
+    ],
+    "needsReview": false,
+    "patternType": "staffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מרפאת המטולוגיית ילדים",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-ho-clin.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-ho-clin.aspx",
+    "discoveryConfidence": 0.8,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-ho-clin.aspx",
+      "inlineStaffEntries=1",
+      "sectionHeadings=#Team",
+      "confidenceRule=0.8"
+    ],
+    "needsReview": true,
+    "patternType": "inlineStaffPage",
+    "recommendedParserType": "inlineStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%90%d7%91%d7%9c%d7%a6%d7%99%d7%94-%d7%a2%d7%91%d7%a8%d7%99%d7%aa.pdf",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "anchorText=עברית",
+      "href=/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%90%d7%91%d7%9c%d7%a6%d7%99%d7%94-%d7%a2%d7%91%d7%a8%d7%99%d7%aa.pdf",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%90%d7%91%d7%9c%d7%a6%d7%99%d7%94-%d7%a2%d7%a8%d7%91%d7%99%d7%aa.pdf",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "anchorText=ערבית",
+      "href=/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%90%d7%91%d7%9c%d7%a6%d7%99%d7%94-%d7%a2%d7%a8%d7%91%d7%99%d7%aa.pdf",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%90%d7%91%d7%9c%d7%a6%d7%99%d7%94-%d7%a8%d7%95%d7%a1%d7%99%d7%aa.pdf",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "anchorText=רוסית",
+      "href=/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%90%d7%91%d7%9c%d7%a6%d7%99%d7%94-%d7%a8%d7%95%d7%a1%d7%99%d7%aa.pdf",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%a0%d7%99%d7%98%d7%95%d7%a8-%d7%a7%d7%95%d7%a6%d7%91-%d7%9e%d7%a8%d7%97%d7%95%d7%a7-%d7%90%d7%a0.pdf",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "anchorText=אנגלית.",
+      "href=/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%a0%d7%99%d7%98%d7%95%d7%a8-%d7%a7%d7%95%d7%a6%d7%91-%d7%9e%d7%a8%d7%97%d7%95%d7%a7-%d7%90%d7%a0.pdf",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%a0%d7%99%d7%98%d7%95%d7%a8-%d7%a7%d7%95%d7%a6%d7%91-%d7%9e%d7%a8%d7%97%d7%95%d7%a7-%d7%a2%d7%91.pdf",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "anchorText=עברית",
+      "href=/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%a0%d7%99%d7%98%d7%95%d7%a8-%d7%a7%d7%95%d7%a6%d7%91-%d7%9e%d7%a8%d7%97%d7%95%d7%a7-%d7%a2%d7%91.pdf",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%a0%d7%99%d7%98%d7%95%d7%a8-%d7%a7%d7%95%d7%a6%d7%91-%d7%9e%d7%a8%d7%97%d7%95%d7%a7-%d7%a2%d7%a8.pdf",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "anchorText=ערבית",
+      "href=/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%a0%d7%99%d7%98%d7%95%d7%a8-%d7%a7%d7%95%d7%a6%d7%91-%d7%9e%d7%a8%d7%97%d7%95%d7%a7-%d7%a2%d7%a8.pdf",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-cardiology",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Cardiology",
+    "departmentHebrew": "היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%a0%d7%99%d7%98%d7%95%d7%a8-%d7%a7%d7%95%d7%a6%d7%91-%d7%9e%d7%a8%d7%97%d7%95%d7%a7-%d7%a8%d7%95.pdf",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "anchorText=רוסית",
+      "href=/soroka/he/med-units/cardiology/Documents/%d7%99%d7%97%d7%99%d7%93%d7%94%20%d7%9c%d7%90%d7%9c%d7%a7%d7%98%d7%a8%d7%95%d7%a4%d7%99%d7%96%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94%20%d7%95%d7%a7%d7%95%d7%a6%d7%91%d7%99%20%d7%9c%d7%91/%d7%a0%d7%99%d7%98%d7%95%d7%a8-%d7%a7%d7%95%d7%a6%d7%91-%d7%9e%d7%a8%d7%97%d7%95%d7%a7-%d7%a8%d7%95.pdf",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-oncology-inst",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Oncology Inst",
+    "departmentHebrew": "מרפאת המטולוגיה וקרישה",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/hematology-institute.aspx",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/coag-hema-clin.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/coag-hema-clin.aspx",
+      "anchorText=צוות המכון ההמטולוגי",
+      "href=/soroka/he/med-units/oncology-inst/Pages/hematology-institute.aspx#staffhemato",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מחלקת המטואונקולוגיית ילדים - אשפוז ואשפוז-יום",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Documents/%d7%94%d7%9e%d7%98%d7%95%d7%90%d7%95%d7%a0%d7%a7%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%99%d7%aa%20%d7%99%d7%9c%d7%93%d7%99%d7%9d/%d7%91%d7%93%d7%99%d7%a7%d7%aa%20LP%20%28%d7%a0%d7%99%d7%a7%d7%95%d7%a8%20%d7%9e%d7%95%d7%aa%d7%a0%d7%99%29%20%d7%95-IT%20%28%d7%94%d7%96%d7%a8%d7%a7%d7%aa%20%d7%aa%d7%a8%d7%95%d7%a4%d7%94%20%d7%9c%d7%97%d7%9c%d7%9c%20%d7%94%d7%a9%d7%93%d7%a8%d7%94%29%20-%20%d7%9e%d7%99%d7%93%d7%a2%20%d7%9c%d7%94%d7%95%d7%a8%d7%99%d7%9d.pdf",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-hemato-onco-div.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-hemato-onco-div.aspx",
+      "anchorText=בדיקת LP (ניקור מותני) ו-IT (הזרקת תרופה לחלל השדרה)",
+      "href=/soroka/he/med-units/pediatrics-division/Documents/%d7%94%d7%9e%d7%98%d7%95%d7%90%d7%95%d7%a0%d7%a7%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%99%d7%aa%20%d7%99%d7%9c%d7%93%d7%99%d7%9d/%d7%91%d7%93%d7%99%d7%a7%d7%aa%20LP%20%28%d7%a0%d7%99%d7%a7%d7%95%d7%a8%20%d7%9e%d7%95%d7%aa%d7%a0%d7%99%29%20%d7%95-IT%20%28%d7%94%d7%96%d7%a8%d7%a7%d7%aa%20%d7%aa%d7%a8%d7%95%d7%a4%d7%94%20%d7%9c%d7%97%d7%9c%d7%9c%20%d7%94%d7%a9%d7%93%d7%a8%d7%94%29%20-%20%d7%9e%d7%99%d7%93%d7%a2%20%d7%9c%d7%94%d7%95%d7%a8%d7%99%d7%9d.pdf",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  },
+  {
+    "id": "soroka-pediatrics-division",
+    "hospital": "Soroka Medical Center",
+    "hospitalSlug": "soroka",
+    "department": "Pediatrics Division",
+    "departmentHebrew": "מחלקת המטואונקולוגיית ילדים - אשפוז ואשפוז-יום",
+    "doctorListUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Documents/%d7%94%d7%9e%d7%98%d7%95%d7%90%d7%95%d7%a0%d7%a7%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%99%d7%aa%20%d7%99%d7%9c%d7%93%d7%99%d7%9d/%d7%97%d7%95%d7%9d%20%d7%95%d7%a0%d7%95%d7%99%d7%98%d7%a8%d7%95%d7%a4%d7%a0%d7%99%d7%94%20-%20%d7%94%d7%93%d7%a8%d7%9b%d7%94%20%d7%9c%d7%94%d7%95%d7%a8%d7%99%d7%9d%20.pdf",
+    "sourceDepartmentUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-hemato-onco-div.aspx",
+    "discoveryConfidence": 0.5,
+    "discoveryEvidence": [
+      "sourceDepartmentUrl=https://hospitals.clalit.co.il/soroka/he/med-units/pediatrics-division/Pages/ped-hemato-onco-div.aspx",
+      "anchorText=חום ונויטרופניה",
+      "href=/soroka/he/med-units/pediatrics-division/Documents/%d7%94%d7%9e%d7%98%d7%95%d7%90%d7%95%d7%a0%d7%a7%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%99%d7%aa%20%d7%99%d7%9c%d7%93%d7%99%d7%9d/%d7%97%d7%95%d7%9d%20%d7%95%d7%a0%d7%95%d7%99%d7%98%d7%a8%d7%95%d7%a4%d7%a0%d7%99%d7%94%20-%20%d7%94%d7%93%d7%a8%d7%9b%d7%94%20%d7%9c%d7%94%d7%95%d7%a8%d7%99%d7%9d%20.pdf",
+      "confidenceRule=0.5"
+    ],
+    "needsReview": true,
+    "patternType": "unknownStaffPage",
+    "recommendedParserType": "genericStaffPage"
+  }
+]
