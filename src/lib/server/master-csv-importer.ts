@@ -21,6 +21,11 @@ import {
   normalizeCatalogLookupValue,
   slugifyValue
 } from "@/server/department-catalog";
+import {
+  isSpreadsheetErrorValue,
+  normalizeSpreadsheetCell,
+  nullIfSpreadsheetError
+} from "@/lib/spreadsheet-errors";
 
 type DbClient = PrismaClient | Prisma.TransactionClient;
 
@@ -64,6 +69,7 @@ type CsvTable = {
 };
 
 type ImportOnlyMode = "all" | "data-exp" | "spec" | "dept";
+export type MasterCsvUploadKind = "spec" | "dept";
 
 const MASTER_SPEC_FILE = "MASTER_Spec.csv";
 const MASTER_DEPT_FILE = "Master_Dept.csv";
@@ -146,10 +152,7 @@ const DEPARTMENT_NUMERIC_METRICS: MetricInput[] = [
 ];
 
 function cleanCell(value: string | null | undefined) {
-  return (value ?? "")
-    .replace(/^\ufeff/, "")
-    .replace(/[\u200b-\u200f\u202a-\u202e\u2066-\u2069]/g, "")
-    .trim();
+  return normalizeSpreadsheetCell(value);
 }
 
 function normalizeHebrewKey(value: string) {
@@ -276,11 +279,11 @@ function parseNumberCell(raw: string): ParsedCell {
     return { value: null, rawValue: null };
   }
 
-  if (/^#(?:DIV\/0!|N\/A|VALUE!|REF!|NUM!)/i.test(rawValue)) {
+  if (isSpreadsheetErrorValue(rawValue)) {
     return {
       value: null,
-      rawValue,
-      warning: `ערך לא מספרי נשמר כטקסט: ${rawValue}`
+      rawValue: null,
+      warning: `ערך שגיאה מגיליון טופל כחסר: ${rawValue}`
     };
   }
 
@@ -341,6 +344,10 @@ function rowMetricValue(row: CsvRow, metric: MetricInput | TextMetricInput) {
   }
 
   return row.get(metric.header, metric.occurrence);
+}
+
+function rowTextMetricValue(row: CsvRow, metric: TextMetricInput) {
+  return nullIfSpreadsheetError(rowMetricValue(row, metric));
 }
 
 function sourceNoteForMetric(table: CsvTable, metric: MetricInput | TextMetricInput) {
@@ -1021,12 +1028,12 @@ async function importSpecialtyCsv(db: DbClient, filePath: string, dataExplanatio
 
       for (const metric of SPECIALTY_TEXT_METRICS) {
         const metadata = metadataForMetric(dataExplanations, "MASTER_Spec", metric);
-        const rawValue = rowMetricValue(row, metric);
+        const rawValue = rowTextMetricValue(row, metric);
         await upsertSpecialtyMetric(db, {
           specialtyId: specialty.id,
           metric,
           value: null,
-          rawValue: rawValue || null,
+          rawValue,
           sourceNotes: sourceForMetric(table, metric, metadata),
           lastUpdated,
           displayMetadata: metadata
@@ -1395,6 +1402,134 @@ async function importDepartmentCsv(
   });
 
   return { batchId: batch.id, imported, failed, staleHidden, rows: selectedRows.length, totalRows: table.rows.length };
+}
+
+function sourcePathForUploadKind(kind: MasterCsvUploadKind) {
+  return path.join(process.cwd(), kind === "spec" ? MASTER_SPEC_FILE : MASTER_DEPT_FILE);
+}
+
+function tableForUploadKind(csvText: string, kind: MasterCsvUploadKind) {
+  return createCsvTable(csvText, { hasSourceNotesRow: true });
+}
+
+function countCsvEntities(table: CsvTable, kind: MasterCsvUploadKind) {
+  if (kind === "spec") {
+    return new Set(
+      table.rows
+        .map((row) => canonicalSpecialtyName(row.get("תחום_התמחות")))
+        .filter((value) => value && !rowLooksLikeSourceNote(value))
+    ).size;
+  }
+
+  return table.rows.filter((row) => row.get("שם_מרכז_רפואי") && row.get("תחום התמחות")).length;
+}
+
+function rowLooksLikeSourceNote(value: string) {
+  return value.includes("מקור") || value.includes("הסבר");
+}
+
+function scanSpreadsheetErrors(table: CsvTable) {
+  const findings: Array<{ rowNumber: number; header: string; value: string }> = [];
+
+  for (const row of table.rows) {
+    table.headers.forEach((header, index) => {
+      const value = cleanCell(row.values[index]);
+      if (!isSpreadsheetErrorValue(value)) return;
+
+      findings.push({
+        rowNumber: row.rowNumber,
+        header: header || `column_${index + 1}`,
+        value
+      });
+    });
+  }
+
+  return findings;
+}
+
+function compareTables(uploaded: CsvTable, reference: CsvTable) {
+  let changedCellsCount = 0;
+  const changedRows: Array<{
+    rowNumber: number;
+    field: string;
+    oldValue: string;
+    newValue: string;
+  }> = [];
+  const maxRows = Math.max(uploaded.rows.length, reference.rows.length);
+  const maxColumns = Math.max(uploaded.headers.length, reference.headers.length);
+
+  for (let rowIndex = 0; rowIndex < maxRows; rowIndex += 1) {
+    const uploadedRow = uploaded.rows[rowIndex];
+    const referenceRow = reference.rows[rowIndex];
+
+    for (let columnIndex = 0; columnIndex < maxColumns; columnIndex += 1) {
+      const field =
+        uploaded.headers[columnIndex] ||
+        reference.headers[columnIndex] ||
+        `column_${columnIndex + 1}`;
+      const newValue = cleanCell(uploadedRow?.values[columnIndex]);
+      const oldValue = cleanCell(referenceRow?.values[columnIndex]);
+
+      if (newValue === oldValue) continue;
+
+      changedCellsCount += 1;
+      if (changedRows.length < 80) {
+        changedRows.push({
+          rowNumber: uploadedRow?.rowNumber ?? referenceRow?.rowNumber ?? rowIndex + 2,
+          field,
+          oldValue,
+          newValue
+        });
+      }
+    }
+  }
+
+  return { changedCellsCount, changedRows };
+}
+
+export async function previewMasterCsvUpload(input: {
+  kind: MasterCsvUploadKind;
+  csvText: string;
+  fileName?: string;
+}) {
+  const uploaded = tableForUploadKind(input.csvText, input.kind);
+  const referenceText = await fs.readFile(sourcePathForUploadKind(input.kind), "utf8");
+  const reference = tableForUploadKind(referenceText, input.kind);
+  const headerDiffs = {
+    matches: uploaded.headers.length === reference.headers.length &&
+      uploaded.headers.every((header, index) => header === reference.headers[index]),
+    expected: reference.headers,
+    received: uploaded.headers
+  };
+  const rowCount = uploaded.rows.length;
+  const referenceRowCount = reference.rows.length;
+  const entityCount = countCsvEntities(uploaded, input.kind);
+  const referenceEntityCount = countCsvEntities(reference, input.kind);
+  const spreadsheetErrors = scanSpreadsheetErrors(uploaded);
+  const { changedCellsCount, changedRows } = compareTables(uploaded, reference);
+  const warnings = [
+    !headerDiffs.matches ? "כותרות הקובץ אינן תואמות לקובץ המקור." : null,
+    spreadsheetErrors.length > 0 ? `נמצאו ${spreadsheetErrors.length} ערכי שגיאה מגיליון; הם יטופלו כחסר.` : null
+  ].filter((warning): warning is string => Boolean(warning));
+
+  return {
+    kind: input.kind,
+    fileName: input.fileName ?? null,
+    headerMatches: headerDiffs.matches,
+    expectedHeaders: headerDiffs.expected,
+    receivedHeaders: headerDiffs.received,
+    rowCount,
+    referenceRowCount,
+    specialtyCount: input.kind === "spec" ? entityCount : null,
+    referenceSpecialtyCount: input.kind === "spec" ? referenceEntityCount : null,
+    departmentCount: input.kind === "dept" ? entityCount : null,
+    referenceDepartmentCount: input.kind === "dept" ? referenceEntityCount : null,
+    changedCellsCount,
+    changedRows,
+    spreadsheetErrorsCount: spreadsheetErrors.length,
+    spreadsheetErrors: spreadsheetErrors.slice(0, 80),
+    warnings
+  };
 }
 
 export async function importMasterCsvFiles(

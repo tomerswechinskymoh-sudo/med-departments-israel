@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { departmentNewResidentsChartRows } from "@/lib/department-yearly-residents";
+import { missingImportedDataText } from "@/lib/spreadsheet-errors";
 import { formatDate, getDepartmentHref } from "@/lib/utils";
 
 function MetricChip({
@@ -80,7 +81,7 @@ function MiniYearlyResidentsChart({
         <p className="text-[0.68rem] font-black text-slate-600">
           {title}
         </p>
-        <p className="mt-1 text-xs font-semibold text-slate-400">הנתון עדיין לא סופק</p>
+        <p className="mt-1 text-xs font-semibold text-slate-400">{missingImportedDataText}</p>
       </div>
     );
   }

@@ -1,3 +1,5 @@
+import { isSpreadsheetErrorValue } from "@/lib/spreadsheet-errors";
+
 export const DEPARTMENT_NEW_RESIDENTS_YEARS = [2020, 2021, 2022, 2023, 2024] as const;
 
 type DepartmentYearlyMetricLike = {
@@ -21,7 +23,7 @@ export type DepartmentNewResidentsChartRow = DepartmentNewResidentsYearlyRow & {
 function parseRawNumber(value: string | null | undefined) {
   if (!value) return null;
   const normalized = value.replace(/,/g, "").trim();
-  if (!normalized || normalized === "#DIV/0!" || normalized === "#N/A") return null;
+  if (!normalized || isSpreadsheetErrorValue(normalized)) return null;
   const parsed = Number(normalized);
 
   return Number.isFinite(parsed) ? parsed : null;

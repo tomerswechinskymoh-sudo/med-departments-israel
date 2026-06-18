@@ -5,6 +5,7 @@ import {
   type DataExplanationSheet,
   type MetricDisplayMetadata
 } from "@/lib/metric-display";
+import { isSpreadsheetErrorValue } from "@/lib/spreadsheet-errors";
 
 export type ImportedMetricLike = {
   metricKey: string;
@@ -323,7 +324,9 @@ function hasMetricValue(metric: ImportedMetricLike | ImportedYearlyMetricLike | 
   return Boolean(
     metric &&
       ((typeof metric.value === "number" && Number.isFinite(metric.value)) ||
-        (typeof metric.rawValue === "string" && metric.rawValue.trim().length > 0))
+        (typeof metric.rawValue === "string" &&
+          metric.rawValue.trim().length > 0 &&
+          !isSpreadsheetErrorValue(metric.rawValue)))
   );
 }
 

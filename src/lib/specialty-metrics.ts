@@ -11,6 +11,7 @@ import {
   resolveImportedYearlyMetric,
   resolveMetricDisplayMetadata
 } from "@/lib/imported-metric-resolver";
+import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
 
 export const specialtyMetricKeys = [
   "programsCount",
@@ -154,7 +155,7 @@ export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
   "duns100PhysiciansCount"
 ];
 
-const missingMetricValue = "הנתון עדיין לא סופק";
+const missingMetricValue = missingImportedDataText;
 const burnoutTooltipSentence = "ככל שהערך גבוה יותר, רמת השחיקה בתחום גבוהה יותר.";
 const newResidentsTrendTooltip =
   "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות.";
@@ -220,6 +221,7 @@ function formatNumberWithUnit(value: number, unit?: string | null) {
 
 function formatMetricValue(metric: SpecialtyImportedMetric | SpecialtyImportedYearlyMetric) {
   if (metric.rawValue) {
+    if (isSpreadsheetErrorValue(metric.rawValue)) return null;
     const rawNumber = Number(metric.rawValue.replace(/[,₪$%]/g, "").trim());
     if (Number.isFinite(rawNumber) && metric.unit && !metric.rawValue.includes("%")) {
       return formatNumberWithUnit(rawNumber, metric.unit);
@@ -237,6 +239,7 @@ function formatMetricValue(metric: SpecialtyImportedMetric | SpecialtyImportedYe
 
 function formatRoundedPercentMetricValue(metric: SpecialtyImportedMetric | null | undefined) {
   if (!metric) return null;
+  if (isSpreadsheetErrorValue(metric.rawValue)) return null;
   const normalizedRaw = metric.rawValue
     ? metric.rawValue.replace(/[₪$%]/g, "").trim()
     : null;
@@ -257,6 +260,7 @@ function formatSalaryMetricValue(
   options: { maximumFractionDigits?: number } = {}
 ) {
   if (!metric) return null;
+  if (isSpreadsheetErrorValue(metric.rawValue)) return null;
   const numericValue =
     typeof metric.value === "number" && Number.isFinite(metric.value)
       ? metric.value
@@ -360,10 +364,17 @@ function yearlyValueRows(
     .sort((left, right) => left.year - right.year);
 
   if (specialtyRows.length > 0) {
-    return specialtyRows.map((metric) => ({
-      year: metric.year,
-      displayValue: formatMetricValue(metric) ?? "0"
-    }));
+    return specialtyRows
+      .map((metric) => {
+        const displayValue = formatMetricValue(metric);
+        return displayValue
+          ? {
+              year: metric.year,
+              displayValue
+            }
+          : null;
+      })
+      .filter((row): row is { year: number; displayValue: string } => Boolean(row));
   }
 
   return Array.from({ length: endYear - startYear + 1 }, (_, index) => startYear + index)

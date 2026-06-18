@@ -39,6 +39,7 @@ import {
   resolveInstitutionRegion,
   reviewerTypeLabel
 } from "@/lib/queries";
+import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
 import { formatDepartmentDisplayName, getDepartmentHref } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -77,7 +78,7 @@ type ProfileManagerRow = {
   singleEmailFallback: boolean;
 };
 
-const MISSING_IMPORTED_VALUE = "הנתון עדיין לא סופק";
+const MISSING_IMPORTED_VALUE = missingImportedDataText;
 const NEW_RESIDENTS_TOOLTIP =
   "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות.";
 const BURNOUT_TOOLTIP_SENTENCE = "ככל שהערך גבוה יותר, רמת השחיקה בתחום גבוהה יותר.";
@@ -723,8 +724,7 @@ function formatWholeImportedNumber(value: number) {
 }
 
 function isInvalidImportedRawValue(value: string | null | undefined) {
-  const rawValue = value?.trim();
-  return Boolean(rawValue && /^#(?:DIV\/0!|N\/A|VALUE!|REF!|NUM!)/i.test(rawValue));
+  return isSpreadsheetErrorValue(value);
 }
 
 function formatImportedMetricValue(metric: ImportedMetric | ImportedYearlyMetric) {

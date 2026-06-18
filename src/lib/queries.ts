@@ -24,6 +24,7 @@ import {
 import type { MetricDisplayMetadata } from "@/lib/metric-display";
 import { normalizeDepartmentNameSubDepartment } from "@/lib/department-normalization";
 import { resolveImportedMetric } from "@/lib/imported-metric-resolver";
+import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
 import { getOpenAlexMappingStatus } from "@/lib/server/openalex-research";
 import { average, formatDepartmentDisplayName } from "@/lib/utils";
 import { resolveCanonicalDepartmentSlug } from "@/server/department-catalog";
@@ -1908,11 +1909,10 @@ type ComparisonYearlyMetricInput = ComparisonMetricInput & {
   year: number;
 };
 
-const COMPARISON_MISSING_VALUE = "הנתון עדיין לא סופק";
+const COMPARISON_MISSING_VALUE = missingImportedDataText;
 
 function isInvalidComparisonRawValue(value: string | null | undefined) {
-  const rawValue = value?.trim();
-  return Boolean(rawValue && /^#(?:DIV\/0!|N\/A|VALUE!|REF!|NUM!)/i.test(rawValue));
+  return isSpreadsheetErrorValue(value);
 }
 
 function formatComparisonNumber(value: number) {

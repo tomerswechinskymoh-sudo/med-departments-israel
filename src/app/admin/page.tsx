@@ -566,6 +566,23 @@ export default async function AdminPage() {
       <AdminAccordionSection title="ניהול מחלקות, מוסדות ותחומים">
         <div className="grid gap-6 xl:grid-cols-2">
           <Card className="xl:col-span-2">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 className="text-xl font-bold text-ink">ייבוא קבצי MASTER</h2>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  העלאה מבוקרת של MASTER_Spec.csv ו-MASTER_Dept.csv עם תצוגה מקדימה, בדיקת כותרות וספירת שינויים.
+                </p>
+              </div>
+              <Link
+                href="/admin/master-csv"
+                className="rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white"
+              >
+                ניהול ייבוא CSV
+              </Link>
+            </div>
+          </Card>
+
+          <Card className="xl:col-span-2">
             <h2 className="text-xl font-bold text-ink">ניהול דשבורד תחום התמחות</h2>
             <p className="mt-2 text-sm leading-7 text-slate-600">
               לכל תחום אפשר לבחור אילו מדדים יוצגו למשתמשים ובאיזה סדר.
