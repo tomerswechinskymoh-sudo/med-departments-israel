@@ -1,0 +1,1272 @@
+[
+  {
+    "profileCompleteness": "full",
+    "fullName": "פרופ' אוהד עציון",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": true,
+    "seniorityEvidence": "- מנהל המכון",
+    "role": "- מנהל המכון",
+    "unit": "המכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1994 - 2000 - לימודי רפואה, הפקולטה למדעי הבריאות, אוניברסיטת בן-גוריון בנגב."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": "ohadet@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' אוהד עציון",
+        "evidence": "שם:\nפרופ' אוהד עציון\nדוא\"ל:\nohadet@clalit.org.il\nיחידה:\nהמכון גסטרואנטרולוגיה ומחלות כבד\n1994 - 2000 - לימודי רפואה, הפקולטה למדעי הבריאות, אוניברסיטת בן-גוריון בנגב.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/etzion-o.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nפרופ' אוהד עציון\nדוא\"ל:\nohadet@clalit.org.il\nיחידה:\nהמכון גסטרואנטרולוגיה ומחלות כבד\n1994 - 2000 - לימודי רפואה, הפקולטה למדעי הבריאות, אוניברסיטת בן-גוריון בנגב.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/etzion-o.aspx"
+      },
+      {
+        "field": "contact.email",
+        "value": "ohadet@clalit.org.il",
+        "evidence": "שם:\nפרופ' אוהד עציון\nדוא\"ל:\nohadet@clalit.org.il\nיחידה:\nהמכון גסטרואנטרולוגיה ומחלות כבד\n1994 - 2000 - לימודי רפואה, הפקולטה למדעי הבריאות, אוניברסיטת בן-גוריון בנגב.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/etzion-o.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "7fc716bfa64a3d235b7986d9",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/etzion-o.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/etzion-o.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אריה סגל",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "- סגן מנהל המכון",
+    "unit": "מכון גסטרואנטרולוגיה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אריה סגל",
+        "evidence": "שם:\nד\"ר אריה סגל\nיחידה:\nמכון גסטרואנטרולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/segal-ar.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה",
+        "evidence": "שם:\nד\"ר אריה סגל\nיחידה:\nמכון גסטרואנטרולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/segal-ar.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contactDetails"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "d9739c5f56563b2c3ca18664",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/segal-ar.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/segal-ar.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אלכסנדר רוזנטל",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": true,
+    "seniorityEvidence": "- מנהל היחידה לגסטרואנטרולוגיה פולשנית",
+    "role": "- מנהל היחידה לגסטרואנטרולוגיה פולשנית",
+    "unit": "מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אלכסנדר רוזנטל",
+        "evidence": "שם:\nד\"ר אלכסנדר רוזנטל\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenthal-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר אלכסנדר רוזנטל\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenthal-a.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "7e052c30872c80d3bc0f54f6",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenthal-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenthal-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר דורון שוורץ",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": true,
+    "seniorityEvidence": "2026 – present - Head IBD Unit. Dept. of Gastroenterology & Hepatology, Soroka University medical center.",
+    "role": "מנהל היחידה למחלות מעי דלקתיות",
+    "unit": "המכון לגסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1994 - 2000 - לימודי רפואה באוניברסיטת בן-גוריון",
+      "2019- 2021 – תואר שני בניהול מערכות בריאות."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "doronsh@clalit.org.il",
+      "phone": "0000000000"
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר דורון שוורץ",
+        "evidence": "שם:\nד\"ר דורון שוורץ\nדוא\"ל:\ndoronsh@clalit.org.il\nיחידה:\nהמכון לגסטרואנטרולוגיה ומחלות כבד\n2026 – present - Head IBD Unit. Dept. of Gastroen",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwartz-d.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המכון לגסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר דורון שוורץ\nדוא\"ל:\ndoronsh@clalit.org.il\nיחידה:\nהמכון לגסטרואנטרולוגיה ומחלות כבד\n2026 – present - Head IBD Unit. Dept. of Gastroenterology & Hepatology, Soroka University medical center.2019- 2025 – D",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwartz-d.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "32b1f461b2d16bbbdbcae97e",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwartz-d.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwartz-d.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר דניאלה מונטאנו",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "המכון לגסטרואנטרולוגיה\nSoroka hospital doctor index",
+    "unit": "המכון לגסטרואנטרולוגיה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "2000-1994 - לימודי רפואה באוניברסיטת קישינב, מולדובה"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "Danielamu@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר דניאלה מונטאנו",
+        "evidence": "שם:\nד\"ר דניאלה מונטאנו\nדוא\"ל:\nDanielamu@clalit.org.il\nיחידה:\nהמכון לגסטרואנטרולוגיה\n2000-1994 - לימודי רפואה באוניברסיטת קישינב, מולדובה\nמדריך",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/munteanu-d.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המכון לגסטרואנטרולוגיה",
+        "evidence": "שם:\nד\"ר דניאלה מונטאנו\nדוא\"ל:\nDanielamu@clalit.org.il\nיחידה:\nהמכון לגסטרואנטרולוגיה\n2000-1994 - לימודי רפואה באוניברסיטת קישינב, מולדובה\nמדריך",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/munteanu-d.aspx"
+      },
+      {
+        "field": "email",
+        "value": "Danielamu@clalit.org.il",
+        "evidence": "שם:\nד\"ר דניאלה מונטאנו\nדוא\"ל:\nDanielamu@clalit.org.il\nיחידה:\nהמכון לגסטרואנטרולוגיה\n2000-1994 - לימודי רפואה באוניברסיטת קישינב, מולדובה\nמדריך",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/munteanu-d.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "residency",
+      "fellowship",
+      "subspecialties",
+      "clinicalInterests"
+    ],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "5d38f21fc320ccfae9eb9bdd",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/munteanu-d.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/munteanu-d.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר דוד ירדני",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מכון גסטרואנטרולוגיה ומחלות כבד\nSoroka hospital doctor index",
+    "unit": "מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "2004 - 2011 - בוגר בית הספר לרפואה באוניברסיטת בן-גוריון."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר דוד ירדני",
+        "evidence": "שם:\nד\"ר דוד ירדני\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד\n2004 - 2011 - בוגר בית הספר לרפואה באוניברסיטת בן-גוריון.\nמרצה בבית הספר לרפואהח",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yardeni-d.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר דוד ירדני\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד\n2004 - 2011 - בוגר בית הספר לרפואה באוניברסיטת בן-גוריון.\nמרצה בבית הספר לרפואהחבר ועד באיגוד הישראלי לגסטרואנטרולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yardeni-d.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "subspecialties",
+      "clinicalInterests",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "6c2bc1457afb9a5a5db11b91",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yardeni-d.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yardeni-d.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אלכסנדר מושקלו",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אלכסנדר מושקלו",
+        "evidence": "שם:\nד\"ר אלכסנדר מושקלו\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/moshkalo-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר אלכסנדר מושקלו\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/moshkalo-a.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "b0b5dc39a62fdf225faa107e",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/moshkalo-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/moshkalo-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר ענת נבו שור",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מכון גסטרואנטרולוגיה ומחלות כבד\nSoroka hospital doctor index",
+    "unit": "מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר ענת נבו שור",
+        "evidence": "שם:\nד\"ר ענת נבו שור\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/nevo-shor-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר ענת נבו שור\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/nevo-shor-a.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "98dc59467b292a7bd1e51605",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/nevo-shor-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/nevo-shor-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "פרופ' נעים אבו פריחה",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": true,
+    "seniorityEvidence": "פרופ'",
+    "role": "מכון גסטרואנטרולוגיה",
+    "unit": "מכון גסטרואנטרולוגיה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "2005-1999 - לימודי רפואה באוניברסיטת טובנגן, גרמניה"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": "naimaf@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' נעים אבו פריחה",
+        "evidence": "שם:\nפרופ' נעים אבו פריחה\nדוא\"ל:\nnaimaf@clalit.org.il\nיחידה:\nמכון גסטרואנטרולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abufreha-n.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה",
+        "evidence": "שם:\nפרופ' נעים אבו פריחה\nדוא\"ל:\nnaimaf@clalit.org.il\nיחידה:\nמכון גסטרואנטרולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abufreha-n.aspx"
+      },
+      {
+        "field": "email",
+        "value": "naimaf@clalit.org.il",
+        "evidence": "שם:\nפרופ' נעים אבו פריחה\nדוא\"ל:\nnaimaf@clalit.org.il\nיחידה:\nמכון גסטרואנטרולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abufreha-n.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "d83eb9d218798c1845c2f051",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abufreha-n.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abufreha-n.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר היבה אבו כף",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מכון גסטרואנטרולוגיה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר היבה אבו כף",
+        "evidence": "שם:\nד\"ר היבה אבו כף\nיחידה:\nמכון גסטרואנטרולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abukaf-h.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה",
+        "evidence": "שם:\nד\"ר היבה אבו כף\nיחידה:\nמכון גסטרואנטרולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abukaf-h.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "bfb7ebe486b5733bae42e05f",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abukaf-h.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abukaf-h.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר ג'אבר אלקרינאוי",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": true,
+    "seniorityEvidence": "רופא בכיר במכון הגסטרו ומחלות הכבד בסורוקה ובמחוז דרום בכללית",
+    "role": null,
+    "unit": "מכון גסטרואנטרולוגיה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1997 - 2003 - לימודי רפואה באוניברסיטת מונסתר, גרמניה."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "jabiral@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר ג'אבר אלקרינאוי",
+        "evidence": "שם:\nד\"ר ג'אבר אלקרינאוי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrenawi-j.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה",
+        "evidence": "יחידה:\nמכון גסטרואנטרולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrenawi-j.aspx"
+      },
+      {
+        "field": "email",
+        "value": "jabiral@clalit.org.il",
+        "evidence": "דוא\"ל:\njabiral@clalit.org.il",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrenawi-j.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "5e2f70a9acbf77bda2c83e0d",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrenawi-j.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrenawi-j.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר מוחמד עאסלה",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר מוחמד עאסלה",
+        "evidence": "שם:\nד\"ר מוחמד עאסלה\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asala-mu.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר מוחמד עאסלה\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asala-mu.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "d09dd849aaa51590f9ee2397",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asala-mu.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asala-mu.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אינה ליפניצקי",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקה פנימית ו' ,מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אינה ליפניצקי",
+        "evidence": "שם:\nד\"ר אינה ליפניצקי\nיחידה:\nמחלקה פנימית ו' ,מכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/lipinski-i.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה פנימית ו' ,מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר אינה ליפניצקי\nיחידה:\nמחלקה פנימית ו' ,מכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/lipinski-i.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "e991fcb6d82f7d72f32b388b",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/lipinski-i.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/lipinski-i.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר עלי אבו ג'ומעה",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": true,
+    "seniorityEvidence": "רופא בכיר מומחה לרפואה פנימית",
+    "role": "מחלקה פנימית ח' ,מכון גסטרואנטרולוגיה ומחלות כבד",
+    "unit": "מחלקה פנימית ח' ,מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "aliju@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר עלי אבו ג'ומעה",
+        "evidence": "שם:\nד\"ר עלי אבו ג'ומעה\nדוא\"ל:\naliju@clalit.org.il\nיחידה:\nמחלקה פנימית ח' ,מכון גסטרואנטרולוגיה ומחלות כבד\nרופא בכיר מומחה לרפואה פנימית\n2009 - 2015 - לימודי רפואה USMF מולדובה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-guma-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה פנימית ח' ,מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר עלי אבו ג'ומעה\nדוא\"ל:\naliju@clalit.org.il\nיחידה:\nמחלקה פנימית ח' ,מכון גסטרואנטרולוגיה ומחלות כבד\nרופא בכיר מומחה לרפואה פנימית\n2009 - 2015 - לימודי רפואה USMF מולדובה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-guma-a.aspx"
+      },
+      {
+        "field": "email",
+        "value": "aliju@clalit.org.il",
+        "evidence": "שם:\nד\"ר עלי אבו ג'ומעה\nדוא\"ל:\naliju@clalit.org.il\nיחידה:\nמחלקה פנימית ח' ,מכון גסטרואנטרולוגיה ומחלות כבד\nרופא בכיר מומחה לרפואה פנימית\n2009 - 2015 - לימודי רפואה USMF מולדובה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-guma-a.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "0fcb13c0ffac78819e43717f",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-guma-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-guma-a.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר עלא אדדין נעמה",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר עלא אדדין נעמה",
+        "evidence": "שם:\nד\"ר עלא אדדין נעמה\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/naama-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר עלא אדדין נעמה\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/naama-a.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "4bcf2f564582f5d922f205b1",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/naama-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/naama-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר ניר כהן",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מחלקה כירורגית ב',מכון גסטרואנטרולוגיה ומחלות כבד",
+    "unit": "מחלקה כירורגית ב',מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "2000 - לימודי רפואה, רומא איטליה."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "nircohengastro@gmail.com",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר ניר כהן",
+        "evidence": "שם:\nד\"ר ניר כהן\nדוא\"ל:\nnircohengastro@gmail.com nircohengeneralsurgery@gmail.com\nיחידה:\nמחלקה כירורגית ב',מכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cohen-nir.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה כירורגית ב',מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "ניר כהן\nדוא\"ל:\nnircohengastro@gmail.com nircohengeneralsurgery@gmail.com\nיחידה:\nמחלקה כירורגית ב',מכון גסטרואנטרולוגיה ומחלות כבד\nמתאם הדרכה בחטיבה הכירורגית.\n2000 - לימודי רפואה, רומא איטליה.\nאיגוד הכירורגים בישראלהחברה הישראלית לניתוחי ושט-קיבה האיגוד הישראלי לגסטרואנטרולוגיה.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cohen-nir.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "a318bbbea7560ae724d15586",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cohen-nir.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cohen-nir.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר יסר אפיניש",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יסר אפיניש",
+        "evidence": "שם:\nד\"ר יסר אפיניש\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/afinish-y.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר יסר אפיניש\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/afinish-y.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "cf2c7c9275a445e2bc24ae3a",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/afinish-y.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/afinish-y.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר ווליד אלעמור",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר ווליד אלעמור",
+        "evidence": "שם:\nד\"ר ווליד אלעמור\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/elamor-w.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "שם:\nד\"ר ווליד אלעמור\nיחידה:\nמכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/elamor-w.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "9b59f0ebae23fb778e28063f",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/elamor-w.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/elamor-w.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר פהמי אבו עליון",
+    "hospital": "Soroka Medical Center",
+    "department": "Gastro Institute",
+    "isSenior": true,
+    "seniorityEvidence": "משנת 2024 - רופא בכיר במחלקה פנימית ח'.",
+    "role": null,
+    "unit": "מחלקה פנימית ח',מכון גסטרואנטרולוגיה ומחלות כבד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "2018 - סיום לימודי רפואה ב-USMF, מולדובה."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "fahmiab@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר פהמי אבו עליון",
+        "evidence": "שם:\nד\"ר פהמי אבו עליון",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ghalion-f.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה פנימית ח',מכון גסטרואנטרולוגיה ומחלות כבד",
+        "evidence": "יחידה:\nמחלקה פנימית ח',מכון גסטרואנטרולוגיה ומחלות כבד",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ghalion-f.aspx"
+      },
+      {
+        "field": "isSenior",
+        "value": "true",
+        "evidence": "משנת 2024 - רופא בכיר במחלקה פנימית ח'.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ghalion-f.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "indexUnmatched"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing."
+    ],
+    "qaSeverity": "ok",
+    "doctorKey": "54caf194d3eea2da6534b03a",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ghalion-f.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/gastro-institute.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ghalion-f.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  }
+]

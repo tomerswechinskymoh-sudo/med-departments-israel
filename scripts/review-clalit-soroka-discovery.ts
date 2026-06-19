@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { readJson, writeJson } from "@/crawler/clalit/utils";
@@ -64,7 +65,16 @@ type ReviewCandidate = {
   parserRisk: ParserRisk;
   duplicateGroup: string | null;
   parentDivision: string | null;
+  extractedDoctorCount: number | null;
+  indexMatchedDoctorCount: number | null;
+  suspectedFalsePositiveCount: number | null;
   sourceCandidate: DiscoveryCandidate;
+};
+
+type CandidateOutputStats = {
+  extractedDoctorCount: number;
+  indexMatchedDoctorCount: number;
+  suspectedFalsePositiveCount: number;
 };
 
 function csvEscape(value: unknown) {
@@ -183,6 +193,43 @@ function actionFor(candidate: DiscoveryCandidate, pageType: PageType, parserRisk
   return "review" as const;
 }
 
+function outputStatsFor(candidate: DiscoveryCandidate): CandidateOutputStats | null {
+  const outputPath = path.join(process.cwd(), "data", "crawler", "output", candidate.id, "doctors.json");
+  if (!existsSync(outputPath)) return null;
+
+  try {
+    const doctors = JSON.parse(readFileSync(outputPath, "utf8")) as Array<{
+      indexMatched?: boolean;
+      qaFlags?: string[];
+    }>;
+    return {
+      extractedDoctorCount: doctors.length,
+      indexMatchedDoctorCount: doctors.filter((doctor) => doctor.indexMatched).length,
+      suspectedFalsePositiveCount: doctors.filter((doctor) => doctor.qaFlags?.includes("suspectedFalsePositive")).length
+    };
+  } catch {
+    return null;
+  }
+}
+
+function actionWithOutputSignals(
+  candidate: DiscoveryCandidate,
+  pageType: PageType,
+  parserRisk: ParserRisk,
+  duplicateGroup: string | null,
+  stats: CandidateOutputStats | null
+) {
+  const baseAction = actionFor(candidate, pageType, parserRisk, duplicateGroup);
+  if (!stats || stats.extractedDoctorCount === 0) return baseAction;
+  if (isNonHtmlDocument(candidate)) return "skip" as const;
+  const matchRatio = stats.indexMatchedDoctorCount / stats.extractedDoctorCount;
+  if (stats.indexMatchedDoctorCount >= 3 && matchRatio >= 0.6 && stats.suspectedFalsePositiveCount === 0 && !duplicateGroup) {
+    return "import" as const;
+  }
+  if (stats.indexMatchedDoctorCount > 0 || stats.suspectedFalsePositiveCount > 0) return "review" as const;
+  return baseAction;
+}
+
 function reasonFor(candidate: DiscoveryCandidate, pageType: PageType, parserRisk: ParserRisk, duplicateGroup: string | null) {
   const reasons: string[] = [];
   if (isNonHtmlDocument(candidate)) reasons.push("non-html document URL; not a crawlable staff page");
@@ -197,11 +244,31 @@ function reasonFor(candidate: DiscoveryCandidate, pageType: PageType, parserRisk
   return reasons.join("; ");
 }
 
+function reasonWithOutputSignals(
+  candidate: DiscoveryCandidate,
+  pageType: PageType,
+  parserRisk: ParserRisk,
+  duplicateGroup: string | null,
+  stats: CandidateOutputStats | null
+) {
+  const reasons = [reasonFor(candidate, pageType, parserRisk, duplicateGroup)].filter(Boolean);
+  if (stats) {
+    reasons.push(
+      `existing crawler output: ${stats.indexMatchedDoctorCount}/${stats.extractedDoctorCount} doctors matched Soroka index`
+    );
+    if (stats.suspectedFalsePositiveCount > 0) {
+      reasons.push(`${stats.suspectedFalsePositiveCount} suspected false positives in existing output`);
+    }
+  }
+  return reasons.join("; ");
+}
+
 function toReviewCandidate(candidate: DiscoveryCandidate, duplicateByUrl: Map<string, string>): ReviewCandidate {
   const duplicateGroup = duplicateByUrl.get(normalizedUrl(candidate.doctorListUrl)) ?? null;
   const pageType = estimatePageType(candidate);
   const parserRisk = riskFor(candidate, pageType, duplicateGroup);
-  const recommendedAction = actionFor(candidate, pageType, parserRisk, duplicateGroup);
+  const stats = outputStatsFor(candidate);
+  const recommendedAction = actionWithOutputSignals(candidate, pageType, parserRisk, duplicateGroup, stats);
 
   return {
     candidateId: candidate.id,
@@ -212,10 +279,13 @@ function toReviewCandidate(candidate: DiscoveryCandidate, duplicateByUrl: Map<st
     confidence: candidate.discoveryConfidence,
     pageType,
     recommendedAction,
-    reason: reasonFor(candidate, pageType, parserRisk, duplicateGroup),
+    reason: reasonWithOutputSignals(candidate, pageType, parserRisk, duplicateGroup, stats),
     parserRisk,
     duplicateGroup,
     parentDivision: parentDivision(candidate),
+    extractedDoctorCount: stats?.extractedDoctorCount ?? null,
+    indexMatchedDoctorCount: stats?.indexMatchedDoctorCount ?? null,
+    suspectedFalsePositiveCount: stats?.suspectedFalsePositiveCount ?? null,
     sourceCandidate: candidate
   };
 }
@@ -292,7 +362,10 @@ function toCsv(rows: ReviewCandidate[]) {
     "reason",
     "parserRisk",
     "duplicateGroup",
-    "parentDivision"
+    "parentDivision",
+    "extractedDoctorCount",
+    "indexMatchedDoctorCount",
+    "suspectedFalsePositiveCount"
   ];
 
   return [

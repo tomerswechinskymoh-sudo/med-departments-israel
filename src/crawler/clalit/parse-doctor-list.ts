@@ -5,6 +5,7 @@ import type { Element } from "domhandler";
 import { fetchClalitHtml } from "./fetch";
 import { buildDuplicateDoctorContext, qaForDoctorRecord, summarizeQaFlags } from "./qa";
 import type { CandidateBlock, ClalitDepartmentConfig, CrawlerOutputPaths, DoctorListPageResult, DoctorRecord } from "./types";
+import { applySorokaIdentityMap } from "./soroka-identity-map";
 import { absoluteUrl, normalizeMultilineText, normalizeWhitespace, writeJson } from "./utils";
 
 const MAX_PAGES = 12;
@@ -14,6 +15,8 @@ const doctorNamePattern =
   /((?:ד["״']ר|ד״ר|ד"ר|פרופ['׳]?|פרופ׳|פרופסור)\s+[א-ת][א-ת\s.'׳״"-]{2,90})/i;
 const rolePattern = /(מנהל|מנהלת|רופא|רופאה|מומחה|מומחית|אחראי|אחראית|סגן|סגנית|יועץ|יועצת|מחלקה|יחידה|שירות|שרות)/;
 const excludedContainerPattern = /(header|footer|nav|menu|breadcrumb|search|pager|paging|pagination|social|share)/i;
+const sorokaNonPhysicianStaffPattern =
+  /(אחות|אחים|אחיות|מזכיר|מזכירה|מינהל|עובד|עובדת|טכנאי|טכנאית|פיזיותרפ|עבודה סוציאלית|דיאט|רוקח|סטודנט|מתנדב)/;
 const candidateSelectors = [
   ".article-item",
   ".doctor",
@@ -78,6 +81,7 @@ function cleanDoctorName(value: string) {
     .replace(/\s*[|,]\s*.*$/, "")
     .replace(/\s*[-–—]\s*(מנהל|מנהלת|רופא|רופאה|מומחה|מומחית|אחראי|אחראית|סגן|סגנית).*$/, "")
     .replace(/\s+(מנהל|מנהלת|רופא|רופאה|מומחה|מומחית|אחראי|אחראית|סגן|סגנית).*$/, "")
+    .replace(/[.]+$/g, "")
     .trim();
   const match = withoutNoise.match(doctorNamePattern);
 
@@ -250,6 +254,7 @@ function extractTextLineStaffDoctors($: CheerioAPI, sourceUrl: string, config: C
       for (const segment of segments) {
         const fullName = extractNameFromText(segment);
         if (!fullName || !rolePattern.test(segment)) continue;
+        if (config.hospitalSlug === "soroka" && (segment.length > 240 || sorokaNonPhysicianStaffPattern.test(segment))) continue;
         doctors.push({
           fullName,
           titleOrRole: extractRoleFromText(segment, fullName),
@@ -369,6 +374,10 @@ function candidateElements($: CheerioAPI) {
 }
 
 export function extractDoctorsFromDoctorList($: CheerioAPI, sourceUrl: string, config: ClalitDepartmentConfig) {
+  return extractDoctorsFromDoctorListWithDiagnostics($, sourceUrl, config).doctors;
+}
+
+function extractDoctorsFromDoctorListWithDiagnostics($: CheerioAPI, sourceUrl: string, config: ClalitDepartmentConfig) {
   const doctors: DoctorRecord[] = [];
   const seen = new Set<string>();
 
@@ -408,7 +417,19 @@ export function extractDoctorsFromDoctorList($: CheerioAPI, sourceUrl: string, c
     });
   }
 
-  return doctors;
+  if (config.hospitalSlug !== "soroka") {
+    return { doctors, rejectedCandidates: [] };
+  }
+
+  const refined = applySorokaIdentityMap(doctors);
+
+  return {
+    doctors: refined.accepted,
+    rejectedCandidates: refined.rejected.map((candidate) => ({
+      ...candidate,
+      sourceUrl
+    }))
+  };
 }
 
 function pageNumberFromUrl(url: string) {
@@ -457,6 +478,7 @@ async function crawlPage(
   const $ = load(html);
   const pageNumber = pageNumberFromUrl(url);
   const snapshotPath = path.join(paths.rawListDir, `page-${pageNumber || crawlIndex}.html`);
+  const extracted = extractDoctorsFromDoctorListWithDiagnostics($, url, config);
 
   await fs.writeFile(snapshotPath, html, "utf8");
 
@@ -464,9 +486,10 @@ async function crawlPage(
     url,
     pageNumber,
     html,
-    doctors: extractDoctorsFromDoctorList($, url, config),
+    doctors: extracted.doctors,
     discoveredPageUrls: discoverPaginationUrls($, url),
-    candidateBlocks: inspectDoctorLikeBlocks($)
+    candidateBlocks: inspectDoctorLikeBlocks($),
+    rejectedCandidates: extracted.rejectedCandidates
   };
 }
 
@@ -538,6 +561,12 @@ export async function crawlClalitDepartmentDoctors(config: ClalitDepartmentConfi
     warnings: pages
       .filter((page) => page.doctors.length === 0)
       .map((page) => `Zero doctors found on page ${page.pageNumber}: ${page.url}`),
+    rejectedCandidates: pages.flatMap((page) =>
+      (page.rejectedCandidates ?? []).map((candidate) => ({
+        pageNumber: page.pageNumber,
+        ...candidate
+      }))
+    ),
     zeroDoctorCandidateBlocks: pages
       .filter((item) => item.doctors.length === 0)
       .map((page) => ({

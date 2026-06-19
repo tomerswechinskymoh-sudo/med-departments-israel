@@ -1,0 +1,533 @@
+[
+  {
+    "profileCompleteness": "partial",
+    "fullName": "פרופ' מוטי קליין",
+    "hospital": "Soroka Medical Center",
+    "department": "Gicu",
+    "isSenior": true,
+    "seniorityEvidence": "- מנהל המחלקה",
+    "role": "- מנהל המחלקה",
+    "unit": "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר,אירועי חירום ,החטיבה להרדמה ולטיפול נמרץ",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' מוטי קליין",
+        "evidence": "שם:\nפרופ' מוטי קליין\nיחידה:\nהמחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר,אירועי חירום ,החטיבה להרדמה ולטיפול נמרץ",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/klein-m.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר,אירועי חירום ,החטיבה להרדמה ולטיפול נמרץ",
+        "evidence": "שם:\nפרופ' מוטי קליין\nיחידה:\nהמחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר,אירועי חירום ,החטיבה להרדמה ולטיפול נמרץ",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/klein-m.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "92e18c1cc5ea09914569da9f",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/klein-m.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/klein-m.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר לאוניד קויפמן",
+    "hospital": "Soroka Medical Center",
+    "department": "Gicu",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "- סגן מנהל המחלקה",
+    "unit": "מחלקת הרדמה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר לאוניד קויפמן",
+        "evidence": "שם:\nד\"ר לאוניד קויפמן\nיחידה:\nמחלקת הרדמה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koyfman-l.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת הרדמה",
+        "evidence": "שם:\nד\"ר לאוניד קויפמן\nיחידה:\nמחלקת הרדמה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koyfman-l.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "5d8462d1c63cde1f71dc1caf",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koyfman-l.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koyfman-l.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "פרופ' אבגני ברוטפיין",
+    "hospital": "Soroka Medical Center",
+    "department": "Gicu",
+    "isSenior": true,
+    "seniorityEvidence": "פרופ'",
+    "role": "מנהל יחידת התאוששות",
+    "unit": "מחלקת הרדמה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' אבגני ברוטפיין",
+        "evidence": "שם:\nפרופ' אבגני ברוטפיין\nיחידה:\nמחלקת הרדמה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/brotfain-e.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת הרדמה",
+        "evidence": "שם:\nפרופ' אבגני ברוטפיין\nיחידה:\nמחלקת הרדמה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/brotfain-e.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"מחלקת הרדמה\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "9cdce5e2b4fff9026e90b9bd",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/brotfain-e.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/brotfain-e.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "פרופ' עמית פרנקל",
+    "hospital": "Soroka Medical Center",
+    "department": "Gicu",
+    "isSenior": true,
+    "seniorityEvidence": "מנהל היחידה לאיתור וניהול חולים בסיכון",
+    "role": "- מנהל היחידה לאיתור וניהול חולים בסיכון",
+    "unit": "היחידה לטפול נמרץ כללי",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' עמית פרנקל",
+        "evidence": "שם:\nפרופ' עמית פרנקל\nיחידה:\nהיחידה לטפול נמרץ כללי\nמנהל היחידה לאיתור וניהול חולים בסיכוןראש המחלקה לרפואת חירום, בי\"ס רקנאטי, הפקולטה למדעי הבריאות, אוניברסיטת בן גוריון",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/frenkel-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "היחידה לטפול נמרץ כללי",
+        "evidence": "שם:\nפרופ' עמית פרנקל\nיחידה:\nהיחידה לטפול נמרץ כללי\nמנהל היחידה לאיתור וניהול חולים בסיכוןראש המחלקה לרפואת חירום, בי\"ס רקנאטי, הפקולטה למדעי הבריאות, אוניברסיטת בן גוריון",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/frenkel-a.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "ebe2c30ac52e84e5191697e5",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/frenkel-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/frenkel-a.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר יואב ביחובסקי",
+    "hospital": "Soroka Medical Center",
+    "department": "Gicu",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יואב ביחובסקי",
+        "evidence": "שם:\nד\"ר יואב ביחובסקי\nיחידה:\nהמחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bichovsky-y.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+        "evidence": "שם:\nד\"ר יואב ביחובסקי\nיחידה:\nהמחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bichovsky-y.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "ec4cda45381dd274d1e825a2",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bichovsky-y.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bichovsky-y.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אוהד גבאי",
+    "hospital": "Soroka Medical Center",
+    "department": "Gicu",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אוהד גבאי",
+        "evidence": "שם:\nד\"ר אוהד גבאי\nיחידה:\nהמחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gabay-o.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+        "evidence": "שם:\nד\"ר אוהד גבאי\nיחידה:\nהמחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gabay-o.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "04eabf2c30646e92d4aa3e4c",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gabay-o.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gabay-o.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אורן ביהם",
+    "hospital": "Soroka Medical Center",
+    "department": "Gicu",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אורן ביהם",
+        "evidence": "שם:\nד\"ר אורן ביהם\nיחידה:\nהמחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bihem-o.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+        "evidence": "שם:\nד\"ר אורן ביהם\nיחידה:\nהמחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bihem-o.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "f9d92d45279620a61c3aa9c3",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bihem-o.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bihem-o.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "פרופ' אברהם בורר",
+    "hospital": "Soroka Medical Center",
+    "department": "Gicu",
+    "isSenior": true,
+    "seniorityEvidence": "פרופ'",
+    "role": "מהיחידה למניעת זיהומים",
+    "unit": "היחידה למניעת זיהומים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' אברהם בורר",
+        "evidence": "שם:\nפרופ' אברהם בורר",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/borer-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "היחידה למניעת זיהומים",
+        "evidence": "יחידה:\nהיחידה למניעת זיהומים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/borer-a.aspx"
+      },
+      {
+        "field": "academicTitle",
+        "value": "פרופ'",
+        "evidence": "מרצה בכיר",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/borer-a.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"היחידה למניעת זיהומים\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "573abce465bd97d5551eba74",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/borer-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/borer-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

@@ -1,0 +1,611 @@
+[
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר עאטף זיאדנה",
+    "hospital": "Soroka Medical Center",
+    "department": "Ivf",
+    "isSenior": true,
+    "seniorityEvidence": "- מנהל היחידה",
+    "role": "- מנהל היחידה",
+    "unit": "היחידה לפוריות ולהפריה חוץ-גופית",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר עאטף זיאדנה",
+        "evidence": "שם:\nד\"ר עאטף זיאדנה\nיחידה:\nהיחידה לפוריות ולהפריה חוץ-גופית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeadna-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "היחידה לפוריות ולהפריה חוץ-גופית",
+        "evidence": "שם:\nד\"ר עאטף זיאדנה\nיחידה:\nהיחידה לפוריות ולהפריה חוץ-גופית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeadna-a.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "8da157cb42d27cd9448f0e83",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeadna-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeadna-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר נעמה שטיינר",
+    "hospital": "Soroka Medical Center",
+    "department": "Ivf",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "היחידה לפוריות ולהפריה חוץ-גופית\nהיחידה לחינוך רפואי,היחידה לפוריות ולהפריה חוץ-גופית ,מרפאת נשים ,מחלקת נשים א'",
+    "unit": "היחידה לחינוך רפואי,היחידה לפוריות ולהפריה חוץ-גופית ,מרפאת נשים ,מחלקת נשים א'",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר נעמה שטיינר",
+        "evidence": "שם:\nד\"ר נעמה שטיינר\nיחידה:\nהיחידה לחינוך רפואי,היחידה לפוריות ולהפריה חוץ-גופית ,מרפאת נשים ,מחלקת נשים א'\nמנהלת בנק הזרע",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/steiner-n.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "היחידה לחינוך רפואי,היחידה לפוריות ולהפריה חוץ-גופית ,מרפאת נשים ,מחלקת נשים א'",
+        "evidence": "שם:\nד\"ר נעמה שטיינר\nיחידה:\nהיחידה לחינוך רפואי,היחידה לפוריות ולהפריה חוץ-גופית ,מרפאת נשים ,מחלקת נשים א'\nמנהלת בנק הזרע",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/steiner-n.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "517b0b55e9fc358b32d95ffe",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/steiner-n.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/steiner-n.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר גיל גוטוירץ",
+    "hospital": "Soroka Medical Center",
+    "department": "Ivf",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "בנק הזרע\nמחלקת נשים ב'\nבנק הזרע,מחלקת נשים ב',היחידה לפוריות והפריה חוץ-גופית",
+    "unit": "בנק הזרע,מחלקת נשים ב',היחידה לפוריות והפריה חוץ-גופית",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר גיל גוטוירץ",
+        "evidence": "שם:\nד\"ר גיל גוטוירץ\nיחידה:\nבנק הזרע,מחלקת נשים ב',היחידה לפוריות והפריה חוץ-גופית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gutvirtz-g.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "בנק הזרע,מחלקת נשים ב',היחידה לפוריות והפריה חוץ-גופית",
+        "evidence": "שם:\nד\"ר גיל גוטוירץ\nיחידה:\nבנק הזרע,מחלקת נשים ב',היחידה לפוריות והפריה חוץ-גופית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gutvirtz-g.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "843aa574e8197e5b468c6245",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gutvirtz-g.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gutvirtz-g.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר תמר מדר",
+    "hospital": "Soroka Medical Center",
+    "department": "Ivf",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "היחידה לפוריות ולהפריה חוץ-גופית\nSoroka hospital doctor index",
+    "unit": "היחידה לפוריות ולהפריה חוץ-גופית",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר תמר מדר",
+        "evidence": "שם:\nד\"ר תמר מדר\nיחידה:\nהיחידה לפוריות ולהפריה חוץ-גופית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/madar-t.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "היחידה לפוריות ולהפריה חוץ-גופית",
+        "evidence": "שם:\nד\"ר תמר מדר\nיחידה:\nהיחידה לפוריות ולהפריה חוץ-גופית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/madar-t.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "941341d07e3c8c4353ff5451",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/madar-t.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/madar-t.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אופיר אלמסי",
+    "hospital": "Soroka Medical Center",
+    "department": "Ivf",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקת נשים א',היחידה לפוריות והפריה חוץ-גופית",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אופיר אלמסי",
+        "evidence": "שם:\nד\"ר אופיר אלמסי\nיחידה:\nמחלקת נשים א',היחידה לפוריות והפריה חוץ-גופית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/almasi-o.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת נשים א',היחידה לפוריות והפריה חוץ-גופית",
+        "evidence": "שם:\nד\"ר אופיר אלמסי\nיחידה:\nמחלקת נשים א',היחידה לפוריות והפריה חוץ-גופית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/almasi-o.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "779c234d7e0d94cdd73fdcee",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/almasi-o.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/almasi-o.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר צביה פריאל",
+    "hospital": "Soroka Medical Center",
+    "department": "Ivf",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "צוות היחידה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר צביה פריאל",
+        "evidence": "גילי אלטר, ד\"ר צביה פריאל, ד\"ר דגנית ריכטר, ד\"ר יעלה שדה, ד\"ר אושרי נעמני, ד\"ר מראם עזב וד\"ר עירית סולודקין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "missingProfileUrl",
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "No profileUrl was found on the department doctors list.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "db96b2ae6463a5cdf7ae9ac8",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר צביה פריאל",
+    "hospital": "Soroka Medical Center",
+    "department": "Ivf",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "צוות היחידה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר צביה פריאל",
+        "evidence": "גילי אלטר, ד\"ר צביה פריאל, ד\"ר דגנית ריכטר, ד\"ר יעלה שדה, ד\"ר אושרי נעמני, ד\"ר מראם עזב וד\"ר עירית סולודקין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "missingProfileUrl",
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "No profileUrl was found on the department doctors list.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "db96b2ae6463a5cdf7ae9ac8",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר צביה פריאל",
+    "hospital": "Soroka Medical Center",
+    "department": "Ivf",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "צוות היחידה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר צביה פריאל",
+        "evidence": "גילי אלטר, ד\"ר צביה פריאל, ד\"ר דגנית ריכטר, ד\"ר יעלה שדה, ד\"ר אושרי נעמני, ד\"ר מראם עזב וד\"ר עירית סולודקין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "missingProfileUrl",
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "No profileUrl was found on the department doctors list.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "db96b2ae6463a5cdf7ae9ac8",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר צביה פריאל",
+    "hospital": "Soroka Medical Center",
+    "department": "Ivf",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "צוות היחידה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר צביה פריאל",
+        "evidence": "גילי אלטר, ד\"ר צביה פריאל, ד\"ר דגנית ריכטר, ד\"ר יעלה שדה, ד\"ר אושרי נעמני, ד\"ר מראם עזב וד\"ר עירית סולודקין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "missingProfileUrl",
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "No profileUrl was found on the department doctors list.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "db96b2ae6463a5cdf7ae9ac8",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

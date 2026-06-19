@@ -48,6 +48,11 @@ export type DoctorRecord = {
   qaFlags?: string[];
   qaNotes?: string[];
   qaSeverity?: QaSeverity;
+  indexMatched?: boolean;
+  indexMatchSource?: "profileUrl" | "normalizedName" | null;
+  indexProfileUrl?: string | null;
+  indexKnownUnits?: string[];
+  indexKnownFields?: string[];
 };
 
 export type CandidateBlock = {
@@ -64,6 +69,13 @@ export type DoctorListPageResult = {
   doctors: DoctorRecord[];
   discoveredPageUrls: string[];
   candidateBlocks: CandidateBlock[];
+  rejectedCandidates?: Array<{
+    fullName: string;
+    profileUrl: string | null;
+    rawText: string;
+    reason: string;
+    sourceUrl?: string;
+  }>;
 };
 
 export type SourceEvidence = {

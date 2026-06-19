@@ -1,0 +1,417 @@
+[
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר אורי רוביו",
+    "hospital": "Soroka Medical Center",
+    "department": "Med A",
+    "isSenior": true,
+    "seniorityEvidence": "משנת 2020 - מנהל מחלקה פנימית א'",
+    "role": "מומחה ברפואה פנימית ובהמטולוגיה",
+    "unit": "מחלקה פנימית א',מכון המטולוגיה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "2001-1994 - לימודי רפואה בבית הספר לרפואה ע\"ש גולדמן, אוניברסיטת בן־גוריון בנגב",
+      "2006-1998 - לימודי תואר שני ודוקטורט באימונו־וירולוגיה במחלקה לאימונולוגיה ומיקרוביולוגיה, הפקולטה למדעי הבריאות, אוניברסיטת בן־גוריון בנגב"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "oryro@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אורי רוביו",
+        "evidence": "שם:\nד\"ר אורי רוביו",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rouvio-o.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה פנימית א',מכון המטולוגיה",
+        "evidence": "יחידה:\nמחלקה פנימית א',מכון המטולוגיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rouvio-o.aspx"
+      },
+      {
+        "field": "contact.email",
+        "value": "oryro@clalit.org.il",
+        "evidence": "דוא\"ל:\noryro@clalit.org.il",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rouvio-o.aspx"
+      },
+      {
+        "field": "isSenior",
+        "value": "true",
+        "evidence": "משנת 2020 - מנהל מחלקה פנימית א'",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rouvio-o.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "b17931c3d2a2fa0e36055c1c",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rouvio-o.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rouvio-o.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר יעל גבעון כהן",
+    "hospital": "Soroka Medical Center",
+    "department": "Med A",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "(רופאה בכירה במחלקה פנימית ) - מומחית ברפואה פנימית",
+    "unit": "מחלקה פנימית א'",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "בית הספר לרפואה, הפקולטה למדעי הבריאות, אוניברסיטת בן גוריון בנגב, 2016."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יעל גבעון כהן",
+        "evidence": "שם:\nד\"ר יעל גבעון כהן\nיחידה:\nמחלקה פנימית א'",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/givon-cohen-y.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה פנימית א'",
+        "evidence": "שם:\nד\"ר יעל גבעון כהן\nיחידה:\nמחלקה פנימית א'",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/givon-cohen-y.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "8545143229977a2d2d467c84",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/givon-cohen-y.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/givon-cohen-y.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר מעתז אבו עבוד",
+    "hospital": "Soroka Medical Center",
+    "department": "Med A",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "- מומחה ברפואה פנימית וריאות",
+    "unit": "רופאים בכירים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר מעתז אבו עבוד",
+        "evidence": "ד\"ר מעתז אבו עבוד - מומחה ברפואה פנימית וריאות",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abud-m.aspx"
+      },
+      {
+        "field": "role",
+        "value": "- מומחה ברפואה פנימית וריאות",
+        "evidence": "ד\"ר מעתז אבו עבוד - מומחה ברפואה פנימית וריאות",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abud-m.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "indexUnmatched",
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "2b3374bd5d481a91968651b8",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abud-m.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abud-m.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר מוחמד אבו עאבד",
+    "hospital": "Soroka Medical Center",
+    "department": "Med A",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקה פנימית א'",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר מוחמד אבו עאבד",
+        "evidence": "שם:\nד\"ר מוחמד אבו עאבד\nיחידה:\nמחלקה פנימית א'",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abed-m.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה פנימית א'",
+        "evidence": "שם:\nד\"ר מוחמד אבו עאבד\nיחידה:\nמחלקה פנימית א'",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abed-m.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "afa29961494ac58a5a006d8d",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abed-m.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abed-m.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר תהלה מגד-בוק",
+    "hospital": "Soroka Medical Center",
+    "department": "Med A",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "רופאים בכירים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Extracted unit/department does not match configured department keywords. unit=\"רופאים בכירים\".",
+      "Doctor appeared in this department list but profile/unit appears to belong elsewhere.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"רופאים בכירים\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "907086f9d8b505a6f0d49223",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/meged-buk-t.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/meged-buk-t.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אורלי שמעוני",
+    "hospital": "Soroka Medical Center",
+    "department": "Med A",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "צוות המחלקה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אורלי שמעוני",
+        "evidence": "ד\"ר אורלי שמעוני",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "missingProfileUrl",
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "No profileUrl was found on the department doctors list.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"צוות המחלקה\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "164cbdf10ea9a54a662ae963",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/med-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

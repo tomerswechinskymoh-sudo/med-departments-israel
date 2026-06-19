@@ -1,0 +1,376 @@
+[
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר נעם יאנקולוביץ",
+    "hospital": "Soroka Medical Center",
+    "department": "Retinal Clinic",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "יחידת רשתית\nיחידת רשתית ,מערך עיניים",
+    "unit": "יחידת רשתית ,מערך עיניים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1999 - 2006 - לימודי רפאה באוניברסיטת בן-גוריון, באר-שבע."
+    ],
+    "residency": [
+      "2006 - 2007 - סטז׳ במרכז הרפואי סורוקה."
+    ],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "NoamYa@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר נעם יאנקולוביץ",
+        "evidence": "שם:\nד\"ר נעם יאנקולוביץ",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yanculovich-n.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "יחידת רשתית ,מערך עיניים",
+        "evidence": "יחידה:\nיחידת רשתית ,מערך עיניים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yanculovich-n.aspx"
+      },
+      {
+        "field": "role",
+        "value": "יחידת רשתית\nיחידת רשתית ,מערך עיניים",
+        "evidence": "יחידה:\nיחידת רשתית ,מערך עיניים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yanculovich-n.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.phone"
+    ],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "e86ed43b6c7a9569011541ed",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yanculovich-n.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/retinal-clinic.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yanculovich-n.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר נדב בלפר",
+    "hospital": "Soroka Medical Center",
+    "department": "Retinal Clinic",
+    "isSenior": true,
+    "seniorityEvidence": "מנהל השירות לניתוחי קטרקט",
+    "role": "יחידת רשתית ,מערך עיניים",
+    "unit": "יחידת רשתית ,מערך עיניים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1995 - סיום לימודי הרפואה בפקולטה לרפואה באוניברסיטת בן גוריון בנגב."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "NadavB@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר נדב בלפר",
+        "evidence": "שם:\nד\"ר נדב בלפר\nדוא\"ל:\nNadavB@clalit.org.ilDobelfair@gmail.com\nיחידה:\nיחידת רשתית ,מערך עיניים\n1995 - סיום לימודי הרפואה בפקולטה לרפואה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/belfair-n.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "יחידת רשתית ,מערך עיניים",
+        "evidence": "שם:\nד\"ר נדב בלפר\nדוא\"ל:\nNadavB@clalit.org.ilDobelfair@gmail.com\nיחידה:\nיחידת רשתית ,מערך עיניים\n1995 - סיום לימודי הרפואה בפקולטה לרפואה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/belfair-n.aspx"
+      },
+      {
+        "field": "role",
+        "value": "יחידת רשתית ,מערך עיניים",
+        "evidence": "שם:\nד\"ר נדב בלפר\nדוא\"ל:\nNadavB@clalit.org.ilDobelfair@gmail.com\nיחידה:\nיחידת רשתית ,מערך עיניים\n1995 - סיום לימודי הרפואה בפקולטה לרפואה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/belfair-n.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "47d5d428d9f4fb69b3bb9cac",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/belfair-n.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/retinal-clinic.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/belfair-n.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר מרינה שנק",
+    "hospital": "Soroka Medical Center",
+    "department": "Retinal Clinic",
+    "isSenior": true,
+    "seniorityEvidence": "משנת 1997 - מנהלת מרפאת אובאיטיס.",
+    "role": "מרפאת אובאיטיס\nיחידת רשתית\nמרפאת אובאיטיס ,יחידת רשתית ,מערך עיניים",
+    "unit": "מרפאת אובאיטיס ,יחידת רשתית ,מערך עיניים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1989 – לימודי רפואה בפקולטה למדעי הבריאות, אוניברסיטת בן־גוריון."
+    ],
+    "residency": [
+      "1990 – סטז' במרכז רפואי האוניברסטאי סורוקה."
+    ],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "shneck@bgu.ac.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "seniority",
+        "value": "מנהלת מרפאת אובאיטיס",
+        "evidence": "משנת 1997 - מנהלת מרפאת אובאיטיס.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shnek-m.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship"
+    ],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "f2aa274e7d686f722360050b",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shnek-m.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/retinal-clinic.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shnek-m.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר אביאל חדד",
+    "hospital": "Soroka Medical Center",
+    "department": "Retinal Clinic",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מרפאת רשתית\nמערך עיניים",
+    "unit": "מרפאת רשתית,מערך עיניים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אביאל חדד",
+        "evidence": "שם:\nד\"ר אביאל חדד\nיחידה:\nמרפאת רשתית,מערך עיניים\nתואר ראשון במדעי הרפואה, האוניברסיטה העברית, ירושלים.\nתואר שני MPH בבריאות הציבור, האוניברסיטה העברית, ירושלים.\nדוקטור ברפואה -MD, האוניברסיטה העברית, ברושלים.נסיון קליניסטז' במרכז הרפואי קפלן, רחובות.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hadad-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מרפאת רשתית,מערך עיניים",
+        "evidence": "שם:\nד\"ר אביאל חדד\nיחידה:\nמרפאת רשתית,מערך עיניים\nתואר ראשון במדעי הרפואה, האוניברסיטה העברית, ירושלים.\nתואר שני MPH בבריאות הציבור, האוניברסיטה העברית, ירושלים.\nדוקטור ברפואה -MD, האוניברסיטה העברית, ברושלים.נסיון קליניסטז' במרכז הרפואי קפלן, רחובות.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hadad-a.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "8dd9d1739dbc7bbf76d98590",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hadad-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/retinal-clinic.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hadad-a.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אורטל בוחבוט",
+    "hospital": "Soroka Medical Center",
+    "department": "Retinal Clinic",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מערך עיניים,יחידת רשתית",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "d649cd4763efac256ae0e2d7",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/buhbut-o.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/retinal-clinic.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/buhbut-o.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר סקוט ארטורו ריצ'רדס",
+    "hospital": "Soroka Medical Center",
+    "department": "Retinal Clinic",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מערך עיניים,יחידת רשתית",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "b739069f837dcb80b03ec47d",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/richards-s-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Ophthalmology/Pages/retinal-clinic.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/richards-s-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

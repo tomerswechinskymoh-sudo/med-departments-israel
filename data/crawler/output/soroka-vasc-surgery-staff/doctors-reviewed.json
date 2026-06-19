@@ -1,0 +1,367 @@
+[
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אנטולי לייצין",
+    "hospital": "Soroka Medical Center",
+    "department": "Vasc Surgery Staff",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקת כירורגיית כלי-דם",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אנטולי לייצין",
+        "evidence": "שם:\nד\"ר אנטולי לייצין\nיחידה:\nמחלקת כירורגיית כלי-דם",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/leizin-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת כירורגיית כלי-דם",
+        "evidence": "שם:\nד\"ר אנטולי לייצין\nיחידה:\nמחלקת כירורגיית כלי-דם",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/leizin-a.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "93778879fb3dde6e2b24c638",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/leizin-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/leizin-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר דמיטרי שפובלוב",
+    "hospital": "Soroka Medical Center",
+    "department": "Vasc Surgery Staff",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקה לכירורגיית כלי-דם",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1995 - 2001 - לימודי רפואה באקדמיה לרפואה של קירגיזסטאן"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר דמיטרי שפובלוב",
+        "evidence": "שם:\nד\"ר דמיטרי שפובלוב\nיחידה:\nמחלקה לכירורגיית כלי-דם\n1995 - 2001 - לימודי רפואה באקדמיה לרפואה של קירגיזסטאן\nמדריך בהוראת סטודנטים לרפואה מרצה בקורס הכנה למבחן רישוי לרופאים עולים.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shepovalov-d.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לכירורגיית כלי-דם",
+        "evidence": "שם:\nד\"ר דמיטרי שפובלוב\nיחידה:\nמחלקה לכירורגיית כלי-דם\n1995 - 2001 - לימודי רפואה באקדמיה לרפואה של קירגיזסטאן\nמדריך בהוראת סטודנטים לרפואה מרצה בקורס הכנה למבחן רישוי לרופאים עולים.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shepovalov-d.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "7415c6841148137d14062da8",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shepovalov-d.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shepovalov-d.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר נאהל אבו-קוש",
+    "hospital": "Soroka Medical Center",
+    "department": "Vasc Surgery Staff",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": null,
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר נאהל אבו-קוש",
+        "evidence": "ד\"ר נאהל אבו-קוש.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role",
+      "unit",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "missingProfileUrl",
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "No profileUrl was found on the department doctors list.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"unknown\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "d0d1d21f60632a523e7db980",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר נאהל אבו-קוש",
+    "hospital": "Soroka Medical Center",
+    "department": "Vasc Surgery Staff",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": null,
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר נאהל אבו-קוש",
+        "evidence": "ד\"ר נאהל אבו-קוש.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role",
+      "unit",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "missingProfileUrl",
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "No profileUrl was found on the department doctors list.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"unknown\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "d0d1d21f60632a523e7db980",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר נאהל אבו-קוש",
+    "hospital": "Soroka Medical Center",
+    "department": "Vasc Surgery Staff",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": null,
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר נאהל אבו-קוש",
+        "evidence": "ד\"ר נאהל אבו-קוש.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role",
+      "unit",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "missingProfileUrl",
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "No profileUrl was found on the department doctors list.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"unknown\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "d0d1d21f60632a523e7db980",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

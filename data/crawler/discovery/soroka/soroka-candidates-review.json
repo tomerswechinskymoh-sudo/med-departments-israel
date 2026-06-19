@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-06-18T20:30:54.223Z",
+    "generatedAt": "2026-06-19T05:59:18.144Z",
     "inputCandidatesPath": "data/crawler/discovery/soroka/department-doctor-pages.json",
     "inputAuditPath": "data/crawler/discovery/soroka/discovery-audit.json",
     "departmentPagesScanned": 204,
@@ -14,8 +14,8 @@
       }
     ],
     "totalCandidates": 156,
-    "recommendedImportCount": 111,
-    "recommendedReviewCount": 36,
+    "recommendedImportCount": 112,
+    "recommendedReviewCount": 35,
     "recommendedSkipCount": 9,
     "countsByPageType": {
       "coreDepartment": 42,
@@ -245,6 +245,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-d86d49bc",
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -278,6 +281,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "anesthesiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-anesthesiology-division",
         "hospital": "Soroka Medical Center",
@@ -311,6 +317,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "anesthesiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-anesthesiology-division",
         "hospital": "Soroka Medical Center",
@@ -344,6 +353,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "anesthesiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-anesthesiology-division",
         "hospital": "Soroka Medical Center",
@@ -377,6 +389,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -410,6 +425,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -443,6 +461,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-871dacea",
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -476,6 +497,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -509,6 +533,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -542,6 +569,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -575,6 +605,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -608,6 +641,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -641,6 +677,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -674,6 +713,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -707,6 +749,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -740,6 +785,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "imaging",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-imaging",
         "hospital": "Soroka Medical Center",
@@ -773,6 +821,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "imaging",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-imaging",
         "hospital": "Soroka Medical Center",
@@ -806,6 +857,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -839,6 +893,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -872,6 +929,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -905,6 +965,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -938,6 +1001,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -971,6 +1037,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1004,6 +1073,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1037,6 +1109,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1070,6 +1145,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1103,6 +1181,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1136,6 +1217,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1169,6 +1253,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1202,6 +1289,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1235,6 +1325,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1268,6 +1361,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1301,6 +1397,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1334,6 +1433,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1367,6 +1469,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1400,6 +1505,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1433,6 +1541,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1466,6 +1577,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1499,6 +1613,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1532,6 +1649,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1565,6 +1685,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-d64435a8",
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1598,6 +1721,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1631,6 +1757,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1664,6 +1793,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1697,6 +1829,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "medicine",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-medicine-division",
         "hospital": "Soroka Medical Center",
@@ -1730,6 +1865,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -1763,6 +1901,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -1796,6 +1937,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -1829,6 +1973,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -1862,6 +2009,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -1895,6 +2045,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -1928,6 +2081,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -1961,6 +2117,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -1994,6 +2153,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -2027,6 +2189,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -2060,6 +2225,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -2093,6 +2261,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -2126,6 +2297,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -2159,6 +2333,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -2192,6 +2369,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -2225,6 +2405,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ob-gyn",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ob-gyn-division",
         "hospital": "Soroka Medical Center",
@@ -2258,6 +2441,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-c6a8a439",
       "parentDivision": "oncology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-oncology-inst",
         "hospital": "Soroka Medical Center",
@@ -2291,6 +2477,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "oncology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-oncology-inst",
         "hospital": "Soroka Medical Center",
@@ -2324,6 +2513,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "oncology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-oncology-inst",
         "hospital": "Soroka Medical Center",
@@ -2357,6 +2549,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "oncology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-oncology-inst",
         "hospital": "Soroka Medical Center",
@@ -2390,6 +2585,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "oncology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-oncology-inst",
         "hospital": "Soroka Medical Center",
@@ -2423,6 +2621,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "oncology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-oncology-inst",
         "hospital": "Soroka Medical Center",
@@ -2456,6 +2657,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "oncology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-oncology-inst",
         "hospital": "Soroka Medical Center",
@@ -2489,6 +2693,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -2522,6 +2729,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -2555,6 +2765,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -2588,6 +2801,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -2621,6 +2837,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -2654,6 +2873,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-1162abcf",
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -2687,6 +2909,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -2720,6 +2945,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -2753,6 +2981,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -2786,6 +3017,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-bloodbank",
         "hospital": "Soroka Medical Center",
@@ -2814,11 +3048,14 @@
       "patternType": "inlineStaffPage",
       "confidence": 0.9,
       "pageType": "unknown",
-      "recommendedAction": "review",
-      "reason": "page type could not be classified",
+      "recommendedAction": "import",
+      "reason": "page type could not be classified; existing crawler output: 16/19 doctors matched Soroka index",
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": 19,
+      "indexMatchedDoctorCount": 16,
+      "suspectedFalsePositiveCount": 0,
       "sourceCandidate": {
         "id": "soroka-er",
         "hospital": "Soroka Medical Center",
@@ -2848,10 +3085,13 @@
       "confidence": 0.9,
       "pageType": "institute",
       "recommendedAction": "import",
-      "reason": "known HTML staff/inline page with usable confidence",
+      "reason": "known HTML staff/inline page with usable confidence; existing crawler output: 4/6 doctors matched Soroka index",
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": 6,
+      "indexMatchedDoctorCount": 4,
+      "suspectedFalsePositiveCount": 0,
       "sourceCandidate": {
         "id": "soroka-genetic-inst",
         "hospital": "Soroka Medical Center",
@@ -2885,6 +3125,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-infect-prevent",
         "hospital": "Soroka Medical Center",
@@ -2918,6 +3161,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-isotop-inst",
         "hospital": "Soroka Medical Center",
@@ -2951,6 +3197,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-isotop-pet-ct",
         "hospital": "Soroka Medical Center",
@@ -2984,6 +3233,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-d64435a8",
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-neurology-angiography",
         "hospital": "Soroka Medical Center",
@@ -3017,6 +3269,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pathology",
         "hospital": "Soroka Medical Center",
@@ -3050,6 +3305,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-rehabilitation",
         "hospital": "Soroka Medical Center",
@@ -3083,6 +3341,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-sleep-lab",
         "hospital": "Soroka Medical Center",
@@ -3116,6 +3377,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-rooms",
         "hospital": "Soroka Medical Center",
@@ -3149,6 +3413,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3182,6 +3449,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3215,6 +3485,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3248,6 +3521,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3281,6 +3557,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3314,6 +3593,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3347,6 +3629,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3380,6 +3665,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3413,6 +3701,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-d503caf4",
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3446,6 +3737,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3479,6 +3773,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3512,6 +3809,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3545,6 +3845,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3578,6 +3881,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3611,6 +3917,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3644,6 +3953,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3677,6 +3989,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3710,6 +4025,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3743,6 +4061,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3776,6 +4097,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3809,6 +4133,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3842,6 +4169,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3875,6 +4205,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -3908,6 +4241,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "psychiatry",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-psychiatry",
         "hospital": "Soroka Medical Center",
@@ -3941,6 +4277,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "psychiatry",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-psychiatry",
         "hospital": "Soroka Medical Center",
@@ -3974,6 +4313,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "psychiatry",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-psychiatry",
         "hospital": "Soroka Medical Center",
@@ -4007,6 +4349,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "psychiatry",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-psychiatry",
         "hospital": "Soroka Medical Center",
@@ -4040,6 +4385,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "psychiatry",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-psychiatry",
         "hospital": "Soroka Medical Center",
@@ -4073,6 +4421,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "psychiatry",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-psychiatry",
         "hospital": "Soroka Medical Center",
@@ -4106,6 +4457,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "psychiatry",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-psychiatry",
         "hospital": "Soroka Medical Center",
@@ -4139,6 +4493,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4172,6 +4529,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4205,6 +4565,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4238,6 +4601,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4271,6 +4637,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4304,6 +4673,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4337,6 +4709,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4370,6 +4745,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4403,6 +4781,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4436,6 +4817,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4469,6 +4853,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4502,6 +4889,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4535,6 +4925,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4568,6 +4961,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4601,6 +4997,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4634,6 +5033,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4667,6 +5069,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4700,6 +5105,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4733,6 +5141,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4766,6 +5177,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4799,6 +5213,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4832,6 +5249,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4865,6 +5285,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-d86d49bc",
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4898,6 +5321,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4931,6 +5357,9 @@
       "parserRisk": "low",
       "duplicateGroup": null,
       "parentDivision": "surgery",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-surgery-division",
         "hospital": "Soroka Medical Center",
@@ -4964,6 +5393,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-1162abcf",
       "parentDivision": "ophthalmology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-ophthalmology",
         "hospital": "Soroka Medical Center",
@@ -4997,6 +5429,9 @@
       "parserRisk": "medium",
       "duplicateGroup": null,
       "parentDivision": null,
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-staff-students-vaccines",
         "hospital": "Soroka Medical Center",
@@ -5030,6 +5465,9 @@
       "parserRisk": "high",
       "duplicateGroup": null,
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -5063,6 +5501,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-871dacea",
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -5096,6 +5537,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-871dacea",
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -5129,6 +5573,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-871dacea",
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -5162,6 +5609,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-871dacea",
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -5195,6 +5645,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-871dacea",
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -5228,6 +5681,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-871dacea",
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -5261,6 +5717,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-871dacea",
       "parentDivision": "cardiology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-cardiology",
         "hospital": "Soroka Medical Center",
@@ -5294,6 +5753,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-c6a8a439",
       "parentDivision": "oncology",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-oncology-inst",
         "hospital": "Soroka Medical Center",
@@ -5327,6 +5789,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-d503caf4",
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",
@@ -5360,6 +5825,9 @@
       "parserRisk": "high",
       "duplicateGroup": "title-d503caf4",
       "parentDivision": "pediatrics",
+      "extractedDoctorCount": null,
+      "indexMatchedDoctorCount": null,
+      "suspectedFalsePositiveCount": null,
       "sourceCandidate": {
         "id": "soroka-pediatrics-division",
         "hospital": "Soroka Medical Center",

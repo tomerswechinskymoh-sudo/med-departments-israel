@@ -1,0 +1,565 @@
+[
+  {
+    "profileCompleteness": "partial",
+    "fullName": "פרופ' קרלוס כפרי",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Angio",
+    "isSenior": true,
+    "seniorityEvidence": "מרצה בכיר בקרדיולוגיה",
+    "role": "מנהל היחידה",
+    "unit": "יחידת צנתורים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1976-1983 - Faculty of Medicine, Northeast University"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": "Cafricar@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' קרלוס כפרי",
+        "evidence": "שם:\nפרופ' קרלוס כפרי\nדוא\"ל:\nCafricar@clalit.org.ilCafricar@netvision.net.il\nיחידה:\nיחידת צנתורים\n1976-1983 - Faculty of Medicine, Northeast University",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cafr-c.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "יחידת צנתורים",
+        "evidence": "פרופ' קרלוס כפרי\nדוא\"ל:\nCafricar@clalit.org.ilCafricar@netvision.net.il\nיחידה:\nיחידת צנתורים\n1976-1983 - Faculty of Medicine, Northeast University",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cafr-c.aspx"
+      },
+      {
+        "field": "role",
+        "value": "מנהל היחידה",
+        "evidence": "מרצה בכיר בקרדיולוגיה באוניברסיטה בן־גוריון",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cafr-c.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "6c648fc8f625fa7e26fe83c2",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cafr-c.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cafr-c.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר ז'אן מרק וויינשטיין",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Angio",
+    "isSenior": true,
+    "seniorityEvidence": "משנת 1993 - רופא בכיר במערך הקרדיולוגי במרכז הרפואי סורוקה",
+    "role": "מערך קרדיולוגי,מרפאת אי-ספיקת לב",
+    "unit": "מערך קרדיולוגי,מרפאת אי-ספיקת לב",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [
+      "אי־ספיקת לב",
+      "צינתורים",
+      "אקו־קרדיוגרפיה"
+    ],
+    "education": [
+      "1983-1977 - לימודי רפואה באוניברסיטת לונדון"
+    ],
+    "residency": [],
+    "fellowship": [
+      {
+        "field": "Cardiology",
+        "institution": "Royal College of Physicians",
+        "country": "UK",
+        "rawText": "Fellow of the Royal College of Physicians (FRCP)"
+      }
+    ],
+    "academicTitles": [
+      "ד\"ר",
+      "מרצה בכיר באוניברסיטת בן־גוריון"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0.8,
+      "fellowship": 0.9,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "seniority",
+        "value": "רופא בכיר",
+        "evidence": "משנת 1993 - רופא בכיר במערך הקרדיולוגי במרכז הרפואי סורוקה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weinstein-m.aspx"
+      },
+      {
+        "field": "role",
+        "value": "מערך קרדיולוגי,מרפאת אי-ספיקת לב",
+        "evidence": "מערך קרדיולוגי,מרפאת אי-ספיקת לב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weinstein-m.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"מערך קרדיולוגי,מרפאת אי-ספיקת לב\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "d543723f715e52d3c31c286f",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weinstein-m.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weinstein-m.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר גבריאל רוזנשטיין",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Angio",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "יחידת צנתורים\nSoroka hospital doctor index",
+    "unit": "יחידת צנתורים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "GabrielR@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר גבריאל רוזנשטיין",
+        "evidence": "שם:\nד\"ר גבריאל רוזנשטיין\nדוא\"ל:\nGabrielR@clalit.org.il\nיחידה:\nיחידת צנתורים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenstein-g.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "יחידת צנתורים",
+        "evidence": "שם:\nד\"ר גבריאל רוזנשטיין\nדוא\"ל:\nGabrielR@clalit.org.il\nיחידה:\nיחידת צנתורים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenstein-g.aspx"
+      },
+      {
+        "field": "contactDetails.emails",
+        "value": "GabrielR@clalit.org.il",
+        "evidence": "שם:\nד\"ר גבריאל רוזנשטיין\nדוא\"ל:\nGabrielR@clalit.org.il\nיחידה:\nיחידת צנתורים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenstein-g.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship"
+    ],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "8eb338135853fcd2ea649f3e",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenstein-g.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenstein-g.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר יורי קלאשיאן",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Angio",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מערך קרדיולוגי\nSoroka hospital doctor index",
+    "unit": "מערך קרדיולוגי",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "yurikl@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יורי קלאשיאן",
+        "evidence": "שם:\nד\"ר יורי קלאשיאן\nדוא\"ל:\nyurikl@clalit.org.il\nיחידה:\nמערך קרדיולוגי\nרופא מומחה במערך הקרדיולוגי\n1996-1988 - נובוסיבירסק, רוסיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kalashian-y.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מערך קרדיולוגי",
+        "evidence": "שם:\nד\"ר יורי קלאשיאן\nדוא\"ל:\nyurikl@clalit.org.il\nיחידה:\nמערך קרדיולוגי\nרופא מומחה במערך הקרדיולוגי\n1996-1988 - נובוסיבירסק, רוסיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kalashian-y.aspx"
+      },
+      {
+        "field": "email",
+        "value": "yurikl@clalit.org.il",
+        "evidence": "שם:\nד\"ר יורי קלאשיאן\nדוא\"ל:\nyurikl@clalit.org.il\nיחידה:\nמערך קרדיולוגי\nרופא מומחה במערך הקרדיולוגי\n1996-1988 - נובוסיבירסק, רוסיה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kalashian-y.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"מערך קרדיולוגי\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "c1cf4f1f67fce5671bdbaaf7",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kalashian-y.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kalashian-y.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר עארף אל נצאצרה",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Angio",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "טיפול-נמרץ לב וטיפול-נמרץ לב ביניים,יחידת צנתורים",
+    "unit": "טיפול-נמרץ לב וטיפול-נמרץ לב ביניים,יחידת צנתורים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "ArefEN@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר עארף אל נצאצרה",
+        "evidence": "שם:\nד\"ר עארף אל נצאצרה\nדוא\"ל:\nArefEN@clalit.org.il\nיחידה:\nטיפול-נמרץ לב וטיפול-נמרץ לב ביניים,יחידת צנתורים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/el-nasasra-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "טיפול-נמרץ לב וטיפול-נמרץ לב ביניים,יחידת צנתורים",
+        "evidence": "שם:\nד\"ר עארף אל נצאצרה\nדוא\"ל:\nArefEN@clalit.org.il\nיחידה:\nטיפול-נמרץ לב וטיפול-נמרץ לב ביניים,יחידת צנתורים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/el-nasasra-a.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role/position section not found."
+    ],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "ccd3f1aadbae44601ca7334d",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/el-nasasra-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/el-nasasra-a.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר עלא אבו דוגוש",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Angio",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "טיפול-נמרץ לב וטיפול-נמרץ לב ביניים\nיחידת צנתורים",
+    "unit": "טיפול-נמרץ לב וטיפול-נמרץ לב ביניים,יחידת צנתורים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר עלא אבו דוגוש",
+        "evidence": "שם:\nד\"ר עלא אבו דוגוש\nיחידה:\nטיפול-נמרץ לב וטיפול-נמרץ לב ביניים,יחידת צנתורים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abudugush-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "טיפול-נמרץ לב וטיפול-נמרץ לב ביניים,יחידת צנתורים",
+        "evidence": "שם:\nד\"ר עלא אבו דוגוש\nיחידה:\nטיפול-נמרץ לב וטיפול-נמרץ לב ביניים,יחידת צנתורים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abudugush-a.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "seniorityEvidence",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "1c0c989e133cdfb85dd1be14",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abudugush-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abudugush-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר תומר מלר",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Angio",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "המערך הקרדיולוגי\nקרדיולוגיה התערבותית (צנתורים)",
+    "unit": "המערך הקרדיולוגי,קרדיולוגיה התערבותית (צנתורים)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר תומר מלר",
+        "evidence": "שם:\nד\"ר תומר מלר\nיחידה:\nהמערך הקרדיולוגי,קרדיולוגיה התערבותית (צנתורים)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/maller-t.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המערך הקרדיולוגי,קרדיולוגיה התערבותית (צנתורים)",
+        "evidence": "שם:\nד\"ר תומר מלר\nיחידה:\nהמערך הקרדיולוגי,קרדיולוגיה התערבותית (צנתורים)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/maller-t.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "df7094c0483807cc088d258f",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/maller-t.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/maller-t.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר איתי ויסברג",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Angio",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "קרדיולוגיה התערבותית (צנתורים)",
+    "unit": "קרדיולוגיה התערבותית (צנתורים)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר איתי ויסברג",
+        "evidence": "שם:\nד\"ר איתי ויסברג\nיחידה:\nקרדיולוגיה התערבותית (צנתורים)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weissberg-i.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "קרדיולוגיה התערבותית (צנתורים)",
+        "evidence": "שם:\nד\"ר איתי ויסברג\nיחידה:\nקרדיולוגיה התערבותית (צנתורים)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weissberg-i.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "f0f08a2292ddf8422cee75bb",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weissberg-i.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-angio.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weissberg-i.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

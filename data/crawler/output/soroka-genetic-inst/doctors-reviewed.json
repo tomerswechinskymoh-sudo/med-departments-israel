@@ -1,0 +1,385 @@
+[
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר אריה קויפמן",
+    "hospital": "Soroka Medical Center",
+    "department": "Genetic Inst",
+    "isSenior": true,
+    "seniorityEvidence": "מנהל המכון לגנטיקה",
+    "role": "מנהל המכון",
+    "unit": "המכון לגנטיקה של האדם",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "ariek2@clalit.org.il",
+      "phone": "0509028017"
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אריה קויפמן",
+        "evidence": "שם:\nד\"ר אריה קויפמן\nדוא\"ל:\nariek2@clalit.org.il\nיחידה:\nהמכון לגנטיקה של האדם\nמשנת 2024 - מנהל המכון לגנטיקה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koifman-i.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המכון לגנטיקה של האדם",
+        "evidence": "שם:\nד\"ר אריה קויפמן\nדוא\"ל:\nariek2@clalit.org.il\nיחידה:\nהמכון לגנטיקה של האדם\nמשנת 2024 - מנהל המכון לגנטיקה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koifman-i.aspx"
+      },
+      {
+        "field": "role",
+        "value": "מנהל המכון",
+        "evidence": "משנת 2024 - מנהל המכון לגנטיקה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koifman-i.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "indexUnmatched"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing."
+    ],
+    "qaSeverity": "ok",
+    "doctorKey": "fee86bc2284b7708d0f43d48",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koifman-i.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koifman-i.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר ברכה קננגיסר פינס ביבי",
+    "hospital": "Soroka Medical Center",
+    "department": "Genetic Inst",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "המכון לגנטיקה של האדם",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1999 - לימודי רפואה, בית הספר לרפואה, האוניברסיטה העברית, ירושלים."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר ברכה קננגיסר פינס ביבי",
+        "evidence": "שם:\nד\"ר ברכה קננגיסר פינס ביבי\nיחידה:\nהמכון לגנטיקה של האדם\n1999 - לימודי רפואה, בית הספר לרפואה, האוניברסיטה העברית, ירושלים.\nאיגוד הגנטיקאים הרפואיים.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kanengisser-pines-bibi-b.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המכון לגנטיקה של האדם",
+        "evidence": "שם:\nד\"ר ברכה קננגיסר פינס ביבי\nיחידה:\nהמכון לגנטיקה של האדם\n1999 - לימודי רפואה, בית הספר לרפואה, האוניברסיטה העברית, ירושלים.\nאיגוד הגנטיקאים הרפואיים.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kanengisser-pines-bibi-b.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "fbfd4ccaf1033876120387dc",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kanengisser-pines-bibi-b.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kanengisser-pines-bibi-b.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר רבקה ליזה קבש",
+    "hospital": "Soroka Medical Center",
+    "department": "Genetic Inst",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "המכון לגנטיקה של האדם",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר רבקה ליזה קבש",
+        "evidence": "שם:\nד\"ר רבקה ליזה קבש\nיחידה:\nהמכון לגנטיקה של האדם",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/calabash-l.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המכון לגנטיקה של האדם",
+        "evidence": "שם:\nד\"ר רבקה ליזה קבש\nיחידה:\nהמכון לגנטיקה של האדם",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/calabash-l.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "32db72fbb74c32c4cb41a79a",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/calabash-l.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/calabash-l.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר מאשה מזור אורינג",
+    "hospital": "Soroka Medical Center",
+    "department": "Genetic Inst",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "המכון לגנטיקה של האדם",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "29da2bcb8a2e5a21c4992a1f",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/mazor-oring-m.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/mazor-oring-m.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר גיל סמוחה שכטר",
+    "hospital": "Soroka Medical Center",
+    "department": "Genetic Inst",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "המכון לגנטיקה של האדם",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "a4caf95767aec68a5f500e14",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/samoja-shekar-g.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/samoja-shekar-g.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר שירלי עמר",
+    "hospital": "Soroka Medical Center",
+    "department": "Genetic Inst",
+    "isSenior": true,
+    "seniorityEvidence": "מנהלת",
+    "role": "מנהלת",
+    "unit": "צוות המעבדה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר שירלי עמר",
+        "evidence": "ד\"ר שירלי עמר- מנהלת, מוניקה נויהוז – סגנית מנהלת, מריה קרטר – אחראית מעבדה מולקולרית, אירה אמורז'וייב, אלה פליישמכר, אנה יוספוב, גלינה מרגוליס, ליליאנה שייקו, מגדה ברטל, מרינה ורנבסקי, מרינה מוסטובוי-לוריא, דניאל אליהו, ילנה גורביץ, אלבירה אפלבאום, שרה ויזנר, גלנדה קלניקר, איתי מלכה, ד'אהר אבו האני, רוית ברוך, מיקה לוי, יבגניה אלצופין ויעל קהת. מזכירת המעבדה: אתי רובין.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx"
+      },
+      {
+        "field": "role",
+        "value": "מנהלת",
+        "evidence": "ד\"ר שירלי עמר- מנהלת, מוניקה נויהוז – סגנית מנהלת, מריה קרטר – אחראית מעבדה מולקולרית, אירה אמורז'וייב, אלה פליישמכר, אנה יוספוב, גלינה מרגוליס, ליליאנה שייקו, מגדה ברטל, מרינה ורנבסקי, מרינה מוסטובוי-לוריא, דניאל אליהו, ילנה גורביץ, אלבירה אפלבאום, שרה ויזנר, גלנדה קלניקר, איתי מלכה, ד'אהר אבו האני, רוית ברוך, מיקה לוי, יבגניה אלצופין ויעל קהת. מזכירת המעבדה: אתי רובין.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "indexUnmatched",
+      "missingProfileUrl",
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "No profileUrl was found on the department doctors list.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"צוות המעבדה\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "1df8038e6d885cae17ec60aa",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

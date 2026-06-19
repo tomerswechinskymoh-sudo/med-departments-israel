@@ -1,0 +1,985 @@
+{
+  "runId": "2026-06-19T05-57-53-071Z",
+  "startedAt": "2026-06-19T05:57:53.071Z",
+  "completedAt": "2026-06-19T05:58:21.844Z",
+  "aiEnabled": true,
+  "ids": [
+    "soroka-vasc-surgery-staff",
+    "soroka-gicu",
+    "soroka-pain-clin",
+    "soroka-card-angio",
+    "soroka-card-electro",
+    "soroka-gastro-institute",
+    "soroka-dermatology",
+    "soroka-med-a",
+    "soroka-ivf",
+    "soroka-genetic-inst",
+    "soroka-er",
+    "soroka-retinal-clinic"
+  ],
+  "passed": 12,
+  "failed": 0,
+  "results": [
+    {
+      "id": "soroka-vasc-surgery-staff",
+      "doctorsCount": 5,
+      "enrichedCount": 5,
+      "normalizedCount": 5,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 5,
+      "crawlWarnings": [],
+      "rejectedCandidates": [
+        {
+          "pageNumber": 1,
+          "fullName": "ד\"ר דמיטרי שפובלוב.רופאים מתמחים",
+          "profileUrl": null,
+          "rawText": "ד\"ר דמיטרי שפובלוב.רופאים מתמחים:",
+          "reason": "unmatched prose or weak physician-name candidate",
+          "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/surgery-division/Pages/vasc-surgery-staff.aspx"
+        }
+      ],
+      "qaFlagCounts": {
+        "listOnlyProfile": 4,
+        "lowConfidenceAffiliation": 5,
+        "indexUnmatched": 3,
+        "missingProfileUrl": 3,
+        "unitMismatch": 3,
+        "crossListedDoctor": 3
+      },
+      "qaSeverityCounts": {
+        "ok": 0,
+        "review": 5,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-vasc-surgery-staff",
+        "doctors": 5,
+        "enriched": 5,
+        "normalized": 5,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 1,
+        "profileEvidenceEligibleCount": 1,
+        "profileCompletenessCounts": {
+          "full": 0,
+          "partial": 1,
+          "listOnly": 4
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 5,
+        "absoluteProfileUrlCount": 5,
+        "qaFlagsSummary": {
+          "listOnlyProfile": 4,
+          "lowConfidenceAffiliation": 5,
+          "indexUnmatched": 3,
+          "missingProfileUrl": 3,
+          "unitMismatch": 3,
+          "crossListedDoctor": 3
+        },
+        "qaSeverityCounts": {
+          "ok": 0,
+          "review": 5,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "listOnlyProfile": 4,
+          "lowConfidenceAffiliation": 5,
+          "missingProfileUrl": 3,
+          "unitMismatch": 3,
+          "crossListedDoctor": 3
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 3,
+        "missingProfileUrlCount": 3,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-gicu",
+      "doctorsCount": 8,
+      "enrichedCount": 8,
+      "normalizedCount": 8,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 8,
+      "crawlWarnings": [],
+      "rejectedCandidates": [
+        {
+          "pageNumber": 1,
+          "fullName": "פרופ' אברהם בורר - מה",
+          "profileUrl": null,
+          "rawText": "פרופ' אברהם בורר - מהיחידה למניעת זיהומיםהלם ספטי",
+          "reason": "unmatched prose or weak physician-name candidate",
+          "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/gicu.aspx"
+        }
+      ],
+      "qaFlagCounts": {
+        "listOnlyProfile": 5,
+        "unitMismatch": 2,
+        "crossListedDoctor": 2,
+        "lowConfidenceAffiliation": 5
+      },
+      "qaSeverityCounts": {
+        "ok": 2,
+        "review": 6,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-gicu",
+        "doctors": 8,
+        "enriched": 8,
+        "normalized": 8,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 3,
+        "profileEvidenceEligibleCount": 3,
+        "profileCompletenessCounts": {
+          "full": 0,
+          "partial": 3,
+          "listOnly": 5
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 8,
+        "absoluteProfileUrlCount": 8,
+        "qaFlagsSummary": {
+          "listOnlyProfile": 5,
+          "unitMismatch": 2,
+          "crossListedDoctor": 2,
+          "lowConfidenceAffiliation": 5
+        },
+        "qaSeverityCounts": {
+          "ok": 2,
+          "review": 6,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "listOnlyProfile": 5,
+          "unitMismatch": 2,
+          "crossListedDoctor": 2,
+          "lowConfidenceAffiliation": 5
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 2,
+        "missingProfileUrlCount": 0,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-pain-clin",
+      "doctorsCount": 5,
+      "enrichedCount": 5,
+      "normalizedCount": 5,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 5,
+      "crawlWarnings": [],
+      "rejectedCandidates": [],
+      "qaFlagCounts": {
+        "listOnlyProfile": 3,
+        "unitMismatch": 1,
+        "crossListedDoctor": 1,
+        "lowConfidenceAffiliation": 3,
+        "indexUnmatched": 1
+      },
+      "qaSeverityCounts": {
+        "ok": 2,
+        "review": 3,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-pain-clin",
+        "doctors": 5,
+        "enriched": 5,
+        "normalized": 5,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 1,
+        "profileEvidenceEligibleCount": 2,
+        "profileCompletenessCounts": {
+          "full": 1,
+          "partial": 1,
+          "listOnly": 3
+        },
+        "roleCoverage": 0.5,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 5,
+        "absoluteProfileUrlCount": 5,
+        "qaFlagsSummary": {
+          "listOnlyProfile": 3,
+          "unitMismatch": 1,
+          "crossListedDoctor": 1,
+          "lowConfidenceAffiliation": 3,
+          "indexUnmatched": 1
+        },
+        "qaSeverityCounts": {
+          "ok": 2,
+          "review": 3,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "listOnlyProfile": 3,
+          "unitMismatch": 1,
+          "crossListedDoctor": 1,
+          "lowConfidenceAffiliation": 3
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 1,
+        "missingProfileUrlCount": 0,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-card-angio",
+      "doctorsCount": 8,
+      "enrichedCount": 8,
+      "normalizedCount": 8,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 8,
+      "crawlWarnings": [],
+      "rejectedCandidates": [],
+      "qaFlagCounts": {
+        "unitMismatch": 2,
+        "crossListedDoctor": 2,
+        "lowConfidenceAffiliation": 2,
+        "listOnlyProfile": 3
+      },
+      "qaSeverityCounts": {
+        "ok": 3,
+        "review": 5,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-card-angio",
+        "doctors": 8,
+        "enriched": 8,
+        "normalized": 8,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 5,
+        "profileEvidenceEligibleCount": 5,
+        "profileCompletenessCounts": {
+          "full": 1,
+          "partial": 4,
+          "listOnly": 3
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 1,
+        "specialtyEvidenceCoverage": 0.2,
+        "sourceUrlCount": 8,
+        "absoluteProfileUrlCount": 8,
+        "qaFlagsSummary": {
+          "unitMismatch": 2,
+          "crossListedDoctor": 2,
+          "lowConfidenceAffiliation": 2,
+          "listOnlyProfile": 3
+        },
+        "qaSeverityCounts": {
+          "ok": 3,
+          "review": 5,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "unitMismatch": 2,
+          "crossListedDoctor": 2,
+          "lowConfidenceAffiliation": 2,
+          "listOnlyProfile": 3
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 2,
+        "missingProfileUrlCount": 0,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-card-electro",
+      "doctorsCount": 5,
+      "enrichedCount": 5,
+      "normalizedCount": 5,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 5,
+      "crawlWarnings": [],
+      "rejectedCandidates": [],
+      "qaFlagCounts": {
+        "unitMismatch": 1,
+        "crossListedDoctor": 1,
+        "lowConfidenceAffiliation": 1,
+        "listOnlyProfile": 1
+      },
+      "qaSeverityCounts": {
+        "ok": 3,
+        "review": 2,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-card-electro",
+        "doctors": 5,
+        "enriched": 5,
+        "normalized": 5,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 4,
+        "profileEvidenceEligibleCount": 4,
+        "profileCompletenessCounts": {
+          "full": 2,
+          "partial": 2,
+          "listOnly": 1
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 1,
+        "specialtyEvidenceCoverage": 0.25,
+        "sourceUrlCount": 5,
+        "absoluteProfileUrlCount": 5,
+        "qaFlagsSummary": {
+          "unitMismatch": 1,
+          "crossListedDoctor": 1,
+          "lowConfidenceAffiliation": 1,
+          "listOnlyProfile": 1
+        },
+        "qaSeverityCounts": {
+          "ok": 3,
+          "review": 2,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "unitMismatch": 1,
+          "crossListedDoctor": 1,
+          "lowConfidenceAffiliation": 1,
+          "listOnlyProfile": 1
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 1,
+        "missingProfileUrlCount": 0,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-gastro-institute",
+      "doctorsCount": 19,
+      "enrichedCount": 19,
+      "normalizedCount": 19,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 19,
+      "crawlWarnings": [],
+      "rejectedCandidates": [],
+      "qaFlagCounts": {
+        "listOnlyProfile": 10,
+        "lowConfidenceAffiliation": 7,
+        "indexUnmatched": 2
+      },
+      "qaSeverityCounts": {
+        "ok": 9,
+        "review": 10,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-gastro-institute",
+        "doctors": 19,
+        "enriched": 19,
+        "normalized": 19,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 8,
+        "profileEvidenceEligibleCount": 9,
+        "profileCompletenessCounts": {
+          "full": 7,
+          "partial": 2,
+          "listOnly": 10
+        },
+        "roleCoverage": 0.889,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 19,
+        "absoluteProfileUrlCount": 19,
+        "qaFlagsSummary": {
+          "listOnlyProfile": 10,
+          "lowConfidenceAffiliation": 7,
+          "indexUnmatched": 2
+        },
+        "qaSeverityCounts": {
+          "ok": 9,
+          "review": 10,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "listOnlyProfile": 10,
+          "lowConfidenceAffiliation": 7
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 0,
+        "missingProfileUrlCount": 0,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-dermatology",
+      "doctorsCount": 5,
+      "enrichedCount": 5,
+      "normalizedCount": 5,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 5,
+      "crawlWarnings": [],
+      "rejectedCandidates": [],
+      "qaFlagCounts": {
+        "listOnlyProfile": 4,
+        "lowConfidenceAffiliation": 3,
+        "unitMismatch": 1,
+        "crossListedDoctor": 1
+      },
+      "qaSeverityCounts": {
+        "ok": 1,
+        "review": 4,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-dermatology",
+        "doctors": 5,
+        "enriched": 5,
+        "normalized": 5,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 1,
+        "profileEvidenceEligibleCount": 1,
+        "profileCompletenessCounts": {
+          "full": 0,
+          "partial": 1,
+          "listOnly": 4
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 5,
+        "absoluteProfileUrlCount": 5,
+        "qaFlagsSummary": {
+          "listOnlyProfile": 4,
+          "lowConfidenceAffiliation": 3,
+          "unitMismatch": 1,
+          "crossListedDoctor": 1
+        },
+        "qaSeverityCounts": {
+          "ok": 1,
+          "review": 4,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "listOnlyProfile": 4,
+          "lowConfidenceAffiliation": 3,
+          "unitMismatch": 1,
+          "crossListedDoctor": 1
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 1,
+        "missingProfileUrlCount": 0,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-med-a",
+      "doctorsCount": 6,
+      "enrichedCount": 6,
+      "normalizedCount": 6,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 6,
+      "crawlWarnings": [],
+      "rejectedCandidates": [],
+      "qaFlagCounts": {
+        "indexUnmatched": 3,
+        "listOnlyProfile": 4,
+        "lowConfidenceAffiliation": 3,
+        "unitMismatch": 2,
+        "crossListedDoctor": 2,
+        "missingProfileUrl": 1
+      },
+      "qaSeverityCounts": {
+        "ok": 2,
+        "review": 4,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-med-a",
+        "doctors": 6,
+        "enriched": 6,
+        "normalized": 6,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 2,
+        "profileEvidenceEligibleCount": 2,
+        "profileCompletenessCounts": {
+          "full": 1,
+          "partial": 1,
+          "listOnly": 4
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 6,
+        "absoluteProfileUrlCount": 6,
+        "qaFlagsSummary": {
+          "indexUnmatched": 3,
+          "listOnlyProfile": 4,
+          "lowConfidenceAffiliation": 3,
+          "unitMismatch": 2,
+          "crossListedDoctor": 2,
+          "missingProfileUrl": 1
+        },
+        "qaSeverityCounts": {
+          "ok": 2,
+          "review": 4,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "listOnlyProfile": 4,
+          "lowConfidenceAffiliation": 3,
+          "unitMismatch": 2,
+          "crossListedDoctor": 2,
+          "missingProfileUrl": 1
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 2,
+        "missingProfileUrlCount": 1,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-ivf",
+      "doctorsCount": 9,
+      "enrichedCount": 9,
+      "normalizedCount": 9,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 9,
+      "crawlWarnings": [],
+      "rejectedCandidates": [
+        {
+          "pageNumber": 1,
+          "fullName": "ד\"ר תמר מדר או עם אפרת מחלב העובדת הסוציאלית",
+          "profileUrl": null,
+          "rawText": "לקבלת מידע נוסף, ניתן ליצור קשר ביחידה ד\"ר תמר מדר או עם אפרת מחלב העובדת הסוציאלית",
+          "reason": "unmatched prose or weak physician-name candidate",
+          "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/ob-gyn-division/Pages/ivf.aspx"
+        }
+      ],
+      "qaFlagCounts": {
+        "listOnlyProfile": 8,
+        "lowConfidenceAffiliation": 5,
+        "indexUnmatched": 4,
+        "missingProfileUrl": 4
+      },
+      "qaSeverityCounts": {
+        "ok": 1,
+        "review": 8,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-ivf",
+        "doctors": 9,
+        "enriched": 9,
+        "normalized": 9,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 1,
+        "profileEvidenceEligibleCount": 1,
+        "profileCompletenessCounts": {
+          "full": 0,
+          "partial": 1,
+          "listOnly": 8
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 9,
+        "absoluteProfileUrlCount": 9,
+        "qaFlagsSummary": {
+          "listOnlyProfile": 8,
+          "lowConfidenceAffiliation": 5,
+          "indexUnmatched": 4,
+          "missingProfileUrl": 4
+        },
+        "qaSeverityCounts": {
+          "ok": 1,
+          "review": 8,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "listOnlyProfile": 8,
+          "lowConfidenceAffiliation": 5,
+          "missingProfileUrl": 4
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 0,
+        "missingProfileUrlCount": 4,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-genetic-inst",
+      "doctorsCount": 6,
+      "enrichedCount": 6,
+      "normalizedCount": 6,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 6,
+      "crawlWarnings": [],
+      "rejectedCandidates": [
+        {
+          "pageNumber": 1,
+          "fullName": "ד\"ר שירלי עמר",
+          "profileUrl": null,
+          "rawText": "ד\"ר שירלי עמר- מנהלת, מוניקה נויהוז – סגנית מנהלת, מריה קרטר – אחראית מעבדה מולקולרית, אירה אמורז'וייב, אלה פליישמכר, אנה יוספוב, גלינה מרגוליס, ליליאנה שייקו, מגדה ברטל, מרינה ורנבסקי, מרינה מוסטובוי-לוריא, דניאל אליהו, ילנה גורביץ, אלבירה אפלבאום, שרה ויזנר, גלנדה קלניקר, איתי מלכה, ד'אהר אבו האני, רוית ברוך, מיקה לוי, יבגניה אלצופין ויעל קהת. מזכירת המעבדה: אתי רובין.",
+          "reason": "unmatched prose or weak physician-name candidate",
+          "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx"
+        },
+        {
+          "pageNumber": 1,
+          "fullName": "ד\"ר לארי נורטון",
+          "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/default.aspx",
+          "rawText": "מרכז לגסי הריטג' לאונקולוגיה ומכון ד\"ר לארי נורטון",
+          "reason": "non-doctor profile URL not found in Soroka index",
+          "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/genetic-inst.aspx"
+        }
+      ],
+      "qaFlagCounts": {
+        "indexUnmatched": 2,
+        "lowConfidenceAffiliation": 5,
+        "listOnlyProfile": 4,
+        "missingProfileUrl": 1,
+        "unitMismatch": 1,
+        "crossListedDoctor": 1
+      },
+      "qaSeverityCounts": {
+        "ok": 1,
+        "review": 5,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-genetic-inst",
+        "doctors": 6,
+        "enriched": 6,
+        "normalized": 6,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 2,
+        "profileEvidenceEligibleCount": 2,
+        "profileCompletenessCounts": {
+          "full": 1,
+          "partial": 1,
+          "listOnly": 4
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 6,
+        "absoluteProfileUrlCount": 6,
+        "qaFlagsSummary": {
+          "indexUnmatched": 2,
+          "lowConfidenceAffiliation": 5,
+          "listOnlyProfile": 4,
+          "missingProfileUrl": 1,
+          "unitMismatch": 1,
+          "crossListedDoctor": 1
+        },
+        "qaSeverityCounts": {
+          "ok": 1,
+          "review": 5,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "lowConfidenceAffiliation": 5,
+          "listOnlyProfile": 4,
+          "missingProfileUrl": 1,
+          "unitMismatch": 1,
+          "crossListedDoctor": 1
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 1,
+        "missingProfileUrlCount": 1,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-er",
+      "doctorsCount": 19,
+      "enrichedCount": 19,
+      "normalizedCount": 19,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 19,
+      "crawlWarnings": [],
+      "rejectedCandidates": [
+        {
+          "pageNumber": 1,
+          "fullName": "ד\"ר לארי נורטון",
+          "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/default.aspx",
+          "rawText": "מרכז לגסי הריטג' לאונקולוגיה ומכון ד\"ר לארי נורטון",
+          "reason": "non-doctor profile URL not found in Soroka index",
+          "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx"
+        }
+      ],
+      "qaFlagCounts": {
+        "listOnlyProfile": 12,
+        "unitMismatch": 4,
+        "crossListedDoctor": 4,
+        "lowConfidenceAffiliation": 9,
+        "indexUnmatched": 3
+      },
+      "qaSeverityCounts": {
+        "ok": 6,
+        "review": 13,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-er",
+        "doctors": 19,
+        "enriched": 19,
+        "normalized": 19,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 7,
+        "profileEvidenceEligibleCount": 7,
+        "profileCompletenessCounts": {
+          "full": 2,
+          "partial": 5,
+          "listOnly": 12
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 19,
+        "absoluteProfileUrlCount": 19,
+        "qaFlagsSummary": {
+          "listOnlyProfile": 12,
+          "unitMismatch": 4,
+          "crossListedDoctor": 4,
+          "lowConfidenceAffiliation": 9,
+          "indexUnmatched": 3
+        },
+        "qaSeverityCounts": {
+          "ok": 6,
+          "review": 13,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "listOnlyProfile": 12,
+          "unitMismatch": 4,
+          "crossListedDoctor": 4,
+          "lowConfidenceAffiliation": 9
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 4,
+        "missingProfileUrlCount": 0,
+        "failures": []
+      }
+    },
+    {
+      "id": "soroka-retinal-clinic",
+      "doctorsCount": 6,
+      "enrichedCount": 6,
+      "normalizedCount": 6,
+      "pagesCrawled": 1,
+      "rawDoctorItemsCount": 6,
+      "crawlWarnings": [],
+      "rejectedCandidates": [],
+      "qaFlagCounts": {
+        "listOnlyProfile": 2,
+        "lowConfidenceAffiliation": 2
+      },
+      "qaSeverityCounts": {
+        "ok": 4,
+        "review": 2,
+        "fail": 0
+      },
+      "productionReady": false,
+      "pass": true,
+      "error": null,
+      "verification": {
+        "ok": true,
+        "productionReady": false,
+        "id": "soroka-retinal-clinic",
+        "doctors": 6,
+        "enriched": 6,
+        "normalized": 6,
+        "thresholds": {
+          "minDoctorsExpected": 1,
+          "allowSmallDepartment": true,
+          "maxDuplicateDoctors": 0,
+          "maxUnitMismatch": null,
+          "minSpecialtyEvidenceCoverage": 0,
+          "maxMissingProfileUrlCoverage": 1
+        },
+        "roleCount": 4,
+        "profileEvidenceEligibleCount": 4,
+        "profileCompletenessCounts": {
+          "full": 4,
+          "partial": 0,
+          "listOnly": 2
+        },
+        "roleCoverage": 1,
+        "specialtyEvidenceCount": 0,
+        "specialtyEvidenceCoverage": 0,
+        "sourceUrlCount": 6,
+        "absoluteProfileUrlCount": 6,
+        "qaFlagsSummary": {
+          "listOnlyProfile": 2,
+          "lowConfidenceAffiliation": 2
+        },
+        "qaSeverityCounts": {
+          "ok": 4,
+          "review": 2,
+          "fail": 0
+        },
+        "failFlags": {},
+        "reviewFlags": {
+          "listOnlyProfile": 2,
+          "lowConfidenceAffiliation": 2
+        },
+        "duplicateProfileUrlCount": 0,
+        "duplicateNameCount": 0,
+        "unitMismatchCount": 0,
+        "missingProfileUrlCount": 0,
+        "failures": []
+      }
+    }
+  ]
+}

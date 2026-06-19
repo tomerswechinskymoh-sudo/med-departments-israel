@@ -73,6 +73,7 @@ async function runDepartment(id: string, aiEnabled: boolean) {
   let pagesCrawled = 0;
   let rawDoctorItemsCount = 0;
   let crawlWarnings: string[] = [];
+  let rejectedCandidates: Array<{ pageNumber: number; fullName: string; profileUrl: string | null; rawText: string; reason: string }> = [];
 
   try {
     const config = await loadClalitDepartmentConfig(id);
@@ -83,6 +84,7 @@ async function runDepartment(id: string, aiEnabled: boolean) {
     pagesCrawled = crawlSummary.pagesCrawled;
     rawDoctorItemsCount = crawlSummary.doctorsPerPage.reduce((sum, page) => sum + page.doctorsFound, 0);
     crawlWarnings = crawlSummary.warnings;
+    rejectedCandidates = crawlSummary.rejectedCandidates ?? [];
     await enrichClalitDepartmentProfiles(config, paths);
 
     if (aiEnabled) {
@@ -104,6 +106,7 @@ async function runDepartment(id: string, aiEnabled: boolean) {
     pagesCrawled,
     rawDoctorItemsCount,
     crawlWarnings,
+    rejectedCandidates,
     qaFlagCounts,
     qaSeverityCounts: verification?.qaSeverityCounts ?? { ok: 0, review: 0, fail: 0 },
     productionReady: verification?.productionReady ?? false,

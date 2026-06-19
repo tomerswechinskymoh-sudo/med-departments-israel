@@ -1,0 +1,1244 @@
+[
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר יבגני שניידר",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": true,
+    "seniorityEvidence": "- מנהל המלר\"ד, מומחה ברפואה פנימית וברפואה דחופה",
+    "role": "מנהל המלר\"ד, מומחה ברפואה פנימית וברפואה דחופה",
+    "unit": "המחלקה לרפואה דחופה(מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "לימודי רפואה ביקטירנבורג, רוסיה"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "Evgenis@clalit.org.ilBorr126@yahoo.com",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יבגני שניידר",
+        "evidence": "שם:\nד\"ר יבגני שניידר\nדוא\"ל:\nEvgenis@clalit.org.ilBorr126@yahoo.com\nיחידה:\nהמחלקה לרפואה דחופה(מלר\"ד)\nלימודי רפואה ביקטירנבורג, רוסיה\nמרצה בא",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shneider-y.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המחלקה לרפואה דחופה(מלר\"ד)",
+        "evidence": "שם:\nד\"ר יבגני שניידר\nדוא\"ל:\nEvgenis@clalit.org.ilBorr126@yahoo.com\nיחידה:\nהמחלקה לרפואה דחופה(מלר\"ד)\nלימודי רפואה ביקטירנבורג, רוסיה\nמרצה באוניברסיטת בן־גוריון בנגב.\nחבר באיגוד הישראלי לרפואה דחופה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shneider-y.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "b13c10da268d253588389e46",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shneider-y.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shneider-y.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "פרופ' דן שוורצפוקס",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": true,
+    "seniorityEvidence": "מנהל היחידה למיון פנימי ואמבולטורי, סגן מנהל בית החולים",
+    "role": "מנהל היחידה למיון פנימי ואמבולטורי",
+    "unit": "המחלקה לרפואה דחופה - מלר\"ד (מיון) ,הנהלה רפואית",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "לימודי רפואה בבית הספר באוניברסיטת בן-גוריון"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": "dansch@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' דן שוורצפוקס",
+        "evidence": "שם:\nפרופ' דן שוורצפוקס",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwarzfuchs-d.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המחלקה לרפואה דחופה - מלר\"ד (מיון) ,הנהלה רפואית",
+        "evidence": "יחידה:\nהמחלקה לרפואה דחופה - מלר\"ד (מיון) ,הנהלה רפואית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwarzfuchs-d.aspx"
+      },
+      {
+        "field": "role",
+        "value": "מנהל היחידה למיון פנימי ואמבולטורי",
+        "evidence": "- מנהל היחידה למיון פנימי ואמבולטורי, מומחה ברפואה פנימית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwarzfuchs-d.aspx"
+      },
+      {
+        "field": "isSenior",
+        "value": "true",
+        "evidence": "סגן מנהל בית החולים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwarzfuchs-d.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "6782001bb85169ac3a0ca0ce",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwarzfuchs-d.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwarzfuchs-d.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אופירה אזולאי פרסטר",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "סגנית מנהל המלר\"ד, מומחית ברפואה פנימית וברפואה דחופה",
+    "unit": "מחלקה לרפואה דחופה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אופירה אזולאי פרסטר",
+        "evidence": "שם:\nד\"ר אופירה אזולאי פרסטר\nיחידה:\nמחלקה לרפואה דחופה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/azulay-frester-o.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה",
+        "evidence": "שם:\nד\"ר אופירה אזולאי פרסטר\nיחידה:\nמחלקה לרפואה דחופה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/azulay-frester-o.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "0d91939242cddf4990389636",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/azulay-frester-o.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/azulay-frester-o.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר צחי סלוצקי",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": true,
+    "seniorityEvidence": "סגן מנהל בית חולים, רופא בכיר במלר\"ד",
+    "role": "מומחה ברפואה פנימית וברפואה דחופה.",
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד),הנהלה רפואית",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "2004 - 2010 - לימודי רפואה, דברצן, הונגריה."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "TzachiSl@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר צחי סלוצקי",
+        "evidence": "שם:\nד\"ר צחי סלוצקי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/slutsky-t.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה (מלר\"ד),הנהלה רפואית",
+        "evidence": "יחידה:\nמחלקה לרפואה דחופה (מלר\"ד),הנהלה רפואית",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/slutsky-t.aspx"
+      },
+      {
+        "field": "contact.email",
+        "value": "TzachiSl@clalit.org.il",
+        "evidence": "דוא\"ל:\nTzachiSl@clalit.org.il",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/slutsky-t.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "7ba35cceda311ad0f80947ec",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/slutsky-t.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/slutsky-t.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר יבגניה גלפר",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מומחית ברפואה פנימית וברפואה דחופה",
+    "unit": "מחלקה לרפואה דחופה - מלר\"ד",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "בית ספר לרפואה בטבר, רוסיה."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "Evgeniaga@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יבגניה גלפר",
+        "evidence": "שם:\nד\"ר יבגניה גלפר\nדוא\"ל:\nEvgeniaga@clalit.org.il\nיחידה:\nמחלקה לרפואה דחופה - מלר\"ד\nבית ספר לרפואה בטבר, רוסיה.\nמדריכה באוניברסיטת בן־גוריון בנגב.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gelfer-e.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה - מלר\"ד",
+        "evidence": "שם:\nד\"ר יבגניה גלפר\nדוא\"ל:\nEvgeniaga@clalit.org.il\nיחידה:\nמחלקה לרפואה דחופה - מלר\"ד\nבית ספר לרפואה בטבר, רוסיה.\nמדריכה באוניברסיטת בן־גוריון בנגב.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gelfer-e.aspx"
+      },
+      {
+        "field": "contact.email",
+        "value": "Evgeniaga@clalit.org.il",
+        "evidence": "שם:\nד\"ר יבגניה גלפר\nדוא\"ל:\nEvgeniaga@clalit.org.il\nיחידה:\nמחלקה לרפואה דחופה - מלר\"ד\nבית ספר לרפואה בטבר, רוסיה.\nמדריכה באוניברסיטת בן־גוריון בנגב.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gelfer-e.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "672e0f53b6d7766581d46249",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gelfer-e.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gelfer-e.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר יליזבטה אלייב",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מומחית ברפואה פנימית וברפואה דחופה",
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יליזבטה אלייב",
+        "evidence": "שם:\nד\"ר יליזבטה אלייב\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/aliyev-e.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה (מלר\"ד)",
+        "evidence": "שם:\nד\"ר יליזבטה אלייב\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/aliyev-e.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role/position section not found"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "2723c493d8dd7db669e30508",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/aliyev-e.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/aliyev-e.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר יוסף אייזנברג",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": true,
+    "seniorityEvidence": "משנת 2004 - רופא בכיר במחלקה לרפואה דחופה (מלר\"ד)",
+    "role": "מומחה ברפואה פנימית וברפואה דחופה",
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1985 - לימודי רפואה בקרסנוירסק, בריה\"מ"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יוסף אייזנברג",
+        "evidence": "שם:\nד\"ר יוסף אייזנברג\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayzenberg-j.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה (מלר\"ד)",
+        "evidence": "שם:\nד\"ר יוסף אייזנברג\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayzenberg-j.aspx"
+      },
+      {
+        "field": "isSenior",
+        "value": "true",
+        "evidence": "משנת 2004 - רופא בכיר במחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayzenberg-j.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "2a781bee9edc0273cac27cba",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayzenberg-j.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayzenberg-j.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר חוסני אלקרינאוי",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מומחה ברפואה פנימית וברפואה דחופה",
+    "unit": "מחלקה לרפואה דחופה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "1993-1987 - לימודי רפואה ביאש, רומניה."
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "Hosnial@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר חוסני אלקרינאוי",
+        "evidence": "שם:\nד\"ר חוסני אלקרינאוי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrinawi-h.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה",
+        "evidence": "יחידה:\nמחלקה לרפואה דחופה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrinawi-h.aspx"
+      },
+      {
+        "field": "email",
+        "value": "Hosnial@clalit.org.il",
+        "evidence": "דוא\"ל:\nHosnial@clalit.org.il",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrinawi-h.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship"
+    ],
+    "qaFlags": [
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"מחלקה לרפואה דחופה\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "0ce2c9a7c1aa298e339f786c",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrinawi-h.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrinawi-h.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר ליובוב אסטיס",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "- מומחית ברפואה פנימית וברפואה דחופה",
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר ליובוב אסטיס",
+        "evidence": "שם:\nד\"ר ליובוב אסטיס\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/astis-l.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה (מלר\"ד)",
+        "evidence": "שם:\nד\"ר ליובוב אסטיס\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/astis-l.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "cd5312a5b13d4a52a330526f",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/astis-l.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/astis-l.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר ולדימיר זלדץ",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": true,
+    "seniorityEvidence": "רופא בכיר במחלקה לרפואה דחופה",
+    "role": "מנהל שירות רפואה דחופה",
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "בית ספר לרפואה בנובוסיבירסק, רוסיה"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "Vladz@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר ולדימיר זלדץ",
+        "evidence": "שם:\nד\"ר ולדימיר זלדץ\nדוא\"ל:\nVladz@clalit.org.ilZalds@bgu.ac.il\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)\nרופא בכיר במחלקה לרפואה דחופה\nבית ספר לרפואה בנובוסיבירסק, רוסיה\nמדריך באוניברסיטת בן־גוריון בנגב.\nחבר באיגוד הקרדיולוגם הישראלי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeldets-v.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה (מלר\"ד)",
+        "evidence": "שם:\nד\"ר ולדימיר זלדץ\nדוא\"ל:\nVladz@clalit.org.ilZalds@bgu.ac.il\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)\nרופא בכיר במחלקה לרפואה דחופה\nבית ספר לרפואה בנובוסיבירסק, רוסיה\nמדריך באוניברסיטת בן־גוריון בנגב.\nחבר באיגוד הקרדיולוגם הישראלי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeldets-v.aspx"
+      },
+      {
+        "field": "role",
+        "value": "מנהל שירות רפואה דחופה",
+        "evidence": "רופא בכיר במחלקה לרפואה דחופה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeldets-v.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "600bfff464d450694e4c9805",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeldets-v.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeldets-v.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר נלי לוי",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "- מומחית ברפואה פנימית",
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר נלי לוי",
+        "evidence": "שם:\nד\"ר נלי לוי\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/levi-ne.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה (מלר\"ד)",
+        "evidence": "שם:\nד\"ר נלי לוי\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/levi-ne.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "bafd07cff18cff57e08f9515",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/levi-ne.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/levi-ne.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אלינה שאייר",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "רופאים בכירים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"רופאים בכירים\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "416c745c3650e64e84b48c09",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shrier-i.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shrier-i.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר יוליה פמינה",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יוליה פמינה",
+        "evidence": "שם:\nד\"ר יוליה פמינה\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/fomina-y.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה לרפואה דחופה (מלר\"ד)",
+        "evidence": "שם:\nד\"ר יוליה פמינה\nיחידה:\nמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/fomina-y.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "a6ea02eca5f8cddcaf15cd71",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/fomina-y.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/fomina-y.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר ברוך מנדלצוויג",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "רופאים בכירים",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"רופאים בכירים\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "b11bd26c5091bf0f670bd1ce",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/mandelzweig-b.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/mandelzweig-b.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר נאיף אבו עאבד",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "3ddc35c4bb815dd49cdc1835",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abuabed-n.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abuabed-n.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר מוחמד אבו עראר",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "4403d800366e25238335fe3c",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-arar-m.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-arar-m.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אמין אבו עגאג",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקה לרפואה דחופה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"מחלקה לרפואה דחופה\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "3ae8dfbd780e15f2f8da1000",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ajaj-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ajaj-a.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר טל פרץ",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "461655db89afbf00028ee9b9",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/peretz-t.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/peretz-t.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר קאייד עאיש",
+    "hospital": "Soroka Medical Center",
+    "department": "Er",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "המחלקה לרפואה דחופה (מלר\"ד)",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר קאייד עאיש",
+        "evidence": "שם:\nד\"ר קאייד עאיש\nיחידה:\nהמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayash-k.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "המחלקה לרפואה דחופה (מלר\"ד)",
+        "evidence": "שם:\nד\"ר קאייד עאיש\nיחידה:\nהמחלקה לרפואה דחופה (מלר\"ד)",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayash-k.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "indexUnmatched",
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing.",
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "676bf518024e52c4a4be4370",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayash-k.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/Pages/er.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayash-k.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

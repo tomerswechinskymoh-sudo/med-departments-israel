@@ -1,0 +1,344 @@
+[
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר יוליה ולדמן",
+    "hospital": "Soroka Medical Center",
+    "department": "Dermatology",
+    "isSenior": true,
+    "seniorityEvidence": "- מנהלת המחלקה",
+    "role": "- מנהלת המחלקה",
+    "unit": "מחלקת עור ומין",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יוליה ולדמן",
+        "evidence": "שם:\nד\"ר יוליה ולדמן\nיחידה:\nמחלקת עור ומין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/valdman%E2%80%90greenshpon-y.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת עור ומין",
+        "evidence": "שם:\nד\"ר יוליה ולדמן\nיחידה:\nמחלקת עור ומין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/valdman%E2%80%90greenshpon-y.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "c6ffda375bcc00bdf3d2e631",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/valdman%E2%80%90greenshpon-y.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatology.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/valdman%E2%80%90greenshpon-y.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר דפנה הלל הלוי",
+    "hospital": "Soroka Medical Center",
+    "department": "Dermatology",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקת עור ומין",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר דפנה הלל הלוי",
+        "evidence": "שם:\nד\"ר דפנה הלל הלוי\nיחידה:\nמחלקת עור ומין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hallel-halevy-d.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת עור ומין",
+        "evidence": "שם:\nד\"ר דפנה הלל הלוי\nיחידה:\nמחלקת עור ומין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hallel-halevy-d.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "0fd03e3b7127fec6b0334bee",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hallel-halevy-d.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatology.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hallel-halevy-d.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר עדי סעדיה",
+    "hospital": "Soroka Medical Center",
+    "department": "Dermatology",
+    "isSenior": true,
+    "seniorityEvidence": "רופא בכיר מחלקת עור",
+    "role": "מרפאת עור ומין",
+    "unit": "מחלקת עור ומין,מרפאת עור ומין",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "2001 - 2007- לימודי רפואה, פקולטה לרפואה, הטכניון, חיפה"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "yosaadia@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר עדי סעדיה",
+        "evidence": "שם:\nד\"ר עדי סעדיה\nדוא\"ל:\nyosaadia@clalit.org.il\nיחידה:\nמחלקת עור ומין,מרפאת עור ומין\nרופא בכיר מחלקת עור",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/saadia-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת עור ומין,מרפאת עור ומין",
+        "evidence": "שם:\nד\"ר עדי סעדיה\nדוא\"ל:\nyosaadia@clalit.org.il\nיחידה:\nמחלקת עור ומין,מרפאת עור ומין\nרופא בכיר מחלקת עור",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/saadia-a.aspx"
+      },
+      {
+        "field": "email",
+        "value": "yosaadia@clalit.org.il",
+        "evidence": "שם:\nד\"ר עדי סעדיה\nדוא\"ל:\nyosaadia@clalit.org.il\nיחידה:\nמחלקת עור ומין,מרפאת עור ומין\nרופא בכיר מחלקת עור",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/saadia-a.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "bdabd16c93bc83a7dfbe4d3c",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/saadia-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatology.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/saadia-a.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר אברהים אלעטאונה",
+    "hospital": "Soroka Medical Center",
+    "department": "Dermatology",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקת עור ומין",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אברהים אלעטאונה",
+        "evidence": "שם:\nד\"ר אברהים אלעטאונה\nיחידה:\nמחלקת עור ומין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/altauna-i.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת עור ומין",
+        "evidence": "שם:\nד\"ר אברהים אלעטאונה\nיחידה:\nמחלקת עור ומין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/altauna-i.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "561cd4450924df55c17f5115",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/altauna-i.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatology.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/altauna-i.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר רוקסנה גרינברג",
+    "hospital": "Soroka Medical Center",
+    "department": "Dermatology",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "Soroka hospital doctor index",
+    "unit": "Soroka hospital doctor index",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר רוקסנה גרינברג",
+        "evidence": "שם:\nד\"ר רוקסנה גרינברג",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/greenberg-r.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "Soroka hospital doctor index",
+        "evidence": "שם:\nד\"ר רוקסנה גרינברג",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/greenberg-r.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"Soroka hospital doctor index\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "1997060e09f9ae4227651531",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/greenberg-r.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/medicine-division/Pages/dermatology.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/greenberg-r.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

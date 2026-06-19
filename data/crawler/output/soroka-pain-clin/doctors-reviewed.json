@@ -1,0 +1,343 @@
+[
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר שירי סביר",
+    "hospital": "Soroka Medical Center",
+    "department": "Pain Clin",
+    "isSenior": true,
+    "seniorityEvidence": "9.2025 - מנהלת מרפאת כאב בית חולים סורוקה",
+    "role": "מנהלת המרפאה",
+    "unit": "מרפאת כאב",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר שירי סביר",
+        "evidence": "שם:\nד\"ר שירי סביר\n",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/savir-s.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מרפאת כאב",
+        "evidence": "יחידה:\nמרפאת כאב\n",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/savir-s.aspx"
+      },
+      {
+        "field": "role",
+        "value": "מנהלת המרפאה",
+        "evidence": "9.2025 - מנהלת מרפאת כאב בית חולים סורוקה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/savir-s.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "556f8cda2f54ab259c6d06f0",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/savir-s.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/pain-clin.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/savir-s.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר צביה רודיך",
+    "hospital": "Soroka Medical Center",
+    "department": "Pain Clin",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מחלקת הרדמה\nSoroka hospital doctor index",
+    "unit": "מחלקת הרדמה",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר צביה רודיך",
+        "evidence": "שם:\nד\"ר צביה רודיך\nיחידה:\nמחלקת הרדמה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rudich-z.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת הרדמה",
+        "evidence": "שם:\nד\"ר צביה רודיך\nיחידה:\nמחלקת הרדמה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rudich-z.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "subspecialties",
+      "clinicalInterests",
+      "education",
+      "residency",
+      "fellowship",
+      "contact.email",
+      "contact.phone"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"מחלקת הרדמה\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "467ccde6388834a82d09f7f5",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rudich-z.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/pain-clin.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rudich-z.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר סבטלנה שוליק",
+    "hospital": "Soroka Medical Center",
+    "department": "Pain Clin",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקת הרדמה ,מרפאת כאב",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר סבטלנה שוליק",
+        "evidence": "שם:\nד\"ר סבטלנה שוליק\nיחידה:\nמחלקת הרדמה ,מרפאת כאב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shulik-s.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת הרדמה ,מרפאת כאב",
+        "evidence": "שם:\nד\"ר סבטלנה שוליק\nיחידה:\nמחלקת הרדמה ,מרפאת כאב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shulik-s.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "c4261677b2842d077dee2f5f",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shulik-s.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/pain-clin.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shulik-s.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר מוהנד עאסלה",
+    "hospital": "Soroka Medical Center",
+    "department": "Pain Clin",
+    "isSenior": true,
+    "seniorityEvidence": "רופא בכיר במחלקה נוירולוגית",
+    "role": null,
+    "unit": "מחלקה נוירולוגית,מרפאה נוירולוגית,מרפאת כאב",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "2013 - אוניברסיטת צ'ארלס , פראג , צ'יכיה"
+    ],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "MohnnadAs@clalit.org.ilds.mohnnad@gmail.com",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר מוהנד עאסלה",
+        "evidence": "שם:\nד\"ר מוהנד עאסלה\nדוא\"ל:\nMohnnadAs@clalit.org.ilds.mohnnad@gmail.com\nיחידה:\nמחלקה נוירולוגית,מרפאה נוירולוגית,מרפאת כאב\nרופא בכיר במחלקה",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asla-m.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקה נוירולוגית,מרפאה נוירולוגית,מרפאת כאב",
+        "evidence": "שם:\nד\"ר מוהנד עאסלה\nדוא\"ל:\nMohnnadAs@clalit.org.ilds.mohnnad@gmail.com\nיחידה:\nמחלקה נוירולוגית,מרפאה נוירולוגית,מרפאת כאב\nרופא בכיר במחלקה נוירולוגית , התמחות ברפואה לשיכוך כאב.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asla-m.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [
+      "indexUnmatched"
+    ],
+    "qaNotes": [
+      "Soroka doctor candidate did not match the hospital doctor index; review before publishing."
+    ],
+    "qaSeverity": "ok",
+    "doctorKey": "0b1a25bce7832c6f57d4764c",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asla-m.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/pain-clin.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asla-m.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר ולדימיר קוטלובקר",
+    "hospital": "Soroka Medical Center",
+    "department": "Pain Clin",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": null,
+    "unit": "מחלקת הרדמה,מרפאת כאב",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר ולדימיר קוטלובקר",
+        "evidence": "שם:\nד\"ר ולדימיר קוטלובקר\nיחידה:\nמחלקת הרדמה,מרפאת כאב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kotlovker-v.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מחלקת הרדמה,מרפאת כאב",
+        "evidence": "שם:\nד\"ר ולדימיר קוטלובקר\nיחידה:\nמחלקת הרדמה,מרפאת כאב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kotlovker-v.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role"
+    ],
+    "qaFlags": [
+      "listOnlyProfile",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "be83972a14c291e2e07218d4",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kotlovker-v.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/anesthesiology-division/Pages/pain-clin.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kotlovker-v.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

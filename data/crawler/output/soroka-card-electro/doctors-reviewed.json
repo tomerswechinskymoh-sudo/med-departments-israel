@@ -1,0 +1,386 @@
+[
+  {
+    "profileCompleteness": "full",
+    "fullName": "ד\"ר יובל קונסטנטינו",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Electro",
+    "isSenior": true,
+    "seniorityEvidence": "מנהל היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "role": "מנהל היחידה",
+    "unit": "היחידה לאלקטרופיזיולוגיה וקוצבי לב,המערך הקרדיולוגי",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [
+      {
+        "field": "Fellow of the European Society of Cardiology (FESC)",
+        "institution": null,
+        "country": null,
+        "rawText": "Fellow of the European Society of Cardiology (FESC) משנת 2022."
+      },
+      {
+        "field": "Excellent cardiology fellow award",
+        "institution": null,
+        "country": null,
+        "rawText": "פרס “Excellent cardiology fellow award\" ב 2005"
+      }
+    ],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "yuvalkon@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 1,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר יובל קונסטנטינו",
+        "evidence": "שם:\nד\"ר יובל קונסטנטינו",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/konstantino-y.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "היחידה לאלקטרופיזיולוגיה וקוצבי לב,המערך הקרדיולוגי",
+        "evidence": "יחידה:\nהיחידה לאלקטרופיזיולוגיה וקוצבי לב,המערך הקרדיולוגי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/konstantino-y.aspx"
+      },
+      {
+        "field": "fellowship",
+        "value": "Fellow of the European Society of Cardiology (FESC) משנת 2022.",
+        "evidence": "Fellow of the European Society of Cardiology (FESC) משנת 2022.",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/konstantino-y.aspx"
+      },
+      {
+        "field": "fellowship",
+        "value": "פרס “Excellent cardiology fellow award\" ב 2005",
+        "evidence": "פרס “Excellent cardiology fellow award\" ב 2005",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/konstantino-y.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "2f7db6c8a556faac2a78b629",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/konstantino-y.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/konstantino-y.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "full",
+    "fullName": "פרופ' מוטי חיים",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Electro",
+    "isSenior": true,
+    "seniorityEvidence": "מנהל המערך הקרדיולוגי",
+    "role": "מנהל המערך הקרדיולוגי",
+    "unit": "היחידה לאלקטרופיזיולוגיה וקוצבי לב,המערך הקרדיולוגי",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [
+      "לימודי רפואה בבית ספר לרפואה סאקלר, אונברסיטת תל-אביב"
+    ],
+    "residency": [
+      "מתמחה ברפואה פנימית, בית חולים מאיר",
+      "מתמחה בקרדיולוגיה, קמפוס בילינסון, מרכז רפואי רבין"
+    ],
+    "fellowship": [],
+    "academicTitles": [
+      "פרופ'"
+    ],
+    "contact": {
+      "email": "motih@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 1,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 1
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "פרופ' מוטי חיים",
+        "evidence": "שם:\nפרופ' מוטי חיים",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "היחידה לאלקטרופיזיולוגיה וקוצבי לב,המערך הקרדיולוגי",
+        "evidence": "יחידה:\nהיחידה לאלקטרופיזיולוגיה וקוצבי לב,המערך הקרדיולוגי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx"
+      },
+      {
+        "field": "email",
+        "value": "motih@clalit.org.il",
+        "evidence": "דוא\"ל:\nmotih@clalit.org.il",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx"
+      },
+      {
+        "field": "education",
+        "value": "לימודי רפואה בבית ספר לרפואה סאקלר, אונברסיטת תל-אביב",
+        "evidence": "1991-1985 - לימודי רפואה בבית ספר לרפואה סאקלר, אונברסיטת תל-אביב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx"
+      },
+      {
+        "field": "residency",
+        "value": "מתמחה ברפואה פנימית, בית חולים מאיר",
+        "evidence": "2001-1997 - מתמחה ברפואה פנימית, בית חולים מאיר",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx"
+      },
+      {
+        "field": "residency",
+        "value": "מתמחה בקרדיולוגיה, קמפוס בילינסון, מרכז רפואי רבין",
+        "evidence": "2004-2001- מתמחה בקרדיולוגיה, קמפוס בילינסון, מרכז רפואי רבין",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx"
+      }
+    ],
+    "missingImportantFields": [],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "05403a6c2a23dba9aa76d94c",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר אברהם וגשל",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Electro",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מערך קרדיולוגי,יחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "unit": "מערך קרדיולוגי,יחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "AviBV@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר אברהם וגשל",
+        "evidence": "שם:\nד\"ר אברהם וגשל\nדוא\"ל:\nAviBV@clalit.org.il\nיחידה:\nמערך קרדיולוגי,יחידה לאלקטרופיזיולוגיה וקוצבי לב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/wagshal-a.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מערך קרדיולוגי,יחידה לאלקטרופיזיולוגיה וקוצבי לב",
+        "evidence": "שם:\nד\"ר אברהם וגשל\nדוא\"ל:\nAviBV@clalit.org.il\nיחידה:\nמערך קרדיולוגי,יחידה לאלקטרופיזיולוגיה וקוצבי לב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/wagshal-a.aspx"
+      },
+      {
+        "field": "email",
+        "value": "AviBV@clalit.org.il",
+        "evidence": "שם:\nד\"ר אברהם וגשל\nדוא\"ל:\nAviBV@clalit.org.il\nיחידה:\nמערך קרדיולוגי,יחידה לאלקטרופיזיולוגיה וקוצבי לב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/wagshal-a.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "residency",
+      "fellowship",
+      "specialties",
+      "subspecialties",
+      "clinicalInterests",
+      "education"
+    ],
+    "qaFlags": [],
+    "qaNotes": [],
+    "qaSeverity": "ok",
+    "doctorKey": "44b4adc2b221438d9e4eeac6",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/wagshal-a.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/wagshal-a.aspx"
+    ],
+    "reviewedStatus": "approved",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": true,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "partial",
+    "fullName": "ד\"ר סרגיי ברזה",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Electro",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מערך קרדיולוגי\nSoroka hospital doctor index",
+    "unit": "מערך קרדיולוגי",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": "SergeyBe@clalit.org.il",
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.8,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר סרגיי ברזה",
+        "evidence": "שם:\nד\"ר סרגיי ברזה\nדוא\"ל:\nSergeyBe@clalit.org.il\nיחידה:\nמערך קרדיולוגי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/barza-s.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מערך קרדיולוגי",
+        "evidence": "שם:\nד\"ר סרגיי ברזה\nדוא\"ל:\nSergeyBe@clalit.org.il\nיחידה:\nמערך קרדיולוגי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/barza-s.aspx"
+      },
+      {
+        "field": "contactDetails.emails",
+        "value": "SergeyBe@clalit.org.il",
+        "evidence": "שם:\nד\"ר סרגיי ברזה\nדוא\"ל:\nSergeyBe@clalit.org.il\nיחידה:\nמערך קרדיולוגי",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/barza-s.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role/position section not found"
+    ],
+    "qaFlags": [
+      "unitMismatch",
+      "crossListedDoctor",
+      "lowConfidenceAffiliation"
+    ],
+    "qaNotes": [
+      "AI-normalized unit/role/subspecialty evidence does not match configured department keywords. unit=\"מערך קרדיולוגי\".",
+      "Doctor appeared in this department list but normalized profile appears to belong elsewhere.",
+      "Low confidence or weak department-affiliation evidence; review manually."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "6e6f4b140f02cd96901c1f16",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/barza-s.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/barza-s.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  },
+  {
+    "profileCompleteness": "listOnly",
+    "fullName": "ד\"ר רועי וסטרייך",
+    "hospital": "Soroka Medical Center",
+    "department": "Card Electro",
+    "isSenior": null,
+    "seniorityEvidence": null,
+    "role": "מערך קרדיולוגי\nהיחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "unit": "מערך קרדיולוגי,היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+    "specialties": [],
+    "subspecialties": [],
+    "clinicalInterests": [],
+    "education": [],
+    "residency": [],
+    "fellowship": [],
+    "academicTitles": [
+      "ד\"ר"
+    ],
+    "contact": {
+      "email": null,
+      "phone": null
+    },
+    "confidence": {
+      "role": 0.9,
+      "subspecialties": 0,
+      "fellowship": 0,
+      "isSenior": 0
+    },
+    "claims": [
+      {
+        "field": "fullName",
+        "value": "ד\"ר רועי וסטרייך",
+        "evidence": "שם:\nד\"ר רועי וסטרייך\nיחידה:\nמערך קרדיולוגי,היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/westrich-r.aspx"
+      },
+      {
+        "field": "unit",
+        "value": "מערך קרדיולוגי,היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+        "evidence": "שם:\nד\"ר רועי וסטרייך\nיחידה:\nמערך קרדיולוגי,היחידה לאלקטרופיזיולוגיה וקוצבי לב",
+        "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/westrich-r.aspx"
+      }
+    ],
+    "missingImportantFields": [
+      "role/position section not found"
+    ],
+    "qaFlags": [
+      "listOnlyProfile"
+    ],
+    "qaNotes": [
+      "Public profile contains only doctor-list identity or name/unit metadata; no rich profile content is published."
+    ],
+    "qaSeverity": "review",
+    "doctorKey": "6fbb37ad4550d9fc9a85a04d",
+    "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/westrich-r.aspx",
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/soroka/he/med-units/cardiology/Pages/card-electro.aspx",
+      "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/westrich-r.aspx"
+    ],
+    "reviewedStatus": "needsMoreEvidence",
+    "manualReviewApplied": false,
+    "reviewerNote": null,
+    "reviewedAt": null,
+    "productionReady": false,
+    "mergedDoctorKeys": []
+  }
+]

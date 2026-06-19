@@ -1,0 +1,19 @@
+{
+  "name": "Soroka pilot v2 crawler candidates",
+  "source": "data/crawler/discovery/soroka/soroka-candidates-review.json",
+  "generatedAt": "2026-06-19T00:00:00.000Z",
+  "ids": [
+    "soroka-vasc-surgery-staff",
+    "soroka-gicu",
+    "soroka-pain-clin",
+    "soroka-card-angio",
+    "soroka-card-electro",
+    "soroka-gastro-institute",
+    "soroka-dermatology",
+    "soroka-med-a",
+    "soroka-ivf",
+    "soroka-genetic-inst",
+    "soroka-er",
+    "soroka-retinal-clinic"
+  ]
+}
