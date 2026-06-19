@@ -1,0 +1,815 @@
+{
+  "skipped": false,
+  "pilotIds": [
+    "soroka-vasc-surgery-staff",
+    "soroka-eye-staff1",
+    "soroka-gicu",
+    "soroka-pain-clin",
+    "soroka-card-angio",
+    "soroka-card-electro",
+    "soroka-gastro-institute",
+    "soroka-dermatology",
+    "soroka-med-a",
+    "soroka-ivf",
+    "soroka-genetic-inst",
+    "soroka-er",
+    "soroka-hematology-institute",
+    "soroka-retinal-clinic"
+  ],
+  "inputRecords": 111,
+  "reviewedRecords": 111,
+  "productionReadyBefore": 25,
+  "matchedCount": 83,
+  "unmatchedCount": 28,
+  "recoverableMissingProfileUrlCount": 0,
+  "duplicateProfileUrlGroupsCount": 1,
+  "matched": [
+    {
+      "departmentId": "soroka-vasc-surgery-staff",
+      "fullName": "ד\"ר אנטולי לייצין",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/leizin-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/leizin-a.aspx"
+    },
+    {
+      "departmentId": "soroka-vasc-surgery-staff",
+      "fullName": "ד\"ר דמיטרי שפובלוב",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shepovalov-d.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shepovalov-d.aspx"
+    },
+    {
+      "departmentId": "soroka-gicu",
+      "fullName": "פרופ' מוטי קליין",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/klein-m.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/klein-m.aspx"
+    },
+    {
+      "departmentId": "soroka-gicu",
+      "fullName": "ד\"ר לאוניד קויפמן",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koyfman-l.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koyfman-l.aspx"
+    },
+    {
+      "departmentId": "soroka-gicu",
+      "fullName": "פרופ' אבגני ברוטפיין",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/brotfain-e.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/brotfain-e.aspx"
+    },
+    {
+      "departmentId": "soroka-gicu",
+      "fullName": "פרופ' עמית פרנקל",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/frenkel-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/frenkel-a.aspx"
+    },
+    {
+      "departmentId": "soroka-gicu",
+      "fullName": "ד\"ר יואב ביחובסקי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bichovsky-y.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bichovsky-y.aspx"
+    },
+    {
+      "departmentId": "soroka-gicu",
+      "fullName": "ד\"ר אוהד גבאי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gabay-o.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gabay-o.aspx"
+    },
+    {
+      "departmentId": "soroka-gicu",
+      "fullName": "ד\"ר אורן ביהם",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bihem-o.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bihem-o.aspx"
+    },
+    {
+      "departmentId": "soroka-gicu",
+      "fullName": "פרופ' אברהם בורר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/borer-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/borer-a.aspx"
+    },
+    {
+      "departmentId": "soroka-pain-clin",
+      "fullName": "ד\"ר שירי סביר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/savir-s.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/savir-s.aspx"
+    },
+    {
+      "departmentId": "soroka-pain-clin",
+      "fullName": "ד\"ר צביה רודיך",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rudich-z.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rudich-z.aspx"
+    },
+    {
+      "departmentId": "soroka-pain-clin",
+      "fullName": "ד\"ר סבטלנה שוליק",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shulik-s.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shulik-s.aspx"
+    },
+    {
+      "departmentId": "soroka-pain-clin",
+      "fullName": "ד\"ר ולדימיר קוטלובקר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kotlovker-v.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kotlovker-v.aspx"
+    },
+    {
+      "departmentId": "soroka-card-angio",
+      "fullName": "פרופ' קרלוס כפרי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cafr-c.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cafr-c.aspx"
+    },
+    {
+      "departmentId": "soroka-card-angio",
+      "fullName": "ד\"ר ז'אן מרק וויינשטיין",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weinstein-m.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weinstein-m.aspx"
+    },
+    {
+      "departmentId": "soroka-card-angio",
+      "fullName": "ד\"ר גבריאל רוזנשטיין",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenstein-g.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenstein-g.aspx"
+    },
+    {
+      "departmentId": "soroka-card-angio",
+      "fullName": "ד\"ר יורי קלאשיאן",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kalashian-y.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kalashian-y.aspx"
+    },
+    {
+      "departmentId": "soroka-card-angio",
+      "fullName": "ד\"ר עארף אל נצאצרה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/el-nasasra-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/el-nasasra-a.aspx"
+    },
+    {
+      "departmentId": "soroka-card-angio",
+      "fullName": "ד\"ר עלא אבו דוגוש",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abudugush-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abudugush-a.aspx"
+    },
+    {
+      "departmentId": "soroka-card-angio",
+      "fullName": "ד\"ר תומר מלר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/maller-t.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/maller-t.aspx"
+    },
+    {
+      "departmentId": "soroka-card-angio",
+      "fullName": "ד\"ר איתי ויסברג",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weissberg-i.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/weissberg-i.aspx"
+    },
+    {
+      "departmentId": "soroka-card-electro",
+      "fullName": "ד\"ר יובל קונסטנטינו",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/konstantino-y.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/konstantino-y.aspx"
+    },
+    {
+      "departmentId": "soroka-card-electro",
+      "fullName": "פרופ' מוטי חיים",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/haim-m.aspx"
+    },
+    {
+      "departmentId": "soroka-card-electro",
+      "fullName": "ד\"ר אברהם וגשל",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/wagshal-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/wagshal-a.aspx"
+    },
+    {
+      "departmentId": "soroka-card-electro",
+      "fullName": "ד\"ר סרגיי ברזה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/barza-s.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/barza-s.aspx"
+    },
+    {
+      "departmentId": "soroka-card-electro",
+      "fullName": "ד\"ר רועי וסטרייך",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/westrich-r.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/westrich-r.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "פרופ' אוהד עציון",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/etzion-o.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/etzion-o.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר אריה סגל",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/segal-ar.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/segal-ar.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר אלכסנדר רוזנטל",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenthal-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rosenthal-a.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר דורון שוורץ",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwartz-d.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwartz-d.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר דניאלה מונטאנו",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/munteanu-d.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/munteanu-d.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר דוד ירדני",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yardeni-d.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yardeni-d.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר אלכסנדר מושקלו",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/moshkalo-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/moshkalo-a.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר ענת נבו שור",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/nevo-shor-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/nevo-shor-a.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "פרופ' נעים אבו פריחה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abufreha-n.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abufreha-n.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר היבה אבו כף",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abukaf-h.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abukaf-h.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר ג'אבר אלקרינאוי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrenawi-j.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrenawi-j.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר מוחמד עאסלה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asala-mu.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asala-mu.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר אינה ליפניצקי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/lipinski-i.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/lipinski-i.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר עלי אבו ג'ומעה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-guma-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-guma-a.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר עלא אדדין נעמה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/naama-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/naama-a.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר ניר כהן",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cohen-nir.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/cohen-nir.aspx"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר ווליד אלעמור",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/elamor-w.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/elamor-w.aspx"
+    },
+    {
+      "departmentId": "soroka-dermatology",
+      "fullName": "ד\"ר יוליה ולדמן",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/valdman%e2%80%90greenshpon-y.aspx",
+      "matchedBy": "normalizedName",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/valdman%E2%80%90greenshpon-y.aspx"
+    },
+    {
+      "departmentId": "soroka-dermatology",
+      "fullName": "ד\"ר דפנה הלל הלוי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hallel-halevy-d.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hallel-halevy-d.aspx"
+    },
+    {
+      "departmentId": "soroka-dermatology",
+      "fullName": "ד\"ר עדי סעדיה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/saadia-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/saadia-a.aspx"
+    },
+    {
+      "departmentId": "soroka-dermatology",
+      "fullName": "ד\"ר אברהים אלעטאונה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/altauna-i.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/altauna-i.aspx"
+    },
+    {
+      "departmentId": "soroka-dermatology",
+      "fullName": "ד\"ר רוקסנה גרינברג",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/greenberg-r.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/greenberg-r.aspx"
+    },
+    {
+      "departmentId": "soroka-med-a",
+      "fullName": "ד\"ר אורי רוביו",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rouvio-o.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rouvio-o.aspx"
+    },
+    {
+      "departmentId": "soroka-med-a",
+      "fullName": "ד\"ר יעל גבעון כהן",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/givon-cohen-y.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/givon-cohen-y.aspx"
+    },
+    {
+      "departmentId": "soroka-med-a",
+      "fullName": "ד\"ר מוחמד אבו עאבד",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abed-m.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abed-m.aspx"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר עאטף זיאדנה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeadna-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeadna-a.aspx"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר נעמה שטיינר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/steiner-n.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/steiner-n.aspx"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר גיל גוטוירץ",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gutvirtz-g.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gutvirtz-g.aspx"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר תמר מדר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/madar-t.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/madar-t.aspx"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר אופיר אלמסי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/almasi-o.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/almasi-o.aspx"
+    },
+    {
+      "departmentId": "soroka-genetic-inst",
+      "fullName": "ד\"ר ברכה קננגיסר פינס ביבי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kanengisser-pines-bibi-b.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/kanengisser-pines-bibi-b.aspx"
+    },
+    {
+      "departmentId": "soroka-genetic-inst",
+      "fullName": "ד\"ר רבקה ליזה קבש",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/calabash-l.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/calabash-l.aspx"
+    },
+    {
+      "departmentId": "soroka-genetic-inst",
+      "fullName": "ד\"ר מאשה מזור אורינג",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/mazor-oring-m.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/mazor-oring-m.aspx"
+    },
+    {
+      "departmentId": "soroka-genetic-inst",
+      "fullName": "ד\"ר גיל סמוחה שכטר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/samoja-shekar-g.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/samoja-shekar-g.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר יבגני שניידר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shneider-y.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shneider-y.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "פרופ' דן שוורצפוקס",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwarzfuchs-d.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/schwarzfuchs-d.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר אופירה אזולאי פרסטר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/azulay-frester-o.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/azulay-frester-o.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר צחי סלוצקי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/slutsky-t.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/slutsky-t.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר יבגניה גלפר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gelfer-e.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gelfer-e.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר יליזבטה אלייב",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/aliyev-e.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/aliyev-e.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר יוסף אייזנברג",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayzenberg-j.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayzenberg-j.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר חוסני אלקרינאוי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrinawi-h.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/alkrinawi-h.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר ליובוב אסטיס",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/astis-l.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/astis-l.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר ולדימיר זלדץ",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeldets-v.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/zeldets-v.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר נלי לוי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/levi-ne.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/levi-ne.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר יוליה פמינה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/fomina-y.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/fomina-y.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר נאיף אבו עאבד",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abuabed-n.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abuabed-n.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר מוחמד אבו עראר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-arar-m.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-arar-m.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר אמין אבו עגאג",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ajaj-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ajaj-a.aspx"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר טל פרץ",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/peretz-t.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/peretz-t.aspx"
+    },
+    {
+      "departmentId": "soroka-retinal-clinic",
+      "fullName": "ד\"ר נעם יאנקולוביץ",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yanculovich-n.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yanculovich-n.aspx"
+    },
+    {
+      "departmentId": "soroka-retinal-clinic",
+      "fullName": "ד\"ר נדב בלפר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/belfair-n.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/belfair-n.aspx"
+    },
+    {
+      "departmentId": "soroka-retinal-clinic",
+      "fullName": "ד\"ר מרינה שנק",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shnek-m.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shnek-m.aspx"
+    },
+    {
+      "departmentId": "soroka-retinal-clinic",
+      "fullName": "ד\"ר אביאל חדד",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hadad-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hadad-a.aspx"
+    },
+    {
+      "departmentId": "soroka-retinal-clinic",
+      "fullName": "ד\"ר אורטל בוחבוט",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/buhbut-o.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/buhbut-o.aspx"
+    },
+    {
+      "departmentId": "soroka-retinal-clinic",
+      "fullName": "ד\"ר סקוט ארטורו ריצ'רדס",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/richards-s-a.aspx",
+      "matchedBy": "profileUrl",
+      "indexProfileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/richards-s-a.aspx"
+    }
+  ],
+  "unmatched": [
+    {
+      "departmentId": "soroka-vasc-surgery-staff",
+      "fullName": "ד\"ר דמיטרי שפובלוב.רופאים מתמחים",
+      "profileUrl": null,
+      "rawText": "ד\"ר דמיטרי שפובלוב.רופאים מתמחים:"
+    },
+    {
+      "departmentId": "soroka-vasc-surgery-staff",
+      "fullName": "ד\"ר נאהל אבו-קוש. אל הצוות מצטרפים",
+      "profileUrl": null,
+      "rawText": "ד\"ר נאהל אבו-קוש. אל הצוות מצטרפים, ברוטציה, רופאים צעירים ממחלקות אחרות אשר משתלבים בפעילות השוטפת של המחלקה למשך זמן מוגבל. כמו כן, במהלך שנת הלימודים האקדמית, מתלווים לצוות הרופאים סטודנטים לרפואה בשנים האחרונות ללימודיהם ופועלים תחת פיקוחם."
+    },
+    {
+      "departmentId": "soroka-vasc-surgery-staff",
+      "fullName": "ד\"ר סרגיי וסילייב",
+      "profileUrl": null,
+      "rawText": "ד\"ר סרגיי וסילייב"
+    },
+    {
+      "departmentId": "soroka-vasc-surgery-staff",
+      "fullName": "ד\"ר מקסים קטלנץ",
+      "profileUrl": null,
+      "rawText": "ד\"ר מקסים קטלנץ"
+    },
+    {
+      "departmentId": "soroka-vasc-surgery-staff",
+      "fullName": "ד\"ר נאהל אבו-קוש.",
+      "profileUrl": null,
+      "rawText": "ד\"ר נאהל אבו-קוש."
+    },
+    {
+      "departmentId": "soroka-gicu",
+      "fullName": "פרופ' אברהם בורר - מה",
+      "profileUrl": null,
+      "rawText": "פרופ' אברהם בורר - מהיחידה למניעת זיהומיםהלם ספטי"
+    },
+    {
+      "departmentId": "soroka-pain-clin",
+      "fullName": "ד\"ר מוהנד עאסלה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/asla-m.aspx",
+      "rawText": "ד\"ר מוהנד עאסלה"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר יסר אפיניש",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/afinish-y.aspx",
+      "rawText": "ד\"ר יסר אפיניש"
+    },
+    {
+      "departmentId": "soroka-gastro-institute",
+      "fullName": "ד\"ר פהמי אבו עליון",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-ghalion-f.aspx",
+      "rawText": "ד\"ר פהמי אבו עליון"
+    },
+    {
+      "departmentId": "soroka-med-a",
+      "fullName": "ד\"ר מעתז אבו עבוד",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-abud-m.aspx",
+      "rawText": "ד\"ר מעתז אבו עבוד - מומחה ברפואה פנימית וריאות"
+    },
+    {
+      "departmentId": "soroka-med-a",
+      "fullName": "ד\"ר תהלה מגד-בוק",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/meged-buk-t.aspx",
+      "rawText": "ד\"ר תהלה מגד-בוק"
+    },
+    {
+      "departmentId": "soroka-med-a",
+      "fullName": "ד\"ר אורלי שמעוני",
+      "profileUrl": null,
+      "rawText": "ד\"ר אורלי שמעוני"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר איליה בורד",
+      "profileUrl": null,
+      "rawText": "ד\"ר איליה בורד"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר אמיר פרויד",
+      "profileUrl": null,
+      "rawText": "ד\"ר אמיר פרויד"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "פרופ' איריס הר-ורדי",
+      "profileUrl": null,
+      "rawText": "פרופ' איריס הר-ורדי"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר צביה פריאל",
+      "profileUrl": null,
+      "rawText": "גילי אלטר, ד\"ר צביה פריאל, ד\"ר דגנית ריכטר, ד\"ר יעלה שדה, ד\"ר אושרי נעמני, ד\"ר מראם עזב וד\"ר עירית סולודקין"
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר תמר מדר או עם אפרת מחלב העובדת הסוציאליתלקביעת פגישה ניתן לפנות אל מזכירות ה",
+      "profileUrl": null,
+      "rawText": "ד\"ר תמר מדר או עם אפרת מחלב העובדת הסוציאליתלקביעת פגישה ניתן לפנות אל מזכירות היחידה, בטלפונים: 08-6403761, 08-6400562, 08-6244533דוא\"ל: somr53@clalit.org.i."
+    },
+    {
+      "departmentId": "soroka-ivf",
+      "fullName": "ד\"ר תמר מדר או עם אפרת מחלב העובדת הסוציאלית",
+      "profileUrl": null,
+      "rawText": "לקבלת מידע נוסף, ניתן ליצור קשר ביחידה ד\"ר תמר מדר או עם אפרת מחלב העובדת הסוציאלית"
+    },
+    {
+      "departmentId": "soroka-genetic-inst",
+      "fullName": "ד\"ר אריה קויפמן",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/koifman-i.aspx",
+      "rawText": "ד\"ר אריה קויפמן - מנהל המכון"
+    },
+    {
+      "departmentId": "soroka-genetic-inst",
+      "fullName": "ד\"ר שירלי עמר",
+      "profileUrl": null,
+      "rawText": "ד\"ר שירלי עמר- מנהלת, מוניקה נויהוז – סגנית מנהלת, מריה קרטר – אחראית מעבדה מולקולרית, אירה אמורז'וייב, אלה פליישמכר, אנה יוספוב, גלינה מרגוליס, ליליאנה שייקו, מגדה ברטל, מרינה ורנבסקי, מרינה מוסטובוי-לוריא, דניאל אליהו, ילנה גורביץ, אלבירה אפלבאום, שרה ויזנר, גלנדה קלניקר, איתי מלכה, ד'אהר אבו האני, רוית ברוך, מיקה לוי, יבגניה אלצופין ויעל קהת. מזכירת המעבדה: אתי רובין."
+    },
+    {
+      "departmentId": "soroka-genetic-inst",
+      "fullName": "ד\"ר גינת נרקיס ודים דולגין",
+      "profileUrl": null,
+      "rawText": "ד\"ר גינת נרקיס ודים דולגין"
+    },
+    {
+      "departmentId": "soroka-genetic-inst",
+      "fullName": "ד\"ר לארי נורטון",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/default.aspx",
+      "rawText": "מרכז לגסי הריטג' לאונקולוגיה ומכון ד\"ר לארי נורטון"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר אלינה שאייר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/shrier-i.aspx",
+      "rawText": "ד\"ר אלינה שאייר"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר ברוך מנדלצוויג",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/mandelzweig-b.aspx",
+      "rawText": "ד\"ר ברוך מנדלצוויג"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר קאייד עאיש",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ayash-k.aspx",
+      "rawText": "ד\"ר קאייד עאיש"
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "פרופ' דן שוורצפוקסצוות המיון הפנימי מטפל בפונים עם בעיות פנימיות",
+      "profileUrl": null,
+      "rawText": "פרופ' דן שוורצפוקסצוות המיון הפנימי מטפל בפונים עם בעיות פנימיות: מחלות חום, דלקות, זיהומים, בעיות לב, לחץ־דם, בעיות נוירולוגיות, אבנים בכליות ומחלות נפשיות.לפי הצורך נעזר צוות המיון הפנימי ביועצים ממחלקות בית החולים השונות, כגון: קרדיולוגים, רופאי ריאות, רופאי עור, אונקולוגים, רופאים גריאטרים, פסיכיאטריםכ-45% מהפונים למלר\"ד מופנים אל המיון הפנימיהמיון הפנימי הוא הגדול באתרי המלר\"דבמיון הפנימי 35 "
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "פרופ' דן שוורצפוקסהמיון האמבולטורי קולט כרבע מהחולים הפונים למיון הפנימילפי סדר ההגעה מקבל",
+      "profileUrl": null,
+      "rawText": "פרופ' דן שוורצפוקסהמיון האמבולטורי קולט כרבע מהחולים הפונים למיון הפנימילפי סדר ההגעה מקבל רופא פנימאי את הפונים שמצבם קל, כולל מקרים כירורגיים ואורתופדיים קליםבמיון האמבולטורי יש חדר בדיקה, תחנת אחות, מכשיר אק''ג וחדר טיפולים.מיון כירורגי כ-25% מהפונים למלר\"ד מופנים אל המיון הכירורגיבמיון הכירורגי 15 מיטות, 3 חדרי תפירה וחדר טיפול נמרץצוות המיון הכירורגי מטפל בבעיות הרפואיות הבאות: טראומה קטנה - "
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "ד\"ר לארי נורטון",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/default.aspx",
+      "rawText": "מרכז לגסי הריטג' לאונקולוגיה ומכון ד\"ר לארי נורטון"
+    }
+  ],
+  "likelyFalsePositives": [
+    {
+      "departmentId": "soroka-genetic-inst",
+      "fullName": "ד\"ר שירלי עמר",
+      "profileUrl": null,
+      "rawText": "ד\"ר שירלי עמר- מנהלת, מוניקה נויהוז – סגנית מנהלת, מריה קרטר – אחראית מעבדה מולקולרית, אירה אמורז'וייב, אלה פליישמכר, אנה יוספוב, גלינה מרגוליס, ליליאנה שייקו, מגדה ברטל, מרינה ורנבסקי, מרינה מוסטובוי-לוריא, דניאל אליהו, ילנה גורביץ, אלבירה אפלבאום, שרה ויזנר, גלנדה קלניקר, איתי מלכה, ד'אהר אבו האני, רוית ברוך, מיקה לוי, יבגניה אלצופין ויעל קהת. מזכירת המעבדה: אתי רובין."
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "פרופ' דן שוורצפוקסצוות המיון הפנימי מטפל בפונים עם בעיות פנימיות",
+      "profileUrl": null,
+      "rawText": "פרופ' דן שוורצפוקסצוות המיון הפנימי מטפל בפונים עם בעיות פנימיות: מחלות חום, דלקות, זיהומים, בעיות לב, לחץ־דם, בעיות נוירולוגיות, אבנים בכליות ומחלות נפשיות.לפי הצורך נעזר צוות המיון הפנימי ביועצים ממחלקות בית החולים השונות, כגון: קרדיולוגים, רופאי ריאות, רופאי עור, אונקולוגים, רופאים גריאטרים, פסיכיאטריםכ-45% מהפונים למלר\"ד מופנים אל המיון הפנימיהמיון הפנימי הוא הגדול באתרי המלר\"דבמיון הפנימי 35 "
+    },
+    {
+      "departmentId": "soroka-er",
+      "fullName": "פרופ' דן שוורצפוקסהמיון האמבולטורי קולט כרבע מהחולים הפונים למיון הפנימילפי סדר ההגעה מקבל",
+      "profileUrl": null,
+      "rawText": "פרופ' דן שוורצפוקסהמיון האמבולטורי קולט כרבע מהחולים הפונים למיון הפנימילפי סדר ההגעה מקבל רופא פנימאי את הפונים שמצבם קל, כולל מקרים כירורגיים ואורתופדיים קליםבמיון האמבולטורי יש חדר בדיקה, תחנת אחות, מכשיר אק''ג וחדר טיפולים.מיון כירורגי כ-25% מהפונים למלר\"ד מופנים אל המיון הכירורגיבמיון הכירורגי 15 מיטות, 3 חדרי תפירה וחדר טיפול נמרץצוות המיון הכירורגי מטפל בבעיות הרפואיות הבאות: טראומה קטנה - "
+    }
+  ],
+  "recoverableMissingProfileUrls": [],
+  "duplicateProfileUrlGroups": [
+    {
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/med-units/oncology-inst/Pages/default.aspx",
+      "records": [
+        {
+          "departmentId": "soroka-genetic-inst",
+          "fullName": "ד\"ר לארי נורטון"
+        },
+        {
+          "departmentId": "soroka-er",
+          "fullName": "ד\"ר לארי נורטון"
+        }
+      ]
+    }
+  ]
+}

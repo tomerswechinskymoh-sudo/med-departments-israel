@@ -33,6 +33,7 @@
     "verify:crawler-rabin-beilinson-ent": "tsx scripts/verify-crawler-rabin-beilinson-ent.ts",
     "discover:clalit-rabin": "tsx scripts/discover-clalit-rabin-departments.ts",
     "discover:clalit-hospital": "tsx scripts/discover-clalit-hospital-departments.ts",
+    "crawl:clalit-soroka-doctor-index": "tsx scripts/crawl-clalit-soroka-doctor-index.ts",
     "compare:clalit-hospital-discovery": "tsx scripts/compare-clalit-hospital-discovery.ts",
     "review:clalit-rabin-discovery": "tsx scripts/review-clalit-rabin-discovery.ts",
     "review:clalit-soroka-discovery": "tsx scripts/review-clalit-soroka-discovery.ts",

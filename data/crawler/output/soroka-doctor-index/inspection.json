@@ -1,0 +1,303 @@
+{
+  "sourceUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/default.aspx",
+  "title": "הרופאים המומחים שלנו\n | סורוקה מרכז רפואי אוניברסיטאי",
+  "headingValues": [
+    "מידע רפואי אישי – כללית און ליין",
+    "הרופאים המומחים שלנו",
+    "אינדקס רופאים"
+  ],
+  "htmlSize": 3004843,
+  "namesEmbeddedInDocumentHtml": true,
+  "rawIndexRows": 1140,
+  "uniqueProfileUrls": 499,
+  "duplicateIndexRows": 641,
+  "sampleRows": [
+    {
+      "fullName": "ד\"ר יואל עזריאל בר-און",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/baron-j.aspx",
+      "units": [
+        "המכון לאולטרה-סאונד גינקולוגי ומיילדותי"
+      ],
+      "rawText": "ד\"ר יואל עזריאל בר-און\nהמכון לאולטרה-סאונד גינקולוגי ומיילדותי"
+    },
+    {
+      "fullName": "פרופ' רלי הרשקוביץ",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hershkovitz-r.aspx",
+      "units": [
+        "מחלקת נשים א'",
+        "מחלקת יולדות א'"
+      ],
+      "rawText": "פרופ' רלי הרשקוביץ\nמחלקת נשים א'\nמחלקת יולדות א'"
+    },
+    {
+      "fullName": "ד\"ר יוליה דודניק",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/dudnik-j.aspx",
+      "units": [
+        "מחלקה אונקולוגית"
+      ],
+      "rawText": "ד\"ר יוליה דודניק\nמחלקה אונקולוגית"
+    },
+    {
+      "fullName": "פרופ' יצחק אביטל",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/avital-i.aspx",
+      "units": [
+        "מחלקה כירורגית א'",
+        "מרפאה כירורגית א'"
+      ],
+      "rawText": "פרופ' יצחק אביטל\nמחלקה כירורגית א'\nמרפאה כירורגית א'"
+    },
+    {
+      "fullName": "ד\"ר לאוניד בוגומולני",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/bogomolni-l.aspx",
+      "units": [
+        "מחלקה אונקולוגית"
+      ],
+      "rawText": "ד\"ר לאוניד בוגומולני\nמחלקה אונקולוגית"
+    },
+    {
+      "fullName": "ד\"ר אולגה בלושיצקי",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/blushinsky-o.aspx",
+      "units": [
+        "יחידת קרינה"
+      ],
+      "rawText": "ד\"ר אולגה בלושיצקי\nיחידת קרינה"
+    },
+    {
+      "fullName": "ד\"ר אירינה גוסקוב",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gusakov-i.aspx",
+      "units": [
+        "מחלקה אונקולוגית",
+        "אשפוז יום אונקולוגי"
+      ],
+      "rawText": "ד\"ר אירינה גוסקוב\nמחלקה אונקולוגית\nאשפוז יום אונקולוגי"
+    },
+    {
+      "fullName": "ד\"ר אלכסנדר גלוזמן",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/gluzman-a.aspx",
+      "units": [
+        "המערך האונקולוגי"
+      ],
+      "rawText": "ד\"ר אלכסנדר גלוזמן\nהמערך האונקולוגי"
+    },
+    {
+      "fullName": "ד\"ר ואעל הזייל",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hoziel-w.aspx",
+      "units": [
+        "מחלקה אונקולוגית - מחלקת אשפוז"
+      ],
+      "rawText": "ד\"ר ואעל הזייל\nמחלקה אונקולוגית - מחלקת אשפוז"
+    },
+    {
+      "fullName": "ד\"ר מרגריטה טוקר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/toker-m.aspx",
+      "units": [
+        "המערך האונקולוגי"
+      ],
+      "rawText": "ד\"ר מרגריטה טוקר\nהמערך האונקולוגי"
+    },
+    {
+      "fullName": "ד\"ר אלכסנדר יעקובסון",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/yakobson-a.aspx",
+      "units": [
+        "המערך האונקולוגי",
+        "אשפוז יום אונקולוגי"
+      ],
+      "rawText": "ד\"ר אלכסנדר יעקובסון\nהמערך האונקולוגי\nאשפוז יום אונקולוגי"
+    },
+    {
+      "fullName": "ד\"ר קונסטנטין לברנקוב",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/lavrenkov-k.aspx",
+      "units": [
+        "יחידת קרינה"
+      ],
+      "rawText": "ד\"ר קונסטנטין לברנקוב\nיחידת קרינה"
+    },
+    {
+      "fullName": "ד\"ר עמית מאיר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/mayer-a.aspx",
+      "units": [
+        "גינקולוגיה אונקולוגית"
+      ],
+      "rawText": "ד\"ר עמית מאיר\nגינקולוגיה אונקולוגית"
+    },
+    {
+      "fullName": "פרופ' עמיחי מאירוביץ",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/meirovich-a.aspx",
+      "units": [
+        "המערך האונקולוגי"
+      ],
+      "rawText": "פרופ' עמיחי מאירוביץ\nהמערך האונקולוגי"
+    },
+    {
+      "fullName": "ד\"ר מיחאי מאירוביץ'",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/meirovitz-m.aspx",
+      "units": [
+        "גינקולוגיה אונקולוגית"
+      ],
+      "rawText": "ד\"ר מיחאי מאירוביץ'\nגינקולוגיה אונקולוגית"
+    },
+    {
+      "fullName": "ד\"ר סופיה מן",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/mann-s.aspx",
+      "units": [
+        "המערך האונקולוגי"
+      ],
+      "rawText": "ד\"ר סופיה מן\nהמערך האונקולוגי"
+    },
+    {
+      "fullName": "פרופ' ג'ילברט סבג",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/sebbag-g.aspx",
+      "units": [],
+      "rawText": "פרופ' ג'ילברט סבג\nאירועי חירום"
+    },
+    {
+      "fullName": "פרופ' איל פינק",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/fink-e.aspx",
+      "units": [
+        "מערך האונקולוגי"
+      ],
+      "rawText": "פרופ' איל פינק\nמערך האונקולוגי"
+    },
+    {
+      "fullName": "ד\"ר ז'אנה פרידמן",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/friedman-j.aspx",
+      "units": [
+        "היחידה לאשפוז־יום אונקולוגי"
+      ],
+      "rawText": "ד\"ר ז'אנה פרידמן\nהיחידה לאשפוז־יום אונקולוגי"
+    },
+    {
+      "fullName": "ד\"ר קרן רובינוב",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/rubinov-k.aspx",
+      "units": [
+        "המערך האונקולוגי"
+      ],
+      "rawText": "ד\"ר קרן רובינוב\nהמערך האונקולוגי"
+    }
+  ],
+  "first15Doctors": [
+    {
+      "fullName": "פרופ' אבגני ברוטפיין",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/brotfain-e.aspx",
+      "visibleMedicalFields": [
+        "מחלקת הרדמה"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "ד\"ר אביאל חדד",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/hadad-a.aspx",
+      "visibleMedicalFields": [
+        "מרפאת רשתית",
+        "מערך עיניים"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "פרופ' אביב גולדברט",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/goldbart-a.aspx",
+      "visibleMedicalFields": [
+        "מחלקת ילדים ב"
+      ],
+      "indexOccurrences": 3
+    },
+    {
+      "fullName": "פרופ' אביבה לויטס",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/levitas-a.aspx",
+      "visibleMedicalFields": [
+        "קרדיולוגיית ילדים"
+      ],
+      "indexOccurrences": 3
+    },
+    {
+      "fullName": "ד\"ר אבנר ליאון",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/lion-a.aspx",
+      "visibleMedicalFields": [
+        "מחלקת הרדמה"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "ד\"ר אבראהים אבו סלאמה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-salame-i.aspx",
+      "visibleMedicalFields": [
+        "מחלקה נוירולוגית"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "ד\"ר אברהים אלעטאונה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/altauna-i.aspx",
+      "visibleMedicalFields": [
+        "מחלקת עור ומין"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "פרופ' אברהם בורר",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/borer-a.aspx",
+      "visibleMedicalFields": [
+        "היחידה למניעת זיהומים"
+      ],
+      "indexOccurrences": 3
+    },
+    {
+      "fullName": "ד\"ר אברהם וגשל",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/wagshal-a.aspx",
+      "visibleMedicalFields": [
+        "מערך קרדיולוגי",
+        "יחידה לאלקטרופיזיולוגיה וקוצבי לב"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "ד\"ר אברהם לבנטל",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/leventhal-a.aspx",
+      "visibleMedicalFields": [
+        "מחלקת כירורגיית לב וחזה ע\"ש סמי עופר"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "ד\"ר אברהם רשף",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/reshef-a.aspx",
+      "visibleMedicalFields": [
+        "מחלקה כירורגית ב'",
+        "מרפאה כירורגית ב'"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "ד\"ר אדוארד לינג",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/ling-e.aspx",
+      "visibleMedicalFields": [
+        "מרפאה ראומטולוגית ילדים"
+      ],
+      "indexOccurrences": 3
+    },
+    {
+      "fullName": "ד\"ר אדיר אבו חרמה",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-harma-a.aspx",
+      "visibleMedicalFields": [
+        "המחלקה לרפואה דחופה (מלר\"ד)"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "ד\"ר אדם אבו גאמע",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/abu-gama-a.aspx",
+      "visibleMedicalFields": [
+        "מרפאה אורתופדית"
+      ],
+      "indexOccurrences": 2
+    },
+    {
+      "fullName": "ד\"ר אדם צפרוב",
+      "profileUrl": "https://hospitals.clalit.co.il/soroka/he/our-specialists/Pages/saparov-a.aspx",
+      "visibleMedicalFields": [
+        "המחלקה לטיפול-נמרץ כללי ע\"ש סמי עופר"
+      ],
+      "indexOccurrences": 2
+    }
+  ]
+}
