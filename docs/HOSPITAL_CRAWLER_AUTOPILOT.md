@@ -53,6 +53,18 @@ data/crawler/hospitals/national-coverage-report.md
 - Doctor outputs get Master_Dept mapping fields. Exact row-source matches and row-specific nearby team/doctor URLs can be marked `sourceUrlMatch`; ambiguous or global index matches stay `reviewNeeded`.
 - Sheba is deferred to Wave 4 so it cannot block national coverage.
 
+## Canonical Doctors And Department Links
+
+- A canonical doctor is the doctor identity. A department link is the relationship between that identity and one Master_Dept row, department page, team page, or source URL.
+- Canonical doctors are keyed by normalized absolute `profileUrl` when present. If no profile URL exists, the fallback key is `hospitalSlug + normalizedName`.
+- The crawler never merges doctors across hospitals.
+- The same profile URL can legitimately appear on multiple department or unit pages. That should create one canonical doctor plus multiple `doctorDepartmentLinks`, not duplicate doctor identities.
+- Duplicate profile URLs are only a QA failure when they create duplicate canonical doctors after canonicalization.
+- `sourceUrlMatch` is allowed only when a doctor was extracted from the exact Master_Dept row URL or from a row-specific nearby doctor/team URL discovered from that row.
+- If the same doctor/team page is reachable from multiple Master_Dept rows, links stay `reviewNeeded` and carry `ambiguityReason`.
+- Global hospital search, doctor indexes, and broad hospital-level discovery remain `reviewNeeded` until a human or stronger row-specific lineage confirms the department relationship.
+- Broad fuzzy matching is still not allowed. The national crawler uses exact URL lineage, exact normalized names, and conservative hospital/specialty evidence only.
+
 ## Readiness
 
 - `pilotReady`: enough candidate pages or doctor-index evidence to run a small pilot.

@@ -29,7 +29,17 @@
           "wave": 1,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 6,
-          "pendingUrlCount": 6
+          "pendingUrlCount": 6,
+          "canonicalStatsSourceHospitalSlug": "hadassah",
+          "canonicalStats": {
+            "canonicalDoctors": 49,
+            "doctorDepartmentLinks": 181,
+            "productionReadyCanonicalDoctors": 49,
+            "sourceUrlMatchLinks": 0,
+            "reviewNeededLinks": 181,
+            "duplicateProfileUrlGroupsBefore": 0,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         },
         {
           "hospitalName": "מרכז רפואי מאיר",
@@ -59,7 +69,17 @@
           "wave": 1,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 24,
-          "pendingUrlCount": 24
+          "pendingUrlCount": 24,
+          "canonicalStatsSourceHospitalSlug": "meir",
+          "canonicalStats": {
+            "canonicalDoctors": 17,
+            "doctorDepartmentLinks": 17,
+            "productionReadyCanonicalDoctors": 17,
+            "sourceUrlMatchLinks": 12,
+            "reviewNeededLinks": 5,
+            "duplicateProfileUrlGroupsBefore": 0,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         },
         {
           "hospitalName": "מרכז רפואי ת\"א סוראסקי",
@@ -79,7 +99,17 @@
           "wave": 1,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 0,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 0,
+          "canonicalStatsSourceHospitalSlug": "ichilov",
+          "canonicalStats": {
+            "canonicalDoctors": 72,
+            "doctorDepartmentLinks": 72,
+            "productionReadyCanonicalDoctors": 72,
+            "sourceUrlMatchLinks": 0,
+            "reviewNeededLinks": 72,
+            "duplicateProfileUrlGroupsBefore": 0,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         },
         {
           "hospitalName": "ביה\"ח הדסה הר הצופים",
@@ -109,7 +139,17 @@
           "wave": 1,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 10,
-          "pendingUrlCount": 10
+          "pendingUrlCount": 10,
+          "canonicalStatsSourceHospitalSlug": "hadassah",
+          "canonicalStats": {
+            "canonicalDoctors": 49,
+            "doctorDepartmentLinks": 181,
+            "productionReadyCanonicalDoctors": 49,
+            "sourceUrlMatchLinks": 0,
+            "reviewNeededLinks": 181,
+            "duplicateProfileUrlGroupsBefore": 0,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         }
       ]
     },
@@ -145,7 +185,17 @@
           "wave": 2,
           "directStaffUrlCount": 1,
           "departmentUrlCount": 26,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 0,
+          "canonicalStatsSourceHospitalSlug": "emek",
+          "canonicalStats": {
+            "canonicalDoctors": 11,
+            "doctorDepartmentLinks": 11,
+            "productionReadyCanonicalDoctors": 4,
+            "sourceUrlMatchLinks": 10,
+            "reviewNeededLinks": 1,
+            "duplicateProfileUrlGroupsBefore": 2,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         },
         {
           "hospitalName": "מרכז רפואי כרמל",
@@ -175,7 +225,17 @@
           "wave": 2,
           "directStaffUrlCount": 1,
           "departmentUrlCount": 21,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 0,
+          "canonicalStatsSourceHospitalSlug": "carmel",
+          "canonicalStats": {
+            "canonicalDoctors": 381,
+            "doctorDepartmentLinks": 381,
+            "productionReadyCanonicalDoctors": 380,
+            "sourceUrlMatchLinks": 0,
+            "reviewNeededLinks": 381,
+            "duplicateProfileUrlGroupsBefore": 54,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         },
         {
           "hospitalName": "מרכז רפואי סורוקה",
@@ -228,7 +288,17 @@
           "wave": 2,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 22,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 0,
+          "canonicalStatsSourceHospitalSlug": "kaplan",
+          "canonicalStats": {
+            "canonicalDoctors": 17,
+            "doctorDepartmentLinks": 17,
+            "productionReadyCanonicalDoctors": 6,
+            "sourceUrlMatchLinks": 1,
+            "reviewNeededLinks": 16,
+            "duplicateProfileUrlGroupsBefore": 0,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         },
         {
           "hospitalName": "ביה\"ח בילינסון מרכז רפואי רבין",
@@ -247,7 +317,17 @@
           "wave": 2,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 0,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 0,
+          "canonicalStatsSourceHospitalSlug": "rabin",
+          "canonicalStats": {
+            "canonicalDoctors": 37,
+            "doctorDepartmentLinks": 37,
+            "productionReadyCanonicalDoctors": 37,
+            "sourceUrlMatchLinks": 0,
+            "reviewNeededLinks": 37,
+            "duplicateProfileUrlGroupsBefore": 0,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         },
         {
           "hospitalName": "מרכז רפואי רבין",
@@ -270,7 +350,17 @@
           "wave": 2,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 4,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 0,
+          "canonicalStatsSourceHospitalSlug": "rabin",
+          "canonicalStats": {
+            "canonicalDoctors": 37,
+            "doctorDepartmentLinks": 37,
+            "productionReadyCanonicalDoctors": 37,
+            "sourceUrlMatchLinks": 0,
+            "reviewNeededLinks": 37,
+            "duplicateProfileUrlGroupsBefore": 0,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         },
         {
           "hospitalName": "ביה\"ח השרון מרכז רפואי רבין",
@@ -296,7 +386,17 @@
           "wave": 2,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 7,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 0,
+          "canonicalStatsSourceHospitalSlug": "rabin",
+          "canonicalStats": {
+            "canonicalDoctors": 37,
+            "doctorDepartmentLinks": 37,
+            "productionReadyCanonicalDoctors": 37,
+            "sourceUrlMatchLinks": 0,
+            "reviewNeededLinks": 37,
+            "duplicateProfileUrlGroupsBefore": 0,
+            "duplicateProfileUrlGroupsAfter": 0
+          }
         },
         {
           "hospitalName": "מרכז שניידר לילדים",

@@ -1,0 +1,206 @@
+[
+  {
+    "canonicalDoctorId": "doctor-7b5ae856003e2ac3",
+    "fullName": "ד\"ר דניאלה קושניר גרינבאום\nד\"ר דניאלה קושניר גרינבאום\nרופאה בכירה במחלקת עור ובמרפאת פסוריאזיס",
+    "normalizedName": "דניאלה קושניר גרינבאום דר דניאלה קושניר גרינבאום רופאה בכירה במחלקת עור ובמרפאת פסוריאזיס",
+    "profileUrl": null,
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx"
+    ],
+    "evidence": [
+      "ד\"ר דניאלה קושניר גרינבאום\nד\"ר דניאלה קושניר גרינבאום\nרופאה בכירה במחלקת עור ובמרפאת פסוריאזיס"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-247be0253598cdac",
+    "fullName": "ד\"ר דניאלה קושניר גרינבאום\nיחידה",
+    "normalizedName": "דניאלה קושניר גרינבאום יחידה",
+    "profileUrl": null,
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx"
+    ],
+    "evidence": [
+      "ד\"ר דניאלה קושניר גרינבאום\nיחידה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-21fd87a751adcac4",
+    "fullName": "פרופסור חדשה בעמק",
+    "normalizedName": "חדשה בעמק מינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ",
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/news/Documents/%d7%a4%d7%a8%d7%95%d7%a4%20%d7%9c%d7%99.png",
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "פרופ",
+    "role": "מינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ’ לי גולדשטיין מנהלת מחלקה פנימית ג’",
+    "profileCompleteness": "partial",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+      "https://hospitals.clalit.co.il/emek/he/news/Documents/%d7%a4%d7%a8%d7%95%d7%a4%20%d7%9c%d7%99.png"
+    ],
+    "evidence": [
+      "מינוי דרגת פרופסור חדשה בעמק\nמינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ’ לי גולדשטיין מנהלת מחלקה פנימית ג’\nלכתבת המינוי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f0acf7cae8c17d2e",
+    "fullName": "ד\"ר מיכאל זיו",
+    "normalizedName": "מיכאל זיו",
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל המחלקה",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx"
+    ],
+    "evidence": [
+      "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא ",
+      "עור - מחלקה\nמנהל המחלקה\nד\"ר מיכאל זיו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-c61c4c05c3717d0f",
+    "fullName": "ד\"ר מיכאל זיו\nד\"ר מיכאל זיו\nמנהל מחלקת עור\nשם",
+    "normalizedName": "מיכאל זיו דר מיכאל זיו מנהל מחלקת עור שם",
+    "profileUrl": null,
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx"
+    ],
+    "evidence": [
+      "ד\"ר מיכאל זיו\nד\"ר מיכאל זיו\nמנהל מחלקת עור\nשם"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-cca81f914043587e",
+    "fullName": "ד\"ר מיכאל זיו\nטלפון",
+    "normalizedName": "מיכאל זיו טלפון",
+    "profileUrl": null,
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx"
+    ],
+    "evidence": [
+      "ד\"ר מיכאל זיו\nטלפון"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e72f4e0982ad5d9e",
+    "fullName": "ד\"ר מירי קרנר",
+    "normalizedName": "מירי קרנר",
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/miri_kerner.aspx",
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "profileCompleteness": "listOnly",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/miri_kerner.aspx"
+    ],
+    "evidence": [
+      "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-664c7a0370ccaae9",
+    "fullName": "ד\"ר ערן ברק כהן\nד\"ר ערן ברק כהן\nמנהל שירות עור ילדים וסגן מנהל מחלקת עור",
+    "normalizedName": "ערן ברק כהן דר ערן ברק כהן מנהל שירות עור ילדים וסגן מנהל מחלקת עור",
+    "profileUrl": null,
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx"
+    ],
+    "evidence": [
+      "ד\"ר ערן ברק כהן\nד\"ר ערן ברק כהן\nמנהל שירות עור ילדים וסגן מנהל מחלקת עור"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d647b59a43467e59",
+    "fullName": "ד\"ר ערן ברק כהן\nטלפון",
+    "normalizedName": "ערן ברק כהן טלפון",
+    "profileUrl": null,
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx"
+    ],
+    "evidence": [
+      "ד\"ר ערן ברק כהן\nטלפון"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-760a01eb21735229",
+    "fullName": "ד\"ר ערן כהן ברק",
+    "normalizedName": "ערן כהן ברק",
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx"
+    ],
+    "evidence": [
+      "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-ad714b114554282f",
+    "fullName": "ד\"ר קושניר גרינבאום דניאלה",
+    "normalizedName": "קושניר גרינבאום דניאלה",
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+    "hospitalName": "Emek Medical Center",
+    "provider": "emek",
+    "titlePrefix": "ד\"ר",
+    "role": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx"
+    ],
+    "evidence": [
+      "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא "
+    ]
+  }
+]

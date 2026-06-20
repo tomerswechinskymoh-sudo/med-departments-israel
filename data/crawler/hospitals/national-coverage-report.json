@@ -227,7 +227,7 @@
   "wave2Results": [
     {
       "hospital": "emek",
-      "readiness": "needsCalibration",
+      "readiness": "needsHumanReview",
       "reviewedRecords": 13,
       "productionReadyCount": 7,
       "mappedRecords": 13,
@@ -239,11 +239,20 @@
         "ambiguousMapping": 2,
         "unmapped": 0
       },
-      "mainBlocker": "Duplicate profile URLs remain in pilot output."
+      "mainBlocker": "Canonicalization removed duplicate identity issue; pilot still needs department-link QA before controlled full.",
+      "canonicalStats": {
+        "canonicalDoctors": 11,
+        "doctorDepartmentLinks": 11,
+        "productionReadyCanonicalDoctors": 4,
+        "sourceUrlMatchLinks": 10,
+        "reviewNeededLinks": 1,
+        "duplicateProfileUrlGroupsBefore": 2,
+        "duplicateProfileUrlGroupsAfter": 0
+      }
     },
     {
       "hospital": "carmel",
-      "readiness": "needsCalibration",
+      "readiness": "needsHumanReview",
       "reviewedRecords": 630,
       "productionReadyCount": 629,
       "mappedRecords": 630,
@@ -255,7 +264,16 @@
         "ambiguousMapping": 630,
         "unmapped": 0
       },
-      "mainBlocker": "Duplicate profile URLs remain in pilot output."
+      "mainBlocker": "Canonicalization removed duplicate identity issue; department links still require review because source lineage is not row-specific.",
+      "canonicalStats": {
+        "canonicalDoctors": 381,
+        "doctorDepartmentLinks": 381,
+        "productionReadyCanonicalDoctors": 380,
+        "sourceUrlMatchLinks": 0,
+        "reviewNeededLinks": 381,
+        "duplicateProfileUrlGroupsBefore": 54,
+        "duplicateProfileUrlGroupsAfter": 0
+      }
     },
     {
       "hospital": "kaplan",
@@ -271,7 +289,16 @@
         "ambiguousMapping": 16,
         "unmapped": 0
       },
-      "mainBlocker": "Profile URL coverage is below 50%."
+      "mainBlocker": "Profile URL coverage is below 50%.",
+      "canonicalStats": {
+        "canonicalDoctors": 17,
+        "doctorDepartmentLinks": 17,
+        "productionReadyCanonicalDoctors": 6,
+        "sourceUrlMatchLinks": 1,
+        "reviewNeededLinks": 16,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      }
     },
     {
       "hospital": "rabin",
@@ -287,8 +314,82 @@
         "ambiguousMapping": 37,
         "unmapped": 0
       },
-      "mainBlocker": null
+      "mainBlocker": null,
+      "canonicalStats": {
+        "canonicalDoctors": 37,
+        "doctorDepartmentLinks": 37,
+        "productionReadyCanonicalDoctors": 37,
+        "sourceUrlMatchLinks": 0,
+        "reviewNeededLinks": 37,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      }
     }
   ],
-  "sorokaStatus": "Improved pilot available; full Soroka batch is not marked safe."
+  "sorokaStatus": "Improved pilot available; full Soroka batch is not marked safe.",
+  "canonicalStatsByHospital": {
+    "ichilov": {
+      "canonicalDoctors": 72,
+      "doctorDepartmentLinks": 72,
+      "productionReadyCanonicalDoctors": 72,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 72,
+      "duplicateProfileUrlGroupsBefore": 0,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "hadassah": {
+      "canonicalDoctors": 49,
+      "doctorDepartmentLinks": 181,
+      "productionReadyCanonicalDoctors": 49,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 181,
+      "duplicateProfileUrlGroupsBefore": 0,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "meir": {
+      "canonicalDoctors": 17,
+      "doctorDepartmentLinks": 17,
+      "productionReadyCanonicalDoctors": 17,
+      "sourceUrlMatchLinks": 12,
+      "reviewNeededLinks": 5,
+      "duplicateProfileUrlGroupsBefore": 0,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "emek": {
+      "canonicalDoctors": 11,
+      "doctorDepartmentLinks": 11,
+      "productionReadyCanonicalDoctors": 4,
+      "sourceUrlMatchLinks": 10,
+      "reviewNeededLinks": 1,
+      "duplicateProfileUrlGroupsBefore": 2,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "carmel": {
+      "canonicalDoctors": 381,
+      "doctorDepartmentLinks": 381,
+      "productionReadyCanonicalDoctors": 380,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 381,
+      "duplicateProfileUrlGroupsBefore": 54,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "kaplan": {
+      "canonicalDoctors": 17,
+      "doctorDepartmentLinks": 17,
+      "productionReadyCanonicalDoctors": 6,
+      "sourceUrlMatchLinks": 1,
+      "reviewNeededLinks": 16,
+      "duplicateProfileUrlGroupsBefore": 0,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "rabin": {
+      "canonicalDoctors": 37,
+      "doctorDepartmentLinks": 37,
+      "productionReadyCanonicalDoctors": 37,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 37,
+      "duplicateProfileUrlGroupsBefore": 0,
+      "duplicateProfileUrlGroupsAfter": 0
+    }
+  }
 }

@@ -1,0 +1,1112 @@
+[
+  {
+    "canonicalDoctorId": "doctor-0635732fe28d16c9",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-12c1d24ea9d08a12",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-13097a626bf2c5ca",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-19fcaa23e7824b6e",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-1d6950eb46daa4a9",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2208de54346e1357",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-25deedf82ee5fb61",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-26911b9d472abb6d",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2d235569add77925",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2f8235171446682a",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-3ab16a85f482fca2",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-49517f60ff2c2be0",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-4c6751cf6d3f1095",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-4fb994e2009d4cf0",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-51a80c467763eb84",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-5ac711499bcb1a58",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-5d13e93dbb035a13",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-67b0f77a138762ba",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-7ab4eba20a100fdc",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-8261d92649271de4",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-8a5c102750e5ba80",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-92273e04115ed302",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-923fa94eed04c314",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-92c789f003fdb627",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-a06bbf760bb48a42",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-a67ab45441af0391",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-b4f18f2011acf726",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-b9232e99a17a5ae8",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-bb9052e2cb2ddc98",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-be550b6b3b23d947",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-cb9385962bd550b4",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-d40084d26965a82c",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-dfe9671dd857b5c4",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-e9dbd5ed65cc6993",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-edc7ad9a92a0e5db",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-fcbb828676751762",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-fd19469e265efcaf",
+    "masterDeptRowId": null,
+    "hospitalName": "Rabin Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.lev-hasharon.co.il/?page_id=853",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/orthopedics/Pages/orthopedic_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/anesthesiology-introduction/Pages/anesthesiology_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/emergency-medicine/Pages/emergency_medicine_department_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_b_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_c_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/medicine/Pages/internal_d_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/surgery/Pages/surgery_a_dept_hasharon.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/imaging/Pages/imaging_beilinson.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/urology/Pages/urology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/ophthalmology/Pages/ophthalmology.aspx",
+        "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/pathology/Pages/pathology.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Rabin Medical Center; candidates=61"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  }
+]

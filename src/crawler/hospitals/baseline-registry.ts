@@ -133,7 +133,8 @@ export const hospitalBaselines: HospitalBaseline[] = [
     ],
     doctorIndexUrlCandidates: [],
     pilotUrlCandidates: [
-      "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx"
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx",
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/women_maternity/women_maternity_doctors/Pages/doctors_list.aspx"
     ],
     parserFamilies: ["teamPage", "inlineStaff", "classicDoctorCards"],
     notes: ["Master_Dept Wave2 baseline: Clalit department pages with possible inline/team links."]

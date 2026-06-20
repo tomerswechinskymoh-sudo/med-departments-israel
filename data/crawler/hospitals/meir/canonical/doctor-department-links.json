@@ -1,0 +1,440 @@
+[
+  {
+    "canonicalDoctorId": "doctor-060b3e744d4d7ab0",
+    "masterDeptRowId": "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "מחלות עיניים",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-07e9c9391e1496b5",
+    "masterDeptRowId": null,
+    "hospitalName": "Meir Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-172493b43c8fa4cd",
+    "masterDeptRowId": "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-3a80a27b20e7467a",
+    "masterDeptRowId": "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "מחלות עיניים",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-414da9ca81daeae3",
+    "masterDeptRowId": null,
+    "hospitalName": "Meir Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-485e2817ca732cd2",
+    "masterDeptRowId": null,
+    "hospitalName": "Meir Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-71ea6ca320a4e643",
+    "masterDeptRowId": "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-81b17d25b1495cd4",
+    "masterDeptRowId": "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-927a83071e03e9e3",
+    "masterDeptRowId": "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "מחלות עיניים",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-979b2621067a2c41",
+    "masterDeptRowId": null,
+    "hospitalName": "Meir Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-b1cd246981bf78ec",
+    "masterDeptRowId": "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-b92ac3b24bed3e15",
+    "masterDeptRowId": "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-bba11316a80dbcdd",
+    "masterDeptRowId": null,
+    "hospitalName": "Meir Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-c230930210016fc2",
+    "masterDeptRowId": "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "מחלות עיניים",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-d750908b5ff35a0f",
+    "masterDeptRowId": "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f2ffd14cfa84e172",
+    "masterDeptRowId": "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-fc71c322074fb459",
+    "masterDeptRowId": "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
+    "hospitalName": "מרכז רפואי מאיר",
+    "departmentName": null,
+    "specialty": "מחלות עיניים",
+    "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

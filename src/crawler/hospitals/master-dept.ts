@@ -1,9 +1,12 @@
 import fs from "node:fs/promises";
+import crypto from "node:crypto";
 import path from "node:path";
 import { discoverCandidatePages, fetchPublicHtml, inspectHtml } from "./adapters/generic-public-site";
 import { getHospitalBaseline, hospitalBaselines } from "./baseline-registry";
 import type {
   CandidatePage,
+  CanonicalDoctor,
+  DoctorDepartmentLink,
   HospitalBaseline,
   HospitalPilotEvaluation,
   MasterDeptMatchConfidence,
@@ -68,6 +71,7 @@ export type NationalCoverageReport = {
   };
   wave1MappingBefore: Record<string, MappingStats>;
   wave1MappingAfter: Record<string, MappingStats>;
+  canonicalStatsByHospital: Record<string, CanonicalStats>;
   wave1Results: Array<{
     hospital: string;
     readiness: string;
@@ -109,7 +113,18 @@ export type Wave2Result = {
   productionReadyCount: number;
   mappedRecords: number;
   mappingStats: MappingStats;
+  canonicalStats: CanonicalStats;
   mainBlocker: string | null;
+};
+
+export type CanonicalStats = {
+  canonicalDoctors: number;
+  doctorDepartmentLinks: number;
+  productionReadyCanonicalDoctors: number;
+  sourceUrlMatchLinks: number;
+  reviewNeededLinks: number;
+  duplicateProfileUrlGroupsBefore: number;
+  duplicateProfileUrlGroupsAfter: number;
 };
 
 function parseCsv(text: string): string[][] {
@@ -428,13 +443,22 @@ function waveForHospital(target: MasterDeptTarget, readiness: NationalHospitalPl
 }
 
 export function buildNationalWaves(plan: NationalHospitalPlan[]) {
+  return buildNationalWavesWithCanonicalStats(plan, {});
+}
+
+function buildNationalWavesWithCanonicalStats(plan: NationalHospitalPlan[], canonicalStatsByHospital: Record<string, CanonicalStats>) {
+  const attachCanonicalStats = (item: NationalHospitalPlan) => {
+    const slug = item.knownAdapter ?? "";
+    const stats = slug ? canonicalStatsByHospital[slug] : null;
+    return stats ? { ...item, canonicalStatsSourceHospitalSlug: slug, canonicalStats: stats } : item;
+  };
   return {
     generatedAt: new Date().toISOString(),
     waves: [
-      { wave: 1, label: "Proven safe adapters", hospitals: plan.filter((item) => item.wave === 1) },
-      { wave: 2, label: "Other Clalit hospitals", hospitals: plan.filter((item) => item.wave === 2) },
-      { wave: 3, label: "Government/private generic parser candidates", hospitals: plan.filter((item) => item.wave === 3) },
-      { wave: 4, label: "Deferred hard cases", hospitals: plan.filter((item) => item.wave === 4) }
+      { wave: 1, label: "Proven safe adapters", hospitals: plan.filter((item) => item.wave === 1).map(attachCanonicalStats) },
+      { wave: 2, label: "Other Clalit hospitals", hospitals: plan.filter((item) => item.wave === 2).map(attachCanonicalStats) },
+      { wave: 3, label: "Government/private generic parser candidates", hospitals: plan.filter((item) => item.wave === 3).map(attachCanonicalStats) },
+      { wave: 4, label: "Deferred hard cases", hospitals: plan.filter((item) => item.wave === 4).map(attachCanonicalStats) }
     ]
   };
 }
@@ -565,11 +589,13 @@ export async function applyMasterDeptMappingToReviewed(hospitalSlug: string, tar
   const doctors = JSON.parse(raw) as Array<Record<string, unknown> & { hospital: string; sourceUrl: string; unit: string | null; rawText: string }>;
   const mapped = doctors.map((doctor) => ({ ...doctor, ...matchDoctorToMasterDept(doctor, targets) }));
   await writeJson(filePath, mapped);
+  const canonical = await writeCanonicalOutputs(hospitalSlug, mapped, targets);
   return {
     hospitalSlug,
     reviewedRecords: mapped.length,
     mappedRecords: mapped.filter((doctor) => Array.isArray(doctor.matchedMasterDeptRowIds) && doctor.matchedMasterDeptRowIds.length > 0).length,
-    mappingStats: mappingStatsFromRecords(mapped)
+    mappingStats: mappingStatsFromRecords(mapped),
+    canonicalStats: canonical.stats
   };
 }
 
@@ -594,6 +620,170 @@ function mappingStatsFromRecords(records: Array<Record<string, unknown>>): Mappi
   };
 }
 
+export async function readCanonicalStats(hospitalSlug: string): Promise<CanonicalStats> {
+  try {
+    const canonicalPath = path.join(NATIONAL_OUTPUT_DIR, hospitalSlug, "canonical", "canonical-doctors.json");
+    const linksPath = path.join(NATIONAL_OUTPUT_DIR, hospitalSlug, "canonical", "doctor-department-links.json");
+    const reportPath = path.join(NATIONAL_OUTPUT_DIR, hospitalSlug, "canonical", "summary.json");
+    const summary = JSON.parse(await fs.readFile(reportPath, "utf8")) as CanonicalStats;
+    await fs.access(canonicalPath);
+    await fs.access(linksPath);
+    return summary;
+  } catch {
+    return {
+      canonicalDoctors: 0,
+      doctorDepartmentLinks: 0,
+      productionReadyCanonicalDoctors: 0,
+      sourceUrlMatchLinks: 0,
+      reviewNeededLinks: 0,
+      duplicateProfileUrlGroupsBefore: 0,
+      duplicateProfileUrlGroupsAfter: 0
+    };
+  }
+}
+
+async function writeCanonicalOutputs(hospitalSlug: string, records: Array<Record<string, unknown>>, targets: MasterDeptTarget[]) {
+  const canonical = canonicalizeDoctors(hospitalSlug, records, targets);
+  const outputDir = path.join(NATIONAL_OUTPUT_DIR, hospitalSlug, "canonical");
+  await writeJson(path.join(outputDir, "canonical-doctors.json"), canonical.canonicalDoctors);
+  await writeJson(path.join(outputDir, "doctor-department-links.json"), canonical.doctorDepartmentLinks);
+  await writeJson(path.join(outputDir, "summary.json"), canonical.stats);
+  return canonical;
+}
+
+function canonicalizeDoctors(hospitalSlug: string, records: Array<Record<string, unknown>>, targets: MasterDeptTarget[]) {
+  const targetsById = new Map(targets.map((target) => [target.masterDeptRowId, target]));
+  const byCanonicalKey = new Map<string, CanonicalDoctor>();
+  const links: DoctorDepartmentLink[] = [];
+  const beforeDuplicateProfileUrlGroups = duplicateProfileUrlGroups(records);
+
+  for (const record of records) {
+    const canonicalKey = canonicalKeyForRecord(hospitalSlug, record);
+    const canonicalDoctorId = `doctor-${hash(canonicalKey)}`;
+    const existing = byCanonicalKey.get(canonicalKey);
+    const sourceUrls = new Set([...(existing?.sourceUrls ?? []), stringValue(record.sourceUrl), stringValue(record.profileUrl)].filter(Boolean));
+    const evidence = new Set([...(existing?.evidence ?? []), stringValue(record.sourceEvidence), stringValue(record.rawText)].filter(Boolean).map((item) => item.slice(0, 500)));
+    const profileCompleteness = bestProfileCompleteness(existing?.profileCompleteness, completenessValue(record.profileCompleteness));
+    const productionReady = Boolean(existing?.productionReady || (record.productionReady === true && !isFileAssetUrl(stringValue(record.profileUrl))));
+    byCanonicalKey.set(canonicalKey, {
+      canonicalDoctorId,
+      fullName: chooseFullName(existing?.fullName, stringValue(record.fullName)),
+      normalizedName: stringValue(record.normalizedName),
+      profileUrl: stringValue(record.profileUrl) || existing?.profileUrl || null,
+      hospitalName: stringValue(record.hospital) || existing?.hospitalName || hospitalSlug,
+      provider: providerGuess(stringValue(record.hospital), stringValue(record.sourceUrl), "") || "unknown",
+      titlePrefix: stringValue(record.titlePrefix) || existing?.titlePrefix || null,
+      role: stringValue(record.role) || existing?.role || null,
+      profileCompleteness,
+      productionReady,
+      sourceUrls: Array.from(sourceUrls),
+      evidence: Array.from(evidence)
+    });
+
+    const rowIds = shouldExpandCandidateRows(record) && Array.isArray(record.matchedMasterDeptRowIds) && record.matchedMasterDeptRowIds.length > 0
+      ? record.matchedMasterDeptRowIds.map(String)
+      : [null];
+    for (const rowId of rowIds) {
+      const target = rowId ? targetsById.get(rowId) : null;
+      links.push({
+        canonicalDoctorId,
+        masterDeptRowId: rowId,
+        hospitalName: target?.hospitalNameRaw ?? stringValue(record.hospital),
+        departmentName: target?.departmentNameRaw ?? null,
+        specialty: target?.specialtyRaw ?? null,
+        sourceUrl: target?.sourceUrlNormalized ?? null,
+        extractedFromUrl: stringValue(record.sourceUrl) || null,
+        matchConfidence: matchConfidenceValue(record.matchConfidence),
+        matchEvidence: (record.matchEvidence as DoctorDepartmentLink["matchEvidence"]) ?? null,
+        ambiguityReason: stringValue(record.ambiguityReason) || null
+      });
+    }
+  }
+
+  const canonicalDoctors = Array.from(byCanonicalKey.values()).sort((left, right) => left.normalizedName.localeCompare(right.normalizedName, "he"));
+  const doctorDepartmentLinks = dedupeLinks(links).sort((left, right) => left.canonicalDoctorId.localeCompare(right.canonicalDoctorId) || String(left.masterDeptRowId).localeCompare(String(right.masterDeptRowId)));
+  const afterDuplicateProfileUrlGroups = duplicateCanonicalProfileUrlGroups(canonicalDoctors);
+  const stats: CanonicalStats = {
+    canonicalDoctors: canonicalDoctors.length,
+    doctorDepartmentLinks: doctorDepartmentLinks.length,
+    productionReadyCanonicalDoctors: canonicalDoctors.filter((doctor) => doctor.productionReady).length,
+    sourceUrlMatchLinks: doctorDepartmentLinks.filter((link) => link.matchConfidence === "sourceUrlMatch").length,
+    reviewNeededLinks: doctorDepartmentLinks.filter((link) => link.matchConfidence === "reviewNeeded").length,
+    duplicateProfileUrlGroupsBefore: beforeDuplicateProfileUrlGroups,
+    duplicateProfileUrlGroupsAfter: afterDuplicateProfileUrlGroups
+  };
+  return { canonicalDoctors, doctorDepartmentLinks, stats };
+}
+
+function dedupeLinks(links: DoctorDepartmentLink[]) {
+  const byKey = new Map<string, DoctorDepartmentLink>();
+  for (const link of links) {
+    const key = [link.canonicalDoctorId, link.masterDeptRowId ?? "none", link.extractedFromUrl ?? "none", link.matchConfidence].join("::");
+    if (!byKey.has(key)) byKey.set(key, link);
+  }
+  return Array.from(byKey.values());
+}
+
+function canonicalKeyForRecord(hospitalSlug: string, record: Record<string, unknown>) {
+  const profileUrl = normalizeSourceUrl(stringValue(record.profileUrl));
+  if (profileUrl) return `${hospitalSlug}::profile::${profileUrl.toLowerCase()}`;
+  return `${hospitalSlug}::name::${normalizeName(stringValue(record.normalizedName) || stringValue(record.fullName))}`;
+}
+
+function shouldExpandCandidateRows(record: Record<string, unknown>) {
+  if (record.matchConfidence === "sourceUrlMatch" || record.matchConfidence === "normalizedExact" || record.matchConfidence === "exact") return true;
+  return record.ambiguityReason === "multipleMasterDeptSourceRows" || record.ambiguityReason === "multipleUnitSpecialtyMatches";
+}
+
+function hash(value: string) {
+  return crypto.createHash("sha1").update(value).digest("hex").slice(0, 16);
+}
+
+function stringValue(value: unknown) {
+  return typeof value === "string" ? value : "";
+}
+
+function matchConfidenceValue(value: unknown): MasterDeptMatchConfidence {
+  return value === "sourceUrlMatch" || value === "normalizedExact" || value === "exact" || value === "hospitalOnly" || value === "reviewNeeded" ? value : "reviewNeeded";
+}
+
+function completenessValue(value: unknown): CanonicalDoctor["profileCompleteness"] {
+  return value === "full" || value === "partial" || value === "listOnly" ? value : "listOnly";
+}
+
+function bestProfileCompleteness(left: CanonicalDoctor["profileCompleteness"] | undefined, right: CanonicalDoctor["profileCompleteness"]) {
+  const rank = { full: 3, partial: 2, listOnly: 1 };
+  if (!left) return right;
+  return rank[right] > rank[left] ? right : left;
+}
+
+function chooseFullName(existing: string | undefined, candidate: string) {
+  if (!existing) return candidate;
+  if (!candidate) return existing;
+  return candidate.length < existing.length ? candidate : existing;
+}
+
+function isFileAssetUrl(value: string) {
+  return /\.(png|jpe?g|gif|webp|pdf|docx?|xlsx?|pptx?)(?:[?#].*)?$/i.test(value);
+}
+
+function duplicateProfileUrlGroups(records: Array<Record<string, unknown>>) {
+  const counts = new Map<string, number>();
+  for (const record of records) {
+    const profileUrl = normalizeSourceUrl(stringValue(record.profileUrl));
+    if (profileUrl) counts.set(profileUrl, (counts.get(profileUrl) ?? 0) + 1);
+  }
+  return Array.from(counts.values()).filter((count) => count > 1).length;
+}
+
+function duplicateCanonicalProfileUrlGroups(records: CanonicalDoctor[]) {
+  const counts = new Map<string, number>();
+  for (const record of records) {
+    if (record.profileUrl) counts.set(record.profileUrl, (counts.get(record.profileUrl) ?? 0) + 1);
+  }
+  return Array.from(counts.values()).filter((count) => count > 1).length;
+}
+
 export async function writeNationalPlanOutputs(
   targets: MasterDeptTarget[],
   plan: NationalHospitalPlan[],
@@ -601,6 +791,7 @@ export async function writeNationalPlanOutputs(
     wave1Results?: NationalCoverageReport["wave1Results"];
     wave1MappingBefore?: Record<string, MappingStats>;
     wave1MappingAfter?: Record<string, MappingStats>;
+    canonicalStatsByHospital?: Record<string, CanonicalStats>;
     wave2SelectedHospitals?: Wave2PlanItem[];
     wave2Results?: Wave2Result[];
   } = {}
@@ -629,7 +820,7 @@ export async function writeNationalPlanOutputs(
   })));
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-crawl-plan.json"), plan);
   await writeCsv(path.join(NATIONAL_OUTPUT_DIR, "national-crawl-plan.csv"), plan.map((item) => ({ ...item, knownStartingUrls: item.knownStartingUrls.join(" | ") })));
-  await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-waves.json"), buildNationalWaves(plan));
+  await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-waves.json"), buildNationalWavesWithCanonicalStats(plan, options.canonicalStatsByHospital ?? {}));
   const wave2SelectedHospitals = options.wave2SelectedHospitals ?? [];
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "wave2-plan.json"), wave2SelectedHospitals);
   await writeCsv(path.join(NATIONAL_OUTPUT_DIR, "wave2-plan.csv"), wave2SelectedHospitals.map((item) => ({ ...item, hospitalNames: item.hospitalNames.join(" | ") })));
@@ -637,6 +828,7 @@ export async function writeNationalPlanOutputs(
     wave1Results: options.wave1Results ?? [],
     wave1MappingBefore: options.wave1MappingBefore ?? {},
     wave1MappingAfter: options.wave1MappingAfter ?? {},
+    canonicalStatsByHospital: options.canonicalStatsByHospital ?? {},
     wave2SelectedHospitals,
     wave2Results: options.wave2Results ?? []
   });
@@ -659,6 +851,7 @@ function buildCoverageReport(
     wave1Results: NationalCoverageReport["wave1Results"];
     wave1MappingBefore: Record<string, MappingStats>;
     wave1MappingAfter: Record<string, MappingStats>;
+    canonicalStatsByHospital: Record<string, CanonicalStats>;
     wave2SelectedHospitals: Wave2PlanItem[];
     wave2Results: Wave2Result[];
   }
@@ -689,6 +882,7 @@ function buildCoverageReport(
     },
     wave1MappingBefore: options.wave1MappingBefore,
     wave1MappingAfter: options.wave1MappingAfter,
+    canonicalStatsByHospital: options.canonicalStatsByHospital,
     wave1Results: options.wave1Results,
     wave2SelectedHospitals: options.wave2SelectedHospitals,
     wave2Results: options.wave2Results,
@@ -732,6 +926,9 @@ function renderCoverageReport(report: NationalCoverageReport) {
       const after = report.wave1MappingAfter[hospital];
       return `- ${hospital}: sourceUrlMatch ${before?.sourceUrlMatch ?? 0} -> ${after?.sourceUrlMatch ?? 0}; reviewNeeded ${before?.reviewNeeded ?? 0} -> ${after?.reviewNeeded ?? 0}; ambiguous ${before?.ambiguousMapping ?? 0} -> ${after?.ambiguousMapping ?? 0}; unmapped ${before?.unmapped ?? 0} -> ${after?.unmapped ?? 0}`;
     }),
+    "",
+    "## Canonical Doctor / Link Counts",
+    ...Object.entries(report.canonicalStatsByHospital).map(([hospital, stats]) => `- ${hospital}: canonicalDoctors=${stats.canonicalDoctors}; doctorDepartmentLinks=${stats.doctorDepartmentLinks}; productionReadyCanonicalDoctors=${stats.productionReadyCanonicalDoctors}; sourceUrlMatchLinks=${stats.sourceUrlMatchLinks}; reviewNeededLinks=${stats.reviewNeededLinks}; duplicateProfileGroups ${stats.duplicateProfileUrlGroupsBefore} -> ${stats.duplicateProfileUrlGroupsAfter}`),
     "",
     "## Wave 2 Selected",
     ...report.wave2SelectedHospitals.map((item) => `- ${item.hospitalSlug}: ${item.hospitalNames.join(" / ")}; rows=${item.masterDeptRows}; URLs=${item.rowsWithUrls}; nearby=${item.nearbyDoctorOrTeamUrlRows}; mode=${item.plannedMode}; reason=${item.whySelected}`),

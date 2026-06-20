@@ -1,0 +1,314 @@
+[
+  {
+    "canonicalDoctorId": "doctor-5bc85516b2484579",
+    "fullName": "ד\"ר אודי קצנל",
+    "normalizedName": "אודי קצנל",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר אודי קצנל - מנהל היחידה לניתוחי אוזניים ושתל שבלול"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-1c20b6986dae1e62",
+    "fullName": "ד\"ר אודי קצנל",
+    "normalizedName": "אודי קצנל",
+    "profileUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/dr_udi_katzenell.aspx",
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/default.aspx",
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/dr_udi_katzenell.aspx"
+    ],
+    "evidence": [
+      "ד\"ר אודי קצנל"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-684d37e6085221c0",
+    "fullName": "פרופ' אלה עברון",
+    "normalizedName": "אלה עברון",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "פרופ' אלה עברון - מנהלת המכון האונקולוגיפרופ' יונתן להב - מנהל מחלקת אא\"ג וניתוחי ראש צווארד\"ר יע"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-fc68849b05ea356e",
+    "fullName": "פרופ' אריה מרקוביץ'",
+    "normalizedName": "אריה מרקוביץ",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "פרופ' אריה מרקוביץ' - מנהל מערך עינייםפרופ' סורל גולנד - מנהלת היחידה לאי ספיקת לב ומחלות לב בנשי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9d4a37cb59433e37",
+    "fullName": "ד\"ר ברק בר זכאי",
+    "normalizedName": "ברק בר זכאי",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר ברק בר זכאי - מנהל המערך הכירורגיד\"ר רון בראונר - מנהל היחידה לניתוחי לבד\"ר יניב שילה - מנה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-030871f1726cd683",
+    "fullName": "פרופ' דנה אגוזי",
+    "normalizedName": "דנה אגוזי",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "פרופ' דנה אגוזי - מנהלת המחלקה לכירורגיה פלסטיתד\"ר ברק בר זכאי - מנהל המערך הכירורגיהרופאים שלנו "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-057b1c1ce648f84a",
+    "fullName": "ד\"ר דניאל אלבירט",
+    "normalizedName": "דניאל אלבירט",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר דניאל אלבירט - מנהל היחידה לאלרגיה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b7bf636619da78c4",
+    "fullName": "פרופ' יונתן להב",
+    "normalizedName": "יונתן להב",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "פרופ' יונתן להב - מנהל מחלקת אא\"ג וניתוחי ראש צווארד\"ר יעל שפירא גליץ - סגנית מנהל מחלקת אא\"גד\"ר "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-051c645a10e587d3",
+    "fullName": "פרופ' יונתן להב",
+    "normalizedName": "יונתן להב",
+    "profileUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/dr_yonatan_lahav.aspx",
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/default.aspx",
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/dr_yonatan_lahav.aspx"
+    ],
+    "evidence": [
+      "פרופ' יונתן להב"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-bd8cf613343a3a2e",
+    "fullName": "ד\"ר יעל שפירא גליץ",
+    "normalizedName": "יעל שפירא גליץ",
+    "profileUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/yael_shapira.aspx",
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/default.aspx",
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/yael_shapira.aspx"
+    ],
+    "evidence": [
+      "ד\"ר יעל שפירא גליץ"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2b1f0cab75f12d4a",
+    "fullName": "ד\"ר יצחק פוריה",
+    "normalizedName": "יצחק פוריה",
+    "profileUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/dr_poriya.aspx",
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/default.aspx",
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/dr_poriya.aspx"
+    ],
+    "evidence": [
+      "ד\"ר יצחק פוריה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-7bf51e21f7186c46",
+    "fullName": "ד\"ר מאיר ורמן",
+    "normalizedName": "מאיר ורמן",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר מאיר ורמן - מנהל היחידה לניתוחי אף וסינוסים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-ecff8cae3b464634",
+    "fullName": "ד\"ר מאיר ורמן",
+    "normalizedName": "מאיר ורמן",
+    "profileUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/dr_meir_warman.aspx",
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/default.aspx",
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/dr_meir_warman.aspx"
+    ],
+    "evidence": [
+      "ד\"ר מאיר ורמן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-ca8d741149c1684f",
+    "fullName": "פרופ' עמית אסא",
+    "normalizedName": "עמית אסא",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "פרופ' עמית אסא - מנהל יחידת גסטרואנטרולוגיה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-99cd727701bdb5fc",
+    "fullName": "פרופ' עמית נחום",
+    "normalizedName": "עמית נחום",
+    "profileUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/amitnahum.aspx",
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "פרופ'",
+    "role": "מנהל מערך הילדים: פרופ' עמית נחוםמנהלת הסיעוד: דינה לויטלפון: 08-9441276פקס: 08-9411942",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx",
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/amitnahum.aspx"
+    ],
+    "evidence": [
+      "מנהל מערך הילדים: פרופ' עמית נחוםמנהלת הסיעוד: דינה לויטלפון: 08-9441276פקס: 08-9411942"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-84ddc571b57294b4",
+    "fullName": "ד\"ר קרן מחלב-גורי",
+    "normalizedName": "קרן מחלב גורי",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר קרן מחלב-גורי - רופאה בכירה במערך האלרגיה והאימונולוגיהד\"ר ינון חזן - מנהל יחידת אולטרסאונד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-176b37905aaab64f",
+    "fullName": "ד\"ר שרי טל",
+    "normalizedName": "שרי טל",
+    "profileUrl": null,
+    "hospitalName": "Kaplan Medical Center",
+    "provider": "kaplan",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר שרי טל - מנהלת המחלקה הגריאטרית היוצאתפרופ' סטיבן מלניק - מנהל מחלקה פנימית ג' היוצא המומחי"
+    ]
+  }
+]

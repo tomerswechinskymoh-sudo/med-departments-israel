@@ -1,0 +1,325 @@
+[
+  {
+    "canonicalDoctorId": "doctor-3a80a27b20e7467a",
+    "fullName": "ד\"ר אלכסנדר רובוביץ",
+    "normalizedName": "אלכסנדר רובוביץ",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/alexanderr.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר אלכסנדר רובוביץ מנהל יחידת רשתית",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/alexanderr.aspx"
+    ],
+    "evidence": [
+      "ד\"ר אלכסנדר רובוביץ מנהל יחידת רשתית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d750908b5ff35a0f",
+    "fullName": "פרופ' אמיר וייזר",
+    "normalizedName": "אמיר וייזר",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/wiser.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "פרופ'",
+    "role": "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/wiser.aspx"
+    ],
+    "evidence": [
+      "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-927a83071e03e9e3",
+    "fullName": "ד\"ר אמיר עבדל קאדר",
+    "normalizedName": "אמיר עבדל קאדר",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/amirabed.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר אמיר עבדל קאדרמומחה קרנית",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/amirabed.aspx"
+    ],
+    "evidence": [
+      "ד\"ר אמיר עבדל קאדרמומחה קרנית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-172493b43c8fa4cd",
+    "fullName": "ד\"ר אריה ברקוביץ",
+    "normalizedName": "אריה ברקוביץ",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/%D7%90%D7%A8%D7%99%D7%94-%D7%91%D7%A8%D7%A7%D7%95%D7%91%D7%99%D7%A5.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/%D7%90%D7%A8%D7%99%D7%94-%D7%91%D7%A8%D7%A7%D7%95%D7%91%D7%99%D7%A5.aspx"
+    ],
+    "evidence": [
+      "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-414da9ca81daeae3",
+    "fullName": "ד\"ר גיא טופז",
+    "normalizedName": "גיא טופז",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/%D7%93%D7%A8-%D7%92%D7%99%D7%90-%D7%98%D7%95%D7%A4%D7%96.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר גיא טופזסגן מנהל המרכז הרפואי",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/%D7%93%D7%A8-%D7%92%D7%99%D7%90-%D7%98%D7%95%D7%A4%D7%96.aspx"
+    ],
+    "evidence": [
+      "ד\"ר גיא טופזסגן מנהל המרכז הרפואי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-07e9c9391e1496b5",
+    "fullName": "ד\"ר גלוריה רשיד",
+    "normalizedName": "גלוריה רשיד",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/grashid.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר גלוריה רשידמנהלת מערך המעבדות הרפואיות",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/grashid.aspx"
+    ],
+    "evidence": [
+      "ד\"ר גלוריה רשידמנהלת מערך המעבדות הרפואיות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-fc71c322074fb459",
+    "fullName": "ד\"ר גלעד אלון",
+    "normalizedName": "גלעד אלון",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/giladalon.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר גלעד אלוןמומחה ברפואת עיניים, מומחה ברשתית ואובאיטיס",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/giladalon.aspx"
+    ],
+    "evidence": [
+      "ד\"ר גלעד אלוןמומחה ברפואת עיניים, מומחה ברשתית ואובאיטיס"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-979b2621067a2c41",
+    "fullName": "ד\"ר יוסי נגה",
+    "normalizedName": "יוסי נגה",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/%D7%93%D7%A8-%D7%99%D7%95%D7%A1%D7%99-%D7%A0%D7%92%D7%94.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר יוסי נגהמנהל מערך האיכות והבטיחות",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/%D7%93%D7%A8-%D7%99%D7%95%D7%A1%D7%99-%D7%A0%D7%92%D7%94.aspx"
+    ],
+    "evidence": [
+      "ד\"ר יוסי נגהמנהל מערך האיכות והבטיחות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-485e2817ca732cd2",
+    "fullName": "פרופ' יעקב חן",
+    "normalizedName": "יעקב חן",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/%D7%99%D7%A2%D7%A7%D7%91-%D7%97%D7%9F.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/%D7%99%D7%A2%D7%A7%D7%91-%D7%97%D7%9F.aspx"
+    ],
+    "evidence": [
+      "פרופ' יעקב חן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b92ac3b24bed3e15",
+    "fullName": "ד\"ר ירדנה משיח",
+    "normalizedName": "ירדנה משיח",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/yardena.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/yardena.aspx"
+    ],
+    "evidence": [
+      "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-060b3e744d4d7ab0",
+    "fullName": "ד\"ר נמרוד דר",
+    "normalizedName": "נמרוד דר",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/ndar.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר נמרוד דררופא עיניים בכיר ומומחה לגלאוקומה וקטרקט",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/ndar.aspx"
+    ],
+    "evidence": [
+      "ד\"ר נמרוד דררופא עיניים בכיר ומומחה לגלאוקומה וקטרקט"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-bba11316a80dbcdd",
+    "fullName": "ד\"ר נרימאן כבהא",
+    "normalizedName": "נרימאן כבהא",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/%D7%93%D7%A8-%D7%A0%D7%A8%D7%99%D7%9E%D7%9F-%D7%9B%D7%91%D7%94%D7%90.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר נרימאן כבהאעוזרת מנהל המרכז הרפואי",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "https://hospitals.clalit.co.il/meir/he/about/Pages/Teams/%D7%93%D7%A8-%D7%A0%D7%A8%D7%99%D7%9E%D7%9F-%D7%9B%D7%91%D7%94%D7%90.aspx"
+    ],
+    "evidence": [
+      "ד\"ר נרימאן כבהאעוזרת מנהל המרכז הרפואי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-81b17d25b1495cd4",
+    "fullName": "ד\"ר נתי מילר",
+    "normalizedName": "נתי מילר",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/nmiler.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/nmiler.aspx"
+    ],
+    "evidence": [
+      "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-71ea6ca320a4e643",
+    "fullName": "ד\"ר עופר גונן",
+    "normalizedName": "עופר גונן",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/%D7%A2%D7%95%D7%A4%D7%A8-%D7%92%D7%95%D7%A0%D7%9F.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/%D7%A2%D7%95%D7%A4%D7%A8-%D7%92%D7%95%D7%A0%D7%9F.aspx"
+    ],
+    "evidence": [
+      "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f2ffd14cfa84e172",
+    "fullName": "ד\"ר עינת חייקין",
+    "normalizedName": "עינת חייקין",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/einat.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/einat.aspx"
+    ],
+    "evidence": [
+      "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b1cd246981bf78ec",
+    "fullName": "ד\"ר קרן עמיחי",
+    "normalizedName": "קרן עמיחי",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/%D7%A7%D7%A8%D7%9F-%D7%A2%D7%9E%D7%99%D7%97%D7%99.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/%D7%A7%D7%A8%D7%9F-%D7%A2%D7%9E%D7%99%D7%97%D7%99.aspx"
+    ],
+    "evidence": [
+      "פרופ' אמיר וייזר - מנהל היחידה • ד\"ר עופר גונן• ד\"ר אריה ברקוביץ• ד\"ר קרן עמיחי• ד\"ר עינת חייקין• ד\"ר ירדנה משיח• ד\"ר נתי מילרד\"ר רוני רהב קורן ד\"ר יריב גדעוני• פסיכולוגית רעות בן קמחי הצוות הסיעודי• גליה שולמן - מנהלת הסיעוד • הדס סגל - אחות• מאירה מרמור - אחות• אמירה עודה - אחות• עידית טיילר - אחות• דפנה גוטמן - אחות• אורנה כהן - אחות• חן רז - אחות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-c230930210016fc2",
+    "fullName": "ד\"ר רועי אלון",
+    "normalizedName": "רועי אלון",
+    "profileUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/ralon.aspx",
+    "hospitalName": "Meir Medical Center",
+    "provider": "meir",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר רועי אלוןמומחה רשתית",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/ralon.aspx"
+    ],
+    "evidence": [
+      "ד\"ר רועי אלוןמומחה רשתית"
+    ]
+  }
+]

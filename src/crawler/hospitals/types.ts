@@ -138,6 +138,34 @@ export type HospitalDoctorRecord = {
   profileTextLength?: number;
 };
 
+export type CanonicalDoctor = {
+  canonicalDoctorId: string;
+  fullName: string;
+  normalizedName: string;
+  profileUrl: string | null;
+  hospitalName: string;
+  provider: WebsiteFamily | "government" | "private" | "unknown";
+  titlePrefix: string | null;
+  role: string | null;
+  profileCompleteness: "full" | "partial" | "listOnly";
+  productionReady: boolean;
+  sourceUrls: string[];
+  evidence: string[];
+};
+
+export type DoctorDepartmentLink = {
+  canonicalDoctorId: string;
+  masterDeptRowId: string | null;
+  hospitalName: string;
+  departmentName: string | null;
+  specialty: string | null;
+  sourceUrl: string | null;
+  extractedFromUrl: string | null;
+  matchConfidence: MasterDeptMatchConfidence;
+  matchEvidence: MasterDeptMatchEvidence | string | null;
+  ambiguityReason: string | null;
+};
+
 export type HospitalPlan = {
   hospitalSlug: string;
   hospitalName: string;

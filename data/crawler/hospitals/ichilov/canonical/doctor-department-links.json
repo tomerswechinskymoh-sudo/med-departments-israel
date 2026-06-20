@@ -1,0 +1,1226 @@
+[
+  {
+    "canonicalDoctorId": "doctor-0094b30329714f6d",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-011ecb2a8aac9814",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-02b65afb030500e6",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-050c436a2a79add0",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-05d86772ddbbb51a",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-0627686f54b2fadc",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-0cb1c0571c7dfa7e",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-0e0a98b0bb421db6",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-1166e515722d9c45",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-11a9adf5eecf38be",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-11f47814f09b35ad",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-136442fddff149f2",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-14569d9c699465ff",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-191bb19547af067c",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-1e007d5f5fa8f441",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2151d09701508d40",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-28f132d671f79c5f",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2c7aa47ce82da779",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2cf6cbf24be738a6",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2dc905234e5d5dcd",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2fcb2986d49f1422",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-344991356d9dfc31",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-34c7f76749c5ccec",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-38a85a58eb627258",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-3fcf4bef9ef72df4",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-4344198e0c172587",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-4e61ad6e726c7816",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-5183d3ed920e37b3",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-5190a77caaaf0f15",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-55487c24b95b9828",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-61fb0afbacf3498b",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-6298ff7dde66b9e0",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-6624c51f8ca90c9d",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-6fbd7eb76634d5e7",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-7f7218128e4d4553",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-7fd0658c4268e424",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-8234bc225369d767",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-872ecc3583f091e0",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-89267b2537514aea",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-8ec93740bca93ec1",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-94ad61504f8ee594",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-963bafc45d5f962a",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-9863b03c1a0970d9",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-9ac7352a2195a24c",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-9cee1b1bd7723fb9",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-9fb779e9dadf3a70",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-9ffab2390be9e604",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-a16c9cd9640371a1",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-a9085d2c5efb7534",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-abd973bb8b602949",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-ae15679036b9b237",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-af86fbf9ab14cc7a",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-b576654eed1affcc",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-be35a996382a5e17",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-be90559920fe5738",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-cb6302bbcbd5cc10",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-ccba76ac265894c0",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-ccfe92fcb1744e82",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-cea8749eb565218a",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-d7318290c2ac2a18",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-d78b953300203976",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-da09e4785d7695fb",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-db0a8320cafc9b7c",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-dccf3b3495d1f092",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-e4d6c88f1947ff80",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-e5765490c5b39523",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-f20a0040ef579291",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-f3a18217d2c0e17c",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-f4e26e4b66ee1f2c",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-f7a9307f65c7859e",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-f8335ac4b9b992a5",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-fa99f6c3d46747ca",
+    "masterDeptRowId": null,
+    "hospitalName": "Tel Aviv Sourasky / Ichilov",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  }
+]

@@ -1,0 +1,237 @@
+[
+  {
+    "canonicalDoctorId": "doctor-21fd87a751adcac4",
+    "masterDeptRowId": null,
+    "hospitalName": "Emek Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/rehabilitation_unit.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_a.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_b.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_c.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_d.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_f.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/xray.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/pediatric/Pages/pediatrics_department_a.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/pediatric/Pages/pediatrix_department_b.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/children_surgery.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/anesthesia_operating_rooms_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/urology_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/orthopedics_division.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/otolaringology_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/e_r/Pages/emergency_medicine_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/yoldot_vetinokot/ahrey_haleyda/Pages/infants_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/eyes_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/psychiatric/Pages/mental_health_of_children_and_youth.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/surgery_department_a.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/surgery_department_b.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/neurology.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/pathology.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/cardiologiccenter/Pages/cardiology.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/beit_shulamit/Pages/oncology_clinics.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/nuclear_medicine.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Emek Medical Center; candidates=27"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-247be0253598cdac",
+    "masterDeptRowId": "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-664c7a0370ccaae9",
+    "masterDeptRowId": "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-760a01eb21735229",
+    "masterDeptRowId": "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "רפואת עור",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-7b5ae856003e2ac3",
+    "masterDeptRowId": "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-ad714b114554282f",
+    "masterDeptRowId": "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "רפואת עור",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-c61c4c05c3717d0f",
+    "masterDeptRowId": "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-cca81f914043587e",
+    "masterDeptRowId": "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-d647b59a43467e59",
+    "masterDeptRowId": "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e72f4e0982ad5d9e",
+    "masterDeptRowId": "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "רפואת עור",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f0acf7cae8c17d2e",
+    "masterDeptRowId": "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור",
+    "hospitalName": "מרכז רפואי העמק",
+    "departmentName": null,
+    "specialty": "רפואת עור",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

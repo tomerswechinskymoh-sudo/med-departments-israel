@@ -7,6 +7,7 @@ import {
   buildWave2Plan,
   inspectMasterDeptTargets,
   loadMasterDeptTargets,
+  readCanonicalStats,
   nationalPlanSummary,
   readMappingStats,
   writeNationalPlanOutputs
@@ -15,6 +16,22 @@ import type { AutopilotMode, HospitalPilotEvaluation } from "@/crawler/hospitals
 
 const modes = new Set(["plan", "pilot", "evaluate", "full", "national-plan", "national-pilot", "national-full-safe"]);
 const wave1HospitalSlugs = ["ichilov", "hadassah", "meir"];
+
+function canonicalCalibratedReadiness(evaluation: HospitalPilotEvaluation, canonicalStats: Awaited<ReturnType<typeof readCanonicalStats>>) {
+  if (evaluation.mainBlocker === "Duplicate profile URLs remain in pilot output." && canonicalStats.duplicateProfileUrlGroupsAfter === 0) {
+    if (canonicalStats.sourceUrlMatchLinks === 0) {
+      return {
+        readiness: "needsHumanReview",
+        mainBlocker: "Canonicalization removed duplicate identity issue; department links still require review because source lineage is not row-specific."
+      };
+    }
+    return {
+      readiness: "needsHumanReview",
+      mainBlocker: "Canonicalization removed duplicate identity issue; pilot still needs department-link QA before controlled full."
+    };
+  }
+  return { readiness: evaluation.readiness, mainBlocker: evaluation.mainBlocker };
+}
 
 async function main() {
   const args = parseArgs();
@@ -50,23 +67,27 @@ async function main() {
             productionReadyCount: 0,
             mappedRecords: 0,
             mappingStats: await readMappingStats(item.hospitalSlug),
+            canonicalStats: await readCanonicalStats(item.hospitalSlug),
             mainBlocker: "No runnable baseline adapter for this Wave2 candidate."
           });
           continue;
         }
         const evaluation = (await runHospitalAutopilot(item.hospitalSlug, "pilot", false)) as HospitalPilotEvaluation;
         const mapping = await applyMasterDeptMappingToReviewed(item.hospitalSlug, targets);
+        const calibrated = canonicalCalibratedReadiness(evaluation, mapping.canonicalStats);
         wave2Results.push({
           hospital: item.hospitalSlug,
-          readiness: evaluation.readiness,
+          readiness: calibrated.readiness,
           reviewedRecords: evaluation.reviewedRecords,
           productionReadyCount: evaluation.productionReadyCount,
           mappedRecords: mapping.mappedRecords,
           mappingStats: mapping.mappingStats,
-          mainBlocker: evaluation.mainBlocker
+          canonicalStats: mapping.canonicalStats,
+          mainBlocker: calibrated.mainBlocker
         });
       }
       const wave1MappingAfter = Object.fromEntries(await Promise.all(wave1HospitalSlugs.map(async (slug) => [slug, await readMappingStats(slug)])));
+      const canonicalStatsByHospital = Object.fromEntries(await Promise.all([...wave1HospitalSlugs, ...wave2Results.map((result) => result.hospital)].map(async (slug) => [slug, await readCanonicalStats(slug)])));
       const wave1Results = [];
       for (const slug of wave1HospitalSlugs) {
         const evaluation = (await runHospitalAutopilot(slug, "evaluate", false)) as HospitalPilotEvaluation;
@@ -79,7 +100,7 @@ async function main() {
           mappedRecords: stats.totalReviewed - stats.unmapped
         });
       }
-      const report = await writeNationalPlanOutputs(targets, inspectedPlan, { wave1Results, wave1MappingBefore, wave1MappingAfter, wave2SelectedHospitals, wave2Results });
+      const report = await writeNationalPlanOutputs(targets, inspectedPlan, { wave1Results, wave1MappingBefore, wave1MappingAfter, canonicalStatsByHospital, wave2SelectedHospitals, wave2Results });
       console.log(JSON.stringify({ ...nationalPlanSummary(targets, inspectedPlan, report), wave2SelectedHospitals, wave2Results }, null, 2));
       return;
     }
@@ -98,8 +119,9 @@ async function main() {
       });
     }
     const wave1MappingAfter = Object.fromEntries(await Promise.all(wave1HospitalSlugs.map(async (slug) => [slug, await readMappingStats(slug)])));
+    const canonicalStatsByHospital = Object.fromEntries(await Promise.all(wave1HospitalSlugs.map(async (slug) => [slug, await readCanonicalStats(slug)])));
     const plan = buildNationalHospitalPlan(targets);
-    const report = await writeNationalPlanOutputs(targets, plan, { wave1Results, wave1MappingBefore, wave1MappingAfter });
+    const report = await writeNationalPlanOutputs(targets, plan, { wave1Results, wave1MappingBefore, wave1MappingAfter, canonicalStatsByHospital });
     console.log(JSON.stringify({ ...nationalPlanSummary(targets, plan, report), wave1Results, wave1MappingBefore, wave1MappingAfter }, null, 2));
     return;
   }

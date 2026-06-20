@@ -1,0 +1,3665 @@
+[
+  {
+    "canonicalDoctorId": "doctor-01cea4ded1a61037",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-01cea4ded1a61037",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-01cea4ded1a61037",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-01cea4ded1a61037",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-01cea4ded1a61037",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-02f567633fd25088",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-06cf60b74c7e00bc",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-06cf60b74c7e00bc",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-06cf60b74c7e00bc",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-06cf60b74c7e00bc",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-06cf60b74c7e00bc",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-0e5cbe176e3dc057",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-0e5cbe176e3dc057",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-0e5cbe176e3dc057",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-0e5cbe176e3dc057",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-0e5cbe176e3dc057",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-119437e0e202ab4f",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-16d4f9f317527859",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-16d4f9f317527859",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-16d4f9f317527859",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-16d4f9f317527859",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-16d4f9f317527859",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-2aac92ff44b63da1",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-2aac92ff44b63da1",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-2aac92ff44b63da1",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-2aac92ff44b63da1",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-2aac92ff44b63da1",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-320496639fc3a34a",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-320496639fc3a34a",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-320496639fc3a34a",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-320496639fc3a34a",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-320496639fc3a34a",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-34f30e693fb610a4",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-36fed4ef1d1f2123",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-3754aa8043ca48b3",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3754aa8043ca48b3",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3754aa8043ca48b3",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3754aa8043ca48b3",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3754aa8043ca48b3",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3aa03218b9222a32",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-3c0b10d46e34592b",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-3ceffc611c6ecd2f",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3ceffc611c6ecd2f",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3ceffc611c6ecd2f",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3ceffc611c6ecd2f",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3ceffc611c6ecd2f",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3cf53c70ddc7a005",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3cf53c70ddc7a005",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3cf53c70ddc7a005",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3cf53c70ddc7a005",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-3cf53c70ddc7a005",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-407c9a7435ad6718",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-47dee894b993a707",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-47dee894b993a707",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-47dee894b993a707",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-47dee894b993a707",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-47dee894b993a707",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4989fe02b41b8697",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-4a937f3e55cc9981",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4a937f3e55cc9981",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4a937f3e55cc9981",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4a937f3e55cc9981",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4a937f3e55cc9981",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4e003e470fbc99a6",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4e003e470fbc99a6",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4e003e470fbc99a6",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4e003e470fbc99a6",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-4e003e470fbc99a6",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-5cb715825778cd59",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-5cb715825778cd59",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-5cb715825778cd59",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-5cb715825778cd59",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-5cb715825778cd59",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-612ec2c91a0e03da",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-612ec2c91a0e03da",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-612ec2c91a0e03da",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-612ec2c91a0e03da",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-612ec2c91a0e03da",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-678fc8ab78ea74e0",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-74ad0aa8dfc4015d",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-76925872ad374b9a",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-76925872ad374b9a",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-76925872ad374b9a",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-76925872ad374b9a",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-76925872ad374b9a",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-788cf773a5846836",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-788cf773a5846836",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-788cf773a5846836",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-788cf773a5846836",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-788cf773a5846836",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-7f38931e84836623",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-7f38931e84836623",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-7f38931e84836623",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-7f38931e84836623",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-7f38931e84836623",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-803a3d89bb5aa16f",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-803a3d89bb5aa16f",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-803a3d89bb5aa16f",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-803a3d89bb5aa16f",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-803a3d89bb5aa16f",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-828e26fd468a405b",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-828e26fd468a405b",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-828e26fd468a405b",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-828e26fd468a405b",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-828e26fd468a405b",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-83a274ff54164940",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-8d82997b0f648f2c",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-8d82997b0f648f2c",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-8d82997b0f648f2c",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-8d82997b0f648f2c",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-8d82997b0f648f2c",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-8db3c5ea58de7c72",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-9058db521207b31b",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-9058db521207b31b",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-9058db521207b31b",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-9058db521207b31b",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-9058db521207b31b",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-95f72ceb2759c4a8",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-95f72ceb2759c4a8",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-95f72ceb2759c4a8",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-95f72ceb2759c4a8",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-95f72ceb2759c4a8",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-9746c2723a7d5755",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-9746c2723a7d5755",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-9746c2723a7d5755",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-9746c2723a7d5755",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-9746c2723a7d5755",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b575fef280d2d8b3",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b575fef280d2d8b3",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b575fef280d2d8b3",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b575fef280d2d8b3",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b575fef280d2d8b3",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b832fe00cf1a841e",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b832fe00cf1a841e",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b832fe00cf1a841e",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b832fe00cf1a841e",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-b832fe00cf1a841e",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-bb64e8ed2a394fec",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-bb64e8ed2a394fec",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-bb64e8ed2a394fec",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-bb64e8ed2a394fec",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-bb64e8ed2a394fec",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-c487c100db798b5e",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-c85abe06ac917a98",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-c85abe06ac917a98",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-c85abe06ac917a98",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-c85abe06ac917a98",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-c85abe06ac917a98",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d0618873703a8bd3",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d0618873703a8bd3",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d0618873703a8bd3",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d0618873703a8bd3",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d0618873703a8bd3",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d5705088812ba466",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d5705088812ba466",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d5705088812ba466",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d5705088812ba466",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d5705088812ba466",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d82543cd31f2efcc",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d82543cd31f2efcc",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d82543cd31f2efcc",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d82543cd31f2efcc",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-d82543cd31f2efcc",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-e4666f8addc31cf4",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-e4666f8addc31cf4",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-e4666f8addc31cf4",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-e4666f8addc31cf4",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-e4666f8addc31cf4",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-ea7d8335bb80486e",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-f4878ac19c27c782",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-f56b8f5fad3e47f8",
+    "masterDeptRowId": null,
+    "hospitalName": "Hadassah Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-fcdeebc0642676a2",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-fcdeebc0642676a2",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-fcdeebc0642676a2",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-fcdeebc0642676a2",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-fcdeebc0642676a2",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-fda1c8e2e6bf323c",
+    "masterDeptRowId": "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+    "hospitalName": "ביה\"ח הדסה הר הצופים",
+    "departmentName": null,
+    "specialty": "פנימית",
+    "sourceUrl": "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-fda1c8e2e6bf323c",
+    "masterDeptRowId": "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-fda1c8e2e6bf323c",
+    "masterDeptRowId": "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ב",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-fda1c8e2e6bf323c",
+    "masterDeptRowId": "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ג",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  },
+  {
+    "canonicalDoctorId": "doctor-fda1c8e2e6bf323c",
+    "masterDeptRowId": "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+    "hospitalName": "ביה\"ח הדסה עין כרם",
+    "departmentName": "ד",
+    "specialty": "פנימית",
+    "sourceUrl": null,
+    "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
+  }
+]

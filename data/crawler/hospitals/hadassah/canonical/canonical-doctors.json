@@ -1,0 +1,933 @@
+[
+  {
+    "canonicalDoctorId": "doctor-f4878ac19c27c782",
+    "fullName": "ד\"ר אבראהים נסר אלדין",
+    "normalizedName": "אבראהים נסר אלדין",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00035261/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00035261/"
+    ],
+    "evidence": [
+      "ד\"ר אבראהים נסר אלדין | רופא/ה | הדסה עין כרם | מלר\"ד ע\"כ | אגף פנימי | תחום: פנימית,רפואה דחופה | טלפון ציבורי: 0546692918"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-320496639fc3a34a",
+    "fullName": "ד\"ר אדיר ישראלי",
+    "normalizedName": "אדיר ישראלי",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00043377/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה (מכבי)",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00043377/"
+    ],
+    "evidence": [
+      "ד\"ר אדיר ישראלי | רופא/ה (מכבי) | הדסה עין כרם | פנימית א' | אגף פנימי | תחום: פנימית | טלפון ציבורי: 0505890012"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-8db3c5ea58de7c72",
+    "fullName": "ד\"ר אחמד הייב",
+    "normalizedName": "אחמד הייב",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00037723/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא (גישור)",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00037723/"
+    ],
+    "evidence": [
+      "ד\"ר אחמד הייב | רופא (גישור) | הדסה עין כרם | מלר\"ד ע\"כ | תחום: רפואה דחופה | טלפון ציבורי: 0524881135"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-612ec2c91a0e03da",
+    "fullName": "ד\"ר איה נאמארי",
+    "normalizedName": "איה נאמארי",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00046364/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00046364/"
+    ],
+    "evidence": [
+      "ד\"ר איה נאמארי | רופא/ה | הדסה עין כרם | פנימית ב' | תחום: פנימית | טלפון ציבורי: 0509702920"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-828e26fd468a405b",
+    "fullName": "ד\"ר איילת רוטר",
+    "normalizedName": "איילת רוטר",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00038442/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00038442/"
+    ],
+    "evidence": [
+      "ד\"ר איילת רוטר | רופא/ה | הדסה עין כרם | פנימית ב' | תחום: פנימית | טלפון ציבורי: 0526801281"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-5cb715825778cd59",
+    "fullName": "ד\"ר אימן אבו רמילה",
+    "normalizedName": "אימן אבו רמילה",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00017898/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00017898/"
+    ],
+    "evidence": [
+      "ד\"ר אימן אבו רמילה | רופא/ה | הדסה הר הצופים | פנימית ה\"צ | אגף פנימי | תחום: פנימית,מחלות ריאה | טלפון ציבורי: 0584400010"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-4a937f3e55cc9981",
+    "fullName": "ד\"ר אלאא דבש",
+    "normalizedName": "אלאא דבש",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00046480/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00046480/"
+    ],
+    "evidence": [
+      "ד\"ר אלאא דבש | רופא/ה | הדסה עין כרם | פנימית ג' | תחום: פנימית | טלפון ציבורי: 0523100405"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9746c2723a7d5755",
+    "fullName": "ד\"ר אלאא דנון",
+    "normalizedName": "אלאא דנון",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00040274/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00040274/"
+    ],
+    "evidence": [
+      "ד\"ר אלאא דנון | רופא/ה | הדסה עין כרם | פנימית ב' | תחום: פנימית | טלפון ציבורי: 0522926124"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0e5cbe176e3dc057",
+    "fullName": "ד\"ר אלחנן פריד",
+    "normalizedName": "אלחנן פריד",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00014521/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00014521/"
+    ],
+    "evidence": [
+      "ד\"ר אלחנן פריד | רופא/ה | הדסה הר הצופים | פנימית ה\"צ | תחום: פנימית,ט.נמרץ כללי | טלפון ציבורי: 0508573453"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e4666f8addc31cf4",
+    "fullName": "ד\"ר אליהו צאיג",
+    "normalizedName": "אליהו צאיג",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00019611/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00019611/"
+    ],
+    "evidence": [
+      "ד\"ר אליהו צאיג | רופא/ה | הדסה הר הצופים | פנימית ה\"צ | תחום: כירורגיה בית החזה כללית,פנימית | טלפון ציבורי: 0525497882"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-4989fe02b41b8697",
+    "fullName": "ד\"ר אלכסנדר חיימוב",
+    "normalizedName": "אלכסנדר חיימוב",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00019366/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא שיניים",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00019366/"
+    ],
+    "evidence": [
+      "ד\"ר אלכסנדר חיימוב | רופא שיניים | הדסה עין כרם | מ. רפו\"ש קהילתית-בי\"ס לרפ | תחום: רפו\"ש צבורית | טלפון ציבורי: 0522759691"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-ea7d8335bb80486e",
+    "fullName": "ד\"ר אלנה גולזנד",
+    "normalizedName": "אלנה גולזנד",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00013019/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00013019/"
+    ],
+    "evidence": [
+      "ד\"ר אלנה גולזנד | רופא/ה | הדסה הר הצופים | פגייה ה\"צ | אגף ילדים | תחום: ילדים,נאונטולוגיה | טלפון ציבורי: 0507874294"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-47dee894b993a707",
+    "fullName": "ד\"ר אמל דלאשה",
+    "normalizedName": "אמל דלאשה",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00020368/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00020368/"
+    ],
+    "evidence": [
+      "ד\"ר אמל דלאשה | רופא/ה | הדסה עין כרם | פנימית ב' | תחום: פנימית | טלפון ציבורי: 0547700956"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-34f30e693fb610a4",
+    "fullName": "ד\"ר בהא זרו",
+    "normalizedName": "בהא זרו",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00037406/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00037406/"
+    ],
+    "evidence": [
+      "ד\"ר בהא זרו | רופא | הדסה עין כרם | מלר\"ד ע\"כ | מערכים אחרים | תחום: רפואה דחופה,רפואה לשיכוך כאב | טלפון ציבורי: 0544849387"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-76925872ad374b9a",
+    "fullName": "ד\"ר גבריאלה סנוימן",
+    "normalizedName": "גבריאלה סנוימן",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00040404/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00040404/"
+    ],
+    "evidence": [
+      "ד\"ר גבריאלה סנוימן | רופא/ה | הדסה עין כרם | פנימית א' | מערכים אחרים | תחום: פנימית | טלפון ציבורי: 0534717241"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-c487c100db798b5e",
+    "fullName": "ד\"ר גיא טוביאס",
+    "normalizedName": "גיא טוביאס",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00019692/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא שיניים",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00019692/"
+    ],
+    "evidence": [
+      "ד\"ר גיא טוביאס | רופא שיניים | הדסה עין כרם | מ. רפו\"ש קהילתית-בי\"ס לרפ | תחום: רפו\"ש צבורית | טלפון ציבורי: 0527052333"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2aac92ff44b63da1",
+    "fullName": "ד\"ר דאניה גבר",
+    "normalizedName": "דאניה גבר",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00040299/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "סטאז'ר לרפואה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00040299/"
+    ],
+    "evidence": [
+      "ד\"ר דאניה גבר | סטאז'ר לרפואה | הדסה עין כרם | פנימית א' | תחום: פנימית | טלפון ציבורי: 0523725890"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3cf53c70ddc7a005",
+    "fullName": "ד\"ר דינה גבר",
+    "normalizedName": "דינה גבר",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00046483/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה (גישור)",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00046483/"
+    ],
+    "evidence": [
+      "ד\"ר דינה גבר | רופא/ה (גישור) | הדסה עין כרם | פנימית ג' | תחום: פנימית | טלפון ציבורי: 0522975715"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-fcdeebc0642676a2",
+    "fullName": "ד\"ר האני סיאג",
+    "normalizedName": "האני סיאג",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00041981/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה (מכבי)",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00041981/"
+    ],
+    "evidence": [
+      "ד\"ר האני סיאג | רופא/ה (מכבי) | הדסה עין כרם | פנימית ג' | תחום: פנימית | טלפון ציבורי: 0545830749"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3c0b10d46e34592b",
+    "fullName": "ד\"ר חאפז גוויחאן",
+    "normalizedName": "חאפז גוויחאן",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00044928/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00044928/"
+    ],
+    "evidence": [
+      "ד\"ר חאפז גוויחאן | רופא/ה | הדסה עין כרם | א. יום פנימי | תחום: פנימית | טלפון ציבורי: 0584424004"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-16d4f9f317527859",
+    "fullName": "ד\"ר יהונתן כהן",
+    "normalizedName": "יהונתן כהן",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00043878/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00043878/"
+    ],
+    "evidence": [
+      "ד\"ר יהונתן כהן | רופא/ה | הדסה עין כרם | פנימית א' | תחום: פנימית | טלפון ציבורי: 0508822551"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-119437e0e202ab4f",
+    "fullName": "פרופ' יובל ורד",
+    "normalizedName": "יובל ורד",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00012093/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "פרופ'",
+    "role": "מנהל מחלקת רפואת שיניים קהילתית",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00012093/"
+    ],
+    "evidence": [
+      "פרופ' יובל ורד | מנהל מחלקת רפואת שיניים קהילתית | הדסה עין כרם | מ. רפו\"ש קהילתית-בי\"ס לרפ | תחום: רפו\"ש צבורית | טלפון ציבורי: 0522545125"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-788cf773a5846836",
+    "fullName": "ד\"ר יונתן בכרך",
+    "normalizedName": "יונתן בכרך",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00044016/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00044016/"
+    ],
+    "evidence": [
+      "ד\"ר יונתן בכרך | רופא/ה | הדסה עין כרם | פנימית א' | תחום: פנימית | טלפון ציבורי: 0502228348"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-fda1c8e2e6bf323c",
+    "fullName": "ד\"ר יוסף קדומי",
+    "normalizedName": "יוסף קדומי",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00046391/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00046391/"
+    ],
+    "evidence": [
+      "ד\"ר יוסף קדומי | רופא/ה | הדסה עין כרם | פנימית ג' | תחום: פנימית | טלפון ציבורי: 0523494305"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-74ad0aa8dfc4015d",
+    "fullName": "פרופ' יניב שרר",
+    "normalizedName": "יניב שרר",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00043910/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "פרופ'",
+    "role": "מנהל/ת בית חולים עין כרם",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00043910/"
+    ],
+    "evidence": [
+      "פרופ' יניב שרר | מנהל/ת בית חולים עין כרם | הדסה עין כרם | לשכת מ. בי\"ח | תחום: מינהל רפואי,פנימית | טלפון ציבורי: 0537674000"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d82543cd31f2efcc",
+    "fullName": "ד\"ר יעל לוי",
+    "normalizedName": "יעל לוי",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00039496/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00039496/"
+    ],
+    "evidence": [
+      "ד\"ר יעל לוי | רופא/ה | הדסה עין כרם | פנימית ב' | תחום: פנימית | טלפון ציבורי: 0528311924"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-06cf60b74c7e00bc",
+    "fullName": "ד\"ר ישי גרואר",
+    "normalizedName": "ישי גרואר",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00045327/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00045327/"
+    ],
+    "evidence": [
+      "ד\"ר ישי גרואר | רופא/ה | הדסה עין כרם | פנימית ג' | תחום: פנימית | טלפון ציבורי: 0528632525"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9058db521207b31b",
+    "fullName": "ד\"ר לאון מוסקוביץ פרדומו",
+    "normalizedName": "לאון מוסקוביץ פרדומו",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00036883/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא(גישור)",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00036883/"
+    ],
+    "evidence": [
+      "ד\"ר לאון מוסקוביץ פרדומו | רופא(גישור) | הדסה עין כרם | פנימית ג' | תחום: פנימית | טלפון ציבורי: 0538036205"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-4e003e470fbc99a6",
+    "fullName": "ד\"ר ליאור נוה",
+    "normalizedName": "ליאור נוה",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00034602/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00034602/"
+    ],
+    "evidence": [
+      "ד\"ר ליאור נוה | רופא/ה | הדסה עין כרם | פנימית ד | תחום: פנימית | טלפון ציבורי: 0547718915"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-83a274ff54164940",
+    "fullName": "ד\"ר למה עסאף-ג`ברין",
+    "normalizedName": "למה עסאף ג`ברין",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00016647/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ת שיניים",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00016647/"
+    ],
+    "evidence": [
+      "ד\"ר למה עסאף-ג`ברין | רופא/ת שיניים | הדסה עין כרם | מחלקת פדודנטיה -בי\"ס לרפו | תחום: פדודונטיה | טלפון ציבורי: 0546911207"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-678fc8ab78ea74e0",
+    "fullName": "ד\"ר מאזן ברהום",
+    "normalizedName": "מאזן ברהום",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00034726/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00034726/"
+    ],
+    "evidence": [
+      "ד\"ר מאזן ברהום | רופא/ה | הדסה עין כרם | מלר\"ד ע\"כ | תחום: רפואה דחופה | טלפון ציבורי: 0533378550"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-c85abe06ac917a98",
+    "fullName": "ד\"ר מוחמד ג'בר",
+    "normalizedName": "מוחמד גבר",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00041546/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00041546/"
+    ],
+    "evidence": [
+      "ד\"ר מוחמד ג'בר | רופא/ה | הדסה עין כרם | פנימית ג' | תחום: פנימית | טלפון ציבורי: 0507070196"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d5705088812ba466",
+    "fullName": "ד\"ר מוראד שקיראת",
+    "normalizedName": "מוראד שקיראת",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00042061/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00042061/"
+    ],
+    "evidence": [
+      "ד\"ר מוראד שקיראת | רופא/ה | הדסה עין כרם | פנימית ב' | תחום: פנימית | טלפון ציבורי: 0537616592"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-95f72ceb2759c4a8",
+    "fullName": "ד\"ר מחמוד גרייב",
+    "normalizedName": "מחמוד גרייב",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00045620/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00045620/"
+    ],
+    "evidence": [
+      "ד\"ר מחמוד גרייב | רופא/ה | הדסה עין כרם | פנימית ב' | תחום: פנימית | טלפון ציבורי: 0527917468"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b575fef280d2d8b3",
+    "fullName": "פרופ' מרדכי מושקט",
+    "normalizedName": "מרדכי מושקט",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00012174/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "פרופ'",
+    "role": "מנהל/ת מחלקת פנימית הר הצופים",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00012174/"
+    ],
+    "evidence": [
+      "פרופ' מרדכי מושקט | מנהל/ת מחלקת פנימית הר הצופים | הדסה הר הצופים | פנימית ה\"צ | אגף פנימי | תחום: פנימית,פרמקולוגיה קלי | טלפון ציבורי: 0508573793"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-02f567633fd25088",
+    "fullName": "ד\"ר נועם בן יוסף",
+    "normalizedName": "נועם בן יוסף",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00034910/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00034910/"
+    ],
+    "evidence": [
+      "ד\"ר נועם בן יוסף | רופא/ה | הדסה עין כרם | א. יום פנימי | אגף פנימי | תחום: פנימית,גריאטריה | טלפון ציבורי: 0507228869"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-36fed4ef1d1f2123",
+    "fullName": "ד\"ר נועם כהן",
+    "normalizedName": "נועם כהן",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00035671/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "עוזר רופא-סטודנט לרפואה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00035671/"
+    ],
+    "evidence": [
+      "ד\"ר נועם כהן | עוזר רופא-סטודנט לרפואה | הדסה עין כרם | מלר\"ד ע\"כ | תחום: הרדמה | טלפון ציבורי: 0547808048"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f56b8f5fad3e47f8",
+    "fullName": "ד\"ר סנאן אבו ליל",
+    "normalizedName": "סנאן אבו ליל",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00014158/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל/ת מחלקת נאונטולוגיה הר הצופים",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00014158/"
+    ],
+    "evidence": [
+      "ד\"ר סנאן אבו ליל | מנהל/ת מחלקת נאונטולוגיה הר הצופים | הדסה הר הצופים | פגייה ה\"צ | אגף ילדים | תחום: ילדים,נאונטולוגיה | טלפון ציבורי: 0507874842"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3754aa8043ca48b3",
+    "fullName": "ד\"ר עדי הולנדר",
+    "normalizedName": "עדי הולנדר",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00042959/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00042959/"
+    ],
+    "evidence": [
+      "ד\"ר עדי הולנדר | רופא/ה | הדסה עין כרם | פנימית א' | מערכים אחרים | תחום: פנימית | טלפון ציבורי: 0546791967"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b832fe00cf1a841e",
+    "fullName": "ד\"ר עומר זחאיקה",
+    "normalizedName": "עומר זחאיקה",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00038351/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00038351/"
+    ],
+    "evidence": [
+      "ד\"ר עומר זחאיקה | רופא/ה | הדסה עין כרם | פנימית ב' | תחום: פנימית | טלפון ציבורי: 0525905609"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3ceffc611c6ecd2f",
+    "fullName": "ד\"ר עומר חמצני",
+    "normalizedName": "עומר חמצני",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00037125/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00037125/"
+    ],
+    "evidence": [
+      "ד\"ר עומר חמצני | רופא/ה | הדסה עין כרם | פנימית א' | תחום: פנימית | טלפון ציבורי: 0525605138"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3aa03218b9222a32",
+    "fullName": "ד\"ר עירא ארליכמן",
+    "normalizedName": "עירא ארליכמן",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00017677/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל/ת יחידת יילודים ה\"צ",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00017677/"
+    ],
+    "evidence": [
+      "ד\"ר עירא ארליכמן | מנהל/ת יחידת יילודים ה\"צ | הדסה הר הצופים | פגייה ה\"צ | אגף ילדים | תחום: ילדים,נאונטולוגיה | טלפון ציבורי: 0505172796"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-803a3d89bb5aa16f",
+    "fullName": "ד\"ר ענת אלעזרי",
+    "normalizedName": "ענת אלעזרי",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00013817/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00013817/"
+    ],
+    "evidence": [
+      "ד\"ר ענת אלעזרי | רופא/ה | הדסה הר הצופים | פנימית ה\"צ | אגף פנימי | תחום: פנימית,ראומטולוגיה | טלפון ציבורי: 0508573620"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-407c9a7435ad6718",
+    "fullName": "ד\"ר קאסם נמר",
+    "normalizedName": "קאסם נמר",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00034584/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00034584/"
+    ],
+    "evidence": [
+      "ד\"ר קאסם נמר | רופא | הדסה עין כרם | מלר\"ד ע\"כ | מערכים אחרים | תחום: רפואה דחופה,רפואה לשיכוך כאב | טלפון ציבורי: 0525770404"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-7f38931e84836623",
+    "fullName": "ד\"ר רוני בן עמי",
+    "normalizedName": "רוני בן עמי",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00036578/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00036578/"
+    ],
+    "evidence": [
+      "ד\"ר רוני בן עמי | רופא/ה | הדסה עין כרם | פנימית ד | תחום: פנימית | טלפון ציבורי: 0547230597"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-bb64e8ed2a394fec",
+    "fullName": "ד\"ר רפאל ליבר",
+    "normalizedName": "רפאל ליבר",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00037543/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00037543/"
+    ],
+    "evidence": [
+      "ד\"ר רפאל ליבר | רופא/ה | הדסה עין כרם | פנימית ב' | תחום: פנימית | טלפון ציבורי: 0547671654"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-01cea4ded1a61037",
+    "fullName": "ד\"ר שאול יערי",
+    "normalizedName": "שאול יערי",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00015918/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל/ת היחידה לאשפוז יום פנימי ה\"צ",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00015918/"
+    ],
+    "evidence": [
+      "ד\"ר שאול יערי | מנהל/ת היחידה לאשפוז יום פנימי ה\"צ | הדסה הר הצופים | פנימית ה\"צ | אגף פנימי | תחום: פנימית,גסטרואנטרולוגי | טלפון ציבורי: 0508181621"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-8d82997b0f648f2c",
+    "fullName": "ד\"ר שני אמיתי",
+    "normalizedName": "שני אמיתי",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00041814/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00041814/"
+    ],
+    "evidence": [
+      "ד\"ר שני אמיתי | רופא/ה | הדסה עין כרם | פנימית ג' | תחום: פנימית | טלפון ציבורי: 0537229997"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d0618873703a8bd3",
+    "fullName": "ד\"ר שרה ברכה בן ציוני",
+    "normalizedName": "שרה ברכה בן ציוני",
+    "profileUrl": "https://he.hadassah.org.il/doctorsdoctor/00039381/",
+    "hospitalName": "Hadassah Medical Center",
+    "provider": "hadassah",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא/ה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "https://he.hadassah.org.il/doctorsdoctor/00039381/"
+    ],
+    "evidence": [
+      "ד\"ר שרה ברכה בן ציוני | רופא/ה | הדסה עין כרם | פנימית ד | תחום: פנימית | טלפון ציבורי: 0549435330"
+    ]
+  }
+]

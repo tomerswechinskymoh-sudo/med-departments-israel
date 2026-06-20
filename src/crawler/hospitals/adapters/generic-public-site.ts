@@ -10,6 +10,9 @@ const linkCandidatePattern =
   /(רופאים|רופאי המחלקה|אנשי הצוות|צוות רפואי|הצוות הרפואי|הצוות שלנו|צוות המחלקה|מומחים|רופאים בכירים|doctors|doctor|team|staff|physicians|specialists)/i;
 const noisyTextPattern =
   /(כניסה|יציאה|הרשמה|חיפוש|זימון תור|ניווט|תפריט|פייסבוק|instagram|youtube|accessibility|footer|header)/i;
+const fileAssetPattern = /\.(?:pdf|docx?|xlsx?|pptx?|png|jpe?g|gif|webp)(?:[?#].*)?$/i;
+const noisyUrlPattern =
+  /(?:\/news\/|news_|\/gen_info\/|covid|academy_and_research\/documents|publications|publication|newsletter|press|\/documents\/)/i;
 
 export async function fetchPublicHtml(url: string, timeoutMs = 20_000) {
   const controller = new AbortController();
@@ -77,6 +80,11 @@ function sameDomain(url: string, sourceUrl: string) {
   }
 }
 
+function isNoisyCrawlerUrl(url: string, anchorText = "") {
+  const joined = `${url} ${anchorText}`;
+  return fileAssetPattern.test(url) || noisyUrlPattern.test(joined);
+}
+
 function patternTypeFor(url: string, text: string): CandidatePage["patternType"] {
   const joined = `${url} ${text}`;
   if (/doctorssearch|doctors-lobby|our-specialists|רופאים מומחים/i.test(joined)) return "doctorIndex";
@@ -102,6 +110,7 @@ export function discoverCandidatePages(html: string, sourceUrl: string, baseline
     const href = absoluteUrl($(anchor).attr("href"), sourceUrl);
     if (!href || !sameDomain(href, sourceUrl)) return;
     const anchorText = normalizeWhitespace($(anchor).text());
+    if (isNoisyCrawlerUrl(href, anchorText)) return;
     const evidence = `${anchorText} ${href}`;
     if (!linkCandidatePattern.test(evidence) && !/doctor|staff|team|physician|specialist/i.test(href)) return;
     const patternType = patternTypeFor(href, anchorText);
@@ -167,6 +176,8 @@ function candidateRoot($: CheerioAPI, node: Parameters<CheerioAPI>[0]) {
 }
 
 export function extractDoctorsFromHtml(html: string, sourceUrl: string, baseline: HospitalBaseline, parserFamily: ParserFamily) {
+  if (isNoisyCrawlerUrl(sourceUrl)) return [];
+
   const $ = load(html);
   const doctors = new Map<string, HospitalDoctorRecord>();
 
