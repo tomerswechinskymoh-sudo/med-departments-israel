@@ -18,7 +18,42 @@ export type ReadinessStatus =
   | "needsHumanReview"
   | "blocked";
 
-export type AutopilotMode = "plan" | "pilot" | "evaluate" | "full";
+export type AutopilotMode = "plan" | "pilot" | "evaluate" | "full" | "national-plan" | "national-pilot" | "national-full-safe";
+
+export type MasterDeptSourceUrlStatus = "notProvided" | "pending" | "live" | "redirected" | "stale" | "forbidden" | "failed";
+
+export type MasterDeptSourceUrlPageType =
+  | "departmentPage"
+  | "unitPage"
+  | "arrayPage"
+  | "hospitalPage"
+  | "doctorsPage"
+  | "teamPage"
+  | "unknown";
+
+export type MasterDeptTarget = {
+  masterDeptRowId: string;
+  hospitalNameRaw: string;
+  hospitalNameNormalized: string;
+  departmentNameRaw: string;
+  departmentNameNormalized: string;
+  specialtyRaw: string;
+  specialtyNormalized: string;
+  city: string | null;
+  district: string | null;
+  sourceUrlRaw: string | null;
+  sourceUrlNormalized: string | null;
+  sourceUrlStatus: MasterDeptSourceUrlStatus;
+  sourceUrlPageType: MasterDeptSourceUrlPageType;
+  discoveredFromMasterDeptUrl: boolean;
+  nearbyDoctorOrTeamUrls: string[];
+  urlInspectionEvidence: string | null;
+  providerGuess: WebsiteFamily | "government" | "private";
+  crawlerStatus: "pending" | "supported" | "safeForPilot" | "safeForFullBatch" | "needsAdapter" | "deferred" | "blocked";
+  deferReason: string | null;
+};
+
+export type MasterDeptMatchConfidence = "exact" | "normalizedExact" | "sourceUrlMatch" | "hospitalOnly" | "reviewNeeded";
 
 export type HospitalBaseline = {
   hospitalSlug: string;
@@ -55,6 +90,15 @@ export type CandidatePage = {
   parserFamily: ParserFamily;
   confidence: number;
   evidence: string;
+  sourceUrlRaw?: string | null;
+  sourceUrlNormalized?: string | null;
+  sourceUrlStatus?: MasterDeptSourceUrlStatus;
+  sourceUrlPageType?: MasterDeptSourceUrlPageType;
+  discoveredFromMasterDeptUrl?: boolean;
+  nearbyDoctorOrTeamUrls?: string[];
+  urlInspectionEvidence?: string | null;
+  matchConfidence?: MasterDeptMatchConfidence;
+  matchEvidence?: string | null;
 };
 
 export type HospitalDoctorRecord = {

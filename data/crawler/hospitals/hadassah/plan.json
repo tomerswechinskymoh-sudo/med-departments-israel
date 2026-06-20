@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "hadassah",
   "hospitalName": "Hadassah Medical Center",
-  "generatedAt": "2026-06-20T09:07:20.839Z",
+  "generatedAt": "2026-06-20T14:43:26.835Z",
   "provider": "hadassah",
   "websiteFamily": "hadassah",
   "knownUrls": {
@@ -35,8 +35,8 @@
         "ניווט מהיר",
         "צור קשר"
       ],
-      "htmlLength": 960449,
-      "visibleTextLength": 261546,
+      "htmlLength": 960076,
+      "visibleTextLength": 261321,
       "error": null
     },
     {
@@ -70,8 +70,8 @@
         "א",
         "ג"
       ],
-      "htmlLength": 478692,
-      "visibleTextLength": 201688,
+      "htmlLength": 478598,
+      "visibleTextLength": 201670,
       "error": null
     },
     {
@@ -88,8 +88,8 @@
         "ניווט מהיר",
         "צור קשר"
       ],
-      "htmlLength": 271761,
-      "visibleTextLength": 90535,
+      "htmlLength": 271718,
+      "visibleTextLength": 90509,
       "error": null
     }
   ],

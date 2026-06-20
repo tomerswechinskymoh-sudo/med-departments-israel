@@ -7,6 +7,9 @@ npm run crawl -- --hospital sheba --mode plan
 npm run crawl -- --hospital sheba --mode pilot
 npm run crawl -- --hospital sheba --mode evaluate
 npm run crawl -- --hospital sheba --mode full --confirm
+npm run crawl -- --mode national-plan
+npm run crawl -- --mode national-pilot --limit 3
+npm run crawl -- --mode national-full-safe --confirm
 ```
 
 ## Modes
@@ -15,6 +18,9 @@ npm run crawl -- --hospital sheba --mode full --confirm
 - `pilot`: run a capped pilot on representative URLs, sample profile pages, write reviewed output and evaluation.
 - `evaluate`: read the latest pilot evaluation.
 - `full`: blocked unless readiness is `safeForFullBatch` and `--confirm` is supplied; provider-specific full adapters must still be added.
+- `national-plan`: read `Master_Dept.csv`, create target registry, national crawl plan, waves, and coverage report. No crawling by default.
+- `national-pilot`: run a limited safe wave. Current default Wave 1 is Ichilov, Hadassah, and Meir only.
+- `national-full-safe`: requires `--confirm`, but remains blocked until provider-specific full adapters exist.
 
 ## Outputs
 
@@ -27,7 +33,24 @@ data/crawler/hospitals/<hospitalSlug>/doctor-index/identity-map.json
 data/crawler/hospitals/<hospitalSlug>/pilot/config.json
 data/crawler/hospitals/<hospitalSlug>/pilot/evaluation.json
 data/crawler/hospitals/<hospitalSlug>/reviewed/doctors-reviewed.json
+data/crawler/hospitals/master-dept-targets.json
+data/crawler/hospitals/master-dept-targets.csv
+data/crawler/hospitals/national-crawl-plan.json
+data/crawler/hospitals/national-crawl-plan.csv
+data/crawler/hospitals/national-waves.json
+data/crawler/hospitals/national-coverage-report.json
+data/crawler/hospitals/national-coverage-report.md
 ```
+
+## Master_Dept URL Priority
+
+- `Master_Dept.csv` is the national source of truth for hospital, specialty, department/array, and row-level source URL targets.
+- Row URLs are preserved as `sourceUrlRaw` and normalized as `sourceUrlNormalized`.
+- URL status is explicit: `notProvided`, `pending`, `live`, `redirected`, `stale`, `forbidden`, or `failed`.
+- Page type is classified as department, unit, array, hospital, doctors, team, or unknown.
+- If a row URL is inspected and nearby doctor/team links are found, they are preserved in `nearbyDoctorOrTeamUrls`.
+- Doctor outputs get Master_Dept mapping fields. Ambiguous matches are marked `reviewNeeded`; the crawler must not invent a department match.
+- Sheba is deferred to Wave 4 so it cannot block national coverage.
 
 ## Readiness
 

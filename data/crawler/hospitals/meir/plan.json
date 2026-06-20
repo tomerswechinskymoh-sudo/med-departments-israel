@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "meir",
   "hospitalName": "Meir Medical Center",
-  "generatedAt": "2026-06-20T09:10:45.485Z",
+  "generatedAt": "2026-06-20T14:43:53.726Z",
   "provider": "clalit",
   "websiteFamily": "clalit",
   "knownUrls": {
@@ -36,7 +36,7 @@
         "סרטונים נבחרים",
         "חדשות מרכז רפואי מאיר"
       ],
-      "htmlLength": 345356,
+      "htmlLength": 345222,
       "visibleTextLength": 22321,
       "error": null
     },

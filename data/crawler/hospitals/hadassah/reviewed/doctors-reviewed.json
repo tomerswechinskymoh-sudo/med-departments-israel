@@ -18,7 +18,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר אדיר ישראלי",
@@ -39,7 +124,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
   },
   {
     "fullName": "ד\"ר אחמד הייב",
@@ -60,7 +164,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר איה נאמארי",
@@ -81,7 +270,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
   },
   {
     "fullName": "ד\"ר איילת רוטר",
@@ -102,7 +310,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
   },
   {
     "fullName": "ד\"ר אימן אבו רמילה",
@@ -123,7 +350,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
   },
   {
     "fullName": "ד\"ר אלאא דבש",
@@ -144,7 +390,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
   },
   {
     "fullName": "ד\"ר אלאא דנון",
@@ -165,7 +430,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
   },
   {
     "fullName": "ד\"ר אלחנן פריד",
@@ -184,9 +468,28 @@
     "qaFlags": [],
     "qaSeverity": "ok",
     "profileCompleteness": "partial",
-    "profileTextLength": 75628,
+    "profileTextLength": 75602,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
   },
   {
     "fullName": "ד\"ר אליהו צאיג",
@@ -207,7 +510,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
   },
   {
     "fullName": "ד\"ר אלכסנדר חיימוב",
@@ -228,7 +550,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר אלנה גולזנד",
@@ -249,7 +656,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 75628,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר אמל דלאשה",
@@ -270,7 +762,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
   },
   {
     "fullName": "ד\"ר בהא זרו",
@@ -291,7 +802,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר גבריאלה סנוימן",
@@ -312,7 +908,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
   },
   {
     "fullName": "ד\"ר גיא טוביאס",
@@ -333,7 +948,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר דאניה גבר",
@@ -354,7 +1054,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
   },
   {
     "fullName": "ד\"ר דינה גבר",
@@ -375,7 +1094,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
   },
   {
     "fullName": "ד\"ר האני סיאג",
@@ -396,7 +1134,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
   },
   {
     "fullName": "ד\"ר חאפז גוויחאן",
@@ -417,7 +1174,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר יהונתן כהן",
@@ -438,7 +1280,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
   },
   {
     "fullName": "פרופ' יובל ורד",
@@ -459,7 +1320,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר יונתן בכרך",
@@ -480,7 +1426,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
   },
   {
     "fullName": "ד\"ר יוסף קדומי",
@@ -501,7 +1466,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
   },
   {
     "fullName": "פרופ' יניב שרר",
@@ -522,7 +1506,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר יעל לוי",
@@ -543,7 +1612,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
   },
   {
     "fullName": "ד\"ר ישי גרואר",
@@ -564,7 +1652,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
   },
   {
     "fullName": "ד\"ר לאון מוסקוביץ פרדומו",
@@ -585,7 +1692,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
   },
   {
     "fullName": "ד\"ר ליאור נוה",
@@ -606,7 +1732,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ד"
   },
   {
     "fullName": "ד\"ר למה עסאף-ג`ברין",
@@ -627,7 +1772,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר מאזן ברהום",
@@ -648,7 +1878,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר מוחמד ג'בר",
@@ -669,7 +1984,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
   },
   {
     "fullName": "ד\"ר מוראד שקיראת",
@@ -690,7 +2024,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
   },
   {
     "fullName": "ד\"ר מחמוד גרייב",
@@ -711,7 +2064,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
   },
   {
     "fullName": "פרופ' מרדכי מושקט",
@@ -732,7 +2104,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
   },
   {
     "fullName": "ד\"ר נועם בן יוסף",
@@ -753,7 +2144,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר נועם כהן",
@@ -774,7 +2250,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר סנאן אבו ליל",
@@ -795,7 +2356,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר עדי הולנדר",
@@ -816,7 +2462,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
   },
   {
     "fullName": "ד\"ר עומר זחאיקה",
@@ -837,7 +2502,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
   },
   {
     "fullName": "ד\"ר עומר חמצני",
@@ -858,7 +2542,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
   },
   {
     "fullName": "ד\"ר עירא ארליכמן",
@@ -879,7 +2582,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר ענת אלעזרי",
@@ -900,7 +2688,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
   },
   {
     "fullName": "ד\"ר קאסם נמר",
@@ -921,7 +2728,92 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+      "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה",
+      "master-dept-0090-ביהח-הדסה-הר-הצופים-רפואה-דחופה",
+      "master-dept-0091-ביהח-הדסה-הר-הצופים-כירורגיה-כללית",
+      "master-dept-0092-ביהח-הדסה-הר-הצופים-מחלות-עיניים-משולב-הדסות",
+      "master-dept-0093-ביהח-הדסה-הר-הצופים-אורתופדיה-משולב-הדסות",
+      "master-dept-0094-ביהח-הדסה-הר-הצופים-הרדמה",
+      "master-dept-0095-ביהח-הדסה-הר-הצופים-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0096-ביהח-הדסה-הר-הצופים-כירורגיה-של-בית-החזה",
+      "master-dept-0097-ביהח-הדסה-הר-הצופים-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+      "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+      "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד",
+      "master-dept-0284-ביהח-הדסה-עין-כרם-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0285-ביהח-הדסה-עין-כרם-מחלות-עיניים",
+      "master-dept-0286-ביהח-הדסה-עין-כרם-אונקולוגיה",
+      "master-dept-0287-ביהח-הדסה-עין-כרם-אורתופדיה",
+      "master-dept-0288-ביהח-הדסה-עין-כרם-כירורגיה-כללית",
+      "master-dept-0289-ביהח-הדסה-עין-כרם-רדיולוגיה-דימות-משולב-הדסות",
+      "master-dept-0290-ביהח-הדסה-עין-כרם-כירורגית-כלי-דם",
+      "master-dept-0291-ביהח-הדסה-עין-כרם-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0292-ביהח-הדסה-עין-כרם-פתולוגיה",
+      "master-dept-0293-ביהח-הדסה-עין-כרם-קרדיולוגיה",
+      "master-dept-0294-ביהח-הדסה-עין-כרם-אף-אוזן-גרון",
+      "master-dept-0295-ביהח-הדסה-עין-כרם-רפואה-דחופה",
+      "master-dept-0296-ביהח-הדסה-עין-כרם-נוירולוגיה",
+      "master-dept-0297-ביהח-הדסה-עין-כרם-נוירוכירורגיה",
+      "master-dept-0298-ביהח-הדסה-עין-כרם-רפואת-עור",
+      "master-dept-0299-ביהח-הדסה-עין-כרם-יילוד-וגינקולוגיה",
+      "master-dept-0300-ביהח-הדסה-עין-כרם-כירורגיה-אורולוגית",
+      "master-dept-0301-ביהח-הדסה-עין-כרם-בריאות-הציבור",
+      "master-dept-0302-ביהח-הדסה-עין-כרם-כירורגיה-של-בית-החזה",
+      "master-dept-0303-ביהח-הדסה-עין-כרם-כירורגית-ילדים",
+      "master-dept-0304-ביהח-הדסה-עין-כרם-רפואה-גרעינית",
+      "master-dept-0305-ביהח-הדסה-עין-כרם-רפואה-פיזיקלית-ושיקום-הר-צופים",
+      "master-dept-0306-ביהח-הדסה-עין-כרם-גריאטריה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "משולב הדסות",
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "הר צופים"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "פנימית",
+      "רפואה פיזיקלית ושיקום",
+      "גריאטריה",
+      "יילוד וגינקולוגיה",
+      "רפואה דחופה",
+      "כירורגיה כללית",
+      "מחלות עיניים",
+      "אורתופדיה",
+      "הרדמה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה של בית החזה",
+      "פסיכיאטריה של הילד והמתבגר",
+      "פסיכיאטריה",
+      "כירורגיה פלסטית ואסתטית",
+      "אונקולוגיה",
+      "כירורגית כלי דם",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אף אוזן גרון",
+      "נוירולוגיה",
+      "נוירוכירורגיה",
+      "רפואת עור",
+      "כירורגיה אורולוגית",
+      "בריאות הציבור",
+      "כירורגית ילדים",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
   },
   {
     "fullName": "ד\"ר רוני בן עמי",
@@ -942,7 +2834,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ד"
   },
   {
     "fullName": "ד\"ר רפאל ליבר",
@@ -963,7 +2874,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
   },
   {
     "fullName": "ד\"ר שאול יערי",
@@ -984,7 +2914,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
   },
   {
     "fullName": "ד\"ר שני אמיתי",
@@ -1005,7 +2954,26 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
   },
   {
     "fullName": "ד\"ר שרה ברכה בן ציוני",
@@ -1026,6 +2994,25 @@
     "profileCompleteness": "partial",
     "profileTextLength": 0,
     "productionReady": true,
-    "reviewedStatus": "approved"
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+      "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+      "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב",
+      "master-dept-0282-ביהח-הדסה-עין-כרם-פנימית-ג",
+      "master-dept-0283-ביהח-הדסה-עין-כרם-פנימית-ד"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": "ambiguous unit specialty match=פנימית ד"
   }
 ]

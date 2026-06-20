@@ -1,6 +1,6 @@
 # Meir Medical Center crawler inspection
 
-- generatedAt: 2026-06-20T09:10:45.485Z
+- generatedAt: 2026-06-20T14:43:53.726Z
 - provider: clalit
 - doctorIndexExists: false
 - readiness: pilotReady

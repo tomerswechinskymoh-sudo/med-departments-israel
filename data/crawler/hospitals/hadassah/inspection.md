@@ -1,15 +1,15 @@
 # Hadassah Medical Center crawler inspection
 
-- generatedAt: 2026-06-20T09:07:20.839Z
+- generatedAt: 2026-06-20T14:43:26.835Z
 - provider: hadassah
 - doctorIndexExists: true
 - readiness: pilotReady
 - mainBlocker: none
 
 ## Fetches
-- OK 200 https://he.hadassah.org.il/ title=בית חולים הדסה - ביה"ח המוביל בירושלים - הדסה עין כרם והר הצופים text=261546
-- OK 200 https://he.hadassah.org.il/medicine-specialization/internship-programs/ title=תוכניות התמחות ברפואה בהדסה text=201688
-- OK 200 https://he.hadassah.org.il/doctor-search/ title=חיפוש רופא | בית חולים הדסה text=90535
+- OK 200 https://he.hadassah.org.il/ title=בית חולים הדסה - ביה"ח המוביל בירושלים - הדסה עין כרם והר הצופים text=261321
+- OK 200 https://he.hadassah.org.il/medicine-specialization/internship-programs/ title=תוכניות התמחות ברפואה בהדסה text=201670
+- OK 200 https://he.hadassah.org.il/doctor-search/ title=חיפוש רופא | בית חולים הדסה text=90509
 
 ## Candidate pages
 - 0.82 doctorPage searchDriven https://he.hadassah.org.il/news-and-events/duns-medical-2024/ text=מומחי הדסה בראש רשימת הרופאים המובילים בישראל בדירוג “duns 100”

@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-06-20T14:43:59.605Z",
+  "totalHospitals": 60,
+  "totalMasterDeptRows": 634,
+  "hospitalsByProviderGuess": {
+    "hadassah": 2,
+    "clalit": 15,
+    "ichilov": 1,
+    "government": 11,
+    "private": 6,
+    "unknown": 24,
+    "sheba": 1
+  },
+  "hospitalsByReadiness": {
+    "safeForFullBatch": 4,
+    "safeForPilot": 14,
+    "needsAdapter": 17,
+    "pending": 24,
+    "deferred": 1
+  },
+  "hospitalsSafeForFullBatch": [
+    "ביה\"ח הדסה עין כרם",
+    "מרכז רפואי מאיר",
+    "מרכז רפואי ת\"א סוראסקי",
+    "ביה\"ח הדסה הר הצופים"
+  ],
+  "hospitalsPilotReady": [
+    "מרכז רפואי העמק",
+    "מרכז רפואי כרמל",
+    "מרכז רפואי סורוקה",
+    "מרכז רפואי קפלן",
+    "ביה\"ח בילינסון מרכז רפואי רבין",
+    "מרכז רפואי רבין",
+    "ביה\"ח השרון מרכז רפואי רבין",
+    "מרכז שניידר לילדים",
+    "מרכז לבה\"נ גהה",
+    "מרכז לבה\"נ שלוותה",
+    "מרכז לבה\"נ מעלה הכרמל",
+    "ביה\"ח יוספטל",
+    "שירותי בריאות כללית",
+    "מרכז לבה\"נ לב השרון"
+  ],
+  "hospitalsNeedingAdapter": [
+    "מרכז רפואי וולפסון",
+    "ביה\"ח מעיני הישועה",
+    "המרכז הרפואי לגליל",
+    "מרכז רפואי יצחק שמיר",
+    "מרכז רפואי ברזילי",
+    "מרכז רפואי בני ציון",
+    "ביה\"ח זיו - צפת",
+    "מרכז רפואי הלל יפה",
+    "בי\"ח אסותא אשדוד",
+    "מרכז רפואי ברוך פדה פוריה",
+    "ביה\"ח לניאדו",
+    "מרחבים - המרכז הרפואי לטיפול במוח ובנפש באר יעקב נס ציונה",
+    "מרכז לבה\"נ אברבנאל",
+    "מכבי שירותי בריאות",
+    "קופ\"ח לאומית",
+    "קופ\"ח מאוחדת",
+    "מרכז לבה\"נ מזור"
+  ],
+  "hospitalsDeferred": [
+    {
+      "hospitalName": "מרכז רפואי שיבא",
+      "reason": "hard JS/API/502 case; deferred after national coverage"
+    }
+  ],
+  "shebaStatus": "hard JS/API/502 case; deferred after national coverage",
+  "wave1Results": [
+    {
+      "hospital": "ichilov",
+      "readiness": "safeForFullBatch",
+      "reviewedRecords": 72,
+      "productionReadyCount": 72,
+      "mappedRecords": 72
+    },
+    {
+      "hospital": "hadassah",
+      "readiness": "safeForFullBatch",
+      "reviewedRecords": 49,
+      "productionReadyCount": 49,
+      "mappedRecords": 49
+    },
+    {
+      "hospital": "meir",
+      "readiness": "safeForFullBatch",
+      "reviewedRecords": 17,
+      "productionReadyCount": 17,
+      "mappedRecords": 17
+    }
+  ]
+}

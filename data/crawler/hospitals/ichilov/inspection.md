@@ -1,6 +1,6 @@
 # Tel Aviv Sourasky / Ichilov crawler inspection
 
-- generatedAt: 2026-06-20T08:54:33.571Z
+- generatedAt: 2026-06-20T14:43:10.554Z
 - provider: ichilov
 - doctorIndexExists: true
 - readiness: pilotReady
