@@ -84,10 +84,10 @@ export const hospitalBaselines: HospitalBaseline[] = [
     departmentsIndexUrlCandidates: [
       "https://he.hadassah.org.il/medicine-specialization/internship-programs/"
     ],
-    doctorIndexUrlCandidates: [],
-    pilotUrlCandidates: ["https://he.hadassah.org.il/medicine-specialization/internship-programs/"],
-    parserFamilies: ["unknown"],
-    notes: ["Target URL is internship-focused; pilot only if real doctor/team pages are found."]
+    doctorIndexUrlCandidates: ["https://he.hadassah.org.il/doctor-search/"],
+    pilotUrlCandidates: ["https://he.hadassah.org.il/doctor-search/"],
+    parserFamilies: ["searchDriven", "jsDriven", "unknown"],
+    notes: ["Doctor search is backed by the public /api/doctors endpoint; profile pages are Next shells with limited public metadata."]
   },
   {
     hospitalSlug: "meir",

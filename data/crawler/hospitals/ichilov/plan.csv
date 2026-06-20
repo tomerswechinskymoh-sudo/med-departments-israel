@@ -1,0 +1,27 @@
+url,sourceUrl,anchorText,patternType,parserFamily,confidence,evidence
+https://www.tasmc.org.il/doctorssearch/,https://www.tasmc.org.il/,חיפוש רופא.ה,doctorIndex,searchDriven,0.9,חיפוש רופא.ה https://www.tasmc.org.il/doctorssearch/
+https://www.tasmc.org.il/doctorssearch/#,https://www.tasmc.org.il/,חיפוש רופא.ה,doctorIndex,searchDriven,0.9,חיפוש רופא.ה https://www.tasmc.org.il/doctorssearch/#
+https://www.tasmc.org.il/en/doctorssearch/,https://www.tasmc.org.il/doctorssearch/,English,doctorIndex,searchDriven,0.9,English https://www.tasmc.org.il/en/doctorssearch/
+https://www.tasmc.org.il/ich-news/n18626/,https://www.tasmc.org.il/,"משיקים את GECKO – הפלטפורמה שמרכזת מידע קליני
+ האפליקציה החדשה של איכילוב תאפשר לראשונה לרופאים גישה מאובטחת ומלאה לנתוני המטופלים - מכל מקום",doctorPage,searchDriven,0.82,"משיקים את GECKO – הפלטפורמה שמרכזת מידע קליני
+ האפליקציה החדשה של איכילוב תאפשר לראשונה לרופאים גישה מאובטחת ומלאה לנתוני המטופלים - מכל מקום https://www.tasmc.org.il/ich-news/n18626/"
+https://www.tasmc.org.il/media/haartz-labeles/,https://www.tasmc.org.il/,"הארץ לייבלס-שיחות סלון
+ המומחים של איכילוב באולפן הארץ: שיחת סלון רופאים ורופאות ישראלים, על החיים, העשייה הרפואית ומה שביניהם",doctorPage,searchDriven,0.82,"הארץ לייבלס-שיחות סלון
+ המומחים של איכילוב באולפן הארץ: שיחת סלון רופאים ורופאות ישראלים, על החיים, העשייה הרפואית ומה שביניהם https://www.tasmc.org.il/media/haartz-labeles/"
+https://www.tasmc.org.il/segel-unit/doctors/,https://www.tasmc.org.il/,הנהלת הרופאים,doctorPage,searchDriven,0.82,הנהלת הרופאים https://www.tasmc.org.il/segel-unit/doctors/
+https://www.tasmc.org.il/lis/about/lis-talk-podcast/,https://www.tasmc.org.il/,"ליס טוק פודקאסט - פרופ יריב יוגב מארח ומשוחח
+ הפודקאסט שמביא אליכם את הסיפורים האמיתיים ברפואת הנשים, היריון ולידה . פרופ' יריב יוגב, מארח מומחים לשיחה על האתגרים, החדשנות והרגעים המרגשים.",unknown,searchDriven,0.65,"ליס טוק פודקאסט - פרופ יריב יוגב מארח ומשוחח
+ הפודקאסט שמביא אליכם את הסיפורים האמיתיים ברפואת הנשים, היריון ולידה . פרופ' יריב יוגב, מארח מומחים לשיחה על האתגרים, החדשנות והרגעים המרגשים. https://www.tasmc.org.il/lis/about/lis-talk-podcast/"
+https://www.tasmc.org.il/media/2023-staff-meeting/,https://www.tasmc.org.il/,פגישות סגל 23-24,staffPage,teamPage,0.65,פגישות סגל 23-24 https://www.tasmc.org.il/media/2023-staff-meeting/
+https://www.tasmc.org.il/media/staff-meeting-2025/,https://www.tasmc.org.il/,פגישות סגל 25,staffPage,teamPage,0.65,פגישות סגל 25 https://www.tasmc.org.il/media/staff-meeting-2025/
+https://www.tasmc.org.il/media/staff-meeting-2026/,https://www.tasmc.org.il/,פגישות סגל 2026,staffPage,teamPage,0.65,פגישות סגל 2026 https://www.tasmc.org.il/media/staff-meeting-2026/
+https://www.tasmc.org.il/media/staff-meeting/,https://www.tasmc.org.il/,פגישות סגל 21-22,staffPage,teamPage,0.65,פגישות סגל 21-22 https://www.tasmc.org.il/media/staff-meeting/
+https://www.tasmc.org.il/media/walla-podcast/,https://www.tasmc.org.il/,"פודקאסט מרפאות מומחים בוואלה
+ מומחי איכילוב ב""מרפאת מומחים"" של וואלה עם איריס קול",unknown,searchDriven,0.65,"פודקאסט מרפאות מומחים בוואלה
+ מומחי איכילוב ב""מרפאת מומחים"" של וואלה עם איריס קול https://www.tasmc.org.il/media/walla-podcast/"
+https://www.tasmc.org.il/unit-index-page/clinics-institutes/,https://www.tasmc.org.il/,מרפאות מומחים ומכונים,departmentPage,inlineStaff,0.65,מרפאות מומחים ומכונים https://www.tasmc.org.il/unit-index-page/clinics-institutes/
+https://www.tasmc.org.il/unit-index-page/internalmed/,https://www.tasmc.org.il/,"האגף הפנימי
+ מחלקות פנימיות, מכונים, מרפאות בכל תחומי הבריאות - אבחון, טיפול, ייעוץ ומעקב של המומחים המובילים 
+ למידע נוסף",departmentPage,inlineStaff,0.65,"האגף הפנימי
+ מחלקות פנימיות, מכונים, מרפאות בכל תחומי הבריאות - אבחון, טיפול, ייעוץ ומעקב של המומחים המובילים 
+ למידע נוסף https://www.tasmc.org.il/unit-index-page/internalmed/"

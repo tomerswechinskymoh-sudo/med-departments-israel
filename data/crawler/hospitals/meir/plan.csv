@@ -1,0 +1,8 @@
+url,sourceUrl,anchorText,patternType,parserFamily,confidence,evidence
+https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx,https://hospitals.clalit.co.il/meir/he/Pages/default.aspx,צוות ההנהלה,teamPage,teamPage,0.82,צוות ההנהלה https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx
+https://hospitals.clalit.co.il/meir/he/med/gyne/club/Pages/MeetingsWithDrs.aspx,https://hospitals.clalit.co.il/meir/he/med/Pages/default.aspx,מפגשים מקצועיים עם רופאים (הכנה להנקה/ תאומים/קיסרי/סכרת),doctorPage,teamPage,0.82,מפגשים מקצועיים עם רופאים (הכנה להנקה/ תאומים/קיסרי/סכרת) https://hospitals.clalit.co.il/meir/he/med/gyne/club/Pages/MeetingsWithDrs.aspx
+https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx,https://hospitals.clalit.co.il/meir/he/med/Pages/default.aspx,צוות היחידה,teamPage,teamPage,0.82,צוות היחידה https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx
+https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/mouth.aspx,https://hospitals.clalit.co.il/meir/he/Pages/default.aspx,"מומחים בכירורגיית פה ולסת
+ היחידה לכירורגית פה ולסתות פעילה במגוון רחב של תחומי טיפול: טראומה, אונקולוגיה, אורטוגנטיה, חך שסוע, הפרעות בפרקי הלסת ועוד",departmentPage,inlineStaff,0.65,"מומחים בכירורגיית פה ולסת
+ היחידה לכירורגית פה ולסתות פעילה במגוון רחב של תחומי טיפול: טראומה, אונקולוגיה, אורטוגנטיה, חך שסוע, הפרעות בפרקי הלסת ועוד https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/mouth.aspx"
+https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/SurgicalClinics.aspx,https://hospitals.clalit.co.il/meir/he/med/Pages/default.aspx,מרפאות המומחים של האגף הכירורגי,departmentPage,inlineStaff,0.65,מרפאות המומחים של האגף הכירורגי https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/SurgicalClinics.aspx

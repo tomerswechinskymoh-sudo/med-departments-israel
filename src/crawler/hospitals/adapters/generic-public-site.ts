@@ -4,8 +4,8 @@ import type { CandidatePage, FetchSnapshot, HospitalBaseline, HospitalDoctorReco
 import { absoluteUrl, normalizeText, normalizeWhitespace } from "@/crawler/clalit/utils";
 
 const doctorTitlePattern =
-  /(?:ד["״']?ר|ד״ר|ד"ר|פרופ['׳]?|פרופ׳|פרופסור|Dr\.?|Prof\.?)\s+[א-תA-Za-z][א-תA-Za-z\s.'׳״"-]{2,90}/i;
-const hebrewDoctorTitlePrefix = /^(ד["״']?ר|ד״ר|ד"ר|פרופ['׳]?|פרופ׳|פרופסור)\s+/;
+  /(?:ד["״']ר|ד״ר|ד"ר|ד'\s?ר|פרופ['׳]?|פרופ׳|פרופסור|Dr\.?|Prof\.?)\s+[א-תA-Za-z][א-תA-Za-z\s.'׳״"-]{2,90}/i;
+const hebrewDoctorTitlePrefix = /^(ד["״']ר|ד״ר|ד"ר|ד'\s?ר|פרופ['׳]?|פרופ׳|פרופסור)\s+/;
 const linkCandidatePattern =
   /(רופאים|רופאי המחלקה|אנשי הצוות|צוות רפואי|הצוות הרפואי|הצוות שלנו|צוות המחלקה|מומחים|רופאים בכירים|doctors|doctor|team|staff|physicians|specialists)/i;
 const noisyTextPattern =
@@ -177,7 +177,10 @@ export function extractDoctorsFromHtml(html: string, sourceUrl: string, baseline
     const rawText = normalizeText(rawRoot.text() || text);
     const evidence = `${text} ${href ?? ""} ${rawText.slice(0, 160)}`;
     if (!doctorTitlePattern.test(evidence) || noisyTextPattern.test(evidence)) return;
-    const fullName = cleanName(text || rawText);
+    const textHasDoctorName = doctorTitlePattern.test(text);
+    const rawDoctorMatches = rawText.match(new RegExp(doctorTitlePattern.source, "gi")) ?? [];
+    if (!textHasDoctorName && rawDoctorMatches.length !== 1) return;
+    const fullName = cleanName(textHasDoctorName ? text : rawText);
     const normalizedName = normalizeDoctorName(fullName);
     if (!normalizedName || normalizedName.length < 3 || normalizedName.length > 80) return;
     const profileUrl = href && !/#|javascript:/i.test(href) ? href : null;

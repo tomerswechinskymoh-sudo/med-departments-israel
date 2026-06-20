@@ -1,0 +1,220 @@
+{
+  "hospitalSlug": "ichilov",
+  "hospitalName": "Tel Aviv Sourasky / Ichilov",
+  "generatedAt": "2026-06-20T08:54:33.571Z",
+  "provider": "ichilov",
+  "websiteFamily": "ichilov",
+  "knownUrls": {
+    "homepageUrl": "https://www.tasmc.org.il/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.tasmc.org.il/medical-services/"
+    ],
+    "doctorIndexUrlCandidates": [
+      "https://www.tasmc.org.il/doctorssearch/"
+    ],
+    "pilotUrlCandidates": [
+      "https://www.tasmc.org.il/doctorssearch/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.tasmc.org.il/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.tasmc.org.il/",
+      "title": "איכילוב",
+      "h1": [
+        "חדש באתר איכילוב: צ'אט AI לשיפור השירות"
+      ],
+      "h2": [
+        "כנס החדשנות השנתי",
+        "דנה דואק לילדים",
+        "חדש באיכילוב",
+        "רפואה לכל גיל: איכילוב, ליס, דנה דואק",
+        "מגזין מאי - שבץ מוח",
+        "כמה אנשים מטופלים באיכילוב?",
+        "ספריית הפודקאסטים",
+        "מסמך הבדיקה בתיק הרפואי לא נפתח באייפון?"
+      ],
+      "htmlLength": 127486,
+      "visibleTextLength": 11896,
+      "error": null
+    },
+    {
+      "url": "https://www.tasmc.org.il/medical-services/",
+      "ok": false,
+      "statusCode": 404,
+      "finalUrl": "https://www.tasmc.org.il/medical-services/",
+      "title": "404",
+      "h1": [
+        "404 העמוד שביקשת לא נמצא"
+      ],
+      "h2": [
+        "ניתן לנסות לרענן את העמוד או לחזור"
+      ],
+      "htmlLength": 71794,
+      "visibleTextLength": 7263,
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.tasmc.org.il/doctorssearch/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "title": "חיפוש רופא.ה באיכילוב | איכילוב",
+      "h1": [],
+      "h2": [],
+      "htmlLength": 75076,
+      "visibleTextLength": 7434,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://www.tasmc.org.il/doctorssearch/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "חיפוש רופא.ה",
+      "patternType": "doctorIndex",
+      "parserFamily": "searchDriven",
+      "confidence": 0.9,
+      "evidence": "חיפוש רופא.ה https://www.tasmc.org.il/doctorssearch/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/doctorssearch/#",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "חיפוש רופא.ה",
+      "patternType": "doctorIndex",
+      "parserFamily": "searchDriven",
+      "confidence": 0.9,
+      "evidence": "חיפוש רופא.ה https://www.tasmc.org.il/doctorssearch/#"
+    },
+    {
+      "url": "https://www.tasmc.org.il/en/doctorssearch/",
+      "sourceUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "anchorText": "English",
+      "patternType": "doctorIndex",
+      "parserFamily": "searchDriven",
+      "confidence": 0.9,
+      "evidence": "English https://www.tasmc.org.il/en/doctorssearch/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/ich-news/n18626/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "משיקים את GECKO – הפלטפורמה שמרכזת מידע קליני\n האפליקציה החדשה של איכילוב תאפשר לראשונה לרופאים גישה מאובטחת ומלאה לנתוני המטופלים - מכל מקום",
+      "patternType": "doctorPage",
+      "parserFamily": "searchDriven",
+      "confidence": 0.82,
+      "evidence": "משיקים את GECKO – הפלטפורמה שמרכזת מידע קליני\n האפליקציה החדשה של איכילוב תאפשר לראשונה לרופאים גישה מאובטחת ומלאה לנתוני המטופלים - מכל מקום https://www.tasmc.org.il/ich-news/n18626/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/media/haartz-labeles/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "הארץ לייבלס-שיחות סלון\n המומחים של איכילוב באולפן הארץ: שיחת סלון רופאים ורופאות ישראלים, על החיים, העשייה הרפואית ומה שביניהם",
+      "patternType": "doctorPage",
+      "parserFamily": "searchDriven",
+      "confidence": 0.82,
+      "evidence": "הארץ לייבלס-שיחות סלון\n המומחים של איכילוב באולפן הארץ: שיחת סלון רופאים ורופאות ישראלים, על החיים, העשייה הרפואית ומה שביניהם https://www.tasmc.org.il/media/haartz-labeles/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/segel-unit/doctors/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "הנהלת הרופאים",
+      "patternType": "doctorPage",
+      "parserFamily": "searchDriven",
+      "confidence": 0.82,
+      "evidence": "הנהלת הרופאים https://www.tasmc.org.il/segel-unit/doctors/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/lis/about/lis-talk-podcast/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "ליס טוק פודקאסט - פרופ יריב יוגב מארח ומשוחח\n הפודקאסט שמביא אליכם את הסיפורים האמיתיים ברפואת הנשים, היריון ולידה . פרופ' יריב יוגב, מארח מומחים לשיחה על האתגרים, החדשנות והרגעים המרגשים.",
+      "patternType": "unknown",
+      "parserFamily": "searchDriven",
+      "confidence": 0.65,
+      "evidence": "ליס טוק פודקאסט - פרופ יריב יוגב מארח ומשוחח\n הפודקאסט שמביא אליכם את הסיפורים האמיתיים ברפואת הנשים, היריון ולידה . פרופ' יריב יוגב, מארח מומחים לשיחה על האתגרים, החדשנות והרגעים המרגשים. https://www.tasmc.org.il/lis/about/lis-talk-podcast/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/media/2023-staff-meeting/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "פגישות סגל 23-24",
+      "patternType": "staffPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "פגישות סגל 23-24 https://www.tasmc.org.il/media/2023-staff-meeting/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/media/staff-meeting-2025/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "פגישות סגל 25",
+      "patternType": "staffPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "פגישות סגל 25 https://www.tasmc.org.il/media/staff-meeting-2025/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/media/staff-meeting-2026/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "פגישות סגל 2026",
+      "patternType": "staffPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "פגישות סגל 2026 https://www.tasmc.org.il/media/staff-meeting-2026/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/media/staff-meeting/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "פגישות סגל 21-22",
+      "patternType": "staffPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "פגישות סגל 21-22 https://www.tasmc.org.il/media/staff-meeting/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/media/walla-podcast/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "פודקאסט מרפאות מומחים בוואלה\n מומחי איכילוב ב\"מרפאת מומחים\" של וואלה עם איריס קול",
+      "patternType": "unknown",
+      "parserFamily": "searchDriven",
+      "confidence": 0.65,
+      "evidence": "פודקאסט מרפאות מומחים בוואלה\n מומחי איכילוב ב\"מרפאת מומחים\" של וואלה עם איריס קול https://www.tasmc.org.il/media/walla-podcast/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/unit-index-page/clinics-institutes/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "מרפאות מומחים ומכונים",
+      "patternType": "departmentPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "מרפאות מומחים ומכונים https://www.tasmc.org.il/unit-index-page/clinics-institutes/"
+    },
+    {
+      "url": "https://www.tasmc.org.il/unit-index-page/internalmed/",
+      "sourceUrl": "https://www.tasmc.org.il/",
+      "anchorText": "האגף הפנימי\n מחלקות פנימיות, מכונים, מרפאות בכל תחומי הבריאות - אבחון, טיפול, ייעוץ ומעקב של המומחים המובילים \n למידע נוסף",
+      "patternType": "departmentPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "האגף הפנימי\n מחלקות פנימיות, מכונים, מרפאות בכל תחומי הבריאות - אבחון, טיפול, ייעוץ ומעקב של המומחים המובילים \n למידע נוסף https://www.tasmc.org.il/unit-index-page/internalmed/"
+    }
+  ],
+  "doctorIndexExists": true,
+  "parserFamilies": [
+    "searchDriven",
+    "jsDriven",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.tasmc.org.il/",
+    "https://www.tasmc.org.il/medical-services/",
+    "https://www.tasmc.org.il/doctorssearch/",
+    "https://www.tasmc.org.il/doctorssearch/#",
+    "https://www.tasmc.org.il/en/doctorssearch/",
+    "https://www.tasmc.org.il/ich-news/n18626/",
+    "https://www.tasmc.org.il/media/haartz-labeles/",
+    "https://www.tasmc.org.il/segel-unit/doctors/",
+    "https://www.tasmc.org.il/lis/about/lis-talk-podcast/",
+    "https://www.tasmc.org.il/media/2023-staff-meeting/"
+  ],
+  "readiness": "pilotReady",
+  "mainBlocker": null
+}

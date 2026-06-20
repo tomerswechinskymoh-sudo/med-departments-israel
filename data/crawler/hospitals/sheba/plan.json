@@ -1,0 +1,69 @@
+{
+  "hospitalSlug": "sheba",
+  "hospitalName": "Sheba Medical Center",
+  "generatedAt": "2026-06-20T08:46:49.643Z",
+  "provider": "sheba",
+  "websiteFamily": "sheba",
+  "knownUrls": {
+    "homepageUrl": "https://www.sheba.co.il/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.sheba.co.il/hospitals-clinics"
+    ],
+    "doctorIndexUrlCandidates": [
+      "https://www.sheba.co.il/lobbies-container/doctors-lobby"
+    ],
+    "pilotUrlCandidates": [
+      "https://www.sheba.co.il/lobbies-container/doctors-lobby"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.sheba.co.il/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.sheba.co.il/",
+      "title": "המרכז הרפואי שיבא",
+      "h1": [],
+      "h2": [],
+      "htmlLength": 52674,
+      "visibleTextLength": 525,
+      "error": null
+    },
+    {
+      "url": "https://www.sheba.co.il/hospitals-clinics",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.sheba.co.il/hospitals-clinics",
+      "title": "המרכז הרפואי שיבא",
+      "h1": [],
+      "h2": [],
+      "htmlLength": 52674,
+      "visibleTextLength": 525,
+      "error": null
+    },
+    {
+      "url": "https://www.sheba.co.il/lobbies-container/doctors-lobby",
+      "ok": false,
+      "statusCode": 502,
+      "finalUrl": "https://www.sheba.co.il/lobbies-container/doctors-lobby",
+      "title": null,
+      "h1": [],
+      "h2": [],
+      "htmlLength": 87,
+      "visibleTextLength": 87,
+      "error": "502 Bad Gateway"
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "doctorIndexAssisted",
+    "jsDriven",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.sheba.co.il/lobbies-container/doctors-lobby"
+  ],
+  "readiness": "blocked",
+  "mainBlocker": "Known URLs failed or returned no crawlable evidence."
+}

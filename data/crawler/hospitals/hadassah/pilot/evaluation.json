@@ -1,0 +1,28 @@
+{
+  "hospitalSlug": "hadassah",
+  "hospitalName": "Hadassah Medical Center",
+  "generatedAt": "2026-06-20T09:07:46.915Z",
+  "urlsUsed": [
+    "https://he.hadassah.org.il/doctor-search/"
+  ],
+  "doctorIndexExists": true,
+  "parserFamily": "searchDriven",
+  "candidatePagesFound": 4,
+  "pilotPagesSelected": 1,
+  "rawDoctorRecords": 49,
+  "profileUrlCoverage": 1,
+  "profileFetchSuccess": 12,
+  "reviewedRecords": 49,
+  "productionReadyCount": 49,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 49,
+    "listOnly": 0
+  },
+  "readiness": "safeForFullBatch",
+  "mainBlocker": null
+}

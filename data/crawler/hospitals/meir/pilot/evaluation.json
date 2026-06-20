@@ -1,0 +1,30 @@
+{
+  "hospitalSlug": "meir",
+  "hospitalName": "Meir Medical Center",
+  "generatedAt": "2026-06-20T09:10:51.840Z",
+  "urlsUsed": [
+    "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+    "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+    "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 5,
+  "pilotPagesSelected": 3,
+  "rawDoctorRecords": 17,
+  "profileUrlCoverage": 1,
+  "profileFetchSuccess": 12,
+  "reviewedRecords": 17,
+  "productionReadyCount": 17,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 12,
+    "partial": 5,
+    "listOnly": 0
+  },
+  "readiness": "safeForFullBatch",
+  "mainBlocker": null
+}

@@ -1,0 +1,150 @@
+{
+  "hospitalSlug": "hadassah",
+  "hospitalName": "Hadassah Medical Center",
+  "generatedAt": "2026-06-20T09:07:20.839Z",
+  "provider": "hadassah",
+  "websiteFamily": "hadassah",
+  "knownUrls": {
+    "homepageUrl": "https://he.hadassah.org.il/",
+    "departmentsIndexUrlCandidates": [
+      "https://he.hadassah.org.il/medicine-specialization/internship-programs/"
+    ],
+    "doctorIndexUrlCandidates": [
+      "https://he.hadassah.org.il/doctor-search/"
+    ],
+    "pilotUrlCandidates": [
+      "https://he.hadassah.org.il/doctor-search/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://he.hadassah.org.il/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://he.hadassah.org.il/",
+      "title": "בית חולים הדסה - ביה\"ח המוביל בירושלים - הדסה עין כרם והר הצופים",
+      "h1": [
+        "מרכז רפואי הדסה - מובילים ברפואה חוקרת"
+      ],
+      "h2": [
+        "איך נוכל לעזור לך?",
+        "נשארים מעודכנים",
+        "מרכזי הדסה",
+        "הדסה TV - הטלוויזיה הרב ערוצית בתחום הבריאות והרפואה",
+        "כיצד ניתן למנוע התקף לב",
+        "ניווט מהיר",
+        "צור קשר"
+      ],
+      "htmlLength": 960449,
+      "visibleTextLength": 261546,
+      "error": null
+    },
+    {
+      "url": "https://he.hadassah.org.il/medicine-specialization/internship-programs/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://he.hadassah.org.il/medicine-specialization/internship-programs/",
+      "title": "תוכניות התמחות ברפואה בהדסה",
+      "h1": [
+        "תוכניות התמחות ברפואה בהדסה"
+      ],
+      "h2": [
+        "ניווט מהיר",
+        "צור קשר",
+        "התמחות באגף הכירורגי",
+        "התמחות באגף הפנימי",
+        "התמחות באגף השיקום",
+        "התמחות באגף ילדים",
+        "התמחות באגף לב וכלי דם",
+        "התמחות באגף הרדמה",
+        "התמחות באגף המח",
+        "התמחות באגף כירורגית ראש צוואר",
+        "התמחות באגף הדימות",
+        "התמחות באגף רפואה דחופה",
+        "התמחות באגף האורתופדי",
+        "התמחות באגף נשים ויולדות",
+        "התמחות באונקולוגיה והמטולוגיה",
+        "התמחות בפתולוגיה וגנטיקה",
+        "התמחות במערך העיניים",
+        "חיפוש התמחות",
+        "א",
+        "ג"
+      ],
+      "htmlLength": 478692,
+      "visibleTextLength": 201688,
+      "error": null
+    },
+    {
+      "url": "https://he.hadassah.org.il/doctor-search/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://he.hadassah.org.il/doctor-search/",
+      "title": "חיפוש רופא | בית חולים הדסה",
+      "h1": [],
+      "h2": [
+        "חיפוש רופא",
+        "חיפוש רופא",
+        "כל הדרכים מובילות להדסה",
+        "ניווט מהיר",
+        "צור קשר"
+      ],
+      "htmlLength": 271761,
+      "visibleTextLength": 90535,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://he.hadassah.org.il/news-and-events/duns-medical-2024/",
+      "sourceUrl": "https://he.hadassah.org.il/",
+      "anchorText": "מומחי הדסה בראש רשימת הרופאים המובילים בישראל בדירוג “duns 100”",
+      "patternType": "doctorPage",
+      "parserFamily": "searchDriven",
+      "confidence": 0.82,
+      "evidence": "מומחי הדסה בראש רשימת הרופאים המובילים בישראל בדירוג “duns 100” https://he.hadassah.org.il/news-and-events/duns-medical-2024/"
+    },
+    {
+      "url": "https://he.hadassah.org.il/news-and-events/news-307/",
+      "sourceUrl": "https://he.hadassah.org.il/",
+      "anchorText": "הרופאים שהגיעו לסייע בשעת מלחמהבואו לקרוא עוד",
+      "patternType": "doctorPage",
+      "parserFamily": "searchDriven",
+      "confidence": 0.82,
+      "evidence": "הרופאים שהגיעו לסייע בשעת מלחמהבואו לקרוא עוד https://he.hadassah.org.il/news-and-events/news-307/"
+    },
+    {
+      "url": "https://he.hadassah.org.il/news-and-events/news-411/",
+      "sourceUrl": "https://he.hadassah.org.il/",
+      "anchorText": "הרופאים שמקדישים את חייהם בואו לקרוא עוד",
+      "patternType": "doctorPage",
+      "parserFamily": "searchDriven",
+      "confidence": 0.82,
+      "evidence": "הרופאים שמקדישים את חייהם בואו לקרוא עוד https://he.hadassah.org.il/news-and-events/news-411/"
+    },
+    {
+      "url": "https://he.hadassah.org.il/doctor-search/",
+      "sourceUrl": "https://he.hadassah.org.il/",
+      "anchorText": "חיפוש רופא",
+      "patternType": "unknown",
+      "parserFamily": "searchDriven",
+      "confidence": 0.65,
+      "evidence": "חיפוש רופא https://he.hadassah.org.il/doctor-search/"
+    }
+  ],
+  "doctorIndexExists": true,
+  "parserFamilies": [
+    "searchDriven",
+    "jsDriven",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://he.hadassah.org.il/",
+    "https://he.hadassah.org.il/medicine-specialization/internship-programs/",
+    "https://he.hadassah.org.il/doctor-search/",
+    "https://he.hadassah.org.il/news-and-events/duns-medical-2024/",
+    "https://he.hadassah.org.il/news-and-events/news-307/",
+    "https://he.hadassah.org.il/news-and-events/news-411/"
+  ],
+  "readiness": "pilotReady",
+  "mainBlocker": null
+}

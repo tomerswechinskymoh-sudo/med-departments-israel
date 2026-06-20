@@ -45,3 +45,12 @@ data/crawler/hospitals/<hospitalSlug>/reviewed/doctors-reviewed.json
 - Pilot records preserve `rawText`, `sourceUrl`, profile URL when available, and QA flags.
 - Evaluation reports production-ready count and blocker.
 - Full batch is never the default path.
+
+## Current Target Pilot Status
+
+| Hospital | Parser family | Pilot result | Readiness |
+| --- | --- | --- | --- |
+| Sheba | `doctorIndexAssisted` / `jsDriven` | No safe pilot. Public doctors lobby returned `502`; shell pages exposed only low-text Angular HTML. Bundle references dev CMS/Elastic configuration, but the crawler does not use embedded credentials. | `blocked` |
+| Ichilov | `searchDriven` | Uses the public doctor-search App Search endpoint discovered from the site bundle. Pilot extracted real doctor records with profile URLs. | `safeForFullBatch` |
+| Hadassah | `searchDriven` | Uses the public `/api/doctors` endpoint discovered from the Next.js doctor-search bundle. Profile pages are limited shells, so API metadata is treated as partial profile evidence. | `safeForFullBatch` |
+| Meir | `teamPage` | Uses Clalit team/staff pages. Pilot is restricted to team pages to avoid homepage/news prose false positives. | `safeForFullBatch` |

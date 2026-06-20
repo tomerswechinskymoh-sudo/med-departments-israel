@@ -1,0 +1,28 @@
+{
+  "hospitalSlug": "ichilov",
+  "hospitalName": "Tel Aviv Sourasky / Ichilov",
+  "generatedAt": "2026-06-20T08:54:41.578Z",
+  "urlsUsed": [
+    "https://www.tasmc.org.il/doctorssearch/"
+  ],
+  "doctorIndexExists": true,
+  "parserFamily": "searchDriven",
+  "candidatePagesFound": 14,
+  "pilotPagesSelected": 1,
+  "rawDoctorRecords": 72,
+  "profileUrlCoverage": 1,
+  "profileFetchSuccess": 12,
+  "reviewedRecords": 72,
+  "productionReadyCount": 72,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 4,
+    "partial": 68,
+    "listOnly": 0
+  },
+  "readiness": "safeForFullBatch",
+  "mainBlocker": null
+}

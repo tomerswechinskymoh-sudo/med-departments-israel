@@ -3,6 +3,8 @@ import path from "node:path";
 import { getHospitalBaseline } from "./baseline-registry";
 import type { AutopilotMode, CandidatePage, HospitalDoctorRecord, HospitalPilotEvaluation, HospitalPlan, ParserFamily, ReadinessStatus } from "./types";
 import { discoverCandidatePages, extractDoctorsFromHtml, fetchPublicHtml, inspectHtml, inspectProfileHtml } from "./adapters/generic-public-site";
+import { crawlHadassahDoctorSearchPilot } from "./adapters/hadassah-doctors";
+import { crawlIchilovDoctorSearchPilot } from "./adapters/ichilov-search";
 import { normalizeWhitespace, readJson, sleep, writeJson } from "@/crawler/clalit/utils";
 
 const PROFILE_SAMPLE_LIMIT = 12;
@@ -172,22 +174,50 @@ export async function runHospitalPilot(hospitalSlug: string): Promise<HospitalPi
   const outputDir = baseOutputDir(hospitalSlug);
   const plan = await runHospitalPlan(hospitalSlug);
   const parserFamily = dominantParserFamily(plan);
-  const selectedUrls = Array.from(new Set(plan.recommendedPilotUrls)).slice(0, PILOT_PAGE_LIMIT);
+  const selectedUrls =
+    baseline.hospitalSlug === "ichilov"
+      ? ["https://www.tasmc.org.il/doctorssearch/"]
+      : baseline.hospitalSlug === "hadassah"
+        ? ["https://he.hadassah.org.il/doctor-search/"]
+        : baseline.hospitalSlug === "meir"
+          ? Array.from(
+              new Set([
+                ...baseline.pilotUrlCandidates,
+                ...plan.candidatePages
+                  .filter((candidate) => candidate.patternType === "teamPage" || candidate.patternType === "staffPage")
+                  .map((candidate) => candidate.url)
+              ])
+            ).slice(0, PILOT_PAGE_LIMIT)
+      : Array.from(new Set(plan.recommendedPilotUrls)).slice(0, PILOT_PAGE_LIMIT);
   const doctorsByKey = new Map<string, HospitalDoctorRecord>();
   const profileFetches = new Map<string, { ok: boolean; textLength: number; completeness: "full" | "partial" | "listOnly" }>();
 
-  for (const url of selectedUrls) {
-    const response = await fetchPublicHtml(url);
-    if (!response.html) continue;
-    const pageParser =
-      plan.candidatePages.find((candidate) => candidate.url === url)?.parserFamily ??
-      (baseline.doctorIndexUrlCandidates.includes(url) ? "doctorIndexAssisted" : parserFamily);
-    const doctors = extractDoctorsFromHtml(response.html, response.finalUrl || url, baseline, pageParser);
+  if (baseline.hospitalSlug === "ichilov") {
+    const doctors = await crawlIchilovDoctorSearchPilot(baseline);
     for (const doctor of doctors) {
       const key = `${doctor.normalizedName}::${doctor.profileUrl ?? doctor.sourceUrl}`;
       doctorsByKey.set(key, doctor);
     }
-    await sleep(250);
+  } else if (baseline.hospitalSlug === "hadassah") {
+    const doctors = await crawlHadassahDoctorSearchPilot(baseline);
+    for (const doctor of doctors) {
+      const key = `${doctor.normalizedName}::${doctor.profileUrl ?? doctor.sourceUrl}`;
+      doctorsByKey.set(key, doctor);
+    }
+  } else {
+    for (const url of selectedUrls) {
+      const response = await fetchPublicHtml(url);
+      if (!response.html) continue;
+      const pageParser =
+        plan.candidatePages.find((candidate) => candidate.url === url)?.parserFamily ??
+        (baseline.doctorIndexUrlCandidates.includes(url) ? "doctorIndexAssisted" : parserFamily);
+      const doctors = extractDoctorsFromHtml(response.html, response.finalUrl || url, baseline, pageParser);
+      for (const doctor of doctors) {
+        const key = `${doctor.normalizedName}::${doctor.profileUrl ?? doctor.sourceUrl}`;
+        doctorsByKey.set(key, doctor);
+      }
+      await sleep(250);
+    }
   }
 
   const doctors = Array.from(doctorsByKey.values());
@@ -205,7 +235,10 @@ export async function runHospitalPilot(hospitalSlug: string): Promise<HospitalPi
 
   const reviewed = doctors.map((doctor) => {
     const profile = doctor.profileUrl ? profileFetches.get(doctor.profileUrl) : null;
-    const profileCompleteness = profile?.completeness ?? (doctor.profileUrl ? "partial" : "listOnly");
+    const profileCompleteness =
+      baseline.hospitalSlug === "hadassah"
+        ? (doctor.profileCompleteness ?? "partial")
+        : profile?.completeness ?? (doctor.profileUrl ? "partial" : "listOnly");
     const qaFlags = [...doctor.qaFlags];
     if (!doctor.profileUrl) qaFlags.push("missingProfileUrl");
     if (doctor.rawText.length > 700 && !doctor.profileUrl) qaFlags.push("suspectedFalsePositive");

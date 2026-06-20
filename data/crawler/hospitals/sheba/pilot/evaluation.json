@@ -1,0 +1,28 @@
+{
+  "hospitalSlug": "sheba",
+  "hospitalName": "Sheba Medical Center",
+  "generatedAt": "2026-06-20T08:46:50.103Z",
+  "urlsUsed": [
+    "https://www.sheba.co.il/lobbies-container/doctors-lobby"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "doctorIndexAssisted",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 1,
+  "rawDoctorRecords": 0,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 0,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 0
+  },
+  "readiness": "blocked",
+  "mainBlocker": "Pilot extracted zero doctor records."
+}

@@ -1,0 +1,161 @@
+{
+  "hospitalSlug": "meir",
+  "hospitalName": "Meir Medical Center",
+  "generatedAt": "2026-06-20T09:10:45.485Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://hospitals.clalit.co.il/meir/he/Pages/default.aspx",
+    "departmentsIndexUrlCandidates": [
+      "https://hospitals.clalit.co.il/meir/he/med/Pages/default.aspx"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://hospitals.clalit.co.il/meir/he/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/meir/he/Pages/default.aspx",
+      "title": "מרכז רפואי מאיר\n | מרכז רפואי מאיר",
+      "h1": [],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "חדרי אשפוז פרטיים ליולדות",
+        "ההתמחות שלנו",
+        "מרכז רפואי מאיר משיק מחלקה לרפואה דחופה",
+        "מרכז רפואי מאיר מקבוצת כללית הצטרף לארגון בתי החולים הבינלאומי IHF",
+        "מכשיר דימות חדשני ומתקדם SPECT-CT",
+        "שירותי רפואה להט\"בית במרכז רפואי מאיר",
+        "על פי דו\"ח התוכניות הלאומיות של משרד הבריאות: מרכז רפואי מאיר ממשיך להוביל בצמרת בתי החולים הגדולים בישראל – מלר\"ד הילדים במאיר בחוד החנית בטיפול בילדים",
+        "שיקום לב מרחוק",
+        "סרטונים נבחרים",
+        "חדשות מרכז רפואי מאיר"
+      ],
+      "htmlLength": 345356,
+      "visibleTextLength": 22321,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/meir/he/med/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/meir/he/med/Pages/default.aspx",
+      "title": "מחלקות, מרפאות ומכונים\n | מרכז רפואי מאיר",
+      "h1": [
+        "תחומים רפואיים- מחלקות, יחידות ומכונים"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "אונקולוגיה",
+        "אורולוגיה",
+        "אורתופדיה",
+        "אלרגיה ואימונולוגיה קלינית",
+        "אנדוקרינולוגיה, סוכרת ומטבוליזם",
+        "אף אוזן גרון",
+        "גינקולוגיה ומילדות",
+        "גנטיקה",
+        "גסטרואנטרולוגיה ומחלות הכבד",
+        "גריאטריה",
+        "היחידה לפוריות והפריה חוץ גופית IVF",
+        "המחלקה לרפואה דחופה",
+        "המטולוגיה",
+        "המערך הכירורגי",
+        "המערך הפסיכולוגי",
+        "הרדמה, טיפול נמרץ ויחידת כאב",
+        "השירות לעבודה סוציאלית",
+        "חטיבת הילדים"
+      ],
+      "htmlLength": 772457,
+      "visibleTextLength": 23588,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "title": "הצוות שלנו\n | מרכז רפואי מאיר",
+      "h1": [
+        "עיניים"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "הצוות שלנו"
+      ],
+      "htmlLength": 292425,
+      "visibleTextLength": 16702,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/meir/he/Pages/default.aspx",
+      "anchorText": "צוות ההנהלה",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צוות ההנהלה https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/meir/he/med/gyne/club/Pages/MeetingsWithDrs.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/Pages/default.aspx",
+      "anchorText": "מפגשים מקצועיים עם רופאים (הכנה להנקה/ תאומים/קיסרי/סכרת)",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "מפגשים מקצועיים עם רופאים (הכנה להנקה/ תאומים/קיסרי/סכרת) https://hospitals.clalit.co.il/meir/he/med/gyne/club/Pages/MeetingsWithDrs.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/Pages/default.aspx",
+      "anchorText": "צוות היחידה",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צוות היחידה https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/mouth.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/meir/he/Pages/default.aspx",
+      "anchorText": "מומחים בכירורגיית פה ולסת\n היחידה לכירורגית פה ולסתות פעילה במגוון רחב של תחומי טיפול: טראומה, אונקולוגיה, אורטוגנטיה, חך שסוע, הפרעות בפרקי הלסת ועוד",
+      "patternType": "departmentPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "מומחים בכירורגיית פה ולסת\n היחידה לכירורגית פה ולסתות פעילה במגוון רחב של תחומי טיפול: טראומה, אונקולוגיה, אורטוגנטיה, חך שסוע, הפרעות בפרקי הלסת ועוד https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/mouth.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/SurgicalClinics.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/meir/he/med/Pages/default.aspx",
+      "anchorText": "מרפאות המומחים של האגף הכירורגי",
+      "patternType": "departmentPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "מרפאות המומחים של האגף הכירורגי https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/SurgicalClinics.aspx"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://hospitals.clalit.co.il/meir/he/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+    "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+    "https://hospitals.clalit.co.il/meir/he/med/gyne/club/Pages/MeetingsWithDrs.aspx",
+    "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+    "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/mouth.aspx",
+    "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/SurgicalClinics.aspx"
+  ],
+  "readiness": "pilotReady",
+  "mainBlocker": null
+}

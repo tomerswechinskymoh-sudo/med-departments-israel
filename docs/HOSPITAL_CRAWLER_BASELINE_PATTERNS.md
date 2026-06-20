@@ -34,25 +34,27 @@ The goal is still conservative: public hospital website data only, evidence pres
 
 - Known URL: `https://www.sheba.co.il/lobbies-container/doctors-lobby`.
 - Expected pattern: doctor lobby, possibly JS/API-backed.
-- Current goal: discover whether doctor names/profile links are in HTML, JS state, or API responses.
+- Current finding: public fetch returns a low-text Angular shell for main pages and `502` for the doctors lobby.
+- Caution: the public JS bundle references dev CMS/Elastic hosts and a redacted search credential. Do not use embedded credentials; mark as blocked unless a public no-secret endpoint is confirmed.
 
 ### Ichilov / Tel Aviv Sourasky
 
 - Known URL: `https://www.tasmc.org.il/doctorssearch/`.
-- Expected pattern: search-driven doctor index, possibly JS/API-backed.
-- Current goal: find result source and profile URL coverage.
+- Pattern: search-driven doctor index.
+- Current finding: the page bundle exposes a public Elastic App Search endpoint and public search key. The pilot adapter keeps only `/doctorssearch/dr/` profile URLs to avoid non-doctor staff cards.
 
 ### Hadassah
 
 - Starting URL: `https://he.hadassah.org.il/medicine-specialization/internship-programs/`.
-- Expected risk: page may describe internship programs rather than doctors.
-- Current goal: report if better doctor/team URLs are required; do not guess silently.
+- Doctor index URL: `https://he.hadassah.org.il/doctor-search/`.
+- Pattern: Next.js search page backed by public `/api/doctors`.
+- Current finding: profile pages are limited shells, but the API returns names, roles, medical centers, departments, fields, and public phone values.
 
 ### Meir
 
 - Known URL: `https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx`.
 - Expected pattern: Clalit team or inline staff page.
-- Current goal: compare parser family to Carmel/Soroka without running a full batch.
+- Current finding: team pages work with the generic Clalit parser. Homepage/news pages are noisy, so pilots should prefer team/staff pages and avoid prose/news extraction.
 
 ## Guardrails
 
