@@ -1,0 +1,32 @@
+{
+  "hospitalSlug": "kaplan",
+  "hospitalName": "Kaplan Medical Center",
+  "generatedAt": "2026-06-20T15:13:07.355Z",
+  "urlsUsed": [
+    "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx",
+    "https://hospitals.clalit.co.il/kaplan/he/gen_info/Pages/covid_info4family.aspx",
+    "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/kaplan/he/academy_and_research/Documents/Kaplan_Medical_Staff_Publications_2019.pdf"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 6,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 17,
+  "profileUrlCoverage": 0.35294117647058826,
+  "profileFetchSuccess": 6,
+  "reviewedRecords": 17,
+  "productionReadyCount": 6,
+  "missingProfileUrlCount": 11,
+  "duplicateNameCount": 3,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 6,
+    "partial": 0,
+    "listOnly": 11
+  },
+  "readiness": "needsHumanReview",
+  "mainBlocker": "Profile URL coverage is below 50%."
+}

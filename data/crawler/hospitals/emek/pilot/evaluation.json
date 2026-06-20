@@ -1,0 +1,32 @@
+{
+  "hospitalSlug": "emek",
+  "hospitalName": "Emek Medical Center",
+  "generatedAt": "2026-06-20T15:12:50.997Z",
+  "urlsUsed": [
+    "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+    "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+    "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 6,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 13,
+  "profileUrlCoverage": 0.5384615384615384,
+  "profileFetchSuccess": 4,
+  "reviewedRecords": 13,
+  "productionReadyCount": 7,
+  "missingProfileUrlCount": 6,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 2,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 4,
+    "partial": 2,
+    "listOnly": 7
+  },
+  "readiness": "needsCalibration",
+  "mainBlocker": "Duplicate profile URLs remain in pilot output."
+}

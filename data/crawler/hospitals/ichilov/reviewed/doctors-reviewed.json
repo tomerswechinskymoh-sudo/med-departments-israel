@@ -74,7 +74,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אדם פיליפס",
@@ -151,7 +157,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אולגה דיס",
@@ -228,7 +240,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אור יריב",
@@ -305,7 +323,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אורי ארגוב",
@@ -382,7 +406,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אורי רוגובסקי",
@@ -459,7 +489,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "איתי גואטה",
@@ -536,7 +572,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אמג'ד דרובי",
@@ -613,7 +655,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אמיל גרנובסקי",
@@ -690,7 +738,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אמיר שטרנהיים",
@@ -767,7 +821,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אסף וסרמן",
@@ -844,7 +904,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אסתר עובדת",
@@ -921,7 +987,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "אריאל מלול",
@@ -998,7 +1070,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "גבי ברבש",
@@ -1075,7 +1153,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ג'ובראן מנסור",
@@ -1152,7 +1236,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ג׳יאן חוואג׳ה",
@@ -1229,7 +1319,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "גיל בורנשטיין",
@@ -1306,7 +1402,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "גנדי שנדלר",
@@ -1383,7 +1485,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ג'ניפר זיצר",
@@ -1460,7 +1568,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ג'סיקה זק",
@@ -1537,7 +1651,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ג'ף האוסדורף",
@@ -1614,7 +1734,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ג'רמי בן שושן",
@@ -1691,7 +1817,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ג'רמי מולד",
@@ -1768,7 +1900,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "דותן בן –הר",
@@ -1845,7 +1983,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "דן רמון",
@@ -1922,7 +2066,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "הוארד אוסטר",
@@ -1999,7 +2149,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ואלרי אלוש",
@@ -2076,7 +2232,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ויטלי מן",
@@ -2153,7 +2315,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "וסים ג'בר",
@@ -2230,7 +2398,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ורד שכנר",
@@ -2307,7 +2481,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "חן רובינשטין",
@@ -2384,7 +2564,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "טלי אופיר דברת",
@@ -2461,7 +2647,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "טלי קפואה",
@@ -2538,7 +2730,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "יגאל יכיני",
@@ -2615,7 +2813,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "יהודה קריב",
@@ -2692,7 +2896,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "יובל נחלון",
@@ -2769,7 +2979,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "יעל בר",
@@ -2846,7 +3062,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "יעל רז",
@@ -2923,7 +3145,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "יעקב (ז'קי) הרצליך",
@@ -3000,7 +3228,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "יעקב רוזנמן",
@@ -3077,7 +3311,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "יצחק שר",
@@ -3154,7 +3394,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ישי סקלי",
@@ -3231,7 +3477,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ליאור דגבלי",
@@ -3308,7 +3560,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מוחמד ג'רה",
@@ -3385,7 +3643,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מוחמד הוארי",
@@ -3462,7 +3726,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מועאד סלימאן",
@@ -3539,7 +3809,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מוריה באר",
@@ -3616,7 +3892,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מיכאל קסלר",
@@ -3693,7 +3975,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מיכל מזרחי",
@@ -3770,7 +4058,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מירב אינגביר",
@@ -3847,7 +4141,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מירב בן יהוידע",
@@ -3924,7 +4224,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מריוס קובל",
@@ -4001,7 +4307,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מרינה פיכטה",
@@ -4078,7 +4390,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "מרק ברמן",
@@ -4155,7 +4473,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "נגה סימנטוב",
@@ -4232,7 +4556,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "נועה שטוקהאמר",
@@ -4309,7 +4639,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "נטע נתנאלה נבו",
@@ -4386,7 +4722,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ניצה חורב",
@@ -4463,7 +4805,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ניר גומל",
@@ -4540,7 +4888,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "סלבה שור",
@@ -4617,7 +4971,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "עדי ליכטנשטיין",
@@ -4694,7 +5054,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "עדי רביב",
@@ -4771,7 +5137,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "עידו דרוקמן",
@@ -4848,7 +5220,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "פביאן גרסטנהבר",
@@ -4925,7 +5303,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "פורסאן ג'השאן",
@@ -5002,7 +5386,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "פיראס פאהום",
@@ -5079,7 +5469,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "רועי בראון",
@@ -5156,7 +5552,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "רם שרוני",
@@ -5233,7 +5635,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "שלמה ברלינר",
@@ -5310,7 +5718,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "שלמה דותן",
@@ -5387,7 +5801,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "תמיר גרציאני",
@@ -5464,7 +5884,13 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "תמרה קוליץ",
@@ -5541,6 +5967,12 @@
       "כירורגיה של בית החזה"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://www.tasmc.org.il/doctorssearch/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Tel Aviv Sourasky / Ichilov; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   }
 ]

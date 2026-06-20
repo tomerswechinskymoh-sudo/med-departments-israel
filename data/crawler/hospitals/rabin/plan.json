@@ -1,0 +1,115 @@
+{
+  "hospitalSlug": "rabin",
+  "hospitalName": "Rabin Medical Center",
+  "generatedAt": "2026-06-20T15:13:08.479Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+    "departmentsIndexUrlCandidates": [
+      "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": []
+  },
+  "fetches": [
+    {
+      "url": "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+      "title": "מרכז רפואי רבין - בית חולים בילינסון והשרון\n | מרכז רפואי רבין",
+      "h1": [],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "סרטונים מחרבות ברזל",
+        "מידע למבקר במרפאות החוץ",
+        "מידע למתאשפז",
+        "דפי הדרכה למטופל",
+        "חדשות בתי החולים בילינסון והשרון"
+      ],
+      "htmlLength": 313740,
+      "visibleTextLength": 17773,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+      "title": "מחלקות ומרפאות במרכז הרפואי רבין בילינסון השרון\n | מרכז רפואי רבין",
+      "h1": [
+        "מחלקות ומרפאות"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "אונקולוגיה",
+        "אורולוגיה",
+        "אורתופדיה",
+        "אלרגיה ואימונולוגיה קלינית",
+        "אנדוקרינולוגיה",
+        "אף אוזן וגרון וניתוחי ראש וצוואר",
+        "בנק הדם - מחלקת שירותי הדם ואפרזיס",
+        "גנטיקה",
+        "גסטרואנטרולוגיה",
+        "גריאטריה",
+        "דימות",
+        "המטולוגיה",
+        "הרדמה",
+        "מחלקת השתלות איברים",
+        "טיפול נמרץ כללי",
+        "יחידות פארא-רפואיות",
+        "יילודים",
+        "כבד"
+      ],
+      "htmlLength": 1235539,
+      "visibleTextLength": 32251,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+      "anchorText": "קורס הכנה לרישוי רופאים - בית חולים השרון",
+      "patternType": "doctorPage",
+      "parserFamily": "classicDoctorCards",
+      "confidence": 0.82,
+      "evidence": "קורס הכנה לרישוי רופאים - בית חולים השרון https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+      "anchorText": "פורומים",
+      "patternType": "doctorPage",
+      "parserFamily": "classicDoctorCards",
+      "confidence": 0.82,
+      "evidence": "פורומים https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+      "anchorText": "הרופאים שלנו",
+      "patternType": "doctorPage",
+      "parserFamily": "classicDoctorCards",
+      "confidence": 0.82,
+      "evidence": "הרופאים שלנו https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "classicDoctorCards",
+    "teamPage"
+  ],
+  "recommendedPilotUrls": [
+    "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
+    "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx"
+  ],
+  "readiness": "pilotReady",
+  "mainBlocker": null
+}

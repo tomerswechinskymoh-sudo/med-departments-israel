@@ -103,7 +103,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר אדיר ישראלי",
@@ -143,7 +165,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר אחמד הייב",
@@ -249,7 +279,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר איה נאמארי",
@@ -289,7 +341,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר איילת רוטר",
@@ -329,7 +389,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר אימן אבו רמילה",
@@ -369,7 +437,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר אלאא דבש",
@@ -409,7 +485,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר אלאא דנון",
@@ -449,7 +533,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר אלחנן פריד",
@@ -468,7 +560,7 @@
     "qaFlags": [],
     "qaSeverity": "ok",
     "profileCompleteness": "partial",
-    "profileTextLength": 75602,
+    "profileTextLength": 75628,
     "productionReady": true,
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "ביה\"ח הדסה הר הצופים",
@@ -489,7 +581,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר אליהו צאיג",
@@ -529,7 +629,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר אלכסנדר חיימוב",
@@ -635,7 +743,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר אלנה גולזנד",
@@ -741,7 +871,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר אמל דלאשה",
@@ -781,7 +933,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר בהא זרו",
@@ -887,7 +1047,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר גבריאלה סנוימן",
@@ -927,7 +1109,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר גיא טוביאס",
@@ -1033,7 +1223,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר דאניה גבר",
@@ -1073,7 +1285,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר דינה גבר",
@@ -1113,7 +1333,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר האני סיאג",
@@ -1153,7 +1381,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר חאפז גוויחאן",
@@ -1259,7 +1495,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר יהונתן כהן",
@@ -1299,7 +1557,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "פרופ' יובל ורד",
@@ -1405,7 +1671,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר יונתן בכרך",
@@ -1445,7 +1733,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר יוסף קדומי",
@@ -1485,7 +1781,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "פרופ' יניב שרר",
@@ -1591,7 +1895,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר יעל לוי",
@@ -1631,7 +1957,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר ישי גרואר",
@@ -1671,7 +2005,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר לאון מוסקוביץ פרדומו",
@@ -1711,7 +2053,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר ליאור נוה",
@@ -1751,7 +2101,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ד"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר למה עסאף-ג`ברין",
@@ -1857,7 +2215,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר מאזן ברהום",
@@ -1963,7 +2343,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר מוחמד ג'בר",
@@ -2003,7 +2405,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר מוראד שקיראת",
@@ -2043,7 +2453,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר מחמוד גרייב",
@@ -2083,7 +2501,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "פרופ' מרדכי מושקט",
@@ -2123,7 +2549,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר נועם בן יוסף",
@@ -2229,7 +2663,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר נועם כהן",
@@ -2335,7 +2791,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר סנאן אבו ליל",
@@ -2441,7 +2919,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר עדי הולנדר",
@@ -2481,7 +2981,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר עומר זחאיקה",
@@ -2521,7 +3029,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר עומר חמצני",
@@ -2561,7 +3077,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית א'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית א'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר עירא ארליכמן",
@@ -2667,7 +3191,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר ענת אלעזרי",
@@ -2707,7 +3253,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר קאסם נמר",
@@ -2813,7 +3367,29 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Hadassah Medical Center; candidates=43"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/children/peds-ht/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/",
+        "https://he.hadassah.org.il/medicine-specialization/physical-medicine-rehabilitation/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-obstetrics-and-gynecology/",
+        "https://he.hadassah.org.il/medicine-specialization/ms-emergency-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/general-surgery-ms/",
+        "https://he.hadassah.org.il/medicine-specialization/ophthalmology/",
+        "https://he.hadassah.org.il/medicine-specialization/orthopedics/",
+        "https://he.hadassah.org.il/anesthesia/department-anesthesia/",
+        "https://he.hadassah.org.il/medicine-specialization/imaging-medicine/",
+        "https://he.hadassah.org.il/medicine-specialization/vascular-surgery-ek/",
+        "https://he.hadassah.org.il/medicine-specialization/dermatology/",
+        "https://he.hadassah.org.il/children/peds-surgery-enkarem/",
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-nuclear-medicine/",
+        "https://he.hadassah.org.il/internal/geriatrics-enkarem/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Hadassah Medical Center; candidates=43"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר רוני בן עמי",
@@ -2853,7 +3429,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ד"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר רפאל ליבר",
@@ -2893,7 +3477,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ב'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ב'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר שאול יערי",
@@ -2933,7 +3525,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ה\"צ"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ה\"צ"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר שני אמיתי",
@@ -2973,7 +3573,15 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ג'"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ג'"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   },
   {
     "fullName": "ד\"ר שרה ברכה בן ציוני",
@@ -3013,6 +3621,14 @@
       "פנימית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "ambiguous unit specialty match=פנימית ד"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://he.hadassah.org.il/medicine-specialization/specialization-in-internal-medicinems/"
+      ],
+      "extractedFromUrl": "https://he.hadassah.org.il/api/doctors?search=&skip=0",
+      "relationship": "normalizedSpecialty",
+      "reason": "ambiguous unit specialty match=פנימית ד"
+    },
+    "ambiguityReason": "multipleUnitSpecialtyMatches"
   }
 ]

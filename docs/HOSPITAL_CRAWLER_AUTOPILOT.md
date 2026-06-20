@@ -9,6 +9,7 @@ npm run crawl -- --hospital sheba --mode evaluate
 npm run crawl -- --hospital sheba --mode full --confirm
 npm run crawl -- --mode national-plan
 npm run crawl -- --mode national-pilot --limit 3
+npm run crawl -- --mode national-pilot --wave 2 --limit 5
 npm run crawl -- --mode national-full-safe --confirm
 ```
 
@@ -19,7 +20,7 @@ npm run crawl -- --mode national-full-safe --confirm
 - `evaluate`: read the latest pilot evaluation.
 - `full`: blocked unless readiness is `safeForFullBatch` and `--confirm` is supplied; provider-specific full adapters must still be added.
 - `national-plan`: read `Master_Dept.csv`, create target registry, national crawl plan, waves, and coverage report. No crawling by default.
-- `national-pilot`: run a limited safe wave. Current default Wave 1 is Ichilov, Hadassah, and Meir only.
+- `national-pilot`: run a limited safe wave. Current default Wave 1 is Ichilov, Hadassah, and Meir only. Use `--wave 2 --limit 5` for Master_Dept-driven Clalit pilot candidates; Sheba and full Soroka remain excluded.
 - `national-full-safe`: requires `--confirm`, but remains blocked until provider-specific full adapters exist.
 
 ## Outputs
@@ -49,7 +50,7 @@ data/crawler/hospitals/national-coverage-report.md
 - URL status is explicit: `notProvided`, `pending`, `live`, `redirected`, `stale`, `forbidden`, or `failed`.
 - Page type is classified as department, unit, array, hospital, doctors, team, or unknown.
 - If a row URL is inspected and nearby doctor/team links are found, they are preserved in `nearbyDoctorOrTeamUrls`.
-- Doctor outputs get Master_Dept mapping fields. Ambiguous matches are marked `reviewNeeded`; the crawler must not invent a department match.
+- Doctor outputs get Master_Dept mapping fields. Exact row-source matches and row-specific nearby team/doctor URLs can be marked `sourceUrlMatch`; ambiguous or global index matches stay `reviewNeeded`.
 - Sheba is deferred to Wave 4 so it cannot block national coverage.
 
 ## Readiness

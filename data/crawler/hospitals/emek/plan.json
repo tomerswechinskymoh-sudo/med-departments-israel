@@ -1,0 +1,151 @@
+{
+  "hospitalSlug": "emek",
+  "hospitalName": "Emek Medical Center",
+  "generatedAt": "2026-06-20T15:12:46.250Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+    "departmentsIndexUrlCandidates": [
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/Pages/default.aspx"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+      "title": "מרכז רפואי העמק\n | מרכז רפואי העמק",
+      "h1": [],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "מינוי דרגת פרופסור חדשה בעמק",
+        "חדשנות בדה מרקר",
+        "כח הריפוי של המוזיקה",
+        "תקווה חדשה לחולי קוליטיס כיבית",
+        "מעצמה רפואית בצפון",
+        "מרכז רפואי העמק ב- YouTube"
+      ],
+      "htmlLength": 161644,
+      "visibleTextLength": 12641,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/Pages/default.aspx",
+      "title": "דף הבית\n | מרכז רפואי העמק",
+      "h1": [
+        "מחלקות ומרפאות"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "אינדקס יחידות"
+      ],
+      "htmlLength": 673960,
+      "visibleTextLength": 18190,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "title": "עור - מחלקה\n | מרכז רפואי העמק",
+      "h1": [
+        "אגף פנימיות"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "עור - מחלקה",
+        "צוות"
+      ],
+      "htmlLength": 155389,
+      "visibleTextLength": 14070,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "anchorText": "ד\"ר ערן כהן ברק",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר ערן כהן ברק https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "anchorText": "ד\"ר קושניר גרינבאום דניאלה",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר קושניר גרינבאום דניאלה https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "anchorText": "ד\"ר מיכאל זיו",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר מיכאל זיו https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/miri_kerner.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "anchorText": "ד\"ר מירי קרנר",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר מירי קרנר https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/miri_kerner.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/our_doctors.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+      "anchorText": "רופאי העמק",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רופאי העמק https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/our_doctors.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/roni_dudiok_gad.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "anchorText": "דודיוק גד רוני",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "דודיוק גד רוני https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/roni_dudiok_gad.aspx"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "classicDoctorCards"
+  ],
+  "recommendedPilotUrls": [
+    "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+    "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+    "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+    "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/miri_kerner.aspx",
+    "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/our_doctors.aspx",
+    "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/roni_dudiok_gad.aspx"
+  ],
+  "readiness": "pilotReady",
+  "mainBlocker": null
+}

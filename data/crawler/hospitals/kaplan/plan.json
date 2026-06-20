@@ -1,0 +1,178 @@
+{
+  "hospitalSlug": "kaplan",
+  "hospitalName": "Kaplan Medical Center",
+  "generatedAt": "2026-06-20T15:13:03.053Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+    "departmentsIndexUrlCandidates": [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/Pages/default.aspx"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+      "title": "דף הבית\n | מרכז רפואי קפלן",
+      "h1": [],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "יחידות ומחלקות",
+        "קפלן בוידאו",
+        "מועדון יולדות קפלן Mommy K"
+      ],
+      "htmlLength": 209104,
+      "visibleTextLength": 15601,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/kaplan/he/med_units/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/Pages/default.aspx",
+      "title": "יחידות רפואיות\n | מרכז רפואי קפלן",
+      "h1": [
+        "יחידות רפואיות"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "אונקולוגיה",
+        "אורולוגיה",
+        "אורתופדיה",
+        "איידס",
+        "אלרגיה ואימונולוגיה",
+        "אף אוזן גרון",
+        "אשפוז יום כירורגי",
+        "בנק הדם",
+        "גנטיקה קלינית",
+        "גסטרואנטרולוגיה ומחלות כבד",
+        "גריאטריה",
+        "דימות (רנטגן)",
+        "היחידה לפוריות והפריה חוץ גופית (IVF)",
+        "המטולוגיה",
+        "המרכז הבריאטרי",
+        "התפתחות הילד",
+        "טיפול נמרץ כללי",
+        "טראומה"
+      ],
+      "htmlLength": 228692,
+      "visibleTextLength": 12717,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx",
+      "title": "חטיבת הילדים - מרכז רפואי קפלן\n | מרכז רפואי קפלן",
+      "h1": [
+        "ילדים",
+        "מערך רפואת הילדים במרכז הרפואי קפלן כולל:",
+        "יצירת קשר"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "גסטרו ילדים",
+        "טיפול נמרץ ילדים",
+        "לאחרונה",
+        "מרפאות ילדים",
+        "מידע להורים לקראת ניתוח",
+        "אשפוז ילדים במרכז הרפואי קפלן",
+        "כירורגית ילדים",
+        "פסיכולוגיה רפואית לילדים ונוער",
+        "נפרולוגיה ילדים",
+        "ברוכים הבאים למחלקת ילדים",
+        "בית ספר קפלן בחטיבת הילדים",
+        "ילדים א'",
+        "ילדים ב'",
+        "חטיבת הילדים - מרכז רפואי קפלן"
+      ],
+      "htmlLength": 207579,
+      "visibleTextLength": 14384,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+      "anchorText": "",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": " https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/kaplan/he/gen_info/Pages/covid_info4family.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+      "anchorText": "ביקור רופאים במחלקה - מידע למטופל",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ביקור רופאים במחלקה - מידע למטופל https://hospitals.clalit.co.il/kaplan/he/gen_info/Pages/covid_info4family.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/default.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+      "anchorText": "אף אוזן גרון\n צוות המחלקה מטפל במחלות כירורגיות ומחלות שאינן כירורגיות, ובמטופלים בכל הגילאים. למחלקה מרפאות חוץ שעוסקות בכל התחומים ובחדרי ניתוח. הצוות עובד בשיתוף פעולה רב מקצועי עם היחידות השונות במרכז הרפואי.",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "אף אוזן גרון\n צוות המחלקה מטפל במחלות כירורגיות ומחלות שאינן כירורגיות, ובמטופלים בכל הגילאים. למחלקה מרפאות חוץ שעוסקות בכל התחומים ובחדרי ניתוח. הצוות עובד בשיתוף פעולה רב מקצועי עם היחידות השונות במרכז הרפואי. https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/default.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/kaplan/he/academy_and_research/Documents/Kaplan_Medical_Staff_Publications_2019.pdf",
+      "sourceUrl": "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+      "anchorText": "פרסומי מחקרים לפי חודשים 2019",
+      "patternType": "staffPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "פרסומי מחקרים לפי חודשים 2019 https://hospitals.clalit.co.il/kaplan/he/academy_and_research/Documents/Kaplan_Medical_Staff_Publications_2019.pdf"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/kaplan/he/med_units/cardiology/Pages/default.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+      "anchorText": "קרדיולוגיה\n מהמובילים בתחום רפואת הלב – טיפול מותאם אישית לצד טכנולוגיה חדשנית בבניין האשפוז החדש. במערך מומחים המנוסים בצנתורי לב בהדמיה תלת מימד, השתלת מסתמים בצנתור, יחידת קוצבים מהמובילות בארץ, מרפאות ייחודיות ושימוש בטכנולוגיות חדשות מהמתקדמות בעולם.",
+      "patternType": "departmentPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "קרדיולוגיה\n מהמובילים בתחום רפואת הלב – טיפול מותאם אישית לצד טכנולוגיה חדשנית בבניין האשפוז החדש. במערך מומחים המנוסים בצנתורי לב בהדמיה תלת מימד, השתלת מסתמים בצנתור, יחידת קוצבים מהמובילות בארץ, מרפאות ייחודיות ושימוש בטכנולוגיות חדשות מהמתקדמות בעולם. https://hospitals.clalit.co.il/kaplan/he/med_units/cardiology/Pages/default.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/kaplan/he/med_units/urology/Pages/default.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+      "anchorText": "אורולוגיה\n המחלקה האורולוגית מוכרת כאחד ממוקדי המצוינות הרפואית במרכז הרפואי קפלן. רופאי המחלקה מטפלים במגוון נושאים רפואיים, כגון: באבנים בדרכי השתן, מחלות שונות בדרכי השתן, הפרעות בתפקוד המיני ועוד, תוך שימוש בטכנולוגיות והשיטות החדשניות ביותר.",
+      "patternType": "departmentPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "אורולוגיה\n המחלקה האורולוגית מוכרת כאחד ממוקדי המצוינות הרפואית במרכז הרפואי קפלן. רופאי המחלקה מטפלים במגוון נושאים רפואיים, כגון: באבנים בדרכי השתן, מחלות שונות בדרכי השתן, הפרעות בתפקוד המיני ועוד, תוך שימוש בטכנולוגיות והשיטות החדשניות ביותר. https://hospitals.clalit.co.il/kaplan/he/med_units/urology/Pages/default.aspx"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "classicDoctorCards"
+  ],
+  "recommendedPilotUrls": [
+    "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/kaplan/he/gen_info/kaplan_news/Pages/outstanding-doctors.aspx",
+    "https://hospitals.clalit.co.il/kaplan/he/gen_info/Pages/covid_info4family.aspx",
+    "https://hospitals.clalit.co.il/kaplan/he/med_units/ent/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/kaplan/he/academy_and_research/Documents/Kaplan_Medical_Staff_Publications_2019.pdf",
+    "https://hospitals.clalit.co.il/kaplan/he/med_units/cardiology/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/kaplan/he/med_units/urology/Pages/default.aspx"
+  ],
+  "readiness": "pilotReady",
+  "mainBlocker": null
+}

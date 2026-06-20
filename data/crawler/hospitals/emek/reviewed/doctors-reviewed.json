@@ -1,0 +1,683 @@
+[
+  {
+    "fullName": "פרופסור חדשה בעמק",
+    "normalizedName": "חדשה בעמק",
+    "titlePrefix": "פרופ",
+    "role": "מינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ’ לי גולדשטיין מנהלת מחלקה פנימית ג’",
+    "unit": null,
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/news/Documents/%d7%a4%d7%a8%d7%95%d7%a4%20%d7%9c%d7%99.png",
+    "imageUrl": null,
+    "rawText": "מינוי דרגת פרופסור חדשה בעמק\nמינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ’ לי גולדשטיין מנהלת מחלקה פנימית ג’\nלכתבת המינוי",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "מינוי דרגת פרופסור חדשה בעמק\nמינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ’ לי גולדשטיין מנהלת מחלקה פנימית ג’\nלכתבת המינוי",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "partial",
+    "profileTextLength": 546816,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה",
+      "master-dept-0362-מרכז-רפואי-העמק-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור",
+      "master-dept-0364-מרכז-רפואי-העמק-פנימית-א",
+      "master-dept-0365-מרכז-רפואי-העמק-פנימית-ב",
+      "master-dept-0366-מרכז-רפואי-העמק-פנימית-ג",
+      "master-dept-0367-מרכז-רפואי-העמק-פנימית-ד",
+      "master-dept-0368-מרכז-רפואי-העמק-פנימית-ה",
+      "master-dept-0369-מרכז-רפואי-העמק-רדיולוגיה-דימות",
+      "master-dept-0370-מרכז-רפואי-העמק-רפואת-ילדים-א",
+      "master-dept-0371-מרכז-רפואי-העמק-רפואת-ילדים-ב",
+      "master-dept-0372-מרכז-רפואי-העמק-כירורגית-ילדים",
+      "master-dept-0373-מרכז-רפואי-העמק-הרדמה",
+      "master-dept-0374-מרכז-רפואי-העמק-כירורגיה-אורולוגית",
+      "master-dept-0375-מרכז-רפואי-העמק-אורתופדיה",
+      "master-dept-0376-מרכז-רפואי-העמק-אף-אוזן-גרון",
+      "master-dept-0377-מרכז-רפואי-העמק-רפואה-דחופה",
+      "master-dept-0378-מרכז-רפואי-העמק-יילוד-וגינקולוגיה",
+      "master-dept-0379-מרכז-רפואי-העמק-מחלות-עיניים",
+      "master-dept-0380-מרכז-רפואי-העמק-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0381-מרכז-רפואי-העמק-כירורגיה-כללית-א",
+      "master-dept-0382-מרכז-רפואי-העמק-כירורגיה-כללית-ב",
+      "master-dept-0383-מרכז-רפואי-העמק-נוירולוגיה",
+      "master-dept-0384-מרכז-רפואי-העמק-פתולוגיה",
+      "master-dept-0385-מרכז-רפואי-העמק-קרדיולוגיה",
+      "master-dept-0386-מרכז-רפואי-העמק-אונקולוגיה",
+      "master-dept-0387-מרכז-רפואי-העמק-רפואה-גרעינית"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "ה"
+    ],
+    "matchedMasterSpecialties": [
+      "פסיכיאטריה",
+      "רפואה פיזיקלית ושיקום",
+      "רפואת עור",
+      "פנימית",
+      "רדיולוגיה (דימות)",
+      "רפואת ילדים",
+      "כירורגית ילדים",
+      "הרדמה",
+      "כירורגיה אורולוגית",
+      "אורתופדיה",
+      "אף אוזן גרון",
+      "רפואה דחופה",
+      "יילוד וגינקולוגיה",
+      "מחלות עיניים",
+      "פסיכיאטריה של הילד והמתבגר",
+      "כירורגיה כללית",
+      "נוירולוגיה",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אונקולוגיה",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/rehabilitation_unit.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_a.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_b.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_c.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_d.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_f.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/xray.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/pediatric/Pages/pediatrics_department_a.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/pediatric/Pages/pediatrix_department_b.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/children_surgery.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/anesthesia_operating_rooms_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/urology_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/orthopedics_division.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/otolaringology_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/e_r/Pages/emergency_medicine_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/yoldot_vetinokot/ahrey_haleyda/Pages/infants_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/eyes_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/psychiatric/Pages/mental_health_of_children_and_youth.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/surgery_department_a.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/surgery_department_b.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/neurology.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/pathology.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/cardiologiccenter/Pages/cardiology.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/beit_shulamit/Pages/oncology_clinics.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/nuclear_medicine.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Emek Medical Center; candidates=27"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "פרופסור חדשה בעמק\nמינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ",
+    "normalizedName": "חדשה בעמק מינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ",
+    "titlePrefix": "פרופ",
+    "role": "מינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ’ לי גולדשטיין מנהלת מחלקה פנימית ג’",
+    "unit": null,
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/news/Documents/%d7%a4%d7%a8%d7%95%d7%a4%20%d7%9c%d7%99.png",
+    "imageUrl": null,
+    "rawText": "מינוי דרגת פרופסור חדשה בעמק\nמינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ’ לי גולדשטיין מנהלת מחלקה פנימית ג’\nלכתבת המינוי",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "מינוי דרגת פרופסור חדשה בעמק\nמינוי דרגת פרופסור חבר בפקולטה לרפואה בטכניון לפרופ’ לי גולדשטיין מנהלת מחלקה פנימית ג’\nלכתבת המינוי",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "partial",
+    "profileTextLength": 546816,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה",
+      "master-dept-0362-מרכז-רפואי-העמק-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור",
+      "master-dept-0364-מרכז-רפואי-העמק-פנימית-א",
+      "master-dept-0365-מרכז-רפואי-העמק-פנימית-ב",
+      "master-dept-0366-מרכז-רפואי-העמק-פנימית-ג",
+      "master-dept-0367-מרכז-רפואי-העמק-פנימית-ד",
+      "master-dept-0368-מרכז-רפואי-העמק-פנימית-ה",
+      "master-dept-0369-מרכז-רפואי-העמק-רדיולוגיה-דימות",
+      "master-dept-0370-מרכז-רפואי-העמק-רפואת-ילדים-א",
+      "master-dept-0371-מרכז-רפואי-העמק-רפואת-ילדים-ב",
+      "master-dept-0372-מרכז-רפואי-העמק-כירורגית-ילדים",
+      "master-dept-0373-מרכז-רפואי-העמק-הרדמה",
+      "master-dept-0374-מרכז-רפואי-העמק-כירורגיה-אורולוגית",
+      "master-dept-0375-מרכז-רפואי-העמק-אורתופדיה",
+      "master-dept-0376-מרכז-רפואי-העמק-אף-אוזן-גרון",
+      "master-dept-0377-מרכז-רפואי-העמק-רפואה-דחופה",
+      "master-dept-0378-מרכז-רפואי-העמק-יילוד-וגינקולוגיה",
+      "master-dept-0379-מרכז-רפואי-העמק-מחלות-עיניים",
+      "master-dept-0380-מרכז-רפואי-העמק-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0381-מרכז-רפואי-העמק-כירורגיה-כללית-א",
+      "master-dept-0382-מרכז-רפואי-העמק-כירורגיה-כללית-ב",
+      "master-dept-0383-מרכז-רפואי-העמק-נוירולוגיה",
+      "master-dept-0384-מרכז-רפואי-העמק-פתולוגיה",
+      "master-dept-0385-מרכז-רפואי-העמק-קרדיולוגיה",
+      "master-dept-0386-מרכז-רפואי-העמק-אונקולוגיה",
+      "master-dept-0387-מרכז-רפואי-העמק-רפואה-גרעינית"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "ה"
+    ],
+    "matchedMasterSpecialties": [
+      "פסיכיאטריה",
+      "רפואה פיזיקלית ושיקום",
+      "רפואת עור",
+      "פנימית",
+      "רדיולוגיה (דימות)",
+      "רפואת ילדים",
+      "כירורגית ילדים",
+      "הרדמה",
+      "כירורגיה אורולוגית",
+      "אורתופדיה",
+      "אף אוזן גרון",
+      "רפואה דחופה",
+      "יילוד וגינקולוגיה",
+      "מחלות עיניים",
+      "פסיכיאטריה של הילד והמתבגר",
+      "כירורגיה כללית",
+      "נוירולוגיה",
+      "פתולוגיה",
+      "קרדיולוגיה",
+      "אונקולוגיה",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/rehabilitation_unit.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_a.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_b.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_c.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_d.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_f.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/xray.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/pediatric/Pages/pediatrics_department_a.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/pediatric/Pages/pediatrix_department_b.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/children_surgery.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/anesthesia_operating_rooms_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/urology_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/orthopedics_division.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/otolaringology_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/e_r/Pages/emergency_medicine_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/yoldot_vetinokot/ahrey_haleyda/Pages/infants_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/eyes_department.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/psychiatric/Pages/mental_health_of_children_and_youth.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/surgery_department_a.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/surgery_department_b.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/neurology.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/pathology.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/cardiologiccenter/Pages/cardiology.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/beit_shulamit/Pages/oncology_clinics.aspx",
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/nuclear_medicine.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Emek Medical Center; candidates=27"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר זיו מיכאל",
+    "normalizedName": "זיו מיכאל",
+    "titlePrefix": "ד\"ר",
+    "role": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "unit": null,
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+    "imageUrl": null,
+    "rawText": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא ",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 12899,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואת עור"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מיכאל זיו",
+    "normalizedName": "מיכאל זיו",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל המחלקה",
+    "unit": null,
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+    "imageUrl": null,
+    "rawText": "עור - מחלקה\nמנהל המחלקה\nד\"ר מיכאל זיו",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "עור - מחלקה\nמנהל המחלקה\nד\"ר מיכאל זיו",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 12899,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואת עור"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מירי קרנר",
+    "normalizedName": "מירי קרנר",
+    "titlePrefix": "ד\"ר",
+    "role": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "unit": null,
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/miri_kerner.aspx",
+    "imageUrl": null,
+    "rawText": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא ",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 14,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואת עור"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר ערן כהן ברק",
+    "normalizedName": "ערן כהן ברק",
+    "titlePrefix": "ד\"ר",
+    "role": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "unit": null,
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+    "imageUrl": null,
+    "rawText": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא ",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 13324,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואת עור"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר קושניר גרינבאום דניאלה",
+    "normalizedName": "קושניר גרינבאום דניאלה",
+    "titlePrefix": "ד\"ר",
+    "role": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "unit": null,
+    "profileUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+    "imageUrl": null,
+    "rawText": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא פררו, ד\"ר חאמד מירא אחות אחראית מרפאה: גליה זיסראחים.יות מרפאה: איריס בן יהודה, עירפאן שבאלניאחות אחראית מחלקה: טטיאנה גוטמןעו\"ס: שקד עופרמזכירת המחלקה: בוקובזה אילנהמזכיר המרפאה: ליאור מועלם",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "מחלקת העור משרתת אוכלוסייה גדולה מרמת הגולן בצפון ועד חדרה בדרום.מרבית האבחון והטיפול במחלות עור ומין מבוצע במרפאות החוץ, במרכז רפואי העמק. במסגרת מחלקת האשפוז ניתנים טיפולים אינטנסיביים לחולים אשר לא ניתן לטפל בהם במסגרת אמבולטורית.צוותמנהל מחלקה: ד\"ר זיו מיכאלסגן מנהל: ד\"ר ערן כהן ברק מנהלת היחידה למחלות עור דלקתיות ואוטואימוניות : פרופ' דודיוק גד רונירופאים בכירים: ד\"ר מירי קרנר, ד\"ר שרביט שרון, ד\"ר מוחמד סח, ד\"ר מתי רוזנבלט, ד\"ר קושניר גרינבאום דניאלה , ד\"ר חלאג' עווד, ד\"ר תמר קורן, ד\"ר גיא ",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 12106,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואת עור"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר ערן ברק כהן\nד\"ר ערן ברק כהן\nמנהל שירות עור ילדים וסגן מנהל מחלקת עור",
+    "normalizedName": "ערן ברק כהן דר ערן ברק כהן מנהל שירות עור ילדים וסגן מנהל מחלקת עור",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ערן ברק כהן\nד\"ר ערן ברק כהן\nמנהל שירות עור ילדים וסגן מנהל מחלקת עור",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר ערן ברק כהן\nד\"ר ערן ברק כהן\nמנהל שירות עור ילדים וסגן מנהל מחלקת עור",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "פסיכיאטריה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר ערן ברק כהן\nטלפון",
+    "normalizedName": "ערן ברק כהן טלפון",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ערן ברק כהן\nטלפון",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר ערן ברק כהן\nטלפון",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "פסיכיאטריה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/eran_barak_cohen.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר דניאלה קושניר גרינבאום\nד\"ר דניאלה קושניר גרינבאום\nרופאה בכירה במחלקת עור ובמרפאת פסוריאזיס",
+    "normalizedName": "דניאלה קושניר גרינבאום דר דניאלה קושניר גרינבאום רופאה בכירה במחלקת עור ובמרפאת פסוריאזיס",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר דניאלה קושניר גרינבאום\nד\"ר דניאלה קושניר גרינבאום\nרופאה בכירה במחלקת עור ובמרפאת פסוריאזיס",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר דניאלה קושניר גרינבאום\nד\"ר דניאלה קושניר גרינבאום\nרופאה בכירה במחלקת עור ובמרפאת פסוריאזיס",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "פסיכיאטריה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר דניאלה קושניר גרינבאום\nיחידה",
+    "normalizedName": "דניאלה קושניר גרינבאום יחידה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר דניאלה קושניר גרינבאום\nיחידה",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר דניאלה קושניר גרינבאום\nיחידה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "פסיכיאטריה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/kushnir_grinbaum_daniela.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מיכאל זיו\nד\"ר מיכאל זיו\nמנהל מחלקת עור\nשם",
+    "normalizedName": "מיכאל זיו דר מיכאל זיו מנהל מחלקת עור שם",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מיכאל זיו\nד\"ר מיכאל זיו\nמנהל מחלקת עור\nשם",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר מיכאל זיו\nד\"ר מיכאל זיו\nמנהל מחלקת עור\nשם",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "פסיכיאטריה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מיכאל זיו\nטלפון",
+    "normalizedName": "מיכאל זיו טלפון",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מיכאל זיו\nטלפון",
+    "sourceUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+    "hospitalSlug": "emek",
+    "hospital": "Emek Medical Center",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר מיכאל זיו\nטלפון",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי העמק",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "פסיכיאטריה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/michael_ziv.aspx",
+      "relationship": "discoveredNearbyDoctorUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

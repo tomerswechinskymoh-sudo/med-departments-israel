@@ -1,0 +1,92 @@
+{
+  "hospitalSlug": "carmel",
+  "hospitalName": "Carmel Medical Center",
+  "generatedAt": "2026-06-20T15:12:51.811Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://hospitals.clalit.co.il/carmel/he/Pages/default.aspx",
+    "departmentsIndexUrlCandidates": [
+      "https://hospitals.clalit.co.il/carmel/he/med_units/Pages/default.aspx"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": []
+  },
+  "fetches": [
+    {
+      "url": "https://hospitals.clalit.co.il/carmel/he/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/carmel/he/Pages/default.aspx",
+      "title": "מרכז רפואי כרמל, חיפה\n | מרכז רפואי כרמל",
+      "h1": [],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "שירות חדש לפתרון בעיית החניה בכרמל!",
+        "הריון ולידה",
+        "הלב של הרפואה בחיפה ובצפון",
+        "תיק רפואי אונליין",
+        "נולדנו בשבילכם עם מגוון שירותים לקראת הלידה",
+        "חדשות הכרמל"
+      ],
+      "htmlLength": 223931,
+      "visibleTextLength": 15661,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/carmel/he/med_units/Pages/default.aspx",
+      "ok": false,
+      "statusCode": 404,
+      "finalUrl": "https://hospitals.clalit.co.il/carmel/he/med_units/Pages/default.aspx",
+      "title": null,
+      "h1": [],
+      "h2": [],
+      "htmlLength": 724,
+      "visibleTextLength": 14,
+      "error": "404 Not Found"
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/carmel/he/Pages/default.aspx",
+      "anchorText": "הרופאים שלנו",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הרופאים שלנו https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/lung-cancer-multidisciplinary-center.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/carmel/he/Pages/default.aspx",
+      "anchorText": "אבחון וטיפול בסרטן ריאות\n במרכז לאבחון וטיפול בסרטן הריאה מומחים מקצועיים ממספר תחומים. כולם עוסקים באיתור מוקדם של סרטן הריאה ובטיפול כוללני בחולה.",
+      "patternType": "departmentPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "אבחון וטיפול בסרטן ריאות\n במרכז לאבחון וטיפול בסרטן הריאה מומחים מקצועיים ממספר תחומים. כולם עוסקים באיתור מוקדם של סרטן הריאה ובטיפול כוללני בחולה. https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/lung-cancer-multidisciplinary-center.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Institutes-and-Laboratories/Pages/Genetic.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/carmel/he/Pages/default.aspx",
+      "anchorText": "המכון לגנטיקה רפואית\n המכון מספק ייעוץ גנטי טרום הריוני וטרום לידתי לזוגות ומשפחות עם מחלות תורשתיות במשפחה ועוסק באיתור נשאות למחלות גנטיות תוך כדי ייעוץ עם מומחים במגוון תחומים רפואיים.",
+      "patternType": "departmentPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "המכון לגנטיקה רפואית\n המכון מספק ייעוץ גנטי טרום הריוני וטרום לידתי לזוגות ומשפחות עם מחלות תורשתיות במשפחה ועוסק באיתור נשאות למחלות גנטיות תוך כדי ייעוץ עם מומחים במגוון תחומים רפואיים. https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Institutes-and-Laboratories/Pages/Genetic.aspx"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff"
+  ],
+  "recommendedPilotUrls": [
+    "https://hospitals.clalit.co.il/carmel/he/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Clinical-departments-and-clinics/Pages/lung-cancer-multidisciplinary-center.aspx",
+    "https://hospitals.clalit.co.il/carmel/he/Departments-and-Outpatient-Clinics-main/Institutes-and-Laboratories/Pages/Genetic.aspx"
+  ],
+  "readiness": "pilotReady",
+  "mainBlocker": null
+}

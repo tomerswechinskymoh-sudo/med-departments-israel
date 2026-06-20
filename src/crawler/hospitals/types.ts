@@ -55,6 +55,22 @@ export type MasterDeptTarget = {
 
 export type MasterDeptMatchConfidence = "exact" | "normalizedExact" | "sourceUrlMatch" | "hospitalOnly" | "reviewNeeded";
 
+export type MasterDeptMatchRelationship =
+  | "exactSourceUrl"
+  | "discoveredNearbyTeamUrl"
+  | "discoveredNearbyDoctorUrl"
+  | "normalizedUnit"
+  | "normalizedSpecialty"
+  | "hospitalOnly"
+  | "none";
+
+export type MasterDeptMatchEvidence = {
+  masterDeptSourceUrls: string[];
+  extractedFromUrl: string | null;
+  relationship: MasterDeptMatchRelationship;
+  reason: string;
+};
+
 export type HospitalBaseline = {
   hospitalSlug: string;
   hospitalName: string;
@@ -98,7 +114,8 @@ export type CandidatePage = {
   nearbyDoctorOrTeamUrls?: string[];
   urlInspectionEvidence?: string | null;
   matchConfidence?: MasterDeptMatchConfidence;
-  matchEvidence?: string | null;
+  matchEvidence?: MasterDeptMatchEvidence | string | null;
+  ambiguityReason?: string | null;
 };
 
 export type HospitalDoctorRecord = {

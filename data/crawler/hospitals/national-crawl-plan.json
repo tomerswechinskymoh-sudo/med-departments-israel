@@ -23,7 +23,7 @@
     "wave": 1,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 6,
-    "pendingUrlCount": 0
+    "pendingUrlCount": 6
   },
   {
     "hospitalName": "מרכז רפואי מאיר",
@@ -53,7 +53,7 @@
     "wave": 1,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 24,
-    "pendingUrlCount": 0
+    "pendingUrlCount": 24
   },
   {
     "hospitalName": "מרכז רפואי ת\"א סוראסקי",
@@ -103,7 +103,7 @@
     "wave": 1,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 10,
-    "pendingUrlCount": 0
+    "pendingUrlCount": 10
   },
   {
     "hospitalName": "מרכז רפואי העמק",
@@ -112,8 +112,9 @@
     "specialties": 21,
     "departments": 27,
     "providerGuess": "clalit",
-    "knownAdapter": null,
+    "knownAdapter": "emek",
     "knownStartingUrls": [
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/Pages/default.aspx",
       "https://hospitals.clalit.co.il/emek/he/info/emek_doctors/Pages/alon_reshef.aspx",
       "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/rehabilitation_unit.aspx",
       "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx",
@@ -124,8 +125,7 @@
       "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/internal_department_f.aspx",
       "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/institutes/Pages/xray.aspx",
       "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/pediatric/Pages/pediatrics_department_a.aspx",
-      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/pediatric/Pages/pediatrix_department_b.aspx",
-      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/surgery/Pages/children_surgery.aspx"
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/pediatric/Pages/pediatrix_department_b.aspx"
     ],
     "currentReadiness": "safeForPilot",
     "recommendedNextAction": "runPilot",
@@ -133,7 +133,7 @@
     "wave": 2,
     "directStaffUrlCount": 1,
     "departmentUrlCount": 26,
-    "pendingUrlCount": 27
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז רפואי כרמל",
@@ -163,7 +163,7 @@
     "wave": 2,
     "directStaffUrlCount": 1,
     "departmentUrlCount": 21,
-    "pendingUrlCount": 22
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז רפואי סורוקה",
@@ -195,8 +195,9 @@
     "specialties": 22,
     "departments": 25,
     "providerGuess": "clalit",
-    "knownAdapter": null,
+    "knownAdapter": "kaplan",
     "knownStartingUrls": [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/Pages/default.aspx",
       "https://hospitals.clalit.co.il/kaplan/he/med_units/Pages/er-emergencyroom.aspx",
       "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx",
       "https://hospitals.clalit.co.il/kaplan/he/med_units/eyes/Pages/default.aspx",
@@ -207,8 +208,7 @@
       "https://hospitals.clalit.co.il/kaplan/he/med_units/internal_c/Pages/internal_c_unit.aspx",
       "https://hospitals.clalit.co.il/kaplan/he/med_units/internal_d/Pages/internal_d_unit.aspx",
       "https://hospitals.clalit.co.il/kaplan/he/med_units/x_ray/Pages/default.aspx",
-      "https://hospitals.clalit.co.il/kaplan/he/med_units/women_maternity/Pages/lobby.aspx",
-      "https://hospitals.clalit.co.il/kaplan/he/med_units/surgery/Pages/breastsurgery.aspx"
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/women_maternity/Pages/lobby.aspx"
     ],
     "currentReadiness": "safeForPilot",
     "recommendedNextAction": "runPilot",
@@ -216,7 +216,7 @@
     "wave": 2,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 22,
-    "pendingUrlCount": 22
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "ביה\"ח בילינסון מרכז רפואי רבין",
@@ -258,7 +258,7 @@
     "wave": 2,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 4,
-    "pendingUrlCount": 4
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "ביה\"ח השרון מרכז רפואי רבין",
@@ -284,7 +284,7 @@
     "wave": 2,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 7,
-    "pendingUrlCount": 7
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז שניידר לילדים",

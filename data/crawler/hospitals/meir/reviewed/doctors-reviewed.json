@@ -21,62 +21,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "מחלות עיניים"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר אמיר עבדל קאדר",
@@ -100,62 +60,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "מחלות עיניים"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר גלעד אלון",
@@ -179,62 +99,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "מחלות עיניים"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר נמרוד דר",
@@ -258,62 +138,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "מחלות עיניים"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר רועי אלון",
@@ -337,62 +177,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "מחלות עיניים"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר גיא טופז",
@@ -471,7 +271,38 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר גלוריה רשיד",
@@ -550,7 +381,38 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר יוסי נגה",
@@ -629,7 +491,38 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "פרופ' יעקב חן",
@@ -708,7 +601,38 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "ד\"ר נרימאן כבהא",
@@ -787,7 +711,38 @@
       "רפואה גרעינית"
     ],
     "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/intensive/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/a.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/b.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/c.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/d.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/int/Pages/e.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orto/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/surgery/Pages/%D7%94%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/eyes/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/heart/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/plasticsugery/Pages/plas.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/childs/Pages/surg.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/malrad/Pages/clinic.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/vessel/Pages/vesselsurgery.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/aog/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/orology/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/Geriatric/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/neuro/Pages/hosp.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/xray/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/onco/Pages/default.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/pat/Pages/dept.aspx",
+        "https://hospitals.clalit.co.il/meir/he/med/nuc/Pages/clinic.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/about/Pages/team.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Meir Medical Center; candidates=24"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
   },
   {
     "fullName": "פרופ' אמיר וייזר",
@@ -811,62 +766,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "יילוד וגינקולוגיה"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר אריה ברקוביץ",
@@ -890,62 +805,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "יילוד וגינקולוגיה"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר ירדנה משיח",
@@ -969,62 +844,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "יילוד וגינקולוגיה"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר נתי מילר",
@@ -1048,62 +883,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "יילוד וגינקולוגיה"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר עופר גונן",
@@ -1127,62 +922,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "יילוד וגינקולוגיה"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר עינת חייקין",
@@ -1206,62 +961,22 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "יילוד וגינקולוגיה"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   },
   {
     "fullName": "ד\"ר קרן עמיחי",
@@ -1285,61 +1000,21 @@
     "reviewedStatus": "approved",
     "matchedMasterHospitalName": "מרכז רפואי מאיר",
     "matchedMasterDeptRowIds": [
-      "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
-      "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
-      "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
-      "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
-      "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד",
-      "master-dept-0233-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ה",
-      "master-dept-0234-מרכז-רפואי-מאיר-אורתופדיה",
-      "master-dept-0235-מרכז-רפואי-מאיר-רפואת-ילדים",
-      "master-dept-0236-מרכז-רפואי-מאיר-כירורגיה-כללית",
-      "master-dept-0237-מרכז-רפואי-מאיר-מחלות-עיניים",
-      "master-dept-0238-מרכז-רפואי-מאיר-קרדיולוגיה",
-      "master-dept-0239-מרכז-רפואי-מאיר-כירורגיה-פלסטית-ואסתטית",
-      "master-dept-0240-מרכז-רפואי-מאיר-כירורגית-ילדים",
-      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה",
-      "master-dept-0242-מרכז-רפואי-מאיר-רפואה-דחופה",
-      "master-dept-0243-מרכז-רפואי-מאיר-כירורגית-כלי-דם",
-      "master-dept-0244-מרכז-רפואי-מאיר-אף-אוזן-גרון",
-      "master-dept-0245-מרכז-רפואי-מאיר-כירורגיה-אורולוגית",
-      "master-dept-0246-מרכז-רפואי-מאיר-גריאטריה",
-      "master-dept-0247-מרכז-רפואי-מאיר-נוירולוגיה",
-      "master-dept-0248-מרכז-רפואי-מאיר-רדיולוגיה-דימות",
-      "master-dept-0249-מרכז-רפואי-מאיר-אונקולוגיה",
-      "master-dept-0250-מרכז-רפואי-מאיר-פתולוגיה",
-      "master-dept-0251-מרכז-רפואי-מאיר-רפואה-גרעינית"
+      "master-dept-0241-מרכז-רפואי-מאיר-יילוד-וגינקולוגיה"
     ],
-    "matchedMasterDepartmentNames": [
-      "בית חולים- מחלקה א",
-      "בית חולים-מחלקה ב",
-      "בית חולים-מחלקה ג",
-      "בית חולים-מחלקה ד",
-      "בית חולים-מחלקה ה"
-    ],
+    "matchedMasterDepartmentNames": [],
     "matchedMasterSpecialties": [
-      "הרדמה",
-      "פנימית",
-      "אורתופדיה",
-      "רפואת ילדים",
-      "כירורגיה כללית",
-      "מחלות עיניים",
-      "קרדיולוגיה",
-      "כירורגיה פלסטית ואסתטית",
-      "כירורגית ילדים",
-      "יילוד וגינקולוגיה",
-      "רפואה דחופה",
-      "כירורגית כלי דם",
-      "אף אוזן גרון",
-      "כירורגיה אורולוגית",
-      "גריאטריה",
-      "נוירולוגיה",
-      "רדיולוגיה (דימות)",
-      "אונקולוגיה",
-      "פתולוגיה",
-      "רפואה גרעינית"
+      "יילוד וגינקולוגיה"
     ],
-    "matchConfidence": "reviewNeeded",
-    "matchEvidence": "hospital=Meir Medical Center; candidates=24"
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/meir/he/med/gyne/Pages/default.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/meir/he/med/gyne/ivf/Pages/teamivf.aspx",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"
+    },
+    "ambiguityReason": null
   }
 ]

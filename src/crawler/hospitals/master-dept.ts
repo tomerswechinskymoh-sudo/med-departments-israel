@@ -5,7 +5,9 @@ import { getHospitalBaseline, hospitalBaselines } from "./baseline-registry";
 import type {
   CandidatePage,
   HospitalBaseline,
+  HospitalPilotEvaluation,
   MasterDeptMatchConfidence,
+  MasterDeptMatchEvidence,
   MasterDeptSourceUrlPageType,
   MasterDeptSourceUrlStatus,
   MasterDeptTarget,
@@ -46,6 +48,10 @@ export type NationalCoverageReport = {
   generatedAt: string;
   totalHospitals: number;
   totalMasterDeptRows: number;
+  rowsWithUrls: number;
+  sourceUrlStatusCounts: Record<string, number>;
+  sourceUrlPageTypeCounts: Record<string, number>;
+  nearbyDoctorOrTeamUrlRows: number;
   hospitalsByProviderGuess: Record<string, number>;
   hospitalsByReadiness: Record<string, number>;
   hospitalsSafeForFullBatch: string[];
@@ -53,6 +59,15 @@ export type NationalCoverageReport = {
   hospitalsNeedingAdapter: string[];
   hospitalsDeferred: Array<{ hospitalName: string; reason: string | null }>;
   shebaStatus: string;
+  wave1Counts: {
+    masterDeptHospitalGroups: number;
+    attemptedHospitals: number;
+    successfulHospitals: number;
+    deferredHospitals: number;
+    blockedHospitals: number;
+  };
+  wave1MappingBefore: Record<string, MappingStats>;
+  wave1MappingAfter: Record<string, MappingStats>;
   wave1Results: Array<{
     hospital: string;
     readiness: string;
@@ -60,6 +75,41 @@ export type NationalCoverageReport = {
     productionReadyCount: number | null;
     mappedRecords: number | null;
   }>;
+  wave2SelectedHospitals: Wave2PlanItem[];
+  wave2Results: Array<Wave2Result>;
+  sorokaStatus: string;
+};
+
+export type MappingStats = {
+  totalReviewed: number;
+  sourceUrlMatch: number;
+  hospitalOnly: number;
+  reviewNeeded: number;
+  ambiguousMapping: number;
+  unmapped: number;
+};
+
+export type Wave2PlanItem = {
+  hospitalSlug: string;
+  hospitalNames: string[];
+  providerGuess: string;
+  masterDeptRows: number;
+  rowsWithUrls: number;
+  liveUrlRows: number;
+  nearbyDoctorOrTeamUrlRows: number;
+  adapterParserFamily: string;
+  whySelected: string;
+  plannedMode: "pilot only" | "controlled full if already safe";
+};
+
+export type Wave2Result = {
+  hospital: string;
+  readiness: string;
+  reviewedRecords: number;
+  productionReadyCount: number;
+  mappedRecords: number;
+  mappingStats: MappingStats;
+  mainBlocker: string | null;
 };
 
 function parseCsv(text: string): string[][] {
@@ -394,28 +444,77 @@ export function matchDoctorToMasterDept(doctor: { hospital: string; sourceUrl: s
   const source = normalizeSourceUrl(doctor.sourceUrl);
   const doctorProvider = providerGuess(doctor.hospital, doctor.sourceUrl, "");
   const hospitalTargets = targets.filter((target) => targetMatchesDoctorHospital(target, hospital, doctor.hospital, doctorProvider));
-  const directSourceMatches = targets.filter((target) => target.sourceUrlNormalized && source && target.sourceUrlNormalized === source);
-  if (directSourceMatches.length > 0) return matchResult(directSourceMatches, "sourceUrlMatch", `Master_Dept URL=${directSourceMatches[0].sourceUrlNormalized}; doctor source=${source}`);
-  const childSourceMatches = targets.filter((target) => source && target.sourceUrlNormalized && target.nearbyDoctorOrTeamUrls.includes(source) && sameDepartmentPath(target.sourceUrlNormalized, source));
+  const directSourceMatches = hospitalTargets.filter((target) => target.sourceUrlNormalized && source && target.sourceUrlNormalized === source);
+  if (directSourceMatches.length === 1) return matchResult(directSourceMatches, "sourceUrlMatch", evidenceFor("exactSourceUrl", directSourceMatches, source, "doctor source equals Master_Dept source URL"));
+  if (directSourceMatches.length > 1) return matchResult(directSourceMatches, "reviewNeeded", evidenceFor("exactSourceUrl", directSourceMatches, source, "exact source URL matches multiple Master_Dept rows"), "multipleMasterDeptSourceRows");
+
+  const childSourceMatches = hospitalTargets.filter((target) =>
+    source &&
+    target.sourceUrlNormalized &&
+    target.nearbyDoctorOrTeamUrls.includes(source) &&
+    sameDepartmentPath(target.sourceUrlNormalized, source) &&
+    isRowSpecificNearbyRelationship(target, source)
+  );
   if (childSourceMatches.length === 1) {
-    return matchResult(childSourceMatches, "sourceUrlMatch", `Master_Dept URL=${childSourceMatches[0].sourceUrlNormalized}; discovered child URL=${source}`);
+    return matchResult(childSourceMatches, "sourceUrlMatch", evidenceFor(relationshipForSource(source), childSourceMatches, source, "doctor source URL was discovered from this Master_Dept source URL"));
   }
   if (childSourceMatches.length > 1) {
-    return matchResult(childSourceMatches, "reviewNeeded", `ambiguous Master_Dept child URL=${source}; candidates=${childSourceMatches.length}`);
+    return matchResult(childSourceMatches, "reviewNeeded", evidenceFor(relationshipForSource(source), childSourceMatches, source, `child URL matches ${childSourceMatches.length} Master_Dept rows`), "multipleMasterDeptSourceRows");
+  }
+
+  const scopedStaffMatches = hospitalTargets.filter((target) => source && target.sourceUrlNormalized && isStaffOrDoctorUrl(source) && sameDepartmentPath(target.sourceUrlNormalized, source) && isRowSpecificNearbyRelationship(target, source));
+  if (scopedStaffMatches.length === 1) {
+    return matchResult(scopedStaffMatches, "sourceUrlMatch", evidenceFor(relationshipForSource(source), scopedStaffMatches, source, "doctor source URL is a same-scope staff/team/doctor page under one Master_Dept source URL"));
+  }
+  if (scopedStaffMatches.length > 1) {
+    return matchResult(scopedStaffMatches, "reviewNeeded", evidenceFor(relationshipForSource(source), scopedStaffMatches, source, `same-scope staff/team URL matches ${scopedStaffMatches.length} Master_Dept rows`), "multipleMasterDeptSourceRows");
   }
 
   const unit = normalizeName(doctor.unit ?? "");
   if (unit) {
     const exact = hospitalTargets.filter((target) => target.departmentNameNormalized && target.departmentNameNormalized === unit);
-    if (exact.length > 0) return matchResult(exact, "normalizedExact", `unit=${doctor.unit}`);
+    if (exact.length > 0) return matchResult(exact, "normalizedExact", evidenceFor("normalizedUnit", exact, source, `unit=${doctor.unit}`));
     const specialty = hospitalTargets.filter((target) => target.specialtyNormalized && unit.includes(target.specialtyNormalized));
-    if (specialty.length === 1) return matchResult(specialty, "exact", `unit specialty match=${doctor.unit}`);
-    if (specialty.length > 1) return matchResult(specialty, "reviewNeeded", `ambiguous unit specialty match=${doctor.unit}`);
+    if (specialty.length === 1) return matchResult(specialty, "exact", evidenceFor("normalizedSpecialty", specialty, source, `unit specialty match=${doctor.unit}`));
+    if (specialty.length > 1) return matchResult(specialty, "reviewNeeded", evidenceFor("normalizedSpecialty", specialty, source, `ambiguous unit specialty match=${doctor.unit}`), "multipleUnitSpecialtyMatches");
   }
 
-  if (hospitalTargets.length === 1) return matchResult(hospitalTargets, "hospitalOnly", `hospital=${doctor.hospital}`);
-  if (hospitalTargets.length > 1) return matchResult(hospitalTargets, "reviewNeeded", `hospital=${doctor.hospital}; candidates=${hospitalTargets.length}`);
-  return matchResult([], "reviewNeeded", `no Master_Dept match for hospital=${doctor.hospital}`);
+  if (hospitalTargets.length === 1) return matchResult(hospitalTargets, "hospitalOnly", evidenceFor("hospitalOnly", hospitalTargets, source, `hospital=${doctor.hospital}`));
+  if (hospitalTargets.length > 1) return matchResult(hospitalTargets, "reviewNeeded", evidenceFor("hospitalOnly", hospitalTargets, source, `hospital=${doctor.hospital}; candidates=${hospitalTargets.length}`), "multipleMasterDeptHospitalRows");
+  return matchResult([], "reviewNeeded", evidenceFor("none", [], source, `no Master_Dept match for hospital=${doctor.hospital}`), "noMasterDeptHospitalMatch");
+}
+
+function isStaffOrDoctorUrl(sourceUrl: string | null) {
+  return Boolean(sourceUrl && /(doctors?|physicians?|team|staff|specialists?|רופאים|רופא|צוות|סגל|מומחים)/i.test(decodeURIComponent(sourceUrl)));
+}
+
+function isGenericDoctorIndexUrl(sourceUrl: string | null) {
+  if (!sourceUrl) return false;
+  const decoded = decodeURIComponent(sourceUrl);
+  return /(doctorssearch|doctor-search|doctors-lobby|our-specialists|Our-doctors-and-experts\/Pages\/default\.aspx|\/team\.aspx$|רופאים-מומחים)/i.test(decoded);
+}
+
+function isRowSpecificNearbyRelationship(target: MasterDeptTarget, sourceUrl: string) {
+  // A department page -> same-scope team/doctors page is row-specific enough.
+  // A single doctor-profile URL -> global doctor index is not row-specific and must stay reviewNeeded.
+  if (target.sourceUrlPageType === "doctorsPage" && isGenericDoctorIndexUrl(sourceUrl)) return false;
+  return true;
+}
+
+function relationshipForSource(sourceUrl: string | null): MasterDeptMatchEvidence["relationship"] {
+  if (!sourceUrl) return "none";
+  const decoded = decodeURIComponent(sourceUrl);
+  if (/(doctors?|physicians?|specialists?|רופאים|רופא|מומחים)/i.test(decoded)) return "discoveredNearbyDoctorUrl";
+  return "discoveredNearbyTeamUrl";
+}
+
+function evidenceFor(relationship: MasterDeptMatchEvidence["relationship"], targets: MasterDeptTarget[], sourceUrl: string | null, reason: string): MasterDeptMatchEvidence {
+  return {
+    masterDeptSourceUrls: Array.from(new Set(targets.map((target) => target.sourceUrlNormalized).filter(Boolean) as string[])),
+    extractedFromUrl: sourceUrl,
+    relationship,
+    reason
+  };
 }
 
 function sameDepartmentPath(parentUrl: string, childUrl: string) {
@@ -443,17 +542,20 @@ function targetMatchesDoctorHospital(target: MasterDeptTarget, normalizedDoctorH
   if (/\brabin\b/i.test(rawDoctorHospital) && /רבין|בילינסון|השרון/.test(target.hospitalNameRaw)) return true;
   if (/\bsoroka\b/i.test(rawDoctorHospital) && /סורוקה/.test(target.hospitalNameRaw)) return true;
   if (/\bcarmel\b/i.test(rawDoctorHospital) && /כרמל/.test(target.hospitalNameRaw)) return true;
+  if (/\bemek\b/i.test(rawDoctorHospital) && /העמק/.test(target.hospitalNameRaw)) return true;
+  if (/\bkaplan\b/i.test(rawDoctorHospital) && /קפלן/.test(target.hospitalNameRaw)) return true;
   return false;
 }
 
-function matchResult(targets: MasterDeptTarget[], confidence: MasterDeptMatchConfidence, evidence: string) {
+function matchResult(targets: MasterDeptTarget[], confidence: MasterDeptMatchConfidence, evidence: MasterDeptMatchEvidence, ambiguityReason: string | null = null) {
   return {
     matchedMasterHospitalName: targets[0]?.hospitalNameRaw ?? null,
     matchedMasterDeptRowIds: targets.map((target) => target.masterDeptRowId),
     matchedMasterDepartmentNames: Array.from(new Set(targets.map((target) => target.departmentNameRaw).filter(Boolean))),
     matchedMasterSpecialties: Array.from(new Set(targets.map((target) => target.specialtyRaw).filter(Boolean))),
     matchConfidence: confidence,
-    matchEvidence: evidence
+    matchEvidence: evidence,
+    ambiguityReason
   };
 }
 
@@ -466,11 +568,43 @@ export async function applyMasterDeptMappingToReviewed(hospitalSlug: string, tar
   return {
     hospitalSlug,
     reviewedRecords: mapped.length,
-    mappedRecords: mapped.filter((doctor) => Array.isArray(doctor.matchedMasterDeptRowIds) && doctor.matchedMasterDeptRowIds.length > 0).length
+    mappedRecords: mapped.filter((doctor) => Array.isArray(doctor.matchedMasterDeptRowIds) && doctor.matchedMasterDeptRowIds.length > 0).length,
+    mappingStats: mappingStatsFromRecords(mapped)
   };
 }
 
-export async function writeNationalPlanOutputs(targets: MasterDeptTarget[], plan: NationalHospitalPlan[], wave1Results: NationalCoverageReport["wave1Results"] = []) {
+export async function readMappingStats(hospitalSlug: string): Promise<MappingStats> {
+  try {
+    const filePath = path.join(NATIONAL_OUTPUT_DIR, hospitalSlug, "reviewed", "doctors-reviewed.json");
+    const doctors = JSON.parse(await fs.readFile(filePath, "utf8")) as Array<Record<string, unknown>>;
+    return mappingStatsFromRecords(doctors);
+  } catch {
+    return mappingStatsFromRecords([]);
+  }
+}
+
+function mappingStatsFromRecords(records: Array<Record<string, unknown>>): MappingStats {
+  return {
+    totalReviewed: records.length,
+    sourceUrlMatch: records.filter((record) => record.matchConfidence === "sourceUrlMatch").length,
+    hospitalOnly: records.filter((record) => record.matchConfidence === "hospitalOnly").length,
+    reviewNeeded: records.filter((record) => record.matchConfidence === "reviewNeeded").length,
+    ambiguousMapping: records.filter((record) => Boolean(record.ambiguityReason)).length,
+    unmapped: records.filter((record) => !Array.isArray(record.matchedMasterDeptRowIds) || record.matchedMasterDeptRowIds.length === 0).length
+  };
+}
+
+export async function writeNationalPlanOutputs(
+  targets: MasterDeptTarget[],
+  plan: NationalHospitalPlan[],
+  options: {
+    wave1Results?: NationalCoverageReport["wave1Results"];
+    wave1MappingBefore?: Record<string, MappingStats>;
+    wave1MappingAfter?: Record<string, MappingStats>;
+    wave2SelectedHospitals?: Wave2PlanItem[];
+    wave2Results?: Wave2Result[];
+  } = {}
+) {
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "master-dept-targets.json"), targets);
   await writeCsv(path.join(NATIONAL_OUTPUT_DIR, "master-dept-targets.csv"), targets.map((target) => ({
     masterDeptRowId: target.masterDeptRowId,
@@ -496,7 +630,16 @@ export async function writeNationalPlanOutputs(targets: MasterDeptTarget[], plan
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-crawl-plan.json"), plan);
   await writeCsv(path.join(NATIONAL_OUTPUT_DIR, "national-crawl-plan.csv"), plan.map((item) => ({ ...item, knownStartingUrls: item.knownStartingUrls.join(" | ") })));
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-waves.json"), buildNationalWaves(plan));
-  const report = buildCoverageReport(targets, plan, wave1Results);
+  const wave2SelectedHospitals = options.wave2SelectedHospitals ?? [];
+  await writeJson(path.join(NATIONAL_OUTPUT_DIR, "wave2-plan.json"), wave2SelectedHospitals);
+  await writeCsv(path.join(NATIONAL_OUTPUT_DIR, "wave2-plan.csv"), wave2SelectedHospitals.map((item) => ({ ...item, hospitalNames: item.hospitalNames.join(" | ") })));
+  const report = buildCoverageReport(targets, plan, {
+    wave1Results: options.wave1Results ?? [],
+    wave1MappingBefore: options.wave1MappingBefore ?? {},
+    wave1MappingAfter: options.wave1MappingAfter ?? {},
+    wave2SelectedHospitals,
+    wave2Results: options.wave2Results ?? []
+  });
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-coverage-report.json"), report);
   await fs.writeFile(path.join(NATIONAL_OUTPUT_DIR, "national-coverage-report.md"), renderCoverageReport(report), "utf8");
   return report;
@@ -509,11 +652,27 @@ function countBy<T extends string>(items: T[]) {
   }, {});
 }
 
-function buildCoverageReport(targets: MasterDeptTarget[], plan: NationalHospitalPlan[], wave1Results: NationalCoverageReport["wave1Results"]): NationalCoverageReport {
+function buildCoverageReport(
+  targets: MasterDeptTarget[],
+  plan: NationalHospitalPlan[],
+  options: {
+    wave1Results: NationalCoverageReport["wave1Results"];
+    wave1MappingBefore: Record<string, MappingStats>;
+    wave1MappingAfter: Record<string, MappingStats>;
+    wave2SelectedHospitals: Wave2PlanItem[];
+    wave2Results: Wave2Result[];
+  }
+): NationalCoverageReport {
+  const wave1Plans = plan.filter((item) => item.wave === 1);
+  const wave1Attempted = new Set(options.wave1Results.map((item) => item.hospital));
   return {
     generatedAt: new Date().toISOString(),
     totalHospitals: plan.length,
     totalMasterDeptRows: targets.length,
+    rowsWithUrls: targets.filter((target) => target.sourceUrlNormalized).length,
+    sourceUrlStatusCounts: countBy(targets.map((target) => target.sourceUrlStatus)),
+    sourceUrlPageTypeCounts: countBy(targets.map((target) => target.sourceUrlPageType)),
+    nearbyDoctorOrTeamUrlRows: targets.filter((target) => target.nearbyDoctorOrTeamUrls.length > 0).length,
     hospitalsByProviderGuess: countBy(plan.map((item) => item.providerGuess)),
     hospitalsByReadiness: countBy(plan.map((item) => item.currentReadiness)),
     hospitalsSafeForFullBatch: plan.filter((item) => item.currentReadiness === "safeForFullBatch").map((item) => item.hospitalName),
@@ -521,7 +680,19 @@ function buildCoverageReport(targets: MasterDeptTarget[], plan: NationalHospital
     hospitalsNeedingAdapter: plan.filter((item) => item.currentReadiness === "needsAdapter").map((item) => item.hospitalName),
     hospitalsDeferred: plan.filter((item) => item.currentReadiness === "deferred").map((item) => ({ hospitalName: item.hospitalName, reason: item.deferReason })),
     shebaStatus: plan.find((item) => /שיבא|תל השומר|sheba/i.test(item.hospitalName))?.deferReason ?? "not present",
-    wave1Results
+    wave1Counts: {
+      masterDeptHospitalGroups: wave1Plans.length,
+      attemptedHospitals: wave1Attempted.size,
+      successfulHospitals: options.wave1Results.filter((item) => item.reviewedRecords && item.reviewedRecords > 0 && item.readiness !== "blocked").length,
+      deferredHospitals: wave1Plans.filter((item) => item.currentReadiness === "deferred").length,
+      blockedHospitals: options.wave1Results.filter((item) => item.readiness === "blocked").length
+    },
+    wave1MappingBefore: options.wave1MappingBefore,
+    wave1MappingAfter: options.wave1MappingAfter,
+    wave1Results: options.wave1Results,
+    wave2SelectedHospitals: options.wave2SelectedHospitals,
+    wave2Results: options.wave2Results,
+    sorokaStatus: "Improved pilot available; full Soroka batch is not marked safe."
   };
 }
 
@@ -532,7 +703,12 @@ function renderCoverageReport(report: NationalCoverageReport) {
     `- generatedAt: ${report.generatedAt}`,
     `- total hospitals: ${report.totalHospitals}`,
     `- total Master_Dept rows: ${report.totalMasterDeptRows}`,
+    `- rows with URLs: ${report.rowsWithUrls}`,
+    `- nearby doctor/team URL rows: ${report.nearbyDoctorOrTeamUrlRows}`,
     `- Sheba: ${report.shebaStatus}`,
+    "",
+    "## URL Status",
+    ...Object.entries(report.sourceUrlStatusCounts).map(([key, value]) => `- ${key}: ${value}`),
     "",
     "## Provider Guess",
     ...Object.entries(report.hospitalsByProviderGuess).map(([key, value]) => `- ${key}: ${value}`),
@@ -540,9 +716,100 @@ function renderCoverageReport(report: NationalCoverageReport) {
     "## Readiness",
     ...Object.entries(report.hospitalsByReadiness).map(([key, value]) => `- ${key}: ${value}`),
     "",
+    "## Wave 1 Counts",
+    `- Master_Dept hospital groups: ${report.wave1Counts.masterDeptHospitalGroups}`,
+    `- attempted hospitals: ${report.wave1Counts.attemptedHospitals}`,
+    `- successful hospitals: ${report.wave1Counts.successfulHospitals}`,
+    `- deferred hospitals: ${report.wave1Counts.deferredHospitals}`,
+    `- blocked hospitals: ${report.wave1Counts.blockedHospitals}`,
+    "",
     "## Wave 1 Results",
-    ...report.wave1Results.map((item) => `- ${item.hospital}: readiness=${item.readiness}; reviewed=${item.reviewedRecords ?? "n/a"}; productionReady=${item.productionReadyCount ?? "n/a"}; mapped=${item.mappedRecords ?? "n/a"}`)
+    ...report.wave1Results.map((item) => `- ${item.hospital}: readiness=${item.readiness}; reviewed=${item.reviewedRecords ?? "n/a"}; productionReady=${item.productionReadyCount ?? "n/a"}; mapped=${item.mappedRecords ?? "n/a"}`),
+    "",
+    "## Wave 1 Mapping",
+    ...Object.keys(report.wave1MappingAfter).map((hospital) => {
+      const before = report.wave1MappingBefore[hospital];
+      const after = report.wave1MappingAfter[hospital];
+      return `- ${hospital}: sourceUrlMatch ${before?.sourceUrlMatch ?? 0} -> ${after?.sourceUrlMatch ?? 0}; reviewNeeded ${before?.reviewNeeded ?? 0} -> ${after?.reviewNeeded ?? 0}; ambiguous ${before?.ambiguousMapping ?? 0} -> ${after?.ambiguousMapping ?? 0}; unmapped ${before?.unmapped ?? 0} -> ${after?.unmapped ?? 0}`;
+    }),
+    "",
+    "## Wave 2 Selected",
+    ...report.wave2SelectedHospitals.map((item) => `- ${item.hospitalSlug}: ${item.hospitalNames.join(" / ")}; rows=${item.masterDeptRows}; URLs=${item.rowsWithUrls}; nearby=${item.nearbyDoctorOrTeamUrlRows}; mode=${item.plannedMode}; reason=${item.whySelected}`),
+    "",
+    "## Wave 2 Results",
+    ...report.wave2Results.map((item) => `- ${item.hospital}: readiness=${item.readiness}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; sourceUrlMatch=${item.mappingStats.sourceUrlMatch}; reviewNeeded=${item.mappingStats.reviewNeeded}; blocker=${item.mainBlocker ?? "none"}`),
+    "",
+    "## Soroka",
+    `- ${report.sorokaStatus}`
   ].join("\n");
+}
+
+export function buildWave2Plan(plan: NationalHospitalPlan[], targets: MasterDeptTarget[], limit = 5): Wave2PlanItem[] {
+  const rowsByHospital = new Map<string, MasterDeptTarget[]>();
+  for (const target of targets) {
+    const key = target.hospitalNameNormalized || target.hospitalNameRaw;
+    rowsByHospital.set(key, [...(rowsByHospital.get(key) ?? []), target]);
+  }
+
+  const bySlug = new Map<string, { plans: NationalHospitalPlan[]; rows: MasterDeptTarget[]; baseline: HospitalBaseline | null }>();
+  for (const item of plan) {
+    if (item.wave !== 2) continue;
+    if (/שיבא|תל השומר|sheba/i.test(item.hospitalName)) continue;
+    if (/סורוקה|soroka/i.test(item.hospitalName)) continue;
+    const baseline = getHospitalBaselineSafe(item.knownAdapter) ?? baselineForTarget(rowsByHospital.get(item.normalizedHospitalName)?.[0] ?? ({} as MasterDeptTarget));
+    const slug = baseline?.hospitalSlug ?? item.normalizedHospitalName.replace(/\s+/g, "-");
+    const rows = rowsByHospital.get(item.normalizedHospitalName) ?? [];
+    const existing = bySlug.get(slug);
+    bySlug.set(slug, {
+      plans: [...(existing?.plans ?? []), item],
+      rows: [...(existing?.rows ?? []), ...rows],
+      baseline: existing?.baseline ?? baseline
+    });
+  }
+
+  return Array.from(bySlug.entries())
+    .map(([hospitalSlug, value]) => {
+      const rowsWithUrls = value.rows.filter((row) => row.sourceUrlNormalized).length;
+      const liveUrlRows = value.rows.filter((row) => row.sourceUrlStatus === "live" || row.sourceUrlStatus === "redirected").length;
+      const nearbyDoctorOrTeamUrlRows = value.rows.filter((row) => row.nearbyDoctorOrTeamUrls.length > 0).length;
+      const directStaffRows = value.rows.filter((row) => row.sourceUrlPageType === "teamPage" || row.sourceUrlPageType === "doctorsPage").length;
+      const why = [
+        value.baseline ? `known adapter ${value.baseline.hospitalSlug}` : "no baseline adapter yet",
+        rowsWithUrls ? `${rowsWithUrls} Master_Dept URLs` : "no Master_Dept URLs",
+        liveUrlRows ? `${liveUrlRows} live inspected URLs` : "URLs pending inspection",
+        nearbyDoctorOrTeamUrlRows ? `${nearbyDoctorOrTeamUrlRows} nearby doctor/team URLs` : null,
+        directStaffRows ? `${directStaffRows} direct staff/doctors URLs` : null
+      ].filter(Boolean).join("; ");
+      return {
+        hospitalSlug,
+        hospitalNames: Array.from(new Set(value.plans.map((item) => item.hospitalName))),
+        providerGuess: majority(value.plans.map((item) => item.providerGuess)),
+        masterDeptRows: value.rows.length,
+        rowsWithUrls,
+        liveUrlRows,
+        nearbyDoctorOrTeamUrlRows,
+        adapterParserFamily: value.baseline?.parserFamilies.join("+") ?? "adapter-needed",
+        whySelected: why,
+        plannedMode: "pilot only" as const
+      };
+    })
+    .filter((item) => item.adapterParserFamily !== "adapter-needed")
+    .filter((item) => item.rowsWithUrls > 0 || item.hospitalSlug === "rabin" || item.hospitalSlug === "carmel")
+    .sort((left, right) => {
+      const leftKnown = left.adapterParserFamily === "adapter-needed" ? 0 : 1;
+      const rightKnown = right.adapterParserFamily === "adapter-needed" ? 0 : 1;
+      return rightKnown - leftKnown || right.nearbyDoctorOrTeamUrlRows - left.nearbyDoctorOrTeamUrlRows || right.liveUrlRows - left.liveUrlRows || right.rowsWithUrls - left.rowsWithUrls;
+    })
+    .slice(0, limit);
+}
+
+function getHospitalBaselineSafe(slug: string | null) {
+  if (!slug) return null;
+  try {
+    return getHospitalBaseline(slug);
+  } catch {
+    return null;
+  }
 }
 
 export async function buildMasterDeptNationalPlan(options: { inspectWave1Urls?: boolean } = {}) {

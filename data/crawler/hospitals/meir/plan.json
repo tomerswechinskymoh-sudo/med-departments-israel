@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "meir",
   "hospitalName": "Meir Medical Center",
-  "generatedAt": "2026-06-20T14:43:53.726Z",
+  "generatedAt": "2026-06-20T15:03:09.191Z",
   "provider": "clalit",
   "websiteFamily": "clalit",
   "knownUrls": {
@@ -36,7 +36,7 @@
         "סרטונים נבחרים",
         "חדשות מרכז רפואי מאיר"
       ],
-      "htmlLength": 345222,
+      "htmlLength": 345356,
       "visibleTextLength": 22321,
       "error": null
     },
@@ -71,7 +71,7 @@
         "השירות לעבודה סוציאלית",
         "חטיבת הילדים"
       ],
-      "htmlLength": 772457,
+      "htmlLength": 772591,
       "visibleTextLength": 23588,
       "error": null
     },
@@ -89,7 +89,7 @@
         "מידע רפואי אישי – כללית און ליין",
         "הצוות שלנו"
       ],
-      "htmlLength": 292425,
+      "htmlLength": 292560,
       "visibleTextLength": 16702,
       "error": null
     }

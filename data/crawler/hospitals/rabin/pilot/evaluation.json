@@ -1,0 +1,32 @@
+{
+  "hospitalSlug": "rabin",
+  "hospitalName": "Rabin Medical Center",
+  "generatedAt": "2026-06-20T15:13:17.431Z",
+  "urlsUsed": [
+    "https://hospitals.clalit.co.il/rabin/he/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/rabin/he/departments-and-clinics/Pages/default.aspx",
+    "https://hospitals.clalit.co.il/rabin/he/academy-research-training/research-and-development/course-for-foreign-doctors/Pages/doctors_licensing_course_hasharon.aspx",
+    "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/forums_doctors.aspx",
+    "https://hospitals.clalit.co.il/rabin/he/patient-information/Pages/our_doctors.aspx"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "classicDoctorCards",
+  "candidatePagesFound": 3,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 37,
+  "profileUrlCoverage": 1,
+  "profileFetchSuccess": 12,
+  "reviewedRecords": 37,
+  "productionReadyCount": 37,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 10,
+    "partial": 27,
+    "listOnly": 0
+  },
+  "readiness": "safeForFullBatch",
+  "mainBlocker": null
+}

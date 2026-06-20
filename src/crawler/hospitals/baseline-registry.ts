@@ -103,6 +103,40 @@ export const hospitalBaselines: HospitalBaseline[] = [
     ],
     parserFamilies: ["teamPage", "inlineStaff", "unknown"],
     notes: ["Target: Clalit team page generalization from Carmel/Soroka patterns."]
+  },
+  {
+    hospitalSlug: "emek",
+    hospitalName: "Emek Medical Center",
+    hospitalHebrew: "מרכז רפואי העמק",
+    provider: "clalit",
+    websiteFamily: "clalit",
+    homepageUrl: "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx",
+    departmentsIndexUrlCandidates: [
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/Pages/default.aspx"
+    ],
+    doctorIndexUrlCandidates: [],
+    pilotUrlCandidates: [
+      "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+    ],
+    parserFamilies: ["teamPage", "inlineStaff", "classicDoctorCards"],
+    notes: ["Master_Dept Wave2 baseline: Clalit department pages with possible inline/team links."]
+  },
+  {
+    hospitalSlug: "kaplan",
+    hospitalName: "Kaplan Medical Center",
+    hospitalHebrew: "מרכז רפואי קפלן",
+    provider: "clalit",
+    websiteFamily: "clalit",
+    homepageUrl: "https://hospitals.clalit.co.il/kaplan/he/Pages/default.aspx",
+    departmentsIndexUrlCandidates: [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/Pages/default.aspx"
+    ],
+    doctorIndexUrlCandidates: [],
+    pilotUrlCandidates: [
+      "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx"
+    ],
+    parserFamilies: ["teamPage", "inlineStaff", "classicDoctorCards"],
+    notes: ["Master_Dept Wave2 baseline: Clalit department pages with possible inline/team links."]
   }
 ];
 
