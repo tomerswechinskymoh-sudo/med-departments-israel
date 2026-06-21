@@ -32,11 +32,18 @@
           "pendingUrlCount": 6,
           "canonicalStatsSourceHospitalSlug": "hadassah",
           "canonicalStats": {
+            "rawReviewedRows": 49,
             "canonicalDoctors": 49,
             "doctorDepartmentLinks": 181,
             "productionReadyCanonicalDoctors": 49,
             "sourceUrlMatchLinks": 0,
             "reviewNeededLinks": 181,
+            "expectedDistinctDoctorDepartmentLinks": 181,
+            "rawRowsDroppedAsExactDuplicates": 0,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 33,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
             "duplicateProfileUrlGroupsBefore": 0,
             "duplicateProfileUrlGroupsAfter": 0
           }
@@ -72,11 +79,18 @@
           "pendingUrlCount": 24,
           "canonicalStatsSourceHospitalSlug": "meir",
           "canonicalStats": {
+            "rawReviewedRows": 17,
             "canonicalDoctors": 17,
             "doctorDepartmentLinks": 17,
             "productionReadyCanonicalDoctors": 17,
             "sourceUrlMatchLinks": 12,
             "reviewNeededLinks": 5,
+            "expectedDistinctDoctorDepartmentLinks": 17,
+            "rawRowsDroppedAsExactDuplicates": 0,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
             "duplicateProfileUrlGroupsBefore": 0,
             "duplicateProfileUrlGroupsAfter": 0
           }
@@ -102,11 +116,18 @@
           "pendingUrlCount": 0,
           "canonicalStatsSourceHospitalSlug": "ichilov",
           "canonicalStats": {
+            "rawReviewedRows": 72,
             "canonicalDoctors": 72,
             "doctorDepartmentLinks": 72,
             "productionReadyCanonicalDoctors": 72,
             "sourceUrlMatchLinks": 0,
             "reviewNeededLinks": 72,
+            "expectedDistinctDoctorDepartmentLinks": 72,
+            "rawRowsDroppedAsExactDuplicates": 0,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
             "duplicateProfileUrlGroupsBefore": 0,
             "duplicateProfileUrlGroupsAfter": 0
           }
@@ -142,11 +163,18 @@
           "pendingUrlCount": 10,
           "canonicalStatsSourceHospitalSlug": "hadassah",
           "canonicalStats": {
+            "rawReviewedRows": 49,
             "canonicalDoctors": 49,
             "doctorDepartmentLinks": 181,
             "productionReadyCanonicalDoctors": 49,
             "sourceUrlMatchLinks": 0,
             "reviewNeededLinks": 181,
+            "expectedDistinctDoctorDepartmentLinks": 181,
+            "rawRowsDroppedAsExactDuplicates": 0,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 33,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
             "duplicateProfileUrlGroupsBefore": 0,
             "duplicateProfileUrlGroupsAfter": 0
           }
@@ -188,11 +216,18 @@
           "pendingUrlCount": 0,
           "canonicalStatsSourceHospitalSlug": "emek",
           "canonicalStats": {
+            "rawReviewedRows": 13,
             "canonicalDoctors": 11,
             "doctorDepartmentLinks": 11,
             "productionReadyCanonicalDoctors": 4,
             "sourceUrlMatchLinks": 10,
             "reviewNeededLinks": 1,
+            "expectedDistinctDoctorDepartmentLinks": 11,
+            "rawRowsDroppedAsExactDuplicates": 2,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 2,
             "duplicateProfileUrlGroupsBefore": 2,
             "duplicateProfileUrlGroupsAfter": 0
           }
@@ -228,11 +263,18 @@
           "pendingUrlCount": 0,
           "canonicalStatsSourceHospitalSlug": "carmel",
           "canonicalStats": {
+            "rawReviewedRows": 630,
             "canonicalDoctors": 381,
             "doctorDepartmentLinks": 381,
             "productionReadyCanonicalDoctors": 380,
             "sourceUrlMatchLinks": 0,
             "reviewNeededLinks": 381,
+            "expectedDistinctDoctorDepartmentLinks": 381,
+            "rawRowsDroppedAsExactDuplicates": 249,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 52,
             "duplicateProfileUrlGroupsBefore": 54,
             "duplicateProfileUrlGroupsAfter": 0
           }
@@ -291,11 +333,18 @@
           "pendingUrlCount": 0,
           "canonicalStatsSourceHospitalSlug": "kaplan",
           "canonicalStats": {
+            "rawReviewedRows": 17,
             "canonicalDoctors": 17,
             "doctorDepartmentLinks": 17,
             "productionReadyCanonicalDoctors": 6,
             "sourceUrlMatchLinks": 1,
             "reviewNeededLinks": 16,
+            "expectedDistinctDoctorDepartmentLinks": 17,
+            "rawRowsDroppedAsExactDuplicates": 0,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
             "duplicateProfileUrlGroupsBefore": 0,
             "duplicateProfileUrlGroupsAfter": 0
           }
@@ -320,11 +369,18 @@
           "pendingUrlCount": 0,
           "canonicalStatsSourceHospitalSlug": "rabin",
           "canonicalStats": {
+            "rawReviewedRows": 37,
             "canonicalDoctors": 37,
             "doctorDepartmentLinks": 37,
             "productionReadyCanonicalDoctors": 37,
             "sourceUrlMatchLinks": 0,
             "reviewNeededLinks": 37,
+            "expectedDistinctDoctorDepartmentLinks": 37,
+            "rawRowsDroppedAsExactDuplicates": 0,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
             "duplicateProfileUrlGroupsBefore": 0,
             "duplicateProfileUrlGroupsAfter": 0
           }
@@ -353,11 +409,18 @@
           "pendingUrlCount": 0,
           "canonicalStatsSourceHospitalSlug": "rabin",
           "canonicalStats": {
+            "rawReviewedRows": 37,
             "canonicalDoctors": 37,
             "doctorDepartmentLinks": 37,
             "productionReadyCanonicalDoctors": 37,
             "sourceUrlMatchLinks": 0,
             "reviewNeededLinks": 37,
+            "expectedDistinctDoctorDepartmentLinks": 37,
+            "rawRowsDroppedAsExactDuplicates": 0,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
             "duplicateProfileUrlGroupsBefore": 0,
             "duplicateProfileUrlGroupsAfter": 0
           }
@@ -389,11 +452,18 @@
           "pendingUrlCount": 0,
           "canonicalStatsSourceHospitalSlug": "rabin",
           "canonicalStats": {
+            "rawReviewedRows": 37,
             "canonicalDoctors": 37,
             "doctorDepartmentLinks": 37,
             "productionReadyCanonicalDoctors": 37,
             "sourceUrlMatchLinks": 0,
             "reviewNeededLinks": 37,
+            "expectedDistinctDoctorDepartmentLinks": 37,
+            "rawRowsDroppedAsExactDuplicates": 0,
+            "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+            "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+            "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+            "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
             "duplicateProfileUrlGroupsBefore": 0,
             "duplicateProfileUrlGroupsAfter": 0
           }

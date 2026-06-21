@@ -118,13 +118,35 @@ export type Wave2Result = {
 };
 
 export type CanonicalStats = {
+  rawReviewedRows: number;
   canonicalDoctors: number;
   doctorDepartmentLinks: number;
   productionReadyCanonicalDoctors: number;
   sourceUrlMatchLinks: number;
   reviewNeededLinks: number;
+  expectedDistinctDoctorDepartmentLinks: number;
+  rawRowsDroppedAsExactDuplicates: number;
+  canonicalDoctorsWithMoreThanOneSourceUrl: number;
+  canonicalDoctorsWithMoreThanOneMasterDeptCandidate: number;
+  canonicalDoctorsWithMoreThanOneExtractedFromUrl: number;
+  canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink: number;
   duplicateProfileUrlGroupsBefore: number;
   duplicateProfileUrlGroupsAfter: number;
+};
+
+type LinkPreservationDiagnostics = CanonicalStats & {
+  examples: Array<{
+    canonicalDoctorId: string;
+    fullName: string;
+    rawRows: number;
+    doctorDepartmentLinks: number;
+    distinctSourceUrls: number;
+    distinctMasterDeptRowIds: number;
+    distinctExtractedFromUrls: number;
+    sourceUrls: string[];
+    masterDeptRowIds: string[];
+    extractedFromUrls: string[];
+  }>;
 };
 
 function parseCsv(text: string): string[][] {
@@ -631,11 +653,18 @@ export async function readCanonicalStats(hospitalSlug: string): Promise<Canonica
     return summary;
   } catch {
     return {
+      rawReviewedRows: 0,
       canonicalDoctors: 0,
       doctorDepartmentLinks: 0,
       productionReadyCanonicalDoctors: 0,
       sourceUrlMatchLinks: 0,
       reviewNeededLinks: 0,
+      expectedDistinctDoctorDepartmentLinks: 0,
+      rawRowsDroppedAsExactDuplicates: 0,
+      canonicalDoctorsWithMoreThanOneSourceUrl: 0,
+      canonicalDoctorsWithMoreThanOneMasterDeptCandidate: 0,
+      canonicalDoctorsWithMoreThanOneExtractedFromUrl: 0,
+      canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink: 0,
       duplicateProfileUrlGroupsBefore: 0,
       duplicateProfileUrlGroupsAfter: 0
     };
@@ -648,6 +677,7 @@ async function writeCanonicalOutputs(hospitalSlug: string, records: Array<Record
   await writeJson(path.join(outputDir, "canonical-doctors.json"), canonical.canonicalDoctors);
   await writeJson(path.join(outputDir, "doctor-department-links.json"), canonical.doctorDepartmentLinks);
   await writeJson(path.join(outputDir, "summary.json"), canonical.stats);
+  await writeJson(path.join(outputDir, "link-preservation-diagnostics.json"), canonical.diagnostics);
   return canonical;
 }
 
@@ -655,6 +685,14 @@ function canonicalizeDoctors(hospitalSlug: string, records: Array<Record<string,
   const targetsById = new Map(targets.map((target) => [target.masterDeptRowId, target]));
   const byCanonicalKey = new Map<string, CanonicalDoctor>();
   const links: DoctorDepartmentLink[] = [];
+  const rawBuckets = new Map<string, {
+    fullName: string;
+    rawRows: number;
+    sourceUrls: Set<string>;
+    masterDeptRowIds: Set<string>;
+    extractedFromUrls: Set<string>;
+    expectedLinkKeys: Set<string>;
+  }>();
   const beforeDuplicateProfileUrlGroups = duplicateProfileUrlGroups(records);
 
   for (const record of records) {
@@ -680,12 +718,25 @@ function canonicalizeDoctors(hospitalSlug: string, records: Array<Record<string,
       evidence: Array.from(evidence)
     });
 
+    const rawBucket = rawBuckets.get(canonicalDoctorId) ?? {
+      fullName: stringValue(record.fullName),
+      rawRows: 0,
+      sourceUrls: new Set<string>(),
+      masterDeptRowIds: new Set<string>(),
+      extractedFromUrls: new Set<string>(),
+      expectedLinkKeys: new Set<string>()
+    };
+    rawBucket.rawRows += 1;
+    if (stringValue(record.sourceUrl)) rawBucket.sourceUrls.add(stringValue(record.sourceUrl));
+    if (stringValue(record.sourceUrl)) rawBucket.extractedFromUrls.add(stringValue(record.sourceUrl));
+    rawBuckets.set(canonicalDoctorId, rawBucket);
+
     const rowIds = shouldExpandCandidateRows(record) && Array.isArray(record.matchedMasterDeptRowIds) && record.matchedMasterDeptRowIds.length > 0
       ? record.matchedMasterDeptRowIds.map(String)
       : [null];
     for (const rowId of rowIds) {
       const target = rowId ? targetsById.get(rowId) : null;
-      links.push({
+      const link: DoctorDepartmentLink = {
         canonicalDoctorId,
         masterDeptRowId: rowId,
         hospitalName: target?.hospitalNameRaw ?? stringValue(record.hospital),
@@ -696,32 +747,129 @@ function canonicalizeDoctors(hospitalSlug: string, records: Array<Record<string,
         matchConfidence: matchConfidenceValue(record.matchConfidence),
         matchEvidence: (record.matchEvidence as DoctorDepartmentLink["matchEvidence"]) ?? null,
         ambiguityReason: stringValue(record.ambiguityReason) || null
-      });
+      };
+      links.push(link);
+      if (rowId) rawBucket.masterDeptRowIds.add(rowId);
+      rawBucket.expectedLinkKeys.add(linkKey(link));
     }
   }
 
   const canonicalDoctors = Array.from(byCanonicalKey.values()).sort((left, right) => left.normalizedName.localeCompare(right.normalizedName, "he"));
   const doctorDepartmentLinks = dedupeLinks(links).sort((left, right) => left.canonicalDoctorId.localeCompare(right.canonicalDoctorId) || String(left.masterDeptRowId).localeCompare(String(right.masterDeptRowId)));
   const afterDuplicateProfileUrlGroups = duplicateCanonicalProfileUrlGroups(canonicalDoctors);
+  const diagnostics = buildLinkPreservationDiagnostics(records.length, canonicalDoctors, doctorDepartmentLinks, rawBuckets, beforeDuplicateProfileUrlGroups, afterDuplicateProfileUrlGroups);
   const stats: CanonicalStats = {
+    rawReviewedRows: records.length,
     canonicalDoctors: canonicalDoctors.length,
     doctorDepartmentLinks: doctorDepartmentLinks.length,
     productionReadyCanonicalDoctors: canonicalDoctors.filter((doctor) => doctor.productionReady).length,
     sourceUrlMatchLinks: doctorDepartmentLinks.filter((link) => link.matchConfidence === "sourceUrlMatch").length,
     reviewNeededLinks: doctorDepartmentLinks.filter((link) => link.matchConfidence === "reviewNeeded").length,
+    expectedDistinctDoctorDepartmentLinks: diagnostics.expectedDistinctDoctorDepartmentLinks,
+    rawRowsDroppedAsExactDuplicates: diagnostics.rawRowsDroppedAsExactDuplicates,
+    canonicalDoctorsWithMoreThanOneSourceUrl: diagnostics.canonicalDoctorsWithMoreThanOneSourceUrl,
+    canonicalDoctorsWithMoreThanOneMasterDeptCandidate: diagnostics.canonicalDoctorsWithMoreThanOneMasterDeptCandidate,
+    canonicalDoctorsWithMoreThanOneExtractedFromUrl: diagnostics.canonicalDoctorsWithMoreThanOneExtractedFromUrl,
+    canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink: diagnostics.canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink,
     duplicateProfileUrlGroupsBefore: beforeDuplicateProfileUrlGroups,
     duplicateProfileUrlGroupsAfter: afterDuplicateProfileUrlGroups
   };
-  return { canonicalDoctors, doctorDepartmentLinks, stats };
+  return { canonicalDoctors, doctorDepartmentLinks, stats, diagnostics: { ...diagnostics, ...stats } };
 }
 
 function dedupeLinks(links: DoctorDepartmentLink[]) {
   const byKey = new Map<string, DoctorDepartmentLink>();
   for (const link of links) {
-    const key = [link.canonicalDoctorId, link.masterDeptRowId ?? "none", link.extractedFromUrl ?? "none", link.matchConfidence].join("::");
+    const key = linkKey(link);
     if (!byKey.has(key)) byKey.set(key, link);
   }
   return Array.from(byKey.values());
+}
+
+function linkKey(link: DoctorDepartmentLink) {
+  return [
+    link.canonicalDoctorId,
+    link.masterDeptRowId ?? "none",
+    link.extractedFromUrl ?? "none",
+    link.sourceUrl ?? "none",
+    link.departmentName ?? "none",
+    link.specialty ?? "none",
+    link.matchConfidence
+  ].join("::");
+}
+
+function buildLinkPreservationDiagnostics(
+  rawReviewedRows: number,
+  canonicalDoctors: CanonicalDoctor[],
+  doctorDepartmentLinks: DoctorDepartmentLink[],
+  rawBuckets: Map<string, {
+    fullName: string;
+    rawRows: number;
+    sourceUrls: Set<string>;
+    masterDeptRowIds: Set<string>;
+    extractedFromUrls: Set<string>;
+    expectedLinkKeys: Set<string>;
+  }>,
+  duplicateProfileUrlGroupsBefore: number,
+  duplicateProfileUrlGroupsAfter: number
+): LinkPreservationDiagnostics {
+  const linksByDoctor = new Map<string, DoctorDepartmentLink[]>();
+  for (const link of doctorDepartmentLinks) {
+    const links = linksByDoctor.get(link.canonicalDoctorId) ?? [];
+    links.push(link);
+    linksByDoctor.set(link.canonicalDoctorId, links);
+  }
+  let expectedDistinctDoctorDepartmentLinks = 0;
+  let canonicalDoctorsWithMoreThanOneSourceUrl = 0;
+  let canonicalDoctorsWithMoreThanOneMasterDeptCandidate = 0;
+  let canonicalDoctorsWithMoreThanOneExtractedFromUrl = 0;
+  let canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink = 0;
+  const examples: LinkPreservationDiagnostics["examples"] = [];
+
+  for (const doctor of canonicalDoctors) {
+    const bucket = rawBuckets.get(doctor.canonicalDoctorId);
+    if (!bucket) continue;
+    const links = linksByDoctor.get(doctor.canonicalDoctorId) ?? [];
+    expectedDistinctDoctorDepartmentLinks += bucket.expectedLinkKeys.size;
+    if (bucket.sourceUrls.size > 1) canonicalDoctorsWithMoreThanOneSourceUrl += 1;
+    if (bucket.masterDeptRowIds.size > 1) canonicalDoctorsWithMoreThanOneMasterDeptCandidate += 1;
+    if (bucket.extractedFromUrls.size > 1) canonicalDoctorsWithMoreThanOneExtractedFromUrl += 1;
+    if (bucket.rawRows > 1 && links.length === 1) {
+      canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink += 1;
+      if (examples.length < 20) {
+        examples.push({
+          canonicalDoctorId: doctor.canonicalDoctorId,
+          fullName: doctor.fullName || bucket.fullName,
+          rawRows: bucket.rawRows,
+          doctorDepartmentLinks: links.length,
+          distinctSourceUrls: bucket.sourceUrls.size,
+          distinctMasterDeptRowIds: bucket.masterDeptRowIds.size,
+          distinctExtractedFromUrls: bucket.extractedFromUrls.size,
+          sourceUrls: Array.from(bucket.sourceUrls).slice(0, 5),
+          masterDeptRowIds: Array.from(bucket.masterDeptRowIds).slice(0, 5),
+          extractedFromUrls: Array.from(bucket.extractedFromUrls).slice(0, 5)
+        });
+      }
+    }
+  }
+
+  return {
+    rawReviewedRows,
+    canonicalDoctors: canonicalDoctors.length,
+    doctorDepartmentLinks: doctorDepartmentLinks.length,
+    productionReadyCanonicalDoctors: canonicalDoctors.filter((doctor) => doctor.productionReady).length,
+    sourceUrlMatchLinks: doctorDepartmentLinks.filter((link) => link.matchConfidence === "sourceUrlMatch").length,
+    reviewNeededLinks: doctorDepartmentLinks.filter((link) => link.matchConfidence === "reviewNeeded").length,
+    expectedDistinctDoctorDepartmentLinks,
+    rawRowsDroppedAsExactDuplicates: Math.max(0, rawReviewedRows - expectedDistinctDoctorDepartmentLinks),
+    canonicalDoctorsWithMoreThanOneSourceUrl,
+    canonicalDoctorsWithMoreThanOneMasterDeptCandidate,
+    canonicalDoctorsWithMoreThanOneExtractedFromUrl,
+    canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink,
+    duplicateProfileUrlGroupsBefore,
+    duplicateProfileUrlGroupsAfter,
+    examples
+  };
 }
 
 function canonicalKeyForRecord(hospitalSlug: string, record: Record<string, unknown>) {
@@ -928,7 +1076,7 @@ function renderCoverageReport(report: NationalCoverageReport) {
     }),
     "",
     "## Canonical Doctor / Link Counts",
-    ...Object.entries(report.canonicalStatsByHospital).map(([hospital, stats]) => `- ${hospital}: canonicalDoctors=${stats.canonicalDoctors}; doctorDepartmentLinks=${stats.doctorDepartmentLinks}; productionReadyCanonicalDoctors=${stats.productionReadyCanonicalDoctors}; sourceUrlMatchLinks=${stats.sourceUrlMatchLinks}; reviewNeededLinks=${stats.reviewNeededLinks}; duplicateProfileGroups ${stats.duplicateProfileUrlGroupsBefore} -> ${stats.duplicateProfileUrlGroupsAfter}`),
+    ...Object.entries(report.canonicalStatsByHospital).map(([hospital, stats]) => `- ${hospital}: rawReviewedRows=${stats.rawReviewedRows}; canonicalDoctors=${stats.canonicalDoctors}; doctorDepartmentLinks=${stats.doctorDepartmentLinks}; expectedDistinctLinks=${stats.expectedDistinctDoctorDepartmentLinks}; productionReadyCanonicalDoctors=${stats.productionReadyCanonicalDoctors}; sourceUrlMatchLinks=${stats.sourceUrlMatchLinks}; reviewNeededLinks=${stats.reviewNeededLinks}; rawRowsDroppedAsExactDuplicates=${stats.rawRowsDroppedAsExactDuplicates}; duplicateProfileGroups ${stats.duplicateProfileUrlGroupsBefore} -> ${stats.duplicateProfileUrlGroupsAfter}`),
     "",
     "## Wave 2 Selected",
     ...report.wave2SelectedHospitals.map((item) => `- ${item.hospitalSlug}: ${item.hospitalNames.join(" / ")}; rows=${item.masterDeptRows}; URLs=${item.rowsWithUrls}; nearby=${item.nearbyDoctorOrTeamUrlRows}; mode=${item.plannedMode}; reason=${item.whySelected}`),

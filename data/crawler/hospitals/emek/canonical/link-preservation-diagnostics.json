@@ -1,0 +1,52 @@
+{
+  "rawReviewedRows": 13,
+  "canonicalDoctors": 11,
+  "doctorDepartmentLinks": 11,
+  "productionReadyCanonicalDoctors": 4,
+  "sourceUrlMatchLinks": 10,
+  "reviewNeededLinks": 1,
+  "expectedDistinctDoctorDepartmentLinks": 11,
+  "rawRowsDroppedAsExactDuplicates": 2,
+  "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+  "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+  "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+  "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 2,
+  "duplicateProfileUrlGroupsBefore": 2,
+  "duplicateProfileUrlGroupsAfter": 0,
+  "examples": [
+    {
+      "canonicalDoctorId": "doctor-21fd87a751adcac4",
+      "fullName": "פרופסור חדשה בעמק",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/emek/he/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-f0acf7cae8c17d2e",
+      "fullName": "ד\"ר מיכאל זיו",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 1,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ],
+      "masterDeptRowIds": [
+        "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור"
+      ],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/emek/he/departmentsandclinics/internal_departments/Pages/skin.aspx"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "rawReviewedRows": 630,
+  "canonicalDoctors": 381,
+  "doctorDepartmentLinks": 381,
+  "productionReadyCanonicalDoctors": 380,
+  "sourceUrlMatchLinks": 0,
+  "reviewNeededLinks": 381,
+  "expectedDistinctDoctorDepartmentLinks": 381,
+  "rawRowsDroppedAsExactDuplicates": 249,
+  "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+  "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+  "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+  "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 52,
+  "duplicateProfileUrlGroupsBefore": 54,
+  "duplicateProfileUrlGroupsAfter": 0,
+  "examples": [
+    {
+      "canonicalDoctorId": "doctor-375f723537eb84e9",
+      "fullName": "פרופ' אלי צוקרמן\nמכון כבד",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-3c23b493021669dd",
+      "fullName": "ד\"ר ואאל באבא\nגריאטריה",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-d2579d93c1d88946",
+      "fullName": "ד\"ר אריה מרר\nרדיולוגיה פולשנית",
+      "rawRows": 4,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-8a8ae24cf83f6da4",
+      "fullName": "ד\"ר אריאל זילברליכט\nמחלקת נשים\nאורו-גינקולוגיה ורצפת אגן",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-71bb995f79fc3708",
+      "fullName": "ד\"ר לוטוף חאג'\nהדמיית רנטגן\nמכון לתהודה מגנטית",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-b8ceb2f1a050852d",
+      "fullName": "ד\"ר ילנה מח'ולה\nמחלות צוואר הרחם ודרכי מין תחתונות",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-36a0bc03cc21239e",
+      "fullName": "ד\"ר מהרן כבהה\nאורולוגיה",
+      "rawRows": 9,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-84ac53d6ff64a38a",
+      "fullName": "ד\"ר טל סלמון\nכלי דם",
+      "rawRows": 5,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-23b9bc076390b7ba",
+      "fullName": "ד\"ר טל גזית\nראומטולוגיה",
+      "rawRows": 4,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-97a90afd781a98b7",
+      "fullName": "ד\"ר מיכאל גרץ\nמרפאת כאב",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-9cf6c10f9cc290f0",
+      "fullName": "ד\"ר מיכל מולד מונתה למנהלת יחידת הילודים בפגייה",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-d7694932a2f0e4a4",
+      "fullName": "ד\"ר אירנה ברגמן\nפנימית ג",
+      "rawRows": 3,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-e2507682135682ba",
+      "fullName": "ד\"ר גלית דיכטרמן\nאולטרסאונד",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-0b20ceef70d1f7ff",
+      "fullName": "ד\"ר יעל צנטר\nמכון פתולוגיה",
+      "rawRows": 7,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-0fba1a154fce9a30",
+      "fullName": "ד\"ר לריסה כצבמן\nדימות",
+      "rawRows": 9,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-645351f6daaed1b7",
+      "fullName": "ד\"ר ילנה נוטס\nהדמיית רנטגן\nCT טומוגרפיה ממוחשבת",
+      "rawRows": 7,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-666d02393b14085c",
+      "fullName": "ד\"ר נעמי גרוניך\nרפואת הקהילה ואפידמיולוגיה\nרשם חולים כרונים",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-a4ed4da21ac90a98",
+      "fullName": "ד\"ר מריה חודיאקובה\nפנימית ב",
+      "rawRows": 4,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-e87bd1f5ed1ab958",
+      "fullName": "ד\"ר עולא אעלימי\nמכון לגנטיקה רפואית",
+      "rawRows": 3,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-9a17887de42bbff6",
+      "fullName": "ד\"ר סיון סקוירסקי\nפוריות והפריה חוץ גופית",
+      "rawRows": 6,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 0,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ],
+      "masterDeptRowIds": [],
+      "extractedFromUrls": [
+        "https://hospitals.clalit.co.il/carmel/he/Our-doctors-and-experts/Pages/default.aspx"
+      ]
+    }
+  ]
+}

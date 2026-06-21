@@ -12,5 +12,6 @@
   "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
   "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
   "duplicateProfileUrlGroupsBefore": 0,
-  "duplicateProfileUrlGroupsAfter": 0
+  "duplicateProfileUrlGroupsAfter": 0,
+  "examples": []
 }
