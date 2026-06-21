@@ -1,0 +1,656 @@
+{
+  "hospitalSlug": "hillel-yaffe",
+  "hospitalName": "מרכז רפואי הלל יפה",
+  "generatedAt": "2026-06-21T10:36:32.004Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://hymc.org.il/nashim?CategoryID=407",
+    "departmentsIndexUrlCandidates": [
+      "https://hymc.org.il/nashim",
+      "https://hymc.org.il/?CategoryID=204",
+      "https://hymc.org.il/?CategoryID=223",
+      "https://hymc.org.il/?CategoryID=205",
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=614&ArticleID=1507",
+      "https://hymc.org.il/?CategoryID=236",
+      "https://hymc.org.il/?CategoryID=289",
+      "https://hymc.org.il/?CategoryID=231"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://hymc.org.il/nashim?CategoryID=407",
+      "https://hymc.org.il/nashim?CategoryID=408",
+      "https://hymc.org.il/nashim?CategoryID=434",
+      "https://hymc.org.il/nashim?CategoryID=583",
+      "https://hymc.org.il/nashim?CategoryID=593",
+      "https://hymc.org.il/nashim?CategoryID=666",
+      "https://hymc.org.il/nashim?CategoryID=667",
+      "https://hymc.org.il/?CategoryID=297"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=407",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/nashim?CategoryID=407",
+      "title": "המרכז הרפואי הלל יפה",
+      "h1": [
+        "המרכז הרפואי הלל יפה - עמוד הבית"
+      ],
+      "h2": [
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "\"כיפת ברזל נפשית\": כך שומרות האחיות בישראל על חוסן בזמן מלחמה",
+        "עדכון מהמרכז הרפואי הלל יפה"
+      ],
+      "htmlLength": 82217,
+      "visibleTextLength": 13282,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/nashim",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/nashim",
+      "title": "נשים, יולדות ופריון",
+      "h1": [
+        "המרכז הרפואי הלל יפה - עמוד הבית"
+      ],
+      "h2": [
+        "פתחנו!",
+        "מרכז בריאות האישה ע\"ש עדנה ויהודה סביר",
+        "בחרת כבר שיר ללידה?",
+        "פתחנו!",
+        "פתחנו!",
+        "מרכז בריאות האישה ע\"ש עדנה ויהודה סביר",
+        "בחרת כבר שיר ללידה?",
+        "פתחנו!",
+        "מחווה מרגשת: קראה לבתה על שם האחות שטיפלה בבנה שנפטר",
+        "שותפות מקצועית ברגעים הקריטיים",
+        "בת ה-88 שמגיעה להתנדב גם כשהטילים שורקים מעל",
+        "לידה בזמן מלחמה - שבעה דברים שכדאי לדעת על לידה ב\"הלל יפה\""
+      ],
+      "htmlLength": 63981,
+      "visibleTextLength": 12365,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=204",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/?CategoryID=204",
+      "title": "נוירולוגיה",
+      "h1": [
+        "נוירולוגיה"
+      ],
+      "h2": [
+        "הנהלה",
+        "צוות",
+        "תיאור",
+        "מידע שימושי",
+        "מידע נוסף",
+        "פרסומי המחלקה",
+        "מחקרים פעילים לגיוס נחקרים"
+      ],
+      "htmlLength": 67127,
+      "visibleTextLength": 14996,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=223",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/?CategoryID=223",
+      "title": "מיון (מלר\"ד - המחלקה לרפואה דחופה)",
+      "h1": [
+        "מיון (מלר\"ד - המחלקה לרפואה דחופה)"
+      ],
+      "h2": [
+        "הנהלה",
+        "צוות",
+        "תיאור",
+        "אודות הצוות הבכיר",
+        "מידע שימושי",
+        "מידע נוסף",
+        "פרסומי המחלקה"
+      ],
+      "htmlLength": 58581,
+      "visibleTextLength": 10958,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=205",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/?CategoryID=205",
+      "title": "אורתופדית א'",
+      "h1": [
+        "אורתופדית א'"
+      ],
+      "h2": [
+        "הנהלה",
+        "צוות",
+        "תיאור",
+        "מידע שימושי",
+        "מידע נוסף"
+      ],
+      "htmlLength": 56335,
+      "visibleTextLength": 10357,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=208",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/?CategoryID=208",
+      "title": "כירורגית א'",
+      "h1": [
+        "כירורגית א'"
+      ],
+      "h2": [
+        "הנהלה",
+        "צוות",
+        "תיאור",
+        "מידע שימושי",
+        "מידע נוסף"
+      ],
+      "htmlLength": 55648,
+      "visibleTextLength": 10620,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=614&ArticleID=1507",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/?CategoryID=614&ArticleID=1507",
+      "title": "אודות אגף ילדים",
+      "h1": [
+        "אודות אגף ילדים"
+      ],
+      "h2": [],
+      "htmlLength": 38863,
+      "visibleTextLength": 8786,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=236",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/?CategoryID=236",
+      "title": "מערך הלב (קרדיולוגיה)",
+      "h1": [
+        "מערך הלב (קרדיולוגיה)"
+      ],
+      "h2": [
+        "הנהלה",
+        "צוות",
+        "תיאור",
+        "מרפאות חוץ",
+        "מידע שימושי",
+        "מידע נוסף",
+        "מחקרים פעילים לגיוס נחקרים"
+      ],
+      "htmlLength": 67285,
+      "visibleTextLength": 14918,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=289",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/?CategoryID=289",
+      "title": "מכון הרנטגן - דימות",
+      "h1": [
+        "מכון הרנטגן - דימות"
+      ],
+      "h2": [
+        "הנהלה",
+        "צוות",
+        "תיאור",
+        "מידע שימושי",
+        "מידע נוסף"
+      ],
+      "htmlLength": 63175,
+      "visibleTextLength": 11768,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=231",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/?CategoryID=231",
+      "title": "אף-אוזן-גרון וכירורגיה של ראש-צוואר",
+      "h1": [
+        "אף-אוזן-גרון וכירורגיה של ראש-צוואר"
+      ],
+      "h2": [
+        "הנהלה",
+        "צוות",
+        "תיאור",
+        "שירות אף וסינוסים",
+        "שירות אף-אוזן-גרון לילדים",
+        "שירות קול וגרון",
+        "ניתוחי ראש-צוואר ותריס",
+        "טיפול בנחירות ודום נשימה בשינה",
+        "מכון השמיעה והדיבור",
+        "אוטו-נוירולוגיה",
+        "מרפאת בליעה",
+        "מרפאה משולבת לסובלים מנזלת/סינוסיטיס כרונית ואלרגיה",
+        "מידע שימושי",
+        "פעילות אקדמית ומחקרית",
+        "כתבות בנושא אף-אוזן-גרון",
+        "מידע נוסף"
+      ],
+      "htmlLength": 66863,
+      "visibleTextLength": 14271,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=408",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/nashim?CategoryID=408",
+      "title": "המרכז הרפואי הלל יפה",
+      "h1": [
+        "המרכז הרפואי הלל יפה - עמוד הבית"
+      ],
+      "h2": [
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "\"כיפת ברזל נפשית\": כך שומרות האחיות בישראל על חוסן בזמן מלחמה",
+        "עדכון מהמרכז הרפואי הלל יפה"
+      ],
+      "htmlLength": 82237,
+      "visibleTextLength": 13282,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=434",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/nashim?CategoryID=434",
+      "title": "המרכז הרפואי הלל יפה",
+      "h1": [
+        "המרכז הרפואי הלל יפה - עמוד הבית"
+      ],
+      "h2": [
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "\"כיפת ברזל נפשית\": כך שומרות האחיות בישראל על חוסן בזמן מלחמה",
+        "עדכון מהמרכז הרפואי הלל יפה"
+      ],
+      "htmlLength": 82193,
+      "visibleTextLength": 13282,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=583",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/nashim?CategoryID=583",
+      "title": "המרכז הרפואי הלל יפה",
+      "h1": [
+        "המרכז הרפואי הלל יפה - עמוד הבית"
+      ],
+      "h2": [
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "\"כיפת ברזל נפשית\": כך שומרות האחיות בישראל על חוסן בזמן מלחמה",
+        "עדכון מהמרכז הרפואי הלל יפה"
+      ],
+      "htmlLength": 82237,
+      "visibleTextLength": 13282,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=593",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/nashim?CategoryID=593",
+      "title": "המרכז הרפואי הלל יפה",
+      "h1": [
+        "המרכז הרפואי הלל יפה - עמוד הבית"
+      ],
+      "h2": [
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "\"כיפת ברזל נפשית\": כך שומרות האחיות בישראל על חוסן בזמן מלחמה",
+        "עדכון מהמרכז הרפואי הלל יפה"
+      ],
+      "htmlLength": 82222,
+      "visibleTextLength": 13282,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=666",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/nashim?CategoryID=666",
+      "title": "המרכז הרפואי הלל יפה",
+      "h1": [
+        "המרכז הרפואי הלל יפה - עמוד הבית"
+      ],
+      "h2": [
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "\"כיפת ברזל נפשית\": כך שומרות האחיות בישראל על חוסן בזמן מלחמה",
+        "עדכון מהמרכז הרפואי הלל יפה"
+      ],
+      "htmlLength": 82222,
+      "visibleTextLength": 13282,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=667",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/nashim?CategoryID=667",
+      "title": "המרכז הרפואי הלל יפה",
+      "h1": [
+        "המרכז הרפואי הלל יפה - עמוד הבית"
+      ],
+      "h2": [
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "היבטים נפשיים בגיל המעבר:חזית הידע לשנת 2026",
+        "חדש! מכון PET-CT ע\"ש קרן הלמסלי",
+        "גם מהביתהטיפול שלך ממשיך",
+        "טיפול קבוצתי לנשים עם פיברומיאלגיה",
+        "מרפאה טרשת נפוצה",
+        "להתכונן לרגע האמת",
+        "בחרת כבר שיר ללידה?",
+        "זכותכם לקבל שירות קרוב לבית",
+        "תיק בקליק",
+        "\"כיפת ברזל נפשית\": כך שומרות האחיות בישראל על חוסן בזמן מלחמה",
+        "עדכון מהמרכז הרפואי הלל יפה"
+      ],
+      "htmlLength": 82237,
+      "visibleTextLength": 13282,
+      "error": null
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=297",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hymc.org.il/?CategoryID=297",
+      "title": "הצוות שלנו",
+      "h1": [
+        "הצוות שלנו"
+      ],
+      "h2": [
+        "א",
+        "ב",
+        "ג",
+        "ד",
+        "ה",
+        "ו",
+        "ז",
+        "ח",
+        "ט",
+        "י",
+        "כ",
+        "ל",
+        "מ",
+        "נ",
+        "ס",
+        "ע",
+        "פ",
+        "צ",
+        "ק",
+        "ר"
+      ],
+      "htmlLength": 84757,
+      "visibleTextLength": 10497,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hymc.org.il/?CategoryID=297",
+      "sourceUrl": "https://hymc.org.il/?CategoryID=204",
+      "anchorText": "הצוות שלנו",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הצוות שלנו https://hymc.org.il/?CategoryID=297"
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=620",
+      "sourceUrl": "https://hymc.org.il/?CategoryID=614&ArticleID=1507",
+      "anchorText": "הצוות שלנו",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הצוות שלנו https://hymc.org.il/?CategoryID=620"
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=639",
+      "sourceUrl": "https://hymc.org.il/?CategoryID=614&ArticleID=1507",
+      "anchorText": "הצוות שלנו",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הצוות שלנו https://hymc.org.il/?CategoryID=639"
+    },
+    {
+      "url": "https://hymc.org.il/?CategoryID=647",
+      "sourceUrl": "https://hymc.org.il/?CategoryID=614&ArticleID=1507",
+      "anchorText": "הצוות שלנו",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הצוות שלנו https://hymc.org.il/?CategoryID=647"
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=25&ArticleID=12657",
+      "sourceUrl": "https://hymc.org.il/nashim?CategoryID=407",
+      "anchorText": "הרופאים הצילו את ראייתו של בן 13 באמצעות שתל תלת-ממד",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "הרופאים הצילו את ראייתו של בן 13 באמצעות שתל תלת-ממד https://hymc.org.il/nashim?CategoryID=25&ArticleID=12657"
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=297",
+      "sourceUrl": "https://hymc.org.il/nashim?CategoryID=407",
+      "anchorText": "הצוות שלנו",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הצוות שלנו https://hymc.org.il/nashim?CategoryID=297"
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=407",
+      "sourceUrl": "https://hymc.org.il/nashim",
+      "anchorText": "צוות המחלקה",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צוות המחלקה https://hymc.org.il/nashim?CategoryID=407"
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=408",
+      "sourceUrl": "https://hymc.org.il/nashim",
+      "anchorText": "צוות המחלקה",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צוות המחלקה https://hymc.org.il/nashim?CategoryID=408"
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=434",
+      "sourceUrl": "https://hymc.org.il/nashim",
+      "anchorText": "צוות המחלקה",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צוות המחלקה https://hymc.org.il/nashim?CategoryID=434"
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=583",
+      "sourceUrl": "https://hymc.org.il/nashim",
+      "anchorText": "הצוות שלנו",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הצוות שלנו https://hymc.org.il/nashim?CategoryID=583"
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=593",
+      "sourceUrl": "https://hymc.org.il/nashim",
+      "anchorText": "צוות המחלקה",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צוות המחלקה https://hymc.org.il/nashim?CategoryID=593"
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=666",
+      "sourceUrl": "https://hymc.org.il/nashim",
+      "anchorText": "צוות המחלקה",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צוות המחלקה https://hymc.org.il/nashim?CategoryID=666"
+    },
+    {
+      "url": "https://hymc.org.il/nashim?CategoryID=667",
+      "sourceUrl": "https://hymc.org.il/nashim",
+      "anchorText": "צוות המחלקה",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צוות המחלקה https://hymc.org.il/nashim?CategoryID=667"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://hymc.org.il/nashim?CategoryID=407",
+    "https://hymc.org.il/?CategoryID=204",
+    "https://hymc.org.il/?CategoryID=223",
+    "https://hymc.org.il/?CategoryID=205",
+    "https://hymc.org.il/?CategoryID=208",
+    "https://hymc.org.il/?CategoryID=614&ArticleID=1507",
+    "https://hymc.org.il/?CategoryID=236",
+    "https://hymc.org.il/?CategoryID=289",
+    "https://hymc.org.il/?CategoryID=231",
+    "https://hymc.org.il/nashim?CategoryID=408",
+    "https://hymc.org.il/nashim?CategoryID=434",
+    "https://hymc.org.il/nashim?CategoryID=583"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

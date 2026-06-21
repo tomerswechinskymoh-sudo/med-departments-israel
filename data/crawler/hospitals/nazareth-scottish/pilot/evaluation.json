@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "nazareth-scottish",
+  "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+  "generatedAt": "2026-06-21T10:37:43.867Z",
+  "urlsUsed": [
+    "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+    "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+    "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 14,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 14,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 14,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 14
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Profile URL coverage is below 50%."
+}

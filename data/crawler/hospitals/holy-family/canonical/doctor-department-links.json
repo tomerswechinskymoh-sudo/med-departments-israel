@@ -1,0 +1,526 @@
+[
+  {
+    "canonicalDoctorId": "doctor-03c43f73eb83f0d6",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-03e17787cdc668e1",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+        "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+        "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח המשפחה הקדושה; candidates=6"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2127392aa4303d0e",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-2e5fe6530a87c466",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-369977d87d4c6e38",
+    "masterDeptRowId": "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-3a7a4141ec77cb8e",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+        "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+        "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח המשפחה הקדושה; candidates=6"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-4a30274f60ae6920",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-4cb338a616be4a4b",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-54fd4f58d48df13e",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+        "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+        "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח המשפחה הקדושה; candidates=6"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-5d4e2648c36732aa",
+    "masterDeptRowId": "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-75ac5ba7cb1da4c9",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+        "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+        "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח המשפחה הקדושה; candidates=6"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-81a3255521c184dd",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-8d1b57159d9d4023",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+        "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+        "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח המשפחה הקדושה; candidates=6"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-93088f7c497266d1",
+    "masterDeptRowId": "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-9a8f459b91e0e1ed",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-a28e923e5ca123c6",
+    "masterDeptRowId": "master-dept-0044-ביהח-המשפחה-הקדושה-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-aae83333561aed04",
+    "masterDeptRowId": "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-ab40702b19efd68e",
+    "masterDeptRowId": "master-dept-0044-ביהח-המשפחה-הקדושה-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-b3e8063ab4f4c588",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-bd9d70a2a8d96b15",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+        "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+        "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח המשפחה הקדושה; candidates=6"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-bd9d7d1cb6a7db61",
+    "masterDeptRowId": "master-dept-0046-ביהח-המשפחה-הקדושה-רדיולוגיה-דימות",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "רדיולוגיה (דימות)",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-c57018f8f874dd35",
+    "masterDeptRowId": "master-dept-0044-ביהח-המשפחה-הקדושה-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e17ed7be45c72c55",
+    "masterDeptRowId": "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e2864b0e8f0d41d8",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-ec2775729239f3ae",
+    "masterDeptRowId": "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f69325a36e8a18c8",
+    "masterDeptRowId": "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

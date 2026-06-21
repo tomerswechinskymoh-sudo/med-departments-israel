@@ -1,0 +1,382 @@
+[
+  {
+    "canonicalDoctorId": "doctor-077fb1d25ee92c90",
+    "masterDeptRowId": "master-dept-0133-מרכז-רפואי-ברוך-פדה-פוריה-רפואת-ילדים",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=8"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-0f19d1924917eeb7",
+    "masterDeptRowId": "master-dept-0130-מרכז-רפואי-ברוך-פדה-פוריה-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=11"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-1f21d8ad5b047331",
+    "masterDeptRowId": "master-dept-0132-מרכז-רפואי-ברוך-פדה-פוריה-גריאטריה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "גריאטריה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=6"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-2508fe6712edceb0",
+    "masterDeptRowId": "master-dept-0131-מרכז-רפואי-ברוך-פדה-פוריה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=10"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-345a520d1ee85d5e",
+    "masterDeptRowId": "master-dept-0131-מרכז-רפואי-ברוך-פדה-פוריה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=10"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-39feedcb7a9a7760",
+    "masterDeptRowId": "master-dept-0130-מרכז-רפואי-ברוך-פדה-פוריה-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=11"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-45bdd7a23e15f8d5",
+    "masterDeptRowId": "master-dept-0133-מרכז-רפואי-ברוך-פדה-פוריה-רפואת-ילדים",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=8"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-4a29f0777f52ed58",
+    "masterDeptRowId": "master-dept-0133-מרכז-רפואי-ברוך-פדה-פוריה-רפואת-ילדים",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=8"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-52959a07d258b1c6",
+    "masterDeptRowId": "master-dept-0130-מרכז-רפואי-ברוך-פדה-פוריה-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=11"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-56bddadbb5850c82",
+    "masterDeptRowId": "master-dept-0132-מרכז-רפואי-ברוך-פדה-פוריה-גריאטריה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "גריאטריה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=6"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-5c5195859aadc5d1",
+    "masterDeptRowId": "master-dept-0130-מרכז-רפואי-ברוך-פדה-פוריה-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=11"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-730bb5ef16b3c4c5",
+    "masterDeptRowId": "master-dept-0131-מרכז-רפואי-ברוך-פדה-פוריה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=10"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-7b5e3fb0f1693c04",
+    "masterDeptRowId": "master-dept-0133-מרכז-רפואי-ברוך-פדה-פוריה-רפואת-ילדים",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=8"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-9c147b7b98955ff3",
+    "masterDeptRowId": "master-dept-0130-מרכז-רפואי-ברוך-פדה-פוריה-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=11"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-a4c992f81befbd0c",
+    "masterDeptRowId": "master-dept-0131-מרכז-רפואי-ברוך-פדה-פוריה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=10"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-b85c1497a90cdec6",
+    "masterDeptRowId": "master-dept-0130-מרכז-רפואי-ברוך-פדה-פוריה-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=11"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-d2c94cc44cfbaa1a",
+    "masterDeptRowId": "master-dept-0131-מרכז-רפואי-ברוך-פדה-פוריה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=10"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-d63bcafbe98c43a1",
+    "masterDeptRowId": "master-dept-0133-מרכז-רפואי-ברוך-פדה-פוריה-רפואת-ילדים",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=8"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e1b99f4b3f4016e9",
+    "masterDeptRowId": "master-dept-0132-מרכז-רפואי-ברוך-פדה-פוריה-גריאטריה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "גריאטריה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=6"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e42a7eb125d843d3",
+    "masterDeptRowId": "master-dept-0130-מרכז-רפואי-ברוך-פדה-פוריה-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.poria.org.il/?CategoryID=2081&ArticleID=11"
+      ],
+      "extractedFromUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

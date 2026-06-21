@@ -1,0 +1,381 @@
+[
+  {
+    "canonicalDoctorId": "doctor-a4c992f81befbd0c",
+    "fullName": "ד\"ר אדיב ניקולא",
+    "normalizedName": "אדיב ניקולא",
+    "profileUrl": "https://www.poria.health.gov.il/?CategoryID=2554&ArticleID=6374",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "סגן מנהל המחלקה: ד\"ר אדיב ניקולאאחות אחראית: גב' קטי זקמזכירה: גב' אתי סמדר",
+    "profileCompleteness": "listOnly",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "https://www.poria.health.gov.il/?CategoryID=2554&ArticleID=6374"
+    ],
+    "evidence": [
+      "סגן מנהל המחלקה: ד\"ר אדיב ניקולאאחות אחראית: גב' קטי זקמזכירה: גב' אתי סמדר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-56bddadbb5850c82",
+    "fullName": "ד\"ר אמיתי אוברמן",
+    "normalizedName": "אמיתי אוברמן",
+    "profileUrl": "http://www.poria.health.gov.il/?CategoryID=2123&ArticleID=6012",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל/ת מחלקה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+      "http://www.poria.health.gov.il/?CategoryID=2123&ArticleID=6012"
+    ],
+    "evidence": [
+      "מנהל/ת מחלקה\nד\"ר אמיתי אוברמן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e1b99f4b3f4016e9",
+    "fullName": "ד\"ר אמיתי אוברמןאחות אחראית",
+    "normalizedName": "אמיתי אוברמןאחות אחראית",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "גריאטריה שיקומיתמנהל: ד\"ר אמיתי אוברמןאחות אחראית: גב' איילת עמר טלפוניםתחנת אחיות: 04-6654040 פיזיותרפיה: 04-6654040 ריפוי בעיסוק: 04-6652461קלינאי תקשורת: 04-6654040 עובדת סוציאלית: 04-6652361מוקד זימון תורים04-665229104-6652283מזכירה: גב' אלה שושןמייל: [email protected] שעות ביקור08:00-13:0016:00-21:00מיקום: מבנה גריאטריה ע\"ש גרייס בלס ז\"ל - בניין מס' 2ניתן לפנות בכל שאלה לצוות המחלקה",
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=6"
+    ],
+    "evidence": [
+      "גריאטריה שיקומיתמנהל: ד\"ר אמיתי אוברמןאחות אחראית: גב' איילת עמר טלפוניםתחנת אחיות: 04-6654040 פיזיותרפיה: 04-6654040 ריפוי בעיסוק: 04-6652461קלינאי תקשורת: 04-6654040 עובדת סוציאלית: 04-6652361מוקד זימון תורים04-665229104-6652283מזכירה: גב' אלה שושןמייל: [email protected] שעות ביקור08:00-13:0016:00-21:00מיקום: מבנה גריאטריה ע\"ש גרייס בלס ז\"ל - בניין מס' 2ניתן לפנות בכל שאלה לצוות המחלקה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-1f21d8ad5b047331",
+    "fullName": "ד\"ר אמיתי אוברמןאחות אחראית",
+    "normalizedName": "אמיתי אוברמןאחות אחראית",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2722",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "גריאטריה שיקומיתמנהל: ד\"ר אמיתי אוברמןאחות אחראית: גב' איילת עמר טלפוניםתחנת אחיות: 04-6654040 פיזיותרפיה: 04-6654040 ריפוי בעיסוק: 04-6652461קלינאי תקשורת: 04-6654040 עובדת סוציאלית: 04-6652361מוקד זימון תורים04-665229104-6652283מזכירה: גב' אלה שושןמייל: [email protected] שעות ביקור08:00-13:0016:00-21:00מיקום: מבנה גריאטריה ע\"ש גרייס בלס ז\"ל - בניין מס' 2ניתן לפנות בכל שאלה לצוות המחלקה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+      "https://www.poria.org.il/?CategoryID=2722"
+    ],
+    "evidence": [
+      "גריאטריה שיקומיתמנהל: ד\"ר אמיתי אוברמןאחות אחראית: גב' איילת עמר טלפוניםתחנת אחיות: 04-6654040 פיזיותרפיה: 04-6654040 ריפוי בעיסוק: 04-6652461קלינאי תקשורת: 04-6654040 עובדת סוציאלית: 04-6652361מוקד זימון תורים04-665229104-6652283מזכירה: גב' אלה שושןמייל: [email protected] שעות ביקור08:00-13:0016:00-21:00מיקום: מבנה גריאטריה ע\"ש גרייס בלס ז\"ל - בניין מס' 2ניתן לפנות בכל שאלה לצוות המחלקה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-5c5195859aadc5d1",
+    "fullName": "ד\"ר אנטולי גרינשפון",
+    "normalizedName": "אנטולי גרינשפון",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2554&ArticleID=4315",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "סגן מנהל המערך: ד\"ר אנטולי גרינשפון אחות אחראית: גב נדאל חאג' מזכירה: גב' עליזה כהן",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "https://www.poria.org.il/?CategoryID=2554&ArticleID=4315"
+    ],
+    "evidence": [
+      "סגן מנהל המערך: ד\"ר אנטולי גרינשפון אחות אחראית: גב נדאל חאג' מזכירה: גב' עליזה כהן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d63bcafbe98c43a1",
+    "fullName": "פרופ' ברוך פדה ז",
+    "normalizedName": "ברוך פדה ז",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2097",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": "אודותאודות המרכז הרפואידבר המנהלחזון המרכז הרפואי צפון (פוריה)פרופ' ברוך פדה ז˝לאקרדיטציה במרכז הרפואי צפוןגלריית תמונותחדשותעמותת ידידי בית החוליםדוברות וקשרי קהילהמכרזיםמכתבי תודהבטאון המרכז הרפואיקריירה במרכז רפואי צפוןסרטיםכתבו עלינו",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "https://www.poria.org.il/?CategoryID=2097"
+    ],
+    "evidence": [
+      "אודותאודות המרכז הרפואידבר המנהלחזון המרכז הרפואי צפון (פוריה)פרופ' ברוך פדה ז˝לאקרדיטציה במרכז הרפואי צפוןגלריית תמונותחדשותעמותת ידידי בית החוליםדוברות וקשרי קהילהמכרזיםמכתבי תודהבטאון המרכז הרפואיקריירה במרכז רפואי צפוןסרטיםכתבו עלינו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-45bdd7a23e15f8d5",
+    "fullName": "פרופ' ברוך פדה ז",
+    "normalizedName": "ברוך פדה ז",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=1946",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "https://www.poria.org.il/?CategoryID=1946"
+    ],
+    "evidence": [
+      "פרופ' ברוך פדה ז˝ל"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-4a29f0777f52ed58",
+    "fullName": "ד\"ר גבי כנען",
+    "normalizedName": "גבי כנען",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2414",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "https://www.poria.org.il/?CategoryID=2414"
+    ],
+    "evidence": [
+      "ספריה רפואית ע\"ש ד\"ר גבי כנען"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-7b5e3fb0f1693c04",
+    "fullName": "ד\"ר גבי כנעןמאמריםמחקרים קליניים",
+    "normalizedName": "גבי כנעןמאמריםמחקרים קליניים",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=190",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "https://www.poria.org.il/?CategoryID=190"
+    ],
+    "evidence": [
+      "מחקר ואקדמיהרשות המחקרמכון המחקרהוראה - ביה\"ס לרפואההתמחות במרכז רפואי צפוןועדת הלסינקימגמת מדעי הבריאות לבגרותספריה רפואית ע\"ש ד\"ר גבי כנעןמאמריםמחקרים קליניים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b85c1497a90cdec6",
+    "fullName": "פרופ' ג'וני יונס",
+    "normalizedName": "גוני יונס",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2123&ArticleID=3110",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": "פרופ' ג'וני יונס - מנהל יח' IVFד\"ר צ'ויין דמיטרי - מנהל חדר לידה ד\"ר סופיה סולצמן פרופ' ג'וני יונסד\"ר טל בוגניםד\"ר ענב יפת - אחראית מרפאת סכרת היריון ד\"ר רוברט מולנר",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "https://www.poria.org.il/?CategoryID=2123&ArticleID=3110"
+    ],
+    "evidence": [
+      "פרופ' ג'וני יונס - מנהל יח' IVFד\"ר צ'ויין דמיטרי - מנהל חדר לידה ד\"ר סופיה סולצמן פרופ' ג'וני יונסד\"ר טל בוגניםד\"ר ענב יפת - אחראית מרפאת סכרת היריון ד\"ר רוברט מולנר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-730bb5ef16b3c4c5",
+    "fullName": "ד\"ר זכר ברמניק",
+    "normalizedName": "זכר ברמניק",
+    "profileUrl": "https://www.poria.health.gov.il/?CategoryID=2123&ArticleID=6375",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר זכר ברמניק - מנהל יח' כירורגיה אונקולוגיתד\"ר ברק לויט - מנהל יח' טראומהד\"ר רון דר - אחראי תחום כירורגיה קולורקטלית",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "https://www.poria.health.gov.il/?CategoryID=2123&ArticleID=6375"
+    ],
+    "evidence": [
+      "ד\"ר זכר ברמניק - מנהל יח' כירורגיה אונקולוגיתד\"ר ברק לויט - מנהל יח' טראומהד\"ר רון דר - אחראי תחום כירורגיה קולורקטלית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d2c94cc44cfbaa1a",
+    "fullName": "ד\"ר זכר ברמניק",
+    "normalizedName": "זכר ברמניק",
+    "profileUrl": "https://www.poria.health.gov.il/?CategoryID=2123&ArticleID=6376",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר זכר ברמניק - מנהל יח' כירורגיה אונקולוגיתד\"ר ברק לויט - מנהל יח' טראומהד\"ר רון דר - אחראי תחום כירורגיה קולורקטלית",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "https://www.poria.health.gov.il/?CategoryID=2123&ArticleID=6376"
+    ],
+    "evidence": [
+      "ד\"ר זכר ברמניק - מנהל יח' כירורגיה אונקולוגיתד\"ר ברק לויט - מנהל יח' טראומהד\"ר רון דר - אחראי תחום כירורגיה קולורקטלית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2508fe6712edceb0",
+    "fullName": "ד\"ר זכר ברמניק",
+    "normalizedName": "זכר ברמניק",
+    "profileUrl": "https://www.poria.health.gov.il/?CategoryID=2554&ArticleID=6377",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "ד\"ר זכר ברמניק - מנהל יח' כירורגיה אונקולוגיתד\"ר ברק לויט - מנהל יח' טראומהד\"ר רון דר - אחראי תחום כירורגיה קולורקטלית",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "https://www.poria.health.gov.il/?CategoryID=2554&ArticleID=6377"
+    ],
+    "evidence": [
+      "ד\"ר זכר ברמניק - מנהל יח' כירורגיה אונקולוגיתד\"ר ברק לויט - מנהל יח' טראומהד\"ר רון דר - אחראי תחום כירורגיה קולורקטלית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e42a7eb125d843d3",
+    "fullName": "ד\"ר יורי פרליץ",
+    "normalizedName": "יורי פרליץ",
+    "profileUrl": "http://www.poria.health.gov.il/?CategoryID=2123&ArticleID=3117",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל/ת מחלקה",
+    "profileCompleteness": "listOnly",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "http://www.poria.health.gov.il/?CategoryID=2123&ArticleID=3117"
+    ],
+    "evidence": [
+      "מנהל/ת מחלקה\nד\"ר יורי פרליץ"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-52959a07d258b1c6",
+    "fullName": "ד\"ר יורי פרליץ",
+    "normalizedName": "יורי פרליץ",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2492&ArticleID=3931",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "https://www.poria.org.il/?CategoryID=2492&ArticleID=3931"
+    ],
+    "evidence": [
+      "סרט: חווית הלידה במרכז רפואי צפון (פוריה) סיור באגף לאם ולילוד מחלקת נשים ויולדות במרכז הרפואי צפון (פוריה) מרכזת את כל הפעילות הקשורה באישה ובאם ומעניקה מגוון רחב של שירותים בתחום רפואת נשים, רפואת האם והעובר, אבחון טרום-לידתי, הריון בסיכון גבוה, אולטרא-סאונד, רפואת פריון והפריה חוץ-גופית, ואונקו-גינקולוגיה. חדרי הלידה וחדרי היולדות באגף נבנו לרווחת היולדות והמטופלות, עם ציוד חדיש ומתקדם, ואפשרות ללידות טבעיות וביות מלא ליולדות.צוות המחלקה מיומן במגוון האבחונים והטיפולים הנדרשים, ופועל מתוך תוד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-39feedcb7a9a7760",
+    "fullName": "ד\"ר יורי פרליץ",
+    "normalizedName": "יורי פרליץ",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2123&ArticleID=3117",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל המערך: ד\"ר יורי פרליץ",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "https://www.poria.org.il/?CategoryID=2123&ArticleID=3117"
+    ],
+    "evidence": [
+      "מנהל המערך: ד\"ר יורי פרליץ"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0f19d1924917eeb7",
+    "fullName": "ד\"ר סופיה סולצמן",
+    "normalizedName": "סופיה סולצמן",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2554&ArticleID=4313",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "פרופ' ג'וני יונס - מנהל יח' IVFד\"ר צ'ויין דמיטרי - מנהל חדר לידה ד\"ר סופיה סולצמן פרופ' ג'וני יונסד\"ר טל בוגניםד\"ר ענב יפת - אחראית מרפאת סכרת היריון ד\"ר רוברט מולנר",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "https://www.poria.org.il/?CategoryID=2554&ArticleID=4313"
+    ],
+    "evidence": [
+      "פרופ' ג'וני יונס - מנהל יח' IVFד\"ר צ'ויין דמיטרי - מנהל חדר לידה ד\"ר סופיה סולצמן פרופ' ג'וני יונסד\"ר טל בוגניםד\"ר ענב יפת - אחראית מרפאת סכרת היריון ד\"ר רוברט מולנר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-077fb1d25ee92c90",
+    "fullName": "ד\"ר סעיד אבוזייד",
+    "normalizedName": "סעיד אבוזייד",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2123&ArticleID=4202",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל/ת מחלקה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "https://www.poria.org.il/?CategoryID=2123&ArticleID=4202"
+    ],
+    "evidence": [
+      "מנהל/ת מחלקה\nד\"ר סעיד אבוזייד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-345a520d1ee85d5e",
+    "fullName": "ד\"ר פורת סוייד",
+    "normalizedName": "פורת סוייד",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2123&ArticleID=6822",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל/ת מחלקה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "https://www.poria.org.il/?CategoryID=2123&ArticleID=6822"
+    ],
+    "evidence": [
+      "מנהל/ת מחלקה\nד\"ר פורת סוייד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9c147b7b98955ff3",
+    "fullName": "ד\"ר צ'ויין דמיטרי",
+    "normalizedName": "צויין דמיטרי",
+    "profileUrl": "https://www.poria.org.il/?CategoryID=2123&ArticleID=4945",
+    "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "פרופ' ג'וני יונס - מנהל יח' IVFד\"ר צ'ויין דמיטרי - מנהל חדר לידה ד\"ר סופיה סולצמן פרופ' ג'וני יונסד\"ר טל בוגניםד\"ר ענב יפת - אחראית מרפאת סכרת היריון ד\"ר רוברט מולנר",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "https://www.poria.org.il/?CategoryID=2123&ArticleID=4945"
+    ],
+    "evidence": [
+      "פרופ' ג'וני יונס - מנהל יח' IVFד\"ר צ'ויין דמיטרי - מנהל חדר לידה ד\"ר סופיה סולצמן פרופ' ג'וני יונסד\"ר טל בוגניםד\"ר ענב יפת - אחראית מרפאת סכרת היריון ד\"ר רוברט מולנר"
+    ]
+  }
+]

@@ -1,9 +1,12 @@
 import { parseArgs } from "@/crawler/clalit/utils";
+import { registerHospitalBaseline } from "@/crawler/hospitals/baseline-registry";
 import { runHospitalAutopilot, summarizeAutopilotResult } from "@/crawler/hospitals/autopilot";
 import {
   applyMasterDeptMappingToReviewed,
+  buildNationalRemainingQueue,
   buildMasterDeptNationalPlan,
   buildNationalHospitalPlan,
+  buildSyntheticBaselineForQueueItem,
   buildWave2Plan,
   buildWave3Plan,
   inspectMasterDeptTargets,
@@ -16,10 +19,12 @@ import {
   readMappingStats,
   writeNationalPlanOutputs
 } from "@/crawler/hospitals/master-dept";
+import type { NationalSweepResult } from "@/crawler/hospitals/master-dept";
 import type { AutopilotMode, CrawlReadinessStatus, HospitalPilotEvaluation, MappingReadinessStatus, OutputUsability } from "@/crawler/hospitals/types";
 
-const modes = new Set(["plan", "pilot", "evaluate", "full", "national-plan", "national-pilot", "national-full-safe"]);
+const modes = new Set(["plan", "pilot", "evaluate", "full", "national-plan", "national-pilot", "national-sweep", "national-full-safe"]);
 const wave1HospitalSlugs = ["ichilov", "hadassah", "meir"];
+const wave3HospitalSlugs = ["shamir", "maayanei-hayeshua", "galilee", "laniado", "wolfson"];
 
 function canonicalCalibratedReadiness(evaluation: HospitalPilotEvaluation, canonicalStats: Awaited<ReturnType<typeof readCanonicalStats>>) {
   if (evaluation.mainBlocker === "Duplicate profile URLs remain in pilot output." && canonicalStats.duplicateProfileUrlGroupsAfter === 0) {
@@ -114,6 +119,60 @@ async function currentWave2Results(targets: Awaited<ReturnType<typeof loadMaster
     }
   }
   return results;
+}
+
+async function currentWave3Results(targets: Awaited<ReturnType<typeof loadMasterDeptTargets>>) {
+  const results = [];
+  for (const slug of wave3HospitalSlugs) {
+    try {
+      const evaluation = (await runHospitalAutopilot(slug, "evaluate", false)) as HospitalPilotEvaluation;
+      const mapping = await applyMasterDeptMappingToReviewed(slug, targets);
+      const calibrated = canonicalCalibratedReadiness(evaluation, mapping.canonicalStats);
+      const split = splitFor(slug, calibrated.readiness, mapping.canonicalStats);
+      results.push({
+        hospital: slug,
+        readiness: calibrated.readiness,
+        crawlReadiness: split.crawlReadiness,
+        mappingReadiness: split.mappingReadiness,
+        outputUsability: split.outputUsability,
+        reviewedRecords: evaluation.reviewedRecords,
+        productionReadyCount: evaluation.productionReadyCount,
+        mappedRecords: mapping.mappedRecords,
+        mappingStats: mapping.mappingStats,
+        canonicalStats: mapping.canonicalStats,
+        mainBlocker: calibrated.mainBlocker
+      });
+    } catch (error) {
+      const mappingStats = await readMappingStats(slug);
+      const canonicalStats = await readCanonicalStats(slug);
+      const split = blockedSplit();
+      results.push({
+        hospital: slug,
+        readiness: "blocked",
+        crawlReadiness: split.crawlReadiness,
+        mappingReadiness: split.mappingReadiness,
+        outputUsability: split.outputUsability,
+        reviewedRecords: mappingStats.totalReviewed,
+        productionReadyCount: canonicalStats.productionReadyCanonicalDoctors,
+        mappedRecords: mappingStats.totalReviewed - mappingStats.unmapped,
+        mappingStats,
+        canonicalStats,
+        mainBlocker: error instanceof Error ? error.message : String(error)
+      });
+    }
+  }
+  return results;
+}
+
+function blockerTypeFor(errorMessage: string | null, evaluation?: HospitalPilotEvaluation) {
+  const text = `${errorMessage ?? ""} ${evaluation?.mainBlocker ?? ""}`.toLowerCase();
+  if (evaluation && evaluation.rawDoctorRecords === 0) return "noPublicRosterFound" as const;
+  if (/403|forbidden/.test(text)) return "siteBlocked" as const;
+  if (/404|410|stale/.test(text)) return "staleMasterDeptUrls" as const;
+  if (/api|js|angular|shell/.test(text)) return "apiNeedsAdapter" as const;
+  if (/parser|selector/.test(text)) return "parserMissing" as const;
+  if (/no doctor|zero doctor|0 doctor/.test(text)) return "noDoctorPagesFound" as const;
+  return "other" as const;
 }
 
 async function main() {
@@ -274,6 +333,119 @@ async function main() {
     const plan = buildNationalHospitalPlan(targets);
     const report = await writeNationalPlanOutputs(targets, plan, { wave1Results, wave1MappingBefore, wave1MappingAfter, canonicalStatsByHospital });
     console.log(JSON.stringify({ ...nationalPlanSummary(targets, plan, report), wave1Results, wave1MappingBefore, wave1MappingAfter }, null, 2));
+    return;
+  }
+
+  if (mode === "national-sweep") {
+    const limit = Number(args.get("limit") ?? "10");
+    const targets = await loadMasterDeptTargets();
+    const initialPlan = buildNationalHospitalPlan(targets);
+    const initialQueue = buildNationalRemainingQueue(initialPlan, targets);
+    const inspectCandidates = initialQueue
+      .filter((item) => item.plannedAction === "pilot" || item.plannedAction === "adapterInspect")
+      .slice(0, limit);
+    await inspectMasterDeptTargets(targets, { hospitalNames: inspectCandidates.map((item) => item.hospitalName), limit: 240 });
+    const inspectedPlan = buildNationalHospitalPlan(targets);
+    const nationalRemainingQueue = buildNationalRemainingQueue(inspectedPlan, targets);
+    const sweepQueue = nationalRemainingQueue
+      .filter((item) => item.plannedAction === "pilot" || item.plannedAction === "adapterInspect")
+      .slice(0, limit);
+    const nationalSweepResults: NationalSweepResult[] = [];
+
+    for (const item of sweepQueue) {
+      if (item.plannedAction !== "pilot") {
+        const mappingStats = await readMappingStats(item.hospitalSlug);
+        const canonicalStats = await readCanonicalStats(item.hospitalSlug);
+        const split = blockedSplit(item.expectedCrawlReadiness === "needsAdapter" ? "needsAdapter" : "blocked");
+        nationalSweepResults.push({
+          hospital: item.hospitalSlug,
+          plannedAction: item.plannedAction,
+          readiness: item.expectedCrawlReadiness === "needsAdapter" ? "needsAdapter" : "blocked",
+          crawlReadiness: split.crawlReadiness,
+          mappingReadiness: split.mappingReadiness,
+          outputUsability: split.outputUsability,
+          reviewedRecords: mappingStats.totalReviewed,
+          productionReadyCount: canonicalStats.productionReadyCanonicalDoctors,
+          mappedRecords: mappingStats.totalReviewed - mappingStats.unmapped,
+          mappingStats,
+          canonicalStats,
+          mainBlocker: item.rowsWithUrls === 0 ? "No Master_Dept source URLs available for a safe pilot." : "Adapter inspection required before pilot.",
+          blockerType: item.rowsWithUrls === 0 ? "noPublicRosterFound" : "parserMissing"
+        });
+        continue;
+      }
+
+      try {
+        registerHospitalBaseline(buildSyntheticBaselineForQueueItem(item, targets));
+        const evaluation = (await runHospitalAutopilot(item.hospitalSlug, "pilot", false)) as HospitalPilotEvaluation;
+        const mapping = await applyMasterDeptMappingToReviewed(item.hospitalSlug, targets);
+        const calibrated = canonicalCalibratedReadiness(evaluation, mapping.canonicalStats);
+        const split = splitFor(item.hospitalSlug, calibrated.readiness, mapping.canonicalStats);
+        nationalSweepResults.push({
+          hospital: item.hospitalSlug,
+          plannedAction: item.plannedAction,
+          readiness: calibrated.readiness,
+          crawlReadiness: split.crawlReadiness,
+          mappingReadiness: split.mappingReadiness,
+          outputUsability: split.outputUsability,
+          reviewedRecords: evaluation.reviewedRecords,
+          productionReadyCount: evaluation.productionReadyCount,
+          mappedRecords: mapping.mappedRecords,
+          mappingStats: mapping.mappingStats,
+          canonicalStats: mapping.canonicalStats,
+          mainBlocker: calibrated.mainBlocker,
+          blockerType: calibrated.mainBlocker ? blockerTypeFor(calibrated.mainBlocker, evaluation) : "none"
+        });
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : String(error);
+        const mappingStats = await readMappingStats(item.hospitalSlug);
+        const canonicalStats = await readCanonicalStats(item.hospitalSlug);
+        const split = blockedSplit();
+        nationalSweepResults.push({
+          hospital: item.hospitalSlug,
+          plannedAction: item.plannedAction,
+          readiness: "blocked",
+          crawlReadiness: split.crawlReadiness,
+          mappingReadiness: split.mappingReadiness,
+          outputUsability: split.outputUsability,
+          reviewedRecords: mappingStats.totalReviewed,
+          productionReadyCount: canonicalStats.productionReadyCanonicalDoctors,
+          mappedRecords: mappingStats.totalReviewed - mappingStats.unmapped,
+          mappingStats,
+          canonicalStats,
+          mainBlocker: errorMessage,
+          blockerType: blockerTypeFor(errorMessage)
+        });
+      }
+    }
+
+    const wave1MappingBefore = Object.fromEntries(await Promise.all(wave1HospitalSlugs.map(async (slug) => [slug, await readMappingStats(slug)])));
+    const wave1MappingAfter = wave1MappingBefore;
+    const wave1Results = await currentWave1Results(wave1MappingAfter);
+    const wave2Results = await currentWave2Results(targets);
+    const wave3Results = await currentWave3Results(targets);
+    const wave2SelectedHospitals = buildWave2Plan(inspectedPlan, targets, 5).filter((item) => new Set(wave2Results.map((result) => result.hospital)).has(item.hospitalSlug));
+    const wave3SelectedHospitals = buildWave3Plan(inspectedPlan, targets, 5);
+    const allResultSlugs = [...new Set([
+      ...wave1HospitalSlugs,
+      ...wave2Results.map((result) => result.hospital),
+      ...wave3Results.map((result) => result.hospital),
+      ...nationalSweepResults.map((result) => result.hospital)
+    ])];
+    const canonicalStatsByHospital = Object.fromEntries(await Promise.all(allResultSlugs.map(async (slug) => [slug, await readCanonicalStats(slug)])));
+    const report = await writeNationalPlanOutputs(targets, inspectedPlan, {
+      wave1Results,
+      wave1MappingBefore,
+      wave1MappingAfter,
+      canonicalStatsByHospital,
+      wave2SelectedHospitals,
+      wave2Results,
+      wave3SelectedHospitals,
+      wave3Results,
+      nationalRemainingQueue,
+      nationalSweepResults
+    });
+    console.log(JSON.stringify({ ...nationalPlanSummary(targets, inspectedPlan, report), nationalSweepResults, nextQueue: nationalRemainingQueue.slice(limit, limit + 10) }, null, 2));
     return;
   }
 

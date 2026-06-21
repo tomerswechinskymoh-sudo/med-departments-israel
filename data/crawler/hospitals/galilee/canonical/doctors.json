@@ -1,0 +1,548 @@
+[
+  {
+    "canonicalDoctorId": "doctor-c592634488459f3a",
+    "fullName": "ד\"ר אדהם דאוד",
+    "normalizedName": "אדהם דאוד",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "ד\"ר אדהם דאוד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6bf9642236abb912",
+    "fullName": "ד\"ר אליהו חלפון",
+    "normalizedName": "אליהו חלפון",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "ד\"ר אליהו חלפון"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0bc5e410690430d6",
+    "fullName": "ד\"ר אלכס שטורמן",
+    "normalizedName": "אלכס שטורמן",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "ד\"ר אלכס שטורמן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-fc9c65df8fa5763a",
+    "fullName": "ד\"ר בולוס מריאנה",
+    "normalizedName": "בולוס מריאנה",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10533"
+    ],
+    "evidence": [
+      "ד\"ר בולוס מריאנה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3974f7f2af688c48",
+    "fullName": "פרופ' ברהום בועידת הבריאות של ידיעות אחרונות",
+    "normalizedName": "ברהום בועידת הבריאות של ידיעות אחרונות",
+    "profileUrl": "https://www.gmc.gov.il/?p=12176",
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/",
+      "https://www.gmc.gov.il/?p=12176"
+    ],
+    "evidence": [
+      "פרופ' ברהום בועידת הבריאות של ידיעות אחרונות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9f2307d243f68d1f",
+    "fullName": "ד\"ר גאנם נדיר",
+    "normalizedName": "גאנם נדיר",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+    ],
+    "evidence": [
+      "ד\"ר גאנם נדיר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9048101a13a738a8",
+    "fullName": "ד\"ר גסאן מועדי",
+    "normalizedName": "גסאן מועדי",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "ד\"ר גסאן מועדי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-1eaf88e7431f71ea",
+    "fullName": "ד\"ר ואסים משיעל",
+    "normalizedName": "ואסים משיעל",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=8838"
+    ],
+    "evidence": [
+      "ד\"ר ואסים משיעל"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-51c20d6c4730db73",
+    "fullName": "ד\"ר ואסים שיהאב",
+    "normalizedName": "ואסים שיהאב",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=8838"
+    ],
+    "evidence": [
+      "ד\"ר ואסים שיהאב"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f7cc67353cb9cb02",
+    "fullName": "פרופ' חיתאם חוסיין בסיקור מיוחד עבור \"ישראל היום\"",
+    "normalizedName": "חיתאם חוסיין בסיקור מיוחד עבור ישראל היום",
+    "profileUrl": "https://www.gmc.gov.il/?p=22108",
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/",
+      "https://www.gmc.gov.il/?p=22108"
+    ],
+    "evidence": [
+      "התפרצות וירוס ההאנטה: פרופ' חיתאם חוסיין בסיקור מיוחד עבור \"ישראל היום\""
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d9fd82881f162d0d",
+    "fullName": "ד\"ר חליל נסראללה",
+    "normalizedName": "חליל נסראללה",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=8838"
+    ],
+    "evidence": [
+      "ד\"ר חליל נסראללה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e8e9be00aae860ad",
+    "fullName": "ד\"ר טוני אבו רחמה",
+    "normalizedName": "טוני אבו רחמה",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "ד\"ר טוני אבו רחמה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-bacd0762dc72e350",
+    "fullName": "ד\"ר לואי מוברכה",
+    "normalizedName": "לואי מוברכה",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "ד\"ר לואי מוברכה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0b32879b546ed78a",
+    "fullName": "ד\"ר לואי עראף",
+    "normalizedName": "לואי עראף",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=8838"
+    ],
+    "evidence": [
+      "ד\"ר לואי עראף"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-31f77623c28d3953",
+    "fullName": "פרופ' ליאור לבנשטיין",
+    "normalizedName": "ליאור לבנשטיין",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+    ],
+    "evidence": [
+      "פרופ' ליאור לבנשטיין"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6531a61c19100a90",
+    "fullName": "פרופ' מאיה וולף-פרנק",
+    "normalizedName": "מאיה וולף פרנק",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+    ],
+    "evidence": [
+      "פרופ' מאיה וולף-פרנק"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-14dd8f5bf367d8db",
+    "fullName": "ד\"ר מואנס סרחאן",
+    "normalizedName": "מואנס סרחאן",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "ד\"ר מואנס סרחאן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-1d77262c0df11945",
+    "fullName": "ד\"ר מלחם פארס",
+    "normalizedName": "מלחם פארס",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10533"
+    ],
+    "evidence": [
+      "ד\"ר מלחם פארס"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-5187ef1f1b5e00a0",
+    "fullName": "פרופ' מסעד ברהום",
+    "normalizedName": "מסעד ברהום",
+    "profileUrl": "https://www.gmc.gov.il/?p=12221",
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": "מפקד פיקוד הצפון, אלוף אורי גורדין העניק תעודת הוקרה למנהל המרכז, פרופ' מסעד ברהום.",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/",
+      "https://www.gmc.gov.il/?p=12221"
+    ],
+    "evidence": [
+      "מפקד פיקוד הצפון, אלוף אורי גורדין העניק תעודת הוקרה למנהל המרכז, פרופ' מסעד ברהום."
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6d2a7cb98dbae65c",
+    "fullName": "פרופ' מסעד ברהום",
+    "normalizedName": "מסעד ברהום",
+    "profileUrl": "https://www.gmc.gov.il/?p=22136",
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": "הצדעה לצוותים ומוכנות לכל תרחיש: פרופ' מסעד ברהום, מנהל המרכז הרפואי לגליל, בראיון לערוץ 14",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/",
+      "https://www.gmc.gov.il/?p=22136"
+    ],
+    "evidence": [
+      "הצדעה לצוותים ומוכנות לכל תרחיש: פרופ' מסעד ברהום, מנהל המרכז הרפואי לגליל, בראיון לערוץ 14"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6e95b677909b43fc",
+    "fullName": "פרופ' מרואן עודה",
+    "normalizedName": "מרואן עודה",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+    ],
+    "evidence": [
+      "פרופ' מרואן עודה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6f6e77410d517376",
+    "fullName": "פרופ' נימר עאסי",
+    "normalizedName": "נימר עאסי",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10533"
+    ],
+    "evidence": [
+      "פרופ' נימר עאסי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-87964a76354a406e",
+    "fullName": "ד\"ר סבטלנה ליסיצין",
+    "normalizedName": "סבטלנה ליסיצין",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10533"
+    ],
+    "evidence": [
+      "ד\"ר סבטלנה ליסיצין"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3f343924a1265b78",
+    "fullName": "ד\"ר צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס \"Resilient Medicine",
+    "normalizedName": "צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס Resilient Medicine",
+    "profileUrl": "https://www.gmc.gov.il/?p=22119",
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/",
+      "https://www.gmc.gov.il/?p=22119"
+    ],
+    "evidence": [
+      "גאווה בזירה הבינלאומית: ד\"ר צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס \"Resilient Medicine 2026\""
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0d817b2aad68ef66",
+    "fullName": "ד\"ר צפריר אור",
+    "normalizedName": "צפריר אור",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "ד\"ר צפריר אור"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2001d028acd0f171",
+    "fullName": "פרופ' שאול עטר",
+    "normalizedName": "שאול עטר",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "פרופ' שאול עטר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-4ba7bb759bc096e8",
+    "fullName": "ד\"ר שולי האיתם",
+    "normalizedName": "שולי האיתם",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=10501"
+    ],
+    "evidence": [
+      "ד\"ר שולי האיתם"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0972be06535da764",
+    "fullName": "ד\"ר שטארקר חיים יפים",
+    "normalizedName": "שטארקר חיים יפים",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?p=8838"
+    ],
+    "evidence": [
+      "ד\"ר שטארקר חיים יפים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-1e06ce4e65b63da8",
+    "fullName": "ד\"ר שרבל חורי",
+    "normalizedName": "שרבל חורי",
+    "profileUrl": "https://www.gmc.gov.il/?p=12196",
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/",
+      "https://www.gmc.gov.il/?p=12196"
+    ],
+    "evidence": [
+      "תעודת הוקרה לד\"ר שרבל חורי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-57a21059c27a6c2e",
+    "fullName": "ד\"ר שרון אבשלום",
+    "normalizedName": "שרון אבשלום",
+    "profileUrl": null,
+    "hospitalName": "Galilee Medical Center",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+    ],
+    "evidence": [
+      "ד\"ר שרון אבשלום"
+    ]
+  }
+]

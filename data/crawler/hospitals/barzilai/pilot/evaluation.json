@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "barzilai",
+  "hospitalName": "מרכז רפואי ברזילי",
+  "generatedAt": "2026-06-21T10:36:56.633Z",
+  "urlsUsed": [
+    "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+    "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825",
+    "https://www.barzilaimc.org.il/?CategoryID=878&ArticleID=4195",
+    "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=4871"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 1,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 19,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 19,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 19,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 19
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Profile URL coverage is below 50%."
+}

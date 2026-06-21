@@ -1,0 +1,133 @@
+{
+  "hospitalSlug": "schneider",
+  "hospitalName": "מרכז שניידר לילדים",
+  "generatedAt": "2026-06-21T10:37:54.262Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427",
+    "departmentsIndexUrlCandidates": [
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2431"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2431"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427",
+      "title": "רפואה דחופה",
+      "h1": [
+        "המחלקה לרפואה דחופה"
+      ],
+      "h2": [],
+      "htmlLength": 81476,
+      "visibleTextLength": 16350,
+      "error": null
+    },
+    {
+      "url": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+      "title": "ילדים א",
+      "h1": [
+        "מחלקת ילדים א'"
+      ],
+      "h2": [],
+      "htmlLength": 68491,
+      "visibleTextLength": 10197,
+      "error": null
+    },
+    {
+      "url": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
+      "title": "ילדים ב",
+      "h1": [
+        "מחלקת ילדים ב'"
+      ],
+      "h2": [],
+      "htmlLength": 68509,
+      "visibleTextLength": 10018,
+      "error": null
+    },
+    {
+      "url": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+      "title": "ילדים ג",
+      "h1": [
+        "מחלקת ילדים ג'"
+      ],
+      "h2": [],
+      "htmlLength": 69125,
+      "visibleTextLength": 10598,
+      "error": null
+    },
+    {
+      "url": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
+      "title": "מחלקת ילדים ד'",
+      "h1": [
+        "מחלקת ילדים ד'"
+      ],
+      "h2": [],
+      "htmlLength": 67226,
+      "visibleTextLength": 10154,
+      "error": null
+    },
+    {
+      "url": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2431",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2431",
+      "title": "המערך לבריאות הנפש",
+      "h1": [
+        "מערך בריאות הנפש"
+      ],
+      "h2": [],
+      "htmlLength": 99678,
+      "visibleTextLength": 19450,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "classicDoctorCards"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427",
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=2431"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

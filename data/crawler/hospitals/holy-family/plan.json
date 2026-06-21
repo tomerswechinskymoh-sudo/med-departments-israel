@@ -1,0 +1,267 @@
+{
+  "hospitalSlug": "holy-family",
+  "hospitalName": "ביה\"ח המשפחה הקדושה",
+  "generatedAt": "2026-06-21T10:36:59.996Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+    "departmentsIndexUrlCandidates": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "https://hfhosp.org/he/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D",
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "title": "הצוות שלנו | בית חולים המשפחה הקדושה נצרת",
+      "h1": [
+        "הצוות שלנו"
+      ],
+      "h2": [
+        "users login menu",
+        "שפות",
+        "טופס חיפוש",
+        "הינך נמצא כאן",
+        "כל הצוותים",
+        "ד\"ר מאהר דיב",
+        "ד\"ר האשם בשארה",
+        "מנאל ברגות",
+        "פרופ' זיו גיל",
+        "מרלן חדאד",
+        "ד\"ר איימן חרבג'י",
+        "ד\"ר ג'אד ח'טיב",
+        "דר' מוחמד חג'אזי",
+        "ד\"ר בהא פרנסיס",
+        "עלאא סמרה",
+        "אדהם ג'נטוס",
+        "תאמר חאיק"
+      ],
+      "htmlLength": 144181,
+      "visibleTextLength": 7237,
+      "error": null
+    },
+    {
+      "url": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+      "title": "אגף נשים ויולדות | בית חולים המשפחה הקדושה נצרת",
+      "h1": [
+        "אגף נשים ויולדות"
+      ],
+      "h2": [
+        "users login menu",
+        "שפות",
+        "טופס חיפוש",
+        "הינך נמצא כאן",
+        "אגף נשים ויולדות",
+        "מחשבון בריאטריה"
+      ],
+      "htmlLength": 138383,
+      "visibleTextLength": 8557,
+      "error": null
+    },
+    {
+      "url": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "title": "אורתופדיה | בית חולים המשפחה הקדושה נצרת",
+      "h1": [
+        "אורתופדיה"
+      ],
+      "h2": [
+        "users login menu",
+        "שפות",
+        "טופס חיפוש",
+        "הינך נמצא כאן",
+        "אורתופדיה",
+        "מחשבון בריאטריה"
+      ],
+      "htmlLength": 136179,
+      "visibleTextLength": 7622,
+      "error": null
+    },
+    {
+      "url": "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+      "title": "רנטגן - C.T- U.S - צפיפות העצם | בית חולים המשפחה הקדושה נצרת",
+      "h1": [
+        "רנטגן - C.T- U.S - צפיפות העצם"
+      ],
+      "h2": [
+        "users login menu",
+        "שפות",
+        "טופס חיפוש",
+        "הינך נמצא כאן",
+        "רנטגן - C.T- U.S - צפיפות העצם",
+        "מחשבון בריאטריה",
+        "הצוות",
+        "ג'מאל נאסר",
+        "דר' מוחמד חג'אזי",
+        "ד\"ר זאהי אבו נסאר",
+        "הצוות",
+        "ג'מאל נאסר",
+        "דר' מוחמד חג'אזי",
+        "ד\"ר זאהי אבו נסאר"
+      ],
+      "htmlLength": 145754,
+      "visibleTextLength": 7611,
+      "error": null
+    },
+    {
+      "url": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "title": "כירורגיה כללית | בית חולים המשפחה הקדושה נצרת",
+      "h1": [
+        "מערך לכירורגיה כללית"
+      ],
+      "h2": [
+        "users login menu",
+        "שפות",
+        "טופס חיפוש",
+        "הינך נמצא כאן",
+        "מערך לכירורגיה כללית",
+        "מחשבון בריאטריה"
+      ],
+      "htmlLength": 158709,
+      "visibleTextLength": 19793,
+      "error": null
+    },
+    {
+      "url": "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+      "title": "אגף גריאטרי | בית חולים המשפחה הקדושה נצרת",
+      "h1": [
+        "אגף גריאטרי"
+      ],
+      "h2": [
+        "users login menu",
+        "שפות",
+        "טופס חיפוש",
+        "הינך נמצא כאן"
+      ],
+      "htmlLength": 127092,
+      "visibleTextLength": 7249,
+      "error": null
+    },
+    {
+      "url": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA",
+      "title": "פנימית | בית חולים המשפחה הקדושה נצרת",
+      "h1": [
+        "מחלקה פנימית"
+      ],
+      "h2": [
+        "users login menu",
+        "שפות",
+        "טופס חיפוש",
+        "הינך נמצא כאן",
+        "מחלקה פנימית",
+        "מחשבון בריאטריה"
+      ],
+      "htmlLength": 134978,
+      "visibleTextLength": 7307,
+      "error": null
+    },
+    {
+      "url": "https://hfhosp.org/he/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hfhosp.org/he/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D",
+      "title": "צוות הרופאים | בית חולים המשפחה הקדושה נצרת",
+      "h1": [
+        "צוות הרופאים"
+      ],
+      "h2": [
+        "users login menu",
+        "שפות",
+        "טופס חיפוש",
+        "הינך נמצא כאן",
+        "ד\"ר האשם בשארה",
+        "מנאל ברגות",
+        "פרופ' זיו גיל",
+        "ד\"ר איימן חרבג'י",
+        "ד\"ר ג'אד ח'טיב",
+        "דר' מוחמד חג'אזי",
+        "ד\"ר בהא פרנסיס",
+        "ראמי גנטוס",
+        "לינא נג'אר",
+        "סוזאן בנא",
+        "בושרה עזאם",
+        "סועאד מנאסרה"
+      ],
+      "htmlLength": 144291,
+      "visibleTextLength": 7374,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "sourceUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "anchorText": "הצוות שלנו",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הצוות שלנו https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95"
+    },
+    {
+      "url": "https://hfhosp.org/he/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D",
+      "sourceUrl": "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "anchorText": "צוות הרופאים",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "צוות הרופאים https://hfhosp.org/he/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+    "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+    "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+    "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "https://hfhosp.org/he/%D7%90%D7%92%D7%A3-%D7%92%D7%A8%D7%99%D7%90%D7%98%D7%A8%D7%99",
+    "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%97%D7%9C%D7%A7%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA",
+    "https://hfhosp.org/he/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

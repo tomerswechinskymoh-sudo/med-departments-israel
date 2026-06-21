@@ -1,0 +1,476 @@
+[
+  {
+    "canonicalDoctorId": "doctor-31f1ad6cec24ca27",
+    "fullName": "ד\"ר אופיר אורי",
+    "normalizedName": "אופיר אורי",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=5635&dbsAuthToken=",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מערך אורתופדיה: ד''ר איל ברבלק",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=205",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=5635&dbsAuthToken="
+    ],
+    "evidence": [
+      "מנהל מערך אורתופדיה: ד''ר איל ברבלק\nסגן מנהל המחלקה ומנתח כתף ומרפק: ד\"ר אופיר אורי\nאחות אחראית: גב' גלינה שמילוב\nסגן אחות אחראית: מר חוסאם דהוד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-569b566a99ab21fa",
+    "fullName": "ד\"ר אופיר אורי\nאחות אחראית",
+    "normalizedName": "אופיר אורי אחות אחראית",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=3805",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מערך אורתופדיה: ד''ר איל ברבלק",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=205",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=3805"
+    ],
+    "evidence": [
+      "מנהל מערך אורתופדיה: ד''ר איל ברבלק\nסגן מנהל המחלקה ומנתח כתף ומרפק: ד\"ר אופיר אורי\nאחות אחראית: גב' גלינה שמילוב\nסגן אחות אחראית: מר חוסאם דהוד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-8598f6601705d175",
+    "fullName": "ד\"ר אופיר זמירה",
+    "normalizedName": "אופיר זמירה",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=9729",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאים בכירים:",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=204",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=9729"
+    ],
+    "evidence": [
+      "רופאים בכירים:\nד\"ר סרג'ו בלומן, פרופ' משנה קליני\nד\"ר אופיר זמירה, מנהל יחידת טרשת נפוצה ונוירואימונולוגיה\nד\"ר נטליה בדנרצי'ק\nד\"ר נאום פיירשטיין\nד\"ר עדי אלדר-הרסליס - מנהלת יחידת עצב-שריר\nד\"ר איילת מדברי - מנהלת יחידה מקצועית כאב\nרופאים מתמחים:\nד\"ר עומרי ביאדסה\nד\"ר שי שבו\nד\"ר אמיר עאסלה\nד\"ר נור אבו אחמד\nד\"ר מנאר זובידאת\nד\"ר תמארה כיואן\nד\"ר דימה סוסאן\nמזכירה:\nגב' שולי מרציאנו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0db20b9318e28900",
+    "fullName": "ד\"ר אורן ישראלי",
+    "normalizedName": "אורן ישראלי",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=12221",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל האגף: פרופ' בוריס קסל",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=12221"
+    ],
+    "evidence": [
+      "מנהל האגף: פרופ' בוריס קסל\nמנהל המחלקה: ד\"ר ויאצ'סלב זילברמינץ\nמנהלת היחידה לכירורגיית שד: ד\"ר יסמין דגן\nמנהל יחידה לכירורגיה קולו-רקטאלית: ד\"ר מרק קירשון\nמנהל שירות כירורגיה של מערכת עיכול עליונה (Foregut): ד\"ר אורן ישראלי\nאחות אחראית: גב' אינה פורמן\nסגנית אחות אחראית: גב' סאמיה מחאמיד\nסגן אחות אחראית: מר אחמד אגבריה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-cc6c0b4177b3e2ca",
+    "fullName": "ד\"ר אייל מרכדו",
+    "normalizedName": "אייל מרכדו",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=11869",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל יחידת כירורגיה כתף ומרפק: ד\"ר גיל לאופר",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=205",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=11869"
+    ],
+    "evidence": [
+      "מנהל יחידת כירורגיה כתף ומרפק: ד\"ר גיל לאופר\nמנהל היחידה לכירורגיית כף יד: ד\"ר בועז גרנות\nרופאים בכירים, היחידה לכירורגיה של היד: ד\"ר ירון סלע, ד\"ר יונס מוחמד\nרופא בכיר, אורתופדיית ילדים: ד\"ר אייל מרכדו\nרופאים בכירים ביחידה לכירורגיה של עמוד השדרה: ד\"ר ליעד חיימוביץ' ד\"ר עמית קרן\nמתמחים:\nד\"ר הייתם מצארווה\nד\"ר מוחמד אבו חוסין\nד\"ר סלים סמארה\nד\"ר רבקה (ריבי) שלום\nד\"ר משה גרצולין\nד\"ר אורן ברש\nד\"ר עוביידה אכתילאת\nד\"ר עמר מנסור\nד\"ר ענבר פז\nד\"ר גמאל ואדל\nד\"ר נועה מרטינוביץ\nד\"ר ליעד אלפנדרי\nד\"ר ארתיום ש"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-637c1dc382678ac3",
+    "fullName": "ד\"ר איילת מדברי",
+    "normalizedName": "איילת מדברי",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=5080",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאים בכירים:",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=204",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=5080"
+    ],
+    "evidence": [
+      "רופאים בכירים:\nד\"ר סרג'ו בלומן, פרופ' משנה קליני\nד\"ר אופיר זמירה, מנהל יחידת טרשת נפוצה ונוירואימונולוגיה\nד\"ר נטליה בדנרצי'ק\nד\"ר נאום פיירשטיין\nד\"ר עדי אלדר-הרסליס - מנהלת יחידת עצב-שריר\nד\"ר איילת מדברי - מנהלת יחידה מקצועית כאב\nרופאים מתמחים:\nד\"ר עומרי ביאדסה\nד\"ר שי שבו\nד\"ר אמיר עאסלה\nד\"ר נור אבו אחמד\nד\"ר מנאר זובידאת\nד\"ר תמארה כיואן\nד\"ר דימה סוסאן\nמזכירה:\nגב' שולי מרציאנו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-236d8794c04362f9",
+    "fullName": "פרופ' בוריס קסל",
+    "normalizedName": "בוריס קסל",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=371",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": "מנהל האגף: פרופ' בוריס קסל",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=371"
+    ],
+    "evidence": [
+      "מנהל האגף: פרופ' בוריס קסל\nמנהל המחלקה: ד\"ר ויאצ'סלב זילברמינץ\nמנהלת היחידה לכירורגיית שד: ד\"ר יסמין דגן\nמנהל יחידה לכירורגיה קולו-רקטאלית: ד\"ר מרק קירשון\nמנהל שירות כירורגיה של מערכת עיכול עליונה (Foregut): ד\"ר אורן ישראלי\nאחות אחראית: גב' אינה פורמן\nסגנית אחות אחראית: גב' סאמיה מחאמיד\nסגן אחות אחראית: מר אחמד אגבריה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6cafe6b6fa66907d",
+    "fullName": "ד\"ר גיל לאופר",
+    "normalizedName": "גיל לאופר",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=391",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל יחידת כירורגיה כתף ומרפק: ד\"ר גיל לאופר",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=205",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=391"
+    ],
+    "evidence": [
+      "מנהל יחידת כירורגיה כתף ומרפק: ד\"ר גיל לאופר\nמנהל היחידה לכירורגיית כף יד: ד\"ר בועז גרנות\nרופאים בכירים, היחידה לכירורגיה של היד: ד\"ר ירון סלע, ד\"ר יונס מוחמד\nרופא בכיר, אורתופדיית ילדים: ד\"ר אייל מרכדו\nרופאים בכירים ביחידה לכירורגיה של עמוד השדרה: ד\"ר ליעד חיימוביץ' ד\"ר עמית קרן\nמתמחים:\nד\"ר הייתם מצארווה\nד\"ר מוחמד אבו חוסין\nד\"ר סלים סמארה\nד\"ר רבקה (ריבי) שלום\nד\"ר משה גרצולין\nד\"ר אורן ברש\nד\"ר עוביידה אכתילאת\nד\"ר עמר מנסור\nד\"ר ענבר פז\nד\"ר גמאל ואדל\nד\"ר נועה מרטינוביץ\nד\"ר ליעד אלפנדרי\nד\"ר ארתיום ש"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-634dd3849052d63e",
+    "fullName": "ד\"ר דניאל שפר",
+    "normalizedName": "דניאל שפר",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=8101",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאים בכירים:",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=8101"
+    ],
+    "evidence": [
+      "רופאים בכירים:\nד\"ר דרור קרני ד\"ר מיכאל מדבדב - מומחה בכירורגיה כללית וכירורגיית ילדים, מנהל היחידה לכירורגיית ילדים ד\"ר מוחמד ג'בארין\nד\"ר דניאל שפר\nד\"ר ניב טשרנין\nרופאים מתמחים: ד\"ר הגר לוי שחר\nד\"ר מירי אלגבסי\nד\"ר סעיד יונסד\"ר ג'מאל יונס ד\"ר עדי מונזון ד\"ר טל וייס\nמזכירות רפואיות:\nגב' הילה גמליאל\nגב' נטלי פלאח"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e2c2574be40f3c38",
+    "fullName": "ד\"ר דרור קרני",
+    "normalizedName": "דרור קרני",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=12272",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאים בכירים:",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=12272"
+    ],
+    "evidence": [
+      "רופאים בכירים:\nד\"ר דרור קרני ד\"ר מיכאל מדבדב - מומחה בכירורגיה כללית וכירורגיית ילדים, מנהל היחידה לכירורגיית ילדים ד\"ר מוחמד ג'בארין\nד\"ר דניאל שפר\nד\"ר ניב טשרנין\nרופאים מתמחים: ד\"ר הגר לוי שחר\nד\"ר מירי אלגבסי\nד\"ר סעיד יונסד\"ר ג'מאל יונס ד\"ר עדי מונזון ד\"ר טל וייס\nמזכירות רפואיות:\nגב' הילה גמליאל\nגב' נטלי פלאח"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-23ba83287699c1de",
+    "fullName": "ד\"ר הלל יפה",
+    "normalizedName": "הלל יפה",
+    "profileUrl": "https://hymc.org.il/nashim?CategoryID=211",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/nashim?CategoryID=407",
+      "https://hymc.org.il/nashim?CategoryID=211"
+    ],
+    "evidence": [
+      "ד\"ר הלל יפה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-bc9c28c730e85c80",
+    "fullName": "ד\"ר הלל יפה",
+    "normalizedName": "הלל יפה",
+    "profileUrl": "https://hymc.org.il/?CategoryID=211",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=211"
+    ],
+    "evidence": [
+      "ד\"ר הלל יפה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3bc2dd2fa27edad8",
+    "fullName": "ד\"ר ויאצ'סלב זילברמינץ",
+    "normalizedName": "ויאצסלב זילברמינץ",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=8095",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל האגף: פרופ' בוריס קסל",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=8095"
+    ],
+    "evidence": [
+      "מנהל האגף: פרופ' בוריס קסל\nמנהל המחלקה: ד\"ר ויאצ'סלב זילברמינץ\nמנהלת היחידה לכירורגיית שד: ד\"ר יסמין דגן\nמנהל יחידה לכירורגיה קולו-רקטאלית: ד\"ר מרק קירשון\nמנהל שירות כירורגיה של מערכת עיכול עליונה (Foregut): ד\"ר אורן ישראלי\nאחות אחראית: גב' אינה פורמן\nסגנית אחות אחראית: גב' סאמיה מחאמיד\nסגן אחות אחראית: מר אחמד אגבריה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-488536300aa670bc",
+    "fullName": "ד\"ר יסמין דגן",
+    "normalizedName": "יסמין דגן",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=3687",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל האגף: פרופ' בוריס קסל",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=3687"
+    ],
+    "evidence": [
+      "מנהל האגף: פרופ' בוריס קסל\nמנהל המחלקה: ד\"ר ויאצ'סלב זילברמינץ\nמנהלת היחידה לכירורגיית שד: ד\"ר יסמין דגן\nמנהל יחידה לכירורגיה קולו-רקטאלית: ד\"ר מרק קירשון\nמנהל שירות כירורגיה של מערכת עיכול עליונה (Foregut): ד\"ר אורן ישראלי\nאחות אחראית: גב' אינה פורמן\nסגנית אחות אחראית: גב' סאמיה מחאמיד\nסגן אחות אחראית: מר אחמד אגבריה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-48f2adf72c8c6382",
+    "fullName": "ד\"ר ירון סלע",
+    "normalizedName": "ירון סלע",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=5865",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל יחידת כירורגיה כתף ומרפק: ד\"ר גיל לאופר",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=205",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=5865"
+    ],
+    "evidence": [
+      "מנהל יחידת כירורגיה כתף ומרפק: ד\"ר גיל לאופר\nמנהל היחידה לכירורגיית כף יד: ד\"ר בועז גרנות\nרופאים בכירים, היחידה לכירורגיה של היד: ד\"ר ירון סלע, ד\"ר יונס מוחמד\nרופא בכיר, אורתופדיית ילדים: ד\"ר אייל מרכדו\nרופאים בכירים ביחידה לכירורגיה של עמוד השדרה: ד\"ר ליעד חיימוביץ' ד\"ר עמית קרן\nמתמחים:\nד\"ר הייתם מצארווה\nד\"ר מוחמד אבו חוסין\nד\"ר סלים סמארה\nד\"ר רבקה (ריבי) שלום\nד\"ר משה גרצולין\nד\"ר אורן ברש\nד\"ר עוביידה אכתילאת\nד\"ר עמר מנסור\nד\"ר ענבר פז\nד\"ר גמאל ואדל\nד\"ר נועה מרטינוביץ\nד\"ר ליעד אלפנדרי\nד\"ר ארתיום ש"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d7d304e7a89a55cc",
+    "fullName": "ד\"ר ירון ריבר",
+    "normalizedName": "ירון ריבר",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=442",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל המחלקה: ד\"ר ירון ריברסגן מנהל המחלקה ומנהל היחידה לשבץ מוחי: ד\"ר סרג'יו שבתאי",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=204",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=442"
+    ],
+    "evidence": [
+      "מנהל המחלקה: ד\"ר ירון ריברסגן מנהל המחלקה ומנהל היחידה לשבץ מוחי: ד\"ר סרג'יו שבתאי\nאחות אחראית: גב' אוקסנה פורת\nסגנית אחות אחראית: גב' בת חן אבשלום\nאח מתאם, שבץ מוחי: מר מחמוד אבו חלף"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-ac032a2f4d5d1f55",
+    "fullName": "ד\"ר ירון ריבר\nמתאמת מחקר",
+    "normalizedName": "ירון ריבר מתאמת מחקר",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=204"
+    ],
+    "evidence": [
+      "נושא המחקר: M21-307: מיגרנה אפיזודית-מחקר שלב 3 על השימוש בבוטוקס (רעלן בוטולינום מסוג A) למניעת מיגרנות בקרב נבדקים עם מיגרנה אפיזודית.\nחוקר ראשי: ד\"ר ירון ריבר\nמתאמת מחקר: גב' אסתי סדן\nפרטי תקשורת: 04-7744909 [email protected]"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-54b972206b5882dd",
+    "fullName": "ד\"ר ליעד חיימוביץ'",
+    "normalizedName": "ליעד חיימוביץ",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=11475",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל יחידת כירורגיה כתף ומרפק: ד\"ר גיל לאופר",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=205",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=11475"
+    ],
+    "evidence": [
+      "מנהל יחידת כירורגיה כתף ומרפק: ד\"ר גיל לאופר\nמנהל היחידה לכירורגיית כף יד: ד\"ר בועז גרנות\nרופאים בכירים, היחידה לכירורגיה של היד: ד\"ר ירון סלע, ד\"ר יונס מוחמד\nרופא בכיר, אורתופדיית ילדים: ד\"ר אייל מרכדו\nרופאים בכירים ביחידה לכירורגיה של עמוד השדרה: ד\"ר ליעד חיימוביץ' ד\"ר עמית קרן\nמתמחים:\nד\"ר הייתם מצארווה\nד\"ר מוחמד אבו חוסין\nד\"ר סלים סמארה\nד\"ר רבקה (ריבי) שלום\nד\"ר משה גרצולין\nד\"ר אורן ברש\nד\"ר עוביידה אכתילאת\nד\"ר עמר מנסור\nד\"ר ענבר פז\nד\"ר גמאל ואדל\nד\"ר נועה מרטינוביץ\nד\"ר ליעד אלפנדרי\nד\"ר ארתיום ש"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-05344e66c94e35cb",
+    "fullName": "ד\"ר מוחמד ג'בארין",
+    "normalizedName": "מוחמד גבארין",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=412",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאים בכירים:",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=412"
+    ],
+    "evidence": [
+      "רופאים בכירים:\nד\"ר דרור קרני ד\"ר מיכאל מדבדב - מומחה בכירורגיה כללית וכירורגיית ילדים, מנהל היחידה לכירורגיית ילדים ד\"ר מוחמד ג'בארין\nד\"ר דניאל שפר\nד\"ר ניב טשרנין\nרופאים מתמחים: ד\"ר הגר לוי שחר\nד\"ר מירי אלגבסי\nד\"ר סעיד יונסד\"ר ג'מאל יונס ד\"ר עדי מונזון ד\"ר טל וייס\nמזכירות רפואיות:\nגב' הילה גמליאל\nגב' נטלי פלאח"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-89e9cfcc8e3a1f53",
+    "fullName": "ד\"ר מיכאל מדבדב",
+    "normalizedName": "מיכאל מדבדב",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=433",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאים בכירים:",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=433"
+    ],
+    "evidence": [
+      "רופאים בכירים:\nד\"ר דרור קרני ד\"ר מיכאל מדבדב - מומחה בכירורגיה כללית וכירורגיית ילדים, מנהל היחידה לכירורגיית ילדים ד\"ר מוחמד ג'בארין\nד\"ר דניאל שפר\nד\"ר ניב טשרנין\nרופאים מתמחים: ד\"ר הגר לוי שחר\nד\"ר מירי אלגבסי\nד\"ר סעיד יונסד\"ר ג'מאל יונס ד\"ר עדי מונזון ד\"ר טל וייס\nמזכירות רפואיות:\nגב' הילה גמליאל\nגב' נטלי פלאח"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-26cdc45cb19f53b3",
+    "fullName": "ד\"ר מרק קירשון",
+    "normalizedName": "מרק קירשון",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=413",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל האגף: פרופ' בוריס קסל",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=413"
+    ],
+    "evidence": [
+      "מנהל האגף: פרופ' בוריס קסל\nמנהל המחלקה: ד\"ר ויאצ'סלב זילברמינץ\nמנהלת היחידה לכירורגיית שד: ד\"ר יסמין דגן\nמנהל יחידה לכירורגיה קולו-רקטאלית: ד\"ר מרק קירשון\nמנהל שירות כירורגיה של מערכת עיכול עליונה (Foregut): ד\"ר אורן ישראלי\nאחות אחראית: גב' אינה פורמן\nסגנית אחות אחראית: גב' סאמיה מחאמיד\nסגן אחות אחראית: מר אחמד אגבריה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e55fea938f0b5e58",
+    "fullName": "ד\"ר ניב טשרנין",
+    "normalizedName": "ניב טשרנין",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=8094",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאים בכירים:",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=208",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=8094"
+    ],
+    "evidence": [
+      "רופאים בכירים:\nד\"ר דרור קרני ד\"ר מיכאל מדבדב - מומחה בכירורגיה כללית וכירורגיית ילדים, מנהל היחידה לכירורגיית ילדים ד\"ר מוחמד ג'בארין\nד\"ר דניאל שפר\nד\"ר ניב טשרנין\nרופאים מתמחים: ד\"ר הגר לוי שחר\nד\"ר מירי אלגבסי\nד\"ר סעיד יונסד\"ר ג'מאל יונס ד\"ר עדי מונזון ד\"ר טל וייס\nמזכירות רפואיות:\nגב' הילה גמליאל\nגב' נטלי פלאח"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d4e09975ecadee7d",
+    "fullName": "ד\"ר סרג'ו בלומן",
+    "normalizedName": "סרגו בלומן",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=445",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאים בכירים:",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=204",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=445"
+    ],
+    "evidence": [
+      "רופאים בכירים:\nד\"ר סרג'ו בלומן, פרופ' משנה קליני\nד\"ר אופיר זמירה, מנהל יחידת טרשת נפוצה ונוירואימונולוגיה\nד\"ר נטליה בדנרצי'ק\nד\"ר נאום פיירשטיין\nד\"ר עדי אלדר-הרסליס - מנהלת יחידת עצב-שריר\nד\"ר איילת מדברי - מנהלת יחידה מקצועית כאב\nרופאים מתמחים:\nד\"ר עומרי ביאדסה\nד\"ר שי שבו\nד\"ר אמיר עאסלה\nד\"ר נור אבו אחמד\nד\"ר מנאר זובידאת\nד\"ר תמארה כיואן\nד\"ר דימה סוסאן\nמזכירה:\nגב' שולי מרציאנו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-692dfec03b1306be",
+    "fullName": "ד\"ר סרג'יו שבתאי",
+    "normalizedName": "סרגיו שבתאי",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=3674",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל המחלקה: ד\"ר ירון ריברסגן מנהל המחלקה ומנהל היחידה לשבץ מוחי: ד\"ר סרג'יו שבתאי",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=204",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=3674"
+    ],
+    "evidence": [
+      "מנהל המחלקה: ד\"ר ירון ריברסגן מנהל המחלקה ומנהל היחידה לשבץ מוחי: ד\"ר סרג'יו שבתאי\nאחות אחראית: גב' אוקסנה פורת\nסגנית אחות אחראית: גב' בת חן אבשלום\nאח מתאם, שבץ מוחי: מר מחמוד אבו חלף"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a0dd07f1f150c2c8",
+    "fullName": "ד\"ר עדי אלדר-הרסליס",
+    "normalizedName": "עדי אלדר הרסליס",
+    "profileUrl": "https://hymc.org.il/?CategoryID=297&ArticleID=9987",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאים בכירים:",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hymc.org.il/?CategoryID=204",
+      "https://hymc.org.il/?CategoryID=297&ArticleID=9987"
+    ],
+    "evidence": [
+      "רופאים בכירים:\nד\"ר סרג'ו בלומן, פרופ' משנה קליני\nד\"ר אופיר זמירה, מנהל יחידת טרשת נפוצה ונוירואימונולוגיה\nד\"ר נטליה בדנרצי'ק\nד\"ר נאום פיירשטיין\nד\"ר עדי אלדר-הרסליס - מנהלת יחידת עצב-שריר\nד\"ר איילת מדברי - מנהלת יחידה מקצועית כאב\nרופאים מתמחים:\nד\"ר עומרי ביאדסה\nד\"ר שי שבו\nד\"ר אמיר עאסלה\nד\"ר נור אבו אחמד\nד\"ר מנאר זובידאת\nד\"ר תמארה כיואן\nד\"ר דימה סוסאן\nמזכירה:\nגב' שולי מרציאנו"
+    ]
+  }
+]

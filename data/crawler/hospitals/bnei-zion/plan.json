@@ -1,0 +1,237 @@
+{
+  "hospitalSlug": "bnei-zion",
+  "hospitalName": "מרכז רפואי בני ציון",
+  "generatedAt": "2026-06-21T10:37:46.639Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.gov.il/he//departments/Units/emergency_medicine",
+    "departmentsIndexUrlCandidates": [
+      "https://www.gov.il/he//departments/Units/emergency_medicine",
+      "https://www.gov.il/he//departments/Units/kids_department",
+      "https://www.gov.il/he//departments/Units/department_of_neurology",
+      "https://www.gov.il/he//departments/Units/womens_department",
+      "https://www.gov.il/he//departments/Units/rehabilitation_department",
+      "https://www.gov.il/he//departments/Units/department_of_anesthesia",
+      "https://www.gov.il/he//departments/Units/department_of_surgery",
+      "https://www.gov.il/he//departments/Units/bz_cardiology",
+      "https://www.gov.il/he//departments/Units/eyes",
+      "https://www.gov.il/he//departments/Units/department_of_orthopedics"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.gov.il/he//departments/Units/emergency_medicine",
+      "https://www.gov.il/he//departments/Units/kids_department",
+      "https://www.gov.il/he//departments/Units/department_of_neurology",
+      "https://www.gov.il/he//departments/Units/womens_department",
+      "https://www.gov.il/he//departments/Units/rehabilitation_department",
+      "https://www.gov.il/he//departments/Units/department_of_anesthesia",
+      "https://www.gov.il/he//departments/Units/department_of_surgery",
+      "https://www.gov.il/he//departments/Units/bz_cardiology"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.gov.il/he//departments/Units/emergency_medicine",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/emergency_medicine",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he//departments/Units/kids_department",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/kids_department",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he//departments/Units/department_of_neurology",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/department_of_neurology",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he//departments/Units/womens_department",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/womens_department",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he//departments/Units/rehabilitation_department",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/rehabilitation_department",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he//departments/Units/department_of_anesthesia",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/department_of_anesthesia",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he//departments/Units/department_of_surgery",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/department_of_surgery",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he//departments/Units/bz_cardiology",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/bz_cardiology",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he//departments/Units/eyes",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/eyes",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he//departments/Units/department_of_orthopedics",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he//departments/Units/department_of_orthopedics",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.gov.il/he//departments/Units/emergency_medicine",
+    "https://www.gov.il/he//departments/Units/kids_department",
+    "https://www.gov.il/he//departments/Units/department_of_neurology",
+    "https://www.gov.il/he//departments/Units/womens_department",
+    "https://www.gov.il/he//departments/Units/rehabilitation_department",
+    "https://www.gov.il/he//departments/Units/department_of_anesthesia",
+    "https://www.gov.il/he//departments/Units/department_of_surgery",
+    "https://www.gov.il/he//departments/Units/bz_cardiology"
+  ],
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Known URLs failed or returned no crawlable evidence."
+}

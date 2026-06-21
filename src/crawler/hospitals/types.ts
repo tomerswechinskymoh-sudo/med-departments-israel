@@ -24,7 +24,15 @@ export type MappingReadinessStatus = "sourceUrlMapped" | "partiallyMapped" | "ho
 
 export type OutputUsability = "hospitalRoster" | "departmentMappedRoster" | "notUsableYet";
 
-export type AutopilotMode = "plan" | "pilot" | "evaluate" | "full" | "national-plan" | "national-pilot" | "national-full-safe";
+export type AutopilotMode =
+  | "plan"
+  | "pilot"
+  | "evaluate"
+  | "full"
+  | "national-plan"
+  | "national-pilot"
+  | "national-sweep"
+  | "national-full-safe";
 
 export type MasterDeptSourceUrlStatus = "notProvided" | "pending" | "live" | "redirected" | "stale" | "forbidden" | "failed";
 

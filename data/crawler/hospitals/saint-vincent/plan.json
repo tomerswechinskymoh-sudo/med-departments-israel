@@ -1,0 +1,127 @@
+{
+  "hospitalSlug": "saint-vincent",
+  "hospitalName": "ביה\"ח הצרפתי",
+  "generatedAt": "2026-06-21T10:37:08.378Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
+    "departmentsIndexUrlCandidates": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%90%d7%a3-%d7%90%d7%95%d7%96%d7%9f-%d7%92%d7%a8%d7%95%d7%9f/",
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%90%d7%a3-%d7%90%d7%95%d7%96%d7%9f-%d7%92%d7%a8%d7%95%d7%9f/",
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
+      "title": "רופאים – Saint Vincent De Paul Hospital",
+      "h1": [],
+      "h2": [
+        "הרופאים שלנו"
+      ],
+      "htmlLength": 164612,
+      "visibleTextLength": 11408,
+      "error": null
+    },
+    {
+      "url": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "title": "מחלקת ילדים – Saint Vincent De Paul Hospital",
+      "h1": [],
+      "h2": [],
+      "htmlLength": 165292,
+      "visibleTextLength": 20147,
+      "error": null
+    },
+    {
+      "url": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "title": "מחלקת נשים ויולדות – Saint Vincent De Paul Hospital",
+      "h1": [],
+      "h2": [],
+      "htmlLength": 133100,
+      "visibleTextLength": 13854,
+      "error": null
+    },
+    {
+      "url": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%90%d7%a3-%d7%90%d7%95%d7%96%d7%9f-%d7%92%d7%a8%d7%95%d7%9f/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%90%d7%a3-%d7%90%d7%95%d7%96%d7%9f-%d7%92%d7%a8%d7%95%d7%9f/",
+      "title": "מחלקת אף אוזן גרון – Saint Vincent De Paul Hospital",
+      "h1": [],
+      "h2": [],
+      "htmlLength": 132315,
+      "visibleTextLength": 15997,
+      "error": null
+    },
+    {
+      "url": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/",
+      "title": "מחלקת עיניים – Saint Vincent De Paul Hospital",
+      "h1": [],
+      "h2": [],
+      "htmlLength": 122197,
+      "visibleTextLength": 12029,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
+      "sourceUrl": "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
+      "anchorText": "רופאים ומנהלים",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "רופאים ומנהלים https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/"
+    },
+    {
+      "url": "https://saint-vincent-hospital.org/2023/03/10/%d7%94%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d-%d7%a9%d7%9c%d7%a0%d7%95-%d7%94%d7%9d-%d7%94%d7%92%d7%90%d7%95%d7%95%d7%94-%d7%a9%d7%9c%d7%a0%d7%95-%d7%93%d7%a8-%d7%a0%d7%91%d7%99%d7%9c-%d7%a4%d7%a8/",
+      "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "anchorText": "הרופאים שלנו הם הגאווה שלנו! ד\"ר נביל פרנאנש…",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "הרופאים שלנו הם הגאווה שלנו! ד\"ר נביל פרנאנש… https://saint-vincent-hospital.org/2023/03/10/%d7%94%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d-%d7%a9%d7%9c%d7%a0%d7%95-%d7%94%d7%9d-%d7%94%d7%92%d7%90%d7%95%d7%95%d7%94-%d7%a9%d7%9c%d7%a0%d7%95-%d7%93%d7%a8-%d7%a0%d7%91%d7%99%d7%9c-%d7%a4%d7%a8/"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%90%d7%a3-%d7%90%d7%95%d7%96%d7%9f-%d7%92%d7%a8%d7%95%d7%9f/",
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/",
+    "https://saint-vincent-hospital.org/2023/03/10/%d7%94%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d-%d7%a9%d7%9c%d7%a0%d7%95-%d7%94%d7%9d-%d7%94%d7%92%d7%90%d7%95%d7%95%d7%94-%d7%a9%d7%9c%d7%a0%d7%95-%d7%93%d7%a8-%d7%a0%d7%91%d7%99%d7%9c-%d7%a4%d7%a8/"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

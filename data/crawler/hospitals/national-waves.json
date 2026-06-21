@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-21T10:16:23.419Z",
+  "generatedAt": "2026-06-21T10:38:12.099Z",
   "waves": [
     {
       "wave": 1,
@@ -526,7 +526,7 @@
           "wave": 2,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 6,
-          "pendingUrlCount": 6
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "מרכז לבה\"נ גהה",
@@ -691,7 +691,7 @@
           "wave": 3,
           "directStaffUrlCount": 4,
           "departmentUrlCount": 4,
-          "pendingUrlCount": 0,
+          "pendingUrlCount": 8,
           "canonicalStatsSourceHospitalSlug": "wolfson",
           "canonicalStats": {
             "rawReviewedRows": 0,
@@ -735,7 +735,7 @@
           "wave": 3,
           "directStaffUrlCount": 2,
           "departmentUrlCount": 4,
-          "pendingUrlCount": 0,
+          "pendingUrlCount": 6,
           "canonicalStatsSourceHospitalSlug": "maayanei-hayeshua",
           "canonicalStats": {
             "rawReviewedRows": 27,
@@ -785,7 +785,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 28,
-          "pendingUrlCount": 0,
+          "pendingUrlCount": 28,
           "canonicalStatsSourceHospitalSlug": "galilee",
           "canonicalStats": {
             "rawReviewedRows": 30,
@@ -835,7 +835,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 26,
-          "pendingUrlCount": 0,
+          "pendingUrlCount": 26,
           "canonicalStatsSourceHospitalSlug": "shamir",
           "canonicalStats": {
             "rawReviewedRows": 12,
@@ -900,7 +900,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 7,
-          "pendingUrlCount": 7
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "מרכז רפואי רמב\"ם",
@@ -953,7 +953,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 20,
-          "pendingUrlCount": 20
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "ביה\"ח זיו - צפת",
@@ -986,7 +986,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 16,
-          "pendingUrlCount": 16
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "מרכז רפואי הלל יפה",
@@ -1016,7 +1016,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 9,
-          "pendingUrlCount": 9
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "בי\"ח אסותא אשדוד",
@@ -1041,7 +1041,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 4,
-          "pendingUrlCount": 4
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "מרכז רפואי ברוך פדה פוריה",
@@ -1074,7 +1074,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 13,
-          "pendingUrlCount": 13
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "ביה\"ח לניאדו",
@@ -1106,7 +1106,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 11,
-          "pendingUrlCount": 0,
+          "pendingUrlCount": 11,
           "canonicalStatsSourceHospitalSlug": "laniado",
           "canonicalStats": {
             "rawReviewedRows": 18,
@@ -1152,7 +1152,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 8,
-          "pendingUrlCount": 8
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "ביה\"ח המשפחה הקדושה",
@@ -1179,7 +1179,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 6,
-          "pendingUrlCount": 6
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "ביה\"ח הצרפתי",
@@ -1204,7 +1204,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 4,
-          "pendingUrlCount": 4
+          "pendingUrlCount": 0
         },
         {
           "hospitalName": "מרכז לבה\"נ באר שבע",

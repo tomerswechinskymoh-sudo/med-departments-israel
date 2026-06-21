@@ -1,0 +1,344 @@
+[
+  {
+    "canonicalDoctorId": "doctor-222d195ebaed7760",
+    "fullName": "פרופ' בן יוסף רחמים פרופ' אילן רון ד\"ר חרקובסקי טטיאנה\nאחות אחראית\nלירון עזראאחות כימותרפיה\nאירנה",
+    "normalizedName": "בן יוסף רחמים פרופ אילן רון דר חרקובסקי טטיאנה אחות אחראית לירון עזראאחות כימותרפיה אירנה",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304"
+    ],
+    "evidence": [
+      "פרופ' בן יוסף רחמים פרופ' אילן רון ד\"ר חרקובסקי טטיאנה\nאחות אחראית\nלירון עזראאחות כימותרפיה\nאירנה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-97afee157ccf905a",
+    "fullName": "ד\"ר ולרי לבדב היחידה מטפלת בסוגים שונים של בעיות רפואיות בגישה מלעורית לכלי הדם והאיברים הפנימי",
+    "normalizedName": "ולרי לבדב היחידה מטפלת בסוגים שונים של בעיות רפואיות בגישה מלעורית לכלי הדם והאיברים הפנימי",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר ולרי לבדב היחידה מטפלת בסוגים שונים של בעיות רפואיות בגישה מלעורית לכלי הדם והאיברים הפנימי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-07d8a1c2bf36b24e",
+    "fullName": "ד\"ר חדוה ספקטור- פיכולוגית קלינית בכירה",
+    "normalizedName": "חדוה ספקטור פיכולוגית קלינית בכירה",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825"
+    ],
+    "evidence": [
+      "ד\"ר חדוה ספקטור- פיכולוגית קלינית בכירה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b5102312eed8b564",
+    "fullName": "ד\"ר יבגניה צ'רניאבסקי- מנהלת מערך דימות ומנהלת שירות MRI ד\"ר יוליה אז'יבקוב",
+    "normalizedName": "יבגניה צרניאבסקי מנהלת מערך דימות ומנהלת שירות MRI דר יוליה אזיבקוב",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר יבגניה צ'רניאבסקי- מנהלת מערך דימות ומנהלת שירות MRI ד\"ר יוליה אז'יבקוב "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d16196e66c332870",
+    "fullName": "ד\"ר יוליה אז'יבקוב\nטכנאית אחראית\nגלית מסי\nבמכון הממוגרפיה מבוצעות בדיקות הדמייה של השד וכן ביצו",
+    "normalizedName": "יוליה אזיבקוב טכנאית אחראית גלית מסי במכון הממוגרפיה מבוצעות בדיקות הדמייה של השד וכן ביצו",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר יוליה אז'יבקוב\nטכנאית אחראית\nגלית מסי\nבמכון הממוגרפיה מבוצעות בדיקות הדמייה של השד וכן ביצו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-30ace5a5fa495522",
+    "fullName": "ד\"ר יוליה אז'יבקוב\nמכון הממוגרפיה מבוצעות בדיקות הדמיה של השד",
+    "normalizedName": "יוליה אזיבקוב מכון הממוגרפיה מבוצעות בדיקות הדמיה של השד",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר יוליה אז'יבקוב\nמכון הממוגרפיה מבוצעות בדיקות הדמיה של השד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-080197554886847b",
+    "fullName": "ד\"ר ישי וואהל",
+    "normalizedName": "ישי וואהל",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=4871"
+    ],
+    "evidence": [
+      "ד\"ר ישי וואהל - מומחה בכירורוגיה פלסטית ד\"ר עופר ארנון - מומחה בכירורוגיה פלסטיתד\"ר יעלה בן נפת"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b9e9c4776a4cb804",
+    "fullName": "ד\"ר לבדב ולרי",
+    "normalizedName": "לבדב ולרי",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר לבדב ולרי\n"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-087faae51c701aaa",
+    "fullName": "ד\"ר ליאפיס ויקטור- אחראי יחידה על שימעית.ד\"ר ולרי לבדב",
+    "normalizedName": "ליאפיס ויקטור אחראי יחידה על שימעית דר ולרי לבדב",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר ליאפיס ויקטור- אחראי יחידה על שימעית.ד\"ר ולרי לבדב "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a89eddec28ab66b3",
+    "fullName": "ד\"ר ליאפיס ויקטור ביחידה העל שמעית מבוצעות בדיקות אולטרסאונד וביניהן בדיקות פולשניות ובדיקות דו",
+    "normalizedName": "ליאפיס ויקטור ביחידה העל שמעית מבוצעות בדיקות אולטרסאונד וביניהן בדיקות פולשניות ובדיקות דו",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר ליאפיס ויקטור ביחידה העל שמעית מבוצעות בדיקות אולטרסאונד וביניהן בדיקות פולשניות ובדיקות דו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-050239d4a63f59ec",
+    "fullName": "ד\"ר ליאפיס ויקטור\nטכנאית אחראית - יבגניה גלינקו\nביחידה העל שימעית מבוצעות בדיקות אולטרא סאונד ו",
+    "normalizedName": "ליאפיס ויקטור טכנאית אחראית יבגניה גלינקו ביחידה העל שימעית מבוצעות בדיקות אולטרא סאונד ו",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר ליאפיס ויקטור\nטכנאית אחראית - יבגניה גלינקו\nביחידה העל שימעית מבוצעות בדיקות אולטרא סאונד ו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a0172a489d7e5f18",
+    "fullName": "ד\"ר מיכאל ורשבסקי\nאחות אחראית לימור איתן\nאמרכ\"לשמעון מויאל\nמזכירות\nמור מכלוף אללוף",
+    "normalizedName": "מיכאל ורשבסקי אחות אחראית לימור איתן אמרכלשמעון מויאל מזכירות מור מכלוף אללוף",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=878&ArticleID=4195"
+    ],
+    "evidence": [
+      "ד\"ר מיכאל ורשבסקי\nאחות אחראית לימור איתן\nאמרכ\"לשמעון מויאל\nמזכירות\nמור מכלוף אללוף\n"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2e85c8261e426a45",
+    "fullName": "ד\"ר סימנוביץ עזריה\nמזכירת מנהלת המכון",
+    "normalizedName": "סימנוביץ עזריה מזכירת מנהלת המכון",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר סימנוביץ עזריה\nמזכירת מנהלת המכון"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-55353760dae82383",
+    "fullName": "ד\"ר עזרייה סימונוביץ- סגן מנהל מערך דימות ואחראי ניורורדיולוגיה.\nצוות סיעודי -",
+    "normalizedName": "עזרייה סימונוביץ סגן מנהל מערך דימות ואחראי ניורורדיולוגיה צוות סיעודי",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר עזרייה סימונוביץ- סגן מנהל מערך דימות ואחראי ניורורדיולוגיה.\nצוות סיעודי -\n"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-38b90d0e91b3531a",
+    "fullName": "ד\"ר פלס שרון\nימים ושעות פעילות המכון\nא'",
+    "normalizedName": "פלס שרון ימים ושעות פעילות המכון א",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304"
+    ],
+    "evidence": [
+      "ד\"ר פלס שרון\nימים ושעות פעילות המכון\nא' - ה' בין השעות "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-df4551b2e944c71b",
+    "fullName": "ד\"ר צ'רניאבסקי יבגניה\nטכנאי אחראיאלכס גרשנוק\nביחידת ה MRI ישנו מכשיר משוכלל בטכנולוגיה מתקדמת מ",
+    "normalizedName": "צרניאבסקי יבגניה טכנאי אחראיאלכס גרשנוק ביחידת ה MRI ישנו מכשיר משוכלל בטכנולוגיה מתקדמת מ",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר צ'רניאבסקי יבגניה\nטכנאי אחראיאלכס גרשנוק\nביחידת ה MRI ישנו מכשיר משוכלל בטכנולוגיה מתקדמת מ"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-8e742fff81fb295e",
+    "fullName": "ד\"ר צרניאבסקי יבגנייה\nס. מנהלת המכון",
+    "normalizedName": "צרניאבסקי יבגנייה ס מנהלת המכון",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+    ],
+    "evidence": [
+      "ד\"ר צרניאבסקי יבגנייה\nס. מנהלת המכון"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6067caf18b48fffc",
+    "fullName": "ד\"ר רן טליסמן\nימי פעילות היחידה לכירורגיה פלסטית",
+    "normalizedName": "רן טליסמן ימי פעילות היחידה לכירורגיה פלסטית",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=4871"
+    ],
+    "evidence": [
+      "ד\"ר רן טליסמן\nימי פעילות היחידה לכירורגיה פלסטית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a51e58fc1496b0aa",
+    "fullName": "ד\"ר רן טליסמן\nתיאור פעילות המרפאההיחידה לכירורגיה פלסטית מספקת שירות בכל תחומי הכירורגיה הפלסטי",
+    "normalizedName": "רן טליסמן תיאור פעילות המרפאההיחידה לכירורגיה פלסטית מספקת שירות בכל תחומי הכירורגיה הפלסטי",
+    "profileUrl": null,
+    "hospitalName": "מרכז רפואי ברזילי",
+    "provider": "government",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=4871"
+    ],
+    "evidence": [
+      "ד\"ר רן טליסמן\nתיאור פעילות המרפאההיחידה לכירורגיה פלסטית מספקת שירות בכל תחומי הכירורגיה הפלסטי"
+    ]
+  }
+]

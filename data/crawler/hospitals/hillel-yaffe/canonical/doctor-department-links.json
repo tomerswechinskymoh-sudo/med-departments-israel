@@ -1,0 +1,477 @@
+[
+  {
+    "canonicalDoctorId": "doctor-05344e66c94e35cb",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-0db20b9318e28900",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-236d8794c04362f9",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-23ba83287699c1de",
+    "masterDeptRowId": "master-dept-0166-מרכז-רפואי-הלל-יפה-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://hymc.org.il/nashim",
+    "extractedFromUrl": "https://hymc.org.il/nashim?CategoryID=407",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/nashim"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/nashim?CategoryID=407",
+      "relationship": "discoveredNearbyTeamUrl",
+      "reason": "doctor source URL was discovered from this Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-26cdc45cb19f53b3",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-31f1ad6cec24ca27",
+    "masterDeptRowId": "master-dept-0169-מרכז-רפואי-הלל-יפה-אורתופדיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=205",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=205"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-3bc2dd2fa27edad8",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-488536300aa670bc",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-48f2adf72c8c6382",
+    "masterDeptRowId": "master-dept-0169-מרכז-רפואי-הלל-יפה-אורתופדיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=205",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=205"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-54b972206b5882dd",
+    "masterDeptRowId": "master-dept-0169-מרכז-רפואי-הלל-יפה-אורתופדיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=205",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=205"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-569b566a99ab21fa",
+    "masterDeptRowId": "master-dept-0169-מרכז-רפואי-הלל-יפה-אורתופדיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=205",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=205"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-634dd3849052d63e",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-637c1dc382678ac3",
+    "masterDeptRowId": "master-dept-0167-מרכז-רפואי-הלל-יפה-נוירולוגיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "נוירולוגיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=204",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=204"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-692dfec03b1306be",
+    "masterDeptRowId": "master-dept-0167-מרכז-רפואי-הלל-יפה-נוירולוגיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "נוירולוגיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=204",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=204"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-6cafe6b6fa66907d",
+    "masterDeptRowId": "master-dept-0169-מרכז-רפואי-הלל-יפה-אורתופדיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=205",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=205"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-8598f6601705d175",
+    "masterDeptRowId": "master-dept-0167-מרכז-רפואי-הלל-יפה-נוירולוגיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "נוירולוגיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=204",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=204"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-89e9cfcc8e3a1f53",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-a0dd07f1f150c2c8",
+    "masterDeptRowId": "master-dept-0167-מרכז-רפואי-הלל-יפה-נוירולוגיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "נוירולוגיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=204",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=204"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-ac032a2f4d5d1f55",
+    "masterDeptRowId": "master-dept-0167-מרכז-רפואי-הלל-יפה-נוירולוגיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "נוירולוגיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=204",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=204"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-bc9c28c730e85c80",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-cc6c0b4177b3e2ca",
+    "masterDeptRowId": "master-dept-0169-מרכז-רפואי-הלל-יפה-אורתופדיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=205",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=205"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=205",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-d4e09975ecadee7d",
+    "masterDeptRowId": "master-dept-0167-מרכז-רפואי-הלל-יפה-נוירולוגיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "נוירולוגיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=204",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=204"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-d7d304e7a89a55cc",
+    "masterDeptRowId": "master-dept-0167-מרכז-רפואי-הלל-יפה-נוירולוגיה",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "נוירולוגיה",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=204",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=204"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=204",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e2c2574be40f3c38",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e55fea938f0b5e58",
+    "masterDeptRowId": "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית",
+    "hospitalName": "מרכז רפואי הלל יפה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://hymc.org.il/?CategoryID=208",
+    "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hymc.org.il/?CategoryID=208"
+      ],
+      "extractedFromUrl": "https://hymc.org.il/?CategoryID=208",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

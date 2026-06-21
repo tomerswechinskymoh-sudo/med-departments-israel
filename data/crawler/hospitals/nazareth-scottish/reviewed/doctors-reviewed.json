@@ -1,0 +1,590 @@
+[
+  {
+    "fullName": "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "normalizedName": "גליל חילו דר יעקוב זכריאן מומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה",
+    "normalizedName": "מונא אגבאריה מומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי דר פאדל אבו סביה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי",
+    "normalizedName": "נורא חיסן מומחית במיילדות וגניקולוגיה והריון בסיכון גבוה דר סוזן מיכאיל מוסטפא מומחית במיי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר ניבאל ח'מאיסי",
+    "normalizedName": "ניבאל חמאיסי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ניבאל ח'מאיסי\n",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ניבאל ח'מאיסי\n",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא",
+    "normalizedName": "ניבאל עואד חמאיסי דר אורלי ברנדס קליין רופאה מומחית במיילדות וגניקולוגיה מנהלת היחידה לא",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר עלי מפרע\nמומחה ברפואת נשים",
+    "normalizedName": "עלי מפרע מומחה ברפואת נשים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר עלי מפרע\nמומחה ברפואת נשים",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר עלי מפרע\nמומחה ברפואת נשים",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד",
+    "normalizedName": "גמאל עונאללה מומחה מפרקים דר פארס אל קיש מומחה בפגיעות ספורט דר אדוארד חליף מומחה כף יד",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד\n",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד\n",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0051-ביהח-אי-מ-מ-ס-הסקוטי-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית",
+    "normalizedName": "מוקבל שלח מומחה באורתופדיה כללית",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0051-ביהח-אי-מ-מ-ס-הסקוטי-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת",
+    "normalizedName": "שאדי בדעאן כירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת ",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת ",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0052-ביהח-אי-מ-מ-ס-הסקוטי-כירורגיה-אורולוגית"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "כירורגיה אורולוגית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל",
+    "normalizedName": "שמעון מרטיק כירורגיה אורולוגית דר פאדי זועבי אורולוג ילדים שירותים מוצעים מרפאה לקבלת קהל",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל\n",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל\n",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0052-ביהח-אי-מ-מ-ס-הסקוטי-כירורגיה-אורולוגית"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "כירורגיה אורולוגית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך",
+    "normalizedName": "עאמר ספורי מומחה ברפואה פנימית ורמטולוגיה אח אחראי שאדי אסטפאן אח מוסמך",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0053-ביהח-אי-מ-מ-ס-הסקוטי-פנימית"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות",
+    "normalizedName": "זאהי יוסף רפואה דחופה שירותים מוצעים טיפול נמרץ למחלות פנימיות טיפול נמרץ למחלות כירורגיות",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות ",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות ",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0054-ביהח-אי-מ-מ-ס-הסקוטי-רפואה-דחופה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואה דחופה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת",
+    "normalizedName": "נגיב נסראללה רופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת ",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת ",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0054-ביהח-אי-מ-מ-ס-הסקוטי-רפואה-דחופה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואה דחופה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר סוהאד מחאמיד\nרופא ילדים",
+    "normalizedName": "סוהאד מחאמיד רופא ילדים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר סוהאד מחאמיד\nרופא ילדים",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר סוהאד מחאמיד\nרופא ילדים",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0054-ביהח-אי-מ-מ-ס-הסקוטי-רפואה-דחופה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואה דחופה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

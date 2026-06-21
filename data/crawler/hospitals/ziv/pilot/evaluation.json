@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "ziv",
+  "hospitalName": "ביה\"ח זיו - צפת",
+  "generatedAt": "2026-06-21T10:38:11.815Z",
+  "urlsUsed": [
+    "https://www.gov.il/he/departments/PublicBodies/kisd",
+    "https://www.gov.il/he/pages/adult_psychiatric_ziv",
+    "https://www.gov.il/he/departments/units/pregnancy-and-childbirth/govil-landing-page",
+    "https://www.gov.il/he/departments/PublicBodies/1internal_medicine_division",
+    "https://www.gov.il/he/departments/PublicBodies/internal_department_b"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 0,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 0,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 0
+  },
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Pilot extracted zero doctor records."
+}

@@ -1,0 +1,237 @@
+{
+  "hospitalSlug": "ziv",
+  "hospitalName": "ביה\"ח זיו - צפת",
+  "generatedAt": "2026-06-21T10:38:10.435Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.gov.il/he/departments/PublicBodies/kisd",
+    "departmentsIndexUrlCandidates": [
+      "https://www.gov.il/he/departments/PublicBodies/kisd",
+      "https://www.gov.il/he/pages/adult_psychiatric_ziv",
+      "https://www.gov.il/he/departments/units/pregnancy-and-childbirth/govil-landing-page",
+      "https://www.gov.il/he/departments/PublicBodies/1internal_medicine_division",
+      "https://www.gov.il/he/departments/PublicBodies/internal_department_b",
+      "https://www.gov.il/he/pages/children_and_youth_mental_health_center",
+      "https://www.gov.il/he/departments/PublicBodies/anesthesia",
+      "https://www.gov.il/he/departments/PublicBodies/orthopedic_department",
+      "https://www.gov.il/he/departments/PublicBodies/neurology_dep",
+      "https://www.gov.il/he/departments/PublicBodies/cardiology"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.gov.il/he/departments/PublicBodies/kisd",
+      "https://www.gov.il/he/pages/adult_psychiatric_ziv",
+      "https://www.gov.il/he/departments/units/pregnancy-and-childbirth/govil-landing-page",
+      "https://www.gov.il/he/departments/PublicBodies/1internal_medicine_division",
+      "https://www.gov.il/he/departments/PublicBodies/internal_department_b",
+      "https://www.gov.il/he/pages/children_and_youth_mental_health_center",
+      "https://www.gov.il/he/departments/PublicBodies/anesthesia",
+      "https://www.gov.il/he/departments/PublicBodies/orthopedic_department"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.gov.il/he/departments/PublicBodies/kisd",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/PublicBodies/kisd",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/pages/adult_psychiatric_ziv",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/pages/adult_psychiatric_ziv",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/departments/units/pregnancy-and-childbirth/govil-landing-page",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/units/pregnancy-and-childbirth/govil-landing-page",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/departments/PublicBodies/1internal_medicine_division",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/PublicBodies/1internal_medicine_division",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/departments/PublicBodies/internal_department_b",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/PublicBodies/internal_department_b",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/pages/children_and_youth_mental_health_center",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/pages/children_and_youth_mental_health_center",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/departments/PublicBodies/anesthesia",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/PublicBodies/anesthesia",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/departments/PublicBodies/orthopedic_department",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/PublicBodies/orthopedic_department",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/departments/PublicBodies/neurology_dep",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/PublicBodies/neurology_dep",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/departments/PublicBodies/cardiology",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/PublicBodies/cardiology",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.gov.il/he/departments/PublicBodies/kisd",
+    "https://www.gov.il/he/pages/adult_psychiatric_ziv",
+    "https://www.gov.il/he/departments/units/pregnancy-and-childbirth/govil-landing-page",
+    "https://www.gov.il/he/departments/PublicBodies/1internal_medicine_division",
+    "https://www.gov.il/he/departments/PublicBodies/internal_department_b",
+    "https://www.gov.il/he/pages/children_and_youth_mental_health_center",
+    "https://www.gov.il/he/departments/PublicBodies/anesthesia",
+    "https://www.gov.il/he/departments/PublicBodies/orthopedic_department"
+  ],
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Known URLs failed or returned no crawlable evidence."
+}

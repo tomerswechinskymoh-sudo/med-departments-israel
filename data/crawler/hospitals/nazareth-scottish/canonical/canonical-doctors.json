@@ -1,0 +1,254 @@
+[
+  {
+    "canonicalDoctorId": "doctor-57516e3da0997b08",
+    "fullName": "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "normalizedName": "גליל חילו דר יעקוב זכריאן מומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-c3ca1cd4f21c284f",
+    "fullName": "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד",
+    "normalizedName": "גמאל עונאללה מומחה מפרקים דר פארס אל קיש מומחה בפגיעות ספורט דר אדוארד חליף מומחה כף יד",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד\n"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9c63ef09c079bb87",
+    "fullName": "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות",
+    "normalizedName": "זאהי יוסף רפואה דחופה שירותים מוצעים טיפול נמרץ למחלות פנימיות טיפול נמרץ למחלות כירורגיות",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-1e0d8450a6df7535",
+    "fullName": "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה",
+    "normalizedName": "מונא אגבאריה מומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי דר פאדל אבו סביה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-7cce5ddf6522f9f4",
+    "fullName": "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית",
+    "normalizedName": "מוקבל שלח מומחה באורתופדיה כללית",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6ce1a2d3b0bb7a42",
+    "fullName": "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת",
+    "normalizedName": "נגיב נסראללה רופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-35ae21f8299a24bd",
+    "fullName": "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי",
+    "normalizedName": "נורא חיסן מומחית במיילדות וגניקולוגיה והריון בסיכון גבוה דר סוזן מיכאיל מוסטפא מומחית במיי",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-beb74663f78f0ea5",
+    "fullName": "ד\"ר ניבאל ח'מאיסי",
+    "normalizedName": "ניבאל חמאיסי",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר ניבאל ח'מאיסי\n"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-8a5a3b24ba35e9a5",
+    "fullName": "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא",
+    "normalizedName": "ניבאל עואד חמאיסי דר אורלי ברנדס קליין רופאה מומחית במיילדות וגניקולוגיה מנהלת היחידה לא",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a9bdc172a01e0af1",
+    "fullName": "ד\"ר סוהאד מחאמיד\nרופא ילדים",
+    "normalizedName": "סוהאד מחאמיד רופא ילדים",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר סוהאד מחאמיד\nרופא ילדים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-7ad7682988a148ee",
+    "fullName": "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך",
+    "normalizedName": "עאמר ספורי מומחה ברפואה פנימית ורמטולוגיה אח אחראי שאדי אסטפאן אח מוסמך",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-83c16b4cccc934f2",
+    "fullName": "ד\"ר עלי מפרע\nמומחה ברפואת נשים",
+    "normalizedName": "עלי מפרע מומחה ברפואת נשים",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר עלי מפרע\nמומחה ברפואת נשים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b38103a3cf8d97a3",
+    "fullName": "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת",
+    "normalizedName": "שאדי בדעאן כירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he"
+    ],
+    "evidence": [
+      "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a1299221e22e9be3",
+    "fullName": "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל",
+    "normalizedName": "שמעון מרטיק כירורגיה אורולוגית דר פאדי זועבי אורולוג ילדים שירותים מוצעים מרפאה לקבלת קהל",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he"
+    ],
+    "evidence": [
+      "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל\n"
+    ]
+  }
+]

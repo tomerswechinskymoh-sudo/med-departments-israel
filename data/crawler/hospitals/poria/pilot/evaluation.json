@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "poria",
+  "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+  "generatedAt": "2026-06-21T10:37:31.705Z",
+  "urlsUsed": [
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=5",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=8"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 20,
+  "profileUrlCoverage": 0.95,
+  "profileFetchSuccess": 9,
+  "reviewedRecords": 20,
+  "productionReadyCount": 19,
+  "missingProfileUrlCount": 1,
+  "duplicateNameCount": 4,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 9,
+    "partial": 8,
+    "listOnly": 3
+  },
+  "readiness": "safeForFullBatch",
+  "crawlReadiness": "safeForFullBatch",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": null
+}

@@ -269,3 +269,13 @@ export function getHospitalBaseline(hospitalSlug: string) {
   }
   return baseline;
 }
+
+export function registerHospitalBaseline(baseline: HospitalBaseline) {
+  const index = hospitalBaselines.findIndex((hospital) => hospital.hospitalSlug === baseline.hospitalSlug);
+  if (index >= 0) {
+    hospitalBaselines[index] = baseline;
+  } else {
+    hospitalBaselines.push(baseline);
+  }
+  return baseline;
+}

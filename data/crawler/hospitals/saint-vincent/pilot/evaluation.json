@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "saint-vincent",
+  "hospitalName": "ביה\"ח הצרפתי",
+  "generatedAt": "2026-06-21T10:37:12.397Z",
+  "urlsUsed": [
+    "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%90%d7%a3-%d7%90%d7%95%d7%96%d7%9f-%d7%92%d7%a8%d7%95%d7%9f/",
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 2,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 16,
+  "profileUrlCoverage": 0.125,
+  "profileFetchSuccess": 2,
+  "reviewedRecords": 16,
+  "productionReadyCount": 2,
+  "missingProfileUrlCount": 14,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 2,
+    "partial": 0,
+    "listOnly": 14
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Profile URL coverage is below 50%."
+}

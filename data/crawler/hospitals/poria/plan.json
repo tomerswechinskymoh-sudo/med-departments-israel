@@ -1,0 +1,200 @@
+{
+  "hospitalSlug": "poria",
+  "hospitalName": "מרכז רפואי ברוך פדה פוריה",
+  "generatedAt": "2026-06-21T10:37:19.013Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=5",
+    "departmentsIndexUrlCandidates": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=5",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=7",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=16",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=15",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=83",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=13"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=5",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=7",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=16",
+      "https://www.poria.org.il/?CategoryID=2081&ArticleID=15"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=5",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=5",
+      "title": "אורתופדיה",
+      "h1": [
+        "שם מחלקה : אורתופדיה"
+      ],
+      "h2": [],
+      "htmlLength": 74788,
+      "visibleTextLength": 12779,
+      "error": null
+    },
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+      "title": "נשים ויולדות",
+      "h1": [
+        "שם מחלקה : נשים ויולדות"
+      ],
+      "h2": [],
+      "htmlLength": 78166,
+      "visibleTextLength": 11240,
+      "error": null
+    },
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+      "title": "כירורגיה",
+      "h1": [
+        "שם מחלקה : כירורגיה"
+      ],
+      "h2": [],
+      "htmlLength": 63559,
+      "visibleTextLength": 7055,
+      "error": null
+    },
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+      "title": "גריאטריה שיקומית",
+      "h1": [
+        "שם מחלקה : גריאטריה שיקומית"
+      ],
+      "h2": [],
+      "htmlLength": 51006,
+      "visibleTextLength": 8157,
+      "error": null
+    },
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+      "title": "ילדים ע\"ש ד\"ר רולנד גייגר",
+      "h1": [
+        "שם מחלקה : ילדים ע\"ש ד\"ר רולנד גייגר"
+      ],
+      "h2": [],
+      "htmlLength": 48859,
+      "visibleTextLength": 8653,
+      "error": null
+    },
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=7",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=7",
+      "title": "הרדמה וחדר ניתוח",
+      "h1": [
+        "שם מחלקה : הרדמה וחדר ניתוח"
+      ],
+      "h2": [],
+      "htmlLength": 46644,
+      "visibleTextLength": 6466,
+      "error": null
+    },
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=16",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=16",
+      "title": "רפואה דחופה (חדר מיון)",
+      "h1": [
+        "שם מחלקה : רפואה דחופה (חדר מיון)"
+      ],
+      "h2": [],
+      "htmlLength": 45738,
+      "visibleTextLength": 6481,
+      "error": null
+    },
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=15",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=15",
+      "title": "קרדיולוגיה ע\"ש לידיה וקרול קיטנר, לאה ובנימין דוידאי",
+      "h1": [
+        "שם מחלקה : קרדיולוגיה ע\"ש לידיה וקרול קיטנר, לאה ובנימין דוידאי"
+      ],
+      "h2": [],
+      "htmlLength": 65917,
+      "visibleTextLength": 12899,
+      "error": null
+    },
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=83",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=83",
+      "title": "עיניים",
+      "h1": [
+        "שם מחלקה : עיניים"
+      ],
+      "h2": [],
+      "htmlLength": 52216,
+      "visibleTextLength": 9443,
+      "error": null
+    },
+    {
+      "url": "https://www.poria.org.il/?CategoryID=2081&ArticleID=13",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.poria.org.il/?CategoryID=2081&ArticleID=13",
+      "title": "פנימית א'",
+      "h1": [
+        "שם מחלקה : פנימית א'",
+        "Dentistry and internal medicine: from the focal infection theory to the periodontal medicine concept-there could be light in the end of the tunnel…."
+      ],
+      "h2": [],
+      "htmlLength": 78969,
+      "visibleTextLength": 9090,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=5",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=11",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=10",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=6",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=8",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=7",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=16",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=15",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=83",
+    "https://www.poria.org.il/?CategoryID=2081&ArticleID=13"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

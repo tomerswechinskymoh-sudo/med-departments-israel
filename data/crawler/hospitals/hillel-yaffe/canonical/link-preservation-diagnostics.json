@@ -1,0 +1,17 @@
+{
+  "rawReviewedRows": 25,
+  "canonicalDoctors": 25,
+  "doctorDepartmentLinks": 25,
+  "productionReadyCanonicalDoctors": 24,
+  "sourceUrlMatchLinks": 25,
+  "reviewNeededLinks": 0,
+  "expectedDistinctDoctorDepartmentLinks": 25,
+  "rawRowsDroppedAsExactDuplicates": 0,
+  "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+  "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+  "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+  "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+  "duplicateProfileUrlGroupsBefore": 0,
+  "duplicateProfileUrlGroupsAfter": 0,
+  "examples": []
+}

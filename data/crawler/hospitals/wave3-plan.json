@@ -1,82 +1,82 @@
 [
   {
-    "hospitalSlug": "shamir",
+    "hospitalSlug": "hillel-yaffe",
     "hospitalNames": [
-      "מרכז רפואי יצחק שמיר"
+      "מרכז רפואי הלל יפה"
     ],
     "providerGuess": "government",
-    "masterDeptRows": 27,
-    "rowsWithUrls": 26,
-    "liveUrlRows": 26,
-    "nearbyDoctorOrTeamUrlRows": 7,
+    "masterDeptRows": 19,
+    "rowsWithUrls": 9,
+    "liveUrlRows": 9,
+    "nearbyDoctorOrTeamUrlRows": 9,
     "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline shamir; 26 Master_Dept URLs; 26 live inspected URLs; 7 nearby doctor/team URLs",
+    "whySelected": "Wave3 baseline hillel-yaffe; 9 Master_Dept URLs; 9 live inspected URLs; 9 nearby doctor/team URLs",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "partiallyMapped",
     "plannedMode": "pilot only"
   },
   {
-    "hospitalSlug": "maayanei-hayeshua",
+    "hospitalSlug": "barzilai",
     "hospitalNames": [
-      "ביה\"ח מעיני הישועה"
+      "מרכז רפואי ברזילי"
     ],
-    "providerGuess": "private",
+    "providerGuess": "government",
+    "masterDeptRows": 25,
+    "rowsWithUrls": 7,
+    "liveUrlRows": 7,
+    "nearbyDoctorOrTeamUrlRows": 7,
+    "adapterParserFamily": "inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline barzilai; 7 Master_Dept URLs; 7 live inspected URLs; 7 nearby doctor/team URLs",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "partiallyMapped",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "holy-family",
+    "hospitalNames": [
+      "ביה\"ח המשפחה הקדושה"
+    ],
+    "providerGuess": "unknown",
     "masterDeptRows": 6,
     "rowsWithUrls": 6,
     "liveUrlRows": 6,
     "nearbyDoctorOrTeamUrlRows": 6,
-    "adapterParserFamily": "teamPage+inlineStaff+unknown",
-    "whySelected": "Wave3 baseline maayanei-hayeshua; 6 Master_Dept URLs; 6 live inspected URLs; 6 nearby doctor/team URLs; 2 direct staff/doctors URLs",
+    "adapterParserFamily": "inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline holy-family; 6 Master_Dept URLs; 6 live inspected URLs; 6 nearby doctor/team URLs",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "partiallyMapped",
     "plannedMode": "pilot only"
   },
   {
-    "hospitalSlug": "galilee",
+    "hospitalSlug": "saint-vincent",
     "hospitalNames": [
-      "המרכז הרפואי לגליל"
+      "ביה\"ח הצרפתי"
     ],
-    "providerGuess": "government",
-    "masterDeptRows": 29,
-    "rowsWithUrls": 28,
-    "liveUrlRows": 28,
-    "nearbyDoctorOrTeamUrlRows": 0,
+    "providerGuess": "unknown",
+    "masterDeptRows": 4,
+    "rowsWithUrls": 4,
+    "liveUrlRows": 4,
+    "nearbyDoctorOrTeamUrlRows": 4,
     "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline galilee; 28 Master_Dept URLs; 28 live inspected URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "reviewNeeded",
-    "plannedMode": "pilot only"
-  },
-  {
-    "hospitalSlug": "laniado",
-    "hospitalNames": [
-      "ביה\"ח לניאדו"
-    ],
-    "providerGuess": "private",
-    "masterDeptRows": 11,
-    "rowsWithUrls": 11,
-    "liveUrlRows": 11,
-    "nearbyDoctorOrTeamUrlRows": 0,
-    "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline laniado; 11 Master_Dept URLs; 11 live inspected URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "reviewNeeded",
-    "plannedMode": "pilot only"
-  },
-  {
-    "hospitalSlug": "wolfson",
-    "hospitalNames": [
-      "מרכז רפואי וולפסון"
-    ],
-    "providerGuess": "government",
-    "masterDeptRows": 25,
-    "rowsWithUrls": 8,
-    "liveUrlRows": 0,
-    "nearbyDoctorOrTeamUrlRows": 0,
-    "adapterParserFamily": "teamPage+inlineStaff+unknown",
-    "whySelected": "Wave3 baseline wolfson; 8 Master_Dept URLs; URLs pending inspection; 4 direct staff/doctors URLs",
+    "whySelected": "Wave3 baseline saint-vincent; 4 Master_Dept URLs; 4 live inspected URLs; 4 nearby doctor/team URLs",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "partiallyMapped",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "poria",
+    "hospitalNames": [
+      "מרכז רפואי ברוך פדה פוריה"
+    ],
+    "providerGuess": "government",
+    "masterDeptRows": 16,
+    "rowsWithUrls": 13,
+    "liveUrlRows": 13,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline poria; 13 Master_Dept URLs; 13 live inspected URLs",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "reviewNeeded",
     "plannedMode": "pilot only"
   }
 ]

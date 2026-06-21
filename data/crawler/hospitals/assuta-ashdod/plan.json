@@ -1,0 +1,99 @@
+{
+  "hospitalSlug": "assuta-ashdod",
+  "hospitalName": "בי\"ח אסותא אשדוד",
+  "generatedAt": "2026-06-21T10:38:05.466Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.assutaashdod.co.il/?catid=%7B2DB90760-19F3-4413-BC58-756C41059817%7D",
+    "departmentsIndexUrlCandidates": [
+      "https://www.assutaashdod.co.il/?catid=%7B2DB90760-19F3-4413-BC58-756C41059817%7D",
+      "https://www.assutaashdod.co.il/?catid=%7BBBE0857F-8BBB-4E0F-9BDB-48E97C9944C9%7D",
+      "https://www.assutaashdod.co.il/?catid=%7B8EE51910-A8FB-4815-91BF-0987D50FD28A%7D",
+      "https://www.assutaashdod.co.il/?catid=%7B02CF0154-82DF-4A6E-839B-3AC51F780B33%7D"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.assutaashdod.co.il/?catid=%7B2DB90760-19F3-4413-BC58-756C41059817%7D",
+      "https://www.assutaashdod.co.il/?catid=%7BBBE0857F-8BBB-4E0F-9BDB-48E97C9944C9%7D",
+      "https://www.assutaashdod.co.il/?catid=%7B8EE51910-A8FB-4815-91BF-0987D50FD28A%7D",
+      "https://www.assutaashdod.co.il/?catid=%7B02CF0154-82DF-4A6E-839B-3AC51F780B33%7D"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://validate.perfdrive.com/?ssa=69fb7823-2add-46e2-ac33-ec4c11c98b83&ssb=94964273417&ssc=https%3A%2F%2Fwww.assutaashdod.co.il%2F%3Fcatid%3D%257B2DB90760-19F3-4413-BC58-756C41059817%257D&ssi=2cb5c73f-d2uy-4e4d-84aa-b76798d30e3c&ssk=botmanager_support@radware.com&ssm=01376576306906557109249527068775&ssn=bf1107e658f630ce8adb7a66e0bae8341f56064f9deb-dfa8-4f40-adc183&sso=8ad62bb3-f559928319d68859c90e9afaf0dcbe1d83a2e395f67064e9&ssp=99100643781782098437178204300052277&ssq=76622143828324587509138283050746340738776&ssr=MTQ3LjIzNS4yNDguMTkw&sst=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/125.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2Y5MDAwODNlMzQ4Y2ItYmU4Yi00OTU1LTlkMTgtMWI5OTJiYzA5ZWU2MS0xNzgyMDM4MjgzMTAxMC05ZDU3ZWVkYTdkYmZjNjBmMTAiLCJyZCI6ImFzc3V0YWFzaGRvZC5jby5pbCIsIl9fdXptZiI6IjdmOTAwMDA2NGY5ZGViLWRmYTgtNGY0MC1hYmIzLWY1NTk5MjgzMTlkNjEtMTc4MjAzODI4MzEwMTAtMDAzZTA3NTk2NDAwZmZiM2Y3ZTEwIn0=",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://validate.perfdrive.com/?ssa=69fb7823-2add-46e2-ac33-ec4c11c98b83&ssb=94964273417&ssc=https%3A%2F%2Fwww.assutaashdod.co.il%2F%3Fcatid%3D%257B2DB90760-19F3-4413-BC58-756C41059817%257D&ssi=2cb5c73f-d2uy-4e4d-84aa-b76798d30e3c&ssk=botmanager_support@radware.com&ssm=01376576306906557109249527068775&ssn=bf1107e658f630ce8adb7a66e0bae8341f56064f9deb-dfa8-4f40-adc183&sso=8ad62bb3-f559928319d68859c90e9afaf0dcbe1d83a2e395f67064e9&ssp=99100643781782098437178204300052277&ssq=76622143828324587509138283050746340738776&ssr=MTQ3LjIzNS4yNDguMTkw&sst=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/125.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2Y5MDAwODNlMzQ4Y2ItYmU4Yi00OTU1LTlkMTgtMWI5OTJiYzA5ZWU2MS0xNzgyMDM4MjgzMTAxMC05ZDU3ZWVkYTdkYmZjNjBmMTAiLCJyZCI6ImFzc3V0YWFzaGRvZC5jby5pbCIsIl9fdXptZiI6IjdmOTAwMDA2NGY5ZGViLWRmYTgtNGY0MC1hYmIzLWY1NTk5MjgzMTlkNjEtMTc4MjAzODI4MzEwMTAtMDAzZTA3NTk2NDAwZmZiM2Y3ZTEwIn0=",
+      "title": "Radware Captcha Page",
+      "h1": [
+        "We apologize for the inconvenience..."
+      ],
+      "h2": [],
+      "htmlLength": 15095,
+      "visibleTextLength": 713,
+      "error": null
+    },
+    {
+      "url": "https://validate.perfdrive.com/?ssa=28533209-c227-4c4b-8b8d-3a4b4ca3339e&ssb=94964273417&ssc=https%3A%2F%2Fwww.assutaashdod.co.il%2F%3Fcatid%3D%257BBBE0857F-8BBB-4E0F-9BDB-48E97C9944C9%257D&ssi=8691d74d-d2uy-494f-8c2e-5fdc4efe0954&ssk=botmanager_support@radware.com&ssm=01376576306906557109249527068775&ssn=bf1107e6ac1fd7a7eac48749b887e8341f56cc6c4a06-9031-4e83-9dc183&sso=8ad6262a-e596234d0e4d8859c90e12305eefbf02cb4d05d9f67064e9&ssp=99100643781782098437178204300052277&ssq=76622143828324587509138283050746340738776&ssr=MTQ3LjIzNS4yNDguMTkw&sst=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/125.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2Y5MDAwYWQyMDQyNWEtZWVlMy00MWRlLTkxYjEtYzM3MWEyM2FkNzgzMS0xNzgyMDM4MjgzOTE0MC02ODlkOGJhNDU3M2Y4MjA0MTAiLCJyZCI6ImFzc3V0YWFzaGRvZC5jby5pbCIsIl9fdXptZiI6IjdmOTAwMGNjNmM0YTA2LTkwMzEtNGU4My05NjJhLWU1OTYyMzRkMGU0ZDEtMTc4MjAzODI4MzkxNDAtMDAzODAwOGI5N2Y2NTRjNjcxMzEwIn0=",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://validate.perfdrive.com/?ssa=28533209-c227-4c4b-8b8d-3a4b4ca3339e&ssb=94964273417&ssc=https%3A%2F%2Fwww.assutaashdod.co.il%2F%3Fcatid%3D%257BBBE0857F-8BBB-4E0F-9BDB-48E97C9944C9%257D&ssi=8691d74d-d2uy-494f-8c2e-5fdc4efe0954&ssk=botmanager_support@radware.com&ssm=01376576306906557109249527068775&ssn=bf1107e6ac1fd7a7eac48749b887e8341f56cc6c4a06-9031-4e83-9dc183&sso=8ad6262a-e596234d0e4d8859c90e12305eefbf02cb4d05d9f67064e9&ssp=99100643781782098437178204300052277&ssq=76622143828324587509138283050746340738776&ssr=MTQ3LjIzNS4yNDguMTkw&sst=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/125.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2Y5MDAwYWQyMDQyNWEtZWVlMy00MWRlLTkxYjEtYzM3MWEyM2FkNzgzMS0xNzgyMDM4MjgzOTE0MC02ODlkOGJhNDU3M2Y4MjA0MTAiLCJyZCI6ImFzc3V0YWFzaGRvZC5jby5pbCIsIl9fdXptZiI6IjdmOTAwMGNjNmM0YTA2LTkwMzEtNGU4My05NjJhLWU1OTYyMzRkMGU0ZDEtMTc4MjAzODI4MzkxNDAtMDAzODAwOGI5N2Y2NTRjNjcxMzEwIn0=",
+      "title": "Radware Captcha Page",
+      "h1": [
+        "We apologize for the inconvenience..."
+      ],
+      "h2": [],
+      "htmlLength": 15095,
+      "visibleTextLength": 713,
+      "error": null
+    },
+    {
+      "url": "https://validate.perfdrive.com/?ssa=f9dd80e6-a73e-4154-a435-9a8e4528f8c7&ssb=15932233557&ssc=https%3A%2F%2Fwww.assutaashdod.co.il%2F%3Fcatid%3D%257B8EE51910-A8FB-4815-91BF-0987D50FD28A%257D&ssi=0176de53-d2uy-402c-8bf1-2d52582159cd&ssk=botmanager_support@radware.com&ssm=90970469300814601104877979925673&ssn=83dd053a0f6c82277ca59de4dc33d3000b9675570f79-5047-4ae2-8e9597&sso=941cfb8c-4622174a90de3cfac6997f78148231b9277c36a31a826b30&ssp=48497614521782089127178209998850812&ssq=32556403828430377046438284154310782339219&ssr=MTQ3LjIzNS4yNDguMTkw&sst=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/125.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2Y5MDAwNjI5MGI3YTMtNzljMi00MDU1LWEzOTktNzU3ZTVkNzMzYWJmMS0xNzgyMDM4Mjg0NDU4MC04MjUzMTU5NDE3Zjc0YzE1MTAiLCJyZCI6ImFzc3V0YWFzaGRvZC5jby5pbCIsIl9fdXptZiI6IjdmOTAwMDc1NTcwZjc5LTUwNDctNGFlMi04YjhjLTQ2MjIxNzRhOTBkZTEtMTc4MjAzODI4NDQ1ODAtMDAzMmU0MzJmZmQ0MThlNWEzMTEwIn0=",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://validate.perfdrive.com/?ssa=f9dd80e6-a73e-4154-a435-9a8e4528f8c7&ssb=15932233557&ssc=https%3A%2F%2Fwww.assutaashdod.co.il%2F%3Fcatid%3D%257B8EE51910-A8FB-4815-91BF-0987D50FD28A%257D&ssi=0176de53-d2uy-402c-8bf1-2d52582159cd&ssk=botmanager_support@radware.com&ssm=90970469300814601104877979925673&ssn=83dd053a0f6c82277ca59de4dc33d3000b9675570f79-5047-4ae2-8e9597&sso=941cfb8c-4622174a90de3cfac6997f78148231b9277c36a31a826b30&ssp=48497614521782089127178209998850812&ssq=32556403828430377046438284154310782339219&ssr=MTQ3LjIzNS4yNDguMTkw&sst=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/125.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2Y5MDAwNjI5MGI3YTMtNzljMi00MDU1LWEzOTktNzU3ZTVkNzMzYWJmMS0xNzgyMDM4Mjg0NDU4MC04MjUzMTU5NDE3Zjc0YzE1MTAiLCJyZCI6ImFzc3V0YWFzaGRvZC5jby5pbCIsIl9fdXptZiI6IjdmOTAwMDc1NTcwZjc5LTUwNDctNGFlMi04YjhjLTQ2MjIxNzRhOTBkZTEtMTc4MjAzODI4NDQ1ODAtMDAzMmU0MzJmZmQ0MThlNWEzMTEwIn0=",
+      "title": "Radware Captcha Page",
+      "h1": [
+        "We apologize for the inconvenience..."
+      ],
+      "h2": [],
+      "htmlLength": 15095,
+      "visibleTextLength": 713,
+      "error": null
+    },
+    {
+      "url": "https://validate.perfdrive.com/?ssa=f5ba7519-2737-4ce8-af5a-c99186e8f55d&ssb=76690207558&ssc=https%3A%2F%2Fwww.assutaashdod.co.il%2F%3Fcatid%3D%257B02CF0154-82DF-4A6E-839B-3AC51F780B33%257D&ssi=8b61f9d5-d2uy-4afc-8261-8c87a296a21a&ssk=botmanager_support@radware.com&ssm=43702937495388562100890798554262&ssn=6cc0285d39e54b369fb66ce6c47f4ae894ce0c809045-fdd8-490a-ae0843&sso=5becb75b-ded92b85f23c097a8c6caadf15ccbd06701bd7ecab904992&ssp=13321875591782034975178201328094509&ssq=45065283828492208073238284446725385156544&ssr=MTQ3LjIzNS4yNDguMTkw&sst=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/125.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2Y5MDAwY2M4YzBhNGQtMGViMi00ODY0LTllZjEtZDA2ZTk2NzE2ZTM5MS0xNzgyMDM4Mjg1MDAxMC00YzJkYmM5NzhmZGEzYzRiMTAiLCJyZCI6ImFzc3V0YWFzaGRvZC5jby5pbCIsIl9fdXptZiI6IjdmOTAwMDBjODA5MDQ1LWZkZDgtNDkwYS1hNzViLWRlZDkyYjg1ZjIzYzEtMTc4MjAzODI4NTAwMTAtMDAzN2ZkNjA0OWU2ZGRkZTMyZjEwIn0=",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://validate.perfdrive.com/?ssa=f5ba7519-2737-4ce8-af5a-c99186e8f55d&ssb=76690207558&ssc=https%3A%2F%2Fwww.assutaashdod.co.il%2F%3Fcatid%3D%257B02CF0154-82DF-4A6E-839B-3AC51F780B33%257D&ssi=8b61f9d5-d2uy-4afc-8261-8c87a296a21a&ssk=botmanager_support@radware.com&ssm=43702937495388562100890798554262&ssn=6cc0285d39e54b369fb66ce6c47f4ae894ce0c809045-fdd8-490a-ae0843&sso=5becb75b-ded92b85f23c097a8c6caadf15ccbd06701bd7ecab904992&ssp=13321875591782034975178201328094509&ssq=45065283828492208073238284446725385156544&ssr=MTQ3LjIzNS4yNDguMTkw&sst=Mozilla/5.0%20(Macintosh;%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit/537.36%20(KHTML,%20like%20Gecko)%20Chrome/125.0%20Safari/537.36&ssu=&ssv=&ssw=&ssx=eyJ1em14IjoiN2Y5MDAwY2M4YzBhNGQtMGViMi00ODY0LTllZjEtZDA2ZTk2NzE2ZTM5MS0xNzgyMDM4Mjg1MDAxMC00YzJkYmM5NzhmZGEzYzRiMTAiLCJyZCI6ImFzc3V0YWFzaGRvZC5jby5pbCIsIl9fdXptZiI6IjdmOTAwMDBjODA5MDQ1LWZkZDgtNDkwYS1hNzViLWRlZDkyYjg1ZjIzYzEtMTc4MjAzODI4NTAwMTAtMDAzN2ZkNjA0OWU2ZGRkZTMyZjEwIn0=",
+      "title": "Radware Captcha Page",
+      "h1": [
+        "We apologize for the inconvenience..."
+      ],
+      "h2": [],
+      "htmlLength": 15095,
+      "visibleTextLength": 713,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.assutaashdod.co.il/?catid=%7B2DB90760-19F3-4413-BC58-756C41059817%7D",
+    "https://www.assutaashdod.co.il/?catid=%7BBBE0857F-8BBB-4E0F-9BDB-48E97C9944C9%7D",
+    "https://www.assutaashdod.co.il/?catid=%7B8EE51910-A8FB-4815-91BF-0987D50FD28A%7D",
+    "https://www.assutaashdod.co.il/?catid=%7B02CF0154-82DF-4A6E-839B-3AC51F780B33%7D"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

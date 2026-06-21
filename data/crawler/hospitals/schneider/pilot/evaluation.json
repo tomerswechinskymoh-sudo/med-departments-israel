@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "schneider",
+  "hospitalName": "מרכז שניידר לילדים",
+  "generatedAt": "2026-06-21T10:38:02.976Z",
+  "urlsUsed": [
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427",
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken="
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 15,
+  "profileUrlCoverage": 0.26666666666666666,
+  "profileFetchSuccess": 4,
+  "reviewedRecords": 15,
+  "productionReadyCount": 4,
+  "missingProfileUrlCount": 11,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 4,
+    "partial": 0,
+    "listOnly": 11
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Profile URL coverage is below 50%."
+}

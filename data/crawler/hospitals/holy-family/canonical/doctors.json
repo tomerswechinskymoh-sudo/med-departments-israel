@@ -1,0 +1,477 @@
+[
+  {
+    "canonicalDoctorId": "doctor-bd9d70a2a8d96b15",
+    "fullName": "ד\"ר איימן חרבג'י",
+    "normalizedName": "איימן חרבגי",
+    "profileUrl": "https://hfhosp.org/he/%D7%91%D7%A8%D7%99%D7%90%D7%95%D7%AA-%D7%94%D7%A9%D7%93/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%90%D7%99%D7%99%D7%9E%D7%9F-%D7%97%D7%A8%D7%91%D7%92%D7%99",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מרכז בריאות השד",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "https://hfhosp.org/he/%D7%91%D7%A8%D7%99%D7%90%D7%95%D7%AA-%D7%94%D7%A9%D7%93/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%90%D7%99%D7%99%D7%9E%D7%9F-%D7%97%D7%A8%D7%91%D7%92%D7%99"
+    ],
+    "evidence": [
+      "ד\"ר איימן חרבג'י\nמנהל מרכז בריאות השד\nמומחה רדיולוגיה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3a7a4141ec77cb8e",
+    "fullName": "ד\"ר בהא פרנסיס",
+    "normalizedName": "בהא פרנסיס",
+    "profileUrl": "https://hfhosp.org/he/%D7%9E%D7%95%D7%A0%D7%A9%D7%9E%D7%99%D7%9D-%D7%9B%D7%A8%D7%95%D7%A0%D7%99%D7%99%D7%9D/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%91%D7%94%D7%90-%D7%A4%D7%A8%D7%A0%D7%A1%D7%99%D7%A1",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל המערך הגריאטרי",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "https://hfhosp.org/he/%D7%9E%D7%95%D7%A0%D7%A9%D7%9E%D7%99%D7%9D-%D7%9B%D7%A8%D7%95%D7%A0%D7%99%D7%99%D7%9D/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%91%D7%94%D7%90-%D7%A4%D7%A8%D7%A0%D7%A1%D7%99%D7%A1"
+    ],
+    "evidence": [
+      "ד\"ר בהא פרנסיס\nמנהל המערך הגריאטרי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2e5fe6530a87c466",
+    "fullName": "ד\"ר בלאל חטיב",
+    "normalizedName": "בלאל חטיב",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר בלאל חטיב"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-75ac5ba7cb1da4c9",
+    "fullName": "ד\"ר ג'אד ח'טיב",
+    "normalizedName": "גאד חטיב",
+    "profileUrl": "https://hfhosp.org/he/%D7%94%D7%A8%D7%93%D7%9E%D7%94-%D7%95%D7%94%D7%AA%D7%90%D7%95%D7%A9%D7%A9%D7%95%D7%AA/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%92%D7%90%D7%93-%D7%97%D7%98%D7%99%D7%91",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מחלקת הרדמה",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "https://hfhosp.org/he/%D7%94%D7%A8%D7%93%D7%9E%D7%94-%D7%95%D7%94%D7%AA%D7%90%D7%95%D7%A9%D7%A9%D7%95%D7%AA/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%92%D7%90%D7%93-%D7%97%D7%98%D7%99%D7%91"
+    ],
+    "evidence": [
+      "ד\"ר ג'אד ח'טיב\nמנהל מחלקת הרדמה\nמומחה בהרדמה כללית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-8d1b57159d9d4023",
+    "fullName": "ד\"ר האשם בשארה",
+    "normalizedName": "האשם בשארה",
+    "profileUrl": "https://hfhosp.org/he/%D7%9E%D7%A8%D7%A4%D7%90%D7%AA-%D7%A8%D7%99%D7%90%D7%95%D7%AA/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%94%D7%90%D7%A9%D7%9D-%D7%91%D7%A9%D7%90%D7%A8%D7%94",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מרפאת ריאות",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "https://hfhosp.org/he/%D7%9E%D7%A8%D7%A4%D7%90%D7%AA-%D7%A8%D7%99%D7%90%D7%95%D7%AA/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%94%D7%90%D7%A9%D7%9D-%D7%91%D7%A9%D7%90%D7%A8%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר האשם בשארה\nמנהל מרפאת ריאות\nמומחה רפואה פנימית, מחלות ריאה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-bd9d7d1cb6a7db61",
+    "fullName": "ד\"ר זאהי אבו נסאר",
+    "normalizedName": "זאהי אבו נסאר",
+    "profileUrl": "https://hfhosp.org/he/%D7%93%D7%99%D7%9E%D7%95%D7%AA/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%96%D7%90%D7%94%D7%99-%D7%90%D7%91%D7%95-%D7%A0%D7%A1%D7%90%D7%A8",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מכון הדימות",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%A0%D7%98%D7%92%D7%9F-ct-us-%D7%A6%D7%A4%D7%99%D7%A4%D7%95%D7%AA-%D7%94%D7%A2%D7%A6%D7%9D",
+      "https://hfhosp.org/he/%D7%93%D7%99%D7%9E%D7%95%D7%AA/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%93%D7%A8-%D7%96%D7%90%D7%94%D7%99-%D7%90%D7%91%D7%95-%D7%A0%D7%A1%D7%90%D7%A8"
+    ],
+    "evidence": [
+      "ד\"ר זאהי אבו נסאר\nמנהל מכון הדימות\nמומחה ברדיולוגיה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-54fd4f58d48df13e",
+    "fullName": "פרופ' זיו גיל",
+    "normalizedName": "זיו גיל",
+    "profileUrl": "https://hfhosp.org/he/%D7%A8%D7%90%D7%A9-%D7%A6%D7%95%D7%95%D7%90%D7%A8-%D7%90%D7%90%D7%92-%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%A4%D7%A8%D7%95%D7%A4-%D7%96%D7%99%D7%95-%D7%92%D7%99%D7%9C",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": "מנהל יחידת ראש וצוואר - א.א.ג",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "https://hfhosp.org/he/%D7%A8%D7%90%D7%A9-%D7%A6%D7%95%D7%95%D7%90%D7%A8-%D7%90%D7%90%D7%92-%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A8%D7%95%D7%A4%D7%90%D7%99%D7%9D/%D7%A4%D7%A8%D7%95%D7%A4-%D7%96%D7%99%D7%95-%D7%92%D7%99%D7%9C"
+    ],
+    "evidence": [
+      "פרופ' זיו גיל\nמנהל יחידת ראש וצוואר - א.א.ג"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-369977d87d4c6e38",
+    "fullName": "פרופ' זיו גיל\nמרכז לכירורגיה פלסטית",
+    "normalizedName": "זיו גיל מרכז לכירורגיה פלסטית",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+    ],
+    "evidence": [
+      "פרופ' זיו גיל\nמרכז לכירורגיה פלסטית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f69325a36e8a18c8",
+    "fullName": "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר",
+    "normalizedName": "חדאד לנצרת וניהול המחלקה שהחל בפברואר",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-03e17787cdc668e1",
+    "fullName": "ד\"ר מאהר דיב",
+    "normalizedName": "מאהר דיב",
+    "profileUrl": "https://hfhosp.org/he/%D7%94%D7%A0%D7%94%D7%9C%D7%94/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A0%D7%94%D7%9C%D7%94/%D7%93%D7%A8-%D7%9E%D7%90%D7%94%D7%A8-%D7%93%D7%99%D7%91",
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%94%D7%A6%D7%95%D7%95%D7%AA-%D7%A9%D7%9C%D7%A0%D7%95",
+      "https://hfhosp.org/he/%D7%94%D7%A0%D7%94%D7%9C%D7%94/%D7%A6%D7%95%D7%95%D7%AA-%D7%94%D7%A0%D7%94%D7%9C%D7%94/%D7%93%D7%A8-%D7%9E%D7%90%D7%94%D7%A8-%D7%93%D7%99%D7%91"
+    ],
+    "evidence": [
+      "ד\"ר מאהר דיב\nמנכ\"ל בית החולים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e17ed7be45c72c55",
+    "fullName": "ד\"ר מוחמד חמוד\nיחידה פרוקטולוגית בניהול ד\"ר אברהים חרבג'י\nהמערך הכירורגי מטפל בחולים הזקוקים לט",
+    "normalizedName": "מוחמד חמוד יחידה פרוקטולוגית בניהול דר אברהים חרבגי המערך הכירורגי מטפל בחולים הזקוקים לט",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+    ],
+    "evidence": [
+      "ד\"ר מוחמד חמוד\nיחידה פרוקטולוגית בניהול ד\"ר אברהים חרבג'י\nהמערך הכירורגי מטפל בחולים הזקוקים לט"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-81a3255521c184dd",
+    "fullName": "ד\"ר מוחמד יונס",
+    "normalizedName": "מוחמד יונס",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר מוחמד יונס "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-03c43f73eb83f0d6",
+    "fullName": "ד\"ר מוחמד יונס וד\"ר מרואן גנטוס",
+    "normalizedName": "מוחמד יונס ודר מרואן גנטוס",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר מוחמד יונס וד\"ר מרואן גנטוס"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-aae83333561aed04",
+    "fullName": "ד\"ר מחמוד זידאן\nיחידה לכירורגיה של השד בניהול ד\"ר הדר עבודי נבו\nיחידת קולון ורקטום בניהול ד\"ר ו",
+    "normalizedName": "מחמוד זידאן יחידה לכירורגיה של השד בניהול דר הדר עבודי נבו יחידת קולון ורקטום בניהול דר ו",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+    ],
+    "evidence": [
+      "ד\"ר מחמוד זידאן\nיחידה לכירורגיה של השד בניהול ד\"ר הדר עבודי נבו\nיחידת קולון ורקטום בניהול ד\"ר ו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-4a30274f60ae6920",
+    "fullName": "ד\"ר מרואן גנטוס",
+    "normalizedName": "מרואן גנטוס",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר מרואן גנטוס "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2127392aa4303d0e",
+    "fullName": "ד\"ר מרואן חדאד",
+    "normalizedName": "מרואן חדאד",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר מרואן חדאד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e2864b0e8f0d41d8",
+    "fullName": "ד\"ר מרואן חדאדאח",
+    "normalizedName": "מרואן חדאדאח",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר מרואן חדאדאח"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b3e8063ab4f4c588",
+    "fullName": "ד\"ר מרואן יוסף\nד\"ר מהדי ג'והר\nד\"ר רביע אבו פול\nד\"ר גהאד חאזן\nד\"ר איליא חורי\nמחשבון בריאטריה\nמשק",
+    "normalizedName": "מרואן יוסף דר מהדי גוהר דר רביע אבו פול דר גהאד חאזן דר איליא חורי מחשבון בריאטריה משק",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר מרואן יוסף\nד\"ר מהדי ג'והר\nד\"ר רביע אבו פול\nד\"ר גהאד חאזן\nד\"ר איליא חורי\nמחשבון בריאטריה\nמשק"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-5d4e2648c36732aa",
+    "fullName": "פרופ' נאסר סקרן",
+    "normalizedName": "נאסר סקרן",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+    ],
+    "evidence": [
+      "פרופ' נאסר סקרן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-ec2775729239f3ae",
+    "fullName": "פרופ' נאסר סקרןאח",
+    "normalizedName": "נאסר סקרןאח",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+    ],
+    "evidence": [
+      "פרופ' נאסר סקרןאח"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-93088f7c497266d1",
+    "fullName": "ד\"ר סמיח זועבי\nמרכז בריאטרי",
+    "normalizedName": "סמיח זועבי מרכז בריאטרי",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+    ],
+    "evidence": [
+      "ד\"ר סמיח זועבי\nמרכז בריאטרי "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9a8f459b91e0e1ed",
+    "fullName": "ד\"ר פראס מלחם",
+    "normalizedName": "פראס מלחם",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר פראס מלחם "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-4cb338a616be4a4b",
+    "fullName": "ד\"ר ראיד אשקר\nד\"ר אלכס חזנוביץ\nד\"ר עלי נגאר\nד\"ר האדי זריק\nמתמחים",
+    "normalizedName": "ראיד אשקר דר אלכס חזנוביץ דר עלי נגאר דר האדי זריק מתמחים",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+    ],
+    "evidence": [
+      "ד\"ר ראיד אשקר\nד\"ר אלכס חזנוביץ\nד\"ר עלי נגאר\nד\"ר האדי זריק\nמתמחים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a28e923e5ca123c6",
+    "fullName": "פרופ' ראיד סלים",
+    "normalizedName": "ראיד סלים",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA"
+    ],
+    "evidence": [
+      "פרופ' ראיד סלים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-ab40702b19efd68e",
+    "fullName": "פרופ' ראיד סלים\nצוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק",
+    "normalizedName": "ראיד סלים צוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA"
+    ],
+    "evidence": [
+      "פרופ' ראיד סלים\nצוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-c57018f8f874dd35",
+    "fullName": "פרופ' ראיד סליםאח",
+    "normalizedName": "ראיד סליםאח",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח המשפחה הקדושה",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA"
+    ],
+    "evidence": [
+      "פרופ' ראיד סליםאח"
+    ]
+  }
+]

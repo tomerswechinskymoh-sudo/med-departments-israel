@@ -11,6 +11,7 @@ npm run crawl -- --mode national-plan
 npm run crawl -- --mode national-pilot --limit 3
 npm run crawl -- --mode national-pilot --wave 2 --limit 5
 npm run crawl -- --mode national-pilot --wave 3 --limit 5
+npm run crawl -- --mode national-sweep --limit 10
 npm run crawl -- --mode national-full-safe --confirm
 ```
 
@@ -22,6 +23,7 @@ npm run crawl -- --mode national-full-safe --confirm
 - `full`: blocked unless readiness is `safeForFullBatch` and `--confirm` is supplied; provider-specific full adapters must still be added.
 - `national-plan`: read `Master_Dept.csv`, create target registry, national crawl plan, waves, and coverage report. No crawling by default.
 - `national-pilot`: run a limited safe wave. Current default Wave 1 is Ichilov, Hadassah, and Meir only. Use `--wave 2 --limit 5` for Master_Dept-driven Clalit pilot candidates. Use `--wave 3 --limit 5` for selected government/private pilots. Sheba and full Soroka remain excluded.
+- `national-sweep`: run a controlled pilot-only sweep over up to `--limit` remaining Master_Dept hospital groups. It uses synthetic Master_Dept-seeded baselines when no permanent adapter exists, preserves source lineage, writes a queue and per-hospital status, and continues after individual failures.
 - `national-full-safe`: requires `--confirm`, but remains blocked until provider-specific full adapters exist.
 
 ## Outputs
@@ -40,6 +42,8 @@ data/crawler/hospitals/master-dept-targets.csv
 data/crawler/hospitals/national-crawl-plan.json
 data/crawler/hospitals/national-crawl-plan.csv
 data/crawler/hospitals/national-waves.json
+data/crawler/hospitals/national-remaining-queue.json
+data/crawler/hospitals/national-remaining-queue.csv
 data/crawler/hospitals/national-coverage-report.json
 data/crawler/hospitals/national-coverage-report.md
 ```
@@ -117,3 +121,12 @@ Readiness is split because a hospital can have a reliable doctor roster while st
 - Wave 3: Maayanei Hayeshua produced the strongest pilot and is crawl-safe. Shamir, Galilee, and Laniado produced department-mapped pilots but need calibration or human review. Wolfson is blocked until a government-site adapter can extract doctors from its staff pages.
 - Sheba remains deferred because its public doctors lobby is a hard JS/API case and must not block other national coverage work.
 - Soroka remains excluded from full batch because the identity-map-assisted pilot improved quality, but the full candidate set still includes noisy inline/staff pages.
+
+## Controlled National Sweep
+
+- Sweep mode is pilot-only. It never runs full mode and never exports production data.
+- Each hospital is isolated: one blocked parser/site does not stop the batch.
+- Sheba remains deferred, Soroka full batch remains deferred, and Wolfson is skipped unless a new adapter path exists.
+- Queue priorities favor Master_Dept rows with live source URLs and nearby doctor/team URLs.
+- Synthetic baselines are temporary runtime adapters created from row URLs. They are useful for discovery, but permanent adapter code should be added only after a pilot proves stable.
+- `departmentMappedRoster` is assigned only when source URL lineage creates meaningful `sourceUrlMatch` or partial row-specific links. A reliable hospital roster can still remain `hospitalRoster` if department mapping is broad or ambiguous.

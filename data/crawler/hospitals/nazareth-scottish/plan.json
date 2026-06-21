@@ -1,0 +1,167 @@
+{
+  "hospitalSlug": "nazareth-scottish",
+  "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+  "generatedAt": "2026-06-21T10:37:42.163Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "departmentsIndexUrlCandidates": [
+      "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+      "https://nazhosp.com/department/%d8%a7%d9%84%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%a7%d9%85%d8%a9/?lang=he",
+      "https://nazhosp.com/department/%d9%88%d8%ad%d8%af%d8%a9-%d8%a7%d9%84%d8%aa%d8%ae%d8%af%d9%8a%d8%b1/?lang=he",
+      "https://nazhosp.com/department/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a8%d7%93%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94/?lang=he"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+      "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+      "https://nazhosp.com/department/%d8%a7%d9%84%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%a7%d9%85%d8%a9/?lang=he",
+      "https://nazhosp.com/department/%d9%88%d8%ad%d8%af%d8%a9-%d8%a7%d9%84%d8%aa%d8%ae%d8%af%d9%8a%d8%b1/?lang=he",
+      "https://nazhosp.com/department/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a8%d7%93%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94/?lang=he"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "title": "Nazareth Hospital | מחלקת נשים ויולדות - Nazareth Hospital",
+      "h1": [
+        "מחלקת נשים ויולדות",
+        "מחלקת נשים ויולדות",
+        "מחלקת נשים ויולדות"
+      ],
+      "h2": [],
+      "htmlLength": 58608,
+      "visibleTextLength": 6874,
+      "error": null
+    },
+    {
+      "url": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+      "title": "Nazareth Hospital | מחלקת אורתופדיה - Nazareth Hospital",
+      "h1": [
+        "מחלקת אורתופדיה"
+      ],
+      "h2": [],
+      "htmlLength": 58261,
+      "visibleTextLength": 6242,
+      "error": null
+    },
+    {
+      "url": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "title": "Nazareth Hospital | מחלקה אורולוגית - Nazareth Hospital",
+      "h1": [
+        "מחלקה אורולוגית"
+      ],
+      "h2": [],
+      "htmlLength": 52506,
+      "visibleTextLength": 6168,
+      "error": null
+    },
+    {
+      "url": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+      "title": "Nazareth Hospital | מחלקה פנימית - Nazareth Hospital",
+      "h1": [
+        "מחלקה פנימית"
+      ],
+      "h2": [],
+      "htmlLength": 49859,
+      "visibleTextLength": 5765,
+      "error": null
+    },
+    {
+      "url": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+      "title": "Nazareth Hospital | היחידה לרפואה דחופה - Nazareth Hospital",
+      "h1": [
+        "יחידה לרפואה דחופה"
+      ],
+      "h2": [],
+      "htmlLength": 52955,
+      "visibleTextLength": 6506,
+      "error": null
+    },
+    {
+      "url": "https://nazhosp.com/department/%d8%a7%d9%84%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%a7%d9%85%d8%a9/?lang=he",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%a7%d9%85%d8%a9/?lang=he",
+      "title": "Nazareth Hospital | מחלקת כירורגיה - Nazareth Hospital",
+      "h1": [],
+      "h2": [],
+      "htmlLength": 53118,
+      "visibleTextLength": 5658,
+      "error": null
+    },
+    {
+      "url": "https://nazhosp.com/department/%d9%88%d8%ad%d8%af%d8%a9-%d8%a7%d9%84%d8%aa%d8%ae%d8%af%d9%8a%d8%b1/?lang=he",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://nazhosp.com/department/%d9%88%d8%ad%d8%af%d8%a9-%d8%a7%d9%84%d8%aa%d8%ae%d8%af%d9%8a%d8%b1/?lang=he",
+      "title": "Nazareth Hospital | מחלקת הרדמה - Nazareth Hospital",
+      "h1": [
+        "מחלקת ההרדמה"
+      ],
+      "h2": [],
+      "htmlLength": 50450,
+      "visibleTextLength": 5883,
+      "error": null
+    },
+    {
+      "url": "https://nazhosp.com/department/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a8%d7%93%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94/?lang=he",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://nazhosp.com/department/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a8%d7%93%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94/?lang=he",
+      "title": "Nazareth Hospital | מחלקת רדיולוגיה - Nazareth Hospital",
+      "h1": [
+        "מחלקת רדיולוגיה"
+      ],
+      "h2": [],
+      "htmlLength": 53968,
+      "visibleTextLength": 6062,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+    "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+    "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
+    "https://nazhosp.com/department/%d8%a7%d9%84%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%a7%d9%85%d8%a9/?lang=he",
+    "https://nazhosp.com/department/%d9%88%d8%ad%d8%af%d8%a9-%d8%a7%d9%84%d8%aa%d8%ae%d8%af%d9%8a%d8%b1/?lang=he",
+    "https://nazhosp.com/department/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a8%d7%93%d7%99%d7%95%d7%9c%d7%95%d7%92%d7%99%d7%94/?lang=he"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

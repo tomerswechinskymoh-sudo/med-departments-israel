@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "hillel-yaffe",
+  "hospitalName": "מרכז רפואי הלל יפה",
+  "generatedAt": "2026-06-21T10:36:48.727Z",
+  "urlsUsed": [
+    "https://hymc.org.il/nashim?CategoryID=407",
+    "https://hymc.org.il/?CategoryID=204",
+    "https://hymc.org.il/?CategoryID=223",
+    "https://hymc.org.il/?CategoryID=205",
+    "https://hymc.org.il/?CategoryID=208"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 13,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 25,
+  "profileUrlCoverage": 0.96,
+  "profileFetchSuccess": 12,
+  "reviewedRecords": 25,
+  "productionReadyCount": 24,
+  "missingProfileUrlCount": 1,
+  "duplicateNameCount": 1,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 7,
+    "partial": 17,
+    "listOnly": 1
+  },
+  "readiness": "safeForFullBatch",
+  "crawlReadiness": "safeForFullBatch",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": null
+}

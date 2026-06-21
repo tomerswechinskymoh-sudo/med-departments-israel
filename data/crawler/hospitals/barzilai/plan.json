@@ -1,0 +1,181 @@
+{
+  "hospitalSlug": "barzilai",
+  "hospitalName": "מרכז רפואי ברזילי",
+  "generatedAt": "2026-06-21T10:36:53.928Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.barzilaimc.org.il/?CategoryID=864",
+    "departmentsIndexUrlCandidates": [
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+      "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825",
+      "https://www.barzilaimc.org.il/?CategoryID=878&ArticleID=4195",
+      "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=4871",
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=313",
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=2791"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.barzilaimc.org.il/?CategoryID=864",
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+      "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825",
+      "https://www.barzilaimc.org.il/?CategoryID=878&ArticleID=4195",
+      "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=4871",
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=313",
+      "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=2791"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.barzilaimc.org.il/?CategoryID=864",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.barzilaimc.org.il/?CategoryID=864",
+      "title": "צוות רפואי",
+      "h1": [
+        "צוות רפואי"
+      ],
+      "h2": [
+        "ז",
+        "ע",
+        "פ",
+        "ק"
+      ],
+      "htmlLength": 38372,
+      "visibleTextLength": 2295,
+      "error": null
+    },
+    {
+      "url": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+      "title": "אונקולוגיה- מכון",
+      "h1": [
+        "אונקולוגיה- מכון"
+      ],
+      "h2": [],
+      "htmlLength": 68637,
+      "visibleTextLength": 7706,
+      "error": null
+    },
+    {
+      "url": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+      "title": "דימות (רנטגן)",
+      "h1": [
+        "דימות (רנטגן)"
+      ],
+      "h2": [],
+      "htmlLength": 62823,
+      "visibleTextLength": 8586,
+      "error": null
+    },
+    {
+      "url": "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825",
+      "title": "היחידה לילד ולמתבגר- מרפאה",
+      "h1": [
+        "היחידה לילד ולמתבגר- מרפאה"
+      ],
+      "h2": [],
+      "htmlLength": 40773,
+      "visibleTextLength": 4463,
+      "error": null
+    },
+    {
+      "url": "https://www.barzilaimc.org.il/?CategoryID=878&ArticleID=4195",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.barzilaimc.org.il/?CategoryID=878&ArticleID=4195",
+      "title": "מחלקת אשפוז שיקום",
+      "h1": [
+        "מחלקת אשפוז שיקום"
+      ],
+      "h2": [],
+      "htmlLength": 39952,
+      "visibleTextLength": 2881,
+      "error": null
+    },
+    {
+      "url": "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=4871",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=4871",
+      "title": "כירורגיה פלסטית",
+      "h1": [
+        "כירורגיה פלסטית"
+      ],
+      "h2": [],
+      "htmlLength": 44242,
+      "visibleTextLength": 3578,
+      "error": null
+    },
+    {
+      "url": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=313",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=313",
+      "title": "רפואה גרעינית",
+      "h1": [
+        "רפואה גרעינית"
+      ],
+      "h2": [],
+      "htmlLength": 50240,
+      "visibleTextLength": 5434,
+      "error": null
+    },
+    {
+      "url": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=2791",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=2791",
+      "title": "פתולוגיה וציטולוגיה",
+      "h1": [
+        "פתולוגיה וציטולוגיה"
+      ],
+      "h2": [],
+      "htmlLength": 46742,
+      "visibleTextLength": 3366,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://www.barzilaimc.org.il/?CategoryID=864",
+      "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=864",
+      "anchorText": "צוות רפואי",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צוות רפואי https://www.barzilaimc.org.il/?CategoryID=864"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+    "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825",
+    "https://www.barzilaimc.org.il/?CategoryID=878&ArticleID=4195",
+    "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=4871",
+    "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=313",
+    "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=2791",
+    "https://www.barzilaimc.org.il/?CategoryID=864"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

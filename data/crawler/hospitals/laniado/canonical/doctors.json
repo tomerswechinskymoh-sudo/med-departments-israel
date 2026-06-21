@@ -1,0 +1,230 @@
+[
+  {
+    "canonicalDoctorId": "doctor-f8613385fcb27259",
+    "fullName": "ד\"ר אביה רוזנטל",
+    "normalizedName": "אביה רוזנטל",
+    "profileUrl": null,
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.laniado.org.il/"
+    ],
+    "evidence": [
+      "ד\"ר אביה רוזנטל"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-ca96b7bd6e7f8b48",
+    "fullName": "ד\"ר אינה דובין",
+    "normalizedName": "אינה דובין מנהלת מחלקת פנימית א",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%99%d7%a0%d7%94-%d7%93%d7%95%d7%91%d7%99%d7%9f/",
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהלת מחלקת פנימית א'",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%99%d7%a0%d7%94-%d7%93%d7%95%d7%91%d7%99%d7%9f/"
+    ],
+    "evidence": [
+      "ד\"ר אינה דובין",
+      "ד\"ר אינה דובין\nמנהלת מחלקת פנימית א'"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3b0f743825d96edd",
+    "fullName": "ד\"ר אליזבטה ניסים",
+    "normalizedName": "אליזבטה ניסים מומחית לרפואה פנימית",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9c%d7%99%d7%96%d7%91%d7%98%d7%94-%d7%a0%d7%99%d7%a1%d7%99%d7%9d/",
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מומחית לרפואה פנימית",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9c%d7%99%d7%96%d7%91%d7%98%d7%94-%d7%a0%d7%99%d7%a1%d7%99%d7%9d/"
+    ],
+    "evidence": [
+      "ד\"ר אליזבטה ניסים",
+      "ד\"ר אליזבטה ניסים\nמומחית לרפואה פנימית"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-deecf6c98f1ca30a",
+    "fullName": "ד\"ר אמיר וינטראוב",
+    "normalizedName": "אמיר וינטראוב מנהל יחידת IVF בלניאדו",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9e%d7%99%d7%a8-%d7%95%d7%99%d7%a0%d7%98%d7%a8%d7%90%d7%95%d7%91/",
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל יחידת IVF בלניאדו",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9e%d7%99%d7%a8-%d7%95%d7%99%d7%a0%d7%98%d7%a8%d7%90%d7%95%d7%91/"
+    ],
+    "evidence": [
+      "ד\"ר אמיר וינטראוב",
+      "ד\"ר אמיר וינטראוב\nמנהל יחידת IVF בלניאדו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-52a98745efa54883",
+    "fullName": "ד\"ר בן שדה",
+    "normalizedName": "בן שדה",
+    "profileUrl": null,
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.laniado.org.il/"
+    ],
+    "evidence": [
+      "ד\"ר בן שדה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e06fd43c56dddc3d",
+    "fullName": "ד\"ר הילה הוכלר",
+    "normalizedName": "הילה הוכלר",
+    "profileUrl": null,
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.laniado.org.il/"
+    ],
+    "evidence": [
+      "ד\"ר הילה הוכלר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-32d9a8c3152c5221",
+    "fullName": "ד\"ר יעל יקל",
+    "normalizedName": "יעל יקל מנהלת מחלקה",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%99%d7%a2%d7%9c-%d7%99%d7%a7%d7%9c/",
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהלת מחלקה",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%99%d7%a2%d7%9c-%d7%99%d7%a7%d7%9c/"
+    ],
+    "evidence": [
+      "ד\"ר יעל יקל",
+      "ד\"ר יעל יקל\nמנהלת מחלקה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-23b8892f8d6291b4",
+    "fullName": "ד\"ר מיכאל בן אקון. הסיור כלל סקירה מקיפה של פעילות אגף הילדים",
+    "normalizedName": "מיכאל בן אקון הסיור כלל סקירה מקיפה של פעילות אגף הילדים",
+    "profileUrl": null,
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.laniado.org.il/"
+    ],
+    "evidence": [
+      "ד\"ר מיכאל בן אקון. הסיור כלל סקירה מקיפה של פעילות אגף הילדים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6227b2304916261e",
+    "fullName": "ד\"ר מיכאל בן אקון",
+    "normalizedName": "מיכאל בן אקון מנהל אגף ילדים",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%9e%d7%99%d7%9b%d7%90%d7%9c-%d7%91%d7%9f-%d7%90%d7%a7%d7%95%d7%9f/",
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל אגף ילדים",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%9e%d7%99%d7%9b%d7%90%d7%9c-%d7%91%d7%9f-%d7%90%d7%a7%d7%95%d7%9f/"
+    ],
+    "evidence": [
+      "ד\"ר מיכאל בן אקון",
+      "ד\"ר מיכאל בן אקון\nמנהל אגף ילדים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0c1dcae4c627d58f",
+    "fullName": "פרופ' צבי שמעוני",
+    "normalizedName": "צבי שמעוני",
+    "profileUrl": null,
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.laniado.org.il/"
+    ],
+    "evidence": [
+      "פרופ' צבי שמעוני"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-77f12ea9e6b0ad6e",
+    "fullName": "ד\"ר קלוד פיקאר",
+    "normalizedName": "קלוד פיקאר מנהל מחלקת אורטופדיה",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%a7%d7%9c%d7%95%d7%93-%d7%a4%d7%99%d7%a7%d7%90%d7%a8/",
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מחלקת אורטופדיה",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+      "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%a7%d7%9c%d7%95%d7%93-%d7%a4%d7%99%d7%a7%d7%90%d7%a8/"
+    ],
+    "evidence": [
+      "ד\"ר קלוד פיקאר",
+      "ד\"ר קלוד פיקאר\nמנהל מחלקת אורטופדיה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b1c6abd4c28db542",
+    "fullName": "ד\"ר שדה",
+    "normalizedName": "שדה",
+    "profileUrl": null,
+    "hospitalName": "Laniado Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.laniado.org.il/"
+    ],
+    "evidence": [
+      "ד\"ר שדה"
+    ]
+  }
+]

@@ -1,0 +1,515 @@
+[
+  {
+    "canonicalDoctorId": "doctor-8a01ab4056b5d39d",
+    "fullName": "ד\"ר אדם אבו-עביד",
+    "normalizedName": "אדם אבו עביד",
+    "profileUrl": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%90%d7%93%d7%9d-%d7%90%d7%91%d7%95-%d7%a2%d7%91%d7%99%d7%93/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%90%d7%93%d7%9d-%d7%90%d7%91%d7%95-%d7%a2%d7%91%d7%99%d7%93/"
+    ],
+    "evidence": [
+      "ד\"ר אדם אבו-עביד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-827053ee3b7fc3c7",
+    "fullName": "פרופ' אלי סומך",
+    "normalizedName": "אלי סומך",
+    "profileUrl": "https://www.mymc.co.il/doctors/eli-somech/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": "<img loading=\"lazy\" decoding=\"async\" width=\"144\" height=\"155\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/pr.-somech.png\" class=\"attachment-full size-full wp-image-18878\" alt=\"רופא\" />מנהל אגף ילדיםפרופ' אלי סומך",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/",
+      "https://www.mymc.co.il/doctors/eli-somech/"
+    ],
+    "evidence": [
+      "<img loading=\"lazy\" decoding=\"async\" width=\"144\" height=\"155\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/pr.-somech.png\" class=\"attachment-full size-full wp-image-18878\" alt=\"רופא\" />מנהל אגף ילדיםפרופ' אלי סומך"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0503a6762054a272",
+    "fullName": "פרופ' אריאל מני",
+    "normalizedName": "אריאל מני",
+    "profileUrl": "https://www.mymc.co.il/doctors/prof-mani/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": "<img loading=\"lazy\" decoding=\"async\" width=\"192\" height=\"206\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/arielMani.jpg\" class=\"attachment-full size-full wp-image-19046\" alt=\"רופא\" />מנהל אגף נשים ויולדותפרופ' אריאל מני",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/",
+      "https://www.mymc.co.il/doctors/prof-mani/"
+    ],
+    "evidence": [
+      "<img loading=\"lazy\" decoding=\"async\" width=\"192\" height=\"206\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/arielMani.jpg\" class=\"attachment-full size-full wp-image-19046\" alt=\"רופא\" />מנהל אגף נשים ויולדותפרופ' אריאל מני"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e9da5905d593f5eb",
+    "fullName": "ד\"ר בוריס אורקין \n \n \n \n מנהל יחידת כירורגיה ילדים \n \n \n \n \n \n \n ד\"ר בוריס אורקין",
+    "normalizedName": "בוריס אורקין מנהל יחידת כירורגיה ילדים דר בוריס אורקין",
+    "profileUrl": "https://www.mymc.co.il/doctors/boris-orkin/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל יחידת כירורגיה ילדים",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/doctors/boris-orkin/"
+    ],
+    "evidence": [
+      "ד\"ר בוריס אורקין\nמנהל יחידת כירורגיה ילדים\nד\"ר בוריס אורקין, בוגר הפקולטה לרפואה של אוניברסיטת סמרה שברוסיה,\nהינו רופא ומנתח בכיר במחלקת כירורגיה ילדים במרכז הרפואי מעיני הישועה.\nביצע סטאז' במרכז הרפואי האוניברסיטאי הקליני סמארה,\nשם המשיך לתת-התמחות קלינית במחלקה האורולוגית.\nמאוחר יותר התמחה באורולוגיה כללית במחלקה האורולוגית במרכז הרפואי שערי צדק בירושלים,\nוהמשיך לעבוד בה בתפקיד אורולוג בכיר.\nבנוסף, הוא התמחה בכירורגיה כללית ובכירורגיית ילדים במרכז הרפואי הדסה עין כרם בירושלים.\nבהמשך שימש כמנתח"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-179fa1d2168b333a",
+    "fullName": "ד\"ר גליה רהב",
+    "normalizedName": "גליה רהב",
+    "profileUrl": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%92%d7%9c%d7%99%d7%94-%d7%a8%d7%94%d7%91/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%92%d7%9c%d7%99%d7%94-%d7%a8%d7%94%d7%91/"
+    ],
+    "evidence": [
+      "ד\"ר גליה רהב"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-5b8393f03ef24365",
+    "fullName": "ד\"ר גרסטנהבר פביאן \n \n \n \n מנהל המחלקה כירורגית \n \n \n \n \n \n \n ד\"ר גרסטנהבר פביאן",
+    "normalizedName": "גרסטנהבר פביאן מנהל המחלקה כירורגית דר גרסטנהבר פביאן",
+    "profileUrl": "https://www.mymc.co.il/doctors/dr-fabian/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל המחלקה כירורגית",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/doctors/dr-fabian/"
+    ],
+    "evidence": [
+      "ד\"ר גרסטנהבר פביאן\nמנהל המחלקה כירורגית\nד\"ר גרסטנהבר פביאן, בוגר לימודי רפואה באוניברסיטת תל אביב,\nהינו מנהל המחלקה כירורגית במרכז הרפואי מעיני הישועה.\nביצע סטאז' בבית החולים איכילוב בתל אביב,\nשם המשיך בתפקיד רופא מתמחה במחלקה הכירורגית והקים את מרכז ההדרכה לניתוחים לפרוסקופיים.\nבהמשך מונה לתפקיד רופא בכיר ביחידה לכירורגיה אונקולוגית באיכילוב.\nכמו כן, ביצע סטאז' קליני בכירורגיה אונקולוגית אצל פרופ' אלסנדרו גרונכי במכון האונקולוגי\nובניתוחים זעיר פולשניים ורובוטיים אצל פרופ' פאוול ביאנקי בבית החול"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a1f986340d67c352",
+    "fullName": "ד\"ר דוד אלמלך \n \n \n \n רופא מומחה לקרדיולוגיית ילדים \n \n \n \n \n \n \n ד\"ר דוד אלימלך הינו רופא מומח",
+    "normalizedName": "דוד אלמלך רופא מומחה לקרדיולוגיית ילדים דר דוד אלימלך הינו רופא מומח",
+    "profileUrl": "https://www.mymc.co.il/doctors/dr-david-elimelech/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא מומחה לקרדיולוגיית ילדים",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/doctors/dr-david-elimelech/"
+    ],
+    "evidence": [
+      "ד\"ר דוד אלמלך\nרופא מומחה לקרדיולוגיית ילדים\nד\"ר דוד אלימלך הינו רופא מומחה לקרדיולוגיית ילדים במרכז הרפואי מעיני הישועה.\nבעברו שימש כרופא כללי פרטי וחבר פעיל באגודה הרפואית SOS Medecines –\nארגון ביקורי חירום רפואיים בבית במרסיי, צרפת.\nעבד בתפקיד רופא יועץ בכיר ברפואת ילדים במחלקת הילדים של מרכז רפואי צפון – פוריה ליד טבריה.\nבהמשך עשה תת-התמחות בקרדיולוגיית ילדים בבית החולים לילדים CHU Sainte-Justine במונטריאול, קנדה.\nשימש כרופא יועץ ברפואת ילדים בקופת חולים כללית,\nובמקביל עבד בתפקיד קרדיולוג ילד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2c0c3efbe7db11a6",
+    "fullName": "ד\"ר דנית דיין",
+    "normalizedName": "דנית דיין",
+    "profileUrl": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%93%d7%a0%d7%99%d7%aa-%d7%93%d7%99%d7%99%d7%9f/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%93%d7%a0%d7%99%d7%aa-%d7%93%d7%99%d7%99%d7%9f/"
+    ],
+    "evidence": [
+      "ד\"ר דנית דיין"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-1a2f2864411a2c2e",
+    "fullName": "ד\"ר חביב ידיד יעל \n \n \n \n מנהלת מחלקת טיפול נמרץ כללי",
+    "normalizedName": "חביב ידיד יעל מנהלת מחלקת טיפול נמרץ כללי",
+    "profileUrl": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%97%d7%91%d7%99%d7%91-%d7%99%d7%93%d7%99%d7%93-%d7%99%d7%a2%d7%9c/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהלת מחלקת טיפול נמרץ כללי",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%97%d7%91%d7%99%d7%91-%d7%99%d7%93%d7%99%d7%93-%d7%99%d7%a2%d7%9c/"
+    ],
+    "evidence": [
+      "ד\"ר חביב ידיד יעל\nמנהלת מחלקת טיפול נמרץ כללי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-3afc48ee5e43ee43",
+    "fullName": "פרופ' חיים ביבי \n \n \n \n מנהל מחלקת טיפול נמרץ ילדים",
+    "normalizedName": "חיים ביבי מנהל מחלקת טיפול נמרץ ילדים",
+    "profileUrl": "https://www.mymc.co.il/doctors/chaim-bibi/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": "מנהל מחלקת טיפול נמרץ ילדים",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/doctors/chaim-bibi/"
+    ],
+    "evidence": [
+      "פרופ' חיים ביבי\nמנהל מחלקת טיפול נמרץ ילדים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-5576ccfaa64c9a38",
+    "fullName": "ד\"ר יורם בן יהודה \n \n \n \n מנהל מחלקת ילדים",
+    "normalizedName": "יורם בן יהודה מנהל מחלקת ילדים",
+    "profileUrl": "https://www.mymc.co.il/doctors/yoram-ben-yehuda/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מחלקת ילדים",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/doctors/yoram-ben-yehuda/"
+    ],
+    "evidence": [
+      "ד\"ר יורם בן יהודה\nמנהל מחלקת ילדים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-eef1e080ee66db90",
+    "fullName": "פרופ' יעקב אמיר \n \n \n \n מנהל היחידה למחלות זיהומיות ילדים \n \n \n \n \n \n \n פרופ' יעקב אמיר",
+    "normalizedName": "יעקב אמיר מנהל היחידה למחלות זיהומיות ילדים פרופ יעקב אמיר",
+    "profileUrl": "https://www.mymc.co.il/doctors/professor-yaakov-amir/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": "מנהל היחידה למחלות זיהומיות ילדים",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/doctors/professor-yaakov-amir/"
+    ],
+    "evidence": [
+      "פרופ' יעקב אמיר\nמנהל היחידה למחלות זיהומיות ילדים\nפרופ' יעקב אמיר, בוגר לימודי רפואה באוניברסיטה העברית בשילוב עם המרכז הרפואי הדסה בירושלים,\nהינו מנהל היחידה למחלות זיהומיות בילדים במרכז הרפואי מעיני הישועה.\nהתמחה ברפואת ילדים בבית החולים בילינסון בפתח תקווה,\nובהמשך התמחה במחלות זיהומיות באוניברסיטת וושינגטון בסנט-לואיס שבמיזורי, ארה\"ב.\nהשתלם כפרופסור אורח במכון למחקר של בית החולים לילדים באוקלנד בקליפורניה,\nביחידה למחלות זיהומיות בבית החולים לילדים בלונג איילנד בניו-יורק,\nבמעבדות המחקר לפיתוח "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-1622a0cea99a9185",
+    "fullName": "פרופ' ישראל שטראוס",
+    "normalizedName": "ישראל שטראוס",
+    "profileUrl": "https://www.mymc.co.il/doctors/israel-straus/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": "<img loading=\"lazy\" decoding=\"async\" width=\"380\" height=\"410\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/proStraws.jpg\" class=\"attachment-full size-full wp-image-18530\" alt=\"רופא\" srcset=\"https://www.mymc.co.il/wp-content/uploads/2025/10/proStraws.jpg 380w, https://www.mymc.co.il/wp-content/uploads/2025/10/proStraws-278x300.jpg 278w\" sizes=\"(max-width: 380px) 100vw, 380px\" />את המערך הפסיכיאטרי על כל מרכיביו מנהלפרופ' ישראל שטראוס",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/mental-health/",
+      "https://www.mymc.co.il/doctors/israel-straus/"
+    ],
+    "evidence": [
+      "<img loading=\"lazy\" decoding=\"async\" width=\"380\" height=\"410\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/proStraws.jpg\" class=\"attachment-full size-full wp-image-18530\" alt=\"רופא\" srcset=\"https://www.mymc.co.il/wp-content/uploads/2025/10/proStraws.jpg 380w, https://www.mymc.co.il/wp-content/uploads/2025/10/proStraws-278x300.jpg 278w\" sizes=\"(max-width: 380px) 100vw, 380px\" />את המערך הפסיכיאטרי על כל מרכיביו מנהלפרופ' ישראל שטראוס\n<img loading=\"lazy\" decoding=\"async\" width=\"9\" height"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-70967c3baf8dca50",
+    "fullName": "ד\"ר ליונל קופליוביץ",
+    "normalizedName": "ליונל קופליוביץ",
+    "profileUrl": "https://www.mymc.co.il/doctors/lionel-kopliovitz/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא מומחה לאורתופדיית ילדים",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/doctors/lionel-kopliovitz/"
+    ],
+    "evidence": [
+      "ד”ר ליונל קופליוביץ\nרופא מומחה לאורתופדיית ילדים\nד\"ר ליונל קופליוביץ, בוגר בית הספר לרפואה של האוניברסיטה הפדרלית של ריו דה ז'ניירו בברזיל,\nהינו רופא מומחה לאורתופדיית ילדים במרכז הרפואי מעיני הישועה.\nביצע סטאז' במרכז הרפואי אסף הרופא בבאר יעקב,\nשם עבד במחלקות אורתופדיה, כירורגיה, מדעי יסוד, רפואה שיקומית, נוירוכירורגיה וכירורגיה פלסטית.\nשימש כרופא בכיר ביחידת אורתופדיה ילדים וכן כיהן כמנהל היחידה.\nבהמשך כיהן בתפקיד סגן מנהל מחלקת אורתופדיה במרכז הרפואי אסף הרופא.\nהשכלה והכשרה מקצועית\n1972-1975 "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-79e85944cee3c312",
+    "fullName": "ד\"ר מחמד קבלאווי \n \n \n \n רופא אחראי מחלקת טיפול נמרץ לב",
+    "normalizedName": "מחמד קבלאווי רופא אחראי מחלקת טיפול נמרץ לב",
+    "profileUrl": "https://www.mymc.co.il/doctors/shimcha-mayzel/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא אחראי מחלקת טיפול נמרץ לב",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/doctors/shimcha-mayzel/"
+    ],
+    "evidence": [
+      "ד\"ר מחמד קבלאווי\nרופא אחראי מחלקת טיפול נמרץ לב"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2f29a911da584022",
+    "fullName": "ד\"ר מיכאל בלכר \n \n \n \n רופא מומחה בכירורגיה כללית \n \n \n \n \n \n \n ד\"ר מיכאל בלכר",
+    "normalizedName": "מיכאל בלכר רופא מומחה בכירורגיה כללית דר מיכאל בלכר",
+    "profileUrl": "https://www.mymc.co.il/doctors/michael-blecher/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא מומחה בכירורגיה כללית",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/doctors/michael-blecher/"
+    ],
+    "evidence": [
+      "ד\"ר מיכאל בלכר\nרופא מומחה בכירורגיה כללית\nד\"ר מיכאל בלכר, בוגר לימודי רפואה באוניברסיטת סנט פטרסבורג ברוסיה,\nהינו רופא מומחה לכירורגיה כללית במרכז הרפואי מעיני הישועה.\nביצע רוטציות במחלקות במסגרת הסטאז' בבית חולים איכילוב בתל אביב. התמחה במחלקת כירורגיה כללית א' במרכז רפואי וולפסון בחולון.\nשימש כרופא מנהלי בקופת חולים מכבי. כמו כן, היה אחראי על בקרת בית החולים שיבא ברמת גן. משמש ככירורג כללי בקופת חולים מכבי בעיר כפר סבא וביישוב כפר יונה.\nהשכלה והכשרה מקצועית\n2000 קורס MTLS.\n1998 קורס ATLS.\nקורס"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-37e3966055862cd5",
+    "fullName": "ד\"ר משה קולר \n \n \n \n מנהל אגף כירורגיה \n \n \n \n \n \n \n ד\"ר משה קולר",
+    "normalizedName": "משה קולר מנהל אגף כירורגיה דר משה קולר",
+    "profileUrl": "https://www.mymc.co.il/doctors/moshe-koler/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל אגף כירורגיה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/doctors/moshe-koler/"
+    ],
+    "evidence": [
+      "ד\"ר משה קולר\nמנהל אגף כירורגיה\nד\"ר משה קולר, בוגר אוניברסיטת בולוניה באיטליה,\nהינו מנהל מחלקה כירורגית במרכז הרפואי מעיני הישועה.\nביצע סטאז' במרכז הרפואי שיבא תל השומר, שם המשיך להתמחות בכירורגיה כללית.\nשימש כעמית מחקר בבית החולים מאונט סיני בניו יורק, ארה\"ב.\nעבד בתפקיד מנתח בכיר במחלקת כירורגיה אונקולוגית במרכז הרפואי שיבא תל השומר.\nבמהלך תפקידו העניק שירות קולורקטלי למטופלים.\nכיהן כסגן מנהל המחלקה לכירורגיה אונקולוגית במרכז הרפואי שיבא תל השומר.\nהעביר קורס בכירורגיה קולורקטלית בבית החולים St. "
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-8d71e9396c1ee6fe",
+    "fullName": "ד\"ר משה רוטשילד",
+    "normalizedName": "משה רוטשילד",
+    "profileUrl": "https://www.mymc.co.il/about/dr-moshe-rothschild/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/mental-health/",
+      "https://www.mymc.co.il/about/dr-moshe-rothschild/"
+    ],
+    "evidence": [
+      "ד\"ר משה רוטשילד – מייסד בית החולים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f4d52934ff7a294c",
+    "fullName": "ד\"ר עינת להב \n \n \n \n נפרולוגית ילדים \n \n \n \n \n \n \n ד\"ר עינב להב",
+    "normalizedName": "עינת להב נפרולוגית ילדים דר עינב להב",
+    "profileUrl": "https://www.mymc.co.il/doctors/dr-einav-lahav/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "עבדה בתפקיד רופאה מתמחה בכירה בבית החולים אדמונד ולילי ספרא לילדים",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/doctors/dr-einav-lahav/"
+    ],
+    "evidence": [
+      "ד\"ר עינת להב\nנפרולוגית ילדים\nד\"ר עינב להב, בוגרת בית הספר לרפואה הדסה והאוניברסיטה העברית,\nהינה נפרולוגית ילדים במרכז הרפואי מעיני הישועה.\nביצעה סטאז' כללי במחלקות רפואה פנימית, כירורגיה, פסיכיאטריה ורפואת ילדים בבית החולים מאיר בכפר סבא.\nעבדה בתפקיד רופאה מתמחה בכירה בבית החולים אדמונד ולילי ספרא לילדים\nשל המרכז הרפואי שיבא תל השומר ברמת גן, שם המשיכה להתמחות ברפואת ילדים.\nבהמשך התמחתה בנפרולוגיה ילדים במרפאת נפרולוגיה ילדים במרכז הרפואי שניידר לילדים בפתח תקווה.\nלאחר מכן שימשה כרופאה מתמחה בנפ"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-62ce4439e1df5bc0",
+    "fullName": "ד\"ר ענת לאור",
+    "normalizedName": "ענת לאור",
+    "profileUrl": "https://www.mymc.co.il/doctors/dr-einav-lhabdar-anat-laor/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "רופאה במחלקת כירוגיה ילדים",
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/doctors/dr-einav-lhabdar-anat-laor/"
+    ],
+    "evidence": [
+      "ד”ר ענת לאור\nרופאה במחלקת כירוגיה ילדים\nד\"ר ענת לאור, רופאה מומחית לילדים,\nהינה מנהלת היחידה הכירורגית לילדים ומתבגרים במרכז הרפואי מעיני הישועה.\nלאחר שסיימה בהצטיינות לימודי רפואה בהונגריה, היא התמחתה בכירורגיה כללית במרכז הרפואי קפלן ברחובות,\nוכן עשתה התמחות על בכירורגיית ילדים במרכז הרפואי הדסה עין כרם בירושלים.\nלאחר ההתמחות חזרה למרכז הרפואי קפלן בתפקיד רופאה בכירה.\nבשנת 2017 הקימה יחד עם ד\"ר בוריס אורקין את מחלקת כירורגיית הילדים בבית החולים אסותא באשדוד,\nתוך שיתוף פעולה מקצועי עם המחלקה במ"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f1afa292fa55f6d4",
+    "fullName": "ד\"ר ערן גרין",
+    "normalizedName": "ערן גרין",
+    "profileUrl": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a2%d7%a8%d7%9f-%d7%92%d7%a8%d7%99%d7%9f/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a2%d7%a8%d7%9f-%d7%92%d7%a8%d7%99%d7%9f/"
+    ],
+    "evidence": [
+      "ד\"ר ערן גרין"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2edf1193a9b3ceff",
+    "fullName": "ד\"ר פבלו לואיס ז'נוס",
+    "normalizedName": "פבלו לואיס זנוס",
+    "profileUrl": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a4%d7%91%d7%9c%d7%95-%d7%9c%d7%95%d7%90%d7%99%d7%a1-%d7%96%d7%a0%d7%95%d7%a1/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a4%d7%91%d7%9c%d7%95-%d7%9c%d7%95%d7%90%d7%99%d7%a1-%d7%96%d7%a0%d7%95%d7%a1/"
+    ],
+    "evidence": [
+      "ד\"ר פבלו לואיס ז'נוס"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-958cda1022db7a73",
+    "fullName": "ד\"ר קבלאוי מוחמד",
+    "normalizedName": "קבלאוי מוחמד",
+    "profileUrl": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a7%d7%91%d7%9c%d7%90%d7%95%d7%99-%d7%9e%d7%95%d7%97%d7%9e%d7%93/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a7%d7%91%d7%9c%d7%90%d7%95%d7%99-%d7%9e%d7%95%d7%97%d7%9e%d7%93/"
+    ],
+    "evidence": [
+      "ד\"ר קבלאוי מוחמד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a9cf2947e40bd426",
+    "fullName": "ד\"ר רפאל גרי \n \n \n \n רופא בכיר בנפרולוגיה \n \n \n \n \n \n \n ד\"ר רפאל גרי",
+    "normalizedName": "רפאל גרי רופא בכיר בנפרולוגיה דר רפאל גרי",
+    "profileUrl": "https://www.mymc.co.il/doctors/dr-raphael-geri/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא בכיר בנפרולוגיה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/doctors/dr-raphael-geri/"
+    ],
+    "evidence": [
+      "ד\"ר רפאל גרי\nרופא בכיר בנפרולוגיה\nד\"ר רפאל גרי, בוגר בית הספר לרפואה במילאנו שבאיטליה,\nהינו רופא בכיר בנפרולוגיה במרכז הרפואי מעיני הישועה.\nבעברו עשה סטאג' במרכז הרפואי בני ציון בחיפה.\nהתמחה במחלקה פנימית ובמחלקת נפרולוגיה בקריה הרפואית רמב\"ם חיפה.\nביצע השתלמות עמיתים קלינית באוניברסיטת טורונטו בקנדה.\nכיהן כמנהל היחידה הנפרולוגית במרכז הרפואי זיו בצפת.\nמשמש כיועץ נפרולוגי בקופת חולים מכבי חיפה ובפרדס חנה.\nכיהן עד לאחרונה בתפקיד מנהל היחידה הנפרולוגית במרכז הרפואי מעיני הישועה."
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-730dad45ede41fc2",
+    "fullName": "ד\"ר שי מרון אלדר \n \n \n \n רופא מומחה לטיפול ניתוחי בהשמנת יתר \n \n \n \n \n \n \n ד\"ר שי מרון אלדר",
+    "normalizedName": "שי מרון אלדר רופא מומחה לטיפול ניתוחי בהשמנת יתר דר שי מרון אלדר",
+    "profileUrl": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a9%d7%99-%d7%9e%d7%a8%d7%95%d7%9f-%d7%90%d7%9c%d7%93%d7%a8/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא מומחה לטיפול ניתוחי בהשמנת יתר",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a9%d7%99-%d7%9e%d7%a8%d7%95%d7%9f-%d7%90%d7%9c%d7%93%d7%a8/"
+    ],
+    "evidence": [
+      "ד\"ר שי מרון אלדר\nרופא מומחה לטיפול ניתוחי בהשמנת יתר\nד\"ר שי מרון אלדר, בוגר הפקולטה לרפואה של אוניברסיטת בן-גוריון בבאר שבע,\nהינו רופא מומחה לטיפול ניתוחי בהשמנת יתר במרכז הרפואי מעיני הישועה.\nביצע סטאז' קליני רוטציוני במרכז רפואי כרמל בחיפה. שימש כרופא מתמחה במחלקה כירורגית ג' במרכז הרפואי שיבא תל השומר.\nהתמחה בכירורגיה כללית במרכז הרפואי מאונט סיני בניו יורק.\nשימש כעמית מחקר ועמית קליני במכון לניתוחים בריאטריים ומטבולים במרכז כירורגי בקליבלנד באוהיו, ארה\"ב.\nמאז, מנהל את היחידה לטיפול ניתוחי בה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-12e9baa8259ebeb5",
+    "fullName": "ד\"ר שמחה רוזנבלט \n \n \n \n רופא מומחה לקרדיולוגיה \n \n \n \n \n \n \n ד\"ר שמחה רוזנבלט",
+    "normalizedName": "שמחה רוזנבלט רופא מומחה לקרדיולוגיה דר שמחה רוזנבלט",
+    "profileUrl": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a9%d7%9e%d7%97%d7%94-%d7%a8%d7%95%d7%96%d7%a0%d7%91%d7%9c%d7%98/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": "רופא מומחה לקרדיולוגיה",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a9%d7%9e%d7%97%d7%94-%d7%a8%d7%95%d7%96%d7%a0%d7%91%d7%9c%d7%98/"
+    ],
+    "evidence": [
+      "ד\"ר שמחה רוזנבלט\nרופא מומחה לקרדיולוגיה\nד\"ר שמחה רוזנבלט, בוגר לימודי רפואה באוניברסיטה העברית בירושלים,\nהינו רופא מומחה לקרדיולוגיה במרכז הרפואי מעיני הישועה.\nעשה סטאז' במרכז הרפואי קפלן ברחובות.\nהתמחה בקרדיולוגיה כולל השתלמות במחלקה פנימית במרכז הרפואי שיבא תל השומר, שם המשיך לעבוד במכון הלב.\nניהל את מכון הלב של מכבי בקהילה. עבד במחלקה הקרדיולוגית של מרכז רפואי שיבא תל השומר ועסק בבדיקות אקו.\nעבד במכון של מכבי במשמרות של אקו ואקו במאמץ, והדריך טכנאים ורופאים."
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-7a4c54e417357bc6",
+    "fullName": "פרופ' תומר אבני \n \n \n \n מנהל המחלקה הפנימית",
+    "normalizedName": "תומר אבני מנהל המחלקה הפנימית",
+    "profileUrl": "https://www.mymc.co.il/doctors/tomer-avni/",
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "provider": "unknown",
+    "titlePrefix": "פרופ'",
+    "role": "מנהל המחלקה הפנימית",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/doctors/tomer-avni/"
+    ],
+    "evidence": [
+      "פרופ' תומר אבני\nמנהל המחלקה הפנימית"
+    ]
+  }
+]
