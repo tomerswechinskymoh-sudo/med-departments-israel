@@ -1,8 +1,26 @@
 [
   {
-    "canonicalDoctorId": "doctor-e40dfe8448bab99f",
-    "fullName": "פרופ' אשכנזי ועוסקת בחקר מחלות זיהומיות ובמחקר קליני. מחקר הוא אחד משלושת מרכיביה של הרפואה האיכו",
-    "normalizedName": "אשכנזי ועוסקת בחקר מחלות זיהומיות ובמחקר קליני מחקר הוא אחד משלושת מרכיביה של הרפואה האיכו",
+    "canonicalDoctorId": "doctor-85c97fa54076e095",
+    "fullName": "ד\"ר איתי ברגר",
+    "normalizedName": "איתי ברגר",
+    "profileUrl": null,
+    "hospitalName": "מרכז שניידר לילדים",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+    ],
+    "evidence": [
+      "ד\"ר איתי ברגר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-72eec2c355585c52",
+    "fullName": "פרופ' אפרים בילבסקי",
+    "normalizedName": "אפרים בילבסקי",
     "profileUrl": null,
     "hospitalName": "מרכז שניידר לילדים",
     "provider": "clalit",
@@ -11,10 +29,10 @@
     "profileCompleteness": "listOnly",
     "productionReady": false,
     "sourceUrls": [
-      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
     ],
     "evidence": [
-      "פרופ' אשכנזי ועוסקת בחקר מחלות זיהומיות ובמחקר קליני. מחקר הוא אחד משלושת מרכיביה של הרפואה האיכו"
+      "פרופ' אפרים בילבסקי"
     ]
   },
   {
@@ -36,9 +54,9 @@
     ]
   },
   {
-    "canonicalDoctorId": "doctor-1dede58bc947d1ac",
-    "fullName": "פרופ' גילת לבני רופאים בכירים\nד\"ר איתי ברגר ד\"ר לנה ציון ד\"ר שירי רובין ד\"ר יהונתן פסטרנק\nמנהלת ה",
-    "normalizedName": "גילת לבני רופאים בכירים דר איתי ברגר דר לנה ציון דר שירי רובין דר יהונתן פסטרנק מנהלת ה",
+    "canonicalDoctorId": "doctor-36097a87e98b582f",
+    "fullName": "פרופ' גילת לבני רופאים בכירים",
+    "normalizedName": "גילת לבני רופאים בכירים",
     "profileUrl": null,
     "hospitalName": "מרכז שניידר לילדים",
     "provider": "clalit",
@@ -50,7 +68,7 @@
       "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
     ],
     "evidence": [
-      "פרופ' גילת לבני רופאים בכירים\nד\"ר איתי ברגר ד\"ר לנה ציון ד\"ר שירי רובין ד\"ר יהונתן פסטרנק\nמנהלת ה"
+      "פרופ' גילת לבני רופאים בכירים"
     ]
   },
   {
@@ -72,27 +90,27 @@
     ]
   },
   {
-    "canonicalDoctorId": "doctor-4a0e5c169f25f3c7",
-    "fullName": "פרופ' דריו פרייסרופאים בכיריםד\"ר מירי דותןפרופ' יואל לוינסקיד\"ר טארק זועבי מנהלת האחיותלירון בניו",
-    "normalizedName": "דריו פרייסרופאים בכיריםדר מירי דותןפרופ יואל לוינסקידר טארק זועבי מנהלת האחיותלירון בניו",
+    "canonicalDoctorId": "doctor-0177edb38b425ef3",
+    "fullName": "ד\"ר יהונתן פסטרנק",
+    "normalizedName": "יהונתן פסטרנק",
     "profileUrl": null,
     "hospitalName": "מרכז שניידר לילדים",
     "provider": "clalit",
-    "titlePrefix": "פרופ'",
+    "titlePrefix": "ד\"ר",
     "role": null,
     "profileCompleteness": "listOnly",
     "productionReady": false,
     "sourceUrls": [
-      "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken="
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
     ],
     "evidence": [
-      "פרופ' דריו פרייסרופאים בכיריםד\"ר מירי דותןפרופ' יואל לוינסקיד\"ר טארק זועבי מנהלת האחיותלירון בניו"
+      "ד\"ר יהונתן פסטרנק"
     ]
   },
   {
-    "canonicalDoctorId": "doctor-5f42da71cc8e9a18",
-    "fullName": "ד\"ר יואל לוינסקי ד''ר נופר מרכוס ד\"ר לוטם גולדברג\nמנהלת הסיעוד\nגלית אשר\nפסיכולוג\nדני לוטן\nעובדת",
-    "normalizedName": "יואל לוינסקי דר נופר מרכוס דר לוטם גולדברג מנהלת הסיעוד גלית אשר פסיכולוג דני לוטן עובדת",
+    "canonicalDoctorId": "doctor-964b5f09ed632f07",
+    "fullName": "ד\"ר יואל לוינסקי ד''ר נופר מרכוס",
+    "normalizedName": "יואל לוינסקי דר נופר מרכוס",
     "profileUrl": null,
     "hospitalName": "מרכז שניידר לילדים",
     "provider": "clalit",
@@ -104,7 +122,61 @@
       "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424"
     ],
     "evidence": [
-      "ד\"ר יואל לוינסקי ד''ר נופר מרכוס ד\"ר לוטם גולדברג\nמנהלת הסיעוד\nגלית אשר\nפסיכולוג\nדני לוטן\nעובדת"
+      "ד\"ר יואל לוינסקי ד''ר נופר מרכוס"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-1aabcba5f808b7f3",
+    "fullName": "ד\"ר לוטם גולדברג",
+    "normalizedName": "לוטם גולדברג",
+    "profileUrl": null,
+    "hospitalName": "מרכז שניידר לילדים",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424"
+    ],
+    "evidence": [
+      "ד\"ר לוטם גולדברג"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2d1124b1c6193832",
+    "fullName": "ד\"ר ליעד אבנרי",
+    "normalizedName": "ליעד אבנרי",
+    "profileUrl": null,
+    "hospitalName": "מרכז שניידר לילדים",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
+    ],
+    "evidence": [
+      "ד\"ר ליעד אבנרי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-81a96e83f479d228",
+    "fullName": "ד\"ר לנה ציון",
+    "normalizedName": "לנה ציון",
+    "profileUrl": null,
+    "hospitalName": "מרכז שניידר לילדים",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+    ],
+    "evidence": [
+      "ד\"ר לנה ציון"
     ]
   },
   {
@@ -146,9 +218,9 @@
     ]
   },
   {
-    "canonicalDoctorId": "doctor-ce00d0f94116549f",
-    "fullName": "ד\"ר נמרוד זקס ד\"ר רחלי גביש\nמנהלת הסיעוד\nמאיה פרנקל תאומים\nפסיכולוגית\nמיכל לפיד\nעובדת סוציאלית",
-    "normalizedName": "נמרוד זקס דר רחלי גביש מנהלת הסיעוד מאיה פרנקל תאומים פסיכולוגית מיכל לפיד עובדת סוציאלית",
+    "canonicalDoctorId": "doctor-db9c9a9c9f8eeae0",
+    "fullName": "ד\"ר נמרוד זקס",
+    "normalizedName": "נמרוד זקס",
     "profileUrl": null,
     "hospitalName": "מרכז שניידר לילדים",
     "provider": "clalit",
@@ -160,7 +232,7 @@
       "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
     ],
     "evidence": [
-      "ד\"ר נמרוד זקס ד\"ר רחלי גביש\nמנהלת הסיעוד\nמאיה פרנקל תאומים\nפסיכולוגית\nמיכל לפיד\nעובדת סוציאלית\n"
+      "ד\"ר נמרוד זקס"
     ]
   },
   {
@@ -182,24 +254,6 @@
     ]
   },
   {
-    "canonicalDoctorId": "doctor-b56319895073db99",
-    "fullName": "פרופ' עודד שוירמן\nסגנית וממלאת מקום מנהל המחלקה\nד''ר ורד הופר",
-    "normalizedName": "עודד שוירמן סגנית וממלאת מקום מנהל המחלקה דר ורד הופר",
-    "profileUrl": null,
-    "hospitalName": "מרכז שניידר לילדים",
-    "provider": "clalit",
-    "titlePrefix": "פרופ'",
-    "role": null,
-    "profileCompleteness": "listOnly",
-    "productionReady": false,
-    "sourceUrls": [
-      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424"
-    ],
-    "evidence": [
-      "פרופ' עודד שוירמן\nסגנית וממלאת מקום מנהל המחלקה\nד''ר ורד הופר"
-    ]
-  },
-  {
     "canonicalDoctorId": "doctor-22ab5f7585872a0c",
     "fullName": "פרופ' עירית קראוזה",
     "normalizedName": "עירית קראוזה",
@@ -215,24 +269,6 @@
     ],
     "evidence": [
       "פרופ' עירית קראוזה"
-    ]
-  },
-  {
-    "canonicalDoctorId": "doctor-6456803a9234a437",
-    "fullName": "פרופ' עירית קראוזה\nסגן מנהלת המחלקה ד\"ר ערן רום\nרופאים בכירים\nפרופ' אפרים בילבסקי ד\"ר ליעד אבנרי",
-    "normalizedName": "עירית קראוזה סגן מנהלת המחלקה דר ערן רום רופאים בכירים פרופ אפרים בילבסקי דר ליעד אבנרי",
-    "profileUrl": null,
-    "hospitalName": "מרכז שניידר לילדים",
-    "provider": "clalit",
-    "titlePrefix": "פרופ'",
-    "role": null,
-    "profileCompleteness": "listOnly",
-    "productionReady": false,
-    "sourceUrls": [
-      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
-    ],
-    "evidence": [
-      "פרופ' עירית קראוזה\nסגן מנהלת המחלקה ד\"ר ערן רום\nרופאים בכירים\nפרופ' אפרים בילבסקי ד\"ר ליעד אבנרי "
     ]
   },
   {
@@ -255,6 +291,24 @@
     ]
   },
   {
+    "canonicalDoctorId": "doctor-20254b8ff77ec29c",
+    "fullName": "ד\"ר ערן רום",
+    "normalizedName": "ערן רום",
+    "profileUrl": null,
+    "hospitalName": "מרכז שניידר לילדים",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
+    ],
+    "evidence": [
+      "ד\"ר ערן רום"
+    ]
+  },
+  {
     "canonicalDoctorId": "doctor-095f9d0348a9941a",
     "fullName": "ד\"ר רון ברנט",
     "normalizedName": "רון ברנט",
@@ -271,6 +325,42 @@
     ],
     "evidence": [
       "המחלקה לרפואה דחופה בשניידר היא הגדולה בישראל לילדים וצומת ראשי במרכז הרפואי שלנו. הצוות הרפואי מטפל במגוון בעיות דחופות בילדים, אשר נזקקים לעזרה בשל מחלה או בעקבות חבלה. המחלקה פועלת ללא הפסקה - 24 שעות ביממה, שבעה ימים בשבוע ו־365 ימים בשנה - ומעניקה שירותים רפואיים לתינוקות, פעוטות ילדים ובני נוער עד גיל 18. צוות הרופאים והאחיות במחלקה התמחה ברפואת ילדים דחופה, קשוב תמיד לצורכיהם המיוחדים של הילדים והוריהם ושם לו למטרה להפחית למינימום את האשפוזים המיותרים.\nמיקום: קומה 2 טלפון בעמדת הקבלה: 03-"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e158cea5bd7cb54d",
+    "fullName": "ד\"ר רחלי גביש",
+    "normalizedName": "רחלי גביש",
+    "profileUrl": null,
+    "hospitalName": "מרכז שניידר לילדים",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
+    ],
+    "evidence": [
+      "ד\"ר רחלי גביש"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f9840d88018f232c",
+    "fullName": "ד\"ר שירי רובין",
+    "normalizedName": "שירי רובין",
+    "profileUrl": null,
+    "hospitalName": "מרכז שניידר לילדים",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+    ],
+    "evidence": [
+      "ד\"ר שירי רובין"
     ]
   }
 ]

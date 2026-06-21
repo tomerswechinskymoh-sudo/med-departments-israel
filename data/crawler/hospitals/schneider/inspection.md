@@ -1,6 +1,6 @@
 # מרכז שניידר לילדים crawler inspection
 
-- generatedAt: 2026-06-21T10:37:54.262Z
+- generatedAt: 2026-06-21T11:23:31.336Z
 - provider: clalit
 - doctorIndexExists: false
 - readiness: inspectNeeded

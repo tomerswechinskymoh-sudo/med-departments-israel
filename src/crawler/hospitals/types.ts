@@ -227,6 +227,7 @@ export type HospitalPilotEvaluation = {
     partial: number;
     listOnly: number;
   };
+  sourceLineageUrlMatchCount?: number;
   readiness: ReadinessStatus;
   crawlReadiness: CrawlReadinessStatus;
   mappingReadiness: MappingReadinessStatus;

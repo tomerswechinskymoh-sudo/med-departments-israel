@@ -1,6 +1,6 @@
 # ביה"ח המשפחה הקדושה crawler inspection
 
-- generatedAt: 2026-06-21T10:36:59.996Z
+- generatedAt: 2026-06-21T11:23:43.544Z
 - provider: unknown
 - doctorIndexExists: false
 - readiness: pilotReady

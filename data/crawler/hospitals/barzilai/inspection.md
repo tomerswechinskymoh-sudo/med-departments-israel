@@ -1,6 +1,6 @@
 # מרכז רפואי ברזילי crawler inspection
 
-- generatedAt: 2026-06-21T10:36:53.928Z
+- generatedAt: 2026-06-21T11:23:17.805Z
 - provider: unknown
 - doctorIndexExists: false
 - readiness: pilotReady

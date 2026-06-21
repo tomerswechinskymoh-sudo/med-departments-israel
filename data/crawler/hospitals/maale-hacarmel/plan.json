@@ -1,0 +1,55 @@
+{
+  "hospitalSlug": "maale-hacarmel",
+  "hospitalName": "מרכז לבה\"נ מעלה הכרמל",
+  "generatedAt": "2026-06-21T11:24:14.549Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://www.tiratcarmel-med.org.il/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.tiratcarmel-med.org.il/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.tiratcarmel-med.org.il/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.tiratcarmel-med.org.il/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.tiratcarmel-med.org.il/",
+      "title": "המרכז לבריאות הנפש מעלה הכרמל",
+      "h1": [
+        "מרכז לבריאות הנפש מעלה הכרמל - עמוד הבית"
+      ],
+      "h2": [
+        "\"המרכז הרפואי לבריאות הנפש מעלה הכרמל\"",
+        "לינק ליחידה הממשלתית לתיאום המאבק בגזענות",
+        "\"המרכז הרפואי לבריאות הנפש מעלה הכרמל\"",
+        "\"המרכז הרפואי לבריאות הנפש מעלה הכרמל\"",
+        "לינק ליחידה הממשלתית לתיאום המאבק בגזענות",
+        "\"המרכז הרפואי לבריאות הנפש מעלה הכרמל\""
+      ],
+      "htmlLength": 62245,
+      "visibleTextLength": 8927,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "classicDoctorCards"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.tiratcarmel-med.org.il/"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

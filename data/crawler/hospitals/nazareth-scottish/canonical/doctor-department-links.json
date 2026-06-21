@@ -1,63 +1,25 @@
 [
   {
-    "canonicalDoctorId": "doctor-1e0d8450a6df7535",
-    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
+    "canonicalDoctorId": "doctor-060c5cb45dd0e965",
+    "masterDeptRowId": "master-dept-0052-ביהח-אי-מ-מ-ס-הסקוטי-כירורגיה-אורולוגית",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
-    "specialty": "יילוד וגינקולוגיה",
-    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "specialty": "כירורגיה אורולוגית",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he"
       ],
-      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-35ae21f8299a24bd",
-    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
-    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
-    "departmentName": "",
-    "specialty": "יילוד וגינקולוגיה",
-    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
-      ],
-      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-57516e3da0997b08",
-    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
-    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
-    "departmentName": "",
-    "specialty": "יילוד וגינקולוגיה",
-    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
-      ],
-      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-6ce1a2d3b0bb7a42",
+    "canonicalDoctorId": "doctor-0c9462fd5bbf54f4",
     "masterDeptRowId": "master-dept-0054-ביהח-אי-מ-מ-ס-הסקוטי-רפואה-דחופה",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
@@ -76,26 +38,45 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-7ad7682988a148ee",
-    "masterDeptRowId": "master-dept-0053-ביהח-אי-מ-מ-ס-הסקוטי-פנימית",
+    "canonicalDoctorId": "doctor-1394867b6fe64ad1",
+    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
-    "specialty": "פנימית",
-    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
-    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he"
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
       ],
-      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-7cce5ddf6522f9f4",
+    "canonicalDoctorId": "doctor-23d03106b90e1367",
+    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-32404b8f53a4fc0b",
     "masterDeptRowId": "master-dept-0051-ביהח-אי-מ-מ-ס-הסקוטי-אורתופדיה",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
@@ -114,45 +95,26 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-83c16b4cccc934f2",
-    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
+    "canonicalDoctorId": "doctor-78a5bcd80f1300dd",
+    "masterDeptRowId": "master-dept-0051-ביהח-אי-מ-מ-ס-הסקוטי-אורתופדיה",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
-    "specialty": "יילוד וגינקולוגיה",
-    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he"
       ],
-      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-8a5a3b24ba35e9a5",
-    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
-    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
-    "departmentName": "",
-    "specialty": "יילוד וגינקולוגיה",
-    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
-      ],
-      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-9c63ef09c079bb87",
+    "canonicalDoctorId": "doctor-9bf70e0b62b9b43f",
     "masterDeptRowId": "master-dept-0054-ביהח-אי-מ-מ-ס-הסקוטי-רפואה-דחופה",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
@@ -171,26 +133,26 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-a1299221e22e9be3",
-    "masterDeptRowId": "master-dept-0052-ביהח-אי-מ-מ-ס-הסקוטי-כירורגיה-אורולוגית",
+    "canonicalDoctorId": "doctor-a367a096ca37c1f4",
+    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
-    "specialty": "כירורגיה אורולוגית",
-    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
-    "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he"
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
       ],
-      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-a9bdc172a01e0af1",
+    "canonicalDoctorId": "doctor-b4d11238646ead4c",
     "masterDeptRowId": "master-dept-0054-ביהח-אי-מ-מ-ס-הסקוטי-רפואה-דחופה",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
@@ -209,19 +171,38 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-b38103a3cf8d97a3",
-    "masterDeptRowId": "master-dept-0052-ביהח-אי-מ-מ-ס-הסקוטי-כירורגיה-אורולוגית",
+    "canonicalDoctorId": "doctor-b4e4d5b8df1d7f55",
+    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
-    "specialty": "כירורגיה אורולוגית",
-    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
-    "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he"
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
       ],
-      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-bb1250456bdfd957",
+    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -247,7 +228,102 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-c3ca1cd4f21c284f",
+    "canonicalDoctorId": "doctor-c91010d789d71a91",
+    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-d0f294688b1ad992",
+    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-dbe6f8dd79a425c1",
+    "masterDeptRowId": "master-dept-0052-ביהח-אי-מ-מ-ס-הסקוטי-כירורגיה-אורולוגית",
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "departmentName": "",
+    "specialty": "כירורגיה אורולוגית",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e1f803c277101d3c",
+    "masterDeptRowId": "master-dept-0052-ביהח-אי-מ-מ-ס-הסקוטי-כירורגיה-אורולוגית",
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "departmentName": "",
+    "specialty": "כירורגיה אורולוגית",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e38154cb38570ef6",
+    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f3d5de4adbb07042",
     "masterDeptRowId": "master-dept-0051-ביהח-אי-מ-מ-ס-הסקוטי-אורתופדיה",
     "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "departmentName": "",
@@ -260,6 +336,44 @@
         "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he"
       ],
       "extractedFromUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f7fc1b51c6c471fb",
+    "masterDeptRowId": "master-dept-0053-ביהח-אי-מ-מ-ס-הסקוטי-פנימית",
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "departmentName": "",
+    "specialty": "פנימית",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-ffa63f8106e2a0e1",
+    "masterDeptRowId": "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he"
+      ],
+      "extractedFromUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },

@@ -97,6 +97,8 @@ export type NationalCoverageReport = {
   wave3Results: Array<Wave3Result>;
   nationalRemainingQueue: NationalRemainingQueueItem[];
   nationalSweepResults: NationalSweepResult[];
+  calibrationResults: NationalSweepResult[];
+  adapterPriorityResults: NationalSweepResult[];
   attemptedHospitalCount: number;
   usableHospitalRosterCount: number;
   usableDepartmentMappedRosterCount: number;
@@ -105,6 +107,10 @@ export type NationalCoverageReport = {
   needsAdapterCount: number;
   blockedCount: number;
   deferredCount: number;
+  notAttemptedCount: number;
+  attemptedButNoDoctorsCount: number;
+  attemptedWithDepartmentMappedRosterCount: number;
+  attemptedWithHospitalRosterOnlyCount: number;
   remainingUnattemptedCount: number;
   blockersByType: Record<string, number>;
   topNextAdapterPriorities: NationalRemainingQueueItem[];
@@ -1095,6 +1101,8 @@ export async function writeNationalPlanOutputs(
     wave3Results?: Wave3Result[];
     nationalRemainingQueue?: NationalRemainingQueueItem[];
     nationalSweepResults?: NationalSweepResult[];
+    calibrationResults?: NationalSweepResult[];
+    adapterPriorityResults?: NationalSweepResult[];
   } = {}
 ) {
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "master-dept-targets.json"), targets);
@@ -1141,7 +1149,9 @@ export async function writeNationalPlanOutputs(
     wave3SelectedHospitals,
     wave3Results: options.wave3Results ?? [],
     nationalRemainingQueue,
-    nationalSweepResults: options.nationalSweepResults ?? []
+    nationalSweepResults: options.nationalSweepResults ?? [],
+    calibrationResults: options.calibrationResults ?? [],
+    adapterPriorityResults: options.adapterPriorityResults ?? []
   });
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-coverage-report.json"), report);
   await fs.writeFile(path.join(NATIONAL_OUTPUT_DIR, "national-coverage-report.md"), renderCoverageReport(report), "utf8");
@@ -1234,12 +1244,30 @@ function buildCoverageReport(
     wave3Results: Wave3Result[];
     nationalRemainingQueue: NationalRemainingQueueItem[];
     nationalSweepResults: NationalSweepResult[];
+    calibrationResults: NationalSweepResult[];
+    adapterPriorityResults: NationalSweepResult[];
   }
 ): NationalCoverageReport {
   const wave1Plans = plan.filter((item) => item.wave === 1);
   const wave1Attempted = new Set(options.wave1Results.map((item) => item.hospital));
   const hospitalReadinessBySlug = buildHospitalSplitReadiness(plan, options);
   const splitEntries = Object.values(hospitalReadinessBySlug);
+  const attemptedResultSlugs = new Set([
+    ...options.wave1Results.map((item) => item.hospital),
+    ...options.wave2Results.map((item) => item.hospital),
+    ...options.wave3Results.map((item) => item.hospital),
+    ...options.calibrationResults.map((item) => item.hospital),
+    ...options.adapterPriorityResults.map((item) => item.hospital),
+    ...options.nationalSweepResults.map((item) => item.hospital)
+  ].filter(Boolean));
+  const attemptedButNoDoctors = [
+    ...options.wave2Results,
+    ...options.wave3Results,
+    ...options.calibrationResults,
+    ...options.adapterPriorityResults,
+    ...options.nationalSweepResults
+  ].filter((item) => item.reviewedRecords === 0 || item.canonicalStats.canonicalDoctors === 0);
+  const currentBlockedSlugs = new Set(splitEntries.filter((item) => item.crawlReadiness === "blocked" || item.outputUsability === "notUsableYet").map((item) => item.hospitalSlug));
   return {
     generatedAt: new Date().toISOString(),
     totalHospitals: plan.length,
@@ -1278,16 +1306,22 @@ function buildCoverageReport(
     wave3Results: options.wave3Results,
     nationalRemainingQueue: options.nationalRemainingQueue,
     nationalSweepResults: options.nationalSweepResults,
-    attemptedHospitalCount: splitEntries.filter((item) => item.canonicalDoctors > 0 || item.outputUsability === "notUsableYet").length,
+    calibrationResults: options.calibrationResults,
+    adapterPriorityResults: options.adapterPriorityResults,
+    attemptedHospitalCount: attemptedResultSlugs.size,
     usableHospitalRosterCount: splitEntries.filter((item) => item.outputUsability === "hospitalRoster" || item.outputUsability === "departmentMappedRoster").length,
     usableDepartmentMappedRosterCount: splitEntries.filter((item) => item.outputUsability === "departmentMappedRoster").length,
     safeForFullBatchCount: splitEntries.filter((item) => item.crawlReadiness === "safeForFullBatch").length,
     needsCalibrationCount: splitEntries.filter((item) => item.crawlReadiness === "needsCalibration").length,
     needsAdapterCount: plan.filter((item) => item.currentReadiness === "needsAdapter").length,
-    blockedCount: splitEntries.filter((item) => item.crawlReadiness === "blocked").length,
+    blockedCount: currentBlockedSlugs.size,
     deferredCount: plan.filter((item) => item.currentReadiness === "deferred").length,
+    notAttemptedCount: plan.length - attemptedResultSlugs.size,
+    attemptedButNoDoctorsCount: attemptedButNoDoctors.length,
+    attemptedWithDepartmentMappedRosterCount: splitEntries.filter((item) => attemptedResultSlugs.has(item.hospitalSlug) && item.outputUsability === "departmentMappedRoster").length,
+    attemptedWithHospitalRosterOnlyCount: splitEntries.filter((item) => attemptedResultSlugs.has(item.hospitalSlug) && item.outputUsability === "hospitalRoster").length,
     remainingUnattemptedCount: options.nationalRemainingQueue.filter((item) => item.plannedAction !== "skipAlreadyUsable").length,
-    blockersByType: countBy(options.nationalSweepResults.map((item) => item.blockerType)),
+    blockersByType: countBy([...options.adapterPriorityResults, ...options.nationalSweepResults].map((item) => item.blockerType)),
     topNextAdapterPriorities: options.nationalRemainingQueue
       .filter((item) => item.plannedAction === "adapterInspect" || item.expectedCrawlReadiness === "needsAdapter")
       .slice(0, 8),
@@ -1312,6 +1346,12 @@ function renderCoverageReport(report: NationalCoverageReport) {
     `- attempted hospitals: ${report.attemptedHospitalCount}`,
     `- usable hospital rosters: ${report.usableHospitalRosterCount}`,
     `- usable department-mapped rosters: ${report.usableDepartmentMappedRosterCount}`,
+    `- attempted department-mapped rosters: ${report.attemptedWithDepartmentMappedRosterCount}`,
+    `- attempted hospital-roster-only: ${report.attemptedWithHospitalRosterOnlyCount}`,
+    `- attempted but no doctors: ${report.attemptedButNoDoctorsCount}`,
+    `- blocked hospitals: ${report.blockedCount}`,
+    `- deferred hospitals: ${report.deferredCount}`,
+    `- not attempted hospitals: ${report.notAttemptedCount}`,
     `- remaining unattempted queue: ${report.remainingUnattemptedCount}`,
     `- Sheba: ${report.shebaStatus}`,
     "",
@@ -1367,6 +1407,12 @@ function renderCoverageReport(report: NationalCoverageReport) {
     "",
     "## Wave 3 Results",
     ...report.wave3Results.map((item) => `- ${item.hospital}: readiness=${item.readiness}; crawlReadiness=${item.crawlReadiness}; mappingReadiness=${item.mappingReadiness}; output=${item.outputUsability}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; sourceUrlMatch=${item.mappingStats.sourceUrlMatch}; reviewNeeded=${item.mappingStats.reviewNeeded}; blocker=${item.mainBlocker ?? "none"}`),
+    "",
+    "## Calibration Results",
+    ...report.calibrationResults.map((item) => `- ${item.hospital}: readiness=${item.readiness}; crawlReadiness=${item.crawlReadiness}; mappingReadiness=${item.mappingReadiness}; output=${item.outputUsability}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; sourceUrlMatch=${item.mappingStats.sourceUrlMatch}; reviewNeeded=${item.mappingStats.reviewNeeded}; blocker=${item.mainBlocker ?? "none"}`),
+    "",
+    "## Adapter Priority Results",
+    ...report.adapterPriorityResults.map((item) => `- ${item.hospital}: action=${item.plannedAction}; readiness=${item.readiness}; crawlReadiness=${item.crawlReadiness}; mappingReadiness=${item.mappingReadiness}; output=${item.outputUsability}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; blockerType=${item.blockerType}; blocker=${item.mainBlocker ?? "none"}`),
     "",
     "## National Sweep Queue",
     ...report.nationalRemainingQueue.slice(0, 25).map((item) => `- ${item.hospitalSlug}: ${item.hospitalName}; priority=${item.priority}; action=${item.plannedAction}; rows=${item.masterDeptRows}; URLs=${item.rowsWithUrls}; live=${item.liveUrlRows}; nearby=${item.nearbyDoctorOrTeamUrlRows}; expectedCrawl=${item.expectedCrawlReadiness}; expectedMapping=${item.expectedMappingReadiness}; reason=${item.reasonForPriority}`),
@@ -1520,7 +1566,17 @@ const defaultHandledSlugs = new Set([
   "shamir",
   "maayanei-hayeshua",
   "galilee",
-  "laniado"
+  "laniado",
+  "hillel-yaffe",
+  "barzilai",
+  "holy-family",
+  "saint-vincent",
+  "poria",
+  "nazareth-scottish",
+  "bnei-zion",
+  "schneider",
+  "assuta-ashdod",
+  "ziv"
 ]);
 
 const defaultDeferredSlugs = new Set(["sheba", "soroka", "wolfson"]);

@@ -1,0 +1,48 @@
+{
+  "hospitalSlug": "lev-hasharon",
+  "hospitalName": "מרכז לבה\"נ לב השרון",
+  "generatedAt": "2026-06-21T11:24:20.918Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://www.lev-hasharon.co.il/?page_id=853",
+    "departmentsIndexUrlCandidates": [
+      "https://www.lev-hasharon.co.il/?page_id=853"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.lev-hasharon.co.il/?page_id=853"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.lev-hasharon.co.il/?page_id=853",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.lev-hasharon.co.il/?page_id=853",
+      "title": "התמחות בפסיכיאטריה | המרכז לבריאות הנפש לב השרון",
+      "h1": [
+        "התמחות בפסיכיאטריה"
+      ],
+      "h2": [],
+      "htmlLength": 51922,
+      "visibleTextLength": 5702,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "classicDoctorCards"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.lev-hasharon.co.il/?page_id=853"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

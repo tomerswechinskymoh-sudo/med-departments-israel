@@ -1,24 +1,5 @@
 [
   {
-    "canonicalDoctorId": "doctor-050239d4a63f59ec",
-    "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
-    "hospitalName": "מרכז רפואי ברזילי",
-    "departmentName": "",
-    "specialty": "רדיולוגיה (דימות)",
-    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
-      ],
-      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
     "canonicalDoctorId": "doctor-07d8a1c2bf36b24e",
     "masterDeptRowId": "master-dept-0325-מרכז-רפואי-ברזילי-פסיכיאטריה-של-הילד-והמתבגר",
     "hospitalName": "מרכז רפואי ברזילי",
@@ -76,7 +57,45 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-222d195ebaed7760",
+    "canonicalDoctorId": "doctor-0ba7c5216b62d7b1",
+    "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
+    "hospitalName": "מרכז רפואי ברזילי",
+    "departmentName": "",
+    "specialty": "רדיולוגיה (דימות)",
+    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+      ],
+      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-131b8599e09292c8",
+    "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
+    "hospitalName": "מרכז רפואי ברזילי",
+    "departmentName": "",
+    "specialty": "רדיולוגיה (דימות)",
+    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+      ],
+      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-1d892937ad7a4f5b",
     "masterDeptRowId": "master-dept-0320-מרכז-רפואי-ברזילי-אונקולוגיה",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",
@@ -95,7 +114,7 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-2e85c8261e426a45",
+    "canonicalDoctorId": "doctor-3eec30c59d843546",
     "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",
@@ -114,7 +133,7 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-30ace5a5fa495522",
+    "canonicalDoctorId": "doctor-40d125e71fec4ef4",
     "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",
@@ -133,45 +152,7 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-38b90d0e91b3531a",
-    "masterDeptRowId": "master-dept-0320-מרכז-רפואי-ברזילי-אונקולוגיה",
-    "hospitalName": "מרכז רפואי ברזילי",
-    "departmentName": "",
-    "specialty": "אונקולוגיה",
-    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
-    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304"
-      ],
-      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-55353760dae82383",
-    "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
-    "hospitalName": "מרכז רפואי ברזילי",
-    "departmentName": "",
-    "specialty": "רדיולוגיה (דימות)",
-    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
-      ],
-      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-6067caf18b48fffc",
+    "canonicalDoctorId": "doctor-6b72434f8463a35c",
     "masterDeptRowId": "master-dept-0329-מרכז-רפואי-ברזילי-כירורגיה-פלסטית-ואסתטית",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",
@@ -190,45 +171,7 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-8e742fff81fb295e",
-    "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
-    "hospitalName": "מרכז רפואי ברזילי",
-    "departmentName": "",
-    "specialty": "רדיולוגיה (דימות)",
-    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
-      ],
-      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-97afee157ccf905a",
-    "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
-    "hospitalName": "מרכז רפואי ברזילי",
-    "departmentName": "",
-    "specialty": "רדיולוגיה (דימות)",
-    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
-      ],
-      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-a0172a489d7e5f18",
+    "canonicalDoctorId": "doctor-6d241550c504a9e6",
     "masterDeptRowId": "master-dept-0328-מרכז-רפואי-ברזילי-רפואה-פיזיקלית-ושיקום",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",
@@ -247,7 +190,45 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-a51e58fc1496b0aa",
+    "canonicalDoctorId": "doctor-6dfd07b916eef9cc",
+    "masterDeptRowId": "master-dept-0325-מרכז-רפואי-ברזילי-פסיכיאטריה-של-הילד-והמתבגר",
+    "hospitalName": "מרכז רפואי ברזילי",
+    "departmentName": "",
+    "specialty": "פסיכיאטריה של הילד והמתבגר",
+    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825",
+    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825"
+      ],
+      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=240&ArticleID=3825",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-76d27ef92740d70a",
+    "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
+    "hospitalName": "מרכז רפואי ברזילי",
+    "departmentName": "",
+    "specialty": "רדיולוגיה (דימות)",
+    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+      ],
+      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-9f44a087596107ff",
     "masterDeptRowId": "master-dept-0329-מרכז-רפואי-ברזילי-כירורגיה-פלסטית-ואסתטית",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",
@@ -266,38 +247,38 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-a89eddec28ab66b3",
-    "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
+    "canonicalDoctorId": "doctor-a578674ef0613aa3",
+    "masterDeptRowId": "master-dept-0320-מרכז-רפואי-ברזילי-אונקולוגיה",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",
-    "specialty": "רדיולוגיה (דימות)",
-    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "specialty": "אונקולוגיה",
+    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304"
       ],
-      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-b5102312eed8b564",
-    "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
+    "canonicalDoctorId": "doctor-b7ab41b6add1fa0b",
+    "masterDeptRowId": "master-dept-0320-מרכז-רפואי-ברזילי-אונקולוגיה",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",
-    "specialty": "רדיולוגיה (דימות)",
-    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
-    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+    "specialty": "אונקולוגיה",
+    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440"
+        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304"
       ],
-      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=440",
+      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -323,7 +304,26 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-d16196e66c332870",
+    "canonicalDoctorId": "doctor-bd083669e5c7332a",
+    "masterDeptRowId": "master-dept-0320-מרכז-רפואי-ברזילי-אונקולוגיה",
+    "hospitalName": "מרכז רפואי ברזילי",
+    "departmentName": "",
+    "specialty": "אונקולוגיה",
+    "sourceUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+    "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304"
+      ],
+      "extractedFromUrl": "https://www.barzilaimc.org.il/?CategoryID=241&ArticleID=304",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-cd2db47ff3b82fa7",
     "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",
@@ -342,7 +342,7 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-df4551b2e944c71b",
+    "canonicalDoctorId": "doctor-db0549bb7ac0a9da",
     "masterDeptRowId": "master-dept-0321-מרכז-רפואי-ברזילי-רדיולוגיה-דימות",
     "hospitalName": "מרכז רפואי ברזילי",
     "departmentName": "",

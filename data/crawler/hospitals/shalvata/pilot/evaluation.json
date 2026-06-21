@@ -1,0 +1,32 @@
+{
+  "hospitalSlug": "shalvata",
+  "hospitalName": "מרכז לבה\"נ שלוותה",
+  "generatedAt": "2026-06-21T11:24:05.948Z",
+  "urlsUsed": [
+    "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+    "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 1,
+  "pilotPagesSelected": 2,
+  "rawDoctorRecords": 3,
+  "profileUrlCoverage": 1,
+  "profileFetchSuccess": 3,
+  "reviewedRecords": 3,
+  "productionReadyCount": 3,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 3,
+    "partial": 0,
+    "listOnly": 0
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Pilot has useful records but insufficient production-ready coverage."
+}

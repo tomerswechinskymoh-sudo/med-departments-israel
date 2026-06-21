@@ -1,6 +1,6 @@
 # ביה"ח אי.מ.מ.ס הסקוטי crawler inspection
 
-- generatedAt: 2026-06-21T10:37:42.163Z
+- generatedAt: 2026-06-21T11:23:23.837Z
 - provider: unknown
 - doctorIndexExists: false
 - readiness: inspectNeeded

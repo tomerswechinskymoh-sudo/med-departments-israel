@@ -1,0 +1,85 @@
+{
+  "hospitalSlug": "shalvata",
+  "hospitalName": "מרכז לבה\"נ שלוותה",
+  "generatedAt": "2026-06-21T11:24:03.397Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+    "departmentsIndexUrlCandidates": [
+      "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+      "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+      "title": "צוות שלוותה\n | שלוותה",
+      "h1": [
+        "אודות"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "הצוות שלנו",
+        "צוות הנהלת בית החולים",
+        "הנהלות הצוותים המטפלים:"
+      ],
+      "htmlLength": 183655,
+      "visibleTextLength": 17322,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
+      "title": "הכשרה והתמחות בפסיכיאטריה\n | שלוותה",
+      "h1": [
+        "התמחות והכשרה"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "רפואה",
+        "מידע נוסף בנושא"
+      ],
+      "htmlLength": 183043,
+      "visibleTextLength": 17538,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+      "anchorText": "הצוות שלנו",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הצוות שלנו https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "classicDoctorCards"
+  ],
+  "recommendedPilotUrls": [
+    "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+    "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Few candidate pages; pilot can run but needs manual review."
+}

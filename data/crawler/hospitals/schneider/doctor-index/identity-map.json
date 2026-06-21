@@ -28,11 +28,11 @@
     "evidence": "המחלקה לרפואה דחופה בשניידר היא הגדולה בישראל לילדים וצומת ראשי במרכז הרפואי שלנו. הצוות הרפואי מטפל במגוון בעיות דחופות בילדים, אשר נזקקים לעזרה בשל מחלה או בעקבות חבלה. המחלקה פועלת ללא הפסקה - 24 שעות ביממה, שבעה ימים בשבוע ו־365 ימים בשנה - ומעניקה שירותים רפואיים לתינוקות, פעוטות ילדים ובני נוער עד גיל 18. צוות הרופאים והאחיות במחלקה התמחה ברפואת ילדים דחופה, קשוב תמיד לצורכיהם המיוחדים של הילדים והוריהם ושם לו למטרה להפחית למינימום את האשפוזים המיותרים.\nמיקום: קומה 2 טלפון בעמדת הקבלה: 03-"
   },
   {
-    "canonicalName": "פרופ' אשכנזי ועוסקת בחקר מחלות זיהומיות ובמחקר קליני. מחקר הוא אחד משלושת מרכיביה של הרפואה האיכו",
-    "normalizedName": "אשכנזי ועוסקת בחקר מחלות זיהומיות ובמחקר קליני מחקר הוא אחד משלושת מרכיביה של הרפואה האיכו",
+    "canonicalName": "ד\"ר איתי ברגר",
+    "normalizedName": "איתי ברגר",
     "profileUrl": null,
     "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
-    "evidence": "פרופ' אשכנזי ועוסקת בחקר מחלות זיהומיות ובמחקר קליני. מחקר הוא אחד משלושת מרכיביה של הרפואה האיכו"
+    "evidence": "ד\"ר איתי ברגר"
   },
   {
     "canonicalName": "פרופ' גילת לבני",
@@ -42,18 +42,46 @@
     "evidence": "פרופ' גילת לבני"
   },
   {
-    "canonicalName": "פרופ' גילת לבני רופאים בכירים\nד\"ר איתי ברגר ד\"ר לנה ציון ד\"ר שירי רובין ד\"ר יהונתן פסטרנק\nמנהלת ה",
-    "normalizedName": "גילת לבני רופאים בכירים דר איתי ברגר דר לנה ציון דר שירי רובין דר יהונתן פסטרנק מנהלת ה",
+    "canonicalName": "פרופ' גילת לבני רופאים בכירים",
+    "normalizedName": "גילת לבני רופאים בכירים",
     "profileUrl": null,
     "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
-    "evidence": "פרופ' גילת לבני רופאים בכירים\nד\"ר איתי ברגר ד\"ר לנה ציון ד\"ר שירי רובין ד\"ר יהונתן פסטרנק\nמנהלת ה"
+    "evidence": "פרופ' גילת לבני רופאים בכירים"
   },
   {
-    "canonicalName": "ד\"ר יואל לוינסקי ד''ר נופר מרכוס ד\"ר לוטם גולדברג\nמנהלת הסיעוד\nגלית אשר\nפסיכולוג\nדני לוטן\nעובדת",
-    "normalizedName": "יואל לוינסקי דר נופר מרכוס דר לוטם גולדברג מנהלת הסיעוד גלית אשר פסיכולוג דני לוטן עובדת",
+    "canonicalName": "ד\"ר יהונתן פסטרנק",
+    "normalizedName": "יהונתן פסטרנק",
+    "profileUrl": null,
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "evidence": "ד\"ר יהונתן פסטרנק"
+  },
+  {
+    "canonicalName": "ד\"ר לנה ציון",
+    "normalizedName": "לנה ציון",
+    "profileUrl": null,
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "evidence": "ד\"ר לנה ציון"
+  },
+  {
+    "canonicalName": "ד\"ר שירי רובין",
+    "normalizedName": "שירי רובין",
+    "profileUrl": null,
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "evidence": "ד\"ר שירי רובין"
+  },
+  {
+    "canonicalName": "ד\"ר יואל לוינסקי ד''ר נופר מרכוס",
+    "normalizedName": "יואל לוינסקי דר נופר מרכוס",
     "profileUrl": null,
     "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
-    "evidence": "ד\"ר יואל לוינסקי ד''ר נופר מרכוס ד\"ר לוטם גולדברג\nמנהלת הסיעוד\nגלית אשר\nפסיכולוג\nדני לוטן\nעובדת"
+    "evidence": "ד\"ר יואל לוינסקי ד''ר נופר מרכוס"
+  },
+  {
+    "canonicalName": "ד\"ר לוטם גולדברג",
+    "normalizedName": "לוטם גולדברג",
+    "profileUrl": null,
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
+    "evidence": "ד\"ר לוטם גולדברג"
   },
   {
     "canonicalName": "פרופ' עודד שוירמן",
@@ -63,18 +91,25 @@
     "evidence": "פרופ' עודד שוירמן"
   },
   {
-    "canonicalName": "פרופ' עודד שוירמן\nסגנית וממלאת מקום מנהל המחלקה\nד''ר ורד הופר",
-    "normalizedName": "עודד שוירמן סגנית וממלאת מקום מנהל המחלקה דר ורד הופר",
-    "profileUrl": null,
-    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
-    "evidence": "פרופ' עודד שוירמן\nסגנית וממלאת מקום מנהל המחלקה\nד''ר ורד הופר"
-  },
-  {
-    "canonicalName": "ד\"ר נמרוד זקס ד\"ר רחלי גביש\nמנהלת הסיעוד\nמאיה פרנקל תאומים\nפסיכולוגית\nמיכל לפיד\nעובדת סוציאלית",
-    "normalizedName": "נמרוד זקס דר רחלי גביש מנהלת הסיעוד מאיה פרנקל תאומים פסיכולוגית מיכל לפיד עובדת סוציאלית",
+    "canonicalName": "פרופ' אפרים בילבסקי",
+    "normalizedName": "אפרים בילבסקי",
     "profileUrl": null,
     "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
-    "evidence": "ד\"ר נמרוד זקס ד\"ר רחלי גביש\nמנהלת הסיעוד\nמאיה פרנקל תאומים\nפסיכולוגית\nמיכל לפיד\nעובדת סוציאלית\n"
+    "evidence": "פרופ' אפרים בילבסקי"
+  },
+  {
+    "canonicalName": "ד\"ר ליעד אבנרי",
+    "normalizedName": "ליעד אבנרי",
+    "profileUrl": null,
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "evidence": "ד\"ר ליעד אבנרי"
+  },
+  {
+    "canonicalName": "ד\"ר נמרוד זקס",
+    "normalizedName": "נמרוד זקס",
+    "profileUrl": null,
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "evidence": "ד\"ר נמרוד זקס"
   },
   {
     "canonicalName": "פרופ' עירית קראוזה",
@@ -84,11 +119,18 @@
     "evidence": "פרופ' עירית קראוזה"
   },
   {
-    "canonicalName": "פרופ' עירית קראוזה\nסגן מנהלת המחלקה ד\"ר ערן רום\nרופאים בכירים\nפרופ' אפרים בילבסקי ד\"ר ליעד אבנרי",
-    "normalizedName": "עירית קראוזה סגן מנהלת המחלקה דר ערן רום רופאים בכירים פרופ אפרים בילבסקי דר ליעד אבנרי",
+    "canonicalName": "ד\"ר ערן רום",
+    "normalizedName": "ערן רום",
     "profileUrl": null,
     "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
-    "evidence": "פרופ' עירית קראוזה\nסגן מנהלת המחלקה ד\"ר ערן רום\nרופאים בכירים\nפרופ' אפרים בילבסקי ד\"ר ליעד אבנרי "
+    "evidence": "ד\"ר ערן רום"
+  },
+  {
+    "canonicalName": "ד\"ר רחלי גביש",
+    "normalizedName": "רחלי גביש",
+    "profileUrl": null,
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "evidence": "ד\"ר רחלי גביש"
   },
   {
     "canonicalName": "פרופ' דריו פרייס",
@@ -96,12 +138,5 @@
     "profileUrl": null,
     "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
     "evidence": "פרופ' דריו פרייס"
-  },
-  {
-    "canonicalName": "פרופ' דריו פרייסרופאים בכיריםד\"ר מירי דותןפרופ' יואל לוינסקיד\"ר טארק זועבי מנהלת האחיותלירון בניו",
-    "normalizedName": "דריו פרייסרופאים בכיריםדר מירי דותןפרופ יואל לוינסקידר טארק זועבי מנהלת האחיותלירון בניו",
-    "profileUrl": null,
-    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
-    "evidence": "פרופ' דריו פרייסרופאים בכיריםד\"ר מירי דותןפרופ' יואל לוינסקיד\"ר טארק זועבי מנהלת האחיותלירון בניו"
   }
 ]

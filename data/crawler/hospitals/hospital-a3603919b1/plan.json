@@ -1,0 +1,61 @@
+{
+  "hospitalSlug": "hospital-a3603919b1",
+  "hospitalName": "אסיא ש.בריאות קהילתיים",
+  "generatedAt": "2026-06-21T11:24:22.056Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.assiamd.co.il/about/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.assiamd.co.il/about/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.assiamd.co.il/about/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.assiamd.co.il/about/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.assiamd.co.il/about/",
+      "title": "אודות - מרפאות אסיא",
+      "h1": [],
+      "h2": [
+        "אודות",
+        "חזון",
+        "הנהלה",
+        "ד\"ר מוריס ביטון MD",
+        "דירקטור ומרכז ההתמחותמדריך בכיר ברפואת המשפחה",
+        "ד\"ר אלי רימון MD",
+        "דירקטור ומנהל רפואי מדריך בכיר ברפואת המשפחה",
+        "יובל זיו MBA",
+        "מנכ\"ל",
+        "אסיא שירותי בריאות",
+        "מרפאות",
+        "מוקדים",
+        "אסתטיקה ואנטי אייג'ינג",
+        "זימון תורים און-ליין"
+      ],
+      "htmlLength": 97800,
+      "visibleTextLength": 16121,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.assiamd.co.il/about/"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

@@ -1,0 +1,32 @@
+{
+  "hospitalSlug": "hospital-fa8413a9cd",
+  "hospitalName": "מרכז לבה\"נ ירושלים (כפר שאול ואיתנים)",
+  "generatedAt": "2026-06-21T11:24:20.099Z",
+  "urlsUsed": [
+    "https://psjer.org.il/?CategoryID=254",
+    "http://www.psjer.org.il/?CategoryID=254"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 2,
+  "rawDoctorRecords": 2,
+  "profileUrlCoverage": 1,
+  "profileFetchSuccess": 2,
+  "reviewedRecords": 2,
+  "productionReadyCount": 2,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 2,
+    "listOnly": 0
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Pilot has useful records but insufficient production-ready coverage."
+}

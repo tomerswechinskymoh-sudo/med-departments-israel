@@ -1,0 +1,52 @@
+{
+  "hospitalSlug": "hospital-3a3abf9b65",
+  "hospitalName": "מרכז לבה\"נ אברבנאל",
+  "generatedAt": "2026-06-21T11:24:23.248Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
+    "departmentsIndexUrlCandidates": [
+      "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page"
+  ],
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Known URLs failed or returned no crawlable evidence."
+}

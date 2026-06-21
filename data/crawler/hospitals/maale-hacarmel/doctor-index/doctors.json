@@ -1,0 +1,22 @@
+[
+  {
+    "fullName": "ד\"ר איל פרוכטר",
+    "normalizedName": "איל פרוכטר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר איל פרוכטר",
+    "sourceUrl": "https://www.tiratcarmel-med.org.il/",
+    "hospitalSlug": "maale-hacarmel",
+    "hospital": "מרכז לבה\"נ מעלה הכרמל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר איל פרוכטר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  }
+]

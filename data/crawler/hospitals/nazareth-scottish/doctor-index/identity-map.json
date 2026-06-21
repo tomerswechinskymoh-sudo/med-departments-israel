@@ -1,100 +1,142 @@
 [
   {
-    "canonicalName": "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
-    "normalizedName": "גליל חילו דר יעקוב זכריאן מומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "canonicalName": "ד\"ר אורלי ברנדס- קליין",
+    "normalizedName": "אורלי ברנדס קליין",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "evidence": "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה"
+    "evidence": "ד\"ר אורלי ברנדס- קליין"
   },
   {
-    "canonicalName": "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה",
-    "normalizedName": "מונא אגבאריה מומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי דר פאדל אבו סביה",
+    "canonicalName": "ד\"ר גליל חילו",
+    "normalizedName": "גליל חילו",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "evidence": "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה"
+    "evidence": "ד\"ר גליל חילו"
   },
   {
-    "canonicalName": "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי",
-    "normalizedName": "נורא חיסן מומחית במיילדות וגניקולוגיה והריון בסיכון גבוה דר סוזן מיכאיל מוסטפא מומחית במיי",
+    "canonicalName": "ד\"ר יעקוב זכריאן",
+    "normalizedName": "יעקוב זכריאן",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "evidence": "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי"
+    "evidence": "ד\"ר יעקוב זכריאן"
+  },
+  {
+    "canonicalName": "ד\"ר מונא אגבאריה",
+    "normalizedName": "מונא אגבאריה",
+    "profileUrl": null,
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "evidence": "ד\"ר מונא אגבאריה"
+  },
+  {
+    "canonicalName": "ד\"ר נורא חיסן",
+    "normalizedName": "נורא חיסן",
+    "profileUrl": null,
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "evidence": "ד\"ר נורא חיסן"
   },
   {
     "canonicalName": "ד\"ר ניבאל ח'מאיסי",
     "normalizedName": "ניבאל חמאיסי",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "evidence": "ד\"ר ניבאל ח'מאיסי\n"
+    "evidence": "ד\"ר ניבאל ח'מאיסי"
   },
   {
-    "canonicalName": "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא",
-    "normalizedName": "ניבאל עואד חמאיסי דר אורלי ברנדס קליין רופאה מומחית במיילדות וגניקולוגיה מנהלת היחידה לא",
+    "canonicalName": "ד\"ר ניבאל עואד חמאיסי",
+    "normalizedName": "ניבאל עואד חמאיסי",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "evidence": "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא"
+    "evidence": "ד\"ר ניבאל עואד חמאיסי"
   },
   {
-    "canonicalName": "ד\"ר עלי מפרע\nמומחה ברפואת נשים",
-    "normalizedName": "עלי מפרע מומחה ברפואת נשים",
+    "canonicalName": "ד\"ר סוזן מיכאיל מוסטפא",
+    "normalizedName": "סוזן מיכאיל מוסטפא",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
-    "evidence": "ד\"ר עלי מפרע\nמומחה ברפואת נשים"
+    "evidence": "ד\"ר סוזן מיכאיל מוסטפא"
   },
   {
-    "canonicalName": "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד",
-    "normalizedName": "גמאל עונאללה מומחה מפרקים דר פארס אל קיש מומחה בפגיעות ספורט דר אדוארד חליף מומחה כף יד",
+    "canonicalName": "ד\"ר עלי מפרע",
+    "normalizedName": "עלי מפרע",
+    "profileUrl": null,
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "evidence": "ד\"ר עלי מפרע"
+  },
+  {
+    "canonicalName": "ד\"ר פאדל אבו סביה",
+    "normalizedName": "פאדל אבו סביה",
+    "profileUrl": null,
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "evidence": "ד\"ר פאדל אבו סביה"
+  },
+  {
+    "canonicalName": "ד\"ר גמאל עונאללה",
+    "normalizedName": "גמאל עונאללה",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
-    "evidence": "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד\n"
+    "evidence": "ד\"ר גמאל עונאללה"
   },
   {
-    "canonicalName": "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית",
-    "normalizedName": "מוקבל שלח מומחה באורתופדיה כללית",
+    "canonicalName": "ד\"ר מוקבל שלח",
+    "normalizedName": "מוקבל שלח",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
-    "evidence": "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית"
+    "evidence": "ד\"ר מוקבל שלח"
   },
   {
-    "canonicalName": "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת",
-    "normalizedName": "שאדי בדעאן כירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת",
+    "canonicalName": "ד\"ר פארס אל קיש",
+    "normalizedName": "פארס אל קיש",
+    "profileUrl": null,
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+    "evidence": "ד\"ר פארס אל קיש"
+  },
+  {
+    "canonicalName": "ד\"ר פאדי זועבי",
+    "normalizedName": "פאדי זועבי",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
-    "evidence": "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת "
+    "evidence": "ד\"ר פאדי זועבי"
   },
   {
-    "canonicalName": "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל",
-    "normalizedName": "שמעון מרטיק כירורגיה אורולוגית דר פאדי זועבי אורולוג ילדים שירותים מוצעים מרפאה לקבלת קהל",
+    "canonicalName": "ד\"ר שאדי בדעאן",
+    "normalizedName": "שאדי בדעאן",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
-    "evidence": "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל\n"
+    "evidence": "ד\"ר שאדי בדעאן"
   },
   {
-    "canonicalName": "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך",
-    "normalizedName": "עאמר ספורי מומחה ברפואה פנימית ורמטולוגיה אח אחראי שאדי אסטפאן אח מוסמך",
+    "canonicalName": "פרופ' שמעון מרטיק",
+    "normalizedName": "שמעון מרטיק",
+    "profileUrl": null,
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "evidence": "פרופ' שמעון מרטיק"
+  },
+  {
+    "canonicalName": "ד\"ר עאמר ספורי",
+    "normalizedName": "עאמר ספורי",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
-    "evidence": "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך"
+    "evidence": "ד\"ר עאמר ספורי"
   },
   {
-    "canonicalName": "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות",
-    "normalizedName": "זאהי יוסף רפואה דחופה שירותים מוצעים טיפול נמרץ למחלות פנימיות טיפול נמרץ למחלות כירורגיות",
+    "canonicalName": "ד\"ר זאהי יוסף",
+    "normalizedName": "זאהי יוסף",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
-    "evidence": "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות "
+    "evidence": "ד\"ר זאהי יוסף"
   },
   {
-    "canonicalName": "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת",
-    "normalizedName": "נגיב נסראללה רופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת",
+    "canonicalName": "ד\"ר נג'יב נסראללה",
+    "normalizedName": "נגיב נסראללה",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
-    "evidence": "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת "
+    "evidence": "ד\"ר נג'יב נסראללה"
   },
   {
-    "canonicalName": "ד\"ר סוהאד מחאמיד\nרופא ילדים",
-    "normalizedName": "סוהאד מחאמיד רופא ילדים",
+    "canonicalName": "ד\"ר סוהאד מחאמיד",
+    "normalizedName": "סוהאד מחאמיד",
     "profileUrl": null,
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
-    "evidence": "ד\"ר סוהאד מחאמיד\nרופא ילדים"
+    "evidence": "ד\"ר סוהאד מחאמיד"
   }
 ]

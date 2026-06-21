@@ -1,0 +1,389 @@
+{
+  "hospitalSlug": "clalit-community",
+  "hospitalName": "שירותי בריאות כללית",
+  "generatedAt": "2026-06-21T11:24:09.448Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+    "departmentsIndexUrlCandidates": [
+      "https://www.clalit.co.il/he/info/career/Pages/family_docs.aspx"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "https://www.clalit.co.il/he/myrights/medical-tests/Pages/medical-specialist.aspx",
+      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/default.aspx",
+      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/dermatologist-online.aspx",
+      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/kids-online.aspx",
+      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/online-o18.aspx",
+      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/Ophthalmologist-online.aspx",
+      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/tyto.aspx"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "title": "אגרת ביקור אצל רופאים מומחים, דיאטנים ופודיאטרים - הזכויות שלך\n | שירותי בריאות כללית",
+      "h1": [
+        "אגרת ביקור אצל רופאים מומחים, דיאטנים ופודיאטרים"
+      ],
+      "h2": [
+        "למי מגיע?",
+        "מה מגיע לי?",
+        "כמה זה עולה לי?",
+        "איך מקבלים את השירות?"
+      ],
+      "htmlLength": 162906,
+      "visibleTextLength": 31396,
+      "error": null
+    },
+    {
+      "url": "https://www.clalit.co.il/he/info/career/Pages/family_docs.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.clalit.co.il/he/info/career/Pages/family_docs.aspx",
+      "title": "להתמחות ברפואת משפחה בכללית\n | שירותי בריאות כללית",
+      "h1": [
+        "התמחות ברפואת המשפחה בכללית"
+      ],
+      "h2": [],
+      "htmlLength": 171980,
+      "visibleTextLength": 33803,
+      "error": null
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/medical-tests/Pages/medical-specialist.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.clalit.co.il/he/myrights/medical-tests/Pages/medical-specialist.aspx",
+      "title": "חוות דעת שנייה: התייעצות עם רופא מומחה במושלם - הזכויות שלך\n | שירותי בריאות כללית",
+      "h1": [
+        "התייעצות עם רופאים מומחים בארץ לחוות דעת שנייה"
+      ],
+      "h2": [
+        "למי מגיע?",
+        "האם צריך תקופת אכשרה?",
+        "מה מגיע לי?",
+        "כמה זה עולה לי?",
+        "איך מקבלים את השירות?",
+        "מה עוד חשוב לדעת?"
+      ],
+      "htmlLength": 171611,
+      "visibleTextLength": 32664,
+      "error": null
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/default.aspx",
+      "title": "רפואת און ליין\n | שירותי בריאות כללית",
+      "h1": [
+        "רפואת און־ליין"
+      ],
+      "h2": [
+        "במה נתמקד?"
+      ],
+      "htmlLength": 162527,
+      "visibleTextLength": 37528,
+      "error": null
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/dermatologist-online.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/dermatologist-online.aspx",
+      "title": "כללית NEXT: רופאי עור און־ליין - עכשיו כבר משעות הבוקר\n | שירותי בריאות כללית",
+      "h1": [
+        "רופא עור און־ליין"
+      ],
+      "h2": [
+        "למי מגיע?",
+        "מה מגיע לי?",
+        "כמה זה עולה לי?",
+        "מהן שעות הפעילות?",
+        "איך נרשמים לייעוץ?",
+        "מה עוד חשוב לדעת?",
+        "תשובות לשאלות נפוצות"
+      ],
+      "htmlLength": 171511,
+      "visibleTextLength": 33228,
+      "error": null
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/kids-online.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/kids-online.aspx",
+      "title": "כללית NEXT: רופא ילדים און־ליין, 24 שעות ביממה\n | שירותי בריאות כללית",
+      "h1": [
+        "רופא ילדים און־ליין"
+      ],
+      "h2": [
+        "למי מגיע?",
+        "מה מגיע לי?",
+        "כמה זה עולה לי?",
+        "מהן שעות הפעילות?",
+        "איך נרשמים לייעוץ?",
+        "מה עוד חשוב לדעת?",
+        "תשובות לשאלות נפוצות"
+      ],
+      "htmlLength": 170454,
+      "visibleTextLength": 32842,
+      "error": null
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/online-o18.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/online-o18.aspx",
+      "title": "כללית NEXT: רופא משפחה און־ליין\n | שירותי בריאות כללית",
+      "h1": [
+        "רופא משפחה און־ליין"
+      ],
+      "h2": [
+        "למי מגיע ואיך קובעים תור?",
+        "מה מגיע לי?",
+        "כמה זה עולה לי?",
+        "מהן שעות הפעילות?",
+        "איך נרשמים לייעוץ?",
+        "מה עוד חשוב לדעת?",
+        "תשובות לשאלות נפוצות"
+      ],
+      "htmlLength": 171736,
+      "visibleTextLength": 32556,
+      "error": null
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/Ophthalmologist-online.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/Ophthalmologist-online.aspx",
+      "title": "כללית NEXT: רופא עיניים און־ליין - הזכויות שלך\n | שירותי בריאות כללית",
+      "h1": [
+        "רופא עיניים און־ליין"
+      ],
+      "h2": [
+        "למי מגיע?",
+        "מה מגיע לי?",
+        "כמה זה עולה לי?",
+        "מהן שעות הפעילות של השירות?",
+        "איך נרשמים לייעוץ?",
+        "מה עוד חשוב לדעת?"
+      ],
+      "htmlLength": 169975,
+      "visibleTextLength": 32127,
+      "error": null
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/tyto.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/tyto.aspx",
+      "title": "מכשיר Tyto (טייטו) לבדיקות מרחוק - הזכויות שלך\n | שירותי בריאות כללית",
+      "h1": [
+        "מכשיר Tyto (טייטו) לבדיקות מרחוק"
+      ],
+      "h2": [
+        "למי מגיע?",
+        "מה מגיע לי?",
+        "כמה זה עולה לי?",
+        "איך מקבלים את השירות?",
+        "מהן שעות הפעילות?",
+        "מה עוד חשוב לדעת?"
+      ],
+      "htmlLength": 165019,
+      "visibleTextLength": 31408,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "אגרת ביקור אצל רופאים מומחים, דיאטנים ופודיאטרים",
+      "patternType": "doctorIndex",
+      "parserFamily": "searchDriven",
+      "confidence": 0.9,
+      "evidence": "אגרת ביקור אצל רופאים מומחים, דיאטנים ופודיאטרים https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/medical-tests/Pages/medical-specialist.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "התייעצות עם רופאים מומחים בארץ לחוות דעת שנייה",
+      "patternType": "doctorIndex",
+      "parserFamily": "searchDriven",
+      "confidence": 0.9,
+      "evidence": "התייעצות עם רופאים מומחים בארץ לחוות דעת שנייה https://www.clalit.co.il/he/myrights/medical-tests/Pages/medical-specialist.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/default.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "רפואת און־ליין",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רפואת און־ליין https://www.clalit.co.il/he/myrights/online-doctors/Pages/default.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/dermatologist-online.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "רופא עור און־ליין",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רופא עור און־ליין https://www.clalit.co.il/he/myrights/online-doctors/Pages/dermatologist-online.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/kids-online.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "רופא ילדים און־ליין",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רופא ילדים און־ליין https://www.clalit.co.il/he/myrights/online-doctors/Pages/kids-online.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/online-o18.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "רופא משפחה און־ליין",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רופא משפחה און־ליין https://www.clalit.co.il/he/myrights/online-doctors/Pages/online-o18.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/Ophthalmologist-online.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "רופא עיניים און־ליין",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רופא עיניים און־ליין https://www.clalit.co.il/he/myrights/online-doctors/Pages/Ophthalmologist-online.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/tyto.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "מכשיר Tyto (טייטו) לבדיקות מרחוק",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "מכשיר Tyto (טייטו) לבדיקות מרחוק https://www.clalit.co.il/he/myrights/online-doctors/Pages/tyto.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/october23war/Pages/doctors.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "צריכים רופא/ה?",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "צריכים רופא/ה? https://www.clalit.co.il/he/october23war/Pages/doctors.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/online_doctors/Pages/abroad.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/online-doctors/Pages/dermatologist-online.aspx",
+      "anchorText": "כל הפרטים על קבלת ייעוץ מחו\"ל.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "כל הפרטים על קבלת ייעוץ מחו\"ל. https://www.clalit.co.il/he/online_doctors/Pages/abroad.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/online_doctors/Pages/default.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "רפואת און־ליין",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רפואת און־ליין https://www.clalit.co.il/he/online_doctors/Pages/default.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/online_doctors/Pages/mashlima_on_line.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "רפואה משלימה און־ליין",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רפואה משלימה און־ליין https://www.clalit.co.il/he/online_doctors/Pages/mashlima_on_line.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/sefersherut/pages/services_guide.aspx?service=doctors",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "רופאים/ת ומטפלים/ת",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רופאים/ת ומטפלים/ת https://www.clalit.co.il/he/sefersherut/pages/services_guide.aspx?service=doctors"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/sefersherut/Pages/services_guide.aspx?service=doctors",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "רופאים ומטפלים",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רופאים ומטפלים https://www.clalit.co.il/he/sefersherut/Pages/services_guide.aspx?service=doctors"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/info/career/Pages/specialists.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/info/career/Pages/family_docs.aspx",
+      "anchorText": "רפואה יועצת בקהילה: כללית זה המקום בשבילך",
+      "patternType": "unknown",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "רפואה יועצת בקהילה: כללית זה המקום בשבילך https://www.clalit.co.il/he/info/career/Pages/specialists.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/info/services/Pages/write_the_doctor.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "פנייה לרופא/ת עור",
+      "patternType": "unknown",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "פנייה לרופא/ת עור https://www.clalit.co.il/he/info/services/Pages/write_the_doctor.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/home-care/Pages/doctor-visit.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "ביקור רופא בבית",
+      "patternType": "unknown",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "ביקור רופא בבית https://www.clalit.co.il/he/myrights/home-care/Pages/doctor-visit.aspx"
+    },
+    {
+      "url": "https://www.clalit.co.il/he/myrights/medical-tests/Pages/medical-specialist-abroad.aspx",
+      "sourceUrl": "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+      "anchorText": "חוות דעת שנייה מרופאה או רופא מומחים בחו\"ל (מדינות חוץ)",
+      "patternType": "unknown",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "חוות דעת שנייה מרופאה או רופא מומחים בחו\"ל (מדינות חוץ) https://www.clalit.co.il/he/myrights/medical-tests/Pages/medical-specialist-abroad.aspx"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "classicDoctorCards"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
+    "https://www.clalit.co.il/he/myrights/medical-tests/Pages/medical-specialist.aspx",
+    "https://www.clalit.co.il/he/myrights/online-doctors/Pages/default.aspx",
+    "https://www.clalit.co.il/he/myrights/online-doctors/Pages/dermatologist-online.aspx",
+    "https://www.clalit.co.il/he/myrights/online-doctors/Pages/kids-online.aspx",
+    "https://www.clalit.co.il/he/myrights/online-doctors/Pages/online-o18.aspx",
+    "https://www.clalit.co.il/he/myrights/online-doctors/Pages/Ophthalmologist-online.aspx",
+    "https://www.clalit.co.il/he/myrights/online-doctors/Pages/tyto.aspx"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

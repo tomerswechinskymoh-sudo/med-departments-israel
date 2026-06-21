@@ -1,21 +1,5 @@
 [
   {
-    "hospitalSlug": "hillel-yaffe",
-    "hospitalNames": [
-      "מרכז רפואי הלל יפה"
-    ],
-    "providerGuess": "government",
-    "masterDeptRows": 19,
-    "rowsWithUrls": 9,
-    "liveUrlRows": 9,
-    "nearbyDoctorOrTeamUrlRows": 9,
-    "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline hillel-yaffe; 9 Master_Dept URLs; 9 live inspected URLs; 9 nearby doctor/team URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "partiallyMapped",
-    "plannedMode": "pilot only"
-  },
-  {
     "hospitalSlug": "barzilai",
     "hospitalNames": [
       "מרכז רפואי ברזילי"
@@ -64,17 +48,33 @@
     "plannedMode": "pilot only"
   },
   {
-    "hospitalSlug": "poria",
+    "hospitalSlug": "hospital-08078cfe7d",
     "hospitalNames": [
-      "מרכז רפואי ברוך פדה פוריה"
+      "מכבי שירותי בריאות"
     ],
-    "providerGuess": "government",
-    "masterDeptRows": 16,
-    "rowsWithUrls": 13,
-    "liveUrlRows": 13,
+    "providerGuess": "private",
+    "masterDeptRows": 1,
+    "rowsWithUrls": 1,
+    "liveUrlRows": 1,
+    "nearbyDoctorOrTeamUrlRows": 1,
+    "adapterParserFamily": "inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline hospital-08078cfe7d; 1 Master_Dept URLs; 1 live inspected URLs; 1 nearby doctor/team URLs",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "partiallyMapped",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "nazareth-scottish",
+    "hospitalNames": [
+      "ביה\"ח אי.מ.מ.ס הסקוטי"
+    ],
+    "providerGuess": "unknown",
+    "masterDeptRows": 10,
+    "rowsWithUrls": 8,
+    "liveUrlRows": 8,
     "nearbyDoctorOrTeamUrlRows": 0,
     "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline poria; 13 Master_Dept URLs; 13 live inspected URLs",
+    "whySelected": "Wave3 baseline nazareth-scottish; 8 Master_Dept URLs; 8 live inspected URLs",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "reviewNeeded",
     "plannedMode": "pilot only"

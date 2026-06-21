@@ -1,0 +1,46 @@
+[
+  {
+    "fullName": "ד\"ר איל פרוכטר",
+    "normalizedName": "איל פרוכטר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר איל פרוכטר",
+    "sourceUrl": "https://www.tiratcarmel-med.org.il/",
+    "hospitalSlug": "maale-hacarmel",
+    "hospital": "מרכז לבה\"נ מעלה הכרמל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר איל פרוכטר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז לבה\"נ מעלה הכרמל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0012-מרכז-לבהנ-מעלה-הכרמל-פסיכיאטריה",
+      "master-dept-0022-מרכז-לבהנ-מעלה-הכרמל-פסיכיאטריה-של-הילד-והמתבגר"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "פסיכיאטריה",
+      "פסיכיאטריה של הילד והמתבגר"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.tiratcarmel-med.org.il/"
+      ],
+      "extractedFromUrl": "https://www.tiratcarmel-med.org.il/",
+      "relationship": "exactSourceUrl",
+      "reason": "exact source URL matches multiple Master_Dept rows"
+    },
+    "ambiguityReason": "multipleMasterDeptSourceRows"
+  }
+]

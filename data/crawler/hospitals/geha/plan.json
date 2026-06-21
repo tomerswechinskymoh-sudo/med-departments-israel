@@ -1,0 +1,248 @@
+{
+  "hospitalSlug": "geha",
+  "hospitalName": "מרכז לבה\"נ גהה",
+  "generatedAt": "2026-06-21T11:23:58.057Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+    "departmentsIndexUrlCandidates": [
+      "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+      "https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx",
+      "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "title": "רשימת המומחים שלנו\n | מרכז לבריאות הנפש גהה",
+      "h1": [
+        "המומחים שלנו"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "רשימת המומחים שלנו"
+      ],
+      "htmlLength": 226931,
+      "visibleTextLength": 15111,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx",
+      "title": "התמחות בפסיכיאטריה\n | מרכז לבריאות הנפש גהה",
+      "h1": [
+        "התמחויות והוראה"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "התמחות בפסיכיאטריה"
+      ],
+      "htmlLength": 209998,
+      "visibleTextLength": 15172,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+      "title": "מפגשי צוות (Staff Meetings)\n | מרכז לבריאות הנפש גהה",
+      "h1": [
+        "חדשות ואירועים"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "מפגשי צוות (Staff Meetings)"
+      ],
+      "htmlLength": 211351,
+      "visibleTextLength": 14531,
+      "error": null
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx",
+      "title": "מידע מקצועי לרופאים ראשוניים\n | מרכז לבריאות הנפש גהה",
+      "h1": [
+        "התמחויות והוראה"
+      ],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע מקצועי לרופאים ראשוניים",
+        "עלון מידע בנושא אובדנות"
+      ],
+      "htmlLength": 218114,
+      "visibleTextLength": 20473,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "מנור-אברבנאל איריס",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "מנור-אברבנאל איריס https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/nkatz.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "כץ אבי נחום",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "כץ אבי נחום https://hospitals.clalit.co.il/geha/he/about/Pages/Team/nkatz.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/sgur.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "גור שי יהושע",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "גור שי יהושע https://hospitals.clalit.co.il/geha/he/about/Pages/Team/sgur.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/zalsman.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "גיל זלצמן",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "גיל זלצמן https://hospitals.clalit.co.il/geha/he/about/Pages/Team/zalsman.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/zfishel.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "פישל צבי חיים",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "פישל צבי חיים https://hospitals.clalit.co.il/geha/he/about/Pages/Team/zfishel.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/med/mature/Pages/Team/acriboy.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "אמיר קריבוי",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "אמיר קריבוי https://hospitals.clalit.co.il/geha/he/med/mature/Pages/Team/acriboy.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/med/mature/Pages/Team/eberger.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "ברגר אהוד",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ברגר אהוד https://hospitals.clalit.co.il/geha/he/med/mature/Pages/Team/eberger.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/med/mature/Pages/Team/shayk.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "קונס שי",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "קונס שי https://hospitals.clalit.co.il/geha/he/med/mature/Pages/Team/shayk.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/med/teens/Pages/team/mpaskin.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "פסקין מרים",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "פסקין מרים https://hospitals.clalit.co.il/geha/he/med/teens/Pages/team/mpaskin.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/Pages/searchresult.aspx#k=%d7%9e%d7%99%d7%93%d7%a2%20%d7%9e%d7%a7%d7%a6%d7%95%d7%a2%d7%99%20%d7%9c%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx",
+      "anchorText": "מידע מקצועי לרופאים",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "מידע מקצועי לרופאים https://hospitals.clalit.co.il/geha/he/Pages/searchresult.aspx#k=%d7%9e%d7%99%d7%93%d7%a2%20%d7%9e%d7%a7%d7%a6%d7%95%d7%a2%d7%99%20%d7%9c%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "רשימת המומחים שלנו",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רשימת המומחים שלנו https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "מפגשי צוות (Staff Meetings)",
+      "patternType": "teamPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "מפגשי צוות (Staff Meetings) https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "מידע מקצועי לרופאים ראשוניים",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "מידע מקצועי לרופאים ראשוניים https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/geha/he/pro/Pages/default.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+      "anchorText": "המומחים שלנו",
+      "patternType": "unknown",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "המומחים שלנו https://hospitals.clalit.co.il/geha/he/pro/Pages/default.aspx"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "classicDoctorCards"
+  ],
+  "recommendedPilotUrls": [
+    "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+    "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx",
+    "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+    "https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx",
+    "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx",
+    "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/nkatz.aspx",
+    "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/sgur.aspx",
+    "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/zalsman.aspx",
+    "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/zfishel.aspx",
+    "https://hospitals.clalit.co.il/geha/he/med/mature/Pages/Team/acriboy.aspx",
+    "https://hospitals.clalit.co.il/geha/he/med/mature/Pages/Team/eberger.aspx",
+    "https://hospitals.clalit.co.il/geha/he/med/mature/Pages/Team/shayk.aspx"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

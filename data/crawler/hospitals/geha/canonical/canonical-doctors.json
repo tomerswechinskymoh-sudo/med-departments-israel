@@ -1,0 +1,78 @@
+[
+  {
+    "canonicalDoctorId": "doctor-5e7f78499ff8b08d",
+    "fullName": "אשפוז אנשים הסובלים מהפרעת אישיות גבולית -",
+    "normalizedName": "אשפוז אנשים הסובלים מהפרעת אישיות גבולית",
+    "profileUrl": "https://hospitals.clalit.co.il/geha/he/pub/Documents/%D7%90%D7%A9%D7%A4%D7%95%D7%96%20%D7%90%D7%A0%D7%A9%D7%99%D7%9D%20%D7%94%D7%A1%D7%95%D7%91%D7%9C%D7%99%D7%9D%20%D7%9E%D7%94%D7%A4%D7%A8%D7%A2%D7%AA%20%D7%90%D7%99%D7%A9%D7%99%D7%95%D7%AA%20%D7%92%D7%91%D7%95%D7%9C%D7%99%D7%AA%20-%20%D7%A4%D7%A8%D7%95%D7%A4%27%20%D7%92%D7%99%D7%9C%20%D7%96%D7%9C%D7%A6%D7%9E%D7%9F.pdf",
+    "hospitalName": "מרכז לבה\"נ גהה",
+    "provider": "clalit",
+    "titlePrefix": null,
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+      "https://hospitals.clalit.co.il/geha/he/pub/Documents/%D7%90%D7%A9%D7%A4%D7%95%D7%96%20%D7%90%D7%A0%D7%A9%D7%99%D7%9D%20%D7%94%D7%A1%D7%95%D7%91%D7%9C%D7%99%D7%9D%20%D7%9E%D7%94%D7%A4%D7%A8%D7%A2%D7%AA%20%D7%90%D7%99%D7%A9%D7%99%D7%95%D7%AA%20%D7%92%D7%91%D7%95%D7%9C%D7%99%D7%AA%20-%20%D7%A4%D7%A8%D7%95%D7%A4%27%20%D7%92%D7%99%D7%9C%20%D7%96%D7%9C%D7%A6%D7%9E%D7%9F.pdf"
+    ],
+    "evidence": [
+      "הרצאות נבחרות במגוון נושאים שעל סדר היום.המפגשים מתקיימים מדי שנה אקדמית (בין החודשים אוקטובר- יוני) על בסיס שבועי בנוכחות כלל סגל בית החולים. הקליקו לצפייה:פרופ' גיל זלצמן - \"פסיכיאטריה על רגל אחת\" (22.6.2017)פרופ' אבי ויצמן - \"שינויים קוגניטיביים המלווים דיכאון\" (9.2.2017)ד\"ר שמואל הס - \"גמילה מעישון בקרב מטופלי בריאות הנפש\" (10.11.2016) מצגות נבחרות:אשפוז אנשים הסובלים מהפרעת אישיות גבולית - פרופ' גיל זלצמן.pdfהפרעת אישיות גבולית - פרופ' גל שובל.pdfטיפול דיאלקטי התנהגותי - דר רוית מרום טל.pdf"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-5e060afe4407562c",
+    "fullName": "גהה על הבר -",
+    "normalizedName": "גהה על הבר",
+    "profileUrl": "https://hospitals.clalit.co.il/geha/he/pub/Pages/2542017.aspx",
+    "hospitalName": "מרכז לבה\"נ גהה",
+    "provider": "clalit",
+    "titlePrefix": null,
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx",
+      "https://hospitals.clalit.co.il/geha/he/pub/Pages/2542017.aspx"
+    ],
+    "evidence": [
+      "גהה על הבר - פרופ' גל שובל: קיצור תולדות הסמים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-8fc24c36df71b394",
+    "fullName": "הפרעת אישיות גבולית -",
+    "normalizedName": "הפרעת אישיות גבולית",
+    "profileUrl": "https://hospitals.clalit.co.il/geha/he/pub/Documents/%D7%94%D7%A4%D7%A8%D7%A2%D7%AA%20%D7%90%D7%99%D7%A9%D7%99%D7%95%D7%AA%20%D7%92%D7%91%D7%95%D7%9C%D7%99%D7%AA%20-%20%D7%A4%D7%A8%D7%95%D7%A4%27%20%D7%92%D7%9C%20%D7%A9%D7%95%D7%91%D7%9C.pdf",
+    "hospitalName": "מרכז לבה\"נ גהה",
+    "provider": "clalit",
+    "titlePrefix": null,
+    "role": null,
+    "profileCompleteness": "partial",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+      "https://hospitals.clalit.co.il/geha/he/pub/Documents/%D7%94%D7%A4%D7%A8%D7%A2%D7%AA%20%D7%90%D7%99%D7%A9%D7%99%D7%95%D7%AA%20%D7%92%D7%91%D7%95%D7%9C%D7%99%D7%AA%20-%20%D7%A4%D7%A8%D7%95%D7%A4%27%20%D7%92%D7%9C%20%D7%A9%D7%95%D7%91%D7%9C.pdf"
+    ],
+    "evidence": [
+      "הרצאות נבחרות במגוון נושאים שעל סדר היום.המפגשים מתקיימים מדי שנה אקדמית (בין החודשים אוקטובר- יוני) על בסיס שבועי בנוכחות כלל סגל בית החולים. הקליקו לצפייה:פרופ' גיל זלצמן - \"פסיכיאטריה על רגל אחת\" (22.6.2017)פרופ' אבי ויצמן - \"שינויים קוגניטיביים המלווים דיכאון\" (9.2.2017)ד\"ר שמואל הס - \"גמילה מעישון בקרב מטופלי בריאות הנפש\" (10.11.2016) מצגות נבחרות:אשפוז אנשים הסובלים מהפרעת אישיות גבולית - פרופ' גיל זלצמן.pdfהפרעת אישיות גבולית - פרופ' גל שובל.pdfטיפול דיאלקטי התנהגותי - דר רוית מרום טל.pdf"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2428a04c0dc446a9",
+    "fullName": "פרופ' זלצמן פודקאסט גלצ",
+    "normalizedName": "זלצמן פודקאסט גלצ",
+    "profileUrl": "https://hospitals.clalit.co.il/geha/he/pub/Pages/podcast-glz-zaltsmzn-03072021.aspx",
+    "hospitalName": "מרכז לבה\"נ גהה",
+    "provider": "clalit",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "profileCompleteness": "full",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx",
+      "https://hospitals.clalit.co.il/geha/he/pub/Pages/podcast-glz-zaltsmzn-03072021.aspx"
+    ],
+    "evidence": [
+      "רוית הכט ופרופ' זלצמן פודקאסט גלצ"
+    ]
+  }
+]

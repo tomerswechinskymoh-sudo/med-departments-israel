@@ -1,5 +1,24 @@
 [
   {
+    "canonicalDoctorId": "doctor-0177edb38b425ef3",
+    "masterDeptRowId": "master-dept-0061-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-א",
+    "hospitalName": "מרכז שניידר לילדים",
+    "departmentName": "בית חולים- מחלקה א",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+      ],
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
     "canonicalDoctorId": "doctor-095f9d0348a9941a",
     "masterDeptRowId": "master-dept-0060-מרכז-שניידר-לילדים-רפואה-דחופה",
     "hospitalName": "מרכז שניידר לילדים",
@@ -38,19 +57,38 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-1dede58bc947d1ac",
-    "masterDeptRowId": "master-dept-0061-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-א",
+    "canonicalDoctorId": "doctor-1aabcba5f808b7f3",
+    "masterDeptRowId": "master-dept-0062-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ב",
     "hospitalName": "מרכז שניידר לילדים",
-    "departmentName": "בית חולים- מחלקה א",
+    "departmentName": "בית חולים-מחלקה ב",
     "specialty": "רפואת ילדים",
-    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
-    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424"
       ],
-      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-20254b8ff77ec29c",
+    "masterDeptRowId": "master-dept-0063-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ג",
+    "hospitalName": "מרכז שניידר לילדים",
+    "departmentName": "בית חולים-מחלקה ג",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
+      ],
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -76,45 +114,7 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-4a0e5c169f25f3c7",
-    "masterDeptRowId": "master-dept-0064-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ד",
-    "hospitalName": "מרכז שניידר לילדים",
-    "departmentName": "בית חולים-מחלקה ד",
-    "specialty": "רפואת ילדים",
-    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
-    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken="
-      ],
-      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-5f42da71cc8e9a18",
-    "masterDeptRowId": "master-dept-0062-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ב",
-    "hospitalName": "מרכז שניידר לילדים",
-    "departmentName": "בית חולים-מחלקה ב",
-    "specialty": "רפואת ילדים",
-    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
-    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424"
-      ],
-      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2424",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-6456803a9234a437",
+    "canonicalDoctorId": "doctor-2d1124b1c6193832",
     "masterDeptRowId": "master-dept-0063-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ג",
     "hospitalName": "מרכז שניידר לילדים",
     "departmentName": "בית חולים-מחלקה ג",
@@ -127,6 +127,82 @@
         "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
       ],
       "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-36097a87e98b582f",
+    "masterDeptRowId": "master-dept-0061-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-א",
+    "hospitalName": "מרכז שניידר לילדים",
+    "departmentName": "בית חולים- מחלקה א",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+      ],
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-72eec2c355585c52",
+    "masterDeptRowId": "master-dept-0063-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ג",
+    "hospitalName": "מרכז שניידר לילדים",
+    "departmentName": "בית חולים-מחלקה ג",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
+      ],
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-81a96e83f479d228",
+    "masterDeptRowId": "master-dept-0061-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-א",
+    "hospitalName": "מרכז שניידר לילדים",
+    "departmentName": "בית חולים- מחלקה א",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+      ],
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-85c97fa54076e095",
+    "masterDeptRowId": "master-dept-0061-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-א",
+    "hospitalName": "מרכז שניידר לילדים",
+    "departmentName": "בית חולים- מחלקה א",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+      ],
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -171,26 +247,7 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-a51eb42657b30c5c",
-    "masterDeptRowId": "master-dept-0064-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ד",
-    "hospitalName": "מרכז שניידר לילדים",
-    "departmentName": "בית חולים-מחלקה ד",
-    "specialty": "רפואת ילדים",
-    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
-    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken="
-      ],
-      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
-    "canonicalDoctorId": "doctor-b56319895073db99",
+    "canonicalDoctorId": "doctor-964b5f09ed632f07",
     "masterDeptRowId": "master-dept-0062-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ב",
     "hospitalName": "מרכז שניידר לילדים",
     "departmentName": "בית חולים-מחלקה ב",
@@ -209,19 +266,19 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-ce00d0f94116549f",
-    "masterDeptRowId": "master-dept-0063-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ג",
+    "canonicalDoctorId": "doctor-a51eb42657b30c5c",
+    "masterDeptRowId": "master-dept-0064-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ד",
     "hospitalName": "מרכז שניידר לילדים",
-    "departmentName": "בית חולים-מחלקה ג",
+    "departmentName": "בית חולים-מחלקה ד",
     "specialty": "רפואת ילדים",
-    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
-    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken="
       ],
-      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=6109&dbsAuthToken=",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -247,19 +304,38 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-e40dfe8448bab99f",
-    "masterDeptRowId": "master-dept-0061-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-א",
+    "canonicalDoctorId": "doctor-db9c9a9c9f8eeae0",
+    "masterDeptRowId": "master-dept-0063-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ג",
     "hospitalName": "מרכז שניידר לילדים",
-    "departmentName": "בית חולים- מחלקה א",
+    "departmentName": "בית חולים-מחלקה ג",
     "specialty": "רפואת ילדים",
-    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
-    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
     "matchConfidence": "sourceUrlMatch",
     "matchEvidence": {
       "masterDeptSourceUrls": [
-        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
       ],
-      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e158cea5bd7cb54d",
+    "masterDeptRowId": "master-dept-0063-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ג",
+    "hospitalName": "מרכז שניידר לילדים",
+    "departmentName": "בית חולים-מחלקה ג",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken="
+      ],
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2415&dbsAuthToken=",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -279,6 +355,25 @@
         "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427"
       ],
       "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f9840d88018f232c",
+    "masterDeptRowId": "master-dept-0061-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-א",
+    "hospitalName": "מרכז שניידר לילדים",
+    "departmentName": "בית חולים- מחלקה א",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken="
+      ],
+      "extractedFromUrl": "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },

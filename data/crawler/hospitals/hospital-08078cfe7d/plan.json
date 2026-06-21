@@ -1,0 +1,86 @@
+{
+  "hospitalSlug": "hospital-08078cfe7d",
+  "hospitalName": "מכבי שירותי בריאות",
+  "generatedAt": "2026-06-21T11:24:12.753Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.maccabi4u.co.il/careers/independent-doctors/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.maccabi4u.co.il/careers/specialization_family/info/family_medicine/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.maccabi4u.co.il/careers/independent-doctors/",
+      "https://www.maccabi4u.co.il/careers/specialization_family/info/family_medicine/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.maccabi4u.co.il/careers/independent-doctors/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.maccabi4u.co.il/careers/independent-doctors/",
+      "title": "להיות רופא עצמאי במכבי | מכבי שירותי בריאות",
+      "h1": [
+        "רופאים ורופאות עצמאיים"
+      ],
+      "h2": [
+        "להיות רופא עצמאי במכבי",
+        "הרופאים העצמאיים במכבי",
+        "רק במכבי",
+        "פיתוח אישי ומקצועי",
+        "הגעת לאתר החדש של מכבי"
+      ],
+      "htmlLength": 33341,
+      "visibleTextLength": 4195,
+      "error": null
+    },
+    {
+      "url": "https://www.maccabi4u.co.il/careers/specialization_family/info/family_medicine/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.maccabi4u.co.il/careers/specialization_family/info/family_medicine/",
+      "title": "מכבי שירותי בריאות | למה רפואת משפחה?",
+      "h1": [
+        "התמחות ברפואת משפחה - למה רפואת משפחה?"
+      ],
+      "h2": [
+        "למה רפואת משפחה?",
+        "רפואת המשפחה - התמחות עם משמעות",
+        "רפואת המשפחה - אצלנו במכבי",
+        "מסלולי התפתחות במכבי",
+        "הגעת לאתר החדש של מכבי"
+      ],
+      "htmlLength": 36821,
+      "visibleTextLength": 5600,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://www.maccabi4u.co.il/careers/independent-doctors/",
+      "sourceUrl": "https://www.maccabi4u.co.il/careers/independent-doctors/",
+      "anchorText": "רופאים עצמאיים",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "רופאים עצמאיים https://www.maccabi4u.co.il/careers/independent-doctors/"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.maccabi4u.co.il/careers/independent-doctors/",
+    "https://www.maccabi4u.co.il/careers/specialization_family/info/family_medicine/"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Few candidate pages; pilot can run but needs manual review."
+}

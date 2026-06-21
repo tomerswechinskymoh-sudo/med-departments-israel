@@ -1,0 +1,31 @@
+{
+  "hospitalSlug": "maale-hacarmel",
+  "hospitalName": "מרכז לבה\"נ מעלה הכרמל",
+  "generatedAt": "2026-06-21T11:24:15.224Z",
+  "urlsUsed": [
+    "https://www.tiratcarmel-med.org.il/"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 1,
+  "rawDoctorRecords": 1,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 1,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 1,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 1
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Profile URL coverage is below 50%."
+}

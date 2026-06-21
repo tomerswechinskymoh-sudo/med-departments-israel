@@ -1,0 +1,40 @@
+[
+  {
+    "canonicalDoctorId": "doctor-177068df52010573",
+    "masterDeptRowId": "master-dept-0012-מרכז-לבהנ-מעלה-הכרמל-פסיכיאטריה",
+    "hospitalName": "מרכז לבה\"נ מעלה הכרמל",
+    "departmentName": "",
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://www.tiratcarmel-med.org.il/",
+    "extractedFromUrl": "https://www.tiratcarmel-med.org.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.tiratcarmel-med.org.il/"
+      ],
+      "extractedFromUrl": "https://www.tiratcarmel-med.org.il/",
+      "relationship": "exactSourceUrl",
+      "reason": "exact source URL matches multiple Master_Dept rows"
+    },
+    "ambiguityReason": "multipleMasterDeptSourceRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-177068df52010573",
+    "masterDeptRowId": "master-dept-0022-מרכז-לבהנ-מעלה-הכרמל-פסיכיאטריה-של-הילד-והמתבגר",
+    "hospitalName": "מרכז לבה\"נ מעלה הכרמל",
+    "departmentName": "",
+    "specialty": "פסיכיאטריה של הילד והמתבגר",
+    "sourceUrl": "https://www.tiratcarmel-med.org.il/",
+    "extractedFromUrl": "https://www.tiratcarmel-med.org.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.tiratcarmel-med.org.il/"
+      ],
+      "extractedFromUrl": "https://www.tiratcarmel-med.org.il/",
+      "relationship": "exactSourceUrl",
+      "reason": "exact source URL matches multiple Master_Dept rows"
+    },
+    "ambiguityReason": "multipleMasterDeptSourceRows"
+  }
+]

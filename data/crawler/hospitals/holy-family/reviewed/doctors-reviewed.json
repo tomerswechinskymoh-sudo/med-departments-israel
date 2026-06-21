@@ -366,48 +366,6 @@
     "ambiguityReason": null
   },
   {
-    "fullName": "פרופ' ראיד סלים\nצוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק",
-    "normalizedName": "ראיד סלים צוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק",
-    "titlePrefix": "פרופ'",
-    "role": null,
-    "unit": null,
-    "profileUrl": null,
-    "imageUrl": null,
-    "rawText": "פרופ' ראיד סלים\nצוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק",
-    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
-    "hospitalSlug": "holy-family",
-    "hospital": "ביה\"ח המשפחה הקדושה",
-    "parserFamily": "teamPage",
-    "sourceEvidence": "פרופ' ראיד סלים\nצוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק",
-    "qaFlags": [
-      "missingProfileUrl",
-      "textOnlyCandidate"
-    ],
-    "qaSeverity": "review",
-    "profileCompleteness": "listOnly",
-    "profileTextLength": 0,
-    "productionReady": false,
-    "reviewedStatus": "needsMoreEvidence",
-    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
-    "matchedMasterDeptRowIds": [
-      "master-dept-0044-ביהח-המשפחה-הקדושה-יילוד-וגינקולוגיה"
-    ],
-    "matchedMasterDepartmentNames": [],
-    "matchedMasterSpecialties": [
-      "יילוד וגינקולוגיה"
-    ],
-    "matchConfidence": "sourceUrlMatch",
-    "matchEvidence": {
-      "masterDeptSourceUrls": [
-        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA"
-      ],
-      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
-      "relationship": "exactSourceUrl",
-      "reason": "doctor source equals Master_Dept source URL"
-    },
-    "ambiguityReason": null
-  },
-  {
     "fullName": "פרופ' ראיד סליםאח",
     "normalizedName": "ראיד סליםאח",
     "titlePrefix": "פרופ'",
@@ -444,6 +402,90 @@
         "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA"
       ],
       "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר איליא חורי",
+    "normalizedName": "איליא חורי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר איליא חורי",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר איליא חורי",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אלכס חזנוביץ",
+    "normalizedName": "אלכס חזנוביץ",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אלכס חזנוביץ",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר אלכס חזנוביץ",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -492,6 +534,90 @@
     "ambiguityReason": null
   },
   {
+    "fullName": "ד\"ר גהאד חאזן",
+    "normalizedName": "גהאד חאזן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גהאד חאזן",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר גהאד חאזן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר האדי זריק",
+    "normalizedName": "האדי זריק",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר האדי זריק",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר האדי זריק",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
     "fullName": "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר",
     "normalizedName": "חדאד לנצרת וניהול המחלקה שהחל בפברואר",
     "titlePrefix": "ד\"ר",
@@ -499,12 +625,54 @@
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר ",
+    "rawText": "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר ",
+    "sourceEvidence": "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מהדי ג'והר",
+    "normalizedName": "מהדי גוהר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מהדי ג'והר",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר מהדי ג'והר",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -541,12 +709,12 @@
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר מוחמד יונס ",
+    "rawText": "ד\"ר מוחמד יונס",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "ד\"ר מוחמד יונס ",
+    "sourceEvidence": "ד\"ר מוחמד יונס",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -625,12 +793,12 @@
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר מרואן גנטוס ",
+    "rawText": "ד\"ר מרואן גנטוס",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "ד\"ר מרואן גנטוס ",
+    "sourceEvidence": "ד\"ר מרואן גנטוס",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -744,19 +912,61 @@
     "ambiguityReason": null
   },
   {
-    "fullName": "ד\"ר מרואן יוסף\nד\"ר מהדי ג'והר\nד\"ר רביע אבו פול\nד\"ר גהאד חאזן\nד\"ר איליא חורי\nמחשבון בריאטריה\nמשק",
-    "normalizedName": "מרואן יוסף דר מהדי גוהר דר רביע אבו פול דר גהאד חאזן דר איליא חורי מחשבון בריאטריה משק",
+    "fullName": "ד\"ר מרואן יוסף",
+    "normalizedName": "מרואן יוסף",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר מרואן יוסף\nד\"ר מהדי ג'והר\nד\"ר רביע אבו פול\nד\"ר גהאד חאזן\nד\"ר איליא חורי\nמחשבון בריאטריה\nמשק",
+    "rawText": "ד\"ר מרואן יוסף",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "ד\"ר מרואן יוסף\nד\"ר מהדי ג'והר\nד\"ר רביע אבו פול\nד\"ר גהאד חאזן\nד\"ר איליא חורי\nמחשבון בריאטריה\nמשק",
+    "sourceEvidence": "ד\"ר מרואן יוסף",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר עלי נגאר",
+    "normalizedName": "עלי נגאר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר עלי נגאר",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר עלי נגאר",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -793,12 +1003,12 @@
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר פראס מלחם ",
+    "rawText": "ד\"ר פראס מלחם",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "ד\"ר פראס מלחם ",
+    "sourceEvidence": "ד\"ר פראס מלחם",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -828,19 +1038,61 @@
     "ambiguityReason": null
   },
   {
-    "fullName": "ד\"ר ראיד אשקר\nד\"ר אלכס חזנוביץ\nד\"ר עלי נגאר\nד\"ר האדי זריק\nמתמחים",
-    "normalizedName": "ראיד אשקר דר אלכס חזנוביץ דר עלי נגאר דר האדי זריק מתמחים",
+    "fullName": "ד\"ר ראיד אשקר",
+    "normalizedName": "ראיד אשקר",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר ראיד אשקר\nד\"ר אלכס חזנוביץ\nד\"ר עלי נגאר\nד\"ר האדי זריק\nמתמחים",
+    "rawText": "ד\"ר ראיד אשקר",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "ד\"ר ראיד אשקר\nד\"ר אלכס חזנוביץ\nד\"ר עלי נגאר\nד\"ר האדי זריק\nמתמחים",
+    "sourceEvidence": "ד\"ר ראיד אשקר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר רביע אבו פול",
+    "normalizedName": "רביע אבו פול",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר רביע אבו פול",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר רביע אבו פול",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -909,19 +1161,145 @@
     "ambiguityReason": null
   },
   {
-    "fullName": "פרופ' זיו גיל\nמרכז לכירורגיה פלסטית",
-    "normalizedName": "זיו גיל מרכז לכירורגיה פלסטית",
+    "fullName": "ד\"ר אברהים חרבג'י",
+    "normalizedName": "אברהים חרבגי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אברהים חרבג'י",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר אברהים חרבג'י",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "כירורגיה כללית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר הדר עבודי נבו",
+    "normalizedName": "הדר עבודי נבו",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר הדר עבודי נבו",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר הדר עבודי נבו",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "כירורגיה כללית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר ואיל ח'ורי",
+    "normalizedName": "ואיל חורי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ואיל ח'ורי",
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "hospitalSlug": "holy-family",
+    "hospital": "ביה\"ח המשפחה הקדושה",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר ואיל ח'ורי",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח המשפחה הקדושה",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "כירורגיה כללית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA"
+      ],
+      "extractedFromUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "פרופ' זיו גיל",
+    "normalizedName": "זיו גיל",
     "titlePrefix": "פרופ'",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "פרופ' זיו גיל\nמרכז לכירורגיה פלסטית",
+    "rawText": "פרופ' זיו גיל",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "פרופ' זיו גיל\nמרכז לכירורגיה פלסטית",
+    "sourceEvidence": "פרופ' זיו גיל",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -951,19 +1329,19 @@
     "ambiguityReason": null
   },
   {
-    "fullName": "ד\"ר מוחמד חמוד\nיחידה פרוקטולוגית בניהול ד\"ר אברהים חרבג'י\nהמערך הכירורגי מטפל בחולים הזקוקים לט",
-    "normalizedName": "מוחמד חמוד יחידה פרוקטולוגית בניהול דר אברהים חרבגי המערך הכירורגי מטפל בחולים הזקוקים לט",
+    "fullName": "ד\"ר מוחמד חמוד",
+    "normalizedName": "מוחמד חמוד",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר מוחמד חמוד\nיחידה פרוקטולוגית בניהול ד\"ר אברהים חרבג'י\nהמערך הכירורגי מטפל בחולים הזקוקים לט",
+    "rawText": "ד\"ר מוחמד חמוד",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "ד\"ר מוחמד חמוד\nיחידה פרוקטולוגית בניהול ד\"ר אברהים חרבג'י\nהמערך הכירורגי מטפל בחולים הזקוקים לט",
+    "sourceEvidence": "ד\"ר מוחמד חמוד",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -993,19 +1371,19 @@
     "ambiguityReason": null
   },
   {
-    "fullName": "ד\"ר מחמוד זידאן\nיחידה לכירורגיה של השד בניהול ד\"ר הדר עבודי נבו\nיחידת קולון ורקטום בניהול ד\"ר ו",
-    "normalizedName": "מחמוד זידאן יחידה לכירורגיה של השד בניהול דר הדר עבודי נבו יחידת קולון ורקטום בניהול דר ו",
+    "fullName": "ד\"ר מחמוד זידאן",
+    "normalizedName": "מחמוד זידאן",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר מחמוד זידאן\nיחידה לכירורגיה של השד בניהול ד\"ר הדר עבודי נבו\nיחידת קולון ורקטום בניהול ד\"ר ו",
+    "rawText": "ד\"ר מחמוד זידאן",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "ד\"ר מחמוד זידאן\nיחידה לכירורגיה של השד בניהול ד\"ר הדר עבודי נבו\nיחידת קולון ורקטום בניהול ד\"ר ו",
+    "sourceEvidence": "ד\"ר מחמוד זידאן",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -1119,19 +1497,19 @@
     "ambiguityReason": null
   },
   {
-    "fullName": "ד\"ר סמיח זועבי\nמרכז בריאטרי",
-    "normalizedName": "סמיח זועבי מרכז בריאטרי",
+    "fullName": "ד\"ר סמיח זועבי",
+    "normalizedName": "סמיח זועבי",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר סמיח זועבי\nמרכז בריאטרי ",
+    "rawText": "ד\"ר סמיח זועבי",
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
     "hospitalSlug": "holy-family",
     "hospital": "ביה\"ח המשפחה הקדושה",
     "parserFamily": "teamPage",
-    "sourceEvidence": "ד\"ר סמיח זועבי\nמרכז בריאטרי ",
+    "sourceEvidence": "ד\"ר סמיח זועבי",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"

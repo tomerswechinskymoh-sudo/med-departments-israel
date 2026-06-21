@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "saint-vincent",
   "hospitalName": "ביה\"ח הצרפתי",
-  "generatedAt": "2026-06-21T10:37:12.397Z",
+  "generatedAt": "2026-06-21T11:23:54.984Z",
   "urlsUsed": [
     "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
     "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
@@ -11,7 +11,7 @@
   ],
   "doctorIndexExists": false,
   "parserFamily": "inlineStaff",
-  "candidatePagesFound": 2,
+  "candidatePagesFound": 1,
   "pilotPagesSelected": 5,
   "rawDoctorRecords": 16,
   "profileUrlCoverage": 0.125,
@@ -23,8 +23,8 @@
   "duplicateProfileUrlCount": 0,
   "suspectedFalsePositiveCount": 0,
   "profileCompleteness": {
-    "full": 2,
-    "partial": 0,
+    "full": 1,
+    "partial": 1,
     "listOnly": 14
   },
   "readiness": "needsHumanReview",

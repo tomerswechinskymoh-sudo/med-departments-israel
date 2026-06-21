@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "schneider",
   "hospitalName": "מרכז שניידר לילדים",
-  "generatedAt": "2026-06-21T10:38:02.976Z",
+  "generatedAt": "2026-06-21T11:23:40.110Z",
   "urlsUsed": [
     "https://www.schneider.org.il/?CategoryID=839&ArticleID=2427",
     "https://www.schneider.org.il/?CategoryID=839&ArticleID=2410&dbsAuthToken=",
@@ -13,19 +13,19 @@
   "parserFamily": "teamPage",
   "candidatePagesFound": 0,
   "pilotPagesSelected": 5,
-  "rawDoctorRecords": 15,
-  "profileUrlCoverage": 0.26666666666666666,
+  "rawDoctorRecords": 20,
+  "profileUrlCoverage": 0.2,
   "profileFetchSuccess": 4,
-  "reviewedRecords": 15,
+  "reviewedRecords": 20,
   "productionReadyCount": 4,
-  "missingProfileUrlCount": 11,
+  "missingProfileUrlCount": 16,
   "duplicateNameCount": 0,
   "duplicateProfileUrlCount": 0,
   "suspectedFalsePositiveCount": 0,
   "profileCompleteness": {
     "full": 4,
     "partial": 0,
-    "listOnly": 11
+    "listOnly": 16
   },
   "readiness": "needsHumanReview",
   "crawlReadiness": "needsCalibration",

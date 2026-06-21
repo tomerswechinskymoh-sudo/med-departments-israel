@@ -1,18 +1,18 @@
 [
   {
-    "fullName": "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
-    "normalizedName": "גליל חילו דר יעקוב זכריאן מומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "fullName": "ד\"ר אורלי ברנדס- קליין",
+    "normalizedName": "אורלי ברנדס קליין",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "rawText": "ד\"ר אורלי ברנדס- קליין",
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר גליל חילו\nד\"ר יעקוב זכריאן\nמומחה במיילדות וגניקולוגיה והריון בסיכון גבוה",
+    "sourceEvidence": "ד\"ר אורלי ברנדס- קליין",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -20,19 +20,19 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה",
-    "normalizedName": "מונא אגבאריה מומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי דר פאדל אבו סביה",
+    "fullName": "ד\"ר גליל חילו",
+    "normalizedName": "גליל חילו",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה",
+    "rawText": "ד\"ר גליל חילו",
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר מונא אגבאריה\nמומחה במיילדות וגניקולוגיה ובאולטרהסאונד מיילדותי וגניקולוגי\nד\"ר פאדל אבו סביה",
+    "sourceEvidence": "ד\"ר גליל חילו",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -40,19 +40,59 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי",
-    "normalizedName": "נורא חיסן מומחית במיילדות וגניקולוגיה והריון בסיכון גבוה דר סוזן מיכאיל מוסטפא מומחית במיי",
+    "fullName": "ד\"ר יעקוב זכריאן",
+    "normalizedName": "יעקוב זכריאן",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי",
+    "rawText": "ד\"ר יעקוב זכריאן",
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר נורא חיסן\nמומחית במיילדות וגניקולוגיה והריון בסיכון גבוה\nד\"ר סוזן מיכאיל מוסטפא\nמומחית במיי",
+    "sourceEvidence": "ד\"ר יעקוב זכריאן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מונא אגבאריה",
+    "normalizedName": "מונא אגבאריה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מונא אגבאריה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מונא אגבאריה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר נורא חיסן",
+    "normalizedName": "נורא חיסן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר נורא חיסן",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר נורא חיסן",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -67,12 +107,12 @@
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר ניבאל ח'מאיסי\n",
+    "rawText": "ד\"ר ניבאל ח'מאיסי",
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר ניבאל ח'מאיסי\n",
+    "sourceEvidence": "ד\"ר ניבאל ח'מאיסי",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -80,19 +120,19 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא",
-    "normalizedName": "ניבאל עואד חמאיסי דר אורלי ברנדס קליין רופאה מומחית במיילדות וגניקולוגיה מנהלת היחידה לא",
+    "fullName": "ד\"ר ניבאל עואד חמאיסי",
+    "normalizedName": "ניבאל עואד חמאיסי",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא",
+    "rawText": "ד\"ר ניבאל עואד חמאיסי",
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר ניבאל עואד חמאיסי\nד\"ר אורלי ברנדס- קליין\nרופאה מומחית במיילדות וגניקולוגיה- מנהלת היחידה לא",
+    "sourceEvidence": "ד\"ר ניבאל עואד חמאיסי",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -100,19 +140,19 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר עלי מפרע\nמומחה ברפואת נשים",
-    "normalizedName": "עלי מפרע מומחה ברפואת נשים",
+    "fullName": "ד\"ר סוזן מיכאיל מוסטפא",
+    "normalizedName": "סוזן מיכאיל מוסטפא",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר עלי מפרע\nמומחה ברפואת נשים",
+    "rawText": "ד\"ר סוזן מיכאיל מוסטפא",
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר עלי מפרע\nמומחה ברפואת נשים",
+    "sourceEvidence": "ד\"ר סוזן מיכאיל מוסטפא",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -120,19 +160,59 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד",
-    "normalizedName": "גמאל עונאללה מומחה מפרקים דר פארס אל קיש מומחה בפגיעות ספורט דר אדוארד חליף מומחה כף יד",
+    "fullName": "ד\"ר עלי מפרע",
+    "normalizedName": "עלי מפרע",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד\n",
+    "rawText": "ד\"ר עלי מפרע",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר עלי מפרע",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר פאדל אבו סביה",
+    "normalizedName": "פאדל אבו סביה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר פאדל אבו סביה",
+    "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d9%86%d8%b3%d8%a7%d8%a1-%d9%88%d8%a7%d9%84%d8%aa%d9%88%d9%84%d9%8a%d8%af/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר פאדל אבו סביה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר גמאל עונאללה",
+    "normalizedName": "גמאל עונאללה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גמאל עונאללה",
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר גמאל עונאללה\nמומחה מפרקים\nד\"ר פארס אל קיש\nמומחה בפגיעות ספורט\nדר' אדוארד ח'ליף\nמומחה כף יד\n",
+    "sourceEvidence": "ד\"ר גמאל עונאללה",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -140,19 +220,19 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית",
-    "normalizedName": "מוקבל שלח מומחה באורתופדיה כללית",
+    "fullName": "ד\"ר מוקבל שלח",
+    "normalizedName": "מוקבל שלח",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית",
+    "rawText": "ד\"ר מוקבל שלח",
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר מוקבל שלח\nמומחה באורתופדיה כללית",
+    "sourceEvidence": "ד\"ר מוקבל שלח",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -160,19 +240,39 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת",
-    "normalizedName": "שאדי בדעאן כירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת",
+    "fullName": "ד\"ר פארס אל קיש",
+    "normalizedName": "פארס אל קיש",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת ",
+    "rawText": "ד\"ר פארס אל קיש",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%ac%d8%b1%d8%a7%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b8%d8%a7%d9%85/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר פארס אל קיש",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר פאדי זועבי",
+    "normalizedName": "פאדי זועבי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר פאדי זועבי",
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר שאדי בדעאן\nכירורגיה אורולוגית סיים את לימודיו בפקולטה לרפואה מהאונבירסיטה העברית שנת ",
+    "sourceEvidence": "ד\"ר פאדי זועבי",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -180,19 +280,39 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל",
-    "normalizedName": "שמעון מרטיק כירורגיה אורולוגית דר פאדי זועבי אורולוג ילדים שירותים מוצעים מרפאה לקבלת קהל",
+    "fullName": "ד\"ר שאדי בדעאן",
+    "normalizedName": "שאדי בדעאן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שאדי בדעאן",
+    "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
+    "hospitalSlug": "nazareth-scottish",
+    "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שאדי בדעאן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "פרופ' שמעון מרטיק",
+    "normalizedName": "שמעון מרטיק",
     "titlePrefix": "פרופ'",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל\n",
+    "rawText": "פרופ' שמעון מרטיק",
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d9%85%d8%b3%d8%a7%d9%84%d9%83-%d8%a7%d9%84%d8%a8%d9%88%d9%84%d9%8a%d8%a9/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "פרופ' שמעון מרטיק\nכירורגיה אורולוגית\nד\"ר פאדי זועבי\nאורולוג ילדים\nשירותים מוצעים\nמרפאה לקבלת קהל\n",
+    "sourceEvidence": "פרופ' שמעון מרטיק",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -200,19 +320,19 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך",
-    "normalizedName": "עאמר ספורי מומחה ברפואה פנימית ורמטולוגיה אח אחראי שאדי אסטפאן אח מוסמך",
+    "fullName": "ד\"ר עאמר ספורי",
+    "normalizedName": "עאמר ספורי",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך",
+    "rawText": "ד\"ר עאמר ספורי",
     "sourceUrl": "https://nazhosp.com/department/%d8%a7%d9%84%d8%a7%d9%85%d8%b1%d8%a7%d8%b6-%d8%a7%d9%84%d8%af%d8%a7%d8%ae%d9%84%d9%8a%d8%a9/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר עאמר ספורי\nמומחה ברפואה פנימית ורמטולוגיה\nאח אחראי שאדי אסטפאן\nאח מוסמך",
+    "sourceEvidence": "ד\"ר עאמר ספורי",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -220,19 +340,19 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות",
-    "normalizedName": "זאהי יוסף רפואה דחופה שירותים מוצעים טיפול נמרץ למחלות פנימיות טיפול נמרץ למחלות כירורגיות",
+    "fullName": "ד\"ר זאהי יוסף",
+    "normalizedName": "זאהי יוסף",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות ",
+    "rawText": "ד\"ר זאהי יוסף",
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר זאהי יוסף\nרפואה דחופה\nשירותים מוצעים\nטיפול נמרץ למחלות פנימיות\nטיפול נמרץ למחלות כירורגיות ",
+    "sourceEvidence": "ד\"ר זאהי יוסף",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -240,19 +360,19 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת",
-    "normalizedName": "נגיב נסראללה רופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת",
+    "fullName": "ד\"ר נג'יב נסראללה",
+    "normalizedName": "נגיב נסראללה",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת ",
+    "rawText": "ד\"ר נג'יב נסראללה",
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר נג'יב נסראללה\nרופא ילדים ומומחה ברפואה דחופה סיים את לימודי הרפואה בשנת ",
+    "sourceEvidence": "ד\"ר נג'יב נסראללה",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"
@@ -260,19 +380,19 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "ד\"ר סוהאד מחאמיד\nרופא ילדים",
-    "normalizedName": "סוהאד מחאמיד רופא ילדים",
+    "fullName": "ד\"ר סוהאד מחאמיד",
+    "normalizedName": "סוהאד מחאמיד",
     "titlePrefix": "ד\"ר",
     "role": null,
     "unit": null,
     "profileUrl": null,
     "imageUrl": null,
-    "rawText": "ד\"ר סוהאד מחאמיד\nרופא ילדים",
+    "rawText": "ד\"ר סוהאד מחאמיד",
     "sourceUrl": "https://nazhosp.com/department/%d9%82%d8%b3%d9%85-%d8%a7%d9%84%d8%b7%d9%88%d8%a7%d8%b1%d8%a6/?lang=he",
     "hospitalSlug": "nazareth-scottish",
     "hospital": "ביה\"ח אי.מ.מ.ס הסקוטי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "ד\"ר סוהאד מחאמיד\nרופא ילדים",
+    "sourceEvidence": "ד\"ר סוהאד מחאמיד",
     "qaFlags": [
       "missingProfileUrl",
       "textOnlyCandidate"

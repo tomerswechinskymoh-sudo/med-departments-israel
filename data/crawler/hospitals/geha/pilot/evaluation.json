@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "geha",
+  "hospitalName": "מרכז לבה\"נ גהה",
+  "generatedAt": "2026-06-21T11:24:02.397Z",
+  "urlsUsed": [
+    "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
+    "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx",
+    "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+    "https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx",
+    "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 14,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 4,
+  "profileUrlCoverage": 1,
+  "profileFetchSuccess": 4,
+  "reviewedRecords": 4,
+  "productionReadyCount": 4,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 2,
+    "partial": 2,
+    "listOnly": 0
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Pilot has useful records but insufficient production-ready coverage."
+}

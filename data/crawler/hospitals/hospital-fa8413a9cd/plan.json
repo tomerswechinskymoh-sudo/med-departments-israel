@@ -1,0 +1,55 @@
+{
+  "hospitalSlug": "hospital-fa8413a9cd",
+  "hospitalName": "מרכז לבה\"נ ירושלים (כפר שאול ואיתנים)",
+  "generatedAt": "2026-06-21T11:24:17.374Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "http://www.psjer.org.il/?CategoryID=254",
+    "departmentsIndexUrlCandidates": [
+      "http://www.psjer.org.il/?CategoryID=254"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "http://www.psjer.org.il/?CategoryID=254"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://psjer.org.il/?CategoryID=254",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://psjer.org.il/?CategoryID=254",
+      "title": "עמוד הבית - המרכז הירושלמי לבריאות הנפש",
+      "h1": [
+        "המרכז הירושלמי לבריאות הנפש"
+      ],
+      "h2": [
+        "קמפוס כפר-שאול",
+        "ביה\"ח איתנים",
+        "מרפאות",
+        "מקצועות הבריאות",
+        "מאמרים"
+      ],
+      "htmlLength": 212767,
+      "visibleTextLength": 57781,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://psjer.org.il/?CategoryID=254",
+    "http://www.psjer.org.il/?CategoryID=254"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

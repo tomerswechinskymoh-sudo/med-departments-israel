@@ -1,0 +1,78 @@
+[
+  {
+    "canonicalDoctorId": "doctor-11ec2da70f76871e",
+    "masterDeptRowId": null,
+    "hospitalName": "מרכז לבה\"נ שלוותה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=מרכז לבה\"נ שלוותה; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-5d9a79744dcccedd",
+    "masterDeptRowId": null,
+    "hospitalName": "מרכז לבה\"נ שלוותה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=מרכז לבה\"נ שלוותה; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-ff338c340e975f3b",
+    "masterDeptRowId": "master-dept-0008-מרכז-לבהנ-שלוותה-פסיכיאטריה",
+    "hospitalName": "מרכז לבה\"נ שלוותה",
+    "departmentName": "",
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "exact source URL matches multiple Master_Dept rows"
+    },
+    "ambiguityReason": "multipleMasterDeptSourceRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-ff338c340e975f3b",
+    "masterDeptRowId": "master-dept-0019-מרכז-לבהנ-שלוותה-פסיכיאטריה-של-הילד-והמתבגר",
+    "hospitalName": "מרכז לבה\"נ שלוותה",
+    "departmentName": "",
+    "specialty": "פסיכיאטריה של הילד והמתבגר",
+    "sourceUrl": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
+    "extractedFromUrl": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
+      "relationship": "exactSourceUrl",
+      "reason": "exact source URL matches multiple Master_Dept rows"
+    },
+    "ambiguityReason": "multipleMasterDeptSourceRows"
+  }
+]

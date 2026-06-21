@@ -1,0 +1,78 @@
+[
+  {
+    "canonicalDoctorId": "doctor-2428a04c0dc446a9",
+    "masterDeptRowId": null,
+    "hospitalName": "מרכז לבה\"נ גהה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=מרכז לבה\"נ גהה; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-5e060afe4407562c",
+    "masterDeptRowId": null,
+    "hospitalName": "מרכז לבה\"נ גהה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/geha/he/about/Pages/Team/IManor.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=מרכז לבה\"נ גהה; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-5e7f78499ff8b08d",
+    "masterDeptRowId": null,
+    "hospitalName": "מרכז לבה\"נ גהה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=מרכז לבה\"נ גהה; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-8fc24c36df71b394",
+    "masterDeptRowId": null,
+    "hospitalName": "מרכז לבה\"נ גהה",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx"
+      ],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=מרכז לבה\"נ גהה; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  }
+]

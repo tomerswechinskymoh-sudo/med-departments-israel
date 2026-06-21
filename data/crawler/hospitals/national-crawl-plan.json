@@ -366,7 +366,7 @@
     "wave": 2,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 2,
-    "pendingUrlCount": 2
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז לבה\"נ שלוותה",
@@ -388,7 +388,7 @@
     "wave": 2,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 2,
-    "pendingUrlCount": 2
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז לבה\"נ מעלה הכרמל",
@@ -410,7 +410,7 @@
     "wave": 2,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 2,
-    "pendingUrlCount": 2
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "ביה\"ח יוספטל",
@@ -452,7 +452,7 @@
     "wave": 2,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 1,
-    "pendingUrlCount": 1
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז לבה\"נ לב השרון",
@@ -474,7 +474,7 @@
     "wave": 2,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 1,
-    "pendingUrlCount": 1
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז רפואי וולפסון",
@@ -697,7 +697,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 20,
-    "pendingUrlCount": 0
+    "pendingUrlCount": 20
   },
   {
     "hospitalName": "ביה\"ח זיו - צפת",
@@ -730,7 +730,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 16,
-    "pendingUrlCount": 0
+    "pendingUrlCount": 16
   },
   {
     "hospitalName": "מרכז רפואי הלל יפה",
@@ -760,7 +760,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 9,
-    "pendingUrlCount": 0
+    "pendingUrlCount": 9
   },
   {
     "hospitalName": "בי\"ח אסותא אשדוד",
@@ -785,7 +785,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 4,
-    "pendingUrlCount": 0
+    "pendingUrlCount": 4
   },
   {
     "hospitalName": "מרכז רפואי ברוך פדה פוריה",
@@ -818,7 +818,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 13,
-    "pendingUrlCount": 0
+    "pendingUrlCount": 13
   },
   {
     "hospitalName": "ביה\"ח לניאדו",
@@ -973,7 +973,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 2,
-    "pendingUrlCount": 2
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז לבה\"נ אברבנאל",
@@ -995,7 +995,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 2,
-    "pendingUrlCount": 2
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז לבה\"נ ירושלים (כפר שאול ואיתנים)",
@@ -1017,7 +1017,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 2,
-    "pendingUrlCount": 2
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מרכז בריאות הנפש רמת חן ע\"ש בריל",
@@ -1059,7 +1059,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 1,
-    "pendingUrlCount": 1
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "מכבי שירותי בריאות",
@@ -1081,7 +1081,7 @@
     "wave": 3,
     "directStaffUrlCount": 0,
     "departmentUrlCount": 1,
-    "pendingUrlCount": 1
+    "pendingUrlCount": 0
   },
   {
     "hospitalName": "קופ\"ח לאומית",

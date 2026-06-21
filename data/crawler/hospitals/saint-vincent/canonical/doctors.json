@@ -36,6 +36,25 @@
     ]
   },
   {
+    "canonicalDoctorId": "doctor-51388aff5851904c",
+    "fullName": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת",
+    "normalizedName": "גאווה גדולה: מנהל בית החולים הצרפתי נצרת",
+    "profileUrl": "https://saint-vincent-hospital.org/2023/03/03/%d7%92%d7%90%d7%95%d7%95%d7%94-%d7%92%d7%93%d7%95%d7%9c%d7%94-%d7%9e%d7%a0%d7%94%d7%9c-%d7%91%d7%99%d7%aa-%d7%94%d7%97%d7%95%d7%9c%d7%99%d7%9d-%d7%94%d7%a6%d7%a8%d7%a4%d7%aa%d7%99-%d7%a0%d7%90%d7%99/",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": null,
+    "role": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת ד\"ר נאיל אליאס קודם לדרגת פרופ'מרץ 3, 2023",
+    "profileCompleteness": "partial",
+    "productionReady": true,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "https://saint-vincent-hospital.org/2023/03/03/%d7%92%d7%90%d7%95%d7%95%d7%94-%d7%92%d7%93%d7%95%d7%9c%d7%94-%d7%9e%d7%a0%d7%94%d7%9c-%d7%91%d7%99%d7%aa-%d7%94%d7%97%d7%95%d7%9c%d7%99%d7%9d-%d7%94%d7%a6%d7%a8%d7%a4%d7%aa%d7%99-%d7%a0%d7%90%d7%99/"
+    ],
+    "evidence": [
+      "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת ד\"ר נאיל אליאס קודם לדרגת פרופ'מרץ 3, 2023"
+    ]
+  },
+  {
     "canonicalDoctorId": "doctor-04d684e58744673a",
     "fullName": "ד\"ר גמיל אנדראויס",
     "normalizedName": "גמיל אנדראויס",
@@ -50,7 +69,7 @@
       "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
     ],
     "evidence": [
-      "ד\"ר גמיל אנדראויס "
+      "ד\"ר גמיל אנדראויס"
     ]
   },
   {
@@ -68,7 +87,7 @@
       "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
     ],
     "evidence": [
-      "ד\"ר ואיל גרוס "
+      "ד\"ר ואיל גרוס"
     ]
   },
   {
@@ -86,7 +105,7 @@
       "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
     ],
     "evidence": [
-      "ד\"ר ויסאם שקור.\n"
+      "ד\"ר ויסאם שקור"
     ]
   },
   {
@@ -108,9 +127,9 @@
     ]
   },
   {
-    "canonicalDoctorId": "doctor-c7561cc816ebbe7d",
-    "fullName": "ד\"ר כמאל אמטאנס\nרופא בית במרפאות",
-    "normalizedName": "כמאל אמטאנס רופא בית במרפאות",
+    "canonicalDoctorId": "doctor-35df413cf87a5b9a",
+    "fullName": "ד\"ר כמאל אמטאנס",
+    "normalizedName": "כמאל אמטאנס",
     "profileUrl": null,
     "hospitalName": "ביה\"ח הצרפתי",
     "provider": "unknown",
@@ -122,7 +141,7 @@
       "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
     ],
     "evidence": [
-      "ד\"ר כמאל אמטאנס\nרופא בית במרפאות"
+      "ד\"ר כמאל אמטאנס"
     ]
   },
   {
@@ -140,26 +159,7 @@
       "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
     ],
     "evidence": [
-      "ד\"ר לואי עומרי "
-    ]
-  },
-  {
-    "canonicalDoctorId": "doctor-ae9882fa42a46063",
-    "fullName": "פרופ' נאיל אליאס בטקס החגיגי ל",
-    "normalizedName": "נאיל אליאס בטקס החגיגי ל",
-    "profileUrl": "https://saint-vincent-hospital.org/2023/03/25/%d7%94%d7%a0%d7%90%d7%95%d7%9d-%d7%a9%d7%9c-%d7%a4%d7%a8%d7%95%d7%a4-%d7%a0%d7%90%d7%99%d7%9c-%d7%90%d7%9c%d7%99%d7%90%d7%a1-%d7%91%d7%98%d7%a7%d7%a1-%d7%94%d7%97%d7%92%d7%99%d7%92%d7%99-%d7%9c-125/",
-    "hospitalName": "ביה\"ח הצרפתי",
-    "provider": "unknown",
-    "titlePrefix": "פרופ'",
-    "role": null,
-    "profileCompleteness": "full",
-    "productionReady": true,
-    "sourceUrls": [
-      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
-      "https://saint-vincent-hospital.org/2023/03/25/%d7%94%d7%a0%d7%90%d7%95%d7%9d-%d7%a9%d7%9c-%d7%a4%d7%a8%d7%95%d7%a4-%d7%a0%d7%90%d7%99%d7%9c-%d7%90%d7%9c%d7%99%d7%90%d7%a1-%d7%91%d7%98%d7%a7%d7%a1-%d7%94%d7%97%d7%92%d7%99%d7%92%d7%99-%d7%9c-125/"
-    ],
-    "evidence": [
-      "הנאום של פרופ' נאיל אליאס בטקס החגיגי ל 125שנה להיווסדות ביה\"ח צרפתי-נצרתמרץ 25, 2023"
+      "ד\"ר לואי עומרי"
     ]
   },
   {
@@ -196,7 +196,7 @@
       "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
     ],
     "evidence": [
-      "ד\"ר נזיה עאסלי "
+      "ד\"ר נזיה עאסלי"
     ]
   },
   {
@@ -218,9 +218,9 @@
     ]
   },
   {
-    "canonicalDoctorId": "doctor-4649f137c2ed78c9",
-    "fullName": "ד\"ר נסרין דאוד-זרייק.\nלפני שלב א",
-    "normalizedName": "נסרין דאוד זרייק לפני שלב א",
+    "canonicalDoctorId": "doctor-fb5c9a8308be60f4",
+    "fullName": "ד\"ר נסרין דאוד-זרייק",
+    "normalizedName": "נסרין דאוד זרייק",
     "profileUrl": null,
     "hospitalName": "ביה\"ח הצרפתי",
     "provider": "unknown",
@@ -232,7 +232,7 @@
       "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
     ],
     "evidence": [
-      "ד\"ר נסרין דאוד-זרייק.\nלפני שלב א "
+      "ד\"ר נסרין דאוד-זרייק"
     ]
   },
   {
@@ -250,7 +250,7 @@
       "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
     ],
     "evidence": [
-      "ד\"ר עלאא אבו שרקי "
+      "ד\"ר עלאא אבו שרקי"
     ]
   },
   {
@@ -272,9 +272,9 @@
     ]
   },
   {
-    "canonicalDoctorId": "doctor-48f58dd5075b14ce",
-    "fullName": "ד\"ר רשא חליליה- אלרגולוגיה ואימונולוגיה קלינית.\nצוות אחים ואחיות",
-    "normalizedName": "רשא חליליה אלרגולוגיה ואימונולוגיה קלינית צוות אחים ואחיות",
+    "canonicalDoctorId": "doctor-450399d9032b646f",
+    "fullName": "ד\"ר רשא חליליה- אלרגולוגיה ואימונולוגיה קלינית",
+    "normalizedName": "רשא חליליה אלרגולוגיה ואימונולוגיה קלינית",
     "profileUrl": null,
     "hospitalName": "ביה\"ח הצרפתי",
     "provider": "unknown",
@@ -286,7 +286,7 @@
       "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
     ],
     "evidence": [
-      "ד\"ר רשא חליליה- אלרגולוגיה ואימונולוגיה קלינית.\nצוות אחים ואחיות"
+      "ד\"ר רשא חליליה- אלרגולוגיה ואימונולוגיה קלינית"
     ]
   }
 ]

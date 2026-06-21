@@ -1,0 +1,20 @@
+[
+  {
+    "canonicalDoctorId": "doctor-177068df52010573",
+    "fullName": "ד\"ר איל פרוכטר",
+    "normalizedName": "איל פרוכטר",
+    "profileUrl": null,
+    "hospitalName": "מרכז לבה\"נ מעלה הכרמל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://www.tiratcarmel-med.org.il/"
+    ],
+    "evidence": [
+      "ד\"ר איל פרוכטר"
+    ]
+  }
+]

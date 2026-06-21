@@ -4,7 +4,8 @@ import type { CandidatePage, FetchSnapshot, HospitalBaseline, HospitalDoctorReco
 import { absoluteUrl, normalizeText, normalizeWhitespace } from "@/crawler/clalit/utils";
 
 const doctorTitlePattern =
-  /(?:ד["״']ר|ד״ר|ד"ר|ד'\s?ר|פרופ['׳]?|פרופ׳|פרופסור|Dr\.?|Prof\.?)\s+[א-תA-Za-z][א-תA-Za-z\s.'׳״"-]{2,90}/i;
+  /(?:ד["״']ר|ד״ר|ד"ר|ד'\s?ר|פרופ['׳]?|פרופ׳|פרופסור|Dr\.?|Prof\.?)\s+[א-תA-Za-z][א-תA-Za-z .'׳״"-]{2,90}/i;
+const doctorTitleGlobalPattern = new RegExp(doctorTitlePattern.source, "gi");
 const hebrewDoctorTitlePrefix = /^(ד["״']ר|ד״ר|ד"ר|ד'\s?ר|פרופ['׳]?|פרופ׳|פרופסור)\s+/;
 const linkCandidatePattern =
   /(רופאים|רופאי המחלקה|אנשי הצוות|צוות רפואי|הצוות הרפואי|הצוות שלנו|צוות המחלקה|מומחים|רופאים בכירים|doctors|doctor|team|staff|physicians|specialists)/i;
@@ -132,10 +133,14 @@ export function discoverCandidatePages(html: string, sourceUrl: string, baseline
 }
 
 function cleanName(value: string) {
-  const match = normalizeWhitespace(value).match(doctorTitlePattern);
-  return normalizeWhitespace(match?.[0] ?? value)
+  const compact = normalizeWhitespace(value)
+    .replace(/\s+(?=(?:ד["״']ר|ד״ר|ד"ר|ד'\s?ר|פרופ['׳]?|פרופ׳|פרופסור|Dr\.?|Prof\.?))/gi, "\n")
+    .split("\n")[0] ?? value;
+  const match = compact.match(doctorTitlePattern);
+  return normalizeWhitespace(match?.[0] ?? compact)
     .replace(/\s*[|,]\s*.*$/, "")
     .replace(/\s+-\s+.*$/, "")
+    .replace(/\s+(?:מנהל|מנהלת|רופא|רופאה|מומחה|מומחית|אחראי|אחראית|אחות|אח|director|physician|specialist|consultant)\b.*$/i, "")
     .replace(/[.]+$/g, "");
 }
 
@@ -175,6 +180,23 @@ function candidateRoot($: CheerioAPI, node: Parameters<CheerioAPI>[0]) {
   return $(node).closest("article,li,dd,tr,.doctor,.doctor-card,.team-member,.staff-member,.card,.item,div");
 }
 
+function doctorNameMatchesFromText(text: string) {
+  const names = new Set<string>();
+  const normalized = normalizeText(text)
+    .replace(/\s+(?=(?:ד["״']ר|ד״ר|ד"ר|ד'\s?ר|פרופ['׳]?|פרופ׳|פרופסור|Dr\.?|Prof\.?))/gi, "\n");
+  for (const line of normalized.split(/\n+/)) {
+    const trimmed = normalizeWhitespace(line);
+    if (!trimmed || noisyTextPattern.test(trimmed)) continue;
+    const matches = trimmed.match(doctorTitleGlobalPattern) ?? [];
+    for (const match of matches) {
+      const fullName = cleanName(match);
+      const normalizedName = normalizeDoctorName(fullName);
+      if (normalizedName.length >= 3 && normalizedName.length <= 80) names.add(fullName);
+    }
+  }
+  return Array.from(names);
+}
+
 export function extractDoctorsFromHtml(html: string, sourceUrl: string, baseline: HospitalBaseline, parserFamily: ParserFamily) {
   if (isNoisyCrawlerUrl(sourceUrl)) return [];
 
@@ -189,7 +211,7 @@ export function extractDoctorsFromHtml(html: string, sourceUrl: string, baseline
     const evidence = `${text} ${href ?? ""} ${rawText.slice(0, 160)}`;
     if (!doctorTitlePattern.test(evidence) || noisyTextPattern.test(evidence)) return;
     const textHasDoctorName = doctorTitlePattern.test(text);
-    const rawDoctorMatches = rawText.match(new RegExp(doctorTitlePattern.source, "gi")) ?? [];
+    const rawDoctorMatches = doctorNameMatchesFromText(rawText);
     if (!textHasDoctorName && rawDoctorMatches.length !== 1) return;
     const fullName = cleanName(textHasDoctorName ? text : rawText);
     const normalizedName = normalizeDoctorName(fullName);
@@ -217,7 +239,7 @@ export function extractDoctorsFromHtml(html: string, sourceUrl: string, baseline
 
   if (doctors.size === 0) {
     const bodyText = normalizeText($("body").text());
-    const matches = bodyText.match(new RegExp(doctorTitlePattern.source, "gi")) ?? [];
+    const matches = doctorNameMatchesFromText(bodyText);
     for (const match of matches.slice(0, 80)) {
       if (noisyTextPattern.test(match)) continue;
       const fullName = cleanName(match);

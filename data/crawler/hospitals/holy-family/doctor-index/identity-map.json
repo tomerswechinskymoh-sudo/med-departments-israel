@@ -49,18 +49,25 @@
     "evidence": "פרופ' ראיד סלים"
   },
   {
-    "canonicalName": "פרופ' ראיד סלים\nצוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק",
-    "normalizedName": "ראיד סלים צוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק",
-    "profileUrl": null,
-    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
-    "evidence": "פרופ' ראיד סלים\nצוות מחלקת נשים ויולדות בבית חולים המשפחה הקדושה שמח וגאה להעניק לך טיפול אישי מק"
-  },
-  {
     "canonicalName": "פרופ' ראיד סליםאח",
     "normalizedName": "ראיד סליםאח",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%92%D7%A3-%D7%A0%D7%A9%D7%99%D7%9D-%D7%95%D7%99%D7%95%D7%9C%D7%93%D7%95%D7%AA",
     "evidence": "פרופ' ראיד סליםאח"
+  },
+  {
+    "canonicalName": "ד\"ר איליא חורי",
+    "normalizedName": "איליא חורי",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "evidence": "ד\"ר איליא חורי"
+  },
+  {
+    "canonicalName": "ד\"ר אלכס חזנוביץ",
+    "normalizedName": "אלכס חזנוביץ",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "evidence": "ד\"ר אלכס חזנוביץ"
   },
   {
     "canonicalName": "ד\"ר בלאל חטיב",
@@ -70,18 +77,39 @@
     "evidence": "ד\"ר בלאל חטיב"
   },
   {
+    "canonicalName": "ד\"ר גהאד חאזן",
+    "normalizedName": "גהאד חאזן",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "evidence": "ד\"ר גהאד חאזן"
+  },
+  {
+    "canonicalName": "ד\"ר האדי זריק",
+    "normalizedName": "האדי זריק",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "evidence": "ד\"ר האדי זריק"
+  },
+  {
     "canonicalName": "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר",
     "normalizedName": "חדאד לנצרת וניהול המחלקה שהחל בפברואר",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
-    "evidence": "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר "
+    "evidence": "ד\"ר חדאד לנצרת וניהול המחלקה שהחל בפברואר"
+  },
+  {
+    "canonicalName": "ד\"ר מהדי ג'והר",
+    "normalizedName": "מהדי גוהר",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "evidence": "ד\"ר מהדי ג'והר"
   },
   {
     "canonicalName": "ד\"ר מוחמד יונס",
     "normalizedName": "מוחמד יונס",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
-    "evidence": "ד\"ר מוחמד יונס "
+    "evidence": "ד\"ר מוחמד יונס"
   },
   {
     "canonicalName": "ד\"ר מוחמד יונס וד\"ר מרואן גנטוס",
@@ -95,7 +123,7 @@
     "normalizedName": "מרואן גנטוס",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
-    "evidence": "ד\"ר מרואן גנטוס "
+    "evidence": "ד\"ר מרואן גנטוס"
   },
   {
     "canonicalName": "ד\"ר מרואן חדאד",
@@ -112,25 +140,39 @@
     "evidence": "ד\"ר מרואן חדאדאח"
   },
   {
-    "canonicalName": "ד\"ר מרואן יוסף\nד\"ר מהדי ג'והר\nד\"ר רביע אבו פול\nד\"ר גהאד חאזן\nד\"ר איליא חורי\nמחשבון בריאטריה\nמשק",
-    "normalizedName": "מרואן יוסף דר מהדי גוהר דר רביע אבו פול דר גהאד חאזן דר איליא חורי מחשבון בריאטריה משק",
+    "canonicalName": "ד\"ר מרואן יוסף",
+    "normalizedName": "מרואן יוסף",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
-    "evidence": "ד\"ר מרואן יוסף\nד\"ר מהדי ג'והר\nד\"ר רביע אבו פול\nד\"ר גהאד חאזן\nד\"ר איליא חורי\nמחשבון בריאטריה\nמשק"
+    "evidence": "ד\"ר מרואן יוסף"
+  },
+  {
+    "canonicalName": "ד\"ר עלי נגאר",
+    "normalizedName": "עלי נגאר",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "evidence": "ד\"ר עלי נגאר"
   },
   {
     "canonicalName": "ד\"ר פראס מלחם",
     "normalizedName": "פראס מלחם",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
-    "evidence": "ד\"ר פראס מלחם "
+    "evidence": "ד\"ר פראס מלחם"
   },
   {
-    "canonicalName": "ד\"ר ראיד אשקר\nד\"ר אלכס חזנוביץ\nד\"ר עלי נגאר\nד\"ר האדי זריק\nמתמחים",
-    "normalizedName": "ראיד אשקר דר אלכס חזנוביץ דר עלי נגאר דר האדי זריק מתמחים",
+    "canonicalName": "ד\"ר ראיד אשקר",
+    "normalizedName": "ראיד אשקר",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
-    "evidence": "ד\"ר ראיד אשקר\nד\"ר אלכס חזנוביץ\nד\"ר עלי נגאר\nד\"ר האדי זריק\nמתמחים"
+    "evidence": "ד\"ר ראיד אשקר"
+  },
+  {
+    "canonicalName": "ד\"ר רביע אבו פול",
+    "normalizedName": "רביע אבו פול",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%90%D7%95%D7%A8%D7%AA%D7%95%D7%A4%D7%93%D7%99%D7%94",
+    "evidence": "ד\"ר רביע אבו פול"
   },
   {
     "canonicalName": "ד\"ר זאהי אבו נסאר",
@@ -140,25 +182,46 @@
     "evidence": "ד\"ר זאהי אבו נסאר\nמנהל מכון הדימות\nמומחה ברדיולוגיה"
   },
   {
-    "canonicalName": "פרופ' זיו גיל\nמרכז לכירורגיה פלסטית",
-    "normalizedName": "זיו גיל מרכז לכירורגיה פלסטית",
+    "canonicalName": "ד\"ר אברהים חרבג'י",
+    "normalizedName": "אברהים חרבגי",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
-    "evidence": "פרופ' זיו גיל\nמרכז לכירורגיה פלסטית"
+    "evidence": "ד\"ר אברהים חרבג'י"
   },
   {
-    "canonicalName": "ד\"ר מוחמד חמוד\nיחידה פרוקטולוגית בניהול ד\"ר אברהים חרבג'י\nהמערך הכירורגי מטפל בחולים הזקוקים לט",
-    "normalizedName": "מוחמד חמוד יחידה פרוקטולוגית בניהול דר אברהים חרבגי המערך הכירורגי מטפל בחולים הזקוקים לט",
+    "canonicalName": "ד\"ר הדר עבודי נבו",
+    "normalizedName": "הדר עבודי נבו",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
-    "evidence": "ד\"ר מוחמד חמוד\nיחידה פרוקטולוגית בניהול ד\"ר אברהים חרבג'י\nהמערך הכירורגי מטפל בחולים הזקוקים לט"
+    "evidence": "ד\"ר הדר עבודי נבו"
   },
   {
-    "canonicalName": "ד\"ר מחמוד זידאן\nיחידה לכירורגיה של השד בניהול ד\"ר הדר עבודי נבו\nיחידת קולון ורקטום בניהול ד\"ר ו",
-    "normalizedName": "מחמוד זידאן יחידה לכירורגיה של השד בניהול דר הדר עבודי נבו יחידת קולון ורקטום בניהול דר ו",
+    "canonicalName": "ד\"ר ואיל ח'ורי",
+    "normalizedName": "ואיל חורי",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
-    "evidence": "ד\"ר מחמוד זידאן\nיחידה לכירורגיה של השד בניהול ד\"ר הדר עבודי נבו\nיחידת קולון ורקטום בניהול ד\"ר ו"
+    "evidence": "ד\"ר ואיל ח'ורי"
+  },
+  {
+    "canonicalName": "פרופ' זיו גיל",
+    "normalizedName": "זיו גיל",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "evidence": "פרופ' זיו גיל"
+  },
+  {
+    "canonicalName": "ד\"ר מוחמד חמוד",
+    "normalizedName": "מוחמד חמוד",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "evidence": "ד\"ר מוחמד חמוד"
+  },
+  {
+    "canonicalName": "ד\"ר מחמוד זידאן",
+    "normalizedName": "מחמוד זידאן",
+    "profileUrl": null,
+    "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
+    "evidence": "ד\"ר מחמוד זידאן"
   },
   {
     "canonicalName": "פרופ' נאסר סקרן",
@@ -175,10 +238,10 @@
     "evidence": "פרופ' נאסר סקרןאח"
   },
   {
-    "canonicalName": "ד\"ר סמיח זועבי\nמרכז בריאטרי",
-    "normalizedName": "סמיח זועבי מרכז בריאטרי",
+    "canonicalName": "ד\"ר סמיח זועבי",
+    "normalizedName": "סמיח זועבי",
     "profileUrl": null,
     "sourceUrl": "https://hfhosp.org/he/%D7%9E%D7%97%D7%9C%D7%A7%D7%95%D7%AA/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%9C%D7%9B%D7%99%D7%A8%D7%95%D7%A8%D7%92%D7%99%D7%94-%D7%9B%D7%9C%D7%9C%D7%99%D7%AA",
-    "evidence": "ד\"ר סמיח זועבי\nמרכז בריאטרי "
+    "evidence": "ד\"ר סמיח זועבי"
   }
 ]
