@@ -1,0 +1,922 @@
+[
+  {
+    "fullName": "ד\"ר אביה רוזנטל",
+    "normalizedName": "אביה רוזנטל",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אביה רוזנטל",
+    "sourceUrl": "https://www.laniado.org.il/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אביה רוזנטל",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0118-ביהח-לניאדו-רפואת-ילדים",
+      "master-dept-0119-ביהח-לניאדו-אורתופדיה",
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א",
+      "master-dept-0121-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-ב",
+      "master-dept-0122-ביהח-לניאדו-הרדמה",
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה",
+      "master-dept-0124-ביהח-לניאדו-רדיולוגיה-דימות",
+      "master-dept-0125-ביהח-לניאדו-כירורגיה-כללית",
+      "master-dept-0126-ביהח-לניאדו-גריאטריה",
+      "master-dept-0127-ביהח-לניאדו-רפואה-דחופה",
+      "master-dept-0128-ביהח-לניאדו-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א",
+      "בית חולים-מחלקה ב"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "אורתופדיה",
+      "פנימית",
+      "הרדמה",
+      "יילוד וגינקולוגיה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה כללית",
+      "גריאטריה",
+      "רפואה דחופה",
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר בן שדה",
+    "normalizedName": "בן שדה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר בן שדה",
+    "sourceUrl": "https://www.laniado.org.il/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר בן שדה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0118-ביהח-לניאדו-רפואת-ילדים",
+      "master-dept-0119-ביהח-לניאדו-אורתופדיה",
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א",
+      "master-dept-0121-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-ב",
+      "master-dept-0122-ביהח-לניאדו-הרדמה",
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה",
+      "master-dept-0124-ביהח-לניאדו-רדיולוגיה-דימות",
+      "master-dept-0125-ביהח-לניאדו-כירורגיה-כללית",
+      "master-dept-0126-ביהח-לניאדו-גריאטריה",
+      "master-dept-0127-ביהח-לניאדו-רפואה-דחופה",
+      "master-dept-0128-ביהח-לניאדו-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א",
+      "בית חולים-מחלקה ב"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "אורתופדיה",
+      "פנימית",
+      "הרדמה",
+      "יילוד וגינקולוגיה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה כללית",
+      "גריאטריה",
+      "רפואה דחופה",
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר הילה הוכלר",
+    "normalizedName": "הילה הוכלר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר הילה הוכלר",
+    "sourceUrl": "https://www.laniado.org.il/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר הילה הוכלר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0118-ביהח-לניאדו-רפואת-ילדים",
+      "master-dept-0119-ביהח-לניאדו-אורתופדיה",
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א",
+      "master-dept-0121-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-ב",
+      "master-dept-0122-ביהח-לניאדו-הרדמה",
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה",
+      "master-dept-0124-ביהח-לניאדו-רדיולוגיה-דימות",
+      "master-dept-0125-ביהח-לניאדו-כירורגיה-כללית",
+      "master-dept-0126-ביהח-לניאדו-גריאטריה",
+      "master-dept-0127-ביהח-לניאדו-רפואה-דחופה",
+      "master-dept-0128-ביהח-לניאדו-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א",
+      "בית חולים-מחלקה ב"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "אורתופדיה",
+      "פנימית",
+      "הרדמה",
+      "יילוד וגינקולוגיה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה כללית",
+      "גריאטריה",
+      "רפואה דחופה",
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר מיכאל בן אקון. הסיור כלל סקירה מקיפה של פעילות אגף הילדים",
+    "normalizedName": "מיכאל בן אקון הסיור כלל סקירה מקיפה של פעילות אגף הילדים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מיכאל בן אקון. הסיור כלל סקירה מקיפה של פעילות אגף הילדים",
+    "sourceUrl": "https://www.laniado.org.il/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מיכאל בן אקון. הסיור כלל סקירה מקיפה של פעילות אגף הילדים",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0118-ביהח-לניאדו-רפואת-ילדים",
+      "master-dept-0119-ביהח-לניאדו-אורתופדיה",
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א",
+      "master-dept-0121-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-ב",
+      "master-dept-0122-ביהח-לניאדו-הרדמה",
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה",
+      "master-dept-0124-ביהח-לניאדו-רדיולוגיה-דימות",
+      "master-dept-0125-ביהח-לניאדו-כירורגיה-כללית",
+      "master-dept-0126-ביהח-לניאדו-גריאטריה",
+      "master-dept-0127-ביהח-לניאדו-רפואה-דחופה",
+      "master-dept-0128-ביהח-לניאדו-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א",
+      "בית חולים-מחלקה ב"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "אורתופדיה",
+      "פנימית",
+      "הרדמה",
+      "יילוד וגינקולוגיה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה כללית",
+      "גריאטריה",
+      "רפואה דחופה",
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "פרופ' צבי שמעוני",
+    "normalizedName": "צבי שמעוני",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' צבי שמעוני",
+    "sourceUrl": "https://www.laniado.org.il/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' צבי שמעוני",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0118-ביהח-לניאדו-רפואת-ילדים",
+      "master-dept-0119-ביהח-לניאדו-אורתופדיה",
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א",
+      "master-dept-0121-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-ב",
+      "master-dept-0122-ביהח-לניאדו-הרדמה",
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה",
+      "master-dept-0124-ביהח-לניאדו-רדיולוגיה-דימות",
+      "master-dept-0125-ביהח-לניאדו-כירורגיה-כללית",
+      "master-dept-0126-ביהח-לניאדו-גריאטריה",
+      "master-dept-0127-ביהח-לניאדו-רפואה-דחופה",
+      "master-dept-0128-ביהח-לניאדו-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א",
+      "בית חולים-מחלקה ב"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "אורתופדיה",
+      "פנימית",
+      "הרדמה",
+      "יילוד וגינקולוגיה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה כללית",
+      "גריאטריה",
+      "רפואה דחופה",
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר שדה",
+    "normalizedName": "שדה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שדה",
+    "sourceUrl": "https://www.laniado.org.il/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שדה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0118-ביהח-לניאדו-רפואת-ילדים",
+      "master-dept-0119-ביהח-לניאדו-אורתופדיה",
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א",
+      "master-dept-0121-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-ב",
+      "master-dept-0122-ביהח-לניאדו-הרדמה",
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה",
+      "master-dept-0124-ביהח-לניאדו-רדיולוגיה-דימות",
+      "master-dept-0125-ביהח-לניאדו-כירורגיה-כללית",
+      "master-dept-0126-ביהח-לניאדו-גריאטריה",
+      "master-dept-0127-ביהח-לניאדו-רפואה-דחופה",
+      "master-dept-0128-ביהח-לניאדו-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א",
+      "בית חולים-מחלקה ב"
+    ],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים",
+      "אורתופדיה",
+      "פנימית",
+      "הרדמה",
+      "יילוד וגינקולוגיה",
+      "רדיולוגיה (דימות)",
+      "כירורגיה כללית",
+      "גריאטריה",
+      "רפואה דחופה",
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר מיכאל בן אקון",
+    "normalizedName": "מיכאל בן אקון",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%9e%d7%99%d7%9b%d7%90%d7%9c-%d7%91%d7%9f-%d7%90%d7%a7%d7%95%d7%9f/",
+    "imageUrl": null,
+    "rawText": "ד\"ר מיכאל בן אקון",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מיכאל בן אקון",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 22025,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0118-ביהח-לניאדו-רפואת-ילדים"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מיכאל בן אקון\nמנהל אגף ילדים",
+    "normalizedName": "מיכאל בן אקון מנהל אגף ילדים",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל אגף ילדים",
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%9e%d7%99%d7%9b%d7%90%d7%9c-%d7%91%d7%9f-%d7%90%d7%a7%d7%95%d7%9f/",
+    "imageUrl": "https://www.laniado.org.il/wp-content/uploads/2022/08/222-scaled-e1727547343296.jpg",
+    "rawText": "ד\"ר מיכאל בן אקון\nמנהל אגף ילדים",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מיכאל בן אקון\nמנהל אגף ילדים",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 22025,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0118-ביהח-לניאדו-רפואת-ילדים"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר קלוד פיקאר",
+    "normalizedName": "קלוד פיקאר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%a7%d7%9c%d7%95%d7%93-%d7%a4%d7%99%d7%a7%d7%90%d7%a8/",
+    "imageUrl": null,
+    "rawText": "ד\"ר קלוד פיקאר",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר קלוד פיקאר",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 23062,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0119-ביהח-לניאדו-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר קלוד פיקאר\nמנהל מחלקת אורטופדיה",
+    "normalizedName": "קלוד פיקאר מנהל מחלקת אורטופדיה",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מחלקת אורטופדיה",
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%a7%d7%9c%d7%95%d7%93-%d7%a4%d7%99%d7%a7%d7%90%d7%a8/",
+    "imageUrl": "https://www.laniado.org.il/wp-content/uploads/2022/07/DSC_7643%D7%A0%D7%99%D7%91%D7%97%D7%A8%D7%AA-scaled-e1749735408509.jpg",
+    "rawText": "ד\"ר קלוד פיקאר\nמנהל מחלקת אורטופדיה",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר קלוד פיקאר\nמנהל מחלקת אורטופדיה",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 23062,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0119-ביהח-לניאדו-אורתופדיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אינה דובין",
+    "normalizedName": "אינה דובין",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%99%d7%a0%d7%94-%d7%93%d7%95%d7%91%d7%99%d7%9f/",
+    "imageUrl": null,
+    "rawText": "ד\"ר אינה דובין",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אינה דובין",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 22036,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אינה דובין\nמנהלת מחלקת פנימית א'",
+    "normalizedName": "אינה דובין מנהלת מחלקת פנימית א",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהלת מחלקת פנימית א'",
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%99%d7%a0%d7%94-%d7%93%d7%95%d7%91%d7%99%d7%9f/",
+    "imageUrl": "https://www.laniado.org.il/wp-content/uploads/2022/08/-%D7%90%D7%99%D7%A0%D7%94-%D7%93%D7%95%D7%91%D7%99%D7%9F-scaled-e1660744127786.jpg",
+    "rawText": "ד\"ר אינה דובין\nמנהלת מחלקת פנימית א'",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אינה דובין\nמנהלת מחלקת פנימית א'",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 22036,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אליזבטה ניסים",
+    "normalizedName": "אליזבטה ניסים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9c%d7%99%d7%96%d7%91%d7%98%d7%94-%d7%a0%d7%99%d7%a1%d7%99%d7%9d/",
+    "imageUrl": null,
+    "rawText": "ד\"ר אליזבטה ניסים",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אליזבטה ניסים",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 22048,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אליזבטה ניסים\nמומחית לרפואה פנימית",
+    "normalizedName": "אליזבטה ניסים מומחית לרפואה פנימית",
+    "titlePrefix": "ד\"ר",
+    "role": "מומחית לרפואה פנימית",
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9c%d7%99%d7%96%d7%91%d7%98%d7%94-%d7%a0%d7%99%d7%a1%d7%99%d7%9d/",
+    "imageUrl": "https://www.laniado.org.il/wp-content/uploads/2022/08/-%D7%90%D7%9C%D7%99%D7%96%D7%91%D7%98%D7%94-%D7%A0%D7%99%D7%A1%D7%99%D7%9D-scaled-e1660745244100.jpg",
+    "rawText": "ד\"ר אליזבטה ניסים\nמומחית לרפואה פנימית",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אליזבטה ניסים\nמומחית לרפואה פנימית",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 22048,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "בית חולים- מחלקה א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אמיר וינטראוב",
+    "normalizedName": "אמיר וינטראוב",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9e%d7%99%d7%a8-%d7%95%d7%99%d7%a0%d7%98%d7%a8%d7%90%d7%95%d7%91/",
+    "imageUrl": null,
+    "rawText": "ד\"ר אמיר וינטראוב",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אמיר וינטראוב",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 23106,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אמיר וינטראוב\nמנהל יחידת IVF בלניאדו",
+    "normalizedName": "אמיר וינטראוב מנהל יחידת IVF בלניאדו",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל יחידת IVF בלניאדו",
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9e%d7%99%d7%a8-%d7%95%d7%99%d7%a0%d7%98%d7%a8%d7%90%d7%95%d7%91/",
+    "imageUrl": "https://www.laniado.org.il/wp-content/uploads/2022/08/DSC_7556-scaled-e1725820179370.jpg",
+    "rawText": "ד\"ר אמיר וינטראוב\nמנהל יחידת IVF בלניאדו",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אמיר וינטראוב\nמנהל יחידת IVF בלניאדו",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 23106,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר יעל יקל",
+    "normalizedName": "יעל יקל",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%99%d7%a2%d7%9c-%d7%99%d7%a7%d7%9c/",
+    "imageUrl": null,
+    "rawText": "ד\"ר יעל יקל",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר יעל יקל",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 22022,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר יעל יקל\nמנהלת מחלקה",
+    "normalizedName": "יעל יקל מנהלת מחלקה",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהלת מחלקה",
+    "unit": null,
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%99%d7%a2%d7%9c-%d7%99%d7%a7%d7%9c/",
+    "imageUrl": "https://www.laniado.org.il/wp-content/uploads/2022/08/DSC_7583-scaled-e1725726839367.jpg",
+    "rawText": "ד\"ר יעל יקל\nמנהלת מחלקה",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "laniado",
+    "hospital": "Laniado Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר יעל יקל\nמנהלת מחלקה",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 22022,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "ביה\"ח לניאדו",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "canonicalDoctorId": "doctor-0c1dcae4c627d58f",
+    "masterDeptRowId": null,
+    "hospitalName": "Laniado Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.laniado.org.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-23b8892f8d6291b4",
+    "masterDeptRowId": null,
+    "hospitalName": "Laniado Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.laniado.org.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-32d9a8c3152c5221",
+    "masterDeptRowId": "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח לניאדו",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-3b0f743825d96edd",
+    "masterDeptRowId": "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א",
+    "hospitalName": "ביה\"ח לניאדו",
+    "departmentName": "בית חולים- מחלקה א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-52a98745efa54883",
+    "masterDeptRowId": null,
+    "hospitalName": "Laniado Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.laniado.org.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-6227b2304916261e",
+    "masterDeptRowId": "master-dept-0118-ביהח-לניאדו-רפואת-ילדים",
+    "hospitalName": "ביה\"ח לניאדו",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+    "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-77f12ea9e6b0ad6e",
+    "masterDeptRowId": "master-dept-0119-ביהח-לניאדו-אורתופדיה",
+    "hospitalName": "ביה\"ח לניאדו",
+    "departmentName": "",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+    "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-b1c6abd4c28db542",
+    "masterDeptRowId": null,
+    "hospitalName": "Laniado Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.laniado.org.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-ca96b7bd6e7f8b48",
+    "masterDeptRowId": "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א",
+    "hospitalName": "ביה\"ח לניאדו",
+    "departmentName": "בית חולים- מחלקה א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-deecf6c98f1ca30a",
+    "masterDeptRowId": "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח לניאדו",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e06fd43c56dddc3d",
+    "masterDeptRowId": null,
+    "hospitalName": "Laniado Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.laniado.org.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-f8613385fcb27259",
+    "masterDeptRowId": null,
+    "hospitalName": "Laniado Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.laniado.org.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%92/",
+        "https://www.laniado.org.il/mahlakot/%D7%97%D7%93%D7%A8%D7%99-%D7%A0%D7%99%D7%AA%D7%95%D7%97/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9b%d7%95%d7%9f-%d7%93%d7%99%d7%9e%d7%95%d7%aa/",
+        "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%92%d7%a8%d7%99%d7%90%d7%98%d7%a8%d7%99/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%9c%d7%a8%d7%93-%d7%9e%d7%a8%d7%9b%d7%96-%d7%9c%d7%a8%d7%a4%d7%95%d7%90%d7%94-%d7%93%d7%97%d7%95%d7%a4%d7%94/",
+        "https://www.laniado.org.il/mahlakot/%d7%9e%d7%a2%d7%a8%d7%9a-%d7%94%d7%9c%d7%91/"
+      ],
+      "extractedFromUrl": "https://www.laniado.org.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Laniado Medical Center; candidates=11"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  }
+]

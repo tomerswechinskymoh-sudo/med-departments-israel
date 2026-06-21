@@ -7,10 +7,10 @@
     "providerGuess": "clalit",
     "masterDeptRows": 27,
     "rowsWithUrls": 27,
-    "liveUrlRows": 27,
-    "nearbyDoctorOrTeamUrlRows": 27,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
     "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
-    "whySelected": "known adapter emek; 27 Master_Dept URLs; 27 live inspected URLs; 27 nearby doctor/team URLs; 1 direct staff/doctors URLs",
+    "whySelected": "known adapter emek; 27 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs",
     "plannedMode": "pilot only"
   },
   {
@@ -21,10 +21,10 @@
     "providerGuess": "clalit",
     "masterDeptRows": 25,
     "rowsWithUrls": 22,
-    "liveUrlRows": 22,
-    "nearbyDoctorOrTeamUrlRows": 22,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
     "adapterParserFamily": "teamPage+inlineStaff",
-    "whySelected": "known adapter carmel; 22 Master_Dept URLs; 22 live inspected URLs; 22 nearby doctor/team URLs; 1 direct staff/doctors URLs",
+    "whySelected": "known adapter carmel; 22 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs",
     "plannedMode": "pilot only"
   },
   {
@@ -35,10 +35,10 @@
     "providerGuess": "clalit",
     "masterDeptRows": 25,
     "rowsWithUrls": 22,
-    "liveUrlRows": 22,
-    "nearbyDoctorOrTeamUrlRows": 22,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
     "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
-    "whySelected": "known adapter kaplan; 22 Master_Dept URLs; 22 live inspected URLs; 22 nearby doctor/team URLs",
+    "whySelected": "known adapter kaplan; 22 Master_Dept URLs; URLs pending inspection",
     "plannedMode": "pilot only"
   },
   {
@@ -51,10 +51,10 @@
     "providerGuess": "clalit",
     "masterDeptRows": 60,
     "rowsWithUrls": 11,
-    "liveUrlRows": 11,
-    "nearbyDoctorOrTeamUrlRows": 11,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
     "adapterParserFamily": "classicDoctorCards+teamPage",
-    "whySelected": "known adapter rabin; 11 Master_Dept URLs; 11 live inspected URLs; 11 nearby doctor/team URLs",
+    "whySelected": "known adapter rabin; 11 Master_Dept URLs; URLs pending inspection",
     "plannedMode": "pilot only"
   }
 ]

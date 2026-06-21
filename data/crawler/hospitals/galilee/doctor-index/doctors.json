@@ -1,0 +1,560 @@
+[
+  {
+    "fullName": "פרופ' ברהום בועידת הבריאות של ידיעות אחרונות",
+    "normalizedName": "ברהום בועידת הבריאות של ידיעות אחרונות",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=12176",
+    "imageUrl": null,
+    "rawText": "פרופ' ברהום בועידת הבריאות של ידיעות אחרונות",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' ברהום בועידת הבריאות של ידיעות אחרונות",
+    "qaFlags": [],
+    "qaSeverity": "ok"
+  },
+  {
+    "fullName": "פרופ' חיתאם חוסיין בסיקור מיוחד עבור \"ישראל היום\"",
+    "normalizedName": "חיתאם חוסיין בסיקור מיוחד עבור ישראל היום",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=22108",
+    "imageUrl": null,
+    "rawText": "התפרצות וירוס ההאנטה: פרופ' חיתאם חוסיין בסיקור מיוחד עבור \"ישראל היום\"",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "התפרצות וירוס ההאנטה: פרופ' חיתאם חוסיין בסיקור מיוחד עבור \"ישראל היום\"",
+    "qaFlags": [],
+    "qaSeverity": "ok"
+  },
+  {
+    "fullName": "פרופ' מסעד ברהום",
+    "normalizedName": "מסעד ברהום",
+    "titlePrefix": "פרופ'",
+    "role": "מפקד פיקוד הצפון, אלוף אורי גורדין העניק תעודת הוקרה למנהל המרכז, פרופ' מסעד ברהום.",
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=12221",
+    "imageUrl": null,
+    "rawText": "מפקד פיקוד הצפון, אלוף אורי גורדין העניק תעודת הוקרה למנהל המרכז, פרופ' מסעד ברהום.",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "מפקד פיקוד הצפון, אלוף אורי גורדין העניק תעודת הוקרה למנהל המרכז, פרופ' מסעד ברהום.",
+    "qaFlags": [],
+    "qaSeverity": "ok"
+  },
+  {
+    "fullName": "פרופ' מסעד ברהום",
+    "normalizedName": "מסעד ברהום",
+    "titlePrefix": "פרופ'",
+    "role": "הצדעה לצוותים ומוכנות לכל תרחיש: פרופ' מסעד ברהום, מנהל המרכז הרפואי לגליל, בראיון לערוץ 14",
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=22136",
+    "imageUrl": null,
+    "rawText": "הצדעה לצוותים ומוכנות לכל תרחיש: פרופ' מסעד ברהום, מנהל המרכז הרפואי לגליל, בראיון לערוץ 14",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "הצדעה לצוותים ומוכנות לכל תרחיש: פרופ' מסעד ברהום, מנהל המרכז הרפואי לגליל, בראיון לערוץ 14",
+    "qaFlags": [],
+    "qaSeverity": "ok"
+  },
+  {
+    "fullName": "ד\"ר צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס \"Resilient Medicine",
+    "normalizedName": "צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס Resilient Medicine",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=22119",
+    "imageUrl": null,
+    "rawText": "גאווה בזירה הבינלאומית: ד\"ר צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס \"Resilient Medicine 2026\"",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "גאווה בזירה הבינלאומית: ד\"ר צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס \"Resilient Medicine 2026\"",
+    "qaFlags": [],
+    "qaSeverity": "ok"
+  },
+  {
+    "fullName": "ד\"ר שרבל חורי",
+    "normalizedName": "שרבל חורי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=12196",
+    "imageUrl": null,
+    "rawText": "תעודת הוקרה לד\"ר שרבל חורי",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "תעודת הוקרה לד\"ר שרבל חורי",
+    "qaFlags": [],
+    "qaSeverity": "ok"
+  },
+  {
+    "fullName": "ד\"ר גאנם נדיר",
+    "normalizedName": "גאנם נדיר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גאנם נדיר",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר גאנם נדיר",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "פרופ' ליאור לבנשטיין",
+    "normalizedName": "ליאור לבנשטיין",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' ליאור לבנשטיין",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' ליאור לבנשטיין",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "פרופ' מאיה וולף-פרנק",
+    "normalizedName": "מאיה וולף פרנק",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' מאיה וולף-פרנק",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' מאיה וולף-פרנק",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "פרופ' מרואן עודה",
+    "normalizedName": "מרואן עודה",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' מרואן עודה",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' מרואן עודה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר שרון אבשלום",
+    "normalizedName": "שרון אבשלום",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שרון אבשלום",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שרון אבשלום",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר בולוס מריאנה",
+    "normalizedName": "בולוס מריאנה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר בולוס מריאנה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר בולוס מריאנה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מלחם פארס",
+    "normalizedName": "מלחם פארס",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מלחם פארס",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מלחם פארס",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "פרופ' נימר עאסי",
+    "normalizedName": "נימר עאסי",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' נימר עאסי",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' נימר עאסי",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר סבטלנה ליסיצין",
+    "normalizedName": "סבטלנה ליסיצין",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר סבטלנה ליסיצין",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר סבטלנה ליסיצין",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר ואסים משיעל",
+    "normalizedName": "ואסים משיעל",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ואסים משיעל",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ואסים משיעל",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר ואסים שיהאב",
+    "normalizedName": "ואסים שיהאב",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ואסים שיהאב",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ואסים שיהאב",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר חליל נסראללה",
+    "normalizedName": "חליל נסראללה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר חליל נסראללה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר חליל נסראללה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר לואי עראף",
+    "normalizedName": "לואי עראף",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר לואי עראף",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר לואי עראף",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר שטארקר חיים יפים",
+    "normalizedName": "שטארקר חיים יפים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שטארקר חיים יפים",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שטארקר חיים יפים",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אדהם דאוד",
+    "normalizedName": "אדהם דאוד",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אדהם דאוד",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אדהם דאוד",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אליהו חלפון",
+    "normalizedName": "אליהו חלפון",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אליהו חלפון",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אליהו חלפון",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אלכס שטורמן",
+    "normalizedName": "אלכס שטורמן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אלכס שטורמן",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אלכס שטורמן",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר גסאן מועדי",
+    "normalizedName": "גסאן מועדי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גסאן מועדי",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר גסאן מועדי",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר טוני אבו רחמה",
+    "normalizedName": "טוני אבו רחמה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר טוני אבו רחמה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר טוני אבו רחמה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר לואי מוברכה",
+    "normalizedName": "לואי מוברכה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר לואי מוברכה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר לואי מוברכה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מואנס סרחאן",
+    "normalizedName": "מואנס סרחאן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מואנס סרחאן",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מואנס סרחאן",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר צפריר אור",
+    "normalizedName": "צפריר אור",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר צפריר אור",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר צפריר אור",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "פרופ' שאול עטר",
+    "normalizedName": "שאול עטר",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' שאול עטר",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' שאול עטר",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר שולי האיתם",
+    "normalizedName": "שולי האיתם",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שולי האיתם",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שולי האיתם",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review"
+  }
+]

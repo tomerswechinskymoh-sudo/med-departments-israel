@@ -1,0 +1,128 @@
+[
+  {
+    "canonicalName": "ד\"ר אביה רוזנטל",
+    "normalizedName": "אביה רוזנטל",
+    "profileUrl": null,
+    "sourceUrl": "https://www.laniado.org.il/",
+    "evidence": "ד\"ר אביה רוזנטל"
+  },
+  {
+    "canonicalName": "ד\"ר בן שדה",
+    "normalizedName": "בן שדה",
+    "profileUrl": null,
+    "sourceUrl": "https://www.laniado.org.il/",
+    "evidence": "ד\"ר בן שדה"
+  },
+  {
+    "canonicalName": "ד\"ר הילה הוכלר",
+    "normalizedName": "הילה הוכלר",
+    "profileUrl": null,
+    "sourceUrl": "https://www.laniado.org.il/",
+    "evidence": "ד\"ר הילה הוכלר"
+  },
+  {
+    "canonicalName": "ד\"ר מיכאל בן אקון. הסיור כלל סקירה מקיפה של פעילות אגף הילדים",
+    "normalizedName": "מיכאל בן אקון הסיור כלל סקירה מקיפה של פעילות אגף הילדים",
+    "profileUrl": null,
+    "sourceUrl": "https://www.laniado.org.il/",
+    "evidence": "ד\"ר מיכאל בן אקון. הסיור כלל סקירה מקיפה של פעילות אגף הילדים"
+  },
+  {
+    "canonicalName": "פרופ' צבי שמעוני",
+    "normalizedName": "צבי שמעוני",
+    "profileUrl": null,
+    "sourceUrl": "https://www.laniado.org.il/",
+    "evidence": "פרופ' צבי שמעוני"
+  },
+  {
+    "canonicalName": "ד\"ר שדה",
+    "normalizedName": "שדה",
+    "profileUrl": null,
+    "sourceUrl": "https://www.laniado.org.il/",
+    "evidence": "ד\"ר שדה"
+  },
+  {
+    "canonicalName": "ד\"ר מיכאל בן אקון",
+    "normalizedName": "מיכאל בן אקון",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%9e%d7%99%d7%9b%d7%90%d7%9c-%d7%91%d7%9f-%d7%90%d7%a7%d7%95%d7%9f/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+    "evidence": "ד\"ר מיכאל בן אקון"
+  },
+  {
+    "canonicalName": "ד\"ר מיכאל בן אקון\nמנהל אגף ילדים",
+    "normalizedName": "מיכאל בן אקון מנהל אגף ילדים",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%9e%d7%99%d7%9b%d7%90%d7%9c-%d7%91%d7%9f-%d7%90%d7%a7%d7%95%d7%9f/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+    "evidence": "ד\"ר מיכאל בן אקון\nמנהל אגף ילדים"
+  },
+  {
+    "canonicalName": "ד\"ר קלוד פיקאר",
+    "normalizedName": "קלוד פיקאר",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%a7%d7%9c%d7%95%d7%93-%d7%a4%d7%99%d7%a7%d7%90%d7%a8/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+    "evidence": "ד\"ר קלוד פיקאר"
+  },
+  {
+    "canonicalName": "ד\"ר קלוד פיקאר\nמנהל מחלקת אורטופדיה",
+    "normalizedName": "קלוד פיקאר מנהל מחלקת אורטופדיה",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%a7%d7%9c%d7%95%d7%93-%d7%a4%d7%99%d7%a7%d7%90%d7%a8/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+    "evidence": "ד\"ר קלוד פיקאר\nמנהל מחלקת אורטופדיה"
+  },
+  {
+    "canonicalName": "ד\"ר אינה דובין",
+    "normalizedName": "אינה דובין",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%99%d7%a0%d7%94-%d7%93%d7%95%d7%91%d7%99%d7%9f/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "evidence": "ד\"ר אינה דובין"
+  },
+  {
+    "canonicalName": "ד\"ר אינה דובין\nמנהלת מחלקת פנימית א'",
+    "normalizedName": "אינה דובין מנהלת מחלקת פנימית א",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%99%d7%a0%d7%94-%d7%93%d7%95%d7%91%d7%99%d7%9f/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "evidence": "ד\"ר אינה דובין\nמנהלת מחלקת פנימית א'"
+  },
+  {
+    "canonicalName": "ד\"ר אליזבטה ניסים",
+    "normalizedName": "אליזבטה ניסים",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9c%d7%99%d7%96%d7%91%d7%98%d7%94-%d7%a0%d7%99%d7%a1%d7%99%d7%9d/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "evidence": "ד\"ר אליזבטה ניסים"
+  },
+  {
+    "canonicalName": "ד\"ר אליזבטה ניסים\nמומחית לרפואה פנימית",
+    "normalizedName": "אליזבטה ניסים מומחית לרפואה פנימית",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9c%d7%99%d7%96%d7%91%d7%98%d7%94-%d7%a0%d7%99%d7%a1%d7%99%d7%9d/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "evidence": "ד\"ר אליזבטה ניסים\nמומחית לרפואה פנימית"
+  },
+  {
+    "canonicalName": "ד\"ר אמיר וינטראוב",
+    "normalizedName": "אמיר וינטראוב",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9e%d7%99%d7%a8-%d7%95%d7%99%d7%a0%d7%98%d7%a8%d7%90%d7%95%d7%91/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר אמיר וינטראוב"
+  },
+  {
+    "canonicalName": "ד\"ר אמיר וינטראוב\nמנהל יחידת IVF בלניאדו",
+    "normalizedName": "אמיר וינטראוב מנהל יחידת IVF בלניאדו",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%90%d7%9e%d7%99%d7%a8-%d7%95%d7%99%d7%a0%d7%98%d7%a8%d7%90%d7%95%d7%91/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר אמיר וינטראוב\nמנהל יחידת IVF בלניאדו"
+  },
+  {
+    "canonicalName": "ד\"ר יעל יקל",
+    "normalizedName": "יעל יקל",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%99%d7%a2%d7%9c-%d7%99%d7%a7%d7%9c/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר יעל יקל"
+  },
+  {
+    "canonicalName": "ד\"ר יעל יקל\nמנהלת מחלקה",
+    "normalizedName": "יעל יקל מנהלת מחלקה",
+    "profileUrl": "https://www.laniado.org.il/doctor/%d7%93%d7%a8-%d7%99%d7%a2%d7%9c-%d7%99%d7%a7%d7%9c/",
+    "sourceUrl": "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר יעל יקל\nמנהלת מחלקה"
+  }
+]

@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "laniado",
+  "hospitalName": "Laniado Medical Center",
+  "generatedAt": "2026-06-21T10:16:20.646Z",
+  "urlsUsed": [
+    "https://www.laniado.org.il/",
+    "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+    "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+    "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+    "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 11,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 18,
+  "profileUrlCoverage": 0.6666666666666666,
+  "profileFetchSuccess": 6,
+  "reviewedRecords": 18,
+  "productionReadyCount": 12,
+  "missingProfileUrlCount": 6,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 6,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 12,
+    "partial": 0,
+    "listOnly": 6
+  },
+  "readiness": "needsCalibration",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Duplicate profile URLs remain in pilot output."
+}

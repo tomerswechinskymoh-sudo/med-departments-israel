@@ -1,0 +1,1736 @@
+[
+  {
+    "fullName": "פרופ' ברהום בועידת הבריאות של ידיעות אחרונות",
+    "normalizedName": "ברהום בועידת הבריאות של ידיעות אחרונות",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=12176",
+    "imageUrl": null,
+    "rawText": "פרופ' ברהום בועידת הבריאות של ידיעות אחרונות",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' ברהום בועידת הבריאות של ידיעות אחרונות",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "partial",
+    "profileTextLength": 32473,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+      "master-dept-0334-המרכז-הרפואי-לגליל-פנימית-ב",
+      "master-dept-0335-המרכז-הרפואי-לגליל-פנימית-ג",
+      "master-dept-0336-המרכז-הרפואי-לגליל-פנימית-ד",
+      "master-dept-0337-המרכז-הרפואי-לגליל-פנימית-ה",
+      "master-dept-0338-המרכז-הרפואי-לגליל-פנימית-ו",
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+      "master-dept-0340-המרכז-הרפואי-לגליל-אורתופדיה-ב",
+      "master-dept-0341-המרכז-הרפואי-לגליל-רפואה-דחופה",
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+      "master-dept-0343-המרכז-הרפואי-לגליל-כירורגיה-כללית-א",
+      "master-dept-0344-המרכז-הרפואי-לגליל-כירורגיה-כללית-ב",
+      "master-dept-0345-המרכז-הרפואי-לגליל-אונקולוגיה",
+      "master-dept-0346-המרכז-הרפואי-לגליל-מחלות-עיניים",
+      "master-dept-0347-המרכז-הרפואי-לגליל-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0348-המרכז-הרפואי-לגליל-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0349-המרכז-הרפואי-לגליל-רפואת-ילדים",
+      "master-dept-0350-המרכז-הרפואי-לגליל-אף-אוזן-גרון",
+      "master-dept-0351-המרכז-הרפואי-לגליל-רדיולוגיה-דימות",
+      "master-dept-0352-המרכז-הרפואי-לגליל-גריאטריה",
+      "master-dept-0353-המרכז-הרפואי-לגליל-פתולוגיה",
+      "master-dept-0354-המרכז-הרפואי-לגליל-כירורגיה-אורולוגית",
+      "master-dept-0355-המרכז-הרפואי-לגליל-נוירולוגיה",
+      "master-dept-0356-המרכז-הרפואי-לגליל-הרדמה",
+      "master-dept-0357-המרכז-הרפואי-לגליל-כירורגית-ילדים",
+      "master-dept-0358-המרכז-הרפואי-לגליל-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0359-המרכז-הרפואי-לגליל-נוירוכירורגיה",
+      "master-dept-0360-המרכז-הרפואי-לגליל-רפואה-גרעינית"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "ה",
+      "ו"
+    ],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה",
+      "פנימית",
+      "אורתופדיה",
+      "רפואה דחופה",
+      "קרדיולוגיה",
+      "כירורגיה כללית",
+      "אונקולוגיה",
+      "מחלות עיניים",
+      "כירורגיה פלסטית ואסתטית",
+      "פסיכיאטריה של הילד והמתבגר",
+      "רפואת ילדים",
+      "אף אוזן גרון",
+      "רדיולוגיה (דימות)",
+      "גריאטריה",
+      "פתולוגיה",
+      "כירורגיה אורולוגית",
+      "נוירולוגיה",
+      "הרדמה",
+      "כירורגית ילדים",
+      "רפואה פיזיקלית ושיקום",
+      "נוירוכירורגיה",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "פרופ' חיתאם חוסיין בסיקור מיוחד עבור \"ישראל היום\"",
+    "normalizedName": "חיתאם חוסיין בסיקור מיוחד עבור ישראל היום",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=22108",
+    "imageUrl": null,
+    "rawText": "התפרצות וירוס ההאנטה: פרופ' חיתאם חוסיין בסיקור מיוחד עבור \"ישראל היום\"",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "התפרצות וירוס ההאנטה: פרופ' חיתאם חוסיין בסיקור מיוחד עבור \"ישראל היום\"",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 33292,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+      "master-dept-0334-המרכז-הרפואי-לגליל-פנימית-ב",
+      "master-dept-0335-המרכז-הרפואי-לגליל-פנימית-ג",
+      "master-dept-0336-המרכז-הרפואי-לגליל-פנימית-ד",
+      "master-dept-0337-המרכז-הרפואי-לגליל-פנימית-ה",
+      "master-dept-0338-המרכז-הרפואי-לגליל-פנימית-ו",
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+      "master-dept-0340-המרכז-הרפואי-לגליל-אורתופדיה-ב",
+      "master-dept-0341-המרכז-הרפואי-לגליל-רפואה-דחופה",
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+      "master-dept-0343-המרכז-הרפואי-לגליל-כירורגיה-כללית-א",
+      "master-dept-0344-המרכז-הרפואי-לגליל-כירורגיה-כללית-ב",
+      "master-dept-0345-המרכז-הרפואי-לגליל-אונקולוגיה",
+      "master-dept-0346-המרכז-הרפואי-לגליל-מחלות-עיניים",
+      "master-dept-0347-המרכז-הרפואי-לגליל-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0348-המרכז-הרפואי-לגליל-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0349-המרכז-הרפואי-לגליל-רפואת-ילדים",
+      "master-dept-0350-המרכז-הרפואי-לגליל-אף-אוזן-גרון",
+      "master-dept-0351-המרכז-הרפואי-לגליל-רדיולוגיה-דימות",
+      "master-dept-0352-המרכז-הרפואי-לגליל-גריאטריה",
+      "master-dept-0353-המרכז-הרפואי-לגליל-פתולוגיה",
+      "master-dept-0354-המרכז-הרפואי-לגליל-כירורגיה-אורולוגית",
+      "master-dept-0355-המרכז-הרפואי-לגליל-נוירולוגיה",
+      "master-dept-0356-המרכז-הרפואי-לגליל-הרדמה",
+      "master-dept-0357-המרכז-הרפואי-לגליל-כירורגית-ילדים",
+      "master-dept-0358-המרכז-הרפואי-לגליל-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0359-המרכז-הרפואי-לגליל-נוירוכירורגיה",
+      "master-dept-0360-המרכז-הרפואי-לגליל-רפואה-גרעינית"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "ה",
+      "ו"
+    ],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה",
+      "פנימית",
+      "אורתופדיה",
+      "רפואה דחופה",
+      "קרדיולוגיה",
+      "כירורגיה כללית",
+      "אונקולוגיה",
+      "מחלות עיניים",
+      "כירורגיה פלסטית ואסתטית",
+      "פסיכיאטריה של הילד והמתבגר",
+      "רפואת ילדים",
+      "אף אוזן גרון",
+      "רדיולוגיה (דימות)",
+      "גריאטריה",
+      "פתולוגיה",
+      "כירורגיה אורולוגית",
+      "נוירולוגיה",
+      "הרדמה",
+      "כירורגית ילדים",
+      "רפואה פיזיקלית ושיקום",
+      "נוירוכירורגיה",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "פרופ' מסעד ברהום",
+    "normalizedName": "מסעד ברהום",
+    "titlePrefix": "פרופ'",
+    "role": "מפקד פיקוד הצפון, אלוף אורי גורדין העניק תעודת הוקרה למנהל המרכז, פרופ' מסעד ברהום.",
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=12221",
+    "imageUrl": null,
+    "rawText": "מפקד פיקוד הצפון, אלוף אורי גורדין העניק תעודת הוקרה למנהל המרכז, פרופ' מסעד ברהום.",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "מפקד פיקוד הצפון, אלוף אורי גורדין העניק תעודת הוקרה למנהל המרכז, פרופ' מסעד ברהום.",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "partial",
+    "profileTextLength": 32928,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+      "master-dept-0334-המרכז-הרפואי-לגליל-פנימית-ב",
+      "master-dept-0335-המרכז-הרפואי-לגליל-פנימית-ג",
+      "master-dept-0336-המרכז-הרפואי-לגליל-פנימית-ד",
+      "master-dept-0337-המרכז-הרפואי-לגליל-פנימית-ה",
+      "master-dept-0338-המרכז-הרפואי-לגליל-פנימית-ו",
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+      "master-dept-0340-המרכז-הרפואי-לגליל-אורתופדיה-ב",
+      "master-dept-0341-המרכז-הרפואי-לגליל-רפואה-דחופה",
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+      "master-dept-0343-המרכז-הרפואי-לגליל-כירורגיה-כללית-א",
+      "master-dept-0344-המרכז-הרפואי-לגליל-כירורגיה-כללית-ב",
+      "master-dept-0345-המרכז-הרפואי-לגליל-אונקולוגיה",
+      "master-dept-0346-המרכז-הרפואי-לגליל-מחלות-עיניים",
+      "master-dept-0347-המרכז-הרפואי-לגליל-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0348-המרכז-הרפואי-לגליל-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0349-המרכז-הרפואי-לגליל-רפואת-ילדים",
+      "master-dept-0350-המרכז-הרפואי-לגליל-אף-אוזן-גרון",
+      "master-dept-0351-המרכז-הרפואי-לגליל-רדיולוגיה-דימות",
+      "master-dept-0352-המרכז-הרפואי-לגליל-גריאטריה",
+      "master-dept-0353-המרכז-הרפואי-לגליל-פתולוגיה",
+      "master-dept-0354-המרכז-הרפואי-לגליל-כירורגיה-אורולוגית",
+      "master-dept-0355-המרכז-הרפואי-לגליל-נוירולוגיה",
+      "master-dept-0356-המרכז-הרפואי-לגליל-הרדמה",
+      "master-dept-0357-המרכז-הרפואי-לגליל-כירורגית-ילדים",
+      "master-dept-0358-המרכז-הרפואי-לגליל-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0359-המרכז-הרפואי-לגליל-נוירוכירורגיה",
+      "master-dept-0360-המרכז-הרפואי-לגליל-רפואה-גרעינית"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "ה",
+      "ו"
+    ],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה",
+      "פנימית",
+      "אורתופדיה",
+      "רפואה דחופה",
+      "קרדיולוגיה",
+      "כירורגיה כללית",
+      "אונקולוגיה",
+      "מחלות עיניים",
+      "כירורגיה פלסטית ואסתטית",
+      "פסיכיאטריה של הילד והמתבגר",
+      "רפואת ילדים",
+      "אף אוזן גרון",
+      "רדיולוגיה (דימות)",
+      "גריאטריה",
+      "פתולוגיה",
+      "כירורגיה אורולוגית",
+      "נוירולוגיה",
+      "הרדמה",
+      "כירורגית ילדים",
+      "רפואה פיזיקלית ושיקום",
+      "נוירוכירורגיה",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "פרופ' מסעד ברהום",
+    "normalizedName": "מסעד ברהום",
+    "titlePrefix": "פרופ'",
+    "role": "הצדעה לצוותים ומוכנות לכל תרחיש: פרופ' מסעד ברהום, מנהל המרכז הרפואי לגליל, בראיון לערוץ 14",
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=22136",
+    "imageUrl": null,
+    "rawText": "הצדעה לצוותים ומוכנות לכל תרחיש: פרופ' מסעד ברהום, מנהל המרכז הרפואי לגליל, בראיון לערוץ 14",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "הצדעה לצוותים ומוכנות לכל תרחיש: פרופ' מסעד ברהום, מנהל המרכז הרפואי לגליל, בראיון לערוץ 14",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 33533,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+      "master-dept-0334-המרכז-הרפואי-לגליל-פנימית-ב",
+      "master-dept-0335-המרכז-הרפואי-לגליל-פנימית-ג",
+      "master-dept-0336-המרכז-הרפואי-לגליל-פנימית-ד",
+      "master-dept-0337-המרכז-הרפואי-לגליל-פנימית-ה",
+      "master-dept-0338-המרכז-הרפואי-לגליל-פנימית-ו",
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+      "master-dept-0340-המרכז-הרפואי-לגליל-אורתופדיה-ב",
+      "master-dept-0341-המרכז-הרפואי-לגליל-רפואה-דחופה",
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+      "master-dept-0343-המרכז-הרפואי-לגליל-כירורגיה-כללית-א",
+      "master-dept-0344-המרכז-הרפואי-לגליל-כירורגיה-כללית-ב",
+      "master-dept-0345-המרכז-הרפואי-לגליל-אונקולוגיה",
+      "master-dept-0346-המרכז-הרפואי-לגליל-מחלות-עיניים",
+      "master-dept-0347-המרכז-הרפואי-לגליל-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0348-המרכז-הרפואי-לגליל-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0349-המרכז-הרפואי-לגליל-רפואת-ילדים",
+      "master-dept-0350-המרכז-הרפואי-לגליל-אף-אוזן-גרון",
+      "master-dept-0351-המרכז-הרפואי-לגליל-רדיולוגיה-דימות",
+      "master-dept-0352-המרכז-הרפואי-לגליל-גריאטריה",
+      "master-dept-0353-המרכז-הרפואי-לגליל-פתולוגיה",
+      "master-dept-0354-המרכז-הרפואי-לגליל-כירורגיה-אורולוגית",
+      "master-dept-0355-המרכז-הרפואי-לגליל-נוירולוגיה",
+      "master-dept-0356-המרכז-הרפואי-לגליל-הרדמה",
+      "master-dept-0357-המרכז-הרפואי-לגליל-כירורגית-ילדים",
+      "master-dept-0358-המרכז-הרפואי-לגליל-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0359-המרכז-הרפואי-לגליל-נוירוכירורגיה",
+      "master-dept-0360-המרכז-הרפואי-לגליל-רפואה-גרעינית"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "ה",
+      "ו"
+    ],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה",
+      "פנימית",
+      "אורתופדיה",
+      "רפואה דחופה",
+      "קרדיולוגיה",
+      "כירורגיה כללית",
+      "אונקולוגיה",
+      "מחלות עיניים",
+      "כירורגיה פלסטית ואסתטית",
+      "פסיכיאטריה של הילד והמתבגר",
+      "רפואת ילדים",
+      "אף אוזן גרון",
+      "רדיולוגיה (דימות)",
+      "גריאטריה",
+      "פתולוגיה",
+      "כירורגיה אורולוגית",
+      "נוירולוגיה",
+      "הרדמה",
+      "כירורגית ילדים",
+      "רפואה פיזיקלית ושיקום",
+      "נוירוכירורגיה",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס \"Resilient Medicine",
+    "normalizedName": "צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס Resilient Medicine",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=22119",
+    "imageUrl": null,
+    "rawText": "גאווה בזירה הבינלאומית: ד\"ר צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס \"Resilient Medicine 2026\"",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "גאווה בזירה הבינלאומית: ד\"ר צבי שלג הציג את מומחיות המרכז הרפואי לגליל בכנס \"Resilient Medicine 2026\"",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 33534,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+      "master-dept-0334-המרכז-הרפואי-לגליל-פנימית-ב",
+      "master-dept-0335-המרכז-הרפואי-לגליל-פנימית-ג",
+      "master-dept-0336-המרכז-הרפואי-לגליל-פנימית-ד",
+      "master-dept-0337-המרכז-הרפואי-לגליל-פנימית-ה",
+      "master-dept-0338-המרכז-הרפואי-לגליל-פנימית-ו",
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+      "master-dept-0340-המרכז-הרפואי-לגליל-אורתופדיה-ב",
+      "master-dept-0341-המרכז-הרפואי-לגליל-רפואה-דחופה",
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+      "master-dept-0343-המרכז-הרפואי-לגליל-כירורגיה-כללית-א",
+      "master-dept-0344-המרכז-הרפואי-לגליל-כירורגיה-כללית-ב",
+      "master-dept-0345-המרכז-הרפואי-לגליל-אונקולוגיה",
+      "master-dept-0346-המרכז-הרפואי-לגליל-מחלות-עיניים",
+      "master-dept-0347-המרכז-הרפואי-לגליל-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0348-המרכז-הרפואי-לגליל-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0349-המרכז-הרפואי-לגליל-רפואת-ילדים",
+      "master-dept-0350-המרכז-הרפואי-לגליל-אף-אוזן-גרון",
+      "master-dept-0351-המרכז-הרפואי-לגליל-רדיולוגיה-דימות",
+      "master-dept-0352-המרכז-הרפואי-לגליל-גריאטריה",
+      "master-dept-0353-המרכז-הרפואי-לגליל-פתולוגיה",
+      "master-dept-0354-המרכז-הרפואי-לגליל-כירורגיה-אורולוגית",
+      "master-dept-0355-המרכז-הרפואי-לגליל-נוירולוגיה",
+      "master-dept-0356-המרכז-הרפואי-לגליל-הרדמה",
+      "master-dept-0357-המרכז-הרפואי-לגליל-כירורגית-ילדים",
+      "master-dept-0358-המרכז-הרפואי-לגליל-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0359-המרכז-הרפואי-לגליל-נוירוכירורגיה",
+      "master-dept-0360-המרכז-הרפואי-לגליל-רפואה-גרעינית"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "ה",
+      "ו"
+    ],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה",
+      "פנימית",
+      "אורתופדיה",
+      "רפואה דחופה",
+      "קרדיולוגיה",
+      "כירורגיה כללית",
+      "אונקולוגיה",
+      "מחלות עיניים",
+      "כירורגיה פלסטית ואסתטית",
+      "פסיכיאטריה של הילד והמתבגר",
+      "רפואת ילדים",
+      "אף אוזן גרון",
+      "רדיולוגיה (דימות)",
+      "גריאטריה",
+      "פתולוגיה",
+      "כירורגיה אורולוגית",
+      "נוירולוגיה",
+      "הרדמה",
+      "כירורגית ילדים",
+      "רפואה פיזיקלית ושיקום",
+      "נוירוכירורגיה",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר שרבל חורי",
+    "normalizedName": "שרבל חורי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.gmc.gov.il/?p=12196",
+    "imageUrl": null,
+    "rawText": "תעודת הוקרה לד\"ר שרבל חורי",
+    "sourceUrl": "https://www.gmc.gov.il/",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "תעודת הוקרה לד\"ר שרבל חורי",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "partial",
+    "profileTextLength": 32314,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+      "master-dept-0334-המרכז-הרפואי-לגליל-פנימית-ב",
+      "master-dept-0335-המרכז-הרפואי-לגליל-פנימית-ג",
+      "master-dept-0336-המרכז-הרפואי-לגליל-פנימית-ד",
+      "master-dept-0337-המרכז-הרפואי-לגליל-פנימית-ה",
+      "master-dept-0338-המרכז-הרפואי-לגליל-פנימית-ו",
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+      "master-dept-0340-המרכז-הרפואי-לגליל-אורתופדיה-ב",
+      "master-dept-0341-המרכז-הרפואי-לגליל-רפואה-דחופה",
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+      "master-dept-0343-המרכז-הרפואי-לגליל-כירורגיה-כללית-א",
+      "master-dept-0344-המרכז-הרפואי-לגליל-כירורגיה-כללית-ב",
+      "master-dept-0345-המרכז-הרפואי-לגליל-אונקולוגיה",
+      "master-dept-0346-המרכז-הרפואי-לגליל-מחלות-עיניים",
+      "master-dept-0347-המרכז-הרפואי-לגליל-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0348-המרכז-הרפואי-לגליל-פסיכיאטריה-של-הילד-והמתבגר",
+      "master-dept-0349-המרכז-הרפואי-לגליל-רפואת-ילדים",
+      "master-dept-0350-המרכז-הרפואי-לגליל-אף-אוזן-גרון",
+      "master-dept-0351-המרכז-הרפואי-לגליל-רדיולוגיה-דימות",
+      "master-dept-0352-המרכז-הרפואי-לגליל-גריאטריה",
+      "master-dept-0353-המרכז-הרפואי-לגליל-פתולוגיה",
+      "master-dept-0354-המרכז-הרפואי-לגליל-כירורגיה-אורולוגית",
+      "master-dept-0355-המרכז-הרפואי-לגליל-נוירולוגיה",
+      "master-dept-0356-המרכז-הרפואי-לגליל-הרדמה",
+      "master-dept-0357-המרכז-הרפואי-לגליל-כירורגית-ילדים",
+      "master-dept-0358-המרכז-הרפואי-לגליל-רפואה-פיזיקלית-ושיקום",
+      "master-dept-0359-המרכז-הרפואי-לגליל-נוירוכירורגיה",
+      "master-dept-0360-המרכז-הרפואי-לגליל-רפואה-גרעינית"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "ה",
+      "ו"
+    ],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה",
+      "פנימית",
+      "אורתופדיה",
+      "רפואה דחופה",
+      "קרדיולוגיה",
+      "כירורגיה כללית",
+      "אונקולוגיה",
+      "מחלות עיניים",
+      "כירורגיה פלסטית ואסתטית",
+      "פסיכיאטריה של הילד והמתבגר",
+      "רפואת ילדים",
+      "אף אוזן גרון",
+      "רדיולוגיה (דימות)",
+      "גריאטריה",
+      "פתולוגיה",
+      "כירורגיה אורולוגית",
+      "נוירולוגיה",
+      "הרדמה",
+      "כירורגית ילדים",
+      "רפואה פיזיקלית ושיקום",
+      "נוירוכירורגיה",
+      "רפואה גרעינית"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר גאנם נדיר",
+    "normalizedName": "גאנם נדיר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גאנם נדיר",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר גאנם נדיר",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "פרופ' ליאור לבנשטיין",
+    "normalizedName": "ליאור לבנשטיין",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' ליאור לבנשטיין",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' ליאור לבנשטיין",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "פרופ' מאיה וולף-פרנק",
+    "normalizedName": "מאיה וולף פרנק",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' מאיה וולף-פרנק",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' מאיה וולף-פרנק",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "פרופ' מרואן עודה",
+    "normalizedName": "מרואן עודה",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' מרואן עודה",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' מרואן עודה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר שרון אבשלום",
+    "normalizedName": "שרון אבשלום",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שרון אבשלום",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שרון אבשלום",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר בולוס מריאנה",
+    "normalizedName": "בולוס מריאנה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר בולוס מריאנה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר בולוס מריאנה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10533"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מלחם פארס",
+    "normalizedName": "מלחם פארס",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מלחם פארס",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מלחם פארס",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10533"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "פרופ' נימר עאסי",
+    "normalizedName": "נימר עאסי",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' נימר עאסי",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' נימר עאסי",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10533"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר סבטלנה ליסיצין",
+    "normalizedName": "סבטלנה ליסיצין",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר סבטלנה ליסיצין",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר סבטלנה ליסיצין",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10533"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר ואסים משיעל",
+    "normalizedName": "ואסים משיעל",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ואסים משיעל",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ואסים משיעל",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר ואסים שיהאב",
+    "normalizedName": "ואסים שיהאב",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ואסים שיהאב",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ואסים שיהאב",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר חליל נסראללה",
+    "normalizedName": "חליל נסראללה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר חליל נסראללה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר חליל נסראללה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר לואי עראף",
+    "normalizedName": "לואי עראף",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר לואי עראף",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר לואי עראף",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר שטארקר חיים יפים",
+    "normalizedName": "שטארקר חיים יפים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שטארקר חיים יפים",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שטארקר חיים יפים",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אדהם דאוד",
+    "normalizedName": "אדהם דאוד",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אדהם דאוד",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אדהם דאוד",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אליהו חלפון",
+    "normalizedName": "אליהו חלפון",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אליהו חלפון",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אליהו חלפון",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר אלכס שטורמן",
+    "normalizedName": "אלכס שטורמן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אלכס שטורמן",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אלכס שטורמן",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר גסאן מועדי",
+    "normalizedName": "גסאן מועדי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גסאן מועדי",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר גסאן מועדי",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר טוני אבו רחמה",
+    "normalizedName": "טוני אבו רחמה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר טוני אבו רחמה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר טוני אבו רחמה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר לואי מוברכה",
+    "normalizedName": "לואי מוברכה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר לואי מוברכה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר לואי מוברכה",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מואנס סרחאן",
+    "normalizedName": "מואנס סרחאן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מואנס סרחאן",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מואנס סרחאן",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר צפריר אור",
+    "normalizedName": "צפריר אור",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר צפריר אור",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר צפריר אור",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "פרופ' שאול עטר",
+    "normalizedName": "שאול עטר",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' שאול עטר",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' שאול עטר",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר שולי האיתם",
+    "normalizedName": "שולי האיתם",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שולי האיתם",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "hospitalSlug": "galilee",
+    "hospital": "Galilee Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שולי האיתם",
+    "qaFlags": [
+      "missingProfileUrl"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "המרכז הרפואי לגליל",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "קרדיולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

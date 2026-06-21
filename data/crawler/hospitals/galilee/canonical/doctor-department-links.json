@@ -1,0 +1,734 @@
+[
+  {
+    "canonicalDoctorId": "doctor-0972be06535da764",
+    "masterDeptRowId": "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "א",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-0b32879b546ed78a",
+    "masterDeptRowId": "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "א",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-0bc5e410690430d6",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-0d817b2aad68ef66",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-14dd8f5bf367d8db",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-1d77262c0df11945",
+    "masterDeptRowId": "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10533"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-1e06ce4e65b63da8",
+    "masterDeptRowId": null,
+    "hospitalName": "Galilee Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.gmc.gov.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-1eaf88e7431f71ea",
+    "masterDeptRowId": "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "א",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-2001d028acd0f171",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-31f77623c28d3953",
+    "masterDeptRowId": "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-3974f7f2af688c48",
+    "masterDeptRowId": null,
+    "hospitalName": "Galilee Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.gmc.gov.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-3f343924a1265b78",
+    "masterDeptRowId": null,
+    "hospitalName": "Galilee Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.gmc.gov.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-4ba7bb759bc096e8",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-5187ef1f1b5e00a0",
+    "masterDeptRowId": null,
+    "hospitalName": "Galilee Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.gmc.gov.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-51c20d6c4730db73",
+    "masterDeptRowId": "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "א",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-57a21059c27a6c2e",
+    "masterDeptRowId": "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-6531a61c19100a90",
+    "masterDeptRowId": "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-6bf9642236abb912",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-6d2a7cb98dbae65c",
+    "masterDeptRowId": null,
+    "hospitalName": "Galilee Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.gmc.gov.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-6e95b677909b43fc",
+    "masterDeptRowId": "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-6f6e77410d517376",
+    "masterDeptRowId": "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10533"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-87964a76354a406e",
+    "masterDeptRowId": "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10533"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-9048101a13a738a8",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-9f2307d243f68d1f",
+    "masterDeptRowId": "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-bacd0762dc72e350",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-c592634488459f3a",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-d9fd82881f162d0d",
+    "masterDeptRowId": "master-dept-0339-המרכז-הרפואי-לגליל-אורתופדיה-א",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "א",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=8838"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=8838",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e8e9be00aae860ad",
+    "masterDeptRowId": "master-dept-0342-המרכז-הרפואי-לגליל-קרדיולוגיה",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "",
+    "specialty": "קרדיולוגיה",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10501"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10501",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f7cc67353cb9cb02",
+    "masterDeptRowId": null,
+    "hospitalName": "Galilee Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.gmc.gov.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+        "https://www.gmc.gov.il/?p=10533",
+        "https://www.gmc.gov.il/?p=10561",
+        "https://www.gmc.gov.il/?p=10659",
+        "https://www.gmc.gov.il/?p=10688",
+        "https://www.gmc.gov.il/?p=10697",
+        "https://www.gmc.gov.il/?p=10702",
+        "https://www.gmc.gov.il/?p=8838",
+        "https://www.gmc.gov.il/?p=8899",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%9E%D7%99%D7%95%D7%9F",
+        "https://www.gmc.gov.il/?p=10501",
+        "https://www.gmc.gov.il/?p=8742",
+        "https://www.gmc.gov.il/?p=8759",
+        "https://www.gmc.gov.il/?p=10273",
+        "https://www.gmc.gov.il/?p=10069",
+        "https://www.gmc.gov.il/?p=9919",
+        "https://www.gmc.gov.il/?p=10803",
+        "https://www.gmc.gov.il/?p=9912",
+        "https://www.gmc.gov.il/?department=%D7%90%D7%92%D7%A3-%D7%93%D7%99%D7%9E%D7%95%D7%AA",
+        "https://www.gmc.gov.il/?p=10473",
+        "https://www.gmc.gov.il/?p=11199",
+        "https://www.gmc.gov.il/?p=8917",
+        "https://www.gmc.gov.il/?p=10523",
+        "https://www.gmc.gov.il/?p=10164",
+        "https://www.gmc.gov.il/?p=10911",
+        "https://www.gmc.gov.il/?p=10707",
+        "https://www.gmc.gov.il/?p=9941",
+        "https://www.gmc.gov.il/?p=12112"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Galilee Medical Center; candidates=29"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-fc9c65df8fa5763a",
+    "masterDeptRowId": "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+    "hospitalName": "המרכז הרפואי לגליל",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+    "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.gmc.gov.il/?p=10533"
+      ],
+      "extractedFromUrl": "https://www.gmc.gov.il/?p=10533",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

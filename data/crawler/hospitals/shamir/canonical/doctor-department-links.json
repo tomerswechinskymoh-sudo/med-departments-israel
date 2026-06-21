@@ -1,0 +1,236 @@
+[
+  {
+    "canonicalDoctorId": "doctor-03b757c954c8e353",
+    "masterDeptRowId": "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-2d24387099c4fae3",
+    "masterDeptRowId": "master-dept-0423-מרכז-רפואי-יצחק-שמיר-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.shamir.org/clinics/gynecology/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/gynecology/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/gynecology/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/gynecology/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-2effedfb6a2af312",
+    "masterDeptRowId": "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-42eb774368cb4140",
+    "masterDeptRowId": "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-7939c8e0110d7a6d",
+    "masterDeptRowId": "master-dept-0413-מרכז-רפואי-יצחק-שמיר-אורתופדיה-א",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "א",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-7d849b0c62f5dac4",
+    "masterDeptRowId": "master-dept-0423-מרכז-רפואי-יצחק-שמיר-יילוד-וגינקולוגיה",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://www.shamir.org/clinics/gynecology/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/gynecology/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/gynecology/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/gynecology/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-8d969540f8e66697",
+    "masterDeptRowId": "master-dept-0413-מרכז-רפואי-יצחק-שמיר-אורתופדיה-א",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "א",
+    "specialty": "אורתופדיה",
+    "sourceUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-baffa8e9569bd3fd",
+    "masterDeptRowId": null,
+    "hospitalName": "Shamir Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.shamir.org/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartmentb/",
+        "https://www.shamir.org/clinics/pediatrics/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%91-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%92-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%93-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%94-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%95-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/gynecology/",
+        "https://www.shamir.org/clinics/labs/cytologyandpathology/",
+        "https://www.shamir.org/clinics/malrad-%D7%A8%D7%A4%D7%95%D7%90%D7%94-%D7%93%D7%97%D7%95%D7%A4%D7%94-%D7%9E%D7%99%D7%95%D7%9F-%D7%97%D7%93%D7%A8%D7%99-%D7%9E%D7%99%D7%95%D7%9F-%D7%9E%D7%9C%D7%A8%D7%93-%D7%97%D7%93%D7%A8-%D7%9E%D7%99%D7%95%D7%9F/",
+        "https://www.shamir.org/clinics/eye/",
+        "https://www.shamir.org/clinics/aag/",
+        "https://www.shamir.org/clinics/bloodvesselsurgical/",
+        "https://www.shamir.org/clinics/surgery/",
+        "https://www.shamir.org/he/clinics/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%93%D7%99%D7%9E%D7%95%D7%AA/",
+        "https://www.shamir.org/clinics/pediatrics/departmentpediatricsurgery/",
+        "https://www.shamir.org/clinics/urologysurgery1/",
+        "https://www.shamir.org/clinics/cardiology/",
+        "https://www.shamir.org/clinics/neurology/",
+        "https://www.shamir.org/clinics/plasticsurgery/",
+        "https://www.shamir.org/clinics/anesthesia/",
+        "https://www.shamir.org/he/clinic/%D7%A8%D7%A4%D7%95%D7%90%D7%94-%D7%92%D7%A8%D7%A2%D7%99%D7%A0%D7%99%D7%AA-%D7%9E%D7%9B%D7%95%D7%9F/",
+        "https://www.shamir.org/clinics/oncology/",
+        "https://www.shamir.org/clinics/chestsurgery/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Shamir Medical Center; candidates=27"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-e7e88976df73c59d",
+    "masterDeptRowId": "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f2c5ed1bc9cc2e5c",
+    "masterDeptRowId": "master-dept-0415-מרכז-רפואי-יצחק-שמיר-רפואת-ילדים",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.shamir.org/clinics/pediatrics/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/pediatrics/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/pediatrics/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/pediatrics/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-fb87919b1e787c1b",
+    "masterDeptRowId": "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א",
+    "hospitalName": "מרכז רפואי יצחק שמיר",
+    "departmentName": "א",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

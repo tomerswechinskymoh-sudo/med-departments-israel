@@ -1,0 +1,126 @@
+{
+  "rawReviewedRows": 18,
+  "canonicalDoctors": 12,
+  "doctorDepartmentLinks": 12,
+  "productionReadyCanonicalDoctors": 6,
+  "sourceUrlMatchLinks": 6,
+  "reviewNeededLinks": 6,
+  "expectedDistinctDoctorDepartmentLinks": 12,
+  "rawRowsDroppedAsExactDuplicates": 6,
+  "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+  "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+  "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+  "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 6,
+  "duplicateProfileUrlGroupsBefore": 6,
+  "duplicateProfileUrlGroupsAfter": 0,
+  "examples": [
+    {
+      "canonicalDoctorId": "doctor-ca96b7bd6e7f8b48",
+      "fullName": "ד\"ר אינה דובין",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 1,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ],
+      "masterDeptRowIds": [
+        "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א"
+      ],
+      "extractedFromUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-3b0f743825d96edd",
+      "fullName": "ד\"ר אליזבטה ניסים",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 1,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ],
+      "masterDeptRowIds": [
+        "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א"
+      ],
+      "extractedFromUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-deecf6c98f1ca30a",
+      "fullName": "ד\"ר אמיר וינטראוב",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 1,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "masterDeptRowIds": [
+        "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה"
+      ],
+      "extractedFromUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-32d9a8c3152c5221",
+      "fullName": "ד\"ר יעל יקל",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 1,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "masterDeptRowIds": [
+        "master-dept-0123-ביהח-לניאדו-יילוד-וגינקולוגיה"
+      ],
+      "extractedFromUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-6227b2304916261e",
+      "fullName": "ד\"ר מיכאל בן אקון",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 1,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
+      ],
+      "masterDeptRowIds": [
+        "master-dept-0118-ביהח-לניאדו-רפואת-ילדים"
+      ],
+      "extractedFromUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
+      ]
+    },
+    {
+      "canonicalDoctorId": "doctor-77f12ea9e6b0ad6e",
+      "fullName": "ד\"ר קלוד פיקאר",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 1,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/"
+      ],
+      "masterDeptRowIds": [
+        "master-dept-0119-ביהח-לניאדו-אורתופדיה"
+      ],
+      "extractedFromUrls": [
+        "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/"
+      ]
+    }
+  ]
+}

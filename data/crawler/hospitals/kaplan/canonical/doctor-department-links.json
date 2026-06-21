@@ -403,7 +403,7 @@
     "canonicalDoctorId": "doctor-99cd727701bdb5fc",
     "masterDeptRowId": "master-dept-0204-מרכז-רפואי-קפלן-רפואת-ילדים",
     "hospitalName": "מרכז רפואי קפלן",
-    "departmentName": null,
+    "departmentName": "",
     "specialty": "רפואת ילדים",
     "sourceUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx",
     "extractedFromUrl": "https://hospitals.clalit.co.il/kaplan/he/med_units/children/Pages/default.aspx",

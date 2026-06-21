@@ -1,0 +1,6 @@
+hospitalSlug,hospitalNames,providerGuess,masterDeptRows,rowsWithUrls,liveUrlRows,nearbyDoctorOrTeamUrlRows,adapterParserFamily,whySelected,expectedCrawlReadiness,expectedMappingReadiness,plannedMode
+shamir,מרכז רפואי יצחק שמיר,government,27,26,26,7,inlineStaff+teamPage+unknown,Wave3 baseline shamir; 26 Master_Dept URLs; 26 live inspected URLs; 7 nearby doctor/team URLs,pilotReady,partiallyMapped,pilot only
+maayanei-hayeshua,"ביה""ח מעיני הישועה",private,6,6,6,6,teamPage+inlineStaff+unknown,Wave3 baseline maayanei-hayeshua; 6 Master_Dept URLs; 6 live inspected URLs; 6 nearby doctor/team URLs; 2 direct staff/doctors URLs,pilotReady,partiallyMapped,pilot only
+galilee,המרכז הרפואי לגליל,government,29,28,28,0,inlineStaff+teamPage+unknown,Wave3 baseline galilee; 28 Master_Dept URLs; 28 live inspected URLs,pilotReady,reviewNeeded,pilot only
+laniado,"ביה""ח לניאדו",private,11,11,11,0,inlineStaff+teamPage+unknown,Wave3 baseline laniado; 11 Master_Dept URLs; 11 live inspected URLs,pilotReady,reviewNeeded,pilot only
+wolfson,מרכז רפואי וולפסון,government,25,8,0,0,teamPage+inlineStaff+unknown,Wave3 baseline wolfson; 8 Master_Dept URLs; URLs pending inspection; 4 direct staff/doctors URLs,pilotReady,partiallyMapped,pilot only

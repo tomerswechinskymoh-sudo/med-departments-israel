@@ -1,5 +1,5 @@
 hospitalSlug,hospitalNames,providerGuess,masterDeptRows,rowsWithUrls,liveUrlRows,nearbyDoctorOrTeamUrlRows,adapterParserFamily,whySelected,plannedMode
-emek,מרכז רפואי העמק,clalit,27,27,27,27,teamPage+inlineStaff+classicDoctorCards,known adapter emek; 27 Master_Dept URLs; 27 live inspected URLs; 27 nearby doctor/team URLs; 1 direct staff/doctors URLs,pilot only
-carmel,מרכז רפואי כרמל,clalit,25,22,22,22,teamPage+inlineStaff,known adapter carmel; 22 Master_Dept URLs; 22 live inspected URLs; 22 nearby doctor/team URLs; 1 direct staff/doctors URLs,pilot only
-kaplan,מרכז רפואי קפלן,clalit,25,22,22,22,teamPage+inlineStaff+classicDoctorCards,known adapter kaplan; 22 Master_Dept URLs; 22 live inspected URLs; 22 nearby doctor/team URLs,pilot only
-rabin,"ביה""ח בילינסון מרכז רפואי רבין | מרכז רפואי רבין | ביה""ח השרון מרכז רפואי רבין",clalit,60,11,11,11,classicDoctorCards+teamPage,known adapter rabin; 11 Master_Dept URLs; 11 live inspected URLs; 11 nearby doctor/team URLs,pilot only
+emek,מרכז רפואי העמק,clalit,27,27,0,0,teamPage+inlineStaff+classicDoctorCards,known adapter emek; 27 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs,pilot only
+carmel,מרכז רפואי כרמל,clalit,25,22,0,0,teamPage+inlineStaff,known adapter carmel; 22 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs,pilot only
+kaplan,מרכז רפואי קפלן,clalit,25,22,0,0,teamPage+inlineStaff+classicDoctorCards,known adapter kaplan; 22 Master_Dept URLs; URLs pending inspection,pilot only
+rabin,"ביה""ח בילינסון מרכז רפואי רבין | מרכז רפואי רבין | ביה""ח השרון מרכז רפואי רבין",clalit,60,11,0,0,classicDoctorCards+teamPage,known adapter rabin; 11 Master_Dept URLs; URLs pending inspection,pilot only

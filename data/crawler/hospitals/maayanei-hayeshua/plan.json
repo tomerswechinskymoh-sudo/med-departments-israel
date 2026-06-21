@@ -1,0 +1,521 @@
+{
+  "hospitalSlug": "maayanei-hayeshua",
+  "hospitalName": "Maayanei Hayeshua Medical Center",
+  "generatedAt": "2026-06-21T10:15:10.621Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.mymc.co.il/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/mental-health/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/mental-health/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.mymc.co.il/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.mymc.co.il/",
+      "title": "המרכז הרפואי מעיני הישועה - עולם של רפואה מתקדמת",
+      "h1": [
+        "המרכז הרפואי מעיני הישועה"
+      ],
+      "h2": [
+        "גינקולוגיה",
+        "כירורגיה",
+        "אורתופדיה",
+        "נוירולוגיה",
+        "דימות",
+        "עדכונים וחדשות",
+        "דף הבית"
+      ],
+      "htmlLength": 433383,
+      "visibleTextLength": 65728,
+      "error": null
+    },
+    {
+      "url": "https://www.mymc.co.il/children-wing/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.mymc.co.il/children-wing/",
+      "title": "אגף ילדים - מרכז רפואי מעיני הישועה",
+      "h1": [
+        "אגף ילדים"
+      ],
+      "h2": [
+        "מחלקות",
+        "מיון ילדים",
+        "מחלקת ילדים",
+        "כירורגיית ילדים",
+        "טיפול נמרץ ילדים",
+        "אגף ילודים ופגים",
+        "אורתופדיית ילדים",
+        "מחלות זיהומיות בילדים",
+        "מרפאות",
+        "הצוות הרפואי",
+        "אגף ילדים"
+      ],
+      "htmlLength": 412680,
+      "visibleTextLength": 82792,
+      "error": null
+    },
+    {
+      "url": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "title": "אגף פנימי - מרכז רפואי מעיני הישועה",
+      "h1": [
+        "אגף פנימי"
+      ],
+      "h2": [
+        "מחלקות",
+        "מחלקה פנימית",
+        "טיפול נמרץ כללי",
+        "מערך קרדיולוגיה",
+        "טיפול נמרץ לב",
+        "ריאות",
+        "דיאליזה",
+        "גסטרו",
+        "מחלות זיהומיות",
+        "מרפאות",
+        "הצוות הרפואי",
+        "אגף פנימי"
+      ],
+      "htmlLength": 412882,
+      "visibleTextLength": 76725,
+      "error": null
+    },
+    {
+      "url": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "title": "המחלקה הכירורגית - מרכז רפואי מעיני הישועה",
+      "h1": [
+        "המחלקה הכירורגית"
+      ],
+      "h2": [
+        "אודות המחלקה",
+        "המרפאות במחלקה",
+        "מידע למטופל",
+        "הצוות הרפואי",
+        "עלוני מידע",
+        "המחלקה הכירורגית"
+      ],
+      "htmlLength": 527290,
+      "visibleTextLength": 80795,
+      "error": null
+    },
+    {
+      "url": "https://www.mymc.co.il/mental-health/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.mymc.co.il/mental-health/",
+      "title": "המערך לבריאות הנפש - מרכז רפואי מעיני הישועה",
+      "h1": [
+        "המערך \nלבריאות הנפש"
+      ],
+      "h2": [
+        "מחלקות",
+        "מרפאות",
+        "ברגישות ובכבוד",
+        "מחקר וחדשנות",
+        "חדשות האגף",
+        "מאמרים רפואיים מהמומחים שלנו",
+        "המערך לבריאות הנפש"
+      ],
+      "htmlLength": 426830,
+      "visibleTextLength": 64774,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://www.mymc.co.il/doctors/",
+      "sourceUrl": "https://www.mymc.co.il/",
+      "anchorText": "הצוות הרפואי",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הצוות הרפואי https://www.mymc.co.il/doctors/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%90%d7%95%d7%93%d7%99%d7%94-%d7%92%d7%9c%d7%96%d7%a8/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "גב' אודיה גלזר \n \n \n \n אחות אחראית",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "גב' אודיה גלזר \n \n \n \n אחות אחראית https://www.mymc.co.il/doctors/%d7%90%d7%95%d7%93%d7%99%d7%94-%d7%92%d7%9c%d7%96%d7%a8/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%90%d7%a8%d7%96-%d7%97%d7%91%d7%a8%d7%95%d7%a0%d7%99/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "ארז חברוני \n \n \n \n אח אחראי דיאליזה",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ארז חברוני \n \n \n \n אח אחראי דיאליזה https://www.mymc.co.il/doctors/%d7%90%d7%a8%d7%96-%d7%97%d7%91%d7%a8%d7%95%d7%a0%d7%99/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%91%d7%99-%d7%91%d7%a7-2/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "דבי בק \n \n \n \n אחות אחראית ילדים",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "דבי בק \n \n \n \n אחות אחראית ילדים https://www.mymc.co.il/doctors/%d7%93%d7%91%d7%99-%d7%91%d7%a7-2/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%90%d7%93%d7%9d-%d7%90%d7%91%d7%95-%d7%a2%d7%91%d7%99%d7%93/",
+      "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "anchorText": "ד\"ר אדם אבו-עביד",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר אדם אבו-עביד https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%90%d7%93%d7%9d-%d7%90%d7%91%d7%95-%d7%a2%d7%91%d7%99%d7%93/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%92%d7%9c%d7%99%d7%94-%d7%a8%d7%94%d7%91/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "ד\"ר גליה רהב",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר גליה רהב https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%92%d7%9c%d7%99%d7%94-%d7%a8%d7%94%d7%91/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%93%d7%a0%d7%99%d7%aa-%d7%93%d7%99%d7%99%d7%9f/",
+      "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "anchorText": "ד\"ר דנית דיין",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר דנית דיין https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%93%d7%a0%d7%99%d7%aa-%d7%93%d7%99%d7%99%d7%9f/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%97%d7%91%d7%99%d7%91-%d7%99%d7%93%d7%99%d7%93-%d7%99%d7%a2%d7%9c/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "ד\"ר חביב ידיד יעל \n \n \n \n מנהלת מחלקת טיפול נמרץ כללי",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר חביב ידיד יעל \n \n \n \n מנהלת מחלקת טיפול נמרץ כללי https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%97%d7%91%d7%99%d7%91-%d7%99%d7%93%d7%99%d7%93-%d7%99%d7%a2%d7%9c/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a2%d7%a8%d7%9f-%d7%92%d7%a8%d7%99%d7%9f/",
+      "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "anchorText": "ד\"ר ערן גרין",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר ערן גרין https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a2%d7%a8%d7%9f-%d7%92%d7%a8%d7%99%d7%9f/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a4%d7%91%d7%9c%d7%95-%d7%9c%d7%95%d7%90%d7%99%d7%a1-%d7%96%d7%a0%d7%95%d7%a1/",
+      "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "anchorText": "ד\"ר פבלו לואיס ז'נוס",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר פבלו לואיס ז'נוס https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a4%d7%91%d7%9c%d7%95-%d7%9c%d7%95%d7%90%d7%99%d7%a1-%d7%96%d7%a0%d7%95%d7%a1/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a7%d7%91%d7%9c%d7%90%d7%95%d7%99-%d7%9e%d7%95%d7%97%d7%9e%d7%93/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "ד\"ר קבלאוי מוחמד",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר קבלאוי מוחמד https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a7%d7%91%d7%9c%d7%90%d7%95%d7%99-%d7%9e%d7%95%d7%97%d7%9e%d7%93/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a7%d7%a8%d7%9f-%d7%91%d7%99%d7%9c%d7%9e%d7%9f/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "קרן בילמן \n \n \n \n אחות אחראית",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "קרן בילמן \n \n \n \n אחות אחראית https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a7%d7%a8%d7%9f-%d7%91%d7%99%d7%9c%d7%9e%d7%9f/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a9%d7%99-%d7%9e%d7%a8%d7%95%d7%9f-%d7%90%d7%9c%d7%93%d7%a8/",
+      "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "anchorText": "ד\"ר שי מרון אלדר \n \n \n \n רופא מומחה לטיפול ניתוחי בהשמנת יתר \n \n \n \n \n \n \n ד\"ר שי מרון אלדר, בוגר הפקולטה לרפואה של אוניברסיטת בן-גוריון בבאר שבע,\nהינו רופא מומחה לטיפול ניתוחי בהשמנת יתר במרכז הרפואי מעיני הישועה.\nביצע סטאז' קליני רוטציוני במרכז רפואי כרמל בחיפה. שימש כרופא מתמחה במחלקה כירורגית ג' במרכז הרפואי שיבא תל השומר.\nהתמחה בכירורגיה כללית במרכז הרפואי מאונט סיני בניו יורק.\nשימש כעמית מחקר ועמית קליני במכון לניתוחים בריאטריים ומטבולים במרכז כירורגי בקליבלנד באוהיו, ארה\"ב.\nמאז, מנהל את היחידה לטיפול ניתוחי בהשמנת יתר במרכז הרפואי איכילוב בתל אביב.\nהשכלה והכשרה מקצועית\n\n2011 שלב 3 של מבחן USMLE.\n2009 קורס מדריכי ATLS.\n2008 שלב 2 של הבחינה הישראלית בכירורגיה כללית – בהצטיינות.\n2006 שלב 1 של הבחינה הישראלית בכירורגיה כללית.\n2006 תעודת ECFMG.\n2005 שלב 2 CS של מבחן USMLE.\n2003 קורס ATLS/MTLS.\n2002 שלב 2 CK של מבחן USMLE.\n2002 שלב 1 של מבחן USMLE.\n1995-2001 לימודי רפואה בפקולטה לרפואה של אוניברסיטת בן-גוריון, באר שבע.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר שי מרון אלדר \n \n \n \n רופא מומחה לטיפול ניתוחי בהשמנת יתר \n \n \n \n \n \n \n ד\"ר שי מרון אלדר, בוגר הפקולטה לרפואה של אוניברסיטת בן-גוריון בבאר שבע,\nהינו רופא מומחה לטיפול ניתוחי בהשמנת יתר במרכז הרפואי מעיני הישועה.\nביצע סטאז' קליני רוטציוני במרכז רפואי כרמל בחיפה. שימש כרופא מתמחה במחלקה כירורגית ג' במרכז הרפואי שיבא תל השומר.\nהתמחה בכירורגיה כללית במרכז הרפואי מאונט סיני בניו יורק.\nשימש כעמית מחקר ועמית קליני במכון לניתוחים בריאטריים ומטבולים במרכז כירורגי בקליבלנד באוהיו, ארה\"ב.\nמאז, מנהל את ה"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%a9%d7%9e%d7%97%d7%94-%d7%a8%d7%95%d7%96%d7%a0%d7%91%d7%9c%d7%98/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "ד\"ר שמחה רוזנבלט \n \n \n \n רופא מומחה לקרדיולוגיה \n \n \n \n \n \n \n ד\"ר שמחה רוזנבלט, בוגר לימודי רפואה באוניברסיטה העברית בירושלים,\nהינו רופא מומחה לקרדיולוגיה במרכז הרפואי מעיני הישועה.\nעשה סטאז' במרכז הרפואי קפלן ברחובות.\nהתמחה בקרדיולוגיה כולל השתלמות במחלקה פנימית במרכז הרפואי שיבא תל השומר, שם המשיך לעבוד במכון הלב.\nניהל את מכון הלב של מכבי בקהילה. עבד במחלקה הקרדיולוגית של מרכז רפואי שיבא תל השומר ועסק בבדיקות אקו.\nעבד במכון של מכבי במשמרות של אקו ואקו במאמץ, והדריך טכנאים ורופאים.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר שמחה רוזנבלט \n \n \n \n רופא מומחה לקרדיולוגיה \n \n \n \n \n \n \n ד\"ר שמחה רוזנבלט, בוגר לימודי רפואה באוניברסיטה העברית בירושלים,\nהינו רופא מומחה לקרדיולוגיה במרכז הרפואי מעיני הישועה.\nעשה סטאז' במרכז הרפואי קפלן ברחובות.\nהתמחה בקרדיולוגיה כולל השתלמות במחלקה פנימית במרכז הרפואי שיבא תל השומר, שם המשיך לעבוד במכון הלב.\nניהל את מכון הלב של מכבי בקהילה. עבד במחלקה הקרדיולוגית של מרכז רפואי שיבא תל השומר ועסק בבדיקות אקו.\nעבד במכון של מכבי במשמרות של אקו ואקו במאמץ, והדריך טכנאים ורופאים. https://www."
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%97%d7%99%d7%94-%d7%a8%d7%95%d7%96%d7%a0%d7%91%d7%9c%d7%98/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "חיה רוזנבלט \n \n \n \n מ\"מ אחות אחראית טיפול נמרץ ילדים",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "חיה רוזנבלט \n \n \n \n מ\"מ אחות אחראית טיפול נמרץ ילדים https://www.mymc.co.il/doctors/%d7%97%d7%99%d7%94-%d7%a8%d7%95%d7%96%d7%a0%d7%91%d7%9c%d7%98/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%99%d7%90%d7%9f-%d7%93%d7%a0%d7%a6%d7%99%d7%a7%d7%95/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "יאן דנצ'קו \n \n \n \n אח אחראי טיפול נמרץ לב",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "יאן דנצ'קו \n \n \n \n אח אחראי טיפול נמרץ לב https://www.mymc.co.il/doctors/%d7%99%d7%90%d7%9f-%d7%93%d7%a0%d7%a6%d7%99%d7%a7%d7%95/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%9b%d7%a8%d7%9e%d7%99%d7%aa-%d7%96%d7%99%d7%92%d7%93%d7%95%d7%9f/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "כרמית זיגדון \n \n \n \n אחות אחראית כירורגיה",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "כרמית זיגדון \n \n \n \n אחות אחראית כירורגיה https://www.mymc.co.il/doctors/%d7%9b%d7%a8%d7%9e%d7%99%d7%aa-%d7%96%d7%99%d7%92%d7%93%d7%95%d7%9f/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%9e%d7%99%d7%9b%d7%9c-%d7%91%d7%9f-%d7%93%d7%91/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "מיכל בן דב \n \n \n \n סגנית מנהלת שירותי סיעוד \n \n \n \n \n \n \n מיכל בן דב, סגנית מנהלת שירותי סיעוד:\n\nבוגרת תואר ראשון בסיעוד של אוניברסיטת ירושלים R.N, B.A\nבוגרת תואר שני במנהל מערכות בריאות, אוניברסיטת בן גוריון – MHA\nקורס הדרכה קלינית\nקורס על בסיסי ברפואה ראשונית בקהילה\n\nבעברה עבדה כאחות אחראית במחלקת פנימית בשיבא וכאחות אחראית מרפאות במכבי שירותי בריאות.\nעובדת כאחות אחראית מרפאות חוץ.\nתחומי אחריות :\n\nהובלת פרויקטים של הנהלת הסיעוד במהלך השנה\nקליטה ושימור כוחות עזר/סטודנטים במערך הסיעוד.\nאחראית על תכנית העבודה במערך הסיעוד\nאחראית על מדדי איכות במערך האיכות\nלווי אחיות אחראיות וסגניות חדשות",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "מיכל בן דב \n \n \n \n סגנית מנהלת שירותי סיעוד \n \n \n \n \n \n \n מיכל בן דב, סגנית מנהלת שירותי סיעוד:\n\nבוגרת תואר ראשון בסיעוד של אוניברסיטת ירושלים R.N, B.A\nבוגרת תואר שני במנהל מערכות בריאות, אוניברסיטת בן גוריון – MHA\nקורס הדרכה קלינית\nקורס על בסיסי ברפואה ראשונית בקהילה\n\nבעברה עבדה כאחות אחראית במחלקת פנימית בשיבא וכאחות אחראית מרפאות במכבי שירותי בריאות.\nעובדת כאחות אחראית מרפאות חוץ.\nתחומי אחריות :\n\nהובלת פרויקטים של הנהלת הסיעוד במהלך השנה\nקליטה ושימור כוחות עזר/סטודנטים במערך הסיעוד.\nאחראית על"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%a8%d7%97%d7%9c-%d7%90%d7%9e%d7%99%d7%aa%d7%99/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "רחל אמיתי",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "רחל אמיתי https://www.mymc.co.il/doctors/%d7%a8%d7%97%d7%9c-%d7%90%d7%9e%d7%99%d7%aa%d7%99/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/%d7%a8%d7%a2%d7%95%d7%aa-%d7%93%d7%91%d7%95%d7%a9/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "גב' רעות דבוש \n \n \n \n סגנית אחות אחראית מחלקה פנימית",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "גב' רעות דבוש \n \n \n \n סגנית אחות אחראית מחלקה פנימית https://www.mymc.co.il/doctors/%d7%a8%d7%a2%d7%95%d7%aa-%d7%93%d7%91%d7%95%d7%a9/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/boris-orkin/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "ד\"ר בוריס אורקין \n \n \n \n מנהל יחידת כירורגיה ילדים \n \n \n \n \n \n \n ד\"ר בוריס אורקין, בוגר הפקולטה לרפואה של אוניברסיטת סמרה שברוסיה,\nהינו רופא ומנתח בכיר במחלקת כירורגיה ילדים במרכז הרפואי מעיני הישועה.\nביצע סטאז' במרכז הרפואי האוניברסיטאי הקליני סמארה,\nשם המשיך לתת-התמחות קלינית במחלקה האורולוגית.\nמאוחר יותר התמחה באורולוגיה כללית במחלקה האורולוגית במרכז הרפואי שערי צדק בירושלים,\nוהמשיך לעבוד בה בתפקיד אורולוג בכיר.\nבנוסף, הוא התמחה בכירורגיה כללית ובכירורגיית ילדים במרכז הרפואי הדסה עין כרם בירושלים.\nבהמשך שימש כמנתח ילדים בכיר במרכז הרפואי שערי צדק.\nכמו כן, כיהן כמנהל מחלקת כירורגיית ילדים במרכז הרפואי קפלן ברחובות.\nהשכלה והכשרה מקצועית\n\n2009 התמחות-על קצרה בכירורגיית ילדים ב-LIG ובבית החולים לילדים S. Morgan בניו יורק, ארה\"ב.\n2005 SAGES – התמחות-על בכירורגיית ילדים בקורס לניתוחים לפרוסקופיים במיאמי, פלורידה, ארה\"ב.\n2001 קורס בסיסי בניתוח לפרוסקופי בקריה הרפואית רמב\"ם, חיפה.\n1997 פורום החורף האירופאי השביעי על אורולוגיה בדאבוס, שוויץ.\n1990 אורולוגיה ניתוחית מתקדמת במכון הרפואי הראשון, האקדמיה למדעי הטבע במוסקבה, רוסיה.\n1989 קורס באורולוגיה שמרנית במכון הרפואי הראשון, האקדמיה למדעי הטבע במוסקבה, רוסיה.\n1988 קורס בטיפול שמרני במחלות דלקתיות של מערכת השתן והמין, המכון הרפואי בסנט פטרסבורג, רוסיה.\n1987 קורס באורולוגיה כירורגית מתקדמת במכון הרפואי הראשון, האקדמיה למדעי הטבע במוסקבה, רוסיה.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר בוריס אורקין \n \n \n \n מנהל יחידת כירורגיה ילדים \n \n \n \n \n \n \n ד\"ר בוריס אורקין, בוגר הפקולטה לרפואה של אוניברסיטת סמרה שברוסיה,\nהינו רופא ומנתח בכיר במחלקת כירורגיה ילדים במרכז הרפואי מעיני הישועה.\nביצע סטאז' במרכז הרפואי האוניברסיטאי הקליני סמארה,\nשם המשיך לתת-התמחות קלינית במחלקה האורולוגית.\nמאוחר יותר התמחה באורולוגיה כללית במחלקה האורולוגית במרכז הרפואי שערי צדק בירושלים,\nוהמשיך לעבוד בה בתפקיד אורולוג בכיר.\nבנוסף, הוא התמחה בכירורגיה כללית ובכירורגיית ילדים במרכז הרפואי הדסה עין כרם בירו"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/chaim-bibi/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "פרופ' חיים ביבי \n \n \n \n מנהל מחלקת טיפול נמרץ ילדים",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "פרופ' חיים ביבי \n \n \n \n מנהל מחלקת טיפול נמרץ ילדים https://www.mymc.co.il/doctors/chaim-bibi/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/dr-david-elimelech/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "ד\"ר דוד אלמלך \n \n \n \n רופא מומחה לקרדיולוגיית ילדים \n \n \n \n \n \n \n ד\"ר דוד אלימלך הינו רופא מומחה לקרדיולוגיית ילדים במרכז הרפואי מעיני הישועה.\nבעברו שימש כרופא כללי פרטי וחבר פעיל באגודה הרפואית SOS Medecines –\nארגון ביקורי חירום רפואיים בבית במרסיי, צרפת.\nעבד בתפקיד רופא יועץ בכיר ברפואת ילדים במחלקת הילדים של מרכז רפואי צפון – פוריה ליד טבריה.\nבהמשך עשה תת-התמחות בקרדיולוגיית ילדים בבית החולים לילדים CHU Sainte-Justine במונטריאול, קנדה.\nשימש כרופא יועץ ברפואת ילדים בקופת חולים כללית,\nובמקביל עבד בתפקיד קרדיולוג ילדים במרכז הרפואי שניידר בפתח תקווה.\nמאוחר יותר, במקביל לעבודתו בכללית, שימש כקרדיולוג ילדים במרכז רפואי המלך בעפולה.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר דוד אלמלך \n \n \n \n רופא מומחה לקרדיולוגיית ילדים \n \n \n \n \n \n \n ד\"ר דוד אלימלך הינו רופא מומחה לקרדיולוגיית ילדים במרכז הרפואי מעיני הישועה.\nבעברו שימש כרופא כללי פרטי וחבר פעיל באגודה הרפואית SOS Medecines –\nארגון ביקורי חירום רפואיים בבית במרסיי, צרפת.\nעבד בתפקיד רופא יועץ בכיר ברפואת ילדים במחלקת הילדים של מרכז רפואי צפון – פוריה ליד טבריה.\nבהמשך עשה תת-התמחות בקרדיולוגיית ילדים בבית החולים לילדים CHU Sainte-Justine במונטריאול, קנדה.\nשימש כרופא יועץ ברפואת ילדים בקופת חולים כללית,\nובמקביל ע"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/dr-einav-lahav/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "ד\"ר עינת להב \n \n \n \n נפרולוגית ילדים \n \n \n \n \n \n \n ד\"ר עינב להב, בוגרת בית הספר לרפואה הדסה והאוניברסיטה העברית,\nהינה נפרולוגית ילדים במרכז הרפואי מעיני הישועה.\nביצעה סטאז' כללי במחלקות רפואה פנימית, כירורגיה, פסיכיאטריה ורפואת ילדים בבית החולים מאיר בכפר סבא.\nעבדה בתפקיד רופאה מתמחה בכירה בבית החולים אדמונד ולילי ספרא לילדים\nשל המרכז הרפואי שיבא תל השומר ברמת גן, שם המשיכה להתמחות ברפואת ילדים.\nבהמשך התמחתה בנפרולוגיה ילדים במרפאת נפרולוגיה ילדים במרכז הרפואי שניידר לילדים בפתח תקווה.\nלאחר מכן שימשה כרופאה מתמחה בנפרולוגיה ילדים במרפאת נפרולוגיה ילדים בבית החולים אדמונד ולילי ספרא לילדים.\nהשכלה והכשרה מקצועית\n\n2015 קבלת רישיון בנפרולוגיית ילדים מטעם ההסתדרות הרפואית בישראל.\n2012 קורס החייאה מתקדמת בילדים (APLS) במרכז רפואי שניידר לילדים, פתח תקווה.\n2011 קבלת רישיון ברפואת ילדים מטעם ההסתדרות הרפואית בישראל.\n2010 קורס GCP במרכז רפואי שיבא תל השומר.\n2009 קורס חמצון חוץ גופי (ECMO) במרכז רפואי שיבא תל השומר.\n2009 קורס בסיסי בייעוץ הנקה במרכז רפואי שיבא תל השומר.\n2005 קורס סדציה במרכז הרפואי שיבא תל השומר.\n2004 תואר דוקטור לרפואה (M.D.) באוניברסיטה העברית ובית הספר לרפואה הדסה, ירושלים.\n2000 תואר ראשון במדעי הרפואה (B.Sc.) באוניברסיטה העברית ובית הספר לרפואה הדסה, ירושלים.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר עינת להב \n \n \n \n נפרולוגית ילדים \n \n \n \n \n \n \n ד\"ר עינב להב, בוגרת בית הספר לרפואה הדסה והאוניברסיטה העברית,\nהינה נפרולוגית ילדים במרכז הרפואי מעיני הישועה.\nביצעה סטאז' כללי במחלקות רפואה פנימית, כירורגיה, פסיכיאטריה ורפואת ילדים בבית החולים מאיר בכפר סבא.\nעבדה בתפקיד רופאה מתמחה בכירה בבית החולים אדמונד ולילי ספרא לילדים\nשל המרכז הרפואי שיבא תל השומר ברמת גן, שם המשיכה להתמחות ברפואת ילדים.\nבהמשך התמחתה בנפרולוגיה ילדים במרפאת נפרולוגיה ילדים במרכז הרפואי שניידר לילדים בפתח תקווה.\nלאחר מכן "
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/dr-einav-lhabdar-anat-laor/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "ד”ר ענת לאור \n \n \n \n רופאה במחלקת כירוגיה ילדים \n \n \n \n \n \n \n ד\"ר ענת לאור, רופאה מומחית לילדים,\nהינה מנהלת היחידה הכירורגית לילדים ומתבגרים במרכז הרפואי מעיני הישועה.\nלאחר שסיימה בהצטיינות לימודי רפואה בהונגריה, היא התמחתה בכירורגיה כללית במרכז הרפואי קפלן ברחובות,\nוכן עשתה התמחות על בכירורגיית ילדים במרכז הרפואי הדסה עין כרם בירושלים.\nלאחר ההתמחות חזרה למרכז הרפואי קפלן בתפקיד רופאה בכירה.\nבשנת 2017 הקימה יחד עם ד\"ר בוריס אורקין את מחלקת כירורגיית הילדים בבית החולים אסותא באשדוד,\nתוך שיתוף פעולה מקצועי עם המחלקה במעיני הישועה.\nבמהלך עבודתה כמתמחה וכבכירה ניתחה ד\"ר לאור אינספור ילדים במגוון רחב של בעיות,\nהחל ממצבים שכיחים יותר כגון בקע מפשעתי או טבורי, אשך תמיר,\nוניתוחים לפרוסקופיים, ועד לניתוחים מורכבים של מומים מולדים וגידולים.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד”ר ענת לאור \n \n \n \n רופאה במחלקת כירוגיה ילדים \n \n \n \n \n \n \n ד\"ר ענת לאור, רופאה מומחית לילדים,\nהינה מנהלת היחידה הכירורגית לילדים ומתבגרים במרכז הרפואי מעיני הישועה.\nלאחר שסיימה בהצטיינות לימודי רפואה בהונגריה, היא התמחתה בכירורגיה כללית במרכז הרפואי קפלן ברחובות,\nוכן עשתה התמחות על בכירורגיית ילדים במרכז הרפואי הדסה עין כרם בירושלים.\nלאחר ההתמחות חזרה למרכז הרפואי קפלן בתפקיד רופאה בכירה.\nבשנת 2017 הקימה יחד עם ד\"ר בוריס אורקין את מחלקת כירורגיית הילדים בבית החולים אסותא באשדוד,\nתוך שיתוף פעו"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/dr-fabian/",
+      "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "anchorText": "ד\"ר גרסטנהבר פביאן \n \n \n \n מנהל המחלקה כירורגית \n \n \n \n \n \n \n ד\"ר גרסטנהבר פביאן, בוגר לימודי רפואה באוניברסיטת תל אביב,\nהינו מנהל המחלקה כירורגית במרכז הרפואי מעיני הישועה.\nביצע סטאז' בבית החולים איכילוב בתל אביב,\nשם המשיך בתפקיד רופא מתמחה במחלקה הכירורגית והקים את מרכז ההדרכה לניתוחים לפרוסקופיים.\nבהמשך מונה לתפקיד רופא בכיר ביחידה לכירורגיה אונקולוגית באיכילוב.\nכמו כן, ביצע סטאז' קליני בכירורגיה אונקולוגית אצל פרופ' אלסנדרו גרונכי במכון האונקולוגי\nובניתוחים זעיר פולשניים ורובוטיים אצל פרופ' פאוול ביאנקי בבית החולים סן פאולו במילאנו, איטליה.\nבמקביל לעבודתו במעיני הישועה, הוא מכהן כראש שירות ניתוחים זעיר פולשניים\nוניתוחי רובוטיקה במחלקת כירורגיה בבית החולים איכילוב בתל אביב. \n \nהשכלה והכשרה מקצועית\n\n2013-2019 קורס ניתוחים לפרוסקופיים במערכת העיכול במוסד המחקר IRCAD בשטרסבורג, צרפת.\n2013-2019 קורסים מתקדמים בהדמיה גמישה למנתחים במוסד המחקר IRCAD בשטרסבורג, צרפת.\n2008-2012 תואר דוקטור לרפואה (M.D) באוניברסיטת תל-אביב – סיום בהצטיינות.\n2005-2008 תואר B.A. במדעי הרפואה באוניברסיטת תל-אביב.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר גרסטנהבר פביאן \n \n \n \n מנהל המחלקה כירורגית \n \n \n \n \n \n \n ד\"ר גרסטנהבר פביאן, בוגר לימודי רפואה באוניברסיטת תל אביב,\nהינו מנהל המחלקה כירורגית במרכז הרפואי מעיני הישועה.\nביצע סטאז' בבית החולים איכילוב בתל אביב,\nשם המשיך בתפקיד רופא מתמחה במחלקה הכירורגית והקים את מרכז ההדרכה לניתוחים לפרוסקופיים.\nבהמשך מונה לתפקיד רופא בכיר ביחידה לכירורגיה אונקולוגית באיכילוב.\nכמו כן, ביצע סטאז' קליני בכירורגיה אונקולוגית אצל פרופ' אלסנדרו גרונכי במכון האונקולוגי\nובניתוחים זעיר פולשניים ורובוטיים אצל פרופ' "
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/dr-raphael-geri/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "ד\"ר רפאל גרי \n \n \n \n רופא בכיר בנפרולוגיה \n \n \n \n \n \n \n ד\"ר רפאל גרי, בוגר בית הספר לרפואה במילאנו שבאיטליה,\nהינו רופא בכיר בנפרולוגיה במרכז הרפואי מעיני הישועה.\nבעברו עשה סטאג' במרכז הרפואי בני ציון בחיפה.\nהתמחה במחלקה פנימית ובמחלקת נפרולוגיה בקריה הרפואית רמב\"ם חיפה.\nביצע השתלמות עמיתים קלינית באוניברסיטת טורונטו בקנדה.\nכיהן כמנהל היחידה הנפרולוגית במרכז הרפואי זיו בצפת.\nמשמש כיועץ נפרולוגי בקופת חולים מכבי חיפה ובפרדס חנה.\nכיהן עד לאחרונה בתפקיד מנהל היחידה הנפרולוגית במרכז הרפואי מעיני הישועה.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר רפאל גרי \n \n \n \n רופא בכיר בנפרולוגיה \n \n \n \n \n \n \n ד\"ר רפאל גרי, בוגר בית הספר לרפואה במילאנו שבאיטליה,\nהינו רופא בכיר בנפרולוגיה במרכז הרפואי מעיני הישועה.\nבעברו עשה סטאג' במרכז הרפואי בני ציון בחיפה.\nהתמחה במחלקה פנימית ובמחלקת נפרולוגיה בקריה הרפואית רמב\"ם חיפה.\nביצע השתלמות עמיתים קלינית באוניברסיטת טורונטו בקנדה.\nכיהן כמנהל היחידה הנפרולוגית במרכז הרפואי זיו בצפת.\nמשמש כיועץ נפרולוגי בקופת חולים מכבי חיפה ובפרדס חנה.\nכיהן עד לאחרונה בתפקיד מנהל היחידה הנפרולוגית במרכז הרפואי מעיני הישו"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/eli-somech/",
+      "sourceUrl": "https://www.mymc.co.il/",
+      "anchorText": "<img loading=\"lazy\" decoding=\"async\" width=\"144\" height=\"155\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/pr.-somech.png\" class=\"attachment-full size-full wp-image-18878\" alt=\"רופא\" />מנהל אגף ילדיםפרופ' אלי סומך",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "<img loading=\"lazy\" decoding=\"async\" width=\"144\" height=\"155\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/pr.-somech.png\" class=\"attachment-full size-full wp-image-18878\" alt=\"רופא\" />מנהל אגף ילדיםפרופ' אלי סומך https://www.mymc.co.il/doctors/eli-somech/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/israel-straus/",
+      "sourceUrl": "https://www.mymc.co.il/",
+      "anchorText": "<img loading=\"lazy\" decoding=\"async\" width=\"144\" height=\"155\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/pr.-straus.png\" class=\"attachment-full size-full wp-image-18882\" alt=\"רופא\" />מנהל אגף בריאות הנפשפרופ' ישראל שטראוס",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "<img loading=\"lazy\" decoding=\"async\" width=\"144\" height=\"155\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/pr.-straus.png\" class=\"attachment-full size-full wp-image-18882\" alt=\"רופא\" />מנהל אגף בריאות הנפשפרופ' ישראל שטראוס https://www.mymc.co.il/doctors/israel-straus/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/lionel-kopliovitz/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "ד”ר ליונל קופליוביץ \n \n \n \n רופא מומחה לאורתופדיית ילדים \n \n \n \n \n \n \n ד\"ר ליונל קופליוביץ, בוגר בית הספר לרפואה של האוניברסיטה הפדרלית של ריו דה ז'ניירו בברזיל,\nהינו רופא מומחה לאורתופדיית ילדים במרכז הרפואי מעיני הישועה.\nביצע סטאז' במרכז הרפואי אסף הרופא בבאר יעקב,\nשם עבד במחלקות אורתופדיה, כירורגיה, מדעי יסוד, רפואה שיקומית, נוירוכירורגיה וכירורגיה פלסטית.\nשימש כרופא בכיר ביחידת אורתופדיה ילדים וכן כיהן כמנהל היחידה.\nבהמשך כיהן בתפקיד סגן מנהל מחלקת אורתופדיה במרכז הרפואי אסף הרופא.\nהשכלה והכשרה מקצועית\n\n1972-1975 לימודי המשך באורתופדיה באוניברסיטת תל אביב.\n1965-1970 בית הספר לרפואה של האוניברסיטה הפדרלית של ריו דה ז'ניירו, ברזיל.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד”ר ליונל קופליוביץ \n \n \n \n רופא מומחה לאורתופדיית ילדים \n \n \n \n \n \n \n ד\"ר ליונל קופליוביץ, בוגר בית הספר לרפואה של האוניברסיטה הפדרלית של ריו דה ז'ניירו בברזיל,\nהינו רופא מומחה לאורתופדיית ילדים במרכז הרפואי מעיני הישועה.\nביצע סטאז' במרכז הרפואי אסף הרופא בבאר יעקב,\nשם עבד במחלקות אורתופדיה, כירורגיה, מדעי יסוד, רפואה שיקומית, נוירוכירורגיה וכירורגיה פלסטית.\nשימש כרופא בכיר ביחידת אורתופדיה ילדים וכן כיהן כמנהל היחידה.\nבהמשך כיהן בתפקיד סגן מנהל מחלקת אורתופדיה במרכז הרפואי אסף הרופא.\nהשכלה והכ"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/marlen-taher/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "גב' מרלן טהר \n \n \n \n אחות אחראית מחלקה פנימית",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "גב' מרלן טהר \n \n \n \n אחות אחראית מחלקה פנימית https://www.mymc.co.il/doctors/marlen-taher/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/michael-blecher/",
+      "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "anchorText": "ד\"ר מיכאל בלכר \n \n \n \n רופא מומחה בכירורגיה כללית \n \n \n \n \n \n \n ד\"ר מיכאל בלכר, בוגר לימודי רפואה באוניברסיטת סנט פטרסבורג ברוסיה,\nהינו רופא מומחה לכירורגיה כללית במרכז הרפואי מעיני הישועה.\nביצע רוטציות במחלקות במסגרת הסטאז' בבית חולים איכילוב בתל אביב. התמחה במחלקת כירורגיה כללית א' במרכז רפואי וולפסון בחולון.\nשימש כרופא מנהלי בקופת חולים מכבי. כמו כן, היה אחראי על בקרת בית החולים שיבא ברמת גן. משמש ככירורג כללי בקופת חולים מכבי בעיר כפר סבא וביישוב כפר יונה.\nהשכלה והכשרה מקצועית\n\n2000 קורס MTLS.\n1998 קורס ATLS. \nקורס תיקוני בקעים בשיטה לפרוסקופית, בלגיה\n1985-1993 לימודי רפואה באוניברסיטת סנט פטרסבורג, רוסיה.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר מיכאל בלכר \n \n \n \n רופא מומחה בכירורגיה כללית \n \n \n \n \n \n \n ד\"ר מיכאל בלכר, בוגר לימודי רפואה באוניברסיטת סנט פטרסבורג ברוסיה,\nהינו רופא מומחה לכירורגיה כללית במרכז הרפואי מעיני הישועה.\nביצע רוטציות במחלקות במסגרת הסטאז' בבית חולים איכילוב בתל אביב. התמחה במחלקת כירורגיה כללית א' במרכז רפואי וולפסון בחולון.\nשימש כרופא מנהלי בקופת חולים מכבי. כמו כן, היה אחראי על בקרת בית החולים שיבא ברמת גן. משמש ככירורג כללי בקופת חולים מכבי בעיר כפר סבא וביישוב כפר יונה.\nהשכלה והכשרה מקצועית\n\n2000 קורס MTL"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/moshe-koler/",
+      "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "anchorText": "ד\"ר משה קולר \n \n \n \n מנהל אגף כירורגיה \n \n \n \n \n \n \n ד\"ר משה קולר, בוגר אוניברסיטת בולוניה באיטליה,\nהינו מנהל מחלקה כירורגית במרכז הרפואי מעיני הישועה.\nביצע סטאז' במרכז הרפואי שיבא תל השומר, שם המשיך להתמחות בכירורגיה כללית.\nשימש כעמית מחקר בבית החולים מאונט סיני בניו יורק, ארה\"ב.\nעבד בתפקיד מנתח בכיר במחלקת כירורגיה אונקולוגית במרכז הרפואי שיבא תל השומר.\nבמהלך תפקידו העניק שירות קולורקטלי למטופלים.\nכיהן כסגן מנהל המחלקה לכירורגיה אונקולוגית במרכז הרפואי שיבא תל השומר.\nהעביר קורס בכירורגיה קולורקטלית בבית החולים St. Mark בלונדון, אנגליה.\nכמו כן, שימש כמרצה בכיר לכירורגיה באוניברסיטת תל אביב.\nכיהן כמנהל היחידה לכירורגיה קולורקטלית במרכז הרפואי שיבא תל השומר.\nהשכלה והכשרה מקצועית\n\n1983 עבר בהצלחה את בחינות ההסתדרות הרפואית בישראל בכירורגיה כללית.\n1971-1974 לימודי רפואה בפקולטה לרפואה של הטכניון, חיפה.\n1968-1971 לימודי רפואה באוניברסיטת בולוניה באיטליה.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר משה קולר \n \n \n \n מנהל אגף כירורגיה \n \n \n \n \n \n \n ד\"ר משה קולר, בוגר אוניברסיטת בולוניה באיטליה,\nהינו מנהל מחלקה כירורגית במרכז הרפואי מעיני הישועה.\nביצע סטאז' במרכז הרפואי שיבא תל השומר, שם המשיך להתמחות בכירורגיה כללית.\nשימש כעמית מחקר בבית החולים מאונט סיני בניו יורק, ארה\"ב.\nעבד בתפקיד מנתח בכיר במחלקת כירורגיה אונקולוגית במרכז הרפואי שיבא תל השומר.\nבמהלך תפקידו העניק שירות קולורקטלי למטופלים.\nכיהן כסגן מנהל המחלקה לכירורגיה אונקולוגית במרכז הרפואי שיבא תל השומר.\nהעביר קורס בכירורגיה קולור"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/prof-mani/",
+      "sourceUrl": "https://www.mymc.co.il/",
+      "anchorText": "<img loading=\"lazy\" decoding=\"async\" width=\"192\" height=\"206\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/arielMani.jpg\" class=\"attachment-full size-full wp-image-19046\" alt=\"רופא\" />מנהל אגף נשים ויולדותפרופ' אריאל מני",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "<img loading=\"lazy\" decoding=\"async\" width=\"192\" height=\"206\" src=\"https://www.mymc.co.il/wp-content/uploads/2025/10/arielMani.jpg\" class=\"attachment-full size-full wp-image-19046\" alt=\"רופא\" />מנהל אגף נשים ויולדותפרופ' אריאל מני https://www.mymc.co.il/doctors/prof-mani/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/prof-nathan-wexler/",
+      "sourceUrl": "https://www.mymc.co.il/",
+      "anchorText": "<img loading=\"lazy\" decoding=\"async\" width=\"96\" height=\"103\" src=\"https://www.mymc.co.il/wp-content/uploads/2026/01/drFabianS.jpg\" class=\"attachment-full size-full wp-image-25627\" alt=\"\" />מנהל מחלקת כירורגיהדר' פביאן גרסטנהבר",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "<img loading=\"lazy\" decoding=\"async\" width=\"96\" height=\"103\" src=\"https://www.mymc.co.il/wp-content/uploads/2026/01/drFabianS.jpg\" class=\"attachment-full size-full wp-image-25627\" alt=\"\" />מנהל מחלקת כירורגיהדר' פביאן גרסטנהבר https://www.mymc.co.il/doctors/prof-nathan-wexler/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/professor-yaakov-amir/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "פרופ' יעקב אמיר \n \n \n \n מנהל היחידה למחלות זיהומיות ילדים \n \n \n \n \n \n \n פרופ' יעקב אמיר, בוגר לימודי רפואה באוניברסיטה העברית בשילוב עם המרכז הרפואי הדסה בירושלים,\nהינו מנהל היחידה למחלות זיהומיות בילדים במרכז הרפואי מעיני הישועה.\nהתמחה ברפואת ילדים בבית החולים בילינסון בפתח תקווה,\nובהמשך התמחה במחלות זיהומיות באוניברסיטת וושינגטון בסנט-לואיס שבמיזורי, ארה\"ב.\nהשתלם כפרופסור אורח במכון למחקר של בית החולים לילדים באוקלנד בקליפורניה,\nביחידה למחלות זיהומיות בבית החולים לילדים בלונג איילנד בניו-יורק,\nבמעבדות המחקר לפיתוח חיסונים של 'נוברטיס' בסיינה איטליה\nובמחלקת היולדות בבית-החולים 'נקר אנפנט מלדי' בפריז, צרפת.\nהקים מרפאה ייחודית למעקב אחרי ילדים עם זיהום מולד ב-CMV.\nניהל במשך שנים את מחלקת הילדים במרכז שניידר לרפואת ילדים בפתח תקווה.\nחבר באיגוד למחלות זיהומיות בישראל, באיגוד האירופי למחלות זיהומיות, ובאיגוד רופאי הילדים.",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "פרופ' יעקב אמיר \n \n \n \n מנהל היחידה למחלות זיהומיות ילדים \n \n \n \n \n \n \n פרופ' יעקב אמיר, בוגר לימודי רפואה באוניברסיטה העברית בשילוב עם המרכז הרפואי הדסה בירושלים,\nהינו מנהל היחידה למחלות זיהומיות בילדים במרכז הרפואי מעיני הישועה.\nהתמחה ברפואת ילדים בבית החולים בילינסון בפתח תקווה,\nובהמשך התמחה במחלות זיהומיות באוניברסיטת וושינגטון בסנט-לואיס שבמיזורי, ארה\"ב.\nהשתלם כפרופסור אורח במכון למחקר של בית החולים לילדים באוקלנד בקליפורניה,\nביחידה למחלות זיהומיות בבית החולים לילדים בלונג איילנד בניו-יורק,"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/shimcha-mayzel/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "ד\"ר מחמד קבלאווי \n \n \n \n רופא אחראי מחלקת טיפול נמרץ לב",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר מחמד קבלאווי \n \n \n \n רופא אחראי מחלקת טיפול נמרץ לב https://www.mymc.co.il/doctors/shimcha-mayzel/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/tomer-avni/",
+      "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "anchorText": "פרופ' תומר אבני \n \n \n \n מנהל המחלקה הפנימית",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "פרופ' תומר אבני \n \n \n \n מנהל המחלקה הפנימית https://www.mymc.co.il/doctors/tomer-avni/"
+    },
+    {
+      "url": "https://www.mymc.co.il/doctors/yoram-ben-yehuda/",
+      "sourceUrl": "https://www.mymc.co.il/children-wing/",
+      "anchorText": "ד\"ר יורם בן יהודה \n \n \n \n מנהל מחלקת ילדים",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "ד\"ר יורם בן יהודה \n \n \n \n מנהל מחלקת ילדים https://www.mymc.co.il/doctors/yoram-ben-yehuda/"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.mymc.co.il/",
+    "https://www.mymc.co.il/children-wing/",
+    "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "https://www.mymc.co.il/main-departments/surgical-department/",
+    "https://www.mymc.co.il/mental-health/",
+    "https://www.mymc.co.il/doctors/",
+    "https://www.mymc.co.il/doctors/%d7%90%d7%95%d7%93%d7%99%d7%94-%d7%92%d7%9c%d7%96%d7%a8/",
+    "https://www.mymc.co.il/doctors/%d7%90%d7%a8%d7%96-%d7%97%d7%91%d7%a8%d7%95%d7%a0%d7%99/",
+    "https://www.mymc.co.il/doctors/%d7%93%d7%91%d7%99-%d7%91%d7%a7-2/",
+    "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%90%d7%93%d7%9d-%d7%90%d7%91%d7%95-%d7%a2%d7%91%d7%99%d7%93/",
+    "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%92%d7%9c%d7%99%d7%94-%d7%a8%d7%94%d7%91/",
+    "https://www.mymc.co.il/doctors/%d7%93%d7%a8-%d7%93%d7%a0%d7%99%d7%aa-%d7%93%d7%99%d7%99%d7%9f/"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

@@ -1,0 +1,525 @@
+[
+  {
+    "canonicalDoctorId": "doctor-0503a6762054a272",
+    "masterDeptRowId": null,
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.mymc.co.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/mental-health/",
+        "https://www.mymc.co.il/children-wing/",
+        "https://woman.mymc.co.il/",
+        "https://www.mymc.co.il/wings/internal-affairs-division/",
+        "https://www.mymc.co.il/main-departments/operating-rooms/",
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Maayanei Hayeshua Medical Center; candidates=6"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-12e9baa8259ebeb5",
+    "masterDeptRowId": "master-dept-0082-ביהח-מעיני-הישועה-פנימית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/wings/internal-affairs-division/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-1622a0cea99a9185",
+    "masterDeptRowId": "master-dept-0079-ביהח-מעיני-הישועה-פסיכיאטריה",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://www.mymc.co.il/mental-health/",
+    "extractedFromUrl": "https://www.mymc.co.il/mental-health/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/mental-health/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/mental-health/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-179fa1d2168b333a",
+    "masterDeptRowId": "master-dept-0082-ביהח-מעיני-הישועה-פנימית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/wings/internal-affairs-division/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-1a2f2864411a2c2e",
+    "masterDeptRowId": "master-dept-0082-ביהח-מעיני-הישועה-פנימית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/wings/internal-affairs-division/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-2c0c3efbe7db11a6",
+    "masterDeptRowId": "master-dept-0084-ביהח-מעיני-הישועה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-2edf1193a9b3ceff",
+    "masterDeptRowId": "master-dept-0084-ביהח-מעיני-הישועה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-2f29a911da584022",
+    "masterDeptRowId": "master-dept-0084-ביהח-מעיני-הישועה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-37e3966055862cd5",
+    "masterDeptRowId": "master-dept-0084-ביהח-מעיני-הישועה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-3afc48ee5e43ee43",
+    "masterDeptRowId": "master-dept-0080-ביהח-מעיני-הישועה-רפואת-ילדים",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.mymc.co.il/children-wing/",
+    "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/children-wing/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-5576ccfaa64c9a38",
+    "masterDeptRowId": "master-dept-0080-ביהח-מעיני-הישועה-רפואת-ילדים",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.mymc.co.il/children-wing/",
+    "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/children-wing/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-5b8393f03ef24365",
+    "masterDeptRowId": "master-dept-0084-ביהח-מעיני-הישועה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-62ce4439e1df5bc0",
+    "masterDeptRowId": "master-dept-0080-ביהח-מעיני-הישועה-רפואת-ילדים",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.mymc.co.il/children-wing/",
+    "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/children-wing/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-70967c3baf8dca50",
+    "masterDeptRowId": "master-dept-0080-ביהח-מעיני-הישועה-רפואת-ילדים",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.mymc.co.il/children-wing/",
+    "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/children-wing/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-730dad45ede41fc2",
+    "masterDeptRowId": "master-dept-0084-ביהח-מעיני-הישועה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-79e85944cee3c312",
+    "masterDeptRowId": "master-dept-0082-ביהח-מעיני-הישועה-פנימית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/wings/internal-affairs-division/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-7a4c54e417357bc6",
+    "masterDeptRowId": "master-dept-0082-ביהח-מעיני-הישועה-פנימית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/wings/internal-affairs-division/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-827053ee3b7fc3c7",
+    "masterDeptRowId": null,
+    "hospitalName": "Maayanei Hayeshua Medical Center",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.mymc.co.il/",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/mental-health/",
+        "https://www.mymc.co.il/children-wing/",
+        "https://woman.mymc.co.il/",
+        "https://www.mymc.co.il/wings/internal-affairs-division/",
+        "https://www.mymc.co.il/main-departments/operating-rooms/",
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Maayanei Hayeshua Medical Center; candidates=6"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-8a01ab4056b5d39d",
+    "masterDeptRowId": "master-dept-0084-ביהח-מעיני-הישועה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-8d71e9396c1ee6fe",
+    "masterDeptRowId": "master-dept-0079-ביהח-מעיני-הישועה-פסיכיאטריה",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פסיכיאטריה",
+    "sourceUrl": "https://www.mymc.co.il/mental-health/",
+    "extractedFromUrl": "https://www.mymc.co.il/mental-health/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/mental-health/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/mental-health/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-958cda1022db7a73",
+    "masterDeptRowId": "master-dept-0082-ביהח-מעיני-הישועה-פנימית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/wings/internal-affairs-division/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-a1f986340d67c352",
+    "masterDeptRowId": "master-dept-0080-ביהח-מעיני-הישועה-רפואת-ילדים",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.mymc.co.il/children-wing/",
+    "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/children-wing/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-a9cf2947e40bd426",
+    "masterDeptRowId": "master-dept-0082-ביהח-מעיני-הישועה-פנימית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/wings/internal-affairs-division/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-e9da5905d593f5eb",
+    "masterDeptRowId": "master-dept-0080-ביהח-מעיני-הישועה-רפואת-ילדים",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.mymc.co.il/children-wing/",
+    "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/children-wing/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-eef1e080ee66db90",
+    "masterDeptRowId": "master-dept-0082-ביהח-מעיני-הישועה-פנימית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "פנימית",
+    "sourceUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/wings/internal-affairs-division/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f1afa292fa55f6d4",
+    "masterDeptRowId": "master-dept-0084-ביהח-מעיני-הישועה-כירורגיה-כללית",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "כירורגיה כללית",
+    "sourceUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/main-departments/surgical-department/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/main-departments/surgical-department/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f4d52934ff7a294c",
+    "masterDeptRowId": "master-dept-0080-ביהח-מעיני-הישועה-רפואת-ילדים",
+    "hospitalName": "ביה\"ח מעיני הישועה",
+    "departmentName": "",
+    "specialty": "רפואת ילדים",
+    "sourceUrl": "https://www.mymc.co.il/children-wing/",
+    "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.mymc.co.il/children-wing/"
+      ],
+      "extractedFromUrl": "https://www.mymc.co.il/children-wing/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

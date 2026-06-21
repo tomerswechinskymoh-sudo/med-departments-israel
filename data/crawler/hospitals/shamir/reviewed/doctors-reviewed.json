@@ -1,0 +1,579 @@
+[
+  {
+    "fullName": "ד\"ר דבורה שטרסבורגר מנהלת המעבדה ביחידה להפריה חוץ גופית במרכז הרפואי שמיר",
+    "normalizedName": "דבורה שטרסבורגר מנהלת המעבדה ביחידה להפריה חוץ גופית במרכז הרפואי שמיר",
+    "titlePrefix": "ד\"ר",
+    "role": "שיחה עם ד\"ר דבורה שטרסבורגר מנהלת המעבדה ביחידה להפריה חוץ גופית במרכז הרפואי שמיר (אסף הרופא)",
+    "unit": null,
+    "profileUrl": "https://www.shamir.org/%D7%A8%D7%A9%D7%99%D7%9E%D7%95%D7%AA-%D7%9B%D7%9C%D7%9C%D7%99%D7%95%D7%AA/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%97%D7%93%D7%A9%D7%95%D7%AA/airevolution/",
+    "imageUrl": "https://www.shamir.org/images/FixImages/date.png",
+    "rawText": "מהפכת ה-AI\n\"ה-AI הרבה יותר אובייקטיבי מהאדם בבחירת התינוק\" קריירה בעידן ה-AI\nשיחה עם ד\"ר דבורה שטרסבורגר מנהלת המעבדה ביחידה להפריה חוץ גופית במרכז הרפואי שמיר (אסף הרופא)\n24-12-25",
+    "sourceUrl": "https://www.shamir.org/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "מהפכת ה-AI\n\"ה-AI הרבה יותר אובייקטיבי מהאדם בבחירת התינוק\" קריירה בעידן ה-AI\nשיחה עם ד\"ר דבורה שטרסבורגר מנהלת המעבדה ביחידה להפריה חוץ גופית במרכז הרפואי שמיר (אסף הרופא)\n24-12-25",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 5460,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0413-מרכז-רפואי-יצחק-שמיר-אורתופדיה-א",
+      "master-dept-0414-מרכז-רפואי-יצחק-שמיר-אורתופדיה-ב",
+      "master-dept-0415-מרכז-רפואי-יצחק-שמיר-רפואת-ילדים",
+      "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א",
+      "master-dept-0417-מרכז-רפואי-יצחק-שמיר-פנימית-ב",
+      "master-dept-0418-מרכז-רפואי-יצחק-שמיר-פנימית-ג",
+      "master-dept-0419-מרכז-רפואי-יצחק-שמיר-פנימית-ד",
+      "master-dept-0420-מרכז-רפואי-יצחק-שמיר-פנימית-ה",
+      "master-dept-0421-מרכז-רפואי-יצחק-שמיר-פנימית-ו",
+      "master-dept-0422-מרכז-רפואי-יצחק-שמיר-פנימית-ח",
+      "master-dept-0423-מרכז-רפואי-יצחק-שמיר-יילוד-וגינקולוגיה",
+      "master-dept-0424-מרכז-רפואי-יצחק-שמיר-פתולוגיה",
+      "master-dept-0425-מרכז-רפואי-יצחק-שמיר-רפואה-דחופה",
+      "master-dept-0426-מרכז-רפואי-יצחק-שמיר-מחלות-עיניים",
+      "master-dept-0427-מרכז-רפואי-יצחק-שמיר-אף-אוזן-גרון",
+      "master-dept-0428-מרכז-רפואי-יצחק-שמיר-כירורגית-כלי-דם",
+      "master-dept-0429-מרכז-רפואי-יצחק-שמיר-כירורגיה-כללית",
+      "master-dept-0430-מרכז-רפואי-יצחק-שמיר-רדיולוגיה-דימות",
+      "master-dept-0431-מרכז-רפואי-יצחק-שמיר-כירורגית-ילדים",
+      "master-dept-0432-מרכז-רפואי-יצחק-שמיר-כירורגיה-אורולוגית",
+      "master-dept-0433-מרכז-רפואי-יצחק-שמיר-קרדיולוגיה",
+      "master-dept-0434-מרכז-רפואי-יצחק-שמיר-נוירולוגיה",
+      "master-dept-0435-מרכז-רפואי-יצחק-שמיר-כירורגיה-פלסטית-ואסתטית",
+      "master-dept-0436-מרכז-רפואי-יצחק-שמיר-הרדמה",
+      "master-dept-0437-מרכז-רפואי-יצחק-שמיר-רפואה-גרעינית",
+      "master-dept-0438-מרכז-רפואי-יצחק-שמיר-אונקולוגיה",
+      "master-dept-0439-מרכז-רפואי-יצחק-שמיר-כירורגיה-של-בית-החזה"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א",
+      "ב",
+      "ג",
+      "ד",
+      "ה",
+      "ו",
+      "ח"
+    ],
+    "matchedMasterSpecialties": [
+      "אורתופדיה",
+      "רפואת ילדים",
+      "פנימית",
+      "יילוד וגינקולוגיה",
+      "פתולוגיה",
+      "רפואה דחופה",
+      "מחלות עיניים",
+      "אף אוזן גרון",
+      "כירורגית כלי דם",
+      "כירורגיה כללית",
+      "רדיולוגיה (דימות)",
+      "כירורגית ילדים",
+      "כירורגיה אורולוגית",
+      "קרדיולוגיה",
+      "נוירולוגיה",
+      "כירורגיה פלסטית ואסתטית",
+      "הרדמה",
+      "רפואה גרעינית",
+      "אונקולוגיה",
+      "כירורגיה של בית החזה"
+    ],
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartmentb/",
+        "https://www.shamir.org/clinics/pediatrics/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%91-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%92-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%93-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%94-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%95-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+        "https://www.shamir.org/clinics/gynecology/",
+        "https://www.shamir.org/clinics/labs/cytologyandpathology/",
+        "https://www.shamir.org/clinics/malrad-%D7%A8%D7%A4%D7%95%D7%90%D7%94-%D7%93%D7%97%D7%95%D7%A4%D7%94-%D7%9E%D7%99%D7%95%D7%9F-%D7%97%D7%93%D7%A8%D7%99-%D7%9E%D7%99%D7%95%D7%9F-%D7%9E%D7%9C%D7%A8%D7%93-%D7%97%D7%93%D7%A8-%D7%9E%D7%99%D7%95%D7%9F/",
+        "https://www.shamir.org/clinics/eye/",
+        "https://www.shamir.org/clinics/aag/",
+        "https://www.shamir.org/clinics/bloodvesselsurgical/",
+        "https://www.shamir.org/clinics/surgery/",
+        "https://www.shamir.org/he/clinics/%D7%9E%D7%A2%D7%A8%D7%9A-%D7%94%D7%93%D7%99%D7%9E%D7%95%D7%AA/",
+        "https://www.shamir.org/clinics/pediatrics/departmentpediatricsurgery/",
+        "https://www.shamir.org/clinics/urologysurgery1/",
+        "https://www.shamir.org/clinics/cardiology/",
+        "https://www.shamir.org/clinics/neurology/",
+        "https://www.shamir.org/clinics/plasticsurgery/",
+        "https://www.shamir.org/clinics/anesthesia/",
+        "https://www.shamir.org/he/clinic/%D7%A8%D7%A4%D7%95%D7%90%D7%94-%D7%92%D7%A8%D7%A2%D7%99%D7%A0%D7%99%D7%AA-%D7%9E%D7%9B%D7%95%D7%9F/",
+        "https://www.shamir.org/clinics/oncology/",
+        "https://www.shamir.org/clinics/chestsurgery/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=Shamir Medical Center; candidates=27"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "fullName": "ד\"ר בר יפתח",
+    "normalizedName": "בר יפתח",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מחלקת אורתופדית א'",
+    "unit": null,
+    "profileUrl": "https://www.shamir.org/%D7%A8%D7%A9%D7%99%D7%9E%D7%95%D7%AA-%D7%9B%D7%9C%D7%9C%D7%99%D7%95%D7%AA/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D/bariftach/",
+    "imageUrl": "https://www.shamir.org/media/lqrjppw4/%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D-49.jpg",
+    "rawText": "מנהל מחלקת אורתופדית א'\nד\"ר בר יפתח\nאחות אחראית במחלקה האורתופדית\nגב' מורד איטל",
+    "sourceUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "מנהל מחלקת אורתופדית א'\nד\"ר בר יפתח\nאחות אחראית במחלקה האורתופדית\nגב' מורד איטל",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 5606,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0413-מרכז-רפואי-יצחק-שמיר-אורתופדיה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר בר יפתח\nאחות אחראית במחלקה האורתופדית\nגב' מורד איטל",
+    "normalizedName": "בר יפתח אחות אחראית במחלקה האורתופדית גב מורד איטל",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מחלקת אורתופדית א'",
+    "unit": null,
+    "profileUrl": "https://www.shamir.org/%D7%A8%D7%A9%D7%99%D7%9E%D7%95%D7%AA-%D7%9B%D7%9C%D7%9C%D7%99%D7%95%D7%AA/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D/bariftach/",
+    "imageUrl": "https://www.shamir.org/media/lqrjppw4/%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D-49.jpg",
+    "rawText": "מנהל מחלקת אורתופדית א'\nד\"ר בר יפתח\nאחות אחראית במחלקה האורתופדית\nגב' מורד איטל",
+    "sourceUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "מנהל מחלקת אורתופדית א'\nד\"ר בר יפתח\nאחות אחראית במחלקה האורתופדית\nגב' מורד איטל",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 5606,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0413-מרכז-רפואי-יצחק-שמיר-אורתופדיה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר בר יפתח\nאחות אחראית במחלקה האורתופדית\nגב' מורד איטל",
+    "normalizedName": "בר יפתח אחות אחראית במחלקה האורתופדית גב מורד איטל",
+    "titlePrefix": "ד\"ר",
+    "role": "מנהל מחלקת אורתופדית א'",
+    "unit": null,
+    "profileUrl": "https://www.shamir.org/%D7%A8%D7%A9%D7%99%D7%9E%D7%95%D7%AA-%D7%9B%D7%9C%D7%9C%D7%99%D7%95%D7%AA/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D/moradeitle/",
+    "imageUrl": "https://www.shamir.org/media/lqrjppw4/%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D-49.jpg",
+    "rawText": "מנהל מחלקת אורתופדית א'\nד\"ר בר יפתח\nאחות אחראית במחלקה האורתופדית\nגב' מורד איטל",
+    "sourceUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "מנהל מחלקת אורתופדית א'\nד\"ר בר יפתח\nאחות אחראית במחלקה האורתופדית\nגב' מורד איטל",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 5055,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0413-מרכז-רפואי-יצחק-שמיר-אורתופדיה-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "אורתופדיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר רייזלר גד",
+    "normalizedName": "רייזלר גד",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.shamir.org/%D7%A8%D7%A9%D7%99%D7%9E%D7%95%D7%AA-%D7%9B%D7%9C%D7%9C%D7%99%D7%95%D7%AA/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D/%D7%93%D7%A8-%D7%A8%D7%99%D7%99%D7%96%D7%9C%D7%A8-%D7%92%D7%93/",
+    "imageUrl": "https://www.shamir.org/media/2wmiuou4/%D7%A8%D7%99%D7%99%D7%96%D7%9C%D7%A8.png",
+    "rawText": "יו\"ר חטיבת הילדים\nד\"ר רייזלר גד",
+    "sourceUrl": "https://www.shamir.org/clinics/pediatrics/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "יו\"ר חטיבת הילדים\nד\"ר רייזלר גד",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 6370,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0415-מרכז-רפואי-יצחק-שמיר-רפואת-ילדים"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "רפואת ילדים"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/pediatrics/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/pediatrics/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר דניאל פוקס",
+    "normalizedName": "דניאל פוקס",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר דניאל פוקס - רופא בכיר",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר דניאל פוקס - רופא בכיר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר יעל להט",
+    "normalizedName": "יעל להט",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר יעל להט - רופאה בכירה",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר יעל להט - רופאה בכירה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר מלי קלר",
+    "normalizedName": "מלי קלר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מלי קלר - רופאה בכירה",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מלי קלר - רופאה בכירה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר רונית קורן",
+    "normalizedName": "רונית קורן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר רונית קורן - מנהלת המחלקה",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר רונית קורן - מנהלת המחלקה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "ד\"ר רונית קורן והמרפאה לזיהומים בהריון באחריות ד\"ר רונית זיידנשטיין. במרפאות אלה מטופלות נשים ה",
+    "normalizedName": "רונית קורן והמרפאה לזיהומים בהריון באחריות דר רונית זיידנשטיין במרפאות אלה מטופלות נשים ה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר רונית קורן והמרפאה לזיהומים בהריון באחריות ד\"ר רונית זיידנשטיין. במרפאות אלה מטופלות נשים ה",
+    "sourceUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר רונית קורן והמרפאה לזיהומים בהריון באחריות ד\"ר רונית זיידנשטיין. במרפאות אלה מטופלות נשים ה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review",
+    "profileCompleteness": "listOnly",
+    "profileTextLength": 0,
+    "productionReady": false,
+    "reviewedStatus": "needsMoreEvidence",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א"
+    ],
+    "matchedMasterDepartmentNames": [
+      "א"
+    ],
+    "matchedMasterSpecialties": [
+      "פנימית"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "פרופ' מיכל קובו",
+    "normalizedName": "מיכל קובו",
+    "titlePrefix": "פרופ'",
+    "role": "מנהלת אגף נשים ויולדות",
+    "unit": null,
+    "profileUrl": "https://www.shamir.org/%D7%A8%D7%A9%D7%99%D7%9E%D7%95%D7%AA-%D7%9B%D7%9C%D7%9C%D7%99%D7%95%D7%AA/%D7%A8%D7%A9%D7%99%D7%9E%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D/michal-kobo/",
+    "imageUrl": "https://www.shamir.org/media/2p4jpaop/%D7%AA%D7%9E%D7%95%D7%A0%D7%95%D7%AA-%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D-83.jpg",
+    "rawText": "מנהלת אגף נשים ויולדות\nפרופ' מיכל קובו",
+    "sourceUrl": "https://www.shamir.org/clinics/gynecology/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "מנהלת אגף נשים ויולדות\nפרופ' מיכל קובו",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 5587,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0423-מרכז-רפואי-יצחק-שמיר-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/gynecology/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/gynecology/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "fullName": "פרופ' קובי סתיו",
+    "normalizedName": "קובי סתיו",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": "https://www.shamir.org/clinics/gynecology/noiroorology/",
+    "imageUrl": null,
+    "rawText": "נוירו-אורולוגיה - מרפאה\nהמרפאה שהוקמה בראשית 2010 ומנוהלת על ידי פרופ' קובי סתיו, מטפלת במחלות הקשורות לבעיות תפקודיות כמו: דליפת שתן בקרב גברים ונשים, וטיפולים ניתוחיים ותרופתיים של דרכי השתן התחתונים.",
+    "sourceUrl": "https://www.shamir.org/clinics/gynecology/",
+    "hospitalSlug": "shamir",
+    "hospital": "Shamir Medical Center",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "נוירו-אורולוגיה - מרפאה\nהמרפאה שהוקמה בראשית 2010 ומנוהלת על ידי פרופ' קובי סתיו, מטפלת במחלות הקשורות לבעיות תפקודיות כמו: דליפת שתן בקרב גברים ונשים, וטיפולים ניתוחיים ותרופתיים של דרכי השתן התחתונים.",
+    "qaFlags": [],
+    "qaSeverity": "ok",
+    "profileCompleteness": "full",
+    "profileTextLength": 9072,
+    "productionReady": true,
+    "reviewedStatus": "approved",
+    "matchedMasterHospitalName": "מרכז רפואי יצחק שמיר",
+    "matchedMasterDeptRowIds": [
+      "master-dept-0423-מרכז-רפואי-יצחק-שמיר-יילוד-וגינקולוגיה"
+    ],
+    "matchedMasterDepartmentNames": [],
+    "matchedMasterSpecialties": [
+      "יילוד וגינקולוגיה"
+    ],
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.shamir.org/clinics/gynecology/"
+      ],
+      "extractedFromUrl": "https://www.shamir.org/clinics/gynecology/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  }
+]

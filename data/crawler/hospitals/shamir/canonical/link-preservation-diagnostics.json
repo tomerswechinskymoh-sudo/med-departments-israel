@@ -1,0 +1,36 @@
+{
+  "rawReviewedRows": 12,
+  "canonicalDoctors": 11,
+  "doctorDepartmentLinks": 11,
+  "productionReadyCanonicalDoctors": 6,
+  "sourceUrlMatchLinks": 10,
+  "reviewNeededLinks": 1,
+  "expectedDistinctDoctorDepartmentLinks": 11,
+  "rawRowsDroppedAsExactDuplicates": 1,
+  "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+  "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+  "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+  "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 1,
+  "duplicateProfileUrlGroupsBefore": 1,
+  "duplicateProfileUrlGroupsAfter": 0,
+  "examples": [
+    {
+      "canonicalDoctorId": "doctor-7939c8e0110d7a6d",
+      "fullName": "ד\"ר בר יפתח",
+      "rawRows": 2,
+      "doctorDepartmentLinks": 1,
+      "distinctSourceUrls": 1,
+      "distinctMasterDeptRowIds": 1,
+      "distinctExtractedFromUrls": 1,
+      "sourceUrls": [
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/"
+      ],
+      "masterDeptRowIds": [
+        "master-dept-0413-מרכז-רפואי-יצחק-שמיר-אורתופדיה-א"
+      ],
+      "extractedFromUrls": [
+        "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/"
+      ]
+    }
+  ]
+}

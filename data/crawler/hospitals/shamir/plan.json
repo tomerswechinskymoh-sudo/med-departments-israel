@@ -1,0 +1,135 @@
+{
+  "hospitalSlug": "shamir",
+  "hospitalName": "Shamir Medical Center",
+  "generatedAt": "2026-06-21T10:15:03.063Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.shamir.org/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "https://www.shamir.org/clinics/pediatrics/",
+      "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "https://www.shamir.org/clinics/gynecology/",
+      "https://www.shamir.org/clinics/labs/cytologyandpathology/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "https://www.shamir.org/clinics/pediatrics/",
+      "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "https://www.shamir.org/clinics/gynecology/",
+      "https://www.shamir.org/clinics/labs/cytologyandpathology/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.shamir.org/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.shamir.org/",
+      "title": "מרכז רפואי שמיר | מרכז רפואי שמיר",
+      "h1": [],
+      "h2": [
+        "רגעים קסומים נולדים כאן!",
+        "שירותים מובילים",
+        "חדשות אחרונות",
+        "היחידה להפריה חוץ גופית - IVF",
+        "Shamir TV"
+      ],
+      "htmlLength": 126381,
+      "visibleTextLength": 7941,
+      "error": null
+    },
+    {
+      "url": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "title": "מרכז רפואי שמיר | אורתופדיה א' - מחלקה",
+      "h1": [
+        "אורתופדיה א' - מחלקה"
+      ],
+      "h2": [],
+      "htmlLength": 99549,
+      "visibleTextLength": 9869,
+      "error": null
+    },
+    {
+      "url": "https://www.shamir.org/clinics/pediatrics/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.shamir.org/clinics/pediatrics/",
+      "title": "מרכז רפואי שמיר | ילדים - חטיבה",
+      "h1": [
+        "ילדים - חטיבה"
+      ],
+      "h2": [],
+      "htmlLength": 126082,
+      "visibleTextLength": 9902,
+      "error": null
+    },
+    {
+      "url": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "title": "מרכז רפואי שמיר | פנימית א' - מחלקה",
+      "h1": [
+        "פנימית א' - מחלקה"
+      ],
+      "h2": [],
+      "htmlLength": 93801,
+      "visibleTextLength": 8214,
+      "error": null
+    },
+    {
+      "url": "https://www.shamir.org/clinics/gynecology/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.shamir.org/clinics/gynecology/",
+      "title": "מרכז רפואי שמיר | נשים ויולדות - אגף",
+      "h1": [
+        "נשים ויולדות - אגף"
+      ],
+      "h2": [],
+      "htmlLength": 107750,
+      "visibleTextLength": 8629,
+      "error": null
+    },
+    {
+      "url": "https://www.shamir.org/clinics/labs/cytologyandpathology/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.shamir.org/clinics/labs/cytologyandpathology/",
+      "title": "מרכז רפואי שמיר | פתולוגיה - מכון",
+      "h1": [
+        "פתולוגיה - מכון"
+      ],
+      "h2": [],
+      "htmlLength": 94168,
+      "visibleTextLength": 7942,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.shamir.org/",
+    "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+    "https://www.shamir.org/clinics/pediatrics/",
+    "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+    "https://www.shamir.org/clinics/gynecology/",
+    "https://www.shamir.org/clinics/labs/cytologyandpathology/"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

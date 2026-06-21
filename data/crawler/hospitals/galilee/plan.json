@@ -1,0 +1,600 @@
+{
+  "hospitalSlug": "galilee",
+  "hospitalName": "Galilee Medical Center",
+  "generatedAt": "2026-06-21T10:15:35.399Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.gmc.gov.il/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "https://www.gmc.gov.il/?p=10533",
+      "https://www.gmc.gov.il/?p=8838",
+      "https://www.gmc.gov.il/?p=10501",
+      "https://www.gmc.gov.il/?p=8742"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "https://www.gmc.gov.il/?p=10533",
+      "https://www.gmc.gov.il/?p=8838",
+      "https://www.gmc.gov.il/?p=10501",
+      "https://www.gmc.gov.il/?p=8742"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.gmc.gov.il/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.gmc.gov.il/",
+      "title": "עמוד הבית - המרכז הרפואי לגליל",
+      "h1": [
+        "מקצועות הבריאות",
+        "אגף דימות",
+        "מיון",
+        "אגף פנימי",
+        "אגף כירורגי",
+        "אגף ילדים",
+        "אגף נשים ויולדות",
+        "אדם לאדם - אדם"
+      ],
+      "h2": [
+        "מקצועות הבריאות",
+        "אגף דימות",
+        "מיון",
+        "אגף פנימי",
+        "אגף כירורגי",
+        "אגף ילדים",
+        "אגף נשים ויולדות",
+        "אגף נשים ויולדות",
+        "אגף ילדים",
+        "אגף כירורגי",
+        "אגף דימות",
+        "מיון",
+        "מקצועות הבריאות",
+        "אגף פנימי"
+      ],
+      "htmlLength": 714750,
+      "visibleTextLength": 78465,
+      "error": null
+    },
+    {
+      "url": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "title": "אגף נשים ויולדות - המרכז הרפואי לגליל",
+      "h1": [
+        "אדם לאדם - אדם"
+      ],
+      "h2": [
+        "אגף נשים ויולדות",
+        "אגף נשים ויולדות",
+        "מנהל האגף",
+        "מפקחת אגף נשים ויולדות",
+        "מנהלת המחלקה לטיפול מיוחד בילוד ומחלקות התינוקות, מומחית ברפואת ילדים ובנאונטולוגיה",
+        "מנהלת יחידת IVF",
+        "מנהל יחידת האולטרה-סאונד (US) המיילדותי והגינקולוגי",
+        "מנהל מחלקת נשים"
+      ],
+      "htmlLength": 533572,
+      "visibleTextLength": 35740,
+      "error": null
+    },
+    {
+      "url": "https://www.gmc.gov.il/?p=10533",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.gmc.gov.il/?p=10533",
+      "title": "פנימית א' - המרכז הרפואי לגליל",
+      "h1": [
+        "אדם לאדם - אדם"
+      ],
+      "h2": [
+        "פנימית א'",
+        "מנהל מחלקת פנימית א'",
+        "אחות אחראית",
+        "רופא בכיר",
+        "רופאה בכירה",
+        "רופאה בכירה",
+        "סגנית אחות אחראית",
+        "מזכירת המחלקה"
+      ],
+      "htmlLength": 588717,
+      "visibleTextLength": 34583,
+      "error": null
+    },
+    {
+      "url": "https://www.gmc.gov.il/?p=8838",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.gmc.gov.il/?p=8838",
+      "title": "אורתופדיה א' - המרכז הרפואי לגליל",
+      "h1": [
+        "אדם לאדם - אדם"
+      ],
+      "h2": [
+        "אורתופדיה א'",
+        "מנהל מחלקת אורתופדיה א'",
+        "אחות אחראית",
+        "רופא בכיר, מומחה כתף",
+        "רופא בכיר, מומחה טראומה אורתופדית",
+        "רופא בכיר",
+        "רופא בכיר",
+        "מזכיר המחלקה"
+      ],
+      "htmlLength": 591096,
+      "visibleTextLength": 35431,
+      "error": null
+    },
+    {
+      "url": "https://www.gmc.gov.il/?p=10501",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.gmc.gov.il/?p=10501",
+      "title": "המערך הקרדיולוגי - המרכז הרפואי לגליל",
+      "h1": [
+        "אדם לאדם - אדם"
+      ],
+      "h2": [
+        "המערך הקרדיולוגי",
+        "מנהל המערך הקרדיולוגי",
+        "מנהל יחידה לאי ספיקת לב",
+        "רופא בכיר ביחידת צנתורים",
+        "מנהל יחידת טיפול נמרץ לב",
+        "מנהל יחידה לקרדיולוגיה לא פולשנית",
+        "מנהל יחידה לקרדיולוגיה פולשנית",
+        "רופא בכיר",
+        "רופא בכיר",
+        "רופא בכיר",
+        "רופא בכיר",
+        "אח אחראי קרדיולוגיה",
+        "אח אחראי צנתורים",
+        "סגנית אח אחראי קרדיולוגיה",
+        "מזכירת מחלקת קרדיולוגיה"
+      ],
+      "htmlLength": 645868,
+      "visibleTextLength": 36282,
+      "error": null
+    },
+    {
+      "url": "https://www.gmc.gov.il/?p=8742",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.gmc.gov.il/?p=8742",
+      "title": "כירורגיה א' - המרכז הרפואי לגליל",
+      "h1": [
+        "אדם לאדם - אדם"
+      ],
+      "h2": [
+        "כירורגיה א'",
+        "מנהל מחלקת כירורגיה א'",
+        "אח אחראי מחלקה",
+        "רופא בכיר",
+        "מ. יח' לניתוחי שד ואחראית תכנית התמחות",
+        "רופא בכיר",
+        "רופא בכיר",
+        "סגנית אח אחראי",
+        "מזכירת המחלקה"
+      ],
+      "htmlLength": 592286,
+      "visibleTextLength": 35182,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://www.gmc.gov.il/?p=20966",
+      "sourceUrl": "https://www.gmc.gov.il/",
+      "anchorText": "הרופאים נדהמו לגלות: המטופל הגיע למרכז הרפואי לגליל עם בליטה חריגה של גלגל העין",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "הרופאים נדהמו לגלות: המטופל הגיע למרכז הרפואי לגליל עם בליטה חריגה של גלגל העין https://www.gmc.gov.il/?p=20966"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%90%d7%99%d7%a8%d7%a0%d7%94-%d7%a1%d7%93%d7%95%d7%91%d7%a1%d7%a7%d7%99",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%90%d7%99%d7%a8%d7%a0%d7%94-%d7%a1%d7%93%d7%95%d7%91%d7%a1%d7%a7%d7%99"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%90%d7%9c%d7%a0%d7%94-%d7%97%d7%95%d7%a8%d7%99",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8742",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%90%d7%9c%d7%a0%d7%94-%d7%97%d7%95%d7%a8%d7%99"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%93%d7%9c%d7%99%d7%aa-%d7%90%d7%95%d7%97%d7%a0%d7%94",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%93%d7%9c%d7%99%d7%aa-%d7%90%d7%95%d7%97%d7%a0%d7%94"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%9c%d7%99%d7%90%d7%aa-%d7%90%d7%9c%d7%94%d7%a8%d7%a8",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%9c%d7%99%d7%90%d7%aa-%d7%90%d7%9c%d7%94%d7%a8%d7%a8"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%9c%d7%99%d7%98%d7%9c-%d7%9b%d7%97%d7%9c%d7%95%d7%9f",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%9c%d7%99%d7%98%d7%9c-%d7%9b%d7%97%d7%9c%d7%95%d7%9f"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%9e%d7%99%d7%a8%d7%99-%d7%9b%d7%94%d7%9f",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8742",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%9e%d7%99%d7%a8%d7%99-%d7%9b%d7%94%d7%9f"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%a7%d7%98%d7%99%d7%94-%d7%a0%d7%90%d7%95%d7%9e%d7%a0%d7%a7%d7%95",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%a7%d7%98%d7%99%d7%94-%d7%a0%d7%90%d7%95%d7%9e%d7%a0%d7%a7%d7%95"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%a8%d7%90%d7%93%d7%94-%d7%a9%d7%99%d7%99%d7%97",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%a8%d7%90%d7%93%d7%94-%d7%a9%d7%99%d7%99%d7%97"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%a9%d7%a8%d7%99-%d7%a0%d7%94%d7%99%d7%a8-%d7%91%d7%99%d7%93%d7%a8%d7%9e%d7%9f-2",
+      "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%a9%d7%a8%d7%99-%d7%a0%d7%94%d7%99%d7%a8-%d7%91%d7%99%d7%93%d7%a8%d7%9e%d7%9f-2"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%90%d7%93%d7%94%d7%9d-%d7%93%d7%90%d7%95%d7%93",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%90%d7%93%d7%94%d7%9d-%d7%93%d7%90%d7%95%d7%93"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%90%d7%9c%d7%99-%d7%a7%d7%a7%d7%99%d7%90%d7%a9%d7%95%d7%99%d7%9c%d7%99",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8742",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%90%d7%9c%d7%99-%d7%a7%d7%a7%d7%99%d7%90%d7%a9%d7%95%d7%99%d7%9c%d7%99"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%90%d7%9c%d7%99%d7%94%d7%95-%d7%97%d7%9c%d7%a4%d7%95%d7%9f",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%90%d7%9c%d7%99%d7%94%d7%95-%d7%97%d7%9c%d7%a4%d7%95%d7%9f"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%90%d7%9c%d7%9b%d7%a1-%d7%a9%d7%98%d7%95%d7%a8%d7%9e%d7%9f",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%90%d7%9c%d7%9b%d7%a1-%d7%a9%d7%98%d7%95%d7%a8%d7%9e%d7%9f"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%91%d7%95%d7%9c%d7%95%d7%a1-%d7%9e%d7%a8%d7%99%d7%90%d7%a0%d7%94",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%91%d7%95%d7%9c%d7%95%d7%a1-%d7%9e%d7%a8%d7%99%d7%90%d7%a0%d7%94"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%92%d7%a1%d7%90%d7%9f-%d7%9e%d7%95%d7%a2%d7%93%d7%99",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%92%d7%a1%d7%90%d7%9f-%d7%9e%d7%95%d7%a2%d7%93%d7%99"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%92%d7%a8%d7%92%d7%95%d7%a8%d7%99-%d7%91%d7%95%d7%92%d7%a1%d7%9c%d7%95%d7%91%d7%a1%d7%a7%d7%99",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8742",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%92%d7%a8%d7%92%d7%95%d7%a8%d7%99-%d7%91%d7%95%d7%92%d7%a1%d7%9c%d7%95%d7%91%d7%a1%d7%a7%d7%99"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%95%d7%90%d7%a1%d7%99%d7%9d-%d7%9e%d7%a9%d7%99%d7%a2%d7%9c",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%95%d7%90%d7%a1%d7%99%d7%9d-%d7%9e%d7%a9%d7%99%d7%a2%d7%9c"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%95%d7%90%d7%a1%d7%99%d7%9d-%d7%a9%d7%99%d7%94%d7%90%d7%91",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%95%d7%90%d7%a1%d7%99%d7%9d-%d7%a9%d7%99%d7%94%d7%90%d7%91"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%95%d7%a8%d7%93-%d7%a9%d7%a4%d7%a8-%d7%a4%d7%9c%d7%99%d7%99%d7%a9%d7%a8-2",
+      "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%95%d7%a8%d7%93-%d7%a9%d7%a4%d7%a8-%d7%a4%d7%9c%d7%99%d7%99%d7%a9%d7%a8-2"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%97%d7%9c%d7%99%d7%9c-%d7%a0%d7%a1%d7%a8%d7%90%d7%9c%d7%9c%d7%94",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%97%d7%9c%d7%99%d7%9c-%d7%a0%d7%a1%d7%a8%d7%90%d7%9c%d7%9c%d7%94"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%98%d7%95%d7%a0%d7%99-%d7%90%d7%91%d7%95-%d7%a8%d7%97%d7%9e%d7%94",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%98%d7%95%d7%a0%d7%99-%d7%90%d7%91%d7%95-%d7%a8%d7%97%d7%9e%d7%94"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9c%d7%95%d7%90%d7%99-%d7%9e%d7%95%d7%91%d7%a8%d7%9b%d7%94",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9c%d7%95%d7%90%d7%99-%d7%9e%d7%95%d7%91%d7%a8%d7%9b%d7%94"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9c%d7%95%d7%90%d7%99-%d7%a2%d7%a8%d7%90%d7%a3",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9c%d7%95%d7%90%d7%99-%d7%a2%d7%a8%d7%90%d7%a3"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9e%d7%95%d7%90%d7%a0%d7%a1-%d7%a1%d7%a8%d7%97%d7%90%d7%9f",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9e%d7%95%d7%90%d7%a0%d7%a1-%d7%a1%d7%a8%d7%97%d7%90%d7%9f"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9e%d7%99%d7%9b%d7%90%d7%9c-%d7%95%d7%99%d7%99%d7%a1",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8742",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9e%d7%99%d7%9b%d7%90%d7%9c-%d7%95%d7%99%d7%99%d7%a1"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9e%d7%9c%d7%97%d7%9d-%d7%a4%d7%90%d7%a8%d7%a1",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%9e%d7%9c%d7%97%d7%9d-%d7%a4%d7%90%d7%a8%d7%a1"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a1%d7%91%d7%98%d7%9c%d7%a0%d7%94-%d7%9c%d7%a1%d7%99%d7%98%d7%a1%d7%99%d7%9f",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a1%d7%91%d7%98%d7%9c%d7%a0%d7%94-%d7%9c%d7%a1%d7%99%d7%98%d7%a1%d7%99%d7%9f"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a6%d7%a4%d7%a8%d7%99%d7%a8-%d7%90%d7%95%d7%a8",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a6%d7%a4%d7%a8%d7%99%d7%a8-%d7%90%d7%95%d7%a8"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a7%d7%98%d7%99-%d7%a9%d7%9c%d7%95%d7%a9-3",
+      "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a7%d7%98%d7%99-%d7%a9%d7%9c%d7%95%d7%a9-3"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a7%d7%a1%d7%99%d7%a1-%d7%95%d7%9c%d7%99%d7%93",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8742",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a7%d7%a1%d7%99%d7%a1-%d7%95%d7%9c%d7%99%d7%93"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a8%d7%99%d7%9d-%d7%97%d7%95%d7%a8%d7%99",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8742",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a8%d7%99%d7%9d-%d7%97%d7%95%d7%a8%d7%99"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a9%d7%95%d7%9c%d7%99-%d7%94%d7%90%d7%99%d7%aa%d7%9d",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a9%d7%95%d7%9c%d7%99-%d7%94%d7%90%d7%99%d7%aa%d7%9d"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a9%d7%98%d7%90%d7%a8%d7%a7%d7%a8-%d7%97%d7%99%d7%99%d7%9d-%d7%99%d7%a4%d7%99%d7%9d",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a9%d7%98%d7%90%d7%a8%d7%a7%d7%a8-%d7%97%d7%99%d7%99%d7%9d-%d7%99%d7%a4%d7%99%d7%9d"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a9%d7%a8%d7%95%d7%9f-%d7%90%d7%91%d7%a9%d7%9c%d7%95%d7%9d-2",
+      "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%93%d7%a8-%d7%a9%d7%a8%d7%95%d7%9f-%d7%90%d7%91%d7%a9%d7%9c%d7%95%d7%9d-2"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%9e%d7%a8-%d7%90%d7%95%d7%a1%d7%95%d7%91-%d7%93%d7%a0%d7%99%d7%a1",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8742",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%9e%d7%a8-%d7%90%d7%95%d7%a1%d7%95%d7%91-%d7%93%d7%a0%d7%99%d7%a1"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%9e%d7%a8-%d7%90%d7%99%d7%aa%d7%9f-%d7%a1%d7%95%d7%93%d7%90%d7%99",
+      "sourceUrl": "https://www.gmc.gov.il/?p=8838",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%9e%d7%a8-%d7%90%d7%99%d7%aa%d7%9f-%d7%a1%d7%95%d7%93%d7%90%d7%99"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%9e%d7%a8-%d7%9e%d7%92%d7%93%d7%99-%d7%a1%d7%95%d7%a1%d7%90%d7%9f",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%9e%d7%a8-%d7%9e%d7%92%d7%93%d7%99-%d7%a1%d7%95%d7%a1%d7%90%d7%9f"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%9e%d7%a8-%d7%a0%d7%91%d7%99%d7%9c-%d7%9e%d7%a8%d7%96%d7%95%d7%a7",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%9e%d7%a8-%d7%a0%d7%91%d7%99%d7%9c-%d7%9e%d7%a8%d7%96%d7%95%d7%a7"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%a4%d7%a8%d7%95%d7%a4-%d7%9c%d7%99%d7%90%d7%95%d7%a8-%d7%9c%d7%91%d7%a0%d7%a9%d7%98%d7%99%d7%99%d7%9f",
+      "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%a4%d7%a8%d7%95%d7%a4-%d7%9c%d7%99%d7%90%d7%95%d7%a8-%d7%9c%d7%91%d7%a0%d7%a9%d7%98%d7%99%d7%99%d7%9f"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%a4%d7%a8%d7%95%d7%a4-%d7%9e%d7%a8%d7%95%d7%90%d7%9f-%d7%a2%d7%95%d7%93%d7%94-2",
+      "sourceUrl": "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%a4%d7%a8%d7%95%d7%a4-%d7%9e%d7%a8%d7%95%d7%90%d7%9f-%d7%a2%d7%95%d7%93%d7%94-2"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%a4%d7%a8%d7%95%d7%a4-%d7%a0%d7%99%d7%9e%d7%a8-%d7%a2%d7%90%d7%a1%d7%99",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10533",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%a4%d7%a8%d7%95%d7%a4-%d7%a0%d7%99%d7%9e%d7%a8-%d7%a2%d7%90%d7%a1%d7%99"
+    },
+    {
+      "url": "https://www.gmc.gov.il/?doctor=%d7%a4%d7%a8%d7%95%d7%a4-%d7%a9%d7%90%d7%95%d7%9c-%d7%a2%d7%98%d7%a8",
+      "sourceUrl": "https://www.gmc.gov.il/?p=10501",
+      "anchorText": "",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": " https://www.gmc.gov.il/?doctor=%d7%a4%d7%a8%d7%95%d7%a4-%d7%a9%d7%90%d7%95%d7%9c-%d7%a2%d7%98%d7%a8"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.gmc.gov.il/",
+    "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "https://www.gmc.gov.il/?p=10533",
+    "https://www.gmc.gov.il/?p=8838",
+    "https://www.gmc.gov.il/?p=10501",
+    "https://www.gmc.gov.il/?p=8742",
+    "https://www.gmc.gov.il/?p=20966",
+    "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%90%d7%99%d7%a8%d7%a0%d7%94-%d7%a1%d7%93%d7%95%d7%91%d7%a1%d7%a7%d7%99",
+    "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%90%d7%9c%d7%a0%d7%94-%d7%97%d7%95%d7%a8%d7%99",
+    "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%93%d7%9c%d7%99%d7%aa-%d7%90%d7%95%d7%97%d7%a0%d7%94",
+    "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%9c%d7%99%d7%90%d7%aa-%d7%90%d7%9c%d7%94%d7%a8%d7%a8",
+    "https://www.gmc.gov.il/?doctor=%d7%92%d7%91-%d7%9c%d7%99%d7%98%d7%9c-%d7%9b%d7%97%d7%9c%d7%95%d7%9f"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

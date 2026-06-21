@@ -1,23 +1,24 @@
 {
-  "generatedAt": "2026-06-20T15:13:17.464Z",
+  "generatedAt": "2026-06-21T10:16:23.421Z",
   "totalHospitals": 60,
   "totalMasterDeptRows": 634,
   "rowsWithUrls": 321,
   "sourceUrlStatusCounts": {
-    "pending": 239,
+    "pending": 242,
     "notProvided": 313,
-    "live": 82
+    "live": 71,
+    "forbidden": 8
   },
   "sourceUrlPageTypeCounts": {
-    "hospitalPage": 140,
+    "hospitalPage": 132,
     "unknown": 325,
-    "departmentPage": 135,
+    "departmentPage": 118,
     "teamPage": 6,
-    "unitPage": 23,
-    "arrayPage": 3,
+    "unitPage": 47,
+    "arrayPage": 4,
     "doctorsPage": 2
   },
-  "nearbyDoctorOrTeamUrlRows": 82,
+  "nearbyDoctorOrTeamUrlRows": 13,
   "hospitalsByProviderGuess": {
     "hadassah": 2,
     "clalit": 15,
@@ -29,10 +30,21 @@
   },
   "hospitalsByReadiness": {
     "safeForFullBatch": 4,
-    "safeForPilot": 14,
-    "needsAdapter": 17,
+    "safeForPilot": 19,
     "pending": 24,
+    "needsAdapter": 12,
     "deferred": 1
+  },
+  "hospitalsByCrawlReadiness": {
+    "needsCalibration": 7,
+    "safeForFullBatch": 5,
+    "blocked": 2
+  },
+  "hospitalsByMappingReadiness": {
+    "reviewNeeded": 2,
+    "partiallyMapped": 7,
+    "hospitalRosterOnly": 3,
+    "blocked": 2
   },
   "hospitalsSafeForFullBatch": [
     "ביה\"ח הדסה עין כרם",
@@ -54,20 +66,20 @@
     "מרכז לבה\"נ מעלה הכרמל",
     "ביה\"ח יוספטל",
     "שירותי בריאות כללית",
-    "מרכז לבה\"נ לב השרון"
-  ],
-  "hospitalsNeedingAdapter": [
+    "מרכז לבה\"נ לב השרון",
     "מרכז רפואי וולפסון",
     "ביה\"ח מעיני הישועה",
     "המרכז הרפואי לגליל",
     "מרכז רפואי יצחק שמיר",
+    "ביה\"ח לניאדו"
+  ],
+  "hospitalsNeedingAdapter": [
     "מרכז רפואי ברזילי",
     "מרכז רפואי בני ציון",
     "ביה\"ח זיו - צפת",
     "מרכז רפואי הלל יפה",
     "בי\"ח אסותא אשדוד",
     "מרכז רפואי ברוך פדה פוריה",
-    "ביה\"ח לניאדו",
     "מרחבים - המרכז הרפואי לטיפול במוח ובנפש באר יעקב נס ציונה",
     "מרכז לבה\"נ אברבנאל",
     "מכבי שירותי בריאות",
@@ -80,6 +92,189 @@
       "hospitalName": "מרכז רפואי שיבא",
       "reason": "hard JS/API/502 case; deferred after national coverage"
     }
+  ],
+  "hospitalReadinessBySlug": {
+    "carmel": {
+      "hospitalSlug": "carmel",
+      "hospitalName": "מרכז רפואי כרמל",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "outputUsability": "hospitalRoster",
+      "canonicalDoctors": 381,
+      "doctorDepartmentLinks": 381,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 381
+    },
+    "emek": {
+      "hospitalSlug": "emek",
+      "hospitalName": "מרכז רפואי העמק",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "canonicalDoctors": 11,
+      "doctorDepartmentLinks": 11,
+      "sourceUrlMatchLinks": 10,
+      "reviewNeededLinks": 1
+    },
+    "galilee": {
+      "hospitalSlug": "galilee",
+      "hospitalName": "המרכז הרפואי לגליל",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "canonicalDoctors": 30,
+      "doctorDepartmentLinks": 30,
+      "sourceUrlMatchLinks": 24,
+      "reviewNeededLinks": 6
+    },
+    "hadassah": {
+      "hospitalSlug": "hadassah",
+      "hospitalName": "ביה\"ח הדסה הר הצופים",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly",
+      "outputUsability": "hospitalRoster",
+      "canonicalDoctors": 49,
+      "doctorDepartmentLinks": 181,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 181
+    },
+    "ichilov": {
+      "hospitalSlug": "ichilov",
+      "hospitalName": "מרכז רפואי ת\"א סוראסקי",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly",
+      "outputUsability": "hospitalRoster",
+      "canonicalDoctors": 72,
+      "doctorDepartmentLinks": 72,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 72
+    },
+    "kaplan": {
+      "hospitalSlug": "kaplan",
+      "hospitalName": "מרכז רפואי קפלן",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "canonicalDoctors": 17,
+      "doctorDepartmentLinks": 17,
+      "sourceUrlMatchLinks": 1,
+      "reviewNeededLinks": 16
+    },
+    "laniado": {
+      "hospitalSlug": "laniado",
+      "hospitalName": "ביה\"ח לניאדו",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "canonicalDoctors": 12,
+      "doctorDepartmentLinks": 12,
+      "sourceUrlMatchLinks": 6,
+      "reviewNeededLinks": 6
+    },
+    "maayanei-hayeshua": {
+      "hospitalSlug": "maayanei-hayeshua",
+      "hospitalName": "ביה\"ח מעיני הישועה",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "canonicalDoctors": 27,
+      "doctorDepartmentLinks": 27,
+      "sourceUrlMatchLinks": 25,
+      "reviewNeededLinks": 2
+    },
+    "meir": {
+      "hospitalSlug": "meir",
+      "hospitalName": "מרכז רפואי מאיר",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "canonicalDoctors": 17,
+      "doctorDepartmentLinks": 17,
+      "sourceUrlMatchLinks": 12,
+      "reviewNeededLinks": 5
+    },
+    "rabin": {
+      "hospitalSlug": "rabin",
+      "hospitalName": "ביה\"ח השרון מרכז רפואי רבין",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly",
+      "outputUsability": "hospitalRoster",
+      "canonicalDoctors": 37,
+      "doctorDepartmentLinks": 37,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 37
+    },
+    "shamir": {
+      "hospitalSlug": "shamir",
+      "hospitalName": "מרכז רפואי יצחק שמיר",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "canonicalDoctors": 11,
+      "doctorDepartmentLinks": 11,
+      "sourceUrlMatchLinks": 10,
+      "reviewNeededLinks": 1
+    },
+    "sheba": {
+      "hospitalSlug": "sheba",
+      "hospitalName": "Sheba Medical Center",
+      "crawlReadiness": "blocked",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 0
+    },
+    "soroka": {
+      "hospitalSlug": "soroka",
+      "hospitalName": "Soroka Medical Center",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "outputUsability": "hospitalRoster",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 0
+    },
+    "wolfson": {
+      "hospitalSlug": "wolfson",
+      "hospitalName": "מרכז רפואי וולפסון",
+      "crawlReadiness": "blocked",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 0
+    }
+  },
+  "hospitalsWithWorkingDoctorRoster": [
+    "carmel",
+    "emek",
+    "galilee",
+    "hadassah",
+    "ichilov",
+    "kaplan",
+    "laniado",
+    "maayanei-hayeshua",
+    "meir",
+    "rabin",
+    "shamir",
+    "soroka"
+  ],
+  "hospitalsWithDepartmentMappedRoster": [
+    "emek",
+    "galilee",
+    "kaplan",
+    "laniado",
+    "maayanei-hayeshua",
+    "meir",
+    "shamir"
+  ],
+  "hospitalsBlocked": [
+    "sheba",
+    "wolfson"
   ],
   "shebaStatus": "hard JS/API/502 case; deferred after national coverage",
   "wave1Counts": {
@@ -141,220 +336,6 @@
       "unmapped": 0
     }
   },
-  "wave1Results": [
-    {
-      "hospital": "ichilov",
-      "readiness": "safeForFullBatch",
-      "reviewedRecords": 72,
-      "productionReadyCount": 72,
-      "mappedRecords": 72
-    },
-    {
-      "hospital": "hadassah",
-      "readiness": "safeForFullBatch",
-      "reviewedRecords": 49,
-      "productionReadyCount": 49,
-      "mappedRecords": 49
-    },
-    {
-      "hospital": "meir",
-      "readiness": "safeForFullBatch",
-      "reviewedRecords": 17,
-      "productionReadyCount": 17,
-      "mappedRecords": 17
-    }
-  ],
-  "wave2SelectedHospitals": [
-    {
-      "hospitalSlug": "emek",
-      "hospitalNames": [
-        "מרכז רפואי העמק"
-      ],
-      "providerGuess": "clalit",
-      "masterDeptRows": 27,
-      "rowsWithUrls": 27,
-      "liveUrlRows": 27,
-      "nearbyDoctorOrTeamUrlRows": 27,
-      "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
-      "whySelected": "known adapter emek; 27 Master_Dept URLs; 27 live inspected URLs; 27 nearby doctor/team URLs; 1 direct staff/doctors URLs",
-      "plannedMode": "pilot only"
-    },
-    {
-      "hospitalSlug": "carmel",
-      "hospitalNames": [
-        "מרכז רפואי כרמל"
-      ],
-      "providerGuess": "clalit",
-      "masterDeptRows": 25,
-      "rowsWithUrls": 22,
-      "liveUrlRows": 22,
-      "nearbyDoctorOrTeamUrlRows": 22,
-      "adapterParserFamily": "teamPage+inlineStaff",
-      "whySelected": "known adapter carmel; 22 Master_Dept URLs; 22 live inspected URLs; 22 nearby doctor/team URLs; 1 direct staff/doctors URLs",
-      "plannedMode": "pilot only"
-    },
-    {
-      "hospitalSlug": "kaplan",
-      "hospitalNames": [
-        "מרכז רפואי קפלן"
-      ],
-      "providerGuess": "clalit",
-      "masterDeptRows": 25,
-      "rowsWithUrls": 22,
-      "liveUrlRows": 22,
-      "nearbyDoctorOrTeamUrlRows": 22,
-      "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
-      "whySelected": "known adapter kaplan; 22 Master_Dept URLs; 22 live inspected URLs; 22 nearby doctor/team URLs",
-      "plannedMode": "pilot only"
-    },
-    {
-      "hospitalSlug": "rabin",
-      "hospitalNames": [
-        "ביה\"ח בילינסון מרכז רפואי רבין",
-        "מרכז רפואי רבין",
-        "ביה\"ח השרון מרכז רפואי רבין"
-      ],
-      "providerGuess": "clalit",
-      "masterDeptRows": 60,
-      "rowsWithUrls": 11,
-      "liveUrlRows": 11,
-      "nearbyDoctorOrTeamUrlRows": 11,
-      "adapterParserFamily": "classicDoctorCards+teamPage",
-      "whySelected": "known adapter rabin; 11 Master_Dept URLs; 11 live inspected URLs; 11 nearby doctor/team URLs",
-      "plannedMode": "pilot only"
-    }
-  ],
-  "wave2Results": [
-    {
-      "hospital": "emek",
-      "readiness": "needsHumanReview",
-      "reviewedRecords": 13,
-      "productionReadyCount": 7,
-      "mappedRecords": 13,
-      "mappingStats": {
-        "totalReviewed": 13,
-        "sourceUrlMatch": 11,
-        "hospitalOnly": 0,
-        "reviewNeeded": 2,
-        "ambiguousMapping": 2,
-        "unmapped": 0
-      },
-      "mainBlocker": "Canonicalization removed duplicate identity issue; pilot still needs department-link QA before controlled full.",
-      "canonicalStats": {
-        "rawReviewedRows": 13,
-        "canonicalDoctors": 11,
-        "doctorDepartmentLinks": 11,
-        "productionReadyCanonicalDoctors": 4,
-        "sourceUrlMatchLinks": 10,
-        "reviewNeededLinks": 1,
-        "expectedDistinctDoctorDepartmentLinks": 11,
-        "rawRowsDroppedAsExactDuplicates": 2,
-        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
-        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
-        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
-        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 2,
-        "duplicateProfileUrlGroupsBefore": 2,
-        "duplicateProfileUrlGroupsAfter": 0
-      }
-    },
-    {
-      "hospital": "carmel",
-      "readiness": "needsHumanReview",
-      "reviewedRecords": 630,
-      "productionReadyCount": 629,
-      "mappedRecords": 630,
-      "mappingStats": {
-        "totalReviewed": 630,
-        "sourceUrlMatch": 0,
-        "hospitalOnly": 0,
-        "reviewNeeded": 630,
-        "ambiguousMapping": 630,
-        "unmapped": 0
-      },
-      "mainBlocker": "Canonicalization removed duplicate identity issue; department links still require review because source lineage is not row-specific.",
-      "canonicalStats": {
-        "rawReviewedRows": 630,
-        "canonicalDoctors": 381,
-        "doctorDepartmentLinks": 381,
-        "productionReadyCanonicalDoctors": 380,
-        "sourceUrlMatchLinks": 0,
-        "reviewNeededLinks": 381,
-        "expectedDistinctDoctorDepartmentLinks": 381,
-        "rawRowsDroppedAsExactDuplicates": 249,
-        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
-        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
-        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
-        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 52,
-        "duplicateProfileUrlGroupsBefore": 54,
-        "duplicateProfileUrlGroupsAfter": 0
-      }
-    },
-    {
-      "hospital": "kaplan",
-      "readiness": "needsHumanReview",
-      "reviewedRecords": 17,
-      "productionReadyCount": 6,
-      "mappedRecords": 17,
-      "mappingStats": {
-        "totalReviewed": 17,
-        "sourceUrlMatch": 1,
-        "hospitalOnly": 0,
-        "reviewNeeded": 16,
-        "ambiguousMapping": 16,
-        "unmapped": 0
-      },
-      "mainBlocker": "Profile URL coverage is below 50%.",
-      "canonicalStats": {
-        "rawReviewedRows": 17,
-        "canonicalDoctors": 17,
-        "doctorDepartmentLinks": 17,
-        "productionReadyCanonicalDoctors": 6,
-        "sourceUrlMatchLinks": 1,
-        "reviewNeededLinks": 16,
-        "expectedDistinctDoctorDepartmentLinks": 17,
-        "rawRowsDroppedAsExactDuplicates": 0,
-        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
-        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
-        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
-        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
-        "duplicateProfileUrlGroupsBefore": 0,
-        "duplicateProfileUrlGroupsAfter": 0
-      }
-    },
-    {
-      "hospital": "rabin",
-      "readiness": "safeForFullBatch",
-      "reviewedRecords": 37,
-      "productionReadyCount": 37,
-      "mappedRecords": 37,
-      "mappingStats": {
-        "totalReviewed": 37,
-        "sourceUrlMatch": 0,
-        "hospitalOnly": 0,
-        "reviewNeeded": 37,
-        "ambiguousMapping": 37,
-        "unmapped": 0
-      },
-      "mainBlocker": null,
-      "canonicalStats": {
-        "rawReviewedRows": 37,
-        "canonicalDoctors": 37,
-        "doctorDepartmentLinks": 37,
-        "productionReadyCanonicalDoctors": 37,
-        "sourceUrlMatchLinks": 0,
-        "reviewNeededLinks": 37,
-        "expectedDistinctDoctorDepartmentLinks": 37,
-        "rawRowsDroppedAsExactDuplicates": 0,
-        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
-        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
-        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
-        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
-        "duplicateProfileUrlGroupsBefore": 0,
-        "duplicateProfileUrlGroupsAfter": 0
-      }
-    }
-  ],
-  "sorokaStatus": "Improved pilot available; full Soroka batch is not marked safe.",
   "canonicalStatsByHospital": {
     "ichilov": {
       "rawReviewedRows": 72,
@@ -467,6 +448,581 @@
       "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
       "duplicateProfileUrlGroupsBefore": 0,
       "duplicateProfileUrlGroupsAfter": 0
+    },
+    "shamir": {
+      "rawReviewedRows": 12,
+      "canonicalDoctors": 11,
+      "doctorDepartmentLinks": 11,
+      "productionReadyCanonicalDoctors": 6,
+      "sourceUrlMatchLinks": 10,
+      "reviewNeededLinks": 1,
+      "expectedDistinctDoctorDepartmentLinks": 11,
+      "rawRowsDroppedAsExactDuplicates": 1,
+      "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+      "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+      "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+      "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 1,
+      "duplicateProfileUrlGroupsBefore": 1,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "maayanei-hayeshua": {
+      "rawReviewedRows": 27,
+      "canonicalDoctors": 27,
+      "doctorDepartmentLinks": 27,
+      "productionReadyCanonicalDoctors": 27,
+      "sourceUrlMatchLinks": 25,
+      "reviewNeededLinks": 2,
+      "expectedDistinctDoctorDepartmentLinks": 27,
+      "rawRowsDroppedAsExactDuplicates": 0,
+      "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+      "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+      "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+      "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+      "duplicateProfileUrlGroupsBefore": 0,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "galilee": {
+      "rawReviewedRows": 30,
+      "canonicalDoctors": 30,
+      "doctorDepartmentLinks": 30,
+      "productionReadyCanonicalDoctors": 6,
+      "sourceUrlMatchLinks": 24,
+      "reviewNeededLinks": 6,
+      "expectedDistinctDoctorDepartmentLinks": 30,
+      "rawRowsDroppedAsExactDuplicates": 0,
+      "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+      "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+      "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+      "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+      "duplicateProfileUrlGroupsBefore": 0,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "laniado": {
+      "rawReviewedRows": 18,
+      "canonicalDoctors": 12,
+      "doctorDepartmentLinks": 12,
+      "productionReadyCanonicalDoctors": 6,
+      "sourceUrlMatchLinks": 6,
+      "reviewNeededLinks": 6,
+      "expectedDistinctDoctorDepartmentLinks": 12,
+      "rawRowsDroppedAsExactDuplicates": 6,
+      "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+      "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+      "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+      "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 6,
+      "duplicateProfileUrlGroupsBefore": 6,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "wolfson": {
+      "rawReviewedRows": 0,
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "productionReadyCanonicalDoctors": 0,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 0,
+      "expectedDistinctDoctorDepartmentLinks": 0,
+      "rawRowsDroppedAsExactDuplicates": 0,
+      "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+      "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+      "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+      "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+      "duplicateProfileUrlGroupsBefore": 0,
+      "duplicateProfileUrlGroupsAfter": 0
     }
-  }
+  },
+  "wave1Results": [
+    {
+      "hospital": "ichilov",
+      "readiness": "safeForFullBatch",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly",
+      "outputUsability": "hospitalRoster",
+      "reviewedRecords": 72,
+      "productionReadyCount": 72,
+      "mappedRecords": 72
+    },
+    {
+      "hospital": "hadassah",
+      "readiness": "safeForFullBatch",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly",
+      "outputUsability": "hospitalRoster",
+      "reviewedRecords": 49,
+      "productionReadyCount": 49,
+      "mappedRecords": 49
+    },
+    {
+      "hospital": "meir",
+      "readiness": "safeForFullBatch",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "reviewedRecords": 17,
+      "productionReadyCount": 17,
+      "mappedRecords": 17
+    }
+  ],
+  "wave2SelectedHospitals": [
+    {
+      "hospitalSlug": "emek",
+      "hospitalNames": [
+        "מרכז רפואי העמק"
+      ],
+      "providerGuess": "clalit",
+      "masterDeptRows": 27,
+      "rowsWithUrls": 27,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
+      "whySelected": "known adapter emek; 27 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "carmel",
+      "hospitalNames": [
+        "מרכז רפואי כרמל"
+      ],
+      "providerGuess": "clalit",
+      "masterDeptRows": 25,
+      "rowsWithUrls": 22,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "teamPage+inlineStaff",
+      "whySelected": "known adapter carmel; 22 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "kaplan",
+      "hospitalNames": [
+        "מרכז רפואי קפלן"
+      ],
+      "providerGuess": "clalit",
+      "masterDeptRows": 25,
+      "rowsWithUrls": 22,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
+      "whySelected": "known adapter kaplan; 22 Master_Dept URLs; URLs pending inspection",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "rabin",
+      "hospitalNames": [
+        "ביה\"ח בילינסון מרכז רפואי רבין",
+        "מרכז רפואי רבין",
+        "ביה\"ח השרון מרכז רפואי רבין"
+      ],
+      "providerGuess": "clalit",
+      "masterDeptRows": 60,
+      "rowsWithUrls": 11,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "classicDoctorCards+teamPage",
+      "whySelected": "known adapter rabin; 11 Master_Dept URLs; URLs pending inspection",
+      "plannedMode": "pilot only"
+    }
+  ],
+  "wave2Results": [
+    {
+      "hospital": "emek",
+      "readiness": "needsHumanReview",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "reviewedRecords": 13,
+      "productionReadyCount": 7,
+      "mappedRecords": 13,
+      "mappingStats": {
+        "totalReviewed": 13,
+        "sourceUrlMatch": 11,
+        "hospitalOnly": 0,
+        "reviewNeeded": 2,
+        "ambiguousMapping": 2,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 13,
+        "canonicalDoctors": 11,
+        "doctorDepartmentLinks": 11,
+        "productionReadyCanonicalDoctors": 4,
+        "sourceUrlMatchLinks": 10,
+        "reviewNeededLinks": 1,
+        "expectedDistinctDoctorDepartmentLinks": 11,
+        "rawRowsDroppedAsExactDuplicates": 2,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 2,
+        "duplicateProfileUrlGroupsBefore": 2,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Canonicalization removed duplicate identity issue; pilot still needs department-link QA before controlled full."
+    },
+    {
+      "hospital": "carmel",
+      "readiness": "needsHumanReview",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "outputUsability": "hospitalRoster",
+      "reviewedRecords": 630,
+      "productionReadyCount": 629,
+      "mappedRecords": 630,
+      "mappingStats": {
+        "totalReviewed": 630,
+        "sourceUrlMatch": 0,
+        "hospitalOnly": 0,
+        "reviewNeeded": 630,
+        "ambiguousMapping": 630,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 630,
+        "canonicalDoctors": 381,
+        "doctorDepartmentLinks": 381,
+        "productionReadyCanonicalDoctors": 380,
+        "sourceUrlMatchLinks": 0,
+        "reviewNeededLinks": 381,
+        "expectedDistinctDoctorDepartmentLinks": 381,
+        "rawRowsDroppedAsExactDuplicates": 249,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 52,
+        "duplicateProfileUrlGroupsBefore": 54,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Canonicalization removed duplicate identity issue; department links still require review because source lineage is not row-specific."
+    },
+    {
+      "hospital": "kaplan",
+      "readiness": "needsHumanReview",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "reviewedRecords": 17,
+      "productionReadyCount": 6,
+      "mappedRecords": 17,
+      "mappingStats": {
+        "totalReviewed": 17,
+        "sourceUrlMatch": 1,
+        "hospitalOnly": 0,
+        "reviewNeeded": 16,
+        "ambiguousMapping": 16,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 17,
+        "canonicalDoctors": 17,
+        "doctorDepartmentLinks": 17,
+        "productionReadyCanonicalDoctors": 6,
+        "sourceUrlMatchLinks": 1,
+        "reviewNeededLinks": 16,
+        "expectedDistinctDoctorDepartmentLinks": 17,
+        "rawRowsDroppedAsExactDuplicates": 0,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Profile URL coverage is below 50%."
+    },
+    {
+      "hospital": "rabin",
+      "readiness": "safeForFullBatch",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly",
+      "outputUsability": "hospitalRoster",
+      "reviewedRecords": 37,
+      "productionReadyCount": 37,
+      "mappedRecords": 37,
+      "mappingStats": {
+        "totalReviewed": 37,
+        "sourceUrlMatch": 0,
+        "hospitalOnly": 0,
+        "reviewNeeded": 37,
+        "ambiguousMapping": 37,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 37,
+        "canonicalDoctors": 37,
+        "doctorDepartmentLinks": 37,
+        "productionReadyCanonicalDoctors": 37,
+        "sourceUrlMatchLinks": 0,
+        "reviewNeededLinks": 37,
+        "expectedDistinctDoctorDepartmentLinks": 37,
+        "rawRowsDroppedAsExactDuplicates": 0,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": null
+    }
+  ],
+  "wave3SelectedHospitals": [
+    {
+      "hospitalSlug": "shamir",
+      "hospitalNames": [
+        "מרכז רפואי יצחק שמיר"
+      ],
+      "providerGuess": "government",
+      "masterDeptRows": 27,
+      "rowsWithUrls": 26,
+      "liveUrlRows": 26,
+      "nearbyDoctorOrTeamUrlRows": 7,
+      "adapterParserFamily": "inlineStaff+teamPage+unknown",
+      "whySelected": "Wave3 baseline shamir; 26 Master_Dept URLs; 26 live inspected URLs; 7 nearby doctor/team URLs",
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "partiallyMapped",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "maayanei-hayeshua",
+      "hospitalNames": [
+        "ביה\"ח מעיני הישועה"
+      ],
+      "providerGuess": "private",
+      "masterDeptRows": 6,
+      "rowsWithUrls": 6,
+      "liveUrlRows": 6,
+      "nearbyDoctorOrTeamUrlRows": 6,
+      "adapterParserFamily": "teamPage+inlineStaff+unknown",
+      "whySelected": "Wave3 baseline maayanei-hayeshua; 6 Master_Dept URLs; 6 live inspected URLs; 6 nearby doctor/team URLs; 2 direct staff/doctors URLs",
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "partiallyMapped",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "galilee",
+      "hospitalNames": [
+        "המרכז הרפואי לגליל"
+      ],
+      "providerGuess": "government",
+      "masterDeptRows": 29,
+      "rowsWithUrls": 28,
+      "liveUrlRows": 28,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "inlineStaff+teamPage+unknown",
+      "whySelected": "Wave3 baseline galilee; 28 Master_Dept URLs; 28 live inspected URLs",
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "reviewNeeded",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "laniado",
+      "hospitalNames": [
+        "ביה\"ח לניאדו"
+      ],
+      "providerGuess": "private",
+      "masterDeptRows": 11,
+      "rowsWithUrls": 11,
+      "liveUrlRows": 11,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "inlineStaff+teamPage+unknown",
+      "whySelected": "Wave3 baseline laniado; 11 Master_Dept URLs; 11 live inspected URLs",
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "reviewNeeded",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "wolfson",
+      "hospitalNames": [
+        "מרכז רפואי וולפסון"
+      ],
+      "providerGuess": "government",
+      "masterDeptRows": 25,
+      "rowsWithUrls": 8,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "teamPage+inlineStaff+unknown",
+      "whySelected": "Wave3 baseline wolfson; 8 Master_Dept URLs; URLs pending inspection; 4 direct staff/doctors URLs",
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "partiallyMapped",
+      "plannedMode": "pilot only"
+    }
+  ],
+  "wave3Results": [
+    {
+      "hospital": "shamir",
+      "readiness": "needsHumanReview",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "reviewedRecords": 12,
+      "productionReadyCount": 7,
+      "mappedRecords": 12,
+      "mappingStats": {
+        "totalReviewed": 12,
+        "sourceUrlMatch": 11,
+        "hospitalOnly": 0,
+        "reviewNeeded": 1,
+        "ambiguousMapping": 1,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 12,
+        "canonicalDoctors": 11,
+        "doctorDepartmentLinks": 11,
+        "productionReadyCanonicalDoctors": 6,
+        "sourceUrlMatchLinks": 10,
+        "reviewNeededLinks": 1,
+        "expectedDistinctDoctorDepartmentLinks": 11,
+        "rawRowsDroppedAsExactDuplicates": 1,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 1,
+        "duplicateProfileUrlGroupsBefore": 1,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Canonicalization removed duplicate identity issue; pilot still needs department-link QA before controlled full."
+    },
+    {
+      "hospital": "maayanei-hayeshua",
+      "readiness": "safeForFullBatch",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "reviewedRecords": 27,
+      "productionReadyCount": 27,
+      "mappedRecords": 27,
+      "mappingStats": {
+        "totalReviewed": 27,
+        "sourceUrlMatch": 25,
+        "hospitalOnly": 0,
+        "reviewNeeded": 2,
+        "ambiguousMapping": 2,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 27,
+        "canonicalDoctors": 27,
+        "doctorDepartmentLinks": 27,
+        "productionReadyCanonicalDoctors": 27,
+        "sourceUrlMatchLinks": 25,
+        "reviewNeededLinks": 2,
+        "expectedDistinctDoctorDepartmentLinks": 27,
+        "rawRowsDroppedAsExactDuplicates": 0,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": null
+    },
+    {
+      "hospital": "galilee",
+      "readiness": "needsHumanReview",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "reviewedRecords": 30,
+      "productionReadyCount": 6,
+      "mappedRecords": 30,
+      "mappingStats": {
+        "totalReviewed": 30,
+        "sourceUrlMatch": 24,
+        "hospitalOnly": 0,
+        "reviewNeeded": 6,
+        "ambiguousMapping": 6,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 30,
+        "canonicalDoctors": 30,
+        "doctorDepartmentLinks": 30,
+        "productionReadyCanonicalDoctors": 6,
+        "sourceUrlMatchLinks": 24,
+        "reviewNeededLinks": 6,
+        "expectedDistinctDoctorDepartmentLinks": 30,
+        "rawRowsDroppedAsExactDuplicates": 0,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Profile URL coverage is below 50%."
+    },
+    {
+      "hospital": "laniado",
+      "readiness": "needsHumanReview",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "outputUsability": "departmentMappedRoster",
+      "reviewedRecords": 18,
+      "productionReadyCount": 12,
+      "mappedRecords": 18,
+      "mappingStats": {
+        "totalReviewed": 18,
+        "sourceUrlMatch": 12,
+        "hospitalOnly": 0,
+        "reviewNeeded": 6,
+        "ambiguousMapping": 6,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 18,
+        "canonicalDoctors": 12,
+        "doctorDepartmentLinks": 12,
+        "productionReadyCanonicalDoctors": 6,
+        "sourceUrlMatchLinks": 6,
+        "reviewNeededLinks": 6,
+        "expectedDistinctDoctorDepartmentLinks": 12,
+        "rawRowsDroppedAsExactDuplicates": 6,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 6,
+        "duplicateProfileUrlGroupsBefore": 6,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Canonicalization removed duplicate identity issue; pilot still needs department-link QA before controlled full."
+    },
+    {
+      "hospital": "wolfson",
+      "readiness": "blocked",
+      "crawlReadiness": "blocked",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet",
+      "reviewedRecords": 0,
+      "productionReadyCount": 0,
+      "mappedRecords": 0,
+      "mappingStats": {
+        "totalReviewed": 0,
+        "sourceUrlMatch": 0,
+        "hospitalOnly": 0,
+        "reviewNeeded": 0,
+        "ambiguousMapping": 0,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 0,
+        "canonicalDoctors": 0,
+        "doctorDepartmentLinks": 0,
+        "productionReadyCanonicalDoctors": 0,
+        "sourceUrlMatchLinks": 0,
+        "reviewNeededLinks": 0,
+        "expectedDistinctDoctorDepartmentLinks": 0,
+        "rawRowsDroppedAsExactDuplicates": 0,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Pilot extracted zero doctor records."
+    }
+  ],
+  "nextRecommendedWave": "Review Wave3 output quality, then select the next 3-5 hospitals; keep Sheba deferred and Soroka full batch blocked.",
+  "sorokaStatus": "Improved pilot available; full Soroka batch is not marked safe."
 }

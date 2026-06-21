@@ -10,6 +10,7 @@ npm run crawl -- --hospital sheba --mode full --confirm
 npm run crawl -- --mode national-plan
 npm run crawl -- --mode national-pilot --limit 3
 npm run crawl -- --mode national-pilot --wave 2 --limit 5
+npm run crawl -- --mode national-pilot --wave 3 --limit 5
 npm run crawl -- --mode national-full-safe --confirm
 ```
 
@@ -20,7 +21,7 @@ npm run crawl -- --mode national-full-safe --confirm
 - `evaluate`: read the latest pilot evaluation.
 - `full`: blocked unless readiness is `safeForFullBatch` and `--confirm` is supplied; provider-specific full adapters must still be added.
 - `national-plan`: read `Master_Dept.csv`, create target registry, national crawl plan, waves, and coverage report. No crawling by default.
-- `national-pilot`: run a limited safe wave. Current default Wave 1 is Ichilov, Hadassah, and Meir only. Use `--wave 2 --limit 5` for Master_Dept-driven Clalit pilot candidates; Sheba and full Soroka remain excluded.
+- `national-pilot`: run a limited safe wave. Current default Wave 1 is Ichilov, Hadassah, and Meir only. Use `--wave 2 --limit 5` for Master_Dept-driven Clalit pilot candidates. Use `--wave 3 --limit 5` for selected government/private pilots. Sheba and full Soroka remain excluded.
 - `national-full-safe`: requires `--confirm`, but remains blocked until provider-specific full adapters exist.
 
 ## Outputs
@@ -67,11 +68,29 @@ data/crawler/hospitals/national-coverage-report.md
 
 ## Readiness
 
+Readiness is split because a hospital can have a reliable doctor roster while still needing review for exact Master_Dept department mapping.
+
+### Crawl Readiness
+
 - `pilotReady`: enough candidate pages or doctor-index evidence to run a small pilot.
 - `safeForFullBatch`: pilot has useful volume, high profile URL coverage, no duplicate profile URL issue.
 - `needsCalibration`: parser quality issue, duplicate profile URLs, or suspected false positives above threshold.
-- `needsHumanReview`: useful pilot records exist but not enough safe coverage.
+- `needsAdapter`: a known public site exists, but no safe adapter/parser exists yet.
 - `blocked`: known URLs failed or no doctor records were extracted.
+
+### Mapping Readiness
+
+- `sourceUrlMapped`: all doctor-department links are tied to exact Master_Dept row URLs or row-specific nearby doctor/team URLs.
+- `partiallyMapped`: some links are row-specific, while others still need review.
+- `hospitalRosterOnly`: doctor identities are useful at hospital level, but department mapping is not row-specific.
+- `reviewNeeded`: links exist but are not trusted enough for department-level use.
+- `blocked`: no usable links exist.
+
+### Output Usability
+
+- `hospitalRoster`: useful canonical doctor identities for a hospital, even if department mapping needs review.
+- `departmentMappedRoster`: usable doctor-to-department links with at least partial source URL lineage.
+- `notUsableYet`: no safe public output should be consumed downstream.
 
 ## Pass Criteria For A New Hospital
 
@@ -90,3 +109,11 @@ data/crawler/hospitals/national-coverage-report.md
 | Ichilov | `searchDriven` | Uses the public doctor-search App Search endpoint discovered from the site bundle. Pilot extracted real doctor records with profile URLs. | `safeForFullBatch` |
 | Hadassah | `searchDriven` | Uses the public `/api/doctors` endpoint discovered from the Next.js doctor-search bundle. Profile pages are limited shells, so API metadata is treated as partial profile evidence. | `safeForFullBatch` |
 | Meir | `teamPage` | Uses Clalit team/staff pages. Pilot is restricted to team pages to avoid homepage/news prose false positives. | `safeForFullBatch` |
+
+## Current Wave Notes
+
+- Wave 1: Ichilov, Hadassah, and Meir produce useful hospital rosters; department mapping is strongest where source URLs are row-specific.
+- Wave 2: Rabin remains crawl-safe as a hospital roster. Carmel needs human mapping review. Emek and Kaplan have partial source URL mapping but need calibration/review before controlled full.
+- Wave 3: Maayanei Hayeshua produced the strongest pilot and is crawl-safe. Shamir, Galilee, and Laniado produced department-mapped pilots but need calibration or human review. Wolfson is blocked until a government-site adapter can extract doctors from its staff pages.
+- Sheba remains deferred because its public doctors lobby is a hard JS/API case and must not block other national coverage work.
+- Soroka remains excluded from full batch because the identity-map-assisted pilot improved quality, but the full candidate set still includes noisy inline/staff pages.

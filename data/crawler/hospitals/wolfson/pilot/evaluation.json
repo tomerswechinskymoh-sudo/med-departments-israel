@@ -1,0 +1,34 @@
+{
+  "hospitalSlug": "wolfson",
+  "hospitalName": "Wolfson Medical Center",
+  "generatedAt": "2026-06-21T10:16:23.180Z",
+  "urlsUsed": [
+    "https://www.gov.il/he/pages/medical_staff",
+    "https://www.gov.il/he/pages/staff_of_the_plastic_surgery_unit",
+    "https://www.gov.il/he/pages/surgery-a-chest-surgeries-staff",
+    "https://www.gov.il/he/pages/nuclear_medicine_institute_staff"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 4,
+  "rawDoctorRecords": 0,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 0,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 0
+  },
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Pilot extracted zero doctor records."
+}

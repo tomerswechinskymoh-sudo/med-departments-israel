@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "maayanei-hayeshua",
+  "hospitalName": "Maayanei Hayeshua Medical Center",
+  "generatedAt": "2026-06-21T10:15:18.958Z",
+  "urlsUsed": [
+    "https://www.mymc.co.il/",
+    "https://www.mymc.co.il/children-wing/",
+    "https://www.mymc.co.il/wings/internal-affairs-division/",
+    "https://www.mymc.co.il/main-departments/surgical-department/",
+    "https://www.mymc.co.il/mental-health/"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 39,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 27,
+  "profileUrlCoverage": 1,
+  "profileFetchSuccess": 12,
+  "reviewedRecords": 27,
+  "productionReadyCount": 27,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 11,
+    "partial": 16,
+    "listOnly": 0
+  },
+  "readiness": "safeForFullBatch",
+  "crawlReadiness": "safeForFullBatch",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": null
+}

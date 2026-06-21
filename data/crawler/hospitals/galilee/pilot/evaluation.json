@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "galilee",
+  "hospitalName": "Galilee Medical Center",
+  "generatedAt": "2026-06-21T10:16:01.805Z",
+  "urlsUsed": [
+    "https://www.gmc.gov.il/",
+    "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+    "https://www.gmc.gov.il/?p=10533",
+    "https://www.gmc.gov.il/?p=8838",
+    "https://www.gmc.gov.il/?p=10501"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 43,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 30,
+  "profileUrlCoverage": 0.2,
+  "profileFetchSuccess": 6,
+  "reviewedRecords": 30,
+  "productionReadyCount": 6,
+  "missingProfileUrlCount": 24,
+  "duplicateNameCount": 1,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 3,
+    "partial": 3,
+    "listOnly": 24
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Profile URL coverage is below 50%."
+}

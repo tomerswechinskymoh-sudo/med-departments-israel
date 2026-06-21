@@ -1,0 +1,133 @@
+{
+  "hospitalSlug": "wolfson",
+  "hospitalName": "Wolfson Medical Center",
+  "generatedAt": "2026-06-21T10:16:22.088Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.gov.il/he/departments/wolfson-medical-center/govil-landing-page",
+    "departmentsIndexUrlCandidates": [
+      "https://www.gov.il/he/pages/medical_staff",
+      "https://www.gov.il/he/pages/staff_of_the_plastic_surgery_unit",
+      "https://www.gov.il/he/pages/surgery-a-chest-surgeries-staff",
+      "https://www.gov.il/he/pages/nuclear_medicine_institute_staff"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.gov.il/he/pages/medical_staff",
+      "https://www.gov.il/he/pages/staff_of_the_plastic_surgery_unit",
+      "https://www.gov.il/he/pages/surgery-a-chest-surgeries-staff",
+      "https://www.gov.il/he/pages/nuclear_medicine_institute_staff"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.gov.il/he/departments/wolfson-medical-center/govil-landing-page",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/departments/wolfson-medical-center/govil-landing-page",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/pages/medical_staff",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/pages/medical_staff",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/pages/staff_of_the_plastic_surgery_unit",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/pages/staff_of_the_plastic_surgery_unit",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/pages/surgery-a-chest-surgeries-staff",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/pages/surgery-a-chest-surgeries-staff",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    },
+    {
+      "url": "https://www.gov.il/he/pages/nuclear_medicine_institute_staff",
+      "ok": false,
+      "statusCode": 403,
+      "finalUrl": "https://www.gov.il/he/pages/nuclear_medicine_institute_staff",
+      "title": "Attention Required! | Cloudflare",
+      "h1": [
+        "Sorry, you have been blocked"
+      ],
+      "h2": [
+        "You are unable to access www.gov.il",
+        "Why have I been blocked?",
+        "What can I do to resolve this?"
+      ],
+      "htmlLength": 5466,
+      "visibleTextLength": 2030,
+      "error": "403 Forbidden"
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.gov.il/he/pages/medical_staff",
+    "https://www.gov.il/he/pages/staff_of_the_plastic_surgery_unit",
+    "https://www.gov.il/he/pages/surgery-a-chest-surgeries-staff",
+    "https://www.gov.il/he/pages/nuclear_medicine_institute_staff"
+  ],
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Known URLs failed or returned no crawlable evidence."
+}
