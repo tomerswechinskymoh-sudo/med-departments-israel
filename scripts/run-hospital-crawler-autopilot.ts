@@ -5,14 +5,18 @@ import {
   buildMasterDeptNationalPlan,
   buildNationalHospitalPlan,
   buildWave2Plan,
+  buildWave3Plan,
   inspectMasterDeptTargets,
   loadMasterDeptTargets,
+  crawlReadinessFromLegacy,
+  mappingReadinessFor,
   readCanonicalStats,
   nationalPlanSummary,
+  outputUsabilityFor,
   readMappingStats,
   writeNationalPlanOutputs
 } from "@/crawler/hospitals/master-dept";
-import type { AutopilotMode, HospitalPilotEvaluation } from "@/crawler/hospitals/types";
+import type { AutopilotMode, CrawlReadinessStatus, HospitalPilotEvaluation, MappingReadinessStatus, OutputUsability } from "@/crawler/hospitals/types";
 
 const modes = new Set(["plan", "pilot", "evaluate", "full", "national-plan", "national-pilot", "national-full-safe"]);
 const wave1HospitalSlugs = ["ichilov", "hadassah", "meir"];
@@ -31,6 +35,85 @@ function canonicalCalibratedReadiness(evaluation: HospitalPilotEvaluation, canon
     };
   }
   return { readiness: evaluation.readiness, mainBlocker: evaluation.mainBlocker };
+}
+
+function splitFor(hospital: string, readiness: string, canonicalStats: Awaited<ReturnType<typeof readCanonicalStats>>) {
+  const crawlReadiness = crawlReadinessFromLegacy(readiness);
+  const mappingReadiness = mappingReadinessFor(hospital, canonicalStats);
+  const outputUsability = outputUsabilityFor(crawlReadiness, mappingReadiness, canonicalStats);
+  return { crawlReadiness, mappingReadiness, outputUsability };
+}
+
+function blockedSplit(crawlReadiness: CrawlReadinessStatus = "blocked") {
+  return {
+    crawlReadiness,
+    mappingReadiness: "blocked" as MappingReadinessStatus,
+    outputUsability: "notUsableYet" as OutputUsability
+  };
+}
+
+async function currentWave1Results(wave1MappingAfter: Record<string, Awaited<ReturnType<typeof readMappingStats>>>) {
+  const results = [];
+  for (const slug of wave1HospitalSlugs) {
+    const evaluation = (await runHospitalAutopilot(slug, "evaluate", false)) as HospitalPilotEvaluation;
+    const canonicalStats = await readCanonicalStats(slug);
+    const split = splitFor(slug, evaluation.readiness, canonicalStats);
+    const stats = wave1MappingAfter[slug];
+    results.push({
+      hospital: slug,
+      readiness: evaluation.readiness,
+      crawlReadiness: split.crawlReadiness,
+      mappingReadiness: split.mappingReadiness,
+      outputUsability: split.outputUsability,
+      reviewedRecords: evaluation.reviewedRecords,
+      productionReadyCount: evaluation.productionReadyCount,
+      mappedRecords: stats.totalReviewed - stats.unmapped
+    });
+  }
+  return results;
+}
+
+async function currentWave2Results(targets: Awaited<ReturnType<typeof loadMasterDeptTargets>>) {
+  const results = [];
+  for (const slug of ["emek", "carmel", "kaplan", "rabin"]) {
+    try {
+      const evaluation = (await runHospitalAutopilot(slug, "evaluate", false)) as HospitalPilotEvaluation;
+      const mapping = await applyMasterDeptMappingToReviewed(slug, targets);
+      const calibrated = canonicalCalibratedReadiness(evaluation, mapping.canonicalStats);
+      const split = splitFor(slug, calibrated.readiness, mapping.canonicalStats);
+      results.push({
+        hospital: slug,
+        readiness: calibrated.readiness,
+        crawlReadiness: split.crawlReadiness,
+        mappingReadiness: split.mappingReadiness,
+        outputUsability: split.outputUsability,
+        reviewedRecords: evaluation.reviewedRecords,
+        productionReadyCount: evaluation.productionReadyCount,
+        mappedRecords: mapping.mappedRecords,
+        mappingStats: mapping.mappingStats,
+        canonicalStats: mapping.canonicalStats,
+        mainBlocker: calibrated.mainBlocker
+      });
+    } catch (error) {
+      const mappingStats = await readMappingStats(slug);
+      const canonicalStats = await readCanonicalStats(slug);
+      const split = blockedSplit("needsCalibration");
+      results.push({
+        hospital: slug,
+        readiness: "needsCalibration",
+        crawlReadiness: split.crawlReadiness,
+        mappingReadiness: split.mappingReadiness,
+        outputUsability: split.outputUsability,
+        reviewedRecords: mappingStats.totalReviewed,
+        productionReadyCount: canonicalStats.productionReadyCanonicalDoctors,
+        mappedRecords: mappingStats.totalReviewed - mappingStats.unmapped,
+        mappingStats,
+        canonicalStats,
+        mainBlocker: error instanceof Error ? error.message : String(error)
+      });
+    }
+  }
+  return results;
 }
 
 async function main() {
@@ -60,9 +143,13 @@ async function main() {
       const wave2Results = [];
       for (const item of wave2SelectedHospitals) {
         if (item.adapterParserFamily === "adapter-needed") {
+          const split = blockedSplit("needsAdapter");
           wave2Results.push({
             hospital: item.hospitalSlug,
             readiness: "blocked",
+            crawlReadiness: split.crawlReadiness,
+            mappingReadiness: split.mappingReadiness,
+            outputUsability: split.outputUsability,
             reviewedRecords: 0,
             productionReadyCount: 0,
             mappedRecords: 0,
@@ -75,9 +162,13 @@ async function main() {
         const evaluation = (await runHospitalAutopilot(item.hospitalSlug, "pilot", false)) as HospitalPilotEvaluation;
         const mapping = await applyMasterDeptMappingToReviewed(item.hospitalSlug, targets);
         const calibrated = canonicalCalibratedReadiness(evaluation, mapping.canonicalStats);
+        const split = splitFor(item.hospitalSlug, calibrated.readiness, mapping.canonicalStats);
         wave2Results.push({
           hospital: item.hospitalSlug,
           readiness: calibrated.readiness,
+          crawlReadiness: split.crawlReadiness,
+          mappingReadiness: split.mappingReadiness,
+          outputUsability: split.outputUsability,
           reviewedRecords: evaluation.reviewedRecords,
           productionReadyCount: evaluation.productionReadyCount,
           mappedRecords: mapping.mappedRecords,
@@ -88,20 +179,76 @@ async function main() {
       }
       const wave1MappingAfter = Object.fromEntries(await Promise.all(wave1HospitalSlugs.map(async (slug) => [slug, await readMappingStats(slug)])));
       const canonicalStatsByHospital = Object.fromEntries(await Promise.all([...wave1HospitalSlugs, ...wave2Results.map((result) => result.hospital)].map(async (slug) => [slug, await readCanonicalStats(slug)])));
-      const wave1Results = [];
-      for (const slug of wave1HospitalSlugs) {
-        const evaluation = (await runHospitalAutopilot(slug, "evaluate", false)) as HospitalPilotEvaluation;
-        const stats = wave1MappingAfter[slug];
-        wave1Results.push({
-          hospital: slug,
-          readiness: evaluation.readiness,
-          reviewedRecords: evaluation.reviewedRecords,
-          productionReadyCount: evaluation.productionReadyCount,
-          mappedRecords: stats.totalReviewed - stats.unmapped
-        });
-      }
+      const wave1Results = await currentWave1Results(wave1MappingAfter);
       const report = await writeNationalPlanOutputs(targets, inspectedPlan, { wave1Results, wave1MappingBefore, wave1MappingAfter, canonicalStatsByHospital, wave2SelectedHospitals, wave2Results });
       console.log(JSON.stringify({ ...nationalPlanSummary(targets, inspectedPlan, report), wave2SelectedHospitals, wave2Results }, null, 2));
+      return;
+    }
+
+    if (wave === 3) {
+      const preselected = buildWave3Plan(initialPlan, targets, limit);
+      await inspectMasterDeptTargets(targets, { hospitalNames: preselected.flatMap((item) => item.hospitalNames), limit: 160 });
+      const inspectedPlan = buildNationalHospitalPlan(targets);
+      const wave3SelectedHospitals = buildWave3Plan(inspectedPlan, targets, limit);
+      const wave3Results = [];
+      for (const item of wave3SelectedHospitals) {
+        try {
+          const evaluation = (await runHospitalAutopilot(item.hospitalSlug, "pilot", false)) as HospitalPilotEvaluation;
+          const mapping = await applyMasterDeptMappingToReviewed(item.hospitalSlug, targets);
+          const calibrated = canonicalCalibratedReadiness(evaluation, mapping.canonicalStats);
+          const split = splitFor(item.hospitalSlug, calibrated.readiness, mapping.canonicalStats);
+          wave3Results.push({
+            hospital: item.hospitalSlug,
+            readiness: calibrated.readiness,
+            crawlReadiness: split.crawlReadiness,
+            mappingReadiness: split.mappingReadiness,
+            outputUsability: split.outputUsability,
+            reviewedRecords: evaluation.reviewedRecords,
+            productionReadyCount: evaluation.productionReadyCount,
+            mappedRecords: mapping.mappedRecords,
+            mappingStats: mapping.mappingStats,
+            canonicalStats: mapping.canonicalStats,
+            mainBlocker: calibrated.mainBlocker
+          });
+        } catch (error) {
+          const mappingStats = await readMappingStats(item.hospitalSlug);
+          const canonicalStats = await readCanonicalStats(item.hospitalSlug);
+          const split = blockedSplit();
+          wave3Results.push({
+            hospital: item.hospitalSlug,
+            readiness: "blocked",
+            crawlReadiness: split.crawlReadiness,
+            mappingReadiness: split.mappingReadiness,
+            outputUsability: split.outputUsability,
+            reviewedRecords: mappingStats.totalReviewed,
+            productionReadyCount: canonicalStats.productionReadyCanonicalDoctors,
+            mappedRecords: mappingStats.totalReviewed - mappingStats.unmapped,
+            mappingStats,
+            canonicalStats,
+            mainBlocker: error instanceof Error ? error.message : String(error)
+          });
+        }
+      }
+      const wave1MappingAfter = Object.fromEntries(await Promise.all(wave1HospitalSlugs.map(async (slug) => [slug, await readMappingStats(slug)])));
+      const wave1Results = await currentWave1Results(wave1MappingAfter);
+      const wave2Results = await currentWave2Results(targets);
+      const selectedWave2Slugs = new Set(wave2Results.map((result) => result.hospital));
+      const wave2SelectedHospitals = buildWave2Plan(inspectedPlan, targets, 5).filter((item) => selectedWave2Slugs.has(item.hospitalSlug));
+      const canonicalStatsByHospital = Object.fromEntries(await Promise.all(
+        [...new Set([...wave1HospitalSlugs, ...wave2Results.map((result) => result.hospital), ...wave3Results.map((result) => result.hospital)])]
+          .map(async (slug) => [slug, await readCanonicalStats(slug)])
+      ));
+      const report = await writeNationalPlanOutputs(targets, inspectedPlan, {
+        wave1Results,
+        wave1MappingBefore,
+        wave1MappingAfter,
+        canonicalStatsByHospital,
+        wave2SelectedHospitals,
+        wave2Results,
+        wave3SelectedHospitals,
+        wave3Results
+      });
+      console.log(JSON.stringify({ ...nationalPlanSummary(targets, inspectedPlan, report), wave3SelectedHospitals, wave3Results }, null, 2));
       return;
     }
 
@@ -110,9 +257,13 @@ async function main() {
     for (const slug of wave1HospitalSlugs.slice(0, Math.max(0, limit))) {
       const evaluation = (await runHospitalAutopilot(slug, "pilot", false)) as HospitalPilotEvaluation;
       const mapping = await applyMasterDeptMappingToReviewed(slug, targets);
+      const split = splitFor(slug, evaluation.readiness, mapping.canonicalStats);
       wave1Results.push({
         hospital: slug,
         readiness: evaluation.readiness,
+        crawlReadiness: split.crawlReadiness,
+        mappingReadiness: split.mappingReadiness,
+        outputUsability: split.outputUsability,
         reviewedRecords: evaluation.reviewedRecords,
         productionReadyCount: evaluation.productionReadyCount,
         mappedRecords: mapping.mappedRecords

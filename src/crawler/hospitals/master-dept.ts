@@ -6,14 +6,17 @@ import { getHospitalBaseline, hospitalBaselines } from "./baseline-registry";
 import type {
   CandidatePage,
   CanonicalDoctor,
+  CrawlReadinessStatus,
   DoctorDepartmentLink,
   HospitalBaseline,
   HospitalPilotEvaluation,
+  MappingReadinessStatus,
   MasterDeptMatchConfidence,
   MasterDeptMatchEvidence,
   MasterDeptSourceUrlPageType,
   MasterDeptSourceUrlStatus,
   MasterDeptTarget,
+  OutputUsability,
   ReadinessStatus,
   WebsiteFamily
 } from "./types";
@@ -39,6 +42,9 @@ export type NationalHospitalPlan = {
   knownAdapter: string | null;
   knownStartingUrls: string[];
   currentReadiness: ReadinessStatus | "pending" | "needsAdapter" | "deferred" | "safeForPilot";
+  crawlReadiness: CrawlReadinessStatus;
+  mappingReadiness: MappingReadinessStatus;
+  outputUsability: OutputUsability;
   recommendedNextAction: "useExistingAdapter" | "runPlan" | "runPilot" | "runFullIfSafe" | "needsAdapter" | "deferToEnd";
   deferReason: string | null;
   wave: 1 | 2 | 3 | 4;
@@ -57,10 +63,16 @@ export type NationalCoverageReport = {
   nearbyDoctorOrTeamUrlRows: number;
   hospitalsByProviderGuess: Record<string, number>;
   hospitalsByReadiness: Record<string, number>;
+  hospitalsByCrawlReadiness: Record<string, number>;
+  hospitalsByMappingReadiness: Record<string, number>;
   hospitalsSafeForFullBatch: string[];
   hospitalsPilotReady: string[];
   hospitalsNeedingAdapter: string[];
   hospitalsDeferred: Array<{ hospitalName: string; reason: string | null }>;
+  hospitalReadinessBySlug: Record<string, HospitalSplitReadiness>;
+  hospitalsWithWorkingDoctorRoster: string[];
+  hospitalsWithDepartmentMappedRoster: string[];
+  hospitalsBlocked: string[];
   shebaStatus: string;
   wave1Counts: {
     masterDeptHospitalGroups: number;
@@ -81,7 +93,22 @@ export type NationalCoverageReport = {
   }>;
   wave2SelectedHospitals: Wave2PlanItem[];
   wave2Results: Array<Wave2Result>;
+  wave3SelectedHospitals: Wave3PlanItem[];
+  wave3Results: Array<Wave3Result>;
+  nextRecommendedWave: string;
   sorokaStatus: string;
+};
+
+export type HospitalSplitReadiness = {
+  hospitalSlug: string;
+  hospitalName: string;
+  crawlReadiness: CrawlReadinessStatus;
+  mappingReadiness: MappingReadinessStatus;
+  outputUsability: OutputUsability;
+  canonicalDoctors: number;
+  doctorDepartmentLinks: number;
+  sourceUrlMatchLinks: number;
+  reviewNeededLinks: number;
 };
 
 export type MappingStats = {
@@ -106,9 +133,27 @@ export type Wave2PlanItem = {
   plannedMode: "pilot only" | "controlled full if already safe";
 };
 
+export type Wave3PlanItem = {
+  hospitalSlug: string;
+  hospitalNames: string[];
+  providerGuess: string;
+  masterDeptRows: number;
+  rowsWithUrls: number;
+  liveUrlRows: number;
+  nearbyDoctorOrTeamUrlRows: number;
+  adapterParserFamily: string;
+  whySelected: string;
+  expectedCrawlReadiness: CrawlReadinessStatus;
+  expectedMappingReadiness: MappingReadinessStatus;
+  plannedMode: "pilot only";
+};
+
 export type Wave2Result = {
   hospital: string;
   readiness: string;
+  crawlReadiness: CrawlReadinessStatus;
+  mappingReadiness: MappingReadinessStatus;
+  outputUsability: OutputUsability;
   reviewedRecords: number;
   productionReadyCount: number;
   mappedRecords: number;
@@ -116,6 +161,8 @@ export type Wave2Result = {
   canonicalStats: CanonicalStats;
   mainBlocker: string | null;
 };
+
+export type Wave3Result = Wave2Result;
 
 export type CanonicalStats = {
   rawReviewedRows: number;
@@ -412,6 +459,8 @@ export function buildNationalHospitalPlan(targets: MasterDeptTarget[]): National
       const departmentUrlCount = items.filter((item) => item.sourceUrlNormalized && item.sourceUrlPageType !== "teamPage" && item.sourceUrlPageType !== "doctorsPage").length;
       const pendingUrlCount = items.filter((item) => item.sourceUrlStatus === "pending").length;
       const readiness = readinessForHospital(first, baseline);
+      const crawlReadiness = crawlReadinessFromLegacy(readiness);
+      const mappingReadiness: MappingReadinessStatus = "blocked";
       const action = actionForHospital(first, readiness, baseline);
       return {
         hospitalName: first.hospitalNameRaw || "Unknown",
@@ -423,6 +472,9 @@ export function buildNationalHospitalPlan(targets: MasterDeptTarget[]): National
         knownAdapter: baseline?.hospitalSlug ?? null,
         knownStartingUrls: Array.from(new Set([...(baseline?.departmentsIndexUrlCandidates ?? []), ...(baseline?.doctorIndexUrlCandidates ?? []), ...items.map((item) => item.sourceUrlNormalized).filter(Boolean) as string[]])).slice(0, 12),
         currentReadiness: readiness,
+        crawlReadiness,
+        mappingReadiness,
+        outputUsability: outputUsabilityFor(crawlReadiness, mappingReadiness, null),
         recommendedNextAction: action,
         deferReason: first.deferReason,
         wave: waveForHospital(first, readiness, baseline),
@@ -440,10 +492,49 @@ function majority<T extends string>(items: T[]) {
   return Array.from(counts.entries()).sort((left, right) => right[1] - left[1])[0]?.[0] ?? items[0];
 }
 
+export function crawlReadinessFromLegacy(readiness: ReadinessStatus | "pending" | "needsAdapter" | "deferred" | "safeForPilot" | string): CrawlReadinessStatus {
+  if (readiness === "safeForFullBatch") return "safeForFullBatch";
+  if (readiness === "safeForPilot" || readiness === "pilotReady" || readiness === "inspectNeeded" || readiness === "discoveryOnly") return "pilotReady";
+  if (readiness === "needsCalibration" || readiness === "needsHumanReview") return "needsCalibration";
+  if (readiness === "needsAdapter" || readiness === "pending" || readiness === "deferred") return readiness === "deferred" ? "blocked" : "needsAdapter";
+  return "blocked";
+}
+
+export function mappingReadinessFor(hospitalSlug: string, stats: CanonicalStats | null | undefined): MappingReadinessStatus {
+  if (!stats || stats.doctorDepartmentLinks === 0) return "blocked";
+  if (stats.sourceUrlMatchLinks === stats.doctorDepartmentLinks) return "sourceUrlMapped";
+  if (stats.sourceUrlMatchLinks > 0) return "partiallyMapped";
+  if (hospitalSlug === "ichilov" || hospitalSlug === "hadassah" || hospitalSlug === "rabin") return "hospitalRosterOnly";
+  return "reviewNeeded";
+}
+
+export function outputUsabilityFor(crawlReadiness: CrawlReadinessStatus, mappingReadiness: MappingReadinessStatus, stats: CanonicalStats | null | undefined): OutputUsability {
+  if (crawlReadiness === "blocked" || crawlReadiness === "needsAdapter" || !stats || stats.canonicalDoctors === 0) return "notUsableYet";
+  if (mappingReadiness === "sourceUrlMapped" || mappingReadiness === "partiallyMapped") return "departmentMappedRoster";
+  if (mappingReadiness === "hospitalRosterOnly" || mappingReadiness === "reviewNeeded") return "hospitalRoster";
+  return "notUsableYet";
+}
+
+function splitReadinessFor(hospitalSlug: string, hospitalName: string, legacyReadiness: string, stats: CanonicalStats | null | undefined): HospitalSplitReadiness {
+  const crawlReadiness = crawlReadinessFromLegacy(legacyReadiness);
+  const mappingReadiness = mappingReadinessFor(hospitalSlug, stats);
+  return {
+    hospitalSlug,
+    hospitalName,
+    crawlReadiness,
+    mappingReadiness,
+    outputUsability: outputUsabilityFor(crawlReadiness, mappingReadiness, stats),
+    canonicalDoctors: stats?.canonicalDoctors ?? 0,
+    doctorDepartmentLinks: stats?.doctorDepartmentLinks ?? 0,
+    sourceUrlMatchLinks: stats?.sourceUrlMatchLinks ?? 0,
+    reviewNeededLinks: stats?.reviewNeededLinks ?? 0
+  };
+}
+
 function readinessForHospital(target: MasterDeptTarget, baseline: HospitalBaseline | null): NationalHospitalPlan["currentReadiness"] {
   if (target.crawlerStatus === "deferred") return "deferred";
   if (target.providerGuess === "ichilov" || target.providerGuess === "hadassah" || baseline?.hospitalSlug === "ichilov" || baseline?.hospitalSlug === "hadassah" || baseline?.hospitalSlug === "meir") return "safeForFullBatch";
-  if (baseline?.provider === "clalit") return "safeForPilot";
+  if (baseline) return "safeForPilot";
   if (target.providerGuess === "clalit") return "safeForPilot";
   if (target.providerGuess === "government" || target.providerGuess === "private") return "needsAdapter";
   return "pending";
@@ -472,7 +563,16 @@ function buildNationalWavesWithCanonicalStats(plan: NationalHospitalPlan[], cano
   const attachCanonicalStats = (item: NationalHospitalPlan) => {
     const slug = item.knownAdapter ?? "";
     const stats = slug ? canonicalStatsByHospital[slug] : null;
-    return stats ? { ...item, canonicalStatsSourceHospitalSlug: slug, canonicalStats: stats } : item;
+    if (!stats) return item;
+    const split = splitReadinessFor(slug, item.hospitalName, item.currentReadiness, stats);
+    return {
+      ...item,
+      crawlReadiness: split.crawlReadiness,
+      mappingReadiness: split.mappingReadiness,
+      outputUsability: split.outputUsability,
+      canonicalStatsSourceHospitalSlug: slug,
+      canonicalStats: stats
+    };
   };
   return {
     generatedAt: new Date().toISOString(),
@@ -590,6 +690,11 @@ function targetMatchesDoctorHospital(target: MasterDeptTarget, normalizedDoctorH
   if (/\bcarmel\b/i.test(rawDoctorHospital) && /כרמל/.test(target.hospitalNameRaw)) return true;
   if (/\bemek\b/i.test(rawDoctorHospital) && /העמק/.test(target.hospitalNameRaw)) return true;
   if (/\bkaplan\b/i.test(rawDoctorHospital) && /קפלן/.test(target.hospitalNameRaw)) return true;
+  if (/\bwolfson\b/i.test(rawDoctorHospital) && /וולפסון/.test(target.hospitalNameRaw)) return true;
+  if (/\bmaayanei|hayeshua|mayanei|mymc\b/i.test(rawDoctorHospital) && /מעיני/.test(target.hospitalNameRaw)) return true;
+  if (/\bgalilee\b|\bgmc\b/i.test(rawDoctorHospital) && /לגליל/.test(target.hospitalNameRaw)) return true;
+  if (/\bshamir\b/i.test(rawDoctorHospital) && /שמיר/.test(target.hospitalNameRaw)) return true;
+  if (/\blaniado\b/i.test(rawDoctorHospital) && /לניאדו/.test(target.hospitalNameRaw)) return true;
   return false;
 }
 
@@ -942,6 +1047,8 @@ export async function writeNationalPlanOutputs(
     canonicalStatsByHospital?: Record<string, CanonicalStats>;
     wave2SelectedHospitals?: Wave2PlanItem[];
     wave2Results?: Wave2Result[];
+    wave3SelectedHospitals?: Wave3PlanItem[];
+    wave3Results?: Wave3Result[];
   } = {}
 ) {
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "master-dept-targets.json"), targets);
@@ -972,13 +1079,18 @@ export async function writeNationalPlanOutputs(
   const wave2SelectedHospitals = options.wave2SelectedHospitals ?? [];
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "wave2-plan.json"), wave2SelectedHospitals);
   await writeCsv(path.join(NATIONAL_OUTPUT_DIR, "wave2-plan.csv"), wave2SelectedHospitals.map((item) => ({ ...item, hospitalNames: item.hospitalNames.join(" | ") })));
+  const wave3SelectedHospitals = options.wave3SelectedHospitals ?? [];
+  await writeJson(path.join(NATIONAL_OUTPUT_DIR, "wave3-plan.json"), wave3SelectedHospitals);
+  await writeCsv(path.join(NATIONAL_OUTPUT_DIR, "wave3-plan.csv"), wave3SelectedHospitals.map((item) => ({ ...item, hospitalNames: item.hospitalNames.join(" | ") })));
   const report = buildCoverageReport(targets, plan, {
     wave1Results: options.wave1Results ?? [],
     wave1MappingBefore: options.wave1MappingBefore ?? {},
     wave1MappingAfter: options.wave1MappingAfter ?? {},
     canonicalStatsByHospital: options.canonicalStatsByHospital ?? {},
     wave2SelectedHospitals,
-    wave2Results: options.wave2Results ?? []
+    wave2Results: options.wave2Results ?? [],
+    wave3SelectedHospitals,
+    wave3Results: options.wave3Results ?? []
   });
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-coverage-report.json"), report);
   await fs.writeFile(path.join(NATIONAL_OUTPUT_DIR, "national-coverage-report.md"), renderCoverageReport(report), "utf8");
@@ -992,6 +1104,71 @@ function countBy<T extends string>(items: T[]) {
   }, {});
 }
 
+function buildHospitalSplitReadiness(
+  plan: NationalHospitalPlan[],
+  options: {
+    canonicalStatsByHospital: Record<string, CanonicalStats>;
+    wave1Results: NationalCoverageReport["wave1Results"];
+    wave2Results: Wave2Result[];
+    wave3Results: Wave3Result[];
+  }
+) {
+  const bySlug = new Map<string, HospitalSplitReadiness>();
+  const planByAdapter = new Map(plan.filter((item) => item.knownAdapter).map((item) => [item.knownAdapter as string, item]));
+  const add = (slug: string, hospitalName: string, legacyReadiness: string, stats: CanonicalStats | null | undefined) => {
+    bySlug.set(slug, splitReadinessFor(slug, hospitalName, legacyReadiness, stats));
+  };
+
+  for (const [slug, stats] of Object.entries(options.canonicalStatsByHospital)) {
+    add(slug, planByAdapter.get(slug)?.hospitalName ?? slug, planByAdapter.get(slug)?.currentReadiness ?? "needsCalibration", stats);
+  }
+  for (const result of options.wave1Results) {
+    if (!result.hospital) continue;
+    add(result.hospital, planByAdapter.get(result.hospital)?.hospitalName ?? result.hospital, result.readiness, options.canonicalStatsByHospital[result.hospital]);
+  }
+  for (const result of [...options.wave2Results, ...options.wave3Results]) {
+    bySlug.set(result.hospital, {
+      hospitalSlug: result.hospital,
+      hospitalName: planByAdapter.get(result.hospital)?.hospitalName ?? result.hospital,
+      crawlReadiness: result.crawlReadiness,
+      mappingReadiness: result.mappingReadiness,
+      outputUsability: result.outputUsability,
+      canonicalDoctors: result.canonicalStats.canonicalDoctors,
+      doctorDepartmentLinks: result.canonicalStats.doctorDepartmentLinks,
+      sourceUrlMatchLinks: result.canonicalStats.sourceUrlMatchLinks,
+      reviewNeededLinks: result.canonicalStats.reviewNeededLinks
+    });
+  }
+
+  if (!bySlug.has("soroka")) {
+    bySlug.set("soroka", {
+      hospitalSlug: "soroka",
+      hospitalName: "Soroka Medical Center",
+      crawlReadiness: "needsCalibration",
+      mappingReadiness: "reviewNeeded",
+      outputUsability: "hospitalRoster",
+      canonicalDoctors: 0,
+      doctorDepartmentLinks: 0,
+      sourceUrlMatchLinks: 0,
+      reviewNeededLinks: 0
+    });
+  }
+  if (!bySlug.has("sheba")) {
+    bySlug.set("sheba", {
+      hospitalSlug: "sheba",
+      hospitalName: "Sheba Medical Center",
+      crawlReadiness: "blocked",
+      mappingReadiness: "blocked",
+      outputUsability: "notUsableYet",
+      canonicalDoctors: 0,
+      doctorDepartmentLinks: 0,
+      sourceUrlMatchLinks: 0,
+      reviewNeededLinks: 0
+    });
+  }
+  return Object.fromEntries(Array.from(bySlug.entries()).sort((left, right) => left[0].localeCompare(right[0])));
+}
+
 function buildCoverageReport(
   targets: MasterDeptTarget[],
   plan: NationalHospitalPlan[],
@@ -1002,10 +1179,14 @@ function buildCoverageReport(
     canonicalStatsByHospital: Record<string, CanonicalStats>;
     wave2SelectedHospitals: Wave2PlanItem[];
     wave2Results: Wave2Result[];
+    wave3SelectedHospitals: Wave3PlanItem[];
+    wave3Results: Wave3Result[];
   }
 ): NationalCoverageReport {
   const wave1Plans = plan.filter((item) => item.wave === 1);
   const wave1Attempted = new Set(options.wave1Results.map((item) => item.hospital));
+  const hospitalReadinessBySlug = buildHospitalSplitReadiness(plan, options);
+  const splitEntries = Object.values(hospitalReadinessBySlug);
   return {
     generatedAt: new Date().toISOString(),
     totalHospitals: plan.length,
@@ -1016,10 +1197,16 @@ function buildCoverageReport(
     nearbyDoctorOrTeamUrlRows: targets.filter((target) => target.nearbyDoctorOrTeamUrls.length > 0).length,
     hospitalsByProviderGuess: countBy(plan.map((item) => item.providerGuess)),
     hospitalsByReadiness: countBy(plan.map((item) => item.currentReadiness)),
+    hospitalsByCrawlReadiness: countBy(splitEntries.map((item) => item.crawlReadiness)),
+    hospitalsByMappingReadiness: countBy(splitEntries.map((item) => item.mappingReadiness)),
     hospitalsSafeForFullBatch: plan.filter((item) => item.currentReadiness === "safeForFullBatch").map((item) => item.hospitalName),
     hospitalsPilotReady: plan.filter((item) => item.currentReadiness === "safeForPilot").map((item) => item.hospitalName),
     hospitalsNeedingAdapter: plan.filter((item) => item.currentReadiness === "needsAdapter").map((item) => item.hospitalName),
     hospitalsDeferred: plan.filter((item) => item.currentReadiness === "deferred").map((item) => ({ hospitalName: item.hospitalName, reason: item.deferReason })),
+    hospitalReadinessBySlug,
+    hospitalsWithWorkingDoctorRoster: splitEntries.filter((item) => item.outputUsability === "hospitalRoster" || item.outputUsability === "departmentMappedRoster").map((item) => item.hospitalSlug),
+    hospitalsWithDepartmentMappedRoster: splitEntries.filter((item) => item.outputUsability === "departmentMappedRoster").map((item) => item.hospitalSlug),
+    hospitalsBlocked: splitEntries.filter((item) => item.outputUsability === "notUsableYet").map((item) => item.hospitalSlug),
     shebaStatus: plan.find((item) => /שיבא|תל השומר|sheba/i.test(item.hospitalName))?.deferReason ?? "not present",
     wave1Counts: {
       masterDeptHospitalGroups: wave1Plans.length,
@@ -1034,6 +1221,9 @@ function buildCoverageReport(
     wave1Results: options.wave1Results,
     wave2SelectedHospitals: options.wave2SelectedHospitals,
     wave2Results: options.wave2Results,
+    wave3SelectedHospitals: options.wave3SelectedHospitals,
+    wave3Results: options.wave3Results,
+    nextRecommendedWave: options.wave3Results.length > 0 ? "Review Wave3 output quality, then select the next 3-5 hospitals; keep Sheba deferred and Soroka full batch blocked." : "Run Wave3 pilot for up to 5 non-Sheba, non-Soroka hospitals.",
     sorokaStatus: "Improved pilot available; full Soroka batch is not marked safe."
   };
 }
@@ -1057,6 +1247,18 @@ function renderCoverageReport(report: NationalCoverageReport) {
     "",
     "## Readiness",
     ...Object.entries(report.hospitalsByReadiness).map(([key, value]) => `- ${key}: ${value}`),
+    "",
+    "## Split Readiness",
+    "- crawlReadiness",
+    ...Object.entries(report.hospitalsByCrawlReadiness).map(([key, value]) => `  - ${key}: ${value}`),
+    "- mappingReadiness",
+    ...Object.entries(report.hospitalsByMappingReadiness).map(([key, value]) => `  - ${key}: ${value}`),
+    "- usable hospital rosters: " + report.hospitalsWithWorkingDoctorRoster.join(", "),
+    "- usable department-mapped rosters: " + report.hospitalsWithDepartmentMappedRoster.join(", "),
+    "- not usable yet: " + report.hospitalsBlocked.join(", "),
+    "",
+    "## Hospital Split Readiness",
+    ...Object.values(report.hospitalReadinessBySlug).map((item) => `- ${item.hospitalSlug}: crawlReadiness=${item.crawlReadiness}; mappingReadiness=${item.mappingReadiness}; output=${item.outputUsability}; canonicalDoctors=${item.canonicalDoctors}; links=${item.doctorDepartmentLinks}; sourceUrlMatch=${item.sourceUrlMatchLinks}; reviewNeeded=${item.reviewNeededLinks}`),
     "",
     "## Wave 1 Counts",
     `- Master_Dept hospital groups: ${report.wave1Counts.masterDeptHospitalGroups}`,
@@ -1082,7 +1284,16 @@ function renderCoverageReport(report: NationalCoverageReport) {
     ...report.wave2SelectedHospitals.map((item) => `- ${item.hospitalSlug}: ${item.hospitalNames.join(" / ")}; rows=${item.masterDeptRows}; URLs=${item.rowsWithUrls}; nearby=${item.nearbyDoctorOrTeamUrlRows}; mode=${item.plannedMode}; reason=${item.whySelected}`),
     "",
     "## Wave 2 Results",
-    ...report.wave2Results.map((item) => `- ${item.hospital}: readiness=${item.readiness}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; sourceUrlMatch=${item.mappingStats.sourceUrlMatch}; reviewNeeded=${item.mappingStats.reviewNeeded}; blocker=${item.mainBlocker ?? "none"}`),
+    ...report.wave2Results.map((item) => `- ${item.hospital}: readiness=${item.readiness}; crawlReadiness=${item.crawlReadiness}; mappingReadiness=${item.mappingReadiness}; output=${item.outputUsability}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; sourceUrlMatch=${item.mappingStats.sourceUrlMatch}; reviewNeeded=${item.mappingStats.reviewNeeded}; blocker=${item.mainBlocker ?? "none"}`),
+    "",
+    "## Wave 3 Selected",
+    ...report.wave3SelectedHospitals.map((item) => `- ${item.hospitalSlug}: ${item.hospitalNames.join(" / ")}; rows=${item.masterDeptRows}; URLs=${item.rowsWithUrls}; live=${item.liveUrlRows}; nearby=${item.nearbyDoctorOrTeamUrlRows}; expectedCrawl=${item.expectedCrawlReadiness}; expectedMapping=${item.expectedMappingReadiness}; mode=${item.plannedMode}; reason=${item.whySelected}`),
+    "",
+    "## Wave 3 Results",
+    ...report.wave3Results.map((item) => `- ${item.hospital}: readiness=${item.readiness}; crawlReadiness=${item.crawlReadiness}; mappingReadiness=${item.mappingReadiness}; output=${item.outputUsability}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; sourceUrlMatch=${item.mappingStats.sourceUrlMatch}; reviewNeeded=${item.mappingStats.reviewNeeded}; blocker=${item.mainBlocker ?? "none"}`),
+    "",
+    "## Next",
+    `- ${report.nextRecommendedWave}`,
     "",
     "## Soroka",
     `- ${report.sorokaStatus}`
@@ -1148,6 +1359,68 @@ export function buildWave2Plan(plan: NationalHospitalPlan[], targets: MasterDept
     .slice(0, limit);
 }
 
+export function buildWave3Plan(plan: NationalHospitalPlan[], targets: MasterDeptTarget[], limit = 5): Wave3PlanItem[] {
+  const handledSlugs = new Set(["ichilov", "hadassah", "meir", "rabin", "carmel", "emek", "kaplan", "soroka", "sheba"]);
+  const rowsByHospital = new Map<string, MasterDeptTarget[]>();
+  for (const target of targets) {
+    const key = target.hospitalNameNormalized || target.hospitalNameRaw;
+    rowsByHospital.set(key, [...(rowsByHospital.get(key) ?? []), target]);
+  }
+
+  const bySlug = new Map<string, { plans: NationalHospitalPlan[]; rows: MasterDeptTarget[]; baseline: HospitalBaseline | null }>();
+  for (const item of plan) {
+    const rows = rowsByHospital.get(item.normalizedHospitalName) ?? [];
+    const baseline = getHospitalBaselineSafe(item.knownAdapter) ?? baselineForTarget(rows[0] ?? ({} as MasterDeptTarget));
+    if (!baseline || handledSlugs.has(baseline.hospitalSlug)) continue;
+    if (/שיבא|תל השומר|sheba|סורוקה|soroka/i.test(item.hospitalName)) continue;
+    if (item.wave !== 3) continue;
+    const existing = bySlug.get(baseline.hospitalSlug);
+    bySlug.set(baseline.hospitalSlug, {
+      plans: [...(existing?.plans ?? []), item],
+      rows: [...(existing?.rows ?? []), ...rows],
+      baseline: existing?.baseline ?? baseline
+    });
+  }
+
+  return Array.from(bySlug.entries())
+    .map(([hospitalSlug, value]) => {
+      const rowsWithUrls = value.rows.filter((row) => row.sourceUrlNormalized).length;
+      const liveUrlRows = value.rows.filter((row) => row.sourceUrlStatus === "live" || row.sourceUrlStatus === "redirected").length;
+      const nearbyDoctorOrTeamUrlRows = value.rows.filter((row) => row.nearbyDoctorOrTeamUrls.length > 0).length;
+      const directStaffRows = value.rows.filter((row) => row.sourceUrlPageType === "teamPage" || row.sourceUrlPageType === "doctorsPage").length;
+      const expectedMappingReadiness: MappingReadinessStatus = directStaffRows || nearbyDoctorOrTeamUrlRows ? "partiallyMapped" : "reviewNeeded";
+      const why = [
+        `Wave3 baseline ${hospitalSlug}`,
+        `${rowsWithUrls} Master_Dept URLs`,
+        liveUrlRows ? `${liveUrlRows} live inspected URLs` : "URLs pending inspection",
+        nearbyDoctorOrTeamUrlRows ? `${nearbyDoctorOrTeamUrlRows} nearby doctor/team URLs` : null,
+        directStaffRows ? `${directStaffRows} direct staff/doctors URLs` : null
+      ].filter(Boolean).join("; ");
+      return {
+        hospitalSlug,
+        hospitalNames: Array.from(new Set(value.plans.map((item) => item.hospitalName))),
+        providerGuess: majority(value.plans.map((item) => item.providerGuess)),
+        masterDeptRows: value.rows.length,
+        rowsWithUrls,
+        liveUrlRows,
+        nearbyDoctorOrTeamUrlRows,
+        adapterParserFamily: value.baseline?.parserFamilies.join("+") ?? "adapter-needed",
+        whySelected: why,
+        expectedCrawlReadiness: "pilotReady" as const,
+        expectedMappingReadiness,
+        plannedMode: "pilot only" as const
+      };
+    })
+    .filter((item) => item.rowsWithUrls > 0)
+    .sort((left, right) =>
+      right.nearbyDoctorOrTeamUrlRows - left.nearbyDoctorOrTeamUrlRows ||
+      right.liveUrlRows - left.liveUrlRows ||
+      right.rowsWithUrls - left.rowsWithUrls ||
+      right.masterDeptRows - left.masterDeptRows
+    )
+    .slice(0, limit);
+}
+
 function getHospitalBaselineSafe(slug: string | null) {
   if (!slug) return null;
   try {
@@ -1176,7 +1449,11 @@ export function nationalPlanSummary(targets: MasterDeptTarget[], plan: NationalH
     waveCounts: countBy(plan.map((item) => `wave${item.wave}`)),
     providerGuess: report.hospitalsByProviderGuess,
     readiness: report.hospitalsByReadiness,
+    crawlReadiness: report.hospitalsByCrawlReadiness,
+    mappingReadiness: report.hospitalsByMappingReadiness,
     safeForFullBatch: report.hospitalsSafeForFullBatch,
+    hospitalRosters: report.hospitalsWithWorkingDoctorRoster,
+    departmentMappedRosters: report.hospitalsWithDepartmentMappedRoster,
     deferred: report.hospitalsDeferred
   };
 }

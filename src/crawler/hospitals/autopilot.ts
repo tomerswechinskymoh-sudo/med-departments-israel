@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { getHospitalBaseline } from "./baseline-registry";
-import type { AutopilotMode, CandidatePage, HospitalDoctorRecord, HospitalPilotEvaluation, HospitalPlan, ParserFamily, ReadinessStatus } from "./types";
+import type { AutopilotMode, CandidatePage, CrawlReadinessStatus, HospitalDoctorRecord, HospitalPilotEvaluation, HospitalPlan, MappingReadinessStatus, OutputUsability, ParserFamily, ReadinessStatus } from "./types";
 import { discoverCandidatePages, extractDoctorsFromHtml, fetchPublicHtml, inspectHtml, inspectProfileHtml } from "./adapters/generic-public-site";
 import { crawlHadassahDoctorSearchPilot } from "./adapters/hadassah-doctors";
 import { crawlIchilovDoctorSearchPilot } from "./adapters/ichilov-search";
@@ -65,7 +65,7 @@ function duplicateCounts(doctors: HospitalDoctorRecord[]) {
   };
 }
 
-function evaluateReadiness(evaluation: Omit<HospitalPilotEvaluation, "readiness" | "mainBlocker">): { readiness: ReadinessStatus; mainBlocker: string | null } {
+function evaluateReadiness(evaluation: Omit<HospitalPilotEvaluation, "readiness" | "crawlReadiness" | "mappingReadiness" | "outputUsability" | "mainBlocker">): { readiness: ReadinessStatus; mainBlocker: string | null } {
   if (evaluation.rawDoctorRecords === 0) return { readiness: "blocked", mainBlocker: "Pilot extracted zero doctor records." };
   if (evaluation.duplicateProfileUrlCount > 0) return { readiness: "needsCalibration", mainBlocker: "Duplicate profile URLs remain in pilot output." };
   if (evaluation.suspectedFalsePositiveCount > Math.max(2, evaluation.rawDoctorRecords * 0.2)) {
@@ -76,6 +76,20 @@ function evaluateReadiness(evaluation: Omit<HospitalPilotEvaluation, "readiness"
     return { readiness: "safeForFullBatch", mainBlocker: null };
   }
   return { readiness: "needsHumanReview", mainBlocker: "Pilot has useful records but insufficient production-ready coverage." };
+}
+
+function crawlReadinessFromReadiness(readiness: ReadinessStatus): CrawlReadinessStatus {
+  if (readiness === "safeForFullBatch") return "safeForFullBatch";
+  if (readiness === "blocked") return "blocked";
+  if (readiness === "needsCalibration" || readiness === "needsHumanReview") return "needsCalibration";
+  return "pilotReady";
+}
+
+function outputUsabilityFor(crawlReadiness: CrawlReadinessStatus, mappingReadiness: MappingReadinessStatus): OutputUsability {
+  if (crawlReadiness === "blocked" || crawlReadiness === "needsAdapter") return "notUsableYet";
+  if (mappingReadiness === "sourceUrlMapped" || mappingReadiness === "partiallyMapped") return "departmentMappedRoster";
+  if (mappingReadiness === "hospitalRosterOnly" || mappingReadiness === "reviewNeeded") return "hospitalRoster";
+  return "notUsableYet";
 }
 
 export async function runHospitalPlan(hospitalSlug: string): Promise<HospitalPlan> {
@@ -113,6 +127,8 @@ export async function runHospitalPlan(hospitalSlug: string): Promise<HospitalPla
   for (const candidate of uniqueByUrl(candidatePages).slice(0, 8)) recommendedPilotUrls.add(candidate.url);
   for (const url of baseline.pilotUrlCandidates) recommendedPilotUrls.add(url);
   const readiness = readinessForPlan(candidatePages, doctorIndexExists, fetches.filter((item) => !item.ok).length);
+  const crawlReadiness = crawlReadinessFromReadiness(readiness.readiness);
+  const mappingReadiness: MappingReadinessStatus = "blocked";
   const plan: HospitalPlan = {
     hospitalSlug,
     hospitalName: baseline.hospitalName,
@@ -131,6 +147,9 @@ export async function runHospitalPlan(hospitalSlug: string): Promise<HospitalPla
     parserFamilies: baseline.parserFamilies,
     recommendedPilotUrls: Array.from(recommendedPilotUrls).slice(0, 12),
     readiness: readiness.readiness,
+    crawlReadiness,
+    mappingReadiness,
+    outputUsability: outputUsabilityFor(crawlReadiness, mappingReadiness),
     mainBlocker: readiness.blocker
   };
 
@@ -285,9 +304,14 @@ export async function runHospitalPilot(hospitalSlug: string): Promise<HospitalPi
     profileCompleteness: completeness
   };
   const readiness = evaluateReadiness(baseEvaluation);
+  const crawlReadiness = crawlReadinessFromReadiness(readiness.readiness);
+  const mappingReadiness: MappingReadinessStatus = doctors.length > 0 ? "hospitalRosterOnly" : "blocked";
   const evaluation: HospitalPilotEvaluation = {
     ...baseEvaluation,
     readiness: readiness.readiness,
+    crawlReadiness,
+    mappingReadiness,
+    outputUsability: outputUsabilityFor(crawlReadiness, mappingReadiness),
     mainBlocker: readiness.mainBlocker
   };
 
@@ -339,6 +363,9 @@ export function summarizeAutopilotResult(mode: AutopilotMode, result: unknown) {
       candidatePages: plan.candidatePages.length,
       recommendedPilotUrls: plan.recommendedPilotUrls.length,
       readiness: plan.readiness,
+      crawlReadiness: plan.crawlReadiness,
+      mappingReadiness: plan.mappingReadiness,
+      outputUsability: plan.outputUsability,
       mainBlocker: plan.mainBlocker
     };
   }
@@ -354,6 +381,9 @@ export function summarizeAutopilotResult(mode: AutopilotMode, result: unknown) {
       reviewedRecords: evaluation.reviewedRecords,
       productionReadyCount: evaluation.productionReadyCount,
       readiness: evaluation.readiness,
+      crawlReadiness: evaluation.crawlReadiness,
+      mappingReadiness: evaluation.mappingReadiness,
+      outputUsability: evaluation.outputUsability,
       mainBlocker: evaluation.mainBlocker
     };
   }

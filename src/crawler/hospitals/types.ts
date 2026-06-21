@@ -18,6 +18,12 @@ export type ReadinessStatus =
   | "needsHumanReview"
   | "blocked";
 
+export type CrawlReadinessStatus = "safeForFullBatch" | "pilotReady" | "needsCalibration" | "needsAdapter" | "blocked";
+
+export type MappingReadinessStatus = "sourceUrlMapped" | "partiallyMapped" | "hospitalRosterOnly" | "reviewNeeded" | "blocked";
+
+export type OutputUsability = "hospitalRoster" | "departmentMappedRoster" | "notUsableYet";
+
 export type AutopilotMode = "plan" | "pilot" | "evaluate" | "full" | "national-plan" | "national-pilot" | "national-full-safe";
 
 export type MasterDeptSourceUrlStatus = "notProvided" | "pending" | "live" | "redirected" | "stale" | "forbidden" | "failed";
@@ -184,6 +190,9 @@ export type HospitalPlan = {
   parserFamilies: ParserFamily[];
   recommendedPilotUrls: string[];
   readiness: ReadinessStatus;
+  crawlReadiness: CrawlReadinessStatus;
+  mappingReadiness: MappingReadinessStatus;
+  outputUsability: OutputUsability;
   mainBlocker: string | null;
 };
 
@@ -211,5 +220,8 @@ export type HospitalPilotEvaluation = {
     listOnly: number;
   };
   readiness: ReadinessStatus;
+  crawlReadiness: CrawlReadinessStatus;
+  mappingReadiness: MappingReadinessStatus;
+  outputUsability: OutputUsability;
   mainBlocker: string | null;
 };

@@ -138,6 +138,127 @@ export const hospitalBaselines: HospitalBaseline[] = [
     ],
     parserFamilies: ["teamPage", "inlineStaff", "classicDoctorCards"],
     notes: ["Master_Dept Wave2 baseline: Clalit department pages with possible inline/team links."]
+  },
+  {
+    hospitalSlug: "wolfson",
+    hospitalName: "Wolfson Medical Center",
+    hospitalHebrew: "מרכז רפואי וולפסון",
+    provider: "unknown",
+    websiteFamily: "unknown",
+    homepageUrl: "https://www.gov.il/he/departments/wolfson-medical-center/govil-landing-page",
+    departmentsIndexUrlCandidates: [
+      "https://www.gov.il/he/pages/medical_staff",
+      "https://www.gov.il/he/pages/staff_of_the_plastic_surgery_unit",
+      "https://www.gov.il/he/pages/surgery-a-chest-surgeries-staff",
+      "https://www.gov.il/he/pages/nuclear_medicine_institute_staff"
+    ],
+    doctorIndexUrlCandidates: [],
+    pilotUrlCandidates: [
+      "https://www.gov.il/he/pages/medical_staff",
+      "https://www.gov.il/he/pages/staff_of_the_plastic_surgery_unit",
+      "https://www.gov.il/he/pages/surgery-a-chest-surgeries-staff",
+      "https://www.gov.il/he/pages/nuclear_medicine_institute_staff"
+    ],
+    parserFamilies: ["teamPage", "inlineStaff", "unknown"],
+    notes: ["Wave3 baseline: gov.il staff pages seeded from Master_Dept row URLs."]
+  },
+  {
+    hospitalSlug: "maayanei-hayeshua",
+    hospitalName: "Maayanei Hayeshua Medical Center",
+    hospitalHebrew: "ביה\"ח מעיני הישועה",
+    provider: "unknown",
+    websiteFamily: "unknown",
+    homepageUrl: "https://www.mymc.co.il/",
+    departmentsIndexUrlCandidates: [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/mental-health/"
+    ],
+    doctorIndexUrlCandidates: [],
+    pilotUrlCandidates: [
+      "https://www.mymc.co.il/children-wing/",
+      "https://www.mymc.co.il/wings/internal-affairs-division/",
+      "https://www.mymc.co.il/main-departments/surgical-department/",
+      "https://www.mymc.co.il/mental-health/"
+    ],
+    parserFamilies: ["teamPage", "inlineStaff", "unknown"],
+    notes: ["Wave3 baseline: private hospital department pages seeded from Master_Dept."]
+  },
+  {
+    hospitalSlug: "galilee",
+    hospitalName: "Galilee Medical Center",
+    hospitalHebrew: "המרכז הרפואי לגליל",
+    provider: "unknown",
+    websiteFamily: "unknown",
+    homepageUrl: "https://www.gmc.gov.il/",
+    departmentsIndexUrlCandidates: [
+      "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "https://www.gmc.gov.il/?p=10533",
+      "https://www.gmc.gov.il/?p=8838",
+      "https://www.gmc.gov.il/?p=10501",
+      "https://www.gmc.gov.il/?p=8742"
+    ],
+    doctorIndexUrlCandidates: [],
+    pilotUrlCandidates: [
+      "https://www.gmc.gov.il/?department=%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa",
+      "https://www.gmc.gov.il/?p=10533",
+      "https://www.gmc.gov.il/?p=8838",
+      "https://www.gmc.gov.il/?p=10501",
+      "https://www.gmc.gov.il/?p=8742"
+    ],
+    parserFamilies: ["inlineStaff", "teamPage", "unknown"],
+    notes: ["Wave3 baseline: government hospital department pages seeded from Master_Dept."]
+  },
+  {
+    hospitalSlug: "shamir",
+    hospitalName: "Shamir Medical Center",
+    hospitalHebrew: "מרכז רפואי יצחק שמיר",
+    provider: "unknown",
+    websiteFamily: "unknown",
+    homepageUrl: "https://www.shamir.org/",
+    departmentsIndexUrlCandidates: [
+      "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "https://www.shamir.org/clinics/pediatrics/",
+      "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "https://www.shamir.org/clinics/gynecology/",
+      "https://www.shamir.org/clinics/labs/cytologyandpathology/"
+    ],
+    doctorIndexUrlCandidates: [],
+    pilotUrlCandidates: [
+      "https://www.shamir.org/clinics/orthopedics/ortopedicdepartment/",
+      "https://www.shamir.org/clinics/pediatrics/",
+      "https://www.shamir.org/clinics/%D7%97%D7%98%D7%99%D7%91%D7%94-%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA/%D7%A4%D7%A0%D7%99%D7%9E%D7%99%D7%AA-%D7%90-%D7%9E%D7%97%D7%9C%D7%A7%D7%94/",
+      "https://www.shamir.org/clinics/gynecology/",
+      "https://www.shamir.org/clinics/labs/cytologyandpathology/"
+    ],
+    parserFamilies: ["inlineStaff", "teamPage", "unknown"],
+    notes: ["Wave3 baseline: public hospital department pages seeded from Master_Dept."]
+  },
+  {
+    hospitalSlug: "laniado",
+    hospitalName: "Laniado Medical Center",
+    hospitalHebrew: "ביה\"ח לניאדו",
+    provider: "unknown",
+    websiteFamily: "unknown",
+    homepageUrl: "https://www.laniado.org.il/",
+    departmentsIndexUrlCandidates: [
+      "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+      "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/"
+    ],
+    doctorIndexUrlCandidates: [],
+    pilotUrlCandidates: [
+      "https://www.laniado.org.il/mahlakot/%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "https://www.laniado.org.il/mahlakot/%d7%90%d7%95%d7%a8%d7%98%d7%95%d7%a4%d7%93%d7%99%d7%94/",
+      "https://www.laniado.org.il/mahlakot/%d7%a4%d7%a0%d7%99%d7%9e%d7%99%d7%aa-%d7%90/",
+      "https://www.laniado.org.il/mahlakot/%d7%90%d7%92%d7%a3-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "https://www.laniado.org.il/mahlakot/%d7%9b%d7%99%d7%a8%d7%95%d7%a8%d7%92%d7%99%d7%94/"
+    ],
+    parserFamilies: ["inlineStaff", "teamPage", "unknown"],
+    notes: ["Wave3 baseline: private hospital pages seeded from Master_Dept."]
   }
 ];
 
