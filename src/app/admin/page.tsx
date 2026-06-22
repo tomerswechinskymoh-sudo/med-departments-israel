@@ -583,6 +583,23 @@ export default async function AdminPage() {
           </Card>
 
           <Card className="xl:col-span-2">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 className="text-xl font-bold text-ink">בדיקת רופאים מהקרולר</h2>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  סקירה לפי בית חולים של רופאים וקישורי מחלקה לפני כל ייבוא או פרסום ציבורי.
+                </p>
+              </div>
+              <Link
+                href="/admin/crawler-review"
+                className="rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white"
+              >
+                Crawler Review
+              </Link>
+            </div>
+          </Card>
+
+          <Card className="xl:col-span-2">
             <h2 className="text-xl font-bold text-ink">ניהול דשבורד תחום התמחות</h2>
             <p className="mt-2 text-sm leading-7 text-slate-600">
               לכל תחום אפשר לבחור אילו מדדים יוצגו למשתמשים ובאיזה סדר.

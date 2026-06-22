@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T18:33:08.619Z",
+  "generatedAt": "2026-06-22T18:48:40.079Z",
   "workbookPath": "data/crawler/hospitals/review-exports/crawler-rosters-review.xlsx",
   "allowedManualDecisionValues": [
     "approve",
@@ -34,6 +34,19 @@
   "warnings": [],
   "errors": [],
   "contradictions": [],
+  "adminDecisionValidation": {
+    "generatedAt": "2026-06-22T18:48:40.189Z",
+    "decisionCount": 0,
+    "invalidDecisionCount": 0,
+    "duplicateReviewEntityIdCount": 0,
+    "contradictionCount": 0,
+    "warningCount": 0,
+    "errorCount": 0,
+    "warnings": [],
+    "errors": [],
+    "contradictions": [],
+    "decisionsByValue": {}
+  },
   "hospitalsWithMostPendingReview": [
     {
       "key": "carmel",

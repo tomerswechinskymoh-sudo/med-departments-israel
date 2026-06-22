@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import ExcelJS from "exceljs";
+import { validateAdminReviewDecisions } from "@/lib/server/crawler-review-store";
 
 type Row = Record<string, string>;
 
@@ -174,6 +175,7 @@ async function main() {
   }
 
   const decisionsByValue = countBy(decisions.map((row) => row.manualDecision));
+  const adminDecisionValidation = await validateAdminReviewDecisions();
   const validation = {
     generatedAt,
     workbookPath: path.relative(ROOT, workbookPath),
@@ -190,6 +192,7 @@ async function main() {
     warnings,
     errors,
     contradictions,
+    adminDecisionValidation,
     hospitalsWithMostPendingReview: topEntries(pendingByHospital),
     hospitalsWithMostRejectOutOfScopeWrongDepartment: topEntries(negativeByHospital),
   };
@@ -231,6 +234,10 @@ async function main() {
     `- Contradictions: ${validation.contradictionCount}`,
     `- Warnings: ${validation.warningCount}`,
     `- Errors: ${validation.errorCount}`,
+    `- Admin artifact decisions: ${adminDecisionValidation.decisionCount}`,
+    `- Admin artifact invalid decisions: ${adminDecisionValidation.invalidDecisionCount}`,
+    `- Admin artifact duplicate IDs: ${adminDecisionValidation.duplicateReviewEntityIdCount}`,
+    `- Admin artifact contradictions: ${adminDecisionValidation.contradictionCount}`,
     "",
     "## Hospitals With Most Pending Review",
     ...validation.hospitalsWithMostPendingReview.map((entry) => `- ${entry.key}: ${entry.count}`),
@@ -256,6 +263,10 @@ async function main() {
     invalidDecisionCount: validation.invalidDecisionCount,
     duplicateReviewEntityIdCount: validation.duplicateReviewEntityIdCount,
     contradictionCount: validation.contradictionCount,
+    adminDecisionCount: adminDecisionValidation.decisionCount,
+    adminDecisionInvalidDecisionCount: adminDecisionValidation.invalidDecisionCount,
+    adminDecisionDuplicateReviewEntityIdCount: adminDecisionValidation.duplicateReviewEntityIdCount,
+    adminDecisionContradictionCount: adminDecisionValidation.contradictionCount,
     warningCount: validation.warningCount,
     errorCount: validation.errorCount,
   }, null, 2));

@@ -1,6 +1,6 @@
 # Manual Review Validation Summary
 
-Generated at: 2026-06-22T18:33:08.619Z
+Generated at: 2026-06-22T18:48:40.079Z
 Workbook: data/crawler/hospitals/review-exports/crawler-rosters-review.xlsx
 
 ## Row Counts
@@ -22,6 +22,10 @@ Workbook: data/crawler/hospitals/review-exports/crawler-rosters-review.xlsx
 - Contradictions: 0
 - Warnings: 0
 - Errors: 0
+- Admin artifact decisions: 0
+- Admin artifact invalid decisions: 0
+- Admin artifact duplicate IDs: 0
+- Admin artifact contradictions: 0
 
 ## Hospitals With Most Pending Review
 - carmel: 1143
