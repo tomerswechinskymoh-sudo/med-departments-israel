@@ -248,7 +248,7 @@ function blockerTypeFor(errorMessage: string | null, evaluation?: HospitalPilotE
   if (/manual seed|needsmanualseed|not marked safe/.test(text)) return "needsManualSeedUrl" as const;
   if (/no master_dept source url|no master dept source url|no row urls/.test(text)) return "noMasterDeptSourceUrl" as const;
   if (evaluation && evaluation.rawDoctorRecords === 0) return "noPublicRosterFound" as const;
-  if (/403|forbidden/.test(text)) return "siteBlocked" as const;
+  if (/403|forbidden|captcha|bot protection|cloudflare|radware/.test(text)) return "siteBlocked" as const;
   if (/404|410|stale/.test(text)) return "staleMasterDeptUrls" as const;
   if (/api|js|angular|shell/.test(text)) return "apiNeedsAdapter" as const;
   if (/parser|selector/.test(text)) return "parserMissing" as const;
@@ -493,7 +493,10 @@ async function main() {
           const item = nationalRemainingQueue.find((candidate) => candidate.hospitalSlug === planItem.hospitalSlug) ??
             inspectedTargetedQueue.find((candidate) => candidate.hospitalSlug === planItem.hospitalSlug);
           if (!item) return null;
-          return { ...item, plannedAction: selectedActionBySlug.get(planItem.hospitalSlug) === "adapterInspect" ? "adapterInspect" as const : item.plannedAction };
+          const selectedAction = selectedActionBySlug.get(planItem.hospitalSlug);
+          return selectedAction === "pilot" || selectedAction === "adapterInspect"
+            ? { ...item, plannedAction: selectedAction }
+            : item;
         })
         .filter((item): item is NonNullable<typeof item> => Boolean(item))
         .filter((item) => item.plannedAction === "pilot" || item.plannedAction === "adapterInspect")

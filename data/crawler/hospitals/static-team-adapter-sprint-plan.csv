@@ -1,0 +1,4 @@
+hospitalSlug,hospitalName,providerGuess,masterDeptRows,rowsWithUrls,liveUrls,nearbyDoctorTeamUrls,plannedAction,reasonSelected
+bnei-zion,מרכז רפואי בני ציון,government,21,20,0,0,pilot,staticTeamPage adapter sprint target
+ziv,"ביה""ח זיו - צפת",government,20,16,0,0,pilot,staticTeamPage adapter sprint target
+assuta-ashdod,"בי""ח אסותא אשדוד",private,18,4,0,0,pilot,staticTeamPage adapter sprint target

@@ -98,7 +98,7 @@ function patternTypeFor(url: string, text: string): CandidatePage["patternType"]
 
 function parserFamilyFor(type: CandidatePage["patternType"], baseline: HospitalBaseline): ParserFamily {
   if (type === "doctorIndex") return baseline.parserFamilies.includes("doctorIndexAssisted") ? "doctorIndexAssisted" : "searchDriven";
-  if (type === "teamPage" || type === "staffPage") return "teamPage";
+  if (type === "teamPage" || type === "staffPage") return baseline.parserFamilies.includes("staticTeamPage") ? "staticTeamPage" : "teamPage";
   if (type === "departmentPage") return "inlineStaff";
   return baseline.parserFamilies[0] ?? "unknown";
 }
@@ -197,6 +197,43 @@ function doctorNameMatchesFromText(text: string) {
   return Array.from(names);
 }
 
+function addDoctorFromTextBlock(
+  doctors: Map<string, HospitalDoctorRecord>,
+  text: string,
+  sourceUrl: string,
+  baseline: HospitalBaseline,
+  parserFamily: ParserFamily,
+  imageUrl: string | null = null
+) {
+  const rawText = normalizeText(text);
+  if (!rawText || rawText.length > 900 || noisyTextPattern.test(rawText)) return;
+  const matches = doctorNameMatchesFromText(rawText);
+  if (matches.length !== 1) return;
+  const fullName = cleanName(matches[0]);
+  const normalizedName = normalizeDoctorName(fullName);
+  if (!normalizedName || normalizedName.length < 3 || normalizedName.length > 80) return;
+  const key = `${normalizedName}::${sourceUrl}`;
+  if (doctors.has(key)) return;
+  doctors.set(key, {
+    fullName,
+    normalizedName,
+    titlePrefix: titlePrefix(fullName),
+    role: roleFromRaw(rawText, fullName),
+    unit: null,
+    profileUrl: null,
+    imageUrl,
+    rawText: rawText.slice(0, 2000),
+    sourceUrl,
+    hospitalSlug: baseline.hospitalSlug,
+    hospital: baseline.hospitalName,
+    parserFamily,
+    sourceEvidence: rawText.slice(0, 500),
+    qaFlags: ["missingProfileUrl", "listOnlyProfile"],
+    qaSeverity: "review",
+    profileCompleteness: "listOnly"
+  });
+}
+
 export function extractDoctorsFromHtml(html: string, sourceUrl: string, baseline: HospitalBaseline, parserFamily: ParserFamily) {
   if (isNoisyCrawlerUrl(sourceUrl)) return [];
 
@@ -236,6 +273,13 @@ export function extractDoctorsFromHtml(html: string, sourceUrl: string, baseline
       qaSeverity: profileUrl ? "ok" : "review"
     });
   });
+
+  $("article,li,tr,section,.card,.team-member,.staff-member,.doctor,.doctor-card,.person,.profile,.item,h2,h3,h4,p")
+    .each((_, node) => {
+      const root = candidateRoot($, node);
+      const rawText = normalizeText(root.text() || $(node).text());
+      addDoctorFromTextBlock(doctors, rawText, sourceUrl, baseline, parserFamily, imageFrom($, root, sourceUrl));
+    });
 
   if (doctors.size === 0) {
     const bodyText = normalizeText($("body").text());

@@ -78,6 +78,14 @@ function evaluateReadiness(evaluation: Omit<HospitalPilotEvaluation, "readiness"
   return { readiness: "needsHumanReview", mainBlocker: "Pilot has useful records but insufficient production-ready coverage." };
 }
 
+function blockedSiteReason(statusCode: number | null, html: string, error: string | null) {
+  const text = `${statusCode ?? ""} ${error ?? ""} ${html.slice(0, 4000)}`;
+  if (statusCode === 403 || /captcha|hcaptcha|cloudflare|radware|bot|forbidden/i.test(text)) {
+    return "Site blocked automated public fetch (403/captcha/bot protection).";
+  }
+  return null;
+}
+
 function crawlReadinessFromReadiness(readiness: ReadinessStatus): CrawlReadinessStatus {
   if (readiness === "safeForFullBatch") return "safeForFullBatch";
   if (readiness === "blocked") return "blocked";
@@ -210,6 +218,7 @@ export async function runHospitalPilot(hospitalSlug: string): Promise<HospitalPi
       : Array.from(new Set(plan.recommendedPilotUrls)).slice(0, PILOT_PAGE_LIMIT);
   const doctorsByKey = new Map<string, HospitalDoctorRecord>();
   const profileFetches = new Map<string, { ok: boolean; textLength: number; completeness: "full" | "partial" | "listOnly" }>();
+  const fetchBlockers = new Set<string>();
 
   if (baseline.hospitalSlug === "ichilov") {
     const doctors = await crawlIchilovDoctorSearchPilot(baseline);
@@ -226,6 +235,8 @@ export async function runHospitalPilot(hospitalSlug: string): Promise<HospitalPi
   } else {
     for (const url of selectedUrls) {
       const response = await fetchPublicHtml(url);
+      const blocker = blockedSiteReason(response.statusCode, response.html, response.error);
+      if (blocker) fetchBlockers.add(blocker);
       if (!response.html) continue;
       const pageParser =
         plan.candidatePages.find((candidate) => candidate.url === url)?.parserFamily ??
@@ -304,6 +315,10 @@ export async function runHospitalPilot(hospitalSlug: string): Promise<HospitalPi
     profileCompleteness: completeness
   };
   const readiness = evaluateReadiness(baseEvaluation);
+  if (baseEvaluation.rawDoctorRecords === 0 && fetchBlockers.size > 0) {
+    readiness.readiness = "blocked";
+    readiness.mainBlocker = Array.from(fetchBlockers).join(" ");
+  }
   const crawlReadiness = crawlReadinessFromReadiness(readiness.readiness);
   const mappingReadiness: MappingReadinessStatus = doctors.length > 0 ? "hospitalRosterOnly" : "blocked";
   const evaluation: HospitalPilotEvaluation = {

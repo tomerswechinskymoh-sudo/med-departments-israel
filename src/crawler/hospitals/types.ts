@@ -2,6 +2,7 @@ export type WebsiteFamily = "clalit" | "sheba" | "ichilov" | "hadassah" | "unkno
 
 export type ParserFamily =
   | "classicDoctorCards"
+  | "staticTeamPage"
   | "teamPage"
   | "inlineStaff"
   | "doctorIndexAssisted"
@@ -23,6 +24,18 @@ export type CrawlReadinessStatus = "safeForFullBatch" | "pilotReady" | "needsCal
 export type MappingReadinessStatus = "sourceUrlMapped" | "partiallyMapped" | "hospitalRosterOnly" | "reviewNeeded" | "blocked";
 
 export type OutputUsability = "hospitalRoster" | "departmentMappedRoster" | "notUsableYet";
+
+export type InstitutionType =
+  | "acuteHospital"
+  | "psychiatricHospital"
+  | "geriatricHospital"
+  | "rehabilitationHospital"
+  | "healthFund"
+  | "communityProvider"
+  | "privateNetwork"
+  | "unknown";
+
+export type CrawlPriority = "high" | "medium" | "low" | "defer";
 
 export type AutopilotMode =
   | "plan"
@@ -63,6 +76,9 @@ export type MasterDeptTarget = {
   nearbyDoctorOrTeamUrls: string[];
   urlInspectionEvidence: string | null;
   providerGuess: WebsiteFamily | "government" | "private";
+  institutionType: InstitutionType;
+  isResidencyHospitalCandidate: boolean;
+  crawlPriority: CrawlPriority;
   crawlerStatus: "pending" | "supported" | "safeForPilot" | "safeForFullBatch" | "needsAdapter" | "deferred" | "blocked";
   deferReason: string | null;
 };

@@ -8,9 +8,11 @@ import { hospitalSeedUrlRegistry, safeSeedUrlsForHospital, seedUrlsForHospital }
 import type {
   CandidatePage,
   CanonicalDoctor,
+  CrawlPriority,
   CrawlReadinessStatus,
   DoctorDepartmentLink,
   HospitalBaseline,
+  InstitutionType,
   HospitalPilotEvaluation,
   MappingReadinessStatus,
   MasterDeptMatchConfidence,
@@ -47,6 +49,9 @@ export type NationalHospitalPlan = {
   crawlReadiness: CrawlReadinessStatus;
   mappingReadiness: MappingReadinessStatus;
   outputUsability: OutputUsability;
+  institutionType: InstitutionType;
+  isResidencyHospitalCandidate: boolean;
+  crawlPriority: CrawlPriority;
   recommendedNextAction: "useExistingAdapter" | "runPlan" | "runPilot" | "runFullIfSafe" | "needsAdapter" | "deferToEnd";
   deferReason: string | null;
   wave: 1 | 2 | 3 | 4;
@@ -64,6 +69,10 @@ export type NationalCoverageReport = {
   sourceUrlPageTypeCounts: Record<string, number>;
   nearbyDoctorOrTeamUrlRows: number;
   hospitalsByProviderGuess: Record<string, number>;
+  hospitalsByInstitutionType: Record<string, number>;
+  hospitalRosterByInstitutionType: Record<string, number>;
+  blockedByInstitutionType: Record<string, number>;
+  remainingUnattemptedByInstitutionType: Record<string, number>;
   hospitalsByReadiness: Record<string, number>;
   hospitalsByCrawlReadiness: Record<string, number>;
   hospitalsByMappingReadiness: Record<string, number>;
@@ -204,6 +213,9 @@ export type NationalRemainingQueueItem = {
   liveUrlRows: number;
   nearbyDoctorOrTeamUrlRows: number;
   existingAdapterParserFamily: string | null;
+  institutionType: InstitutionType;
+  isResidencyHospitalCandidate: boolean;
+  crawlPriority: CrawlPriority;
   seedUrlCount: number;
   safeSeedUrlCount: number;
   needsManualSeedUrl: boolean;
@@ -387,6 +399,36 @@ function providerGuess(hospitalName: string, rawUrl: string | null, institutionT
   return "unknown";
 }
 
+function classifyInstitutionType(hospitalName: string, rawInstitutionType: string, provider: MasterDeptTarget["providerGuess"]): InstitutionType {
+  const joined = `${hospitalName} ${rawInstitutionType}`.replace(/[׳'״"]/g, "");
+  if (/קופ.?ח|מכבי שירותי בריאות|מאוחדת|לאומית|כללית שירותי בריאות/i.test(joined)) return "healthFund";
+  if (/קהילת|שירותי בריאות קהילתיים|אסיא/i.test(joined)) return "communityProvider";
+  if (/ברה.?נ|בריאות הנפש|לב.?ה.?נ|נפש|גהה|שלוותה|אברבנאל|מזור|שער מנשה|כפר שאול|איתנים|מרחבים|מעלה הכרמל|רמת חן|באר שבע/i.test(joined)) return "psychiatricHospital";
+  if (/גריאטר|שמואל הרופא|בית רבקה|פלימן|הרצפלד|נאות המושבה|שהם/i.test(joined)) return "geriatricHospital";
+  if (/שיקומ|לוינשטיין|רעות|עדי נגב/i.test(joined)) return "rehabilitationHospital";
+  if (/אסותא|לניאדו|מעיני|נצרת|משפחה קדושה|סן ונסן/i.test(joined)) return "privateNetwork";
+  if (provider === "clalit" || provider === "government" || provider === "ichilov" || provider === "hadassah" || provider === "sheba") return "acuteHospital";
+  if (/מ.?ר|מרכז רפואי|ביה.?ח|בית חולים/i.test(joined)) return "acuteHospital";
+  return "unknown";
+}
+
+function isResidencyHospitalCandidate(institutionType: InstitutionType) {
+  return institutionType === "acuteHospital" ||
+    institutionType === "psychiatricHospital" ||
+    institutionType === "geriatricHospital" ||
+    institutionType === "rehabilitationHospital" ||
+    institutionType === "privateNetwork";
+}
+
+function crawlPriorityForInstitution(institutionType: InstitutionType, provider: MasterDeptTarget["providerGuess"], hasSourceUrl: boolean): CrawlPriority {
+  if (institutionType === "healthFund" || institutionType === "communityProvider") return "defer";
+  if (institutionType === "acuteHospital" || institutionType === "privateNetwork") return hasSourceUrl ? "high" : "medium";
+  if (institutionType === "psychiatricHospital" || institutionType === "rehabilitationHospital") return hasSourceUrl ? "medium" : "low";
+  if (institutionType === "geriatricHospital") return "low";
+  if (provider === "unknown" && !hasSourceUrl) return "defer";
+  return "low";
+}
+
 function safeHost(rawUrl: string) {
   try {
     return new URL(rawUrl).hostname;
@@ -424,6 +466,7 @@ export async function loadMasterDeptTargets(): Promise<MasterDeptTarget[]> {
       const pageType = classifySourceUrl(sourceUrlNormalized, [row[DEPARTMENT_COLUMN], row[SPECIALTY_COLUMN], row[SOURCE_URL_COLUMN]].join(" "));
       const hospitalNameRaw = row[HOSPITAL_COLUMN] ?? "";
       const provider = providerGuess(hospitalNameRaw, sourceUrlNormalized, row[TYPE_COLUMN] ?? "");
+      const institutionType = classifyInstitutionType(hospitalNameRaw, row[TYPE_COLUMN] ?? "", provider);
       const status = statusForTarget(provider, hospitalNameRaw, pageType);
       return [{
         masterDeptRowId: rowId(index, row),
@@ -443,6 +486,9 @@ export async function loadMasterDeptTargets(): Promise<MasterDeptTarget[]> {
         nearbyDoctorOrTeamUrls: [],
         urlInspectionEvidence: null,
         providerGuess: provider,
+        institutionType,
+        isResidencyHospitalCandidate: isResidencyHospitalCandidate(institutionType),
+        crawlPriority: crawlPriorityForInstitution(institutionType, provider, Boolean(sourceUrlNormalized)),
         crawlerStatus: status.crawlerStatus,
         deferReason: status.deferReason
       }];
@@ -536,6 +582,9 @@ export function buildNationalHospitalPlan(targets: MasterDeptTarget[]): National
       const first = items[0];
       const baseline = baselineForTarget(first);
       const provider = majority(items.map((item) => item.providerGuess));
+      const institutionType = majority(items.map((item) => item.institutionType));
+      const isResidencyCandidate = items.some((item) => item.isResidencyHospitalCandidate);
+      const crawlPriority = highestCrawlPriority(items.map((item) => item.crawlPriority));
       const directStaffUrlCount = items.filter((item) => item.sourceUrlPageType === "teamPage" || item.sourceUrlPageType === "doctorsPage").length;
       const departmentUrlCount = items.filter((item) => item.sourceUrlNormalized && item.sourceUrlPageType !== "teamPage" && item.sourceUrlPageType !== "doctorsPage").length;
       const pendingUrlCount = items.filter((item) => item.sourceUrlStatus === "pending").length;
@@ -556,6 +605,9 @@ export function buildNationalHospitalPlan(targets: MasterDeptTarget[]): National
         crawlReadiness,
         mappingReadiness,
         outputUsability: outputUsabilityFor(crawlReadiness, mappingReadiness, null),
+        institutionType,
+        isResidencyHospitalCandidate: isResidencyCandidate,
+        crawlPriority,
         recommendedNextAction: action,
         deferReason: first.deferReason,
         wave: waveForHospital(first, readiness, baseline),
@@ -571,6 +623,11 @@ function majority<T extends string>(items: T[]) {
   const counts = new Map<T, number>();
   for (const item of items) counts.set(item, (counts.get(item) ?? 0) + 1);
   return Array.from(counts.entries()).sort((left, right) => right[1] - left[1])[0]?.[0] ?? items[0];
+}
+
+function highestCrawlPriority(items: CrawlPriority[]): CrawlPriority {
+  const rank: Record<CrawlPriority, number> = { high: 4, medium: 3, low: 2, defer: 1 };
+  return items.sort((left, right) => rank[right] - rank[left])[0] ?? "low";
 }
 
 export function crawlReadinessFromLegacy(readiness: ReadinessStatus | "pending" | "needsAdapter" | "deferred" | "safeForPilot" | string): CrawlReadinessStatus {
@@ -1156,6 +1213,9 @@ export async function writeNationalPlanOutputs(
     nearbyDoctorOrTeamUrls: target.nearbyDoctorOrTeamUrls.join(" | "),
     urlInspectionEvidence: target.urlInspectionEvidence,
     providerGuess: target.providerGuess,
+    institutionType: target.institutionType,
+    isResidencyHospitalCandidate: target.isResidencyHospitalCandidate,
+    crawlPriority: target.crawlPriority,
     crawlerStatus: target.crawlerStatus,
     deferReason: target.deferReason
   })));
@@ -1372,6 +1432,10 @@ function buildCoverageReport(
     ...options.nationalSweepResults
   ].filter((item) => item.reviewedRecords === 0 || item.canonicalStats.canonicalDoctors === 0);
   const currentBlockedSlugs = new Set(splitEntries.filter((item) => item.crawlReadiness === "blocked" || item.outputUsability === "notUsableYet").map((item) => item.hospitalSlug));
+  const institutionTypeBySlug = institutionTypeMapForPlan(plan);
+  const typeForSlug = (slug: string) => institutionTypeBySlug.get(slug) ?? "unknown";
+  const rosterEntries = splitEntries.filter((item) => item.outputUsability === "hospitalRoster" || item.outputUsability === "departmentMappedRoster");
+  const blockedEntries = splitEntries.filter((item) => item.outputUsability === "notUsableYet");
   return {
     generatedAt: new Date().toISOString(),
     totalHospitals: plan.length,
@@ -1381,6 +1445,10 @@ function buildCoverageReport(
     sourceUrlPageTypeCounts: countBy(targets.map((target) => target.sourceUrlPageType)),
     nearbyDoctorOrTeamUrlRows: targets.filter((target) => target.nearbyDoctorOrTeamUrls.length > 0).length,
     hospitalsByProviderGuess: countBy(plan.map((item) => item.providerGuess)),
+    hospitalsByInstitutionType: countBy(plan.map((item) => item.institutionType)),
+    hospitalRosterByInstitutionType: countBy(rosterEntries.map((item) => typeForSlug(item.hospitalSlug))),
+    blockedByInstitutionType: countBy(blockedEntries.map((item) => typeForSlug(item.hospitalSlug))),
+    remainingUnattemptedByInstitutionType: countBy(options.nationalRemainingQueue.filter((item) => item.plannedAction !== "skipAlreadyUsable").map((item) => item.institutionType)),
     hospitalsByReadiness: countBy(plan.map((item) => item.currentReadiness)),
     hospitalsByCrawlReadiness: countBy(splitEntries.map((item) => item.crawlReadiness)),
     hospitalsByMappingReadiness: countBy(splitEntries.map((item) => item.mappingReadiness)),
@@ -1444,6 +1512,15 @@ function buildCoverageReport(
   };
 }
 
+function institutionTypeMapForPlan(plan: NationalHospitalPlan[]) {
+  const bySlug = new Map<string, InstitutionType>();
+  for (const item of plan) {
+    const slug = item.knownAdapter ?? slugForHospitalName(item.hospitalName);
+    bySlug.set(slug, item.institutionType);
+  }
+  return bySlug;
+}
+
 function renderCoverageReport(report: NationalCoverageReport) {
   return [
     "# National Hospital Crawler Coverage",
@@ -1472,6 +1549,16 @@ function renderCoverageReport(report: NationalCoverageReport) {
     "",
     "## Provider Guess",
     ...Object.entries(report.hospitalsByProviderGuess).map(([key, value]) => `- ${key}: ${value}`),
+    "",
+    "## Institution Taxonomy",
+    "- total hospital groups by type",
+    ...Object.entries(report.hospitalsByInstitutionType).map(([key, value]) => `  - ${key}: ${value}`),
+    "- usable roster by type",
+    ...Object.entries(report.hospitalRosterByInstitutionType).map(([key, value]) => `  - ${key}: ${value}`),
+    "- blocked by type",
+    ...Object.entries(report.blockedByInstitutionType).map(([key, value]) => `  - ${key}: ${value}`),
+    "- remaining unattempted by type",
+    ...Object.entries(report.remainingUnattemptedByInstitutionType).map(([key, value]) => `  - ${key}: ${value}`),
     "",
     "## Readiness",
     ...Object.entries(report.hospitalsByReadiness).map(([key, value]) => `- ${key}: ${value}`),
@@ -1527,7 +1614,7 @@ function renderCoverageReport(report: NationalCoverageReport) {
     ...report.adapterPriorityResults.map((item) => `- ${item.hospital}: action=${item.plannedAction}; readiness=${item.readiness}; crawlReadiness=${item.crawlReadiness}; mappingReadiness=${item.mappingReadiness}; output=${item.outputUsability}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; blockerType=${item.blockerType}; blocker=${item.mainBlocker ?? "none"}`),
     "",
     "## National Sweep Queue",
-    ...report.nationalRemainingQueue.slice(0, 25).map((item) => `- ${item.hospitalSlug}: ${item.hospitalName}; priority=${item.priority}; action=${item.plannedAction}; rows=${item.masterDeptRows}; URLs=${item.rowsWithUrls}; live=${item.liveUrlRows}; nearby=${item.nearbyDoctorOrTeamUrlRows}; expectedCrawl=${item.expectedCrawlReadiness}; expectedMapping=${item.expectedMappingReadiness}; reason=${item.reasonForPriority}`),
+    ...report.nationalRemainingQueue.slice(0, 25).map((item) => `- ${item.hospitalSlug}: ${item.hospitalName}; type=${item.institutionType}; residencyCandidate=${item.isResidencyHospitalCandidate}; crawlPriority=${item.crawlPriority}; priority=${item.priority}; action=${item.plannedAction}; rows=${item.masterDeptRows}; URLs=${item.rowsWithUrls}; live=${item.liveUrlRows}; nearby=${item.nearbyDoctorOrTeamUrlRows}; expectedCrawl=${item.expectedCrawlReadiness}; expectedMapping=${item.expectedMappingReadiness}; reason=${item.reasonForPriority}`),
     "",
     "## National Sweep Results",
     ...report.nationalSweepResults.map((item) => `- ${item.hospital}: action=${item.plannedAction}; readiness=${item.readiness}; crawlReadiness=${item.crawlReadiness}; mappingReadiness=${item.mappingReadiness}; output=${item.outputUsability}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; sourceUrlMatch=${item.mappingStats.sourceUrlMatch}; reviewNeeded=${item.mappingStats.reviewNeeded}; blockerType=${item.blockerType}; blocker=${item.mainBlocker ?? "none"}`),
@@ -1733,6 +1820,9 @@ export function buildNationalRemainingQueue(
       const nearbyDoctorOrTeamUrlRows = rows.filter((row) => row.nearbyDoctorOrTeamUrls.length > 0).length;
       const directStaffRows = rows.filter((row) => row.sourceUrlPageType === "teamPage" || row.sourceUrlPageType === "doctorsPage").length;
       const existingAdapterParserFamily = baseline?.parserFamilies.join("+") ?? null;
+      const institutionType = majority(rows.map((row) => row.institutionType));
+      const isResidencyHospitalCandidate = rows.some((row) => row.isResidencyHospitalCandidate);
+      const crawlPriority = highestCrawlPriority(rows.map((row) => row.crawlPriority));
       const seedUrlCount = seedUrlsForHospital(hospitalSlug).length;
       const safeSeedUrlCount = safeSeedUrlsForHospital(hospitalSlug).length;
       const needsManualSeedUrl = rowsWithUrls === 0 && seedUrlCount > 0 && safeSeedUrlCount === 0;
@@ -1779,6 +1869,9 @@ export function buildNationalRemainingQueue(
         liveUrlRows,
         nearbyDoctorOrTeamUrlRows,
         existingAdapterParserFamily,
+        institutionType,
+        isResidencyHospitalCandidate,
+        crawlPriority,
         seedUrlCount,
         safeSeedUrlCount,
         needsManualSeedUrl,
@@ -1820,7 +1913,7 @@ export function buildSyntheticBaselineForQueueItem(item: NationalRemainingQueueI
     departmentsIndexUrlCandidates: sourceUrls.slice(0, 10),
     doctorIndexUrlCandidates: [],
     pilotUrlCandidates,
-    parserFamilies: provider === "clalit" ? ["teamPage", "inlineStaff", "classicDoctorCards"] : ["inlineStaff", "teamPage", "unknown"],
+    parserFamilies: provider === "clalit" ? ["teamPage", "inlineStaff", "classicDoctorCards"] : ["staticTeamPage", "inlineStaff", "teamPage", "unknown"],
     notes: ["Synthetic Master_Dept-seeded baseline for controlled national sweep."]
   };
 }

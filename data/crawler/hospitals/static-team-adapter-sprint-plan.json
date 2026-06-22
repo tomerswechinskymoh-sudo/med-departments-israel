@@ -1,0 +1,35 @@
+[
+  {
+    "hospitalSlug": "bnei-zion",
+    "hospitalName": "מרכז רפואי בני ציון",
+    "providerGuess": "government",
+    "masterDeptRows": 21,
+    "rowsWithUrls": 20,
+    "liveUrls": 0,
+    "nearbyDoctorTeamUrls": 0,
+    "plannedAction": "pilot",
+    "reasonSelected": "staticTeamPage adapter sprint target"
+  },
+  {
+    "hospitalSlug": "ziv",
+    "hospitalName": "ביה\"ח זיו - צפת",
+    "providerGuess": "government",
+    "masterDeptRows": 20,
+    "rowsWithUrls": 16,
+    "liveUrls": 0,
+    "nearbyDoctorTeamUrls": 0,
+    "plannedAction": "pilot",
+    "reasonSelected": "staticTeamPage adapter sprint target"
+  },
+  {
+    "hospitalSlug": "assuta-ashdod",
+    "hospitalName": "בי\"ח אסותא אשדוד",
+    "providerGuess": "private",
+    "masterDeptRows": 18,
+    "rowsWithUrls": 4,
+    "liveUrls": 0,
+    "nearbyDoctorTeamUrls": 0,
+    "plannedAction": "pilot",
+    "reasonSelected": "staticTeamPage adapter sprint target"
+  }
+]
