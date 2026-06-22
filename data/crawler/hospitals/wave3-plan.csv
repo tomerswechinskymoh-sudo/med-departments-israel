@@ -1,6 +1,6 @@
 hospitalSlug,hospitalNames,providerGuess,masterDeptRows,rowsWithUrls,liveUrlRows,nearbyDoctorOrTeamUrlRows,adapterParserFamily,whySelected,expectedCrawlReadiness,expectedMappingReadiness,plannedMode
-leumit-health-fund,"קופ""ח לאומית",private,1,1,1,1,inlineStaff+teamPage+unknown,Wave3 baseline leumit-health-fund; 1 Master_Dept URLs; 1 live inspected URLs; 1 nearby doctor/team URLs,pilotReady,partiallyMapped,pilot only
-meuhedet-health-fund,"קופ""ח מאוחדת",private,1,1,1,0,inlineStaff+teamPage+unknown,Wave3 baseline meuhedet-health-fund; 1 Master_Dept URLs; 1 live inspected URLs,pilotReady,reviewNeeded,pilot only
-shaar-menashe-mental-health,"מרכז לבה""נ שער מנשה",unknown,1,1,1,0,inlineStaff+teamPage+unknown,Wave3 baseline shaar-menashe-mental-health; 1 Master_Dept URLs; 1 live inspected URLs,pilotReady,reviewNeeded,pilot only
-shoham-geriatric,מ.גריאטרי שהם,unknown,1,1,1,0,inlineStaff+teamPage+unknown,Wave3 baseline shoham-geriatric; 1 Master_Dept URLs; 1 live inspected URLs,pilotReady,reviewNeeded,pilot only
+assuta-ashdod,"בי""ח אסותא אשדוד",private,18,4,4,0,staticTeamPage+inlineStaff+teamPage+unknown,Wave3 baseline assuta-ashdod; 4 Master_Dept URLs; 4 live inspected URLs,pilotReady,reviewNeeded,pilot only
 galilee,המרכז הרפואי לגליל,government,29,28,0,0,inlineStaff+teamPage+unknown,Wave3 baseline galilee; 28 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only
+shamir,מרכז רפואי יצחק שמיר,government,27,26,0,0,inlineStaff+teamPage+unknown,Wave3 baseline shamir; 26 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only
+bnei-zion,מרכז רפואי בני ציון,government,21,20,0,0,staticTeamPage+inlineStaff+teamPage+unknown,Wave3 baseline bnei-zion; 20 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only
+ziv,"ביה""ח זיו - צפת",government,20,16,0,0,staticTeamPage+inlineStaff+teamPage+unknown,Wave3 baseline ziv; 16 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only

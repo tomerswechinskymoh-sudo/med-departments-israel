@@ -1,6 +1,6 @@
 # Hospital Normalization Audit
 
-- generatedAt: 2026-06-22T06:26:59.892Z
+- generatedAt: 2026-06-22T13:07:44.103Z
 - total hospital groups: 60
 - opaque slug count: 0
 

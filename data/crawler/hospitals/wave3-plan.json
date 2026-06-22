@@ -1,64 +1,16 @@
 [
   {
-    "hospitalSlug": "leumit-health-fund",
+    "hospitalSlug": "assuta-ashdod",
     "hospitalNames": [
-      "קופ\"ח לאומית"
+      "בי\"ח אסותא אשדוד"
     ],
     "providerGuess": "private",
-    "masterDeptRows": 1,
-    "rowsWithUrls": 1,
-    "liveUrlRows": 1,
-    "nearbyDoctorOrTeamUrlRows": 1,
-    "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline leumit-health-fund; 1 Master_Dept URLs; 1 live inspected URLs; 1 nearby doctor/team URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "partiallyMapped",
-    "plannedMode": "pilot only"
-  },
-  {
-    "hospitalSlug": "meuhedet-health-fund",
-    "hospitalNames": [
-      "קופ\"ח מאוחדת"
-    ],
-    "providerGuess": "private",
-    "masterDeptRows": 1,
-    "rowsWithUrls": 1,
-    "liveUrlRows": 1,
+    "masterDeptRows": 18,
+    "rowsWithUrls": 4,
+    "liveUrlRows": 4,
     "nearbyDoctorOrTeamUrlRows": 0,
-    "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline meuhedet-health-fund; 1 Master_Dept URLs; 1 live inspected URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "reviewNeeded",
-    "plannedMode": "pilot only"
-  },
-  {
-    "hospitalSlug": "shaar-menashe-mental-health",
-    "hospitalNames": [
-      "מרכז לבה\"נ שער מנשה"
-    ],
-    "providerGuess": "unknown",
-    "masterDeptRows": 1,
-    "rowsWithUrls": 1,
-    "liveUrlRows": 1,
-    "nearbyDoctorOrTeamUrlRows": 0,
-    "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline shaar-menashe-mental-health; 1 Master_Dept URLs; 1 live inspected URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "reviewNeeded",
-    "plannedMode": "pilot only"
-  },
-  {
-    "hospitalSlug": "shoham-geriatric",
-    "hospitalNames": [
-      "מ.גריאטרי שהם"
-    ],
-    "providerGuess": "unknown",
-    "masterDeptRows": 1,
-    "rowsWithUrls": 1,
-    "liveUrlRows": 1,
-    "nearbyDoctorOrTeamUrlRows": 0,
-    "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline shoham-geriatric; 1 Master_Dept URLs; 1 live inspected URLs",
+    "adapterParserFamily": "staticTeamPage+inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline assuta-ashdod; 4 Master_Dept URLs; 4 live inspected URLs",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "reviewNeeded",
     "plannedMode": "pilot only"
@@ -75,6 +27,54 @@
     "nearbyDoctorOrTeamUrlRows": 0,
     "adapterParserFamily": "inlineStaff+teamPage+unknown",
     "whySelected": "Wave3 baseline galilee; 28 Master_Dept URLs; URLs pending inspection",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "reviewNeeded",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "shamir",
+    "hospitalNames": [
+      "מרכז רפואי יצחק שמיר"
+    ],
+    "providerGuess": "government",
+    "masterDeptRows": 27,
+    "rowsWithUrls": 26,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline shamir; 26 Master_Dept URLs; URLs pending inspection",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "reviewNeeded",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "bnei-zion",
+    "hospitalNames": [
+      "מרכז רפואי בני ציון"
+    ],
+    "providerGuess": "government",
+    "masterDeptRows": 21,
+    "rowsWithUrls": 20,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "staticTeamPage+inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline bnei-zion; 20 Master_Dept URLs; URLs pending inspection",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "reviewNeeded",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "ziv",
+    "hospitalNames": [
+      "ביה\"ח זיו - צפת"
+    ],
+    "providerGuess": "government",
+    "masterDeptRows": 20,
+    "rowsWithUrls": 16,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "staticTeamPage+inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline ziv; 16 Master_Dept URLs; URLs pending inspection",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "reviewNeeded",
     "plannedMode": "pilot only"

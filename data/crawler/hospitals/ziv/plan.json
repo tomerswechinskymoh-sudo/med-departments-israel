@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "ziv",
   "hospitalName": "ביה\"ח זיו - צפת",
-  "generatedAt": "2026-06-21T10:38:10.435Z",
+  "generatedAt": "2026-06-22T13:07:35.841Z",
   "provider": "unknown",
   "websiteFamily": "unknown",
   "knownUrls": {
@@ -45,8 +45,8 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     },
     {
@@ -63,8 +63,8 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     },
     {
@@ -81,8 +81,8 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     },
     {
@@ -99,8 +99,8 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     },
     {
@@ -117,8 +117,8 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     },
     {
@@ -135,8 +135,8 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     },
     {
@@ -153,8 +153,8 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     },
     {
@@ -171,8 +171,8 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     },
     {
@@ -189,8 +189,8 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     },
     {
@@ -207,14 +207,15 @@
         "Why have I been blocked?",
         "What can I do to resolve this?"
       ],
-      "htmlLength": 5466,
-      "visibleTextLength": 2030,
+      "htmlLength": 5490,
+      "visibleTextLength": 2054,
       "error": "403 Forbidden"
     }
   ],
   "candidatePages": [],
   "doctorIndexExists": false,
   "parserFamilies": [
+    "staticTeamPage",
     "inlineStaff",
     "teamPage",
     "unknown"

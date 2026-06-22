@@ -247,8 +247,8 @@ function blockerTypeFor(errorMessage: string | null, evaluation?: HospitalPilotE
   const text = `${errorMessage ?? ""} ${evaluation?.mainBlocker ?? ""}`.toLowerCase();
   if (/manual seed|needsmanualseed|not marked safe/.test(text)) return "needsManualSeedUrl" as const;
   if (/no master_dept source url|no master dept source url|no row urls/.test(text)) return "noMasterDeptSourceUrl" as const;
-  if (evaluation && evaluation.rawDoctorRecords === 0) return "noPublicRosterFound" as const;
   if (/403|forbidden|captcha|bot protection|cloudflare|radware/.test(text)) return "siteBlocked" as const;
+  if (evaluation && evaluation.rawDoctorRecords === 0) return "noPublicRosterFound" as const;
   if (/404|410|stale/.test(text)) return "staleMasterDeptUrls" as const;
   if (/api|js|angular|shell/.test(text)) return "apiNeedsAdapter" as const;
   if (/parser|selector/.test(text)) return "parserMissing" as const;

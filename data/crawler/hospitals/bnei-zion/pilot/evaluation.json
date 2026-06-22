@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "bnei-zion",
   "hospitalName": "מרכז רפואי בני ציון",
-  "generatedAt": "2026-06-21T10:37:47.995Z",
+  "generatedAt": "2026-06-22T13:07:32.343Z",
   "urlsUsed": [
     "https://www.gov.il/he//departments/Units/emergency_medicine",
     "https://www.gov.il/he//departments/Units/kids_department",
@@ -10,7 +10,7 @@
     "https://www.gov.il/he//departments/Units/rehabilitation_department"
   ],
   "doctorIndexExists": false,
-  "parserFamily": "inlineStaff",
+  "parserFamily": "staticTeamPage",
   "candidatePagesFound": 0,
   "pilotPagesSelected": 5,
   "rawDoctorRecords": 0,
@@ -31,5 +31,5 @@
   "crawlReadiness": "blocked",
   "mappingReadiness": "blocked",
   "outputUsability": "notUsableYet",
-  "mainBlocker": "Pilot extracted zero doctor records."
+  "mainBlocker": "Site blocked automated public fetch (403/captcha/bot protection)."
 }
