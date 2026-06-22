@@ -1,6 +1,6 @@
 hospitalSlug,hospitalNames,providerGuess,masterDeptRows,rowsWithUrls,liveUrlRows,nearbyDoctorOrTeamUrlRows,adapterParserFamily,whySelected,expectedCrawlReadiness,expectedMappingReadiness,plannedMode
-assuta-ashdod,"בי""ח אסותא אשדוד",private,18,4,4,0,staticTeamPage+inlineStaff+teamPage+unknown,Wave3 baseline assuta-ashdod; 4 Master_Dept URLs; 4 live inspected URLs,pilotReady,reviewNeeded,pilot only
 galilee,המרכז הרפואי לגליל,government,29,28,0,0,inlineStaff+teamPage+unknown,Wave3 baseline galilee; 28 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only
 shamir,מרכז רפואי יצחק שמיר,government,27,26,0,0,inlineStaff+teamPage+unknown,Wave3 baseline shamir; 26 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only
-bnei-zion,מרכז רפואי בני ציון,government,21,20,0,0,staticTeamPage+inlineStaff+teamPage+unknown,Wave3 baseline bnei-zion; 20 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only
-ziv,"ביה""ח זיו - צפת",government,20,16,0,0,staticTeamPage+inlineStaff+teamPage+unknown,Wave3 baseline ziv; 16 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only
+laniado,"ביה""ח לניאדו",private,11,11,0,0,inlineStaff+teamPage+unknown,Wave3 baseline laniado; 11 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only
+wolfson,מרכז רפואי וולפסון,government,25,8,0,0,teamPage+inlineStaff+unknown,Wave3 baseline wolfson; 8 Master_Dept URLs; URLs pending inspection; 4 direct staff/doctors URLs,pilotReady,partiallyMapped,pilot only
+maayanei-hayeshua,"ביה""ח מעיני הישועה",private,6,6,0,0,teamPage+inlineStaff+unknown,Wave3 baseline maayanei-hayeshua; 6 Master_Dept URLs; URLs pending inspection; 2 direct staff/doctors URLs,pilotReady,partiallyMapped,pilot only

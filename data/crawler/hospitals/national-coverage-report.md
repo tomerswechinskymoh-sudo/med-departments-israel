@@ -1,30 +1,28 @@
 # National Hospital Crawler Coverage
 
-- generatedAt: 2026-06-22T13:07:44.105Z
+- generatedAt: 2026-06-22T14:06:40.663Z
 - total hospitals: 60
 - total Master_Dept rows: 634
 - rows with URLs: 321
 - nearby doctor/team URL rows: 17
-- attempted hospitals: 39
+- attempted hospitals: 53
 - usable hospital rosters: 26
 - usable department-mapped rosters: 15
 - previous department-mapped rosters: 14
 - department-mapped roster count note: Current count uses stricter outputUsability classification: only sourceUrlMapped/partiallyMapped link evidence counts as departmentMappedRoster; hospital-level/global rosters stay hospitalRoster.
 - attempted department-mapped rosters: 13
 - attempted hospital-roster-only: 9
-- attempted but no doctors: 18
-- blocked hospitals: 21
+- attempted but no doctors: 32
+- blocked hospitals: 35
 - deferred hospitals: 1
-- not attempted hospitals: 21
-- remaining unattempted queue: 16
+- not attempted hospitals: 7
+- remaining unattempted queue: 2
 - Sheba: hard JS/API/502 case; deferred after national coverage
 
 ## URL Status
-- pending: 250
+- pending: 290
 - notProvided: 313
 - live: 31
-- forbidden: 36
-- redirected: 4
 
 ## Provider Guess
 - hadassah: 2
@@ -51,18 +49,15 @@
   - privateNetwork: 2
   - healthFund: 1
 - blocked by type
-  - psychiatricHospital: 5
+  - acuteHospital: 7
+  - psychiatricHospital: 6
+  - geriatricHospital: 11
   - healthFund: 4
   - privateNetwork: 1
-  - acuteHospital: 6
-  - unknown: 4
-  - geriatricHospital: 1
-- remaining unattempted by type
-  - psychiatricHospital: 1
-  - geriatricHospital: 10
+  - unknown: 5
   - rehabilitationHospital: 1
-  - acuteHospital: 3
-  - unknown: 1
+- remaining unattempted by type
+  - acuteHospital: 2
 
 ## Readiness
 - safeForFullBatch: 4
@@ -73,32 +68,40 @@
 
 ## Split Readiness
 - crawlReadiness
-  - needsCalibration: 40
+  - needsCalibration: 54
   - safeForFullBatch: 5
   - blocked: 2
 - mappingReadiness
-  - blocked: 21
+  - blocked: 35
   - sourceUrlMapped: 5
   - reviewNeeded: 8
   - partiallyMapped: 10
   - hospitalRosterOnly: 3
 - usable hospital rosters: barzilai, carmel, emek, galilee, geha, hadassah, hillel-yaffe, holy-family, hospital-fa8413a9cd, ichilov, jerusalem-mental-health-kfar-shaul-eitanim, kaplan, laniado, leumit-health-fund, maale-hacarmel, maayanei-hayeshua, meir, nazareth-scottish, poria, rabin, saint-vincent, schneider, shalvata, shamir, soroka, yoseftal
 - usable department-mapped rosters: barzilai, emek, galilee, hillel-yaffe, holy-family, kaplan, laniado, leumit-health-fund, maayanei-hayeshua, meir, nazareth-scottish, poria, saint-vincent, schneider, shamir
-- not usable yet: abrabanel-mental-health, asia-community-health-services, assuta-ashdod, beer-sheva-mental-health, bnei-zion, clalit-community, hospital-08078cfe7d, hospital-3a3abf9b65, hospital-a3603919b1, lev-hasharon, maccabi-health-services, mazor-mental-health, merhavim, meuhedet-health-fund, rambam, shaar-menashe-mental-health, shaare-zedek, sheba, shoham-geriatric, wolfson, ziv
+- not usable yet: 0504048312, abrabanel-mental-health, adi-negev-nahalat-eden, asia-community-health-services, assuta-ashdod, beer-sheva-mental-health, beit-balev-rishon-lezion, beit-rivka-geriatric, bnei-zion, clalit-community, fliman-geriatric, forensic-medicine, herzfeld-geriatric, herzog-medical-center, hospital-08078cfe7d, hospital-3a3abf9b65, hospital-a3603919b1, lev-hasharon, loewenstein-rehabilitation, maccabi-health-services, mazor-mental-health, merhavim, meuhedet-health-fund, neot-hamoshava-geriatric, netanya-geriatric, ramat-chen-brill-mental-health, rambam, reuth-medical-center, shaar-menashe-mental-health, shaare-zedek, sheba, shmuel-harofe-geriatric, shoham-geriatric, wolfson, ziv
 
 ## Hospital Split Readiness
+- 0504048312: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - abrabanel-mental-health: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
+- adi-negev-nahalat-eden: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - asia-community-health-services: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - assuta-ashdod: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - barzilai: crawlReadiness=needsCalibration; mappingReadiness=sourceUrlMapped; output=departmentMappedRoster; canonicalDoctors=19; links=19; sourceUrlMatch=19; reviewNeeded=0
 - beer-sheva-mental-health: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
+- beit-balev-rishon-lezion: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
+- beit-rivka-geriatric: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - bnei-zion: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - carmel: crawlReadiness=needsCalibration; mappingReadiness=reviewNeeded; output=hospitalRoster; canonicalDoctors=381; links=381; sourceUrlMatch=0; reviewNeeded=381
 - clalit-community: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - emek: crawlReadiness=needsCalibration; mappingReadiness=partiallyMapped; output=departmentMappedRoster; canonicalDoctors=11; links=11; sourceUrlMatch=10; reviewNeeded=1
+- fliman-geriatric: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
+- forensic-medicine: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - galilee: crawlReadiness=needsCalibration; mappingReadiness=partiallyMapped; output=departmentMappedRoster; canonicalDoctors=30; links=30; sourceUrlMatch=24; reviewNeeded=6
 - geha: crawlReadiness=needsCalibration; mappingReadiness=reviewNeeded; output=hospitalRoster; canonicalDoctors=4; links=4; sourceUrlMatch=0; reviewNeeded=4
 - hadassah: crawlReadiness=safeForFullBatch; mappingReadiness=hospitalRosterOnly; output=hospitalRoster; canonicalDoctors=49; links=181; sourceUrlMatch=0; reviewNeeded=181
+- herzfeld-geriatric: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
+- herzog-medical-center: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - hillel-yaffe: crawlReadiness=needsCalibration; mappingReadiness=sourceUrlMapped; output=departmentMappedRoster; canonicalDoctors=25; links=25; sourceUrlMatch=25; reviewNeeded=0
 - holy-family: crawlReadiness=needsCalibration; mappingReadiness=partiallyMapped; output=departmentMappedRoster; canonicalDoctors=35; links=35; sourceUrlMatch=29; reviewNeeded=6
 - hospital-08078cfe7d: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
@@ -111,6 +114,7 @@
 - laniado: crawlReadiness=needsCalibration; mappingReadiness=partiallyMapped; output=departmentMappedRoster; canonicalDoctors=12; links=12; sourceUrlMatch=6; reviewNeeded=6
 - leumit-health-fund: crawlReadiness=needsCalibration; mappingReadiness=partiallyMapped; output=departmentMappedRoster; canonicalDoctors=20; links=20; sourceUrlMatch=1; reviewNeeded=0
 - lev-hasharon: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
+- loewenstein-rehabilitation: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - maale-hacarmel: crawlReadiness=needsCalibration; mappingReadiness=reviewNeeded; output=hospitalRoster; canonicalDoctors=1; links=2; sourceUrlMatch=0; reviewNeeded=2
 - maayanei-hayeshua: crawlReadiness=safeForFullBatch; mappingReadiness=partiallyMapped; output=departmentMappedRoster; canonicalDoctors=27; links=27; sourceUrlMatch=25; reviewNeeded=2
 - maccabi-health-services: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
@@ -119,9 +123,13 @@
 - merhavim: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - meuhedet-health-fund: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - nazareth-scottish: crawlReadiness=needsCalibration; mappingReadiness=sourceUrlMapped; output=departmentMappedRoster; canonicalDoctors=20; links=20; sourceUrlMatch=20; reviewNeeded=0
+- neot-hamoshava-geriatric: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
+- netanya-geriatric: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - poria: crawlReadiness=needsCalibration; mappingReadiness=sourceUrlMapped; output=departmentMappedRoster; canonicalDoctors=20; links=20; sourceUrlMatch=20; reviewNeeded=0
 - rabin: crawlReadiness=safeForFullBatch; mappingReadiness=hospitalRosterOnly; output=hospitalRoster; canonicalDoctors=37; links=37; sourceUrlMatch=0; reviewNeeded=37
+- ramat-chen-brill-mental-health: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - rambam: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
+- reuth-medical-center: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - saint-vincent: crawlReadiness=needsCalibration; mappingReadiness=partiallyMapped; output=departmentMappedRoster; canonicalDoctors=36; links=36; sourceUrlMatch=35; reviewNeeded=1
 - schneider: crawlReadiness=needsCalibration; mappingReadiness=sourceUrlMapped; output=departmentMappedRoster; canonicalDoctors=20; links=20; sourceUrlMatch=20; reviewNeeded=0
 - shaar-menashe-mental-health: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
@@ -129,6 +137,7 @@
 - shalvata: crawlReadiness=needsCalibration; mappingReadiness=reviewNeeded; output=hospitalRoster; canonicalDoctors=3; links=4; sourceUrlMatch=0; reviewNeeded=4
 - shamir: crawlReadiness=needsCalibration; mappingReadiness=partiallyMapped; output=departmentMappedRoster; canonicalDoctors=11; links=11; sourceUrlMatch=10; reviewNeeded=1
 - sheba: crawlReadiness=blocked; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
+- shmuel-harofe-geriatric: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - shoham-geriatric: crawlReadiness=needsCalibration; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - soroka: crawlReadiness=needsCalibration; mappingReadiness=reviewNeeded; output=hospitalRoster; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
 - wolfson: crawlReadiness=blocked; mappingReadiness=blocked; output=notUsableYet; canonicalDoctors=0; links=0; sourceUrlMatch=0; reviewNeeded=0
@@ -192,6 +201,20 @@
 - bnei-zion: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
 - ziv: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
 - assuta-ashdod: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- ramat-chen-brill-mental-health: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- reuth-medical-center: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- herzog-medical-center: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- fliman-geriatric: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- beit-rivka-geriatric: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- shmuel-harofe-geriatric: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- neot-hamoshava-geriatric: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- herzfeld-geriatric: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- beit-balev-rishon-lezion: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- netanya-geriatric: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- adi-negev-nahalat-eden: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- loewenstein-rehabilitation: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- 0504048312: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
+- forensic-medicine: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
 - hillel-yaffe: rawReviewedRows=25; canonicalDoctors=25; doctorDepartmentLinks=25; expectedDistinctLinks=25; productionReadyCanonicalDoctors=24; sourceUrlMatchLinks=25; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
 - hospital-08078cfe7d: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
 - hospital-3a3abf9b65: rawReviewedRows=0; canonicalDoctors=0; doctorDepartmentLinks=0; expectedDistinctLinks=0; productionReadyCanonicalDoctors=0; sourceUrlMatchLinks=0; reviewNeededLinks=0; rawRowsDroppedAsExactDuplicates=0; duplicateProfileGroups 0 -> 0
@@ -212,11 +235,11 @@
 - rabin: readiness=safeForFullBatch; crawlReadiness=safeForFullBatch; mappingReadiness=hospitalRosterOnly; output=hospitalRoster; reviewed=37; productionReady=37; sourceUrlMatch=0; reviewNeeded=37; blocker=none
 
 ## Wave 3 Selected
-- assuta-ashdod: בי"ח אסותא אשדוד; rows=18; URLs=4; live=4; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; mode=pilot only; reason=Wave3 baseline assuta-ashdod; 4 Master_Dept URLs; 4 live inspected URLs
 - galilee: המרכז הרפואי לגליל; rows=29; URLs=28; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; mode=pilot only; reason=Wave3 baseline galilee; 28 Master_Dept URLs; URLs pending inspection
 - shamir: מרכז רפואי יצחק שמיר; rows=27; URLs=26; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; mode=pilot only; reason=Wave3 baseline shamir; 26 Master_Dept URLs; URLs pending inspection
-- bnei-zion: מרכז רפואי בני ציון; rows=21; URLs=20; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; mode=pilot only; reason=Wave3 baseline bnei-zion; 20 Master_Dept URLs; URLs pending inspection
-- ziv: ביה"ח זיו - צפת; rows=20; URLs=16; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; mode=pilot only; reason=Wave3 baseline ziv; 16 Master_Dept URLs; URLs pending inspection
+- laniado: ביה"ח לניאדו; rows=11; URLs=11; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; mode=pilot only; reason=Wave3 baseline laniado; 11 Master_Dept URLs; URLs pending inspection
+- wolfson: מרכז רפואי וולפסון; rows=25; URLs=8; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=partiallyMapped; mode=pilot only; reason=Wave3 baseline wolfson; 8 Master_Dept URLs; URLs pending inspection; 4 direct staff/doctors URLs
+- maayanei-hayeshua: ביה"ח מעיני הישועה; rows=6; URLs=6; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=partiallyMapped; mode=pilot only; reason=Wave3 baseline maayanei-hayeshua; 6 Master_Dept URLs; URLs pending inspection; 2 direct staff/doctors URLs
 
 ## Wave 3 Results
 - shamir: readiness=needsHumanReview; crawlReadiness=needsCalibration; mappingReadiness=partiallyMapped; output=departmentMappedRoster; reviewed=12; productionReady=7; sourceUrlMatch=11; reviewNeeded=1; blocker=Canonicalization removed duplicate identity issue; pilot still needs department-link QA before controlled full.
@@ -239,20 +262,6 @@
 - shaare-zedek: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; blockerType=needsManualSeedUrl; blocker=No safe seed URL is available yet; manual seed URL verification required.
 
 ## National Sweep Queue
-- ramat-chen-brill-mental-health: מרכז בריאות הנפש רמת חן ע"ש בריל; type=psychiatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=2; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- reuth-medical-center: מרכז רפואי רעות; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- herzog-medical-center: ביה"ח הרצוג; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- fliman-geriatric: מ.גריאטרי פלימן; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- beit-rivka-geriatric: מ.גריאטרי בית רבקה; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- shmuel-harofe-geriatric: מ.גריאטרי שמואל הרופא; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- neot-hamoshava-geriatric: מרכז גריאטרי נאות המושבה; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- herzfeld-geriatric: מ.גריאטרי הרצפלד; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- beit-balev-rishon-lezion: בית בלב ראשון לציון; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- netanya-geriatric: מ.גריאטרי נתניה; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- adi-negev-nahalat-eden: עדי נגב - נחלת עדן; type=geriatricHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- loewenstein-rehabilitation: ביה"ח לוינשטיין; type=rehabilitationHospital; residencyCandidate=true; crawlPriority=low; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- 0504048312: ׳0504048312; type=acuteHospital; residencyCandidate=true; crawlPriority=medium; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- forensic-medicine: מ.לרפואה משפטית; type=unknown; residencyCandidate=false; crawlPriority=defer; priority=low; action=adapterInspect; rows=1; URLs=0; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=blocked; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
 - sheba: מרכז רפואי שיבא; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=defer; rows=38; URLs=3; live=0; nearby=0; expectedCrawl=blocked; expectedMapping=reviewNeeded; reason=explicitly deferred hard case; 3 Master_Dept URLs; parser=doctorIndexAssisted+jsDriven+unknown
 - soroka: מרכז רפואי סורוקה; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=defer; rows=34; URLs=3; live=0; nearby=0; expectedCrawl=blocked; expectedMapping=reviewNeeded; reason=explicitly deferred hard case; 3 Master_Dept URLs; parser=inlineStaff+doctorIndexAssisted
 - barzilai: מרכז רפואי ברזילי; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=25; URLs=7; live=7; nearby=7; expectedCrawl=needsAdapter; expectedMapping=partiallyMapped; reason=already has usable prior output; 7 Master_Dept URLs; 7 live/redirected URLs; 7 nearby doctor/team rows; synthetic generic parser
@@ -260,10 +269,24 @@
 - saint-vincent: ביה"ח הצרפתי; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=4; URLs=4; live=4; nearby=4; expectedCrawl=needsAdapter; expectedMapping=partiallyMapped; reason=already has usable prior output; 4 Master_Dept URLs; 4 live/redirected URLs; 4 nearby doctor/team rows; synthetic generic parser
 - nazareth-scottish: ביה"ח אי.מ.מ.ס הסקוטי; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=10; URLs=8; live=8; nearby=0; expectedCrawl=needsAdapter; expectedMapping=reviewNeeded; reason=already has usable prior output; 8 Master_Dept URLs; 8 live/redirected URLs; synthetic generic parser
 - schneider: מרכז שניידר לילדים; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=6; URLs=6; live=6; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; reason=already has usable prior output; 6 Master_Dept URLs; 6 live/redirected URLs; synthetic generic parser
-- assuta-ashdod: בי"ח אסותא אשדוד; type=privateNetwork; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=18; URLs=4; live=4; nearby=0; expectedCrawl=needsAdapter; expectedMapping=reviewNeeded; reason=already has usable prior output; 4 Master_Dept URLs; 4 live/redirected URLs; parser=staticTeamPage+inlineStaff+teamPage+unknown
 - galilee: המרכז הרפואי לגליל; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=29; URLs=28; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; reason=already has usable prior output; 28 Master_Dept URLs; parser=inlineStaff+teamPage+unknown
 - emek: מרכז רפואי העמק; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=27; URLs=27; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=partiallyMapped; reason=already has usable prior output; 27 Master_Dept URLs; 1 direct staff/doctors URLs; parser=teamPage+inlineStaff+classicDoctorCards
 - shamir: מרכז רפואי יצחק שמיר; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=27; URLs=26; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; reason=already has usable prior output; 26 Master_Dept URLs; parser=inlineStaff+teamPage+unknown
+- meir: מרכז רפואי מאיר; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=24; URLs=24; live=0; nearby=0; expectedCrawl=safeForFullBatch; expectedMapping=reviewNeeded; reason=already has usable prior output; 24 Master_Dept URLs; parser=teamPage+inlineStaff+unknown
+- carmel: מרכז רפואי כרמל; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=25; URLs=22; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=partiallyMapped; reason=already has usable prior output; 22 Master_Dept URLs; 1 direct staff/doctors URLs; parser=teamPage+inlineStaff
+- kaplan: מרכז רפואי קפלן; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=25; URLs=22; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; reason=already has usable prior output; 22 Master_Dept URLs; parser=teamPage+inlineStaff+classicDoctorCards
+- bnei-zion: מרכז רפואי בני ציון; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=21; URLs=20; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=reviewNeeded; reason=already has usable prior output; 20 Master_Dept URLs; synthetic generic parser
+- ziv: ביה"ח זיו - צפת; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=20; URLs=16; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=reviewNeeded; reason=already has usable prior output; 16 Master_Dept URLs; synthetic generic parser
+- poria: מרכז רפואי ברוך פדה פוריה; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=16; URLs=13; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=reviewNeeded; reason=already has usable prior output; 13 Master_Dept URLs; synthetic generic parser
+- laniado: ביה"ח לניאדו; type=privateNetwork; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=11; URLs=11; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; reason=already has usable prior output; 11 Master_Dept URLs; parser=inlineStaff+teamPage+unknown
+- hadassah: ביה"ח הדסה הר הצופים; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=13; URLs=10; live=0; nearby=0; expectedCrawl=safeForFullBatch; expectedMapping=reviewNeeded; reason=already has usable prior output; 10 Master_Dept URLs; parser=searchDriven+jsDriven+unknown
+- hillel-yaffe: מרכז רפואי הלל יפה; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=19; URLs=9; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=reviewNeeded; reason=already has usable prior output; 9 Master_Dept URLs; synthetic generic parser
+- wolfson: מרכז רפואי וולפסון; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=25; URLs=8; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=partiallyMapped; reason=already has usable prior output; 8 Master_Dept URLs; 4 direct staff/doctors URLs; parser=teamPage+inlineStaff+unknown
+- rabin: ביה"ח השרון מרכז רפואי רבין; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=12; URLs=7; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; reason=already has usable prior output; 7 Master_Dept URLs; parser=classicDoctorCards+teamPage
+- hadassah: ביה"ח הדסה עין כרם; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=30; URLs=6; live=0; nearby=0; expectedCrawl=safeForFullBatch; expectedMapping=reviewNeeded; reason=already has usable prior output; 6 Master_Dept URLs; parser=searchDriven+jsDriven+unknown
+- maayanei-hayeshua: ביה"ח מעיני הישועה; type=privateNetwork; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=6; URLs=6; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=partiallyMapped; reason=already has usable prior output; 6 Master_Dept URLs; 2 direct staff/doctors URLs; parser=teamPage+inlineStaff+unknown
+- rabin: מרכז רפואי רבין; type=acuteHospital; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=24; URLs=4; live=0; nearby=0; expectedCrawl=pilotReady; expectedMapping=reviewNeeded; reason=already has usable prior output; 4 Master_Dept URLs; parser=classicDoctorCards+teamPage
+- assuta-ashdod: בי"ח אסותא אשדוד; type=privateNetwork; residencyCandidate=true; crawlPriority=high; priority=low; action=skipAlreadyUsable; rows=18; URLs=4; live=0; nearby=0; expectedCrawl=needsAdapter; expectedMapping=reviewNeeded; reason=already has usable prior output; 4 Master_Dept URLs; synthetic generic parser
 
 ## National Sweep Results
 - geha: action=pilot; readiness=needsHumanReview; crawlReadiness=needsCalibration; mappingReadiness=reviewNeeded; output=hospitalRoster; reviewed=4; productionReady=4; sourceUrlMatch=0; reviewNeeded=4; blockerType=other; blocker=Pilot has useful records but insufficient production-ready coverage.
@@ -285,6 +308,20 @@
 - bnei-zion: action=pilot; readiness=blocked; crawlReadiness=blocked; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=siteBlocked; blocker=Site blocked automated public fetch (403/captcha/bot protection).
 - ziv: action=pilot; readiness=blocked; crawlReadiness=blocked; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=siteBlocked; blocker=Site blocked automated public fetch (403/captcha/bot protection).
 - assuta-ashdod: action=pilot; readiness=blocked; crawlReadiness=blocked; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=siteBlocked; blocker=Site blocked automated public fetch (403/captcha/bot protection).
+- ramat-chen-brill-mental-health: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- reuth-medical-center: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- herzog-medical-center: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- fliman-geriatric: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- beit-rivka-geriatric: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- shmuel-harofe-geriatric: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- neot-hamoshava-geriatric: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- herzfeld-geriatric: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- beit-balev-rishon-lezion: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- netanya-geriatric: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- adi-negev-nahalat-eden: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- loewenstein-rehabilitation: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- 0504048312: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
+- forensic-medicine: action=adapterInspect; readiness=needsAdapter; crawlReadiness=needsAdapter; mappingReadiness=blocked; output=notUsableYet; reviewed=0; productionReady=0; sourceUrlMatch=0; reviewNeeded=0; blockerType=noMasterDeptSourceUrl; blocker=No Master_Dept source URLs available; seed registry did not provide a safe pilot URL.
 
 ## Hospital Normalization
 - opaque slug count: 0
@@ -299,18 +336,18 @@
 - noPublicRosterFound: 12
 - other: 6
 - needsManualSeedUrl: 1
-- noMasterDeptSourceUrl: 1
+- noMasterDeptSourceUrl: 15
 - siteBlocked: 3
 
 ## Top Next Adapter Priorities
-- ramat-chen-brill-mental-health: מרכז בריאות הנפש רמת חן ע"ש בריל; rows=2; URLs=0; live=0; nearby=0; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- reuth-medical-center: מרכז רפואי רעות; rows=1; URLs=0; live=0; nearby=0; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- herzog-medical-center: ביה"ח הרצוג; rows=1; URLs=0; live=0; nearby=0; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- fliman-geriatric: מ.גריאטרי פלימן; rows=1; URLs=0; live=0; nearby=0; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- beit-rivka-geriatric: מ.גריאטרי בית רבקה; rows=1; URLs=0; live=0; nearby=0; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- shmuel-harofe-geriatric: מ.גריאטרי שמואל הרופא; rows=1; URLs=0; live=0; nearby=0; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- neot-hamoshava-geriatric: מרכז גריאטרי נאות המושבה; rows=1; URLs=0; live=0; nearby=0; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
-- herzfeld-geriatric: מ.גריאטרי הרצפלד; rows=1; URLs=0; live=0; nearby=0; reason=no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser
+- barzilai: מרכז רפואי ברזילי; rows=25; URLs=7; live=7; nearby=7; reason=already has usable prior output; 7 Master_Dept URLs; 7 live/redirected URLs; 7 nearby doctor/team rows; synthetic generic parser
+- holy-family: ביה"ח המשפחה הקדושה; rows=6; URLs=6; live=6; nearby=6; reason=already has usable prior output; 6 Master_Dept URLs; 6 live/redirected URLs; 6 nearby doctor/team rows; synthetic generic parser
+- saint-vincent: ביה"ח הצרפתי; rows=4; URLs=4; live=4; nearby=4; reason=already has usable prior output; 4 Master_Dept URLs; 4 live/redirected URLs; 4 nearby doctor/team rows; synthetic generic parser
+- nazareth-scottish: ביה"ח אי.מ.מ.ס הסקוטי; rows=10; URLs=8; live=8; nearby=0; reason=already has usable prior output; 8 Master_Dept URLs; 8 live/redirected URLs; synthetic generic parser
+- bnei-zion: מרכז רפואי בני ציון; rows=21; URLs=20; live=0; nearby=0; reason=already has usable prior output; 20 Master_Dept URLs; synthetic generic parser
+- ziv: ביה"ח זיו - צפת; rows=20; URLs=16; live=0; nearby=0; reason=already has usable prior output; 16 Master_Dept URLs; synthetic generic parser
+- poria: מרכז רפואי ברוך פדה פוריה; rows=16; URLs=13; live=0; nearby=0; reason=already has usable prior output; 13 Master_Dept URLs; synthetic generic parser
+- hillel-yaffe: מרכז רפואי הלל יפה; rows=19; URLs=9; live=0; nearby=0; reason=already has usable prior output; 9 Master_Dept URLs; synthetic generic parser
 
 ## Next
 - Continue national-sweep in batches of 10; prioritize adapterInspect hospitals with many live Master_Dept URLs.

@@ -1,0 +1,452 @@
+{
+  "generatedAt": "2026-06-22T14:13:30.678Z",
+  "sourceReport": "data/crawler/hospitals/national-coverage-report.json",
+  "totalMasterDeptHospitalGroups": 60,
+  "totalMasterDeptRows": 634,
+  "totals": {
+    "workingDoctorRosterTotal": 26,
+    "departmentMappedRoster": 15,
+    "outputUsabilityHospitalRosterOnly": 11,
+    "outputUsabilityDepartmentMappedRoster": 15,
+    "outputUsabilityNotUsableYet": 35,
+    "blocked": 35,
+    "deferred": 1,
+    "remainingUnattempted": 2,
+    "safeForFullBatch": 5,
+    "needsCalibration": 54,
+    "needsAdapter": 12,
+    "needsManualSeedUrl": 1
+  },
+  "countsByInstitutionType": {
+    "acuteHospital": 28,
+    "psychiatricHospital": 11,
+    "healthFund": 5,
+    "privateNetwork": 3,
+    "geriatricHospital": 11,
+    "rehabilitationHospital": 1,
+    "unknown": 1
+  },
+  "hospitalRosterByInstitutionType": {
+    "acuteHospital": 16,
+    "psychiatricHospital": 5,
+    "unknown": 2,
+    "privateNetwork": 2,
+    "healthFund": 1
+  },
+  "blockedByInstitutionType": {
+    "acuteHospital": 7,
+    "psychiatricHospital": 6,
+    "geriatricHospital": 11,
+    "healthFund": 4,
+    "privateNetwork": 1,
+    "unknown": 5,
+    "rehabilitationHospital": 1
+  },
+  "outputUsabilityCounts": {
+    "notUsableYet": 35,
+    "departmentMappedRoster": 15,
+    "hospitalRoster": 11
+  },
+  "usableHospitalRosters": [
+    {
+      "hospitalSlug": "hadassah",
+      "hospitalName": "ביה\"ח הדסה הר הצופים",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly"
+    },
+    {
+      "hospitalSlug": "rabin",
+      "hospitalName": "ביה\"ח השרון מרכז רפואי רבין",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly"
+    },
+    {
+      "hospitalSlug": "carmel",
+      "hospitalName": "מרכז רפואי כרמל",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded"
+    },
+    {
+      "hospitalSlug": "ichilov",
+      "hospitalName": "מרכז רפואי ת\"א סוראסקי",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly"
+    },
+    {
+      "hospitalSlug": "geha",
+      "hospitalName": "geha",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded"
+    },
+    {
+      "hospitalSlug": "hospital-fa8413a9cd",
+      "hospitalName": "hospital-fa8413a9cd",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded"
+    },
+    {
+      "hospitalSlug": "jerusalem-mental-health-kfar-shaul-eitanim",
+      "hospitalName": "jerusalem-mental-health-kfar-shaul-eitanim",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded"
+    },
+    {
+      "hospitalSlug": "maale-hacarmel",
+      "hospitalName": "maale-hacarmel",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded"
+    },
+    {
+      "hospitalSlug": "shalvata",
+      "hospitalName": "shalvata",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded"
+    },
+    {
+      "hospitalSlug": "soroka",
+      "hospitalName": "Soroka Medical Center",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded"
+    },
+    {
+      "hospitalSlug": "yoseftal",
+      "hospitalName": "yoseftal",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded"
+    }
+  ],
+  "usableDepartmentMappedRosters": [
+    {
+      "hospitalSlug": "laniado",
+      "hospitalName": "ביה\"ח לניאדו",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "maayanei-hayeshua",
+      "hospitalName": "ביה\"ח מעיני הישועה",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "galilee",
+      "hospitalName": "המרכז הרפואי לגליל",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "emek",
+      "hospitalName": "מרכז רפואי העמק",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "shamir",
+      "hospitalName": "מרכז רפואי יצחק שמיר",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "meir",
+      "hospitalName": "מרכז רפואי מאיר",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "kaplan",
+      "hospitalName": "מרכז רפואי קפלן",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "barzilai",
+      "hospitalName": "barzilai",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped"
+    },
+    {
+      "hospitalSlug": "hillel-yaffe",
+      "hospitalName": "hillel-yaffe",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped"
+    },
+    {
+      "hospitalSlug": "holy-family",
+      "hospitalName": "holy-family",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "leumit-health-fund",
+      "hospitalName": "leumit-health-fund",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "nazareth-scottish",
+      "hospitalName": "nazareth-scottish",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped"
+    },
+    {
+      "hospitalSlug": "poria",
+      "hospitalName": "poria",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped"
+    },
+    {
+      "hospitalSlug": "saint-vincent",
+      "hospitalName": "saint-vincent",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped"
+    },
+    {
+      "hospitalSlug": "schneider",
+      "hospitalName": "schneider",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped"
+    }
+  ],
+  "highPriorityBlockers": [
+    {
+      "hospitalSlug": "shaare-zedek",
+      "hospitalName": "shaare-zedek",
+      "institutionType": "acuteHospital",
+      "blockerType": "needsManualSeedUrl",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasSeedUrl",
+      "hasMasterDeptUrls": false,
+      "hasSeedUrl": true,
+      "needsManualSeedUrl": true,
+      "likelyParserFamilyNeeded": "doctorIndex",
+      "recommendedNextStep": "Find official public doctors/team/department seed URL before retry.",
+      "priority": "high",
+      "masterDeptRows": 27,
+      "rowsWithUrls": 0,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    },
+    {
+      "hospitalSlug": "barzilai",
+      "hospitalName": "barzilai",
+      "institutionType": "acuteHospital",
+      "blockerType": "other",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasMasterDeptUrls",
+      "hasMasterDeptUrls": true,
+      "hasSeedUrl": false,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "staticTeamPage",
+      "recommendedNextStep": "Review source URL evidence and choose narrow adapter.",
+      "priority": "high",
+      "masterDeptRows": 25,
+      "rowsWithUrls": 7,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped",
+      "outputUsability": "departmentMappedRoster"
+    },
+    {
+      "hospitalSlug": "wolfson",
+      "hospitalName": "מרכז רפואי וולפסון",
+      "institutionType": "acuteHospital",
+      "blockerType": "unknown",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasMasterDeptUrls",
+      "hasMasterDeptUrls": true,
+      "hasSeedUrl": false,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "staticTeamPage",
+      "recommendedNextStep": "Review source URL evidence and choose narrow adapter.",
+      "priority": "high",
+      "masterDeptRows": 25,
+      "rowsWithUrls": 8,
+      "crawlReadiness": "blocked",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    },
+    {
+      "hospitalSlug": "rambam",
+      "hospitalName": "rambam",
+      "institutionType": "acuteHospital",
+      "blockerType": "noPublicRosterFound",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasSeedUrl",
+      "hasMasterDeptUrls": false,
+      "hasSeedUrl": true,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "doctorIndex",
+      "recommendedNextStep": "Find official public doctors/team/department seed URL before retry.",
+      "priority": "high",
+      "masterDeptRows": 24,
+      "rowsWithUrls": 0,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    },
+    {
+      "hospitalSlug": "bnei-zion",
+      "hospitalName": "bnei-zion",
+      "institutionType": "acuteHospital",
+      "blockerType": "siteBlocked",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasMasterDeptUrls",
+      "hasMasterDeptUrls": true,
+      "hasSeedUrl": false,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "siteBlocked",
+      "recommendedNextStep": "Manual/approved assisted capture or official alternate URL; do not blind retry automated fetch.",
+      "priority": "high",
+      "masterDeptRows": 21,
+      "rowsWithUrls": 20,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    },
+    {
+      "hospitalSlug": "ziv",
+      "hospitalName": "ziv",
+      "institutionType": "acuteHospital",
+      "blockerType": "siteBlocked",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasMasterDeptUrls",
+      "hasMasterDeptUrls": true,
+      "hasSeedUrl": false,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "siteBlocked",
+      "recommendedNextStep": "Manual/approved assisted capture or official alternate URL; do not blind retry automated fetch.",
+      "priority": "high",
+      "masterDeptRows": 20,
+      "rowsWithUrls": 16,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    }
+  ],
+  "deferredHardCases": [
+    {
+      "hospitalSlug": "sheba",
+      "reason": "hard JS/API/502 case; deferred by guardrail"
+    },
+    {
+      "hospitalSlug": "soroka",
+      "reason": "doctor index + pilot exist; full batch not safe yet"
+    }
+  ],
+  "nextRecommendedAdapterSprints": [
+    {
+      "hospitalSlug": "shaare-zedek",
+      "hospitalName": "shaare-zedek",
+      "institutionType": "acuteHospital",
+      "blockerType": "needsManualSeedUrl",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasSeedUrl",
+      "hasMasterDeptUrls": false,
+      "hasSeedUrl": true,
+      "needsManualSeedUrl": true,
+      "likelyParserFamilyNeeded": "doctorIndex",
+      "recommendedNextStep": "Find official public doctors/team/department seed URL before retry.",
+      "priority": "high",
+      "masterDeptRows": 27,
+      "rowsWithUrls": 0,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    },
+    {
+      "hospitalSlug": "barzilai",
+      "hospitalName": "barzilai",
+      "institutionType": "acuteHospital",
+      "blockerType": "other",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasMasterDeptUrls",
+      "hasMasterDeptUrls": true,
+      "hasSeedUrl": false,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "staticTeamPage",
+      "recommendedNextStep": "Review source URL evidence and choose narrow adapter.",
+      "priority": "high",
+      "masterDeptRows": 25,
+      "rowsWithUrls": 7,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped",
+      "outputUsability": "departmentMappedRoster"
+    },
+    {
+      "hospitalSlug": "wolfson",
+      "hospitalName": "מרכז רפואי וולפסון",
+      "institutionType": "acuteHospital",
+      "blockerType": "unknown",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasMasterDeptUrls",
+      "hasMasterDeptUrls": true,
+      "hasSeedUrl": false,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "staticTeamPage",
+      "recommendedNextStep": "Review source URL evidence and choose narrow adapter.",
+      "priority": "high",
+      "masterDeptRows": 25,
+      "rowsWithUrls": 8,
+      "crawlReadiness": "blocked",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    },
+    {
+      "hospitalSlug": "rambam",
+      "hospitalName": "rambam",
+      "institutionType": "acuteHospital",
+      "blockerType": "noPublicRosterFound",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasSeedUrl",
+      "hasMasterDeptUrls": false,
+      "hasSeedUrl": true,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "doctorIndex",
+      "recommendedNextStep": "Find official public doctors/team/department seed URL before retry.",
+      "priority": "high",
+      "masterDeptRows": 24,
+      "rowsWithUrls": 0,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    },
+    {
+      "hospitalSlug": "bnei-zion",
+      "hospitalName": "bnei-zion",
+      "institutionType": "acuteHospital",
+      "blockerType": "siteBlocked",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasMasterDeptUrls",
+      "hasMasterDeptUrls": true,
+      "hasSeedUrl": false,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "siteBlocked",
+      "recommendedNextStep": "Manual/approved assisted capture or official alternate URL; do not blind retry automated fetch.",
+      "priority": "high",
+      "masterDeptRows": 21,
+      "rowsWithUrls": 20,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    },
+    {
+      "hospitalSlug": "ziv",
+      "hospitalName": "ziv",
+      "institutionType": "acuteHospital",
+      "blockerType": "siteBlocked",
+      "urlsAttempted": [],
+      "sourceUrlSituation": "hasMasterDeptUrls",
+      "hasMasterDeptUrls": true,
+      "hasSeedUrl": false,
+      "needsManualSeedUrl": false,
+      "likelyParserFamilyNeeded": "siteBlocked",
+      "recommendedNextStep": "Manual/approved assisted capture or official alternate URL; do not blind retry automated fetch.",
+      "priority": "high",
+      "masterDeptRows": 20,
+      "rowsWithUrls": 16,
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet"
+    }
+  ]
+}

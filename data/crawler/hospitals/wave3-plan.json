@@ -1,21 +1,5 @@
 [
   {
-    "hospitalSlug": "assuta-ashdod",
-    "hospitalNames": [
-      "בי\"ח אסותא אשדוד"
-    ],
-    "providerGuess": "private",
-    "masterDeptRows": 18,
-    "rowsWithUrls": 4,
-    "liveUrlRows": 4,
-    "nearbyDoctorOrTeamUrlRows": 0,
-    "adapterParserFamily": "staticTeamPage+inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline assuta-ashdod; 4 Master_Dept URLs; 4 live inspected URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "reviewNeeded",
-    "plannedMode": "pilot only"
-  },
-  {
     "hospitalSlug": "galilee",
     "hospitalNames": [
       "המרכז הרפואי לגליל"
@@ -48,35 +32,51 @@
     "plannedMode": "pilot only"
   },
   {
-    "hospitalSlug": "bnei-zion",
+    "hospitalSlug": "laniado",
     "hospitalNames": [
-      "מרכז רפואי בני ציון"
+      "ביה\"ח לניאדו"
     ],
-    "providerGuess": "government",
-    "masterDeptRows": 21,
-    "rowsWithUrls": 20,
+    "providerGuess": "private",
+    "masterDeptRows": 11,
+    "rowsWithUrls": 11,
     "liveUrlRows": 0,
     "nearbyDoctorOrTeamUrlRows": 0,
-    "adapterParserFamily": "staticTeamPage+inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline bnei-zion; 20 Master_Dept URLs; URLs pending inspection",
+    "adapterParserFamily": "inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline laniado; 11 Master_Dept URLs; URLs pending inspection",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "reviewNeeded",
     "plannedMode": "pilot only"
   },
   {
-    "hospitalSlug": "ziv",
+    "hospitalSlug": "wolfson",
     "hospitalNames": [
-      "ביה\"ח זיו - צפת"
+      "מרכז רפואי וולפסון"
     ],
     "providerGuess": "government",
-    "masterDeptRows": 20,
-    "rowsWithUrls": 16,
+    "masterDeptRows": 25,
+    "rowsWithUrls": 8,
     "liveUrlRows": 0,
     "nearbyDoctorOrTeamUrlRows": 0,
-    "adapterParserFamily": "staticTeamPage+inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline ziv; 16 Master_Dept URLs; URLs pending inspection",
+    "adapterParserFamily": "teamPage+inlineStaff+unknown",
+    "whySelected": "Wave3 baseline wolfson; 8 Master_Dept URLs; URLs pending inspection; 4 direct staff/doctors URLs",
     "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "reviewNeeded",
+    "expectedMappingReadiness": "partiallyMapped",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "maayanei-hayeshua",
+    "hospitalNames": [
+      "ביה\"ח מעיני הישועה"
+    ],
+    "providerGuess": "private",
+    "masterDeptRows": 6,
+    "rowsWithUrls": 6,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "teamPage+inlineStaff+unknown",
+    "whySelected": "Wave3 baseline maayanei-hayeshua; 6 Master_Dept URLs; URLs pending inspection; 2 direct staff/doctors URLs",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "partiallyMapped",
     "plannedMode": "pilot only"
   }
 ]

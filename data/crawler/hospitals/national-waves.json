@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T13:07:44.101Z",
+  "generatedAt": "2026-06-22T14:06:40.659Z",
   "waves": [
     {
       "wave": 1,
@@ -1031,7 +1031,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 20,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 20
         },
         {
           "hospitalName": "ביה\"ח זיו - צפת",
@@ -1067,7 +1067,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 16,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 16
         },
         {
           "hospitalName": "מרכז רפואי הלל יפה",
@@ -1128,7 +1128,7 @@
           "wave": 3,
           "directStaffUrlCount": 0,
           "departmentUrlCount": 4,
-          "pendingUrlCount": 0
+          "pendingUrlCount": 4
         },
         {
           "hospitalName": "מרכז רפואי ברוך פדה פוריה",

@@ -1,0 +1,550 @@
+{
+  "generatedAt": "2026-06-22T14:09:51.317Z",
+  "total": 26,
+  "rosters": [
+    {
+      "hospitalSlug": "hadassah",
+      "hospitalName": "ביה\"ח הדסה הר הצופים",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 49,
+      "paths": {
+        "canonicalDoctors": null,
+        "doctorDepartmentLinks": "data/crawler/hospitals/hadassah/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/hadassah/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "rabin",
+      "hospitalName": "ביה\"ח השרון מרכז רפואי רבין",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly",
+      "canonicalDoctors": 37,
+      "doctorDepartmentLinks": 37,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 37,
+      "productionReadyCanonicalDoctors": 37,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/rabin/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/rabin/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/rabin/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "mappingReviewNeeded",
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "laniado",
+      "hospitalName": "ביה\"ח לניאדו",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 12,
+      "doctorDepartmentLinks": 12,
+      "sourceUrlMatch": 6,
+      "reviewNeeded": 6,
+      "productionReadyCanonicalDoctors": 6,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/laniado/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/laniado/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/laniado/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "maayanei-hayeshua",
+      "hospitalName": "ביה\"ח מעיני הישועה",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 27,
+      "doctorDepartmentLinks": 27,
+      "sourceUrlMatch": 25,
+      "reviewNeeded": 2,
+      "productionReadyCanonicalDoctors": 27,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/maayanei-hayeshua/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/maayanei-hayeshua/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/maayanei-hayeshua/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "mappingReviewNeeded",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "galilee",
+      "hospitalName": "המרכז הרפואי לגליל",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 30,
+      "doctorDepartmentLinks": 30,
+      "sourceUrlMatch": 24,
+      "reviewNeeded": 6,
+      "productionReadyCanonicalDoctors": 6,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/galilee/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/galilee/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/galilee/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "emek",
+      "hospitalName": "מרכז רפואי העמק",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 11,
+      "doctorDepartmentLinks": 11,
+      "sourceUrlMatch": 10,
+      "reviewNeeded": 1,
+      "productionReadyCanonicalDoctors": 4,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/emek/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/emek/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/emek/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "shamir",
+      "hospitalName": "מרכז רפואי יצחק שמיר",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 11,
+      "doctorDepartmentLinks": 11,
+      "sourceUrlMatch": 10,
+      "reviewNeeded": 1,
+      "productionReadyCanonicalDoctors": 6,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/shamir/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/shamir/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/shamir/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "carmel",
+      "hospitalName": "מרכז רפואי כרמל",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "canonicalDoctors": 381,
+      "doctorDepartmentLinks": 381,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 381,
+      "productionReadyCanonicalDoctors": 380,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/carmel/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/carmel/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/carmel/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "meir",
+      "hospitalName": "מרכז רפואי מאיר",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 17,
+      "paths": {
+        "canonicalDoctors": null,
+        "doctorDepartmentLinks": "data/crawler/hospitals/meir/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/meir/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": []
+    },
+    {
+      "hospitalSlug": "kaplan",
+      "hospitalName": "מרכז רפואי קפלן",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 17,
+      "doctorDepartmentLinks": 17,
+      "sourceUrlMatch": 1,
+      "reviewNeeded": 16,
+      "productionReadyCanonicalDoctors": 6,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/kaplan/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/kaplan/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/kaplan/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "ichilov",
+      "hospitalName": "מרכז רפואי ת\"א סוראסקי",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "safeForFullBatch",
+      "mappingReadiness": "hospitalRosterOnly",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 72,
+      "paths": {
+        "canonicalDoctors": null,
+        "doctorDepartmentLinks": "data/crawler/hospitals/ichilov/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/ichilov/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "barzilai",
+      "hospitalName": "barzilai",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped",
+      "canonicalDoctors": 19,
+      "doctorDepartmentLinks": 19,
+      "sourceUrlMatch": 19,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 0,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/barzilai/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/barzilai/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/barzilai/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "geha",
+      "hospitalName": "geha",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "canonicalDoctors": 4,
+      "doctorDepartmentLinks": 4,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 4,
+      "productionReadyCanonicalDoctors": 2,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/geha/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/geha/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/geha/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "hillel-yaffe",
+      "hospitalName": "hillel-yaffe",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 0,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/hillel-yaffe/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/hillel-yaffe/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/hillel-yaffe/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": []
+    },
+    {
+      "hospitalSlug": "holy-family",
+      "hospitalName": "holy-family",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 35,
+      "doctorDepartmentLinks": 35,
+      "sourceUrlMatch": 29,
+      "reviewNeeded": 6,
+      "productionReadyCanonicalDoctors": 7,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/holy-family/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/holy-family/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/holy-family/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "hospital-fa8413a9cd",
+      "hospitalName": "hospital-fa8413a9cd",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 0,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/hospital-fa8413a9cd/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/hospital-fa8413a9cd/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/hospital-fa8413a9cd/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "jerusalem-mental-health-kfar-shaul-eitanim",
+      "hospitalName": "jerusalem-mental-health-kfar-shaul-eitanim",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "canonicalDoctors": 2,
+      "doctorDepartmentLinks": 2,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 2,
+      "productionReadyCanonicalDoctors": 2,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/jerusalem-mental-health-kfar-shaul-eitanim/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/jerusalem-mental-health-kfar-shaul-eitanim/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/jerusalem-mental-health-kfar-shaul-eitanim/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "mappingReviewNeeded",
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "leumit-health-fund",
+      "hospitalName": "leumit-health-fund",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 20,
+      "doctorDepartmentLinks": 20,
+      "sourceUrlMatch": 1,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 0,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/leumit-health-fund/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/leumit-health-fund/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/leumit-health-fund/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "maale-hacarmel",
+      "hospitalName": "maale-hacarmel",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "canonicalDoctors": 1,
+      "doctorDepartmentLinks": 2,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 2,
+      "productionReadyCanonicalDoctors": 0,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/maale-hacarmel/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/maale-hacarmel/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/maale-hacarmel/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "nazareth-scottish",
+      "hospitalName": "nazareth-scottish",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped",
+      "canonicalDoctors": 20,
+      "doctorDepartmentLinks": 20,
+      "sourceUrlMatch": 20,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 0,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/nazareth-scottish/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/nazareth-scottish/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/nazareth-scottish/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "poria",
+      "hospitalName": "poria",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 0,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/poria/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/poria/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/poria/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": []
+    },
+    {
+      "hospitalSlug": "saint-vincent",
+      "hospitalName": "saint-vincent",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "partiallyMapped",
+      "canonicalDoctors": 36,
+      "doctorDepartmentLinks": 36,
+      "sourceUrlMatch": 35,
+      "reviewNeeded": 1,
+      "productionReadyCanonicalDoctors": 1,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/saint-vincent/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/saint-vincent/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/saint-vincent/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "schneider",
+      "hospitalName": "schneider",
+      "outputUsability": "departmentMappedRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "sourceUrlMapped",
+      "canonicalDoctors": 20,
+      "doctorDepartmentLinks": 20,
+      "sourceUrlMatch": 20,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 4,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/schneider/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/schneider/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/schneider/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "sourceUrlMapped"
+      ]
+    },
+    {
+      "hospitalSlug": "shalvata",
+      "hospitalName": "shalvata",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "canonicalDoctors": 3,
+      "doctorDepartmentLinks": 4,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 4,
+      "productionReadyCanonicalDoctors": 3,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/shalvata/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/shalvata/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/shalvata/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "mappingReviewNeeded",
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "soroka",
+      "hospitalName": "Soroka Medical Center",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "canonicalDoctors": 0,
+      "doctorDepartmentLinks": 0,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 0,
+      "productionReadyCanonicalDoctors": 0,
+      "paths": {
+        "canonicalDoctors": null,
+        "doctorDepartmentLinks": null,
+        "reviewedDoctors": null
+      },
+      "cautionFlags": [
+        "hospitalRosterOnly"
+      ]
+    },
+    {
+      "hospitalSlug": "yoseftal",
+      "hospitalName": "yoseftal",
+      "outputUsability": "hospitalRoster",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "canonicalDoctors": 18,
+      "doctorDepartmentLinks": 18,
+      "sourceUrlMatch": 0,
+      "reviewNeeded": 18,
+      "productionReadyCanonicalDoctors": 0,
+      "paths": {
+        "canonicalDoctors": "data/crawler/hospitals/yoseftal/canonical/doctors.json",
+        "doctorDepartmentLinks": "data/crawler/hospitals/yoseftal/canonical/doctor-department-links.json",
+        "reviewedDoctors": "data/crawler/hospitals/yoseftal/reviewed/doctors-reviewed.json"
+      },
+      "cautionFlags": [
+        "profileCoverageLow",
+        "mappingReviewNeeded",
+        "hospitalRosterOnly"
+      ]
+    }
+  ]
+}
