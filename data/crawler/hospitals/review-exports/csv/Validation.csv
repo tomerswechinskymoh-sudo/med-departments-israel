@@ -1,0 +1,6 @@
+"severity","hospitalSlug","filePath","issue","details"
+"warning","hadassah","","missingCanonicalDoctorsPath","Using reviewedDoctors fallback when available."
+"warning","meir","","missingCanonicalDoctorsPath","Using reviewedDoctors fallback when available."
+"warning","ichilov","","missingCanonicalDoctorsPath","Using reviewedDoctors fallback when available."
+"warning","soroka","","missingCanonicalDoctorsPath","Using reviewedDoctors fallback when available."
+"warning","soroka","","missingDoctorDepartmentLinksPath","Using reviewedDoctors fallback when available."

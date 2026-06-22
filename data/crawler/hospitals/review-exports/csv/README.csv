@@ -1,0 +1,7 @@
+"topic","value"
+"Purpose","Manual review workbook for crawler-generated hospital doctor rosters before any database import or public website integration."
+"Publication status","No crawler doctors have been imported into the DB or published by this export."
+"hospitalRoster","Usable hospital-level doctor roster. Department mapping may need review."
+"departmentMappedRoster","Stronger Master_Dept/sourceUrl mapping evidence exists."
+"Caution flags","profileCoverageLow, mappingReviewNeeded, listOnlyMostly, sourceUrlMapped, hospitalRosterOnly."
+"Generated at","2026-06-22T14:27:26.230Z"
