@@ -18,6 +18,60 @@
     ]
   },
   {
+    "canonicalDoctorId": "doctor-cb20806d724cda8f",
+    "fullName": "ד\"ר איאד ג'השאן",
+    "normalizedName": "איאד גהשאן",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר איאד ג'השאן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-feedcd810351453b",
+    "fullName": "ד\"ר איימן חסאדיה",
+    "normalizedName": "איימן חסאדיה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר איימן חסאדיה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a050e828ec397bfa",
+    "fullName": "ד\"ר אליאס עואד",
+    "normalizedName": "אליאס עואד",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר אליאס עואד"
+    ]
+  },
+  {
     "canonicalDoctorId": "doctor-20dfabeb59f330a1",
     "fullName": "ד\"ר אמירה סראחנה- המטולוגיה ואונקולוגיה ילדים",
     "normalizedName": "אמירה סראחנה המטולוגיה ואונקולוגיה ילדים",
@@ -36,22 +90,93 @@
     ]
   },
   {
-    "canonicalDoctorId": "doctor-51388aff5851904c",
-    "fullName": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת",
-    "normalizedName": "גאווה גדולה: מנהל בית החולים הצרפתי נצרת",
-    "profileUrl": "https://saint-vincent-hospital.org/2023/03/03/%d7%92%d7%90%d7%95%d7%95%d7%94-%d7%92%d7%93%d7%95%d7%9c%d7%94-%d7%9e%d7%a0%d7%94%d7%9c-%d7%91%d7%99%d7%aa-%d7%94%d7%97%d7%95%d7%9c%d7%99%d7%9d-%d7%94%d7%a6%d7%a8%d7%a4%d7%aa%d7%99-%d7%a0%d7%90%d7%99/",
+    "canonicalDoctorId": "doctor-41fbe6884cbe3d6d",
+    "fullName": "ד\"ר אקילא נאסר",
+    "normalizedName": "אקילא נאסר",
+    "profileUrl": null,
     "hospitalName": "ביה\"ח הצרפתי",
     "provider": "unknown",
-    "titlePrefix": null,
-    "role": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת ד\"ר נאיל אליאס קודם לדרגת פרופ'מרץ 3, 2023",
-    "profileCompleteness": "partial",
-    "productionReady": true,
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
     "sourceUrls": [
-      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
-      "https://saint-vincent-hospital.org/2023/03/03/%d7%92%d7%90%d7%95%d7%95%d7%94-%d7%92%d7%93%d7%95%d7%9c%d7%94-%d7%9e%d7%a0%d7%94%d7%9c-%d7%91%d7%99%d7%aa-%d7%94%d7%97%d7%95%d7%9c%d7%99%d7%9d-%d7%94%d7%a6%d7%a8%d7%a4%d7%aa%d7%99-%d7%a0%d7%90%d7%99/"
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
     ],
     "evidence": [
-      "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת ד\"ר נאיל אליאס קודם לדרגת פרופ'מרץ 3, 2023"
+      "ד\"ר אקילא נאסר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-5568d00808441fd5",
+    "fullName": "ד\"ר אראם ותד",
+    "normalizedName": "אראם ותד",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר אראם ותד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6de150197a90aed3",
+    "fullName": "ד\"ר ביסאן חלומי",
+    "normalizedName": "ביסאן חלומי",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר ביסאן חלומי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f448cbdee73901c9",
+    "fullName": "ד\"ר גודנה חאג'-סלמאן",
+    "normalizedName": "גודנה חאג סלמאן",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר גודנה חאג'-סלמאן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f906e2191618004b",
+    "fullName": "ד\"ר ג'ומאנה סלאמה",
+    "normalizedName": "גומאנה סלאמה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר ג'ומאנה סלאמה"
     ]
   },
   {
@@ -70,6 +195,42 @@
     ],
     "evidence": [
       "ד\"ר גמיל אנדראויס"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-b2d3de3534360c8a",
+    "fullName": "ד\"ר ג'נאן אחמד",
+    "normalizedName": "גנאן אחמד",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר ג'נאן אחמד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-5cfe5c01245cd95d",
+    "fullName": "ד\"ר דיב רחאל",
+    "normalizedName": "דיב רחאל",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר דיב רחאל"
     ]
   },
   {
@@ -106,6 +267,24 @@
     ],
     "evidence": [
       "ד\"ר ויסאם שקור"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2920f235ce417efb",
+    "fullName": "ד\"ר ח'ואלה ח'ורי",
+    "normalizedName": "חואלה חורי",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר ח'ואלה ח'ורי"
     ]
   },
   {
@@ -163,6 +342,96 @@
     ]
   },
   {
+    "canonicalDoctorId": "doctor-5a63cd74f30d4d41",
+    "fullName": "ד\"ר מג'ד סוסאן",
+    "normalizedName": "מגד סוסאן",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר מג'ד סוסאן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-29bb9ce8aded681e",
+    "fullName": "ד\"ר מג'דולין גנאים",
+    "normalizedName": "מגדולין גנאים",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר מג'דולין גנאים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6493865a91bafd6b",
+    "fullName": "ד\"ר מוחמד ח'לאילה",
+    "normalizedName": "מוחמד חלאילה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר מוחמד ח'לאילה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-aabb82177bbebda4",
+    "fullName": "ד\"ר מיסא חמדאן",
+    "normalizedName": "מיסא חמדאן",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר מיסא חמדאן"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9012144e5a709e30",
+    "fullName": "ד\"ר מרואן חכים",
+    "normalizedName": "מרואן חכים",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר מרואן חכים"
+    ]
+  },
+  {
     "canonicalDoctorId": "doctor-1b1097ae17177b78",
     "fullName": "פרופ' נאיל אליאסמנהל בית החולים",
     "normalizedName": "נאיל אליאסמנהל בית החולים",
@@ -179,6 +448,24 @@
     ],
     "evidence": [
       "פרופ' נאיל אליאסמנהל בית החולים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a75d03642ffd0f51",
+    "fullName": "ד\"ר נזיה ג'השאן",
+    "normalizedName": "נזיה גהשאן",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר נזיה ג'השאן"
     ]
   },
   {
@@ -251,6 +538,78 @@
     ],
     "evidence": [
       "ד\"ר עלאא אבו שרקי"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-d0ddeb42ec764392",
+    "fullName": "ד\"ר ראיסה גוצל",
+    "normalizedName": "ראיסה גוצל",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר ראיסה גוצל"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f382057a1ce8aec2",
+    "fullName": "ד\"ר רואד קרואני",
+    "normalizedName": "רואד קרואני",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר רואד קרואני"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-af6c4cabb541ddaf",
+    "fullName": "ד\"ר רובא אבו אחמד",
+    "normalizedName": "רובא אבו אחמד",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר רובא אבו אחמד"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-f87bd2a4cf188439",
+    "fullName": "ד\"ר רוקיה סרחאן",
+    "normalizedName": "רוקיה סרחאן",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח הצרפתי",
+    "provider": "unknown",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+    ],
+    "evidence": [
+      "ד\"ר רוקיה סרחאן"
     ]
   },
   {

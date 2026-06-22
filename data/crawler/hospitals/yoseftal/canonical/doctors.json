@@ -1,0 +1,326 @@
+[
+  {
+    "canonicalDoctorId": "doctor-146fdc59871f32c0",
+    "fullName": "ד\"ר אברהם רלו",
+    "normalizedName": "אברהם רלו",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר אברהם רלו"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-78f7d53262a60c67",
+    "fullName": "ד\"ר איתי בן ציוןבית חולים שיבא-תל השומרמומחה לרפואת עיניים ילדים. ניתוחי קטרקט",
+    "normalizedName": "איתי בן ציוןבית חולים שיבא תל השומרמומחה לרפואת עיניים ילדים ניתוחי קטרקט",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx"
+    ],
+    "evidence": [
+      "ד\"ר איתי בן ציוןבית חולים שיבא-תל השומרמומחה לרפואת עיניים ילדים. ניתוחי קטרקט"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a2ca5b3b94826d67",
+    "fullName": "פרופסור אלכסנדר פיש",
+    "normalizedName": "אלכסנדר פיש",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "פרופ",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx"
+    ],
+    "evidence": [
+      "פרופסור אלכסנדר פיש"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-0492ce3bca53b042",
+    "fullName": "פרופסור ארנון כהןמרפאות",
+    "normalizedName": "ארנון כהןמרפאות",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "פרופ",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx"
+    ],
+    "evidence": [
+      "פרופסור ארנון כהןמרפאות"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-6de19617878638a1",
+    "fullName": "ד\"ר ארנון קרניבית חולים איכילובמנהל מרפאה",
+    "normalizedName": "ארנון קרניבית חולים איכילובמנהל מרפאה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx"
+    ],
+    "evidence": [
+      "ד\"ר ארנון קרניבית חולים איכילובמנהל מרפאה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-eb2c2f598f3d56ae",
+    "fullName": "ד\"ר אשור יפה",
+    "normalizedName": "אשור יפה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר אשור יפה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-84d132565405a030",
+    "fullName": "ד\"ר בחרך לב",
+    "normalizedName": "בחרך לב",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר בחרך לב"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-87b584da56cb9e1c",
+    "fullName": "ד\"ר גרבצב איליה",
+    "normalizedName": "גרבצב איליה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר גרבצב איליה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-a4f896c0724a24d3",
+    "fullName": "ד\"ר דימיטרי שייניסבית חולים בלינסון-רביןרופא בכיר במחלקה אורתופדיה",
+    "normalizedName": "דימיטרי שייניסבית חולים בלינסון רביןרופא בכיר במחלקה אורתופדיה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx"
+    ],
+    "evidence": [
+      "ד\"ר דימיטרי שייניסבית חולים בלינסון-רביןרופא בכיר במחלקה אורתופדיה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-9d93435ac9d9ca91",
+    "fullName": "ד\"ר דנילושקין יבגני",
+    "normalizedName": "דנילושקין יבגני",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר דנילושקין יבגני"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-93088934172cd0fa",
+    "fullName": "ד\"ר יארונובסקי אלכסנדר",
+    "normalizedName": "יארונובסקי אלכסנדר",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר יארונובסקי אלכסנדר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-fb5b81072b341d1a",
+    "fullName": "ד\"ר מזור אמיר",
+    "normalizedName": "מזור אמיר",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר מזור אמיר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-38eb5862344c463f",
+    "fullName": "ד\"ר נוגריאן אלבר",
+    "normalizedName": "נוגריאן אלבר",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר נוגריאן אלבר"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-2589cfc5cf548b93",
+    "fullName": "ד\"ר עמוס נאמןבית חולים אסף הרופאאורולוג בכיר מנתח מומחה לאורולוגיה ואורולוגית ילדים",
+    "normalizedName": "עמוס נאמןבית חולים אסף הרופאאורולוג בכיר מנתח מומחה לאורולוגיה ואורולוגית ילדים",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx"
+    ],
+    "evidence": [
+      "ד\"ר עמוס נאמןבית חולים אסף הרופאאורולוג בכיר מנתח מומחה לאורולוגיה ואורולוגית ילדים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-e458d06c93aed4bb",
+    "fullName": "ד\"ר קובס ילנה",
+    "normalizedName": "קובס ילנה",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר קובס ילנה"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-94f9d89ef975100d",
+    "fullName": "ד\"ר ריטה ארליךבית חולים בלינסון-רביןמומחית ברפואת עיניים",
+    "normalizedName": "ריטה ארליךבית חולים בלינסון רביןמומחית ברפואת עיניים",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx"
+    ],
+    "evidence": [
+      "ד\"ר ריטה ארליךבית חולים בלינסון-רביןמומחית ברפואת עיניים"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-c67e07b1593eb163",
+    "fullName": "ד\"ר שושנה קבוט",
+    "normalizedName": "שושנה קבוט",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx"
+    ],
+    "evidence": [
+      "ד\"ר שושנה קבוט"
+    ]
+  },
+  {
+    "canonicalDoctorId": "doctor-56d1b78ac27311a3",
+    "fullName": "ד\"ר שיפרין ויטלי",
+    "normalizedName": "שיפרין ויטלי",
+    "profileUrl": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "provider": "clalit",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "profileCompleteness": "listOnly",
+    "productionReady": false,
+    "sourceUrls": [
+      "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    ],
+    "evidence": [
+      "ד\"ר שיפרין ויטלי"
+    ]
+  }
+]

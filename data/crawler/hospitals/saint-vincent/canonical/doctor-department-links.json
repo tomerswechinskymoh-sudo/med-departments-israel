@@ -79,6 +79,44 @@
     "ambiguityReason": null
   },
   {
+    "canonicalDoctorId": "doctor-2920f235ce417efb",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-29bb9ce8aded681e",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
     "canonicalDoctorId": "doctor-35df413cf87a5b9a",
     "masterDeptRowId": "master-dept-0041-ביהח-הצרפתי-מחלות-עיניים",
     "hospitalName": "ביה\"ח הצרפתי",
@@ -92,6 +130,25 @@
         "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
       ],
       "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-41fbe6884cbe3d6d",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -117,7 +174,7 @@
     "ambiguityReason": null
   },
   {
-    "canonicalDoctorId": "doctor-51388aff5851904c",
+    "canonicalDoctorId": "doctor-5568d00808441fd5",
     "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
     "hospitalName": "ביה\"ח הצרפתי",
     "departmentName": "",
@@ -149,6 +206,82 @@
         "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/"
       ],
       "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-5a63cd74f30d4d41",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-5cfe5c01245cd95d",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-6493865a91bafd6b",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-6de150197a90aed3",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -193,6 +326,101 @@
     "ambiguityReason": null
   },
   {
+    "canonicalDoctorId": "doctor-9012144e5a709e30",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-a050e828ec397bfa",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-a75d03642ffd0f51",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-aabb82177bbebda4",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-af6c4cabb541ddaf",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
     "canonicalDoctorId": "doctor-b2533ac61238f943",
     "masterDeptRowId": "master-dept-0041-ביהח-הצרפתי-מחלות-עיניים",
     "hospitalName": "ביה\"ח הצרפתי",
@@ -212,6 +440,25 @@
     "ambiguityReason": null
   },
   {
+    "canonicalDoctorId": "doctor-b2d3de3534360c8a",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
     "canonicalDoctorId": "doctor-bfcca47ca855fb5e",
     "masterDeptRowId": "master-dept-0041-ביהח-הצרפתי-מחלות-עיניים",
     "hospitalName": "ביה\"ח הצרפתי",
@@ -225,6 +472,44 @@
         "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
       ],
       "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-cb20806d724cda8f",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-d0ddeb42ec764392",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },
@@ -269,6 +554,82 @@
     "ambiguityReason": null
   },
   {
+    "canonicalDoctorId": "doctor-f382057a1ce8aec2",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f448cbdee73901c9",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f87bd2a4cf188439",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-f906e2191618004b",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
     "canonicalDoctorId": "doctor-fb5c9a8308be60f4",
     "masterDeptRowId": "master-dept-0041-ביהח-הצרפתי-מחלות-עיניים",
     "hospitalName": "ביה\"ח הצרפתי",
@@ -282,6 +643,25 @@
         "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
       ],
       "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-feedcd810351453b",
+    "masterDeptRowId": "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+    "hospitalName": "ביה\"ח הצרפתי",
+    "departmentName": "",
+    "specialty": "יילוד וגינקולוגיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/"
+      ],
+      "extractedFromUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
       "relationship": "exactSourceUrl",
       "reason": "doctor source equals Master_Dept source URL"
     },

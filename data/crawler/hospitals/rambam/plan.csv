@@ -1,0 +1,5 @@
+url,sourceUrl,anchorText,patternType,parserFamily,confidence,evidence
+https://www.rambam.org.il/doctors/,https://www.rambam.org.il/,הרופאים שלנו,doctorPage,inlineStaff,0.82,הרופאים שלנו https://www.rambam.org.il/doctors/
+https://www.rambam.org.il/patient-and-visitor-information/medical-documents/,https://www.rambam.org.il/,"אפליקציית Rambam4Uכל המידע הרפואי שלך אצלך בניידזימון תור, צפייה בתוצאות בדיקות ,סיכומי רופאים, הדמיות ועוד 
+ קראו עוד",doctorPage,inlineStaff,0.82,"אפליקציית Rambam4Uכל המידע הרפואי שלך אצלך בניידזימון תור, צפייה בתוצאות בדיקות ,סיכומי רופאים, הדמיות ועוד 
+ קראו עוד https://www.rambam.org.il/patient-and-visitor-information/medical-documents/"

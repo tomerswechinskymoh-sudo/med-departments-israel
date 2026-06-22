@@ -11,11 +11,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.assiamd.co.il/about/",
     "sourceUrlNormalized": "https://www.assiamd.co.il/about/",
-    "sourceUrlStatus": "live",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "OK 200 title=אודות - מרפאות אסיא text=16121",
+    "urlInspectionEvidence": null,
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -32,20 +32,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.clalit.co.il/he/info/career/Pages/family_docs.aspx",
     "sourceUrlNormalized": "https://www.clalit.co.il/he/info/career/Pages/family_docs.aspx",
-    "sourceUrlStatus": "live",
-    "sourceUrlPageType": "departmentPage",
+    "sourceUrlStatus": "pending",
+    "sourceUrlPageType": "unknown",
     "discoveredFromMasterDeptUrl": true,
-    "nearbyDoctorOrTeamUrls": [
-      "https://www.clalit.co.il/he/myrights/fees/Pages/doctors.aspx",
-      "https://www.clalit.co.il/he/myrights/medical-tests/Pages/medical-specialist.aspx",
-      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/default.aspx",
-      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/dermatologist-online.aspx",
-      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/kids-online.aspx",
-      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/online-o18.aspx",
-      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/Ophthalmologist-online.aspx",
-      "https://www.clalit.co.il/he/myrights/online-doctors/Pages/tyto.aspx"
-    ],
-    "urlInspectionEvidence": "OK 200 title=להתמחות ברפואת משפחה בכללית\n | שירותי בריאות כללית text=33833",
+    "nearbyDoctorOrTeamUrls": [],
+    "urlInspectionEvidence": null,
     "providerGuess": "clalit",
     "crawlerStatus": "supported",
     "deferReason": null
@@ -62,13 +53,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.maccabi4u.co.il/careers/specialization_family/info/family_medicine/",
     "sourceUrlNormalized": "https://www.maccabi4u.co.il/careers/specialization_family/info/family_medicine/",
-    "sourceUrlStatus": "live",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
-    "nearbyDoctorOrTeamUrls": [
-      "https://www.maccabi4u.co.il/careers/independent-doctors/"
-    ],
-    "urlInspectionEvidence": "OK 200 title=מכבי שירותי בריאות | למה רפואת משפחה? text=5600",
+    "nearbyDoctorOrTeamUrls": [],
+    "urlInspectionEvidence": null,
     "providerGuess": "private",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -127,15 +116,11 @@
     "district": null,
     "sourceUrlRaw": "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx",
     "sourceUrlNormalized": "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx",
-    "sourceUrlStatus": "live",
-    "sourceUrlPageType": "departmentPage",
+    "sourceUrlStatus": "pending",
+    "sourceUrlPageType": "unknown",
     "discoveredFromMasterDeptUrl": true,
-    "nearbyDoctorOrTeamUrls": [
-      "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
-      "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
-      "https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx"
-    ],
-    "urlInspectionEvidence": "OK 200 title=התמחות בפסיכיאטריה\n | מרכז לבריאות הנפש גהה text=15172",
+    "nearbyDoctorOrTeamUrls": [],
+    "urlInspectionEvidence": null,
     "providerGuess": "clalit",
     "crawlerStatus": "supported",
     "deferReason": null
@@ -152,13 +137,11 @@
     "district": null,
     "sourceUrlRaw": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
     "sourceUrlNormalized": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
-    "sourceUrlStatus": "live",
-    "sourceUrlPageType": "departmentPage",
+    "sourceUrlStatus": "pending",
+    "sourceUrlPageType": "unknown",
     "discoveredFromMasterDeptUrl": true,
-    "nearbyDoctorOrTeamUrls": [
-      "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx"
-    ],
-    "urlInspectionEvidence": "OK 200 title=הכשרה והתמחות בפסיכיאטריה\n | שלוותה text=17538",
+    "nearbyDoctorOrTeamUrls": [],
+    "urlInspectionEvidence": null,
     "providerGuess": "clalit",
     "crawlerStatus": "supported",
     "deferReason": null
@@ -217,11 +200,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.gov.il/he/departments/mental-health-center-beer-yaacov-ness-ziona/govil-landing-page",
     "sourceUrlNormalized": "https://www.gov.il/he/departments/mental-health-center-beer-yaacov-ness-ziona/govil-landing-page",
-    "sourceUrlStatus": "forbidden",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "FAIL 403 title=Attention Required! | Cloudflare text=2030",
+    "urlInspectionEvidence": null,
     "providerGuess": "government",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -238,11 +221,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.tiratcarmel-med.org.il/",
     "sourceUrlNormalized": "https://www.tiratcarmel-med.org.il/",
-    "sourceUrlStatus": "live",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "OK 200 title=המרכז לבריאות הנפש מעלה הכרמל text=8927",
+    "urlInspectionEvidence": null,
     "providerGuess": "clalit",
     "crawlerStatus": "supported",
     "deferReason": null
@@ -280,11 +263,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
     "sourceUrlNormalized": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
-    "sourceUrlStatus": "forbidden",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "FAIL 403 title=Attention Required! | Cloudflare text=2030",
+    "urlInspectionEvidence": null,
     "providerGuess": "government",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -301,11 +284,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.lev-hasharon.co.il/?page_id=853",
     "sourceUrlNormalized": "https://www.lev-hasharon.co.il/?page_id=853",
-    "sourceUrlStatus": "live",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "OK 200 title=התמחות בפסיכיאטריה | המרכז לבריאות הנפש לב השרון text=5702",
+    "urlInspectionEvidence": null,
     "providerGuess": "clalit",
     "crawlerStatus": "supported",
     "deferReason": null
@@ -322,11 +305,11 @@
     "district": null,
     "sourceUrlRaw": "http://www.psjer.org.il/?CategoryID=254",
     "sourceUrlNormalized": "http://www.psjer.org.il/?CategoryID=254",
-    "sourceUrlStatus": "redirected",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "OK 200 title=עמוד הבית - המרכז הירושלמי לבריאות הנפש text=57781",
+    "urlInspectionEvidence": null,
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -364,15 +347,11 @@
     "district": null,
     "sourceUrlRaw": "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx",
     "sourceUrlNormalized": "https://hospitals.clalit.co.il/geha/he/stud/Pages/psychiatry.aspx",
-    "sourceUrlStatus": "live",
-    "sourceUrlPageType": "departmentPage",
+    "sourceUrlStatus": "pending",
+    "sourceUrlPageType": "unknown",
     "discoveredFromMasterDeptUrl": true,
-    "nearbyDoctorOrTeamUrls": [
-      "https://hospitals.clalit.co.il/geha/he/pro/Pages/team.aspx",
-      "https://hospitals.clalit.co.il/geha/he/pub/Pages/staff.aspx",
-      "https://hospitals.clalit.co.il/geha/he/stud/Pages/profinfo.aspx"
-    ],
-    "urlInspectionEvidence": "OK 200 title=התמחות בפסיכיאטריה\n | מרכז לבריאות הנפש גהה text=15172",
+    "nearbyDoctorOrTeamUrls": [],
+    "urlInspectionEvidence": null,
     "providerGuess": "clalit",
     "crawlerStatus": "supported",
     "deferReason": null
@@ -389,13 +368,11 @@
     "district": null,
     "sourceUrlRaw": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
     "sourceUrlNormalized": "https://hospitals.clalit.co.il/shalvata/he/residency/Pages/psychiatry_training.aspx",
-    "sourceUrlStatus": "live",
-    "sourceUrlPageType": "departmentPage",
+    "sourceUrlStatus": "pending",
+    "sourceUrlPageType": "unknown",
     "discoveredFromMasterDeptUrl": true,
-    "nearbyDoctorOrTeamUrls": [
-      "https://hospitals.clalit.co.il/shalvata/he/about_us/Pages/our_staff.aspx"
-    ],
-    "urlInspectionEvidence": "OK 200 title=הכשרה והתמחות בפסיכיאטריה\n | שלוותה text=17538",
+    "nearbyDoctorOrTeamUrls": [],
+    "urlInspectionEvidence": null,
     "providerGuess": "clalit",
     "crawlerStatus": "supported",
     "deferReason": null
@@ -433,11 +410,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.gov.il/he/departments/mental-health-center-beer-yaacov-ness-ziona/govil-landing-page",
     "sourceUrlNormalized": "https://www.gov.il/he/departments/mental-health-center-beer-yaacov-ness-ziona/govil-landing-page",
-    "sourceUrlStatus": "forbidden",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "FAIL 403 title=Attention Required! | Cloudflare text=2030",
+    "urlInspectionEvidence": null,
     "providerGuess": "government",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -454,11 +431,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.tiratcarmel-med.org.il/",
     "sourceUrlNormalized": "https://www.tiratcarmel-med.org.il/",
-    "sourceUrlStatus": "live",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "OK 200 title=המרכז לבריאות הנפש מעלה הכרמל text=8927",
+    "urlInspectionEvidence": null,
     "providerGuess": "clalit",
     "crawlerStatus": "supported",
     "deferReason": null
@@ -475,11 +452,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
     "sourceUrlNormalized": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
-    "sourceUrlStatus": "forbidden",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "FAIL 403 title=Attention Required! | Cloudflare text=2030",
+    "urlInspectionEvidence": null,
     "providerGuess": "government",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -496,11 +473,11 @@
     "district": null,
     "sourceUrlRaw": "http://www.psjer.org.il/?CategoryID=254",
     "sourceUrlNormalized": "http://www.psjer.org.il/?CategoryID=254",
-    "sourceUrlStatus": "redirected",
+    "sourceUrlStatus": "pending",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": "OK 200 title=עמוד הבית - המרכז הירושלמי לבריאות הנפש text=57781",
+    "urlInspectionEvidence": null,
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -796,7 +773,7 @@
     "nearbyDoctorOrTeamUrls": [
       "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/"
     ],
-    "urlInspectionEvidence": "OK 200 title=מחלקת ילדים – Saint Vincent De Paul Hospital text=20091",
+    "urlInspectionEvidence": "OK 200 title=מחלקת ילדים – Saint Vincent De Paul Hospital text=20096",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -819,7 +796,7 @@
     "nearbyDoctorOrTeamUrls": [
       "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/"
     ],
-    "urlInspectionEvidence": "OK 200 title=מחלקת נשים ויולדות – Saint Vincent De Paul Hospital text=13854",
+    "urlInspectionEvidence": "OK 200 title=מחלקת נשים ויולדות – Saint Vincent De Paul Hospital text=13877",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -842,7 +819,7 @@
     "nearbyDoctorOrTeamUrls": [
       "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/"
     ],
-    "urlInspectionEvidence": "OK 200 title=מחלקת אף אוזן גרון – Saint Vincent De Paul Hospital text=16043",
+    "urlInspectionEvidence": "OK 200 title=מחלקת אף אוזן גרון – Saint Vincent De Paul Hospital text=15970",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -865,7 +842,7 @@
     "nearbyDoctorOrTeamUrls": [
       "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/"
     ],
-    "urlInspectionEvidence": "OK 200 title=מחלקת עיניים – Saint Vincent De Paul Hospital text=12043",
+    "urlInspectionEvidence": "OK 200 title=מחלקת עיניים – Saint Vincent De Paul Hospital text=12008",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null

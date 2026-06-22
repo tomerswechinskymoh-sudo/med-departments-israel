@@ -1,0 +1,33 @@
+{
+  "hospitalSlug": "rambam",
+  "hospitalName": "מרכז רפואי רמב\"ם",
+  "generatedAt": "2026-06-22T06:01:27.933Z",
+  "urlsUsed": [
+    "https://www.rambam.org.il/doctors/",
+    "https://www.rambam.org.il/patient-and-visitor-information/medical-documents/",
+    "https://www.rambam.org.il/"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 2,
+  "pilotPagesSelected": 3,
+  "rawDoctorRecords": 0,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 0,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 0
+  },
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Pilot extracted zero doctor records."
+}

@@ -157,21 +157,424 @@
     "qaSeverity": "review"
   },
   {
-    "fullName": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת",
-    "normalizedName": "גאווה גדולה: מנהל בית החולים הצרפתי נצרת",
-    "titlePrefix": null,
-    "role": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת ד\"ר נאיל אליאס קודם לדרגת פרופ'מרץ 3, 2023",
+    "fullName": "ד\"ר איאד ג'השאן",
+    "normalizedName": "איאד גהשאן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
     "unit": null,
-    "profileUrl": "https://saint-vincent-hospital.org/2023/03/03/%d7%92%d7%90%d7%95%d7%95%d7%94-%d7%92%d7%93%d7%95%d7%9c%d7%94-%d7%9e%d7%a0%d7%94%d7%9c-%d7%91%d7%99%d7%aa-%d7%94%d7%97%d7%95%d7%9c%d7%99%d7%9d-%d7%94%d7%a6%d7%a8%d7%a4%d7%aa%d7%99-%d7%a0%d7%90%d7%99/",
+    "profileUrl": null,
     "imageUrl": null,
-    "rawText": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת ד\"ר נאיל אליאס קודם לדרגת פרופ'מרץ 3, 2023",
+    "rawText": "ד\"ר איאד ג'השאן",
     "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
     "hospitalSlug": "saint-vincent",
     "hospital": "ביה\"ח הצרפתי",
     "parserFamily": "inlineStaff",
-    "sourceEvidence": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת ד\"ר נאיל אליאס קודם לדרגת פרופ'מרץ 3, 2023",
-    "qaFlags": [],
-    "qaSeverity": "ok"
+    "sourceEvidence": "ד\"ר איאד ג'השאן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר איימן חסאדיה",
+    "normalizedName": "איימן חסאדיה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר איימן חסאדיה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר איימן חסאדיה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אליאס עואד",
+    "normalizedName": "אליאס עואד",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אליאס עואד",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אליאס עואד",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אקילא נאסר",
+    "normalizedName": "אקילא נאסר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אקילא נאסר",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אקילא נאסר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אראם ותד",
+    "normalizedName": "אראם ותד",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אראם ותד",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אראם ותד",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר ביסאן חלומי",
+    "normalizedName": "ביסאן חלומי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ביסאן חלומי",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ביסאן חלומי",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר גודנה חאג'-סלמאן",
+    "normalizedName": "גודנה חאג סלמאן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גודנה חאג'-סלמאן",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר גודנה חאג'-סלמאן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר ג'ומאנה סלאמה",
+    "normalizedName": "גומאנה סלאמה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ג'ומאנה סלאמה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ג'ומאנה סלאמה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר ג'נאן אחמד",
+    "normalizedName": "גנאן אחמד",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ג'נאן אחמד",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ג'נאן אחמד",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר דיב רחאל",
+    "normalizedName": "דיב רחאל",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר דיב רחאל",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר דיב רחאל",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר ח'ואלה ח'ורי",
+    "normalizedName": "חואלה חורי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ח'ואלה ח'ורי",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ח'ואלה ח'ורי",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מג'ד סוסאן",
+    "normalizedName": "מגד סוסאן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מג'ד סוסאן",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מג'ד סוסאן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מג'דולין גנאים",
+    "normalizedName": "מגדולין גנאים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מג'דולין גנאים",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מג'דולין גנאים",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מוחמד ח'לאילה",
+    "normalizedName": "מוחמד חלאילה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מוחמד ח'לאילה",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מוחמד ח'לאילה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מיסא חמדאן",
+    "normalizedName": "מיסא חמדאן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מיסא חמדאן",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מיסא חמדאן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מרואן חכים",
+    "normalizedName": "מרואן חכים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מרואן חכים",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מרואן חכים",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר נזיה ג'השאן",
+    "normalizedName": "נזיה גהשאן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר נזיה ג'השאן",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר נזיה ג'השאן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר ראיסה גוצל",
+    "normalizedName": "ראיסה גוצל",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ראיסה גוצל",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר ראיסה גוצל",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר רואד קרואני",
+    "normalizedName": "רואד קרואני",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר רואד קרואני",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר רואד קרואני",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר רובא אבו אחמד",
+    "normalizedName": "רובא אבו אחמד",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר רובא אבו אחמד",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר רובא אבו אחמד",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר רוקיה סרחאן",
+    "normalizedName": "רוקיה סרחאן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר רוקיה סרחאן",
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "hospitalSlug": "saint-vincent",
+    "hospital": "ביה\"ח הצרפתי",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר רוקיה סרחאן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
   },
   {
     "fullName": "ד\"ר אחמד זרקאוי",

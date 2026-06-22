@@ -1,25 +1,23 @@
 {
-  "generatedAt": "2026-06-21T11:24:23.785Z",
+  "generatedAt": "2026-06-22T06:01:32.700Z",
   "totalHospitals": 60,
   "totalMasterDeptRows": 634,
   "rowsWithUrls": 321,
   "sourceUrlStatusCounts": {
-    "live": 41,
-    "pending": 274,
+    "pending": 290,
     "notProvided": 313,
-    "forbidden": 4,
-    "redirected": 2
+    "live": 31
   },
   "sourceUrlPageTypeCounts": {
     "hospitalPage": 129,
-    "departmentPage": 131,
-    "unknown": 315,
+    "unknown": 320,
+    "departmentPage": 126,
     "teamPage": 6,
     "unitPage": 47,
     "arrayPage": 4,
     "doctorsPage": 2
   },
-  "nearbyDoctorOrTeamUrlRows": 23,
+  "nearbyDoctorOrTeamUrlRows": 17,
   "hospitalsByProviderGuess": {
     "hadassah": 2,
     "clalit": 15,
@@ -43,8 +41,8 @@
   },
   "hospitalsByMappingReadiness": {
     "sourceUrlMapped": 3,
-    "blocked": 12,
-    "reviewNeeded": 6,
+    "blocked": 11,
+    "reviewNeeded": 7,
     "partiallyMapped": 9,
     "hospitalRosterOnly": 3
   },
@@ -366,9 +364,9 @@
       "crawlReadiness": "needsCalibration",
       "mappingReadiness": "partiallyMapped",
       "outputUsability": "departmentMappedRoster",
-      "canonicalDoctors": 16,
-      "doctorDepartmentLinks": 16,
-      "sourceUrlMatchLinks": 15,
+      "canonicalDoctors": 36,
+      "doctorDepartmentLinks": 36,
+      "sourceUrlMatchLinks": 35,
       "reviewNeededLinks": 1
     },
     "schneider": {
@@ -452,12 +450,12 @@
       "hospitalSlug": "yoseftal",
       "hospitalName": "yoseftal",
       "crawlReadiness": "needsCalibration",
-      "mappingReadiness": "blocked",
-      "outputUsability": "notUsableYet",
-      "canonicalDoctors": 0,
-      "doctorDepartmentLinks": 0,
+      "mappingReadiness": "reviewNeeded",
+      "outputUsability": "hospitalRoster",
+      "canonicalDoctors": 18,
+      "doctorDepartmentLinks": 18,
       "sourceUrlMatchLinks": 0,
-      "reviewNeededLinks": 0
+      "reviewNeededLinks": 18
     }
   },
   "hospitalsWithWorkingDoctorRoster": [
@@ -481,7 +479,8 @@
     "schneider",
     "shalvata",
     "shamir",
-    "soroka"
+    "soroka",
+    "yoseftal"
   ],
   "hospitalsWithDepartmentMappedRoster": [
     "barzilai",
@@ -508,8 +507,7 @@
     "rambam",
     "shaare-zedek",
     "sheba",
-    "wolfson",
-    "yoseftal"
+    "wolfson"
   ],
   "shebaStatus": "hard JS/API/502 case; deferred after national coverage",
   "wave1Counts": {
@@ -829,29 +827,13 @@
       "duplicateProfileUrlGroupsAfter": 0
     },
     "saint-vincent": {
-      "rawReviewedRows": 16,
-      "canonicalDoctors": 16,
-      "doctorDepartmentLinks": 16,
-      "productionReadyCanonicalDoctors": 2,
-      "sourceUrlMatchLinks": 15,
+      "rawReviewedRows": 36,
+      "canonicalDoctors": 36,
+      "doctorDepartmentLinks": 36,
+      "productionReadyCanonicalDoctors": 1,
+      "sourceUrlMatchLinks": 35,
       "reviewNeededLinks": 1,
-      "expectedDistinctDoctorDepartmentLinks": 16,
-      "rawRowsDroppedAsExactDuplicates": 0,
-      "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
-      "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
-      "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
-      "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
-      "duplicateProfileUrlGroupsBefore": 0,
-      "duplicateProfileUrlGroupsAfter": 0
-    },
-    "shaare-zedek": {
-      "rawReviewedRows": 0,
-      "canonicalDoctors": 0,
-      "doctorDepartmentLinks": 0,
-      "productionReadyCanonicalDoctors": 0,
-      "sourceUrlMatchLinks": 0,
-      "reviewNeededLinks": 0,
-      "expectedDistinctDoctorDepartmentLinks": 0,
+      "expectedDistinctDoctorDepartmentLinks": 36,
       "rawRowsDroppedAsExactDuplicates": 0,
       "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
       "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
@@ -877,6 +859,22 @@
       "duplicateProfileUrlGroupsAfter": 0
     },
     "yoseftal": {
+      "rawReviewedRows": 18,
+      "canonicalDoctors": 18,
+      "doctorDepartmentLinks": 18,
+      "productionReadyCanonicalDoctors": 0,
+      "sourceUrlMatchLinks": 0,
+      "reviewNeededLinks": 18,
+      "expectedDistinctDoctorDepartmentLinks": 18,
+      "rawRowsDroppedAsExactDuplicates": 0,
+      "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+      "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+      "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+      "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+      "duplicateProfileUrlGroupsBefore": 0,
+      "duplicateProfileUrlGroupsAfter": 0
+    },
+    "beer-sheva-mental-health": {
       "rawReviewedRows": 0,
       "canonicalDoctors": 0,
       "doctorDepartmentLinks": 0,
@@ -892,7 +890,7 @@
       "duplicateProfileUrlGroupsBefore": 0,
       "duplicateProfileUrlGroupsAfter": 0
     },
-    "beer-sheva-mental-health": {
+    "shaare-zedek": {
       "rawReviewedRows": 0,
       "canonicalDoctors": 0,
       "doctorDepartmentLinks": 0,
@@ -1101,7 +1099,66 @@
       "mappedRecords": 17
     }
   ],
-  "wave2SelectedHospitals": [],
+  "wave2SelectedHospitals": [
+    {
+      "hospitalSlug": "emek",
+      "hospitalNames": [
+        "מרכז רפואי העמק"
+      ],
+      "providerGuess": "clalit",
+      "masterDeptRows": 27,
+      "rowsWithUrls": 27,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
+      "whySelected": "known adapter emek; 27 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "carmel",
+      "hospitalNames": [
+        "מרכז רפואי כרמל"
+      ],
+      "providerGuess": "clalit",
+      "masterDeptRows": 25,
+      "rowsWithUrls": 22,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "teamPage+inlineStaff",
+      "whySelected": "known adapter carmel; 22 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "kaplan",
+      "hospitalNames": [
+        "מרכז רפואי קפלן"
+      ],
+      "providerGuess": "clalit",
+      "masterDeptRows": 25,
+      "rowsWithUrls": 22,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
+      "whySelected": "known adapter kaplan; 22 Master_Dept URLs; URLs pending inspection",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "rabin",
+      "hospitalNames": [
+        "ביה\"ח בילינסון מרכז רפואי רבין",
+        "מרכז רפואי רבין",
+        "ביה\"ח השרון מרכז רפואי רבין"
+      ],
+      "providerGuess": "clalit",
+      "masterDeptRows": 60,
+      "rowsWithUrls": 11,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "classicDoctorCards+teamPage",
+      "whySelected": "known adapter rabin; 11 Master_Dept URLs; URLs pending inspection",
+      "plannedMode": "pilot only"
+    }
+  ],
   "wave2Results": [
     {
       "hospital": "emek",
@@ -1294,22 +1351,6 @@
       "plannedMode": "pilot only"
     },
     {
-      "hospitalSlug": "hospital-08078cfe7d",
-      "hospitalNames": [
-        "מכבי שירותי בריאות"
-      ],
-      "providerGuess": "private",
-      "masterDeptRows": 1,
-      "rowsWithUrls": 1,
-      "liveUrlRows": 1,
-      "nearbyDoctorOrTeamUrlRows": 1,
-      "adapterParserFamily": "inlineStaff+teamPage+unknown",
-      "whySelected": "Wave3 baseline hospital-08078cfe7d; 1 Master_Dept URLs; 1 live inspected URLs; 1 nearby doctor/team URLs",
-      "expectedCrawlReadiness": "pilotReady",
-      "expectedMappingReadiness": "partiallyMapped",
-      "plannedMode": "pilot only"
-    },
-    {
       "hospitalSlug": "nazareth-scottish",
       "hospitalNames": [
         "ביה\"ח אי.מ.מ.ס הסקוטי"
@@ -1321,6 +1362,22 @@
       "nearbyDoctorOrTeamUrlRows": 0,
       "adapterParserFamily": "inlineStaff+teamPage+unknown",
       "whySelected": "Wave3 baseline nazareth-scottish; 8 Master_Dept URLs; 8 live inspected URLs",
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "reviewNeeded",
+      "plannedMode": "pilot only"
+    },
+    {
+      "hospitalSlug": "galilee",
+      "hospitalNames": [
+        "המרכז הרפואי לגליל"
+      ],
+      "providerGuess": "government",
+      "masterDeptRows": 29,
+      "rowsWithUrls": 28,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "adapterParserFamily": "inlineStaff+teamPage+unknown",
+      "whySelected": "Wave3 baseline galilee; 28 Master_Dept URLs; URLs pending inspection",
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "plannedMode": "pilot only"
@@ -1510,13 +1567,16 @@
       "providerGuess": "clalit",
       "masterDeptRows": 2,
       "rowsWithUrls": 2,
-      "liveUrlRows": 2,
-      "nearbyDoctorOrTeamUrlRows": 2,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
-      "expectedMappingReadiness": "partiallyMapped",
-      "priority": "medium",
-      "reasonForPriority": "2 Master_Dept URLs; 2 live/redirected URLs; 2 nearby doctor/team rows; synthetic generic parser",
+      "expectedMappingReadiness": "reviewNeeded",
+      "priority": "low",
+      "reasonForPriority": "2 Master_Dept URLs; synthetic generic parser",
       "plannedAction": "pilot"
     },
     {
@@ -1525,103 +1585,16 @@
       "providerGuess": "clalit",
       "masterDeptRows": 2,
       "rowsWithUrls": 2,
-      "liveUrlRows": 2,
-      "nearbyDoctorOrTeamUrlRows": 2,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "pilotReady",
-      "expectedMappingReadiness": "partiallyMapped",
-      "priority": "medium",
-      "reasonForPriority": "2 Master_Dept URLs; 2 live/redirected URLs; 2 nearby doctor/team rows; synthetic generic parser",
-      "plannedAction": "pilot"
-    },
-    {
-      "hospitalName": "שירותי בריאות כללית",
-      "hospitalSlug": "clalit-community",
-      "providerGuess": "clalit",
-      "masterDeptRows": 1,
-      "rowsWithUrls": 1,
-      "liveUrlRows": 1,
-      "nearbyDoctorOrTeamUrlRows": 1,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "pilotReady",
-      "expectedMappingReadiness": "partiallyMapped",
-      "priority": "medium",
-      "reasonForPriority": "1 Master_Dept URLs; 1 live/redirected URLs; 1 nearby doctor/team rows; synthetic generic parser",
-      "plannedAction": "pilot"
-    },
-    {
-      "hospitalName": "מכבי שירותי בריאות",
-      "hospitalSlug": "hospital-08078cfe7d",
-      "providerGuess": "private",
-      "masterDeptRows": 1,
-      "rowsWithUrls": 1,
-      "liveUrlRows": 1,
-      "nearbyDoctorOrTeamUrlRows": 1,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "pilotReady",
-      "expectedMappingReadiness": "partiallyMapped",
-      "priority": "medium",
-      "reasonForPriority": "1 Master_Dept URLs; 1 live/redirected URLs; 1 nearby doctor/team rows; synthetic generic parser",
-      "plannedAction": "pilot"
-    },
-    {
-      "hospitalName": "מרכז לבה\"נ מעלה הכרמל",
-      "hospitalSlug": "maale-hacarmel",
-      "providerGuess": "clalit",
-      "masterDeptRows": 2,
-      "rowsWithUrls": 2,
-      "liveUrlRows": 2,
+      "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "pilotReady",
-      "expectedMappingReadiness": "reviewNeeded",
-      "priority": "medium",
-      "reasonForPriority": "2 Master_Dept URLs; 2 live/redirected URLs; synthetic generic parser",
-      "plannedAction": "pilot"
-    },
-    {
-      "hospitalName": "מרכז לבה\"נ ירושלים (כפר שאול ואיתנים)",
-      "hospitalSlug": "hospital-fa8413a9cd",
-      "providerGuess": "unknown",
-      "masterDeptRows": 2,
-      "rowsWithUrls": 2,
-      "liveUrlRows": 2,
-      "nearbyDoctorOrTeamUrlRows": 0,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "pilotReady",
-      "expectedMappingReadiness": "reviewNeeded",
-      "priority": "medium",
-      "reasonForPriority": "2 Master_Dept URLs; 2 live/redirected URLs; synthetic generic parser",
-      "plannedAction": "pilot"
-    },
-    {
-      "hospitalName": "מרכז לבה\"נ לב השרון",
-      "hospitalSlug": "lev-hasharon",
-      "providerGuess": "clalit",
-      "masterDeptRows": 1,
-      "rowsWithUrls": 1,
-      "liveUrlRows": 1,
-      "nearbyDoctorOrTeamUrlRows": 0,
-      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
-      "reasonForPriority": "1 Master_Dept URLs; 1 live/redirected URLs; synthetic generic parser",
-      "plannedAction": "pilot"
-    },
-    {
-      "hospitalName": "אסיא ש.בריאות קהילתיים",
-      "hospitalSlug": "hospital-a3603919b1",
-      "providerGuess": "unknown",
-      "masterDeptRows": 1,
-      "rowsWithUrls": 1,
-      "liveUrlRows": 1,
-      "nearbyDoctorOrTeamUrlRows": 0,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "pilotReady",
-      "expectedMappingReadiness": "reviewNeeded",
-      "priority": "low",
-      "reasonForPriority": "1 Master_Dept URLs; 1 live/redirected URLs; synthetic generic parser",
+      "reasonForPriority": "2 Master_Dept URLs; synthetic generic parser",
       "plannedAction": "pilot"
     },
     {
@@ -1633,6 +1606,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -1641,13 +1617,16 @@
     },
     {
       "hospitalName": "מרכז לבה\"נ אברבנאל",
-      "hospitalSlug": "hospital-3a3abf9b65",
+      "hospitalSlug": "abrabanel-mental-health",
       "providerGuess": "government",
       "masterDeptRows": 2,
       "rowsWithUrls": 2,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -1655,14 +1634,89 @@
       "plannedAction": "pilot"
     },
     {
-      "hospitalName": "קופ\"ח לאומית",
-      "hospitalSlug": "hospital-8d011027af",
+      "hospitalName": "מרכז לבה\"נ ירושלים (כפר שאול ואיתנים)",
+      "hospitalSlug": "jerusalem-mental-health-kfar-shaul-eitanim",
+      "providerGuess": "unknown",
+      "masterDeptRows": 2,
+      "rowsWithUrls": 2,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "reviewNeeded",
+      "priority": "low",
+      "reasonForPriority": "2 Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "pilot"
+    },
+    {
+      "hospitalName": "שירותי בריאות כללית",
+      "hospitalSlug": "clalit-community",
+      "providerGuess": "clalit",
+      "masterDeptRows": 1,
+      "rowsWithUrls": 1,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "reviewNeeded",
+      "priority": "low",
+      "reasonForPriority": "1 Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "pilot"
+    },
+    {
+      "hospitalName": "אסיא ש.בריאות קהילתיים",
+      "hospitalSlug": "asia-community-health-services",
+      "providerGuess": "unknown",
+      "masterDeptRows": 1,
+      "rowsWithUrls": 1,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "reviewNeeded",
+      "priority": "low",
+      "reasonForPriority": "1 Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "pilot"
+    },
+    {
+      "hospitalName": "מכבי שירותי בריאות",
+      "hospitalSlug": "maccabi-health-services",
       "providerGuess": "private",
       "masterDeptRows": 1,
       "rowsWithUrls": 1,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "reviewNeeded",
+      "priority": "low",
+      "reasonForPriority": "1 Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "pilot"
+    },
+    {
+      "hospitalName": "קופ\"ח לאומית",
+      "hospitalSlug": "leumit-health-fund",
+      "providerGuess": "private",
+      "masterDeptRows": 1,
+      "rowsWithUrls": 1,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -1671,13 +1725,16 @@
     },
     {
       "hospitalName": "קופ\"ח מאוחדת",
-      "hospitalSlug": "hospital-793e6e1bce",
+      "hospitalSlug": "meuhedet-health-fund",
       "providerGuess": "private",
       "masterDeptRows": 1,
       "rowsWithUrls": 1,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -1686,13 +1743,16 @@
     },
     {
       "hospitalName": "מרכז לבה\"נ מזור",
-      "hospitalSlug": "hospital-138ed619c5",
+      "hospitalSlug": "mazor-mental-health",
       "providerGuess": "government",
       "masterDeptRows": 1,
       "rowsWithUrls": 1,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -1701,13 +1761,16 @@
     },
     {
       "hospitalName": "מרכז לבה\"נ שער מנשה",
-      "hospitalSlug": "hospital-1839a655ed",
+      "hospitalSlug": "shaar-menashe-mental-health",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 1,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -1716,17 +1779,74 @@
     },
     {
       "hospitalName": "מ.גריאטרי שהם",
-      "hospitalSlug": "hospital-692f2e5753",
+      "hospitalSlug": "shoham-geriatric",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 1,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
       "reasonForPriority": "1 Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "pilot"
+    },
+    {
+      "hospitalName": "מרכז רפואי רמב\"ם",
+      "hospitalSlug": "rambam",
+      "providerGuess": "unknown",
+      "masterDeptRows": 24,
+      "rowsWithUrls": 0,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 1,
+      "safeSeedUrlCount": 1,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "hospitalRosterOnly",
+      "priority": "low",
+      "reasonForPriority": "no Master_Dept URLs; 1/1 safe seed URLs; synthetic generic parser",
+      "plannedAction": "pilot"
+    },
+    {
+      "hospitalName": "ביה\"ח יוספטל",
+      "hospitalSlug": "yoseftal",
+      "providerGuess": "clalit",
+      "masterDeptRows": 2,
+      "rowsWithUrls": 0,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 1,
+      "safeSeedUrlCount": 1,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "hospitalRosterOnly",
+      "priority": "low",
+      "reasonForPriority": "no Master_Dept URLs; 1/1 safe seed URLs; synthetic generic parser",
+      "plannedAction": "pilot"
+    },
+    {
+      "hospitalName": "מרכז לבה\"נ באר שבע",
+      "hospitalSlug": "beer-sheva-mental-health",
+      "providerGuess": "unknown",
+      "masterDeptRows": 2,
+      "rowsWithUrls": 0,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 1,
+      "safeSeedUrlCount": 1,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "hospitalRosterOnly",
+      "priority": "low",
+      "reasonForPriority": "no Master_Dept URLs; 1/1 safe seed URLs; synthetic generic parser",
       "plannedAction": "pilot"
     },
     {
@@ -1738,66 +1858,27 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 1,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": true,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
-      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
-      "plannedAction": "adapterInspect"
-    },
-    {
-      "hospitalName": "מרכז רפואי רמב\"ם",
-      "hospitalSlug": "rambam",
-      "providerGuess": "unknown",
-      "masterDeptRows": 24,
-      "rowsWithUrls": 0,
-      "liveUrlRows": 0,
-      "nearbyDoctorOrTeamUrlRows": 0,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "needsAdapter",
-      "expectedMappingReadiness": "blocked",
-      "priority": "low",
-      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
-      "plannedAction": "adapterInspect"
-    },
-    {
-      "hospitalName": "ביה\"ח יוספטל",
-      "hospitalSlug": "yoseftal",
-      "providerGuess": "clalit",
-      "masterDeptRows": 2,
-      "rowsWithUrls": 0,
-      "liveUrlRows": 0,
-      "nearbyDoctorOrTeamUrlRows": 0,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "needsAdapter",
-      "expectedMappingReadiness": "blocked",
-      "priority": "low",
-      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
-      "plannedAction": "adapterInspect"
-    },
-    {
-      "hospitalName": "מרכז לבה\"נ באר שבע",
-      "hospitalSlug": "beer-sheva-mental-health",
-      "providerGuess": "unknown",
-      "masterDeptRows": 2,
-      "rowsWithUrls": 0,
-      "liveUrlRows": 0,
-      "nearbyDoctorOrTeamUrlRows": 0,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "needsAdapter",
-      "expectedMappingReadiness": "blocked",
-      "priority": "low",
-      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
+      "reasonForPriority": "public seed URL exists but is not marked safe; manual verification required; no Master_Dept URLs; 0/1 safe seed URLs; synthetic generic parser",
       "plannedAction": "adapterInspect"
     },
     {
       "hospitalName": "מרכז בריאות הנפש רמת חן ע\"ש בריל",
-      "hospitalSlug": "hospital-c693b49d6d",
+      "hospitalSlug": "ramat-chen-brill-mental-health",
       "providerGuess": "unknown",
       "masterDeptRows": 2,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1806,13 +1887,16 @@
     },
     {
       "hospitalName": "מרכז רפואי רעות",
-      "hospitalSlug": "hospital-f15ccc8f1f",
+      "hospitalSlug": "reuth-medical-center",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1821,13 +1905,16 @@
     },
     {
       "hospitalName": "ביה\"ח הרצוג",
-      "hospitalSlug": "hospital-f5503acbbd",
+      "hospitalSlug": "herzog-medical-center",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1836,13 +1923,16 @@
     },
     {
       "hospitalName": "מ.גריאטרי פלימן",
-      "hospitalSlug": "hospital-ef6fbb03f7",
+      "hospitalSlug": "fliman-geriatric",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1851,13 +1941,16 @@
     },
     {
       "hospitalName": "מ.גריאטרי בית רבקה",
-      "hospitalSlug": "hospital-817cda97d4",
+      "hospitalSlug": "beit-rivka-geriatric",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1866,13 +1959,16 @@
     },
     {
       "hospitalName": "מ.גריאטרי שמואל הרופא",
-      "hospitalSlug": "hospital-71045bfaea",
+      "hospitalSlug": "shmuel-harofe-geriatric",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1881,13 +1977,16 @@
     },
     {
       "hospitalName": "מרכז גריאטרי נאות המושבה",
-      "hospitalSlug": "hospital-f9633302b5",
+      "hospitalSlug": "neot-hamoshava-geriatric",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1896,13 +1995,16 @@
     },
     {
       "hospitalName": "מ.גריאטרי הרצפלד",
-      "hospitalSlug": "hospital-1789dc388d",
+      "hospitalSlug": "herzfeld-geriatric",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1911,13 +2013,16 @@
     },
     {
       "hospitalName": "בית בלב ראשון לציון",
-      "hospitalSlug": "hospital-68a9f67a96",
+      "hospitalSlug": "beit-balev-rishon-lezion",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1926,13 +2031,16 @@
     },
     {
       "hospitalName": "מ.גריאטרי נתניה",
-      "hospitalSlug": "hospital-ef5c123bee",
+      "hospitalSlug": "netanya-geriatric",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1941,13 +2049,16 @@
     },
     {
       "hospitalName": "עדי נגב - נחלת עדן",
-      "hospitalSlug": "hospital-6caf8e35bb",
+      "hospitalSlug": "adi-negev-nahalat-eden",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1956,13 +2067,16 @@
     },
     {
       "hospitalName": "ביה\"ח לוינשטיין",
-      "hospitalSlug": "hospital-ecc23d41e9",
+      "hospitalSlug": "loewenstein-rehabilitation",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1978,6 +2092,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -1986,13 +2103,16 @@
     },
     {
       "hospitalName": "מ.לרפואה משפטית",
-      "hospitalSlug": "hospital-850b19e6e4",
+      "hospitalSlug": "forensic-medicine",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -2008,6 +2128,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "teamPage+inlineStaff+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "blocked",
       "expectedMappingReadiness": "partiallyMapped",
       "priority": "low",
@@ -2023,6 +2146,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "doctorIndexAssisted+jsDriven+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "blocked",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2038,6 +2164,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "inlineStaff+doctorIndexAssisted",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "blocked",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2053,6 +2182,9 @@
       "liveUrlRows": 7,
       "nearbyDoctorOrTeamUrlRows": 7,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "partiallyMapped",
       "priority": "low",
@@ -2068,6 +2200,9 @@
       "liveUrlRows": 6,
       "nearbyDoctorOrTeamUrlRows": 6,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "partiallyMapped",
       "priority": "low",
@@ -2083,6 +2218,9 @@
       "liveUrlRows": 4,
       "nearbyDoctorOrTeamUrlRows": 4,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "partiallyMapped",
       "priority": "low",
@@ -2098,6 +2236,9 @@
       "liveUrlRows": 8,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2113,6 +2254,9 @@
       "liveUrlRows": 6,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2128,6 +2272,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "inlineStaff+teamPage+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2143,6 +2290,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "partiallyMapped",
       "priority": "low",
@@ -2158,6 +2308,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "inlineStaff+teamPage+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2173,6 +2326,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "teamPage+inlineStaff+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "safeForFullBatch",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2188,6 +2344,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "teamPage+inlineStaff",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "partiallyMapped",
       "priority": "low",
@@ -2203,6 +2362,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2218,6 +2380,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2233,6 +2398,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2248,6 +2416,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2263,6 +2434,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "inlineStaff+teamPage+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2278,6 +2452,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "searchDriven+jsDriven+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "safeForFullBatch",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2293,6 +2470,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2308,6 +2488,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "classicDoctorCards+teamPage",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2323,6 +2506,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "searchDriven+jsDriven+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "safeForFullBatch",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2338,6 +2524,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "teamPage+inlineStaff+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "partiallyMapped",
       "priority": "low",
@@ -2353,6 +2542,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "classicDoctorCards+teamPage",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
@@ -2368,10 +2560,49 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "reviewNeeded",
       "priority": "low",
       "reasonForPriority": "already has usable prior output; 4 Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "skipAlreadyUsable"
+    },
+    {
+      "hospitalName": "מרכז לבה\"נ מעלה הכרמל",
+      "hospitalSlug": "carmel",
+      "providerGuess": "clalit",
+      "masterDeptRows": 2,
+      "rowsWithUrls": 2,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "reviewNeeded",
+      "priority": "low",
+      "reasonForPriority": "already has usable prior output; 2 Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "skipAlreadyUsable"
+    },
+    {
+      "hospitalName": "מרכז לבה\"נ לב השרון",
+      "hospitalSlug": "rabin",
+      "providerGuess": "clalit",
+      "masterDeptRows": 1,
+      "rowsWithUrls": 1,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "pilotReady",
+      "expectedMappingReadiness": "reviewNeeded",
+      "priority": "low",
+      "reasonForPriority": "already has usable prior output; 1 Master_Dept URLs; synthetic generic parser",
       "plannedAction": "skipAlreadyUsable"
     },
     {
@@ -2383,6 +2614,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "searchDriven+jsDriven+unknown",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "safeForFullBatch",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -2398,6 +2632,9 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": "classicDoctorCards+teamPage",
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "pilotReady",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -2933,25 +3170,25 @@
       "crawlReadiness": "needsCalibration",
       "mappingReadiness": "partiallyMapped",
       "outputUsability": "departmentMappedRoster",
-      "reviewedRecords": 16,
-      "productionReadyCount": 2,
-      "mappedRecords": 16,
+      "reviewedRecords": 36,
+      "productionReadyCount": 1,
+      "mappedRecords": 36,
       "mappingStats": {
-        "totalReviewed": 16,
-        "sourceUrlMatch": 15,
+        "totalReviewed": 36,
+        "sourceUrlMatch": 35,
         "hospitalOnly": 0,
         "reviewNeeded": 1,
         "ambiguousMapping": 1,
         "unmapped": 0
       },
       "canonicalStats": {
-        "rawReviewedRows": 16,
-        "canonicalDoctors": 16,
-        "doctorDepartmentLinks": 16,
-        "productionReadyCanonicalDoctors": 2,
-        "sourceUrlMatchLinks": 15,
+        "rawReviewedRows": 36,
+        "canonicalDoctors": 36,
+        "doctorDepartmentLinks": 36,
+        "productionReadyCanonicalDoctors": 1,
+        "sourceUrlMatchLinks": 35,
         "reviewNeededLinks": 1,
-        "expectedDistinctDoctorDepartmentLinks": 16,
+        "expectedDistinctDoctorDepartmentLinks": 36,
         "rawRowsDroppedAsExactDuplicates": 0,
         "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
         "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
@@ -2965,6 +3202,117 @@
     }
   ],
   "adapterPriorityResults": [
+    {
+      "hospital": "rambam",
+      "plannedAction": "pilot",
+      "readiness": "blocked",
+      "crawlReadiness": "blocked",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet",
+      "reviewedRecords": 0,
+      "productionReadyCount": 0,
+      "mappedRecords": 0,
+      "mappingStats": {
+        "totalReviewed": 0,
+        "sourceUrlMatch": 0,
+        "hospitalOnly": 0,
+        "reviewNeeded": 0,
+        "ambiguousMapping": 0,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 0,
+        "canonicalDoctors": 0,
+        "doctorDepartmentLinks": 0,
+        "productionReadyCanonicalDoctors": 0,
+        "sourceUrlMatchLinks": 0,
+        "reviewNeededLinks": 0,
+        "expectedDistinctDoctorDepartmentLinks": 0,
+        "rawRowsDroppedAsExactDuplicates": 0,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Pilot extracted zero doctor records.",
+      "blockerType": "noPublicRosterFound"
+    },
+    {
+      "hospital": "yoseftal",
+      "plannedAction": "pilot",
+      "readiness": "needsHumanReview",
+      "crawlReadiness": "needsCalibration",
+      "mappingReadiness": "reviewNeeded",
+      "outputUsability": "hospitalRoster",
+      "reviewedRecords": 18,
+      "productionReadyCount": 0,
+      "mappedRecords": 18,
+      "mappingStats": {
+        "totalReviewed": 18,
+        "sourceUrlMatch": 0,
+        "hospitalOnly": 0,
+        "reviewNeeded": 18,
+        "ambiguousMapping": 18,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 18,
+        "canonicalDoctors": 18,
+        "doctorDepartmentLinks": 18,
+        "productionReadyCanonicalDoctors": 0,
+        "sourceUrlMatchLinks": 0,
+        "reviewNeededLinks": 18,
+        "expectedDistinctDoctorDepartmentLinks": 18,
+        "rawRowsDroppedAsExactDuplicates": 0,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Profile URL coverage is below 50%.",
+      "blockerType": "other"
+    },
+    {
+      "hospital": "beer-sheva-mental-health",
+      "plannedAction": "pilot",
+      "readiness": "blocked",
+      "crawlReadiness": "blocked",
+      "mappingReadiness": "blocked",
+      "outputUsability": "notUsableYet",
+      "reviewedRecords": 0,
+      "productionReadyCount": 0,
+      "mappedRecords": 0,
+      "mappingStats": {
+        "totalReviewed": 0,
+        "sourceUrlMatch": 0,
+        "hospitalOnly": 0,
+        "reviewNeeded": 0,
+        "ambiguousMapping": 0,
+        "unmapped": 0
+      },
+      "canonicalStats": {
+        "rawReviewedRows": 0,
+        "canonicalDoctors": 0,
+        "doctorDepartmentLinks": 0,
+        "productionReadyCanonicalDoctors": 0,
+        "sourceUrlMatchLinks": 0,
+        "reviewNeededLinks": 0,
+        "expectedDistinctDoctorDepartmentLinks": 0,
+        "rawRowsDroppedAsExactDuplicates": 0,
+        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
+        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
+        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
+        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
+        "duplicateProfileUrlGroupsBefore": 0,
+        "duplicateProfileUrlGroupsAfter": 0
+      },
+      "mainBlocker": "Pilot extracted zero doctor records.",
+      "blockerType": "noPublicRosterFound"
+    },
     {
       "hospital": "shaare-zedek",
       "plannedAction": "adapterInspect",
@@ -2999,137 +3347,1200 @@
         "duplicateProfileUrlGroupsBefore": 0,
         "duplicateProfileUrlGroupsAfter": 0
       },
-      "mainBlocker": "No Master_Dept source URLs available for a safe pilot.",
-      "blockerType": "noPublicRosterFound"
-    },
-    {
-      "hospital": "rambam",
-      "plannedAction": "adapterInspect",
-      "readiness": "needsAdapter",
-      "crawlReadiness": "needsAdapter",
-      "mappingReadiness": "blocked",
-      "outputUsability": "notUsableYet",
-      "reviewedRecords": 0,
-      "productionReadyCount": 0,
-      "mappedRecords": 0,
-      "mappingStats": {
-        "totalReviewed": 0,
-        "sourceUrlMatch": 0,
-        "hospitalOnly": 0,
-        "reviewNeeded": 0,
-        "ambiguousMapping": 0,
-        "unmapped": 0
-      },
-      "canonicalStats": {
-        "rawReviewedRows": 0,
-        "canonicalDoctors": 0,
-        "doctorDepartmentLinks": 0,
-        "productionReadyCanonicalDoctors": 0,
-        "sourceUrlMatchLinks": 0,
-        "reviewNeededLinks": 0,
-        "expectedDistinctDoctorDepartmentLinks": 0,
-        "rawRowsDroppedAsExactDuplicates": 0,
-        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
-        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
-        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
-        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
-        "duplicateProfileUrlGroupsBefore": 0,
-        "duplicateProfileUrlGroupsAfter": 0
-      },
-      "mainBlocker": "No Master_Dept source URLs available for a safe pilot.",
-      "blockerType": "noPublicRosterFound"
-    },
-    {
-      "hospital": "yoseftal",
-      "plannedAction": "adapterInspect",
-      "readiness": "needsAdapter",
-      "crawlReadiness": "needsAdapter",
-      "mappingReadiness": "blocked",
-      "outputUsability": "notUsableYet",
-      "reviewedRecords": 0,
-      "productionReadyCount": 0,
-      "mappedRecords": 0,
-      "mappingStats": {
-        "totalReviewed": 0,
-        "sourceUrlMatch": 0,
-        "hospitalOnly": 0,
-        "reviewNeeded": 0,
-        "ambiguousMapping": 0,
-        "unmapped": 0
-      },
-      "canonicalStats": {
-        "rawReviewedRows": 0,
-        "canonicalDoctors": 0,
-        "doctorDepartmentLinks": 0,
-        "productionReadyCanonicalDoctors": 0,
-        "sourceUrlMatchLinks": 0,
-        "reviewNeededLinks": 0,
-        "expectedDistinctDoctorDepartmentLinks": 0,
-        "rawRowsDroppedAsExactDuplicates": 0,
-        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
-        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
-        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
-        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
-        "duplicateProfileUrlGroupsBefore": 0,
-        "duplicateProfileUrlGroupsAfter": 0
-      },
-      "mainBlocker": "No Master_Dept source URLs available for a safe pilot.",
-      "blockerType": "noPublicRosterFound"
-    },
-    {
-      "hospital": "beer-sheva-mental-health",
-      "plannedAction": "adapterInspect",
-      "readiness": "needsAdapter",
-      "crawlReadiness": "needsAdapter",
-      "mappingReadiness": "blocked",
-      "outputUsability": "notUsableYet",
-      "reviewedRecords": 0,
-      "productionReadyCount": 0,
-      "mappedRecords": 0,
-      "mappingStats": {
-        "totalReviewed": 0,
-        "sourceUrlMatch": 0,
-        "hospitalOnly": 0,
-        "reviewNeeded": 0,
-        "ambiguousMapping": 0,
-        "unmapped": 0
-      },
-      "canonicalStats": {
-        "rawReviewedRows": 0,
-        "canonicalDoctors": 0,
-        "doctorDepartmentLinks": 0,
-        "productionReadyCanonicalDoctors": 0,
-        "sourceUrlMatchLinks": 0,
-        "reviewNeededLinks": 0,
-        "expectedDistinctDoctorDepartmentLinks": 0,
-        "rawRowsDroppedAsExactDuplicates": 0,
-        "canonicalDoctorsWithMoreThanOneSourceUrl": 0,
-        "canonicalDoctorsWithMoreThanOneMasterDeptCandidate": 0,
-        "canonicalDoctorsWithMoreThanOneExtractedFromUrl": 0,
-        "canonicalDoctorsWhereMultipleRawRowsCollapsedIntoOneLink": 0,
-        "duplicateProfileUrlGroupsBefore": 0,
-        "duplicateProfileUrlGroupsAfter": 0
-      },
-      "mainBlocker": "No Master_Dept source URLs available for a safe pilot.",
-      "blockerType": "noPublicRosterFound"
+      "mainBlocker": "No safe seed URL is available yet; manual seed URL verification required.",
+      "blockerType": "needsManualSeedUrl"
     }
   ],
+  "hospitalNormalizationAudit": {
+    "generatedAt": "2026-06-22T06:01:32.699Z",
+    "totalHospitalGroups": 60,
+    "opaqueSlugCount": 0,
+    "entries": [
+      {
+        "hospitalNameRaw": "׳0504048312",
+        "normalizedHospitalName": "0504048312",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "0504048312",
+        "aliasMatched": false,
+        "aliasLabels": [],
+        "isOpaqueSlug": false,
+        "reason": "ASCII-safe name used as slug",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0077-0504048312-פתולוגיה-רבין"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז לבה\"נ אברבנאל",
+        "normalizedHospitalName": "מרכז לבהנ אברבנאל",
+        "rowCount": 2,
+        "rowsWithUrls": 2,
+        "resolvedSlug": "abrabanel-mental-health",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "אברבנאל"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: אברבנאל",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0014-מרכז-לבהנ-אברבנאל-פסיכיאטריה",
+          "master-dept-0023-מרכז-לבהנ-אברבנאל-פסיכיאטריה-של-הילד-והמתבגר"
+        ]
+      },
+      {
+        "hospitalNameRaw": "עדי נגב - נחלת עדן",
+        "normalizedHospitalName": "עדי נגב נחלת עדן",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "adi-negev-nahalat-eden",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "עדי נגב - נחלת עדן"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: עדי נגב - נחלת עדן",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0036-עדי-נגב-נחלת-עדן-רפואה-פיזיקלית-ושיקום"
+        ]
+      },
+      {
+        "hospitalNameRaw": "אסיא ש.בריאות קהילתיים",
+        "normalizedHospitalName": "אסיא ש.בריאות קהילתיים",
+        "rowCount": 1,
+        "rowsWithUrls": 1,
+        "resolvedSlug": "asia-community-health-services",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "אסיא שירותי בריאות קהילתיים"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: אסיא שירותי בריאות קהילתיים",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0002-אסיא-ש-בריאות-קהילתיים-רפואת-המשפחה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "בי\"ח אסותא אשדוד",
+        "normalizedHospitalName": "ביח אסותא אשדוד",
+        "rowCount": 18,
+        "rowsWithUrls": 4,
+        "resolvedSlug": "assuta-ashdod",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "אסותא אשדוד",
+          "Assuta Ashdod"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: אסותא אשדוד / Assuta Ashdod",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0185-ביח-אסותא-אשדוד-מחלות-עיניים",
+          "master-dept-0186-ביח-אסותא-אשדוד-רדיולוגיה-דימות",
+          "master-dept-0187-ביח-אסותא-אשדוד-קרדיולוגיה",
+          "master-dept-0188-ביח-אסותא-אשדוד-פנימית-ב",
+          "master-dept-0189-ביח-אסותא-אשדוד-פנימית-א"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי ברזילי",
+        "normalizedHospitalName": "מרכז רפואי ברזילי",
+        "rowCount": 25,
+        "rowsWithUrls": 7,
+        "resolvedSlug": "barzilai",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "ברזילי",
+          "Barzilai"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: ברזילי / Barzilai",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0307-מרכז-רפואי-ברזילי-יילוד-וגינקולוגיה",
+          "master-dept-0308-מרכז-רפואי-ברזילי-נוירולוגיה",
+          "master-dept-0309-מרכז-רפואי-ברזילי-גריאטריה",
+          "master-dept-0310-מרכז-רפואי-ברזילי-רפואת-ילדים",
+          "master-dept-0311-מרכז-רפואי-ברזילי-אף-אוזן-גרון"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז לבה\"נ באר שבע",
+        "normalizedHospitalName": "מרכז לבהנ באר שבע",
+        "rowCount": 2,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "beer-sheva-mental-health",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "מרכז לבה\"נ באר שבע",
+          "Beer Sheva Mental Health"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: מרכז לבה\"נ באר שבע / Beer Sheva Mental Health",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0010-מרכז-לבהנ-באר-שבע-פסיכיאטריה",
+          "master-dept-0020-מרכז-לבהנ-באר-שבע-פסיכיאטריה-של-הילד-והמתבגר"
+        ]
+      },
+      {
+        "hospitalNameRaw": "בית בלב ראשון לציון",
+        "normalizedHospitalName": "בית בלב ראשון לציון",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "beit-balev-rishon-lezion",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "בית בלב ראשון לציון"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: בית בלב ראשון לציון",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0034-בית-בלב-ראשון-לציון-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מ.גריאטרי בית רבקה",
+        "normalizedHospitalName": "מ.גריאטרי בית רבקה",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "beit-rivka-geriatric",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "בית רבקה"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: בית רבקה",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0030-מ-גריאטרי-בית-רבקה-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי בני ציון",
+        "normalizedHospitalName": "מרכז רפואי בני ציון",
+        "rowCount": 21,
+        "rowsWithUrls": 20,
+        "resolvedSlug": "bnei-zion",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "בני ציון",
+          "Bnei Zion"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: בני ציון / Bnei Zion",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0145-מרכז-רפואי-בני-ציון-רפואה-דחופה",
+          "master-dept-0146-מרכז-רפואי-בני-ציון-רפואת-ילדים",
+          "master-dept-0147-מרכז-רפואי-בני-ציון-נוירולוגיה",
+          "master-dept-0148-מרכז-רפואי-בני-ציון-יילוד-וגינקולוגיה",
+          "master-dept-0149-מרכז-רפואי-בני-ציון-רפואה-פיזיקלית-ושיקום"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז לבה\"נ מעלה הכרמל",
+        "normalizedHospitalName": "מרכז לבהנ מעלה הכרמל",
+        "rowCount": 2,
+        "rowsWithUrls": 2,
+        "resolvedSlug": "carmel",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "כרמל",
+          "Carmel"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: כרמל / Carmel",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0012-מרכז-לבהנ-מעלה-הכרמל-פסיכיאטריה",
+          "master-dept-0022-מרכז-לבהנ-מעלה-הכרמל-פסיכיאטריה-של-הילד-והמתבגר"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי כרמל",
+        "normalizedHospitalName": "מרכז רפואי כרמל",
+        "rowCount": 25,
+        "rowsWithUrls": 22,
+        "resolvedSlug": "carmel",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "כרמל",
+          "Carmel"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: כרמל / Carmel",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0252-מרכז-רפואי-כרמל-מחלות-עיניים",
+          "master-dept-0253-מרכז-רפואי-כרמל-הרדמה",
+          "master-dept-0254-מרכז-רפואי-כרמל-אף-אוזן-גרון",
+          "master-dept-0255-מרכז-רפואי-כרמל-רפואת-ילדים",
+          "master-dept-0256-מרכז-רפואי-כרמל-פנימית-א"
+        ]
+      },
+      {
+        "hospitalNameRaw": "שירותי בריאות כללית",
+        "normalizedHospitalName": "שירותי בריאות כללית",
+        "rowCount": 1,
+        "rowsWithUrls": 1,
+        "resolvedSlug": "clalit-community",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "שירותי בריאות כללית",
+          "Clalit Community"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: שירותי בריאות כללית / Clalit Community",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0003-שירותי-בריאות-כללית-רפואת-המשפחה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי העמק",
+        "normalizedHospitalName": "מרכז רפואי העמק",
+        "rowCount": 27,
+        "rowsWithUrls": 27,
+        "resolvedSlug": "emek",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "העמק",
+          "Emek"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: העמק / Emek",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0361-מרכז-רפואי-העמק-פסיכיאטריה",
+          "master-dept-0362-מרכז-רפואי-העמק-רפואה-פיזיקלית-ושיקום",
+          "master-dept-0363-מרכז-רפואי-העמק-רפואת-עור",
+          "master-dept-0364-מרכז-רפואי-העמק-פנימית-א",
+          "master-dept-0365-מרכז-רפואי-העמק-פנימית-ב"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מ.גריאטרי פלימן",
+        "normalizedHospitalName": "מ.גריאטרי פלימן",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "fliman-geriatric",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "פלימן"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: פלימן",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0029-מ-גריאטרי-פלימן-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מ.לרפואה משפטית",
+        "normalizedHospitalName": "מ.לרפואה משפטית",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "forensic-medicine",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "רפואה משפטית"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: רפואה משפטית",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0635-מ-לרפואה-משפטית"
+        ]
+      },
+      {
+        "hospitalNameRaw": "המרכז הרפואי לגליל",
+        "normalizedHospitalName": "המרכז הרפואי לגליל",
+        "rowCount": 29,
+        "rowsWithUrls": 28,
+        "resolvedSlug": "galilee",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "המרכז הרפואי לגליל",
+          "Galilee"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: המרכז הרפואי לגליל / Galilee",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0332-המרכז-הרפואי-לגליל-יילוד-וגינקולוגיה",
+          "master-dept-0333-המרכז-הרפואי-לגליל-פנימית-א",
+          "master-dept-0334-המרכז-הרפואי-לגליל-פנימית-ב",
+          "master-dept-0335-המרכז-הרפואי-לגליל-פנימית-ג",
+          "master-dept-0336-המרכז-הרפואי-לגליל-פנימית-ד"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז לבה\"נ גהה",
+        "normalizedHospitalName": "מרכז לבהנ גהה",
+        "rowCount": 2,
+        "rowsWithUrls": 2,
+        "resolvedSlug": "geha",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "גהה",
+          "Geha"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: גהה / Geha",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0007-מרכז-לבהנ-גהה-פסיכיאטריה",
+          "master-dept-0018-מרכז-לבהנ-גהה-פסיכיאטריה-של-הילד-והמתבגר"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח הדסה הר הצופים",
+        "normalizedHospitalName": "ביהח הדסה הר הצופים",
+        "rowCount": 13,
+        "rowsWithUrls": 10,
+        "resolvedSlug": "hadassah",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "הדסה",
+          "Hadassah"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: הדסה / Hadassah",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0085-ביהח-הדסה-הר-הצופים-רפואת-ילדים",
+          "master-dept-0086-ביהח-הדסה-הר-הצופים-פנימית",
+          "master-dept-0087-ביהח-הדסה-הר-הצופים-רפואה-פיזיקלית-ושיקום",
+          "master-dept-0088-ביהח-הדסה-הר-הצופים-גריאטריה",
+          "master-dept-0089-ביהח-הדסה-הר-הצופים-יילוד-וגינקולוגיה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח הדסה עין כרם",
+        "normalizedHospitalName": "ביהח הדסה עין כרם",
+        "rowCount": 30,
+        "rowsWithUrls": 6,
+        "resolvedSlug": "hadassah",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "הדסה",
+          "Hadassah"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: הדסה / Hadassah",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0277-ביהח-הדסה-עין-כרם-הרדמה",
+          "master-dept-0278-ביהח-הדסה-עין-כרם-רפואת-ילדים",
+          "master-dept-0279-ביהח-הדסה-עין-כרם-פסיכיאטריה",
+          "master-dept-0280-ביהח-הדסה-עין-כרם-פנימית-א",
+          "master-dept-0281-ביהח-הדסה-עין-כרם-פנימית-ב"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מ.גריאטרי הרצפלד",
+        "normalizedHospitalName": "מ.גריאטרי הרצפלד",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "herzfeld-geriatric",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "הרצפלד"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: הרצפלד",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0033-מ-גריאטרי-הרצפלד-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח הרצוג",
+        "normalizedHospitalName": "ביהח הרצוג",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "herzog-medical-center",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "הרצוג"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: הרצוג",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0028-ביהח-הרצוג-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי הלל יפה",
+        "normalizedHospitalName": "מרכז רפואי הלל יפה",
+        "rowCount": 19,
+        "rowsWithUrls": 9,
+        "resolvedSlug": "hillel-yaffe",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "הלל יפה",
+          "Hillel Yaffe"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: הלל יפה / Hillel Yaffe",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0166-מרכז-רפואי-הלל-יפה-יילוד-וגינקולוגיה",
+          "master-dept-0167-מרכז-רפואי-הלל-יפה-נוירולוגיה",
+          "master-dept-0168-מרכז-רפואי-הלל-יפה-רפואה-דחופה",
+          "master-dept-0169-מרכז-רפואי-הלל-יפה-אורתופדיה",
+          "master-dept-0170-מרכז-רפואי-הלל-יפה-כירורגיה-כללית"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח המשפחה הקדושה",
+        "normalizedHospitalName": "ביהח המשפחה הקדושה",
+        "rowCount": 6,
+        "rowsWithUrls": 6,
+        "resolvedSlug": "holy-family",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "משפחה הקדושה",
+          "Holy Family"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: משפחה הקדושה / Holy Family",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0044-ביהח-המשפחה-הקדושה-יילוד-וגינקולוגיה",
+          "master-dept-0045-ביהח-המשפחה-הקדושה-אורתופדיה",
+          "master-dept-0046-ביהח-המשפחה-הקדושה-רדיולוגיה-דימות",
+          "master-dept-0047-ביהח-המשפחה-הקדושה-כירורגיה-כללית",
+          "master-dept-0048-ביהח-המשפחה-הקדושה-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי ת\"א סוראסקי",
+        "normalizedHospitalName": "מרכז רפואי תא סוראסקי",
+        "rowCount": 24,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "ichilov",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "איכילוב",
+          "המרכז הרפואי תל אביב",
+          "Tel Aviv Sourasky"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: איכילוב / המרכז הרפואי תל אביב / Tel Aviv Sourasky",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0464-מרכז-רפואי-תא-סוראסקי-רפואה-דחופה",
+          "master-dept-0465-מרכז-רפואי-תא-סוראסקי-הרדמה",
+          "master-dept-0466-מרכז-רפואי-תא-סוראסקי-רפואת-ילדים",
+          "master-dept-0467-מרכז-רפואי-תא-סוראסקי-אורתופדיה",
+          "master-dept-0468-מרכז-רפואי-תא-סוראסקי-פנימית"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז לבה\"נ ירושלים (כפר שאול ואיתנים)",
+        "normalizedHospitalName": "מרכז לבהנ ירושלים (כפר שאול ואיתנים)",
+        "rowCount": 2,
+        "rowsWithUrls": 2,
+        "resolvedSlug": "jerusalem-mental-health-kfar-shaul-eitanim",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "כפר שאול ואיתנים"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: כפר שאול ואיתנים",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0016-מרכז-לבהנ-ירושלים-כפר-שאול-ואיתנים-פסיכיאטריה",
+          "master-dept-0024-מרכז-לבהנ-ירושלים-כפר-שאול-ואיתנים-פסיכיאטריה-של-הילד-והמתבגר"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי קפלן",
+        "normalizedHospitalName": "מרכז רפואי קפלן",
+        "rowCount": 25,
+        "rowsWithUrls": 22,
+        "resolvedSlug": "kaplan",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "קפלן",
+          "Kaplan"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: קפלן / Kaplan",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0203-מרכז-רפואי-קפלן-רפואה-דחופה",
+          "master-dept-0204-מרכז-רפואי-קפלן-רפואת-ילדים",
+          "master-dept-0205-מרכז-רפואי-קפלן-מחלות-עיניים",
+          "master-dept-0206-מרכז-רפואי-קפלן-קרדיולוגיה",
+          "master-dept-0207-מרכז-רפואי-קפלן-כירורגיה-פלסטית-ואסתטית"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח לניאדו",
+        "normalizedHospitalName": "ביהח לניאדו",
+        "rowCount": 11,
+        "rowsWithUrls": 11,
+        "resolvedSlug": "laniado",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "לניאדו",
+          "Laniado"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: לניאדו / Laniado",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0118-ביהח-לניאדו-רפואת-ילדים",
+          "master-dept-0119-ביהח-לניאדו-אורתופדיה",
+          "master-dept-0120-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-א",
+          "master-dept-0121-ביהח-לניאדו-פנימית-בית-חולים-מחלקה-ב",
+          "master-dept-0122-ביהח-לניאדו-הרדמה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "קופ\"ח לאומית",
+        "normalizedHospitalName": "קופח לאומית",
+        "rowCount": 1,
+        "rowsWithUrls": 1,
+        "resolvedSlug": "leumit-health-fund",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "קופ\"ח לאומית"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: קופ\"ח לאומית",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0005-קופח-לאומית-רפואת-המשפחה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח לוינשטיין",
+        "normalizedHospitalName": "ביהח לוינשטיין",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "loewenstein-rehabilitation",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "לוינשטיין"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: לוינשטיין",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0037-ביהח-לוינשטיין-רפואה-פיזיקלית-ושיקום"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח מעיני הישועה",
+        "normalizedHospitalName": "ביהח מעיני הישועה",
+        "rowCount": 6,
+        "rowsWithUrls": 6,
+        "resolvedSlug": "maayanei-hayeshua",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "מעיני הישועה",
+          "Maayanei Hayeshua"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: מעיני הישועה / Maayanei Hayeshua",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0079-ביהח-מעיני-הישועה-פסיכיאטריה",
+          "master-dept-0080-ביהח-מעיני-הישועה-רפואת-ילדים",
+          "master-dept-0081-ביהח-מעיני-הישועה-יילוד-וגינקולוגיה",
+          "master-dept-0082-ביהח-מעיני-הישועה-פנימית",
+          "master-dept-0083-ביהח-מעיני-הישועה-הרדמה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מכבי שירותי בריאות",
+        "normalizedHospitalName": "מכבי שירותי בריאות",
+        "rowCount": 1,
+        "rowsWithUrls": 1,
+        "resolvedSlug": "maccabi-health-services",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "מכבי שירותי בריאות"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: מכבי שירותי בריאות",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0004-מכבי-שירותי-בריאות-רפואת-המשפחה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז לבה\"נ מזור",
+        "normalizedHospitalName": "מרכז לבהנ מזור",
+        "rowCount": 1,
+        "rowsWithUrls": 1,
+        "resolvedSlug": "mazor-mental-health",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "מזור"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: מזור",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0009-מרכז-לבהנ-מזור-פסיכיאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי מאיר",
+        "normalizedHospitalName": "מרכז רפואי מאיר",
+        "rowCount": 24,
+        "rowsWithUrls": 24,
+        "resolvedSlug": "meir",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "מאיר",
+          "Meir"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: מאיר / Meir",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0228-מרכז-רפואי-מאיר-הרדמה",
+          "master-dept-0229-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-א",
+          "master-dept-0230-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ב",
+          "master-dept-0231-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ג",
+          "master-dept-0232-מרכז-רפואי-מאיר-פנימית-בית-חולים-מחלקה-ד"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרחבים - המרכז הרפואי לטיפול במוח ובנפש באר יעקב נס ציונה",
+        "normalizedHospitalName": "מרחבים המרכז הרפואי לטיפול במוח ובנפש באר יעקב נס ציונה",
+        "rowCount": 2,
+        "rowsWithUrls": 2,
+        "resolvedSlug": "merhavim",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "מרחבים",
+          "Merhavim"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: מרחבים / Merhavim",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0011-מרחבים-המרכז-הרפואי-לטיפול-במוח-ובנפש-באר-יעקב-נס-ציונה-פסיכיאטריה",
+          "master-dept-0021-מרחבים-המרכז-הרפואי-לטיפול-במוח-ובנפש-באר-יעקב-נס-ציונה-פסיכיאטריה-של-הי"
+        ]
+      },
+      {
+        "hospitalNameRaw": "קופ\"ח מאוחדת",
+        "normalizedHospitalName": "קופח מאוחדת",
+        "rowCount": 1,
+        "rowsWithUrls": 1,
+        "resolvedSlug": "meuhedet-health-fund",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "קופ\"ח מאוחדת"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: קופ\"ח מאוחדת",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0006-קופח-מאוחדת-רפואת-המשפחה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח אי.מ.מ.ס הסקוטי",
+        "normalizedHospitalName": "ביהח אי.מ.מ.ס הסקוטי",
+        "rowCount": 10,
+        "rowsWithUrls": 8,
+        "resolvedSlug": "nazareth-scottish",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "הסקוטי",
+          "Nazareth Scottish"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: הסקוטי / Nazareth Scottish",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0050-ביהח-אי-מ-מ-ס-הסקוטי-יילוד-וגינקולוגיה",
+          "master-dept-0051-ביהח-אי-מ-מ-ס-הסקוטי-אורתופדיה",
+          "master-dept-0052-ביהח-אי-מ-מ-ס-הסקוטי-כירורגיה-אורולוגית",
+          "master-dept-0053-ביהח-אי-מ-מ-ס-הסקוטי-פנימית",
+          "master-dept-0054-ביהח-אי-מ-מ-ס-הסקוטי-רפואה-דחופה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז גריאטרי נאות המושבה",
+        "normalizedHospitalName": "מרכז גריאטרי נאות המושבה",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "neot-hamoshava-geriatric",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "נאות המושבה"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: נאות המושבה",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0032-מרכז-גריאטרי-נאות-המושבה-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מ.גריאטרי נתניה",
+        "normalizedHospitalName": "מ.גריאטרי נתניה",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "netanya-geriatric",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "גריאטרי נתניה"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: גריאטרי נתניה",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0035-מ-גריאטרי-נתניה-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי ברוך פדה פוריה",
+        "normalizedHospitalName": "מרכז רפואי ברוך פדה פוריה",
+        "rowCount": 16,
+        "rowsWithUrls": 13,
+        "resolvedSlug": "poria",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "פוריה",
+          "פדה",
+          "Poriya"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: פוריה / פדה / Poriya",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0129-מרכז-רפואי-ברוך-פדה-פוריה-אורתופדיה",
+          "master-dept-0130-מרכז-רפואי-ברוך-פדה-פוריה-יילוד-וגינקולוגיה",
+          "master-dept-0131-מרכז-רפואי-ברוך-פדה-פוריה-כירורגיה-כללית",
+          "master-dept-0132-מרכז-רפואי-ברוך-פדה-פוריה-גריאטריה",
+          "master-dept-0133-מרכז-רפואי-ברוך-פדה-פוריה-רפואת-ילדים"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז לבה\"נ לב השרון",
+        "normalizedHospitalName": "מרכז לבהנ לב השרון",
+        "rowCount": 1,
+        "rowsWithUrls": 1,
+        "resolvedSlug": "rabin",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "רבין",
+          "בילינסון",
+          "השרון",
+          "Rabin",
+          "Beilinson"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: רבין / בילינסון / השרון / Rabin / Beilinson",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0015-מרכז-לבהנ-לב-השרון-פסיכיאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח השרון מרכז רפואי רבין",
+        "normalizedHospitalName": "ביהח השרון מרכז רפואי רבין",
+        "rowCount": 12,
+        "rowsWithUrls": 7,
+        "resolvedSlug": "rabin",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "רבין",
+          "בילינסון",
+          "השרון",
+          "Rabin",
+          "Beilinson"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: רבין / בילינסון / השרון / Rabin / Beilinson",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0066-ביהח-השרון-מרכז-רפואי-רבין-אורתופדיה",
+          "master-dept-0067-ביהח-השרון-מרכז-רפואי-רבין-הרדמה",
+          "master-dept-0068-ביהח-השרון-מרכז-רפואי-רבין-רפואה-דחופה",
+          "master-dept-0069-ביהח-השרון-מרכז-רפואי-רבין-פנימית-בית-חולים-מחלקה-א",
+          "master-dept-0070-ביהח-השרון-מרכז-רפואי-רבין-פנימית-בית-חולים-מחלקה-ב"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח בילינסון מרכז רפואי רבין",
+        "normalizedHospitalName": "ביהח בילינסון מרכז רפואי רבין",
+        "rowCount": 24,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "rabin",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "רבין",
+          "בילינסון",
+          "השרון",
+          "Rabin",
+          "Beilinson"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: רבין / בילינסון / השרון / Rabin / Beilinson",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0488-ביהח-בילינסון-מרכז-רפואי-רבין-רפואה-דחופה",
+          "master-dept-0489-ביהח-בילינסון-מרכז-רפואי-רבין-הרדמה",
+          "master-dept-0490-ביהח-בילינסון-מרכז-רפואי-רבין-רפואת-ילדים",
+          "master-dept-0491-ביהח-בילינסון-מרכז-רפואי-רבין-אורתופדיה",
+          "master-dept-0492-ביהח-בילינסון-מרכז-רפואי-רבין-פנימית"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי רבין",
+        "normalizedHospitalName": "מרכז רפואי רבין",
+        "rowCount": 24,
+        "rowsWithUrls": 4,
+        "resolvedSlug": "rabin",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "רבין",
+          "בילינסון",
+          "השרון",
+          "Rabin",
+          "Beilinson"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: רבין / בילינסון / השרון / Rabin / Beilinson",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0611-מרכז-רפואי-רבין-רפואה-דחופה",
+          "master-dept-0612-מרכז-רפואי-רבין-הרדמה",
+          "master-dept-0613-מרכז-רפואי-רבין-רפואת-ילדים",
+          "master-dept-0614-מרכז-רפואי-רבין-אורתופדיה",
+          "master-dept-0615-מרכז-רפואי-רבין-פנימית"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז בריאות הנפש רמת חן ע\"ש בריל",
+        "normalizedHospitalName": "מרכז בריאות הנפש רמת חן עש בריל",
+        "rowCount": 2,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "ramat-chen-brill-mental-health",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "רמת חן ע\"ש בריל"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: רמת חן ע\"ש בריל",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0017-מרכז-בריאות-הנפש-רמת-חן-עש-בריל-פסיכיאטריה",
+          "master-dept-0025-מרכז-בריאות-הנפש-רמת-חן-עש-בריל-פסיכיאטריה-של-הילד-והמתבגר"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי רמב\"ם",
+        "normalizedHospitalName": "מרכז רפואי רמבם",
+        "rowCount": 24,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "rambam",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "רמב\"ם",
+          "רמבם",
+          "Rambam"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: רמב\"ם / רמבם / Rambam",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0440-מרכז-רפואי-רמבם-רפואה-דחופה",
+          "master-dept-0441-מרכז-רפואי-רמבם-הרדמה",
+          "master-dept-0442-מרכז-רפואי-רמבם-רפואת-ילדים",
+          "master-dept-0443-מרכז-רפואי-רמבם-אורתופדיה",
+          "master-dept-0444-מרכז-רפואי-רמבם-פנימית"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי רעות",
+        "normalizedHospitalName": "מרכז רפואי רעות",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "reuth-medical-center",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "רעות"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: רעות",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0027-מרכז-רפואי-רעות-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח הצרפתי",
+        "normalizedHospitalName": "ביהח הצרפתי",
+        "rowCount": 4,
+        "rowsWithUrls": 4,
+        "resolvedSlug": "saint-vincent",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "סן ונסן",
+          "הצרפתי",
+          "Saint Vincent"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: סן ונסן / הצרפתי / Saint Vincent",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0038-ביהח-הצרפתי-רפואת-ילדים",
+          "master-dept-0039-ביהח-הצרפתי-יילוד-וגינקולוגיה",
+          "master-dept-0040-ביהח-הצרפתי-אף-אוזן-גרון",
+          "master-dept-0041-ביהח-הצרפתי-מחלות-עיניים"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז שניידר לילדים",
+        "normalizedHospitalName": "מרכז שניידר לילדים",
+        "rowCount": 6,
+        "rowsWithUrls": 6,
+        "resolvedSlug": "schneider",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "שניידר",
+          "Schneider"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: שניידר / Schneider",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0060-מרכז-שניידר-לילדים-רפואה-דחופה",
+          "master-dept-0061-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-א",
+          "master-dept-0062-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ב",
+          "master-dept-0063-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ג",
+          "master-dept-0064-מרכז-שניידר-לילדים-רפואת-ילדים-בית-חולים-מחלקה-ד"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז לבה\"נ שער מנשה",
+        "normalizedHospitalName": "מרכז לבהנ שער מנשה",
+        "rowCount": 1,
+        "rowsWithUrls": 1,
+        "resolvedSlug": "shaar-menashe-mental-health",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "שער מנשה"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: שער מנשה",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0013-מרכז-לבהנ-שער-מנשה-פסיכיאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי שערי צדק",
+        "normalizedHospitalName": "מרכז רפואי שערי צדק",
+        "rowCount": 27,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "shaare-zedek",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "שערי צדק",
+          "Shaare Zedek"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: שערי צדק / Shaare Zedek",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0512-מרכז-רפואי-שערי-צדק-רפואה-דחופה",
+          "master-dept-0513-מרכז-רפואי-שערי-צדק-הרדמה",
+          "master-dept-0514-מרכז-רפואי-שערי-צדק-רפואת-ילדים",
+          "master-dept-0515-מרכז-רפואי-שערי-צדק-אורתופדיה",
+          "master-dept-0516-מרכז-רפואי-שערי-צדק-פנימית-א"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז לבה\"נ שלוותה",
+        "normalizedHospitalName": "מרכז לבהנ שלוותה",
+        "rowCount": 2,
+        "rowsWithUrls": 2,
+        "resolvedSlug": "shalvata",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "שלוותה",
+          "Shalvata"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: שלוותה / Shalvata",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0008-מרכז-לבהנ-שלוותה-פסיכיאטריה",
+          "master-dept-0019-מרכז-לבהנ-שלוותה-פסיכיאטריה-של-הילד-והמתבגר"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי יצחק שמיר",
+        "normalizedHospitalName": "מרכז רפואי יצחק שמיר",
+        "rowCount": 27,
+        "rowsWithUrls": 26,
+        "resolvedSlug": "shamir",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "שמיר",
+          "אסף הרופא",
+          "Shamir"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: שמיר / אסף הרופא / Shamir",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0413-מרכז-רפואי-יצחק-שמיר-אורתופדיה-א",
+          "master-dept-0414-מרכז-רפואי-יצחק-שמיר-אורתופדיה-ב",
+          "master-dept-0415-מרכז-רפואי-יצחק-שמיר-רפואת-ילדים",
+          "master-dept-0416-מרכז-רפואי-יצחק-שמיר-פנימית-א",
+          "master-dept-0417-מרכז-רפואי-יצחק-שמיר-פנימית-ב"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי שיבא",
+        "normalizedHospitalName": "מרכז רפואי שיבא",
+        "rowCount": 38,
+        "rowsWithUrls": 3,
+        "resolvedSlug": "sheba",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "שיבא",
+          "תל השומר",
+          "Sheba"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: שיבא / תל השומר / Sheba",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0539-מרכז-רפואי-שיבא-רפואה-דחופה",
+          "master-dept-0540-מרכז-רפואי-שיבא-הרדמה",
+          "master-dept-0541-מרכז-רפואי-שיבא-רפואת-ילדים-א",
+          "master-dept-0542-מרכז-רפואי-שיבא-רפואת-ילדים-ב",
+          "master-dept-0543-מרכז-רפואי-שיבא-אורתופדיה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מ.גריאטרי שמואל הרופא",
+        "normalizedHospitalName": "מ.גריאטרי שמואל הרופא",
+        "rowCount": 1,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "shmuel-harofe-geriatric",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "שמואל הרופא"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: שמואל הרופא",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0031-מ-גריאטרי-שמואל-הרופא-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מ.גריאטרי שהם",
+        "normalizedHospitalName": "מ.גריאטרי שהם",
+        "rowCount": 1,
+        "rowsWithUrls": 1,
+        "resolvedSlug": "shoham-geriatric",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "גריאטרי שהם"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: גריאטרי שהם",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0026-מ-גריאטרי-שהם-גריאטריה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי סורוקה",
+        "normalizedHospitalName": "מרכז רפואי סורוקה",
+        "rowCount": 34,
+        "rowsWithUrls": 3,
+        "resolvedSlug": "soroka",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "סורוקה",
+          "Soroka"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: סורוקה / Soroka",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0577-מרכז-רפואי-סורוקה-רפואה-דחופה",
+          "master-dept-0578-מרכז-רפואי-סורוקה-הרדמה",
+          "master-dept-0579-מרכז-רפואי-סורוקה-רפואת-ילדים-א",
+          "master-dept-0580-מרכז-רפואי-סורוקה-רפואת-ילדים-ב",
+          "master-dept-0581-מרכז-רפואי-סורוקה-רפואת-ילדים-ג"
+        ]
+      },
+      {
+        "hospitalNameRaw": "מרכז רפואי וולפסון",
+        "normalizedHospitalName": "מרכז רפואי וולפסון",
+        "rowCount": 25,
+        "rowsWithUrls": 8,
+        "resolvedSlug": "wolfson",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "וולפסון",
+          "Wolfson"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: וולפסון / Wolfson",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0388-מרכז-רפואי-וולפסון-כירורגיה-כללית-א",
+          "master-dept-0389-מרכז-רפואי-וולפסון-כירורגיה-כללית-ב",
+          "master-dept-0390-מרכז-רפואי-וולפסון-רדיולוגיה-דימות",
+          "master-dept-0391-מרכז-רפואי-וולפסון-אף-אוזן-גרון",
+          "master-dept-0392-מרכז-רפואי-וולפסון-הרדמה"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח יוספטל",
+        "normalizedHospitalName": "ביהח יוספטל",
+        "rowCount": 2,
+        "rowsWithUrls": 0,
+        "resolvedSlug": "yoseftal",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "יוספטל",
+          "Yoseftal"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: יוספטל / Yoseftal",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0042-ביהח-יוספטל-פנימית",
+          "master-dept-0043-ביהח-יוספטל-כירורגיה-כללית"
+        ]
+      },
+      {
+        "hospitalNameRaw": "ביה\"ח זיו - צפת",
+        "normalizedHospitalName": "ביהח זיו צפת",
+        "rowCount": 20,
+        "rowsWithUrls": 16,
+        "resolvedSlug": "ziv",
+        "aliasMatched": true,
+        "aliasLabels": [
+          "זיו",
+          "Ziv"
+        ],
+        "isOpaqueSlug": false,
+        "reason": "matched alias registry: זיו / Ziv",
+        "sampleMasterDeptRowIds": [
+          "master-dept-0098-ביהח-זיו-צפת-רפואת-ילדים",
+          "master-dept-0099-ביהח-זיו-צפת-פסיכיאטריה",
+          "master-dept-0100-ביהח-זיו-צפת-יילוד-וגינקולוגיה",
+          "master-dept-0101-ביהח-זיו-צפת-פנימית-בית-חולים-מחלקה-א",
+          "master-dept-0102-ביהח-זיו-צפת-פנימית-בית-חולים-מחלקה-ב"
+        ]
+      }
+    ]
+  },
+  "seedUrlRegistryStatus": [
+    {
+      "hospitalSlug": "beer-sheva-mental-health",
+      "seedUrlCount": 1,
+      "safeSeedUrlCount": 1,
+      "needsManualSeedUrl": false
+    },
+    {
+      "hospitalSlug": "rambam",
+      "seedUrlCount": 1,
+      "safeSeedUrlCount": 1,
+      "needsManualSeedUrl": false
+    },
+    {
+      "hospitalSlug": "shaare-zedek",
+      "seedUrlCount": 1,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": true
+    },
+    {
+      "hospitalSlug": "yoseftal",
+      "seedUrlCount": 1,
+      "safeSeedUrlCount": 1,
+      "needsManualSeedUrl": false
+    }
+  ],
+  "departmentMappedRosterCountPrevious": 14,
+  "departmentMappedRosterCountChangeReason": "Current count uses stricter outputUsability classification: only sourceUrlMapped/partiallyMapped link evidence counts as departmentMappedRoster; hospital-level/global rosters stay hospitalRoster.",
   "attemptedHospitalCount": 31,
-  "usableHospitalRosterCount": 21,
+  "usableHospitalRosterCount": 22,
   "usableDepartmentMappedRosterCount": 12,
   "safeForFullBatchCount": 5,
   "needsCalibrationCount": 26,
   "needsAdapterCount": 12,
-  "blockedCount": 12,
+  "needsManualSeedUrlCount": 1,
+  "blockedCount": 11,
   "deferredCount": 1,
   "notAttemptedCount": 29,
-  "attemptedButNoDoctorsCount": 11,
+  "attemptedButNoDoctorsCount": 10,
   "attemptedWithDepartmentMappedRosterCount": 12,
-  "attemptedWithHospitalRosterOnlyCount": 8,
-  "remainingUnattemptedCount": 36,
+  "attemptedWithHospitalRosterOnlyCount": 9,
+  "remainingUnattemptedCount": 34,
   "blockersByType": {
-    "noPublicRosterFound": 10,
-    "other": 4
+    "noPublicRosterFound": 8,
+    "other": 5,
+    "needsManualSeedUrl": 1
   },
   "topNextAdapterPriorities": [
     {
@@ -3141,66 +4552,27 @@
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 1,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": true,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
-      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
-      "plannedAction": "adapterInspect"
-    },
-    {
-      "hospitalName": "מרכז רפואי רמב\"ם",
-      "hospitalSlug": "rambam",
-      "providerGuess": "unknown",
-      "masterDeptRows": 24,
-      "rowsWithUrls": 0,
-      "liveUrlRows": 0,
-      "nearbyDoctorOrTeamUrlRows": 0,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "needsAdapter",
-      "expectedMappingReadiness": "blocked",
-      "priority": "low",
-      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
-      "plannedAction": "adapterInspect"
-    },
-    {
-      "hospitalName": "ביה\"ח יוספטל",
-      "hospitalSlug": "yoseftal",
-      "providerGuess": "clalit",
-      "masterDeptRows": 2,
-      "rowsWithUrls": 0,
-      "liveUrlRows": 0,
-      "nearbyDoctorOrTeamUrlRows": 0,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "needsAdapter",
-      "expectedMappingReadiness": "blocked",
-      "priority": "low",
-      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
-      "plannedAction": "adapterInspect"
-    },
-    {
-      "hospitalName": "מרכז לבה\"נ באר שבע",
-      "hospitalSlug": "beer-sheva-mental-health",
-      "providerGuess": "unknown",
-      "masterDeptRows": 2,
-      "rowsWithUrls": 0,
-      "liveUrlRows": 0,
-      "nearbyDoctorOrTeamUrlRows": 0,
-      "existingAdapterParserFamily": null,
-      "expectedCrawlReadiness": "needsAdapter",
-      "expectedMappingReadiness": "blocked",
-      "priority": "low",
-      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
+      "reasonForPriority": "public seed URL exists but is not marked safe; manual verification required; no Master_Dept URLs; 0/1 safe seed URLs; synthetic generic parser",
       "plannedAction": "adapterInspect"
     },
     {
       "hospitalName": "מרכז בריאות הנפש רמת חן ע\"ש בריל",
-      "hospitalSlug": "hospital-c693b49d6d",
+      "hospitalSlug": "ramat-chen-brill-mental-health",
       "providerGuess": "unknown",
       "masterDeptRows": 2,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -3209,13 +4581,16 @@
     },
     {
       "hospitalName": "מרכז רפואי רעות",
-      "hospitalSlug": "hospital-f15ccc8f1f",
+      "hospitalSlug": "reuth-medical-center",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -3224,13 +4599,16 @@
     },
     {
       "hospitalName": "ביה\"ח הרצוג",
-      "hospitalSlug": "hospital-f5503acbbd",
+      "hospitalSlug": "herzog-medical-center",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",
@@ -3239,13 +4617,70 @@
     },
     {
       "hospitalName": "מ.גריאטרי פלימן",
-      "hospitalSlug": "hospital-ef6fbb03f7",
+      "hospitalSlug": "fliman-geriatric",
       "providerGuess": "unknown",
       "masterDeptRows": 1,
       "rowsWithUrls": 0,
       "liveUrlRows": 0,
       "nearbyDoctorOrTeamUrlRows": 0,
       "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "needsAdapter",
+      "expectedMappingReadiness": "blocked",
+      "priority": "low",
+      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "adapterInspect"
+    },
+    {
+      "hospitalName": "מ.גריאטרי בית רבקה",
+      "hospitalSlug": "beit-rivka-geriatric",
+      "providerGuess": "unknown",
+      "masterDeptRows": 1,
+      "rowsWithUrls": 0,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "needsAdapter",
+      "expectedMappingReadiness": "blocked",
+      "priority": "low",
+      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "adapterInspect"
+    },
+    {
+      "hospitalName": "מ.גריאטרי שמואל הרופא",
+      "hospitalSlug": "shmuel-harofe-geriatric",
+      "providerGuess": "unknown",
+      "masterDeptRows": 1,
+      "rowsWithUrls": 0,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
+      "expectedCrawlReadiness": "needsAdapter",
+      "expectedMappingReadiness": "blocked",
+      "priority": "low",
+      "reasonForPriority": "no row URLs or no direct pilot source; adapter inspection first; no Master_Dept URLs; synthetic generic parser",
+      "plannedAction": "adapterInspect"
+    },
+    {
+      "hospitalName": "מרכז גריאטרי נאות המושבה",
+      "hospitalSlug": "neot-hamoshava-geriatric",
+      "providerGuess": "unknown",
+      "masterDeptRows": 1,
+      "rowsWithUrls": 0,
+      "liveUrlRows": 0,
+      "nearbyDoctorOrTeamUrlRows": 0,
+      "existingAdapterParserFamily": null,
+      "seedUrlCount": 0,
+      "safeSeedUrlCount": 0,
+      "needsManualSeedUrl": false,
       "expectedCrawlReadiness": "needsAdapter",
       "expectedMappingReadiness": "blocked",
       "priority": "low",

@@ -1,0 +1,362 @@
+[
+  {
+    "fullName": "ד\"ר אברהם רלו",
+    "normalizedName": "אברהם רלו",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אברהם רלו",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר אברהם רלו",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אשור יפה",
+    "normalizedName": "אשור יפה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אשור יפה",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר אשור יפה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר בחרך לב",
+    "normalizedName": "בחרך לב",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר בחרך לב",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר בחרך לב",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר גרבצב איליה",
+    "normalizedName": "גרבצב איליה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גרבצב איליה",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר גרבצב איליה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר דנילושקין יבגני",
+    "normalizedName": "דנילושקין יבגני",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר דנילושקין יבגני",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר דנילושקין יבגני",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר יארונובסקי אלכסנדר",
+    "normalizedName": "יארונובסקי אלכסנדר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר יארונובסקי אלכסנדר",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר יארונובסקי אלכסנדר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מזור אמיר",
+    "normalizedName": "מזור אמיר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מזור אמיר",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר מזור אמיר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר נוגריאן אלבר",
+    "normalizedName": "נוגריאן אלבר",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר נוגריאן אלבר",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר נוגריאן אלבר",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר קובס ילנה",
+    "normalizedName": "קובס ילנה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר קובס ילנה",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר קובס ילנה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר שיפרין ויטלי",
+    "normalizedName": "שיפרין ויטלי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שיפרין ויטלי",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר שיפרין ויטלי",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר איתי בן ציוןבית חולים שיבא-תל השומרמומחה לרפואת עיניים ילדים. ניתוחי קטרקט",
+    "normalizedName": "איתי בן ציוןבית חולים שיבא תל השומרמומחה לרפואת עיניים ילדים ניתוחי קטרקט",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר איתי בן ציוןבית חולים שיבא-תל השומרמומחה לרפואת עיניים ילדים. ניתוחי קטרקט",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר איתי בן ציוןבית חולים שיבא-תל השומרמומחה לרפואת עיניים ילדים. ניתוחי קטרקט",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "פרופסור אלכסנדר פיש",
+    "normalizedName": "אלכסנדר פיש",
+    "titlePrefix": "פרופ",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופסור אלכסנדר פיש",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "פרופסור אלכסנדר פיש",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "פרופסור ארנון כהןמרפאות",
+    "normalizedName": "ארנון כהןמרפאות",
+    "titlePrefix": "פרופ",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופסור ארנון כהןמרפאות",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "פרופסור ארנון כהןמרפאות",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר ארנון קרניבית חולים איכילובמנהל מרפאה",
+    "normalizedName": "ארנון קרניבית חולים איכילובמנהל מרפאה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ארנון קרניבית חולים איכילובמנהל מרפאה",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר ארנון קרניבית חולים איכילובמנהל מרפאה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר דימיטרי שייניסבית חולים בלינסון-רביןרופא בכיר במחלקה אורתופדיה",
+    "normalizedName": "דימיטרי שייניסבית חולים בלינסון רביןרופא בכיר במחלקה אורתופדיה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר דימיטרי שייניסבית חולים בלינסון-רביןרופא בכיר במחלקה אורתופדיה",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר דימיטרי שייניסבית חולים בלינסון-רביןרופא בכיר במחלקה אורתופדיה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר עמוס נאמןבית חולים אסף הרופאאורולוג בכיר מנתח מומחה לאורולוגיה ואורולוגית ילדים",
+    "normalizedName": "עמוס נאמןבית חולים אסף הרופאאורולוג בכיר מנתח מומחה לאורולוגיה ואורולוגית ילדים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר עמוס נאמןבית חולים אסף הרופאאורולוג בכיר מנתח מומחה לאורולוגיה ואורולוגית ילדים",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר עמוס נאמןבית חולים אסף הרופאאורולוג בכיר מנתח מומחה לאורולוגיה ואורולוגית ילדים",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר ריטה ארליךבית חולים בלינסון-רביןמומחית ברפואת עיניים",
+    "normalizedName": "ריטה ארליךבית חולים בלינסון רביןמומחית ברפואת עיניים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר ריטה ארליךבית חולים בלינסון-רביןמומחית ברפואת עיניים",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "teamPage",
+    "sourceEvidence": "ד\"ר ריטה ארליךבית חולים בלינסון-רביןמומחית ברפואת עיניים",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר שושנה קבוט",
+    "normalizedName": "שושנה קבוט",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שושנה קבוט",
+    "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx",
+    "hospitalSlug": "yoseftal",
+    "hospital": "ביה\"ח יוספטל",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שושנה קבוט",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  }
+]

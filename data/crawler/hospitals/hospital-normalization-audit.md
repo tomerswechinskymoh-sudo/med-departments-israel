@@ -1,0 +1,67 @@
+# Hospital Normalization Audit
+
+- generatedAt: 2026-06-22T06:01:32.699Z
+- total hospital groups: 60
+- opaque slug count: 0
+
+## Entries
+- 0504048312: ׳0504048312; rows=1; URLs=0; alias=none; opaque=false; reason=ASCII-safe name used as slug
+- abrabanel-mental-health: מרכז לבה"נ אברבנאל; rows=2; URLs=2; alias=אברבנאל; opaque=false; reason=matched alias registry: אברבנאל
+- adi-negev-nahalat-eden: עדי נגב - נחלת עדן; rows=1; URLs=0; alias=עדי נגב - נחלת עדן; opaque=false; reason=matched alias registry: עדי נגב - נחלת עדן
+- asia-community-health-services: אסיא ש.בריאות קהילתיים; rows=1; URLs=1; alias=אסיא שירותי בריאות קהילתיים; opaque=false; reason=matched alias registry: אסיא שירותי בריאות קהילתיים
+- assuta-ashdod: בי"ח אסותא אשדוד; rows=18; URLs=4; alias=אסותא אשדוד / Assuta Ashdod; opaque=false; reason=matched alias registry: אסותא אשדוד / Assuta Ashdod
+- barzilai: מרכז רפואי ברזילי; rows=25; URLs=7; alias=ברזילי / Barzilai; opaque=false; reason=matched alias registry: ברזילי / Barzilai
+- beer-sheva-mental-health: מרכז לבה"נ באר שבע; rows=2; URLs=0; alias=מרכז לבה"נ באר שבע / Beer Sheva Mental Health; opaque=false; reason=matched alias registry: מרכז לבה"נ באר שבע / Beer Sheva Mental Health
+- beit-balev-rishon-lezion: בית בלב ראשון לציון; rows=1; URLs=0; alias=בית בלב ראשון לציון; opaque=false; reason=matched alias registry: בית בלב ראשון לציון
+- beit-rivka-geriatric: מ.גריאטרי בית רבקה; rows=1; URLs=0; alias=בית רבקה; opaque=false; reason=matched alias registry: בית רבקה
+- bnei-zion: מרכז רפואי בני ציון; rows=21; URLs=20; alias=בני ציון / Bnei Zion; opaque=false; reason=matched alias registry: בני ציון / Bnei Zion
+- carmel: מרכז לבה"נ מעלה הכרמל; rows=2; URLs=2; alias=כרמל / Carmel; opaque=false; reason=matched alias registry: כרמל / Carmel
+- carmel: מרכז רפואי כרמל; rows=25; URLs=22; alias=כרמל / Carmel; opaque=false; reason=matched alias registry: כרמל / Carmel
+- clalit-community: שירותי בריאות כללית; rows=1; URLs=1; alias=שירותי בריאות כללית / Clalit Community; opaque=false; reason=matched alias registry: שירותי בריאות כללית / Clalit Community
+- emek: מרכז רפואי העמק; rows=27; URLs=27; alias=העמק / Emek; opaque=false; reason=matched alias registry: העמק / Emek
+- fliman-geriatric: מ.גריאטרי פלימן; rows=1; URLs=0; alias=פלימן; opaque=false; reason=matched alias registry: פלימן
+- forensic-medicine: מ.לרפואה משפטית; rows=1; URLs=0; alias=רפואה משפטית; opaque=false; reason=matched alias registry: רפואה משפטית
+- galilee: המרכז הרפואי לגליל; rows=29; URLs=28; alias=המרכז הרפואי לגליל / Galilee; opaque=false; reason=matched alias registry: המרכז הרפואי לגליל / Galilee
+- geha: מרכז לבה"נ גהה; rows=2; URLs=2; alias=גהה / Geha; opaque=false; reason=matched alias registry: גהה / Geha
+- hadassah: ביה"ח הדסה הר הצופים; rows=13; URLs=10; alias=הדסה / Hadassah; opaque=false; reason=matched alias registry: הדסה / Hadassah
+- hadassah: ביה"ח הדסה עין כרם; rows=30; URLs=6; alias=הדסה / Hadassah; opaque=false; reason=matched alias registry: הדסה / Hadassah
+- herzfeld-geriatric: מ.גריאטרי הרצפלד; rows=1; URLs=0; alias=הרצפלד; opaque=false; reason=matched alias registry: הרצפלד
+- herzog-medical-center: ביה"ח הרצוג; rows=1; URLs=0; alias=הרצוג; opaque=false; reason=matched alias registry: הרצוג
+- hillel-yaffe: מרכז רפואי הלל יפה; rows=19; URLs=9; alias=הלל יפה / Hillel Yaffe; opaque=false; reason=matched alias registry: הלל יפה / Hillel Yaffe
+- holy-family: ביה"ח המשפחה הקדושה; rows=6; URLs=6; alias=משפחה הקדושה / Holy Family; opaque=false; reason=matched alias registry: משפחה הקדושה / Holy Family
+- ichilov: מרכז רפואי ת"א סוראסקי; rows=24; URLs=0; alias=איכילוב / המרכז הרפואי תל אביב / Tel Aviv Sourasky; opaque=false; reason=matched alias registry: איכילוב / המרכז הרפואי תל אביב / Tel Aviv Sourasky
+- jerusalem-mental-health-kfar-shaul-eitanim: מרכז לבה"נ ירושלים (כפר שאול ואיתנים); rows=2; URLs=2; alias=כפר שאול ואיתנים; opaque=false; reason=matched alias registry: כפר שאול ואיתנים
+- kaplan: מרכז רפואי קפלן; rows=25; URLs=22; alias=קפלן / Kaplan; opaque=false; reason=matched alias registry: קפלן / Kaplan
+- laniado: ביה"ח לניאדו; rows=11; URLs=11; alias=לניאדו / Laniado; opaque=false; reason=matched alias registry: לניאדו / Laniado
+- leumit-health-fund: קופ"ח לאומית; rows=1; URLs=1; alias=קופ"ח לאומית; opaque=false; reason=matched alias registry: קופ"ח לאומית
+- loewenstein-rehabilitation: ביה"ח לוינשטיין; rows=1; URLs=0; alias=לוינשטיין; opaque=false; reason=matched alias registry: לוינשטיין
+- maayanei-hayeshua: ביה"ח מעיני הישועה; rows=6; URLs=6; alias=מעיני הישועה / Maayanei Hayeshua; opaque=false; reason=matched alias registry: מעיני הישועה / Maayanei Hayeshua
+- maccabi-health-services: מכבי שירותי בריאות; rows=1; URLs=1; alias=מכבי שירותי בריאות; opaque=false; reason=matched alias registry: מכבי שירותי בריאות
+- mazor-mental-health: מרכז לבה"נ מזור; rows=1; URLs=1; alias=מזור; opaque=false; reason=matched alias registry: מזור
+- meir: מרכז רפואי מאיר; rows=24; URLs=24; alias=מאיר / Meir; opaque=false; reason=matched alias registry: מאיר / Meir
+- merhavim: מרחבים - המרכז הרפואי לטיפול במוח ובנפש באר יעקב נס ציונה; rows=2; URLs=2; alias=מרחבים / Merhavim; opaque=false; reason=matched alias registry: מרחבים / Merhavim
+- meuhedet-health-fund: קופ"ח מאוחדת; rows=1; URLs=1; alias=קופ"ח מאוחדת; opaque=false; reason=matched alias registry: קופ"ח מאוחדת
+- nazareth-scottish: ביה"ח אי.מ.מ.ס הסקוטי; rows=10; URLs=8; alias=הסקוטי / Nazareth Scottish; opaque=false; reason=matched alias registry: הסקוטי / Nazareth Scottish
+- neot-hamoshava-geriatric: מרכז גריאטרי נאות המושבה; rows=1; URLs=0; alias=נאות המושבה; opaque=false; reason=matched alias registry: נאות המושבה
+- netanya-geriatric: מ.גריאטרי נתניה; rows=1; URLs=0; alias=גריאטרי נתניה; opaque=false; reason=matched alias registry: גריאטרי נתניה
+- poria: מרכז רפואי ברוך פדה פוריה; rows=16; URLs=13; alias=פוריה / פדה / Poriya; opaque=false; reason=matched alias registry: פוריה / פדה / Poriya
+- rabin: מרכז לבה"נ לב השרון; rows=1; URLs=1; alias=רבין / בילינסון / השרון / Rabin / Beilinson; opaque=false; reason=matched alias registry: רבין / בילינסון / השרון / Rabin / Beilinson
+- rabin: ביה"ח השרון מרכז רפואי רבין; rows=12; URLs=7; alias=רבין / בילינסון / השרון / Rabin / Beilinson; opaque=false; reason=matched alias registry: רבין / בילינסון / השרון / Rabin / Beilinson
+- rabin: ביה"ח בילינסון מרכז רפואי רבין; rows=24; URLs=0; alias=רבין / בילינסון / השרון / Rabin / Beilinson; opaque=false; reason=matched alias registry: רבין / בילינסון / השרון / Rabin / Beilinson
+- rabin: מרכז רפואי רבין; rows=24; URLs=4; alias=רבין / בילינסון / השרון / Rabin / Beilinson; opaque=false; reason=matched alias registry: רבין / בילינסון / השרון / Rabin / Beilinson
+- ramat-chen-brill-mental-health: מרכז בריאות הנפש רמת חן ע"ש בריל; rows=2; URLs=0; alias=רמת חן ע"ש בריל; opaque=false; reason=matched alias registry: רמת חן ע"ש בריל
+- rambam: מרכז רפואי רמב"ם; rows=24; URLs=0; alias=רמב"ם / רמבם / Rambam; opaque=false; reason=matched alias registry: רמב"ם / רמבם / Rambam
+- reuth-medical-center: מרכז רפואי רעות; rows=1; URLs=0; alias=רעות; opaque=false; reason=matched alias registry: רעות
+- saint-vincent: ביה"ח הצרפתי; rows=4; URLs=4; alias=סן ונסן / הצרפתי / Saint Vincent; opaque=false; reason=matched alias registry: סן ונסן / הצרפתי / Saint Vincent
+- schneider: מרכז שניידר לילדים; rows=6; URLs=6; alias=שניידר / Schneider; opaque=false; reason=matched alias registry: שניידר / Schneider
+- shaar-menashe-mental-health: מרכז לבה"נ שער מנשה; rows=1; URLs=1; alias=שער מנשה; opaque=false; reason=matched alias registry: שער מנשה
+- shaare-zedek: מרכז רפואי שערי צדק; rows=27; URLs=0; alias=שערי צדק / Shaare Zedek; opaque=false; reason=matched alias registry: שערי צדק / Shaare Zedek
+- shalvata: מרכז לבה"נ שלוותה; rows=2; URLs=2; alias=שלוותה / Shalvata; opaque=false; reason=matched alias registry: שלוותה / Shalvata
+- shamir: מרכז רפואי יצחק שמיר; rows=27; URLs=26; alias=שמיר / אסף הרופא / Shamir; opaque=false; reason=matched alias registry: שמיר / אסף הרופא / Shamir
+- sheba: מרכז רפואי שיבא; rows=38; URLs=3; alias=שיבא / תל השומר / Sheba; opaque=false; reason=matched alias registry: שיבא / תל השומר / Sheba
+- shmuel-harofe-geriatric: מ.גריאטרי שמואל הרופא; rows=1; URLs=0; alias=שמואל הרופא; opaque=false; reason=matched alias registry: שמואל הרופא
+- shoham-geriatric: מ.גריאטרי שהם; rows=1; URLs=1; alias=גריאטרי שהם; opaque=false; reason=matched alias registry: גריאטרי שהם
+- soroka: מרכז רפואי סורוקה; rows=34; URLs=3; alias=סורוקה / Soroka; opaque=false; reason=matched alias registry: סורוקה / Soroka
+- wolfson: מרכז רפואי וולפסון; rows=25; URLs=8; alias=וולפסון / Wolfson; opaque=false; reason=matched alias registry: וולפסון / Wolfson
+- yoseftal: ביה"ח יוספטל; rows=2; URLs=0; alias=יוספטל / Yoseftal; opaque=false; reason=matched alias registry: יוספטל / Yoseftal
+- ziv: ביה"ח זיו - צפת; rows=20; URLs=16; alias=זיו / Ziv; opaque=false; reason=matched alias registry: זיו / Ziv

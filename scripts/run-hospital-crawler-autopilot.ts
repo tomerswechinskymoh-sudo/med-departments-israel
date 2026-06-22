@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { parseArgs } from "@/crawler/clalit/utils";
 import { registerHospitalBaseline } from "@/crawler/hospitals/baseline-registry";
 import { runHospitalAutopilot, summarizeAutopilotResult } from "@/crawler/hospitals/autopilot";
@@ -27,6 +28,18 @@ const wave1HospitalSlugs = ["ichilov", "hadassah", "meir"];
 const wave3HospitalSlugs = ["shamir", "maayanei-hayeshua", "galilee", "laniado", "wolfson"];
 const nationalCalibrationSlugs = ["barzilai", "nazareth-scottish", "schneider", "holy-family", "saint-vincent"];
 const nationalAdapterPrioritySlugs = ["shaare-zedek", "rambam", "yoseftal", "beer-sheva-mental-health"];
+
+function readCommittedNationalCoverageReport() {
+  try {
+    const raw = execFileSync("git", ["show", "HEAD:data/crawler/hospitals/national-coverage-report.json"], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"]
+    });
+    return JSON.parse(raw) as { nationalSweepResults?: NationalSweepResult[] };
+  } catch {
+    return null;
+  }
+}
 
 function canonicalCalibratedReadiness(evaluation: HospitalPilotEvaluation, canonicalStats: Awaited<ReturnType<typeof readCanonicalStats>>) {
   if (evaluation.mainBlocker === "Duplicate profile URLs remain in pilot output." && canonicalStats.duplicateProfileUrlGroupsAfter === 0) {
@@ -482,6 +495,10 @@ async function main() {
       registerHospitalBaseline(buildSyntheticBaselineForQueueItem(item, targets));
       nationalSweepResults.push(await pilotResultForItem(item, targets));
     }
+    const previousReport = limit === 0 ? readCommittedNationalCoverageReport() : null;
+    const reportNationalSweepResults = limit === 0
+      ? previousReport?.nationalSweepResults ?? nationalSweepResults
+      : nationalSweepResults;
 
     const wave1MappingBefore = Object.fromEntries(await Promise.all(wave1HospitalSlugs.map(async (slug) => [slug, await readMappingStats(slug)])));
     const wave1MappingAfter = wave1MappingBefore;
@@ -496,7 +513,7 @@ async function main() {
       ...wave3Results.map((result) => result.hospital),
       ...calibrationResults.map((result) => result.hospital),
       ...adapterPriorityResults.map((result) => result.hospital),
-      ...nationalSweepResults.map((result) => result.hospital)
+      ...reportNationalSweepResults.map((result) => result.hospital)
     ])];
     const canonicalStatsByHospital = Object.fromEntries(await Promise.all(allResultSlugs.map(async (slug) => [slug, await readCanonicalStats(slug)])));
     const report = await writeNationalPlanOutputs(targets, inspectedPlan, {
@@ -509,11 +526,11 @@ async function main() {
       wave3SelectedHospitals,
       wave3Results,
       nationalRemainingQueue,
-      nationalSweepResults,
+      nationalSweepResults: reportNationalSweepResults,
       calibrationResults,
       adapterPriorityResults
     });
-    console.log(JSON.stringify({ ...nationalPlanSummary(targets, inspectedPlan, report), calibrationResults, adapterPriorityResults, nationalSweepResults, nextQueue: nationalRemainingQueue.slice(limit, limit + 10) }, null, 2));
+    console.log(JSON.stringify({ ...nationalPlanSummary(targets, inspectedPlan, report), calibrationResults, adapterPriorityResults, nationalSweepResults: reportNationalSweepResults, nextQueue: nationalRemainingQueue.slice(limit, limit + 10) }, null, 2));
     return;
   }
 

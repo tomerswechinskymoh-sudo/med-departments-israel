@@ -1,0 +1,34 @@
+{
+  "hospitalSlug": "yoseftal",
+  "hospitalName": "ביה\"ח יוספטל",
+  "generatedAt": "2026-06-22T06:01:31.628Z",
+  "urlsUsed": [
+    "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx",
+    "https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "teamPage",
+  "candidatePagesFound": 3,
+  "pilotPagesSelected": 4,
+  "rawDoctorRecords": 18,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 18,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 18,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 18
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Profile URL coverage is below 50%."
+}

@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "holy-family",
   "hospitalName": "ביה\"ח המשפחה הקדושה",
-  "generatedAt": "2026-06-21T11:23:43.544Z",
+  "generatedAt": "2026-06-22T06:01:12.000Z",
   "provider": "unknown",
   "websiteFamily": "unknown",
   "knownUrls": {
@@ -55,7 +55,7 @@
         "אדהם ג'נטוס",
         "תאמר חאיק"
       ],
-      "htmlLength": 144181,
+      "htmlLength": 144259,
       "visibleTextLength": 7237,
       "error": null
     },
@@ -76,7 +76,7 @@
         "אגף נשים ויולדות",
         "מחשבון בריאטריה"
       ],
-      "htmlLength": 138383,
+      "htmlLength": 138408,
       "visibleTextLength": 8557,
       "error": null
     },
@@ -97,7 +97,7 @@
         "אורתופדיה",
         "מחשבון בריאטריה"
       ],
-      "htmlLength": 136179,
+      "htmlLength": 136272,
       "visibleTextLength": 7622,
       "error": null
     },
@@ -126,7 +126,7 @@
         "דר' מוחמד חג'אזי",
         "ד\"ר זאהי אבו נסאר"
       ],
-      "htmlLength": 145754,
+      "htmlLength": 145923,
       "visibleTextLength": 7611,
       "error": null
     },
@@ -147,7 +147,7 @@
         "מערך לכירורגיה כללית",
         "מחשבון בריאטריה"
       ],
-      "htmlLength": 158709,
+      "htmlLength": 158821,
       "visibleTextLength": 19793,
       "error": null
     },
@@ -166,7 +166,7 @@
         "טופס חיפוש",
         "הינך נמצא כאן"
       ],
-      "htmlLength": 127092,
+      "htmlLength": 127164,
       "visibleTextLength": 7249,
       "error": null
     },
@@ -187,7 +187,7 @@
         "מחלקה פנימית",
         "מחשבון בריאטריה"
       ],
-      "htmlLength": 134978,
+      "htmlLength": 135090,
       "visibleTextLength": 7307,
       "error": null
     },
@@ -218,7 +218,7 @@
         "בושרה עזאם",
         "סועאד מנאסרה"
       ],
-      "htmlLength": 144291,
+      "htmlLength": 144277,
       "visibleTextLength": 7374,
       "error": null
     }

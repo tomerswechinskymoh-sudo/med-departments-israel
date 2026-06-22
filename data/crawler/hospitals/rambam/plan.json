@@ -1,0 +1,88 @@
+{
+  "hospitalSlug": "rambam",
+  "hospitalName": "מרכז רפואי רמב\"ם",
+  "generatedAt": "2026-06-22T06:01:26.243Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.rambam.org.il/",
+    "departmentsIndexUrlCandidates": [],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.rambam.org.il/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.rambam.org.il/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.rambam.org.il/",
+      "title": "רמב\"ם - הקריה הרפואית לבריאות האדם",
+      "h1": [
+        "רמב\"ם | הקריה הרפואית לבריאות האדם"
+      ],
+      "h2": [
+        "תפריט נגישות",
+        "טלפונים שימושיים",
+        "הגעה וחניה",
+        "כולנו מתגייסים להציל חיים!",
+        "הקריה הרפואית רמב\"ם",
+        "כדאי ללדת ברמב\"ם!",
+        "בואי להכיר את חדרי הלידה החדשים והמשודרגים שלנו",
+        "צ'אט אחד לפני כולם!",
+        "אפליקציית Rambam4U",
+        "עדכונים ומידע לציבור",
+        "מצאו מחלקות ומרפאות",
+        "למדו על בדיקות, טיפולים ומידע רפואי",
+        "הכירו את הרופאים של רמב\"ם",
+        "זימון תורים",
+        "שירותים נוספים ברמב\"ם",
+        "עומס במיון",
+        "רמב\"ם ומדינת ישראל - הולכים ביחד כבר 78 שנה",
+        "חדשות",
+        "סטטיסטיקה",
+        "באנרים שיווקיים"
+      ],
+      "htmlLength": 323880,
+      "visibleTextLength": 17088,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://www.rambam.org.il/doctors/",
+      "sourceUrl": "https://www.rambam.org.il/",
+      "anchorText": "הרופאים שלנו",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "הרופאים שלנו https://www.rambam.org.il/doctors/"
+    },
+    {
+      "url": "https://www.rambam.org.il/patient-and-visitor-information/medical-documents/",
+      "sourceUrl": "https://www.rambam.org.il/",
+      "anchorText": "אפליקציית Rambam4Uכל המידע הרפואי שלך אצלך בניידזימון תור, צפייה בתוצאות בדיקות ,סיכומי רופאים, הדמיות ועוד \n קראו עוד",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "אפליקציית Rambam4Uכל המידע הרפואי שלך אצלך בניידזימון תור, צפייה בתוצאות בדיקות ,סיכומי רופאים, הדמיות ועוד \n קראו עוד https://www.rambam.org.il/patient-and-visitor-information/medical-documents/"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.rambam.org.il/doctors/",
+    "https://www.rambam.org.il/patient-and-visitor-information/medical-documents/",
+    "https://www.rambam.org.il/"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Few candidate pages; pilot can run but needs manual review."
+}

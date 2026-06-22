@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "barzilai",
   "hospitalName": "מרכז רפואי ברזילי",
-  "generatedAt": "2026-06-21T11:23:17.805Z",
+  "generatedAt": "2026-06-22T06:00:44.913Z",
   "provider": "unknown",
   "websiteFamily": "unknown",
   "knownUrls": {
@@ -57,7 +57,7 @@
         "אונקולוגיה- מכון"
       ],
       "h2": [],
-      "htmlLength": 68645,
+      "htmlLength": 68673,
       "visibleTextLength": 7706,
       "error": null
     },
@@ -71,7 +71,7 @@
         "דימות (רנטגן)"
       ],
       "h2": [],
-      "htmlLength": 62815,
+      "htmlLength": 62822,
       "visibleTextLength": 8586,
       "error": null
     },
@@ -85,7 +85,7 @@
         "היחידה לילד ולמתבגר- מרפאה"
       ],
       "h2": [],
-      "htmlLength": 40789,
+      "htmlLength": 40770,
       "visibleTextLength": 4463,
       "error": null
     },
@@ -113,7 +113,7 @@
         "כירורגיה פלסטית"
       ],
       "h2": [],
-      "htmlLength": 44242,
+      "htmlLength": 44261,
       "visibleTextLength": 3578,
       "error": null
     },
@@ -141,7 +141,7 @@
         "פתולוגיה וציטולוגיה"
       ],
       "h2": [],
-      "htmlLength": 46746,
+      "htmlLength": 46743,
       "visibleTextLength": 3366,
       "error": null
     }

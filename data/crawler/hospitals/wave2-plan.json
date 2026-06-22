@@ -1,1 +1,60 @@
-[]
+[
+  {
+    "hospitalSlug": "emek",
+    "hospitalNames": [
+      "מרכז רפואי העמק"
+    ],
+    "providerGuess": "clalit",
+    "masterDeptRows": 27,
+    "rowsWithUrls": 27,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
+    "whySelected": "known adapter emek; 27 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "carmel",
+    "hospitalNames": [
+      "מרכז רפואי כרמל"
+    ],
+    "providerGuess": "clalit",
+    "masterDeptRows": 25,
+    "rowsWithUrls": 22,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "teamPage+inlineStaff",
+    "whySelected": "known adapter carmel; 22 Master_Dept URLs; URLs pending inspection; 1 direct staff/doctors URLs",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "kaplan",
+    "hospitalNames": [
+      "מרכז רפואי קפלן"
+    ],
+    "providerGuess": "clalit",
+    "masterDeptRows": 25,
+    "rowsWithUrls": 22,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "teamPage+inlineStaff+classicDoctorCards",
+    "whySelected": "known adapter kaplan; 22 Master_Dept URLs; URLs pending inspection",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "rabin",
+    "hospitalNames": [
+      "ביה\"ח בילינסון מרכז רפואי רבין",
+      "מרכז רפואי רבין",
+      "ביה\"ח השרון מרכז רפואי רבין"
+    ],
+    "providerGuess": "clalit",
+    "masterDeptRows": 60,
+    "rowsWithUrls": 11,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "classicDoctorCards+teamPage",
+    "whySelected": "known adapter rabin; 11 Master_Dept URLs; URLs pending inspection",
+    "plannedMode": "pilot only"
+  }
+]

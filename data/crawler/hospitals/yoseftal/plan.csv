@@ -1,0 +1,6 @@
+url,sourceUrl,anchorText,patternType,parserFamily,confidence,evidence
+https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx,https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx,הרופאים שלנו,doctorPage,teamPage,0.82,הרופאים שלנו https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx
+https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx,https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx,חוות דעת שניה - רופאי כללית מושלם,unknown,teamPage,0.65,חוות דעת שניה - רופאי כללית מושלם https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx
+https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx,https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx,"התפתחות הילד
+ מכון ייחודי בעל שם המשלב את מיטב המומחים במגוון טיפולי התפתחות הילד, תחת קורת גג אחת. המכון החדש מורחב ומותאם לצורכי הטיפול בילדים כולל חדר סנוזלן מאובזר ומתקדם.",departmentPage,inlineStaff,0.65,"התפתחות הילד
+ מכון ייחודי בעל שם המשלב את מיטב המומחים במגוון טיפולי התפתחות הילד, תחת קורת גג אחת. המכון החדש מורחב ומותאם לצורכי הטיפול בילדים כולל חדר סנוזלן מאובזר ומתקדם. https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx"

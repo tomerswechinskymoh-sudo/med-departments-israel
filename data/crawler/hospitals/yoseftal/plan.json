@@ -1,0 +1,88 @@
+{
+  "hospitalSlug": "yoseftal",
+  "hospitalName": "ביה\"ח יוספטל",
+  "generatedAt": "2026-06-22T06:01:28.832Z",
+  "provider": "clalit",
+  "websiteFamily": "clalit",
+  "knownUrls": {
+    "homepageUrl": "https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx",
+    "departmentsIndexUrlCandidates": [],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx",
+      "title": "מרכז רפואי יוספטל\n | מרכז רפואי יוספטל",
+      "h1": [],
+      "h2": [
+        "מידע רפואי אישי – כללית און ליין",
+        "מידע רפואי אישי – כללית און ליין",
+        "חדרי לידה",
+        "מחלקת יילודים",
+        "רפואת משפחה ביוספטל",
+        "מרכז רפואי יוספטל - מרחב אילת",
+        "מלר\"ד",
+        "דיאליזה",
+        "תא לחץ",
+        "ילדים",
+        "לידה",
+        "סדנה לגמילה מעישון"
+      ],
+      "htmlLength": 206458,
+      "visibleTextLength": 15595,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx",
+      "anchorText": "הרופאים שלנו",
+      "patternType": "doctorPage",
+      "parserFamily": "teamPage",
+      "confidence": 0.82,
+      "evidence": "הרופאים שלנו https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx",
+      "anchorText": "חוות דעת שניה - רופאי כללית מושלם",
+      "patternType": "unknown",
+      "parserFamily": "teamPage",
+      "confidence": 0.65,
+      "evidence": "חוות דעת שניה - רופאי כללית מושלם https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx"
+    },
+    {
+      "url": "https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx",
+      "sourceUrl": "https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx",
+      "anchorText": "התפתחות הילד\n מכון ייחודי בעל שם המשלב את מיטב המומחים במגוון טיפולי התפתחות הילד, תחת קורת גג אחת. המכון החדש מורחב ומותאם לצורכי הטיפול בילדים כולל חדר סנוזלן מאובזר ומתקדם.",
+      "patternType": "departmentPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "התפתחות הילד\n מכון ייחודי בעל שם המשלב את מיטב המומחים במגוון טיפולי התפתחות הילד, תחת קורת גג אחת. המכון החדש מורחב ומותאם לצורכי הטיפול בילדים כולל חדר סנוזלן מאובזר ומתקדם. https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "teamPage",
+    "inlineStaff",
+    "classicDoctorCards"
+  ],
+  "recommendedPilotUrls": [
+    "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx",
+    "https://hospitals.clalit.co.il/joseftal/he/Pages/default.aspx"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

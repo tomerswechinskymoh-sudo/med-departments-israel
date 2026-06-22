@@ -48,22 +48,6 @@
     "plannedMode": "pilot only"
   },
   {
-    "hospitalSlug": "hospital-08078cfe7d",
-    "hospitalNames": [
-      "מכבי שירותי בריאות"
-    ],
-    "providerGuess": "private",
-    "masterDeptRows": 1,
-    "rowsWithUrls": 1,
-    "liveUrlRows": 1,
-    "nearbyDoctorOrTeamUrlRows": 1,
-    "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline hospital-08078cfe7d; 1 Master_Dept URLs; 1 live inspected URLs; 1 nearby doctor/team URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "partiallyMapped",
-    "plannedMode": "pilot only"
-  },
-  {
     "hospitalSlug": "nazareth-scottish",
     "hospitalNames": [
       "ביה\"ח אי.מ.מ.ס הסקוטי"
@@ -75,6 +59,22 @@
     "nearbyDoctorOrTeamUrlRows": 0,
     "adapterParserFamily": "inlineStaff+teamPage+unknown",
     "whySelected": "Wave3 baseline nazareth-scottish; 8 Master_Dept URLs; 8 live inspected URLs",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "reviewNeeded",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "galilee",
+    "hospitalNames": [
+      "המרכז הרפואי לגליל"
+    ],
+    "providerGuess": "government",
+    "masterDeptRows": 29,
+    "rowsWithUrls": 28,
+    "liveUrlRows": 0,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline galilee; 28 Master_Dept URLs; URLs pending inspection",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "reviewNeeded",
     "plannedMode": "pilot only"

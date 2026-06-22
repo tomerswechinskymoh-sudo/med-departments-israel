@@ -56,11 +56,151 @@
     "evidence": "ד\"ר רשא חליליה- אלרגולוגיה ואימונולוגיה קלינית"
   },
   {
-    "canonicalName": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת",
-    "normalizedName": "גאווה גדולה: מנהל בית החולים הצרפתי נצרת",
-    "profileUrl": "https://saint-vincent-hospital.org/2023/03/03/%d7%92%d7%90%d7%95%d7%95%d7%94-%d7%92%d7%93%d7%95%d7%9c%d7%94-%d7%9e%d7%a0%d7%94%d7%9c-%d7%91%d7%99%d7%aa-%d7%94%d7%97%d7%95%d7%9c%d7%99%d7%9d-%d7%94%d7%a6%d7%a8%d7%a4%d7%aa%d7%99-%d7%a0%d7%90%d7%99/",
+    "canonicalName": "ד\"ר איאד ג'השאן",
+    "normalizedName": "איאד גהשאן",
+    "profileUrl": null,
     "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
-    "evidence": "גאווה גדולה: מנהל בית החולים הצרפתי- נצרת ד\"ר נאיל אליאס קודם לדרגת פרופ'מרץ 3, 2023"
+    "evidence": "ד\"ר איאד ג'השאן"
+  },
+  {
+    "canonicalName": "ד\"ר איימן חסאדיה",
+    "normalizedName": "איימן חסאדיה",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר איימן חסאדיה"
+  },
+  {
+    "canonicalName": "ד\"ר אליאס עואד",
+    "normalizedName": "אליאס עואד",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר אליאס עואד"
+  },
+  {
+    "canonicalName": "ד\"ר אקילא נאסר",
+    "normalizedName": "אקילא נאסר",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר אקילא נאסר"
+  },
+  {
+    "canonicalName": "ד\"ר אראם ותד",
+    "normalizedName": "אראם ותד",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר אראם ותד"
+  },
+  {
+    "canonicalName": "ד\"ר ביסאן חלומי",
+    "normalizedName": "ביסאן חלומי",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר ביסאן חלומי"
+  },
+  {
+    "canonicalName": "ד\"ר גודנה חאג'-סלמאן",
+    "normalizedName": "גודנה חאג סלמאן",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר גודנה חאג'-סלמאן"
+  },
+  {
+    "canonicalName": "ד\"ר ג'ומאנה סלאמה",
+    "normalizedName": "גומאנה סלאמה",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר ג'ומאנה סלאמה"
+  },
+  {
+    "canonicalName": "ד\"ר ג'נאן אחמד",
+    "normalizedName": "גנאן אחמד",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר ג'נאן אחמד"
+  },
+  {
+    "canonicalName": "ד\"ר דיב רחאל",
+    "normalizedName": "דיב רחאל",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר דיב רחאל"
+  },
+  {
+    "canonicalName": "ד\"ר ח'ואלה ח'ורי",
+    "normalizedName": "חואלה חורי",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר ח'ואלה ח'ורי"
+  },
+  {
+    "canonicalName": "ד\"ר מג'ד סוסאן",
+    "normalizedName": "מגד סוסאן",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר מג'ד סוסאן"
+  },
+  {
+    "canonicalName": "ד\"ר מג'דולין גנאים",
+    "normalizedName": "מגדולין גנאים",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר מג'דולין גנאים"
+  },
+  {
+    "canonicalName": "ד\"ר מוחמד ח'לאילה",
+    "normalizedName": "מוחמד חלאילה",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר מוחמד ח'לאילה"
+  },
+  {
+    "canonicalName": "ד\"ר מיסא חמדאן",
+    "normalizedName": "מיסא חמדאן",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר מיסא חמדאן"
+  },
+  {
+    "canonicalName": "ד\"ר מרואן חכים",
+    "normalizedName": "מרואן חכים",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר מרואן חכים"
+  },
+  {
+    "canonicalName": "ד\"ר נזיה ג'השאן",
+    "normalizedName": "נזיה גהשאן",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר נזיה ג'השאן"
+  },
+  {
+    "canonicalName": "ד\"ר ראיסה גוצל",
+    "normalizedName": "ראיסה גוצל",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר ראיסה גוצל"
+  },
+  {
+    "canonicalName": "ד\"ר רואד קרואני",
+    "normalizedName": "רואד קרואני",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר רואד קרואני"
+  },
+  {
+    "canonicalName": "ד\"ר רובא אבו אחמד",
+    "normalizedName": "רובא אבו אחמד",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר רובא אבו אחמד"
+  },
+  {
+    "canonicalName": "ד\"ר רוקיה סרחאן",
+    "normalizedName": "רוקיה סרחאן",
+    "profileUrl": null,
+    "sourceUrl": "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
+    "evidence": "ד\"ר רוקיה סרחאן"
   },
   {
     "canonicalName": "ד\"ר אחמד זרקאוי",

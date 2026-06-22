@@ -1,7 +1,7 @@
 {
   "hospitalSlug": "saint-vincent",
   "hospitalName": "ביה\"ח הצרפתי",
-  "generatedAt": "2026-06-21T11:23:51.227Z",
+  "generatedAt": "2026-06-22T06:01:21.742Z",
   "provider": "unknown",
   "websiteFamily": "unknown",
   "knownUrls": {
@@ -32,8 +32,8 @@
       "h2": [
         "הרופאים שלנו"
       ],
-      "htmlLength": 164920,
-      "visibleTextLength": 11411,
+      "htmlLength": 164260,
+      "visibleTextLength": 11418,
       "error": null
     },
     {
@@ -44,8 +44,8 @@
       "title": "מחלקת ילדים – Saint Vincent De Paul Hospital",
       "h1": [],
       "h2": [],
-      "htmlLength": 165687,
-      "visibleTextLength": 20125,
+      "htmlLength": 165156,
+      "visibleTextLength": 20140,
       "error": null
     },
     {
@@ -56,8 +56,8 @@
       "title": "מחלקת נשים ויולדות – Saint Vincent De Paul Hospital",
       "h1": [],
       "h2": [],
-      "htmlLength": 132905,
-      "visibleTextLength": 13842,
+      "htmlLength": 133471,
+      "visibleTextLength": 13885,
       "error": null
     },
     {
@@ -68,8 +68,8 @@
       "title": "מחלקת אף אוזן גרון – Saint Vincent De Paul Hospital",
       "h1": [],
       "h2": [],
-      "htmlLength": 132177,
-      "visibleTextLength": 16012,
+      "htmlLength": 132687,
+      "visibleTextLength": 16029,
       "error": null
     },
     {
@@ -80,8 +80,8 @@
       "title": "מחלקת עיניים – Saint Vincent De Paul Hospital",
       "h1": [],
       "h2": [],
-      "htmlLength": 121901,
-      "visibleTextLength": 11989,
+      "htmlLength": 122414,
+      "visibleTextLength": 12008,
       "error": null
     }
   ],
@@ -106,8 +106,8 @@
     "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/",
     "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%99%d7%9c%d7%93%d7%99%d7%9d/",
     "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a0%d7%a9%d7%99%d7%9d-%d7%95%d7%99%d7%95%d7%9c%d7%93%d7%95%d7%aa/",
-    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%90%d7%a3-%d7%90%d7%95%d7%96%d7%9f-%d7%92%d7%a8%d7%95%d7%9f/",
-    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/"
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%a2%d7%99%d7%a0%d7%99%d7%99%d7%9d/",
+    "https://saint-vincent-hospital.org/%d7%9e%d7%97%d7%9c%d7%a7%d7%aa-%d7%90%d7%a3-%d7%90%d7%95%d7%96%d7%9f-%d7%92%d7%a8%d7%95%d7%9f/"
   ],
   "readiness": "pilotReady",
   "crawlReadiness": "pilotReady",

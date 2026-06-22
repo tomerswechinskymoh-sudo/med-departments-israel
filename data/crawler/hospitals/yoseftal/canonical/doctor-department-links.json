@@ -1,0 +1,308 @@
+[
+  {
+    "canonicalDoctorId": "doctor-0492ce3bca53b042",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-146fdc59871f32c0",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-2589cfc5cf548b93",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-38eb5862344c463f",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-56d1b78ac27311a3",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-6de19617878638a1",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-78f7d53262a60c67",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-84d132565405a030",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-87b584da56cb9e1c",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-93088934172cd0fa",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-94f9d89ef975100d",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-9d93435ac9d9ca91",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-a2ca5b3b94826d67",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-a4f896c0724a24d3",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/general_info/Pages/mushlam_doctores.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-c67e07b1593eb163",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/med_units/children/Pages/child_development_instatute.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-e458d06c93aed4bb",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-eb2c2f598f3d56ae",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-fb5b81072b341d1a",
+    "masterDeptRowId": null,
+    "hospitalName": "ביה\"ח יוספטל",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [],
+      "extractedFromUrl": "https://hospitals.clalit.co.il/joseftal/he/about_us/Pages/our-doctors.aspx",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=ביה\"ח יוספטל; candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  }
+]

@@ -2,5 +2,5 @@ hospitalSlug,hospitalNames,providerGuess,masterDeptRows,rowsWithUrls,liveUrlRows
 barzilai,מרכז רפואי ברזילי,government,25,7,7,7,inlineStaff+teamPage+unknown,Wave3 baseline barzilai; 7 Master_Dept URLs; 7 live inspected URLs; 7 nearby doctor/team URLs,pilotReady,partiallyMapped,pilot only
 holy-family,"ביה""ח המשפחה הקדושה",unknown,6,6,6,6,inlineStaff+teamPage+unknown,Wave3 baseline holy-family; 6 Master_Dept URLs; 6 live inspected URLs; 6 nearby doctor/team URLs,pilotReady,partiallyMapped,pilot only
 saint-vincent,"ביה""ח הצרפתי",unknown,4,4,4,4,inlineStaff+teamPage+unknown,Wave3 baseline saint-vincent; 4 Master_Dept URLs; 4 live inspected URLs; 4 nearby doctor/team URLs,pilotReady,partiallyMapped,pilot only
-hospital-08078cfe7d,מכבי שירותי בריאות,private,1,1,1,1,inlineStaff+teamPage+unknown,Wave3 baseline hospital-08078cfe7d; 1 Master_Dept URLs; 1 live inspected URLs; 1 nearby doctor/team URLs,pilotReady,partiallyMapped,pilot only
 nazareth-scottish,"ביה""ח אי.מ.מ.ס הסקוטי",unknown,10,8,8,0,inlineStaff+teamPage+unknown,Wave3 baseline nazareth-scottish; 8 Master_Dept URLs; 8 live inspected URLs,pilotReady,reviewNeeded,pilot only
+galilee,המרכז הרפואי לגליל,government,29,28,0,0,inlineStaff+teamPage+unknown,Wave3 baseline galilee; 28 Master_Dept URLs; URLs pending inspection,pilotReady,reviewNeeded,pilot only
