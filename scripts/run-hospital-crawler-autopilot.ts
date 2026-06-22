@@ -168,6 +168,8 @@ async function currentWave3Results(targets: Awaited<ReturnType<typeof loadMaster
 
 function blockerTypeFor(errorMessage: string | null, evaluation?: HospitalPilotEvaluation) {
   const text = `${errorMessage ?? ""} ${evaluation?.mainBlocker ?? ""}`.toLowerCase();
+  if (/manual seed|needsmanualseed|not marked safe/.test(text)) return "needsManualSeedUrl" as const;
+  if (/no master_dept source url|no master dept source url|no row urls/.test(text)) return "noMasterDeptSourceUrl" as const;
   if (evaluation && evaluation.rawDoctorRecords === 0) return "noPublicRosterFound" as const;
   if (/403|forbidden/.test(text)) return "siteBlocked" as const;
   if (/404|410|stale/.test(text)) return "staleMasterDeptUrls" as const;
@@ -428,8 +430,16 @@ async function main() {
           mappedRecords: mappingStats.totalReviewed - mappingStats.unmapped,
           mappingStats,
           canonicalStats,
-          mainBlocker: item.rowsWithUrls === 0 ? "No Master_Dept source URLs available for a safe pilot." : "Adapter inspection required before pilot.",
-          blockerType: item.rowsWithUrls === 0 ? "noPublicRosterFound" : "parserMissing"
+          mainBlocker: item.needsManualSeedUrl
+            ? "No safe seed URL is available yet; manual seed URL verification required."
+            : item.rowsWithUrls === 0
+              ? "No Master_Dept source URLs available; seed registry did not provide a safe pilot URL."
+              : "Adapter inspection required before pilot.",
+          blockerType: item.needsManualSeedUrl
+            ? "needsManualSeedUrl"
+            : item.rowsWithUrls === 0
+              ? "noMasterDeptSourceUrl"
+              : "parserMissing"
         });
       } else {
         registerHospitalBaseline(buildSyntheticBaselineForQueueItem(item, targets));
@@ -455,8 +465,16 @@ async function main() {
           mappedRecords: mappingStats.totalReviewed - mappingStats.unmapped,
           mappingStats,
           canonicalStats,
-          mainBlocker: item.rowsWithUrls === 0 ? "No Master_Dept source URLs available for a safe pilot." : "Adapter inspection required before pilot.",
-          blockerType: item.rowsWithUrls === 0 ? "noPublicRosterFound" : "parserMissing"
+          mainBlocker: item.needsManualSeedUrl
+            ? "No safe seed URL is available yet; manual seed URL verification required."
+            : item.rowsWithUrls === 0
+              ? "No Master_Dept source URLs available; seed registry did not provide a safe pilot URL."
+              : "Adapter inspection required before pilot.",
+          blockerType: item.needsManualSeedUrl
+            ? "needsManualSeedUrl"
+            : item.rowsWithUrls === 0
+              ? "noMasterDeptSourceUrl"
+              : "parserMissing"
         });
         continue;
       }

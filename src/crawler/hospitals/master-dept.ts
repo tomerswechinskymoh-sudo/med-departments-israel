@@ -3,6 +3,8 @@ import crypto from "node:crypto";
 import path from "node:path";
 import { discoverCandidatePages, fetchPublicHtml, inspectHtml } from "./adapters/generic-public-site";
 import { getHospitalBaseline, hospitalBaselines } from "./baseline-registry";
+import { hospitalAliasRegistry, normalizeHospitalAliasInput, resolveHospitalAlias, slugForHospitalAlias } from "./hospital-alias-registry";
+import { hospitalSeedUrlRegistry, safeSeedUrlsForHospital, seedUrlsForHospital } from "./seed-url-registry";
 import type {
   CandidatePage,
   CanonicalDoctor,
@@ -99,12 +101,22 @@ export type NationalCoverageReport = {
   nationalSweepResults: NationalSweepResult[];
   calibrationResults: NationalSweepResult[];
   adapterPriorityResults: NationalSweepResult[];
+  hospitalNormalizationAudit: HospitalNormalizationAudit;
+  seedUrlRegistryStatus: Array<{
+    hospitalSlug: string;
+    seedUrlCount: number;
+    safeSeedUrlCount: number;
+    needsManualSeedUrl: boolean;
+  }>;
+  departmentMappedRosterCountPrevious: number | null;
+  departmentMappedRosterCountChangeReason: string;
   attemptedHospitalCount: number;
   usableHospitalRosterCount: number;
   usableDepartmentMappedRosterCount: number;
   safeForFullBatchCount: number;
   needsCalibrationCount: number;
   needsAdapterCount: number;
+  needsManualSeedUrlCount: number;
   blockedCount: number;
   deferredCount: number;
   notAttemptedCount: number;
@@ -192,6 +204,9 @@ export type NationalRemainingQueueItem = {
   liveUrlRows: number;
   nearbyDoctorOrTeamUrlRows: number;
   existingAdapterParserFamily: string | null;
+  seedUrlCount: number;
+  safeSeedUrlCount: number;
+  needsManualSeedUrl: boolean;
   expectedCrawlReadiness: CrawlReadinessStatus;
   expectedMappingReadiness: MappingReadinessStatus;
   priority: "high" | "medium" | "low";
@@ -203,6 +218,8 @@ export type NationalSweepResult = Wave2Result & {
   plannedAction: NationalRemainingQueueItem["plannedAction"];
   blockerType:
     | "none"
+    | "noMasterDeptSourceUrl"
+    | "needsManualSeedUrl"
     | "noDoctorPagesFound"
     | "onlyJsShell"
     | "apiNeedsAdapter"
@@ -211,6 +228,26 @@ export type NationalSweepResult = Wave2Result & {
     | "parserMissing"
     | "noPublicRosterFound"
     | "other";
+};
+
+export type HospitalNormalizationAuditEntry = {
+  hospitalNameRaw: string;
+  normalizedHospitalName: string;
+  rowCount: number;
+  rowsWithUrls: number;
+  resolvedSlug: string;
+  aliasMatched: boolean;
+  aliasLabels: string[];
+  isOpaqueSlug: boolean;
+  reason: string;
+  sampleMasterDeptRowIds: string[];
+};
+
+export type HospitalNormalizationAudit = {
+  generatedAt: string;
+  totalHospitalGroups: number;
+  opaqueSlugCount: number;
+  entries: HospitalNormalizationAuditEntry[];
 };
 
 export type CanonicalStats = {
@@ -297,12 +334,7 @@ async function writeCsv(filePath: string, rows: Array<Record<string, unknown>>) 
 }
 
 function normalizeName(value: string) {
-  return normalizeWhitespace(value)
-    .replace(/[׳'״"]/g, "")
-    .replace(/\s*[-–—]\s*/g, " ")
-    .replace(/\b(המרכז|מרכז|הרפואי|בית|חולים|בי\"ח|ביהח|ע\"ש|עש)\b/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
+  return normalizeHospitalAliasInput(value);
 }
 
 function extractFirstUrl(value: string | null | undefined) {
@@ -1139,6 +1171,10 @@ export async function writeNationalPlanOutputs(
   const nationalRemainingQueue = options.nationalRemainingQueue ?? [];
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-remaining-queue.json"), nationalRemainingQueue);
   await writeCsv(path.join(NATIONAL_OUTPUT_DIR, "national-remaining-queue.csv"), nationalRemainingQueue);
+  const hospitalNormalizationAudit = buildHospitalNormalizationAudit(targets);
+  await writeJson(path.join(NATIONAL_OUTPUT_DIR, "hospital-normalization-audit.json"), hospitalNormalizationAudit);
+  await fs.writeFile(path.join(NATIONAL_OUTPUT_DIR, "hospital-normalization-audit.md"), renderHospitalNormalizationAudit(hospitalNormalizationAudit), "utf8");
+  const seedStatus = seedUrlRegistryStatus();
   const report = buildCoverageReport(targets, plan, {
     wave1Results: options.wave1Results ?? [],
     wave1MappingBefore: options.wave1MappingBefore ?? {},
@@ -1151,7 +1187,9 @@ export async function writeNationalPlanOutputs(
     nationalRemainingQueue,
     nationalSweepResults: options.nationalSweepResults ?? [],
     calibrationResults: options.calibrationResults ?? [],
-    adapterPriorityResults: options.adapterPriorityResults ?? []
+    adapterPriorityResults: options.adapterPriorityResults ?? [],
+    hospitalNormalizationAudit,
+    seedUrlRegistryStatus: seedStatus
   });
   await writeJson(path.join(NATIONAL_OUTPUT_DIR, "national-coverage-report.json"), report);
   await fs.writeFile(path.join(NATIONAL_OUTPUT_DIR, "national-coverage-report.md"), renderCoverageReport(report), "utf8");
@@ -1163,6 +1201,70 @@ function countBy<T extends string>(items: T[]) {
     acc[item] = (acc[item] ?? 0) + 1;
     return acc;
   }, {});
+}
+
+function buildHospitalNormalizationAudit(targets: MasterDeptTarget[]): HospitalNormalizationAudit {
+  const byName = new Map<string, MasterDeptTarget[]>();
+  for (const target of targets) {
+    const key = target.hospitalNameNormalized || target.hospitalNameRaw;
+    byName.set(key, [...(byName.get(key) ?? []), target]);
+  }
+  const entries = Array.from(byName.entries()).map(([normalizedHospitalName, rows]) => {
+    const rawNames = Array.from(new Set(rows.map((row) => row.hospitalNameRaw).filter(Boolean)));
+    const rawName = rawNames[0] ?? normalizedHospitalName;
+    const alias = resolveHospitalAlias(rawName);
+    const resolvedSlug = slugForHospitalName(rawName);
+    const isOpaqueSlug = /^hospital-/.test(resolvedSlug);
+    return {
+      hospitalNameRaw: rawName,
+      normalizedHospitalName,
+      rowCount: rows.length,
+      rowsWithUrls: rows.filter((row) => row.sourceUrlNormalized).length,
+      resolvedSlug,
+      aliasMatched: Boolean(alias),
+      aliasLabels: alias?.labels ?? [],
+      isOpaqueSlug,
+      reason: alias
+        ? `matched alias registry: ${alias.labels.join(" / ")}`
+        : isOpaqueSlug
+          ? "no conservative alias matched; Hebrew-only name fell back to hash slug"
+          : "ASCII-safe name used as slug",
+      sampleMasterDeptRowIds: rows.slice(0, 5).map((row) => row.masterDeptRowId)
+    } satisfies HospitalNormalizationAuditEntry;
+  }).sort((left, right) => Number(right.isOpaqueSlug) - Number(left.isOpaqueSlug) || left.resolvedSlug.localeCompare(right.resolvedSlug));
+  return {
+    generatedAt: new Date().toISOString(),
+    totalHospitalGroups: entries.length,
+    opaqueSlugCount: entries.filter((entry) => entry.isOpaqueSlug).length,
+    entries
+  };
+}
+
+function renderHospitalNormalizationAudit(audit: HospitalNormalizationAudit) {
+  return [
+    "# Hospital Normalization Audit",
+    "",
+    `- generatedAt: ${audit.generatedAt}`,
+    `- total hospital groups: ${audit.totalHospitalGroups}`,
+    `- opaque slug count: ${audit.opaqueSlugCount}`,
+    "",
+    "## Entries",
+    ...audit.entries.map((entry) => `- ${entry.resolvedSlug}: ${entry.hospitalNameRaw}; rows=${entry.rowCount}; URLs=${entry.rowsWithUrls}; alias=${entry.aliasMatched ? entry.aliasLabels.join(" / ") : "none"}; opaque=${entry.isOpaqueSlug}; reason=${entry.reason}`)
+  ].join("\n");
+}
+
+function seedUrlRegistryStatus() {
+  const slugs = Array.from(new Set(hospitalSeedUrlRegistry.map((seed) => seed.hospitalSlug))).sort();
+  return slugs.map((hospitalSlug) => {
+    const seeds = seedUrlsForHospital(hospitalSlug);
+    const safeSeeds = seeds.filter((seed) => seed.safeToUse);
+    return {
+      hospitalSlug,
+      seedUrlCount: seeds.length,
+      safeSeedUrlCount: safeSeeds.length,
+      needsManualSeedUrl: seeds.length > 0 && safeSeeds.length === 0
+    };
+  });
 }
 
 function buildHospitalSplitReadiness(
@@ -1246,6 +1348,8 @@ function buildCoverageReport(
     nationalSweepResults: NationalSweepResult[];
     calibrationResults: NationalSweepResult[];
     adapterPriorityResults: NationalSweepResult[];
+    hospitalNormalizationAudit: HospitalNormalizationAudit;
+    seedUrlRegistryStatus: NationalCoverageReport["seedUrlRegistryStatus"];
   }
 ): NationalCoverageReport {
   const wave1Plans = plan.filter((item) => item.wave === 1);
@@ -1308,12 +1412,18 @@ function buildCoverageReport(
     nationalSweepResults: options.nationalSweepResults,
     calibrationResults: options.calibrationResults,
     adapterPriorityResults: options.adapterPriorityResults,
+    hospitalNormalizationAudit: options.hospitalNormalizationAudit,
+    seedUrlRegistryStatus: options.seedUrlRegistryStatus,
+    departmentMappedRosterCountPrevious: 14,
+    departmentMappedRosterCountChangeReason:
+      "Current count uses stricter outputUsability classification: only sourceUrlMapped/partiallyMapped link evidence counts as departmentMappedRoster; hospital-level/global rosters stay hospitalRoster.",
     attemptedHospitalCount: attemptedResultSlugs.size,
     usableHospitalRosterCount: splitEntries.filter((item) => item.outputUsability === "hospitalRoster" || item.outputUsability === "departmentMappedRoster").length,
     usableDepartmentMappedRosterCount: splitEntries.filter((item) => item.outputUsability === "departmentMappedRoster").length,
     safeForFullBatchCount: splitEntries.filter((item) => item.crawlReadiness === "safeForFullBatch").length,
     needsCalibrationCount: splitEntries.filter((item) => item.crawlReadiness === "needsCalibration").length,
     needsAdapterCount: plan.filter((item) => item.currentReadiness === "needsAdapter").length,
+    needsManualSeedUrlCount: options.nationalRemainingQueue.filter((item) => item.needsManualSeedUrl).length,
     blockedCount: currentBlockedSlugs.size,
     deferredCount: plan.filter((item) => item.currentReadiness === "deferred").length,
     notAttemptedCount: plan.length - attemptedResultSlugs.size,
@@ -1346,6 +1456,8 @@ function renderCoverageReport(report: NationalCoverageReport) {
     `- attempted hospitals: ${report.attemptedHospitalCount}`,
     `- usable hospital rosters: ${report.usableHospitalRosterCount}`,
     `- usable department-mapped rosters: ${report.usableDepartmentMappedRosterCount}`,
+    `- previous department-mapped rosters: ${report.departmentMappedRosterCountPrevious ?? "n/a"}`,
+    `- department-mapped roster count note: ${report.departmentMappedRosterCountChangeReason}`,
     `- attempted department-mapped rosters: ${report.attemptedWithDepartmentMappedRosterCount}`,
     `- attempted hospital-roster-only: ${report.attemptedWithHospitalRosterOnlyCount}`,
     `- attempted but no doctors: ${report.attemptedButNoDoctorsCount}`,
@@ -1419,6 +1531,13 @@ function renderCoverageReport(report: NationalCoverageReport) {
     "",
     "## National Sweep Results",
     ...report.nationalSweepResults.map((item) => `- ${item.hospital}: action=${item.plannedAction}; readiness=${item.readiness}; crawlReadiness=${item.crawlReadiness}; mappingReadiness=${item.mappingReadiness}; output=${item.outputUsability}; reviewed=${item.reviewedRecords}; productionReady=${item.productionReadyCount}; sourceUrlMatch=${item.mappingStats.sourceUrlMatch}; reviewNeeded=${item.mappingStats.reviewNeeded}; blockerType=${item.blockerType}; blocker=${item.mainBlocker ?? "none"}`),
+    "",
+    "## Hospital Normalization",
+    `- opaque slug count: ${report.hospitalNormalizationAudit.opaqueSlugCount}`,
+    ...report.hospitalNormalizationAudit.entries.filter((entry) => entry.isOpaqueSlug).slice(0, 20).map((entry) => `- ${entry.resolvedSlug}: ${entry.hospitalNameRaw}; rows=${entry.rowCount}; reason=${entry.reason}`),
+    "",
+    "## Seed URL Registry",
+    ...report.seedUrlRegistryStatus.map((item) => `- ${item.hospitalSlug}: seeds=${item.seedUrlCount}; safe=${item.safeSeedUrlCount}; needsManualSeedUrl=${item.needsManualSeedUrl}`),
     "",
     "## Blockers",
     ...Object.entries(report.blockersByType).map(([key, value]) => `- ${key}: ${value}`),
@@ -1582,31 +1701,8 @@ const defaultHandledSlugs = new Set([
 const defaultDeferredSlugs = new Set(["sheba", "soroka", "wolfson"]);
 
 function slugForHospitalName(hospitalName: string) {
-  const known: Array<[RegExp, string]> = [
-    [/שניידר/i, "schneider"],
-    [/גהה/i, "geha"],
-    [/שלוותה/i, "shalvata"],
-    [/מעלה הכרמל/i, "maale-hacarmel"],
-    [/יוספטל/i, "yoseftal"],
-    [/לב השרון/i, "lev-hasharon"],
-    [/שערי צדק/i, "shaare-zedek"],
-    [/ברזילי/i, "barzilai"],
-    [/רמב.?ם/i, "rambam"],
-    [/בני ציון/i, "bnei-zion"],
-    [/זיו/i, "ziv"],
-    [/הלל יפה/i, "hillel-yaffe"],
-    [/אסותא אשדוד/i, "assuta-ashdod"],
-    [/פוריה|פדה/i, "poria"],
-    [/הסקוטי/i, "nazareth-scottish"],
-    [/משפחה הקדושה/i, "holy-family"],
-    [/צרפתי|סן ונסן/i, "saint-vincent"],
-    [/מרחבים/i, "merhavim"],
-    [/באר שבע/i, "beer-sheva-mental-health"],
-    [/שירותי בריאות כללית/i, "clalit-community"]
-  ];
-  for (const [pattern, slug] of known) {
-    if (pattern.test(hospitalName)) return slug;
-  }
+  const aliasSlug = slugForHospitalAlias(hospitalName);
+  if (aliasSlug) return aliasSlug;
   const ascii = hospitalName
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
@@ -1637,7 +1733,16 @@ export function buildNationalRemainingQueue(
       const nearbyDoctorOrTeamUrlRows = rows.filter((row) => row.nearbyDoctorOrTeamUrls.length > 0).length;
       const directStaffRows = rows.filter((row) => row.sourceUrlPageType === "teamPage" || row.sourceUrlPageType === "doctorsPage").length;
       const existingAdapterParserFamily = baseline?.parserFamilies.join("+") ?? null;
-      const expectedMappingReadiness: MappingReadinessStatus = nearbyDoctorOrTeamUrlRows || directStaffRows ? "partiallyMapped" : rowsWithUrls > 0 ? "reviewNeeded" : "blocked";
+      const seedUrlCount = seedUrlsForHospital(hospitalSlug).length;
+      const safeSeedUrlCount = safeSeedUrlsForHospital(hospitalSlug).length;
+      const needsManualSeedUrl = rowsWithUrls === 0 && seedUrlCount > 0 && safeSeedUrlCount === 0;
+      const expectedMappingReadiness: MappingReadinessStatus = nearbyDoctorOrTeamUrlRows || directStaffRows
+        ? "partiallyMapped"
+        : rowsWithUrls > 0
+          ? "reviewNeeded"
+          : safeSeedUrlCount > 0
+            ? "hospitalRosterOnly"
+            : "blocked";
       let plannedAction: NationalRemainingQueueItem["plannedAction"] = "pilot";
       let expectedCrawlReadiness: CrawlReadinessStatus = "pilotReady";
       if (handledSlugs.has(hospitalSlug)) {
@@ -1646,7 +1751,7 @@ export function buildNationalRemainingQueue(
       } else if (deferredSlugs.has(hospitalSlug) || /שיבא|תל השומר|סורוקה/i.test(item.hospitalName)) {
         plannedAction = "defer";
         expectedCrawlReadiness = "blocked";
-      } else if (rowsWithUrls === 0) {
+      } else if (rowsWithUrls === 0 && safeSeedUrlCount === 0) {
         plannedAction = "adapterInspect";
         expectedCrawlReadiness = "needsAdapter";
       }
@@ -1656,11 +1761,13 @@ export function buildNationalRemainingQueue(
       const reasonForPriority = [
         plannedAction === "skipAlreadyUsable" ? "already has usable prior output" : null,
         plannedAction === "defer" ? "explicitly deferred hard case" : null,
-        plannedAction === "adapterInspect" ? "no row URLs or no direct pilot source; adapter inspection first" : null,
+        plannedAction === "adapterInspect" && needsManualSeedUrl ? "public seed URL exists but is not marked safe; manual verification required" : null,
+        plannedAction === "adapterInspect" && !needsManualSeedUrl ? "no row URLs or no direct pilot source; adapter inspection first" : null,
         rowsWithUrls ? `${rowsWithUrls} Master_Dept URLs` : "no Master_Dept URLs",
         liveUrlRows ? `${liveUrlRows} live/redirected URLs` : null,
         nearbyDoctorOrTeamUrlRows ? `${nearbyDoctorOrTeamUrlRows} nearby doctor/team rows` : null,
         directStaffRows ? `${directStaffRows} direct staff/doctors URLs` : null,
+        seedUrlCount ? `${safeSeedUrlCount}/${seedUrlCount} safe seed URLs` : null,
         existingAdapterParserFamily ? `parser=${existingAdapterParserFamily}` : "synthetic generic parser"
       ].filter(Boolean).join("; ");
       return {
@@ -1672,6 +1779,9 @@ export function buildNationalRemainingQueue(
         liveUrlRows,
         nearbyDoctorOrTeamUrlRows,
         existingAdapterParserFamily,
+        seedUrlCount,
+        safeSeedUrlCount,
+        needsManualSeedUrl,
         expectedCrawlReadiness,
         expectedMappingReadiness,
         priority,
@@ -1695,8 +1805,9 @@ export function buildSyntheticBaselineForQueueItem(item: NationalRemainingQueueI
   const rows = targets.filter((target) => slugForHospitalName(target.hospitalNameRaw) === item.hospitalSlug || normalizeName(target.hospitalNameRaw) === normalizeName(item.hospitalName));
   const sourceUrls = Array.from(new Set(rows.map((row) => row.sourceUrlNormalized).filter(Boolean) as string[]));
   const nearbyUrls = Array.from(new Set(rows.flatMap((row) => row.nearbyDoctorOrTeamUrls)));
+  const registrySeedUrls = safeSeedUrlsForHospital(item.hospitalSlug).map((seed) => seed.seedUrl);
   const directStaffUrls = sourceUrls.filter((url) => /(doctors?|physicians?|team|staff|specialists?|רופאים|רופא|צוות|סגל|מומחים)/i.test(decodeURIComponent(url)));
-  const pilotUrlCandidates = Array.from(new Set([...directStaffUrls, ...nearbyUrls, ...sourceUrls])).slice(0, 8);
+  const pilotUrlCandidates = Array.from(new Set([...directStaffUrls, ...nearbyUrls, ...sourceUrls, ...registrySeedUrls])).slice(0, 8);
   const homepageUrl = pilotUrlCandidates[0] ?? sourceUrls[0] ?? "https://example.invalid/";
   const provider: WebsiteFamily = rows[0]?.providerGuess === "clalit" ? "clalit" : "unknown";
   return {
