@@ -1,0 +1,183 @@
+{
+  "hospitalSlug": "leumit-health-fund",
+  "hospitalName": "קופ\"ח לאומית",
+  "generatedAt": "2026-06-22T06:26:53.569Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.leumit.co.il/doctorssearch/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.leumit.co.il/doctorssearch/",
+      "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.leumit.co.il/doctorssearch/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.leumit.co.il/doctorssearch/",
+      "title": "חיפוש רופאים ורופאות | לאומית שירותי בריאות - קופת חולים לאומית",
+      "h1": [
+        "חיפוש רופאים ורופאות"
+      ],
+      "h2": [
+        "חשבנו שיעניין אותך לדעת"
+      ],
+      "htmlLength": 66187,
+      "visibleTextLength": 10384,
+      "error": null
+    },
+    {
+      "url": "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
+      "title": "הכירו את המחלקה לרפואת המשפחה בלאומית | לאומית שירותי בריאות - קופת חולים לאומית",
+      "h1": [
+        "הכירו את המחלקה לרפואת המשפחה בלאומית"
+      ],
+      "h2": [
+        "חשבנו שיעניין אותך"
+      ],
+      "htmlLength": 67362,
+      "visibleTextLength": 10726,
+      "error": null
+    },
+    {
+      "url": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "title": "הרופאים והרופאות שלנו מספרים על עצמם ועל העבודה | לאומית שירותי בריאות - קופת חולים לאומית",
+      "h1": [
+        "הרופאים והרופאות שלנו מספרים על עצמם"
+      ],
+      "h2": [
+        "חשבנו שיעניין אותך"
+      ],
+      "htmlLength": 84228,
+      "visibleTextLength": 29191,
+      "error": null
+    }
+  ],
+  "candidatePages": [
+    {
+      "url": "https://www.leumit.co.il/ar/doctorssearch/",
+      "sourceUrl": "https://www.leumit.co.il/doctorssearch/",
+      "anchorText": "العربية",
+      "patternType": "doctorIndex",
+      "parserFamily": "searchDriven",
+      "confidence": 0.9,
+      "evidence": "العربية https://www.leumit.co.il/ar/doctorssearch/"
+    },
+    {
+      "url": "https://www.leumit.co.il/doctorssearch/",
+      "sourceUrl": "https://www.leumit.co.il/doctorssearch/",
+      "anchorText": "עברית",
+      "patternType": "doctorIndex",
+      "parserFamily": "searchDriven",
+      "confidence": 0.9,
+      "evidence": "עברית https://www.leumit.co.il/doctorssearch/"
+    },
+    {
+      "url": "https://www.leumit.co.il/en/doctorssearch/",
+      "sourceUrl": "https://www.leumit.co.il/doctorssearch/",
+      "anchorText": "English",
+      "patternType": "doctorIndex",
+      "parserFamily": "searchDriven",
+      "confidence": 0.9,
+      "evidence": "English https://www.leumit.co.il/en/doctorssearch/"
+    },
+    {
+      "url": "https://www.leumit.co.il/ru/doctorssearch/",
+      "sourceUrl": "https://www.leumit.co.il/doctorssearch/",
+      "anchorText": "Русский",
+      "patternType": "doctorIndex",
+      "parserFamily": "searchDriven",
+      "confidence": 0.9,
+      "evidence": "Русский https://www.leumit.co.il/ru/doctorssearch/"
+    },
+    {
+      "url": "https://www.leumit.co.il/ar/jobs/family-medicine-intership/family-doctors-stories/",
+      "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "anchorText": "العربية",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "العربية https://www.leumit.co.il/ar/jobs/family-medicine-intership/family-doctors-stories/"
+    },
+    {
+      "url": "https://www.leumit.co.il/diseases/aids-hiv-and-prep/",
+      "sourceUrl": "https://www.leumit.co.il/doctorssearch/",
+      "anchorText": "טיפול ב HIV ורופאים מורשי פרפ\n טיפול נכון ב HIV, הכולל מעקב רפואי ומניעה מותאמת יכולים להפחית משמעותית סיכונים ולהגן על הבריאות.\n \n להמשך קריאה",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "טיפול ב HIV ורופאים מורשי פרפ\n טיפול נכון ב HIV, הכולל מעקב רפואי ומניעה מותאמת יכולים להפחית משמעותית סיכונים ולהגן על הבריאות.\n \n להמשך קריאה https://www.leumit.co.il/diseases/aids-hiv-and-prep/"
+    },
+    {
+      "url": "https://www.leumit.co.il/insurance-policies/leumit-silver-and-gold/consultations/",
+      "sourceUrl": "https://www.leumit.co.il/doctorssearch/",
+      "anchorText": "ייעוץ מומחה/ית - לאומית זהב \n לקוחות לאומית זהב/כסף זכאים לחוות דעת שנייה גם מרופאים ורופאות בכירים, שאינם עובדים בלאומית.\n \n להמשך קריאה",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "ייעוץ מומחה/ית - לאומית זהב \n לקוחות לאומית זהב/כסף זכאים לחוות דעת שנייה גם מרופאים ורופאות בכירים, שאינם עובדים בלאומית.\n \n להמשך קריאה https://www.leumit.co.il/insurance-policies/leumit-silver-and-gold/consultations/"
+    },
+    {
+      "url": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
+      "anchorText": "הרופאים והרופאות שלנו מספרים על עצמם ועל העבודה\n \n \n להמשך קריאה",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "הרופאים והרופאות שלנו מספרים על עצמם ועל העבודה\n \n \n להמשך קריאה https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/"
+    },
+    {
+      "url": "https://www.leumit.co.il/leumit-for-you/appointments/",
+      "sourceUrl": "https://www.leumit.co.il/doctorssearch/",
+      "anchorText": "זימון וניהול תורים\n לזימון תור לרופאים האישיים, רופאים מקצועיים, חדר אחיות, בדיקות דם ועוד, בקלות וביעילות דרך אפליקציית לאומית. \n \n להמשך קריאה",
+      "patternType": "doctorPage",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.82,
+      "evidence": "זימון וניהול תורים\n לזימון תור לרופאים האישיים, רופאים מקצועיים, חדר אחיות, בדיקות דם ועוד, בקלות וביעילות דרך אפליקציית לאומית. \n \n להמשך קריאה https://www.leumit.co.il/leumit-for-you/appointments/"
+    },
+    {
+      "url": "https://www.leumit.co.il/leumit-for-you/correspondence-with-the-personal-doctor/",
+      "sourceUrl": "https://www.leumit.co.il/doctorssearch/",
+      "anchorText": "התכתבות עם הרופא/ה האישי/ת\n רופאי המשפחה והילדים האישיים, זמינים בשבילכם בשביל התייעצויות, הפניות, מרשמים ומענה לכל שאלה. \n \n להמשך קריאה",
+      "patternType": "unknown",
+      "parserFamily": "inlineStaff",
+      "confidence": 0.65,
+      "evidence": "התכתבות עם הרופא/ה האישי/ת\n רופאי המשפחה והילדים האישיים, זמינים בשבילכם בשביל התייעצויות, הפניות, מרשמים ומענה לכל שאלה. \n \n להמשך קריאה https://www.leumit.co.il/leumit-for-you/correspondence-with-the-personal-doctor/"
+    }
+  ],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
+    "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "https://www.leumit.co.il/ar/doctorssearch/",
+    "https://www.leumit.co.il/doctorssearch/",
+    "https://www.leumit.co.il/en/doctorssearch/",
+    "https://www.leumit.co.il/ru/doctorssearch/",
+    "https://www.leumit.co.il/ar/jobs/family-medicine-intership/family-doctors-stories/",
+    "https://www.leumit.co.il/diseases/aids-hiv-and-prep/",
+    "https://www.leumit.co.il/insurance-policies/leumit-silver-and-gold/consultations/"
+  ],
+  "readiness": "pilotReady",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": null
+}

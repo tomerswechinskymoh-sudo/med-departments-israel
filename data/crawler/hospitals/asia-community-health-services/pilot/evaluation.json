@@ -1,0 +1,31 @@
+{
+  "hospitalSlug": "asia-community-health-services",
+  "hospitalName": "אסיא ש.בריאות קהילתיים",
+  "generatedAt": "2026-06-22T06:18:54.807Z",
+  "urlsUsed": [
+    "https://www.assiamd.co.il/about/"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 1,
+  "rawDoctorRecords": 0,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 0,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 0
+  },
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Pilot extracted zero doctor records."
+}

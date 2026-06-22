@@ -1,0 +1,31 @@
+{
+  "hospitalSlug": "shoham-geriatric",
+  "hospitalName": "מ.גריאטרי שהם",
+  "generatedAt": "2026-06-22T06:26:59.672Z",
+  "urlsUsed": [
+    "https://www.shoham-medical.org.il/about-shoham/%d7%94%d7%aa%d7%9e%d7%97%d7%95%d7%aa-%d7%91-%d7%a9%d7%94%d7%9d/"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 1,
+  "rawDoctorRecords": 0,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 0,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 0
+  },
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Pilot extracted zero doctor records."
+}

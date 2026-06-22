@@ -1,0 +1,35 @@
+{
+  "hospitalSlug": "leumit-health-fund",
+  "hospitalName": "קופ\"ח לאומית",
+  "generatedAt": "2026-06-22T06:26:56.094Z",
+  "urlsUsed": [
+    "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
+    "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "https://www.leumit.co.il/ar/doctorssearch/",
+    "https://www.leumit.co.il/doctorssearch/",
+    "https://www.leumit.co.il/en/doctorssearch/"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 10,
+  "pilotPagesSelected": 5,
+  "rawDoctorRecords": 20,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 20,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 20,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 20
+  },
+  "readiness": "needsHumanReview",
+  "crawlReadiness": "needsCalibration",
+  "mappingReadiness": "hospitalRosterOnly",
+  "outputUsability": "hospitalRoster",
+  "mainBlocker": "Profile URL coverage is below 50%."
+}

@@ -1,0 +1,31 @@
+{
+  "hospitalSlug": "shaar-menashe-mental-health",
+  "hospitalName": "מרכז לבה\"נ שער מנשה",
+  "generatedAt": "2026-06-22T06:26:58.837Z",
+  "urlsUsed": [
+    "https://www.shaar-menashe.org/"
+  ],
+  "doctorIndexExists": false,
+  "parserFamily": "inlineStaff",
+  "candidatePagesFound": 0,
+  "pilotPagesSelected": 1,
+  "rawDoctorRecords": 0,
+  "profileUrlCoverage": 0,
+  "profileFetchSuccess": 0,
+  "reviewedRecords": 0,
+  "productionReadyCount": 0,
+  "missingProfileUrlCount": 0,
+  "duplicateNameCount": 0,
+  "duplicateProfileUrlCount": 0,
+  "suspectedFalsePositiveCount": 0,
+  "profileCompleteness": {
+    "full": 0,
+    "partial": 0,
+    "listOnly": 0
+  },
+  "readiness": "blocked",
+  "crawlReadiness": "blocked",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "Pilot extracted zero doctor records."
+}

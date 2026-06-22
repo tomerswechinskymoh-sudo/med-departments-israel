@@ -1,0 +1,56 @@
+{
+  "hospitalSlug": "shoham-geriatric",
+  "hospitalName": "מ.גריאטרי שהם",
+  "generatedAt": "2026-06-22T06:26:59.338Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.shoham-medical.org.il/about-shoham/%d7%94%d7%aa%d7%9e%d7%97%d7%95%d7%aa-%d7%91-%d7%a9%d7%94%d7%9d/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.shoham-medical.org.il/about-shoham/%d7%94%d7%aa%d7%9e%d7%97%d7%95%d7%aa-%d7%91-%d7%a9%d7%94%d7%9d/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.shoham-medical.org.il/about-shoham/%d7%94%d7%aa%d7%9e%d7%97%d7%95%d7%aa-%d7%91-%d7%a9%d7%94%d7%9d/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.shoham-medical.org.il/about-shoham/%d7%94%d7%aa%d7%9e%d7%97%d7%95%d7%aa-%d7%91-%d7%a9%d7%94%d7%9d/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.shoham-medical.org.il/about-shoham/%d7%94%d7%aa%d7%9e%d7%97%d7%95%d7%aa-%d7%91-%d7%a9%d7%94%d7%9d/",
+      "title": "התמחות ב\"שהם\" - מרכז רפואי שהם",
+      "h1": [
+        "שירותים רפואיים",
+        "המרכז הרפואי \"שהם\"",
+        "מלווים אותך",
+        "קמפוס \"שהם\"",
+        "התמחות ב\"שהם\""
+      ],
+      "h2": [
+        "התמחות ב \"שהם\"",
+        "זקוקים לעזרתנו? נשמח לעמוד לרשותכם",
+        "השאירו פרטים ונחזור אליכם בהקדם"
+      ],
+      "htmlLength": 174267,
+      "visibleTextLength": 34219,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.shoham-medical.org.il/about-shoham/%d7%94%d7%aa%d7%9e%d7%97%d7%95%d7%aa-%d7%91-%d7%a9%d7%94%d7%9d/"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

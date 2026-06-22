@@ -11,11 +11,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.assiamd.co.il/about/",
     "sourceUrlNormalized": "https://www.assiamd.co.il/about/",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "live",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "urlInspectionEvidence": "OK 200 title=אודות - מרפאות אסיא text=16121",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -53,11 +53,13 @@
     "district": null,
     "sourceUrlRaw": "https://www.maccabi4u.co.il/careers/specialization_family/info/family_medicine/",
     "sourceUrlNormalized": "https://www.maccabi4u.co.il/careers/specialization_family/info/family_medicine/",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "live",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
-    "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "nearbyDoctorOrTeamUrls": [
+      "https://www.maccabi4u.co.il/careers/independent-doctors/"
+    ],
+    "urlInspectionEvidence": "OK 200 title=מכבי שירותי בריאות | למה רפואת משפחה? text=5600",
     "providerGuess": "private",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -74,11 +76,14 @@
     "district": null,
     "sourceUrlRaw": "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
     "sourceUrlNormalized": "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "live",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
-    "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "nearbyDoctorOrTeamUrls": [
+      "https://www.leumit.co.il/doctorssearch/",
+      "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/"
+    ],
+    "urlInspectionEvidence": "OK 200 title=הכירו את המחלקה לרפואת המשפחה בלאומית | לאומית שירותי בריאות - קופת חולים לאומית text=10726",
     "providerGuess": "private",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -95,11 +100,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.meuhedet.co.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94-%D7%91%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA/%D7%94%D7%AA%D7%9E%D7%97%D7%95%D7%AA-%D7%91%D7%A8%D7%A4%D7%95%D7%90%D7%AA-%D7%9E%D7%A9%D7%A4%D7%97%D7%94/",
     "sourceUrlNormalized": "https://www.meuhedet.co.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94-%D7%91%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA/%D7%94%D7%AA%D7%9E%D7%97%D7%95%D7%AA-%D7%91%D7%A8%D7%A4%D7%95%D7%90%D7%AA-%D7%9E%D7%A9%D7%A4%D7%97%D7%94/",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "live",
     "sourceUrlPageType": "unknown",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "urlInspectionEvidence": "OK 200 title=התמחות ברפואת משפחה עושים אצלנו - מאוחדת text=1151",
     "providerGuess": "private",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -158,11 +163,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.gov.il/he/departments/mazor-health-center/govil-landing-page",
     "sourceUrlNormalized": "https://www.gov.il/he/departments/mazor-health-center/govil-landing-page",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "forbidden",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "urlInspectionEvidence": "FAIL 403 title=Attention Required! | Cloudflare text=2050",
     "providerGuess": "government",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -242,11 +247,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.shaar-menashe.org/",
     "sourceUrlNormalized": "https://www.shaar-menashe.org/",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "live",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "urlInspectionEvidence": "OK 200 title=המרכז לבריאות הנפש- בית חולים שער מנשה text=2396",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -263,11 +268,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
     "sourceUrlNormalized": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "forbidden",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "urlInspectionEvidence": "FAIL 403 title=Attention Required! | Cloudflare text=2050",
     "providerGuess": "government",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -305,11 +310,11 @@
     "district": null,
     "sourceUrlRaw": "http://www.psjer.org.il/?CategoryID=254",
     "sourceUrlNormalized": "http://www.psjer.org.il/?CategoryID=254",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "redirected",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "urlInspectionEvidence": "OK 200 title=עמוד הבית - המרכז הירושלמי לבריאות הנפש text=57781",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -452,11 +457,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
     "sourceUrlNormalized": "https://www.gov.il/he/departments/mental-health-center-abarbanel/govil-landing-page",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "forbidden",
     "sourceUrlPageType": "departmentPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "urlInspectionEvidence": "FAIL 403 title=Attention Required! | Cloudflare text=2050",
     "providerGuess": "government",
     "crawlerStatus": "needsAdapter",
     "deferReason": null
@@ -473,11 +478,11 @@
     "district": null,
     "sourceUrlRaw": "http://www.psjer.org.il/?CategoryID=254",
     "sourceUrlNormalized": "http://www.psjer.org.il/?CategoryID=254",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "redirected",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "urlInspectionEvidence": "OK 200 title=עמוד הבית - המרכז הירושלמי לבריאות הנפש text=57781",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -515,11 +520,11 @@
     "district": null,
     "sourceUrlRaw": "https://www.shoham-medical.org.il/about-shoham/%d7%94%d7%aa%d7%9e%d7%97%d7%95%d7%aa-%d7%91-%d7%a9%d7%94%d7%9d/",
     "sourceUrlNormalized": "https://www.shoham-medical.org.il/about-shoham/%d7%94%d7%aa%d7%9e%d7%97%d7%95%d7%aa-%d7%91-%d7%a9%d7%94%d7%9d/",
-    "sourceUrlStatus": "pending",
+    "sourceUrlStatus": "live",
     "sourceUrlPageType": "hospitalPage",
     "discoveredFromMasterDeptUrl": true,
     "nearbyDoctorOrTeamUrls": [],
-    "urlInspectionEvidence": null,
+    "urlInspectionEvidence": "OK 200 title=התמחות ב\"שהם\" - מרכז רפואי שהם text=34219",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -773,7 +778,7 @@
     "nearbyDoctorOrTeamUrls": [
       "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/"
     ],
-    "urlInspectionEvidence": "OK 200 title=מחלקת ילדים – Saint Vincent De Paul Hospital text=20096",
+    "urlInspectionEvidence": "OK 200 title=מחלקת ילדים – Saint Vincent De Paul Hospital text=20106",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -796,7 +801,7 @@
     "nearbyDoctorOrTeamUrls": [
       "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/"
     ],
-    "urlInspectionEvidence": "OK 200 title=מחלקת נשים ויולדות – Saint Vincent De Paul Hospital text=13877",
+    "urlInspectionEvidence": "OK 200 title=מחלקת נשים ויולדות – Saint Vincent De Paul Hospital text=13852",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -819,7 +824,7 @@
     "nearbyDoctorOrTeamUrls": [
       "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/"
     ],
-    "urlInspectionEvidence": "OK 200 title=מחלקת אף אוזן גרון – Saint Vincent De Paul Hospital text=15970",
+    "urlInspectionEvidence": "OK 200 title=מחלקת אף אוזן גרון – Saint Vincent De Paul Hospital text=16051",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null
@@ -842,7 +847,7 @@
     "nearbyDoctorOrTeamUrls": [
       "https://saint-vincent-hospital.org/%d7%a8%d7%95%d7%a4%d7%90%d7%99%d7%9d/"
     ],
-    "urlInspectionEvidence": "OK 200 title=מחלקת עיניים – Saint Vincent De Paul Hospital text=12008",
+    "urlInspectionEvidence": "OK 200 title=מחלקת עיניים – Saint Vincent De Paul Hospital text=12036",
     "providerGuess": "unknown",
     "crawlerStatus": "pending",
     "deferReason": null

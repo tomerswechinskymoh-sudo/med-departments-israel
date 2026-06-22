@@ -1720,8 +1720,8 @@ export function buildNationalRemainingQueue(
   targets: MasterDeptTarget[],
   options: { handledSlugs?: Set<string>; deferredSlugs?: Set<string> } = {}
 ): NationalRemainingQueueItem[] {
-  const handledSlugs = options.handledSlugs ?? defaultHandledSlugs;
-  const deferredSlugs = options.deferredSlugs ?? defaultDeferredSlugs;
+  const handledSlugs = new Set([...defaultHandledSlugs, ...(options.handledSlugs ?? [])]);
+  const deferredSlugs = new Set([...defaultDeferredSlugs, ...(options.deferredSlugs ?? [])]);
 
   return plan
     .map((item) => {

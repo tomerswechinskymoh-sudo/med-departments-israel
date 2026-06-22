@@ -1,0 +1,382 @@
+[
+  {
+    "canonicalDoctorId": "doctor-0d0ecccb2e8d33fb",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-17eb8da5add3ad9f",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-3fbe075b27a1ea68",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-445545c370350caa",
+    "masterDeptRowId": "master-dept-0005-קופח-לאומית-רפואת-המשפחה",
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": "",
+    "specialty": "רפואת המשפחה",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
+    "matchConfidence": "sourceUrlMatch",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
+      "relationship": "exactSourceUrl",
+      "reason": "doctor source equals Master_Dept source URL"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-5addd2a723553e7d",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-5d45b38dd2a6066f",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-6487b0ca4364a99d",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-6e572487b0a3f2e0",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-75e263ac8159162b",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-7a908d79a95b2a60",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-8bc8c1bbb3579829",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-91fe2584bbf5cfe4",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-afb2a29456ef19c2",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-b032881bfa89b18f",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-b392888edfc313e1",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-b5c1a69acee6092f",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-bb46b8359195b157",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-c2656a385b9dd22f",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-c90020fa0c695ed4",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  },
+  {
+    "canonicalDoctorId": "doctor-cc9cb699086a7bc1",
+    "masterDeptRowId": null,
+    "hospitalName": "קופ\"ח לאומית",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "matchConfidence": "hospitalOnly",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/"
+      ],
+      "extractedFromUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=קופ\"ח לאומית"
+    },
+    "ambiguityReason": null
+  }
+]

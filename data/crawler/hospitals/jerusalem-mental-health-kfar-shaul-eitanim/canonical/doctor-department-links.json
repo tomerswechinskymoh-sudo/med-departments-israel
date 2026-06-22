@@ -1,0 +1,40 @@
+[
+  {
+    "canonicalDoctorId": "doctor-1cb3704c53356696",
+    "masterDeptRowId": null,
+    "hospitalName": "מרכז לבה\"נ ירושלים (כפר שאול ואיתנים)",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://psjer.org.il/?CategoryID=254",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "http://www.psjer.org.il/?CategoryID=254"
+      ],
+      "extractedFromUrl": "https://psjer.org.il/?CategoryID=254",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=מרכז לבה\"נ ירושלים (כפר שאול ואיתנים); candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  },
+  {
+    "canonicalDoctorId": "doctor-7494c276c7360dc4",
+    "masterDeptRowId": null,
+    "hospitalName": "מרכז לבה\"נ ירושלים (כפר שאול ואיתנים)",
+    "departmentName": null,
+    "specialty": null,
+    "sourceUrl": null,
+    "extractedFromUrl": "https://psjer.org.il/?CategoryID=254",
+    "matchConfidence": "reviewNeeded",
+    "matchEvidence": {
+      "masterDeptSourceUrls": [
+        "http://www.psjer.org.il/?CategoryID=254"
+      ],
+      "extractedFromUrl": "https://psjer.org.il/?CategoryID=254",
+      "relationship": "hospitalOnly",
+      "reason": "hospital=מרכז לבה\"נ ירושלים (כפר שאול ואיתנים); candidates=2"
+    },
+    "ambiguityReason": "multipleMasterDeptHospitalRows"
+  }
+]

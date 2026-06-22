@@ -1,0 +1,402 @@
+[
+  {
+    "fullName": "פרופ' אלי קיטאי שגם ניהל והוביל אותה עד שנת",
+    "normalizedName": "אלי קיטאי שגם ניהל והוביל אותה עד שנת",
+    "titlePrefix": "פרופ'",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "פרופ' אלי קיטאי שגם ניהל והוביל אותה עד שנת",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-department/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "פרופ' אלי קיטאי שגם ניהל והוביל אותה עד שנת",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אביאל חנקין",
+    "normalizedName": "אביאל חנקין",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אביאל חנקין",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אביאל חנקין",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אבראהים בכרי",
+    "normalizedName": "אבראהים בכרי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אבראהים בכרי",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אבראהים בכרי",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד״ר אורן עינן",
+    "normalizedName": "אורן עינן",
+    "titlePrefix": "ד״ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד״ר אורן עינן",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד״ר אורן עינן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אילן גרין",
+    "normalizedName": "אילן גרין",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אילן גרין",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אילן גרין",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר אמירה גנים",
+    "normalizedName": "אמירה גנים",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר אמירה גנים",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר אמירה גנים",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר גל בירן",
+    "normalizedName": "גל בירן",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר גל בירן",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר גל בירן",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר דניאל הרש",
+    "normalizedName": "דניאל הרש",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר דניאל הרש",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר דניאל הרש",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר הילה ראצ'ה ניקסון",
+    "normalizedName": "הילה ראצה ניקסון",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר הילה ראצ'ה ניקסון",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר הילה ראצ'ה ניקסון",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר וואיל סוויטאת",
+    "normalizedName": "וואיל סוויטאת",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר וואיל סוויטאת",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר וואיל סוויטאת",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר חמוד מבאסם",
+    "normalizedName": "חמוד מבאסם",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר חמוד מבאסם",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר חמוד מבאסם",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מוחמד ענאתי",
+    "normalizedName": "מוחמד ענאתי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מוחמד ענאתי",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מוחמד ענאתי",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר מועד מחמוד- מדריך ברפואת המשפחה ובוגר המחלקה",
+    "normalizedName": "מועד מחמוד מדריך ברפואת המשפחה ובוגר המחלקה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר מועד מחמוד- מדריך ברפואת המשפחה ובוגר המחלקה",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר מועד מחמוד- מדריך ברפואת המשפחה ובוגר המחלקה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר נדיה הוואש",
+    "normalizedName": "נדיה הוואש",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר נדיה הוואש",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר נדיה הוואש",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר נחמה אנג'ל",
+    "normalizedName": "נחמה אנגל",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר נחמה אנג'ל",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר נחמה אנג'ל",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר סלמאן אבו סאלח",
+    "normalizedName": "סלמאן אבו סאלח",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר סלמאן אבו סאלח",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר סלמאן אבו סאלח",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר עלאא שלאעטה",
+    "normalizedName": "עלאא שלאעטה",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר עלאא שלאעטה",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר עלאא שלאעטה",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר פואד כלדאוי",
+    "normalizedName": "פואד כלדאוי",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר פואד כלדאוי",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר פואד כלדאוי",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר רואן סבאח",
+    "normalizedName": "רואן סבאח",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר רואן סבאח",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר רואן סבאח",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  },
+  {
+    "fullName": "ד\"ר שריף מוחמד",
+    "normalizedName": "שריף מוחמד",
+    "titlePrefix": "ד\"ר",
+    "role": null,
+    "unit": null,
+    "profileUrl": null,
+    "imageUrl": null,
+    "rawText": "ד\"ר שריף מוחמד",
+    "sourceUrl": "https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/",
+    "hospitalSlug": "leumit-health-fund",
+    "hospital": "קופ\"ח לאומית",
+    "parserFamily": "inlineStaff",
+    "sourceEvidence": "ד\"ר שריף מוחמד",
+    "qaFlags": [
+      "missingProfileUrl",
+      "textOnlyCandidate"
+    ],
+    "qaSeverity": "review"
+  }
+]

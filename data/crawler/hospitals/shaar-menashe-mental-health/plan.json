@@ -1,0 +1,52 @@
+{
+  "hospitalSlug": "shaar-menashe-mental-health",
+  "hospitalName": "מרכז לבה\"נ שער מנשה",
+  "generatedAt": "2026-06-22T06:26:58.362Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.shaar-menashe.org/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.shaar-menashe.org/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.shaar-menashe.org/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.shaar-menashe.org/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.shaar-menashe.org/",
+      "title": "המרכז לבריאות הנפש- בית חולים שער מנשה",
+      "h1": [
+        "המרכז לבריאות הנפש- בית חולים שער מנשה - עמוד הבית"
+      ],
+      "h2": [
+        "המרכז לבר\"ן שער מנשה - הנהלה",
+        "האגף לביטחון מרבי",
+        "אדמינסטרציה"
+      ],
+      "htmlLength": 28135,
+      "visibleTextLength": 2396,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.shaar-menashe.org/"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

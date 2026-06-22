@@ -1,0 +1,11 @@
+hospitalSlug,hospitalName,providerGuess,masterDeptRows,rowsWithUrls,liveUrlRows,nearbyDoctorOrTeamUrlRows,seedUrlCount,safeSeedUrlCount,plannedAction,reasonSelected
+"abrabanel-mental-health","מרכז לבה""נ אברבנאל","government","2","2","0","0","0","0","pilot","2 Master_Dept source URL rows; 2 Master_Dept URLs; synthetic generic parser"
+"jerusalem-mental-health-kfar-shaul-eitanim","מרכז לבה""נ ירושלים (כפר שאול ואיתנים)","unknown","2","2","0","0","0","0","pilot","2 Master_Dept source URL rows; 2 Master_Dept URLs; synthetic generic parser"
+"asia-community-health-services","אסיא ש.בריאות קהילתיים","unknown","1","1","0","0","0","0","pilot","1 Master_Dept source URL rows; 1 Master_Dept URLs; synthetic generic parser"
+"maccabi-health-services","מכבי שירותי בריאות","private","1","1","0","0","0","0","pilot","1 Master_Dept source URL rows; 1 Master_Dept URLs; synthetic generic parser"
+"leumit-health-fund","קופ""ח לאומית","private","1","1","0","0","0","0","pilot","1 Master_Dept source URL rows; 1 Master_Dept URLs; synthetic generic parser"
+"meuhedet-health-fund","קופ""ח מאוחדת","private","1","1","0","0","0","0","pilot","1 Master_Dept source URL rows; 1 Master_Dept URLs; synthetic generic parser"
+"mazor-mental-health","מרכז לבה""נ מזור","government","1","1","0","0","0","0","pilot","1 Master_Dept source URL rows; 1 Master_Dept URLs; synthetic generic parser"
+"shaar-menashe-mental-health","מרכז לבה""נ שער מנשה","unknown","1","1","0","0","0","0","pilot","1 Master_Dept source URL rows; 1 Master_Dept URLs; synthetic generic parser"
+"shoham-geriatric","מ.גריאטרי שהם","unknown","1","1","0","0","0","0","pilot","1 Master_Dept source URL rows; 1 Master_Dept URLs; synthetic generic parser"
+"rambam","מרכז רפואי רמב""ם","unknown","24","0","0","0","1","1","adapterInspect","targeted adapter backlog item only; safe seed exists but previous retry found zero doctors, so no blind pilot rerun"

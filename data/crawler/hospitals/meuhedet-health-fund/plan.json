@@ -1,0 +1,53 @@
+{
+  "hospitalSlug": "meuhedet-health-fund",
+  "hospitalName": "קופ\"ח מאוחדת",
+  "generatedAt": "2026-06-22T06:26:56.687Z",
+  "provider": "unknown",
+  "websiteFamily": "unknown",
+  "knownUrls": {
+    "homepageUrl": "https://www.meuhedet.co.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94-%D7%91%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA/%D7%94%D7%AA%D7%9E%D7%97%D7%95%D7%AA-%D7%91%D7%A8%D7%A4%D7%95%D7%90%D7%AA-%D7%9E%D7%A9%D7%A4%D7%97%D7%94/",
+    "departmentsIndexUrlCandidates": [
+      "https://www.meuhedet.co.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94-%D7%91%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA/%D7%94%D7%AA%D7%9E%D7%97%D7%95%D7%AA-%D7%91%D7%A8%D7%A4%D7%95%D7%90%D7%AA-%D7%9E%D7%A9%D7%A4%D7%97%D7%94/"
+    ],
+    "doctorIndexUrlCandidates": [],
+    "pilotUrlCandidates": [
+      "https://www.meuhedet.co.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94-%D7%91%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA/%D7%94%D7%AA%D7%9E%D7%97%D7%95%D7%AA-%D7%91%D7%A8%D7%A4%D7%95%D7%90%D7%AA-%D7%9E%D7%A9%D7%A4%D7%97%D7%94/"
+    ]
+  },
+  "fetches": [
+    {
+      "url": "https://www.meuhedet.co.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94-%D7%91%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA/%D7%94%D7%AA%D7%9E%D7%97%D7%95%D7%AA-%D7%91%D7%A8%D7%A4%D7%95%D7%90%D7%AA-%D7%9E%D7%A9%D7%A4%D7%97%D7%94/",
+      "ok": true,
+      "statusCode": 200,
+      "finalUrl": "https://www.meuhedet.co.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94-%D7%91%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA/%D7%94%D7%AA%D7%9E%D7%97%D7%95%D7%AA-%D7%91%D7%A8%D7%A4%D7%95%D7%90%D7%AA-%D7%9E%D7%A9%D7%A4%D7%97%D7%94/",
+      "title": "התמחות ברפואת משפחה עושים אצלנו - מאוחדת",
+      "h1": [],
+      "h2": [
+        "אודות",
+        "צוות הנהלת המחלקה- מטה",
+        "סגל הדרכה",
+        "מתמחים מספרים",
+        "הגשת מועמדות להתמחות ברפואת משפחה",
+        "מחוזות"
+      ],
+      "htmlLength": 16154,
+      "visibleTextLength": 1151,
+      "error": null
+    }
+  ],
+  "candidatePages": [],
+  "doctorIndexExists": false,
+  "parserFamilies": [
+    "inlineStaff",
+    "teamPage",
+    "unknown"
+  ],
+  "recommendedPilotUrls": [
+    "https://www.meuhedet.co.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94-%D7%91%D7%9E%D7%90%D7%95%D7%97%D7%93%D7%AA/%D7%94%D7%AA%D7%9E%D7%97%D7%95%D7%AA-%D7%91%D7%A8%D7%A4%D7%95%D7%90%D7%AA-%D7%9E%D7%A9%D7%A4%D7%97%D7%94/"
+  ],
+  "readiness": "inspectNeeded",
+  "crawlReadiness": "pilotReady",
+  "mappingReadiness": "blocked",
+  "outputUsability": "notUsableYet",
+  "mainBlocker": "No clear doctor/team pages found from known URLs."
+}

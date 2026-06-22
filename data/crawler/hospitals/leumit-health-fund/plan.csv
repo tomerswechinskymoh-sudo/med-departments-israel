@@ -1,0 +1,41 @@
+url,sourceUrl,anchorText,patternType,parserFamily,confidence,evidence
+https://www.leumit.co.il/ar/doctorssearch/,https://www.leumit.co.il/doctorssearch/,العربية,doctorIndex,searchDriven,0.9,العربية https://www.leumit.co.il/ar/doctorssearch/
+https://www.leumit.co.il/doctorssearch/,https://www.leumit.co.il/doctorssearch/,עברית,doctorIndex,searchDriven,0.9,עברית https://www.leumit.co.il/doctorssearch/
+https://www.leumit.co.il/en/doctorssearch/,https://www.leumit.co.il/doctorssearch/,English,doctorIndex,searchDriven,0.9,English https://www.leumit.co.il/en/doctorssearch/
+https://www.leumit.co.il/ru/doctorssearch/,https://www.leumit.co.il/doctorssearch/,Русский,doctorIndex,searchDriven,0.9,Русский https://www.leumit.co.il/ru/doctorssearch/
+https://www.leumit.co.il/ar/jobs/family-medicine-intership/family-doctors-stories/,https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/,العربية,doctorPage,inlineStaff,0.82,العربية https://www.leumit.co.il/ar/jobs/family-medicine-intership/family-doctors-stories/
+https://www.leumit.co.il/diseases/aids-hiv-and-prep/,https://www.leumit.co.il/doctorssearch/,"טיפול ב HIV ורופאים מורשי פרפ
+ טיפול נכון ב HIV, הכולל מעקב רפואי ומניעה מותאמת יכולים להפחית משמעותית סיכונים ולהגן על הבריאות.
+ 
+ להמשך קריאה",doctorPage,inlineStaff,0.82,"טיפול ב HIV ורופאים מורשי פרפ
+ טיפול נכון ב HIV, הכולל מעקב רפואי ומניעה מותאמת יכולים להפחית משמעותית סיכונים ולהגן על הבריאות.
+ 
+ להמשך קריאה https://www.leumit.co.il/diseases/aids-hiv-and-prep/"
+https://www.leumit.co.il/insurance-policies/leumit-silver-and-gold/consultations/,https://www.leumit.co.il/doctorssearch/,"ייעוץ מומחה/ית - לאומית זהב 
+ לקוחות לאומית זהב/כסף זכאים לחוות דעת שנייה גם מרופאים ורופאות בכירים, שאינם עובדים בלאומית.
+ 
+ להמשך קריאה",doctorPage,inlineStaff,0.82,"ייעוץ מומחה/ית - לאומית זהב 
+ לקוחות לאומית זהב/כסף זכאים לחוות דעת שנייה גם מרופאים ורופאות בכירים, שאינם עובדים בלאומית.
+ 
+ להמשך קריאה https://www.leumit.co.il/insurance-policies/leumit-silver-and-gold/consultations/"
+https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/,https://www.leumit.co.il/jobs/family-medicine-residency/family-department/,"הרופאים והרופאות שלנו מספרים על עצמם ועל העבודה
+ 
+ 
+ להמשך קריאה",doctorPage,inlineStaff,0.82,"הרופאים והרופאות שלנו מספרים על עצמם ועל העבודה
+ 
+ 
+ להמשך קריאה https://www.leumit.co.il/jobs/family-medicine-residency/family-doctors-stories/"
+https://www.leumit.co.il/leumit-for-you/appointments/,https://www.leumit.co.il/doctorssearch/,"זימון וניהול תורים
+ לזימון תור לרופאים האישיים, רופאים מקצועיים, חדר אחיות, בדיקות דם ועוד, בקלות וביעילות דרך אפליקציית לאומית. 
+ 
+ להמשך קריאה",doctorPage,inlineStaff,0.82,"זימון וניהול תורים
+ לזימון תור לרופאים האישיים, רופאים מקצועיים, חדר אחיות, בדיקות דם ועוד, בקלות וביעילות דרך אפליקציית לאומית. 
+ 
+ להמשך קריאה https://www.leumit.co.il/leumit-for-you/appointments/"
+https://www.leumit.co.il/leumit-for-you/correspondence-with-the-personal-doctor/,https://www.leumit.co.il/doctorssearch/,"התכתבות עם הרופא/ה האישי/ת
+ רופאי המשפחה והילדים האישיים, זמינים בשבילכם בשביל התייעצויות, הפניות, מרשמים ומענה לכל שאלה. 
+ 
+ להמשך קריאה",unknown,inlineStaff,0.65,"התכתבות עם הרופא/ה האישי/ת
+ רופאי המשפחה והילדים האישיים, זמינים בשבילכם בשביל התייעצויות, הפניות, מרשמים ומענה לכל שאלה. 
+ 
+ להמשך קריאה https://www.leumit.co.il/leumit-for-you/correspondence-with-the-personal-doctor/"

@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import fs from "node:fs";
 import { parseArgs } from "@/crawler/clalit/utils";
 import { registerHospitalBaseline } from "@/crawler/hospitals/baseline-registry";
 import { runHospitalAutopilot, summarizeAutopilotResult } from "@/crawler/hospitals/autopilot";
@@ -28,6 +29,21 @@ const wave1HospitalSlugs = ["ichilov", "hadassah", "meir"];
 const wave3HospitalSlugs = ["shamir", "maayanei-hayeshua", "galilee", "laniado", "wolfson"];
 const nationalCalibrationSlugs = ["barzilai", "nazareth-scottish", "schneider", "holy-family", "saint-vincent"];
 const nationalAdapterPrioritySlugs = ["shaare-zedek", "rambam", "yoseftal", "beer-sheva-mental-health"];
+const legacyHospitalSlugMap = new Map([
+  ["hospital-08078cfe7d", "maccabi-health-services"],
+  ["hospital-fa8413a9cd", "jerusalem-mental-health-kfar-shaul-eitanim"],
+  ["hospital-a3603919b1", "asia-community-health-services"],
+  ["hospital-3a3abf9b65", "abrabanel-mental-health"]
+]);
+
+function normalizeHospitalResultSlug(slug: string) {
+  return legacyHospitalSlugMap.get(slug) ?? slug;
+}
+
+function normalizeSweepResultSlug<T extends { hospital: string }>(item: T): T {
+  const hospital = normalizeHospitalResultSlug(item.hospital);
+  return hospital === item.hospital ? item : { ...item, hospital };
+}
 
 function readCommittedNationalCoverageReport() {
   try {
@@ -35,9 +51,57 @@ function readCommittedNationalCoverageReport() {
       encoding: "utf8",
       stdio: ["ignore", "pipe", "ignore"]
     });
-    return JSON.parse(raw) as { nationalSweepResults?: NationalSweepResult[] };
+    return JSON.parse(raw) as {
+      wave1Results?: Array<{ hospital: string }>;
+      wave2Results?: Array<{ hospital: string }>;
+      wave3Results?: Array<{ hospital: string }>;
+      calibrationResults?: NationalSweepResult[];
+      adapterPriorityResults?: NationalSweepResult[];
+      nationalSweepResults?: NationalSweepResult[];
+    };
   } catch {
     return null;
+  }
+}
+
+function attemptedSlugsFromReport(report: ReturnType<typeof readCommittedNationalCoverageReport>) {
+  if (!report) return new Set<string>();
+  return new Set([
+    ...(report.wave1Results ?? []).map((item) => normalizeHospitalResultSlug(item.hospital)),
+    ...(report.wave2Results ?? []).map((item) => normalizeHospitalResultSlug(item.hospital)),
+    ...(report.wave3Results ?? []).map((item) => normalizeHospitalResultSlug(item.hospital)),
+    ...(report.calibrationResults ?? []).map((item) => normalizeHospitalResultSlug(item.hospital)),
+    ...(report.adapterPriorityResults ?? []).map((item) => normalizeHospitalResultSlug(item.hospital)),
+    ...(report.nationalSweepResults ?? []).map((item) => normalizeHospitalResultSlug(item.hospital))
+  ].filter(Boolean));
+}
+
+function mergeSweepResults(previous: NationalSweepResult[] = [], current: NationalSweepResult[] = []) {
+  const byHospital = new Map<string, NationalSweepResult>();
+  for (const item of previous.map(normalizeSweepResultSlug)) byHospital.set(item.hospital, item);
+  for (const item of current.map(normalizeSweepResultSlug)) byHospital.set(item.hospital, item);
+  return Array.from(byHospital.values());
+}
+
+type SweepPlanEntry = {
+  hospitalSlug: string;
+  plannedAction?: "pilot" | "adapterInspect" | "skipAlreadyAttempted" | "needsManualSeedUrl";
+};
+
+function readSweepPlan(planPath: string | null) {
+  if (!planPath) return null;
+  return JSON.parse(fs.readFileSync(planPath, "utf8")) as SweepPlanEntry[];
+}
+
+function hospitalSlugsWithCanonicalSummaries() {
+  const root = "data/crawler/hospitals";
+  try {
+    return fs.readdirSync(root, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .filter((slug) => fs.existsSync(`${root}/${slug}/canonical/summary.json`));
+  } catch {
+    return [];
   }
 }
 
@@ -399,65 +463,93 @@ async function main() {
 
   if (mode === "national-sweep") {
     const limit = Number(args.get("limit") ?? "10");
+    const selectedPlan = readSweepPlan(args.get("plan") ?? null);
+    const selectedPlanSlugs = new Set((selectedPlan ?? []).map((item) => item.hospitalSlug));
+    const selectedActionBySlug = new Map((selectedPlan ?? []).map((item) => [item.hospitalSlug, item.plannedAction ?? "pilot"]));
+    const runTargeted = limit === 0 || args.get("targeted") === "true";
+    const previousReport = readCommittedNationalCoverageReport();
+    const previousAttemptedSlugs = attemptedSlugsFromReport(previousReport);
     const targets = await loadMasterDeptTargets();
     const initialPlan = buildNationalHospitalPlan(targets);
-    const initialQueue = buildNationalRemainingQueue(initialPlan, targets);
-    const calibrationItems = initialQueue.filter((item) => nationalCalibrationSlugs.includes(item.hospitalSlug));
+    const initialQueue = buildNationalRemainingQueue(initialPlan, targets, { handledSlugs: previousAttemptedSlugs });
+    const initialTargetedQueue = buildNationalRemainingQueue(initialPlan, targets);
+    const calibrationItems = (runTargeted ? initialTargetedQueue : initialQueue).filter((item) => nationalCalibrationSlugs.includes(item.hospitalSlug));
     const calibrationNames = calibrationItems.map((item) => item.hospitalName);
-    const adapterPriorityItems = initialQueue.filter((item) => nationalAdapterPrioritySlugs.includes(item.hospitalSlug));
-    const inspectCandidates = initialQueue
-      .filter((item) => item.plannedAction === "pilot" || item.plannedAction === "adapterInspect")
-      .slice(0, limit);
+    const adapterPriorityItems = (runTargeted ? initialTargetedQueue : initialQueue).filter((item) => nationalAdapterPrioritySlugs.includes(item.hospitalSlug));
+    const queueForSelection = selectedPlan ? initialTargetedQueue : initialQueue;
+    const inspectCandidates = queueForSelection
+      .filter((item) => selectedPlan ? selectedPlanSlugs.has(item.hospitalSlug) : (item.plannedAction === "pilot" || item.plannedAction === "adapterInspect"))
+      .slice(0, selectedPlan ? selectedPlan.length : limit);
     await inspectMasterDeptTargets(targets, {
       hospitalNames: Array.from(new Set([...calibrationNames, ...adapterPriorityItems.map((item) => item.hospitalName), ...inspectCandidates.map((item) => item.hospitalName)])),
       limit: 320
     });
     const inspectedPlan = buildNationalHospitalPlan(targets);
-    const nationalRemainingQueue = buildNationalRemainingQueue(inspectedPlan, targets);
-    const sweepQueue = nationalRemainingQueue
-      .filter((item) => item.plannedAction === "pilot" || item.plannedAction === "adapterInspect")
-      .slice(0, limit);
+    const nationalRemainingQueue = buildNationalRemainingQueue(inspectedPlan, targets, { handledSlugs: previousAttemptedSlugs });
+    const inspectedTargetedQueue = buildNationalRemainingQueue(inspectedPlan, targets);
+    const sweepQueue = selectedPlan
+      ? selectedPlan
+        .map((planItem) => {
+          const item = nationalRemainingQueue.find((candidate) => candidate.hospitalSlug === planItem.hospitalSlug) ??
+            inspectedTargetedQueue.find((candidate) => candidate.hospitalSlug === planItem.hospitalSlug);
+          if (!item) return null;
+          return { ...item, plannedAction: selectedActionBySlug.get(planItem.hospitalSlug) === "adapterInspect" ? "adapterInspect" as const : item.plannedAction };
+        })
+        .filter((item): item is NonNullable<typeof item> => Boolean(item))
+        .filter((item) => item.plannedAction === "pilot" || item.plannedAction === "adapterInspect")
+      : nationalRemainingQueue
+        .filter((item) => item.plannedAction === "pilot" || item.plannedAction === "adapterInspect")
+        .slice(0, limit);
     const calibrationResults: NationalSweepResult[] = [];
-    for (const slug of nationalCalibrationSlugs) {
-      const item = nationalRemainingQueue.find((candidate) => candidate.hospitalSlug === slug) ??
-        calibrationItems.find((candidate) => candidate.hospitalSlug === slug);
-      if (item) registerHospitalBaseline(buildSyntheticBaselineForQueueItem(item, targets));
-      calibrationResults.push(await pilotResultForItem({ hospitalSlug: slug, plannedAction: "pilot" }, targets));
-    }
-    const inspectedAdapterPriorityItems = nationalRemainingQueue.filter((item) => nationalAdapterPrioritySlugs.includes(item.hospitalSlug));
-    const adapterPriorityResults: NationalSweepResult[] = [];
-    for (const item of inspectedAdapterPriorityItems) {
-      if (item.plannedAction !== "pilot") {
-        const mappingStats = await readMappingStats(item.hospitalSlug);
-        const canonicalStats = await readCanonicalStats(item.hospitalSlug);
-        const split = blockedSplit(item.expectedCrawlReadiness === "needsAdapter" ? "needsAdapter" : "blocked");
-        adapterPriorityResults.push({
-          hospital: item.hospitalSlug,
-          plannedAction: item.plannedAction,
-          readiness: item.expectedCrawlReadiness === "needsAdapter" ? "needsAdapter" : "blocked",
-          crawlReadiness: split.crawlReadiness,
-          mappingReadiness: split.mappingReadiness,
-          outputUsability: split.outputUsability,
-          reviewedRecords: mappingStats.totalReviewed,
-          productionReadyCount: canonicalStats.productionReadyCanonicalDoctors,
-          mappedRecords: mappingStats.totalReviewed - mappingStats.unmapped,
-          mappingStats,
-          canonicalStats,
-          mainBlocker: item.needsManualSeedUrl
-            ? "No safe seed URL is available yet; manual seed URL verification required."
-            : item.rowsWithUrls === 0
-              ? "No Master_Dept source URLs available; seed registry did not provide a safe pilot URL."
-              : "Adapter inspection required before pilot.",
-          blockerType: item.needsManualSeedUrl
-            ? "needsManualSeedUrl"
-            : item.rowsWithUrls === 0
-              ? "noMasterDeptSourceUrl"
-              : "parserMissing"
-        });
-      } else {
-        registerHospitalBaseline(buildSyntheticBaselineForQueueItem(item, targets));
-        adapterPriorityResults.push(await pilotResultForItem(item, targets));
+    if (runTargeted) {
+      for (const slug of nationalCalibrationSlugs) {
+        const item = nationalRemainingQueue.find((candidate) => candidate.hospitalSlug === slug) ??
+          calibrationItems.find((candidate) => candidate.hospitalSlug === slug);
+        if (item) registerHospitalBaseline(buildSyntheticBaselineForQueueItem(item, targets));
+        calibrationResults.push(await pilotResultForItem({ hospitalSlug: slug, plannedAction: "pilot" }, targets));
       }
+    } else {
+      calibrationResults.push(...(previousReport?.calibrationResults ?? []).map(normalizeSweepResultSlug));
+    }
+    const inspectedAdapterPriorityItems = (runTargeted ? buildNationalRemainingQueue(inspectedPlan, targets) : nationalRemainingQueue)
+      .filter((item) => nationalAdapterPrioritySlugs.includes(item.hospitalSlug));
+    const adapterPriorityResults: NationalSweepResult[] = [];
+    if (runTargeted) {
+      for (const item of inspectedAdapterPriorityItems) {
+        if (item.plannedAction !== "pilot") {
+          const mappingStats = await readMappingStats(item.hospitalSlug);
+          const canonicalStats = await readCanonicalStats(item.hospitalSlug);
+          const split = blockedSplit(item.expectedCrawlReadiness === "needsAdapter" ? "needsAdapter" : "blocked");
+          adapterPriorityResults.push({
+            hospital: item.hospitalSlug,
+            plannedAction: item.plannedAction,
+            readiness: item.expectedCrawlReadiness === "needsAdapter" ? "needsAdapter" : "blocked",
+            crawlReadiness: split.crawlReadiness,
+            mappingReadiness: split.mappingReadiness,
+            outputUsability: split.outputUsability,
+            reviewedRecords: mappingStats.totalReviewed,
+            productionReadyCount: canonicalStats.productionReadyCanonicalDoctors,
+            mappedRecords: mappingStats.totalReviewed - mappingStats.unmapped,
+            mappingStats,
+            canonicalStats,
+            mainBlocker: item.needsManualSeedUrl
+              ? "No safe seed URL is available yet; manual seed URL verification required."
+              : item.rowsWithUrls === 0
+                ? "No Master_Dept source URLs available; seed registry did not provide a safe pilot URL."
+                : "Adapter inspection required before pilot.",
+            blockerType: item.needsManualSeedUrl
+              ? "needsManualSeedUrl"
+              : item.rowsWithUrls === 0
+                ? "noMasterDeptSourceUrl"
+                : "parserMissing"
+          });
+        } else {
+          registerHospitalBaseline(buildSyntheticBaselineForQueueItem(item, targets));
+          adapterPriorityResults.push(await pilotResultForItem(item, targets));
+        }
+      }
+    } else {
+      adapterPriorityResults.push(...(previousReport?.adapterPriorityResults ?? []).map(normalizeSweepResultSlug));
     }
     const nationalSweepResults: NationalSweepResult[] = [];
 
@@ -495,10 +587,14 @@ async function main() {
       registerHospitalBaseline(buildSyntheticBaselineForQueueItem(item, targets));
       nationalSweepResults.push(await pilotResultForItem(item, targets));
     }
-    const previousReport = limit === 0 ? readCommittedNationalCoverageReport() : null;
-    const reportNationalSweepResults = limit === 0
-      ? previousReport?.nationalSweepResults ?? nationalSweepResults
-      : nationalSweepResults;
+    const reportNationalSweepResults = mergeSweepResults(previousReport?.nationalSweepResults ?? [], nationalSweepResults);
+    const finalHandledSlugs = new Set([
+      ...previousAttemptedSlugs,
+      ...calibrationResults.map((result) => result.hospital),
+      ...adapterPriorityResults.map((result) => result.hospital),
+      ...nationalSweepResults.map((result) => result.hospital)
+    ]);
+    const finalNationalRemainingQueue = buildNationalRemainingQueue(inspectedPlan, targets, { handledSlugs: finalHandledSlugs });
 
     const wave1MappingBefore = Object.fromEntries(await Promise.all(wave1HospitalSlugs.map(async (slug) => [slug, await readMappingStats(slug)])));
     const wave1MappingAfter = wave1MappingBefore;
@@ -513,7 +609,8 @@ async function main() {
       ...wave3Results.map((result) => result.hospital),
       ...calibrationResults.map((result) => result.hospital),
       ...adapterPriorityResults.map((result) => result.hospital),
-      ...reportNationalSweepResults.map((result) => result.hospital)
+      ...reportNationalSweepResults.map((result) => result.hospital),
+      ...hospitalSlugsWithCanonicalSummaries()
     ])];
     const canonicalStatsByHospital = Object.fromEntries(await Promise.all(allResultSlugs.map(async (slug) => [slug, await readCanonicalStats(slug)])));
     const report = await writeNationalPlanOutputs(targets, inspectedPlan, {
@@ -525,12 +622,12 @@ async function main() {
       wave2Results,
       wave3SelectedHospitals,
       wave3Results,
-      nationalRemainingQueue,
+      nationalRemainingQueue: finalNationalRemainingQueue,
       nationalSweepResults: reportNationalSweepResults,
       calibrationResults,
       adapterPriorityResults
     });
-    console.log(JSON.stringify({ ...nationalPlanSummary(targets, inspectedPlan, report), calibrationResults, adapterPriorityResults, nationalSweepResults: reportNationalSweepResults, nextQueue: nationalRemainingQueue.slice(limit, limit + 10) }, null, 2));
+    console.log(JSON.stringify({ ...nationalPlanSummary(targets, inspectedPlan, report), calibrationResults, adapterPriorityResults, nationalSweepResults: reportNationalSweepResults, nextQueue: finalNationalRemainingQueue.slice(0, 10) }, null, 2));
     return;
   }
 

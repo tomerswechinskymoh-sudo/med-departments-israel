@@ -1,64 +1,64 @@
 [
   {
-    "hospitalSlug": "barzilai",
+    "hospitalSlug": "leumit-health-fund",
     "hospitalNames": [
-      "מרכז רפואי ברזילי"
+      "קופ\"ח לאומית"
     ],
-    "providerGuess": "government",
-    "masterDeptRows": 25,
-    "rowsWithUrls": 7,
-    "liveUrlRows": 7,
-    "nearbyDoctorOrTeamUrlRows": 7,
+    "providerGuess": "private",
+    "masterDeptRows": 1,
+    "rowsWithUrls": 1,
+    "liveUrlRows": 1,
+    "nearbyDoctorOrTeamUrlRows": 1,
     "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline barzilai; 7 Master_Dept URLs; 7 live inspected URLs; 7 nearby doctor/team URLs",
+    "whySelected": "Wave3 baseline leumit-health-fund; 1 Master_Dept URLs; 1 live inspected URLs; 1 nearby doctor/team URLs",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "partiallyMapped",
     "plannedMode": "pilot only"
   },
   {
-    "hospitalSlug": "holy-family",
+    "hospitalSlug": "meuhedet-health-fund",
     "hospitalNames": [
-      "ביה\"ח המשפחה הקדושה"
+      "קופ\"ח מאוחדת"
     ],
-    "providerGuess": "unknown",
-    "masterDeptRows": 6,
-    "rowsWithUrls": 6,
-    "liveUrlRows": 6,
-    "nearbyDoctorOrTeamUrlRows": 6,
-    "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline holy-family; 6 Master_Dept URLs; 6 live inspected URLs; 6 nearby doctor/team URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "partiallyMapped",
-    "plannedMode": "pilot only"
-  },
-  {
-    "hospitalSlug": "saint-vincent",
-    "hospitalNames": [
-      "ביה\"ח הצרפתי"
-    ],
-    "providerGuess": "unknown",
-    "masterDeptRows": 4,
-    "rowsWithUrls": 4,
-    "liveUrlRows": 4,
-    "nearbyDoctorOrTeamUrlRows": 4,
-    "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline saint-vincent; 4 Master_Dept URLs; 4 live inspected URLs; 4 nearby doctor/team URLs",
-    "expectedCrawlReadiness": "pilotReady",
-    "expectedMappingReadiness": "partiallyMapped",
-    "plannedMode": "pilot only"
-  },
-  {
-    "hospitalSlug": "nazareth-scottish",
-    "hospitalNames": [
-      "ביה\"ח אי.מ.מ.ס הסקוטי"
-    ],
-    "providerGuess": "unknown",
-    "masterDeptRows": 10,
-    "rowsWithUrls": 8,
-    "liveUrlRows": 8,
+    "providerGuess": "private",
+    "masterDeptRows": 1,
+    "rowsWithUrls": 1,
+    "liveUrlRows": 1,
     "nearbyDoctorOrTeamUrlRows": 0,
     "adapterParserFamily": "inlineStaff+teamPage+unknown",
-    "whySelected": "Wave3 baseline nazareth-scottish; 8 Master_Dept URLs; 8 live inspected URLs",
+    "whySelected": "Wave3 baseline meuhedet-health-fund; 1 Master_Dept URLs; 1 live inspected URLs",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "reviewNeeded",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "shaar-menashe-mental-health",
+    "hospitalNames": [
+      "מרכז לבה\"נ שער מנשה"
+    ],
+    "providerGuess": "unknown",
+    "masterDeptRows": 1,
+    "rowsWithUrls": 1,
+    "liveUrlRows": 1,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline shaar-menashe-mental-health; 1 Master_Dept URLs; 1 live inspected URLs",
+    "expectedCrawlReadiness": "pilotReady",
+    "expectedMappingReadiness": "reviewNeeded",
+    "plannedMode": "pilot only"
+  },
+  {
+    "hospitalSlug": "shoham-geriatric",
+    "hospitalNames": [
+      "מ.גריאטרי שהם"
+    ],
+    "providerGuess": "unknown",
+    "masterDeptRows": 1,
+    "rowsWithUrls": 1,
+    "liveUrlRows": 1,
+    "nearbyDoctorOrTeamUrlRows": 0,
+    "adapterParserFamily": "inlineStaff+teamPage+unknown",
+    "whySelected": "Wave3 baseline shoham-geriatric; 1 Master_Dept URLs; 1 live inspected URLs",
     "expectedCrawlReadiness": "pilotReady",
     "expectedMappingReadiness": "reviewNeeded",
     "plannedMode": "pilot only"
