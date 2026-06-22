@@ -48,6 +48,7 @@
     "verify:clalit-reviewed-output": "tsx scripts/verify-clalit-reviewed-output.ts",
     "export:clalit-reviewed-doctors": "tsx scripts/export-clalit-reviewed-doctors.ts",
     "export:crawler-review-xlsx": "tsx scripts/export-crawler-rosters-review-xlsx.ts && tsx scripts/fix-crawler-review-workbook.ts",
+    "validate:crawler-review-xlsx": "tsx scripts/validate-crawler-review-xlsx.ts",
     "verify:clalit-public-export": "tsx scripts/verify-clalit-public-export.ts",
     "analyze:clalit-missing-profile-text": "tsx scripts/analyze-clalit-missing-profile-text.ts",
     "crawl": "tsx scripts/run-hospital-crawler-autopilot.ts",

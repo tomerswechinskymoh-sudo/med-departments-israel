@@ -1,0 +1,80 @@
+{
+  "generatedAt": "2026-06-22T18:33:08.619Z",
+  "workbookPath": "data/crawler/hospitals/review-exports/crawler-rosters-review.xlsx",
+  "allowedManualDecisionValues": [
+    "approve",
+    "reject",
+    "needs_check",
+    "duplicate",
+    "wrong_department",
+    "out_of_scope",
+    "keep_roster_only"
+  ],
+  "sheetCounts": {
+    "Canonical Doctors": 889,
+    "Department Links": 889,
+    "Review Needed": 864
+  },
+  "reviewedBySheet": {
+    "Canonical Doctors": 0,
+    "Department Links": 0,
+    "Review Needed": 0
+  },
+  "unreviewedBySheet": {
+    "Canonical Doctors": 889,
+    "Department Links": 889,
+    "Review Needed": 864
+  },
+  "decisionsByValue": {},
+  "invalidDecisionCount": 0,
+  "duplicateReviewEntityIdCount": 0,
+  "contradictionCount": 0,
+  "warningCount": 0,
+  "errorCount": 0,
+  "warnings": [],
+  "errors": [],
+  "contradictions": [],
+  "hospitalsWithMostPendingReview": [
+    {
+      "key": "carmel",
+      "count": 1143
+    },
+    {
+      "key": "ichilov",
+      "count": 216
+    },
+    {
+      "key": "hadassah",
+      "count": 147
+    },
+    {
+      "key": "rabin",
+      "count": 111
+    },
+    {
+      "key": "holy-family",
+      "count": 111
+    },
+    {
+      "key": "saint-vincent",
+      "count": 109
+    },
+    {
+      "key": "galilee",
+      "count": 96
+    },
+    {
+      "key": "maayanei-hayeshua",
+      "count": 70
+    },
+    {
+      "key": "kaplan",
+      "count": 67
+    },
+    {
+      "key": "leumit-health-fund",
+      "count": 60
+    }
+  ],
+  "hospitalsWithMostRejectOutOfScopeWrongDepartment": []
+}

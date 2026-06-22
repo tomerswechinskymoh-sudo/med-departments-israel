@@ -1,3 +1,4 @@
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import ExcelJS from "exceljs";
@@ -27,6 +28,7 @@ const SYNTHETIC_ALIASES: Record<string, { slug: string; name: string; institutio
 };
 
 const MANUAL_COLUMNS = ["manualDecision", "manualNotes", "reviewer", "reviewedAt"];
+const REVIEW_ID_COLUMNS = ["reviewEntityType", "reviewEntityId"];
 const RAW_HTML_RE = /<\/?[a-z][\s\S]*?>/i;
 const SUSPICIOUS_NAME_RE = /(סיור|סקירה|פעילות|חדשות|תרומה|מחלקה|יחידה|טלפון|שם|אחות אחראית|פרטי התקשרות)/;
 const OUT_OF_SCOPE_RE = /(רופא שיניים|dentist|סטאז'?ר|סטודנט|עוזר רופא|מכבי|גישור)/i;
@@ -98,6 +100,10 @@ function splitFlags(value: unknown): string[] {
 
 function uniq(values: string[]): string[] {
   return [...new Set(values.filter(Boolean))];
+}
+
+function hashParts(parts: unknown[]): string {
+  return crypto.createHash("sha1").update(parts.map(toText).join("|")).digest("hex").slice(0, 18);
 }
 
 function addFlag(row: Row, flag: string) {
@@ -212,6 +218,53 @@ function pushManualColumns(row: Row) {
   for (const key of MANUAL_COLUMNS) row[key] = "";
 }
 
+function canonicalReviewEntityId(row: Row): string {
+  return `canonicalDoctor:${toText(row.hospitalSlug)}:${toText(row.canonicalDoctorId)}`;
+}
+
+function doctorDepartmentLinkReviewEntityId(row: Row): string {
+  return `doctorDepartmentLink:${hashParts([
+    row.hospitalSlug,
+    row.canonicalDoctorId,
+    row.masterDeptRowId,
+    row.sourceUrl,
+    row.extractedFromUrl,
+    row.departmentName,
+    row.specialty,
+  ])}`;
+}
+
+function reviewIssueReviewEntityId(row: Row): string {
+  return `reviewIssue:${hashParts([
+    row.issueType,
+    row.hospitalSlug,
+    row.canonicalDoctorId,
+    row.relatedEntityId,
+    row.sourceUrl,
+    row.extractedFromUrl,
+    row.departmentName,
+    row.specialty,
+  ])}`;
+}
+
+function addManualReviewReadme(rowsBySheet: Record<string, Row[]>) {
+  const existing = rowsBySheet.README ?? [];
+  const withoutOldManualRows = existing.filter((row) => !toText(row.topic).startsWith("manualDecision"));
+  rowsBySheet.README = [
+    ...withoutOldManualRows,
+    { topic: "manualDecision allowed values", value: "approve, reject, needs_check, duplicate, wrong_department, out_of_scope, keep_roster_only" },
+    { topic: "manualDecision approve", value: "Acceptable for future import/display after downstream checks." },
+    { topic: "manualDecision reject", value: "Do not use this row in future import/display." },
+    { topic: "manualDecision needs_check", value: "Reviewer cannot decide yet; keep out of automated import." },
+    { topic: "manualDecision duplicate", value: "Duplicate of another row; reviewer should identify target in manualNotes if possible." },
+    { topic: "manualDecision wrong_department", value: "Doctor is real, but this department mapping is wrong." },
+    { topic: "manualDecision out_of_scope", value: "Real person, but not relevant for residency roster." },
+    { topic: "manualDecision keep_roster_only", value: "Doctor may stay in hospital roster, but not department mapping." },
+    { topic: "manualNotes", value: "Free text. Use for duplicate target, mapping correction, or reviewer rationale." },
+    { topic: "reviewer/reviewedAt", value: "Optional reviewer name and review date/timestamp." },
+  ];
+}
+
 function sortRows(rows: Row[], keys: string[]): Row[] {
   return rows.sort((a, b) => keys.map((key) => toText(a[key]).localeCompare(toText(b[key]), "he")).find((v) => v !== 0) ?? 0);
 }
@@ -241,18 +294,18 @@ function csvEscape(value: unknown): string {
 function columnsFor(name: string, rows: Row[]): string[] {
   const preferred: Record<string, string[]> = {
     "Canonical Doctors": [
-      "hospitalSlug", "hospitalName", "institutionType", "outputUsability", "canonicalDoctorId", "fullName", "normalizedName", "profileUrl",
+      ...REVIEW_ID_COLUMNS, "hospitalSlug", "hospitalName", "institutionType", "outputUsability", "canonicalDoctorId", "fullName", "normalizedName", "profileUrl",
       "roleOrTitle", "profileCompleteness", "sourceUrlsCount", "evidenceCount", "cautionFlags", "needsManualReview", "sourceFile",
       ...MANUAL_COLUMNS,
     ],
     "Department Links": [
-      "hospitalSlug", "hospitalName", "canonicalDoctorId", "fullName", "masterDeptRowId", "matchedMasterDepartmentName", "matchedMasterSpecialty",
+      ...REVIEW_ID_COLUMNS, "hospitalSlug", "hospitalName", "canonicalDoctorId", "fullName", "masterDeptRowId", "matchedMasterDepartmentName", "matchedMasterSpecialty",
       "departmentName", "specialty", "matchConfidence", "matchEvidence", "ambiguityReason", "sourceUrl", "extractedFromUrl", "sourceUrlMatch",
       "reviewNeeded", "needsManualReview", ...MANUAL_COLUMNS,
     ],
     "Review Needed": [
-      "issueType", "hospitalSlug", "hospitalName", "fullName", "profileUrl", "departmentName", "specialty", "matchConfidence", "ambiguityReason",
-      "sourceUrl", "extractedFromUrl", "suggestedAction", ...MANUAL_COLUMNS,
+      ...REVIEW_ID_COLUMNS, "relatedEntityId", "canonicalDoctorId", "issueType", "hospitalSlug", "hospitalName", "fullName", "profileUrl", "departmentName",
+      "specialty", "matchConfidence", "ambiguityReason", "sourceUrl", "extractedFromUrl", "suggestedAction", ...MANUAL_COLUMNS,
     ],
   };
   const seen = new Set<string>(preferred[name] ?? []);
@@ -396,6 +449,8 @@ async function main() {
     normalizeRow(row);
     pushManualColumns(row);
     flagDoctor(row);
+    row.reviewEntityType = "canonicalDoctor";
+    row.reviewEntityId = canonicalReviewEntityId(row);
     const slug = toText(row.hospitalSlug);
     canonicalById.set(`${slug}|${toText(row.canonicalDoctorId)}`, row);
     const stats = doctorStats.get(slug) ?? { suspicious: 0, rawHtml: 0, outOfScope: 0, missingProfile: 0 };
@@ -435,6 +490,7 @@ async function main() {
     compactedLinks = compactedLinks.filter((link) => toText(link.hospitalSlug) !== slug);
     for (const doctor of hospitalDoctors) {
       compactedLinks.push({
+        reviewEntityType: "doctorDepartmentLink",
         hospitalSlug: slug,
         hospitalName: doctor.hospitalName,
         canonicalDoctorId: doctor.canonicalDoctorId,
@@ -490,6 +546,12 @@ async function main() {
   rowsBySheet["Department Links"] = sortRows(compactedLinks, ["hospitalSlug", "fullName", "departmentName"]);
 
   for (const row of rowsBySheet["Department Links"]) {
+    row.reviewEntityType = "doctorDepartmentLink";
+    row.reviewEntityId = doctorDepartmentLinkReviewEntityId(row);
+    pushManualColumns(row);
+  }
+
+  for (const row of rowsBySheet["Department Links"]) {
     const slug = toText(row.hospitalSlug);
     if (!toText(row.fullName) && toText(row.canonicalDoctorId)) {
       validationRows.push({ severity: "warning", hospitalSlug: slug, filePath: "", issue: "missingCanonicalDoctorForLink", details: `canonicalDoctorId=${row.canonicalDoctorId}` });
@@ -516,6 +578,9 @@ async function main() {
     const issues = reviewIssueTypesForDoctor(doctor, toText(roster?.outputUsability));
     if (issues.length === 0) continue;
     reviewNeededRows.push({
+      reviewEntityType: "reviewIssue",
+      relatedEntityId: doctor.reviewEntityId,
+      canonicalDoctorId: doctor.canonicalDoctorId,
       issueType: issues.join("; "),
       hospitalSlug: doctor.hospitalSlug,
       hospitalName: doctor.hospitalName,
@@ -535,6 +600,7 @@ async function main() {
       reviewer: "",
       reviewedAt: "",
     });
+    reviewNeededRows[reviewNeededRows.length - 1].reviewEntityId = reviewIssueReviewEntityId(reviewNeededRows[reviewNeededRows.length - 1]);
   }
   for (const link of rowsBySheet["Department Links"]) {
     const roster = rosterBySlug.get(toText(link.hospitalSlug));
@@ -543,6 +609,9 @@ async function main() {
     if (issues.length === 0) continue;
     const doctor = canonicalById.get(`${toText(link.hospitalSlug)}|${toText(link.canonicalDoctorId)}`);
     reviewNeededRows.push({
+      reviewEntityType: "reviewIssue",
+      relatedEntityId: link.reviewEntityId,
+      canonicalDoctorId: link.canonicalDoctorId,
       issueType: issues.join("; "),
       hospitalSlug: link.hospitalSlug,
       hospitalName: link.hospitalName,
@@ -560,6 +629,7 @@ async function main() {
       reviewer: "",
       reviewedAt: "",
     });
+    reviewNeededRows[reviewNeededRows.length - 1].reviewEntityId = reviewIssueReviewEntityId(reviewNeededRows[reviewNeededRows.length - 1]);
   }
   rowsBySheet["Review Needed"] = sortRows(reviewNeededRows, ["hospitalSlug", "fullName", "issueType"]);
 
@@ -628,6 +698,7 @@ async function main() {
   rowsBySheet["Summary by Output Usability"] = summarize(rowsBySheet["Site Ready Rosters"], "outputUsability");
   rowsBySheet["Summary by Review Priority"] = summarize(rowsBySheet["Hospital QA"], "suggestedReviewPriority");
   rowsBySheet["Summary by Issue Type"] = summarizeIssues(rowsBySheet["Review Needed"]);
+  addManualReviewReadme(rowsBySheet);
   rowsBySheet.Validation = [...(rowsBySheet.Validation ?? []), ...validationRows.map((row) => ({ ...row }))];
   for (const [synthetic, alias] of Object.entries(SYNTHETIC_ALIASES)) {
     rowsBySheet.Validation.push({ severity: "info", hospitalSlug: alias.slug, filePath: "", issue: "syntheticSlugResolved", details: `${synthetic} resolved to ${alias.slug}` });

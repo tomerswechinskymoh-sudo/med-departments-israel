@@ -1,6 +1,6 @@
 # Excel Review Workbook QA Audit
 
-Generated at: 2026-06-22T18:20:01.139Z
+Generated at: 2026-06-22T18:32:40.455Z
 
 ## Key Results
 - Before: 889 canonical doctors / 1023 department links / 1551 review-needed rows
