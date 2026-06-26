@@ -21,6 +21,7 @@
     "verify:metric-display": "tsx src/server/jobs/debug-departments-summary.ts",
     "verify:department-card-yearly": "tsx src/server/jobs/verify-department-card-yearly-metrics.ts",
     "verify:department-card-chart": "tsx src/server/jobs/verify-department-card-chart-render.ts",
+    "verify:zero-resident-filter": "tsx src/server/jobs/verify-public-zero-resident-filter.ts",
     "enrichment:mock": "tsx src/server/jobs/run-department-enrichment.ts",
     "openings:process-expired": "tsx src/server/jobs/run-expired-openings.ts",
     "crawl:beilinson-ent": "tsx scripts/crawl-beilinson-ent.ts",

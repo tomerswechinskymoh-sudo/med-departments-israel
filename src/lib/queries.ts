@@ -72,6 +72,32 @@ const publicImportedDepartmentWhere = {
   }
 } satisfies Prisma.DepartmentWhereInput;
 
+const ACTIVE_RESIDENTS_METRIC_KEYS = [
+  "מספר_מתמחים",
+  "residentsCount",
+  "activeResidentsCount"
+];
+
+const publicDisplayableResidentCountWhere = {
+  NOT: {
+    OR: [
+      {
+        residentsCount: 0
+      },
+      {
+        metrics: {
+          some: {
+            metricKey: {
+              in: ACTIVE_RESIDENTS_METRIC_KEYS
+            },
+            value: 0
+          }
+        }
+      }
+    ]
+  }
+} satisfies Prisma.DepartmentWhereInput;
+
 const HIDDEN_PUBLIC_SPECIALTY_NAMES = [
   "מינהל רפואי",
   "המינהל הרפואי",
@@ -90,6 +116,7 @@ function isPublicSpecialtyName(name: string) {
 const publicVisibleDepartmentWhere = {
   AND: [
     publicImportedDepartmentWhere,
+    publicDisplayableResidentCountWhere,
     {
       specialty: {
         is: {
@@ -101,6 +128,19 @@ const publicVisibleDepartmentWhere = {
     }
   ]
 } satisfies Prisma.DepartmentWhereInput;
+
+export function hasDisplayableResidentCount(department: {
+  residentsCount?: number | null;
+  metrics?: Array<{ metricKey: string; value: number | null }>;
+}) {
+  if (department.residentsCount === 0) {
+    return false;
+  }
+
+  return !department.metrics?.some(
+    (metric) => ACTIVE_RESIDENTS_METRIC_KEYS.includes(metric.metricKey) && metric.value === 0
+  );
+}
 
 const dataExplanationSelect = {
   sheet: true,
@@ -528,7 +568,7 @@ export async function resolveDepartmentBySlugOrFallback(
       where: {
         institutionId: input.institutionId,
         specialtyId: input.specialtyId,
-        ...publicImportedDepartmentWhere
+        ...publicVisibleDepartmentWhere
       },
       select: {
         ...departmentSelect,
@@ -561,7 +601,7 @@ export async function resolveDepartmentBySlugOrFallback(
     const departmentById = await prisma.department.findFirst({
       where: {
         id: departmentId,
-        ...publicImportedDepartmentWhere
+        ...publicVisibleDepartmentWhere
       },
       select: departmentSelect
     });
@@ -580,11 +620,13 @@ export async function resolveDepartmentBySlugOrFallback(
       select: departmentSelect
     });
 
-    return hiddenDepartmentById ? canonicalForHiddenDepartment(hiddenDepartmentById) : null;
+    return hiddenDepartmentById?.importStableKey === null
+      ? canonicalForHiddenDepartment(hiddenDepartmentById)
+      : null;
   }
 
   const departmentCandidates = await prisma.department.findMany({
-    where: publicImportedDepartmentWhere,
+    where: publicVisibleDepartmentWhere,
     select: departmentSelect
   });
 
@@ -746,12 +788,21 @@ export async function getHomePageData() {
         prisma.department.count({
           where: publicVisibleDepartmentWhere
         }),
-        prisma.review.count(),
+        prisma.review.count({
+          where: {
+            department: {
+              is: publicVisibleDepartmentWhere
+            }
+          }
+        }),
         prisma.residencyOpening.count({
           where: {
             contentStatus: ContentStatus.PUBLISHED,
             status: {
               in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
+            },
+            department: {
+              is: publicVisibleDepartmentWhere
             }
           }
         })
@@ -858,7 +909,7 @@ export async function getDirectoryFilters() {
               {
                 departments: {
                   some: {
-                    ...publicImportedDepartmentWhere,
+                    ...publicVisibleDepartmentWhere,
                     metrics: {
                       some: {}
                     }
@@ -868,7 +919,7 @@ export async function getDirectoryFilters() {
               {
                 departments: {
                   some: {
-                    ...publicImportedDepartmentWhere,
+                    ...publicVisibleDepartmentWhere,
                     yearlyMetrics: {
                       some: {}
                     }
@@ -1456,7 +1507,7 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
     prisma.department.findMany({
       where: {
         specialtyId,
-        ...publicImportedDepartmentWhere
+        ...publicVisibleDepartmentWhere
       },
       include: {
         reviews: {
@@ -1661,6 +1712,7 @@ export async function getDepartmentPageData(
       medicalArray: {
         include: {
           departments: {
+            where: publicVisibleDepartmentWhere,
             include: {
               specialty: true,
               metrics: {
@@ -1770,7 +1822,7 @@ export async function getDepartmentPageData(
           where: {
             institutionId: department.institutionId,
             specialtyId: department.specialtyId,
-            ...publicImportedDepartmentWhere
+            ...publicVisibleDepartmentWhere
           },
           include: {
             specialty: true,
@@ -1866,7 +1918,7 @@ export async function getDepartmentPageData(
     where: {
       institutionId: department.institutionId,
       specialtyId: department.specialtyId,
-      ...publicImportedDepartmentWhere
+      ...publicVisibleDepartmentWhere
     }
   });
 
@@ -2089,6 +2141,7 @@ export async function getDepartmentComparisonData(input: {
 
   const baseDepartments = await prisma.department.findMany({
     where: {
+      ...publicVisibleDepartmentWhere,
       id: {
         in: departmentIds
       }
@@ -2165,7 +2218,10 @@ export async function getOpeningPageData(openingId: string) {
   const opening = await prisma.residencyOpening.findFirst({
     where: {
       id: openingId,
-      contentStatus: ContentStatus.PUBLISHED
+      contentStatus: ContentStatus.PUBLISHED,
+      department: {
+        is: publicVisibleDepartmentWhere
+      }
     },
     include: {
       department: {
@@ -2211,7 +2267,10 @@ export async function getOpeningApplicationPageData(openingId: string) {
       status: {
         in: [OpportunityStatus.OPEN, OpportunityStatus.UPCOMING]
       },
-      OR: [{ applicationDeadline: null }, { applicationDeadline: { gte: new Date() } }]
+      OR: [{ applicationDeadline: null }, { applicationDeadline: { gte: new Date() } }],
+      department: {
+        is: publicVisibleDepartmentWhere
+      }
     },
     include: {
       department: {
@@ -2296,6 +2355,11 @@ export async function getUserDashboardData(userId: string) {
     },
     include: {
       favorites: {
+        where: {
+          department: {
+            is: publicVisibleDepartmentWhere
+          }
+        },
         include: {
           department: {
             include: {
@@ -2348,7 +2412,10 @@ export async function getUserDashboardData(userId: string) {
 export async function getFavoritesData(userId: string) {
   const favorites = await prisma.favoriteDepartment.findMany({
     where: {
-      userId
+      userId,
+      department: {
+        is: publicVisibleDepartmentWhere
+      }
     },
     include: {
       department: {

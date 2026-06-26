@@ -45,6 +45,14 @@ type CsvPreview = {
     header: string;
     value: string;
   }>;
+  zeroResidentDepartmentsCount: number;
+  zeroResidentDepartments: Array<{
+    rowNumber: number;
+    institutionName: string;
+    specialtyName: string;
+    subDepartment: string;
+    value: string;
+  }>;
   warnings: string[];
 };
 
@@ -203,6 +211,27 @@ function PreviewCard({ preview }: { preview: CsvPreview }) {
               </li>
             ))}
           </ul>
+        </details>
+      ) : null}
+
+      {preview.zeroResidentDepartments.length > 0 ? (
+        <details className="mt-4 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
+          <summary className="cursor-pointer text-xs font-black text-slate-700">
+            מחלקות עם מספר_מתמחים = 0 שיוסתרו מהציבור
+          </summary>
+          <ul className="mt-2 max-h-40 overflow-auto text-xs">
+            {preview.zeroResidentDepartments.map((item) => (
+              <li key={`${item.rowNumber}-${item.institutionName}-${item.specialtyName}-${item.subDepartment}`}>
+                שורה {item.rowNumber}: {item.institutionName} · {item.specialtyName}
+                {item.subDepartment ? ` · ${item.subDepartment}` : ""} = {item.value}
+              </li>
+            ))}
+          </ul>
+          {preview.zeroResidentDepartmentsCount > preview.zeroResidentDepartments.length ? (
+            <p className="mt-2 text-xs font-bold text-slate-500">
+              ועוד {preview.zeroResidentDepartmentsCount - preview.zeroResidentDepartments.length} מחלקות.
+            </p>
+          ) : null}
         </details>
       ) : null}
 

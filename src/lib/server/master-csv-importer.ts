@@ -1464,6 +1464,34 @@ function scanSpreadsheetErrors(table: CsvTable) {
   return findings;
 }
 
+function scanZeroResidentDepartments(table: CsvTable, kind: MasterCsvUploadKind) {
+  if (kind !== "dept") return [];
+
+  const findings: Array<{
+    rowNumber: number;
+    institutionName: string;
+    specialtyName: string;
+    subDepartment: string;
+    value: string;
+  }> = [];
+
+  for (const row of table.rows) {
+    const rawValue = row.get("מספר_מתמחים");
+    const parsed = parseNumberCell(rawValue);
+    if (parsed.value !== 0) continue;
+
+    findings.push({
+      rowNumber: row.rowNumber,
+      institutionName: row.get("שם_מרכז_רפואי"),
+      specialtyName: row.get("תחום התמחות"),
+      subDepartment: row.get("תת מחלקה"),
+      value: rawValue
+    });
+  }
+
+  return findings;
+}
+
 function headerCountMap(headers: string[]) {
   return headers.reduce<Map<string, { count: number; headers: string[]; indexes: number[] }>>((map, header, index) => {
     const normalizedHeader = normalizeCsvHeader(header);
@@ -1627,6 +1655,7 @@ export async function previewMasterCsvUpload(input: {
   const entityCount = countCsvEntities(uploaded, input.kind);
   const referenceEntityCount = countCsvEntities(reference, input.kind);
   const spreadsheetErrors = scanSpreadsheetErrors(uploaded);
+  const zeroResidentDepartments = scanZeroResidentDepartments(uploaded, input.kind);
   const { changedCellsCount, changedRows } = compareTables(uploaded, reference);
   const warnings = [
     headerDiffs.missingHeaders.length > 0
@@ -1641,7 +1670,10 @@ export async function previewMasterCsvUpload(input: {
     headerDiffs.suspiciousChangedHeaders.length > 0
       ? `נמצאו ${headerDiffs.suspiciousChangedHeaders.length} כותרות עם הבדלי רווחים/קידוד בלבד; הן יטופלו כתואמות.`
       : null,
-    spreadsheetErrors.length > 0 ? `נמצאו ${spreadsheetErrors.length} ערכי שגיאה מגיליון; הם יטופלו כחסר.` : null
+    spreadsheetErrors.length > 0 ? `נמצאו ${spreadsheetErrors.length} ערכי שגיאה מגיליון; הם יטופלו כחסר.` : null,
+    zeroResidentDepartments.length > 0
+      ? `${zeroResidentDepartments.length} מחלקות עם מספר_מתמחים = 0 יוסתרו מעמודים ציבוריים.`
+      : null
   ].filter((warning): warning is string => Boolean(warning));
 
   return {
@@ -1667,6 +1699,8 @@ export async function previewMasterCsvUpload(input: {
     changedRows,
     spreadsheetErrorsCount: spreadsheetErrors.length,
     spreadsheetErrors: spreadsheetErrors.slice(0, 80),
+    zeroResidentDepartmentsCount: zeroResidentDepartments.length,
+    zeroResidentDepartments: zeroResidentDepartments.slice(0, 40),
     warnings
   };
 }
