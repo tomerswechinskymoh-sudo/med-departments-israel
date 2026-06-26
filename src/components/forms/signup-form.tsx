@@ -290,6 +290,11 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
 
     setCareerContextError(null);
 
+    if (!verificationProof) {
+      setFormError("יש להעלות אישור לצורך אימות.");
+      return;
+    }
+
     if (contributionEligibility.eligible && !experienceSubmitted) {
       setStep("experience");
       return;
@@ -374,6 +379,8 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
             }}
             initialRoleDetails={initialRoleDetails}
             lockReviewerType
+            verificationAlreadyProvided
+            initialVerificationDocument={verificationProof}
             onSubmitted={() => setExperienceSubmitted(true)}
           />
         )}

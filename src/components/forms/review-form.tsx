@@ -406,6 +406,8 @@ export function ReviewForm({
   initialContact,
   initialRoleDetails,
   lockReviewerType = false,
+  verificationAlreadyProvided = false,
+  initialVerificationDocument = null,
   onSubmitted
 }: {
   departments: {
@@ -432,6 +434,8 @@ export function ReviewForm({
   };
   initialRoleDetails?: Partial<FormValues["roleDetails"]>;
   lockReviewerType?: boolean;
+  verificationAlreadyProvided?: boolean;
+  initialVerificationDocument?: File | null;
   compact?: boolean;
   showGuidancePanels?: boolean;
   onSubmitted?: () => void;
@@ -503,14 +507,16 @@ export function ReviewForm({
     }
   });
 
+  const effectiveVerificationDocument = verificationDocument ?? initialVerificationDocument;
+
   useEffect(() => {
     setValue("reviewerType", initialReviewerType);
     setValue("roleDetails", mergedInitialRoleDetails);
   }, [initialReviewerType, mergedInitialRoleDetails, setValue]);
 
   useEffect(() => {
-    setValue("hasVerificationDocument", Boolean(verificationDocument), { shouldValidate: true });
-  }, [setValue, verificationDocument]);
+    setValue("hasVerificationDocument", Boolean(effectiveVerificationDocument), { shouldValidate: true });
+  }, [effectiveVerificationDocument, setValue]);
 
   const reviewerType = watch("reviewerType");
   const reviewerTypeLabel = roleOptions.find((role) => role.value === reviewerType)?.label ?? "משתף";
@@ -607,8 +613,8 @@ export function ReviewForm({
     formData.set("consentToTerms", String(values.consentToTerms));
     formData.set("consentNoPatientInfo", String(values.consentNoPatientInfo));
 
-    if (verificationDocument) {
-      formData.set("verificationDocument", verificationDocument);
+    if (effectiveVerificationDocument) {
+      formData.set("verificationDocument", effectiveVerificationDocument);
     }
 
     const response = await fetch("/api/reviews", {
@@ -853,16 +859,22 @@ export function ReviewForm({
           </div>
 
           <div className="grid gap-4 md:grid-cols-[1fr_0.9fr]">
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-ink">העלאת הוכחה</label>
-              <input
-                type="file"
-                accept=".pdf,.jpg,.jpeg,.png,.webp,.heic"
-                onChange={(event) => setVerificationDocument(event.target.files?.[0] ?? null)}
-                className="block w-full text-sm text-slate-700"
-              />
-              <p className="mt-2 text-xs leading-6 text-slate-500">{verificationCopyForType(reviewerType)}</p>
-            </div>
+            {verificationAlreadyProvided ? (
+              <div className="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-4 text-sm font-semibold leading-7 text-emerald-900">
+                אין צורך להעלות הוכחה נוספת, ההוכחה כבר נמסרה כחלק מתהליך ההרשמה.
+              </div>
+            ) : (
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-ink">העלאת הוכחה</label>
+                <input
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg,.png,.webp,.heic"
+                  onChange={(event) => setVerificationDocument(event.target.files?.[0] ?? null)}
+                  className="block w-full text-sm text-slate-700"
+                />
+                <p className="mt-2 text-xs leading-6 text-slate-500">{verificationCopyForType(reviewerType)}</p>
+              </div>
+            )}
 
             <label className="flex items-start gap-3 rounded-2xl bg-slate-50 px-4 py-4 text-sm text-slate-700">
               <input type="checkbox" className="mt-1" {...register("isAnonymous")} />

@@ -28,7 +28,7 @@ export function ReviewCard({
     pros: string;
     cons: string;
     tips: string;
-    publishedAt: Date | null;
+    publishedAt: string | Date | null;
   };
   canReport: boolean;
 }) {

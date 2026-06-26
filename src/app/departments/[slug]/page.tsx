@@ -4,12 +4,12 @@ import { notFound } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { DepartmentPageActions } from "@/components/departments/department-page-actions";
 import { DepartmentCompareProfileButton } from "@/components/departments/department-comparison-selection";
+import { DepartmentExperienceTabs } from "@/components/departments/department-experience-tabs";
 import {
   FavoriteToggleButton,
   LoginRequiredBookmarkButton
 } from "@/components/departments/favorite-toggle-button";
 import { InstitutionLogo } from "@/components/departments/institution-logo";
-import { ReviewCard } from "@/components/departments/review-card";
 import { ExperienceCta } from "@/components/experience/experience-cta";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
@@ -36,11 +36,10 @@ import {
   getDataExplanations,
   getReviewFormContext,
   requiredMedicalArraySpecialtyDisplayName,
-  resolveInstitutionRegion,
-  reviewerTypeLabel
+  resolveInstitutionRegion
 } from "@/lib/queries";
 import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
-import { formatDepartmentDisplayName, getDepartmentHref } from "@/lib/utils";
+import { formatDepartmentDisplayName } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -78,6 +77,8 @@ type ProfileManagerRow = {
   singleEmailFallback: boolean;
 };
 
+type ExperiencePerspective = "student" | "intern" | "resident_or_physician";
+
 const MISSING_IMPORTED_VALUE = missingImportedDataText;
 const NEW_RESIDENTS_TOOLTIP =
   "גרף המציג את מספר המתמחים החדשים שהחלו את התמחותם בתחום בכלל הארץ בשנים האחרונות.";
@@ -88,6 +89,28 @@ const ACCEPTANCE_DISTRIBUTION_TOOLTIP =
 
 function EmptyValue({ text = MISSING_IMPORTED_VALUE }: { text?: string }) {
   return <span className="text-slate-400">{text}</span>;
+}
+
+function roleDetailsContributionCategory(roleDetails: unknown): ExperiencePerspective | null {
+  if (!roleDetails || typeof roleDetails !== "object" || Array.isArray(roleDetails)) {
+    return null;
+  }
+
+  const value = (roleDetails as Record<string, unknown>).contributionCategory;
+  return value === "student" || value === "intern" || value === "resident_or_physician"
+    ? value
+    : null;
+}
+
+function reviewPerspective(review: {
+  reviewerType: "RESIDENT" | "INTERN" | "STUDENT";
+  submission?: { roleDetails: unknown } | null;
+}): ExperiencePerspective {
+  const category = roleDetailsContributionCategory(review.submission?.roleDetails);
+  if (category) return category;
+  if (review.reviewerType === "STUDENT") return "student";
+  if (review.reviewerType === "INTERN") return "intern";
+  return "resident_or_physician";
 }
 
 function MetricInfoTip({
@@ -1130,48 +1153,6 @@ function metricCardFromImported(
   };
 }
 
-function comparisonLabelForScore(value: number, salt = 0) {
-  if (!value) {
-    return "אין השוואה";
-  }
-
-  const percentile = Math.max(45, Math.min(96, Math.round((value / 5) * 90 + salt)));
-
-  if (percentile >= 85) {
-    return `Top ${100 - percentile}%`;
-  }
-
-  if (percentile >= 68) {
-    return `אחוזון ${percentile}`;
-  }
-
-  return "סביב הממוצע";
-}
-
-function ScoreBar({ label, value }: { label: string; value: number }) {
-  const comparisonLabel = comparisonLabelForScore(value, label.length % 6);
-
-  return (
-    <div className="rounded-lg border border-slate-100 bg-white px-3 py-3">
-      <div className="flex items-center justify-between gap-3">
-        <p className="text-sm font-semibold text-ink">{label}</p>
-        <div className="flex shrink-0 items-center gap-2">
-          <span className="rounded-full border border-brand-100 bg-brand-50 px-2.5 py-1 text-[0.68rem] font-black text-brand-800">
-            {comparisonLabel}
-          </span>
-          <span className="text-xs font-bold text-slate-500">{value ? value.toFixed(1) : "אין"}</span>
-        </div>
-      </div>
-      <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
-        <div
-          className="h-full rounded-full bg-brand-700"
-          style={{ width: `${Math.max(0, Math.min(100, (value / 5) * 100))}%` }}
-        />
-      </div>
-    </div>
-  );
-}
-
 function sourceFromName(sourceName: string | null | undefined): MetricSource {
   const normalized = (sourceName ?? "").toUpperCase();
 
@@ -1292,8 +1273,11 @@ export default async function DepartmentDetailsPage({
   }
 
   const reviewContext = await getReviewFormContext(department.slug);
-  const visibleReviews = session ? department.reviews : department.reviews.slice(0, 3);
-  const departmentHref = getDepartmentHref(department);
+  const departmentExperienceReviews = department.reviews.map((review) => ({
+    ...review,
+    publishedAt: review.publishedAt ? review.publishedAt.toISOString() : null,
+    perspective: reviewPerspective(review)
+  }));
   const region = resolveInstitutionRegion(department.institution);
   const isMedicalArrayProfile = Boolean(department.specialty.groupAsArray && department.medicalArray);
   const profileTerm = isMedicalArrayProfile ? "מערך" : "מחלקה";
@@ -1391,18 +1375,6 @@ export default async function DepartmentDetailsPage({
     );
   }
 
-  const roleSummaries = ["RESIDENT", "INTERN", "STUDENT"].map((reviewerType) => {
-    const reviews = department.reviews.filter((review) => review.reviewerType === reviewerType);
-
-    return {
-      reviewerType,
-      count: reviews.length,
-      average:
-        reviews.length > 0
-          ? reviews.reduce((sum, review) => sum + review.overallRecommendation, 0) / reviews.length
-        : 0
-    };
-  });
   const metricRecord = (metricKey: string) =>
     profileExternalMetrics.find((metric) => metric.metricKey === metricKey && metric.sourceName !== "DEMO");
   const isMedicalArrayDemo = department.medicalArray?.publicationSourceUrl === "DEMO";
@@ -2244,51 +2216,12 @@ export default async function DepartmentDetailsPage({
           </Card>
 
           <Card className="rounded-xl !p-4">
-            <SectionHeading title={experienceSectionTitle} />
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              <ScoreBar label="דירוג כללי" value={department.summary.overallRecommendation} />
-              <ScoreBar label="איכות הוראה" value={department.summary.teachingQuality} />
-              <ScoreBar label="נגישות בכירים" value={department.summary.seniorsApproachability} />
-              <ScoreBar label="חשיפה למחקר" value={department.summary.researchExposure} />
-              <ScoreBar label="עומס ואיזון חיים" value={department.summary.lifestyleBalance} />
-              <ScoreBar label="חשיפה קלינית" value={department.summary.clinicalExposure} />
-            </div>
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              {roleSummaries.map((item) => (
-                <div key={item.reviewerType} className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-3">
-                  <p className="text-xs font-semibold text-slate-500">
-                    {reviewerTypeLabel(item.reviewerType as "RESIDENT" | "INTERN" | "STUDENT")}
-                  </p>
-                  <p className="mt-1 text-sm font-bold text-ink">
-                    {item.count > 0 ? `${item.average.toFixed(1)} · ${item.count} ביקורות` : "אין עדיין נתונים"}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 grid gap-4">
-              {visibleReviews.length === 0 ? (
-                <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600">
-                  אין עדיין נתונים
-                </p>
-              ) : (
-                visibleReviews.map((review) => (
-                  <ReviewCard key={review.id} review={review} canReport={Boolean(session)} />
-                ))
-              )}
-              {!session && department.reviews.length > visibleReviews.length ? (
-                <div className="rounded-xl border border-slate-100 bg-slate-50 px-4 py-4 text-center">
-                  <p className="text-sm text-slate-600">
-                    יש עוד שיתופים מהשטח למחלקה הזו. התחברות מאפשרת גם שמירה להשוואה.
-                  </p>
-                  <Link
-                    href={`/login?next=${encodeURIComponent(departmentHref)}`}
-                    className="mt-4 inline-flex rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white"
-                  >
-                    התחברות
-                  </Link>
-                </div>
-              ) : null}
-            </div>
+            <DepartmentExperienceTabs
+              title={experienceSectionTitle}
+              reviews={departmentExperienceReviews}
+              summary={department.summary}
+              canReport={Boolean(session)}
+            />
           </Card>
         </div>
 
