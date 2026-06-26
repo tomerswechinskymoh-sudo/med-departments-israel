@@ -63,6 +63,7 @@ type CsvRow = {
 };
 
 type CsvTable = {
+  rawHeaders: string[];
   headers: string[];
   rows: CsvRow[];
   sourceNotes: CsvRow | null;
@@ -155,6 +156,20 @@ function cleanCell(value: string | null | undefined) {
   return normalizeSpreadsheetCell(value);
 }
 
+function cleanTextImportCell(value: string | null | undefined) {
+  return nullIfSpreadsheetError(value);
+}
+
+function normalizeCsvHeader(value: string | null | undefined) {
+  return cleanCell(value)
+    .normalize("NFKC")
+    .replace(/\ufeff/g, "")
+    .replace(/[\u200b-\u200f\u202a-\u202e\u2066-\u2069]/g, "")
+    .replace(/[\r\n]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function normalizeHebrewKey(value: string) {
   return normalizeCatalogLookupValue(value)
     .replace(/[׳’`]/g, "'")
@@ -223,9 +238,10 @@ function parseCsv(text: string) {
 
 function createCsvTable(text: string, options: { hasSourceNotesRow?: boolean } = {}): CsvTable {
   const parsedRows = parseCsv(text);
-  const headers = (parsedRows[0] ?? []).map(cleanCell);
+  const rawHeaders = (parsedRows[0] ?? []).map(cleanCell);
+  const headers = rawHeaders.map(normalizeCsvHeader);
   const indexByHeader = headers.reduce<Map<string, number[]>>((map, header, index) => {
-    const key = cleanCell(header);
+    const key = normalizeCsvHeader(header);
     const indexes = map.get(key) ?? [];
     indexes.push(index);
     map.set(key, indexes);
@@ -237,11 +253,11 @@ function createCsvTable(text: string, options: { hasSourceNotesRow?: boolean } =
       rowNumber,
       values,
       get(header, occurrence = 0) {
-        const index = indexByHeader.get(header)?.[occurrence];
+        const index = indexByHeader.get(normalizeCsvHeader(header))?.[occurrence];
         return index === undefined ? "" : cleanCell(values[index]);
       },
       getAll(header) {
-        return (indexByHeader.get(header) ?? []).map((index) => cleanCell(values[index]));
+        return (indexByHeader.get(normalizeCsvHeader(header)) ?? []).map((index) => cleanCell(values[index]));
       },
       asObject() {
         const result: Record<string, string | string[]> = {};
@@ -266,6 +282,7 @@ function createCsvTable(text: string, options: { hasSourceNotesRow?: boolean } =
   const hasSourceNotesRow = options.hasSourceNotesRow ?? true;
 
   return {
+    rawHeaders,
     headers,
     sourceNotes: hasSourceNotesRow ? dataRows[0] ?? null : null,
     rows: hasSourceNotesRow ? dataRows.slice(1) : dataRows
@@ -1009,7 +1026,7 @@ async function importSpecialtyCsv(db: DbClient, filePath: string, dataExplanatio
     }
 
     try {
-      const syllabusText = row.get("הסבר על ההתמחות ע׳׳פ הרי");
+      const syllabusText = cleanTextImportCell(row.get("הסבר על ההתמחות ע׳׳פ הרי"));
       const lastUpdated = parseDateCell(row.get("עודכן_אחרון"));
       const specialty = await ensureSpecialty(db, {
         name: specialtyName,
@@ -1252,16 +1269,16 @@ async function importDepartmentCsv(
           subDepartment,
           stableKey: rowKey ?? stableKey([institutionName, specialtyName, subDepartment || specialtyName])
         });
-        const websiteUrl = row.get("אתר_מחלקה") || null;
-        const applicationUrl = row.get("לינק להגשת מועמדות") || null;
-        const description = row.get("כמה מילים על המערך") || null;
-        const headTitle = row.get("תואר (ד׳׳ר/פרופסור) מנהל המחלקה") || null;
-        const headName = row.get("שם מנהל/ת המערך/מחלקה") || null;
-        const headEmail = row.get("מייל מנהל/ת המערך/מחלקה") || null;
-        const headPhone = row.get("מספר טלפון מנהל/ת המערך/מחלקה") || null;
-        const contactName = row.get("שם איש קשר") || headName || null;
-        const contactEmail = row.get("מייל איש קשר") || headEmail || null;
-        const contactPhone = row.get("מספר טלפון איש קשר") || headPhone || null;
+        const websiteUrl = cleanTextImportCell(row.get("אתר_מחלקה"));
+        const applicationUrl = cleanTextImportCell(row.get("לינק להגשת מועמדות"));
+        const description = cleanTextImportCell(row.get("כמה מילים על המערך"));
+        const headTitle = cleanTextImportCell(row.get("תואר (ד׳׳ר/פרופסור) מנהל המחלקה"));
+        const headName = cleanTextImportCell(row.get("שם מנהל/ת המערך/מחלקה"));
+        const headEmail = cleanTextImportCell(row.get("מייל מנהל/ת המערך/מחלקה"));
+        const headPhone = cleanTextImportCell(row.get("מספר טלפון מנהל/ת המערך/מחלקה"));
+        const contactName = cleanTextImportCell(row.get("שם איש קשר")) || headName || null;
+        const contactEmail = cleanTextImportCell(row.get("מייל איש קשר")) || headEmail || null;
+        const contactPhone = cleanTextImportCell(row.get("מספר טלפון איש קשר")) || headPhone || null;
         const seniorPhysicians = parseNumberCell(row.get("מספר_בכירים"));
         const residentsCount = parseNumberCell(row.get("מספר_מתמחים"));
         const newResidents2024Values = row.getAll("מספר מתמחים חדשים 2024").filter(Boolean);
@@ -1447,6 +1464,114 @@ function scanSpreadsheetErrors(table: CsvTable) {
   return findings;
 }
 
+function headerCountMap(headers: string[]) {
+  return headers.reduce<Map<string, { count: number; headers: string[]; indexes: number[] }>>((map, header, index) => {
+    const normalizedHeader = normalizeCsvHeader(header);
+    if (!normalizedHeader) return map;
+
+    const current = map.get(normalizedHeader) ?? { count: 0, headers: [], indexes: [] };
+    current.count += 1;
+    current.headers.push(header);
+    current.indexes.push(index + 1);
+    map.set(normalizedHeader, current);
+    return map;
+  }, new Map());
+}
+
+function firstHeaderLabel(
+  counts: Map<string, { count: number; headers: string[]; indexes: number[] }>,
+  normalizedHeader: string
+) {
+  return counts.get(normalizedHeader)?.headers.find(Boolean) ?? normalizedHeader;
+}
+
+function diffHeaders(uploaded: CsvTable, reference: CsvTable) {
+  const uploadedCounts = headerCountMap(uploaded.rawHeaders);
+  const referenceCounts = headerCountMap(reference.rawHeaders);
+  const missingHeaders: string[] = [];
+  const extraHeaders: string[] = [];
+  const duplicateHeaders: Array<{
+    header: string;
+    receivedCount: number;
+    expectedCount: number;
+    columns: number[];
+  }> = [];
+  const allowedDuplicateHeaders: Array<{
+    header: string;
+    count: number;
+    columns: number[];
+  }> = [];
+  const suspiciousChangedHeaders: Array<{
+    column: number;
+    expected: string;
+    received: string;
+    normalized: string;
+  }> = [];
+
+  for (const [normalizedHeader, referenceValue] of referenceCounts) {
+    const uploadedCount = uploadedCounts.get(normalizedHeader)?.count ?? 0;
+    if (uploadedCount === 0) {
+      missingHeaders.push(firstHeaderLabel(referenceCounts, normalizedHeader));
+    }
+  }
+
+  for (const [normalizedHeader, uploadedValue] of uploadedCounts) {
+    const expectedCount = referenceCounts.get(normalizedHeader)?.count ?? 0;
+
+    if (uploadedValue.count > 1 && expectedCount <= 1) {
+      duplicateHeaders.push({
+        header: firstHeaderLabel(uploadedCounts, normalizedHeader),
+        receivedCount: uploadedValue.count,
+        expectedCount,
+        columns: uploadedValue.indexes
+      });
+      continue;
+    }
+
+    if (uploadedValue.count > 1 && expectedCount > 1) {
+      allowedDuplicateHeaders.push({
+        header: firstHeaderLabel(uploadedCounts, normalizedHeader),
+        count: uploadedValue.count,
+        columns: uploadedValue.indexes
+      });
+    }
+
+    if (expectedCount === 0) {
+      extraHeaders.push(firstHeaderLabel(uploadedCounts, normalizedHeader));
+    }
+  }
+
+  const comparableColumns = Math.min(uploaded.rawHeaders.length, reference.rawHeaders.length);
+  for (let index = 0; index < comparableColumns; index += 1) {
+    const expected = reference.rawHeaders[index] ?? "";
+    const received = uploaded.rawHeaders[index] ?? "";
+    const normalizedExpected = normalizeCsvHeader(expected);
+    const normalizedReceived = normalizeCsvHeader(received);
+
+    if (expected !== received && normalizedExpected && normalizedExpected === normalizedReceived) {
+      suspiciousChangedHeaders.push({
+        column: index + 1,
+        expected,
+        received,
+        normalized: normalizedExpected
+      });
+    }
+  }
+
+  return {
+    matches: missingHeaders.length === 0 && duplicateHeaders.length === 0,
+    expected: reference.rawHeaders,
+    received: uploaded.rawHeaders,
+    normalizedExpected: reference.headers,
+    normalizedReceived: uploaded.headers,
+    missingHeaders,
+    extraHeaders,
+    duplicateHeaders,
+    allowedDuplicateHeaders,
+    suspiciousChangedHeaders
+  };
+}
+
 function compareTables(uploaded: CsvTable, reference: CsvTable) {
   let changedCellsCount = 0;
   const changedRows: Array<{
@@ -1491,16 +1616,12 @@ export async function previewMasterCsvUpload(input: {
   kind: MasterCsvUploadKind;
   csvText: string;
   fileName?: string;
+  referenceCsvText?: string;
 }) {
   const uploaded = tableForUploadKind(input.csvText, input.kind);
-  const referenceText = await fs.readFile(sourcePathForUploadKind(input.kind), "utf8");
+  const referenceText = input.referenceCsvText ?? await fs.readFile(sourcePathForUploadKind(input.kind), "utf8");
   const reference = tableForUploadKind(referenceText, input.kind);
-  const headerDiffs = {
-    matches: uploaded.headers.length === reference.headers.length &&
-      uploaded.headers.every((header, index) => header === reference.headers[index]),
-    expected: reference.headers,
-    received: uploaded.headers
-  };
+  const headerDiffs = diffHeaders(uploaded, reference);
   const rowCount = uploaded.rows.length;
   const referenceRowCount = reference.rows.length;
   const entityCount = countCsvEntities(uploaded, input.kind);
@@ -1508,7 +1629,18 @@ export async function previewMasterCsvUpload(input: {
   const spreadsheetErrors = scanSpreadsheetErrors(uploaded);
   const { changedCellsCount, changedRows } = compareTables(uploaded, reference);
   const warnings = [
-    !headerDiffs.matches ? "כותרות הקובץ אינן תואמות לקובץ המקור." : null,
+    headerDiffs.missingHeaders.length > 0
+      ? `חסרות ${headerDiffs.missingHeaders.length} כותרות חובה.`
+      : null,
+    headerDiffs.duplicateHeaders.length > 0
+      ? `נמצאו ${headerDiffs.duplicateHeaders.length} כותרות כפולות שאינן קיימות כך בקובץ המקור.`
+      : null,
+    headerDiffs.extraHeaders.length > 0
+      ? `נמצאו ${headerDiffs.extraHeaders.length} כותרות נוספות; הייבוא יתעלם מהן.`
+      : null,
+    headerDiffs.suspiciousChangedHeaders.length > 0
+      ? `נמצאו ${headerDiffs.suspiciousChangedHeaders.length} כותרות עם הבדלי רווחים/קידוד בלבד; הן יטופלו כתואמות.`
+      : null,
     spreadsheetErrors.length > 0 ? `נמצאו ${spreadsheetErrors.length} ערכי שגיאה מגיליון; הם יטופלו כחסר.` : null
   ].filter((warning): warning is string => Boolean(warning));
 
@@ -1518,6 +1650,13 @@ export async function previewMasterCsvUpload(input: {
     headerMatches: headerDiffs.matches,
     expectedHeaders: headerDiffs.expected,
     receivedHeaders: headerDiffs.received,
+    normalizedExpectedHeaders: headerDiffs.normalizedExpected,
+    normalizedReceivedHeaders: headerDiffs.normalizedReceived,
+    missingHeaders: headerDiffs.missingHeaders,
+    extraHeaders: headerDiffs.extraHeaders,
+    duplicateHeaders: headerDiffs.duplicateHeaders,
+    allowedDuplicateHeaders: headerDiffs.allowedDuplicateHeaders,
+    suspiciousChangedHeaders: headerDiffs.suspiciousChangedHeaders,
     rowCount,
     referenceRowCount,
     specialtyCount: input.kind === "spec" ? entityCount : null,

@@ -7,6 +7,25 @@ type CsvPreview = {
   kind: "spec" | "dept";
   fileName: string | null;
   headerMatches: boolean;
+  missingHeaders: string[];
+  extraHeaders: string[];
+  duplicateHeaders: Array<{
+    header: string;
+    receivedCount: number;
+    expectedCount: number;
+    columns: number[];
+  }>;
+  allowedDuplicateHeaders: Array<{
+    header: string;
+    count: number;
+    columns: number[];
+  }>;
+  suspiciousChangedHeaders: Array<{
+    column: number;
+    expected: string;
+    received: string;
+    normalized: string;
+  }>;
   rowCount: number;
   referenceRowCount: number;
   specialtyCount: number | null;
@@ -38,6 +57,87 @@ type ApiPayload = {
 
 function kindLabel(kind: "spec" | "dept") {
   return kind === "spec" ? "MASTER_Spec.csv" : "MASTER_Dept.csv";
+}
+
+function HeaderDiagnostics({ preview }: { preview: CsvPreview }) {
+  const hasDetails =
+    preview.missingHeaders.length > 0 ||
+    preview.duplicateHeaders.length > 0 ||
+    preview.extraHeaders.length > 0 ||
+    preview.suspiciousChangedHeaders.length > 0 ||
+    preview.allowedDuplicateHeaders.length > 0;
+
+  if (!hasDetails) return null;
+
+  return (
+    <details className="mt-4 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">
+      <summary className="cursor-pointer text-xs font-black text-slate-700">
+        פירוט התאמת כותרות
+      </summary>
+      <div className="mt-3 space-y-3 text-xs">
+        {preview.missingHeaders.length > 0 ? (
+          <div className="rounded-lg border border-rose-200 bg-rose-50 p-2 text-rose-900">
+            <p className="font-black">כותרות חסרות</p>
+            <ul className="mt-1 list-inside list-disc">
+              {preview.missingHeaders.map((header) => (
+                <li key={header}>{header}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {preview.duplicateHeaders.length > 0 ? (
+          <div className="rounded-lg border border-rose-200 bg-rose-50 p-2 text-rose-900">
+            <p className="font-black">כותרות כפולות שחוסמות ייבוא</p>
+            <ul className="mt-1 list-inside list-disc">
+              {preview.duplicateHeaders.map((header) => (
+                <li key={`${header.header}-${header.columns.join("-")}`}>
+                  {header.header} · בקובץ: {header.receivedCount}, במקור: {header.expectedCount} · עמודות {header.columns.join(", ")}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {preview.extraHeaders.length > 0 ? (
+          <div className="rounded-lg border border-amber-200 bg-amber-50 p-2 text-amber-900">
+            <p className="font-black">כותרות נוספות שייובאו כהתעלמות בטוחה</p>
+            <ul className="mt-1 list-inside list-disc">
+              {preview.extraHeaders.map((header) => (
+                <li key={header}>{header}</li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {preview.suspiciousChangedHeaders.length > 0 ? (
+          <div className="rounded-lg border border-amber-200 bg-amber-50 p-2 text-amber-900">
+            <p className="font-black">כותרות עם שינויי רווחים/קידוד בלבד</p>
+            <ul className="mt-1 list-inside list-disc">
+              {preview.suspiciousChangedHeaders.map((header) => (
+                <li key={`${header.column}-${header.normalized}`}>
+                  עמודה {header.column}: {header.received || "-"} → {header.normalized}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {preview.allowedDuplicateHeaders.length > 0 ? (
+          <div className="rounded-lg border border-slate-200 bg-white p-2 text-slate-700">
+            <p className="font-black">כותרות כפולות קיימות גם בקובץ המקור ולכן מותרות</p>
+            <ul className="mt-1 list-inside list-disc">
+              {preview.allowedDuplicateHeaders.map((header) => (
+                <li key={`${header.header}-${header.columns.join("-")}`}>
+                  {header.header} · {header.count} פעמים · עמודות {header.columns.join(", ")}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
+    </details>
+  );
 }
 
 function PreviewCard({ preview }: { preview: CsvPreview }) {
@@ -88,6 +188,8 @@ function PreviewCard({ preview }: { preview: CsvPreview }) {
           ))}
         </div>
       ) : null}
+
+      <HeaderDiagnostics preview={preview} />
 
       {preview.spreadsheetErrors.length > 0 ? (
         <details className="mt-4 rounded-xl border border-slate-100 bg-slate-50 px-3 py-2">

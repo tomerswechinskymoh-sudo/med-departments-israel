@@ -15,6 +15,10 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 const MAX_FILE_BYTES = 8 * 1024 * 1024;
+const SOURCE_FILE_BY_KIND: Record<MasterCsvUploadKind, string> = {
+  spec: "MASTER_Spec.csv",
+  dept: "Master_Dept.csv"
+};
 
 async function readCsvFile(formData: FormData, fieldName: string, kind: MasterCsvUploadKind) {
   const file = formData.get(fieldName);
@@ -40,6 +44,54 @@ async function writeTemporaryCsv(input: { kind: MasterCsvUploadKind; text: strin
   const tempPath = path.join(os.tmpdir(), `master-${input.kind}-${crypto.randomUUID()}.csv`);
   await fs.writeFile(tempPath, input.text, "utf8");
   return tempPath;
+}
+
+function sha256(text: string) {
+  return crypto.createHash("sha256").update(text).digest("hex");
+}
+
+async function createPreImportBackups(
+  uploads: Array<{ kind: MasterCsvUploadKind; fileName: string; text: string }>
+) {
+  const backups = [];
+
+  for (const upload of uploads) {
+    const referenceFile = SOURCE_FILE_BY_KIND[upload.kind];
+    const referencePath = path.join(process.cwd(), referenceFile);
+    const referenceText = await fs.readFile(referencePath, "utf8").catch(() => null);
+
+    const backup = await prisma.dataImportBatch.create({
+      data: {
+        sourceType: "OTHER",
+        target: "CUSTOM",
+        sourceUrl: `admin-master-csv-backup:${upload.kind}`,
+        extractionInstruction: `Backup before admin MASTER CSV import (${referenceFile})`,
+        rawText: referenceText,
+        parsedJson: {
+          backupType: "admin_master_csv_pre_import",
+          kind: upload.kind,
+          referenceFile,
+          uploadedFileName: upload.fileName,
+          referenceMissing: referenceText === null,
+          referenceByteLength: referenceText ? Buffer.byteLength(referenceText, "utf8") : 0,
+          uploadedByteLength: Buffer.byteLength(upload.text, "utf8"),
+          referenceSha256: referenceText ? sha256(referenceText) : null,
+          uploadedSha256: sha256(upload.text),
+          createdAt: new Date().toISOString()
+        },
+        status: "APPROVED"
+      }
+    });
+
+    backups.push({
+      id: backup.id,
+      kind: upload.kind,
+      referenceFile,
+      referenceMissing: referenceText === null
+    });
+  }
+
+  return backups;
 }
 
 export async function POST(request: Request) {
@@ -82,7 +134,7 @@ export async function POST(request: Request) {
     if (invalidPreview) {
       return NextResponse.json(
         {
-          error: "אי אפשר להחיל ייבוא לפני תיקון כותרות הקובץ.",
+          error: "אי אפשר להחיל ייבוא לפני תיקון סכמת הכותרות.",
           previews
         },
         { status: 400 }
@@ -92,11 +144,13 @@ export async function POST(request: Request) {
     const tempPaths: Partial<Record<MasterCsvUploadKind, string>> = {};
 
     try {
+      const backups = await createPreImportBackups(uploads);
+
       for (const upload of uploads) {
         tempPaths[upload.kind] = await writeTemporaryCsv(upload);
       }
 
-      const result: Record<string, unknown> = {};
+      const result: Record<string, unknown> = { backups };
       if (tempPaths.spec) {
         result.spec = await importMasterCsvFiles(prisma, {
           only: "spec",
