@@ -401,7 +401,11 @@ function ResidentQuestionnaire({
 export function ReviewForm({
   departments,
   selectedDepartmentId,
+  initialInstitutionId: initialInstitutionIdProp,
   initialReviewerType = "INTERN",
+  initialContact,
+  initialRoleDetails,
+  lockReviewerType = false,
   onSubmitted
 }: {
   departments: {
@@ -419,7 +423,15 @@ export function ReviewForm({
     };
   }[];
   selectedDepartmentId?: string;
+  initialInstitutionId?: string;
   initialReviewerType?: ReviewerType;
+  initialContact?: {
+    fullName?: string;
+    phone?: string;
+    email?: string;
+  };
+  initialRoleDetails?: Partial<FormValues["roleDetails"]>;
+  lockReviewerType?: boolean;
   compact?: boolean;
   showGuidancePanels?: boolean;
   onSubmitted?: () => void;
@@ -446,8 +458,17 @@ export function ReviewForm({
       ),
     [departments]
   );
+  const mergedInitialRoleDetails = useMemo(
+    () => ({
+      ...getRoleDetailsDefaults(initialReviewerType),
+      ...(initialRoleDetails ?? {})
+    }),
+    [initialReviewerType, initialRoleDetails]
+  );
   const initialInstitutionId =
-    departments.find((department) => department.id === selectedDepartmentId)?.institution.id ?? "";
+    initialInstitutionIdProp ??
+    departments.find((department) => department.id === selectedDepartmentId)?.institution.id ??
+    "";
   const [selectedInstitutionId, setSelectedInstitutionId] = useState(initialInstitutionId);
   const {
     register,
@@ -461,10 +482,10 @@ export function ReviewForm({
     defaultValues: {
       departmentId: selectedDepartmentId ?? "",
       reviewerType: initialReviewerType,
-      fullName: "",
-      phone: "",
+      fullName: initialContact?.fullName ?? "",
+      phone: initialContact?.phone ?? "",
       hasVerificationDocument: false,
-      email: "",
+      email: initialContact?.email ?? "",
       isAnonymous: true,
       teachingQuality: 4,
       workAtmosphere: 4,
@@ -475,7 +496,7 @@ export function ReviewForm({
       pros: "",
       cons: "",
       tips: "",
-      roleDetails: getRoleDetailsDefaults(initialReviewerType),
+      roleDetails: mergedInitialRoleDetails,
       consentToContact: true,
       consentToTerms: true,
       consentNoPatientInfo: true
@@ -484,8 +505,8 @@ export function ReviewForm({
 
   useEffect(() => {
     setValue("reviewerType", initialReviewerType);
-    setValue("roleDetails", getRoleDetailsDefaults(initialReviewerType));
-  }, [initialReviewerType, setValue]);
+    setValue("roleDetails", mergedInitialRoleDetails);
+  }, [initialReviewerType, mergedInitialRoleDetails, setValue]);
 
   useEffect(() => {
     setValue("hasVerificationDocument", Boolean(verificationDocument), { shouldValidate: true });
@@ -608,10 +629,10 @@ export function ReviewForm({
     reset({
       departmentId: selectedDepartmentId ?? "",
       reviewerType: initialReviewerType,
-      fullName: "",
-      phone: "",
+      fullName: initialContact?.fullName ?? "",
+      phone: initialContact?.phone ?? "",
       hasVerificationDocument: false,
-      email: "",
+      email: initialContact?.email ?? "",
       isAnonymous: true,
       teachingQuality: 4,
       workAtmosphere: 4,
@@ -622,7 +643,7 @@ export function ReviewForm({
       pros: "",
       cons: "",
       tips: "",
-      roleDetails: getRoleDetailsDefaults(initialReviewerType),
+      roleDetails: mergedInitialRoleDetails,
       consentToContact: true,
       consentToTerms: true,
       consentNoPatientInfo: true
@@ -676,31 +697,45 @@ export function ReviewForm({
             <h3 className="mt-1 text-3xl font-black text-ink">מאיפה נקודת המבט שלך?</h3>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
-            {roleOptions.map((role) => (
-              <button
-                key={role.value}
-                type="button"
-                onClick={() => {
-                  setValue("reviewerType", role.value, { shouldValidate: true });
-                  setValue("roleDetails", getRoleDetailsDefaults(role.value), {
-                    shouldValidate: true
-                  });
-                }}
-                className={cn(
-                  "min-h-36 rounded-[1.5rem] border p-5 text-right transition",
-                  reviewerType === role.value
-                    ? "border-brand-300 bg-brand-900 text-white shadow-panel"
-                    : "border-slate-200 bg-white text-ink shadow-sm hover:-translate-y-0.5 hover:border-brand-200"
-                )}
-              >
-                <p className="text-xl font-black">{role.label}</p>
-                <p className={cn("mt-2 text-sm leading-7", reviewerType === role.value ? "text-white/82" : "text-slate-600")}>
-                  {role.description}
-                </p>
-              </button>
-            ))}
-          </div>
+          {lockReviewerType ? (
+            <div className="rounded-[1.5rem] border border-brand-200 bg-brand-50 px-5 py-4 text-sm leading-7 text-brand-950">
+              <p className="font-black">{reviewerTypeLabel}</p>
+              <p className="text-slate-600">
+                נקודת המבט נקבעה לפי פרטי ההרשמה. אפשר להמשיך ולבחור מוסד ומחלקה.
+              </p>
+            </div>
+          ) : (
+            <div className="grid gap-4 md:grid-cols-3">
+              {roleOptions.map((role) => (
+                <button
+                  key={role.value}
+                  type="button"
+                  onClick={() => {
+                    setValue("reviewerType", role.value, { shouldValidate: true });
+                    setValue("roleDetails", getRoleDetailsDefaults(role.value), {
+                      shouldValidate: true
+                    });
+                  }}
+                  className={cn(
+                    "min-h-36 rounded-[1.5rem] border p-5 text-right transition",
+                    reviewerType === role.value
+                      ? "border-brand-300 bg-brand-900 text-white shadow-panel"
+                      : "border-slate-200 bg-white text-ink shadow-sm hover:-translate-y-0.5 hover:border-brand-200"
+                  )}
+                >
+                  <p className="text-xl font-black">{role.label}</p>
+                  <p
+                    className={cn(
+                      "mt-2 text-sm leading-7",
+                      reviewerType === role.value ? "text-white/82" : "text-slate-600"
+                    )}
+                  >
+                    {role.description}
+                  </p>
+                </button>
+              ))}
+            </div>
+          )}
 
           {reviewerType === "RESIDENT" ? (
             <div className="rounded-2xl border border-brand-100 bg-brand-50/60 p-4">

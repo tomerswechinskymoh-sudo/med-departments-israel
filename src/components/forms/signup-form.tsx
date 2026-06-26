@@ -2,11 +2,35 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
+import { MEDICAL_FACULTY_OPTIONS } from "@/lib/constants";
+import {
+  getExperienceContributionEligibility,
+  type ExperienceContributionCategory,
+  type StudentTrack
+} from "@/lib/onboarding-contribution";
 import { signupSchema } from "@/lib/validation";
+import { ReviewForm } from "@/components/forms/review-form";
 
 type RoleStatus = "medical_student" | "intern" | "resident" | "specialist" | "other";
+type ContributionStatus = "not_eligible" | "submitted" | "skipped";
+type MedicalFaculty = (typeof MEDICAL_FACULTY_OPTIONS)[number];
+
+type DepartmentOption = {
+  id: string;
+  slug: string;
+  name: string;
+  institution: {
+    id: string;
+    name: string;
+    type: "HOSPITAL" | "HMO";
+  };
+  specialty: {
+    id: string;
+    name: string;
+  };
+};
 
 type FormValues = {
   fullName: string;
@@ -18,25 +42,73 @@ type FormValues = {
   proofConfirmed: boolean;
   marketingConsent: boolean;
   privacyVerificationConsent: boolean;
+  studentTrack?: StudentTrack | "";
+  studentYear?: number | string;
+  medicalFaculty?: MedicalFaculty | "";
+  onboardingInstitutionId?: string;
+  onboardingDepartmentId?: string;
+  experienceContributionStatus?: ContributionStatus;
+  experienceContributionCategory?: ExperienceContributionCategory;
 };
 
-const roleStatusOptions: Array<{ value: RoleStatus; label: string }> = [
-  { value: "medical_student", label: "סטודנט/ית לרפואה" },
-  { value: "intern", label: "סטאז'ר/ית" },
-  { value: "resident", label: "מתמחה" },
-  { value: "specialist", label: "מומחה/ית" },
-  { value: "other", label: "אחר" }
+const roleStatusOptions: Array<{ value: RoleStatus; label: string; description: string }> = [
+  {
+    value: "medical_student",
+    label: "סטודנט/ית לרפואה",
+    description: "נשאל על מסלול ושנת לימוד כדי להבין אם כבר הייתה חשיפה קלינית."
+  },
+  {
+    value: "intern",
+    label: "סטאז׳ר/ית",
+    description: "נשמח לשמוע על מחלקה שבה עברת סבב או אלקטיב."
+  },
+  {
+    value: "resident",
+    label: "מתמחה",
+    description: "חוויה מתוך המחלקה יכולה לעזור מאוד למועמדים הבאים."
+  },
+  {
+    value: "specialist",
+    label: "רופא/ה מומחה/ית",
+    description: "אפשר לשתף מהמחלקה הנוכחית או ממחלקה קודמת."
+  },
+  {
+    value: "other",
+    label: "לא במקצוע רפואי / אחר",
+    description: "ההרשמה תמשיך ללא שלב שיתוף חוויה."
+  }
 ];
 
-export function SignupForm() {
+const studentTrackOptions = [
+  { value: "six_year", label: "מסלול 6 שנתי" },
+  { value: "four_year", label: "מסלול 4 שנתי" }
+] as const;
+
+const studentYearOptions = Array.from({ length: 7 }, (_, index) => index + 1);
+
+const onboardingContributionCopy =
+  "האתר נבנה כדי לעזור לסטודנטים, סטאז׳רים ומתמחים לבחור התמחות ומחלקה בצורה שקופה יותר.\nכמו שהמידע כאן עוזר לך, נשמח שגם תחזיר/י ידע לקהילה ותשתף/י חוויה ממחלקה שבה היית.\nהחוויה אנונימית כברירת מחדל, אלא אם תבחר/י אחרת.";
+
+function normalizeOptional(value?: string | number | null) {
+  if (value === null || value === undefined) return "";
+  return String(value);
+}
+
+export function SignupForm({ departments }: { departments: DepartmentOption[] }) {
   const router = useRouter();
+  const [step, setStep] = useState<"account" | "experience">("account");
   const [formError, setFormError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [devVerificationUrl, setDevVerificationUrl] = useState<string | null>(null);
   const [verificationProof, setVerificationProof] = useState<File | null>(null);
+  const [experienceSubmitted, setExperienceSubmitted] = useState(false);
+  const [careerContextError, setCareerContextError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors, isSubmitting }
   } = useForm<FormValues>({
     resolver: zodResolver(signupSchema),
@@ -49,17 +121,113 @@ export function SignupForm() {
       roleStatus: "medical_student",
       proofConfirmed: false,
       marketingConsent: false,
-      privacyVerificationConsent: false
+      privacyVerificationConsent: false,
+      studentTrack: "",
+      studentYear: "",
+      medicalFaculty: "",
+      onboardingInstitutionId: "",
+      onboardingDepartmentId: ""
     }
   });
 
-  const onSubmit = handleSubmit(async (values) => {
+  const roleStatus = watch("roleStatus");
+  const studentTrack = watch("studentTrack");
+  const studentYear = watch("studentYear");
+  const selectedInstitutionId = watch("onboardingInstitutionId");
+  const selectedDepartmentId = watch("onboardingDepartmentId");
+  const fullName = watch("fullName");
+  const email = watch("email");
+  const phone = watch("phone");
+  const medicalFaculty = watch("medicalFaculty");
+
+  const institutions = useMemo(
+    () =>
+      Array.from(
+        new Map(
+          departments.map((department) => [
+            department.institution.id,
+            {
+              id: department.institution.id,
+              name: department.institution.name,
+              type: department.institution.type
+            }
+          ])
+        ).values()
+      ).sort((left, right) => left.name.localeCompare(right.name, "he")),
+    [departments]
+  );
+
+  const availableDepartments = useMemo(
+    () =>
+      departments
+        .filter((department) => department.institution.id === selectedInstitutionId)
+        .sort((left, right) => {
+          const specialtyCompare = left.specialty.name.localeCompare(right.specialty.name, "he");
+          return specialtyCompare || left.name.localeCompare(right.name, "he");
+        }),
+    [departments, selectedInstitutionId]
+  );
+
+  useEffect(() => {
+    if (!selectedDepartmentId) return;
+    const departmentStillValid = availableDepartments.some(
+      (department) => department.id === selectedDepartmentId
+    );
+    if (!departmentStillValid) {
+      setValue("onboardingDepartmentId", "");
+    }
+  }, [availableDepartments, selectedDepartmentId, setValue]);
+
+  const contributionEligibility = getExperienceContributionEligibility({
+    roleStatus,
+    studentTrack,
+    studentYear
+  });
+
+  const initialRoleDetails = useMemo(
+    () => ({
+      medicalSchool: medicalFaculty || undefined,
+      studentTrack: roleStatus === "medical_student" ? studentTrack || undefined : undefined,
+      studentYear:
+        roleStatus === "medical_student" && studentYear
+          ? Number(studentYear)
+          : undefined,
+      contributionCategory: contributionEligibility.category ?? undefined
+    }),
+    [contributionEligibility.category, medicalFaculty, roleStatus, studentTrack, studentYear]
+  );
+
+  function validateCareerContext(values: FormValues) {
+    if (values.roleStatus === "medical_student") {
+      if (!values.studentTrack) return "יש לבחור מסלול לימודים.";
+      if (!values.studentYear) return "יש לבחור שנת לימוד.";
+      if (!values.medicalFaculty) return "יש לבחור פקולטה לרפואה.";
+      return null;
+    }
+
+    if (values.roleStatus === "intern") {
+      if (!values.onboardingInstitutionId) return "יש לבחור בית חולים לסטאז׳ או לסבב.";
+      return null;
+    }
+
+    if (values.roleStatus === "resident" || values.roleStatus === "specialist") {
+      if (!values.onboardingInstitutionId) return "יש לבחור בית חולים.";
+      if (!values.onboardingDepartmentId) return "יש לבחור מחלקה.";
+      return null;
+    }
+
+    return null;
+  }
+
+  async function createAccount(values: FormValues, contributionStatus: ContributionStatus) {
     setFormError(null);
+    setCareerContextError(null);
     setSuccessMessage(null);
     setDevVerificationUrl(null);
 
     if (!verificationProof) {
       setFormError("יש להעלות אישור לצורך אימות.");
+      setStep("account");
       return;
     }
 
@@ -74,6 +242,13 @@ export function SignupForm() {
     formData.set("marketingConsent", String(values.marketingConsent));
     formData.set("privacyVerificationConsent", String(values.privacyVerificationConsent));
     formData.set("verificationProof", verificationProof);
+    formData.set("studentTrack", values.studentTrack ?? "");
+    formData.set("studentYear", normalizeOptional(values.studentYear));
+    formData.set("medicalFaculty", values.medicalFaculty ?? "");
+    formData.set("onboardingInstitutionId", values.onboardingInstitutionId ?? "");
+    formData.set("onboardingDepartmentId", values.onboardingDepartmentId ?? "");
+    formData.set("experienceContributionStatus", contributionStatus);
+    formData.set("experienceContributionCategory", contributionEligibility.category ?? "");
 
     const response = await fetch("/api/auth/signup", {
       method: "POST",
@@ -88,6 +263,7 @@ export function SignupForm() {
 
     if (!response.ok) {
       setFormError(payload?.error ?? "ההרשמה נכשלה.");
+      setStep("account");
       return;
     }
 
@@ -103,7 +279,43 @@ export function SignupForm() {
     );
     setDevVerificationUrl(payload.verificationUrl);
     router.refresh();
+  }
+
+  const submitAccount = handleSubmit(async (values) => {
+    const contextError = validateCareerContext(values);
+    if (contextError) {
+      setCareerContextError(contextError);
+      return;
+    }
+
+    setCareerContextError(null);
+
+    if (contributionEligibility.eligible && !experienceSubmitted) {
+      setStep("experience");
+      return;
+    }
+
+    await createAccount(values, contributionEligibility.eligible ? "submitted" : "not_eligible");
   });
+
+  function completeAfterSkip() {
+    void handleSubmit(async (values) => {
+      const contextError = validateCareerContext(values);
+      if (contextError) {
+        setCareerContextError(contextError);
+        setStep("account");
+        return;
+      }
+
+      await createAccount(values, "skipped");
+    })();
+  }
+
+  function completeAfterContribution() {
+    void handleSubmit(async (values) => {
+      await createAccount(values, "submitted");
+    })();
+  }
 
   if (successMessage) {
     return (
@@ -125,8 +337,72 @@ export function SignupForm() {
     );
   }
 
+  if (step === "experience") {
+    return (
+      <div className="space-y-6">
+        <div className="rounded-[1.75rem] border border-brand-100 bg-brand-50/70 p-5 text-sm leading-8 text-slate-700">
+          <p className="text-base font-black text-ink">שיתוף ידע לקהילה</p>
+          {onboardingContributionCopy.split("\n").map((line) => (
+            <p key={line} className="mt-2">
+              {line}
+            </p>
+          ))}
+        </div>
+
+        {experienceSubmitted ? (
+          <div className="space-y-4 rounded-[1.5rem] border border-emerald-100 bg-emerald-50 p-5 text-sm leading-7 text-emerald-900">
+            <p className="font-black">תודה, החוויה נשלחה לבדיקה.</p>
+            <button
+              type="button"
+              disabled={isSubmitting}
+              onClick={completeAfterContribution}
+              className="rounded-full bg-brand-700 px-6 py-3 text-sm font-bold text-white disabled:opacity-60"
+            >
+              {isSubmitting ? "משלים/ה הרשמה..." : "המשך להרשמה"}
+            </button>
+          </div>
+        ) : (
+          <ReviewForm
+            departments={departments}
+            selectedDepartmentId={selectedDepartmentId}
+            initialInstitutionId={selectedInstitutionId}
+            initialReviewerType={contributionEligibility.reviewerType ?? "INTERN"}
+            initialContact={{
+              fullName,
+              phone,
+              email
+            }}
+            initialRoleDetails={initialRoleDetails}
+            lockReviewerType
+            onSubmitted={() => setExperienceSubmitted(true)}
+          />
+        )}
+
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4">
+          <button
+            type="button"
+            onClick={() => setStep("account")}
+            className="rounded-full border border-brand-100 px-5 py-3 text-sm font-bold text-brand-800 transition hover:bg-brand-50"
+          >
+            חזרה לפרטי ההרשמה
+          </button>
+          <button
+            type="button"
+            disabled={isSubmitting}
+            onClick={completeAfterSkip}
+            className="rounded-full bg-slate-900 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800 disabled:opacity-60"
+          >
+            אין לי חוויה לשתף כרגע
+          </button>
+        </div>
+
+        {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}
+      </div>
+    );
+  }
+
   return (
-    <form onSubmit={onSubmit} className="space-y-4">
+    <form onSubmit={submitAccount} className="space-y-5">
       <div>
         <label className="mb-2 block text-sm font-semibold text-ink">שם מלא</label>
         <input
@@ -158,22 +434,118 @@ export function SignupForm() {
         </div>
       </div>
 
-      <div>
-        <label className="mb-2 block text-sm font-semibold text-ink">סטטוס מקצועי</label>
-        <select
-          {...register("roleStatus")}
-          className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
-        >
+      <div className="rounded-[1.5rem] border border-brand-100 bg-white p-4">
+        <label className="mb-3 block text-sm font-semibold text-ink">סטטוס מקצועי</label>
+        <div className="grid gap-3 md:grid-cols-2">
           {roleStatusOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
+            <label
+              key={option.value}
+              className="flex cursor-pointer items-start gap-3 rounded-2xl border border-brand-100 bg-surface px-4 py-3 text-sm leading-6 text-slate-700 has-[:checked]:border-brand-300 has-[:checked]:bg-brand-50"
+            >
+              <input
+                {...register("roleStatus")}
+                type="radio"
+                value={option.value}
+                className="mt-1 h-4 w-4 border-brand-200 text-brand-700"
+              />
+              <span>
+                <span className="block font-black text-ink">{option.label}</span>
+                <span className="mt-1 block text-xs leading-5 text-slate-500">{option.description}</span>
+              </span>
+            </label>
           ))}
-        </select>
+        </div>
         {errors.roleStatus ? (
           <p className="mt-2 text-xs text-rose-600">{errors.roleStatus.message}</p>
         ) : null}
       </div>
+
+      {roleStatus === "medical_student" ? (
+        <div className="grid gap-4 rounded-[1.5rem] border border-brand-100 bg-brand-50/50 p-4 md:grid-cols-3">
+          <label className="block">
+            <span className="mb-2 block text-sm font-semibold text-ink">מסלול לימודים</span>
+            <select
+              {...register("studentTrack")}
+              className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
+            >
+              <option value="">בחירת מסלול</option>
+              {studentTrackOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="block">
+            <span className="mb-2 block text-sm font-semibold text-ink">שנת לימוד</span>
+            <select
+              {...register("studentYear")}
+              className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
+            >
+              <option value="">בחירת שנה</option>
+              {studentYearOptions.map((year) => (
+                <option key={year} value={year}>
+                  שנה {year}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="block">
+            <span className="mb-2 block text-sm font-semibold text-ink">פקולטה</span>
+            <select
+              {...register("medicalFaculty")}
+              className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
+            >
+              <option value="">בחירת פקולטה</option>
+              {MEDICAL_FACULTY_OPTIONS.map((faculty) => (
+                <option key={faculty} value={faculty}>
+                  {faculty}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      ) : null}
+
+      {roleStatus === "intern" || roleStatus === "resident" || roleStatus === "specialist" ? (
+        <div className="grid gap-4 rounded-[1.5rem] border border-brand-100 bg-brand-50/50 p-4 md:grid-cols-2">
+          <label className="block">
+            <span className="mb-2 block text-sm font-semibold text-ink">
+              {roleStatus === "intern" ? "בית חולים" : "בית חולים נוכחי או אחרון"}
+            </span>
+            <select
+              {...register("onboardingInstitutionId")}
+              className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
+            >
+              <option value="">בחירת בית חולים</option>
+              {institutions.map((institution) => (
+                <option key={institution.id} value={institution.id}>
+                  {institution.name}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          {roleStatus === "resident" || roleStatus === "specialist" ? (
+            <label className="block">
+              <span className="mb-2 block text-sm font-semibold text-ink">מחלקה נוכחית או אחרונה</span>
+              <select
+                {...register("onboardingDepartmentId")}
+                className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
+              >
+                <option value="">בחירת מחלקה</option>
+                {availableDepartments.map((department) => (
+                  <option key={department.id} value={department.id}>
+                    {department.name} · {department.specialty.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ) : null}
+        </div>
+      ) : null}
+
+      {careerContextError ? <p className="text-sm text-rose-600">{careerContextError}</p> : null}
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
@@ -258,7 +630,11 @@ export function SignupForm() {
         disabled={isSubmitting}
         className="w-full rounded-2xl bg-brand-700 px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
       >
-        {isSubmitting ? "יוצר/ת חשבון..." : "יצירת חשבון"}
+        {isSubmitting
+          ? "ממשיך/ה..."
+          : contributionEligibility.eligible
+            ? "המשך לשיתוף חוויה"
+            : "יצירת חשבון"}
       </button>
     </form>
   );

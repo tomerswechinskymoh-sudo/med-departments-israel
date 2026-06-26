@@ -43,7 +43,14 @@ export async function POST(request: Request) {
     roleStatus: formData.get("roleStatus"),
     proofConfirmed: formData.get("proofConfirmed") === "true",
     marketingConsent: formData.get("marketingConsent") === "true",
-    privacyVerificationConsent: formData.get("privacyVerificationConsent") === "true"
+    privacyVerificationConsent: formData.get("privacyVerificationConsent") === "true",
+    studentTrack: formData.get("studentTrack"),
+    studentYear: formData.get("studentYear"),
+    medicalFaculty: formData.get("medicalFaculty"),
+    onboardingInstitutionId: formData.get("onboardingInstitutionId"),
+    onboardingDepartmentId: formData.get("onboardingDepartmentId"),
+    experienceContributionStatus: formData.get("experienceContributionStatus"),
+    experienceContributionCategory: formData.get("experienceContributionCategory")
   };
   const parsed = signupSchema.safeParse(body);
 
@@ -153,6 +160,15 @@ export async function POST(request: Request) {
     metadata: {
       roleStatus: parsed.data.roleStatus,
       marketingConsent: parsed.data.marketingConsent,
+      onboarding: {
+        studentTrack: parsed.data.studentTrack ?? null,
+        studentYear: parsed.data.studentYear ?? null,
+        medicalFaculty: parsed.data.medicalFaculty ?? null,
+        institutionId: parsed.data.onboardingInstitutionId ?? null,
+        departmentId: parsed.data.onboardingDepartmentId ?? null,
+        experienceContributionStatus: parsed.data.experienceContributionStatus ?? null,
+        experienceContributionCategory: parsed.data.experienceContributionCategory ?? null
+      },
       rejectedReregistration: isRejectedReregistration
     }
   });

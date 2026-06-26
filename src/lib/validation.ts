@@ -163,7 +163,20 @@ export const signupSchema = z
     marketingConsent: z.boolean().default(false),
     privacyVerificationConsent: z.literal(true, {
       errorMap: () => ({ message: "יש לאשר את תנאי השימוש, מדיניות הפרטיות ושמירת המידע לצורכי אימות." })
-    })
+    }),
+    studentTrack: z.preprocess(emptyToUndefined, z.enum(["six_year", "four_year"]).optional()),
+    studentYear: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(7).optional()),
+    medicalFaculty: z.preprocess(emptyToUndefined, z.enum(medicalFacultyValues).optional()),
+    onboardingInstitutionId: z.preprocess(emptyToUndefined, z.string().optional()),
+    onboardingDepartmentId: z.preprocess(emptyToUndefined, z.string().optional()),
+    experienceContributionStatus: z.preprocess(
+      emptyToUndefined,
+      z.enum(["not_eligible", "prompted", "submitted", "skipped"]).optional()
+    ),
+    experienceContributionCategory: z.preprocess(
+      emptyToUndefined,
+      z.enum(["student", "intern", "resident_or_physician"]).optional()
+    )
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
@@ -203,6 +216,8 @@ const reviewRoleDetailsSchema = z.object({
   }),
   clinicalExposure: scaleSchema,
   fitForWho: z.preprocess(emptyToUndefined, z.string().optional()),
+  studentTrack: z.preprocess(emptyToUndefined, z.enum(["six_year", "four_year"]).optional()),
+  studentYear: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(7).optional()),
   rotationLength: z.preprocess(emptyToUndefined, z.string().optional()),
   durationWeeks: z.preprocess(
     emptyToUndefined,
@@ -241,7 +256,11 @@ const reviewRoleDetailsSchema = z.object({
   stageAVacation: z.preprocess(emptyToUndefined, z.enum(["yes", "no", "partial", "unknown"]).optional()),
   stageBVacation: z.preprocess(emptyToUndefined, z.enum(["yes", "no", "partial", "unknown"]).optional()),
   conferenceFunding: z.preprocess(emptyToUndefined, z.enum(["yes", "no", "partial", "unknown"]).optional()),
-  surgicalAutonomy: z.preprocess(emptyToUndefined, scaleSchema.optional())
+  surgicalAutonomy: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  contributionCategory: z.preprocess(
+    emptyToUndefined,
+    z.enum(["student", "intern", "resident_or_physician"]).optional()
+  )
 });
 
 export const reviewSubmissionSchema = z
