@@ -22,6 +22,7 @@
     "verify:department-card-yearly": "tsx src/server/jobs/verify-department-card-yearly-metrics.ts",
     "verify:department-card-chart": "tsx src/server/jobs/verify-department-card-chart-render.ts",
     "verify:zero-resident-filter": "tsx src/server/jobs/verify-public-zero-resident-filter.ts",
+    "verify:effective-hospital": "tsx src/server/jobs/verify-effective-hospital.ts",
     "verify:onboarding-experience": "tsx src/server/jobs/verify-onboarding-experience-eligibility.ts",
     "enrichment:mock": "tsx src/server/jobs/run-department-enrichment.ts",
     "openings:process-expired": "tsx src/server/jobs/run-expired-openings.ts",
