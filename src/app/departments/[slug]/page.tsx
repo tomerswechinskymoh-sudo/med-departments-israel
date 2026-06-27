@@ -38,6 +38,7 @@ import {
   requiredMedicalArraySpecialtyDisplayName,
   resolveInstitutionRegion
 } from "@/lib/queries";
+import { duplicateAwareArrayMetricContributionCalculation } from "@/lib/array-metric-aggregation";
 import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
 import { formatDepartmentDisplayName } from "@/lib/utils";
 
@@ -985,46 +986,18 @@ function latestYearlyMetric(
   return resolveImportedYearlyMetric(metrics, metricKey, options);
 }
 
-function sumPresentMetric(values: Array<number | null | undefined>) {
-  const presentValues = values.filter(
-    (value): value is number => typeof value === "number" && Number.isFinite(value)
-  );
-
-  return presentValues.length > 0
-    ? presentValues.reduce((sum, value) => sum + value, 0)
-    : null;
-}
-
 function duplicateAwareArrayMetricCalculation(
   values: Array<number | null | undefined>,
-  denominator: number
+  denominator: number,
+  countsAsPhysicalDepartment?: boolean[]
 ) {
-  const normalizedValues = values.map((value) =>
-    typeof value === "number" && Number.isFinite(value) ? value : null
+  return duplicateAwareArrayMetricContributionCalculation(
+    values.map((value, index) => ({
+      value,
+      countsAsPhysicalDepartment: countsAsPhysicalDepartment?.[index] ?? true
+    })),
+    denominator
   );
-  const presentValues = normalizedValues.filter((value): value is number => value !== null);
-  const rawTotal = sumPresentMetric(normalizedValues);
-  const currentCalculation =
-    rawTotal === null || denominator === 0 ? null : rawTotal / denominator;
-  const duplicatedAcrossAllRows =
-    denominator > 1 &&
-    presentValues.length === denominator &&
-    presentValues.every((value) => Math.abs(value - presentValues[0]) < 0.000001);
-  const correctedCalculation =
-    currentCalculation === null
-      ? null
-      : duplicatedAcrossAllRows
-        ? presentValues[0] / denominator
-        : currentCalculation;
-
-  return {
-    underlyingValues: normalizedValues,
-    rawTotal,
-    denominator,
-    duplicatedAcrossAllRows,
-    currentCalculation,
-    correctedCalculation
-  };
 }
 
 type MetricRange = {
@@ -1299,7 +1272,13 @@ export default async function DepartmentDetailsPage({
     ? department.medicalArray?.externalMetrics ?? []
     : department.externalMetrics;
   const arrayDepartments = isMedicalArrayProfile ? department.medicalArray?.departments ?? [] : [];
-  const arrayDepartmentCount = arrayDepartments.length;
+  const arrayDepartmentPhysicalFlags = arrayDepartments.map(
+    (arrayDepartment) =>
+      !("countsAsPhysicalDepartment" in arrayDepartment) ||
+      arrayDepartment.countsAsPhysicalDepartment !== false
+  );
+  const arrayDepartmentCount =
+    arrayDepartmentPhysicalFlags.filter(Boolean).length || arrayDepartments.length;
   const importedDepartmentMetrics = department.metrics;
   const importedDepartmentYearlyMetrics = department.yearlyMetrics;
   const importedSpecialtyMetrics = department.specialty.metrics;
@@ -1409,15 +1388,18 @@ export default async function DepartmentDetailsPage({
   );
   const arrayActiveResidentsCalculation = duplicateAwareArrayMetricCalculation(
     arrayActiveResidentValues,
-    arrayDepartmentCount
+    arrayDepartmentCount,
+    arrayDepartmentPhysicalFlags
   );
   const arraySpecialistsCalculation = duplicateAwareArrayMetricCalculation(
     arraySpecialistValues,
-    arrayDepartmentCount
+    arrayDepartmentCount,
+    arrayDepartmentPhysicalFlags
   );
   const arrayExpectedOpeningsCalculation = duplicateAwareArrayMetricCalculation(
     arrayExpectedOpeningValues,
-    arrayDepartmentCount
+    arrayDepartmentCount,
+    arrayDepartmentPhysicalFlags
   );
   const arrayExpectedOpeningsRangeCalculation = duplicateAwareArrayRangeCalculation(
     arrayExpectedOpeningRanges,
@@ -1449,28 +1431,29 @@ export default async function DepartmentDetailsPage({
               (arrayDepartment) =>
                 latestYearlyMetric(arrayDepartment.yearlyMetrics, "newResidents", { year })?.value ?? null
             ),
-            arrayDepartmentCount
+            arrayDepartmentCount,
+            arrayDepartmentPhysicalFlags
           );
 
           return { year, calculation };
         })
     : [];
   const arrayNewResidentsRows = arrayNewResidentsCalculations
-        .map(({ year, calculation }) => {
-          const value =
-            calculation.correctedCalculation === null
-              ? null
-              : Number(calculation.correctedCalculation.toFixed(1));
+    .map(({ year, calculation }) => {
+      const value =
+        calculation.correctedCalculation === null
+          ? null
+          : Number(calculation.correctedCalculation.toFixed(1));
 
-          return value === null
-            ? null
-            : {
-                year,
-                value,
-                rawValue: formatMetricNumber(value)
-              };
-        })
-        .filter((row): row is { year: number; value: number; rawValue: string | null } => Boolean(row));
+      return value === null
+        ? null
+        : {
+            year,
+            value,
+            rawValue: formatMetricNumber(value)
+          };
+    })
+    .filter((row): row is { year: number; value: number; rawValue: string | null } => Boolean(row));
   const activeResidentsMetric = metricRecord("activeResidentsCount");
   const importedActiveResidents = importedMetricNumber(
     importedDepartmentMetrics,
@@ -2022,9 +2005,9 @@ export default async function DepartmentDetailsPage({
                 {department.summary.reviewCount} ביקורות מאושרות
               </span>
             </div>
-            {isMedicalArrayProfile && arrayDepartments.length > 1 ? (
+            {isMedicalArrayProfile && arrayDepartmentCount > 1 ? (
               <p className="mt-3 inline-flex rounded-full border border-brand-100 bg-brand-50 px-3 py-1.5 text-xs font-black text-brand-900">
-                מספר מחלקות במערך: {arrayDepartments.length}
+                מספר מחלקות במערך: {arrayDepartmentCount}
               </p>
             ) : null}
             <div className="mt-3">
@@ -2128,14 +2111,14 @@ export default async function DepartmentDetailsPage({
                   label={expectedOpeningsLabel}
                   value={expectedOpeningsValue}
                   sourceLabel={metadataSourceLabel(expectedOpeningsMeta, expectedOpeningsSourceLabel)}
-	                  tooltip={metadataTooltip(
-	                    expectedOpeningsMeta,
-	                    isMedicalArrayProfile
-	                      ? expectedOpeningsArrayTooltip
-	                      : "צפי משרות המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
-	                  )}
-	                  metricType={isMedicalArrayProfile ? "הערכה למחלקה במערך" : "נתון מחלקתי"}
-	                  caption={isMedicalArrayProfile ? `חושב על בסיס ${arrayDepartmentCount} מחלקות` : undefined}
+                  tooltip={metadataTooltip(
+                    expectedOpeningsMeta,
+                    isMedicalArrayProfile
+                      ? expectedOpeningsArrayTooltip
+                      : "צפי משרות המבוסס על המתמחים שאמורים לסיים השנה לפי אורך ההתמחות החציוני."
+                  )}
+                  metricType={isMedicalArrayProfile ? "הערכה למחלקה במערך" : "נתון מחלקתי"}
+                  caption={isMedicalArrayProfile ? `חושב על בסיס ${arrayDepartmentCount} מחלקות` : undefined}
                   sourceUrl={expectedOpeningsMeta?.sourceUrl}
                   displayAction={metadataDisplayAction(expectedOpeningsMeta)}
                   className={`border-amber-200 bg-amber-50/70 ${highlightedCardClass(expectedOpeningsMeta)}`}
@@ -2219,7 +2202,6 @@ export default async function DepartmentDetailsPage({
             <DepartmentExperienceTabs
               title={experienceSectionTitle}
               reviews={departmentExperienceReviews}
-              summary={department.summary}
               canReport={Boolean(session)}
               emptyAction={
                 <ExperienceCta

@@ -35,7 +35,7 @@ export function normalizeEffectiveHospitalText(value: string | null | undefined)
   return cleanHebrewText(value);
 }
 
-function canonicalRabinHospitalName(value: string | null | undefined) {
+export function canonicalRabinHospitalName(value: string | null | undefined) {
   const compact = compactHebrewText(value);
   if (!compact) return null;
 
@@ -92,6 +92,33 @@ export function resolveEffectiveHospitalName(
   return hospitalName;
 }
 
+export function resolveEffectiveHospitalAssignment(
+  originalHospitalName: string | null | undefined,
+  subDepartmentValue?: string | null
+) {
+  const originalHospitalNameNormalized = normalizeEffectiveHospitalText(originalHospitalName);
+  const canonicalOriginalHospitalName =
+    canonicalRabinHospitalName(originalHospitalNameNormalized) ?? originalHospitalNameNormalized;
+  const effectiveHospitalName = resolveEffectiveHospitalName(
+    originalHospitalNameNormalized,
+    subDepartmentValue
+  );
+  const isRabinRelated = Boolean(canonicalRabinHospitalName(originalHospitalNameNormalized));
+  const isReassigned =
+    isRabinRelated &&
+    canonicalOriginalHospitalName !== effectiveHospitalName;
+
+  return {
+    originalHospitalName: originalHospitalNameNormalized,
+    canonicalOriginalHospitalName,
+    effectiveHospitalName,
+    subDepartment: normalizeEffectiveHospitalText(subDepartmentValue),
+    isRabinRelated,
+    isReassigned,
+    countsAsPhysicalDepartment: !isReassigned
+  };
+}
+
 export function effectiveHospitalFilterId(hospitalName: string) {
   return `effective:${normalizeEffectiveHospitalText(hospitalName)}`;
 }
@@ -113,4 +140,23 @@ export function getEffectiveHospitalNameForDepartment(department: {
       : null);
 
   return resolveEffectiveHospitalName(department.institution?.name, subDepartment);
+}
+
+export function getEffectiveHospitalAssignmentForDepartment(department: {
+  name?: string | null;
+  subDepartment?: string | null;
+  institution?: {
+    name?: string | null;
+  } | null;
+  specialty?: {
+    name?: string | null;
+  } | null;
+}) {
+  const subDepartment =
+    department.subDepartment ??
+    (department.name && department.specialty?.name
+      ? normalizeDepartmentNameSubDepartment(department.name, department.specialty.name)
+      : null);
+
+  return resolveEffectiveHospitalAssignment(department.institution?.name, subDepartment);
 }

@@ -24,16 +24,9 @@ type DepartmentExperienceReview = {
   tips: string;
   publishedAt: string | Date | null;
   perspective?: ExperiencePerspective | null;
-};
-
-type Summary = {
-  reviewCount: number;
-  teachingQuality: number;
-  seniorsApproachability: number;
-  researchExposure: number;
-  lifestyleBalance: number;
-  clinicalExposure: number;
-  overallRecommendation: number;
+  submission?: {
+    roleDetails: unknown;
+  } | null;
 };
 
 const tabs: Array<{
@@ -96,16 +89,29 @@ function SummaryMetric({ label, value }: { label: string; value: number }) {
   );
 }
 
+function average(values: number[]) {
+  return values.length > 0
+    ? values.reduce((sum, value) => sum + value, 0) / values.length
+    : 0;
+}
+
+function numberFromRoleDetails(roleDetails: unknown, key: string) {
+  if (!roleDetails || typeof roleDetails !== "object" || Array.isArray(roleDetails)) {
+    return 0;
+  }
+
+  const value = (roleDetails as Record<string, unknown>)[key];
+  return typeof value === "number" ? value : 0;
+}
+
 export function DepartmentExperienceTabs({
   title,
   reviews,
-  summary,
   canReport,
   emptyAction
 }: {
   title: string;
   reviews: DepartmentExperienceReview[];
-  summary: Summary;
   canReport: boolean;
   emptyAction?: ReactNode;
 }) {
@@ -128,6 +134,18 @@ export function DepartmentExperienceTabs({
   const selected = tabs.find((tab) => tab.key === selectedTab) ?? tabs[0];
   const selectedReviews = reviews.filter((review) => perspectiveForReview(review) === selected.key);
   const hasAnyReviews = reviews.length > 0;
+  const selectedSummary = {
+    teachingQuality: average(selectedReviews.map((review) => review.teachingQuality)),
+    seniorsApproachability: average(selectedReviews.map((review) => review.seniorsApproachability)),
+    researchExposure: average(selectedReviews.map((review) => review.researchExposure)),
+    lifestyleBalance: average(selectedReviews.map((review) => review.lifestyleBalance)),
+    clinicalExposure: average(
+      selectedReviews
+        .map((review) => numberFromRoleDetails(review.submission?.roleDetails, "clinicalExposure"))
+        .filter((value) => value > 0)
+    ),
+    overallRecommendation: average(selectedReviews.map((review) => review.overallRecommendation))
+  };
 
   return (
     <div className="space-y-5">
@@ -137,17 +155,8 @@ export function DepartmentExperienceTabs({
           <h2 className="mt-1 text-2xl font-black text-ink">{title}</h2>
         </div>
         <span className="rounded-full border border-brand-100 bg-brand-50 px-3 py-1 text-xs font-black text-brand-900">
-          {summary.reviewCount} חוויות מאושרות
+          {counts[selected.key]} חוויות בקטגוריה
         </span>
-      </div>
-
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        <SummaryMetric label="דירוג כללי" value={summary.overallRecommendation} />
-        <SummaryMetric label="איכות הוראה" value={summary.teachingQuality} />
-        <SummaryMetric label="זמינות בכירים" value={summary.seniorsApproachability} />
-        <SummaryMetric label="חשיפה למחקר" value={summary.researchExposure} />
-        <SummaryMetric label="עומס ואיזון חיים" value={summary.lifestyleBalance} />
-        <SummaryMetric label="חשיפה קלינית" value={summary.clinicalExposure} />
       </div>
 
       <div className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap">
@@ -182,9 +191,19 @@ export function DepartmentExperienceTabs({
             {emptyAction ? <div className="mt-3">{emptyAction}</div> : null}
           </div>
         ) : (
-          selectedReviews.map((review) => (
-            <ReviewCard key={review.id} review={review} canReport={canReport} />
-          ))
+          <>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <SummaryMetric label="דירוג כללי" value={selectedSummary.overallRecommendation} />
+              <SummaryMetric label="איכות הוראה" value={selectedSummary.teachingQuality} />
+              <SummaryMetric label="זמינות בכירים" value={selectedSummary.seniorsApproachability} />
+              <SummaryMetric label="חשיפה למחקר" value={selectedSummary.researchExposure} />
+              <SummaryMetric label="עומס ואיזון חיים" value={selectedSummary.lifestyleBalance} />
+              <SummaryMetric label="חשיפה קלינית" value={selectedSummary.clinicalExposure} />
+            </div>
+            {selectedReviews.map((review) => (
+              <ReviewCard key={review.id} review={review} canReport={canReport} />
+            ))}
+          </>
         )}
       </div>
     </div>

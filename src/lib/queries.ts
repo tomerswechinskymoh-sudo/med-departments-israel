@@ -17,7 +17,12 @@ import {
 import { prisma } from "@/lib/prisma";
 import { departmentNewResidentsRowsFromYearlyMetrics } from "@/lib/department-yearly-residents";
 import {
+  duplicateAwareArrayMetricContributionAverage,
+  type ArrayMetricContributionRow
+} from "@/lib/array-metric-aggregation";
+import {
   effectiveHospitalFilterId,
+  getEffectiveHospitalAssignmentForDepartment,
   getEffectiveHospitalNameForDepartment,
   normalizeEffectiveHospitalText
 } from "@/lib/effective-hospital";
@@ -166,6 +171,14 @@ type PublicDepartmentHospitalInput = {
 
 function effectiveHospitalNameForPublicDepartment(department: PublicDepartmentHospitalInput) {
   return getEffectiveHospitalNameForDepartment(department);
+}
+
+function effectiveHospitalAssignmentForPublicDepartment(department: PublicDepartmentHospitalInput) {
+  return getEffectiveHospitalAssignmentForDepartment(department);
+}
+
+function countsAsPhysicalDepartmentForPublicGroup(department: PublicDepartmentHospitalInput) {
+  return effectiveHospitalAssignmentForPublicDepartment(department).countsAsPhysicalDepartment;
 }
 
 function publicInstitutionFilterValues(department: PublicDepartmentHospitalInput) {
@@ -477,23 +490,17 @@ function duplicateAwareArrayMetricAverage(
   values: Array<number | null | undefined>,
   denominator: number
 ) {
-  const normalizedValues = values.map((value) =>
-    typeof value === "number" && Number.isFinite(value) ? value : null
+  return duplicateAwareArrayMetricContributionAverage(
+    values.map((value) => ({ value })),
+    denominator
   );
-  const presentValues = normalizedValues.filter((value): value is number => value !== null);
-  const total = sumPresentNumber(normalizedValues);
+}
 
-  if (total === null || denominator === 0) {
-    return null;
-  }
-
-  const duplicatedAcrossAllRows =
-    denominator > 1 &&
-    presentValues.length === denominator &&
-    presentValues.every((value) => Math.abs(value - presentValues[0]) < 0.000001);
-  const correctedValue = duplicatedAcrossAllRows ? presentValues[0] : total;
-
-  return Number((correctedValue / denominator).toFixed(1));
+function duplicateAwareArrayContributionAverage(
+  rows: ArrayMetricContributionRow[],
+  denominator: number
+) {
+  return duplicateAwareArrayMetricContributionAverage(rows, denominator);
 }
 
 type MetricRange = {
@@ -1235,18 +1242,18 @@ export async function getDirectoryData(
   });
 
   const searchedDepartments = filters.search
-	    ? departments.filter((department) => {
-	        const displayName = formatDepartmentDisplayName(department.name, department.specialty.name);
-	        const haystack = [
-	          department.name,
-	          displayName,
-	          department.shortSummary,
-	          department.institution.name,
-	          effectiveHospitalNameForPublicDepartment(department),
-	          department.specialty.name
-	        ]
-	          .join(" ")
-	          .toLocaleLowerCase("he");
+    ? departments.filter((department) => {
+        const displayName = formatDepartmentDisplayName(department.name, department.specialty.name);
+        const haystack = [
+          department.name,
+          displayName,
+          department.shortSummary,
+          department.institution.name,
+          effectiveHospitalNameForPublicDepartment(department),
+          department.specialty.name
+        ]
+          .join(" ")
+          .toLocaleLowerCase("he");
         return haystack.includes(filters.search!.toLocaleLowerCase("he"));
       })
     : departments;
@@ -1300,7 +1307,7 @@ export async function getDirectoryData(
     );
     const residentsCount =
       department.residentsCount ??
-      importedMetricValue(department.metrics, "residentsCount", "activeResidentsCount");
+      importedMetricValue(department.metrics, "מספר_מתמחים", "residentsCount", "activeResidentsCount");
     const shlavAlephPassRate =
       department.shlavAlephPassRate ??
       importedMetricValue(department.metrics, "boardStageAPassRate", "inherited_boardStageAPassRate");
@@ -1314,12 +1321,17 @@ export async function getDirectoryData(
       department.yearlyMetrics
     );
     const expectedOpeningsCount =
-      importedMetricValue(department.metrics, "expectedOpenings2026") ??
+      importedMetricValue(
+        department.metrics,
+        "צפי תקנים חדשים ב2026",
+        "צפי משרות חדשות ב2026",
+        "expectedOpenings2026"
+      ) ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { year: 2026 });
     const duns100PhysiciansCount =
       importedMetricValue(department.metrics, "duns100PhysiciansCount") ??
       externalMetricValue(department.externalMetrics, "DUNS100", "duns100PhysiciansCount");
-    const seniorPhysiciansCount = importedMetricValue(department.metrics, "seniorPhysiciansCount");
+    const seniorPhysiciansCount = importedMetricValue(department.metrics, "מספר_בכירים", "seniorPhysiciansCount");
     const latestResearchMetric = department.researchMetrics[0] ?? null;
     const hasImportedResearch =
       department.metrics.some((metric) => metric.metricKey === "departmentalPublicationsCount" && metric.value) ||
@@ -1336,6 +1348,7 @@ export async function getDirectoryData(
       (filters.clinicalPriority ?? 0) * clinicalExposure;
 
     const publicInstitution = publicInstitutionForDepartment(department);
+    const countsAsPhysicalDepartment = countsAsPhysicalDepartmentForPublicGroup(department);
 
     return {
       id: department.id,
@@ -1378,6 +1391,7 @@ export async function getDirectoryData(
       sourceNotes: department.dataSourceNotes,
       dataLastUpdated: department.dataLastUpdated,
       isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
+      countsAsPhysicalDepartment,
       rankingScore
     };
   });
@@ -1417,6 +1431,8 @@ export async function getDirectoryData(
     emittedArrayGroups.add(groupKey);
 
     const first = group[0];
+    const physicalDepartmentCount =
+      group.filter((item) => item.countsAsPhysicalDepartment).length || group.length;
     const totalReviewCount = group.reduce((sum, item) => sum + item.reviewCount, 0);
     const weightedOverall =
       totalReviewCount > 0
@@ -1431,9 +1447,12 @@ export async function getDirectoryData(
     ).sort((left, right) => right - left);
     const averagedYearlyRows = yearKeys
       .map((year) => {
-        const value = duplicateAwareArrayMetricAverage(
-          group.map((item) => item.departmentNewResidentsYearly?.find((row) => row.year === year)?.value),
-          group.length
+        const value = duplicateAwareArrayContributionAverage(
+          group.map((item) => ({
+            value: item.departmentNewResidentsYearly?.find((row) => row.year === year)?.value,
+            countsAsPhysicalDepartment: item.countsAsPhysicalDepartment
+          })),
+          physicalDepartmentCount
         );
 
         return value === null
@@ -1445,19 +1464,28 @@ export async function getDirectoryData(
             };
       })
       .filter((row): row is { year: number; value: number; rawValue: string } => Boolean(row));
-    const averageResidents = duplicateAwareArrayMetricAverage(
-      group.map((item) => item.residentsCount),
-      group.length
+    const averageResidents = duplicateAwareArrayContributionAverage(
+      group.map((item) => ({
+        value: item.residentsCount,
+        countsAsPhysicalDepartment: item.countsAsPhysicalDepartment
+      })),
+      physicalDepartmentCount
     );
-    const averageSeniorPhysicians = duplicateAwareArrayMetricAverage(
-      group.map((item) => item.seniorPhysiciansCount),
-      group.length
+    const averageSeniorPhysicians = duplicateAwareArrayContributionAverage(
+      group.map((item) => ({
+        value: item.seniorPhysiciansCount,
+        countsAsPhysicalDepartment: item.countsAsPhysicalDepartment
+      })),
+      physicalDepartmentCount
     );
-    const averageExpectedOpenings = duplicateAwareArrayMetricAverage(
-      group.map((item) => item.expectedOpeningsCount),
-      group.length
+    const averageExpectedOpenings = duplicateAwareArrayContributionAverage(
+      group.map((item) => ({
+        value: item.expectedOpeningsCount,
+        countsAsPhysicalDepartment: item.countsAsPhysicalDepartment
+      })),
+      physicalDepartmentCount
     );
-    const departmentCountText = group.length === 1 ? "מחלקה אחת" : `${group.length} מחלקות`;
+    const departmentCountText = physicalDepartmentCount === 1 ? "מחלקה אחת" : `${physicalDepartmentCount} מחלקות`;
     const arraySpecialtyName = requiredMedicalArraySpecialtyDisplayName(first.specialtyName);
 
     return [
@@ -1489,7 +1517,7 @@ export async function getDirectoryData(
         isFavorite: false,
         rankingScore: Math.max(...group.map((item) => item.rankingScore)),
         isArrayCard: true,
-        arrayDepartmentCount: group.length
+        arrayDepartmentCount: physicalDepartmentCount
       }
     ];
   });
@@ -1997,8 +2025,22 @@ export async function getDepartmentPageData(
       .filter((item) => effectiveHospitalNameForPublicDepartment(item) === effectiveHospitalName)
       .map((item) => item.id)
   );
+  const physicalSiblingDepartmentIds = new Set(
+    sameSpecialtyPublicDepartments
+      .filter(
+        (item) =>
+          effectiveHospitalNameForPublicDepartment(item) === effectiveHospitalName &&
+          countsAsPhysicalDepartmentForPublicGroup(item)
+      )
+      .map((item) => item.id)
+  );
   const forcedArrayDepartments =
-    forcedArrayDepartmentsRaw?.filter((item) => effectiveSiblingDepartmentIds.has(item.id)) ?? null;
+    forcedArrayDepartmentsRaw
+      ?.filter((item) => effectiveSiblingDepartmentIds.has(item.id))
+      .map((item) => ({
+        ...item,
+        countsAsPhysicalDepartment: countsAsPhysicalDepartmentForPublicGroup(item)
+      })) ?? null;
   const profileMedicalArray = isRequiredArrayProfile
     ? {
         id: department.medicalArray?.id ?? fallbackMedicalArray?.id ?? `virtual-${effectiveInstitutionId}-${department.specialtyId}`,
@@ -2027,7 +2069,7 @@ export async function getDepartmentPageData(
       }
     : department.medicalArray;
 
-  const siblingDepartmentCount = effectiveSiblingDepartmentIds.size;
+  const siblingDepartmentCount = physicalSiblingDepartmentIds.size || effectiveSiblingDepartmentIds.size;
 
   return {
     ...department,
@@ -2289,7 +2331,15 @@ export async function getDepartmentComparisonData(input: {
     specialtyName: departments[0]?.specialty.name ?? null,
     rows: departments.map((department) => {
       const isArray = Boolean(department.specialty.groupAsArray && department.medicalArray);
-      const arrayDepartmentCount = isArray ? department.medicalArray?.departments.length ?? 0 : 0;
+      const arrayDepartments = department.medicalArray?.departments ?? [];
+      const physicalArrayDepartmentCount = arrayDepartments.filter(
+        (arrayDepartment) =>
+          !("countsAsPhysicalDepartment" in arrayDepartment) ||
+          arrayDepartment.countsAsPhysicalDepartment !== false
+      ).length;
+      const arrayDepartmentCount = isArray
+        ? physicalArrayDepartmentCount || arrayDepartments.length
+        : 0;
       const specialtyName = requiredMedicalArraySpecialtyDisplayName(department.specialty.name);
       const name = isArray
         ? `מערך ${specialtyName}`
