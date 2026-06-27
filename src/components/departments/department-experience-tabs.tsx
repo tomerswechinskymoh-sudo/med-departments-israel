@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import { ReviewCard } from "@/components/departments/review-card";
 import { RatingStars } from "@/components/ui/rating-stars";
@@ -22,7 +23,7 @@ type DepartmentExperienceReview = {
   cons: string;
   tips: string;
   publishedAt: string | Date | null;
-  perspective: ExperiencePerspective;
+  perspective?: ExperiencePerspective | null;
 };
 
 type Summary = {
@@ -64,7 +65,24 @@ const tabs: Array<{
 function defaultTabKey(counts: Record<ExperiencePerspective, number>) {
   if (counts.resident_or_physician > 0) return "resident_or_physician";
   if (counts.intern > 0) return "intern";
-  return "student";
+  if (counts.student > 0) return "student";
+  return "resident_or_physician";
+}
+
+function perspectiveForReview(review: DepartmentExperienceReview): ExperiencePerspective {
+  if (
+    review.perspective === "student" ||
+    review.perspective === "intern" ||
+    review.perspective === "resident_or_physician"
+  ) {
+    return review.perspective;
+  }
+
+  const reviewerType = review.reviewerType.toLocaleLowerCase();
+  if (reviewerType === "student" || reviewerType === "medical_student") return "student";
+  if (reviewerType === "intern") return "intern";
+
+  return "resident_or_physician";
 }
 
 function SummaryMetric({ label, value }: { label: string; value: number }) {
@@ -82,18 +100,20 @@ export function DepartmentExperienceTabs({
   title,
   reviews,
   summary,
-  canReport
+  canReport,
+  emptyAction
 }: {
   title: string;
   reviews: DepartmentExperienceReview[];
   summary: Summary;
   canReport: boolean;
+  emptyAction?: ReactNode;
 }) {
   const counts = useMemo(
     () =>
       reviews.reduce<Record<ExperiencePerspective, number>>(
         (accumulator, review) => {
-          accumulator[review.perspective] += 1;
+          accumulator[perspectiveForReview(review)] += 1;
           return accumulator;
         },
         {
@@ -106,21 +126,19 @@ export function DepartmentExperienceTabs({
   );
   const [selectedTab, setSelectedTab] = useState<ExperiencePerspective>(() => defaultTabKey(counts));
   const selected = tabs.find((tab) => tab.key === selectedTab) ?? tabs[0];
-  const selectedReviews = reviews.filter((review) => review.perspective === selected.key);
+  const selectedReviews = reviews.filter((review) => perspectiveForReview(review) === selected.key);
   const hasAnyReviews = reviews.length > 0;
 
   return (
     <div className="space-y-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-brand-700">{title}</p>
-          <h2 className="mt-1 text-2xl font-black text-ink">{selected.title}</h2>
+          <p className="text-sm font-semibold text-brand-700">חוויות מאושרות</p>
+          <h2 className="mt-1 text-2xl font-black text-ink">{title}</h2>
         </div>
-        {hasAnyReviews ? (
-          <span className="rounded-full border border-brand-100 bg-brand-50 px-3 py-1 text-xs font-black text-brand-900">
-            {summary.reviewCount} חוויות מאושרות
-          </span>
-        ) : null}
+        <span className="rounded-full border border-brand-100 bg-brand-50 px-3 py-1 text-xs font-black text-brand-900">
+          {summary.reviewCount} חוויות מאושרות
+        </span>
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -132,35 +150,37 @@ export function DepartmentExperienceTabs({
         <SummaryMetric label="חשיפה קלינית" value={summary.clinicalExposure} />
       </div>
 
-      {hasAnyReviews ? (
-        <div className="flex gap-2 overflow-x-auto pb-1">
-          {tabs.map((tab) => (
-            <button
-              key={tab.key}
-              type="button"
-              onClick={() => setSelectedTab(tab.key)}
-              className={cn(
-                "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition",
-                selectedTab === tab.key
-                  ? "border-brand-700 bg-brand-900 text-white shadow-sm"
-                  : "border-brand-100 bg-white text-slate-700 hover:bg-brand-50"
-              )}
-            >
-              {tab.buttonLabel} ({counts[tab.key]})
-            </button>
-          ))}
-        </div>
-      ) : null}
+      <div className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap">
+        {tabs.map((tab) => (
+          <button
+            key={tab.key}
+            type="button"
+            onClick={() => setSelectedTab(tab.key)}
+            aria-pressed={selectedTab === tab.key}
+            className={cn(
+              "shrink-0 rounded-full border px-4 py-2 text-sm font-black transition",
+              selectedTab === tab.key
+                ? "border-brand-700 bg-brand-900 text-white shadow-sm"
+                : "border-brand-100 bg-white text-slate-700 hover:bg-brand-50"
+            )}
+          >
+            {tab.buttonLabel} ({counts[tab.key]})
+          </button>
+        ))}
+      </div>
 
       <div className="grid gap-4">
         {!hasAnyReviews ? (
-          <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600">
-            אין עדיין נתונים
-          </p>
+          <div className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-4 text-sm text-slate-600">
+            <p className="font-semibold text-slate-700">אין עדיין חוויות מאושרות במחלקה הזו.</p>
+            {emptyAction ? <div className="mt-3">{emptyAction}</div> : null}
+          </div>
         ) : selectedReviews.length === 0 ? (
-          <p className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm text-slate-600">
-            {selected.emptyText}
-          </p>
+          <div className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-4 text-sm text-slate-600">
+            <p className="font-semibold text-slate-700">עדיין אין חוויות בקטגוריה זו</p>
+            <p className="mt-1">{selected.emptyText}</p>
+            {emptyAction ? <div className="mt-3">{emptyAction}</div> : null}
+          </div>
         ) : (
           selectedReviews.map((review) => (
             <ReviewCard key={review.id} review={review} canReport={canReport} />

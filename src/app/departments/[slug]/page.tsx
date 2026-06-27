@@ -2221,6 +2221,13 @@ export default async function DepartmentDetailsPage({
               reviews={departmentExperienceReviews}
               summary={department.summary}
               canReport={Boolean(session)}
+              emptyAction={
+                <ExperienceCta
+                  departments={reviewContext.departments}
+                  selectedDepartmentId={department.id}
+                  buttonClassName="inline-flex items-center justify-center rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-5 py-2.5 text-sm font-bold text-amber-950 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                />
+              }
             />
           </Card>
         </div>
