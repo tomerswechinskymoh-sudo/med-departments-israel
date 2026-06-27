@@ -674,6 +674,18 @@ function buildDepartmentMetricRows(input: {
   warnings: string[];
 }) {
   const rows: Prisma.DepartmentMetricCreateManyInput[] = [];
+  const subDepartment = normalizeDepartmentSubDepartment(input.row.get("תת מחלקה"));
+
+  if (subDepartment) {
+    rows.push({
+      departmentId: input.departmentId,
+      metricKey: "תת מחלקה",
+      label: "תת מחלקה",
+      value: null,
+      rawValue: subDepartment,
+      sourceNotes: sourceNoteFor(input.table, "תת מחלקה")
+    });
+  }
 
   for (const metric of DEPARTMENT_NUMERIC_METRICS) {
     const metadata = metadataForMetric(input.dataExplanations, "Master_Dept", metric);

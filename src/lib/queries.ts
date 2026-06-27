@@ -154,6 +154,14 @@ export function hasDisplayableResidentCount(department: {
 
 type PublicDepartmentHospitalInput = {
   name?: string | null;
+  importStableKey?: string | null;
+  residentsCount?: number | null;
+  metrics?: Array<{
+    metricKey: string;
+    label?: string | null;
+    rawValue?: string | null;
+    value?: number | null;
+  }>;
   institution: {
     id: string;
     name: string;
@@ -182,13 +190,17 @@ function countsAsPhysicalDepartmentForPublicGroup(department: PublicDepartmentHo
 }
 
 function publicInstitutionFilterValues(department: PublicDepartmentHospitalInput) {
-  const effectiveName = effectiveHospitalNameForPublicDepartment(department);
-  return [
-    department.institution.id,
-    department.institution.name,
-    effectiveName,
-    effectiveHospitalFilterId(effectiveName)
-  ].map(normalizeEffectiveHospitalText);
+  const assignment = effectiveHospitalAssignmentForPublicDepartment(department);
+  const values = [
+    assignment.effectiveHospitalName,
+    effectiveHospitalFilterId(assignment.effectiveHospitalName)
+  ];
+
+  if (!assignment.isReassigned) {
+    values.push(department.institution.id, department.institution.name);
+  }
+
+  return values.map(normalizeEffectiveHospitalText);
 }
 
 function departmentMatchesPublicInstitutionFilter(
@@ -223,6 +235,13 @@ function publicInstitutionForDepartment<T extends PublicDepartmentHospitalInput>
     coverImageUrl: department.institution.coverImageUrl ?? null,
     region: publicInstitutionRegionForDepartment(department)
   };
+}
+
+function publicDepartmentSearchHospitalTerms(department: PublicDepartmentHospitalInput) {
+  const assignment = effectiveHospitalAssignmentForPublicDepartment(department);
+  return assignment.isReassigned
+    ? [assignment.effectiveHospitalName]
+    : [department.institution.name, assignment.effectiveHospitalName];
 }
 
 const dataExplanationSelect = {
@@ -1001,6 +1020,16 @@ export async function getDirectoryFilters() {
       select: {
         id: true,
         name: true,
+        importStableKey: true,
+        residentsCount: true,
+        metrics: {
+          select: {
+            metricKey: true,
+            label: true,
+            rawValue: true,
+            value: true
+          }
+        },
         institution: {
           select: {
             id: true,
@@ -1248,8 +1277,7 @@ export async function getDirectoryData(
           department.name,
           displayName,
           department.shortSummary,
-          department.institution.name,
-          effectiveHospitalNameForPublicDepartment(department),
+          ...publicDepartmentSearchHospitalTerms(department),
           department.specialty.name
         ]
           .join(" ")
@@ -1430,7 +1458,7 @@ export async function getDirectoryData(
 
     emittedArrayGroups.add(groupKey);
 
-    const first = group[0];
+    const first = group.find((item) => item.countsAsPhysicalDepartment) ?? group[0];
     const physicalDepartmentCount =
       group.filter((item) => item.countsAsPhysicalDepartment).length || group.length;
     const totalReviewCount = group.reduce((sum, item) => sum + item.reviewCount, 0);
@@ -1943,6 +1971,16 @@ export async function getDepartmentPageData(
       select: {
         id: true,
         name: true,
+        importStableKey: true,
+        residentsCount: true,
+        metrics: {
+          select: {
+            metricKey: true,
+            label: true,
+            rawValue: true,
+            value: true
+          }
+        },
         institution: true,
         specialty: {
           select: {

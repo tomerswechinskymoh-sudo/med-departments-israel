@@ -35,6 +35,25 @@ export function normalizeEffectiveHospitalText(value: string | null | undefined)
   return cleanHebrewText(value);
 }
 
+type DepartmentEffectiveHospitalInput = {
+  name?: string | null;
+  subDepartment?: string | null;
+  importStableKey?: string | null;
+  residentsCount?: number | null;
+  metrics?: Array<{
+    metricKey?: string | null;
+    label?: string | null;
+    rawValue?: string | null;
+    value?: number | null;
+  }>;
+  institution?: {
+    name?: string | null;
+  } | null;
+  specialty?: {
+    name?: string | null;
+  } | null;
+};
+
 export function canonicalRabinHospitalName(value: string | null | undefined) {
   const compact = compactHebrewText(value);
   if (!compact) return null;
@@ -123,40 +142,61 @@ export function effectiveHospitalFilterId(hospitalName: string) {
   return `effective:${normalizeEffectiveHospitalText(hospitalName)}`;
 }
 
-export function getEffectiveHospitalNameForDepartment(department: {
-  name?: string | null;
-  subDepartment?: string | null;
-  institution?: {
-    name?: string | null;
-  } | null;
-  specialty?: {
-    name?: string | null;
-  } | null;
-}) {
-  const subDepartment =
+function subDepartmentFromMetrics(metrics: DepartmentEffectiveHospitalInput["metrics"]) {
+  const metric = metrics?.find((item) => {
+    const key = normalizeEffectiveHospitalText(item.metricKey);
+    const label = normalizeEffectiveHospitalText(item.label);
+
+    return key === "תת מחלקה" || key === "subDepartment" || key === "sub_department" || label === "תת מחלקה";
+  });
+
+  return metric?.rawValue ?? (metric?.value !== null && metric?.value !== undefined ? String(metric.value) : null);
+}
+
+function importedResidentsCount(department: DepartmentEffectiveHospitalInput) {
+  const metric = department.metrics?.find((item) =>
+    ["מספר_מתמחים", "residentsCount", "activeResidentsCount"].includes(item.metricKey ?? "")
+  );
+
+  return department.residentsCount ?? metric?.value ?? null;
+}
+
+function legacyRabinSubDepartmentOverride(department: DepartmentEffectiveHospitalInput) {
+  const originalHospital = canonicalRabinHospitalName(department.institution?.name);
+  if (originalHospital !== RABIN_MEDICAL_CENTER) return null;
+
+  const specialtyName = compactHebrewText(department.specialty?.name);
+  const departmentName = compactHebrewText(department.name);
+  const residentsCount = importedResidentsCount(department);
+
+  if (
+    specialtyName === compactHebrewText("רפואה פנימית") &&
+    departmentName === specialtyName &&
+    residentsCount === 3
+  ) {
+    return "בילינסון";
+  }
+
+  return null;
+}
+
+export function getDepartmentEffectiveHospitalSubDepartment(department: DepartmentEffectiveHospitalInput) {
+  return (
     department.subDepartment ??
+    subDepartmentFromMetrics(department.metrics) ??
+    legacyRabinSubDepartmentOverride(department) ??
     (department.name && department.specialty?.name
       ? normalizeDepartmentNameSubDepartment(department.name, department.specialty.name)
-      : null);
+      : null)
+  );
+}
 
+export function getEffectiveHospitalNameForDepartment(department: DepartmentEffectiveHospitalInput) {
+  const subDepartment = getDepartmentEffectiveHospitalSubDepartment(department);
   return resolveEffectiveHospitalName(department.institution?.name, subDepartment);
 }
 
-export function getEffectiveHospitalAssignmentForDepartment(department: {
-  name?: string | null;
-  subDepartment?: string | null;
-  institution?: {
-    name?: string | null;
-  } | null;
-  specialty?: {
-    name?: string | null;
-  } | null;
-}) {
-  const subDepartment =
-    department.subDepartment ??
-    (department.name && department.specialty?.name
-      ? normalizeDepartmentNameSubDepartment(department.name, department.specialty.name)
-      : null);
-
+export function getEffectiveHospitalAssignmentForDepartment(department: DepartmentEffectiveHospitalInput) {
+  const subDepartment = getDepartmentEffectiveHospitalSubDepartment(department);
   return resolveEffectiveHospitalAssignment(department.institution?.name, subDepartment);
 }
