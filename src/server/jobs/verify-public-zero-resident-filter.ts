@@ -1,186 +1,223 @@
-import { getDepartmentPageData, getDirectoryData, hasDisplayableResidentCount } from "@/lib/queries";
+import {
+  getDepartmentPageData,
+  getDirectoryData,
+  getPublicDepartmentVisibility,
+  requiredMedicalArraySpecialtyDisplayName
+} from "@/lib/queries";
 import { prisma } from "@/lib/prisma";
+import {
+  getDepartmentEffectiveHospitalSubDepartment,
+  getEffectiveHospitalAssignmentForDepartment,
+  RABIN_BEILINSON,
+  RABIN_GEHA,
+  RABIN_HASHARON,
+  RABIN_MEDICAL_CENTER,
+  RABIN_SCHNEIDER
+} from "@/lib/effective-hospital";
 
 const ACTIVE_RESIDENTS_METRIC_KEYS = [
   "מספר_מתמחים",
   "residentsCount",
   "activeResidentsCount"
 ];
+const RABIN_FAMILY = [
+  RABIN_MEDICAL_CENTER,
+  RABIN_BEILINSON,
+  RABIN_HASHARON,
+  RABIN_GEHA,
+  RABIN_SCHNEIDER
+];
+
+function assert(condition: unknown, message: string) {
+  if (!condition) {
+    throw new Error(message);
+  }
+}
+
+function isTargetSpecialty(name: string, target: "neurosurgery" | "ent") {
+  if (target === "neurosurgery") {
+    return name.includes("נוירוכירורג");
+  }
+
+  return name.includes("א.א.ג") || name.includes("אוזן") || name.includes("ראש וצוואר");
+}
 
 async function main() {
-  const zeroDepartment = await prisma.department.findFirst({
+  const rows = await prisma.department.findMany({
     where: {
       importStableKey: {
         not: null
+      }
+    },
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      importStableKey: true,
+      residentsCount: true,
+      yearlyMetrics: {
+        select: {
+          metricKey: true,
+          year: true,
+          value: true,
+          rawValue: true
+        }
       },
-      OR: [
-        {
-          residentsCount: 0
+      institution: {
+        select: {
+          id: true,
+          name: true,
+          slug: true,
+          type: true,
+          city: true,
+          region: true,
+          coverImageUrl: true
+        }
+      },
+      specialty: {
+        select: {
+          id: true,
+          name: true
+        }
+      },
+      metrics: {
+        select: {
+          metricKey: true,
+          label: true,
+          rawValue: true,
+          value: true
         },
-        {
-          metrics: {
-            some: {
-              metricKey: {
-                in: ACTIVE_RESIDENTS_METRIC_KEYS
-              },
-              value: 0
+        orderBy: {
+          metricKey: "asc"
+        }
+      }
+    },
+    orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
+  });
+  const decisions = rows.map((department) => {
+    const assignment = getEffectiveHospitalAssignmentForDepartment(department);
+    const activeMetric = department.metrics.find((metric) =>
+      ACTIVE_RESIDENTS_METRIC_KEYS.includes(metric.metricKey)
+    );
+    const visibility = getPublicDepartmentVisibility(department);
+
+    return {
+      department,
+      assignment,
+      visibility,
+      debug: {
+        departmentId: department.id,
+        slug: department.slug,
+        originalHospital: department.institution.name,
+        effectiveHospital: assignment.effectiveHospitalName,
+        specialtyOrArray: requiredMedicalArraySpecialtyDisplayName(department.specialty.name),
+        subDepartment: getDepartmentEffectiveHospitalSubDepartment(department),
+        departmentResidentsCount: department.residentsCount,
+        metricResidentsCount: activeMetric
+          ? {
+              key: activeMetric.metricKey,
+              value: activeMetric.value,
+              rawValue: activeMetric.rawValue
             }
-          }
-        }
-      ]
-    },
-    include: {
-      institution: {
-        select: {
-          name: true
-        }
-      },
-      specialty: {
-        select: {
-          id: true,
-          name: true
-        }
-      },
-      metrics: {
-        where: {
-          metricKey: {
-            in: ACTIVE_RESIDENTS_METRIC_KEYS
-          }
-        },
-        select: {
-          metricKey: true,
-          value: true
-        }
+          : null,
+        parsedActiveResidents: visibility.parsedActiveResidents,
+        publicVisible: visibility.isPublic,
+        contributesMetrics: visibility.isPublic,
+        selectedAsRepresentative: false
       }
-    },
-    orderBy: {
-      updatedAt: "desc"
-    }
+    };
   });
 
-  const positiveDepartment = await prisma.department.findFirst({
-    where: {
-      importStableKey: {
-        not: null
-      },
-      residentsCount: {
-        gt: 0
-      }
-    },
-    include: {
-      institution: {
-        select: {
-          name: true
-        }
-      },
-      specialty: {
-        select: {
-          id: true,
-          name: true
-        }
-      },
-      metrics: {
-        where: {
-          metricKey: {
-            in: ACTIVE_RESIDENTS_METRIC_KEYS
-          }
-        },
-        select: {
-          metricKey: true,
-          value: true
-        }
-      }
-    },
-    orderBy: {
-      updatedAt: "desc"
-    }
-  });
+  const zeroRows = decisions.filter((item) => item.visibility.parsedActiveResidents === 0);
+  const publicRows = decisions.filter((item) => item.visibility.isPublic);
+  const positiveRows = decisions.filter(
+    (item) => typeof item.visibility.parsedActiveResidents === "number" && item.visibility.parsedActiveResidents > 0
+  );
+  const zeroWithYearlyRows = zeroRows.filter((item) => item.department.yearlyMetrics.length > 0);
+  const rabinFamilyDebugRows = decisions
+    .filter((item) => RABIN_FAMILY.includes(item.assignment.canonicalOriginalHospitalName))
+    .map((item) => item.debug);
 
-  const result = {
-    zeroResidentDepartment: zeroDepartment
-      ? {
-          id: zeroDepartment.id,
-          slug: zeroDepartment.slug,
-          institutionName: zeroDepartment.institution.name,
-          specialtyName: zeroDepartment.specialty.name,
-          residentsCount: zeroDepartment.residentsCount,
-          metricValues: zeroDepartment.metrics
-        }
-      : null,
-    positiveDepartment: positiveDepartment
-      ? {
-          id: positiveDepartment.id,
-          slug: positiveDepartment.slug,
-          institutionName: positiveDepartment.institution.name,
-          specialtyName: positiveDepartment.specialty.name,
-          residentsCount: positiveDepartment.residentsCount,
-          metricValues: positiveDepartment.metrics
-        }
-      : null
-  };
+  assert(zeroRows.length > 0, "No zero-resident imported department row found to verify");
 
-  if (zeroDepartment) {
+  for (const item of zeroRows.slice(0, 25)) {
     const directoryRows = await getDirectoryData({
-      specialties: [zeroDepartment.specialty.id]
+      specialties: [item.department.specialty.id]
     });
     const leakedDirectoryRow = directoryRows.find(
       (department) =>
-        department.id === zeroDepartment.id ||
-        department.hrefDepartmentId === zeroDepartment.id ||
-        department.favoriteDepartmentId === zeroDepartment.id
+        department.id === item.department.id ||
+        department.hrefDepartmentId === item.department.id ||
+        department.favoriteDepartmentId === item.department.id
     );
-    const detail = await getDepartmentPageData(
-      zeroDepartment.slug,
-      undefined,
-      zeroDepartment.id
+    const detail = await getDepartmentPageData(item.department.slug, undefined, item.department.id);
+
+    assert(!leakedDirectoryRow, `Zero-resident department leaked in directory: ${item.department.id}`);
+    assert(!detail, `Zero-resident department direct detail returned: ${item.department.id}`);
+  }
+
+  for (const target of ["neurosurgery", "ent"] as const) {
+    const targetZeroRows = zeroRows.filter(
+      (item) =>
+        item.department.institution.name === RABIN_MEDICAL_CENTER &&
+        isTargetSpecialty(item.department.specialty.name, target)
     );
 
-    Object.assign(result, {
-      zeroDirectoryRowsReturned: directoryRows.length,
-      zeroLeakedInDirectory: Boolean(leakedDirectoryRow),
-      zeroDirectDetailReturned: Boolean(detail),
-      zeroHelperDisplayable: hasDisplayableResidentCount(zeroDepartment)
-    });
+    for (const item of targetZeroRows) {
+      const cards = await getDirectoryData({
+        specialties: [item.department.specialty.id],
+        institutions: [item.assignment.effectiveHospitalName]
+      });
+      const positivePeerExists = publicRows.some(
+        (candidate) =>
+          candidate.department.specialty.id === item.department.specialty.id &&
+          candidate.assignment.effectiveHospitalName === item.assignment.effectiveHospitalName
+      );
+      const leakedCard = cards.find(
+        (card) =>
+          card.institutionName === item.assignment.effectiveHospitalName &&
+          (card.specialtyName === item.department.specialty.name ||
+            card.specialtyName === requiredMedicalArraySpecialtyDisplayName(item.department.specialty.name))
+      );
 
-    if (leakedDirectoryRow) {
-      throw new Error(`Zero-resident department leaked in directory: ${zeroDepartment.id}`);
-    }
-
-    if (detail) {
-      throw new Error(`Zero-resident department direct detail returned: ${zeroDepartment.id}`);
-    }
-
-    if (hasDisplayableResidentCount(zeroDepartment)) {
-      throw new Error(`Zero-resident helper returned displayable: ${zeroDepartment.id}`);
+      if (!positivePeerExists) {
+        assert(!leakedCard, `Zero-only Rabin ${target} card leaked: ${item.department.id}`);
+      }
     }
   }
 
-  if (positiveDepartment) {
-    const directoryRows = await getDirectoryData({
-      specialties: [positiveDepartment.specialty.id]
-    });
-    const detail = await getDepartmentPageData(
-      positiveDepartment.slug,
-      undefined,
-      positiveDepartment.id
-    );
+  assert(positiveRows.length > 0, "No positive-resident imported department row found");
+  const positiveSample = positiveRows[0].department;
+  assert(
+    await getDepartmentPageData(positiveSample.slug, undefined, positiveSample.id),
+    `Positive-resident department direct detail missing: ${positiveSample.id}`
+  );
 
-    Object.assign(result, {
-      positiveDirectoryRowsReturned: directoryRows.length,
-      positiveDirectDetailReturned: Boolean(detail),
-      positiveHelperDisplayable: hasDisplayableResidentCount(positiveDepartment)
-    });
-
-    if (!detail) {
-      throw new Error(`Positive-resident department direct detail missing: ${positiveDepartment.id}`);
-    }
-
-    if (!hasDisplayableResidentCount(positiveDepartment)) {
-      throw new Error(`Positive-resident helper returned hidden: ${positiveDepartment.id}`);
-    }
-  }
-
-  console.log(JSON.stringify(result, null, 2));
+  console.log(
+    JSON.stringify({
+      ok: true,
+      totals: {
+        importedDepartments: rows.length,
+        publicRows: publicRows.length,
+        zeroRows: zeroRows.length,
+        zeroRowsWithYearlyMetrics: zeroWithYearlyRows.length,
+        positiveRows: positiveRows.length
+      },
+      targetCases: {
+        rabinNeurosurgeryZeroRows: zeroRows.filter(
+          (item) =>
+            item.department.institution.name === RABIN_MEDICAL_CENTER &&
+            isTargetSpecialty(item.department.specialty.name, "neurosurgery")
+        ).length,
+        rabinEntZeroRows: zeroRows.filter(
+          (item) =>
+            item.department.institution.name === RABIN_MEDICAL_CENTER &&
+            isTargetSpecialty(item.department.specialty.name, "ent")
+        ).length
+      },
+      rabinFamilyRows: rabinFamilyDebugRows
+    })
+  );
 }
 
 main()

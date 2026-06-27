@@ -4,9 +4,24 @@ import {
   getEffectiveHospitalAssignmentForDepartment,
   effectiveHospitalFilterId,
   RABIN_BEILINSON,
-  RABIN_MEDICAL_CENTER
+  RABIN_GEHA,
+  RABIN_HASHARON,
+  RABIN_MEDICAL_CENTER,
+  RABIN_SCHNEIDER
 } from "@/lib/effective-hospital";
-import { getDirectoryData, requiredMedicalArraySpecialtyDisplayName } from "@/lib/queries";
+import {
+  getDirectoryData,
+  getPublicDepartmentVisibility,
+  requiredMedicalArraySpecialtyDisplayName
+} from "@/lib/queries";
+
+const RABIN_FAMILY = [
+  RABIN_MEDICAL_CENTER,
+  RABIN_BEILINSON,
+  RABIN_HASHARON,
+  RABIN_GEHA,
+  RABIN_SCHNEIDER
+];
 
 function assert(condition: unknown, message: string) {
   if (!condition) {
@@ -39,7 +54,7 @@ async function main() {
       },
       institution: {
         name: {
-          contains: "רבין"
+          in: RABIN_FAMILY
         }
       }
     },
@@ -77,6 +92,8 @@ async function main() {
   const debugRows = rows.map((department) => {
     const subDepartment = getDepartmentEffectiveHospitalSubDepartment(department);
     const assignment = getEffectiveHospitalAssignmentForDepartment(department);
+    const visibility = getPublicDepartmentVisibility(department);
+    const activeMetric = department.metrics.find((metric) => metric.metricKey === "מספר_מתמחים");
 
     return {
       departmentId: department.id,
@@ -86,9 +103,17 @@ async function main() {
       normalizedSubDepartment: subDepartment,
       effectiveHospital: assignment.effectiveHospitalName,
       specialtyOrArray: requiredMedicalArraySpecialtyDisplayName(department.specialty.name),
-      contributesMetrics: true,
+      contributesMetrics: visibility.isPublic,
       countsAsPhysicalDepartment: assignment.countsAsPhysicalDepartment,
-      residentsCount: department.residentsCount
+      residentsCount: department.residentsCount,
+      metricResidentsCount: activeMetric
+        ? {
+            value: activeMetric.value,
+            rawValue: activeMetric.rawValue
+          }
+        : null,
+      parsedActiveResidents: visibility.parsedActiveResidents,
+      publicVisible: visibility.isPublic
     };
   });
 

@@ -1220,6 +1220,87 @@ async function ensureDepartmentFromCsv(
   return { institution, specialty, department: updated };
 }
 
+async function hideDepartmentsAbsentFromLatestMasterDept(
+  db: PrismaClient,
+  input: {
+    batchId: string;
+    sourceFile: string;
+    importedStableKeys: string[];
+  }
+) {
+  if (input.importedStableKeys.length === 0) return 0;
+
+  const staleDepartments = await db.department.findMany({
+    where: {
+      importStableKey: {
+        not: null,
+        notIn: input.importedStableKeys
+      },
+      NOT: {
+        OR: [
+          { residentsCount: 0 },
+          {
+            metrics: {
+              some: {
+                metricKey: "מספר_מתמחים",
+                value: 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    select: {
+      id: true,
+      importStableKey: true,
+      slug: true
+    }
+  });
+
+  for (let index = 0; index < staleDepartments.length; index += 50) {
+    const chunk = staleDepartments.slice(index, index + 50);
+    const ids = chunk.map((department) => department.id);
+
+    await db.department.updateMany({
+      where: {
+        id: {
+          in: ids
+        }
+      },
+      data: {
+        residentsCount: 0
+      }
+    });
+    await db.departmentMetric.deleteMany({
+      where: {
+        departmentId: {
+          in: ids
+        },
+        metricKey: {
+          in: ["מספר_מתמחים", "residentsCount", "activeResidentsCount"]
+        }
+      }
+    });
+    await db.departmentMetric.createMany({
+      data: ids.map((departmentId) => ({
+        departmentId,
+        metricKey: "מספר_מתמחים",
+        label: "מספר מתמחים",
+        value: 0,
+        rawValue: "0",
+        unit: "count",
+        sourceNotes: "לא הופיע בייבוא MASTER_Dept.csv האחרון; מוסתר מעמודים ציבוריים."
+      }))
+    });
+
+    console.log(
+      `[import:master-csv] hidden stale Master_Dept rows ${Math.min(index + chunk.length, staleDepartments.length)}/${staleDepartments.length}`
+    );
+  }
+
+  return staleDepartments.length;
+}
+
 async function importDepartmentCsv(
   db: PrismaClient,
   filePath: string,
@@ -1235,11 +1316,13 @@ async function importDepartmentCsv(
   });
   let imported = 0;
   let failed = 0;
-  const staleHidden = 0;
+  let staleHidden = 0;
   const startedAt = Date.now();
+  const importedStableKeys = new Set<string>();
   const selectedRows = table.rows
     .filter((row) => options.fromRow === undefined || row.rowNumber >= options.fromRow)
     .slice(0, options.limit);
+  const isFullDepartmentImport = options.fromRow === undefined && options.limit === undefined;
 
   console.log(
     `[import:master-csv] Master_Dept rows: selected=${selectedRows.length}/${table.rows.length}` +
@@ -1257,6 +1340,9 @@ async function importDepartmentCsv(
     const rowKey = institutionName && specialtyName
       ? stableKey([institutionName, specialtyName, subDepartment || specialtyName])
       : null;
+    if (rowKey) {
+      importedStableKeys.add(rowKey);
+    }
 
     if (!institutionName || !specialtyName) {
       await logRow(db, {
@@ -1412,6 +1498,20 @@ async function importDepartmentCsv(
         ` elapsed=${Date.now() - startedAt}ms`
       );
     }
+  }
+
+  if (isFullDepartmentImport) {
+    staleHidden = await hideDepartmentsAbsentFromLatestMasterDept(db, {
+      batchId: batch.id,
+      sourceFile: filePath,
+      importedStableKeys: Array.from(importedStableKeys)
+    });
+    console.log(
+      `[import:master-csv] Master_Dept stale public rows hidden=${staleHidden}` +
+      ` elapsed=${Date.now() - startedAt}ms`
+    );
+  } else {
+    console.log("[import:master-csv] Master_Dept stale public-row hide skipped for partial import");
   }
 
   await db.dataImportBatch.update({

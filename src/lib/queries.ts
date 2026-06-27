@@ -87,6 +87,16 @@ const ACTIVE_RESIDENTS_METRIC_KEYS = [
   "residentsCount",
   "activeResidentsCount"
 ];
+const ACTIVE_RESIDENTS_METRIC_KEY_SET = new Set(ACTIVE_RESIDENTS_METRIC_KEYS);
+const ACTIVE_RESIDENTS_ZERO_RAW_VALUES = [
+  "0",
+  "0.0",
+  "0.00",
+  "0.000",
+  "00",
+  "00.0",
+  "00.00"
+];
 
 const publicDisplayableResidentCountWhere = {
   NOT: {
@@ -100,7 +110,16 @@ const publicDisplayableResidentCountWhere = {
             metricKey: {
               in: ACTIVE_RESIDENTS_METRIC_KEYS
             },
-            value: 0
+            OR: [
+              {
+                value: 0
+              },
+              {
+                rawValue: {
+                  in: ACTIVE_RESIDENTS_ZERO_RAW_VALUES
+                }
+              }
+            ]
           }
         }
       }
@@ -141,15 +160,81 @@ const publicVisibleDepartmentWhere = {
 
 export function hasDisplayableResidentCount(department: {
   residentsCount?: number | null;
-  metrics?: Array<{ metricKey: string; value: number | null }>;
+  metrics?: Array<{ metricKey?: string | null; value?: number | null; rawValue?: string | null }>;
 }) {
-  if (department.residentsCount === 0) {
-    return false;
+  return getPublicDepartmentVisibility(department).isPublic;
+}
+
+function parseActiveResidentsCount(value: string | number | null | undefined) {
+  if (typeof value === "number") {
+    return Number.isFinite(value) ? value : null;
   }
 
-  return !department.metrics?.some(
-    (metric) => ACTIVE_RESIDENTS_METRIC_KEYS.includes(metric.metricKey) && metric.value === 0
-  );
+  const normalized = (value ?? "")
+    .normalize("NFKC")
+    .replace(/^\ufeff/, "")
+    .replace(/[\u200b-\u200f\u202a-\u202e\u2066-\u2069]/g, "")
+    .trim();
+
+  if (!normalized || isSpreadsheetErrorValue(normalized)) return null;
+
+  const numericText = normalized
+    .replace(/,/g, "")
+    .replace(/%/g, "")
+    .replace(/[₪$]/g, "")
+    .trim();
+
+  if (!/^[+-]?\d+(?:\.\d+)?$/.test(numericText)) return null;
+
+  const parsed = Number(numericText);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+export function getPublicDepartmentVisibility(department: {
+  residentsCount?: number | null;
+  metrics?: Array<{ metricKey?: string | null; value?: number | null; rawValue?: string | null }>;
+}) {
+  const sources: Array<{
+    source: string;
+    metricKey: string;
+    value: number;
+  }> = [];
+  const directResidentsCount = parseActiveResidentsCount(department.residentsCount);
+
+  if (directResidentsCount !== null) {
+    sources.push({
+      source: "Department.residentsCount",
+      metricKey: "residentsCount",
+      value: directResidentsCount
+    });
+  }
+
+  for (const metric of department.metrics ?? []) {
+    if (!metric.metricKey || !ACTIVE_RESIDENTS_METRIC_KEY_SET.has(metric.metricKey)) continue;
+
+    const value = parseActiveResidentsCount(metric.value);
+    const rawValue = parseActiveResidentsCount(metric.rawValue);
+    const parsedValue = value ?? rawValue;
+
+    if (parsedValue === null) continue;
+
+    sources.push({
+      source: value !== null ? "DepartmentMetric.value" : "DepartmentMetric.rawValue",
+      metricKey: metric.metricKey,
+      value: parsedValue
+    });
+  }
+
+  const zeroSource = sources.find((source) => source.value === 0);
+  const positiveSource = sources.find((source) => source.value > 0);
+
+  return {
+    isPublic: !zeroSource,
+    parsedActiveResidents: zeroSource?.value ?? positiveSource?.value ?? null,
+    zeroSource: zeroSource ?? null,
+    positiveSource: positiveSource ?? null,
+    sources
+  };
 }
 
 type PublicDepartmentHospitalInput = {
@@ -1048,6 +1133,7 @@ export async function getDirectoryFilters() {
       orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
     })
   ]);
+  const publicDepartments = departments.filter(hasDisplayableResidentCount);
   const institutionMap = new Map<
     string,
     {
@@ -1061,7 +1147,7 @@ export async function getDirectoryFilters() {
     }
   >();
 
-  for (const department of departments) {
+  for (const department of publicDepartments) {
     const institution = publicInstitutionForDepartment(department);
     if (!institutionMap.has(institution.id)) {
       institutionMap.set(institution.id, institution);
@@ -1085,7 +1171,7 @@ export async function getDirectoryFilters() {
         }, new Map())
         .values()
     ),
-    departments: departments.map((department) => ({
+    departments: publicDepartments.map((department) => ({
       ...department,
       name: formatDepartmentDisplayName(department.name, department.specialty.name),
       institution: publicInstitutionForDepartment(department)
@@ -1270,8 +1356,9 @@ export async function getDirectoryData(
     orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
   });
 
+  const publicDepartments = departments.filter(hasDisplayableResidentCount);
   const searchedDepartments = filters.search
-    ? departments.filter((department) => {
+    ? publicDepartments.filter((department) => {
         const displayName = formatDepartmentDisplayName(department.name, department.specialty.name);
         const haystack = [
           department.name,
@@ -1284,7 +1371,7 @@ export async function getDirectoryData(
           .toLocaleLowerCase("he");
         return haystack.includes(filters.search!.toLocaleLowerCase("he"));
       })
-    : departments;
+    : publicDepartments;
 
   const institutionFilteredDepartments = filters.institutions?.length
     ? searchedDepartments.filter((department) =>
@@ -1693,7 +1780,8 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
     config?.displayOrderJson,
     enabledMetrics
   );
-  const metricInput = departments.map((department) => {
+  const publicDepartments = departments.filter(hasDisplayableResidentCount);
+  const metricInput = publicDepartments.map((department) => {
     const importedExternalMetrics = department.metrics
       .filter((metric) => typeof metric.value === "number" && Number.isFinite(metric.value))
       .map((metric) => ({
@@ -1706,7 +1794,7 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
     return {
       residentsCount:
         department.residentsCount ??
-        importedMetricValue(department.metrics, "residentsCount", "activeResidentsCount"),
+        importedMetricValue(department.metrics, "מספר_מתמחים", "residentsCount", "activeResidentsCount"),
       medianResidencyLength: department.medianResidencyLength,
       shlavAlephPassRate:
         department.shlavAlephPassRate ??
@@ -1938,7 +2026,7 @@ export async function getDepartmentPageData(
     }
   });
 
-  if (!department) {
+  if (!department || !hasDisplayableResidentCount(department)) {
     return null;
   }
 
@@ -1962,7 +2050,7 @@ export async function getDepartmentPageData(
     })
   };
   const effectiveInstitutionId = effectiveInstitutionRecord?.id ?? department.institutionId;
-  const [sameSpecialtyPublicDepartments, forcedArrayDepartmentsRaw, fallbackMedicalArray] = await Promise.all([
+  const [sameSpecialtyDepartmentsRaw, forcedArrayDepartmentsRaw, fallbackMedicalArray] = await Promise.all([
     prisma.department.findMany({
       where: {
         specialtyId: department.specialtyId,
@@ -2058,6 +2146,10 @@ export async function getDepartmentPageData(
         })
       : Promise.resolve(null)
   ]);
+  const sameSpecialtyPublicDepartments = sameSpecialtyDepartmentsRaw.filter(hasDisplayableResidentCount);
+  const forcedArrayDepartmentsVisible = forcedArrayDepartmentsRaw?.filter(hasDisplayableResidentCount) ?? null;
+  const medicalArrayDepartmentsVisible =
+    department.medicalArray?.departments?.filter(hasDisplayableResidentCount) ?? [];
   const effectiveSiblingDepartmentIds = new Set(
     sameSpecialtyPublicDepartments
       .filter((item) => effectiveHospitalNameForPublicDepartment(item) === effectiveHospitalName)
@@ -2073,7 +2165,7 @@ export async function getDepartmentPageData(
       .map((item) => item.id)
   );
   const forcedArrayDepartments =
-    forcedArrayDepartmentsRaw
+    forcedArrayDepartmentsVisible
       ?.filter((item) => effectiveSiblingDepartmentIds.has(item.id))
       .map((item) => ({
         ...item,
@@ -2101,7 +2193,7 @@ export async function getDepartmentPageData(
         departments:
           forcedArrayDepartments && forcedArrayDepartments.length > 0
             ? forcedArrayDepartments
-            : department.medicalArray?.departments ?? [],
+            : medicalArrayDepartmentsVisible,
         externalMetrics: department.medicalArray?.externalMetrics ?? fallbackMedicalArray?.externalMetrics ?? [],
         externalPeople: department.medicalArray?.externalPeople ?? fallbackMedicalArray?.externalPeople ?? []
       }
@@ -2501,6 +2593,15 @@ export async function getDepartmentOptions() {
       id: true,
       slug: true,
       name: true,
+      importStableKey: true,
+      residentsCount: true,
+      metrics: {
+        select: {
+          metricKey: true,
+          rawValue: true,
+          value: true
+        }
+      },
       institution: {
         select: {
           id: true,
@@ -2520,7 +2621,7 @@ export async function getDepartmentOptions() {
     orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
   });
 
-  return departments.map((department) => ({
+  return departments.filter(hasDisplayableResidentCount).map((department) => ({
     ...department,
     slug: canonicalDepartmentSlugForRecord(department),
     institution: publicInstitutionForDepartment(department)
