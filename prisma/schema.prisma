@@ -67,6 +67,31 @@ enum OpeningApplicationStatus {
   ARCHIVED
 }
 
+enum ElectiveAvailabilityMode {
+  OPEN_BY_DEFAULT
+  CLOSED_BY_DEFAULT
+}
+
+enum ElectiveWindowStatus {
+  OPEN
+  CLOSED
+}
+
+enum ElectiveApplicationStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  ACCEPTED
+  REJECTED
+  CANCELLED
+  ARCHIVED
+}
+
+enum FellowshipExperienceVisibility {
+  ADMIN_ONLY
+  PUBLIC_ANONYMIZED
+  PUBLIC_IDENTIFIED
+}
+
 enum UploadedFileCategory {
   OPENING_ATTACHMENT
   APPLICATION_CV
@@ -219,6 +244,10 @@ model User {
   createdDataImportBatches DataImportBatch[] @relation("DataImportBatchCreator")
   reviewedDataImportBatches DataImportBatch[] @relation("DataImportBatchReviewer")
   createdDataImportJobs DataImportJob[] @relation("DataImportJobCreator")
+  createdElectiveDepartmentAccounts ElectiveDepartmentAccount[] @relation("ElectiveDepartmentAccountCreator")
+  createdFellowshipSpecialties FellowshipSpecialty[] @relation("FellowshipSpecialtyCreator")
+  createdFellowshipPrograms FellowshipProgram[] @relation("FellowshipProgramCreator")
+  createdFellowshipExperiences FellowshipIsraeliExperience[] @relation("FellowshipExperienceCreator")
 
   @@index([roleKey])
   @@index([isApprovedPublisher])
@@ -264,6 +293,8 @@ model Specialty {
   metrics                 SpecialtyMetric[]
   yearlyMetrics           SpecialtyYearlyMetric[]
   dunsPhysicianRecords    DunsPhysicianRecord[] @relation("DunsPhysicianRecordSpecialty")
+  fellowshipSpecialties   FellowshipSpecialty[] @relation("FellowshipSpecialtyBaseSpecialty")
+  fellowshipPrograms      FellowshipProgram[] @relation("FellowshipProgramBaseSpecialty")
 }
 
 model SpecialtyMetric {
@@ -394,6 +425,10 @@ model Department {
   dataImportRecords      DataImportRecord[]
   dataImportRowLogs      DataImportRowLog[]
   dunsPhysicianRecords   DunsPhysicianRecord[] @relation("DunsPhysicianRecordDepartment")
+  electiveDepartmentAccount ElectiveDepartmentAccount?
+  electiveSettings      ElectiveDepartmentSettings?
+  electiveAvailabilityWindows ElectiveAvailabilityWindow[]
+  electiveApplications  ElectiveApplication[]
 
   @@unique([institutionId, name])
   @@index([institutionId])
@@ -656,6 +691,151 @@ model OpeningApplication {
   @@index([openingId, isTopMatch])
   @@index([openingId, matchScore])
   @@index([reviewedByUserId])
+}
+
+model ElectiveDepartmentAccount {
+  id               String     @id @default(cuid())
+  departmentId     String     @unique @map("department_id")
+  username         String     @unique
+  passwordHash     String     @map("password_hash")
+  isActive         Boolean    @default(true) @map("is_active")
+  lastLoginAt      DateTime?  @map("last_login_at")
+  createdByAdminId String?    @map("created_by_admin_id")
+  createdAt        DateTime   @default(now()) @map("created_at")
+  updatedAt        DateTime   @updatedAt @map("updated_at")
+  department       Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  createdByAdmin   User?      @relation("ElectiveDepartmentAccountCreator", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+
+  @@index([departmentId, isActive])
+  @@index([createdByAdminId])
+}
+
+model ElectiveDepartmentSettings {
+  id                 String                    @id @default(cuid())
+  departmentId       String                    @unique @map("department_id")
+  maxStudentsAtOnce  Int                       @default(1) @map("max_students_at_once")
+  availabilityMode   ElectiveAvailabilityMode  @default(CLOSED_BY_DEFAULT) @map("availability_mode")
+  contactEmail       String?                   @map("contact_email")
+  contactPhone       String?                   @map("contact_phone")
+  instructions       String?
+  adminNotes         String?                   @map("admin_notes")
+  createdAt          DateTime                  @default(now()) @map("created_at")
+  updatedAt          DateTime                  @updatedAt @map("updated_at")
+  department         Department                @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@index([availabilityMode])
+}
+
+model ElectiveAvailabilityWindow {
+  id           String               @id @default(cuid())
+  departmentId String               @map("department_id")
+  status       ElectiveWindowStatus
+  startsAt     DateTime             @map("starts_at")
+  endsAt       DateTime             @map("ends_at")
+  note         String?
+  createdAt    DateTime             @default(now()) @map("created_at")
+  updatedAt    DateTime             @updatedAt @map("updated_at")
+  department   Department           @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@index([departmentId, startsAt, endsAt])
+  @@index([status, startsAt])
+}
+
+model ElectiveApplication {
+  id                 String                    @id @default(cuid())
+  departmentId       String                    @map("department_id")
+  applicantName      String                    @map("applicant_name")
+  applicantEmail     String                    @map("applicant_email")
+  applicantPhone     String?                   @map("applicant_phone")
+  medicalSchool      String?                   @map("medical_school")
+  requestedStartDate DateTime?                 @map("requested_start_date")
+  requestedEndDate   DateTime?                 @map("requested_end_date")
+  status             ElectiveApplicationStatus @default(SUBMITTED)
+  studentNotes       String?                   @map("student_notes")
+  adminNotes         String?                   @map("admin_notes")
+  createdAt          DateTime                  @default(now()) @map("created_at")
+  updatedAt          DateTime                  @updatedAt @map("updated_at")
+  department         Department                @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@index([departmentId, status])
+  @@index([applicantEmail, createdAt])
+}
+
+model FellowshipSpecialty {
+  id              String              @id @default(cuid())
+  baseSpecialtyId String?             @map("base_specialty_id")
+  slug            String              @unique
+  nameHe          String              @map("name_he")
+  nameEn          String?             @map("name_en")
+  description     String?
+  beforeContent   String?             @map("before_content")
+  duringContent   String?             @map("during_content")
+  afterContent    String?             @map("after_content")
+  isPublished     Boolean             @default(false) @map("is_published")
+  createdByAdminId String?            @map("created_by_admin_id")
+  createdAt       DateTime            @default(now()) @map("created_at")
+  updatedAt       DateTime            @updatedAt @map("updated_at")
+  baseSpecialty   Specialty?          @relation("FellowshipSpecialtyBaseSpecialty", fields: [baseSpecialtyId], references: [id], onDelete: SetNull)
+  createdByAdmin  User?               @relation("FellowshipSpecialtyCreator", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+  programs        FellowshipProgram[]
+  israeliExperiences FellowshipIsraeliExperience[]
+
+  @@index([baseSpecialtyId])
+  @@index([isPublished])
+}
+
+model FellowshipProgram {
+  id                    String              @id @default(cuid())
+  fellowshipSpecialtyId String              @map("fellowship_specialty_id")
+  baseSpecialtyId       String?             @map("base_specialty_id")
+  country               String
+  city                  String?
+  institution           String
+  departmentName        String?             @map("department_name")
+  duration              String?
+  requirements          String?
+  contactName           String?             @map("contact_name")
+  contactEmail          String?             @map("contact_email")
+  contactPhone          String?             @map("contact_phone")
+  websiteUrl            String?             @map("website_url")
+  notes                 String?
+  isPublished           Boolean             @default(false) @map("is_published")
+  createdByAdminId      String?             @map("created_by_admin_id")
+  createdAt             DateTime            @default(now()) @map("created_at")
+  updatedAt             DateTime            @updatedAt @map("updated_at")
+  fellowshipSpecialty   FellowshipSpecialty @relation(fields: [fellowshipSpecialtyId], references: [id], onDelete: Cascade)
+  baseSpecialty         Specialty?          @relation("FellowshipProgramBaseSpecialty", fields: [baseSpecialtyId], references: [id], onDelete: SetNull)
+  createdByAdmin        User?               @relation("FellowshipProgramCreator", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+  israeliExperiences    FellowshipIsraeliExperience[]
+
+  @@index([fellowshipSpecialtyId, isPublished])
+  @@index([baseSpecialtyId])
+  @@index([country, city])
+}
+
+model FellowshipIsraeliExperience {
+  id                    String                         @id @default(cuid())
+  fellowshipProgramId   String?                        @map("fellowship_program_id")
+  fellowshipSpecialtyId String?                        @map("fellowship_specialty_id")
+  physicianName         String?                        @map("physician_name")
+  roleTitle             String?                        @map("role_title")
+  currentInstitution    String?                        @map("current_institution")
+  contactEmail          String?                        @map("contact_email")
+  contactPhone          String?                        @map("contact_phone")
+  experienceText        String?                        @map("experience_text")
+  visibility            FellowshipExperienceVisibility @default(ADMIN_ONLY)
+  notes                 String?
+  isPublished           Boolean                        @default(false) @map("is_published")
+  createdByAdminId      String?                        @map("created_by_admin_id")
+  createdAt             DateTime                       @default(now()) @map("created_at")
+  updatedAt             DateTime                       @updatedAt @map("updated_at")
+  fellowshipProgram     FellowshipProgram?             @relation(fields: [fellowshipProgramId], references: [id], onDelete: SetNull)
+  fellowshipSpecialty   FellowshipSpecialty?           @relation(fields: [fellowshipSpecialtyId], references: [id], onDelete: SetNull)
+  createdByAdmin        User?                          @relation("FellowshipExperienceCreator", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+
+  @@index([fellowshipProgramId])
+  @@index([fellowshipSpecialtyId, visibility])
+  @@index([visibility, isPublished])
 }
 
 model ResearchOpportunity {

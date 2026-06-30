@@ -25,6 +25,21 @@ export const openingApplicationStatusValues = [
   "CONTACTED",
   "ARCHIVED"
 ] as const;
+export const electiveAvailabilityModeValues = ["OPEN_BY_DEFAULT", "CLOSED_BY_DEFAULT"] as const;
+export const electiveWindowStatusValues = ["OPEN", "CLOSED"] as const;
+export const electiveApplicationStatusValues = [
+  "SUBMITTED",
+  "UNDER_REVIEW",
+  "ACCEPTED",
+  "REJECTED",
+  "CANCELLED",
+  "ARCHIVED"
+] as const;
+export const fellowshipExperienceVisibilityValues = [
+  "ADMIN_ONLY",
+  "PUBLIC_ANONYMIZED",
+  "PUBLIC_IDENTIFIED"
+] as const;
 export const professionalRoleStatusValues = ["medical_student", "intern", "resident", "specialist", "other"] as const;
 
 const emptyToUndefined = (value: unknown) => {
@@ -609,6 +624,98 @@ export const openingApplicationSchema = z
       });
     }
   });
+
+export const electiveDepartmentAccountSchema = z.object({
+  departmentId: z.string().min(1, "יש לבחור מחלקה."),
+  username: z.string().min(3, "יש להזין שם משתמש באורך 3 תווים לפחות.").max(80),
+  password: z.string().min(8, "יש להזין סיסמה של לפחות 8 תווים."),
+  isActive: z.boolean().default(true)
+});
+
+export const electiveDepartmentSettingsSchema = z.object({
+  departmentId: z.string().min(1, "יש לבחור מחלקה."),
+  maxStudentsAtOnce: z.coerce.number().int().min(1, "המינימום הוא סטודנט אחד.").max(50),
+  availabilityMode: z.enum(electiveAvailabilityModeValues),
+  contactEmail: z.preprocess(emptyToUndefined, z.string().email("יש להזין אימייל תקין.").optional()),
+  contactPhone: z.preprocess(emptyToUndefined, z.string().min(7, "יש להזין טלפון תקין.").optional()),
+  instructions: z.preprocess(emptyToUndefined, z.string().max(2000).optional()),
+  adminNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional())
+});
+
+export const electiveAvailabilityWindowSchema = z
+  .object({
+    departmentId: z.string().min(1, "יש לבחור מחלקה."),
+    status: z.enum(electiveWindowStatusValues),
+    startsAt: z.string().min(1, "יש להזין תאריך התחלה."),
+    endsAt: z.string().min(1, "יש להזין תאריך סיום."),
+    note: z.preprocess(emptyToUndefined, z.string().max(1000).optional())
+  })
+  .refine((data) => new Date(data.endsAt).getTime() >= new Date(data.startsAt).getTime(), {
+    path: ["endsAt"],
+    message: "תאריך הסיום חייב להיות אחרי תאריך ההתחלה."
+  });
+
+export const electiveApplicationAdminSchema = z.object({
+  departmentId: z.string().min(1, "יש לבחור מחלקה."),
+  applicantName: z.string().min(2, "יש להזין שם."),
+  applicantEmail: z.string().email("יש להזין אימייל תקין."),
+  applicantPhone: z.preprocess(emptyToUndefined, z.string().min(7).optional()),
+  medicalSchool: z.preprocess(emptyToUndefined, z.string().max(160).optional()),
+  requestedStartDate: z.preprocess(emptyToUndefined, z.string().optional()),
+  requestedEndDate: z.preprocess(emptyToUndefined, z.string().optional()),
+  status: z.enum(electiveApplicationStatusValues).default("SUBMITTED"),
+  studentNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional()),
+  adminNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional())
+});
+
+export const fellowshipSpecialtySchema = z.object({
+  id: z.preprocess(emptyToUndefined, z.string().optional()),
+  baseSpecialtyId: z.preprocess(emptyToUndefined, z.string().optional()),
+  slug: z
+    .string()
+    .min(2, "יש להזין מזהה קצר.")
+    .regex(/^[a-z0-9-]+$/, "המזהה צריך להכיל אותיות לטיניות קטנות, מספרים ומקפים בלבד."),
+  nameHe: z.string().min(2, "יש להזין שם בעברית."),
+  nameEn: z.preprocess(emptyToUndefined, z.string().max(160).optional()),
+  description: z.preprocess(emptyToUndefined, z.string().max(3000).optional()),
+  beforeContent: z.preprocess(emptyToUndefined, z.string().max(4000).optional()),
+  duringContent: z.preprocess(emptyToUndefined, z.string().max(4000).optional()),
+  afterContent: z.preprocess(emptyToUndefined, z.string().max(4000).optional()),
+  isPublished: z.boolean().default(false)
+});
+
+export const fellowshipProgramSchema = z.object({
+  id: z.preprocess(emptyToUndefined, z.string().optional()),
+  fellowshipSpecialtyId: z.string().min(1, "יש לבחור תחום פלושיפ."),
+  baseSpecialtyId: z.preprocess(emptyToUndefined, z.string().optional()),
+  country: z.string().min(2, "יש להזין מדינה."),
+  city: z.preprocess(emptyToUndefined, z.string().max(120).optional()),
+  institution: z.string().min(2, "יש להזין מוסד."),
+  departmentName: z.preprocess(emptyToUndefined, z.string().max(180).optional()),
+  duration: z.preprocess(emptyToUndefined, z.string().max(120).optional()),
+  requirements: z.preprocess(emptyToUndefined, z.string().max(3000).optional()),
+  contactName: z.preprocess(emptyToUndefined, z.string().max(160).optional()),
+  contactEmail: z.preprocess(emptyToUndefined, z.string().email().optional()),
+  contactPhone: z.preprocess(emptyToUndefined, z.string().max(80).optional()),
+  websiteUrl: z.preprocess(emptyToUndefined, z.string().url().optional()),
+  notes: z.preprocess(emptyToUndefined, z.string().max(3000).optional()),
+  isPublished: z.boolean().default(false)
+});
+
+export const fellowshipIsraeliExperienceSchema = z.object({
+  id: z.preprocess(emptyToUndefined, z.string().optional()),
+  fellowshipProgramId: z.preprocess(emptyToUndefined, z.string().optional()),
+  fellowshipSpecialtyId: z.preprocess(emptyToUndefined, z.string().optional()),
+  physicianName: z.preprocess(emptyToUndefined, z.string().max(160).optional()),
+  roleTitle: z.preprocess(emptyToUndefined, z.string().max(160).optional()),
+  currentInstitution: z.preprocess(emptyToUndefined, z.string().max(160).optional()),
+  contactEmail: z.preprocess(emptyToUndefined, z.string().email().optional()),
+  contactPhone: z.preprocess(emptyToUndefined, z.string().max(80).optional()),
+  experienceText: z.preprocess(emptyToUndefined, z.string().max(5000).optional()),
+  visibility: z.enum(fellowshipExperienceVisibilityValues).default("ADMIN_ONLY"),
+  notes: z.preprocess(emptyToUndefined, z.string().max(3000).optional()),
+  isPublished: z.boolean().default(false)
+});
 
 export const adminInstitutionSchema = z.object({
   name: z.string().min(2, "יש להזין שם מוסד."),

@@ -599,6 +599,34 @@ export default async function AdminPage() {
             </div>
           </Card>
 
+          <Card>
+            <div className="flex h-full flex-col justify-between gap-4">
+              <div>
+                <h2 className="text-xl font-bold text-ink">ניהול אלקטיבים</h2>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  חשבונות מחלקה, הגדרות זמינות וחלונות תאריכים. אדמין בלבד.
+                </p>
+              </div>
+              <Link href="/admin/electives" className="inline-flex w-fit rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">
+                פתיחה
+              </Link>
+            </div>
+          </Card>
+
+          <Card>
+            <div className="flex h-full flex-col justify-between gap-4">
+              <div>
+                <h2 className="text-xl font-bold text-ink">מידע פלושיפים</h2>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  תחומים, תוכניות וניסיון ישראלי לפלושיפים עתידיים. אדמין בלבד.
+                </p>
+              </div>
+              <Link href="/admin/fellowships" className="inline-flex w-fit rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">
+                פתיחה
+              </Link>
+            </div>
+          </Card>
+
           <Card className="xl:col-span-2">
             <h2 className="text-xl font-bold text-ink">ניהול דשבורד תחום התמחות</h2>
             <p className="mt-2 text-sm leading-7 text-slate-600">
