@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { requireAuth } from "@/lib/auth-guards";
 import { prisma } from "@/lib/prisma";
@@ -28,7 +29,7 @@ export default async function MyElectiveApplicationsPage() {
         select: {
           slug: true,
           name: true,
-          institution: { select: { name: true, city: true } },
+          institution: { select: { name: true, city: true, slug: true, coverImageUrl: true } },
           specialty: { select: { name: true } }
         }
       }
@@ -58,10 +59,15 @@ export default async function MyElectiveApplicationsPage() {
               {applications.map((application) => (
                 <tr key={application.id} className="border-t border-slate-100">
                   <td className="px-3 py-3">
-                    <Link href={`/electives/${application.department.slug}`} className="font-semibold text-brand-800">
-                      {application.department.institution.name} · {application.department.specialty.name}
-                    </Link>
-                    <p className="text-xs text-slate-500">{application.department.name}</p>
+                    <div className="flex items-center gap-3">
+                      <InstitutionLogo institution={application.department.institution} size="sm" />
+                      <div className="min-w-0">
+                        <Link href={`/electives/${application.department.slug}`} className="font-semibold text-brand-800">
+                          {application.department.institution.name} · {application.department.specialty.name}
+                        </Link>
+                        <p className="text-xs text-slate-500">{application.department.name}</p>
+                      </div>
+                    </div>
                   </td>
                   <td className="px-3 py-3">
                     {application.requestedStartDate ? formatDate(application.requestedStartDate) : "לא צוין"}

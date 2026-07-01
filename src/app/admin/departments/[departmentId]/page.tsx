@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { requireAdmin } from "@/lib/auth-guards";
 import { getDepartmentEditorPageData } from "@/lib/queries";
 import { DepartmentEditorForm } from "@/components/forms/department-editor-form";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -28,6 +29,14 @@ export default async function AdminDepartmentEditPage({
         title={`${department.institution.name} · ${department.name}`}
         description="אדמין יכול לעדכן כל עמוד מחלקה ישירות. שינויים מכאן נשמרים מיד."
       />
+
+      <Card className="flex items-center gap-4">
+        <InstitutionLogo institution={department.institution} size="md" />
+        <div>
+          <p className="text-sm font-black text-brand-700">{department.specialty.name}</p>
+          <p className="mt-1 font-bold text-ink">{department.institution.name}</p>
+        </div>
+      </Card>
 
       <Card>
         <DepartmentEditorForm

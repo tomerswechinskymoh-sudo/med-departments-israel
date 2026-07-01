@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ReviewBubbleIcon } from "@/components/ui/med-icons";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { reviewerTypeLabel } from "@/lib/queries";
@@ -113,13 +114,16 @@ export function HomeReviewComparisonCard({ review }: { review: HomeReview }) {
             </span>
             <p className="text-xs font-semibold text-brand-700">סקירה מהירה למחלקה</p>
           </div>
-          <div>
-            <h3 className="text-xl font-bold text-ink">
-              {review.department.institution.name} · {review.department.name}
-            </h3>
-            <p className="mt-1 text-sm text-slate-600">
-              {reviewerTypeLabel(review.reviewerType)} · {formatDate(review.publishedAt)}
-            </p>
+          <div className="flex gap-3">
+            <InstitutionLogo institution={review.department.institution} size="sm" />
+            <div className="min-w-0">
+              <h3 className="text-xl font-bold text-ink">
+                {review.department.institution.name} · {review.department.name}
+              </h3>
+              <p className="mt-1 text-sm text-slate-600">
+                {reviewerTypeLabel(review.reviewerType)} · {formatDate(review.publishedAt)}
+              </p>
+            </div>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">

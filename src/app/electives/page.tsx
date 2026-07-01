@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
   getAvailabilitySummary,
@@ -78,11 +79,16 @@ export default async function StudentElectivesPreviewPage({
                   <Badge tone="success">פתוח להגשה</Badge>
                   <Badge tone="default">{department.electiveSettings?.availabilityMode ?? "לא הוגדר"}</Badge>
                 </div>
-                <h2 className="mt-4 text-xl font-black text-ink">{department.institution.name}</h2>
-                <p className="mt-1 text-sm font-semibold text-slate-700">{department.specialty.name}</p>
-                <p className="mt-1 text-xs text-slate-500">
-                  {[department.institution.city, region].filter(Boolean).join(" · ") || "מיקום לא צוין"}
-                </p>
+                <div className="mt-4 flex gap-3">
+                  <InstitutionLogo institution={department.institution} size="sm" />
+                  <div className="min-w-0">
+                    <h2 className="text-xl font-black text-ink">{department.institution.name}</h2>
+                    <p className="mt-1 text-sm font-semibold text-slate-700">{department.specialty.name}</p>
+                    <p className="mt-1 text-xs text-slate-500">
+                      {[department.institution.city, region].filter(Boolean).join(" · ") || "מיקום לא צוין"}
+                    </p>
+                  </div>
+                </div>
                 <p className="mt-4 text-sm leading-7 text-slate-600">{getAvailabilitySummary(department)}</p>
                 <p className="mt-2 text-sm font-semibold text-slate-700">
                   מקסימום במקביל: {department.electiveSettings?.maxStudentsAtOnce ?? "לא הוגדר"}

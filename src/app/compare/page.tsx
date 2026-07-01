@@ -4,6 +4,7 @@ import { getDepartmentComparisonData } from "@/lib/queries";
 import { LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL } from "@/lib/metric-display";
 import { Card } from "@/components/ui/card";
 import { PageShell } from "@/components/layout/page-shell";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -142,7 +143,19 @@ export default async function ComparePage({
                         </p>
                       ) : null}
                     </td>
-                    <td className="px-4 py-4 font-bold text-slate-700">{row.hospitalName}</td>
+                    <td className="px-4 py-4">
+                      <div className="flex items-center gap-3">
+                        <InstitutionLogo
+                          institution={{
+                            name: row.hospitalName,
+                            slug: row.hospitalSlug,
+                            coverImageUrl: row.hospitalCoverImageUrl
+                          }}
+                          size="sm"
+                        />
+                        <span className="font-bold text-slate-700">{row.hospitalName}</span>
+                      </div>
+                    </td>
                     <td className="px-4 py-4">{row.actualDuration}</td>
                     <td className="px-4 py-4">
                       <span>{row.expectedOpenings2026}</span>
@@ -159,7 +172,17 @@ export default async function ComparePage({
             {comparison.rows.map((row) => (
               <div key={row.id} className="rounded-xl border border-slate-100 bg-white px-4 py-4">
                 <p className="text-lg font-black text-ink">{row.name}</p>
-                <p className="mt-1 text-sm font-bold text-slate-600">{row.hospitalName}</p>
+                <div className="mt-2 flex items-center gap-3">
+                  <InstitutionLogo
+                    institution={{
+                      name: row.hospitalName,
+                      slug: row.hospitalSlug,
+                      coverImageUrl: row.hospitalCoverImageUrl
+                    }}
+                    size="sm"
+                  />
+                  <p className="text-sm font-bold text-slate-600">{row.hospitalName}</p>
+                </div>
                 {row.isArray ? (
                   <p className="mt-2 inline-flex rounded-full bg-brand-50 px-3 py-1 text-xs font-black text-brand-800">
                     ממוצע למחלקה במערך · {row.arrayDepartmentCount} מחלקות

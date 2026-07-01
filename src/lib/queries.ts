@@ -2430,6 +2430,8 @@ export async function getDepartmentComparisonData(input: {
         id: department.id,
         name,
         hospitalName: department.institution.name,
+        hospitalSlug: department.institution.slug,
+        hospitalCoverImageUrl: department.institution.coverImageUrl,
         specialtyId: department.specialty.id,
         specialtyName,
         isArray,

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
   formatDateInput,
@@ -53,10 +54,15 @@ export default async function StudentElectiveDepartmentPage({
             <Badge tone="success">פתוח להגשה</Badge>
             <Badge tone="default">{department.electiveSettings?.availabilityMode}</Badge>
           </div>
-          <h2 className="mt-5 text-2xl font-black text-ink">{department.name}</h2>
-          <p className="mt-2 text-sm text-slate-600">
-            {[department.institution.city, region].filter(Boolean).join(" · ") || "מיקום לא צוין"}
-          </p>
+          <div className="mt-5 flex gap-4">
+            <InstitutionLogo institution={department.institution} size="md" />
+            <div className="min-w-0">
+              <h2 className="text-2xl font-black text-ink">{department.name}</h2>
+              <p className="mt-2 text-sm text-slate-600">
+                {[department.institution.city, region].filter(Boolean).join(" · ") || "מיקום לא צוין"}
+              </p>
+            </div>
+          </div>
           <p className="mt-5 text-sm leading-7 text-slate-700">{department.about || department.shortSummary || "לא נוסף תיאור אלקטיב למחלקה."}</p>
           {department.electiveSettings?.notes ? (
             <div className="mt-5 rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-950">

@@ -48,7 +48,7 @@ export async function getElectiveDepartmentBySlug(departmentSlug: string) {
       }
     },
     include: {
-      institution: { select: { name: true, city: true, region: true } },
+      institution: { select: { name: true, city: true, region: true, slug: true, coverImageUrl: true } },
       specialty: { select: { name: true } },
       electiveSettings: true,
       electiveAvailabilityWindows: {
@@ -80,7 +80,7 @@ export async function listElectiveDepartments(input?: { search?: string; special
       ...(specialty ? { specialty: { name: specialty } } : {})
     },
     include: {
-      institution: { select: { name: true, city: true, region: true } },
+      institution: { select: { name: true, city: true, region: true, slug: true, coverImageUrl: true } },
       specialty: { select: { name: true } },
       electiveSettings: true,
       electiveAvailabilityWindows: {

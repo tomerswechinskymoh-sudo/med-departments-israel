@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { openingTypeLabel } from "@/lib/queries";
@@ -114,17 +115,23 @@ export function OpeningCard({
         <h3 className="mt-4 text-2xl font-bold text-ink">{opening.title}</h3>
         <p className="mt-2 text-sm font-semibold text-brand-700">{opening.department.specialty.name}</p>
         {showInstitution ? (
-          <p className="mt-1 text-sm text-slate-600">
-            {opening.department.institution.name} · {opening.department.name}
-          </p>
+          <div className="mt-3 flex items-center gap-3">
+            <InstitutionLogo institution={opening.department.institution} size="sm" />
+            <p className="text-sm text-slate-600">
+              {opening.department.institution.name} · {opening.department.name}
+            </p>
+          </div>
         ) : null}
 
         <div className="mt-5 grid gap-3 text-sm text-slate-600 md:grid-cols-2">
           <div className="rounded-2xl bg-brand-50/70 p-3">
             <p className="text-xs font-semibold text-slate-500">איפה</p>
-            <p className="mt-1 font-semibold text-ink">
-              {opening.department.institution.name} · {opening.department.name}
-            </p>
+            <div className="mt-2 flex items-center gap-3">
+              <InstitutionLogo institution={opening.department.institution} size="sm" />
+              <p className="font-semibold text-ink">
+                {opening.department.institution.name} · {opening.department.name}
+              </p>
+            </div>
           </div>
           <div className="rounded-2xl bg-brand-50/70 p-3">
             <p className="text-xs font-semibold text-slate-500">מה פתוח</p>

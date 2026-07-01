@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Badge } from "@/components/ui/badge";
 import { ExperienceCta } from "@/components/experience/experience-cta";
+import { InstitutionLogo } from "@/components/departments/institution-logo";
 
 export const dynamic = "force-dynamic";
 
@@ -108,14 +109,17 @@ export default async function DashboardPage() {
               />
             ) : (
               data.favorites.slice(0, 4).map((favorite) => (
-                <div key={favorite.departmentId} className="rounded-2xl bg-brand-50 p-4">
-                  <Link
-                    href={getDepartmentHref(favorite.department)}
-                    className="font-semibold text-ink"
-                  >
-                    {favorite.department.institution.name} · {favorite.department.name}
-                  </Link>
-                  <p className="mt-1 text-sm text-slate-600">{favorite.department.shortSummary}</p>
+                <div key={favorite.departmentId} className="flex gap-3 rounded-2xl bg-brand-50 p-4">
+                  <InstitutionLogo institution={favorite.department.institution} size="sm" />
+                  <div className="min-w-0">
+                    <Link
+                      href={getDepartmentHref(favorite.department)}
+                      className="font-semibold text-ink"
+                    >
+                      {favorite.department.institution.name} · {favorite.department.name}
+                    </Link>
+                    <p className="mt-1 text-sm text-slate-600">{favorite.department.shortSummary}</p>
+                  </div>
                 </div>
               ))
             )}
