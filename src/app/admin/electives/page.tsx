@@ -32,14 +32,20 @@ const electiveLinks = [
     href: "/admin/electives/settings",
     title: "חלונות זמינות",
     description: "ניהול מצב פתוח/סגור וחלונות תאריכים לכל מחלקה."
+  },
+  {
+    href: "/admin/electives/demo",
+    title: "דמו מלא לאלקטיבים",
+    description: "יצירת נציג רב-מחלקתי, זמינות, מועמדויות וסטטוסים לבדיקת הזרימה."
   }
 ];
 
 export default async function AdminElectivesPage() {
   await requireAdmin();
 
-  const [accounts, settings, windows, applications, departments] = await Promise.all([
+  const [accounts, representatives, settings, windows, applications, departments] = await Promise.all([
     prisma.electiveDepartmentAccount.count(),
+    prisma.electiveRepresentativeAccount.count(),
     prisma.electiveDepartmentSettings.count(),
     prisma.electiveAvailabilityWindow.count(),
     prisma.electiveApplication.count(),
@@ -63,10 +69,14 @@ export default async function AdminElectivesPage() {
         description="מודול הכנה לניהול אלקטיבים מול מחלקות. בשלב זה אין חשיפה ציבורית ואין כניסת מחלקות חיצונית."
       />
 
-      <div className="grid gap-3 md:grid-cols-4">
+      <div className="grid gap-3 md:grid-cols-5">
         <Card>
           <p className="text-xs font-black text-slate-500">חשבונות מחלקה</p>
           <p className="mt-2 text-3xl font-black text-ink">{accounts}</p>
+        </Card>
+        <Card>
+          <p className="text-xs font-black text-slate-500">נציגים</p>
+          <p className="mt-2 text-3xl font-black text-ink">{representatives}</p>
         </Card>
         <Card>
           <p className="text-xs font-black text-slate-500">הגדרות</p>

@@ -7,7 +7,7 @@ import {
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { requireElectiveDepartmentSession } from "@/lib/elective-department-auth";
+import { getSelectedElectiveDepartment, requireElectiveDepartmentSession } from "@/lib/elective-department-auth";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -19,10 +19,11 @@ export const metadata: Metadata = {
   }
 };
 
-export default async function ElectiveDepartmentSettingsPage() {
+export default async function ElectiveDepartmentSettingsPage({ searchParams }: { searchParams?: Promise<{ departmentId?: string }> }) {
   const session = await requireElectiveDepartmentSession();
+  const selectedDepartment = getSelectedElectiveDepartment(session, (await searchParams)?.departmentId) ?? session.assignedDepartments[0];
   const settings = await prisma.electiveDepartmentSettings.findUnique({
-    where: { departmentId: session.departmentId }
+    where: { departmentId: selectedDepartment.id }
   });
 
   return (
@@ -31,7 +32,7 @@ export default async function ElectiveDepartmentSettingsPage() {
         <SectionHeading
           eyebrow="Private department portal"
           title="הגדרות אלקטיב"
-          description={`${session.institutionName} · ${session.specialtyName}. העריכה מוגבלת למחלקה זו בלבד.`}
+          description={`${selectedDepartment.institutionName} · ${selectedDepartment.specialtyName}. העריכה מוגבלת למחלקות שהוקצו לחשבון.`}
         />
         <div className="flex flex-wrap gap-2">
           <Link href="/electives/department" className="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-black text-slate-700">
@@ -42,6 +43,7 @@ export default async function ElectiveDepartmentSettingsPage() {
       </div>
       <Card>
         <ElectiveDepartmentSettingsPortalForm
+          departmentId={selectedDepartment.id}
           initialSettings={
             settings
               ? {

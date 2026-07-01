@@ -4,6 +4,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { InstitutionLogo } from "@/components/departments/institution-logo";
+import { ElectiveAlternativeDecisionButtons } from "@/components/electives/student-electives-actions";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { requireAuth } from "@/lib/auth-guards";
 import { prisma } from "@/lib/prisma";
@@ -52,6 +53,7 @@ export default async function MyElectiveApplicationsPage() {
                 <th className="px-3 py-2">מחלקה</th>
                 <th className="px-3 py-2">תאריכים</th>
                 <th className="px-3 py-2">סטטוס</th>
+                <th className="px-3 py-2">חלופה</th>
                 <th className="px-3 py-2">הוגש</th>
               </tr>
             </thead>
@@ -76,6 +78,22 @@ export default async function MyElectiveApplicationsPage() {
                   </td>
                   <td className="px-3 py-3">
                     <Badge tone="default">{application.status}</Badge>
+                  </td>
+                  <td className="px-3 py-3">
+                    {application.proposedStartDate && application.proposedEndDate ? (
+                      <div className="space-y-2">
+                        <p className="text-xs font-semibold text-slate-700">
+                          {formatDate(application.proposedStartDate)}
+                          {" - "}
+                          {formatDate(application.proposedEndDate)}
+                        </p>
+                        {application.status === "ALTERNATIVE_OFFERED" ? (
+                          <ElectiveAlternativeDecisionButtons applicationId={application.id} />
+                        ) : null}
+                      </div>
+                    ) : (
+                      <span className="text-xs text-slate-500">אין חלופה</span>
+                    )}
                   </td>
                   <td className="px-3 py-3">{formatDate(application.createdAt)}</td>
                 </tr>

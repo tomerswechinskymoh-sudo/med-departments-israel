@@ -84,8 +84,17 @@ enum ElectiveApplicationStatus {
   APPROVED
   WAITLISTED
   REJECTED
+  ALTERNATIVE_OFFERED
+  ALTERNATIVE_ACCEPTED
+  ALTERNATIVE_DECLINED
   CANCELLED
   ARCHIVED
+}
+
+enum ElectiveRepresentativeAssignmentRole {
+  PRIMARY
+  SECONDARY
+  VIEW_ONLY
 }
 
 enum FellowshipExperienceVisibility {
@@ -432,6 +441,7 @@ model Department {
   electiveSettings      ElectiveDepartmentSettings?
   electiveAvailabilityWindows ElectiveAvailabilityWindow[]
   electiveApplications  ElectiveApplication[]
+  electiveRepresentativeAssignments ElectiveRepresentativeDepartmentAssignment[]
 
   @@unique([institutionId, name])
   @@index([institutionId])
@@ -713,6 +723,40 @@ model ElectiveDepartmentAccount {
   @@index([createdByAdminId])
 }
 
+model ElectiveRepresentativeAccount {
+  id             String                                      @id @default(cuid())
+  name           String
+  email          String                                      @unique
+  username       String                                      @unique
+  passwordHash   String                                      @map("password_hash")
+  phone          String?
+  isActive       Boolean                                     @default(true) @map("is_active")
+  lastLoginAt    DateTime?                                   @map("last_login_at")
+  createdAt      DateTime                                    @default(now()) @map("created_at")
+  updatedAt      DateTime                                    @updatedAt @map("updated_at")
+  assignments    ElectiveRepresentativeDepartmentAssignment[]
+  proposedApplications ElectiveApplication[]                 @relation("ElectiveApplicationProposedBy")
+  decidedApplications  ElectiveApplication[]                 @relation("ElectiveApplicationDecidedBy")
+
+  @@index([isActive])
+}
+
+model ElectiveRepresentativeDepartmentAssignment {
+  id                         String                               @id @default(cuid())
+  representativeAccountId    String                               @map("representative_account_id")
+  departmentId               String                               @map("department_id")
+  role                       ElectiveRepresentativeAssignmentRole @default(PRIMARY)
+  receivesApplicationEmails  Boolean                              @default(true) @map("receives_application_emails")
+  createdAt                  DateTime                             @default(now()) @map("created_at")
+  updatedAt                  DateTime                             @updatedAt @map("updated_at")
+  representativeAccount      ElectiveRepresentativeAccount         @relation(fields: [representativeAccountId], references: [id], onDelete: Cascade)
+  department                 Department                           @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@unique([representativeAccountId, departmentId])
+  @@index([departmentId])
+  @@index([receivesApplicationEmails])
+}
+
 model ElectiveDepartmentSettings {
   id                 String                    @id @default(cuid())
   departmentId       String                    @unique @map("department_id")
@@ -762,15 +806,25 @@ model ElectiveApplication {
   requestedEndDate   DateTime?                 @map("requested_end_date")
   status             ElectiveApplicationStatus @default(SUBMITTED)
   studentNotes       String?                   @map("student_notes")
+  representativeNotes String?                  @map("representative_notes")
   adminNotes         String?                   @map("admin_notes")
+  proposedStartDate  DateTime?                 @map("proposed_start_date")
+  proposedEndDate    DateTime?                 @map("proposed_end_date")
+  proposedByRepresentativeId String?           @map("proposed_by_representative_id")
+  decisionByRepresentativeId String?           @map("decision_by_representative_id")
+  decisionAt         DateTime?                 @map("decision_at")
   createdAt          DateTime                  @default(now()) @map("created_at")
   updatedAt          DateTime                  @updatedAt @map("updated_at")
   department         Department                @relation(fields: [departmentId], references: [id], onDelete: Cascade)
   applicantUser      User?                     @relation("ElectiveApplicationApplicant", fields: [applicantUserId], references: [id], onDelete: SetNull)
+  proposedByRepresentative ElectiveRepresentativeAccount? @relation("ElectiveApplicationProposedBy", fields: [proposedByRepresentativeId], references: [id], onDelete: SetNull)
+  decisionByRepresentative ElectiveRepresentativeAccount? @relation("ElectiveApplicationDecidedBy", fields: [decisionByRepresentativeId], references: [id], onDelete: SetNull)
 
   @@index([departmentId, status])
   @@index([applicantUserId, createdAt])
   @@index([applicantEmail, createdAt])
+  @@index([proposedByRepresentativeId])
+  @@index([decisionByRepresentativeId])
 }
 
 model FellowshipSpecialty {

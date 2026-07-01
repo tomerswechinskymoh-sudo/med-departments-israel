@@ -156,6 +156,107 @@ export function ElectiveDepartmentAccountForm({
   );
 }
 
+export function ElectiveRepresentativeAccountForm({
+  departments
+}: {
+  departments: DepartmentOption[];
+}) {
+  const router = useRouter();
+  const [message, setMessage] = useState<string | null>(null);
+  const [isActive, setIsActive] = useState(true);
+  const [receivesApplicationEmails, setReceivesApplicationEmails] = useState(true);
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setMessage(null);
+    const form = new FormData(event.currentTarget);
+    const departmentIds = form.getAll("departmentIds").map(String).filter(Boolean);
+
+    try {
+      const saved = await postJson("/api/admin/electives/representatives", {
+        name: String(form.get("name") ?? ""),
+        email: String(form.get("email") ?? ""),
+        username: String(form.get("username") ?? ""),
+        password: String(form.get("password") ?? ""),
+        phone: String(form.get("phone") ?? ""),
+        departmentIds,
+        role: String(form.get("role") ?? "PRIMARY"),
+        isActive,
+        receivesApplicationEmails
+      });
+      setMessage(saved);
+      event.currentTarget.reset();
+      setIsActive(true);
+      setReceivesApplicationEmails(true);
+      router.refresh();
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "שמירה נכשלה.");
+    }
+  }
+
+  return (
+    <form onSubmit={onSubmit} className="space-y-4 rounded-2xl bg-brand-50 p-4">
+      <div className="grid gap-3 md:grid-cols-2">
+        <div className="space-y-1">
+          <FieldLabel>שם נציג/ה</FieldLabel>
+          <input name="name" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" required />
+        </div>
+        <div className="space-y-1">
+          <FieldLabel>אימייל</FieldLabel>
+          <input name="email" type="email" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" required />
+        </div>
+        <div className="space-y-1">
+          <FieldLabel>שם משתמש</FieldLabel>
+          <input name="username" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" required minLength={3} />
+        </div>
+        <div className="space-y-1">
+          <FieldLabel>סיסמה זמנית</FieldLabel>
+          <input name="password" type="password" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" required minLength={8} />
+        </div>
+        <div className="space-y-1">
+          <FieldLabel>טלפון</FieldLabel>
+          <input name="phone" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+        </div>
+        <div className="space-y-1">
+          <FieldLabel>תפקיד בהרשאות</FieldLabel>
+          <select name="role" defaultValue="PRIMARY" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none">
+            <option value="PRIMARY">PRIMARY</option>
+            <option value="SECONDARY">SECONDARY</option>
+            <option value="VIEW_ONLY">VIEW_ONLY</option>
+          </select>
+        </div>
+      </div>
+      <div className="space-y-1">
+        <FieldLabel>מחלקות לניהול</FieldLabel>
+        <select name="departmentIds" multiple required className="min-h-40 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none">
+          {departments.map((department) => (
+            <option key={department.id} value={department.id}>
+              {department.label}
+            </option>
+          ))}
+        </select>
+        <p className="text-xs text-slate-500">אפשר לבחור יותר ממחלקה אחת.</p>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        <label className="inline-flex items-center gap-2 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm font-semibold text-slate-700">
+          <input type="checkbox" checked={isActive} onChange={(event) => setIsActive(event.target.checked)} />
+          פעיל
+        </label>
+        <label className="inline-flex items-center gap-2 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm font-semibold text-slate-700">
+          <input
+            type="checkbox"
+            checked={receivesApplicationEmails}
+            onChange={(event) => setReceivesApplicationEmails(event.target.checked)}
+          />
+          מקבל/ת אימיילים על בקשות
+        </label>
+      </div>
+      <StatusMessage message={message} />
+      <button className="rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">שמירת נציג/ה</button>
+    </form>
+  );
+}
+
 export function ElectiveDepartmentSettingsForm({
   departments,
   initialDepartmentId = "",
@@ -468,6 +569,9 @@ export function ElectiveApplicationAdminForm({ departments }: { departments: Dep
           <option value="APPROVED">אושר</option>
           <option value="WAITLISTED">רשימת המתנה</option>
           <option value="REJECTED">נדחה</option>
+          <option value="ALTERNATIVE_OFFERED">הוצעה חלופה</option>
+          <option value="ALTERNATIVE_ACCEPTED">חלופה אושרה</option>
+          <option value="ALTERNATIVE_DECLINED">חלופה נדחתה</option>
           <option value="CANCELLED">בוטל</option>
           <option value="ARCHIVED">ארכיון</option>
         </select>
@@ -520,10 +624,16 @@ export function ElectiveApplicationStatusForm({
           className="rounded-full border border-brand-100 bg-white px-3 py-2 text-xs font-semibold outline-none"
         >
           <option value="SUBMITTED">SUBMITTED</option>
+          <option value="UNDER_REVIEW">UNDER_REVIEW</option>
+          <option value="ACCEPTED">ACCEPTED</option>
           <option value="APPROVED">APPROVED</option>
           <option value="REJECTED">REJECTED</option>
           <option value="WAITLISTED">WAITLISTED</option>
+          <option value="ALTERNATIVE_OFFERED">ALTERNATIVE_OFFERED</option>
+          <option value="ALTERNATIVE_ACCEPTED">ALTERNATIVE_ACCEPTED</option>
+          <option value="ALTERNATIVE_DECLINED">ALTERNATIVE_DECLINED</option>
           <option value="CANCELLED">CANCELLED</option>
+          <option value="ARCHIVED">ARCHIVED</option>
         </select>
         <button
           type="submit"

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createAuditLog } from "@/lib/audit";
-import { requireElectiveDepartmentApiSession } from "@/lib/elective-department-auth";
+import { canManageElectiveDepartment, requireElectiveDepartmentApiSession } from "@/lib/elective-department-auth";
 import { prisma } from "@/lib/prisma";
 import { hasValidSameOrigin } from "@/lib/security";
 import { electiveDepartmentPortalAvailabilitySchema } from "@/lib/validation";
@@ -27,11 +27,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "קלט לא תקין." }, { status: 400 });
   }
 
+  const requestedDepartmentId = typeof body?.departmentId === "string" ? body.departmentId : auth.session.departmentId;
+
+  if (!canManageElectiveDepartment(auth.session, requestedDepartmentId)) {
+    return NextResponse.json({ error: "אין הרשאה למחלקה זו." }, { status: 403 });
+  }
+
   if (parsed.data.action === "delete") {
     const deleted = await prisma.electiveAvailabilityWindow.deleteMany({
       where: {
         id: parsed.data.id,
-        departmentId: auth.session.departmentId
+        departmentId: requestedDepartmentId
       }
     });
 
@@ -45,7 +51,7 @@ export async function POST(request: Request) {
       entityType: "ElectiveAvailabilityWindow",
       entityId: parsed.data.id,
       metadata: {
-        departmentId: auth.session.departmentId,
+        departmentId: requestedDepartmentId,
         accountId: auth.session.accountId
       }
     });
@@ -66,7 +72,7 @@ export async function POST(request: Request) {
     const updated = await prisma.electiveAvailabilityWindow.updateMany({
       where: {
         id: parsed.data.id,
-        departmentId: auth.session.departmentId
+        departmentId: requestedDepartmentId
       },
       data
     });
@@ -81,7 +87,7 @@ export async function POST(request: Request) {
       entityType: "ElectiveAvailabilityWindow",
       entityId: parsed.data.id,
       metadata: {
-        departmentId: auth.session.departmentId,
+        departmentId: requestedDepartmentId,
         accountId: auth.session.accountId
       }
     });
@@ -91,7 +97,7 @@ export async function POST(request: Request) {
 
   const window = await prisma.electiveAvailabilityWindow.create({
     data: {
-      departmentId: auth.session.departmentId,
+      departmentId: requestedDepartmentId,
       ...data
     }
   });
@@ -102,7 +108,7 @@ export async function POST(request: Request) {
     entityType: "ElectiveAvailabilityWindow",
     entityId: window.id,
     metadata: {
-      departmentId: auth.session.departmentId,
+      departmentId: requestedDepartmentId,
       accountId: auth.session.accountId
     }
   });

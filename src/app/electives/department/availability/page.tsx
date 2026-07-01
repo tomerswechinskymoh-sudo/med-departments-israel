@@ -7,7 +7,7 @@ import {
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { requireElectiveDepartmentSession } from "@/lib/elective-department-auth";
+import { getSelectedElectiveDepartment, requireElectiveDepartmentSession } from "@/lib/elective-department-auth";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -23,10 +23,11 @@ function dateInput(value: Date) {
   return value.toISOString().slice(0, 10);
 }
 
-export default async function ElectiveDepartmentAvailabilityPage() {
+export default async function ElectiveDepartmentAvailabilityPage({ searchParams }: { searchParams?: Promise<{ departmentId?: string }> }) {
   const session = await requireElectiveDepartmentSession();
+  const selectedDepartment = getSelectedElectiveDepartment(session, (await searchParams)?.departmentId) ?? session.assignedDepartments[0];
   const windows = await prisma.electiveAvailabilityWindow.findMany({
-    where: { departmentId: session.departmentId },
+    where: { departmentId: selectedDepartment.id },
     orderBy: [{ startsAt: "asc" }, { endsAt: "asc" }]
   });
 
@@ -36,7 +37,7 @@ export default async function ElectiveDepartmentAvailabilityPage() {
         <SectionHeading
           eyebrow="Private department portal"
           title="חלונות זמינות"
-          description={`${session.institutionName} · ${session.specialtyName}. ניתן להגדיר חלונות פתוחים או סגורים למחלקה בלבד.`}
+          description={`${selectedDepartment.institutionName} · ${selectedDepartment.specialtyName}. ניתן להגדיר חלונות פתוחים או סגורים למחלקה שנבחרה.`}
         />
         <div className="flex flex-wrap gap-2">
           <Link href="/electives/department" className="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-black text-slate-700">
@@ -47,6 +48,7 @@ export default async function ElectiveDepartmentAvailabilityPage() {
       </div>
       <Card>
         <ElectiveDepartmentAvailabilityManager
+          departmentId={selectedDepartment.id}
           windows={windows.map((window) => ({
             id: window.id,
             status: window.status,

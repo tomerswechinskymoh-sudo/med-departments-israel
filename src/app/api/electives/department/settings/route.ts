@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createAuditLog } from "@/lib/audit";
-import { requireElectiveDepartmentApiSession } from "@/lib/elective-department-auth";
+import { canManageElectiveDepartment, requireElectiveDepartmentApiSession } from "@/lib/elective-department-auth";
 import { prisma } from "@/lib/prisma";
 import { hasValidSameOrigin } from "@/lib/security";
 import { electiveDepartmentPortalSettingsSchema } from "@/lib/validation";
@@ -27,10 +27,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "קלט לא תקין." }, { status: 400 });
   }
 
+  const requestedDepartmentId = typeof body?.departmentId === "string" ? body.departmentId : auth.session.departmentId;
+
+  if (!canManageElectiveDepartment(auth.session, requestedDepartmentId)) {
+    return NextResponse.json({ error: "אין הרשאה למחלקה זו." }, { status: 403 });
+  }
+
   const settings = await prisma.electiveDepartmentSettings.upsert({
-    where: { departmentId: auth.session.departmentId },
+    where: { departmentId: requestedDepartmentId },
     create: {
-      departmentId: auth.session.departmentId,
+      departmentId: requestedDepartmentId,
       maxStudentsAtOnce: parsed.data.maxStudentsAtOnce,
       availabilityMode: parsed.data.availabilityMode,
       minDurationDays: parsed.data.minDurationDays ?? null,
@@ -60,7 +66,7 @@ export async function POST(request: Request) {
     entityType: "ElectiveDepartmentSettings",
     entityId: settings.id,
     metadata: {
-      departmentId: auth.session.departmentId,
+      departmentId: requestedDepartmentId,
       accountId: auth.session.accountId
     }
   });

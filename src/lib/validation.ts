@@ -34,9 +34,13 @@ export const electiveApplicationStatusValues = [
   "APPROVED",
   "WAITLISTED",
   "REJECTED",
+  "ALTERNATIVE_OFFERED",
+  "ALTERNATIVE_ACCEPTED",
+  "ALTERNATIVE_DECLINED",
   "CANCELLED",
   "ARCHIVED"
 ] as const;
+export const electiveRepresentativeAssignmentRoleValues = ["PRIMARY", "SECONDARY", "VIEW_ONLY"] as const;
 export const fellowshipExperienceVisibilityValues = [
   "ADMIN_ONLY",
   "PUBLIC_ANONYMIZED",
@@ -634,6 +638,19 @@ export const electiveDepartmentAccountSchema = z.object({
   isActive: z.boolean().default(true)
 });
 
+export const electiveRepresentativeAccountSchema = z.object({
+  id: z.preprocess(emptyToUndefined, z.string().optional()),
+  name: z.string().min(2, "יש להזין שם נציג/ה."),
+  email: z.string().email("יש להזין אימייל תקין."),
+  username: z.string().min(3, "יש להזין שם משתמש באורך 3 תווים לפחות.").max(80),
+  password: z.preprocess(emptyToUndefined, z.string().min(8, "יש להזין סיסמה של לפחות 8 תווים.").optional()),
+  phone: z.preprocess(emptyToUndefined, z.string().min(7).optional()),
+  isActive: z.boolean().default(true),
+  departmentIds: z.array(z.string().min(1)).min(1, "יש לבחור לפחות מחלקה אחת."),
+  role: z.enum(electiveRepresentativeAssignmentRoleValues).default("PRIMARY"),
+  receivesApplicationEmails: z.boolean().default(true)
+});
+
 const electiveDepartmentSettingsBaseSchema = z.object({
   departmentId: z.string().min(1, "יש לבחור מחלקה."),
   maxStudentsAtOnce: z.coerce.number().int().min(1, "המינימום הוא סטודנט אחד.").max(50),
@@ -752,7 +769,35 @@ export const electiveStudentApplicationSchema = z
 
 export const electiveApplicationStatusUpdateSchema = z.object({
   applicationId: z.string().min(1, "חסר מזהה מועמדות."),
-  status: z.enum(["SUBMITTED", "APPROVED", "REJECTED", "WAITLISTED", "CANCELLED"])
+  status: z.enum([
+    "SUBMITTED",
+    "UNDER_REVIEW",
+    "ACCEPTED",
+    "APPROVED",
+    "REJECTED",
+    "WAITLISTED",
+    "ALTERNATIVE_OFFERED",
+    "ALTERNATIVE_ACCEPTED",
+    "ALTERNATIVE_DECLINED",
+    "CANCELLED",
+    "ARCHIVED"
+  ])
+});
+
+export const electiveRepresentativeApplicationActionSchema = z.object({
+  applicationId: z.string().min(1, "חסר מזהה מועמדות."),
+  representativeNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional()),
+  proposedStartDate: z.preprocess(emptyToUndefined, z.string().optional()),
+  proposedEndDate: z.preprocess(emptyToUndefined, z.string().optional())
+}).refine((data) => {
+  if (!data.proposedStartDate || !data.proposedEndDate) {
+    return true;
+  }
+
+  return new Date(data.proposedEndDate).getTime() >= new Date(data.proposedStartDate).getTime();
+}, {
+  path: ["proposedEndDate"],
+  message: "תאריך הסיום חייב להיות אחרי תאריך ההתחלה."
 });
 
 export const fellowshipSpecialtySchema = z.object({

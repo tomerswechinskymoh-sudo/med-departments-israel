@@ -86,3 +86,48 @@ export function ElectiveApplicationForm({ departmentSlug }: { departmentSlug: st
     </form>
   );
 }
+
+export function ElectiveAlternativeDecisionButtons({ applicationId }: { applicationId: string }) {
+  const router = useRouter();
+  const [message, setMessage] = useState<string | null>(null);
+  const [isWorking, setIsWorking] = useState(false);
+
+  async function decide(action: "accept-alternative" | "decline-alternative") {
+    setIsWorking(true);
+    setMessage(null);
+
+    try {
+      const payload = await postJson(`/api/electives/applications/${applicationId}/${action}`, {});
+      setMessage(payload.message ?? "עודכן.");
+      router.refresh();
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "העדכון נכשל.");
+    } finally {
+      setIsWorking(false);
+    }
+  }
+
+  return (
+    <div className="space-y-2">
+      <div className="flex flex-wrap gap-2">
+        <button
+          type="button"
+          onClick={() => void decide("accept-alternative")}
+          disabled={isWorking}
+          className="rounded-full bg-brand-700 px-4 py-2 text-xs font-black text-white disabled:opacity-60"
+        >
+          אישור החלופה
+        </button>
+        <button
+          type="button"
+          onClick={() => void decide("decline-alternative")}
+          disabled={isWorking}
+          className="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-black text-slate-700 disabled:opacity-60"
+        >
+          דחיית החלופה
+        </button>
+      </div>
+      {message ? <p className="text-xs font-semibold text-slate-600">{message}</p> : null}
+    </div>
+  );
+}

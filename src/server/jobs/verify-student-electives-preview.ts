@@ -56,6 +56,8 @@ const previewApis = [
   "src/app/api/electives/departments/route.ts",
   "src/app/api/electives/departments/[departmentSlug]/route.ts",
   "src/app/api/electives/applications/route.ts",
+  "src/app/api/electives/applications/[applicationId]/accept-alternative/route.ts",
+  "src/app/api/electives/applications/[applicationId]/decline-alternative/route.ts",
   "src/app/api/electives/my-applications/route.ts"
 ];
 const publicSurfaceFiles = [
@@ -119,7 +121,15 @@ const allowedApis = new Set([
   "src/app/api/electives/department/login/route.ts",
   "src/app/api/electives/department/logout/route.ts",
   "src/app/api/electives/department/settings/route.ts",
-  "src/app/api/electives/department/availability/route.ts"
+  "src/app/api/electives/department/availability/route.ts",
+  "src/app/api/electives/department/applications/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/approve/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/reject/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/waitlist/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/suggest-alternative/route.ts",
+  "src/app/api/electives/applications/[applicationId]/accept-alternative/route.ts",
+  "src/app/api/electives/applications/[applicationId]/decline-alternative/route.ts"
 ]);
 const unexpectedApis = apiRoutes.filter((path) => !allowedApis.has(path));
 addCheck("no unapproved electives APIs", unexpectedApis.length === 0, unexpectedApis.join(", "));

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ElectiveApplicationStatus } from "@prisma/client";
 import { ElectivesDemoTools } from "@/components/admin/admin-demo-actions";
 import { ElectiveApplicationAdminForm, ElectiveApplicationStatusForm } from "@/components/admin/electives-admin-forms";
 import { PageShell } from "@/components/layout/page-shell";
@@ -33,8 +34,12 @@ function statusCounts(applications: Array<{ status: string }>) {
   }, {});
 }
 
-export default async function AdminElectiveApplicationsPage() {
+export default async function AdminElectiveApplicationsPage({ searchParams }: { searchParams?: Promise<{ departmentId?: string; status?: string }> }) {
   await requireAdmin();
+  const params = await searchParams;
+  const status = params?.status && Object.values(ElectiveApplicationStatus).includes(params.status as ElectiveApplicationStatus)
+    ? params.status as ElectiveApplicationStatus
+    : undefined;
 
   const [departments, applications] = await Promise.all([
     prisma.department.findMany({
@@ -47,6 +52,10 @@ export default async function AdminElectiveApplicationsPage() {
       orderBy: [{ institution: { name: "asc" } }, { specialty: { name: "asc" } }, { name: "asc" }]
     }),
     prisma.electiveApplication.findMany({
+      where: {
+        ...(params?.departmentId ? { departmentId: params.departmentId } : {}),
+        ...(status ? { status } : {})
+      },
       include: {
         department: {
           select: {
@@ -107,6 +116,21 @@ export default async function AdminElectiveApplicationsPage() {
             ))}
           </div>
         </div>
+        <form className="mt-5 grid gap-3 md:grid-cols-[1fr_220px_auto]" action="/admin/electives/applications">
+          <select name="departmentId" defaultValue={params?.departmentId ?? ""} className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none">
+            <option value="">כל המחלקות</option>
+            {departmentOptions.map((department) => (
+              <option key={department.id} value={department.id}>{department.label}</option>
+            ))}
+          </select>
+          <select name="status" defaultValue={params?.status ?? ""} className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none">
+            <option value="">כל הסטטוסים</option>
+            {Object.keys(applicationCounts).map((status) => (
+              <option key={status} value={status}>{status}</option>
+            ))}
+          </select>
+          <button className="rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">סינון</button>
+        </form>
         <div className="mt-5 overflow-x-auto">
           <table className="min-w-full text-right text-sm">
             <thead className="text-xs font-black text-slate-500">

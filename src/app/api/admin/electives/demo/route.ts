@@ -43,6 +43,41 @@ async function resolveDepartment(departmentId: unknown) {
   });
 }
 
+async function resolveDemoDepartments(departmentId: unknown) {
+  const first = await resolveDepartment(departmentId);
+
+  if (!first) {
+    return [];
+  }
+
+  const second =
+    await prisma.department.findFirst({
+      where: {
+        id: { not: first.id },
+        institution: { name: first.institution.name }
+      },
+      select: {
+        id: true,
+        name: true,
+        institution: { select: { name: true } },
+        specialty: { select: { name: true } }
+      },
+      orderBy: [{ specialty: { name: "asc" } }, { name: "asc" }]
+    }) ??
+    await prisma.department.findFirst({
+      where: { id: { not: first.id } },
+      select: {
+        id: true,
+        name: true,
+        institution: { select: { name: true } },
+        specialty: { select: { name: true } }
+      },
+      orderBy: [{ institution: { name: "asc" } }, { specialty: { name: "asc" } }, { name: "asc" }]
+    });
+
+  return second ? [first, second] : [first];
+}
+
 async function upsertDemoApplication({
   departmentId,
   applicantEmail,
@@ -54,7 +89,7 @@ async function upsertDemoApplication({
   departmentId: string;
   applicantEmail: string;
   applicantName: string;
-  status: "SUBMITTED" | "UNDER_REVIEW" | "ACCEPTED";
+  status: "SUBMITTED" | "APPROVED" | "REJECTED" | "ALTERNATIVE_OFFERED" | "WAITLISTED";
   startOffset: number;
   endOffset: number;
 }) {
@@ -74,7 +109,10 @@ async function upsertDemoApplication({
     requestedStartDate: toDate(startOffset),
     requestedEndDate: toDate(endOffset),
     status,
+    proposedStartDate: status === "ALTERNATIVE_OFFERED" ? toDate(startOffset + 7) : null,
+    proposedEndDate: status === "ALTERNATIVE_OFFERED" ? toDate(endOffset + 7) : null,
     studentNotes: "נתון דמו פנימי לבדיקת ניהול אלקטיבים.",
+    representativeNotes: status === "ALTERNATIVE_OFFERED" ? "המחלקה מציעה חלון תאריכים חלופי." : null,
     adminNotes: "QA demo"
   };
 
@@ -108,7 +146,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "פעולת דמו לא תקינה." }, { status: 400 });
   }
 
-  const department = await resolveDepartment(body?.departmentId);
+  const demoDepartments = await resolveDemoDepartments(body?.departmentId);
+  const department = demoDepartments[0];
 
   if (!department) {
     return NextResponse.json({ error: "לא נמצאה מחלקה לנתוני הדמו." }, { status: 404 });
@@ -135,10 +174,76 @@ export async function POST(request: Request) {
 
   const summary: Record<string, number | string | boolean | null> = {
     department: `${department.institution.name} · ${department.specialty.name} · ${department.name}`,
+    departmentsInDemo: demoDepartments.length,
     accountActive: account.isActive
   };
 
   if (action === "seed") {
+    const representativePassword = makeTemporaryPassword();
+    const representative = await prisma.electiveRepresentativeAccount.upsert({
+      where: { username: "elective-demo-rep" },
+      create: {
+        name: "נציג/ת אלקטיבים דמו",
+        email: "elective-demo-rep@example.test",
+        username: "elective-demo-rep",
+        passwordHash: await hashPassword(representativePassword),
+        phone: "03-1111111",
+        isActive: true
+      },
+      update: {
+        name: "נציג/ת אלקטיבים דמו",
+        email: "elective-demo-rep@example.test",
+        passwordHash: await hashPassword(representativePassword),
+        phone: "03-1111111",
+        isActive: true
+      }
+    });
+
+    await prisma.electiveRepresentativeDepartmentAssignment.deleteMany({
+      where: { representativeAccountId: representative.id }
+    });
+    await prisma.electiveRepresentativeDepartmentAssignment.createMany({
+      data: demoDepartments.map((demoDepartment, index) => ({
+        representativeAccountId: representative.id,
+        departmentId: demoDepartment.id,
+        role: index === 0 ? "PRIMARY" : "SECONDARY",
+        receivesApplicationEmails: true
+      })),
+      skipDuplicates: true
+    });
+
+    for (const [index, demoDepartment] of demoDepartments.entries()) {
+      const mode = index === 0 ? "OPEN_BY_DEFAULT" : "CLOSED_BY_DEFAULT";
+      await prisma.electiveDepartmentSettings.upsert({
+        where: { departmentId: demoDepartment.id },
+        create: {
+          departmentId: demoDepartment.id,
+          maxStudentsAtOnce: index === 0 ? 2 : 1,
+          availabilityMode: mode,
+          minDurationDays: 14,
+          maxDurationDays: 42,
+          allowApplications: true,
+          contactEmail: "elective-demo@example.test",
+          contactPhone: "03-0000000",
+          instructions: "הגדרת דמו פנימית לבדיקת זמינות אלקטיבים.",
+          notes: index === 0 ? "דמו: פתוח כברירת מחדל עם תאריכים חסומים." : "דמו: סגור כברירת מחדל עם חלונות פתוחים.",
+          adminNotes: "QA demo"
+        },
+        update: {
+          maxStudentsAtOnce: index === 0 ? 2 : 1,
+          availabilityMode: mode,
+          minDurationDays: 14,
+          maxDurationDays: 42,
+          allowApplications: true,
+          contactEmail: "elective-demo@example.test",
+          contactPhone: "03-0000000",
+          instructions: "הגדרת דמו פנימית לבדיקת זמינות אלקטיבים.",
+          notes: index === 0 ? "דמו: פתוח כברירת מחדל עם תאריכים חסומים." : "דמו: סגור כברירת מחדל עם חלונות פתוחים.",
+          adminNotes: "QA demo"
+        }
+      });
+    }
+
     await prisma.electiveDepartmentSettings.upsert({
       where: { departmentId: department.id },
       create: {
@@ -147,7 +252,7 @@ export async function POST(request: Request) {
         availabilityMode: "OPEN_BY_DEFAULT",
         minDurationDays: 14,
         maxDurationDays: 42,
-        allowApplications: false,
+        allowApplications: true,
         contactEmail: "elective-demo@example.test",
         contactPhone: "03-0000000",
         instructions: "הגדרת דמו פנימית לבדיקת זמינות אלקטיבים.",
@@ -159,7 +264,7 @@ export async function POST(request: Request) {
         availabilityMode: "OPEN_BY_DEFAULT",
         minDurationDays: 14,
         maxDurationDays: 42,
-        allowApplications: false,
+        allowApplications: true,
         contactEmail: "elective-demo@example.test",
         contactPhone: "03-0000000",
         instructions: "הגדרת דמו פנימית לבדיקת זמינות אלקטיבים.",
@@ -214,25 +319,43 @@ export async function POST(request: Request) {
       }),
       upsertDemoApplication({
         departmentId: department.id,
-        applicantEmail: "elective-demo-review@example.test",
-        applicantName: "סטודנט/ית דמו - בבדיקה",
-        status: "UNDER_REVIEW",
+        applicantEmail: "elective-demo-approved@example.test",
+        applicantName: "סטודנט/ית דמו - אושר",
+        status: "APPROVED",
         startOffset: 42,
         endOffset: 56
       }),
       upsertDemoApplication({
         departmentId: department.id,
-        applicantEmail: "elective-demo-accepted@example.test",
-        applicantName: "סטודנט/ית דמו - אושר",
-        status: "ACCEPTED",
+        applicantEmail: "elective-demo-rejected@example.test",
+        applicantName: "סטודנט/ית דמו - נדחה",
+        status: "REJECTED",
         startOffset: 70,
         endOffset: 84
+      }),
+      upsertDemoApplication({
+        departmentId: department.id,
+        applicantEmail: "elective-demo-alternative@example.test",
+        applicantName: "סטודנט/ית דמו - חלופה",
+        status: "ALTERNATIVE_OFFERED",
+        startOffset: 91,
+        endOffset: 105
+      }),
+      upsertDemoApplication({
+        departmentId: department.id,
+        applicantEmail: "elective-demo-waitlist@example.test",
+        applicantName: "סטודנט/ית דמו - המתנה",
+        status: "WAITLISTED",
+        startOffset: 112,
+        endOffset: 126
       })
     ]);
 
     summary.settings = "upserted";
     summary.windowsCreated = windowsToCreate.length;
     summary.applicationsTouched = applicationResults.length;
+    summary.representativeUsername = representative.username;
+    summary.representativeTemporaryPassword = representativePassword;
   }
 
   await createAuditLog({

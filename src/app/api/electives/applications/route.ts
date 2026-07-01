@@ -3,6 +3,7 @@ import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
 import { hasValidSameOrigin } from "@/lib/security";
+import { sendElectiveApplicationSubmittedEmails } from "@/lib/services/elective-emails";
 import {
   getElectiveDepartmentBySlug,
   isStudentElectivesPreviewEnabled,
@@ -66,8 +67,44 @@ export async function POST(request: Request) {
       requestedEndDate,
       status: "SUBMITTED",
       studentNotes: parsed.data.studentNotes ?? null
+    },
+    include: {
+      department: {
+        include: {
+          institution: { select: { name: true } },
+          specialty: { select: { name: true } },
+          electiveRepresentativeAssignments: {
+            where: { receivesApplicationEmails: true },
+            include: {
+              representativeAccount: {
+                select: { name: true, email: true, isActive: true }
+              }
+            }
+          }
+        }
+      }
     }
   });
+
+  const recipients = application.department.electiveRepresentativeAssignments
+    .map((assignment) => assignment.representativeAccount)
+    .filter((representative) => representative.isActive)
+    .map((representative) => ({ name: representative.name, email: representative.email }));
+
+  if (recipients.length > 0) {
+    try {
+      await sendElectiveApplicationSubmittedEmails({
+        application,
+        representativeRecipients: recipients
+      });
+    } catch (error) {
+      console.error("[electives] Failed to send representative application email", {
+        applicationId: application.id,
+        departmentId: department.id,
+        error: error instanceof Error ? error.message : String(error)
+      });
+    }
+  }
 
   await createAuditLog({
     actorUserId: session.userId,

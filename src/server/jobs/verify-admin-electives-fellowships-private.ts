@@ -50,6 +50,8 @@ const adminApiRoots = [join(root, "src/app/api/admin/electives"), join(root, "sr
 const representativePagePaths = [
   "src/app/electives/department-login/page.tsx",
   "src/app/electives/department/page.tsx",
+  "src/app/electives/department/applications/page.tsx",
+  "src/app/electives/department/applications/[applicationId]/page.tsx",
   "src/app/electives/department/availability/page.tsx",
   "src/app/electives/department/settings/page.tsx"
 ];
@@ -57,7 +59,13 @@ const representativeApiPaths = [
   "src/app/api/electives/department/login/route.ts",
   "src/app/api/electives/department/logout/route.ts",
   "src/app/api/electives/department/settings/route.ts",
-  "src/app/api/electives/department/availability/route.ts"
+  "src/app/api/electives/department/availability/route.ts",
+  "src/app/api/electives/department/applications/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/approve/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/reject/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/waitlist/route.ts",
+  "src/app/api/electives/department/applications/[applicationId]/suggest-alternative/route.ts"
 ];
 const studentPreviewPagePaths = [
   "src/app/electives/page.tsx",
@@ -69,6 +77,8 @@ const studentPreviewApiPaths = [
   "src/app/api/electives/departments/route.ts",
   "src/app/api/electives/departments/[departmentSlug]/route.ts",
   "src/app/api/electives/applications/route.ts",
+  "src/app/api/electives/applications/[applicationId]/accept-alternative/route.ts",
+  "src/app/api/electives/applications/[applicationId]/decline-alternative/route.ts",
   "src/app/api/electives/my-applications/route.ts"
 ];
 const forbiddenPublicRouteDirs = [
@@ -93,6 +103,7 @@ for (const path of [
   "src/app/admin/electives/departments/page.tsx",
   "src/app/admin/electives/departments/[departmentId]/page.tsx",
   "src/app/admin/electives/applications/page.tsx",
+  "src/app/admin/electives/demo/page.tsx",
   "src/app/admin/electives/settings/page.tsx",
   "src/app/admin/fellowships/page.tsx",
   "src/app/admin/fellowships/content/page.tsx",
@@ -108,6 +119,7 @@ for (const path of [
   "src/app/api/admin/electives/windows/route.ts",
   "src/app/api/admin/electives/applications/route.ts",
   "src/app/api/admin/electives/demo/route.ts",
+  "src/app/api/admin/electives/representatives/route.ts",
   "src/app/api/admin/fellowships/specialties/route.ts",
   "src/app/api/admin/fellowships/programs/route.ts",
   "src/app/api/admin/fellowships/experiences/route.ts",
@@ -175,12 +187,13 @@ for (const path of representativeApiPaths) {
   const file = join(root, path);
   const content = existsSync(file) ? read(file) : "";
   const isLogin = path.includes("/login/");
+  const isReadOnly = path.endsWith("/applications/route.ts") || path.endsWith("/[applicationId]/route.ts");
   const hasRepGate = isLogin
     ? content.includes("authenticateElectiveDepartmentAccount(") && content.includes("isElectiveDepartmentPortalEnabled(")
     : content.includes("requireElectiveDepartmentApiSession(");
 
   addCheck(`representative API gate in ${path}`, hasRepGate);
-  addCheck(`representative API same-origin in ${path}`, content.includes("hasValidSameOrigin("));
+  addCheck(`representative API same-origin in ${path}`, isReadOnly || content.includes("hasValidSameOrigin("));
   addCheck(`representative API does not use admin session in ${path}`, !content.includes("getSession(") && !content.includes('role !== "admin"'));
 }
 

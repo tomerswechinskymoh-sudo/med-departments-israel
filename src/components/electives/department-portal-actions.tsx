@@ -147,7 +147,13 @@ export function ElectiveDepartmentLogoutButton() {
   );
 }
 
-export function ElectiveDepartmentSettingsPortalForm({ initialSettings }: { initialSettings: SettingsInitial }) {
+export function ElectiveDepartmentSettingsPortalForm({
+  initialSettings,
+  departmentId
+}: {
+  initialSettings: SettingsInitial;
+  departmentId: string;
+}) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
   const [isWorking, setIsWorking] = useState(false);
@@ -164,6 +170,7 @@ export function ElectiveDepartmentSettingsPortalForm({ initialSettings }: { init
 
     try {
       const payload = await postJson("/api/electives/department/settings", {
+        departmentId,
         maxStudentsAtOnce: Number(form.get("maxStudentsAtOnce") ?? 1),
         availabilityMode,
         minDurationDays: String(form.get("minDurationDays") ?? ""),
@@ -279,10 +286,12 @@ export function ElectiveDepartmentSettingsPortalForm({ initialSettings }: { init
 
 function WindowForm({
   window,
-  actionLabel
+  actionLabel,
+  departmentId
 }: {
   window?: WindowItem;
   actionLabel: string;
+  departmentId: string;
 }) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
@@ -297,6 +306,7 @@ function WindowForm({
 
     try {
       const payload = await postJson("/api/electives/department/availability", {
+        departmentId,
         action: window ? "update" : "create",
         id: window?.id,
         status,
@@ -329,6 +339,7 @@ function WindowForm({
 
     try {
       const payload = await postJson("/api/electives/department/availability", {
+        departmentId,
         action: "delete",
         id: window.id
       });
@@ -425,17 +436,17 @@ function WindowForm({
   );
 }
 
-export function ElectiveDepartmentAvailabilityManager({ windows }: { windows: WindowItem[] }) {
+export function ElectiveDepartmentAvailabilityManager({ windows, departmentId }: { windows: WindowItem[]; departmentId: string }) {
   return (
     <div className="space-y-5">
-      <WindowForm actionLabel="הוספת חלון זמינות" />
+      <WindowForm actionLabel="הוספת חלון זמינות" departmentId={departmentId} />
       <div className="space-y-3">
         {windows.length === 0 ? (
           <p className="rounded-3xl border border-dashed border-brand-100 bg-white px-4 py-5 text-sm text-slate-600">
             אין חלונות זמינות למחלקה כרגע.
           </p>
         ) : (
-          windows.map((window) => <WindowForm key={window.id} window={window} actionLabel="עדכון חלון" />)
+          windows.map((window) => <WindowForm key={window.id} window={window} actionLabel="עדכון חלון" departmentId={departmentId} />)
         )}
       </div>
     </div>

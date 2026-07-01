@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ElectivesDemoTools } from "@/components/admin/admin-demo-actions";
-import { ElectiveDepartmentAccountForm, ElectiveDepartmentSettingsForm } from "@/components/admin/electives-admin-forms";
+import {
+  ElectiveDepartmentAccountForm,
+  ElectiveDepartmentSettingsForm,
+  ElectiveRepresentativeAccountForm
+} from "@/components/admin/electives-admin-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -60,6 +64,23 @@ export default async function AdminElectiveDepartmentsPage() {
     },
     orderBy: [{ institution: { name: "asc" } }, { specialty: { name: "asc" } }, { name: "asc" }]
   });
+  const representatives = await prisma.electiveRepresentativeAccount.findMany({
+    include: {
+      assignments: {
+        include: {
+          department: {
+            select: {
+              name: true,
+              institution: { select: { name: true } },
+              specialty: { select: { name: true } }
+            }
+          }
+        }
+      }
+    },
+    orderBy: { createdAt: "desc" },
+    take: 50
+  });
   const departmentOptions = departments.map((department) => ({
     id: department.id,
     label: departmentLabel(department)
@@ -75,6 +96,13 @@ export default async function AdminElectiveDepartmentsPage() {
 
       <div className="grid gap-5 xl:grid-cols-2">
         <Card>
+          <h2 className="text-xl font-black text-ink">נציג/ת אלקטיבים רב-מחלקתי</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">חשבון אחד יכול לנהל מחלקה אחת או יותר. הסיסמה נשמרת כ-hash בלבד.</p>
+          <div className="mt-5">
+            <ElectiveRepresentativeAccountForm departments={departmentOptions} />
+          </div>
+        </Card>
+        <Card>
           <h2 className="text-xl font-black text-ink">יצירה / עדכון חשבון מחלקה</h2>
           <p className="mt-2 text-sm leading-7 text-slate-600">החשבון מיועד לשלב עתידי שבו נציג מחלקה ינהל רק את המחלקה שלו.</p>
           <div className="mt-5">
@@ -89,6 +117,43 @@ export default async function AdminElectiveDepartmentsPage() {
           </div>
         </Card>
       </div>
+
+      <Card>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-xl font-black text-ink">נציגי אלקטיבים</h2>
+          <Badge tone="default">{representatives.length} מוצגים</Badge>
+        </div>
+        <div className="mt-5 overflow-x-auto">
+          <table className="min-w-full text-right text-sm">
+            <thead className="text-xs font-black text-slate-500">
+              <tr>
+                <th className="px-3 py-2">נציג/ה</th>
+                <th className="px-3 py-2">סטטוס</th>
+                <th className="px-3 py-2">מחלקות</th>
+              </tr>
+            </thead>
+            <tbody>
+              {representatives.map((representative) => (
+                <tr key={representative.id} className="border-t border-slate-100">
+                  <td className="px-3 py-3">
+                    <p className="font-semibold text-ink">{representative.name}</p>
+                    <p className="text-xs text-slate-500">{representative.email} · {representative.username}</p>
+                  </td>
+                  <td className="px-3 py-3">
+                    <Badge tone={representative.isActive ? "success" : "default"}>{representative.isActive ? "פעיל" : "לא פעיל"}</Badge>
+                  </td>
+                  <td className="px-3 py-3">
+                    {representative.assignments.length > 0
+                      ? representative.assignments.map((assignment) => departmentLabel(assignment.department)).join(" · ")
+                      : "אין שיוך"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {representatives.length === 0 ? <p className="mt-4 text-sm text-slate-600">אין נציגים עדיין.</p> : null}
+        </div>
+      </Card>
 
       <Card>
         <h2 className="text-xl font-black text-ink">QA / דמו פנימי</h2>

@@ -5,7 +5,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { requireElectiveDepartmentSession } from "@/lib/elective-department-auth";
+import { getSelectedElectiveDepartment, requireElectiveDepartmentSession } from "@/lib/elective-department-auth";
 import { prisma } from "@/lib/prisma";
 import { formatDate } from "@/lib/utils";
 
@@ -18,10 +18,11 @@ export const metadata: Metadata = {
   }
 };
 
-export default async function ElectiveDepartmentPortalPage() {
+export default async function ElectiveDepartmentPortalPage({ searchParams }: { searchParams?: Promise<{ departmentId?: string }> }) {
   const session = await requireElectiveDepartmentSession();
+  const selectedDepartment = getSelectedElectiveDepartment(session, (await searchParams)?.departmentId) ?? session.assignedDepartments[0];
   const department = await prisma.department.findUnique({
-    where: { id: session.departmentId },
+    where: { id: selectedDepartment.id },
     include: {
       electiveDepartmentAccount: true,
       electiveSettings: true,
@@ -45,11 +46,28 @@ export default async function ElectiveDepartmentPortalPage() {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <SectionHeading
           eyebrow="Private department portal"
-          title={`${session.institutionName} · ${session.specialtyName}`}
-          description="ניהול אלקטיבים פרטי למחלקה. אין הרשמה ציבורית לסטודנטים בשלב זה."
+          title={`${selectedDepartment.institutionName} · ${selectedDepartment.specialtyName}`}
+          description="ניהול אלקטיבים פרטי למחלקות שהוקצו לחשבון. אין חשיפה בניווט הציבורי."
         />
         <ElectiveDepartmentLogoutButton />
       </div>
+
+      {session.assignedDepartments.length > 1 ? (
+        <Card className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-black text-slate-500">מחלקות בניהולך</span>
+          {session.assignedDepartments.map((assigned) => (
+            <Link
+              key={assigned.id}
+              href={`/electives/department?departmentId=${assigned.id}`}
+              className={`rounded-full px-4 py-2 text-xs font-black ${
+                assigned.id === selectedDepartment.id ? "bg-brand-700 text-white" : "border border-slate-200 bg-white text-slate-700"
+              }`}
+            >
+              {assigned.institutionName} · {assigned.specialtyName}
+            </Link>
+          ))}
+        </Card>
+      ) : null}
 
       <div className="grid gap-3 md:grid-cols-4">
         <Card>
@@ -74,7 +92,7 @@ export default async function ElectiveDepartmentPortalPage() {
         <Card>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-xl font-black text-ink">הגדרות מחלקה</h2>
-            <Link href="/electives/department/settings" className="rounded-full bg-brand-700 px-4 py-2 text-xs font-black text-white">
+            <Link href={`/electives/department/settings?departmentId=${selectedDepartment.id}`} className="rounded-full bg-brand-700 px-4 py-2 text-xs font-black text-white">
               עריכה
             </Link>
           </div>
@@ -95,7 +113,7 @@ export default async function ElectiveDepartmentPortalPage() {
         <Card>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-xl font-black text-ink">חלונות זמינות קרובים</h2>
-            <Link href="/electives/department/availability" className="rounded-full bg-brand-700 px-4 py-2 text-xs font-black text-white">
+            <Link href={`/electives/department/availability?departmentId=${selectedDepartment.id}`} className="rounded-full bg-brand-700 px-4 py-2 text-xs font-black text-white">
               ניהול
             </Link>
           </div>
@@ -122,7 +140,9 @@ export default async function ElectiveDepartmentPortalPage() {
       <Card>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-xl font-black text-ink">מועמדויות אחרונות</h2>
-          <Badge tone="warning">תצוגה פרטית בלבד</Badge>
+          <Link href={`/electives/department/applications?departmentId=${selectedDepartment.id}`} className="rounded-full bg-brand-700 px-4 py-2 text-xs font-black text-white">
+            ניהול מועמדויות
+          </Link>
         </div>
         <div className="mt-4 overflow-x-auto">
           <table className="min-w-full text-right text-sm">
