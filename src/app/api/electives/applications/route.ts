@@ -1,26 +1,21 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
 import { hasValidSameOrigin } from "@/lib/security";
 import { sendElectiveApplicationSubmittedEmails } from "@/lib/services/elective-emails";
 import {
   getElectiveDepartmentBySlug,
-  isStudentElectivesPreviewEnabled,
+  getStudentElectivesAccess,
   parseDateOnly,
   validateElectiveApplicationRequest
 } from "@/lib/student-electives";
 import { electiveStudentApplicationSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
-  if (!isStudentElectivesPreviewEnabled()) {
+  const access = await getStudentElectivesAccess();
+
+  if (!access.ok) {
     return NextResponse.json({ error: "תצוגת אלקטיבים אינה פעילה כרגע." }, { status: 404 });
-  }
-
-  const session = await getSession();
-
-  if (!session) {
-    return NextResponse.json({ error: "יש להתחבר כדי להגיש בקשת אלקטיב." }, { status: 401 });
   }
 
   if (!hasValidSameOrigin(request)) {
@@ -60,9 +55,9 @@ export async function POST(request: Request) {
   const application = await prisma.electiveApplication.create({
     data: {
       departmentId: department.id,
-      applicantUserId: session.userId,
-      applicantName: session.fullName,
-      applicantEmail: session.email,
+      applicantUserId: access.session.userId,
+      applicantName: access.session.fullName,
+      applicantEmail: access.session.email,
       requestedStartDate,
       requestedEndDate,
       status: "SUBMITTED",
@@ -107,7 +102,7 @@ export async function POST(request: Request) {
   }
 
   await createAuditLog({
-    actorUserId: session.userId,
+    actorUserId: access.session.userId,
     action: "student.elective_application_submitted",
     entityType: "ElectiveApplication",
     entityId: application.id,

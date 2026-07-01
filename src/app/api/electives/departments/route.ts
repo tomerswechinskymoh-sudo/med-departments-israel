@@ -2,12 +2,14 @@ import { NextResponse } from "next/server";
 import {
   getAvailabilitySummary,
   getElectiveDepartmentRegion,
-  isStudentElectivesPreviewEnabled,
+  getStudentElectivesAccess,
   listElectiveDepartments
 } from "@/lib/student-electives";
 
 export async function GET(request: Request) {
-  if (!isStudentElectivesPreviewEnabled()) {
+  const access = await getStudentElectivesAccess();
+
+  if (!access.ok) {
     return NextResponse.json({ error: "תצוגת אלקטיבים אינה פעילה כרגע." }, { status: 404 });
   }
 

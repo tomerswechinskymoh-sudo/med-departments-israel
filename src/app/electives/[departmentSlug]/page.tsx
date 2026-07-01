@@ -11,7 +11,7 @@ import {
   getAvailabilitySummary,
   getElectiveDepartmentRegion,
   getElectiveDepartmentBySlug,
-  requireStudentElectivesPreviewEnabled
+  requireStudentElectivesPreviewAccess
 } from "@/lib/student-electives";
 
 export const dynamic = "force-dynamic";
@@ -28,7 +28,7 @@ export default async function StudentElectiveDepartmentPage({
 }: {
   params: Promise<{ departmentSlug: string }>;
 }) {
-  requireStudentElectivesPreviewEnabled();
+  await requireStudentElectivesPreviewAccess();
   const { departmentSlug } = await params;
   const department = await getElectiveDepartmentBySlug(departmentSlug);
 
@@ -43,9 +43,9 @@ export default async function StudentElectiveDepartmentPage({
   return (
     <PageShell className="space-y-6 py-8">
       <SectionHeading
-        eyebrow="Private preview"
+        eyebrow="Admin hidden preview"
         title={`${department.institution.name} · ${department.specialty.name}`}
-        description="עמוד אלקטיב בתצוגה פרטית. ההגשה דורשת התחברות לחשבון רגיל בשלב זה."
+        description="עמוד אלקטיב בתצוגת אדמין מוסתרת בלבד. משתמשים רגילים חסומים עד פתיחה עתידית."
       />
 
       <div className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]">

@@ -5,8 +5,7 @@ import { ElectiveApplicationForm } from "@/components/electives/student-elective
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { requireAuth } from "@/lib/auth-guards";
-import { getElectiveDepartmentBySlug, requireStudentElectivesPreviewEnabled } from "@/lib/student-electives";
+import { getElectiveDepartmentBySlug, requireStudentElectivesPreviewAccess } from "@/lib/student-electives";
 
 export const dynamic = "force-dynamic";
 
@@ -22,8 +21,7 @@ export default async function StudentElectiveApplyPage({
 }: {
   params: Promise<{ departmentSlug: string }>;
 }) {
-  requireStudentElectivesPreviewEnabled();
-  const session = await requireAuth();
+  await requireStudentElectivesPreviewAccess();
   const { departmentSlug } = await params;
   const department = await getElectiveDepartmentBySlug(departmentSlug);
 
@@ -34,9 +32,9 @@ export default async function StudentElectiveApplyPage({
   return (
     <PageShell className="space-y-6 py-8">
       <SectionHeading
-        eyebrow="Private preview"
+        eyebrow="Admin hidden preview"
         title="הגשת בקשה לאלקטיב"
-        description={`${department.institution.name} · ${department.specialty.name}. בשלב ה-Preview נדרש חשבון משתמש רגיל; הבחנה מלאה לסטודנטים תתווסף בהמשך.`}
+        description={`${department.institution.name} · ${department.specialty.name}. בשלב זה ההגשה זמינה לאדמין בלבד לצורכי בדיקה.`}
       />
       <Card>
         <p className="mb-5 rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-950">

@@ -6,9 +6,8 @@ import { Card } from "@/components/ui/card";
 import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { ElectiveAlternativeDecisionButtons } from "@/components/electives/student-electives-actions";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { requireAuth } from "@/lib/auth-guards";
 import { prisma } from "@/lib/prisma";
-import { requireStudentElectivesPreviewEnabled } from "@/lib/student-electives";
+import { requireStudentElectivesPreviewAccess } from "@/lib/student-electives";
 import { formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -21,10 +20,9 @@ export const metadata: Metadata = {
 };
 
 export default async function MyElectiveApplicationsPage() {
-  requireStudentElectivesPreviewEnabled();
-  const session = await requireAuth();
+  const access = await requireStudentElectivesPreviewAccess();
   const applications = await prisma.electiveApplication.findMany({
-    where: { applicantUserId: session.userId },
+    where: { applicantUserId: access.session.userId },
     include: {
       department: {
         select: {
@@ -41,9 +39,9 @@ export default async function MyElectiveApplicationsPage() {
   return (
     <PageShell className="space-y-6 py-8">
       <SectionHeading
-        eyebrow="Private preview"
+        eyebrow="Admin hidden preview"
         title="בקשות האלקטיב שלי"
-        description="תצוגה פרטית למשתמש המחובר בלבד. אין גישה לבקשות של משתמשים אחרים."
+        description="תצוגת אדמין מוסתרת לבדיקת זרימת בקשות בלבד. אין גישה ציבורית בשלב זה."
       />
       <Card>
         <div className="overflow-x-auto">

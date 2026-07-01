@@ -74,6 +74,9 @@ if (existsSync(featureFlagFile)) {
   const content = read(featureFlagFile);
   addCheck("feature flag reads ENABLE_STUDENT_ELECTIVES_PREVIEW", content.includes("ENABLE_STUDENT_ELECTIVES_PREVIEW"));
   addCheck("feature flag defaults disabled", content.includes('=== "true"') || content.includes("=== 'true'"));
+  addCheck("future public launch flag placeholder exists", content.includes("ENABLE_STUDENT_ELECTIVES_PUBLIC"));
+  addCheck("hidden preview requires admin role", content.includes('session.role !== "admin"') && content.includes("admin_required"));
+  addCheck("central preview access helper exists", content.includes("getStudentElectivesAccess") && content.includes("requireStudentElectivesPreviewAccess"));
 }
 
 for (const path of previewPages) {
@@ -81,24 +84,24 @@ for (const path of previewPages) {
   const content = existsSync(file) ? read(file) : "";
   addCheck(`preview page exists: ${path}`, existsSync(file));
   addCheck(`preview page noindex: ${path}`, content.includes("robots") && content.includes("index: false"));
-  addCheck(`preview page feature gate: ${path}`, content.includes("requireStudentElectivesPreviewEnabled("));
+  addCheck(`preview page admin preview guard: ${path}`, content.includes("requireStudentElectivesPreviewAccess("));
 }
 
 for (const path of previewApis) {
   const file = join(root, path);
   const content = existsSync(file) ? read(file) : "";
   addCheck(`preview API exists: ${path}`, existsSync(file));
-  addCheck(`preview API feature gate: ${path}`, content.includes("isStudentElectivesPreviewEnabled("));
+  addCheck(`preview API admin preview guard: ${path}`, content.includes("getStudentElectivesAccess("));
 }
 
 const applicationsApi = read(join(root, "src/app/api/electives/applications/route.ts"));
-addCheck("application API requires user session", applicationsApi.includes("getSession(") && applicationsApi.includes("if (!session)"));
-addCheck("application API uses logged-in user id", applicationsApi.includes("applicantUserId: session.userId"));
+addCheck("application API blocks normal users in hidden preview", applicationsApi.includes("getStudentElectivesAccess(") && applicationsApi.includes("if (!access.ok)"));
+addCheck("application API uses guarded session user id", applicationsApi.includes("applicantUserId: access.session.userId"));
 addCheck("application API same-origin guard", applicationsApi.includes("hasValidSameOrigin("));
 
 const myApplicationsApi = read(join(root, "src/app/api/electives/my-applications/route.ts"));
-addCheck("my-applications API requires user session", myApplicationsApi.includes("getSession(") && myApplicationsApi.includes("if (!session)"));
-addCheck("my-applications API filters by session user", myApplicationsApi.includes("applicantUserId: session.userId"));
+addCheck("my-applications API blocks normal users in hidden preview", myApplicationsApi.includes("getStudentElectivesAccess(") && myApplicationsApi.includes("if (!access.ok)"));
+addCheck("my-applications API filters by guarded session user", myApplicationsApi.includes("applicantUserId: access.session.userId"));
 addCheck(
   "my-applications API does not accept external user selector",
   !myApplicationsApi.includes("searchParams") && !myApplicationsApi.includes("params") && !myApplicationsApi.includes("request.json")
@@ -114,6 +117,9 @@ addCheck("no nav/static/sitemap links to student electives preview", leakedSurfa
 
 addCheck("no public fellowship route", !existsSync(join(root, "src/app/fellowship")) && !existsSync(join(root, "src/app/fellowships")));
 addCheck("no student elective registration route", !existsSync(join(root, "src/app/electives/register")) && !existsSync(join(root, "src/app/electives/applications")));
+
+const schema = read(join(root, "prisma/schema.prisma"));
+addCheck("no plaintext elective passwords in schema", !schema.includes("password String") && schema.includes("passwordHash"));
 
 const apiRoutes = walk(join(root, "src/app/api/electives"), (path) => path.endsWith("/route.ts")).map((path) => rel(path));
 const allowedApis = new Set([

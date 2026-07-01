@@ -9,7 +9,7 @@ import {
   getAvailabilitySummary,
   getElectiveDepartmentRegion,
   listElectiveDepartments,
-  requireStudentElectivesPreviewEnabled
+  requireStudentElectivesPreviewAccess
 } from "@/lib/student-electives";
 
 export const dynamic = "force-dynamic";
@@ -26,7 +26,7 @@ export default async function StudentElectivesPreviewPage({
 }: {
   searchParams: Promise<{ search?: string; specialty?: string; region?: string }>;
 }) {
-  requireStudentElectivesPreviewEnabled();
+  await requireStudentElectivesPreviewAccess();
   const params = await searchParams;
   const departments = await listElectiveDepartments(params);
   const specialties = Array.from(new Set(departments.map((department) => department.specialty.name))).sort();
@@ -35,9 +35,9 @@ export default async function StudentElectivesPreviewPage({
   return (
     <PageShell className="space-y-6 py-8">
       <SectionHeading
-        eyebrow="Private preview"
+        eyebrow="Admin hidden preview"
         title="אלקטיבים למחלקות"
-        description="תצוגת Preview פרטית. מחלקות מופיעות רק אם נפתחה אפשרות להגשת מועמדות. אין קישור ציבורי בניווט או במפת האתר."
+        description="תצוגת אדמין מוסתרת בלבד. משתמשים רגילים אינם יכולים לגשת למסלול האלקטיבים בשלב זה."
       />
 
       <Card>

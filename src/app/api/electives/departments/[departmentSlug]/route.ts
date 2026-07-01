@@ -4,11 +4,13 @@ import {
   getAvailabilitySummary,
   getElectiveDepartmentRegion,
   getElectiveDepartmentBySlug,
-  isStudentElectivesPreviewEnabled
+  getStudentElectivesAccess
 } from "@/lib/student-electives";
 
 export async function GET(_request: Request, { params }: { params: Promise<{ departmentSlug: string }> }) {
-  if (!isStudentElectivesPreviewEnabled()) {
+  const access = await getStudentElectivesAccess();
+
+  if (!access.ok) {
     return NextResponse.json({ error: "תצוגת אלקטיבים אינה פעילה כרגע." }, { status: 404 });
   }
 

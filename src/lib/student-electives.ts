@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { getSession, type AppSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { resolveCanonicalInstitutionRegion } from "@/lib/regions";
 export {
@@ -13,6 +14,43 @@ export {
 
 export function isStudentElectivesPreviewEnabled() {
   return process.env.ENABLE_STUDENT_ELECTIVES_PREVIEW === "true" || process.env.ENABLE_STUDENT_ELECTIVES_PREVIEW === "1";
+}
+
+export function isStudentElectivesPublicEnabled() {
+  // Future launch switch. Keep false unless explicitly enabled after product approval.
+  return process.env.ENABLE_STUDENT_ELECTIVES_PUBLIC === "true" || process.env.ENABLE_STUDENT_ELECTIVES_PUBLIC === "1";
+}
+
+export type StudentElectivesAccess =
+  | { ok: true; mode: "admin_preview" | "public"; session: AppSession }
+  | { ok: false; status: "disabled" | "admin_required" | "login_required" };
+
+export async function getStudentElectivesAccess(): Promise<StudentElectivesAccess> {
+  if (!isStudentElectivesPreviewEnabled()) {
+    return { ok: false, status: "disabled" };
+  }
+
+  const session = await getSession();
+
+  if (isStudentElectivesPublicEnabled()) {
+    return session ? { ok: true, mode: "public", session } : { ok: false, status: "login_required" };
+  }
+
+  if (!session || session.role !== "admin") {
+    return { ok: false, status: "admin_required" };
+  }
+
+  return { ok: true, mode: "admin_preview", session };
+}
+
+export async function requireStudentElectivesPreviewAccess() {
+  const access = await getStudentElectivesAccess();
+
+  if (!access.ok) {
+    notFound();
+  }
+
+  return access;
 }
 
 export function requireStudentElectivesPreviewEnabled() {

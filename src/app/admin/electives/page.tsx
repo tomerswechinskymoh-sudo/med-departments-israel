@@ -66,7 +66,7 @@ export default async function AdminElectivesPage() {
       <SectionHeading
         eyebrow="Admin only"
         title="ניהול אלקטיבים"
-        description="מודול הכנה לניהול אלקטיבים מול מחלקות. בשלב זה אין חשיפה ציבורית ואין כניסת מחלקות חיצונית."
+        description="מודול הכנה לניהול אלקטיבים מול מחלקות. תצוגת הסטודנטים מוסתרת וזמינה לאדמין בלבד עד פתיחה עתידית."
       />
 
       <div className="grid gap-3 md:grid-cols-5">
@@ -106,6 +106,26 @@ export default async function AdminElectivesPage() {
           </Card>
         ))}
       </div>
+
+      <Card>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="text-xl font-black text-ink">Preview סטודנטים מוסתר</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              הקישורים הבאים זמינים רק לאדמין כאשר ENABLE_STUDENT_ELECTIVES_PREVIEW פעיל. הם אינם מופיעים בניווט או במפת האתר.
+            </p>
+          </div>
+          <Badge tone="warning">Admin only</Badge>
+        </div>
+        <div className="mt-5 flex flex-wrap gap-2">
+          <Link href="/electives" className="rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">
+            פתיחת מאגר אלקטיבים
+          </Link>
+          <Link href="/student/electives/my-applications" className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-700">
+            בקשות אלקטיב שלי
+          </Link>
+        </div>
+      </Card>
 
       <Card>
         <div className="flex flex-wrap items-start justify-between gap-3">

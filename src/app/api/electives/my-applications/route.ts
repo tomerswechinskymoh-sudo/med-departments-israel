@@ -1,22 +1,17 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/auth";
-import { isStudentElectivesPreviewEnabled } from "@/lib/student-electives";
+import { getStudentElectivesAccess } from "@/lib/student-electives";
 import { prisma } from "@/lib/prisma";
 
 export async function GET() {
-  if (!isStudentElectivesPreviewEnabled()) {
+  const access = await getStudentElectivesAccess();
+
+  if (!access.ok) {
     return NextResponse.json({ error: "תצוגת אלקטיבים אינה פעילה כרגע." }, { status: 404 });
-  }
-
-  const session = await getSession();
-
-  if (!session) {
-    return NextResponse.json({ error: "יש להתחבר כדי לצפות בבקשות." }, { status: 401 });
   }
 
   const applications = await prisma.electiveApplication.findMany({
     where: {
-      applicantUserId: session.userId
+      applicantUserId: access.session.userId
     },
     include: {
       department: {
