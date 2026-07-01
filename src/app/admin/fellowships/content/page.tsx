@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FellowshipsDemoTools } from "@/components/admin/admin-demo-actions";
 import { FellowshipExperienceForm, FellowshipSpecialtyForm } from "@/components/admin/fellowships-admin-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
@@ -108,6 +109,13 @@ export default async function AdminFellowshipContentPage() {
               isPublished: experience.isPublished
             }))}
           />
+        </div>
+      </Card>
+
+      <Card>
+        <h2 className="text-xl font-black text-ink">QA / דמו פנימי</h2>
+        <div className="mt-5">
+          <FellowshipsDemoTools />
         </div>
       </Card>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ElectivesDemoTools } from "@/components/admin/admin-demo-actions";
 import { ElectiveApplicationAdminForm } from "@/components/admin/electives-admin-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +24,13 @@ function departmentLabel(department: {
   specialty: { name: string };
 }) {
   return `${department.institution.name} · ${department.specialty.name} · ${department.name}`;
+}
+
+function statusCounts(applications: Array<{ status: string }>) {
+  return applications.reduce<Record<string, number>>((accumulator, application) => {
+    accumulator[application.status] = (accumulator[application.status] ?? 0) + 1;
+    return accumulator;
+  }, {});
 }
 
 export default async function AdminElectiveApplicationsPage() {
@@ -52,6 +60,11 @@ export default async function AdminElectiveApplicationsPage() {
       take: 100
     })
   ]);
+  const departmentOptions = departments.map((department) => ({
+    id: department.id,
+    label: departmentLabel(department)
+  }));
+  const applicationCounts = statusCounts(applications);
 
   return (
     <PageShell className="space-y-6 py-8">
@@ -66,18 +79,33 @@ export default async function AdminElectiveApplicationsPage() {
         <p className="mt-2 text-sm leading-7 text-slate-600">משמש לבדיקה וניהול פנימי בלבד.</p>
         <div className="mt-5">
           <ElectiveApplicationAdminForm
-            departments={departments.map((department) => ({
-              id: department.id,
-              label: departmentLabel(department)
-            }))}
+            departments={departmentOptions}
           />
+        </div>
+      </Card>
+
+      <Card>
+        <h2 className="text-xl font-black text-ink">QA / דמו פנימי</h2>
+        <div className="mt-5">
+          {departmentOptions.length === 0 ? (
+            <p className="rounded-2xl bg-slate-50 px-4 py-4 text-sm text-slate-600">אין מחלקות זמינות לנתוני דמו.</p>
+          ) : (
+            <ElectivesDemoTools departments={departmentOptions} />
+          )}
         </div>
       </Card>
 
       <Card>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-xl font-black text-ink">מועמדויות אחרונות</h2>
-          <Badge tone="default">{applications.length} מוצגות</Badge>
+          <div className="flex flex-wrap gap-2">
+            <Badge tone="default">{applications.length} מוצגות</Badge>
+            {Object.entries(applicationCounts).map(([status, count]) => (
+              <Badge key={status} tone="default">
+                {status}: {count}
+              </Badge>
+            ))}
+          </div>
         </div>
         <div className="mt-5 overflow-x-auto">
           <table className="min-w-full text-right text-sm">

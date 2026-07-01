@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ElectivesDemoTools } from "@/components/admin/admin-demo-actions";
 import { ElectiveAvailabilityWindowForm, ElectiveDepartmentSettingsForm } from "@/components/admin/electives-admin-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
@@ -92,6 +93,18 @@ export default async function AdminElectiveSettingsPage() {
           </div>
         </Card>
       </div>
+
+      <Card>
+        <h2 className="text-xl font-black text-ink">QA / דמו פנימי</h2>
+        <p className="mt-2 text-sm leading-7 text-slate-600">יצירת הגדרות, חלונות ומועמדויות דמו למחלקה נבחרת.</p>
+        <div className="mt-5">
+          {departmentOptions.length === 0 ? (
+            <p className="rounded-2xl bg-slate-50 px-4 py-4 text-sm text-slate-600">אין מחלקות זמינות לנתוני דמו.</p>
+          ) : (
+            <ElectivesDemoTools departments={departmentOptions} />
+          )}
+        </div>
+      </Card>
 
       <div className="grid gap-5 xl:grid-cols-2">
         <Card>

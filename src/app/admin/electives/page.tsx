@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ElectivesDemoTools } from "@/components/admin/admin-demo-actions";
 import { requireAdmin } from "@/lib/auth-guards";
 import { prisma } from "@/lib/prisma";
 import { PageShell } from "@/components/layout/page-shell";
@@ -37,11 +38,21 @@ const electiveLinks = [
 export default async function AdminElectivesPage() {
   await requireAdmin();
 
-  const [accounts, settings, windows, applications] = await Promise.all([
+  const [accounts, settings, windows, applications, departments] = await Promise.all([
     prisma.electiveDepartmentAccount.count(),
     prisma.electiveDepartmentSettings.count(),
     prisma.electiveAvailabilityWindow.count(),
-    prisma.electiveApplication.count()
+    prisma.electiveApplication.count(),
+    prisma.department.findMany({
+      select: {
+        id: true,
+        name: true,
+        institution: { select: { name: true } },
+        specialty: { select: { name: true } }
+      },
+      orderBy: [{ institution: { name: "asc" } }, { specialty: { name: "asc" } }, { name: "asc" }],
+      take: 100
+    })
   ]);
 
   return (
@@ -85,6 +96,30 @@ export default async function AdminElectivesPage() {
           </Card>
         ))}
       </div>
+
+      <Card>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="text-xl font-black text-ink">QA / דמו פנימי</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              יצירת חשבון דמו, הגדרות, חלונות ומועמדויות. אין שמירת סיסמה גלויה.
+            </p>
+          </div>
+          <Badge tone="warning">Admin only</Badge>
+        </div>
+        <div className="mt-5">
+          {departments.length === 0 ? (
+            <p className="rounded-2xl bg-slate-50 px-4 py-4 text-sm text-slate-600">אין מחלקות זמינות לנתוני דמו.</p>
+          ) : (
+            <ElectivesDemoTools
+              departments={departments.map((department) => ({
+                id: department.id,
+                label: `${department.institution.name} · ${department.specialty.name} · ${department.name}`
+              }))}
+            />
+          )}
+        </div>
+      </Card>
     </PageShell>
   );
 }

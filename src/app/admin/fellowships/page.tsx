@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FellowshipsDemoTools } from "@/components/admin/admin-demo-actions";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -85,6 +86,21 @@ export default async function AdminFellowshipsPage() {
           </Card>
         ))}
       </div>
+
+      <Card>
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="text-xl font-black text-ink">QA / דמו פנימי</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              יצירת תחומי פלושיפ, תוכניות וניסיון ישראלי בשלושת מצבי החשיפה. הכול נשאר באדמין.
+            </p>
+          </div>
+          <Badge tone="warning">Admin only</Badge>
+        </div>
+        <div className="mt-5">
+          <FellowshipsDemoTools />
+        </div>
+      </Card>
     </PageShell>
   );
 }

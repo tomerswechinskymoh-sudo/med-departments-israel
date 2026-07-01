@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { ElectivesDemoTools } from "@/components/admin/admin-demo-actions";
 import {
   ElectiveAvailabilityWindowForm,
   ElectiveDepartmentAccountForm,
@@ -28,6 +29,13 @@ function departmentLabel(department: {
   specialty: { name: string };
 }) {
   return `${department.institution.name} · ${department.specialty.name} · ${department.name}`;
+}
+
+function applicationStatusCounts(applications: Array<{ status: string }>) {
+  return applications.reduce<Record<string, number>>((accumulator, application) => {
+    accumulator[application.status] = (accumulator[application.status] ?? 0) + 1;
+    return accumulator;
+  }, {});
 }
 
 export default async function AdminElectiveDepartmentDetailPage({
@@ -61,6 +69,7 @@ export default async function AdminElectiveDepartmentDetailPage({
   }
 
   const option = [{ id: department.id, label: departmentLabel(department) }];
+  const applicationCounts = applicationStatusCounts(department.electiveApplications);
 
   return (
     <PageShell className="space-y-6 py-8">
@@ -121,6 +130,16 @@ export default async function AdminElectiveDepartmentDetailPage({
       </div>
 
       <Card>
+        <h2 className="text-xl font-black text-ink">QA / דמו למחלקה זו</h2>
+        <p className="mt-2 text-sm leading-7 text-slate-600">
+          יצירת דמו מלא או איפוס סיסמה זמנית לחשבון המחלקה. הסיסמה מוצגת פעם אחת בלבד.
+        </p>
+        <div className="mt-5">
+          <ElectivesDemoTools departments={option} />
+        </div>
+      </Card>
+
+      <Card>
         <h2 className="text-xl font-black text-ink">חלונות זמינות</h2>
         <div className="mt-5">
           <ElectiveAvailabilityWindowForm departments={option} initialDepartmentId={department.id} />
@@ -145,7 +164,17 @@ export default async function AdminElectiveDepartmentDetailPage({
       </Card>
 
       <Card>
-        <h2 className="text-xl font-black text-ink">מועמדויות אחרונות</h2>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-xl font-black text-ink">מועמדויות אחרונות</h2>
+          <div className="flex flex-wrap gap-2">
+            {Object.entries(applicationCounts).map(([status, count]) => (
+              <Badge key={status} tone="default">
+                {status}: {count}
+              </Badge>
+            ))}
+            {department.electiveApplications.length === 0 ? <Badge tone="warning">אין מועמדויות</Badge> : null}
+          </div>
+        </div>
         <div className="mt-5 overflow-x-auto">
           <table className="min-w-full text-right text-sm">
             <thead className="text-xs font-black text-slate-500">

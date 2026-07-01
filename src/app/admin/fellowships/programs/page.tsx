@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FellowshipsDemoTools } from "@/components/admin/admin-demo-actions";
 import { FellowshipProgramForm } from "@/components/admin/fellowships-admin-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
@@ -75,6 +76,13 @@ export default async function AdminFellowshipProgramsPage() {
       </Card>
 
       <Card>
+        <h2 className="text-xl font-black text-ink">QA / דמו פנימי</h2>
+        <div className="mt-5">
+          <FellowshipsDemoTools />
+        </div>
+      </Card>
+
+      <Card>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-xl font-black text-ink">תוכניות קיימות</h2>
           <Badge tone="default">{programs.length} מוצגות</Badge>
@@ -112,6 +120,9 @@ export default async function AdminFellowshipProgramsPage() {
               ))}
             </tbody>
           </table>
+          {programs.length === 0 ? (
+            <p className="mt-4 rounded-2xl bg-slate-50 px-4 py-4 text-sm text-slate-600">אין עדיין תוכניות פלושיפ. אפשר ליצור ידנית או להשתמש בדמו הפנימי.</p>
+          ) : null}
         </div>
       </Card>
     </PageShell>
