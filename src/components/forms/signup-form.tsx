@@ -51,31 +51,26 @@ type FormValues = {
   experienceContributionCategory?: ExperienceContributionCategory;
 };
 
-const roleStatusOptions: Array<{ value: RoleStatus; label: string; description: string }> = [
+const roleStatusOptions: Array<{ value: RoleStatus; label: string }> = [
   {
     value: "medical_student",
-    label: "סטודנט/ית לרפואה",
-    description: "נשאל על מסלול ושנת לימוד כדי להבין אם כבר הייתה חשיפה קלינית."
+    label: "סטודנט/ית לרפואה"
   },
   {
     value: "intern",
-    label: "סטאז׳ר/ית",
-    description: "נשמח לשמוע על מחלקה שבה עברת סבב או אלקטיב."
+    label: "סטאז׳ר/ית"
   },
   {
     value: "resident",
-    label: "מתמחה",
-    description: "חוויה מתוך המחלקה יכולה לעזור מאוד למועמדים הבאים."
+    label: "מתמחה"
   },
   {
     value: "specialist",
-    label: "רופא/ה מומחה/ית",
-    description: "אפשר לשתף מהמחלקה הנוכחית או ממחלקה קודמת."
+    label: "רופא/ה מומחה/ית"
   },
   {
     value: "other",
-    label: "לא במקצוע רפואי / אחר",
-    description: "ההרשמה תמשיך ללא שלב שיתוף חוויה."
+    label: "לא במקצוע רפואי / אחר"
   }
 ];
 
@@ -447,17 +442,16 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
           {roleStatusOptions.map((option) => (
             <label
               key={option.value}
-              className="flex cursor-pointer items-start gap-3 rounded-2xl border border-brand-100 bg-surface px-4 py-3 text-sm leading-6 text-slate-700 has-[:checked]:border-brand-300 has-[:checked]:bg-brand-50"
+              className="flex cursor-pointer items-center gap-3 rounded-2xl border border-brand-100 bg-surface px-4 py-3 text-sm leading-6 text-slate-700 has-[:checked]:border-brand-300 has-[:checked]:bg-brand-50"
             >
               <input
                 {...register("roleStatus")}
                 type="radio"
                 value={option.value}
-                className="mt-1 h-4 w-4 border-brand-200 text-brand-700"
+                className="h-4 w-4 border-brand-200 text-brand-700"
               />
               <span>
                 <span className="block font-black text-ink">{option.label}</span>
-                <span className="mt-1 block text-xs leading-5 text-slate-500">{option.description}</span>
               </span>
             </label>
           ))}
