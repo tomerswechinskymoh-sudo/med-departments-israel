@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { QuestionSparkIcon } from "@/components/ui/med-icons";
+import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
 
 type FaqItem = {
   title: string;
@@ -52,14 +53,14 @@ export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
                   <div className="space-y-3 text-sm leading-8 text-slate-700">
                     {item.body.map((paragraph) => (
                       <p key={paragraph}>
-                        {paragraph.includes("contact@hitmachut.org") ? (
+                        {paragraph.includes(PUBLIC_CONTACT_EMAIL) ? (
                           <>
-                            {paragraph.replace("contact@hitmachut.org", "")}
+                            {paragraph.replace(PUBLIC_CONTACT_EMAIL, "")}
                             <a
-                              href="mailto:contact@hitmachut.org"
+                              href={PUBLIC_CONTACT_MAILTO}
                               className="font-bold text-brand-800 underline underline-offset-4"
                             >
-                              contact@hitmachut.org
+                              {PUBLIC_CONTACT_EMAIL}
                             </a>
                           </>
                         ) : (

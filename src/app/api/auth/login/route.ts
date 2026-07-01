@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { authenticateUserWithStatus, setSessionCookie } from "@/lib/auth";
+import { PUBLIC_CONTACT_EMAIL } from "@/lib/contact";
 import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin } from "@/lib/security";
 import { loginSchema } from "@/lib/validation";
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
   if (result.status === "rejected") {
     return NextResponse.json(
       {
-        error: "בקשת האימות נדחתה. יש להירשם מחדש או ליצור קשר עם contact@hitmachut.org.",
+        error: `בקשת האימות נדחתה. יש להירשם מחדש או ליצור קשר עם ${PUBLIC_CONTACT_EMAIL}.`,
         code: "ACCOUNT_REJECTED"
       },
       { status: 403 }

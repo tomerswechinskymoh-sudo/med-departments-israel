@@ -3,6 +3,7 @@ import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { DepartmentPageActions } from "@/components/departments/department-page-actions";
+import { PUBLIC_CONTACT_EMAIL } from "@/lib/contact";
 import { DepartmentCompareProfileButton } from "@/components/departments/department-comparison-selection";
 import { DepartmentExperienceTabs } from "@/components/departments/department-experience-tabs";
 import {
@@ -1196,7 +1197,7 @@ function departmentLockCopy(session: Awaited<ReturnType<typeof getSession>>) {
     return {
       title: "אימות הסטטוס לא אושר",
       description:
-        "הגישה לחשבון נחסמה. אפשר להירשם מחדש עם אסמכתא מתאימה או ליצור קשר עם contact@hitmachut.org.",
+        `הגישה לחשבון נחסמה. אפשר להירשם מחדש עם אסמכתא מתאימה או ליצור קשר עם ${PUBLIC_CONTACT_EMAIL}.`,
       ctaHref: "/signup",
       ctaLabel: "הרשמה מחדש"
     };

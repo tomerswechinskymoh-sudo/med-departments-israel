@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
+import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
 
 const navItems = ["למה זה קיים", "איך זה עובד", "מי עומד מאחורי זה", "מקורות נתונים ואחריות", "יצירת קשר"];
 
@@ -180,10 +181,10 @@ export default function AboutPage() {
             </div>
             {section.title === "יצירת קשר" ? (
               <a
-                href="mailto:contact@hitmachut.org"
+                href={PUBLIC_CONTACT_MAILTO}
                 className="mt-5 inline-flex rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
               >
-                contact@hitmachut.org
+                {PUBLIC_CONTACT_EMAIL}
               </a>
             ) : null}
           </article>

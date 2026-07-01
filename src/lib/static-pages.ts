@@ -1,3 +1,5 @@
+import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
+
 export const staticPages = {
   about: {
     kind: "story",
@@ -50,7 +52,7 @@ export const staticPages = {
     theme: "teal",
     eyebrow: "יצירת קשר",
     title: "רוצים לדבר איתנו?",
-    description: "לתיקון תוכן, שיתוף פעולה, שאלה על האתר או משהו שלא מרגיש נכון: contact@hitmachut.org",
+    description: `לתיקון תוכן, שיתוף פעולה, שאלה על האתר או משהו שלא מרגיש נכון: ${PUBLIC_CONTACT_EMAIL}`,
     heroChips: ["תיקוני תוכן", "פניות רגישות", "שיתופי פעולה"],
     heroPanel: {
       eyebrow: "איך הכי טוב לפנות",
@@ -69,7 +71,7 @@ export const staticPages = {
         body: [
           "אפשר לפנות אלינו בכל שאלה שקשורה לתוכן, לפרטיות, לבעיות שימוש או לשיתופי פעולה.",
           "אם צריך לפתוח גישת נציג/ה למחלקה, זה נעשה ידנית על ידי אדמין ולא דרך טופס הרשמה ציבורי.",
-          "כתובת הפנייה הציבורית היא contact@hitmachut.org."
+          `כתובת הפנייה הציבורית היא ${PUBLIC_CONTACT_EMAIL}.`
         ]
       },
       {
@@ -81,7 +83,7 @@ export const staticPages = {
         ]
       }
     ],
-    cta: { href: "mailto:contact@hitmachut.org", label: "contact@hitmachut.org" }
+    cta: { href: PUBLIC_CONTACT_MAILTO, label: PUBLIC_CONTACT_EMAIL }
   },
   faq: {
     kind: "faq",
@@ -114,7 +116,7 @@ export const staticPages = {
       {
         title: "יש לי רעיון לשיפור האתר, למי לפנות?",
         body: [
-          "ניתן ליצור קשר דרך: contact@hitmachut.org"
+          `ניתן ליצור קשר דרך: ${PUBLIC_CONTACT_EMAIL}`
         ]
       },
       {

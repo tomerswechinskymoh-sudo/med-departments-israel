@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
 
 export function SiteFooter() {
-  const contactEmail = "contact@hitmachut.org";
   const links = [
     { href: "/sitemap", label: "מפת אתר" },
     { href: "/about", label: "אודות" },
@@ -26,10 +26,10 @@ export function SiteFooter() {
             </p>
           </div>
           <a
-            href={`mailto:${contactEmail}`}
+            href={PUBLIC_CONTACT_MAILTO}
             className="w-fit rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-brand-50 transition hover:border-white/40 hover:text-white"
           >
-            {contactEmail}
+            {PUBLIC_CONTACT_EMAIL}
           </a>
         </div>
 

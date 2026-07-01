@@ -1,4 +1,5 @@
 import crypto from "crypto";
+import { PUBLIC_CONTACT_EMAIL } from "@/lib/contact";
 import { escapeHtml, getBaseUrl, sendTransactionalEmail } from "@/lib/services/email";
 
 export function createVerificationToken() {
@@ -18,7 +19,7 @@ export function getUserEmailVerificationUrl(token: string, baseUrl = getBaseUrl(
 }
 
 function supportContact() {
-  return "contact@hitmachut.org";
+  return PUBLIC_CONTACT_EMAIL;
 }
 
 export async function sendUserVerificationEmail(input: {
