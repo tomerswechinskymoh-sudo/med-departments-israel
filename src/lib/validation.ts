@@ -632,28 +632,96 @@ export const electiveDepartmentAccountSchema = z.object({
   isActive: z.boolean().default(true)
 });
 
-export const electiveDepartmentSettingsSchema = z.object({
+const electiveDepartmentSettingsBaseSchema = z.object({
   departmentId: z.string().min(1, "יש לבחור מחלקה."),
   maxStudentsAtOnce: z.coerce.number().int().min(1, "המינימום הוא סטודנט אחד.").max(50),
   availabilityMode: z.enum(electiveAvailabilityModeValues),
+  minDurationDays: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(365).optional()),
+  maxDurationDays: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(365).optional()),
+  allowApplications: z.boolean().default(false),
   contactEmail: z.preprocess(emptyToUndefined, z.string().email("יש להזין אימייל תקין.").optional()),
   contactPhone: z.preprocess(emptyToUndefined, z.string().min(7, "יש להזין טלפון תקין.").optional()),
   instructions: z.preprocess(emptyToUndefined, z.string().max(2000).optional()),
+  notes: z.preprocess(emptyToUndefined, z.string().max(2000).optional()),
   adminNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional())
+});
+
+const hasValidElectiveDurationRange = (data: { minDurationDays?: number; maxDurationDays?: number }) => {
+  if (!data.minDurationDays || !data.maxDurationDays) {
+    return true;
+  }
+
+  return data.maxDurationDays >= data.minDurationDays;
+};
+
+export const electiveDepartmentSettingsSchema = electiveDepartmentSettingsBaseSchema.refine(hasValidElectiveDurationRange, {
+  path: ["maxDurationDays"],
+  message: "משך מקסימלי חייב להיות גדול או שווה למשך מינימלי."
 });
 
 export const electiveAvailabilityWindowSchema = z
   .object({
     departmentId: z.string().min(1, "יש לבחור מחלקה."),
+    id: z.preprocess(emptyToUndefined, z.string().optional()),
     status: z.enum(electiveWindowStatusValues),
     startsAt: z.string().min(1, "יש להזין תאריך התחלה."),
     endsAt: z.string().min(1, "יש להזין תאריך סיום."),
+    capacityOverride: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(50).optional()),
+    reason: z.preprocess(emptyToUndefined, z.string().max(1000).optional()),
     note: z.preprocess(emptyToUndefined, z.string().max(1000).optional())
   })
   .refine((data) => new Date(data.endsAt).getTime() >= new Date(data.startsAt).getTime(), {
     path: ["endsAt"],
     message: "תאריך הסיום חייב להיות אחרי תאריך ההתחלה."
   });
+
+export const electiveDepartmentPortalLoginSchema = z.object({
+  username: z.string().min(3, "יש להזין שם משתמש."),
+  password: z.string().min(8, "יש להזין סיסמה.")
+});
+
+export const electiveDepartmentPortalSettingsSchema = electiveDepartmentSettingsBaseSchema.omit({
+  departmentId: true,
+  adminNotes: true
+}).refine(hasValidElectiveDurationRange, {
+  path: ["maxDurationDays"],
+  message: "משך מקסימלי חייב להיות גדול או שווה למשך מינימלי."
+});
+
+export const electiveDepartmentPortalAvailabilitySchema = z.discriminatedUnion("action", [
+  z.object({
+    action: z.literal("create"),
+    status: z.enum(electiveWindowStatusValues),
+    startsAt: z.string().min(1, "יש להזין תאריך התחלה."),
+    endsAt: z.string().min(1, "יש להזין תאריך סיום."),
+    capacityOverride: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(50).optional()),
+    reason: z.preprocess(emptyToUndefined, z.string().max(1000).optional()),
+    note: z.preprocess(emptyToUndefined, z.string().max(1000).optional())
+  }),
+  z.object({
+    action: z.literal("update"),
+    id: z.string().min(1, "חסר מזהה חלון."),
+    status: z.enum(electiveWindowStatusValues),
+    startsAt: z.string().min(1, "יש להזין תאריך התחלה."),
+    endsAt: z.string().min(1, "יש להזין תאריך סיום."),
+    capacityOverride: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(50).optional()),
+    reason: z.preprocess(emptyToUndefined, z.string().max(1000).optional()),
+    note: z.preprocess(emptyToUndefined, z.string().max(1000).optional())
+  }),
+  z.object({
+    action: z.literal("delete"),
+    id: z.string().min(1, "חסר מזהה חלון.")
+  })
+]).refine((data) => {
+  if (data.action === "delete") {
+    return true;
+  }
+
+  return new Date(data.endsAt).getTime() >= new Date(data.startsAt).getTime();
+}, {
+  path: ["endsAt"],
+  message: "תאריך הסיום חייב להיות אחרי תאריך ההתחלה."
+});
 
 export const electiveApplicationAdminSchema = z.object({
   departmentId: z.string().min(1, "יש לבחור מחלקה."),

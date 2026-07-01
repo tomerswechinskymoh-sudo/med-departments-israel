@@ -145,17 +145,25 @@ export async function POST(request: Request) {
         departmentId: department.id,
         maxStudentsAtOnce: 2,
         availabilityMode: "OPEN_BY_DEFAULT",
+        minDurationDays: 14,
+        maxDurationDays: 42,
+        allowApplications: false,
         contactEmail: "elective-demo@example.test",
         contactPhone: "03-0000000",
         instructions: "הגדרת דמו פנימית לבדיקת זמינות אלקטיבים.",
+        notes: "הערת דמו למחלקה.",
         adminNotes: "QA demo"
       },
       update: {
         maxStudentsAtOnce: 2,
         availabilityMode: "OPEN_BY_DEFAULT",
+        minDurationDays: 14,
+        maxDurationDays: 42,
+        allowApplications: false,
         contactEmail: "elective-demo@example.test",
         contactPhone: "03-0000000",
         instructions: "הגדרת דמו פנימית לבדיקת זמינות אלקטיבים.",
+        notes: "הערת דמו למחלקה.",
         adminNotes: "QA demo"
       }
     });
@@ -174,6 +182,8 @@ export async function POST(request: Request) {
         status: "OPEN" as const,
         startsAt: toDate(14),
         endsAt: toDate(28),
+        capacityOverride: 2,
+        reason: "חלון פתוח לבדיקת QA",
         note: "QA demo open window"
       },
       {
@@ -181,6 +191,8 @@ export async function POST(request: Request) {
         status: "CLOSED" as const,
         startsAt: toDate(45),
         endsAt: toDate(52),
+        capacityOverride: null,
+        reason: "חלון סגור לבדיקת QA",
         note: "QA demo closed window"
       }
     ].filter((window) => !existingNotes.has(window.note));

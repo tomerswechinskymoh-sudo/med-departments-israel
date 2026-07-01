@@ -131,7 +131,11 @@ export default async function AdminElectiveDepartmentsPage() {
                   <td className="px-3 py-3 font-semibold text-ink">{departmentLabel(department)}</td>
                   <td className="px-3 py-3">
                     <Badge tone={department.electiveDepartmentAccount?.isActive ? "success" : "default"}>
-                      {department.electiveDepartmentAccount ? "קיים" : "חסר"}
+                      {department.electiveDepartmentAccount
+                        ? department.electiveDepartmentAccount.isActive
+                          ? "פעיל"
+                          : "לא פעיל"
+                        : "חסר"}
                     </Badge>
                   </td>
                   <td className="px-3 py-3">{department.electiveSettings?.maxStudentsAtOnce ?? "לא הוגדר"}</td>

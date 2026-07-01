@@ -31,9 +31,13 @@ export async function POST(request: Request) {
     update: {
       maxStudentsAtOnce: parsed.data.maxStudentsAtOnce,
       availabilityMode: parsed.data.availabilityMode,
+      minDurationDays: parsed.data.minDurationDays ?? null,
+      maxDurationDays: parsed.data.maxDurationDays ?? null,
+      allowApplications: parsed.data.allowApplications,
       contactEmail: parsed.data.contactEmail ?? null,
       contactPhone: parsed.data.contactPhone ?? null,
       instructions: parsed.data.instructions ?? null,
+      notes: parsed.data.notes ?? null,
       adminNotes: parsed.data.adminNotes ?? null
     }
   });

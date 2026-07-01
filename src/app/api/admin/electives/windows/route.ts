@@ -29,6 +29,8 @@ export async function POST(request: Request) {
       status: parsed.data.status,
       startsAt: new Date(parsed.data.startsAt),
       endsAt: new Date(parsed.data.endsAt),
+      capacityOverride: parsed.data.capacityOverride ?? null,
+      reason: parsed.data.reason ?? null,
       note: parsed.data.note ?? null
     }
   });

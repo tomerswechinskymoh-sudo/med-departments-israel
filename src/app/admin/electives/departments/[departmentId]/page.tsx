@@ -84,7 +84,11 @@ export default async function AdminElectiveDepartmentDetailPage({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-xl font-black text-ink">חשבון מחלקה</h2>
             <Badge tone={department.electiveDepartmentAccount?.isActive ? "success" : "warning"}>
-              {department.electiveDepartmentAccount ? "קיים" : "חסר"}
+              {department.electiveDepartmentAccount
+                ? department.electiveDepartmentAccount.isActive
+                  ? "פעיל"
+                  : "לא פעיל"
+                : "חסר"}
             </Badge>
           </div>
           <div className="mt-5">
@@ -117,9 +121,13 @@ export default async function AdminElectiveDepartmentDetailPage({
                   ? {
                       maxStudentsAtOnce: department.electiveSettings.maxStudentsAtOnce,
                       availabilityMode: department.electiveSettings.availabilityMode,
+                      minDurationDays: department.electiveSettings.minDurationDays,
+                      maxDurationDays: department.electiveSettings.maxDurationDays,
+                      allowApplications: department.electiveSettings.allowApplications,
                       contactEmail: department.electiveSettings.contactEmail,
                       contactPhone: department.electiveSettings.contactPhone,
                       instructions: department.electiveSettings.instructions,
+                      notes: department.electiveSettings.notes,
                       adminNotes: department.electiveSettings.adminNotes
                     }
                   : null
@@ -156,6 +164,8 @@ export default async function AdminElectiveDepartmentDetailPage({
                     {formatDate(window.startsAt)} - {formatDate(window.endsAt)}
                   </span>
                 </div>
+                {window.reason ? <p className="mt-2 text-slate-600">סיבה: {window.reason}</p> : null}
+                {window.capacityOverride ? <p className="mt-2 text-slate-600">קיבולת חריגה: {window.capacityOverride}</p> : null}
                 {window.note ? <p className="mt-2 text-slate-600">{window.note}</p> : null}
               </div>
             ))

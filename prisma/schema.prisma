@@ -715,9 +715,13 @@ model ElectiveDepartmentSettings {
   departmentId       String                    @unique @map("department_id")
   maxStudentsAtOnce  Int                       @default(1) @map("max_students_at_once")
   availabilityMode   ElectiveAvailabilityMode  @default(CLOSED_BY_DEFAULT) @map("availability_mode")
+  minDurationDays    Int?                      @map("min_duration_days")
+  maxDurationDays    Int?                      @map("max_duration_days")
+  allowApplications  Boolean                   @default(false) @map("allow_applications")
   contactEmail       String?                   @map("contact_email")
   contactPhone       String?                   @map("contact_phone")
   instructions       String?
+  notes              String?
   adminNotes         String?                   @map("admin_notes")
   createdAt          DateTime                  @default(now()) @map("created_at")
   updatedAt          DateTime                  @updatedAt @map("updated_at")
@@ -732,6 +736,8 @@ model ElectiveAvailabilityWindow {
   status       ElectiveWindowStatus
   startsAt     DateTime             @map("starts_at")
   endsAt       DateTime             @map("ends_at")
+  capacityOverride Int?             @map("capacity_override")
+  reason       String?
   note         String?
   createdAt    DateTime             @default(now()) @map("created_at")
   updatedAt    DateTime             @updatedAt @map("updated_at")

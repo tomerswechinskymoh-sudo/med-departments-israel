@@ -17,9 +17,13 @@ type ElectiveAccountInitial = {
 type ElectiveSettingsInitial = {
   maxStudentsAtOnce: number;
   availabilityMode: "OPEN_BY_DEFAULT" | "CLOSED_BY_DEFAULT";
+  minDurationDays?: number | null;
+  maxDurationDays?: number | null;
+  allowApplications?: boolean | null;
   contactEmail?: string | null;
   contactPhone?: string | null;
   instructions?: string | null;
+  notes?: string | null;
   adminNotes?: string | null;
 } | null;
 
@@ -150,6 +154,7 @@ export function ElectiveDepartmentSettingsForm({
   const [availabilityMode, setAvailabilityMode] = useState<"OPEN_BY_DEFAULT" | "CLOSED_BY_DEFAULT">(
     initialSettings?.availabilityMode ?? "CLOSED_BY_DEFAULT"
   );
+  const [allowApplications, setAllowApplications] = useState(initialSettings?.allowApplications ?? false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -161,9 +166,13 @@ export function ElectiveDepartmentSettingsForm({
         departmentId,
         maxStudentsAtOnce: Number(form.get("maxStudentsAtOnce") ?? 1),
         availabilityMode,
+        minDurationDays: String(form.get("minDurationDays") ?? ""),
+        maxDurationDays: String(form.get("maxDurationDays") ?? ""),
+        allowApplications,
         contactEmail: String(form.get("contactEmail") ?? ""),
         contactPhone: String(form.get("contactPhone") ?? ""),
         instructions: String(form.get("instructions") ?? ""),
+        notes: String(form.get("notes") ?? ""),
         adminNotes: String(form.get("adminNotes") ?? "")
       });
       setMessage(saved);
@@ -232,12 +241,44 @@ export function ElectiveDepartmentSettingsForm({
             className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
           />
         </div>
+        <div className="space-y-1">
+          <FieldLabel>משך מינימלי בימים</FieldLabel>
+          <input
+            name="minDurationDays"
+            type="number"
+            min={1}
+            max={365}
+            defaultValue={initialSettings?.minDurationDays ?? ""}
+            className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
+          />
+        </div>
+        <div className="space-y-1">
+          <FieldLabel>משך מקסימלי בימים</FieldLabel>
+          <input
+            name="maxDurationDays"
+            type="number"
+            min={1}
+            max={365}
+            defaultValue={initialSettings?.maxDurationDays ?? ""}
+            className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
+          />
+        </div>
       </div>
+      <label className="inline-flex items-center gap-2 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm font-semibold text-slate-700">
+        <input type="checkbox" checked={allowApplications} onChange={(event) => setAllowApplications(event.target.checked)} />
+        לאפשר מועמדויות עתידיות
+      </label>
       <textarea
         name="instructions"
         defaultValue={initialSettings?.instructions ?? ""}
         placeholder="הנחיות למחלקה / לסטודנטים בעתיד"
         className="min-h-24 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
+      />
+      <textarea
+        name="notes"
+        defaultValue={initialSettings?.notes ?? ""}
+        placeholder="הערות מחלקה"
+        className="min-h-20 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
       />
       <textarea
         name="adminNotes"
@@ -274,6 +315,8 @@ export function ElectiveAvailabilityWindowForm({
         status,
         startsAt: String(form.get("startsAt") ?? ""),
         endsAt: String(form.get("endsAt") ?? ""),
+        capacityOverride: String(form.get("capacityOverride") ?? ""),
+        reason: String(form.get("reason") ?? ""),
         note: String(form.get("note") ?? "")
       });
       setMessage(saved);
@@ -286,7 +329,7 @@ export function ElectiveAvailabilityWindowForm({
 
   return (
     <form onSubmit={onSubmit} className="space-y-4 rounded-2xl bg-brand-50 p-4">
-      <div className="grid gap-3 md:grid-cols-4">
+      <div className="grid gap-3 md:grid-cols-6">
         <div className="space-y-1 md:col-span-4">
           <FieldLabel>מחלקה</FieldLabel>
           <select
@@ -325,6 +368,20 @@ export function ElectiveAvailabilityWindowForm({
         <div className="space-y-1">
           <FieldLabel>הערה</FieldLabel>
           <input name="note" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+        </div>
+        <div className="space-y-1">
+          <FieldLabel>סיבה</FieldLabel>
+          <input name="reason" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+        </div>
+        <div className="space-y-1">
+          <FieldLabel>קיבולת חריגה</FieldLabel>
+          <input
+            name="capacityOverride"
+            type="number"
+            min={1}
+            max={50}
+            className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
+          />
         </div>
       </div>
       <StatusMessage message={message} />
