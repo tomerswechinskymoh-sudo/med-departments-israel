@@ -44,6 +44,23 @@ async function postJson(path: string, values: Record<string, unknown>) {
   return payload?.message ?? "נשמר.";
 }
 
+async function putJson(path: string, values: Record<string, unknown>) {
+  const response = await fetch(path, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(values)
+  });
+  const payload = (await response.json().catch(() => null)) as { message?: string; error?: string } | null;
+
+  if (!response.ok) {
+    throw new Error(payload?.error ?? "עדכון נכשל.");
+  }
+
+  return payload?.message ?? "עודכן.";
+}
+
 function FieldLabel({ children }: { children: ReactNode }) {
   return <label className="text-xs font-black text-slate-600">{children}</label>;
 }
@@ -448,6 +465,8 @@ export function ElectiveApplicationAdminForm({ departments }: { departments: Dep
           <option value="SUBMITTED">הוגש</option>
           <option value="UNDER_REVIEW">בבדיקה</option>
           <option value="ACCEPTED">אושר</option>
+          <option value="APPROVED">אושר</option>
+          <option value="WAITLISTED">רשימת המתנה</option>
           <option value="REJECTED">נדחה</option>
           <option value="CANCELLED">בוטל</option>
           <option value="ARCHIVED">ארכיון</option>
@@ -457,6 +476,64 @@ export function ElectiveApplicationAdminForm({ departments }: { departments: Dep
       <textarea name="adminNotes" placeholder="הערות אדמין" className="min-h-20 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
       <StatusMessage message={message} />
       <button className="rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">הוספת מועמדות אדמין</button>
+    </form>
+  );
+}
+
+export function ElectiveApplicationStatusForm({
+  applicationId,
+  initialStatus
+}: {
+  applicationId: string;
+  initialStatus: string;
+}) {
+  const router = useRouter();
+  const [status, setStatus] = useState(initialStatus);
+  const [message, setMessage] = useState<string | null>(null);
+  const [isWorking, setIsWorking] = useState(false);
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsWorking(true);
+    setMessage(null);
+
+    try {
+      const saved = await putJson("/api/admin/electives/applications", {
+        applicationId,
+        status
+      });
+      setMessage(saved);
+      router.refresh();
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "עדכון נכשל.");
+    } finally {
+      setIsWorking(false);
+    }
+  }
+
+  return (
+    <form onSubmit={onSubmit} className="space-y-2">
+      <div className="flex items-center gap-2">
+        <select
+          value={status}
+          onChange={(event) => setStatus(event.target.value)}
+          className="rounded-full border border-brand-100 bg-white px-3 py-2 text-xs font-semibold outline-none"
+        >
+          <option value="SUBMITTED">SUBMITTED</option>
+          <option value="APPROVED">APPROVED</option>
+          <option value="REJECTED">REJECTED</option>
+          <option value="WAITLISTED">WAITLISTED</option>
+          <option value="CANCELLED">CANCELLED</option>
+        </select>
+        <button
+          type="submit"
+          disabled={isWorking}
+          className="rounded-full bg-brand-700 px-3 py-2 text-xs font-black text-white disabled:opacity-60"
+        >
+          עדכון
+        </button>
+      </div>
+      <StatusMessage message={message} />
     </form>
   );
 }

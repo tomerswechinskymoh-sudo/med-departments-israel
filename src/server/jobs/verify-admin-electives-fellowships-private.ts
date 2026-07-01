@@ -59,6 +59,18 @@ const representativeApiPaths = [
   "src/app/api/electives/department/settings/route.ts",
   "src/app/api/electives/department/availability/route.ts"
 ];
+const studentPreviewPagePaths = [
+  "src/app/electives/page.tsx",
+  "src/app/electives/[departmentSlug]/page.tsx",
+  "src/app/electives/[departmentSlug]/apply/page.tsx",
+  "src/app/student/electives/my-applications/page.tsx"
+];
+const studentPreviewApiPaths = [
+  "src/app/api/electives/departments/route.ts",
+  "src/app/api/electives/departments/[departmentSlug]/route.ts",
+  "src/app/api/electives/applications/route.ts",
+  "src/app/api/electives/my-applications/route.ts"
+];
 const forbiddenPublicRouteDirs = [
   "src/app/elective",
   "src/app/fellowship",
@@ -108,10 +120,9 @@ for (const path of forbiddenPublicRouteDirs) {
   addCheck(`no public route: ${path}`, !existsSync(join(root, path)));
 }
 
-addCheck("no public electives listing page", !existsSync(join(root, "src/app/electives/page.tsx")));
 addCheck("no student elective application route", !existsSync(join(root, "src/app/electives/applications")));
 addCheck("no student elective registration route", !existsSync(join(root, "src/app/electives/register")));
-addCheck("no student elective apply route", !existsSync(join(root, "src/app/electives/apply")));
+addCheck("no root student elective apply route", !existsSync(join(root, "src/app/electives/apply")));
 
 for (const path of representativePagePaths) {
   addCheck(`representative page exists: ${path}`, existsSync(join(root, path)));
@@ -122,10 +133,11 @@ for (const path of representativeApiPaths) {
 }
 
 const allowedRepresentativePageFiles = new Set(representativePagePaths);
+const allowedStudentPreviewPageFiles = new Set(studentPreviewPagePaths);
 const unexpectedElectivePages = walk(join(root, "src/app/electives"), (path) => path.endsWith(".tsx"))
   .map((path) => rel(path))
-  .filter((path) => !allowedRepresentativePageFiles.has(path));
-addCheck("only private representative electives pages exist", unexpectedElectivePages.length === 0, unexpectedElectivePages.join(", "));
+  .filter((path) => !allowedRepresentativePageFiles.has(path) && !allowedStudentPreviewPageFiles.has(path));
+addCheck("only approved private electives pages exist", unexpectedElectivePages.length === 0, unexpectedElectivePages.join(", "));
 
 const adminPageFiles = adminPageRoots.flatMap((dir) => walk(dir, (path) => path.endsWith(".tsx")));
 for (const file of adminPageFiles) {
@@ -173,10 +185,11 @@ for (const path of representativeApiPaths) {
 }
 
 const allowedRepresentativeApiFiles = new Set(representativeApiPaths);
+const allowedStudentPreviewApiFiles = new Set(studentPreviewApiPaths);
 const unexpectedElectiveApis = walk(join(root, "src/app/api/electives"), (path) => path.endsWith("/route.ts"))
   .map((path) => rel(path))
-  .filter((path) => !allowedRepresentativeApiFiles.has(path));
-addCheck("only representative electives APIs exist outside /api/admin", unexpectedElectiveApis.length === 0, unexpectedElectiveApis.join(", "));
+  .filter((path) => !allowedRepresentativeApiFiles.has(path) && !allowedStudentPreviewApiFiles.has(path));
+addCheck("only approved private electives APIs exist outside /api/admin", unexpectedElectiveApis.length === 0, unexpectedElectiveApis.join(", "));
 
 const leakedPublicLinks = publicSurfaceFiles
   .filter((file) => existsSync(file))
@@ -193,7 +206,7 @@ addCheck(
 const misplacedApis = walk(join(root, "src/app/api"), (path) => path.endsWith("/route.ts"))
   .map((path) => rel(path))
   .filter((path) => /api\/(?!admin\/)(?:electives?|fellowships?)\//.test(path))
-  .filter((path) => !allowedRepresentativeApiFiles.has(path));
+  .filter((path) => !allowedRepresentativeApiFiles.has(path) && !allowedStudentPreviewApiFiles.has(path));
 addCheck("no unapproved electives/fellowships APIs outside admin/representative scope", misplacedApis.length === 0, misplacedApis.join(", "));
 
 const failures = checks.filter((check) => !check.ok);

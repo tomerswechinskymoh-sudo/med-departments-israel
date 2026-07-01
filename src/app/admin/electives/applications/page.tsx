@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ElectivesDemoTools } from "@/components/admin/admin-demo-actions";
-import { ElectiveApplicationAdminForm } from "@/components/admin/electives-admin-forms";
+import { ElectiveApplicationAdminForm, ElectiveApplicationStatusForm } from "@/components/admin/electives-admin-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -115,6 +115,7 @@ export default async function AdminElectiveApplicationsPage() {
                 <th className="px-3 py-2">מחלקה</th>
                 <th className="px-3 py-2">תאריכים</th>
                 <th className="px-3 py-2">סטטוס</th>
+                <th className="px-3 py-2">עדכון סטטוס</th>
                 <th className="px-3 py-2">נוצר</th>
               </tr>
             </thead>
@@ -132,6 +133,9 @@ export default async function AdminElectiveApplicationsPage() {
                     {application.requestedEndDate ? formatDate(application.requestedEndDate) : "לא צוין"}
                   </td>
                   <td className="px-3 py-3"><Badge tone="default">{application.status}</Badge></td>
+                  <td className="px-3 py-3">
+                    <ElectiveApplicationStatusForm applicationId={application.id} initialStatus={application.status} />
+                  </td>
                   <td className="px-3 py-3">{formatDate(application.createdAt)}</td>
                 </tr>
               ))}

@@ -81,6 +81,8 @@ enum ElectiveApplicationStatus {
   SUBMITTED
   UNDER_REVIEW
   ACCEPTED
+  APPROVED
+  WAITLISTED
   REJECTED
   CANCELLED
   ARCHIVED
@@ -245,6 +247,7 @@ model User {
   reviewedDataImportBatches DataImportBatch[] @relation("DataImportBatchReviewer")
   createdDataImportJobs DataImportJob[] @relation("DataImportJobCreator")
   createdElectiveDepartmentAccounts ElectiveDepartmentAccount[] @relation("ElectiveDepartmentAccountCreator")
+  electiveApplications       ElectiveApplication[]    @relation("ElectiveApplicationApplicant")
   createdFellowshipSpecialties FellowshipSpecialty[] @relation("FellowshipSpecialtyCreator")
   createdFellowshipPrograms FellowshipProgram[] @relation("FellowshipProgramCreator")
   createdFellowshipExperiences FellowshipIsraeliExperience[] @relation("FellowshipExperienceCreator")
@@ -750,6 +753,7 @@ model ElectiveAvailabilityWindow {
 model ElectiveApplication {
   id                 String                    @id @default(cuid())
   departmentId       String                    @map("department_id")
+  applicantUserId    String?                   @map("applicant_user_id")
   applicantName      String                    @map("applicant_name")
   applicantEmail     String                    @map("applicant_email")
   applicantPhone     String?                   @map("applicant_phone")
@@ -762,8 +766,10 @@ model ElectiveApplication {
   createdAt          DateTime                  @default(now()) @map("created_at")
   updatedAt          DateTime                  @updatedAt @map("updated_at")
   department         Department                @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  applicantUser      User?                     @relation("ElectiveApplicationApplicant", fields: [applicantUserId], references: [id], onDelete: SetNull)
 
   @@index([departmentId, status])
+  @@index([applicantUserId, createdAt])
   @@index([applicantEmail, createdAt])
 }
 

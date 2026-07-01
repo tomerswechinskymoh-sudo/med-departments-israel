@@ -31,6 +31,8 @@ export const electiveApplicationStatusValues = [
   "SUBMITTED",
   "UNDER_REVIEW",
   "ACCEPTED",
+  "APPROVED",
+  "WAITLISTED",
   "REJECTED",
   "CANCELLED",
   "ARCHIVED"
@@ -734,6 +736,23 @@ export const electiveApplicationAdminSchema = z.object({
   status: z.enum(electiveApplicationStatusValues).default("SUBMITTED"),
   studentNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional()),
   adminNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional())
+});
+
+export const electiveStudentApplicationSchema = z
+  .object({
+    departmentSlug: z.string().min(1, "חסר מזהה מחלקה."),
+    requestedStartDate: z.string().min(1, "יש להזין תאריך התחלה."),
+    requestedEndDate: z.string().min(1, "יש להזין תאריך סיום."),
+    studentNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional())
+  })
+  .refine((data) => new Date(data.requestedEndDate).getTime() >= new Date(data.requestedStartDate).getTime(), {
+    path: ["requestedEndDate"],
+    message: "תאריך הסיום חייב להיות אחרי תאריך ההתחלה."
+  });
+
+export const electiveApplicationStatusUpdateSchema = z.object({
+  applicationId: z.string().min(1, "חסר מזהה מועמדות."),
+  status: z.enum(["SUBMITTED", "APPROVED", "REJECTED", "WAITLISTED", "CANCELLED"])
 });
 
 export const fellowshipSpecialtySchema = z.object({
