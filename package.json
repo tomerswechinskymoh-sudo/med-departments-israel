@@ -12,6 +12,7 @@
     "prisma:migrate": "prisma migrate dev",
     "prisma:migrate:deploy": "prisma migrate deploy",
     "prisma:seed": "tsx prisma/seed.ts",
+    "db:env:diagnose": "tsx src/server/jobs/db-env-diagnose.ts",
     "db:seed": "tsx prisma/seed.ts",
     "import:department-heads": "tsx src/server/jobs/import-department-heads.ts",
     "import:master-csv": "tsx src/server/jobs/import-master-csv.ts",

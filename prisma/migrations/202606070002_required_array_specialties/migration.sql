@@ -10,6 +10,20 @@ SET "group_as_array" = CASE
   ELSE false
 END;
 
+WITH grouped_arrays AS (
+  SELECT
+    'ma_' || md5(inst."id" || ':' || spec."id") AS "id",
+    inst."id" AS "hospital_id",
+    spec."id" AS "specialty_id",
+    'מערך ' || spec."name" || ' · ' || inst."name" AS "name",
+    'array-' || inst."slug" || '-' || spec."slug" AS "slug",
+    'מערך ' || spec."name" || ' בבית החולים ' || inst."name" AS "description"
+  FROM "Department" dept
+  JOIN "Institution" inst ON inst."id" = dept."institution_id"
+  JOIN "Specialty" spec ON spec."id" = dept."specialty_id"
+  WHERE spec."group_as_array" = true
+  GROUP BY inst."id", inst."slug", inst."name", spec."id", spec."slug", spec."name"
+)
 INSERT INTO "MedicalArray" (
   "id",
   "hospital_id",
@@ -21,36 +35,33 @@ INSERT INTO "MedicalArray" (
   "updated_at"
 )
 SELECT
-  'ma_' || md5(institution."id" || ':' || specialty."id") AS "id",
-  institution."id" AS "hospital_id",
-  specialty."id" AS "specialty_id",
-  'מערך ' || specialty."name" || ' · ' || institution."name" AS "name",
-  'array-' || institution."slug" || '-' || specialty."slug" AS "slug",
-  'מערך ' || specialty."name" || ' בבית החולים ' || institution."name" AS "description",
-  NOW() AS "created_at",
-  NOW() AS "updated_at"
-FROM "Department" department
-JOIN "Institution" institution ON institution."id" = department."institution_id"
-JOIN "Specialty" specialty ON specialty."id" = department."specialty_id"
-WHERE specialty."group_as_array" = true
-GROUP BY institution."id", institution."slug", institution."name", specialty."id", specialty."slug", specialty."name"
+  grouped_arrays."id",
+  grouped_arrays."hospital_id",
+  grouped_arrays."specialty_id",
+  grouped_arrays."name",
+  grouped_arrays."slug",
+  grouped_arrays."description",
+  NOW(),
+  NOW()
+FROM grouped_arrays
 ON CONFLICT ("hospital_id", "specialty_id") DO UPDATE SET
   "name" = EXCLUDED."name",
+  "slug" = EXCLUDED."slug",
   "description" = EXCLUDED."description",
   "updated_at" = NOW();
 
-UPDATE "Department" department
-SET "medical_array_id" = array."id"
-FROM "MedicalArray" array
-JOIN "Specialty" specialty ON specialty."id" = array."specialty_id"
-WHERE department."institution_id" = array."hospital_id"
-  AND department."specialty_id" = array."specialty_id"
-  AND specialty."group_as_array" = true
-  AND department."medical_array_id" IS DISTINCT FROM array."id";
+UPDATE "Department" AS dept
+SET "medical_array_id" = medical_array."id"
+FROM "MedicalArray" AS medical_array
+JOIN "Specialty" AS spec ON spec."id" = medical_array."specialty_id"
+WHERE dept."institution_id" = medical_array."hospital_id"
+  AND dept."specialty_id" = medical_array."specialty_id"
+  AND spec."group_as_array" = true
+  AND dept."medical_array_id" IS DISTINCT FROM medical_array."id";
 
-UPDATE "Department" department
+UPDATE "Department" AS dept
 SET "medical_array_id" = NULL
-FROM "Specialty" specialty
-WHERE specialty."id" = department."specialty_id"
-  AND specialty."group_as_array" = false
-  AND department."medical_array_id" IS NOT NULL;
+FROM "Specialty" AS spec
+WHERE spec."id" = dept."specialty_id"
+  AND spec."group_as_array" = false
+  AND dept."medical_array_id" IS NOT NULL;
