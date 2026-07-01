@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
 import { getDepartmentComparisonData } from "@/lib/queries";
+import { LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL } from "@/lib/metric-display";
 import { Card } from "@/components/ui/card";
 import { PageShell } from "@/components/layout/page-shell";
 
@@ -12,7 +13,7 @@ const comparisonColumns = [
   "בית חולים",
   "משך התמחות ממוצע בפועל (שנים)",
   "טווח מתמחים חדשים צפוי ב-2026",
-  "זמן המתנה חציוני למשרה (חודשים)"
+  LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL
 ] as const;
 
 function parseDepartmentIds(value: string | string[] | undefined) {
@@ -174,7 +175,7 @@ export default async function ComparePage({
                     <p className="mt-1 font-black text-ink">{row.expectedOpenings2026}</p>
                   </div>
                   <div className="rounded-lg bg-slate-50 px-3 py-2">
-                    <p className="text-xs font-bold text-slate-500">זמן המתנה חציוני למשרה</p>
+                    <p className="text-xs font-bold text-slate-500">{LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL}</p>
                     <p className="mt-1 font-black text-ink">{row.medianWaitingTime}</p>
                   </div>
                 </div>

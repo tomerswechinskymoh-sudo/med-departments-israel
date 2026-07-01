@@ -1,5 +1,7 @@
 export const DATA_EXPLANATION_SHEETS = ["MASTER_Spec", "Master_Dept"] as const;
 
+export const LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL = "זמן מקבלת רישיון עד תחילת התמחות (חודשים)";
+
 export type DataExplanationSheet = (typeof DATA_EXPLANATION_SHEETS)[number];
 
 export type MetricVisualType =
@@ -116,6 +118,16 @@ export function normalizeCriterion(value: string) {
 }
 
 export function terminologyForDisplay(value: string) {
+  const normalized = normalizeCriterion(value);
+
+  if (
+    normalized === normalizeCriterion("זמן_המתנה_חציוני_לתקן") ||
+    normalized === normalizeCriterion("זמן המתנה חציוני לתקן") ||
+    normalized === normalizeCriterion("זמן המתנה חציוני למשרה")
+  ) {
+    return LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL;
+  }
+
   return value
     .replace(/לתקן/g, "למשרה")
     .replace(/בתקן/g, "במשרה")
@@ -126,6 +138,15 @@ export function terminologyForDisplay(value: string) {
 }
 
 export function readableLabelFromCriterion(value: string) {
+  const normalized = normalizeCriterion(value);
+  if (
+    normalized === normalizeCriterion("זמן_המתנה_חציוני_לתקן") ||
+    normalized === normalizeCriterion("זמן המתנה חציוני לתקן") ||
+    normalized === normalizeCriterion("זמן המתנה חציוני למשרה")
+  ) {
+    return LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL;
+  }
+
   return terminologyForDisplay(value)
     .replace(/\s*\((?:שנים|חודשים)\)\s*/g, "")
     .replace(/_/g, " ")

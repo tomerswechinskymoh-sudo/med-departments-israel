@@ -8,6 +8,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import {
   formatDateInput,
   getAvailabilitySummary,
+  getElectiveDepartmentRegion,
   getElectiveDepartmentBySlug,
   requireStudentElectivesPreviewEnabled
 } from "@/lib/student-electives";
@@ -36,6 +37,7 @@ export default async function StudentElectiveDepartmentPage({
 
   const openWindows = department.electiveAvailabilityWindows.filter((window) => window.status === "OPEN");
   const closedWindows = department.electiveAvailabilityWindows.filter((window) => window.status === "CLOSED");
+  const region = getElectiveDepartmentRegion(department);
 
   return (
     <PageShell className="space-y-6 py-8">
@@ -53,7 +55,7 @@ export default async function StudentElectiveDepartmentPage({
           </div>
           <h2 className="mt-5 text-2xl font-black text-ink">{department.name}</h2>
           <p className="mt-2 text-sm text-slate-600">
-            {[department.institution.city, department.institution.region].filter(Boolean).join(" · ") || "מיקום לא צוין"}
+            {[department.institution.city, region].filter(Boolean).join(" · ") || "מיקום לא צוין"}
           </p>
           <p className="mt-5 text-sm leading-7 text-slate-700">{department.about || department.shortSummary || "לא נוסף תיאור אלקטיב למחלקה."}</p>
           {department.electiveSettings?.notes ? (

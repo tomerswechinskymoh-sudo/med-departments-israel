@@ -1,4 +1,5 @@
 import {
+  LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
   metadataDisplayAction,
   metadataSourceLabel,
   metadataTooltip,
@@ -565,7 +566,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   },
   {
     key: "medianWaitingTime",
-    label: "זמן המתנה חציוני למשרה",
+    label: LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
     description: "הזמן החציוני מקבלת רישיון ועד לתחילת התמחות בכלל הארץ",
     unit: "months",
     sourceLabel: "משרד הבריאות",

@@ -29,6 +29,7 @@
     "verify:rabin-directory-dedupe": "node --import tsx src/server/jobs/verify-rabin-directory-dedupe.ts",
     "verify:admin-private-modules": "node --import tsx src/server/jobs/verify-admin-electives-fellowships-private.ts",
     "verify:student-electives-preview": "node --import tsx src/server/jobs/verify-student-electives-preview.ts",
+    "verify:region-normalization": "node --import tsx src/server/jobs/verify-region-normalization.ts",
     "verify:onboarding-experience": "tsx src/server/jobs/verify-onboarding-experience-eligibility.ts",
     "enrichment:mock": "tsx src/server/jobs/run-department-enrichment.ts",
     "openings:process-expired": "tsx src/server/jobs/run-expired-openings.ts",

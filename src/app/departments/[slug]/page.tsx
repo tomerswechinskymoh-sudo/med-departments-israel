@@ -17,6 +17,7 @@ import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
+  LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
   metadataDisplayAction,
   metadataSourceLabel,
   metadataTooltip,
@@ -938,7 +939,7 @@ function highlightedCardClass(metadata: MetricDisplayMetadata | null | undefined
 const readableMetricLabels: Record<string, string> = {
   officialResidencyDuration: "משך התמחות רשמי",
   actualAverageDuration: "משך ממוצע בפועל",
-  medianWaitingTime: "זמן המתנה חציוני למשרה",
+  medianWaitingTime: LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
   residentsCount: "מספר מתמחים",
   activeResidentsCount: "מספר מתמחים",
   boardStageAPassRate: "מעבר שלב א׳",
@@ -1835,10 +1836,10 @@ export default async function DepartmentDetailsPage({
     },
     {
       id: "residency-median-waiting-time",
-      label: "זמן המתנה חציוני למשרה (חודשים)",
+      label: LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
       value: medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null,
       sourceLabel: metadataSourceLabel(medianWaitingMeta, importedSourceLabel(medianWaitingMetric, "משרד הבריאות")),
-      tooltip: metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני למשרה לפי נתון מחלקתי מיובא."),
+      tooltip: metadataTooltip(medianWaitingMeta, "זמן מקבלת רישיון עד תחילת התמחות לפי נתון מחלקתי מיובא."),
       lastUpdated: medianWaitingMetric?.lastUpdated,
       sourceUrl: medianWaitingMeta?.sourceUrl,
       displayAction: metadataDisplayAction(medianWaitingMeta),
@@ -2127,10 +2128,10 @@ export default async function DepartmentDetailsPage({
 
               <div className="grid gap-2 lg:grid-cols-3">
                 <ClockMetricCard
-                  label="זמן המתנה חציוני למשרה (חודשים)"
+                  label={LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL}
                   value={medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null}
                   sourceLabel={metadataSourceLabel(medianWaitingMeta, importedSourceLabel(medianWaitingMetric, "משרד הבריאות"))}
-                  tooltip={metadataTooltip(medianWaitingMeta, "זמן המתנה חציוני למשרה לפי נתון מחלקתי מיובא.")}
+                  tooltip={metadataTooltip(medianWaitingMeta, "זמן מקבלת רישיון עד תחילת התמחות לפי נתון מחלקתי מיובא.")}
                   lastUpdated={medianWaitingMetric?.lastUpdated}
                   sourceUrl={medianWaitingMeta?.sourceUrl}
                   displayAction={metadataDisplayAction(medianWaitingMeta)}

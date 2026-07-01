@@ -101,7 +101,7 @@ const requiredMetricCards = [
   { id: "peripherySalary", label: "שכר פריפריה", field: "שכר_פריפריה" },
   { id: "peripherySalaryGap", label: "פער שכר", field: "פער_שכר_פריפריה" },
   { id: "residentsCount", label: "מספר מתמחים", field: "מספר_מתמחים" },
-  { id: "medianWaitingTime", label: "זמן המתנה חציוני לתקן", field: "זמן_המתנה_חציוני_לתקן" },
+  { id: "medianWaitingTime", label: "זמן מקבלת רישיון עד תחילת התמחות (חודשים)", field: "זמן_המתנה_חציוני_לתקן" },
   { id: "officialResidencyDuration", label: "משך התמחות רשמי", field: "משך_התמחות_רשמי" },
   { id: "actualAverageDuration", label: "משך ממוצע בפועל", field: "משך_ממוצע_בפועל" },
   { id: "seniorPhysiciansCount", label: "מספר בכירים", field: "מספר_בכירים" },

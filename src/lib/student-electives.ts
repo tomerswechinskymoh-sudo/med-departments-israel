@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { ElectiveAvailabilityMode, ElectiveApplicationStatus, ElectiveWindowStatus } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { resolveCanonicalInstitutionRegion } from "@/lib/regions";
 
 const APPLICATION_CAPACITY_STATUSES: ElectiveApplicationStatus[] = [
   ElectiveApplicationStatus.ACCEPTED,
@@ -62,7 +63,7 @@ export async function listElectiveDepartments(input?: { search?: string; special
   const specialty = input?.specialty?.trim();
   const region = input?.region?.trim();
 
-  return prisma.department.findMany({
+  const departments = await prisma.department.findMany({
     where: {
       electiveSettings: {
         allowApplications: true
@@ -76,8 +77,7 @@ export async function listElectiveDepartments(input?: { search?: string; special
             ]
           }
         : {}),
-      ...(specialty ? { specialty: { name: specialty } } : {}),
-      ...(region ? { institution: { region } } : {})
+      ...(specialty ? { specialty: { name: specialty } } : {})
     },
     include: {
       institution: { select: { name: true, city: true, region: true } },
@@ -90,6 +90,16 @@ export async function listElectiveDepartments(input?: { search?: string; special
     },
     orderBy: [{ institution: { name: "asc" } }, { specialty: { name: "asc" } }, { name: "asc" }]
   });
+
+  return region
+    ? departments.filter((department) => getElectiveDepartmentRegion(department) === region)
+    : departments;
+}
+
+export function getElectiveDepartmentRegion(department: {
+  institution: { name?: string | null; city?: string | null; region?: string | null };
+}) {
+  return resolveCanonicalInstitutionRegion(department.institution);
 }
 
 export function getAvailabilitySummary(department: {

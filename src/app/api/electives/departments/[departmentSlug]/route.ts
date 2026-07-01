@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
-import { formatDateInput, getAvailabilitySummary, getElectiveDepartmentBySlug, isStudentElectivesPreviewEnabled } from "@/lib/student-electives";
+import {
+  formatDateInput,
+  getAvailabilitySummary,
+  getElectiveDepartmentRegion,
+  getElectiveDepartmentBySlug,
+  isStudentElectivesPreviewEnabled
+} from "@/lib/student-electives";
 
 export async function GET(_request: Request, { params }: { params: Promise<{ departmentSlug: string }> }) {
   if (!isStudentElectivesPreviewEnabled()) {
@@ -22,7 +28,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ dep
       description: department.about || department.shortSummary,
       hospital: department.institution.name,
       city: department.institution.city,
-      region: department.institution.region,
+      region: getElectiveDepartmentRegion(department),
       specialty: department.specialty.name,
       settings: department.electiveSettings,
       availabilitySummary: getAvailabilitySummary(department),

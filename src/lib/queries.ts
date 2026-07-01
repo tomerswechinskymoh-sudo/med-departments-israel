@@ -32,6 +32,11 @@ import {
   normalizeMetricKeys
 } from "@/lib/specialty-metrics";
 import type { MetricDisplayMetadata } from "@/lib/metric-display";
+import {
+  CANONICAL_PUBLIC_REGIONS,
+  normalizePublicRegion,
+  resolveCanonicalInstitutionRegion
+} from "@/lib/regions";
 import { normalizeDepartmentNameSubDepartment } from "@/lib/department-normalization";
 import { resolveImportedMetric } from "@/lib/imported-metric-resolver";
 import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
@@ -448,66 +453,12 @@ function canonicalDepartmentSlugForRecord(input: {
   return canonicalSlug || input.slug || (input.id ? `department-${input.id}` : "department");
 }
 
-export const ISRAEL_REGIONS = ["מרכז", "צפון", "דרום", "ירושלים", "חיפה"] as const;
+export const ISRAEL_REGIONS = CANONICAL_PUBLIC_REGIONS;
 
-function inferRegionFromCity(city?: string | null) {
-  if (!city) {
-    return "מרכז";
-  }
-
-  if (["חיפה"].some((item) => city.includes(item))) {
-    return "חיפה";
-  }
-
-  if (["ירושלים"].some((item) => city.includes(item))) {
-    return "ירושלים";
-  }
-
-  if (["באר שבע", "אשקלון", "אילת", "אשדוד"].some((item) => city.includes(item))) {
-    return "דרום";
-  }
-
-  if (["נתניה", "כפר סבא", "חדרה", "רעננה", "הרצליה"].some((item) => city.includes(item))) {
-    return "שרון";
-  }
-
-  if (["רחובות", "באר יעקב", "ראשון לציון", "נס ציונה", "רמלה", "לוד", "גדרה"].some((item) => city.includes(item))) {
-    return "שפלה";
-  }
-
-  if (["נהריה", "צפת", "טבריה", "עפולה", "נצרת"].some((item) => city.includes(item))) {
-    return "צפון";
-  }
-
-  return "מרכז";
-}
-
-function inferRegionFromInstitutionName(name?: string | null) {
-  if (!name) {
-    return null;
-  }
-
-  if (["אסותא אשדוד", "אשדוד", "סורוקה", "ברזילי", "יוספטל", "באר שבע", "אשקלון", "אילת", "עדי נגב"].some((item) => name.includes(item))) {
-    return "דרום";
-  }
-
-  if (["רמב", "כרמל", "בני ציון", "פלימן", "מעלה הכרמל"].some((item) => name.includes(item))) {
-    return "חיפה";
-  }
-
-  if (["הדסה", "שערי צדק", "ירושלים", "הרצוג", "כפר שאול", "איתנים"].some((item) => name.includes(item))) {
-    return "ירושלים";
-  }
-
-  if (["זיו", "גליל", "פוריה", "נצרת", "העמק", "עפולה", "מזור"].some((item) => name.includes(item))) {
-    return "צפון";
-  }
-
-  return null;
-}
+export { normalizePublicRegion };
 
 export function resolveInstitutionRegion(institution: { name?: string | null; city?: string | null; region?: string | null }) {
-  return institution.region ?? inferRegionFromInstitutionName(institution.name) ?? inferRegionFromCity(institution.city);
+  return resolveCanonicalInstitutionRegion(institution);
 }
 
 function normalizeHebrewCatalogName(value: string) {

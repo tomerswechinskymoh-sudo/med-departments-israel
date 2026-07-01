@@ -4,7 +4,12 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { getAvailabilitySummary, listElectiveDepartments, requireStudentElectivesPreviewEnabled } from "@/lib/student-electives";
+import {
+  getAvailabilitySummary,
+  getElectiveDepartmentRegion,
+  listElectiveDepartments,
+  requireStudentElectivesPreviewEnabled
+} from "@/lib/student-electives";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +29,7 @@ export default async function StudentElectivesPreviewPage({
   const params = await searchParams;
   const departments = await listElectiveDepartments(params);
   const specialties = Array.from(new Set(departments.map((department) => department.specialty.name))).sort();
-  const regions = Array.from(new Set(departments.map((department) => department.institution.region).filter(Boolean) as string[])).sort();
+  const regions = Array.from(new Set(departments.map((department) => getElectiveDepartmentRegion(department)))).sort();
 
   return (
     <PageShell className="space-y-6 py-8">
@@ -63,28 +68,32 @@ export default async function StudentElectivesPreviewPage({
       </Card>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        {departments.map((department) => (
-          <Card key={department.id} className="flex h-full flex-col justify-between gap-5">
-            <div>
-              <div className="flex flex-wrap gap-2">
-                <Badge tone="success">פתוח להגשה</Badge>
-                <Badge tone="default">{department.electiveSettings?.availabilityMode ?? "לא הוגדר"}</Badge>
+        {departments.map((department) => {
+          const region = getElectiveDepartmentRegion(department);
+
+          return (
+            <Card key={department.id} className="flex h-full flex-col justify-between gap-5">
+              <div>
+                <div className="flex flex-wrap gap-2">
+                  <Badge tone="success">פתוח להגשה</Badge>
+                  <Badge tone="default">{department.electiveSettings?.availabilityMode ?? "לא הוגדר"}</Badge>
+                </div>
+                <h2 className="mt-4 text-xl font-black text-ink">{department.institution.name}</h2>
+                <p className="mt-1 text-sm font-semibold text-slate-700">{department.specialty.name}</p>
+                <p className="mt-1 text-xs text-slate-500">
+                  {[department.institution.city, region].filter(Boolean).join(" · ") || "מיקום לא צוין"}
+                </p>
+                <p className="mt-4 text-sm leading-7 text-slate-600">{getAvailabilitySummary(department)}</p>
+                <p className="mt-2 text-sm font-semibold text-slate-700">
+                  מקסימום במקביל: {department.electiveSettings?.maxStudentsAtOnce ?? "לא הוגדר"}
+                </p>
               </div>
-              <h2 className="mt-4 text-xl font-black text-ink">{department.institution.name}</h2>
-              <p className="mt-1 text-sm font-semibold text-slate-700">{department.specialty.name}</p>
-              <p className="mt-1 text-xs text-slate-500">
-                {[department.institution.city, department.institution.region].filter(Boolean).join(" · ") || "מיקום לא צוין"}
-              </p>
-              <p className="mt-4 text-sm leading-7 text-slate-600">{getAvailabilitySummary(department)}</p>
-              <p className="mt-2 text-sm font-semibold text-slate-700">
-                מקסימום במקביל: {department.electiveSettings?.maxStudentsAtOnce ?? "לא הוגדר"}
-              </p>
-            </div>
-            <Link href={`/electives/${department.slug}`} className="inline-flex w-fit rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">
-              צפייה בפרטי אלקטיב
-            </Link>
-          </Card>
-        ))}
+              <Link href={`/electives/${department.slug}`} className="inline-flex w-fit rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">
+                צפייה בפרטי אלקטיב
+              </Link>
+            </Card>
+          );
+        })}
       </div>
 
       {departments.length === 0 ? (

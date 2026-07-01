@@ -1,4 +1,5 @@
 import {
+  LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
   findMetricDisplayMetadata,
   normalizeCriterion,
   readableLabelFromCriterion,
@@ -66,7 +67,7 @@ export const metricFieldDefinitions = {
     legacyKeys: ["residentsCount", "activeResidentsCount"]
   },
   medianWaitingTime: {
-    label: "זמן המתנה חציוני למשרה",
+    label: LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
     importedKeys: ["זמן_המתנה_חציוני_לתקן"],
     dbKeys: ["זמן_המתנה_חציוני_לתקן"],
     uiCards: ["specialtyDashboard.medianWaitingTime", "departmentMain.medianWaitingTime"],

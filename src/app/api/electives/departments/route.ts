@@ -1,5 +1,10 @@
 import { NextResponse } from "next/server";
-import { getAvailabilitySummary, isStudentElectivesPreviewEnabled, listElectiveDepartments } from "@/lib/student-electives";
+import {
+  getAvailabilitySummary,
+  getElectiveDepartmentRegion,
+  isStudentElectivesPreviewEnabled,
+  listElectiveDepartments
+} from "@/lib/student-electives";
 
 export async function GET(request: Request) {
   if (!isStudentElectivesPreviewEnabled()) {
@@ -21,7 +26,7 @@ export async function GET(request: Request) {
       name: department.name,
       hospital: department.institution.name,
       city: department.institution.city,
-      region: department.institution.region,
+      region: getElectiveDepartmentRegion(department),
       specialty: department.specialty.name,
       maxStudentsAtOnce: department.electiveSettings?.maxStudentsAtOnce ?? null,
       availabilityMode: department.electiveSettings?.availabilityMode ?? null,

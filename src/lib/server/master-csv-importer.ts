@@ -99,7 +99,7 @@ const SPECIALTY_NUMERIC_METRICS: MetricInput[] = [
     unit: "years"
   },
   { key: "משך_ממוצע_בפועל", label: "משך ממוצע בפועל", header: "משך_ממוצע_בפועל", legacyKeys: ["actualAverageDuration", "medianResidencyDurationMonths"], unit: "years" },
-  { key: "זמן_המתנה_חציוני_לתקן", label: "זמן המתנה חציוני לתקן", header: "זמן_המתנה_חציוני_לתקן", legacyKeys: ["medianWaitingTime"], unit: "months" },
+  { key: "זמן_המתנה_חציוני_לתקן", label: "זמן מקבלת רישיון עד תחילת התמחות (חודשים)", header: "זמן_המתנה_חציוני_לתקן", legacyKeys: ["medianWaitingTime"], unit: "months" },
   { key: "מספר המתקבלים שדיווחו שמצאו מיד התמחות", label: "דיווחי מציאת התמחות מיד", header: "מספר המתקבלים שדיווחו שמצאו מיד התמחות", legacyKeys: ["acceptedImmediatelyReports"], unit: "count" },
   { key: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה", label: "דיווחי מציאת התמחות עד חצי שנה", header: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה", legacyKeys: ["acceptedWithinSixMonthsReports"], unit: "count" },
   { key: "מספר המתקבלים שדיווחו שמצאו עד שנה", label: "דיווחי מציאת התמחות עד שנה", header: "מספר המתקבלים שדיווחו שמצאו עד שנה", legacyKeys: ["acceptedWithinOneYearReports"], unit: "count" },
@@ -128,7 +128,7 @@ const SPECIALTY_TEXT_METRICS: TextMetricInput[] = [
 const DEPARTMENT_NUMERIC_METRICS: MetricInput[] = [
   { key: "משך_התמחות_רשמי", label: "משך התמחות רשמי", header: "משך_התמחות_רשמי", legacyKeys: ["officialResidencyDuration"], unit: "years" },
   { key: "משך_ממוצע_בפועל", label: "משך ממוצע בפועל", header: "משך_ממוצע_בפועל", legacyKeys: ["actualAverageDuration", "medianResidencyDurationMonths"], unit: "years" },
-  { key: "זמן_המתנה_חציוני_לתקן", label: "זמן המתנה חציוני לתקן", header: "זמן_המתנה_חציוני_לתקן", legacyKeys: ["medianWaitingTime"], unit: "months" },
+  { key: "זמן_המתנה_חציוני_לתקן", label: "זמן מקבלת רישיון עד תחילת התמחות (חודשים)", header: "זמן_המתנה_חציוני_לתקן", legacyKeys: ["medianWaitingTime"], unit: "months" },
   { key: "מספר המתקבלים שדיווחו שמצאו מיד התמחות", label: "דיווחי מציאת התמחות מיד", header: "מספר המתקבלים שדיווחו שמצאו מיד התמחות", legacyKeys: ["acceptedImmediatelyReports"], unit: "count" },
   { key: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה", label: "דיווחי מציאת התמחות עד חצי שנה", header: "מספר המתקבלים שדיווחו שמצאו עד חצי שנה", legacyKeys: ["acceptedWithinSixMonthsReports"], unit: "count" },
   { key: "מספר המתקבלים שדיווחו שמצאו עד שנה", label: "דיווחי מציאת התמחות עד שנה", header: "מספר המתקבלים שדיווחו שמצאו עד שנה", legacyKeys: ["acceptedWithinOneYearReports"], unit: "count" },
