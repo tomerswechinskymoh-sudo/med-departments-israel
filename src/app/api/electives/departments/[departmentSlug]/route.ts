@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import {
   formatDateInput,
+  getAvailabilityModeLabel,
   getAvailabilitySummary,
   getElectiveDepartmentRegion,
   getElectiveDepartmentBySlug,
@@ -33,6 +34,7 @@ export async function GET(_request: Request, { params }: { params: Promise<{ dep
       region: getElectiveDepartmentRegion(department),
       specialty: department.specialty.name,
       settings: department.electiveSettings,
+      availabilityModeLabel: getAvailabilityModeLabel(department.electiveSettings?.availabilityMode),
       availabilitySummary: getAvailabilitySummary(department),
       windows: department.electiveAvailabilityWindows.map((window) => ({
         id: window.id,

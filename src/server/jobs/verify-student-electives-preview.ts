@@ -77,6 +77,10 @@ if (existsSync(featureFlagFile)) {
   addCheck("future public launch flag placeholder exists", content.includes("ENABLE_STUDENT_ELECTIVES_PUBLIC"));
   addCheck("hidden preview requires admin role", content.includes('session.role !== "admin"') && content.includes("admin_required"));
   addCheck("central preview access helper exists", content.includes("getStudentElectivesAccess") && content.includes("requireStudentElectivesPreviewAccess"));
+  addCheck("stable detail href helper exists", content.includes("buildElectiveDepartmentHref") && content.includes("encodeURIComponent"));
+  addCheck("detail resolver decodes slug candidates", content.includes("safeDecodeSlug") && content.includes("slugCandidates"));
+  addCheck("search completeness helper requires dates, specialties, regions", content.includes("isElectiveSearchComplete") && content.includes("specialties.length > 0") && content.includes("regions.length > 0"));
+  addCheck("list matching uses availability/capacity match", content.includes("getElectiveDepartmentAvailabilityMatch") && content.includes("remainingCapacity"));
 }
 
 for (const path of previewPages) {
@@ -86,6 +90,21 @@ for (const path of previewPages) {
   addCheck(`preview page noindex: ${path}`, content.includes("robots") && content.includes("index: false"));
   addCheck(`preview page admin preview guard: ${path}`, content.includes("requireStudentElectivesPreviewAccess("));
 }
+
+const electivesPage = read(join(root, "src/app/electives/page.tsx"));
+addCheck("electives page shows search form before results", electivesPage.includes("תאריך התחלה") && electivesPage.includes("תחומי התמחות שמעניינים אותך") && electivesPage.includes("אזור בארץ"));
+addCheck("electives page withholds cards until search complete", electivesPage.includes("isSearchComplete ? await listElectiveDepartments") && electivesPage.includes("כדי לראות מחלקות מתאימות"));
+addCheck("electives cards use shared detail href", electivesPage.includes("buildElectiveDepartmentHref(department.slug, search)"));
+addCheck("electives empty state suggests changing filters", electivesPage.includes("נסה להרחיב אזור"));
+
+const electiveDetailPage = read(join(root, "src/app/electives/[departmentSlug]/page.tsx"));
+addCheck("detail page preserves query for apply", electiveDetailPage.includes("buildElectiveApplyHref(department.slug, search)"));
+addCheck("detail page displays capacity diagnostics", electiveDetailPage.includes("מקומות פנויים בטווח שבחרת") && electiveDetailPage.includes("בקשות מאושרות חופפות"));
+addCheck("detail page blocks apply when dates unavailable", electiveDetailPage.includes("!match?.ok") && electiveDetailPage.includes("disabled"));
+
+const electiveApplyPage = read(join(root, "src/app/electives/[departmentSlug]/apply/page.tsx"));
+addCheck("apply page reads query dates", electiveApplyPage.includes("parseStudentElectiveSearch") && electiveApplyPage.includes("defaultStartDate"));
+addCheck("apply page validates availability before showing form", electiveApplyPage.includes("getElectiveDepartmentAvailabilityMatch") && electiveApplyPage.includes("!match?.ok"));
 
 for (const path of previewApis) {
   const file = join(root, path);

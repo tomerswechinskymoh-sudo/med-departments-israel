@@ -38,6 +38,8 @@ async function main() {
     },
     selectedDepartments: summary.selectedDepartments,
     applicationsByStatus: summary.applicationsByStatus,
+    suggestedSearch: summary.suggestedSearch,
+    directDepartmentLinks: summary.directDepartmentLinks,
     links: summary.links
   }, null, 2));
 }

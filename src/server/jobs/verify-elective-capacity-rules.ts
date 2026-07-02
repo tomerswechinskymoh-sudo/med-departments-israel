@@ -1,4 +1,6 @@
 import { ElectiveAvailabilityMode, ElectiveWindowStatus } from "@prisma/client";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   getEffectiveCapacityForRange,
   isDateRangeAllowedForDepartment,
@@ -59,6 +61,15 @@ add(
   }).ok
 );
 add(
+  "CLOSED_BY_DEFAULT treats date windows as whole calendar days",
+  isDateRangeAllowedForDepartment({
+    settings: closedSettings,
+    requestedStartDate: date("2026-09-01"),
+    requestedEndDate: date("2026-09-14"),
+    windows: [{ status: ElectiveWindowStatus.OPEN, startsAt: new Date("2026-09-01T09:00:00.000Z"), endsAt: new Date("2026-09-14T09:00:00.000Z") }]
+  }).ok
+);
+add(
   "CLOSED_BY_DEFAULT rejects range outside open window",
   !isDateRangeAllowedForDepartment({
     settings: closedSettings,
@@ -76,6 +87,12 @@ add(
     windows: [{ status: ElectiveWindowStatus.OPEN, startsAt: date("2026-11-01"), endsAt: date("2026-11-30"), capacityOverride: 1 }]
   }) === 1
 );
+
+const availabilitySource = readFileSync(join(process.cwd(), "src/lib/elective-availability.ts"), "utf8");
+const studentElectivesSource = readFileSync(join(process.cwd(), "src/lib/student-electives.ts"), "utf8");
+add("server validation blocks full capacity", availabilitySource.includes("approvedOverlapCount >= range.capacity"));
+add("student matching hides full capacity results", studentElectivesSource.includes("remainingCapacity <= 0"));
+add("student matching uses approved overlap count", studentElectivesSource.includes("countApprovedApplicationsOverlappingRange"));
 
 const failures = checks.filter((check) => !check.ok);
 console.log(JSON.stringify({ ok: failures.length === 0, checked: checks.length, failed: failures.length, failures }, null, 2));

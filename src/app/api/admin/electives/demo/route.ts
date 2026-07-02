@@ -16,6 +16,11 @@ function flattenSummary(summary: Awaited<ReturnType<typeof seedElectivesDemo>>) 
     applicationsByStatus: Object.entries(summary.applicationsByStatus)
       .map(([status, count]) => `${status}: ${count}`)
       .join(" | "),
+    suggestedDates: `${summary.suggestedSearch.start} - ${summary.suggestedSearch.end}`,
+    suggestedSpecialties: summary.suggestedSearch.specialties.join(", "),
+    suggestedRegions: summary.suggestedSearch.regions.join(", "),
+    prefilledPreviewUrl: summary.suggestedSearch.url,
+    directDepartmentUrls: summary.directDepartmentLinks.join(" | "),
     previewLinks: summary.links.join(" | ")
   };
 }

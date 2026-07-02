@@ -21,7 +21,15 @@ async function postJson(path: string, values: Record<string, unknown>) {
   return payload ?? {};
 }
 
-export function ElectiveApplicationForm({ departmentSlug }: { departmentSlug: string }) {
+export function ElectiveApplicationForm({
+  departmentSlug,
+  defaultStartDate,
+  defaultEndDate
+}: {
+  departmentSlug: string;
+  defaultStartDate?: string;
+  defaultEndDate?: string;
+}) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
   const [isWorking, setIsWorking] = useState(false);
@@ -57,6 +65,7 @@ export function ElectiveApplicationForm({ departmentSlug }: { departmentSlug: st
             name="requestedStartDate"
             type="date"
             required
+            defaultValue={defaultStartDate}
             className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
           />
         </label>
@@ -66,6 +75,7 @@ export function ElectiveApplicationForm({ departmentSlug }: { departmentSlug: st
             name="requestedEndDate"
             type="date"
             required
+            defaultValue={defaultEndDate}
             className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
           />
         </label>

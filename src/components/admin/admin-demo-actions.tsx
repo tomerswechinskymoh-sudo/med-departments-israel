@@ -67,11 +67,20 @@ function SummaryList({ summary }: { summary: DemoSummary }) {
   );
 }
 
-function ElectivesDemoLinks() {
+function splitSummaryLinks(value: number | string | boolean | null | undefined) {
+  return typeof value === "string" && value.trim()
+    ? value.split(" | ").map((href) => href.trim()).filter(Boolean)
+    : [];
+}
+
+function ElectivesDemoLinks({ summary }: { summary: DemoSummary }) {
+  const prefilledPreviewUrl = typeof summary?.prefilledPreviewUrl === "string" ? summary.prefilledPreviewUrl : "/electives";
+  const directDepartmentUrls = splitSummaryLinks(summary?.directDepartmentUrls);
   const links = [
-    { href: "/electives", label: "תצוגת סטודנטים" },
+    { href: prefilledPreviewUrl, label: "פתיחת חיפוש דמו מלא" },
     { href: "/electives/department-login", label: "כניסת נציג/ת מחלקה" },
-    { href: "/admin/electives/applications", label: "בקשות אלקטיב באדמין" }
+    { href: "/admin/electives/applications", label: "בקשות אלקטיב באדמין" },
+    ...directDepartmentUrls.map((href, index) => ({ href, label: `עמוד מחלקה דמו ${index + 1}` }))
   ];
 
   return (
@@ -160,7 +169,7 @@ export function ElectivesDemoTools({ departments }: { departments: DepartmentOpt
       </form>
       {message ? <p className="text-xs font-semibold text-amber-950">{message}</p> : null}
       <OneTimePasswordNotice password={temporaryPassword} />
-      {summary ? <ElectivesDemoLinks /> : null}
+      {summary ? <ElectivesDemoLinks summary={summary} /> : null}
       <SummaryList summary={summary} />
     </div>
   );

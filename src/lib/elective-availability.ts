@@ -24,6 +24,26 @@ export function rangeContains(outerStart: Date, outerEnd: Date, innerStart: Date
   return outerStart <= innerStart && outerEnd >= innerEnd;
 }
 
+function startOfCalendarDay(value: Date) {
+  const date = new Date(value);
+  date.setHours(0, 0, 0, 0);
+  return date;
+}
+
+function endOfCalendarDay(value: Date) {
+  const date = new Date(value);
+  date.setHours(23, 59, 59, 999);
+  return date;
+}
+
+function normalizeWindowRange(window: ElectiveWindowLike) {
+  return {
+    ...window,
+    startsAt: startOfCalendarDay(window.startsAt),
+    endsAt: endOfCalendarDay(window.endsAt)
+  };
+}
+
 export function daysInclusive(start: Date, end: Date) {
   return Math.floor((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1;
 }
@@ -53,12 +73,15 @@ export function getEffectiveCapacityForRange(input: {
     return null;
   }
 
+  const requestedStartDate = startOfCalendarDay(input.requestedStartDate);
+  const requestedEndDate = endOfCalendarDay(input.requestedEndDate);
   const overlappingOpenWindow = input.windows
+    .map(normalizeWindowRange)
     .filter(
       (window) =>
         window.status === ElectiveWindowStatus.OPEN &&
         window.capacityOverride &&
-        rangesOverlap(input.requestedStartDate, input.requestedEndDate, window.startsAt, window.endsAt)
+        rangesOverlap(requestedStartDate, requestedEndDate, window.startsAt, window.endsAt)
     )
     .sort((a, b) => (a.capacityOverride ?? input.settings!.maxStudentsAtOnce ?? 0) - (b.capacityOverride ?? input.settings!.maxStudentsAtOnce ?? 0))[0];
 
@@ -71,7 +94,9 @@ export function isDateRangeAllowedForDepartment(input: {
   requestedStartDate: Date;
   requestedEndDate: Date;
 }) {
-  const { settings, windows, requestedStartDate, requestedEndDate } = input;
+  const { settings, windows } = input;
+  const requestedStartDate = startOfCalendarDay(input.requestedStartDate);
+  const requestedEndDate = endOfCalendarDay(input.requestedEndDate);
 
   if (!settings?.allowApplications) {
     return { ok: false as const, error: "המחלקה אינה פתוחה למועמדויות אלקטיב." };
@@ -91,7 +116,8 @@ export function isDateRangeAllowedForDepartment(input: {
     return { ok: false as const, error: `משך האלקטיב ארוך מהמקסימום שהוגדר: ${settings.maxDurationDays} ימים.` };
   }
 
-  const overlappingWindows = windows.filter((window) => rangesOverlap(requestedStartDate, requestedEndDate, window.startsAt, window.endsAt));
+  const normalizedWindows = windows.map(normalizeWindowRange);
+  const overlappingWindows = normalizedWindows.filter((window) => rangesOverlap(requestedStartDate, requestedEndDate, window.startsAt, window.endsAt));
 
   if (settings.availabilityMode === ElectiveAvailabilityMode.CLOSED_BY_DEFAULT) {
     const containedByOpenWindow = overlappingWindows.some(

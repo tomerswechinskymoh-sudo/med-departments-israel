@@ -9,6 +9,8 @@ import {
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 import { getPublicDepartmentVisibility } from "@/lib/queries";
+import { formatDateInput } from "@/lib/elective-availability";
+import { resolveCanonicalInstitutionRegion } from "@/lib/regions";
 
 const DEMO_PREFIX = "[DEMO]";
 const DEMO_REPRESENTATIVE_USERNAME = "demo-electives-rep";
@@ -24,7 +26,7 @@ type DemoDepartment = {
   name: string;
   slug: string;
   residentsCount: number | null;
-  institution: { name: string };
+  institution: { name: string; city: string | null; region: string | null };
   specialty: { name: string };
   metrics: Array<{ metricKey: string; value: number | null; rawValue: string | null }>;
 };
@@ -49,6 +51,14 @@ export type ElectivesDemoSeedSummary = {
   selectedDepartments: string[];
   selectedDepartmentIds: string[];
   applicationsByStatus: Record<string, number>;
+  suggestedSearch: {
+    start: string;
+    end: string;
+    specialties: string[];
+    regions: string[];
+    url: string;
+  };
+  directDepartmentLinks: string[];
   links: string[];
 };
 
@@ -91,7 +101,7 @@ async function loadCandidateDepartments(preferredDepartmentId?: string | null) {
     name: true,
     slug: true,
     residentsCount: true,
-    institution: { select: { name: true } },
+    institution: { select: { name: true, city: true, region: true } },
     specialty: { select: { name: true } },
     metrics: {
       where: { metricKey: { in: ["מספר_מתמחים", "residentsCount", "activeResidentsCount"] } },
@@ -170,6 +180,27 @@ async function upsertDemoLegacyDepartmentAccount(department: DemoDepartment, pas
   });
 
   return account.username;
+}
+
+function buildDemoSearch(departments: DemoDepartment[]) {
+  const start = formatDateInput(demoDate(1, 16));
+  const end = formatDateInput(demoDate(1, 23));
+  const specialties = Array.from(new Set(departments.map((department) => department.specialty.name)));
+  const regions = Array.from(new Set(departments.map((department) => resolveCanonicalInstitutionRegion(department.institution))));
+  const params = new URLSearchParams({
+    start,
+    end,
+    specialties: specialties.join(","),
+    regions: regions.join(",")
+  });
+
+  return {
+    start,
+    end,
+    specialties,
+    regions,
+    url: `/electives?${params.toString()}`
+  };
 }
 
 async function upsertRepresentative(password: string) {
@@ -446,6 +477,13 @@ export async function seedElectivesDemo(input: { preferredDepartmentId?: string 
   await seedRepresentativeAssignments(representative.id, departments);
   await seedDepartmentSettings(departments);
   const applicationsByStatus = await seedApplications(departments, representative.id);
+  const suggestedSearch = buildDemoSearch(departments);
+  const detailQuery = new URLSearchParams({
+    start: suggestedSearch.start,
+    end: suggestedSearch.end,
+    specialties: departments[0].specialty.name,
+    regions: resolveCanonicalInstitutionRegion(departments[0].institution)
+  }).toString();
 
   return {
     representativeUsername: representative.username,
@@ -456,6 +494,8 @@ export async function seedElectivesDemo(input: { preferredDepartmentId?: string 
     selectedDepartments: departments.map(describeDepartment),
     selectedDepartmentIds: departments.map((department) => department.id),
     applicationsByStatus,
-    links: ["/electives", "/electives/department-login", "/admin/electives/applications"]
+    suggestedSearch,
+    directDepartmentLinks: departments.map((department) => `/electives/${encodeURIComponent(department.slug)}?${detailQuery}`),
+    links: [suggestedSearch.url, "/electives/department-login", "/admin/electives/applications"]
   };
 }
