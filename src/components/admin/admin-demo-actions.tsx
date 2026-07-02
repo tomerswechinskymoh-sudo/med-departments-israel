@@ -67,6 +67,24 @@ function SummaryList({ summary }: { summary: DemoSummary }) {
   );
 }
 
+function ElectivesDemoLinks() {
+  const links = [
+    { href: "/electives", label: "תצוגת סטודנטים" },
+    { href: "/electives/department-login", label: "כניסת נציג/ת מחלקה" },
+    { href: "/admin/electives/applications", label: "בקשות אלקטיב באדמין" }
+  ];
+
+  return (
+    <div className="flex flex-wrap gap-2 text-xs font-black">
+      {links.map((link) => (
+        <a key={link.href} href={link.href} className="rounded-full border border-amber-300 bg-white px-3 py-2 text-amber-900">
+          {link.label}
+        </a>
+      ))}
+    </div>
+  );
+}
+
 export function ElectivesDemoTools({ departments }: { departments: DepartmentOption[] }) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
@@ -102,7 +120,8 @@ export function ElectivesDemoTools({ departments }: { departments: DepartmentOpt
       <div>
         <p className="text-sm font-black text-amber-950">כלי QA פנימיים לאלקטיבים</p>
         <p className="mt-1 text-xs leading-6 text-amber-900">
-          יוצר נתוני בדיקה אדמין בלבד. סיסמה זמנית מוצגת בתגובה אחת ולא נשמרת כטקסט גלוי.
+          נתוני הדמו יוצרים נציגה, מחלקות פתוחות, חלונות זמינות ובקשות אלקטיב לדוגמה.
+          הסיסמה הזמנית מוצגת בתגובה אחת ולא נשמרת כטקסט גלוי.
         </p>
       </div>
       <form
@@ -128,7 +147,7 @@ export function ElectivesDemoTools({ departments }: { departments: DepartmentOpt
           disabled={isWorking || !departmentId}
           className="rounded-full bg-amber-700 px-5 py-3 text-sm font-black text-white disabled:opacity-60"
         >
-          יצירת דמו מלא
+          יצירת נתוני דמו לאלקטיבים
         </button>
         <button
           type="button"
@@ -141,6 +160,7 @@ export function ElectivesDemoTools({ departments }: { departments: DepartmentOpt
       </form>
       {message ? <p className="text-xs font-semibold text-amber-950">{message}</p> : null}
       <OneTimePasswordNotice password={temporaryPassword} />
+      {summary ? <ElectivesDemoLinks /> : null}
       <SummaryList summary={summary} />
     </div>
   );
