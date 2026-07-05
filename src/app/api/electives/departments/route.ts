@@ -5,9 +5,9 @@ import {
   getAvailabilitySummary,
   getElectiveDepartmentRegion,
   getStudentElectivesAccess,
-  isElectiveSearchComplete,
   listElectiveDepartments,
-  parseStudentElectiveSearch
+  parseStudentElectiveSearch,
+  hasCompleteElectiveDateRange
 } from "@/lib/student-electives";
 
 export async function GET(request: Request) {
@@ -27,12 +27,13 @@ export async function GET(request: Request) {
     specialties: specialties.length > 0 ? specialties : url.searchParams.get("specialties") ?? url.searchParams.get("specialty") ?? undefined,
     regions: regions.length > 0 ? regions : url.searchParams.get("regions") ?? url.searchParams.get("region") ?? undefined
   };
-  const isComplete = isElectiveSearchComplete(parseStudentElectiveSearch(searchInput));
-  const departments = isComplete ? await listElectiveDepartments(searchInput) : [];
+  const parsedSearch = parseStudentElectiveSearch(searchInput);
+  const hasDateRange = hasCompleteElectiveDateRange(parsedSearch);
+  const departments = await listElectiveDepartments(searchInput);
 
   return NextResponse.json({
     ok: true,
-    searchComplete: isComplete,
+    dateRangeSelected: hasDateRange,
     departments: departments.map((department) => ({
       id: department.id,
       slug: department.slug,
@@ -45,7 +46,9 @@ export async function GET(request: Request) {
       maxStudentsAtOnce: department.electiveSettings?.maxStudentsAtOnce ?? null,
       availabilityMode: department.electiveSettings?.availabilityMode ?? null,
       availabilityModeLabel: getAvailabilityModeLabel(department.electiveSettings?.availabilityMode),
+      dateAvailable: department.electiveMatch?.ok ?? null,
       remainingCapacity: department.electiveMatch?.remainingCapacity ?? null,
+      dateAvailabilityError: department.electiveMatch?.error ?? null,
       availabilitySummary: getAvailabilitySummary(department)
     }))
   });

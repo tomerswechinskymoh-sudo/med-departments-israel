@@ -62,20 +62,20 @@ export default async function StudentElectiveApplyPage({
         </p>
 
         {!requestedStartDate || !requestedEndDate ? (
-          <div className="rounded-2xl bg-rose-50 px-4 py-3 text-sm leading-7 text-rose-900">
-            חסרים תאריכי התחלה וסיום. יש לחזור לעמוד האלקטיב ולבחור תאריכים לפני הגשת בקשה.
+          <div className="mb-4 rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-950">
+            יש לבחור תאריך התחלה ותאריך סיום לפני שליחת הבקשה.
           </div>
         ) : !match?.ok ? (
-          <div className="rounded-2xl bg-rose-50 px-4 py-3 text-sm leading-7 text-rose-900">
+          <div className="mb-4 rounded-2xl bg-rose-50 px-4 py-3 text-sm leading-7 text-rose-900">
             {match?.error ?? "התאריכים אינם זמינים להגשה."}
           </div>
-        ) : (
-          <ElectiveApplicationForm
-            departmentSlug={department.slug}
-            defaultStartDate={search.start}
-            defaultEndDate={search.end}
-          />
-        )}
+        ) : null}
+
+        <ElectiveApplicationForm
+          departmentSlug={department.slug}
+          defaultStartDate={search.start}
+          defaultEndDate={search.end}
+        />
       </Card>
       <Link href={detailHref} className="inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-black text-slate-700">
         חזרה לעמוד האלקטיב

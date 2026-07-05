@@ -91,7 +91,7 @@ add(
 const availabilitySource = readFileSync(join(process.cwd(), "src/lib/elective-availability.ts"), "utf8");
 const studentElectivesSource = readFileSync(join(process.cwd(), "src/lib/student-electives.ts"), "utf8");
 add("server validation blocks full capacity", availabilitySource.includes("approvedOverlapCount >= range.capacity"));
-add("student matching hides full capacity results", studentElectivesSource.includes("remainingCapacity <= 0"));
+add("student catalog flags full capacity results", studentElectivesSource.includes("remainingCapacity <= 0") && studentElectivesSource.includes("ok: false as const"));
 add("student matching uses approved overlap count", studentElectivesSource.includes("countApprovedApplicationsOverlappingRange"));
 
 const failures = checks.filter((check) => !check.ok);

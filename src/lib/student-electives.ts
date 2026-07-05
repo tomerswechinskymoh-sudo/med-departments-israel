@@ -88,7 +88,15 @@ export function parseStudentElectiveSearch(input?: StudentElectiveSearchInput) {
 }
 
 export function isElectiveSearchComplete(search: ReturnType<typeof parseStudentElectiveSearch>) {
-  return Boolean(search.start && search.end && parseDateOnly(search.start) && parseDateOnly(search.end) && search.specialties.length > 0 && search.regions.length > 0);
+  return hasCompleteElectiveDateRange(search);
+}
+
+export function hasCompleteElectiveDateRange(search: ReturnType<typeof parseStudentElectiveSearch>) {
+  return Boolean(search.start && search.end && parseDateOnly(search.start) && parseDateOnly(search.end));
+}
+
+export function hasPartialElectiveDateRange(search: ReturnType<typeof parseStudentElectiveSearch>) {
+  return Boolean((search.start && !search.end) || (!search.start && search.end));
 }
 
 export function createElectiveSearchQuery(search: ReturnType<typeof parseStudentElectiveSearch>) {
@@ -260,7 +268,7 @@ export async function listElectiveDepartments(input?: StudentElectiveSearchInput
   const parsed = parseStudentElectiveSearch(input);
   const requestedStartDate = parseDateOnly(parsed.start);
   const requestedEndDate = parseDateOnly(parsed.end);
-  const shouldApplyDateMatching = isElectiveSearchComplete(parsed) && requestedStartDate && requestedEndDate;
+  const shouldApplyDateMatching = hasCompleteElectiveDateRange(parsed) && requestedStartDate && requestedEndDate;
 
   const departments = await prisma.department.findMany({
     where: {
@@ -301,19 +309,17 @@ export async function listElectiveDepartments(input?: StudentElectiveSearchInput
     }));
   }
 
-  const matchedDepartments = [];
+  const departmentsWithMatches = [];
 
   for (const department of regionFiltered) {
     const electiveMatch = await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate);
-    if (electiveMatch.ok) {
-      matchedDepartments.push({
-        ...department,
-        electiveMatch
-      });
-    }
+    departmentsWithMatches.push({
+      ...department,
+      electiveMatch
+    });
   }
 
-  return matchedDepartments;
+  return departmentsWithMatches;
 }
 
 export function getElectiveDepartmentRegion(department: {

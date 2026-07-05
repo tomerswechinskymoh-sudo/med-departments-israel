@@ -92,7 +92,7 @@ export default async function StudentElectiveDepartmentPage({
           ) : null}
 
           <div className="mt-6 flex flex-wrap gap-3">
-            {hasSelectedDates && match?.ok ? (
+            {!hasSelectedDates || match?.ok ? (
               <Link href={buildElectiveApplyHref(department.slug, search)} className="inline-flex rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">
                 המשך להגשת בקשה
               </Link>
@@ -141,7 +141,7 @@ export default async function StudentElectiveDepartmentPage({
             </dl>
           ) : (
             <div className="mt-4 rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-950">
-              כדי לבדוק התאמה למחלקה יש לבחור תחילת וסיום אלקטיב.
+              כדי לבדוק התאמה למחלקה יש לבחור תחילת וסיום אלקטיב. אפשר להמשיך לטופס ההגשה, ושם לבחור תאריכים לפני השליחה.
               <div className="mt-3">
                 <Link href="/electives" className="inline-flex rounded-full bg-amber-700 px-4 py-2 text-xs font-black text-white">
                   מעבר לטופס החיפוש

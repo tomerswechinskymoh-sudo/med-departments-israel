@@ -79,7 +79,8 @@ if (existsSync(featureFlagFile)) {
   addCheck("central preview access helper exists", content.includes("getStudentElectivesAccess") && content.includes("requireStudentElectivesPreviewAccess"));
   addCheck("stable detail href helper exists", content.includes("buildElectiveDepartmentHref") && content.includes("encodeURIComponent"));
   addCheck("detail resolver decodes slug candidates", content.includes("safeDecodeSlug") && content.includes("slugCandidates"));
-  addCheck("search completeness helper requires dates, specialties, regions", content.includes("isElectiveSearchComplete") && content.includes("specialties.length > 0") && content.includes("regions.length > 0"));
+  addCheck("date range helper only requires both dates", content.includes("hasCompleteElectiveDateRange") && content.includes("parseDateOnly(search.start)") && !content.includes("specialties.length > 0 && search.regions.length > 0"));
+  addCheck("partial date helper exists", content.includes("hasPartialElectiveDateRange"));
   addCheck("list matching uses availability/capacity match", content.includes("getElectiveDepartmentAvailabilityMatch") && content.includes("remainingCapacity"));
 }
 
@@ -92,19 +93,23 @@ for (const path of previewPages) {
 }
 
 const electivesPage = read(join(root, "src/app/electives/page.tsx"));
-addCheck("electives page shows search form before results", electivesPage.includes("תאריך התחלה") && electivesPage.includes("תחומי התמחות שמעניינים אותך") && electivesPage.includes("אזור בארץ"));
-addCheck("electives page withholds cards until search complete", electivesPage.includes("isSearchComplete ? await listElectiveDepartments") && electivesPage.includes("כדי לראות מחלקות מתאימות"));
+addCheck("electives page shows optional filter form", electivesPage.includes("תאריך התחלה") && electivesPage.includes("תחומי התמחות שמעניינים אותך") && electivesPage.includes("אזור בארץ"));
+addCheck("electives page always lists departments", electivesPage.includes("const departments = await listElectiveDepartments(rawParams)") && !electivesPage.includes("required"));
+addCheck("electives page warns on partial date only", electivesPage.includes("כדי לבדוק זמינות לפי תאריכים"));
+addCheck("electives page results section is live catalog", electivesPage.includes("מחלקות פתוחות לאלקטיב") && electivesPage.includes("נמצאו {departments.length} מחלקות"));
 addCheck("electives cards use shared detail href", electivesPage.includes("buildElectiveDepartmentHref(department.slug, search)"));
-addCheck("electives empty state suggests changing filters", electivesPage.includes("נסה להרחיב אזור"));
+addCheck("electives empty state suggests clearing filters", electivesPage.includes("נסה לנקות סינונים"));
 
 const electiveDetailPage = read(join(root, "src/app/electives/[departmentSlug]/page.tsx"));
 addCheck("detail page preserves query for apply", electiveDetailPage.includes("buildElectiveApplyHref(department.slug, search)"));
 addCheck("detail page displays capacity diagnostics", electiveDetailPage.includes("מקומות פנויים בטווח שבחרת") && electiveDetailPage.includes("בקשות מאושרות חופפות"));
-addCheck("detail page blocks apply when dates unavailable", electiveDetailPage.includes("!match?.ok") && electiveDetailPage.includes("disabled"));
+addCheck("detail page works without dates", electiveDetailPage.includes("אפשר להמשיך לטופס ההגשה") && electiveDetailPage.includes("!hasSelectedDates || match?.ok"));
+addCheck("detail page blocks apply when selected dates unavailable", electiveDetailPage.includes("match?.ok") && electiveDetailPage.includes("disabled"));
 
 const electiveApplyPage = read(join(root, "src/app/electives/[departmentSlug]/apply/page.tsx"));
 addCheck("apply page reads query dates", electiveApplyPage.includes("parseStudentElectiveSearch") && electiveApplyPage.includes("defaultStartDate"));
-addCheck("apply page validates availability before showing form", electiveApplyPage.includes("getElectiveDepartmentAvailabilityMatch") && electiveApplyPage.includes("!match?.ok"));
+addCheck("apply page shows required date form without query dates", electiveApplyPage.includes("יש לבחור תאריך התחלה ותאריך סיום") && electiveApplyPage.includes("<ElectiveApplicationForm"));
+addCheck("apply page warns on invalid selected dates", electiveApplyPage.includes("getElectiveDepartmentAvailabilityMatch") && electiveApplyPage.includes("!match?.ok"));
 
 for (const path of previewApis) {
   const file = join(root, path);
