@@ -293,6 +293,10 @@ export async function listElectiveDepartments(input?: StudentElectiveSearchInput
       electiveAvailabilityWindows: {
         orderBy: [{ startsAt: "asc" }, { endsAt: "asc" }],
         take: 8
+      },
+      reviews: {
+        where: { reviewerType: "STUDENT" },
+        select: { overallRecommendation: true }
       }
     },
     orderBy: [{ institution: { name: "asc" } }, { specialty: { name: "asc" } }, { name: "asc" }]

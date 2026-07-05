@@ -90,9 +90,11 @@ add(
 
 const availabilitySource = readFileSync(join(process.cwd(), "src/lib/elective-availability.ts"), "utf8");
 const studentElectivesSource = readFileSync(join(process.cwd(), "src/lib/student-electives.ts"), "utf8");
+const studentCatalogSource = readFileSync(join(process.cwd(), "src/components/electives/student-electives-catalog.tsx"), "utf8");
 add("server validation blocks full capacity", availabilitySource.includes("approvedOverlapCount >= range.capacity"));
 add("student catalog flags full capacity results", studentElectivesSource.includes("remainingCapacity <= 0") && studentElectivesSource.includes("ok: false as const"));
 add("student matching uses approved overlap count", studentElectivesSource.includes("countApprovedApplicationsOverlappingRange"));
+add("expanded row fetches capacity check by selected date range", studentCatalogSource.includes("/api/electives/departments/") && studentCatalogSource.includes("remainingCapacity"));
 
 const failures = checks.filter((check) => !check.ok);
 console.log(JSON.stringify({ ok: failures.length === 0, checked: checks.length, failed: failures.length, failures }, null, 2));

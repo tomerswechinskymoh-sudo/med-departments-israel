@@ -11,7 +11,6 @@ import {
   createElectiveSearchQuery,
   formatDateInput,
   getAvailabilityModeLabel,
-  getAvailabilitySummary,
   getElectiveDepartmentAvailabilityMatch,
   getElectiveDepartmentBySlug,
   getElectiveDepartmentRegion,
@@ -118,7 +117,7 @@ export default async function StudentElectiveDepartmentPage({
                 </dd>
               </div>
               <div className="rounded-2xl bg-slate-50 px-4 py-3">
-                <dt className="text-xs font-black text-slate-500">קיבולת מקסימלית</dt>
+                <dt className="text-xs font-black text-slate-500">מספר סטודנטים שיכולים להיות בו זמנית</dt>
                 <dd className="mt-1 font-semibold text-ink">{match?.capacity ?? department.electiveSettings?.maxStudentsAtOnce ?? "לא הוגדר"}</dd>
               </div>
               <div className="rounded-2xl bg-slate-50 px-4 py-3">
@@ -155,7 +154,7 @@ export default async function StudentElectiveDepartmentPage({
       <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
         <Card>
           <h2 className="text-xl font-black text-ink">זמינות וקיבולת</h2>
-          <p className="mt-3 text-sm leading-7 text-slate-700">{getAvailabilitySummary(department)}</p>
+          <p className="mt-3 text-sm leading-7 text-slate-700">ניתן לבחור תאריכים לבדיקה לפי חלונות המחלקה והקיבולת שהוגדרה.</p>
           <dl className="mt-5 grid gap-3 text-sm">
             <div className="rounded-2xl bg-slate-50 px-4 py-3">
               <dt className="text-xs font-black text-slate-500">מצב זמינות</dt>
@@ -174,8 +173,8 @@ export default async function StudentElectiveDepartmentPage({
           <h2 className="text-xl font-black text-ink">חלונות תאריכים</h2>
           <p className="mt-2 text-sm leading-7 text-slate-600">
             {department.electiveSettings?.availabilityMode === "OPEN_BY_DEFAULT"
-              ? "פתוח בדרך כלל. תאריכים חסומים מסומנים מטה."
-              : "פתוח רק בחלונות מוגדרים מראש. ניתן להגיש רק בתוך חלון פתוח."}
+              ? "תאריכים חסומים מסומנים מטה."
+              : "הגשה זמינה בחלונות הפתוחים שמסומנים מטה."}
           </p>
           <div className="mt-5 grid gap-3 md:grid-cols-2">
             {[...openWindows, ...closedWindows].map((window) => (
@@ -186,7 +185,7 @@ export default async function StudentElectiveDepartmentPage({
                     {formatDateInput(window.startsAt)} - {formatDateInput(window.endsAt)}
                   </span>
                 </div>
-                {window.capacityOverride ? <p className="mt-2 text-slate-600">קיבולת בחלון: {window.capacityOverride}</p> : null}
+                {window.capacityOverride ? <p className="mt-2 text-slate-600">מספר סטודנטים בחלון: {window.capacityOverride}</p> : null}
                 {window.reason ? <p className="mt-2 text-slate-600">{window.reason}</p> : null}
               </div>
             ))}

@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { StudentElectivesCatalog, type StudentElectiveCatalogDepartment } from "@/components/electives/student-electives-catalog";
 import { PageShell } from "@/components/layout/page-shell";
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
-  buildElectiveDepartmentHref,
-  getAvailabilityModeLabel,
-  getAvailabilitySummary,
   getElectiveDepartmentRegion,
   getElectiveSearchOptions,
-  hasCompleteElectiveDateRange,
+  formatDateInput,
   hasPartialElectiveDateRange,
   listElectiveDepartments,
   parseStudentElectiveSearch,
@@ -37,10 +32,57 @@ export default async function StudentElectivesPreviewPage({
   await requireStudentElectivesPreviewAccess();
   const rawParams = await searchParams;
   const search = parseStudentElectiveSearch(rawParams);
-  const hasDateRange = hasCompleteElectiveDateRange(search);
   const hasPartialDateRange = hasPartialElectiveDateRange(search);
   const options = await getElectiveSearchOptions();
   const departments = await listElectiveDepartments(rawParams);
+  const catalogDepartments: StudentElectiveCatalogDepartment[] = departments.map((department) => {
+    const studentRatings = department.reviews.map((review) => review.overallRecommendation);
+    const ratingAverage = studentRatings.length > 0
+      ? studentRatings.reduce((sum, value) => sum + value, 0) / studentRatings.length
+      : null;
+
+    return {
+      id: department.id,
+      slug: department.slug,
+      name: department.name,
+      hospital: department.institution.name,
+      city: department.institution.city,
+      region: getElectiveDepartmentRegion(department),
+      specialty: department.specialty.name,
+      institution: department.institution,
+      notes: department.electiveSettings?.notes ?? null,
+      maxStudentsAtOnce: department.electiveSettings?.maxStudentsAtOnce ?? null,
+      minDurationDays: department.electiveSettings?.minDurationDays ?? null,
+      maxDurationDays: department.electiveSettings?.maxDurationDays ?? null,
+      rating: {
+        average: ratingAverage,
+        count: studentRatings.length
+      },
+      openWindows: department.electiveAvailabilityWindows
+        .filter((window) => window.status === "OPEN")
+        .map((window) => ({
+          id: window.id,
+          status: window.status,
+          startsAt: formatDateInput(window.startsAt),
+          endsAt: formatDateInput(window.endsAt),
+          capacityOverride: window.capacityOverride,
+          reason: window.reason,
+          note: window.note
+        })),
+      closedWindows: department.electiveAvailabilityWindows
+        .filter((window) => window.status === "CLOSED")
+        .map((window) => ({
+          id: window.id,
+          status: window.status,
+          startsAt: formatDateInput(window.startsAt),
+          endsAt: formatDateInput(window.endsAt),
+          capacityOverride: window.capacityOverride,
+          reason: window.reason,
+          note: window.note
+        })),
+      electiveMatch: department.electiveMatch
+    };
+  });
 
   return (
     <PageShell className="space-y-6 py-8">
@@ -124,61 +166,15 @@ export default async function StudentElectivesPreviewPage({
       <div className="space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-xl font-black text-ink">מחלקות פתוחות לאלקטיב</h2>
-          <p className="text-sm font-semibold text-slate-600">נמצאו {departments.length} מחלקות</p>
+          <p className="text-sm font-semibold text-slate-600">נמצאו {catalogDepartments.length} מחלקות</p>
         </div>
 
-        <div className="grid max-h-[70vh] gap-4 overflow-y-auto pr-1 lg:grid-cols-2">
-          {departments.map((department) => {
-            const region = getElectiveDepartmentRegion(department);
-            const remainingCapacity = department.electiveMatch?.remainingCapacity ?? null;
-            const dateBadge = !hasDateRange
-              ? "בחר תאריכים כדי לבדוק זמינות מדויקת"
-              : department.electiveMatch?.ok
-                ? "מתאים לתאריכים"
-                : "לא מתאים לתאריכים";
-            const dateBadgeTone = !hasDateRange ? "default" : department.electiveMatch?.ok ? "success" : "danger";
+        <StudentElectivesCatalog
+          departments={catalogDepartments}
+          search={search}
+        />
 
-            return (
-              <Card key={department.id} className="flex h-full flex-col justify-between gap-5">
-                <div>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge tone={dateBadgeTone}>{dateBadge}</Badge>
-                    <Badge tone="default">{getAvailabilityModeLabel(department.electiveSettings?.availabilityMode)}</Badge>
-                    {hasDateRange && department.electiveMatch?.ok ? (
-                      <Badge tone="success">נותרו {remainingCapacity ?? "?"} מקומות</Badge>
-                    ) : null}
-                  </div>
-                  <div className="mt-4 flex gap-3">
-                    <InstitutionLogo institution={department.institution} size="sm" />
-                    <div className="min-w-0">
-                      <h3 className="text-xl font-black text-ink">{department.name}</h3>
-                      <p className="mt-1 text-sm font-semibold text-slate-700">{department.institution.name}</p>
-                      <p className="mt-1 text-sm font-semibold text-slate-700">{department.specialty.name}</p>
-                      <p className="mt-1 text-xs text-slate-500">
-                        {[department.institution.city, region].filter(Boolean).join(" · ") || "מיקום לא צוין"}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">{getAvailabilitySummary(department)}</p>
-                  <p className="mt-2 text-sm font-semibold text-slate-700">
-                    קיבולת מקסימלית: {department.electiveSettings?.maxStudentsAtOnce ?? "לא הוגדר"}
-                  </p>
-                  {hasDateRange && !department.electiveMatch?.ok ? (
-                    <p className="mt-2 text-xs font-black text-rose-700">{department.electiveMatch?.error ?? "לא זמין בטווח שבחרת."}</p>
-                  ) : null}
-                  {!hasDateRange ? (
-                    <p className="mt-2 text-xs font-black text-brand-700">בחר תאריכים כדי לבדוק זמינות מדויקת וקיבולת.</p>
-                  ) : null}
-                </div>
-                <Link href={buildElectiveDepartmentHref(department.slug, search)} className="inline-flex w-fit rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">
-                  צפייה בפרטי אלקטיב
-                </Link>
-              </Card>
-            );
-          })}
-        </div>
-
-        {departments.length === 0 ? (
+        {catalogDepartments.length === 0 ? (
           <Card>
             <p className="text-sm font-semibold text-slate-700">לא נמצאו מחלקות מתאימות לסינון שבחרת.</p>
             <p className="mt-2 text-sm leading-7 text-slate-600">

@@ -93,23 +93,35 @@ for (const path of previewPages) {
 }
 
 const electivesPage = read(join(root, "src/app/electives/page.tsx"));
+const electivesCatalog = read(join(root, "src/components/electives/student-electives-catalog.tsx"));
 addCheck("electives page shows optional filter form", electivesPage.includes("תאריך התחלה") && electivesPage.includes("תחומי התמחות שמעניינים אותך") && electivesPage.includes("אזור בארץ"));
 addCheck("electives page always lists departments", electivesPage.includes("const departments = await listElectiveDepartments(rawParams)") && !electivesPage.includes("required"));
 addCheck("electives page warns on partial date only", electivesPage.includes("כדי לבדוק זמינות לפי תאריכים"));
-addCheck("electives page results section is live catalog", electivesPage.includes("מחלקות פתוחות לאלקטיב") && electivesPage.includes("נמצאו {departments.length} מחלקות"));
-addCheck("electives cards use shared detail href", electivesPage.includes("buildElectiveDepartmentHref(department.slug, search)"));
+addCheck("electives page results section is live catalog", electivesPage.includes("מחלקות פתוחות לאלקטיב") && electivesPage.includes("נמצאו {catalogDepartments.length} מחלקות"));
+addCheck("electives page renders row catalog component", electivesPage.includes("StudentElectivesCatalog") && existsSync(join(root, "src/components/electives/student-electives-catalog.tsx")));
 addCheck("electives empty state suggests clearing filters", electivesPage.includes("נסה לנקות סינונים"));
+addCheck("closed row includes compact row columns", electivesCatalog.includes("בית חולים") && electivesCatalog.includes("מחלקה") && electivesCatalog.includes("תחום") && electivesCatalog.includes("דירוג סטודנטים"));
+addCheck("closed row includes simultaneous student capacity label", electivesCatalog.includes("מספר סטודנטים שיכולים להיות בו זמנית"));
+addCheck("expanded row supports date selection", electivesCatalog.includes("תאריך התחלה") && electivesCatalog.includes("תאריך סיום") && electivesCatalog.includes("checkDates("));
+addCheck("expanded row apply link includes selected dates", electivesCatalog.includes("applyHref(department.slug, search, dates.start, dates.end)"));
+addCheck("electives catalog uses rating fallback", electivesCatalog.includes("עדיין אין נתונים מסטודנטים שביצעו אלקטיב במחלקה זו"));
+addCheck("old verbose closed-row phrases removed", !electivesCatalog.includes("בחר תאריכים כדי לבדוק זמינות מדויקת") && !electivesCatalog.includes("פתוח רק בחלונות מוגדרים") && !electivesCatalog.includes("סגור כברירת מחדל"));
+addCheck("student-facing capacity wording replaced", !`${electivesPage}\n${electivesCatalog}`.includes("קיבולת מקסימלית") && electivesCatalog.includes("מספר סטודנטים שיכולים להיות בו זמנית"));
 
 const electiveDetailPage = read(join(root, "src/app/electives/[departmentSlug]/page.tsx"));
 addCheck("detail page preserves query for apply", electiveDetailPage.includes("buildElectiveApplyHref(department.slug, search)"));
 addCheck("detail page displays capacity diagnostics", electiveDetailPage.includes("מקומות פנויים בטווח שבחרת") && electiveDetailPage.includes("בקשות מאושרות חופפות"));
 addCheck("detail page works without dates", electiveDetailPage.includes("אפשר להמשיך לטופס ההגשה") && electiveDetailPage.includes("!hasSelectedDates || match?.ok"));
 addCheck("detail page blocks apply when selected dates unavailable", electiveDetailPage.includes("match?.ok") && electiveDetailPage.includes("disabled"));
+addCheck("detail page uses simultaneous student capacity wording", !electiveDetailPage.includes("קיבולת מקסימלית") && electiveDetailPage.includes("מספר סטודנטים שיכולים להיות בו זמנית"));
 
 const electiveApplyPage = read(join(root, "src/app/electives/[departmentSlug]/apply/page.tsx"));
 addCheck("apply page reads query dates", electiveApplyPage.includes("parseStudentElectiveSearch") && electiveApplyPage.includes("defaultStartDate"));
 addCheck("apply page shows required date form without query dates", electiveApplyPage.includes("יש לבחור תאריך התחלה ותאריך סיום") && electiveApplyPage.includes("<ElectiveApplicationForm"));
 addCheck("apply page warns on invalid selected dates", electiveApplyPage.includes("getElectiveDepartmentAvailabilityMatch") && electiveApplyPage.includes("!match?.ok"));
+
+const electiveDepartmentApi = read(join(root, "src/app/api/electives/departments/[departmentSlug]/route.ts"));
+addCheck("department API returns date availability for expanded rows", electiveDepartmentApi.includes("dateAvailability") && electiveDepartmentApi.includes("getElectiveDepartmentAvailabilityMatch"));
 
 for (const path of previewApis) {
   const file = join(root, path);

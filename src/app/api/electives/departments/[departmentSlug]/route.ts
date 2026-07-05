@@ -3,12 +3,14 @@ import {
   formatDateInput,
   getAvailabilityModeLabel,
   getAvailabilitySummary,
+  getElectiveDepartmentAvailabilityMatch,
   getElectiveDepartmentRegion,
   getElectiveDepartmentBySlug,
+  parseDateOnly,
   getStudentElectivesAccess
 } from "@/lib/student-electives";
 
-export async function GET(_request: Request, { params }: { params: Promise<{ departmentSlug: string }> }) {
+export async function GET(request: Request, { params }: { params: Promise<{ departmentSlug: string }> }) {
   const access = await getStudentElectivesAccess();
 
   if (!access.ok) {
@@ -21,6 +23,13 @@ export async function GET(_request: Request, { params }: { params: Promise<{ dep
   if (!department) {
     return NextResponse.json({ error: "מחלקת אלקטיב לא נמצאה." }, { status: 404 });
   }
+
+  const url = new URL(request.url);
+  const requestedStartDate = parseDateOnly(url.searchParams.get("start") ?? "");
+  const requestedEndDate = parseDateOnly(url.searchParams.get("end") ?? "");
+  const dateMatch = requestedStartDate && requestedEndDate
+    ? await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate)
+    : null;
 
   return NextResponse.json({
     ok: true,
@@ -36,6 +45,11 @@ export async function GET(_request: Request, { params }: { params: Promise<{ dep
       settings: department.electiveSettings,
       availabilityModeLabel: getAvailabilityModeLabel(department.electiveSettings?.availabilityMode),
       availabilitySummary: getAvailabilitySummary(department),
+      dateAvailability: {
+        checked: Boolean(requestedStartDate && requestedEndDate),
+        match: dateMatch,
+        message: requestedStartDate && requestedEndDate ? null : "בחרו תאריך התחלה ותאריך סיום."
+      },
       windows: department.electiveAvailabilityWindows.map((window) => ({
         id: window.id,
         status: window.status,
