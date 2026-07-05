@@ -478,7 +478,9 @@ function ElectiveDateRangeCalendar({
           {cells.map((cell) => {
             const day = formatInputDate(cell);
             const availability = dayAvailability(department, day);
-            const inSelectedRange = Boolean(selectedStart && previewEnd && rangeIncludes(day, selectedStart, previewEnd));
+            const inFinalSelectedRange = Boolean(selectedStart && selectedEnd && rangeIncludes(day, selectedStart, selectedEnd));
+            const inPreviewRange = Boolean(selectedStart && !selectedEnd && previewEnd && rangeIncludes(day, selectedStart, previewEnd));
+            const inSelectedRange = inFinalSelectedRange || inPreviewRange;
             const isSelectedEdge = day === selectedStart || day === selectedEnd;
             const isOutsideMonth = cell.getUTCMonth() !== currentMonth;
             const isToday = day === today;
@@ -494,22 +496,31 @@ function ElectiveDateRangeCalendar({
                 aria-label={`${day} ${availability.label}`}
                 className={cn(
                   "min-h-11 border px-1 py-1 text-center text-xs font-black transition",
-                  isOutsideMonth && "opacity-35",
+                  isOutsideMonth && !inSelectedRange && "opacity-35",
                   availability.selectable
                     ? "border-emerald-100 bg-white text-slate-800 hover:border-emerald-300 hover:bg-emerald-50"
                     : availability.full
                       ? "cursor-not-allowed border-amber-100 bg-amber-50 text-amber-700"
                       : "cursor-not-allowed border-slate-100 bg-slate-50 text-slate-400",
-                  inSelectedRange && "border-brand-400 bg-brand-200 text-brand-950 shadow-inner",
-                  inSelectedRange && !isSelectedEdge && "rounded-md",
-                  isSelectedEdge && "rounded-2xl border-brand-900 bg-brand-800 text-white shadow-md ring-2 ring-brand-300",
+                  inPreviewRange && "border-brand-300 bg-brand-100 text-brand-950 shadow-inner",
+                  inFinalSelectedRange && !isSelectedEdge && "rounded-md border-brand-700 bg-brand-700 text-white shadow-inner",
+                  isSelectedEdge && "rounded-2xl border-brand-950 bg-brand-900 text-white shadow-md ring-2 ring-brand-300",
                   !inSelectedRange && "rounded-2xl",
                   isToday && !isSelectedEdge && "ring-2 ring-brand-200"
                 )}
               >
-                <span className={cn("block text-sm", isSelectedEdge && "text-white", inSelectedRange && !isSelectedEdge && "text-brand-950")}>{cell.getUTCDate()}</span>
+                <span
+                  className={cn(
+                    "block text-sm",
+                    inFinalSelectedRange && "text-white",
+                    isSelectedEdge && "text-white",
+                    inPreviewRange && !isSelectedEdge && "text-brand-950"
+                  )}
+                >
+                  {cell.getUTCDate()}
+                </span>
                 {!availability.selectable ? (
-                  <span className="mt-0.5 block text-[0.58rem] font-bold">{availability.label}</span>
+                  <span className={cn("mt-0.5 block text-[0.58rem] font-bold", inFinalSelectedRange && "text-white")}>{availability.label}</span>
                 ) : null}
               </button>
             );
@@ -567,7 +578,7 @@ function ElectiveDateRangeCalendar({
         <span className="rounded-full border border-emerald-100 bg-white px-3 py-1 text-emerald-800">פנוי</span>
         <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-500">לא זמין</span>
         <span className="rounded-full bg-amber-50 px-3 py-1 text-amber-800">מלא</span>
-        <span className="rounded-full bg-brand-200 px-3 py-1 text-brand-950">טווח שנבחר</span>
+        <span className="rounded-full bg-brand-700 px-3 py-1 text-white">טווח שנבחר</span>
       </div>
     </div>
   );

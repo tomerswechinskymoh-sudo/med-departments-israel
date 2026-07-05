@@ -107,7 +107,8 @@ addCheck("desktop picker shows two months", electivesCatalog.includes("secondMon
 addCheck("calendar month navigation exists", electivesCatalog.includes("חודש קודם") && electivesCatalog.includes("חודש הבא") && electivesCatalog.includes("addMonths(currentMonth"));
 addCheck("calendar supports clearing and hover preview", electivesCatalog.includes("נקה בחירה") && electivesCatalog.includes("setHoverDay"));
 addCheck("calendar marks unavailable and full days", electivesCatalog.includes("לא זמין") && electivesCatalog.includes("מלא") && electivesCatalog.includes("approvedBookingsForDay"));
-addCheck("calendar selected range uses strong readable styles", electivesCatalog.includes("bg-brand-200") && electivesCatalog.includes("bg-brand-800") && electivesCatalog.includes("text-brand-950") && electivesCatalog.includes("text-white"));
+addCheck("calendar selected range uses strong readable styles", electivesCatalog.includes("inFinalSelectedRange") && electivesCatalog.includes("bg-brand-700") && electivesCatalog.includes("bg-brand-900") && electivesCatalog.includes("text-white"));
+addCheck("selected range avoids low-opacity text", electivesCatalog.includes("isOutsideMonth && !inSelectedRange") && electivesCatalog.includes("inFinalSelectedRange && \"text-white\""));
 addCheck("expanded row apply link includes selected dates", electivesCatalog.includes("applyHref(department.slug, search, dates.start, dates.end)"));
 addCheck("electives catalog uses rating fallback", electivesCatalog.includes("עדיין אין נתונים מסטודנטים שביצעו אלקטיב במחלקה זו"));
 addCheck("raw availability window list removed from expanded row", !electivesCatalog.includes("תאריכים פתוחים") && !electivesCatalog.includes("תאריכים חסומים") && !electivesCatalog.includes("WindowList"));
