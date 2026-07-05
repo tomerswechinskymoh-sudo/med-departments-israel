@@ -95,6 +95,7 @@ add("server validation blocks full capacity", availabilitySource.includes("appro
 add("student catalog flags full capacity results", studentElectivesSource.includes("remainingCapacity <= 0") && studentElectivesSource.includes("ok: false as const"));
 add("student matching uses approved overlap count", studentElectivesSource.includes("countApprovedApplicationsOverlappingRange"));
 add("expanded row fetches capacity check by selected date range", studentCatalogSource.includes("/api/electives/departments/") && studentCatalogSource.includes("remainingCapacity"));
+add("calendar marks full days from approved bookings", studentCatalogSource.includes("approvedBookingsForDay") && studentCatalogSource.includes("מלא"));
 
 const failures = checks.filter((check) => !check.ok);
 console.log(JSON.stringify({ ok: failures.length === 0, checked: checks.length, failed: failures.length, failures }, null, 2));

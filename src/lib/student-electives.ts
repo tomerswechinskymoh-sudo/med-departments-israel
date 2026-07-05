@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { ElectiveApplicationStatus } from "@prisma/client";
 import { getSession, type AppSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { resolveCanonicalInstitutionRegion } from "@/lib/regions";
@@ -293,6 +294,25 @@ export async function listElectiveDepartments(input?: StudentElectiveSearchInput
       electiveAvailabilityWindows: {
         orderBy: [{ startsAt: "asc" }, { endsAt: "asc" }],
         take: 8
+      },
+      electiveApplications: {
+        where: {
+          status: {
+            in: [
+              ElectiveApplicationStatus.ACCEPTED,
+              ElectiveApplicationStatus.APPROVED,
+              ElectiveApplicationStatus.ALTERNATIVE_ACCEPTED
+            ]
+          },
+          requestedStartDate: { not: null },
+          requestedEndDate: { not: null }
+        },
+        select: {
+          id: true,
+          requestedStartDate: true,
+          requestedEndDate: true,
+          status: true
+        }
       },
       reviews: {
         where: { reviewerType: "STUDENT" },

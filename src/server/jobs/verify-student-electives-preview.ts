@@ -102,9 +102,12 @@ addCheck("electives page renders row catalog component", electivesPage.includes(
 addCheck("electives empty state suggests clearing filters", electivesPage.includes("נסה לנקות סינונים"));
 addCheck("closed row includes compact row columns", electivesCatalog.includes("בית חולים") && electivesCatalog.includes("מחלקה") && electivesCatalog.includes("תחום") && electivesCatalog.includes("דירוג סטודנטים"));
 addCheck("closed row includes simultaneous student capacity label", electivesCatalog.includes("מספר סטודנטים שיכולים להיות בו זמנית"));
-addCheck("expanded row supports date selection", electivesCatalog.includes("תאריך התחלה") && electivesCatalog.includes("תאריך סיום") && electivesCatalog.includes("checkDates("));
+addCheck("expanded row renders calendar date selection", electivesCatalog.includes("בחירת תאריכים") && electivesCatalog.includes("getMonthCells") && electivesCatalog.includes("onSelectDay"));
+addCheck("calendar month navigation exists", electivesCatalog.includes("חודש קודם") && electivesCatalog.includes("חודש הבא") && electivesCatalog.includes("addMonths(currentMonth"));
+addCheck("calendar marks unavailable and full days", electivesCatalog.includes("לא זמין") && electivesCatalog.includes("מלא") && electivesCatalog.includes("approvedBookingsForDay"));
 addCheck("expanded row apply link includes selected dates", electivesCatalog.includes("applyHref(department.slug, search, dates.start, dates.end)"));
 addCheck("electives catalog uses rating fallback", electivesCatalog.includes("עדיין אין נתונים מסטודנטים שביצעו אלקטיב במחלקה זו"));
+addCheck("raw availability window list removed from expanded row", !electivesCatalog.includes("תאריכים פתוחים") && !electivesCatalog.includes("תאריכים חסומים") && !electivesCatalog.includes("WindowList"));
 addCheck("old verbose closed-row phrases removed", !electivesCatalog.includes("בחר תאריכים כדי לבדוק זמינות מדויקת") && !electivesCatalog.includes("פתוח רק בחלונות מוגדרים") && !electivesCatalog.includes("סגור כברירת מחדל"));
 addCheck("student-facing capacity wording replaced", !`${electivesPage}\n${electivesCatalog}`.includes("קיבולת מקסימלית") && electivesCatalog.includes("מספר סטודנטים שיכולים להיות בו זמנית"));
 

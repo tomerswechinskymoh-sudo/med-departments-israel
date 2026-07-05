@@ -53,12 +53,18 @@ export type StudentElectiveCatalogDepartment = {
     coverImageUrl: string | null;
   };
   notes: string | null;
+  availabilityMode: "OPEN_BY_DEFAULT" | "CLOSED_BY_DEFAULT" | null;
   maxStudentsAtOnce: number | null;
   minDurationDays: number | null;
   maxDurationDays: number | null;
   rating: RatingSummary;
   openWindows: AvailabilityWindow[];
   closedWindows: AvailabilityWindow[];
+  bookedRanges: Array<{
+    id: string;
+    requestedStartDate: string;
+    requestedEndDate: string;
+  }>;
   electiveMatch: ElectiveMatch;
 };
 
@@ -116,12 +122,88 @@ function statusLabel(match: ElectiveMatch, hasDateRange: boolean) {
   return "לא פנוי בתאריכים שנבחרו";
 }
 
+function parseInputDate(value: string) {
+  if (!value) return null;
+  const date = new Date(`${value}T00:00:00.000Z`);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function formatInputDate(date: Date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function utcDay(value: Date) {
+  return new Date(Date.UTC(value.getUTCFullYear(), value.getUTCMonth(), value.getUTCDate()));
+}
+
+function addDays(value: Date, days: number) {
+  const next = utcDay(value);
+  next.setUTCDate(next.getUTCDate() + days);
+  return next;
+}
+
+function addMonths(value: Date, months: number) {
+  return new Date(Date.UTC(value.getUTCFullYear(), value.getUTCMonth() + months, 1));
+}
+
+function rangeIncludes(day: string, start: string, end: string) {
+  return day >= start && day <= end;
+}
+
+function isDayWithinWindow(day: string, windows: AvailabilityWindow[]) {
+  return windows.some((window) => rangeIncludes(day, window.startsAt, window.endsAt));
+}
+
+function capacityForDay(department: StudentElectiveCatalogDepartment, day: string) {
+  const overrideWindow = department.openWindows.find((window) => window.capacityOverride && rangeIncludes(day, window.startsAt, window.endsAt));
+  return overrideWindow?.capacityOverride ?? department.maxStudentsAtOnce ?? null;
+}
+
+function approvedBookingsForDay(department: StudentElectiveCatalogDepartment, day: string) {
+  return department.bookedRanges.filter((booking) => rangeIncludes(day, booking.requestedStartDate, booking.requestedEndDate)).length;
+}
+
+function dayAvailability(department: StudentElectiveCatalogDepartment, day: string) {
+  if (department.availabilityMode === "CLOSED_BY_DEFAULT" && !isDayWithinWindow(day, department.openWindows)) {
+    return { selectable: false, label: "לא זמין", full: false };
+  }
+
+  if (department.availabilityMode === "OPEN_BY_DEFAULT" && isDayWithinWindow(day, department.closedWindows)) {
+    return { selectable: false, label: "לא זמין", full: false };
+  }
+
+  const capacity = capacityForDay(department, day);
+  if (!capacity) {
+    return { selectable: false, label: "לא זמין", full: false };
+  }
+
+  if (approvedBookingsForDay(department, day) >= capacity) {
+    return { selectable: false, label: "מלא", full: true };
+  }
+
+  return { selectable: true, label: "פנוי", full: false };
+}
+
+function getMonthCells(month: Date) {
+  const first = new Date(Date.UTC(month.getUTCFullYear(), month.getUTCMonth(), 1));
+  const startOffset = first.getUTCDay();
+  const firstCell = addDays(first, -startOffset);
+
+  return Array.from({ length: 42 }, (_, index) => addDays(firstCell, index));
+}
+
+function monthLabel(month: Date) {
+  return new Intl.DateTimeFormat("he-IL", { month: "long", year: "numeric", timeZone: "UTC" }).format(month);
+}
+
 export function StudentElectivesCatalog({ departments, search }: Props) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [dateByDepartment, setDateByDepartment] = useState<Record<string, { start: string; end: string }>>({});
+  const [monthByDepartment, setMonthByDepartment] = useState<Record<string, Date>>({});
   const [matchByDepartment, setMatchByDepartment] = useState<Record<string, MatchState>>({});
 
   const initialDates = useMemo(() => ({ start: search.start, end: search.end }), [search.start, search.end]);
+  const initialMonth = useMemo(() => parseInputDate(search.start) ?? new Date(), [search.start]);
 
   async function checkDates(department: StudentElectiveCatalogDepartment, start: string, end: string) {
     if (!start || !end) {
@@ -170,6 +252,28 @@ export function StudentElectivesCatalog({ departments, search }: Props) {
     }
   }
 
+  function setDepartmentDates(department: StudentElectiveCatalogDepartment, start: string, end: string) {
+    setDateByDepartment((current) => ({ ...current, [department.id]: { start, end } }));
+    void checkDates(department, start, end);
+  }
+
+  function selectCalendarDay(department: StudentElectiveCatalogDepartment, currentDates: { start: string; end: string }, day: string) {
+    const availability = dayAvailability(department, day);
+    if (!availability.selectable) return;
+
+    if (!currentDates.start || currentDates.end) {
+      setDepartmentDates(department, day, "");
+      return;
+    }
+
+    if (day < currentDates.start) {
+      setDepartmentDates(department, day, "");
+      return;
+    }
+
+    setDepartmentDates(department, currentDates.start, day);
+  }
+
   return (
     <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
       <div className="hidden grid-cols-[1.35fr_1.2fr_1fr_0.75fr_1fr_0.85fr_0.55fr] gap-3 border-b border-slate-100 bg-slate-50 px-4 py-3 text-xs font-black text-slate-500 lg:grid">
@@ -191,6 +295,7 @@ export function StudentElectivesCatalog({ departments, search }: Props) {
           const hasLocalDateRange = Boolean(dates.start && dates.end);
           const activeStatusLabel = statusLabel(activeMatch, hasLocalDateRange);
           const remainingCapacity = activeMatch?.remainingCapacity ?? null;
+          const currentMonth = monthByDepartment[department.id] ?? parseInputDate(dates.start) ?? initialMonth;
 
           return (
             <div key={department.id} className="border-b border-slate-100 last:border-b-0">
@@ -260,48 +365,25 @@ export function StudentElectivesCatalog({ departments, search }: Props) {
                     </section>
 
                     <section className="space-y-4">
-                      <div>
-                        <h4 className="text-base font-black text-ink">זמינות ותאריכים</h4>
-                        <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                          <label className="space-y-1">
-                            <span className="text-xs font-black text-slate-500">תאריך התחלה</span>
-                            <input
-                              type="date"
-                              value={dates.start}
-                              onChange={(event) => {
-                                const next = { ...dates, start: event.target.value };
-                                setDateByDepartment((current) => ({ ...current, [department.id]: next }));
-                                void checkDates(department, next.start, next.end);
-                              }}
-                              className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-brand-500"
-                            />
-                          </label>
-                          <label className="space-y-1">
-                            <span className="text-xs font-black text-slate-500">תאריך סיום</span>
-                            <input
-                              type="date"
-                              value={dates.end}
-                              onChange={(event) => {
-                                const next = { ...dates, end: event.target.value };
-                                setDateByDepartment((current) => ({ ...current, [department.id]: next }));
-                                void checkDates(department, next.start, next.end);
-                              }}
-                              className="w-full rounded-2xl border border-slate-200 px-3 py-2 text-sm outline-none focus:border-brand-500"
-                            />
-                          </label>
-                        </div>
-                      </div>
-
-                      <div className="grid gap-3 sm:grid-cols-2">
-                        <WindowList title="תאריכים פתוחים" windows={department.openWindows} tone="success" />
-                        <WindowList title="תאריכים חסומים" windows={department.closedWindows} tone="danger" />
-                      </div>
-
-                      {!department.openWindows.length && !department.closedWindows.length ? (
-                        <p className="rounded-2xl bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">
-                          ניתן לבחור תאריכים לבדיקה.
-                        </p>
-                      ) : null}
+                      <ElectiveDateRangeCalendar
+                        department={department}
+                        month={currentMonth}
+                        selectedStart={dates.start}
+                        selectedEnd={dates.end}
+                        onPreviousMonth={() =>
+                          setMonthByDepartment((current) => ({
+                            ...current,
+                            [department.id]: addMonths(currentMonth, -1)
+                          }))
+                        }
+                        onNextMonth={() =>
+                          setMonthByDepartment((current) => ({
+                            ...current,
+                            [department.id]: addMonths(currentMonth, 1)
+                          }))
+                        }
+                        onSelectDay={(day) => selectCalendarDay(department, dates, day)}
+                      />
 
                       <div className="rounded-2xl border border-slate-100 px-4 py-3">
                         {localMatchState?.status === "loading" ? (
@@ -329,7 +411,7 @@ export function StudentElectivesCatalog({ departments, search }: Props) {
                           </Link>
                         ) : (
                           <button disabled className="inline-flex rounded-full bg-slate-200 px-5 py-3 text-sm font-black text-slate-500">
-                            המשך להגשת בקשה
+                            בחרו טווח תאריכים פנוי
                           </button>
                         )}
                         <Link href={detailHref(department.slug, search, dates.start, dates.end)} className="inline-flex rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-black text-slate-700">
@@ -348,33 +430,106 @@ export function StudentElectivesCatalog({ departments, search }: Props) {
   );
 }
 
-function WindowList({
-  title,
-  windows,
-  tone
+function ElectiveDateRangeCalendar({
+  department,
+  month,
+  selectedStart,
+  selectedEnd,
+  onPreviousMonth,
+  onNextMonth,
+  onSelectDay
 }: {
-  title: string;
-  windows: AvailabilityWindow[];
-  tone: "success" | "danger";
+  department: StudentElectiveCatalogDepartment;
+  month: Date;
+  selectedStart: string;
+  selectedEnd: string;
+  onPreviousMonth: () => void;
+  onNextMonth: () => void;
+  onSelectDay: (day: string) => void;
 }) {
+  const today = formatInputDate(utcDay(new Date()));
+  const cells = getMonthCells(month);
+  const currentMonth = month.getUTCMonth();
+
   return (
-    <div className="rounded-2xl bg-slate-50 px-4 py-3">
-      <div className="flex items-center justify-between gap-2">
-        <p className="text-xs font-black text-slate-500">{title}</p>
-        {windows.length ? <Badge tone={tone}>{windows.length}</Badge> : null}
+    <div className="rounded-3xl border border-slate-100 bg-white p-4">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h4 className="text-base font-black text-ink">בחירת תאריכים</h4>
+          <p className="mt-1 text-xs font-semibold text-slate-500">
+            טווח שנבחר: {selectedStart && selectedEnd ? `${selectedStart} - ${selectedEnd}` : selectedStart ? `${selectedStart} - ...` : "לא נבחר"}
+          </p>
+        </div>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={onPreviousMonth}
+            aria-label="חודש קודם"
+            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-black text-slate-700"
+          >
+            חודש קודם
+          </button>
+          <button
+            type="button"
+            onClick={onNextMonth}
+            aria-label="חודש הבא"
+            className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-black text-slate-700"
+          >
+            חודש הבא
+          </button>
+        </div>
       </div>
-      {windows.length ? (
-        <ul className="mt-2 space-y-2 text-xs font-semibold text-slate-700">
-          {windows.slice(0, 3).map((window) => (
-            <li key={window.id}>
-              {window.startsAt} - {window.endsAt}
-              {window.capacityOverride ? ` · ${window.capacityOverride} מקומות` : ""}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="mt-2 text-xs font-semibold text-slate-500">לא הוגדר</p>
-      )}
+
+      <div className="mt-4 text-center text-sm font-black text-ink">{monthLabel(month)}</div>
+
+      <div className="mt-3 grid grid-cols-7 gap-1 text-center text-xs font-black text-slate-500">
+        {["א", "ב", "ג", "ד", "ה", "ו", "ש"].map((dayName) => (
+          <span key={dayName}>{dayName}</span>
+        ))}
+      </div>
+
+      <div className="mt-2 grid grid-cols-7 gap-1">
+        {cells.map((cell) => {
+          const day = formatInputDate(cell);
+          const availability = dayAvailability(department, day);
+          const inSelectedRange = Boolean(selectedStart && selectedEnd && rangeIncludes(day, selectedStart, selectedEnd));
+          const isSelectedEdge = day === selectedStart || day === selectedEnd;
+          const isOutsideMonth = cell.getUTCMonth() !== currentMonth;
+          const isToday = day === today;
+
+          return (
+            <button
+              key={day}
+              type="button"
+              disabled={!availability.selectable}
+              onClick={() => onSelectDay(day)}
+              aria-label={`${day} ${availability.label}`}
+              className={cn(
+                "min-h-12 rounded-2xl border px-1 py-1 text-center text-xs font-black transition",
+                isOutsideMonth && "opacity-35",
+                availability.selectable
+                  ? "border-emerald-100 bg-emerald-50 text-emerald-900 hover:bg-emerald-100"
+                  : availability.full
+                    ? "cursor-not-allowed border-amber-100 bg-amber-50 text-amber-700"
+                    : "cursor-not-allowed border-slate-100 bg-slate-50 text-slate-400",
+                inSelectedRange && "border-brand-200 bg-brand-100 text-brand-900",
+                isSelectedEdge && "border-brand-700 bg-brand-700 text-white",
+                isToday && !isSelectedEdge && "ring-2 ring-brand-200"
+              )}
+            >
+              <span className="block">{cell.getUTCDate()}</span>
+              <span className="mt-0.5 block text-[0.62rem] font-bold">{availability.label}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="mt-3 flex flex-wrap gap-2 text-xs font-bold text-slate-600">
+        <span className="rounded-full bg-emerald-50 px-3 py-1 text-emerald-800">פנוי</span>
+        <span className="rounded-full bg-slate-100 px-3 py-1 text-slate-500">לא זמין</span>
+        <span className="rounded-full bg-amber-50 px-3 py-1 text-amber-800">מלא</span>
+        <span className="rounded-full bg-brand-100 px-3 py-1 text-brand-900">טווח שנבחר</span>
+      </div>
     </div>
   );
 }

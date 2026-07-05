@@ -51,6 +51,7 @@ export default async function StudentElectivesPreviewPage({
       specialty: department.specialty.name,
       institution: department.institution,
       notes: department.electiveSettings?.notes ?? null,
+      availabilityMode: department.electiveSettings?.availabilityMode ?? null,
       maxStudentsAtOnce: department.electiveSettings?.maxStudentsAtOnce ?? null,
       minDurationDays: department.electiveSettings?.minDurationDays ?? null,
       maxDurationDays: department.electiveSettings?.maxDurationDays ?? null,
@@ -79,6 +80,13 @@ export default async function StudentElectivesPreviewPage({
           capacityOverride: window.capacityOverride,
           reason: window.reason,
           note: window.note
+        })),
+      bookedRanges: department.electiveApplications
+        .filter((application) => application.requestedStartDate && application.requestedEndDate)
+        .map((application) => ({
+          id: application.id,
+          requestedStartDate: formatDateInput(application.requestedStartDate!),
+          requestedEndDate: formatDateInput(application.requestedEndDate!)
         })),
       electiveMatch: department.electiveMatch
     };
