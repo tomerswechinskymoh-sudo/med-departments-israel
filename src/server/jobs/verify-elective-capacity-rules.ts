@@ -96,6 +96,7 @@ add("student catalog flags full capacity results", studentElectivesSource.includ
 add("student matching uses approved overlap count", studentElectivesSource.includes("countApprovedApplicationsOverlappingRange"));
 add("expanded row fetches capacity check by selected date range", studentCatalogSource.includes("/api/electives/departments/") && studentCatalogSource.includes("remainingCapacity"));
 add("calendar marks full days from approved bookings", studentCatalogSource.includes("approvedBookingsForDay") && studentCatalogSource.includes("מלא"));
+add("popup date picker keeps server validation path", studentCatalogSource.includes("פתח לוח שנה") && studentCatalogSource.includes("checkDates(department"));
 
 const failures = checks.filter((check) => !check.ok);
 console.log(JSON.stringify({ ok: failures.length === 0, checked: checks.length, failed: failures.length, failures }, null, 2));
