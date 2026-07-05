@@ -481,15 +481,43 @@ function ElectiveDateRangeCalendar({
             const inFinalSelectedRange = Boolean(selectedStart && selectedEnd && rangeIncludes(day, selectedStart, selectedEnd));
             const inPreviewRange = Boolean(selectedStart && !selectedEnd && previewEnd && rangeIncludes(day, selectedStart, previewEnd));
             const inSelectedRange = inFinalSelectedRange || inPreviewRange;
-            const isSelectedEdge = day === selectedStart || day === selectedEnd;
+            const isSelectedStart = day === selectedStart;
+            const isSelectedEnd = day === selectedEnd;
+            const isSelectedEdge = isSelectedStart || isSelectedEnd;
             const isOutsideMonth = cell.getUTCMonth() !== currentMonth;
             const isToday = day === today;
+            const buttonVisualClass = isSelectedEdge
+              ? "rounded-2xl border-brand-950 bg-brand-900 text-white opacity-100 shadow-md ring-2 ring-brand-300 disabled:text-white disabled:opacity-100"
+              : inFinalSelectedRange
+                ? "rounded-md border-brand-700 bg-brand-700 text-white opacity-100 shadow-inner disabled:text-white disabled:opacity-100"
+                : inPreviewRange
+                  ? "rounded-md border-brand-300 bg-brand-100 text-brand-950 shadow-inner"
+                  : availability.selectable
+                    ? "rounded-2xl border-emerald-100 bg-white text-slate-800 hover:border-emerald-300 hover:bg-emerald-50"
+                    : availability.full
+                      ? "rounded-2xl cursor-not-allowed border-amber-100 bg-amber-50 text-amber-700"
+                      : "rounded-2xl cursor-not-allowed border-slate-100 bg-slate-50 text-slate-400";
+            const dayNumberClass = isSelectedEdge
+              ? "text-white font-black opacity-100"
+              : inFinalSelectedRange
+                ? "text-white font-semibold opacity-100"
+                : inPreviewRange
+                  ? "text-brand-950 opacity-100"
+                  : availability.selectable
+                    ? "text-slate-800"
+                    : availability.full
+                      ? "text-amber-800"
+                      : "text-slate-500";
 
             return (
               <button
                 key={day}
                 type="button"
                 disabled={!availability.selectable}
+                data-day-label={day}
+                data-selected-start={isSelectedStart ? "true" : undefined}
+                data-selected-end={isSelectedEnd ? "true" : undefined}
+                data-selected-range={inFinalSelectedRange ? "true" : undefined}
                 onClick={() => onSelectDay(day)}
                 onMouseEnter={() => setHoverDay(day)}
                 onFocus={() => setHoverDay(day)}
@@ -497,30 +525,15 @@ function ElectiveDateRangeCalendar({
                 className={cn(
                   "min-h-11 border px-1 py-1 text-center text-xs font-black transition",
                   isOutsideMonth && !inSelectedRange && "opacity-35",
-                  availability.selectable
-                    ? "border-emerald-100 bg-white text-slate-800 hover:border-emerald-300 hover:bg-emerald-50"
-                    : availability.full
-                      ? "cursor-not-allowed border-amber-100 bg-amber-50 text-amber-700"
-                      : "cursor-not-allowed border-slate-100 bg-slate-50 text-slate-400",
-                  inPreviewRange && "border-brand-300 bg-brand-100 text-brand-950 shadow-inner",
-                  inFinalSelectedRange && !isSelectedEdge && "rounded-md border-brand-700 bg-brand-700 text-white shadow-inner",
-                  isSelectedEdge && "rounded-2xl border-brand-950 bg-brand-900 text-white shadow-md ring-2 ring-brand-300",
-                  !inSelectedRange && "rounded-2xl",
+                  buttonVisualClass,
                   isToday && !isSelectedEdge && "ring-2 ring-brand-200"
                 )}
               >
-                <span
-                  className={cn(
-                    "block text-sm",
-                    inFinalSelectedRange && "text-white",
-                    isSelectedEdge && "text-white",
-                    inPreviewRange && !isSelectedEdge && "text-brand-950"
-                  )}
-                >
+                <span className={cn("relative z-10 block text-sm", dayNumberClass)}>
                   {cell.getUTCDate()}
                 </span>
                 {!availability.selectable ? (
-                  <span className={cn("mt-0.5 block text-[0.58rem] font-bold", inFinalSelectedRange && "text-white")}>{availability.label}</span>
+                  <span className={cn("relative z-10 mt-0.5 block text-[0.58rem] font-bold", inFinalSelectedRange && "text-white opacity-100")}>{availability.label}</span>
                 ) : null}
               </button>
             );
