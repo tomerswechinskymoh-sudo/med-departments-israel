@@ -12,6 +12,7 @@ import {
   parseStudentElectiveSearch,
   requireStudentElectivesPreviewAccess
 } from "@/lib/student-electives";
+import { DEFAULT_ELECTIVE_TRACK_TYPE, ELECTIVE_TRACK_TYPES, getElectiveTrackLabel } from "@/lib/elective-tracks";
 
 export const dynamic = "force-dynamic";
 
@@ -41,6 +42,16 @@ export default async function StudentElectivesPreviewPage({
       ? studentRatings.reduce((sum, value) => sum + value, 0) / studentRatings.length
       : null;
 
+    const effectiveSettings = department.effectiveElectiveSettings;
+    const trackTypes = new Set<string>();
+    if (department.electiveSettings?.allowApplications) {
+      trackTypes.add(DEFAULT_ELECTIVE_TRACK_TYPE);
+    }
+    department.electiveTrackSettings
+      .filter((settings) => settings.allowApplications)
+      .forEach((settings) => trackTypes.add(settings.trackType));
+    const appliesToSelectedTrack = (trackType: string | null) => !trackType || !search.trackType || trackType === search.trackType;
+
     return {
       id: department.id,
       slug: department.slug,
@@ -50,17 +61,27 @@ export default async function StudentElectivesPreviewPage({
       region: getElectiveDepartmentRegion(department),
       specialty: department.specialty.name,
       institution: department.institution,
-      notes: department.electiveSettings?.notes ?? null,
-      availabilityMode: department.electiveSettings?.availabilityMode ?? null,
-      maxStudentsAtOnce: department.electiveSettings?.maxStudentsAtOnce ?? null,
-      minDurationDays: department.electiveSettings?.minDurationDays ?? null,
-      maxDurationDays: department.electiveSettings?.maxDurationDays ?? null,
+      activeTrackType: search.trackType,
+      availableTracks: Array.from(trackTypes).map((trackType) => ({
+        value: trackType,
+        label: getElectiveTrackLabel(trackType)
+      })),
+      notes: effectiveSettings?.notes ?? null,
+      availabilityMode: effectiveSettings?.availabilityMode ?? null,
+      maxStudentsAtOnce: effectiveSettings?.maxStudentsAtOnce ?? null,
+      minDurationDays: effectiveSettings?.minDurationDays ?? null,
+      maxDurationDays: effectiveSettings?.maxDurationDays ?? null,
+      paymentRequired: effectiveSettings?.paymentRequired ?? false,
+      paymentAmount: effectiveSettings?.paymentAmount ? String(effectiveSettings.paymentAmount) : null,
+      paymentCurrency: effectiveSettings?.paymentCurrency ?? "ILS",
+      paymentLink: effectiveSettings?.paymentLink ?? null,
+      paymentInstructions: effectiveSettings?.paymentInstructions ?? null,
       rating: {
         average: ratingAverage,
         count: studentRatings.length
       },
       openWindows: department.electiveAvailabilityWindows
-        .filter((window) => window.status === "OPEN")
+        .filter((window) => window.status === "OPEN" && appliesToSelectedTrack(window.trackType))
         .map((window) => ({
           id: window.id,
           status: window.status,
@@ -71,7 +92,7 @@ export default async function StudentElectivesPreviewPage({
           note: window.note
         })),
       closedWindows: department.electiveAvailabilityWindows
-        .filter((window) => window.status === "CLOSED")
+        .filter((window) => window.status === "CLOSED" && appliesToSelectedTrack(window.trackType))
         .map((window) => ({
           id: window.id,
           status: window.status,
@@ -82,7 +103,7 @@ export default async function StudentElectivesPreviewPage({
           note: window.note
         })),
       bookedRanges: department.electiveApplications
-        .filter((application) => application.requestedStartDate && application.requestedEndDate)
+        .filter((application) => application.requestedStartDate && application.requestedEndDate && (!search.trackType || application.trackType === search.trackType))
         .map((application) => ({
           id: application.id,
           requestedStartDate: formatDateInput(application.requestedStartDate!),
@@ -122,6 +143,22 @@ export default async function StudentElectivesPreviewPage({
               />
             </label>
           </div>
+
+          <fieldset className="rounded-2xl border border-brand-100 bg-white p-4">
+            <legend className="px-2 text-xs font-black text-slate-600">סוג סבב</legend>
+            <div className="mt-2 grid gap-2 text-sm sm:grid-cols-2">
+              <label className="flex items-center gap-2 rounded-xl px-2 py-1 font-semibold text-slate-700">
+                <input name="trackType" type="radio" value="" defaultChecked={!search.trackType} />
+                <span>כל סוגי הסבבים</span>
+              </label>
+              {ELECTIVE_TRACK_TYPES.map((trackType) => (
+                <label key={trackType} className="flex items-center gap-2 rounded-xl px-2 py-1 font-semibold text-slate-700">
+                  <input name="trackType" type="radio" value={trackType} defaultChecked={search.trackType === trackType} />
+                  <span>{getElectiveTrackLabel(trackType)}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
 
           <div className="grid gap-4 lg:grid-cols-2">
             <fieldset className="rounded-2xl border border-brand-100 bg-white p-4">

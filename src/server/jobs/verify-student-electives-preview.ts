@@ -95,6 +95,7 @@ for (const path of previewPages) {
 const electivesPage = read(join(root, "src/app/electives/page.tsx"));
 const electivesCatalog = read(join(root, "src/components/electives/student-electives-catalog.tsx"));
 addCheck("electives page shows optional filter form", electivesPage.includes("תאריך התחלה") && electivesPage.includes("תחומי התמחות שמעניינים אותך") && electivesPage.includes("אזור בארץ"));
+addCheck("electives page exposes optional track filter", electivesPage.includes("סוג סבב") && electivesPage.includes("ELECTIVE_TRACK_TYPES") && electivesPage.includes("getElectiveTrackLabel"));
 addCheck("electives page always lists departments", electivesPage.includes("const departments = await listElectiveDepartments(rawParams)") && !electivesPage.includes("required"));
 addCheck("electives page warns on partial date only", electivesPage.includes("כדי לבדוק זמינות לפי תאריכים"));
 addCheck("electives page results section is live catalog", electivesPage.includes("מחלקות פתוחות לאלקטיב") && electivesPage.includes("נמצאו {catalogDepartments.length} מחלקות"));
@@ -102,6 +103,7 @@ addCheck("electives page renders row catalog component", electivesPage.includes(
 addCheck("electives empty state suggests clearing filters", electivesPage.includes("נסה לנקות סינונים"));
 addCheck("closed row includes compact row columns", electivesCatalog.includes("בית חולים") && electivesCatalog.includes("מחלקה") && electivesCatalog.includes("תחום") && electivesCatalog.includes("דירוג סטודנטים"));
 addCheck("closed row includes simultaneous student capacity label", electivesCatalog.includes("מספר סטודנטים שיכולים להיות בו זמנית"));
+addCheck("row catalog displays track and payment info", electivesCatalog.includes("סוג סבב") && electivesCatalog.includes("נדרש תשלום") && electivesCatalog.includes("ללא תשלום"));
 addCheck("expanded row renders inline calendar without popup trigger", electivesCatalog.includes("בחירת תאריכים") && electivesCatalog.includes("getMonthCells") && electivesCatalog.includes("onSelectDay") && !electivesCatalog.includes("פתח לוח שנה") && !electivesCatalog.includes("absolute right-0 z-40"));
 addCheck("desktop picker shows two months", electivesCatalog.includes("secondMonth") && electivesCatalog.includes("md:grid-cols-2") && electivesCatalog.includes("hidden md:block"));
 addCheck("calendar month navigation exists", electivesCatalog.includes("חודש קודם") && electivesCatalog.includes("חודש הבא") && electivesCatalog.includes("addMonths(currentMonth"));
@@ -124,14 +126,21 @@ addCheck("detail page displays capacity diagnostics", electiveDetailPage.include
 addCheck("detail page works without dates", electiveDetailPage.includes("אפשר להמשיך לטופס ההגשה") && electiveDetailPage.includes("!hasSelectedDates || match?.ok"));
 addCheck("detail page blocks apply when selected dates unavailable", electiveDetailPage.includes("match?.ok") && electiveDetailPage.includes("disabled"));
 addCheck("detail page uses simultaneous student capacity wording", !electiveDetailPage.includes("קיבולת מקסימלית") && electiveDetailPage.includes("מספר סטודנטים שיכולים להיות בו זמנית"));
+addCheck("detail page uses selected track settings", electiveDetailPage.includes("resolveElectiveTrackSettings") && electiveDetailPage.includes("getElectiveTrackLabel"));
+addCheck("detail page displays payment fields", electiveDetailPage.includes("נדרש תשלום") && electiveDetailPage.includes("קישור לתשלום") && electiveDetailPage.includes("הנחיות תשלום"));
 
 const electiveApplyPage = read(join(root, "src/app/electives/[departmentSlug]/apply/page.tsx"));
 addCheck("apply page reads query dates", electiveApplyPage.includes("parseStudentElectiveSearch") && electiveApplyPage.includes("defaultStartDate"));
 addCheck("apply page shows required date form without query dates", electiveApplyPage.includes("יש לבחור תאריך התחלה ותאריך סיום") && electiveApplyPage.includes("<ElectiveApplicationForm"));
 addCheck("apply page warns on invalid selected dates", electiveApplyPage.includes("getElectiveDepartmentAvailabilityMatch") && electiveApplyPage.includes("!match?.ok"));
+addCheck("apply page passes default track to form", electiveApplyPage.includes("defaultTrackType={search.trackType}"));
+
+const applicationForm = read(join(root, "src/components/electives/student-electives-actions.tsx"));
+addCheck("application form requires track type", applicationForm.includes("name=\"trackType\"") && applicationForm.includes("required") && applicationForm.includes("בחירת סוג סבב"));
 
 const electiveDepartmentApi = read(join(root, "src/app/api/electives/departments/[departmentSlug]/route.ts"));
 addCheck("department API returns date availability for expanded rows", electiveDepartmentApi.includes("dateAvailability") && electiveDepartmentApi.includes("getElectiveDepartmentAvailabilityMatch"));
+addCheck("department API accepts track type", electiveDepartmentApi.includes("trackType") && electiveDepartmentApi.includes("resolveElectiveTrackSettings"));
 
 for (const path of previewApis) {
   const file = join(root, path);
@@ -144,6 +153,7 @@ const applicationsApi = read(join(root, "src/app/api/electives/applications/rout
 addCheck("application API blocks normal users in hidden preview", applicationsApi.includes("getStudentElectivesAccess(") && applicationsApi.includes("if (!access.ok)"));
 addCheck("application API uses guarded session user id", applicationsApi.includes("applicantUserId: access.session.userId"));
 addCheck("application API same-origin guard", applicationsApi.includes("hasValidSameOrigin("));
+addCheck("application API persists track type", applicationsApi.includes("trackType: parsed.data.trackType"));
 
 const myApplicationsApi = read(join(root, "src/app/api/electives/my-applications/route.ts"));
 addCheck("my-applications API blocks normal users in hidden preview", myApplicationsApi.includes("getStudentElectivesAccess(") && myApplicationsApi.includes("if (!access.ok)"));

@@ -25,6 +25,10 @@ export default async function ElectiveDepartmentSettingsPage({ searchParams }: {
   const settings = await prisma.electiveDepartmentSettings.findUnique({
     where: { departmentId: selectedDepartment.id }
   });
+  const trackSettings = await prisma.electiveDepartmentTrackSettings.findMany({
+    where: { departmentId: selectedDepartment.id },
+    orderBy: { trackType: "asc" }
+  });
 
   return (
     <PageShell className="space-y-6 py-8">
@@ -59,6 +63,19 @@ export default async function ElectiveDepartmentSettingsPage({ searchParams }: {
                 }
               : null
           }
+          initialTrackSettings={trackSettings.map((track) => ({
+            trackType: track.trackType,
+            allowApplications: track.allowApplications,
+            maxStudentsAtOnce: track.maxStudentsAtOnce,
+            minDurationDays: track.minDurationDays,
+            maxDurationDays: track.maxDurationDays,
+            notes: track.notes,
+            paymentRequired: track.paymentRequired,
+            paymentAmount: track.paymentAmount ? String(track.paymentAmount) : null,
+            paymentCurrency: track.paymentCurrency,
+            paymentLink: track.paymentLink,
+            paymentInstructions: track.paymentInstructions
+          }))}
         />
       </Card>
     </PageShell>

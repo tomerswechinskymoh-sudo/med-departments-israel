@@ -9,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { requireElectiveDepartmentSession } from "@/lib/elective-department-auth";
 import { getRepresentativeApplication } from "@/lib/elective-representative-applications";
+import { getElectiveTrackLabel } from "@/lib/elective-tracks";
 import { formatDate } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -69,6 +70,10 @@ export default async function ElectiveDepartmentApplicationDetailPage({ params }
             <div className="rounded-2xl bg-slate-50 px-4 py-3">
               <dt className="text-xs font-black text-slate-500">פקולטה</dt>
               <dd className="mt-1 font-semibold text-ink">{application.medicalSchool ?? "לא צוין"}</dd>
+            </div>
+            <div className="rounded-2xl bg-slate-50 px-4 py-3 md:col-span-2">
+              <dt className="text-xs font-black text-slate-500">סוג סבב</dt>
+              <dd className="mt-1 font-semibold text-ink">{getElectiveTrackLabel(application.trackType)}</dd>
             </div>
             <div className="rounded-2xl bg-slate-50 px-4 py-3 md:col-span-2">
               <dt className="text-xs font-black text-slate-500">תאריכים מבוקשים</dt>

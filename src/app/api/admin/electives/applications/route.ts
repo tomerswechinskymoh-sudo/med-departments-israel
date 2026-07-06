@@ -36,6 +36,7 @@ export async function POST(request: Request) {
       medicalSchool: parsed.data.medicalSchool ?? null,
       requestedStartDate: optionalDate(parsed.data.requestedStartDate),
       requestedEndDate: optionalDate(parsed.data.requestedEndDate),
+      trackType: parsed.data.trackType,
       status: parsed.data.status,
       studentNotes: parsed.data.studentNotes ?? null,
       adminNotes: parsed.data.adminNotes ?? null
@@ -49,6 +50,7 @@ export async function POST(request: Request) {
     entityId: application.id,
     metadata: {
       departmentId: parsed.data.departmentId,
+      trackType: parsed.data.trackType,
       status: parsed.data.status
     }
   });

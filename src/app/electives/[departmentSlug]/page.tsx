@@ -18,6 +18,7 @@ import {
   parseStudentElectiveSearch,
   requireStudentElectivesPreviewAccess
 } from "@/lib/student-electives";
+import { getElectiveTrackLabel, resolveElectiveTrackSettings } from "@/lib/elective-tracks";
 
 export const dynamic = "force-dynamic";
 
@@ -51,8 +52,13 @@ export default async function StudentElectiveDepartmentPage({
   const requestedEndDate = parseDateOnly(search.end);
   const hasSelectedDates = Boolean(requestedStartDate && requestedEndDate);
   const match = requestedStartDate && requestedEndDate
-    ? await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate)
+    ? await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate, search.trackType)
     : null;
+  const effectiveSettings = resolveElectiveTrackSettings({
+    baseSettings: department.electiveSettings,
+    trackSettings: department.electiveTrackSettings,
+    trackType: search.trackType
+  });
   const openWindows = department.electiveAvailabilityWindows.filter((window) => window.status === "OPEN");
   const closedWindows = department.electiveAvailabilityWindows.filter((window) => window.status === "CLOSED");
   const region = getElectiveDepartmentRegion(department);
@@ -72,6 +78,7 @@ export default async function StudentElectiveDepartmentPage({
           <div className="flex flex-wrap gap-2">
             <Badge tone="success">פתוח להגשה</Badge>
             <Badge tone="default">{getAvailabilityModeLabel(department.electiveSettings?.availabilityMode)}</Badge>
+            <Badge tone="default">{search.trackType ? getElectiveTrackLabel(search.trackType) : "כל סוגי הסבבים"}</Badge>
           </div>
           <div className="mt-5 flex gap-4">
             <InstitutionLogo institution={department.institution} size="md" />
@@ -84,9 +91,21 @@ export default async function StudentElectiveDepartmentPage({
             </div>
           </div>
           <p className="mt-5 text-sm leading-7 text-slate-700">{department.about || department.shortSummary || "לא נוסף תיאור אלקטיב למחלקה."}</p>
-          {department.electiveSettings?.notes ? (
+          {effectiveSettings?.notes ? (
             <div className="mt-5 rounded-2xl bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-950">
-              {department.electiveSettings.notes}
+              {effectiveSettings.notes}
+            </div>
+          ) : null}
+          {effectiveSettings?.paymentRequired ? (
+            <div className="mt-5 rounded-2xl bg-brand-50 px-4 py-3 text-sm leading-7 text-brand-950">
+              <p className="font-black">נדרש תשלום</p>
+              {effectiveSettings.paymentLink ? <a href={effectiveSettings.paymentLink} target="_blank" rel="noreferrer" className="font-black underline">קישור לתשלום</a> : null}
+              {effectiveSettings.paymentInstructions ? (
+                <div className="mt-2">
+                  <p className="text-xs font-black text-brand-900">הנחיות תשלום</p>
+                  <p>{effectiveSettings.paymentInstructions}</p>
+                </div>
+              ) : null}
             </div>
           ) : null}
 
@@ -118,7 +137,7 @@ export default async function StudentElectiveDepartmentPage({
               </div>
               <div className="rounded-2xl bg-slate-50 px-4 py-3">
                 <dt className="text-xs font-black text-slate-500">מספר סטודנטים שיכולים להיות בו זמנית</dt>
-                <dd className="mt-1 font-semibold text-ink">{match?.capacity ?? department.electiveSettings?.maxStudentsAtOnce ?? "לא הוגדר"}</dd>
+                <dd className="mt-1 font-semibold text-ink">{match?.capacity ?? effectiveSettings?.maxStudentsAtOnce ?? "לא הוגדר"}</dd>
               </div>
               <div className="rounded-2xl bg-slate-50 px-4 py-3">
                 <dt className="text-xs font-black text-slate-500">בקשות מאושרות חופפות</dt>
@@ -163,8 +182,12 @@ export default async function StudentElectiveDepartmentPage({
             <div className="rounded-2xl bg-slate-50 px-4 py-3">
               <dt className="text-xs font-black text-slate-500">משך אלקטיב</dt>
               <dd className="mt-1 font-semibold text-ink">
-                {department.electiveSettings?.minDurationDays ?? "?"} - {department.electiveSettings?.maxDurationDays ?? "?"} ימים
+                {effectiveSettings?.minDurationDays ?? "?"} - {effectiveSettings?.maxDurationDays ?? "?"} ימים
               </dd>
+            </div>
+            <div className="rounded-2xl bg-slate-50 px-4 py-3">
+              <dt className="text-xs font-black text-slate-500">סוג סבב</dt>
+              <dd className="mt-1 font-semibold text-ink">{search.trackType ? getElectiveTrackLabel(search.trackType) : "לא נבחר"}</dd>
             </div>
           </dl>
         </Card>

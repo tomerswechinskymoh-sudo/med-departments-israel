@@ -45,7 +45,8 @@ export async function POST(request: Request) {
   const validation = await validateElectiveApplicationRequest({
     departmentId: department.id,
     requestedStartDate,
-    requestedEndDate
+    requestedEndDate,
+    trackType: parsed.data.trackType
   });
 
   if (!validation.ok) {
@@ -60,6 +61,7 @@ export async function POST(request: Request) {
       applicantEmail: access.session.email,
       requestedStartDate,
       requestedEndDate,
+      trackType: parsed.data.trackType,
       status: "SUBMITTED",
       studentNotes: parsed.data.studentNotes ?? null
     },
@@ -68,6 +70,7 @@ export async function POST(request: Request) {
         include: {
           institution: { select: { name: true } },
           specialty: { select: { name: true } },
+          electiveTrackSettings: true,
           electiveRepresentativeAssignments: {
             where: { receivesApplicationEmails: true },
             include: {
@@ -108,6 +111,7 @@ export async function POST(request: Request) {
     entityId: application.id,
     metadata: {
       departmentId: department.id,
+      trackType: parsed.data.trackType,
       preview: true
     }
   });

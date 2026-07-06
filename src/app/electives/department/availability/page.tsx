@@ -51,6 +51,7 @@ export default async function ElectiveDepartmentAvailabilityPage({ searchParams 
           departmentId={selectedDepartment.id}
           windows={windows.map((window) => ({
             id: window.id,
+            trackType: window.trackType,
             status: window.status,
             startsAt: dateInput(window.startsAt),
             endsAt: dateInput(window.endsAt),

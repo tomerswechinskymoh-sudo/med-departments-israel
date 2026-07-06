@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { ElectiveAlternativeDecisionButtons } from "@/components/electives/student-electives-actions";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { getElectiveTrackLabel } from "@/lib/elective-tracks";
 import { prisma } from "@/lib/prisma";
 import { requireStudentElectivesPreviewAccess } from "@/lib/student-electives";
 import { formatDate } from "@/lib/utils";
@@ -50,6 +51,7 @@ export default async function MyElectiveApplicationsPage() {
               <tr>
                 <th className="px-3 py-2">מחלקה</th>
                 <th className="px-3 py-2">תאריכים</th>
+                <th className="px-3 py-2">סוג סבב</th>
                 <th className="px-3 py-2">סטטוס</th>
                 <th className="px-3 py-2">חלופה</th>
                 <th className="px-3 py-2">הוגש</th>
@@ -74,6 +76,7 @@ export default async function MyElectiveApplicationsPage() {
                     {" - "}
                     {application.requestedEndDate ? formatDate(application.requestedEndDate) : "לא צוין"}
                   </td>
+                  <td className="px-3 py-3">{getElectiveTrackLabel(application.trackType)}</td>
                   <td className="px-3 py-3">
                     <Badge tone="default">{application.status}</Badge>
                   </td>

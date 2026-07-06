@@ -15,7 +15,8 @@ export async function getRepresentativeApplication(input: {
       department: {
         include: {
           institution: { select: { name: true } },
-          specialty: { select: { name: true } }
+          specialty: { select: { name: true } },
+          electiveTrackSettings: true
         }
       }
     }
@@ -62,7 +63,8 @@ export async function updateRepresentativeApplicationDecision(input: {
     const validation = await validateElectiveApplicationRequest({
       departmentId: application.departmentId,
       requestedStartDate: application.requestedStartDate,
-      requestedEndDate: application.requestedEndDate
+      requestedEndDate: application.requestedEndDate,
+      trackType: application.trackType
     });
 
     if (!validation.ok) {
@@ -81,7 +83,8 @@ export async function updateRepresentativeApplicationDecision(input: {
     const validation = await validateElectiveApplicationRequest({
       departmentId: application.departmentId,
       requestedStartDate: proposedStartDate,
-      requestedEndDate: proposedEndDate
+      requestedEndDate: proposedEndDate,
+      trackType: application.trackType
     });
 
     if (!validation.ok) {
@@ -101,7 +104,8 @@ export async function updateRepresentativeApplicationDecision(input: {
       department: {
         include: {
           institution: { select: { name: true } },
-          specialty: { select: { name: true } }
+          specialty: { select: { name: true } },
+          electiveTrackSettings: true
         }
       }
     }

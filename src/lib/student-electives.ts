@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
-import { ElectiveApplicationStatus } from "@prisma/client";
+import { ElectiveApplicationStatus, ElectiveTrackType, Prisma } from "@prisma/client";
 import { getSession, type AppSession } from "@/lib/auth";
+import { DEFAULT_ELECTIVE_TRACK_TYPE, normalizeElectiveTrackType, resolveElectiveTrackSettings } from "@/lib/elective-tracks";
 import { prisma } from "@/lib/prisma";
 import { resolveCanonicalInstitutionRegion } from "@/lib/regions";
 export {
@@ -28,6 +29,8 @@ export type StudentElectiveSearchInput = {
   specialty?: SearchParamValue;
   regions?: SearchParamValue;
   region?: SearchParamValue;
+  trackType?: SearchParamValue;
+  track?: SearchParamValue;
   search?: SearchParamValue;
 };
 
@@ -40,12 +43,69 @@ type ElectiveDepartmentForAvailability = {
     maxDurationDays?: number | null;
     allowApplications?: boolean | null;
   } | null;
+  electiveTrackSettings?: Array<{
+    trackType: ElectiveTrackType;
+    allowApplications: boolean;
+    maxStudentsAtOnce: number;
+    minDurationDays?: number | null;
+    maxDurationDays?: number | null;
+    notes?: string | null;
+    paymentRequired?: boolean | null;
+    paymentAmount?: unknown;
+    paymentCurrency?: string | null;
+    paymentLink?: string | null;
+    paymentInstructions?: string | null;
+  }>;
   electiveAvailabilityWindows: Array<{
     status: "OPEN" | "CLOSED";
+    trackType?: ElectiveTrackType | null;
     startsAt: Date;
     endsAt: Date;
     capacityOverride?: number | null;
   }>;
+};
+
+const electiveDepartmentListInclude = {
+  institution: { select: { name: true, city: true, region: true, slug: true, coverImageUrl: true } },
+  specialty: { select: { name: true } },
+  electiveSettings: true,
+  electiveTrackSettings: true,
+  electiveAvailabilityWindows: {
+    orderBy: [{ startsAt: "asc" }, { endsAt: "asc" }],
+    take: 8
+  },
+  electiveApplications: {
+    where: {
+      status: {
+        in: [
+          ElectiveApplicationStatus.ACCEPTED,
+          ElectiveApplicationStatus.APPROVED,
+          ElectiveApplicationStatus.ALTERNATIVE_ACCEPTED
+        ]
+      },
+      requestedStartDate: { not: null },
+      requestedEndDate: { not: null }
+    },
+    select: {
+      id: true,
+      requestedStartDate: true,
+      requestedEndDate: true,
+      trackType: true,
+      status: true
+    }
+  },
+  reviews: {
+    where: { reviewerType: "STUDENT" },
+    select: { overallRecommendation: true }
+  }
+} satisfies Prisma.DepartmentInclude;
+
+type ElectiveDepartmentListBase = Prisma.DepartmentGetPayload<{ include: typeof electiveDepartmentListInclude }>;
+type ElectiveDepartmentMatch = Awaited<ReturnType<typeof getElectiveDepartmentAvailabilityMatch>>;
+
+export type StudentElectiveDepartmentListItem = ElectiveDepartmentListBase & {
+  effectiveElectiveSettings: ReturnType<typeof resolveElectiveTrackSettings>;
+  electiveMatch: ElectiveDepartmentMatch | null;
 };
 
 function firstValue(value: SearchParamValue) {
@@ -83,6 +143,7 @@ export function parseStudentElectiveSearch(input?: StudentElectiveSearchInput) {
     start: firstValue(input?.start)?.trim() ?? "",
     end: firstValue(input?.end)?.trim() ?? "",
     search: firstValue(input?.search)?.trim() ?? "",
+    trackType: normalizeElectiveTrackType(firstValue(input?.trackType)?.trim() ?? firstValue(input?.track)?.trim() ?? "") ?? null,
     specialties: Array.from(new Set([...specialties, ...legacySpecialties])),
     regions: Array.from(new Set([...regions, ...legacyRegions]))
   };
@@ -105,6 +166,7 @@ export function createElectiveSearchQuery(search: ReturnType<typeof parseStudent
 
   if (search.start) params.set("start", search.start);
   if (search.end) params.set("end", search.end);
+  if (search.trackType) params.set("trackType", search.trackType);
   if (search.specialties.length > 0) params.set("specialties", search.specialties.join(","));
   if (search.regions.length > 0) params.set("regions", search.regions.join(","));
   if (search.search) params.set("search", search.search);
@@ -181,15 +243,21 @@ export async function getElectiveDepartmentBySlug(departmentSlug: string) {
 
   return prisma.department.findFirst({
     where: {
-      OR: [{ slug: { in: slugCandidates } }, { id: decodedSlug }],
-      electiveSettings: {
-        allowApplications: true
-      }
+      AND: [
+        { OR: [{ slug: { in: slugCandidates } }, { id: decodedSlug }] },
+        {
+          OR: [
+            { electiveSettings: { allowApplications: true } },
+            { electiveTrackSettings: { some: { allowApplications: true } } }
+          ]
+        }
+      ]
     },
     include: {
       institution: { select: { name: true, city: true, region: true, slug: true, coverImageUrl: true } },
       specialty: { select: { name: true } },
       electiveSettings: true,
+      electiveTrackSettings: true,
       electiveAvailabilityWindows: {
         orderBy: [{ startsAt: "asc" }, { endsAt: "asc" }]
       }
@@ -200,9 +268,10 @@ export async function getElectiveDepartmentBySlug(departmentSlug: string) {
 export async function getElectiveSearchOptions() {
   const departments = await prisma.department.findMany({
     where: {
-      electiveSettings: {
-        allowApplications: true
-      }
+      OR: [
+        { electiveSettings: { allowApplications: true } },
+        { electiveTrackSettings: { some: { allowApplications: true } } }
+      ]
     },
     select: {
       institution: { select: { name: true, city: true, region: true } },
@@ -220,13 +289,20 @@ export async function getElectiveSearchOptions() {
 export async function getElectiveDepartmentAvailabilityMatch(
   department: ElectiveDepartmentForAvailability,
   requestedStartDate: Date,
-  requestedEndDate: Date
+  requestedEndDate: Date,
+  trackType?: ElectiveTrackType | null
 ) {
+  const settings = resolveElectiveTrackSettings({
+    baseSettings: department.electiveSettings,
+    trackSettings: department.electiveTrackSettings ?? [],
+    trackType: trackType ?? null
+  });
   const range = isDateRangeAllowedForDepartment({
-    settings: department.electiveSettings,
+    settings,
     windows: department.electiveAvailabilityWindows,
     requestedStartDate,
-    requestedEndDate
+    requestedEndDate,
+    trackType
   });
 
   if (!range.ok) {
@@ -242,7 +318,8 @@ export async function getElectiveDepartmentAvailabilityMatch(
   const approvedOverlapCount = await countApprovedApplicationsOverlappingRange({
     departmentId: department.id,
     requestedStartDate,
-    requestedEndDate
+    requestedEndDate,
+    trackType
   });
   const remainingCapacity = Math.max(range.capacity - approvedOverlapCount, 0);
 
@@ -265,60 +342,40 @@ export async function getElectiveDepartmentAvailabilityMatch(
   };
 }
 
-export async function listElectiveDepartments(input?: StudentElectiveSearchInput) {
+export async function listElectiveDepartments(input?: StudentElectiveSearchInput): Promise<StudentElectiveDepartmentListItem[]> {
   const parsed = parseStudentElectiveSearch(input);
+  const selectedTrackType = parsed.trackType;
   const requestedStartDate = parseDateOnly(parsed.start);
   const requestedEndDate = parseDateOnly(parsed.end);
   const shouldApplyDateMatching = hasCompleteElectiveDateRange(parsed) && requestedStartDate && requestedEndDate;
 
   const departments = await prisma.department.findMany({
     where: {
-      electiveSettings: {
-        allowApplications: true
-      },
-      ...(parsed.search
-        ? {
-            OR: [
-              { name: { contains: parsed.search, mode: "insensitive" } },
-              { institution: { name: { contains: parsed.search, mode: "insensitive" } } },
-              { specialty: { name: { contains: parsed.search, mode: "insensitive" } } }
-            ]
-          }
-        : {}),
+      AND: [
+        {
+          OR: selectedTrackType
+            ? [
+                { electiveTrackSettings: { some: { trackType: selectedTrackType, allowApplications: true } } },
+                ...(selectedTrackType === DEFAULT_ELECTIVE_TRACK_TYPE ? [{ electiveSettings: { allowApplications: true } }] : [])
+              ]
+            : [
+                { electiveSettings: { allowApplications: true } },
+                { electiveTrackSettings: { some: { allowApplications: true } } }
+              ]
+        },
+        ...(parsed.search
+          ? [{
+              OR: [
+                { name: { contains: parsed.search, mode: "insensitive" as const } },
+                { institution: { name: { contains: parsed.search, mode: "insensitive" as const } } },
+                { specialty: { name: { contains: parsed.search, mode: "insensitive" as const } } }
+              ]
+            }]
+          : [])
+      ],
       ...(parsed.specialties.length > 0 ? { specialty: { name: { in: parsed.specialties } } } : {})
     },
-    include: {
-      institution: { select: { name: true, city: true, region: true, slug: true, coverImageUrl: true } },
-      specialty: { select: { name: true } },
-      electiveSettings: true,
-      electiveAvailabilityWindows: {
-        orderBy: [{ startsAt: "asc" }, { endsAt: "asc" }],
-        take: 8
-      },
-      electiveApplications: {
-        where: {
-          status: {
-            in: [
-              ElectiveApplicationStatus.ACCEPTED,
-              ElectiveApplicationStatus.APPROVED,
-              ElectiveApplicationStatus.ALTERNATIVE_ACCEPTED
-            ]
-          },
-          requestedStartDate: { not: null },
-          requestedEndDate: { not: null }
-        },
-        select: {
-          id: true,
-          requestedStartDate: true,
-          requestedEndDate: true,
-          status: true
-        }
-      },
-      reviews: {
-        where: { reviewerType: "STUDENT" },
-        select: { overallRecommendation: true }
-      }
-    },
+    include: electiveDepartmentListInclude,
     orderBy: [{ institution: { name: "asc" } }, { specialty: { name: "asc" } }, { name: "asc" }]
   });
 
@@ -329,16 +386,26 @@ export async function listElectiveDepartments(input?: StudentElectiveSearchInput
   if (!shouldApplyDateMatching) {
     return regionFiltered.map((department) => ({
       ...department,
+      effectiveElectiveSettings: resolveElectiveTrackSettings({
+        baseSettings: department.electiveSettings,
+        trackSettings: department.electiveTrackSettings,
+        trackType: selectedTrackType
+      }),
       electiveMatch: null
     }));
   }
 
-  const departmentsWithMatches = [];
+  const departmentsWithMatches: StudentElectiveDepartmentListItem[] = [];
 
   for (const department of regionFiltered) {
-    const electiveMatch = await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate);
+    const electiveMatch = await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate, selectedTrackType);
     departmentsWithMatches.push({
       ...department,
+      effectiveElectiveSettings: resolveElectiveTrackSettings({
+        baseSettings: department.electiveSettings,
+        trackSettings: department.electiveTrackSettings,
+        trackType: selectedTrackType
+      }),
       electiveMatch
     });
   }

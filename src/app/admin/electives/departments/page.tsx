@@ -3,8 +3,10 @@ import Link from "next/link";
 import { ElectivesDemoTools } from "@/components/admin/admin-demo-actions";
 import {
   ElectiveDepartmentAccountForm,
+  ElectiveHospitalRepresentativeGenerationForm,
   ElectiveDepartmentSettingsForm,
-  ElectiveRepresentativeAccountForm
+  ElectiveRepresentativeAccountForm,
+  ElectiveRepresentativeResetPasswordButton
 } from "@/components/admin/electives-admin-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
@@ -96,6 +98,13 @@ export default async function AdminElectiveDepartmentsPage() {
 
       <div className="grid gap-5 xl:grid-cols-2">
         <Card>
+          <h2 className="text-xl font-black text-ink">משתמשי נציגים לפי בתי חולים</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">יוצר חשבון בית-חולים אחד ומשייך אליו את כל המחלקות שהוגדרו לאלקטיבים.</p>
+          <div className="mt-5">
+            <ElectiveHospitalRepresentativeGenerationForm />
+          </div>
+        </Card>
+        <Card>
           <h2 className="text-xl font-black text-ink">נציג/ת אלקטיבים רב-מחלקתי</h2>
           <p className="mt-2 text-sm leading-7 text-slate-600">חשבון אחד יכול לנהל מחלקה אחת או יותר. הסיסמה נשמרת כ-hash בלבד.</p>
           <div className="mt-5">
@@ -130,6 +139,7 @@ export default async function AdminElectiveDepartmentsPage() {
                 <th className="px-3 py-2">נציג/ה</th>
                 <th className="px-3 py-2">סטטוס</th>
                 <th className="px-3 py-2">מחלקות</th>
+                <th className="px-3 py-2">איפוס סיסמה</th>
               </tr>
             </thead>
             <tbody>
@@ -146,6 +156,9 @@ export default async function AdminElectiveDepartmentsPage() {
                     {representative.assignments.length > 0
                       ? representative.assignments.map((assignment) => departmentLabel(assignment.department)).join(" · ")
                       : "אין שיוך"}
+                  </td>
+                  <td className="px-3 py-3">
+                    <ElectiveRepresentativeResetPasswordButton username={representative.username} />
                   </td>
                 </tr>
               ))}

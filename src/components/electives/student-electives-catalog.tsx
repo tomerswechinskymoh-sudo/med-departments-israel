@@ -10,6 +10,7 @@ type SearchState = {
   start: string;
   end: string;
   search: string;
+  trackType: string | null;
   specialties: string[];
   regions: string[];
 };
@@ -58,6 +59,13 @@ export type StudentElectiveCatalogDepartment = {
   minDurationDays: number | null;
   maxDurationDays: number | null;
   rating: RatingSummary;
+  activeTrackType: string | null;
+  availableTracks: Array<{ value: string; label: string }>;
+  paymentRequired: boolean;
+  paymentAmount: string | null;
+  paymentCurrency: string | null;
+  paymentLink: string | null;
+  paymentInstructions: string | null;
   openWindows: AvailabilityWindow[];
   closedWindows: AvailabilityWindow[];
   bookedRanges: Array<{
@@ -98,6 +106,7 @@ function createQuery(search: SearchState) {
 
   if (search.start) params.set("start", search.start);
   if (search.end) params.set("end", search.end);
+  if (search.trackType) params.set("trackType", search.trackType);
   if (search.specialties.length > 0) params.set("specialties", search.specialties.join(","));
   if (search.regions.length > 0) params.set("regions", search.regions.join(","));
   if (search.search) params.set("search", search.search);
@@ -225,6 +234,7 @@ export function StudentElectivesCatalog({ departments, search }: Props) {
 
     try {
       const params = new URLSearchParams({ start, end });
+      if (search.trackType) params.set("trackType", search.trackType);
       const response = await fetch(`/api/electives/departments/${encodeURIComponent(department.slug)}?${params.toString()}`, {
         headers: { Accept: "application/json" }
       });
@@ -343,6 +353,14 @@ export function StudentElectivesCatalog({ departments, search }: Props) {
 
                       <div className="grid gap-3 sm:grid-cols-2">
                         <div className="rounded-2xl bg-slate-50 px-4 py-3">
+                          <p className="text-xs font-black text-slate-500">סוג סבב</p>
+                          <p className="mt-1 text-sm font-bold text-ink">
+                            {department.activeTrackType
+                              ? department.availableTracks.find((track) => track.value === department.activeTrackType)?.label ?? "לא נבחר"
+                              : department.availableTracks.map((track) => track.label).join(" / ") || "לא הוגדר"}
+                          </p>
+                        </div>
+                        <div className="rounded-2xl bg-slate-50 px-4 py-3">
                           <p className="text-xs font-black text-slate-500">מספר סטודנטים שיכולים להיות בו זמנית</p>
                           <p className="mt-1 text-lg font-black text-ink">{department.maxStudentsAtOnce ?? "לא הוגדר"}</p>
                         </div>
@@ -357,10 +375,26 @@ export function StudentElectivesCatalog({ departments, search }: Props) {
                       </div>
 
                       <div className="rounded-2xl bg-slate-50 px-4 py-3">
-                        <p className="text-xs font-black text-slate-500">משך אלקטיב</p>
+                        <p className="text-xs font-black text-slate-500">משך סבב</p>
                         <p className="mt-1 text-sm font-bold text-ink">
                           {department.minDurationDays ?? "?"} - {department.maxDurationDays ?? "?"} ימים
                         </p>
+                      </div>
+
+                      <div className="rounded-2xl bg-slate-50 px-4 py-3">
+                        <p className="text-xs font-black text-slate-500">תשלום</p>
+                        <p className="mt-1 text-sm font-bold text-ink">
+                          {department.paymentRequired ? "נדרש תשלום" : "ללא תשלום"}
+                          {department.paymentRequired && department.paymentAmount ? ` · ${department.paymentAmount} ${department.paymentCurrency ?? "ILS"}` : ""}
+                        </p>
+                        {department.paymentLink ? (
+                          <a href={department.paymentLink} className="mt-2 inline-flex text-xs font-black text-brand-700 underline" target="_blank" rel="noreferrer">
+                            קישור לתשלום
+                          </a>
+                        ) : null}
+                        {department.paymentInstructions ? (
+                          <p className="mt-2 text-xs leading-6 text-slate-600">{department.paymentInstructions}</p>
+                        ) : null}
                       </div>
                     </section>
 

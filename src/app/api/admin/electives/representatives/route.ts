@@ -5,6 +5,7 @@ import { createAuditLog } from "@/lib/audit";
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 import { hasValidSameOrigin } from "@/lib/security";
+import { generateElectiveRepresentativesByHospital, resetHospitalElectiveRepresentativePassword } from "@/lib/server/elective-representative-generation";
 import { electiveRepresentativeAccountSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
@@ -19,6 +20,41 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json().catch(() => null);
+
+  if (body?.action === "generateByHospital") {
+    const summary = await generateElectiveRepresentativesByHospital({
+      resetExistingPasswords: body?.resetExistingPasswords === true
+    });
+
+    await createAuditLog({
+      actorUserId: session.userId,
+      action: "admin.elective_representatives_generated_by_hospital",
+      entityType: "ElectiveRepresentativeAccount",
+      entityId: "hospital-generation",
+      metadata: {
+        hospitalsProcessed: summary.hospitalsProcessed,
+        representativesCreated: summary.representativesCreated,
+        representativesUpdated: summary.representativesUpdated
+      }
+    });
+
+    return NextResponse.json({ message: "משתמשי נציגים לפי בתי חולים נוצרו/עודכנו.", summary });
+  }
+
+  if (body?.action === "resetHospitalRepresentativePassword" && typeof body?.username === "string") {
+    const result = await resetHospitalElectiveRepresentativePassword(body.username);
+
+    await createAuditLog({
+      actorUserId: session.userId,
+      action: "admin.elective_representative_password_reset",
+      entityType: "ElectiveRepresentativeAccount",
+      entityId: body.username,
+      metadata: { username: body.username }
+    });
+
+    return NextResponse.json({ message: "סיסמה זמנית חדשה נוצרה.", result });
+  }
+
   const parsed = electiveRepresentativeAccountSchema.safeParse(body);
 
   if (!parsed.success) {

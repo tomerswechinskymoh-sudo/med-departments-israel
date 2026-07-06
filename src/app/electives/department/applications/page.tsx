@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { getSelectedElectiveDepartment, requireElectiveDepartmentSession } from "@/lib/elective-department-auth";
+import { getElectiveTrackLabel } from "@/lib/elective-tracks";
 import { prisma } from "@/lib/prisma";
 import { formatDate } from "@/lib/utils";
 
@@ -79,6 +80,7 @@ export default async function ElectiveDepartmentApplicationsPage({ searchParams 
               <tr>
                 <th className="px-3 py-2">סטודנט/ית</th>
                 <th className="px-3 py-2">תאריכים</th>
+                <th className="px-3 py-2">סוג סבב</th>
                 <th className="px-3 py-2">סטטוס</th>
                 <th className="px-3 py-2">נוצר</th>
                 <th className="px-3 py-2">פעולה</th>
@@ -96,6 +98,7 @@ export default async function ElectiveDepartmentApplicationsPage({ searchParams 
                     {" - "}
                     {application.requestedEndDate ? formatDate(application.requestedEndDate) : "לא צוין"}
                   </td>
+                  <td className="px-3 py-3">{getElectiveTrackLabel(application.trackType)}</td>
                   <td className="px-3 py-3"><Badge tone="default">{application.status}</Badge></td>
                   <td className="px-3 py-3">{formatDate(application.createdAt)}</td>
                   <td className="px-3 py-3">

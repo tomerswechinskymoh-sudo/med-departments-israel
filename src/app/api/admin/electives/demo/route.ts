@@ -17,6 +17,7 @@ function flattenSummary(summary: Awaited<ReturnType<typeof seedElectivesDemo>>) 
       .map(([status, count]) => `${status}: ${count}`)
       .join(" | "),
     suggestedDates: `${summary.suggestedSearch.start} - ${summary.suggestedSearch.end}`,
+    suggestedTrackType: summary.suggestedSearch.trackType,
     suggestedSpecialties: summary.suggestedSearch.specialties.join(", "),
     suggestedRegions: summary.suggestedSearch.regions.join(", "),
     prefilledPreviewUrl: summary.suggestedSearch.url,

@@ -6,6 +6,12 @@ import { useState } from "react";
 
 type AvailabilityMode = "OPEN_BY_DEFAULT" | "CLOSED_BY_DEFAULT";
 type WindowStatus = "OPEN" | "CLOSED";
+type TrackType = "ISRAELI_FACULTY_STUDENT" | "ABROAD_ISRAELI_STUDENT";
+
+const ELECTIVE_TRACK_OPTIONS: Array<{ value: TrackType; label: string }> = [
+  { value: "ISRAELI_FACULTY_STUDENT", label: "סטודנטים לרפואה בישראל" },
+  { value: "ABROAD_ISRAELI_STUDENT", label: "ישראלים הלומדים בחו״ל" }
+];
 
 type SettingsInitial = {
   maxStudentsAtOnce: number;
@@ -19,8 +25,23 @@ type SettingsInitial = {
   allowApplications: boolean;
 } | null;
 
+type TrackSettingsInitial = Array<{
+  trackType: TrackType;
+  allowApplications: boolean;
+  maxStudentsAtOnce: number;
+  minDurationDays?: number | null;
+  maxDurationDays?: number | null;
+  notes?: string | null;
+  paymentRequired: boolean;
+  paymentAmount?: string | null;
+  paymentCurrency?: string | null;
+  paymentLink?: string | null;
+  paymentInstructions?: string | null;
+}>;
+
 type WindowItem = {
   id: string;
+  trackType?: TrackType | null;
   status: WindowStatus;
   startsAt: string;
   endsAt: string;
@@ -149,9 +170,11 @@ export function ElectiveDepartmentLogoutButton() {
 
 export function ElectiveDepartmentSettingsPortalForm({
   initialSettings,
+  initialTrackSettings = [],
   departmentId
 }: {
   initialSettings: SettingsInitial;
+  initialTrackSettings?: TrackSettingsInitial;
   departmentId: string;
 }) {
   const router = useRouter();
@@ -169,6 +192,19 @@ export function ElectiveDepartmentSettingsPortalForm({
     const form = new FormData(event.currentTarget);
 
     try {
+      const trackSettings = ELECTIVE_TRACK_OPTIONS.map((track) => ({
+        trackType: track.value,
+        allowApplications: form.get(`${track.value}.allowApplications`) === "on",
+        maxStudentsAtOnce: Number(form.get(`${track.value}.maxStudentsAtOnce`) ?? 1),
+        minDurationDays: String(form.get(`${track.value}.minDurationDays`) ?? ""),
+        maxDurationDays: String(form.get(`${track.value}.maxDurationDays`) ?? ""),
+        notes: String(form.get(`${track.value}.notes`) ?? ""),
+        paymentRequired: form.get(`${track.value}.paymentRequired`) === "on",
+        paymentAmount: String(form.get(`${track.value}.paymentAmount`) ?? ""),
+        paymentCurrency: String(form.get(`${track.value}.paymentCurrency`) ?? "ILS"),
+        paymentLink: String(form.get(`${track.value}.paymentLink`) ?? ""),
+        paymentInstructions: String(form.get(`${track.value}.paymentInstructions`) ?? "")
+      }));
       const payload = await postJson("/api/electives/department/settings", {
         departmentId,
         maxStudentsAtOnce: Number(form.get("maxStudentsAtOnce") ?? 1),
@@ -179,7 +215,8 @@ export function ElectiveDepartmentSettingsPortalForm({
         contactEmail: String(form.get("contactEmail") ?? ""),
         contactPhone: String(form.get("contactPhone") ?? ""),
         instructions: String(form.get("instructions") ?? ""),
-        notes: String(form.get("notes") ?? "")
+        notes: String(form.get("notes") ?? ""),
+        trackSettings
       });
       setMessage(payload.message ?? "נשמר.");
       router.refresh();
@@ -272,6 +309,49 @@ export function ElectiveDepartmentSettingsPortalForm({
         placeholder="הערות למחלקה"
         className="min-h-20 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
       />
+      <div className="space-y-3">
+        <h3 className="text-sm font-black text-ink">הגדרות לפי סוג סבב</h3>
+        {ELECTIVE_TRACK_OPTIONS.map((track) => {
+          const initial = initialTrackSettings.find((settings) => settings.trackType === track.value);
+
+          return (
+            <section key={track.value} className="space-y-3 rounded-3xl border border-brand-100 bg-brand-50/50 p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <h4 className="text-sm font-black text-ink">{track.label}</h4>
+                <label className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700">
+                  <input name={`${track.value}.allowApplications`} type="checkbox" defaultChecked={initial?.allowApplications ?? initialSettings?.allowApplications ?? false} />
+                  פתוח להגשה
+                </label>
+              </div>
+              <div className="grid gap-3 md:grid-cols-3">
+                <div className="space-y-1">
+                  <FieldLabel>מספר סטודנטים שיכולים להיות בו זמנית</FieldLabel>
+                  <input name={`${track.value}.maxStudentsAtOnce`} type="number" min={1} max={200} defaultValue={initial?.maxStudentsAtOnce ?? initialSettings?.maxStudentsAtOnce ?? 1} className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+                </div>
+                <div className="space-y-1">
+                  <FieldLabel>משך מינימלי בימים</FieldLabel>
+                  <input name={`${track.value}.minDurationDays`} type="number" min={1} max={365} defaultValue={initial?.minDurationDays ?? initialSettings?.minDurationDays ?? ""} className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+                </div>
+                <div className="space-y-1">
+                  <FieldLabel>משך מקסימלי בימים</FieldLabel>
+                  <input name={`${track.value}.maxDurationDays`} type="number" min={1} max={365} defaultValue={initial?.maxDurationDays ?? initialSettings?.maxDurationDays ?? ""} className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+                </div>
+              </div>
+              <label className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700">
+                <input name={`${track.value}.paymentRequired`} type="checkbox" defaultChecked={initial?.paymentRequired ?? false} />
+                נדרש תשלום
+              </label>
+              <div className="grid gap-3 md:grid-cols-3">
+                <input name={`${track.value}.paymentAmount`} placeholder="סכום תשלום" defaultValue={initial?.paymentAmount ?? ""} className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+                <input name={`${track.value}.paymentCurrency`} placeholder="מטבע" defaultValue={initial?.paymentCurrency ?? "ILS"} className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+                <input name={`${track.value}.paymentLink`} placeholder="קישור לתשלום" defaultValue={initial?.paymentLink ?? ""} className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+              </div>
+              <textarea name={`${track.value}.notes`} defaultValue={initial?.notes ?? ""} placeholder="הערות לסוג הסבב" className="min-h-20 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+              <textarea name={`${track.value}.paymentInstructions`} defaultValue={initial?.paymentInstructions ?? ""} placeholder="הנחיות תשלום" className="min-h-20 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+            </section>
+          );
+        })}
+      </div>
       <StatusMessage message={message} />
       <button
         type="submit"
@@ -309,6 +389,7 @@ function WindowForm({
         departmentId,
         action: window ? "update" : "create",
         id: window?.id,
+        trackType: String(form.get("trackType") ?? ""),
         status,
         startsAt: String(form.get("startsAt") ?? ""),
         endsAt: String(form.get("endsAt") ?? ""),
@@ -355,6 +436,15 @@ function WindowForm({
   return (
     <form onSubmit={onSubmit} className="space-y-3 rounded-3xl border border-brand-100 bg-white p-4 shadow-sm">
       <div className="grid gap-3 md:grid-cols-5">
+        <div className="space-y-1">
+          <FieldLabel>סוג סבב</FieldLabel>
+          <select name="trackType" defaultValue={window?.trackType ?? ""} className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none">
+            <option value="">כל סוגי הסבבים</option>
+            {ELECTIVE_TRACK_OPTIONS.map((track) => (
+              <option key={track.value} value={track.value}>{track.label}</option>
+            ))}
+          </select>
+        </div>
         <div className="space-y-1">
           <FieldLabel>סטטוס</FieldLabel>
           <select

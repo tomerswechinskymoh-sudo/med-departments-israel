@@ -24,11 +24,13 @@ async function postJson(path: string, values: Record<string, unknown>) {
 export function ElectiveApplicationForm({
   departmentSlug,
   defaultStartDate,
-  defaultEndDate
+  defaultEndDate,
+  defaultTrackType
 }: {
   departmentSlug: string;
   defaultStartDate?: string;
   defaultEndDate?: string;
+  defaultTrackType?: string | null;
 }) {
   const router = useRouter();
   const [message, setMessage] = useState<string | null>(null);
@@ -45,6 +47,7 @@ export function ElectiveApplicationForm({
         departmentSlug,
         requestedStartDate: String(form.get("requestedStartDate") ?? ""),
         requestedEndDate: String(form.get("requestedEndDate") ?? ""),
+        trackType: String(form.get("trackType") ?? ""),
         studentNotes: String(form.get("studentNotes") ?? "")
       });
       setMessage(payload.message ?? "בקשת האלקטיב הוגשה.");
@@ -80,6 +83,19 @@ export function ElectiveApplicationForm({
           />
         </label>
       </div>
+      <label className="space-y-1">
+        <span className="text-xs font-black text-slate-600">סוג סבב</span>
+        <select
+          name="trackType"
+          required
+          defaultValue={defaultTrackType ?? ""}
+          className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
+        >
+          <option value="">בחירת סוג סבב</option>
+          <option value="ISRAELI_FACULTY_STUDENT">סטודנטים לרפואה בישראל</option>
+          <option value="ABROAD_ISRAELI_STUDENT">ישראלים הלומדים בחו״ל</option>
+        </select>
+      </label>
       <textarea
         name="studentNotes"
         placeholder="הערות למחלקה"

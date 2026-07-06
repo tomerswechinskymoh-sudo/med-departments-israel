@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { requireAdmin } from "@/lib/auth-guards";
+import { getElectiveTrackLabel } from "@/lib/elective-tracks";
 import { prisma } from "@/lib/prisma";
 import { formatDate } from "@/lib/utils";
 
@@ -138,6 +139,7 @@ export default async function AdminElectiveApplicationsPage({ searchParams }: { 
                 <th className="px-3 py-2">סטודנט/ית</th>
                 <th className="px-3 py-2">מחלקה</th>
                 <th className="px-3 py-2">תאריכים</th>
+                <th className="px-3 py-2">סוג סבב</th>
                 <th className="px-3 py-2">סטטוס</th>
                 <th className="px-3 py-2">עדכון סטטוס</th>
                 <th className="px-3 py-2">נוצר</th>
@@ -156,6 +158,7 @@ export default async function AdminElectiveApplicationsPage({ searchParams }: { 
                     {" - "}
                     {application.requestedEndDate ? formatDate(application.requestedEndDate) : "לא צוין"}
                   </td>
+                  <td className="px-3 py-3">{getElectiveTrackLabel(application.trackType)}</td>
                   <td className="px-3 py-3"><Badge tone="default">{application.status}</Badge></td>
                   <td className="px-3 py-3">
                     <ElectiveApplicationStatusForm applicationId={application.id} initialStatus={application.status} />

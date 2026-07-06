@@ -9,6 +9,7 @@ import {
   parseDateOnly,
   getStudentElectivesAccess
 } from "@/lib/student-electives";
+import { getElectiveTrackLabel, normalizeElectiveTrackType, resolveElectiveTrackSettings } from "@/lib/elective-tracks";
 
 export async function GET(request: Request, { params }: { params: Promise<{ departmentSlug: string }> }) {
   const access = await getStudentElectivesAccess();
@@ -27,8 +28,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ depa
   const url = new URL(request.url);
   const requestedStartDate = parseDateOnly(url.searchParams.get("start") ?? "");
   const requestedEndDate = parseDateOnly(url.searchParams.get("end") ?? "");
+  const trackType = normalizeElectiveTrackType(url.searchParams.get("trackType") ?? url.searchParams.get("track"));
+  const effectiveSettings = resolveElectiveTrackSettings({
+    baseSettings: department.electiveSettings,
+    trackSettings: department.electiveTrackSettings,
+    trackType
+  });
   const dateMatch = requestedStartDate && requestedEndDate
-    ? await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate)
+    ? await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate, trackType)
     : null;
 
   return NextResponse.json({
@@ -43,6 +50,9 @@ export async function GET(request: Request, { params }: { params: Promise<{ depa
       region: getElectiveDepartmentRegion(department),
       specialty: department.specialty.name,
       settings: department.electiveSettings,
+      trackType,
+      trackLabel: trackType ? getElectiveTrackLabel(trackType) : null,
+      effectiveSettings,
       availabilityModeLabel: getAvailabilityModeLabel(department.electiveSettings?.availabilityMode),
       availabilitySummary: getAvailabilitySummary(department),
       dateAvailability: {

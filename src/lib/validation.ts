@@ -27,6 +27,7 @@ export const openingApplicationStatusValues = [
 ] as const;
 export const electiveAvailabilityModeValues = ["OPEN_BY_DEFAULT", "CLOSED_BY_DEFAULT"] as const;
 export const electiveWindowStatusValues = ["OPEN", "CLOSED"] as const;
+export const electiveTrackTypeValues = ["ISRAELI_FACULTY_STUDENT", "ABROAD_ISRAELI_STUDENT"] as const;
 export const electiveApplicationStatusValues = [
   "SUBMITTED",
   "UNDER_REVIEW",
@@ -665,6 +666,21 @@ const electiveDepartmentSettingsBaseSchema = z.object({
   adminNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional())
 });
 
+export const electiveDepartmentTrackSettingsSchema = z.object({
+  departmentId: z.string().min(1, "יש לבחור מחלקה."),
+  trackType: z.enum(electiveTrackTypeValues),
+  allowApplications: z.boolean().default(false),
+  maxStudentsAtOnce: z.coerce.number().int().min(1, "המינימום הוא סטודנט אחד.").max(200),
+  minDurationDays: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(365).optional()),
+  maxDurationDays: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(365).optional()),
+  notes: z.preprocess(emptyToUndefined, z.string().max(2000).optional()),
+  paymentRequired: z.boolean().default(false),
+  paymentAmount: z.preprocess(emptyToUndefined, z.coerce.number().min(0).max(100000).optional()),
+  paymentCurrency: z.preprocess(emptyToUndefined, z.string().max(12).optional()).default("ILS"),
+  paymentLink: z.preprocess(emptyToUndefined, z.string().url("יש להזין קישור תקין.").optional()),
+  paymentInstructions: z.preprocess(emptyToUndefined, z.string().max(2000).optional())
+});
+
 const hasValidElectiveDurationRange = (data: { minDurationDays?: number; maxDurationDays?: number }) => {
   if (!data.minDurationDays || !data.maxDurationDays) {
     return true;
@@ -678,10 +694,16 @@ export const electiveDepartmentSettingsSchema = electiveDepartmentSettingsBaseSc
   message: "משך מקסימלי חייב להיות גדול או שווה למשך מינימלי."
 });
 
+export const electiveTrackSettingsSchema = electiveDepartmentTrackSettingsSchema.refine(hasValidElectiveDurationRange, {
+  path: ["maxDurationDays"],
+  message: "משך מקסימלי חייב להיות גדול או שווה למשך מינימלי."
+});
+
 export const electiveAvailabilityWindowSchema = z
   .object({
     departmentId: z.string().min(1, "יש לבחור מחלקה."),
     id: z.preprocess(emptyToUndefined, z.string().optional()),
+    trackType: z.preprocess(emptyToUndefined, z.enum(electiveTrackTypeValues).optional()),
     status: z.enum(electiveWindowStatusValues),
     startsAt: z.string().min(1, "יש להזין תאריך התחלה."),
     endsAt: z.string().min(1, "יש להזין תאריך סיום."),
@@ -710,6 +732,7 @@ export const electiveDepartmentPortalSettingsSchema = electiveDepartmentSettings
 export const electiveDepartmentPortalAvailabilitySchema = z.discriminatedUnion("action", [
   z.object({
     action: z.literal("create"),
+    trackType: z.preprocess(emptyToUndefined, z.enum(electiveTrackTypeValues).optional()),
     status: z.enum(electiveWindowStatusValues),
     startsAt: z.string().min(1, "יש להזין תאריך התחלה."),
     endsAt: z.string().min(1, "יש להזין תאריך סיום."),
@@ -720,6 +743,7 @@ export const electiveDepartmentPortalAvailabilitySchema = z.discriminatedUnion("
   z.object({
     action: z.literal("update"),
     id: z.string().min(1, "חסר מזהה חלון."),
+    trackType: z.preprocess(emptyToUndefined, z.enum(electiveTrackTypeValues).optional()),
     status: z.enum(electiveWindowStatusValues),
     startsAt: z.string().min(1, "יש להזין תאריך התחלה."),
     endsAt: z.string().min(1, "יש להזין תאריך סיום."),
@@ -750,6 +774,7 @@ export const electiveApplicationAdminSchema = z.object({
   medicalSchool: z.preprocess(emptyToUndefined, z.string().max(160).optional()),
   requestedStartDate: z.preprocess(emptyToUndefined, z.string().optional()),
   requestedEndDate: z.preprocess(emptyToUndefined, z.string().optional()),
+  trackType: z.enum(electiveTrackTypeValues).default("ISRAELI_FACULTY_STUDENT"),
   status: z.enum(electiveApplicationStatusValues).default("SUBMITTED"),
   studentNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional()),
   adminNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional())
@@ -760,6 +785,9 @@ export const electiveStudentApplicationSchema = z
     departmentSlug: z.string().min(1, "חסר מזהה מחלקה."),
     requestedStartDate: z.string().min(1, "יש להזין תאריך התחלה."),
     requestedEndDate: z.string().min(1, "יש להזין תאריך סיום."),
+    trackType: z.enum(electiveTrackTypeValues, {
+      errorMap: () => ({ message: "יש לבחור סוג סבב." })
+    }),
     studentNotes: z.preprocess(emptyToUndefined, z.string().max(2000).optional())
   })
   .refine((data) => new Date(data.requestedEndDate).getTime() >= new Date(data.requestedStartDate).getTime(), {

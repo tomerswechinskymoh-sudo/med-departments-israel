@@ -64,6 +64,18 @@ const schema = read("prisma/schema.prisma");
 add("representative account model exists", schema.includes("model ElectiveRepresentativeAccount"));
 add("representative assignment model exists", schema.includes("model ElectiveRepresentativeDepartmentAssignment"));
 add("plain password field absent", !schema.includes("password String") && schema.includes("passwordHash"));
+add("track settings model exists", schema.includes("model ElectiveDepartmentTrackSettings") && schema.includes("paymentRequired") && schema.includes("paymentInstructions"));
+add("availability windows support track type", /trackType\s+ElectiveTrackType\?\s+@map\("track_type"\)/.test(schema));
+
+const settingsPage = read("src/app/electives/department/settings/page.tsx");
+const portalActions = read("src/components/electives/department-portal-actions.tsx");
+const settingsApi = read("src/app/api/electives/department/settings/route.ts");
+const availabilityApi = read("src/app/api/electives/department/availability/route.ts");
+add("portal settings page loads track settings", settingsPage.includes("electiveDepartmentTrackSettings") && settingsPage.includes("initialTrackSettings"));
+add("portal settings form renders two track sections", portalActions.includes("סטודנטים לרפואה בישראל") && portalActions.includes("ישראלים הלומדים בחו״ל"));
+add("portal settings form renders payment fields", portalActions.includes("נדרש תשלום") && portalActions.includes("קישור לתשלום") && portalActions.includes("הנחיות תשלום"));
+add("portal settings API upserts track settings", settingsApi.includes("electiveDepartmentTrackSettings.upsert") && settingsApi.includes("trackSettings"));
+add("portal availability form/API supports track-specific windows", portalActions.includes("סוג סבב") && availabilityApi.includes("trackType: parsed.data.trackType ?? null"));
 
 const failures = checks.filter((check) => !check.ok);
 console.log(JSON.stringify({ ok: failures.length === 0, checked: checks.length, failed: failures.length, failures }, null, 2));

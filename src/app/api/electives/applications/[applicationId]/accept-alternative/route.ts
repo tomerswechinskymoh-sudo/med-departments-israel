@@ -34,7 +34,8 @@ export async function POST(request: Request, { params }: { params: Promise<{ app
   const validation = await validateElectiveApplicationRequest({
     departmentId: application.departmentId,
     requestedStartDate: application.proposedStartDate,
-    requestedEndDate: application.proposedEndDate
+    requestedEndDate: application.proposedEndDate,
+    trackType: application.trackType
   });
 
   if (!validation.ok) {

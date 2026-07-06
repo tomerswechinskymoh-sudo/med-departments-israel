@@ -77,6 +77,11 @@ enum ElectiveWindowStatus {
   CLOSED
 }
 
+enum ElectiveTrackType {
+  ISRAELI_FACULTY_STUDENT
+  ABROAD_ISRAELI_STUDENT
+}
+
 enum ElectiveApplicationStatus {
   SUBMITTED
   UNDER_REVIEW
@@ -439,6 +444,7 @@ model Department {
   dunsPhysicianRecords   DunsPhysicianRecord[] @relation("DunsPhysicianRecordDepartment")
   electiveDepartmentAccount ElectiveDepartmentAccount?
   electiveSettings      ElectiveDepartmentSettings?
+  electiveTrackSettings ElectiveDepartmentTrackSettings[]
   electiveAvailabilityWindows ElectiveAvailabilityWindow[]
   electiveApplications  ElectiveApplication[]
   electiveRepresentativeAssignments ElectiveRepresentativeDepartmentAssignment[]
@@ -777,9 +783,33 @@ model ElectiveDepartmentSettings {
   @@index([availabilityMode])
 }
 
+model ElectiveDepartmentTrackSettings {
+  id                 String            @id @default(cuid())
+  departmentId       String            @map("department_id")
+  trackType          ElectiveTrackType @map("track_type")
+  allowApplications  Boolean           @default(false) @map("allow_applications")
+  maxStudentsAtOnce  Int               @default(1) @map("max_students_at_once")
+  minDurationDays    Int?              @map("min_duration_days")
+  maxDurationDays    Int?              @map("max_duration_days")
+  notes              String?
+  paymentRequired    Boolean           @default(false) @map("payment_required")
+  paymentAmount      Decimal?          @db.Decimal(10, 2) @map("payment_amount")
+  paymentCurrency    String            @default("ILS") @map("payment_currency")
+  paymentLink        String?           @map("payment_link")
+  paymentInstructions String?          @map("payment_instructions")
+  createdAt          DateTime          @default(now()) @map("created_at")
+  updatedAt          DateTime          @updatedAt @map("updated_at")
+  department         Department        @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+
+  @@unique([departmentId, trackType])
+  @@index([trackType, allowApplications])
+  @@index([departmentId, allowApplications])
+}
+
 model ElectiveAvailabilityWindow {
   id           String               @id @default(cuid())
   departmentId String               @map("department_id")
+  trackType    ElectiveTrackType?   @map("track_type")
   status       ElectiveWindowStatus
   startsAt     DateTime             @map("starts_at")
   endsAt       DateTime             @map("ends_at")
@@ -791,6 +821,7 @@ model ElectiveAvailabilityWindow {
   department   Department           @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@index([departmentId, startsAt, endsAt])
+  @@index([departmentId, trackType, startsAt, endsAt])
   @@index([status, startsAt])
 }
 
@@ -804,6 +835,7 @@ model ElectiveApplication {
   medicalSchool      String?                   @map("medical_school")
   requestedStartDate DateTime?                 @map("requested_start_date")
   requestedEndDate   DateTime?                 @map("requested_end_date")
+  trackType          ElectiveTrackType         @default(ISRAELI_FACULTY_STUDENT) @map("track_type")
   status             ElectiveApplicationStatus @default(SUBMITTED)
   studentNotes       String?                   @map("student_notes")
   representativeNotes String?                  @map("representative_notes")
@@ -821,6 +853,7 @@ model ElectiveApplication {
   decisionByRepresentative ElectiveRepresentativeAccount? @relation("ElectiveApplicationDecidedBy", fields: [decisionByRepresentativeId], references: [id], onDelete: SetNull)
 
   @@index([departmentId, status])
+  @@index([departmentId, trackType, status])
   @@index([applicantUserId, createdAt])
   @@index([applicantEmail, createdAt])
   @@index([proposedByRepresentativeId])

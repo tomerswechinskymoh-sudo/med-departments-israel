@@ -1,5 +1,6 @@
-import { ElectiveAvailabilityMode, ElectiveApplicationStatus, ElectiveWindowStatus } from "@prisma/client";
+import { ElectiveAvailabilityMode, ElectiveApplicationStatus, ElectiveTrackType, ElectiveWindowStatus } from "@prisma/client";
 import { prisma } from "@/lib/prisma";
+import { resolveElectiveTrackSettings } from "@/lib/elective-tracks";
 
 export const ELECTIVE_CAPACITY_STATUSES: ElectiveApplicationStatus[] = [
   ElectiveApplicationStatus.ACCEPTED,
@@ -49,7 +50,7 @@ export function daysInclusive(start: Date, end: Date) {
 }
 
 type ElectiveSettingsLike = {
-  availabilityMode: ElectiveAvailabilityMode;
+  availabilityMode: ElectiveAvailabilityMode | "OPEN_BY_DEFAULT" | "CLOSED_BY_DEFAULT";
   maxStudentsAtOnce: number | null;
   minDurationDays?: number | null;
   maxDurationDays?: number | null;
@@ -58,16 +59,22 @@ type ElectiveSettingsLike = {
 
 type ElectiveWindowLike = {
   status: ElectiveWindowStatus;
+  trackType?: ElectiveTrackType | null;
   startsAt: Date;
   endsAt: Date;
   capacityOverride?: number | null;
 };
+
+function appliesToTrack(window: ElectiveWindowLike, trackType?: ElectiveTrackType | null) {
+  return !window.trackType || !trackType || window.trackType === trackType;
+}
 
 export function getEffectiveCapacityForRange(input: {
   settings: ElectiveSettingsLike | null;
   windows: ElectiveWindowLike[];
   requestedStartDate: Date;
   requestedEndDate: Date;
+  trackType?: ElectiveTrackType | null;
 }) {
   if (!input.settings?.maxStudentsAtOnce) {
     return null;
@@ -79,6 +86,7 @@ export function getEffectiveCapacityForRange(input: {
     .map(normalizeWindowRange)
     .filter(
       (window) =>
+        appliesToTrack(window, input.trackType) &&
         window.status === ElectiveWindowStatus.OPEN &&
         window.capacityOverride &&
         rangesOverlap(requestedStartDate, requestedEndDate, window.startsAt, window.endsAt)
@@ -93,6 +101,7 @@ export function isDateRangeAllowedForDepartment(input: {
   windows: ElectiveWindowLike[];
   requestedStartDate: Date;
   requestedEndDate: Date;
+  trackType?: ElectiveTrackType | null;
 }) {
   const { settings, windows } = input;
   const requestedStartDate = startOfCalendarDay(input.requestedStartDate);
@@ -116,7 +125,7 @@ export function isDateRangeAllowedForDepartment(input: {
     return { ok: false as const, error: `משך האלקטיב ארוך מהמקסימום שהוגדר: ${settings.maxDurationDays} ימים.` };
   }
 
-  const normalizedWindows = windows.map(normalizeWindowRange);
+  const normalizedWindows = windows.filter((window) => appliesToTrack(window, input.trackType)).map(normalizeWindowRange);
   const overlappingWindows = normalizedWindows.filter((window) => rangesOverlap(requestedStartDate, requestedEndDate, window.startsAt, window.endsAt));
 
   if (settings.availabilityMode === ElectiveAvailabilityMode.CLOSED_BY_DEFAULT) {
@@ -142,7 +151,8 @@ export function isDateRangeAllowedForDepartment(input: {
     settings,
     windows,
     requestedStartDate,
-    requestedEndDate
+    requestedEndDate,
+    trackType: input.trackType
   });
 
   if (!capacity) {
@@ -156,10 +166,12 @@ export async function countApprovedApplicationsOverlappingRange(input: {
   departmentId: string;
   requestedStartDate: Date;
   requestedEndDate: Date;
+  trackType?: ElectiveTrackType | null;
 }) {
   return prisma.electiveApplication.count({
     where: {
       departmentId: input.departmentId,
+      ...(input.trackType ? { trackType: input.trackType } : {}),
       status: { in: ELECTIVE_CAPACITY_STATUSES },
       requestedStartDate: { lte: input.requestedEndDate },
       requestedEndDate: { gte: input.requestedStartDate }
@@ -171,10 +183,12 @@ export async function countPendingApplicationsOverlappingRange(input: {
   departmentId: string;
   requestedStartDate: Date;
   requestedEndDate: Date;
+  trackType?: ElectiveTrackType | null;
 }) {
   return prisma.electiveApplication.count({
     where: {
       departmentId: input.departmentId,
+      ...(input.trackType ? { trackType: input.trackType } : {}),
       status: { in: [ElectiveApplicationStatus.SUBMITTED, ElectiveApplicationStatus.UNDER_REVIEW, ElectiveApplicationStatus.WAITLISTED] },
       requestedStartDate: { lte: input.requestedEndDate },
       requestedEndDate: { gte: input.requestedStartDate }
@@ -208,27 +222,38 @@ export async function validateElectiveApplicationRequest(input: {
   departmentId: string;
   requestedStartDate: Date;
   requestedEndDate: Date;
+  trackType?: ElectiveTrackType | null;
 }) {
   const department = await prisma.department.findUnique({
     where: { id: input.departmentId },
     include: {
       electiveSettings: true,
+      electiveTrackSettings: true,
       electiveAvailabilityWindows: true
     }
   });
+  const settings = resolveElectiveTrackSettings({
+    baseSettings: department?.electiveSettings ?? null,
+    trackSettings: department?.electiveTrackSettings ?? [],
+    trackType: input.trackType ?? null
+  });
 
   const range = isDateRangeAllowedForDepartment({
-    settings: department?.electiveSettings ?? null,
+    settings,
     windows: department?.electiveAvailabilityWindows ?? [],
     requestedStartDate: input.requestedStartDate,
-    requestedEndDate: input.requestedEndDate
+    requestedEndDate: input.requestedEndDate,
+    trackType: input.trackType
   });
 
   if (!department || !range.ok) {
     return { ok: false as const, error: range.ok ? "המחלקה לא נמצאה." : range.error };
   }
 
-  const approvedOverlapCount = await countApprovedApplicationsOverlappingRange(input);
+  const approvedOverlapCount = await countApprovedApplicationsOverlappingRange({
+    ...input,
+    trackType: input.trackType ?? null
+  });
 
   if (approvedOverlapCount >= range.capacity) {
     return { ok: false as const, error: "אין קיבולת זמינה בתאריכים שנבחרו." };

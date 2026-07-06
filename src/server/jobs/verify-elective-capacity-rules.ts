@@ -1,4 +1,4 @@
-import { ElectiveAvailabilityMode, ElectiveWindowStatus } from "@prisma/client";
+import { ElectiveAvailabilityMode, ElectiveTrackType, ElectiveWindowStatus } from "@prisma/client";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import {
@@ -87,13 +87,54 @@ add(
     windows: [{ status: ElectiveWindowStatus.OPEN, startsAt: date("2026-11-01"), endsAt: date("2026-11-30"), capacityOverride: 1 }]
   }) === 1
 );
+add(
+  "track-specific windows do not leak across tracks",
+  !isDateRangeAllowedForDepartment({
+    settings: closedSettings,
+    requestedStartDate: date("2026-12-03"),
+    requestedEndDate: date("2026-12-10"),
+    trackType: ElectiveTrackType.ISRAELI_FACULTY_STUDENT,
+    windows: [
+      {
+        status: ElectiveWindowStatus.OPEN,
+        startsAt: date("2026-12-01"),
+        endsAt: date("2026-12-30"),
+        trackType: ElectiveTrackType.ABROAD_ISRAELI_STUDENT
+      }
+    ]
+  }).ok
+);
+add(
+  "track-specific capacity override applies only to selected track",
+  getEffectiveCapacityForRange({
+    settings: openSettings,
+    requestedStartDate: date("2027-01-03"),
+    requestedEndDate: date("2027-01-10"),
+    trackType: ElectiveTrackType.ABROAD_ISRAELI_STUDENT,
+    windows: [
+      {
+        status: ElectiveWindowStatus.OPEN,
+        startsAt: date("2027-01-01"),
+        endsAt: date("2027-01-30"),
+        capacityOverride: 5,
+        trackType: ElectiveTrackType.ABROAD_ISRAELI_STUDENT
+      }
+    ]
+  }) === 5
+);
 
 const availabilitySource = readFileSync(join(process.cwd(), "src/lib/elective-availability.ts"), "utf8");
 const studentElectivesSource = readFileSync(join(process.cwd(), "src/lib/student-electives.ts"), "utf8");
 const studentCatalogSource = readFileSync(join(process.cwd(), "src/components/electives/student-electives-catalog.tsx"), "utf8");
+const validationSource = readFileSync(join(process.cwd(), "src/lib/validation.ts"), "utf8");
+const trackSource = readFileSync(join(process.cwd(), "src/lib/elective-tracks.ts"), "utf8");
 add("server validation blocks full capacity", availabilitySource.includes("approvedOverlapCount >= range.capacity"));
+add("server validation accepts track type", availabilitySource.includes("trackType") && availabilitySource.includes("resolveElectiveTrackSettings"));
+add("abroad track does not silently fall back to base settings", trackSource.includes("input.trackType === DEFAULT_ELECTIVE_TRACK_TYPE || Boolean(track)") && trackSource.includes("return null"));
 add("student catalog flags full capacity results", studentElectivesSource.includes("remainingCapacity <= 0") && studentElectivesSource.includes("ok: false as const"));
 add("student matching uses approved overlap count", studentElectivesSource.includes("countApprovedApplicationsOverlappingRange"));
+add("student matching passes track type to capacity", studentElectivesSource.includes("search.trackType") && studentElectivesSource.includes("trackType: selectedTrackType"));
+add("application validation requires track type", validationSource.includes("trackType: z.enum(electiveTrackTypeValues)"));
 add("expanded row fetches capacity check by selected date range", studentCatalogSource.includes("/api/electives/departments/") && studentCatalogSource.includes("remainingCapacity"));
 add("calendar marks full days from approved bookings", studentCatalogSource.includes("approvedBookingsForDay") && studentCatalogSource.includes("מלא"));
 add("inline date picker keeps server validation path", !studentCatalogSource.includes("פתח לוח שנה") && studentCatalogSource.includes("checkDates(department"));

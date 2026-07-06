@@ -9,6 +9,11 @@ type DepartmentOption = {
   label: string;
 };
 
+const ELECTIVE_TRACK_OPTIONS = [
+  { value: "ISRAELI_FACULTY_STUDENT", label: "סטודנטים לרפואה בישראל" },
+  { value: "ABROAD_ISRAELI_STUDENT", label: "ישראלים הלומדים בחו״ל" }
+] as const;
+
 type ElectiveAccountInitial = {
   username: string;
   isActive: boolean;
@@ -257,6 +262,157 @@ export function ElectiveRepresentativeAccountForm({
   );
 }
 
+type HospitalRepresentativeGenerationRow = {
+  hospitalName: string;
+  username: string;
+  departmentCount: number;
+  status: string;
+  temporaryPassword: string | null;
+};
+
+export function ElectiveHospitalRepresentativeGenerationForm() {
+  const router = useRouter();
+  const [message, setMessage] = useState<string | null>(null);
+  const [rows, setRows] = useState<HospitalRepresentativeGenerationRow[]>([]);
+  const [resetExistingPasswords, setResetExistingPasswords] = useState(false);
+  const [isWorking, setIsWorking] = useState(false);
+
+  async function onGenerate() {
+    setIsWorking(true);
+    setMessage(null);
+    setRows([]);
+
+    try {
+      const response = await fetch("/api/admin/electives/representatives", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "generateByHospital", resetExistingPasswords })
+      });
+      const payload = (await response.json().catch(() => null)) as {
+        message?: string;
+        error?: string;
+        summary?: { warning?: string | null; results?: HospitalRepresentativeGenerationRow[] };
+      } | null;
+
+      if (!response.ok) {
+        throw new Error(payload?.error ?? "יצירת הנציגים נכשלה.");
+      }
+
+      setMessage([payload?.message, payload?.summary?.warning].filter(Boolean).join(" "));
+      setRows(payload?.summary?.results ?? []);
+      router.refresh();
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "יצירת הנציגים נכשלה.");
+    } finally {
+      setIsWorking(false);
+    }
+  }
+
+  return (
+    <div className="space-y-4 rounded-2xl bg-brand-50 p-4">
+      <div>
+        <p className="text-sm font-black text-ink">יצירת משתמשי נציגים לפי בתי חולים</p>
+        <p className="mt-1 text-xs leading-6 text-slate-600">
+          יוצר חשבון אחד לכל בית חולים עם מחלקות אלקטיב ומשייך אליו את כל המחלקות הרלוונטיות. סיסמה זמנית מוצגת רק לחשבונות חדשים או לאחר איפוס.
+        </p>
+      </div>
+      <label className="inline-flex items-center gap-2 text-sm font-semibold text-slate-700">
+        <input type="checkbox" checked={resetExistingPasswords} onChange={(event) => setResetExistingPasswords(event.target.checked)} />
+        לאפס סיסמאות קיימות ולהציג סיסמאות זמניות
+      </label>
+      <button
+        type="button"
+        onClick={() => void onGenerate()}
+        disabled={isWorking}
+        className="rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white disabled:opacity-60"
+      >
+        יצירת משתמשי נציגים לפי בתי חולים
+      </button>
+      <StatusMessage message={message} />
+      {rows.length > 0 ? (
+        <div className="overflow-x-auto rounded-2xl bg-white">
+          <table className="min-w-full text-right text-xs">
+            <thead className="font-black text-slate-500">
+              <tr>
+                <th className="px-3 py-2">בית חולים</th>
+                <th className="px-3 py-2">שם משתמש</th>
+                <th className="px-3 py-2">מחלקות</th>
+                <th className="px-3 py-2">סטטוס</th>
+                <th className="px-3 py-2">סיסמה זמנית</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr key={row.username} className="border-t border-slate-100">
+                  <td className="px-3 py-2">{row.hospitalName}</td>
+                  <td className="px-3 py-2" dir="ltr">{row.username}</td>
+                  <td className="px-3 py-2">{row.departmentCount}</td>
+                  <td className="px-3 py-2">{row.status}</td>
+                  <td className="px-3 py-2" dir="ltr">{row.temporaryPassword ?? "לא אופסה"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+      <a href="/electives/department-login" className="inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-black text-slate-700">
+        מעבר לכניסת נציגים
+      </a>
+    </div>
+  );
+}
+
+export function ElectiveRepresentativeResetPasswordButton({ username }: { username: string }) {
+  const [message, setMessage] = useState<string | null>(null);
+  const [temporaryPassword, setTemporaryPassword] = useState<string | null>(null);
+  const [isWorking, setIsWorking] = useState(false);
+
+  async function onReset() {
+    setIsWorking(true);
+    setMessage(null);
+    setTemporaryPassword(null);
+
+    try {
+      const response = await fetch("/api/admin/electives/representatives", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "resetHospitalRepresentativePassword", username })
+      });
+      const payload = (await response.json().catch(() => null)) as {
+        message?: string;
+        error?: string;
+        result?: { temporaryPassword?: string; warning?: string | null };
+      } | null;
+
+      if (!response.ok) {
+        throw new Error(payload?.error ?? "איפוס הסיסמה נכשל.");
+      }
+
+      setMessage([payload?.message, payload?.result?.warning].filter(Boolean).join(" "));
+      setTemporaryPassword(payload?.result?.temporaryPassword ?? null);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "איפוס הסיסמה נכשל.");
+    } finally {
+      setIsWorking(false);
+    }
+  }
+
+  return (
+    <div className="space-y-2">
+      <button
+        type="button"
+        onClick={() => void onReset()}
+        disabled={isWorking}
+        className="rounded-full border border-amber-300 bg-white px-3 py-2 text-xs font-black text-amber-900 disabled:opacity-60"
+      >
+        איפוס סיסמה לנציג
+      </button>
+      {message ? <p className="text-xs font-semibold text-slate-600">{message}</p> : null}
+      {temporaryPassword ? <code className="block select-all rounded-xl bg-amber-50 px-3 py-2 text-left text-xs font-black text-slate-900" dir="ltr">{temporaryPassword}</code> : null}
+    </div>
+  );
+}
+
 export function ElectiveDepartmentSettingsForm({
   departments,
   initialDepartmentId = "",
@@ -431,6 +587,7 @@ export function ElectiveAvailabilityWindowForm({
       const saved = await postJson("/api/admin/electives/windows", {
         departmentId,
         status,
+        trackType: String(form.get("trackType") ?? ""),
         startsAt: String(form.get("startsAt") ?? ""),
         endsAt: String(form.get("endsAt") ?? ""),
         capacityOverride: String(form.get("capacityOverride") ?? ""),
@@ -473,6 +630,15 @@ export function ElectiveAvailabilityWindowForm({
           >
             <option value="OPEN">פתוח</option>
             <option value="CLOSED">סגור</option>
+          </select>
+        </div>
+        <div className="space-y-1">
+          <FieldLabel>סוג סבב</FieldLabel>
+          <select name="trackType" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none">
+            <option value="">כל סוגי הסבבים</option>
+            {ELECTIVE_TRACK_OPTIONS.map((track) => (
+              <option key={track.value} value={track.value}>{track.label}</option>
+            ))}
           </select>
         </div>
         <div className="space-y-1">
@@ -528,6 +694,7 @@ export function ElectiveApplicationAdminForm({ departments }: { departments: Dep
         medicalSchool: String(form.get("medicalSchool") ?? ""),
         requestedStartDate: String(form.get("requestedStartDate") ?? ""),
         requestedEndDate: String(form.get("requestedEndDate") ?? ""),
+        trackType: String(form.get("trackType") ?? "ISRAELI_FACULTY_STUDENT"),
         status,
         studentNotes: String(form.get("studentNotes") ?? ""),
         adminNotes: String(form.get("adminNotes") ?? "")
@@ -562,6 +729,11 @@ export function ElectiveApplicationAdminForm({ departments }: { departments: Dep
         <input name="medicalSchool" placeholder="פקולטה" className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
         <input name="requestedStartDate" type="date" className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
         <input name="requestedEndDate" type="date" className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none" />
+        <select name="trackType" defaultValue="ISRAELI_FACULTY_STUDENT" className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none">
+          {ELECTIVE_TRACK_OPTIONS.map((track) => (
+            <option key={track.value} value={track.value}>{track.label}</option>
+          ))}
+        </select>
         <select value={status} onChange={(event) => setStatus(event.target.value)} className="rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none">
           <option value="SUBMITTED">הוגש</option>
           <option value="UNDER_REVIEW">בבדיקה</option>

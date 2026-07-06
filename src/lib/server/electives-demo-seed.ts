@@ -3,6 +3,7 @@ import {
   ElectiveApplicationStatus,
   ElectiveAvailabilityMode,
   ElectiveRepresentativeAssignmentRole,
+  ElectiveTrackType,
   ElectiveWindowStatus,
   Prisma
 } from "@prisma/client";
@@ -38,6 +39,7 @@ type DemoApplicationSeed = {
   status: ElectiveApplicationStatus;
   requestedStartDate: Date;
   requestedEndDate: Date;
+  trackType: ElectiveTrackType;
   proposedStartDate?: Date | null;
   proposedEndDate?: Date | null;
 };
@@ -54,6 +56,7 @@ export type ElectivesDemoSeedSummary = {
   suggestedSearch: {
     start: string;
     end: string;
+    trackType: ElectiveTrackType;
     specialties: string[];
     regions: string[];
     url: string;
@@ -190,6 +193,7 @@ function buildDemoSearch(departments: DemoDepartment[]) {
   const params = new URLSearchParams({
     start,
     end,
+    trackType: ElectiveTrackType.ISRAELI_FACULTY_STUDENT,
     specialties: specialties.join(","),
     regions: regions.join(",")
   });
@@ -197,6 +201,7 @@ function buildDemoSearch(departments: DemoDepartment[]) {
   return {
     start,
     end,
+    trackType: ElectiveTrackType.ISRAELI_FACULTY_STUDENT,
     specialties,
     regions,
     url: `/electives?${params.toString()}`
@@ -330,6 +335,71 @@ async function seedDepartmentSettings(departments: DemoDepartment[]) {
       }
     });
 
+    await prisma.electiveDepartmentTrackSettings.upsert({
+      where: {
+        departmentId_trackType: {
+          departmentId: department.id,
+          trackType: ElectiveTrackType.ISRAELI_FACULTY_STUDENT
+        }
+      },
+      create: {
+        departmentId: department.id,
+        trackType: ElectiveTrackType.ISRAELI_FACULTY_STUDENT,
+        allowApplications: true,
+        maxStudentsAtOnce: preset.maxStudentsAtOnce,
+        minDurationDays: preset.minDurationDays,
+        maxDurationDays: preset.maxDurationDays,
+        notes: `${DEMO_PREFIX} מסלול דמו לסטודנטים לרפואה בישראל.`,
+        paymentRequired: false
+      },
+      update: {
+        allowApplications: true,
+        maxStudentsAtOnce: preset.maxStudentsAtOnce,
+        minDurationDays: preset.minDurationDays,
+        maxDurationDays: preset.maxDurationDays,
+        notes: `${DEMO_PREFIX} מסלול דמו לסטודנטים לרפואה בישראל.`,
+        paymentRequired: false,
+        paymentAmount: null,
+        paymentLink: null,
+        paymentInstructions: null
+      }
+    });
+
+    await prisma.electiveDepartmentTrackSettings.upsert({
+      where: {
+        departmentId_trackType: {
+          departmentId: department.id,
+          trackType: ElectiveTrackType.ABROAD_ISRAELI_STUDENT
+        }
+      },
+      create: {
+        departmentId: department.id,
+        trackType: ElectiveTrackType.ABROAD_ISRAELI_STUDENT,
+        allowApplications: true,
+        maxStudentsAtOnce: Math.max(preset.maxStudentsAtOnce, 4),
+        minDurationDays: Math.max(preset.minDurationDays, 28),
+        maxDurationDays: Math.max(preset.maxDurationDays, 90),
+        notes: `${DEMO_PREFIX} מסלול דמו לישראלים הלומדים בחו״ל ומבצעים סבבים בישראל.`,
+        paymentRequired: true,
+        paymentAmount: new Prisma.Decimal("1200.00"),
+        paymentCurrency: "ILS",
+        paymentLink: "https://example.com/demo-payment",
+        paymentInstructions: `${DEMO_PREFIX} יש להשלים תשלום לפי הנחיות בית החולים לפני אישור סופי.`
+      },
+      update: {
+        allowApplications: true,
+        maxStudentsAtOnce: Math.max(preset.maxStudentsAtOnce, 4),
+        minDurationDays: Math.max(preset.minDurationDays, 28),
+        maxDurationDays: Math.max(preset.maxDurationDays, 90),
+        notes: `${DEMO_PREFIX} מסלול דמו לישראלים הלומדים בחו״ל ומבצעים סבבים בישראל.`,
+        paymentRequired: true,
+        paymentAmount: new Prisma.Decimal("1200.00"),
+        paymentCurrency: "ILS",
+        paymentLink: "https://example.com/demo-payment",
+        paymentInstructions: `${DEMO_PREFIX} יש להשלים תשלום לפי הנחיות בית החולים לפני אישור סופי.`
+      }
+    });
+
     await prisma.electiveAvailabilityWindow.deleteMany({
       where: {
         departmentId: department.id,
@@ -375,6 +445,7 @@ async function upsertDemoApplication(seed: DemoApplicationSeed, representativeId
     medicalSchool: "פקולטה לדוגמה",
     requestedStartDate: seed.requestedStartDate,
     requestedEndDate: seed.requestedEndDate,
+    trackType: seed.trackType,
     status: seed.status,
     studentNotes: `${DEMO_PREFIX} בקשת אלקטיב לדוגמה לבדיקה.`,
     representativeNotes: seed.status === ElectiveApplicationStatus.ALTERNATIVE_OFFERED
@@ -412,6 +483,7 @@ async function seedApplications(departments: DemoDepartment[], representativeId:
       applicantEmail: DEMO_STUDENT_EMAILS[0],
       applicantName: "סטודנטית דמו - הוגש",
       status: ElectiveApplicationStatus.SUBMITTED,
+      trackType: ElectiveTrackType.ISRAELI_FACULTY_STUDENT,
       requestedStartDate: demoDate(1, 16),
       requestedEndDate: demoDate(1, 23)
     },
@@ -420,14 +492,16 @@ async function seedApplications(departments: DemoDepartment[], representativeId:
       applicantEmail: DEMO_STUDENT_EMAILS[1],
       applicantName: "סטודנט דמו - אושר",
       status: ElectiveApplicationStatus.APPROVED,
+      trackType: ElectiveTrackType.ABROAD_ISRAELI_STUDENT,
       requestedStartDate: demoDate(1, 1),
-      requestedEndDate: demoDate(1, 8)
+      requestedEndDate: demoDate(1, 30)
     },
     {
       department: third,
       applicantEmail: DEMO_STUDENT_EMAILS[2],
       applicantName: "סטודנטית דמו - נדחה",
       status: ElectiveApplicationStatus.REJECTED,
+      trackType: ElectiveTrackType.ISRAELI_FACULTY_STUDENT,
       requestedStartDate: demoDate(1, 3),
       requestedEndDate: demoDate(1, 10)
     },
@@ -436,14 +510,16 @@ async function seedApplications(departments: DemoDepartment[], representativeId:
       applicantEmail: "demo.student4@hitmachut.local",
       applicantName: "סטודנט דמו - המתנה",
       status: ElectiveApplicationStatus.WAITLISTED,
+      trackType: ElectiveTrackType.ABROAD_ISRAELI_STUDENT,
       requestedStartDate: demoDate(2, 1),
-      requestedEndDate: demoDate(2, 14)
+      requestedEndDate: demoDate(2, 30)
     },
     {
       department: second,
       applicantEmail: "demo.student5@hitmachut.local",
       applicantName: "סטודנטית דמו - חלופה",
       status: ElectiveApplicationStatus.ALTERNATIVE_OFFERED,
+      trackType: ElectiveTrackType.ISRAELI_FACULTY_STUDENT,
       requestedStartDate: demoDate(1, 1),
       requestedEndDate: demoDate(1, 14),
       proposedStartDate: demoDate(2, 1),
@@ -481,6 +557,7 @@ export async function seedElectivesDemo(input: { preferredDepartmentId?: string 
   const detailQuery = new URLSearchParams({
     start: suggestedSearch.start,
     end: suggestedSearch.end,
+    trackType: suggestedSearch.trackType,
     specialties: departments[0].specialty.name,
     regions: resolveCanonicalInstitutionRegion(departments[0].institution)
   }).toString();

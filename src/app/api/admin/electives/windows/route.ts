@@ -26,6 +26,7 @@ export async function POST(request: Request) {
   const window = await prisma.electiveAvailabilityWindow.create({
     data: {
       departmentId: parsed.data.departmentId,
+      trackType: parsed.data.trackType ?? null,
       status: parsed.data.status,
       startsAt: new Date(parsed.data.startsAt),
       endsAt: new Date(parsed.data.endsAt),

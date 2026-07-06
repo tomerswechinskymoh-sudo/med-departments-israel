@@ -46,7 +46,7 @@ export default async function StudentElectiveApplyPage({
   const requestedEndDate = parseDateOnly(search.end);
   const detailHref = buildElectiveDepartmentHref(department.slug, search);
   const match = requestedStartDate && requestedEndDate
-    ? await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate)
+    ? await getElectiveDepartmentAvailabilityMatch(department, requestedStartDate, requestedEndDate, search.trackType)
     : null;
 
   return (
@@ -75,6 +75,7 @@ export default async function StudentElectiveApplyPage({
           departmentSlug={department.slug}
           defaultStartDate={search.start}
           defaultEndDate={search.end}
+          defaultTrackType={search.trackType}
         />
       </Card>
       <Link href={detailHref} className="inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-black text-slate-700">

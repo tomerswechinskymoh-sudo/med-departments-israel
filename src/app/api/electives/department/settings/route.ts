@@ -3,7 +3,7 @@ import { createAuditLog } from "@/lib/audit";
 import { canManageElectiveDepartment, requireElectiveDepartmentApiSession } from "@/lib/elective-department-auth";
 import { prisma } from "@/lib/prisma";
 import { hasValidSameOrigin } from "@/lib/security";
-import { electiveDepartmentPortalSettingsSchema } from "@/lib/validation";
+import { electiveDepartmentPortalSettingsSchema, electiveTrackSettingsSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
   const auth = await requireElectiveDepartmentApiSession();
@@ -59,6 +59,53 @@ export async function POST(request: Request) {
       notes: parsed.data.notes ?? null
     }
   });
+  const trackSettingsInput = Array.isArray(body?.trackSettings) ? body.trackSettings : [];
+
+  for (const item of trackSettingsInput) {
+    const parsedTrack = electiveTrackSettingsSchema.safeParse({
+      ...(item ?? {}),
+      departmentId: requestedDepartmentId
+    });
+
+    if (!parsedTrack.success) {
+      return NextResponse.json({ error: parsedTrack.error.issues[0]?.message ?? "קלט סוג סבב לא תקין." }, { status: 400 });
+    }
+
+    await prisma.electiveDepartmentTrackSettings.upsert({
+      where: {
+        departmentId_trackType: {
+          departmentId: requestedDepartmentId,
+          trackType: parsedTrack.data.trackType
+        }
+      },
+      create: {
+        departmentId: requestedDepartmentId,
+        trackType: parsedTrack.data.trackType,
+        allowApplications: parsedTrack.data.allowApplications,
+        maxStudentsAtOnce: parsedTrack.data.maxStudentsAtOnce,
+        minDurationDays: parsedTrack.data.minDurationDays ?? null,
+        maxDurationDays: parsedTrack.data.maxDurationDays ?? null,
+        notes: parsedTrack.data.notes ?? null,
+        paymentRequired: parsedTrack.data.paymentRequired,
+        paymentAmount: parsedTrack.data.paymentAmount ?? null,
+        paymentCurrency: parsedTrack.data.paymentCurrency ?? "ILS",
+        paymentLink: parsedTrack.data.paymentLink ?? null,
+        paymentInstructions: parsedTrack.data.paymentInstructions ?? null
+      },
+      update: {
+        allowApplications: parsedTrack.data.allowApplications,
+        maxStudentsAtOnce: parsedTrack.data.maxStudentsAtOnce,
+        minDurationDays: parsedTrack.data.minDurationDays ?? null,
+        maxDurationDays: parsedTrack.data.maxDurationDays ?? null,
+        notes: parsedTrack.data.notes ?? null,
+        paymentRequired: parsedTrack.data.paymentRequired,
+        paymentAmount: parsedTrack.data.paymentAmount ?? null,
+        paymentCurrency: parsedTrack.data.paymentCurrency ?? "ILS",
+        paymentLink: parsedTrack.data.paymentLink ?? null,
+        paymentInstructions: parsedTrack.data.paymentInstructions ?? null
+      }
+    });
+  }
 
   await createAuditLog({
     actorUserId: null,
