@@ -259,6 +259,28 @@ const compactSpecialtySelect = {
   groupAsArray: true
 } satisfies Prisma.SpecialtySelect;
 
+const publicDepartmentOptionInstitutionSelect = {
+  id: true,
+  name: true,
+  slug: true,
+  type: true
+} satisfies Prisma.InstitutionSelect;
+
+const publicDepartmentFilterInstitutionSelect = {
+  id: true,
+  name: true,
+  slug: true,
+  type: true,
+  city: true,
+  region: true
+} satisfies Prisma.InstitutionSelect;
+
+const publicDepartmentOptionSpecialtySelect = {
+  id: true,
+  name: true,
+  slug: true
+} satisfies Prisma.SpecialtySelect;
+
 const directoryReviewSelect = {
   teachingQuality: true,
   lifestyleBalance: true,
@@ -288,10 +310,17 @@ const publicDepartmentOptionSelect = {
     }
   },
   institution: {
-    select: compactInstitutionSelect
+    select: publicDepartmentOptionInstitutionSelect
   },
   specialty: {
-    select: compactSpecialtySelect
+    select: publicDepartmentOptionSpecialtySelect
+  }
+} satisfies Prisma.DepartmentSelect;
+
+const publicDepartmentFilterSelect = {
+  ...publicDepartmentOptionSelect,
+  institution: {
+    select: publicDepartmentFilterInstitutionSelect
   }
 } satisfies Prisma.DepartmentSelect;
 
@@ -1214,12 +1243,7 @@ const getPublicDepartmentOptions = publicDataCache(
         orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
       });
 
-      return departments.filter(hasDisplayableResidentCount).map((department) => ({
-        ...department,
-        slug: canonicalDepartmentSlugForRecord(department),
-        name: formatDepartmentDisplayName(department.name, department.specialty.name),
-        institution: publicInstitutionForDepartment(department)
-      }));
+      return departments.filter(hasDisplayableResidentCount).map(toPublicDepartmentOption);
     },
     [
       PUBLIC_DATA_CACHE_TAGS.departments,
@@ -1229,6 +1253,41 @@ const getPublicDepartmentOptions = publicDataCache(
 
 export async function getDepartmentOptions() {
   return getPublicDepartmentOptions();
+}
+
+function toPublicDepartmentOption(department: Prisma.DepartmentGetPayload<{ select: typeof publicDepartmentOptionSelect }>) {
+  const institution = publicInstitutionForDepartment(department);
+
+  return {
+    id: department.id,
+    slug: canonicalDepartmentSlugForRecord(department),
+    name: formatDepartmentDisplayName(department.name, department.specialty.name),
+    institution: {
+      id: institution.id,
+      name: institution.name,
+      type: institution.type
+    },
+    specialty: {
+      id: department.specialty.id,
+      name: department.specialty.name
+    }
+  };
+}
+
+function toDirectoryFilterDepartment(
+  department: Prisma.DepartmentGetPayload<{ select: typeof publicDepartmentFilterSelect }>
+) {
+  const option = toPublicDepartmentOption(department);
+
+  return {
+    id: option.id,
+    name: option.name,
+    institution: {
+      id: option.institution.id,
+      name: option.institution.name
+    },
+    specialty: option.specialty
+  };
 }
 
 const getDirectoryFiltersCached = publicDataCache(
@@ -1243,7 +1302,7 @@ const getDirectoryFiltersCached = publicDataCache(
         };
       }
 
-      const [specialties, departments] = await Promise.all([
+      const [specialties, departmentRows] = await Promise.all([
         prisma.specialty.findMany({
           where: {
             AND: [
@@ -1267,25 +1326,32 @@ const getDirectoryFiltersCached = publicDataCache(
             name: "asc"
           }
         }),
-        getDepartmentOptions()
+        prisma.department.findMany({
+          where: publicVisibleDepartmentWhere,
+          select: publicDepartmentFilterSelect,
+          orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
+        })
       ]);
+      const publicDepartments = departmentRows.filter(hasDisplayableResidentCount);
       const institutionMap = new Map<
         string,
         {
           id: string;
           name: string;
-          slug: string | null;
           type: "HOSPITAL" | "HMO";
-          city: string | null;
           region: string;
-          coverImageUrl: string | null;
         }
       >();
 
-      for (const department of departments) {
+      for (const department of publicDepartments) {
         const institution = publicInstitutionForDepartment(department);
         if (!institutionMap.has(institution.id)) {
-          institutionMap.set(institution.id, institution);
+          institutionMap.set(institution.id, {
+            id: institution.id,
+            name: institution.name,
+            type: institution.type,
+            region: institution.region
+          });
         }
       }
 
@@ -1306,7 +1372,7 @@ const getDirectoryFiltersCached = publicDataCache(
             }, new Map())
             .values()
         ),
-        departments,
+        departments: publicDepartments.map(toDirectoryFilterDepartment),
         regions: ISRAEL_REGIONS
       };
     },

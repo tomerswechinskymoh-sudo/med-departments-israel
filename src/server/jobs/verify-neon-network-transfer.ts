@@ -16,10 +16,15 @@ type ProbeResult = {
   route: string;
   label: string;
   cacheStatus: "cold" | "repeat";
+  status: "ok" | "timeout" | "error";
+  errorMessage?: string;
   queryCount: number;
   duplicateQueries: number;
   rowUnits: number;
   estimatedBytes: number;
+  dbCacheMissBytes: number;
+  cacheHitBytes: number;
+  userOverlayBytes: number;
   cacheEvents: PublicDataCacheDiagnosticEvent[];
   cacheHits: number;
   cacheMisses: number;
@@ -42,7 +47,10 @@ const mode = args.has("--mode=measure") ? "measure" : "verify";
 const labelArg = process.argv.find((arg) => arg.startsWith("--label="));
 const runLabel = labelArg?.slice("--label=".length) || (mode === "measure" ? "measurement" : "verification");
 const envFileArg = process.argv.find((arg) => arg.startsWith("--env-file="));
-const PROBE_TIMEOUT_MS = Number(process.env.NEON_TRANSFER_PROBE_TIMEOUT_MS ?? 15_000);
+const timeoutArg = process.argv.find((arg) => arg.startsWith("--timeout-ms="));
+const PROBE_TIMEOUT_MS = Number(
+  timeoutArg?.slice("--timeout-ms=".length) ?? process.env.NEON_TRANSFER_PROBE_TIMEOUT_MS ?? 15_000
+);
 const queryEvents: QueryEvent[] = [];
 
 function parseDotEnvFile(filePath: string) {
@@ -169,6 +177,18 @@ function cacheMissCount(events: PublicDataCacheDiagnosticEvent[]) {
   return events.filter((event) => /miss|uncached|unavailable/i.test(event.cacheStatus)).length;
 }
 
+function dbCacheMissBytes(events: PublicDataCacheDiagnosticEvent[]) {
+  return events
+    .filter((event) => /miss|uncached|unavailable/i.test(event.cacheStatus))
+    .reduce((total, event) => total + event.bytes, 0);
+}
+
+function cacheHitBytes(events: PublicDataCacheDiagnosticEvent[]) {
+  return events
+    .filter((event) => /hit/i.test(event.cacheStatus))
+    .reduce((total, event) => total + event.bytes, 0);
+}
+
 function safeStringify(value: unknown) {
   return JSON.stringify(value, (_key, item) => (typeof item === "bigint" ? item.toString() : item));
 }
@@ -202,24 +222,61 @@ async function measureProbe<T>(
   queryEvents.length = 0;
   cache.drainPublicDataCacheDiagnosticEvents();
   const startedAt = Date.now();
-  const result = await run();
-  const durationMs = Date.now() - startedAt;
-  const events = [...queryEvents];
-  const cacheEvents = cache.drainPublicDataCacheDiagnosticEvents();
+  console.log(`NEON_TRANSFER_ROUTE_START ${cacheStatus} ${route} ${label}`);
 
-  return {
-    route,
-    label,
-    cacheStatus,
-    queryCount: events.length,
-    duplicateQueries: duplicateQueryCount(events),
-    rowUnits: countRowUnits(result),
-    estimatedBytes: byteLength(result),
-    cacheEvents,
-    cacheHits: cacheHitCount(cacheEvents),
-    cacheMisses: cacheMissCount(cacheEvents),
-    durationMs
-  };
+  try {
+    const result = await withProbeTimeout(`${cacheStatus} ${route}`, run());
+    const durationMs = Date.now() - startedAt;
+    const events = [...queryEvents];
+    const cacheEvents = cache.drainPublicDataCacheDiagnosticEvents();
+    const probeResult = {
+      route,
+      label,
+      cacheStatus,
+      status: "ok" as const,
+      queryCount: events.length,
+      duplicateQueries: duplicateQueryCount(events),
+      rowUnits: countRowUnits(result),
+      estimatedBytes: byteLength(result),
+      dbCacheMissBytes: dbCacheMissBytes(cacheEvents),
+      cacheHitBytes: cacheHitBytes(cacheEvents),
+      userOverlayBytes: 0,
+      cacheEvents,
+      cacheHits: cacheHitCount(cacheEvents),
+      cacheMisses: cacheMissCount(cacheEvents),
+      durationMs
+    };
+    console.log(
+      `NEON_TRANSFER_ROUTE_END ${cacheStatus} ${route} ok queries=${probeResult.queryCount} dbBytes=${probeResult.dbCacheMissBytes} durationMs=${durationMs}`
+    );
+    return probeResult;
+  } catch (error) {
+    const durationMs = Date.now() - startedAt;
+    const events = [...queryEvents];
+    const cacheEvents = cache.drainPublicDataCacheDiagnosticEvents();
+    const message = error instanceof Error ? error.message : String(error);
+    const status = /timed out/i.test(message) ? "timeout" : "error";
+    console.warn(`NEON_TRANSFER_ROUTE_END ${cacheStatus} ${route} ${status} message=${message}`);
+
+    return {
+      route,
+      label,
+      cacheStatus,
+      status,
+      errorMessage: message,
+      queryCount: events.length,
+      duplicateQueries: duplicateQueryCount(events),
+      rowUnits: 0,
+      estimatedBytes: 0,
+      dbCacheMissBytes: dbCacheMissBytes(cacheEvents),
+      cacheHitBytes: cacheHitBytes(cacheEvents),
+      userOverlayBytes: 0,
+      cacheEvents,
+      cacheHits: cacheHitCount(cacheEvents),
+      cacheMisses: cacheMissCount(cacheEvents),
+      durationMs
+    };
+  }
 }
 
 function formatBytes(bytes: number) {
@@ -235,17 +292,42 @@ function printResults(results: ProbeResult[]) {
       route: result.route,
       label: result.label,
       cache: result.cacheStatus,
+      status: result.status,
       queries: result.queryCount,
       duplicateQueries: result.duplicateQueries,
       rowUnits: result.rowUnits,
-      bytes: result.estimatedBytes,
-      displayBytes: formatBytes(result.estimatedBytes),
+      resultBytes: result.estimatedBytes,
+      displayResultBytes: formatBytes(result.estimatedBytes),
+      dbCacheMissBytes: result.dbCacheMissBytes,
+      displayDbBytes: formatBytes(result.dbCacheMissBytes),
+      cacheHitBytes: result.cacheHitBytes,
+      displayCacheHitBytes: formatBytes(result.cacheHitBytes),
+      userOverlayBytes: result.userOverlayBytes,
       cacheHits: result.cacheHits,
       cacheMisses: result.cacheMisses,
       cacheEvents: result.cacheEvents.map((event) => `${event.name}:${event.cacheStatus}`).join(", "),
-      durationMs: result.durationMs
+      durationMs: result.durationMs,
+      error: result.errorMessage ?? ""
     }))
   );
+
+  const totals = results.reduce(
+    (sum, result) => ({
+      queryCount: sum.queryCount + result.queryCount,
+      dbCacheMissBytes: sum.dbCacheMissBytes + result.dbCacheMissBytes,
+      cacheHitBytes: sum.cacheHitBytes + result.cacheHitBytes,
+      resultBytes: sum.resultBytes + result.estimatedBytes,
+      failed: sum.failed + (result.status === "ok" ? 0 : 1)
+    }),
+    {
+      queryCount: 0,
+      dbCacheMissBytes: 0,
+      cacheHitBytes: 0,
+      resultBytes: 0,
+      failed: 0
+    }
+  );
+  console.log(`NEON_TRANSFER_SUMMARY ${JSON.stringify(totals)}`);
 }
 
 async function loadRuntime() {
@@ -296,6 +378,83 @@ async function buildContext(): Promise<ProbeContext> {
     departmentId,
     compareDepartmentIds
   };
+}
+
+function topLevelByteBreakdown(value: Record<string, unknown>) {
+  return Object.fromEntries(
+    Object.entries(value).map(([key, item]) => [key, byteLength(item)])
+  );
+}
+
+function objectFieldByteBreakdown(rows: Array<Record<string, unknown>>) {
+  const totals = new Map<string, number>();
+
+  for (const row of rows) {
+    for (const [key, value] of Object.entries(row)) {
+      totals.set(key, (totals.get(key) ?? 0) + byteLength(value));
+    }
+  }
+
+  return Object.fromEntries(Array.from(totals.entries()).sort((left, right) => right[1] - left[1]));
+}
+
+function duplicateValueCount(values: string[]) {
+  const counts = new Map<string, number>();
+  for (const value of values) {
+    counts.set(value, (counts.get(value) ?? 0) + 1);
+  }
+
+  return Array.from(counts.values()).reduce((total, count) => total + Math.max(0, count - 1), 0);
+}
+
+async function printPayloadInvestigation(context: ProbeContext) {
+  const options = await context.queries.getDepartmentOptions();
+  const filters = await context.queries.getDirectoryFilters();
+  const firstOption = options[0] ?? null;
+  const firstFilterDepartment = filters.departments[0] ?? null;
+
+  console.log(
+    `NEON_TRANSFER_PAYLOAD getDepartmentOptions ${JSON.stringify({
+      bytes: byteLength(options),
+      departmentCount: options.length,
+      fields: firstOption ? Object.keys(firstOption) : [],
+      institutionFields: firstOption?.institution ? Object.keys(firstOption.institution) : [],
+      specialtyFields: firstOption?.specialty ? Object.keys(firstOption.specialty) : [],
+      fieldBytes: objectFieldByteBreakdown(options as Array<Record<string, unknown>>),
+      duplicateDepartmentNames: duplicateValueCount(options.map((department) => department.name)),
+      duplicateInstitutionObjects: duplicateValueCount(
+        options.map((department) => safeStringify(department.institution) ?? "")
+      ),
+      duplicateSpecialtyObjects: duplicateValueCount(
+        options.map((department) => safeStringify(department.specialty) ?? "")
+      )
+    })}`
+  );
+  console.log(
+    `NEON_TRANSFER_PAYLOAD getDirectoryFilters ${JSON.stringify({
+      bytes: byteLength(filters),
+      topLevelBytes: topLevelByteBreakdown(filters as Record<string, unknown>),
+      institutions: filters.institutions.length,
+      specialties: filters.specialties.length,
+      regions: filters.regions.length,
+      departments: filters.departments.length,
+      departmentFields: firstFilterDepartment ? Object.keys(firstFilterDepartment) : [],
+      departmentInstitutionFields: firstFilterDepartment?.institution
+        ? Object.keys(firstFilterDepartment.institution)
+        : [],
+      departmentSpecialtyFields: firstFilterDepartment?.specialty
+        ? Object.keys(firstFilterDepartment.specialty)
+        : [],
+      departmentFieldBytes: objectFieldByteBreakdown(filters.departments as Array<Record<string, unknown>>),
+      duplicatedDepartmentIdsFromOptions: filters.departments.filter((department) =>
+        options.some((option) => option.id === department.id)
+      ).length
+    })}`
+  );
+
+  context.cache.clearPublicDataMemoryCache();
+  context.cache.drainPublicDataCacheDiagnosticEvents();
+  queryEvents.length = 0;
 }
 
 async function runRouteProbes(context: ProbeContext, cacheStatus: ProbeResult["cacheStatus"]) {
@@ -441,6 +600,13 @@ function verifyStaticGuards() {
     failures
   );
   assertText(
+    queries.includes("function toPublicDepartmentOption") &&
+      queries.includes("function toDirectoryFilterDepartment") &&
+      queries.includes("publicDepartmentFilterSelect"),
+    "department option/filter payload compaction helpers missing",
+    failures
+  );
+  assertText(
     cacheFile.includes("stableStringify") && cacheFile.includes("cacheKey(name, args)"),
     "public cache keys do not include stable serialized arguments",
     failures
@@ -505,8 +671,9 @@ async function main() {
     const failures = verifyStaticGuards();
     try {
       const context = await withProbeTimeout("buildContext", buildContext());
-      const cold = await withProbeTimeout("cold probes", runRouteProbes(context, "cold"));
-      const repeat = await withProbeTimeout("repeat probes", runRouteProbes(context, "repeat"));
+      await printPayloadInvestigation(context);
+      const cold = await runRouteProbes(context, "cold");
+      const repeat = await runRouteProbes(context, "repeat");
       const results = [...cold, ...repeat];
       printResults(results);
       await context.prisma.$disconnect();
@@ -531,8 +698,9 @@ async function main() {
   }
 
   const context = await withProbeTimeout("buildContext", buildContext());
-  const cold = await withProbeTimeout("cold probes", runRouteProbes(context, "cold"));
-  const repeat = await withProbeTimeout("repeat probes", runRouteProbes(context, "repeat"));
+  await printPayloadInvestigation(context);
+  const cold = await runRouteProbes(context, "cold");
+  const repeat = await runRouteProbes(context, "repeat");
   const results = [...cold, ...repeat];
   printResults(results);
   await context.prisma.$disconnect();
