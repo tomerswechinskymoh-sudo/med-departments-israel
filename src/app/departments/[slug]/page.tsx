@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { DepartmentPageActions } from "@/components/departments/department-page-actions";
@@ -43,9 +42,6 @@ import {
 import { duplicateAwareArrayMetricContributionCalculation } from "@/lib/array-metric-aggregation";
 import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
 import { formatDepartmentDisplayName } from "@/lib/utils";
-
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 type MetricSource = "moh" | "hospital" | "duns100" | "openalex" | "demo" | "missing";
 
@@ -1219,7 +1215,6 @@ export default async function DepartmentDetailsPage({
   params: Promise<{ slug: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  noStore();
   const [{ slug }, resolvedSearchParams, session] = await Promise.all([
     params,
     searchParams,

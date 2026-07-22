@@ -6,9 +6,6 @@ import { Card } from "@/components/ui/card";
 import { PageShell } from "@/components/layout/page-shell";
 import { InstitutionLogo } from "@/components/departments/institution-logo";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
 const comparisonColumns = [
   "מחלקה / מערך",
   "בית חולים",

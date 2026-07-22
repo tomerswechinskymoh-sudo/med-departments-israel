@@ -15,6 +15,10 @@ import {
   OPENING_TYPE_LABELS
 } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
+import {
+  publicDataCache,
+  PUBLIC_DATA_CACHE_TAGS
+} from "@/lib/public-data-cache";
 import { departmentNewResidentsRowsFromYearlyMetrics } from "@/lib/department-yearly-residents";
 import {
   duplicateAwareArrayMetricContributionAverage,
@@ -38,7 +42,7 @@ import {
   resolveCanonicalInstitutionRegion
 } from "@/lib/regions";
 import { normalizeDepartmentNameSubDepartment } from "@/lib/department-normalization";
-import { resolveImportedMetric } from "@/lib/imported-metric-resolver";
+import { metricFieldDefinitions, resolveImportedMetric } from "@/lib/imported-metric-resolver";
 import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
 import { getOpenAlexMappingStatus } from "@/lib/server/openalex-research";
 import { average, formatDepartmentDisplayName } from "@/lib/utils";
@@ -103,6 +107,194 @@ const ACTIVE_RESIDENTS_ZERO_RAW_VALUES = [
   "00.00"
 ];
 
+const EFFECTIVE_HOSPITAL_METRIC_KEYS = [
+  "תת מחלקה",
+  "subDepartment",
+  "sub_department"
+];
+
+const DIRECTORY_CARD_METRIC_KEYS = Array.from(
+  new Set([
+    ...ACTIVE_RESIDENTS_METRIC_KEYS,
+    ...EFFECTIVE_HOSPITAL_METRIC_KEYS,
+    "boardStageAPassRate",
+    "inherited_boardStageAPassRate",
+    "boardStageBPassRate",
+    "inherited_boardStageBPassRate",
+    "צפי תקנים חדשים ב2026",
+    "צפי משרות חדשות ב2026",
+    "expectedOpenings2026",
+    "DUNS100",
+    "duns100PhysiciansCount",
+    "מספר_בכירים",
+    "seniorPhysiciansCount",
+    "מספר פרסומים מחלקתי",
+    "departmentalPublicationsCount"
+  ])
+);
+
+const COMPARISON_DEPARTMENT_METRIC_KEYS = Array.from(
+  new Set([
+    ...ACTIVE_RESIDENTS_METRIC_KEYS,
+    ...EFFECTIVE_HOSPITAL_METRIC_KEYS,
+    "משך_ממוצע_בפועל",
+    "actualAverageDuration",
+    "medianResidencyDurationMonths",
+    "צפי תקנים חדשים ב2026",
+    "expectedOpenings2026",
+    "זמן_המתנה_חציוני_לתקן",
+    "medianWaitingTime"
+  ])
+);
+
+const SPECIALTY_DASHBOARD_DEPARTMENT_METRIC_KEYS = Array.from(
+  new Set([
+    ...ACTIVE_RESIDENTS_METRIC_KEYS,
+    ...EFFECTIVE_HOSPITAL_METRIC_KEYS,
+    ...Object.values(metricFieldDefinitions).flatMap((definition) => [
+      ...definition.importedKeys,
+      ...definition.dbKeys,
+      ...("legacyKeys" in definition ? definition.legacyKeys : [])
+    ])
+  ])
+);
+
+const compactDepartmentMetricSelect = {
+  metricKey: true,
+  value: true,
+  rawValue: true,
+  unit: true,
+  label: true,
+  lastUpdated: true
+} satisfies Prisma.DepartmentMetricSelect;
+
+const publicOptionMetricWhere = {
+  OR: [
+    {
+      metricKey: {
+        in: [...ACTIVE_RESIDENTS_METRIC_KEYS, ...EFFECTIVE_HOSPITAL_METRIC_KEYS]
+      }
+    },
+    {
+      label: {
+        in: ["תת מחלקה"]
+      }
+    }
+  ]
+} satisfies Prisma.DepartmentMetricWhereInput;
+
+const directoryMetricWhere = {
+  OR: [
+    {
+      metricKey: {
+        in: DIRECTORY_CARD_METRIC_KEYS
+      }
+    },
+    {
+      label: {
+        in: ["תת מחלקה"]
+      }
+    }
+  ]
+} satisfies Prisma.DepartmentMetricWhereInput;
+
+const comparisonMetricWhere = {
+  OR: [
+    {
+      metricKey: {
+        in: COMPARISON_DEPARTMENT_METRIC_KEYS
+      }
+    },
+    {
+      label: {
+        in: ["תת מחלקה"]
+      }
+    }
+  ]
+} satisfies Prisma.DepartmentMetricWhereInput;
+
+const specialtyDashboardMetricWhere = {
+  OR: [
+    {
+      metricKey: {
+        in: SPECIALTY_DASHBOARD_DEPARTMENT_METRIC_KEYS
+      }
+    },
+    {
+      label: {
+        in: ["תת מחלקה"]
+      }
+    }
+  ]
+} satisfies Prisma.DepartmentMetricWhereInput;
+
+const directoryYearlyMetricWhere = {
+  metricKey: "newResidents",
+  year: {
+    lte: 2026
+  }
+} satisfies Prisma.DepartmentYearlyMetricWhereInput;
+
+const comparisonYearlyMetricWhere = {
+  metricKey: "newResidents",
+  year: {
+    lte: 2026
+  }
+} satisfies Prisma.DepartmentYearlyMetricWhereInput;
+
+const compactInstitutionSelect = {
+  id: true,
+  name: true,
+  slug: true,
+  type: true,
+  city: true,
+  region: true,
+  coverImageUrl: true
+} satisfies Prisma.InstitutionSelect;
+
+const compactSpecialtySelect = {
+  id: true,
+  name: true,
+  slug: true,
+  groupAsArray: true
+} satisfies Prisma.SpecialtySelect;
+
+const directoryReviewSelect = {
+  teachingQuality: true,
+  lifestyleBalance: true,
+  researchExposure: true,
+  seniorsApproachability: true,
+  overallRecommendation: true,
+  submission: {
+    select: {
+      roleDetails: true
+    }
+  }
+} satisfies Prisma.ReviewSelect;
+
+const publicDepartmentOptionSelect = {
+  id: true,
+  slug: true,
+  name: true,
+  importStableKey: true,
+  residentsCount: true,
+  metrics: {
+    where: publicOptionMetricWhere,
+    select: {
+      metricKey: true,
+      label: true,
+      rawValue: true,
+      value: true
+    }
+  },
+  institution: {
+    select: compactInstitutionSelect
+  },
+  specialty: {
+    select: compactSpecialtySelect
+  }
+} satisfies Prisma.DepartmentSelect;
+
 const publicDisplayableResidentCountWhere = {
   NOT: {
     OR: [
@@ -145,6 +337,10 @@ const HIDDEN_PUBLIC_SPECIALTY_NORMALIZED_NAMES = new Set(
 
 function isPublicSpecialtyName(name: string) {
   return !HIDDEN_PUBLIC_SPECIALTY_NORMALIZED_NAMES.has(normalizeHebrewCatalogName(name));
+}
+
+function isNextProductionBuildPhase() {
+  return process.env.NEXT_PHASE === "phase-production-build";
 }
 
 const publicVisibleDepartmentWhere = {
@@ -757,6 +953,21 @@ export async function resolveDepartmentBySlugOrFallback(
       : null;
   }
 
+  const directDepartmentBySlug = await prisma.department.findFirst({
+    where: {
+      ...publicVisibleDepartmentWhere,
+      OR: slugVariants.map((variant) => ({ slug: variant }))
+    },
+    select: departmentSelect
+  });
+
+  if (directDepartmentBySlug) {
+    return {
+      ...directDepartmentBySlug,
+      slug: canonicalDepartmentSlugForRecord(directDepartmentBySlug)
+    };
+  }
+
   const departmentCandidates = await prisma.department.findMany({
     where: publicVisibleDepartmentWhere,
     select: departmentSelect
@@ -992,146 +1203,125 @@ export async function getHomePageData() {
   };
 }
 
-export async function getDirectoryFilters() {
-  const [specialties, departments] = await Promise.all([
-    prisma.specialty.findMany({
-      where: {
-        AND: [
-          {
-            name: {
-              notIn: HIDDEN_PUBLIC_SPECIALTY_NAMES
-            }
-          },
-          {
-            OR: [
+const getPublicDepartmentOptions = publicDataCache(
+    "getDepartmentOptions",
+    async () => {
+      if (isNextProductionBuildPhase()) return [];
+
+      const departments = await prisma.department.findMany({
+        where: publicVisibleDepartmentWhere,
+        select: publicDepartmentOptionSelect,
+        orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
+      });
+
+      return departments.filter(hasDisplayableResidentCount).map((department) => ({
+        ...department,
+        slug: canonicalDepartmentSlugForRecord(department),
+        name: formatDepartmentDisplayName(department.name, department.specialty.name),
+        institution: publicInstitutionForDepartment(department)
+      }));
+    },
+    [
+      PUBLIC_DATA_CACHE_TAGS.departments,
+      PUBLIC_DATA_CACHE_TAGS.options
+    ]
+);
+
+export async function getDepartmentOptions() {
+  return getPublicDepartmentOptions();
+}
+
+const getDirectoryFiltersCached = publicDataCache(
+    "getDirectoryFilters",
+    async () => {
+      if (isNextProductionBuildPhase()) {
+        return {
+          institutions: [],
+          specialties: [],
+          departments: [],
+          regions: ISRAEL_REGIONS
+        };
+      }
+
+      const [specialties, departments] = await Promise.all([
+        prisma.specialty.findMany({
+          where: {
+            AND: [
               {
-                metrics: {
-                  some: {}
-                }
-              },
-              {
-                yearlyMetrics: {
-                  some: {}
+                name: {
+                  notIn: HIDDEN_PUBLIC_SPECIALTY_NAMES
                 }
               },
               {
                 departments: {
                   some: publicVisibleDepartmentWhere
                 }
-              },
-              {
-                departments: {
-                  some: {
-                    ...publicVisibleDepartmentWhere,
-                    metrics: {
-                      some: {}
-                    }
-                  }
-                }
-              },
-              {
-                departments: {
-                  some: {
-                    ...publicVisibleDepartmentWhere,
-                    yearlyMetrics: {
-                      some: {}
-                    }
-                  }
-                }
               }
             ]
-          }
-        ]
-      },
-      select: {
-        id: true,
-        name: true
-      },
-      orderBy: {
-        name: "asc"
-      }
-    }),
-    prisma.department.findMany({
-      where: publicVisibleDepartmentWhere,
-      select: {
-        id: true,
-        name: true,
-        importStableKey: true,
-        residentsCount: true,
-        metrics: {
-          select: {
-            metricKey: true,
-            label: true,
-            rawValue: true,
-            value: true
-          }
-        },
-        institution: {
-          select: {
-            id: true,
-            name: true,
-            slug: true,
-            coverImageUrl: true
-          }
-        },
-        specialty: {
+          },
           select: {
             id: true,
             name: true
+          },
+          orderBy: {
+            name: "asc"
           }
+        }),
+        getDepartmentOptions()
+      ]);
+      const institutionMap = new Map<
+        string,
+        {
+          id: string;
+          name: string;
+          slug: string | null;
+          type: "HOSPITAL" | "HMO";
+          city: string | null;
+          region: string;
+          coverImageUrl: string | null;
         }
-      },
-      orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
-    })
-  ]);
-  const publicDepartments = departments.filter(hasDisplayableResidentCount);
-  const institutionMap = new Map<
-    string,
-    {
-      id: string;
-      name: string;
-      slug: string | null;
-      type: "HOSPITAL" | "HMO";
-      city: string | null;
-      region: string;
-      coverImageUrl: string | null;
-    }
-  >();
+      >();
 
-  for (const department of publicDepartments) {
-    const institution = publicInstitutionForDepartment(department);
-    if (!institutionMap.has(institution.id)) {
-      institutionMap.set(institution.id, institution);
-    }
-  }
+      for (const department of departments) {
+        const institution = publicInstitutionForDepartment(department);
+        if (!institutionMap.has(institution.id)) {
+          institutionMap.set(institution.id, institution);
+        }
+      }
 
-  return {
-    institutions: Array.from(institutionMap.values()).sort((left, right) =>
-      left.name.localeCompare(right.name, "he")
-    ),
-    specialties: Array.from(
-      specialties
-        .filter((specialty) => isPublicSpecialtyName(specialty.name))
-        .reduce<Map<string, (typeof specialties)[number]>>((unique, specialty) => {
-          const normalizedName = normalizeHebrewCatalogName(specialty.name);
-          if (!unique.has(normalizedName)) {
-            unique.set(normalizedName, specialty);
-          }
+      return {
+        institutions: Array.from(institutionMap.values()).sort((left, right) =>
+          left.name.localeCompare(right.name, "he")
+        ),
+        specialties: Array.from(
+          specialties
+            .filter((specialty) => isPublicSpecialtyName(specialty.name))
+            .reduce<Map<string, (typeof specialties)[number]>>((unique, specialty) => {
+              const normalizedName = normalizeHebrewCatalogName(specialty.name);
+              if (!unique.has(normalizedName)) {
+                unique.set(normalizedName, specialty);
+              }
 
-          return unique;
-        }, new Map())
-        .values()
-    ),
-    departments: publicDepartments.map((department) => ({
-      ...department,
-      name: formatDepartmentDisplayName(department.name, department.specialty.name),
-      institution: publicInstitutionForDepartment(department)
-    })),
-    regions: ISRAEL_REGIONS
-  };
+              return unique;
+            }, new Map())
+            .values()
+        ),
+        departments,
+        regions: ISRAEL_REGIONS
+      };
+    },
+    [
+      PUBLIC_DATA_CACHE_TAGS.departments,
+      PUBLIC_DATA_CACHE_TAGS.directory,
+      PUBLIC_DATA_CACHE_TAGS.options
+    ]
+);
+
+export async function getDirectoryFilters() {
+  return getDirectoryFiltersCached();
 }
 
-export async function getDirectoryData(
+async function getPublicDirectoryData(
   filters: {
     search?: string;
     institutions?: string[];
@@ -1151,9 +1341,12 @@ export async function getDirectoryData(
     seniorsPriority?: number;
     clinicalPriority?: number;
     searchAcrossSpecialties?: boolean;
-  },
-  userId?: string
+  }
 ) {
+  if (isNextProductionBuildPhase()) {
+    return [];
+  }
+
   const selectedSpecialtyId = filters.specialties?.[0];
 
   if (!selectedSpecialtyId && !filters.searchAcrossSpecialties) {
@@ -1208,9 +1401,26 @@ export async function getDirectoryData(
           : {}
       ]
     },
-    include: {
-      institution: true,
-      specialty: true,
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      importStableKey: true,
+      residentsCount: true,
+      newResidentsThisYear: true,
+      shlavAlephPassRate: true,
+      shlavBetPassRate: true,
+      shortSummary: true,
+      coverImageUrl: true,
+      dataLastUpdated: true,
+      institutionId: true,
+      specialtyId: true,
+      institution: {
+        select: compactInstitutionSelect
+      },
+      specialty: {
+        select: compactSpecialtySelect
+      },
       medicalArray: {
         select: {
           id: true,
@@ -1219,7 +1429,7 @@ export async function getDirectoryData(
         }
       },
       reviews: {
-        select: publishedReviewSelect
+        select: directoryReviewSelect
       },
       residencyOpenings: {
         where: {
@@ -1242,6 +1452,9 @@ export async function getDirectoryData(
       researchOpportunities: {
         where: {
           contentStatus: ContentStatus.PUBLISHED
+        },
+        select: {
+          id: true
         }
       },
       externalMetrics: {
@@ -1256,16 +1469,11 @@ export async function getDirectoryData(
         }
       },
       metrics: {
-        select: {
-          metricKey: true,
-          value: true,
-          rawValue: true,
-          unit: true,
-          label: true,
-          lastUpdated: true
-        }
+        where: directoryMetricWhere,
+        select: compactDepartmentMetricSelect
       },
       yearlyMetrics: {
+        where: directoryYearlyMetricWhere,
         select: {
           metricKey: true,
           year: true,
@@ -1292,17 +1500,7 @@ export async function getDirectoryData(
           year: "desc"
         },
         take: 1
-      },
-      favorites: userId
-        ? {
-            where: {
-              userId
-            },
-            select: {
-              userId: true
-            }
-          }
-        : false
+      }
     },
     orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
   });
@@ -1453,10 +1651,9 @@ export async function getDirectoryData(
       estimatedPublicationsYear: latestResearchMetric?.year ?? null,
       shlavAlephPassRate,
       shlavBetPassRate,
-      candidatePreferences: department.candidatePreferences,
-      sourceNotes: department.dataSourceNotes,
       dataLastUpdated: department.dataLastUpdated,
-      isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
+      isFavorite: false,
+      favoriteDepartmentId: department.id as string | null,
       countsAsPhysicalDepartment,
       rankingScore
     };
@@ -1560,7 +1757,7 @@ export async function getDirectoryData(
         id: first.medicalArrayId ? `array-${first.medicalArrayId}` : `array-${groupKey}`,
         slug: first.medicalArraySlug ?? first.slug,
         hrefDepartmentId: first.id,
-        favoriteDepartmentId: null,
+        favoriteDepartmentId: null as string | null,
         name: `מערך ${arraySpecialtyName}`,
         specialtyName: arraySpecialtyName,
         shortSummary: `מערך ${arraySpecialtyName} הכולל ${departmentCountText} בבית החולים ${first.institutionName}.`,
@@ -1622,26 +1819,91 @@ export async function getDirectoryData(
   });
 }
 
-export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) {
-  if (!specialtyId) {
+const getPublicDirectoryDataCached = publicDataCache(
+    "getPublicDirectoryData",
+    getPublicDirectoryData,
+    [
+      PUBLIC_DATA_CACHE_TAGS.departments,
+      PUBLIC_DATA_CACHE_TAGS.directory
+    ]
+);
+
+async function getFavoriteDepartmentIdSet(userId: string, departmentIds: string[]) {
+  const uniqueDepartmentIds = Array.from(new Set(departmentIds.filter(Boolean)));
+  if (uniqueDepartmentIds.length === 0) return new Set<string>();
+
+  const favorites = await prisma.favoriteDepartment.findMany({
+    where: {
+      userId,
+      departmentId: {
+        in: uniqueDepartmentIds
+      }
+    },
+    select: {
+      departmentId: true
+    }
+  });
+
+  return new Set(favorites.map((favorite) => favorite.departmentId));
+}
+
+export async function getDirectoryData(
+  filters: Parameters<typeof getPublicDirectoryData>[0],
+  userId?: string
+) {
+  const departments = await getPublicDirectoryDataCached(filters);
+
+  if (!userId) {
+    return departments;
+  }
+
+  const favoriteDepartmentIds = await getFavoriteDepartmentIdSet(
+    userId,
+    departments.map((department) => department.favoriteDepartmentId ?? department.hrefDepartmentId ?? department.id)
+  );
+
+  return departments.map((department) => ({
+    ...department,
+    isFavorite: Boolean(
+      department.favoriteDepartmentId && favoriteDepartmentIds.has(department.favoriteDepartmentId)
+    )
+  }));
+}
+
+async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
+  if (isNextProductionBuildPhase()) {
     return {
       metrics: [],
       hasConfig: false
     };
   }
 
-  const [config, specialty, departments, dataExplanations] = await Promise.all([
-    prisma.specialtyDashboardConfig.findUnique({
+  const config = await prisma.specialtyDashboardConfig.findUnique({
       where: {
         specialtyId
       }
-    }),
+    });
+  const enabledMetrics = normalizeMetricKeys(
+    config?.enabledMetricsJson,
+    defaultSpecialtyDashboardMetrics
+  );
+  const displayOrder = normalizeMetricKeys(
+    config?.displayOrderJson,
+    enabledMetrics
+  );
+
+  const [specialty, departments, dataExplanations] = await Promise.all([
     prisma.specialty.findUnique({
       where: {
         id: specialtyId
       },
       include: {
         metrics: {
+          where: {
+            metricKey: {
+              in: SPECIALTY_DASHBOARD_DEPARTMENT_METRIC_KEYS
+            }
+          },
           select: {
             metricKey: true,
             label: true,
@@ -1656,6 +1918,9 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
           }
         },
         yearlyMetrics: {
+          where: {
+            metricKey: "newResidents"
+          },
           select: {
             metricKey: true,
             year: true,
@@ -1674,9 +1939,16 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
         specialtyId,
         ...publicVisibleDepartmentWhere
       },
-      include: {
+      select: {
+        id: true,
+        residentsCount: true,
+        medianResidencyLength: true,
+        shlavAlephPassRate: true,
+        shlavBetPassRate: true,
+        genderBalance: true,
+        educationLocationBreakdown: true,
         reviews: {
-          select: publishedReviewSelect
+          select: directoryReviewSelect
         },
         researchOpportunities: {
           where: {
@@ -1699,15 +1971,11 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
           }
         },
         metrics: {
-          select: {
-            metricKey: true,
-            value: true,
-            rawValue: true,
-            label: true,
-            unit: true
-          }
+          where: specialtyDashboardMetricWhere,
+          select: compactDepartmentMetricSelect
         },
         yearlyMetrics: {
+          where: directoryYearlyMetricWhere,
           select: {
             metricKey: true,
             year: true,
@@ -1722,15 +1990,6 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
       select: dataExplanationSelect
     })
   ]);
-
-  const enabledMetrics = normalizeMetricKeys(
-    config?.enabledMetricsJson,
-    defaultSpecialtyDashboardMetrics
-  );
-  const displayOrder = normalizeMetricKeys(
-    config?.displayOrderJson,
-    enabledMetrics
-  );
   const publicDepartments = departments.filter(hasDisplayableResidentCount);
   const metricInput = publicDepartments.map((department) => {
     const importedExternalMetrics = department.metrics
@@ -1777,20 +2036,53 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
   };
 }
 
-export async function getDataExplanations() {
+const getPublicSpecialtyDashboardMetricsCached = publicDataCache(
+    "getSpecialtyDashboardMetrics",
+    getPublicSpecialtyDashboardMetrics,
+    [
+      PUBLIC_DATA_CACHE_TAGS.departments,
+      PUBLIC_DATA_CACHE_TAGS.specialtyMetrics
+    ]
+);
+
+export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) {
+  if (!specialtyId) {
+    return {
+      metrics: [],
+      hasConfig: false
+    };
+  }
+
+  return getPublicSpecialtyDashboardMetricsCached(specialtyId);
+}
+
+const getDataExplanationsCached = publicDataCache(
+    "getDataExplanations",
+    async () => {
+  if (isNextProductionBuildPhase()) return [];
+
   const rows = await prisma.dataExplanation.findMany({
     select: dataExplanationSelect,
     orderBy: [{ sheet: "asc" }, { criterion: "asc" }]
   });
 
   return rows.map(toMetricDisplayMetadata);
+    },
+    [PUBLIC_DATA_CACHE_TAGS.dataExplanations]
+);
+
+export async function getDataExplanations() {
+  return getDataExplanationsCached();
 }
 
-export async function getDepartmentPageData(
+async function getPublicDepartmentPageData(
   slug: string,
-  viewerId?: string,
   departmentId?: string | null
 ) {
+  if (isNextProductionBuildPhase()) {
+    return null;
+  }
+
   const matchedDepartment = await resolveDepartmentBySlugOrFallback(slug, departmentId);
 
   if (!matchedDepartment) {
@@ -1853,21 +2145,20 @@ export async function getDepartmentPageData(
           publishedAt: "desc"
         }
       },
-      favorites: viewerId
-        ? {
-            where: {
-              userId: viewerId
-            },
-            select: {
-              userId: true
-            }
-          }
-        : false,
       representativeAssignments: {
-        include: {
+        select: {
+          id: true,
           user: {
-            include: {
-              representativeProfile: true
+            select: {
+              id: true,
+              email: true,
+              fullName: true,
+              profileImageUrl: true,
+              representativeProfile: {
+                select: {
+                  title: true
+                }
+              }
             }
           }
         },
@@ -1879,20 +2170,50 @@ export async function getDepartmentPageData(
         include: {
           departments: {
             where: publicVisibleDepartmentWhere,
-            include: {
-              specialty: true,
+            select: {
+              id: true,
+              slug: true,
+              name: true,
+              importStableKey: true,
+              residentsCount: true,
+              publicContactEmail: true,
+              publicContactPhone: true,
+              institution: {
+                select: compactInstitutionSelect
+              },
+              specialty: {
+                select: compactSpecialtySelect
+              },
               metrics: {
+                where: comparisonMetricWhere,
+                select: compactDepartmentMetricSelect,
                 orderBy: {
                   metricKey: "asc"
                 }
               },
               yearlyMetrics: {
+                where: comparisonYearlyMetricWhere,
+                select: {
+                  metricKey: true,
+                  year: true,
+                  value: true,
+                  rawValue: true,
+                  unit: true,
+                  lastUpdated: true
+                },
                 orderBy: [{ year: "desc" }, { metricKey: "asc" }]
               },
               heads: {
+                select: {
+                  id: true,
+                  name: true,
+                  title: true,
+                  role: true
+                },
                 orderBy: {
                   displayOrder: "asc"
-                }
+                },
+                take: 1
               }
             },
             orderBy: {
@@ -2013,6 +2334,7 @@ export async function getDepartmentPageData(
         importStableKey: true,
         residentsCount: true,
         metrics: {
+          where: publicOptionMetricWhere,
           select: {
             metricKey: true,
             label: true,
@@ -2034,21 +2356,50 @@ export async function getDepartmentPageData(
             specialtyId: department.specialtyId,
             ...publicVisibleDepartmentWhere
           },
-          include: {
-            institution: true,
-            specialty: true,
+          select: {
+            id: true,
+            slug: true,
+            name: true,
+            importStableKey: true,
+            residentsCount: true,
+            publicContactEmail: true,
+            publicContactPhone: true,
+            institution: {
+              select: compactInstitutionSelect
+            },
+            specialty: {
+              select: compactSpecialtySelect
+            },
             metrics: {
+              where: comparisonMetricWhere,
+              select: compactDepartmentMetricSelect,
               orderBy: {
                 metricKey: "asc"
               }
             },
             yearlyMetrics: {
+              where: comparisonYearlyMetricWhere,
+              select: {
+                metricKey: true,
+                year: true,
+                value: true,
+                rawValue: true,
+                unit: true,
+                lastUpdated: true
+              },
               orderBy: [{ year: "desc" }, { metricKey: "asc" }]
             },
             heads: {
+              select: {
+                id: true,
+                name: true,
+                title: true,
+                role: true
+              },
               orderBy: {
                 displayOrder: "asc"
-              }
+              },
+              take: 1
             }
           },
           orderBy: {
@@ -2163,7 +2514,7 @@ export async function getDepartmentPageData(
     name: formatDepartmentDisplayName(department.name, department.specialty.name),
     slug: canonicalDepartmentSlugForRecord(department),
     siblingDepartmentCount,
-    isFavorite: Array.isArray(department.favorites) && department.favorites.length > 0,
+    isFavorite: false,
     summary: {
       reviewCount: department.reviews.length,
       teachingQuality: average(department.reviews.map((review) => review.teachingQuality)),
@@ -2181,6 +2532,44 @@ export async function getDepartmentPageData(
   };
 }
 
+const getPublicDepartmentPageDataCached = publicDataCache(
+    "getPublicDepartmentPageData",
+    getPublicDepartmentPageData,
+    [
+      PUBLIC_DATA_CACHE_TAGS.departments,
+      PUBLIC_DATA_CACHE_TAGS.departmentDetails
+    ]
+);
+
+export async function getDepartmentPageData(
+  slug: string,
+  viewerId?: string,
+  departmentId?: string | null
+) {
+  const department = await getPublicDepartmentPageDataCached(slug, departmentId ?? null);
+
+  if (!department || !viewerId) {
+    return department;
+  }
+
+  const favorite = await prisma.favoriteDepartment.findUnique({
+    where: {
+      userId_departmentId: {
+        userId: viewerId,
+        departmentId: department.id
+      }
+    },
+    select: {
+      departmentId: true
+    }
+  });
+
+  return {
+    ...department,
+    isFavorite: Boolean(favorite)
+  };
+}
+
 type ComparisonMetricInput = {
   metricKey: string;
   value: number | null;
@@ -2190,6 +2579,29 @@ type ComparisonMetricInput = {
 
 type ComparisonYearlyMetricInput = ComparisonMetricInput & {
   year: number;
+};
+
+type ComparisonDepartmentInput = {
+  id: string;
+  slug: string;
+  name: string;
+  medianResidencyLength?: string | null;
+  metrics: ComparisonMetricInput[];
+  yearlyMetrics: ComparisonYearlyMetricInput[];
+  institution: {
+    name: string;
+    slug: string;
+    coverImageUrl?: string | null;
+  };
+  specialty: {
+    id: string;
+    name: string;
+    slug: string;
+    groupAsArray: boolean;
+  };
+  medicalArray?: {
+    departments?: ComparisonDepartmentInput[] | null;
+  } | null;
 };
 
 const COMPARISON_MISSING_VALUE = missingImportedDataText;
@@ -2274,9 +2686,7 @@ function comparisonYearlyMetric(
     .sort((left, right) => right.year - left.year)[0] ?? null;
 }
 
-function comparisonArrayDepartments(
-  department: Awaited<ReturnType<typeof getDepartmentPageData>>
-) {
+function comparisonArrayDepartments(department: ComparisonDepartmentInput | null) {
   if (!department) return [];
 
   return department.specialty.groupAsArray && department.medicalArray?.departments?.length
@@ -2292,9 +2702,7 @@ function comparisonMetricNumber(metric: ComparisonMetricInput | ComparisonYearly
   return typeof metric?.value === "number" && Number.isFinite(metric.value) ? metric.value : null;
 }
 
-function comparisonExpectedOpeningsValue(
-  department: NonNullable<Awaited<ReturnType<typeof getDepartmentPageData>>>
-) {
+function comparisonExpectedOpeningsValue(department: ComparisonDepartmentInput) {
   const sourceDepartments = comparisonArrayDepartments(department);
   const isArray = sourceDepartments.length > 1 && department.specialty.groupAsArray;
 
@@ -2333,16 +2741,12 @@ function comparisonExpectedOpeningsValue(
   return comparisonMetricDisplay(directMetric) ?? COMPARISON_MISSING_VALUE;
 }
 
-function comparisonMedianWaitingValue(
-  department: NonNullable<Awaited<ReturnType<typeof getDepartmentPageData>>>
-) {
+function comparisonMedianWaitingValue(department: ComparisonDepartmentInput) {
   const metric = comparisonImportedMetric(department.metrics, "זמן_המתנה_חציוני_לתקן", "medianWaitingTime");
   return comparisonMetricDisplay(metric) ?? COMPARISON_MISSING_VALUE;
 }
 
-function comparisonActualDurationValue(
-  department: NonNullable<Awaited<ReturnType<typeof getDepartmentPageData>>>
-) {
+function comparisonActualDurationValue(department: ComparisonDepartmentInput) {
   const metric = comparisonImportedMetric(
     department.metrics,
     "משך_ממוצע_בפועל",
@@ -2356,10 +2760,18 @@ function comparisonActualDurationValue(
   return formatComparisonYears(years);
 }
 
-export async function getDepartmentComparisonData(input: {
+async function getPublicDepartmentComparisonData(input: {
   departmentIds: string[];
   specialtyId?: string | null;
 }) {
+  if (isNextProductionBuildPhase()) {
+    return {
+      status: "empty" as const,
+      rows: [],
+      specialtyName: null
+    };
+  }
+
   const departmentIds = Array.from(new Set(input.departmentIds.filter(Boolean))).slice(0, 4);
 
   if (departmentIds.length === 0) {
@@ -2370,7 +2782,7 @@ export async function getDepartmentComparisonData(input: {
     };
   }
 
-  const baseDepartments = await prisma.department.findMany({
+  const departmentsRaw = await prisma.department.findMany({
     where: {
       ...publicVisibleDepartmentWhere,
       id: {
@@ -2379,20 +2791,115 @@ export async function getDepartmentComparisonData(input: {
     },
     select: {
       id: true,
-      slug: true
+      slug: true,
+      name: true,
+      medianResidencyLength: true,
+      institution: {
+        select: {
+          name: true,
+          slug: true,
+          coverImageUrl: true
+        }
+      },
+      specialty: {
+        select: compactSpecialtySelect
+      },
+      metrics: {
+        where: comparisonMetricWhere,
+        select: {
+          metricKey: true,
+          value: true,
+          rawValue: true,
+          unit: true
+        }
+      },
+      yearlyMetrics: {
+        where: comparisonYearlyMetricWhere,
+        select: {
+          metricKey: true,
+          year: true,
+          value: true,
+          rawValue: true,
+          unit: true
+        }
+      },
+      medicalArray: {
+        select: {
+          departments: {
+            where: publicVisibleDepartmentWhere,
+            select: {
+              id: true,
+              slug: true,
+              name: true,
+              medianResidencyLength: true,
+              institution: {
+                select: {
+                  name: true,
+                  slug: true,
+                  coverImageUrl: true
+                }
+              },
+              specialty: {
+                select: compactSpecialtySelect
+              },
+              metrics: {
+                where: comparisonMetricWhere,
+                select: {
+                  metricKey: true,
+                  value: true,
+                  rawValue: true,
+                  unit: true
+                }
+              },
+              yearlyMetrics: {
+                where: comparisonYearlyMetricWhere,
+                select: {
+                  metricKey: true,
+                  year: true,
+                  value: true,
+                  rawValue: true,
+                  unit: true
+                }
+              }
+            },
+            orderBy: {
+              name: "asc"
+            }
+          }
+        }
+      }
     }
   });
-  const baseById = new Map(baseDepartments.map((department) => [department.id, department]));
+
+  const normalizeComparisonDepartment = (department: (typeof departmentsRaw)[number]): ComparisonDepartmentInput => ({
+    ...department,
+    specialty: {
+      ...department.specialty,
+      groupAsArray: isRequiredMedicalArraySpecialty(department.specialty.name) || department.specialty.groupAsArray
+    },
+    medicalArray: department.medicalArray
+      ? {
+          departments: department.medicalArray.departments.map((arrayDepartment) => ({
+            ...arrayDepartment,
+            specialty: {
+              ...arrayDepartment.specialty,
+              groupAsArray:
+                isRequiredMedicalArraySpecialty(arrayDepartment.specialty.name) ||
+                arrayDepartment.specialty.groupAsArray
+            },
+            medicalArray: null
+          }))
+        }
+      : null
+  });
+
+  const baseById = new Map(
+    departmentsRaw.map((department) => [department.id, normalizeComparisonDepartment(department)])
+  );
   const orderedBaseDepartments = departmentIds
     .map((id) => baseById.get(id))
-    .filter((department): department is NonNullable<typeof department> => Boolean(department));
-  const departments = (
-    await Promise.all(
-      orderedBaseDepartments.map((department) =>
-        getDepartmentPageData(department.slug, undefined, department.id)
-      )
-    )
-  ).filter((department): department is NonNullable<typeof department> => Boolean(department));
+    .filter((department): department is ComparisonDepartmentInput => Boolean(department));
+  const departments = orderedBaseDepartments;
 
   const specialtyIds = Array.from(new Set(departments.map((department) => department.specialty.id)));
 
@@ -2442,6 +2949,19 @@ export async function getDepartmentComparisonData(input: {
       };
     })
   };
+}
+
+const getDepartmentComparisonDataCached = publicDataCache(
+    "getDepartmentComparisonData",
+    getPublicDepartmentComparisonData,
+    [
+      PUBLIC_DATA_CACHE_TAGS.departments,
+      PUBLIC_DATA_CACHE_TAGS.directory
+    ]
+);
+
+export async function getDepartmentComparisonData(input: Parameters<typeof getPublicDepartmentComparisonData>[0]) {
+  return getDepartmentComparisonDataCached(input);
 }
 
 export async function getActiveSalaryAssumption() {
@@ -2537,48 +3057,6 @@ export async function getOpeningApplicationPageData(openingId: string) {
       slug: canonicalDepartmentSlugForRecord(opening.department)
     }
   };
-}
-
-export async function getDepartmentOptions() {
-  const departments = await prisma.department.findMany({
-    where: publicVisibleDepartmentWhere,
-    select: {
-      id: true,
-      slug: true,
-      name: true,
-      importStableKey: true,
-      residentsCount: true,
-      metrics: {
-        select: {
-          metricKey: true,
-          rawValue: true,
-          value: true
-        }
-      },
-      institution: {
-        select: {
-          id: true,
-          name: true,
-          type: true,
-          slug: true
-        }
-      },
-      specialty: {
-        select: {
-          id: true,
-          name: true,
-          slug: true
-        }
-      }
-    },
-    orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
-  });
-
-  return departments.filter(hasDisplayableResidentCount).map((department) => ({
-    ...department,
-    slug: canonicalDepartmentSlugForRecord(department),
-    institution: publicInstitutionForDepartment(department)
-  }));
 }
 
 export async function getInstitutionOptions() {

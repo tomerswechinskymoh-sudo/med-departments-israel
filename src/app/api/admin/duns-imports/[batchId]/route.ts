@@ -3,6 +3,7 @@ import { z } from "zod";
 import { createAuditLog } from "@/lib/audit";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { revalidatePublicDataCache } from "@/lib/public-data-cache-invalidation";
 import { hasValidSameOrigin } from "@/lib/security";
 import { approveDataImportBatch } from "@/lib/server/data-import-engine";
 
@@ -135,6 +136,8 @@ export async function PATCH(
       affectedDepartmentIds
     }
   });
+
+  revalidatePublicDataCache();
 
   return NextResponse.json({
     message: `ייבוא DUNS100 אושר ועודכנו ${affectedDepartmentIds.length} עמודי מחלקה.`,

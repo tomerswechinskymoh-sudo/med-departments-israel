@@ -1,5 +1,4 @@
 import { getSession } from "@/lib/auth";
-import { unstable_noStore as noStore } from "next/cache";
 import { departmentFilterSchema } from "@/lib/validation";
 import { DepartmentCard } from "@/components/departments/department-card";
 import {
@@ -19,9 +18,6 @@ import {
   getDepartmentOptions,
   getSpecialtyDashboardMetrics
 } from "@/lib/queries";
-
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
 
 function toMultiValue(value: string | string[] | undefined) {
   if (Array.isArray(value)) {
@@ -61,7 +57,6 @@ export default async function DepartmentsPage({
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  noStore();
   const [session, availableFilters, rawSearchParams, reviewDepartments] = await Promise.all([
     getSession(),
     getDirectoryFilters(),

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
+import { revalidatePublicDataCache } from "@/lib/public-data-cache-invalidation";
 import { adminDepartmentSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
@@ -47,6 +48,8 @@ export async function POST(request: Request) {
     entityType: "Department",
     entityId: department.id
   });
+
+  revalidatePublicDataCache();
 
   return NextResponse.json({ message: "המחלקה נוספה בהצלחה." });
 }

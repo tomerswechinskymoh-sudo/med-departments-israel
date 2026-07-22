@@ -3,6 +3,7 @@ import { Prisma } from "@prisma/client";
 import { z } from "zod";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { revalidatePublicDataCache } from "@/lib/public-data-cache-invalidation";
 
 const standardEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -250,6 +251,8 @@ export async function PATCH(
 
     return approved;
   });
+
+  revalidatePublicDataCache();
 
   return NextResponse.json({ revision });
 }

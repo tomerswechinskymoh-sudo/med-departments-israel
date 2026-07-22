@@ -5,6 +5,14 @@ import { prisma } from "@/lib/prisma";
 import { getDepartmentPageData, getDirectoryData } from "@/lib/queries";
 
 const YEARS = [2020, 2021, 2022, 2023, 2024] as const;
+const MASTER_CSV_FILE_NAME = "Master_Dept.csv";
+const MASTER_CSV_FIXTURE_PATH = path.join(
+  "src",
+  "server",
+  "jobs",
+  "fixtures",
+  "department-card-yearly-master-fixture.csv"
+);
 
 const TARGETS = [
   {
@@ -93,6 +101,27 @@ async function readCsv(fileName: string): Promise<CsvTable> {
   };
 }
 
+async function fileExists(fileName: string) {
+  try {
+    await fs.access(path.join(process.cwd(), fileName));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function readMasterCsvSource() {
+  const sourcePath = (await fileExists(MASTER_CSV_FILE_NAME))
+    ? MASTER_CSV_FILE_NAME
+    : MASTER_CSV_FIXTURE_PATH;
+
+  return {
+    table: await readCsv(sourcePath),
+    sourcePath,
+    sourceKind: sourcePath === MASTER_CSV_FILE_NAME ? "repo_csv" : "fixture"
+  };
+}
+
 function getAll(table: CsvTable, row: string[], header: string) {
   return table.headers
     .map((candidate, index) => (candidate === header ? cleanCell(row[index]) : ""))
@@ -130,7 +159,8 @@ function assertEqualValues(
 }
 
 async function main() {
-  const csv = await readCsv("Master_Dept.csv");
+  const csvSource = await readMasterCsvSource();
+  const csv = csvSource.table;
   const specialty = await prisma.specialty.findFirst({
     where: {
       OR: [{ name: "אף אוזן גרון" }, { name: { contains: "אוזן" } }]
@@ -164,7 +194,7 @@ async function main() {
     );
 
     if (!csvRow) {
-      throw new Error(`${target.label}: Master_Dept.csv row not found`);
+      throw new Error(`${target.label}: ${csvSource.sourcePath} row not found`);
     }
 
     const csvValues = YEARS.map((year) =>
@@ -241,8 +271,12 @@ async function main() {
       {
         ok: true,
         specialty,
+        csvSource: {
+          path: csvSource.sourcePath,
+          kind: csvSource.sourceKind
+        },
         auditedPath:
-          "Master_Dept.csv -> DepartmentYearlyMetric -> getDepartmentPageData/getDirectoryData -> DepartmentCard.departmentNewResidentsYearly",
+          `${csvSource.sourcePath} -> DepartmentYearlyMetric -> getDepartmentPageData/getDirectoryData -> DepartmentCard.departmentNewResidentsYearly`,
         rows: output
       },
       null,

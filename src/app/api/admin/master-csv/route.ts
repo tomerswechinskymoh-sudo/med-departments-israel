@@ -5,6 +5,7 @@ import path from "path";
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { revalidatePublicDataCache } from "@/lib/public-data-cache-invalidation";
 import {
   importMasterCsvFiles,
   previewMasterCsvUpload,
@@ -163,6 +164,8 @@ export async function POST(request: Request) {
           departmentCsvPath: tempPaths.dept
         });
       }
+
+      revalidatePublicDataCache();
 
       return NextResponse.json({ action, previews, result });
     } finally {

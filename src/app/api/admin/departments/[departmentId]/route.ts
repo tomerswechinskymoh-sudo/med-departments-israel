@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
+import { revalidatePublicDataCache } from "@/lib/public-data-cache-invalidation";
 import { departmentEditorSchema } from "@/lib/validation";
 import { applyDepartmentChangePayload } from "@/server/workflows/department-change-requests";
 
@@ -56,6 +57,8 @@ export async function POST(
     entityType: "Department",
     entityId: departmentId
   });
+
+  revalidatePublicDataCache();
 
   return NextResponse.json({ message: "עמוד המחלקה עודכן ישירות." });
 }

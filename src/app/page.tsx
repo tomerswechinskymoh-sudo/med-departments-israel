@@ -10,8 +10,6 @@ import {
 } from "@/components/ui/med-icons";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-export const dynamic = "force-dynamic";
-
 const trustItems = [
   "מקורות רשמיים",
   "שיתופי קהילה מאומתים",
