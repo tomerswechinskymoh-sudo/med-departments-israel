@@ -616,6 +616,20 @@ export default async function AdminPage() {
           <Card>
             <div className="flex h-full flex-col justify-between gap-4">
               <div>
+                <h2 className="text-xl font-bold text-ink">סבבים קליניים</h2>
+                <p className="mt-2 text-sm leading-7 text-slate-600">
+                  מודול נפרד לסטודנטים מחו״ל, בתי חולים, תשלומים וכללי משרד הבריאות. אדמין בלבד.
+                </p>
+              </div>
+              <Link href="/admin/clinical-rotations" className="inline-flex w-fit rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white">
+                פתיחה
+              </Link>
+            </div>
+          </Card>
+
+          <Card>
+            <div className="flex h-full flex-col justify-between gap-4">
+              <div>
                 <h2 className="text-xl font-bold text-ink">מידע פלושיפים</h2>
                 <p className="mt-2 text-sm leading-7 text-slate-600">
                   תחומים, תוכניות וניסיון ישראלי לפלושיפים עתידיים. אדמין בלבד.

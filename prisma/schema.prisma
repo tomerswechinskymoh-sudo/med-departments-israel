@@ -102,6 +102,59 @@ enum ElectiveRepresentativeAssignmentRole {
   VIEW_ONLY
 }
 
+enum ClinicalRotationAccessRole {
+  REPRESENTATIVE
+  VIEW_ONLY
+}
+
+enum ClinicalRotationOfferingStatus {
+  DRAFT
+  PUBLISHED
+  PAUSED
+  CLOSED
+}
+
+enum ClinicalRotationApplicationStatus {
+  DRAFT
+  SUBMITTED
+  APPROVED
+  DECLINED
+  CANCELLED
+  COMPLETED
+}
+
+enum ClinicalRotationPaymentStatus {
+  NOT_REQUIRED
+  CASH_DUE
+  LINK_PENDING
+  LINK_SENT
+  PAID
+  WAIVED
+  OVERDUE
+}
+
+enum ClinicalRotationPaymentMethod {
+  CASH_AT_ROTATION
+  EXTERNAL_PAYMENT_LINK
+}
+
+enum ClinicalRotationPriceUnit {
+  TOTAL
+  PER_WEEK
+}
+
+enum ClinicalRotationCoreSpecialty {
+  INTERNAL_MEDICINE
+  GENERAL_SURGERY
+  PEDIATRICS
+  OBSTETRICS_GYNECOLOGY
+}
+
+enum ClinicalRotationCoreRuleEnforcementMode {
+  WARN
+  BLOCK
+}
+
 enum FellowshipExperienceVisibility {
   ADMIN_ONLY
   PUBLIC_ANONYMIZED
@@ -262,6 +315,20 @@ model User {
   createdDataImportJobs DataImportJob[] @relation("DataImportJobCreator")
   createdElectiveDepartmentAccounts ElectiveDepartmentAccount[] @relation("ElectiveDepartmentAccountCreator")
   electiveApplications       ElectiveApplication[]    @relation("ElectiveApplicationApplicant")
+  clinicalRotationHospitalAccesses ClinicalRotationHospitalAccess[] @relation("ClinicalRotationHospitalAccessUser")
+  createdClinicalRotationHospitalAccesses ClinicalRotationHospitalAccess[] @relation("ClinicalRotationHospitalAccessCreator")
+  createdClinicalRotationAvailabilityWindows ClinicalRotationAvailabilityWindow[] @relation("ClinicalRotationAvailabilityWindowCreator")
+  createdClinicalRotationBlackouts ClinicalRotationBlackout[] @relation("ClinicalRotationBlackoutCreator")
+  createdClinicalRotationOfferings ClinicalRotationOffering[] @relation("ClinicalRotationOfferingCreator")
+  updatedClinicalRotationOfferings ClinicalRotationOffering[] @relation("ClinicalRotationOfferingUpdater")
+  clinicalRotationApplications ClinicalRotationApplication[] @relation("ClinicalRotationApplicationStudent")
+  decidedClinicalRotationApplications ClinicalRotationApplication[] @relation("ClinicalRotationApplicationDecider")
+  completedClinicalRotationApplications ClinicalRotationApplication[] @relation("ClinicalRotationApplicationCompleter")
+  cancelledClinicalRotationApplications ClinicalRotationApplication[] @relation("ClinicalRotationApplicationCanceller")
+  clinicalRotationPaymentUpdates ClinicalRotationPayment[] @relation("ClinicalRotationPaymentUpdater")
+  createdClinicalRotationCoreRules ClinicalRotationCoreRule[] @relation("ClinicalRotationCoreRuleCreator")
+  updatedClinicalRotationCoreRules ClinicalRotationCoreRule[] @relation("ClinicalRotationCoreRuleUpdater")
+  clinicalRotationAuditLogs ClinicalRotationAuditLog[] @relation("ClinicalRotationAuditActor")
   createdFellowshipSpecialties FellowshipSpecialty[] @relation("FellowshipSpecialtyCreator")
   createdFellowshipPrograms FellowshipProgram[] @relation("FellowshipProgramCreator")
   createdFellowshipExperiences FellowshipIsraeliExperience[] @relation("FellowshipExperienceCreator")
@@ -290,6 +357,12 @@ model Institution {
   medicalArrays     MedicalArray[]
   publisherRequests PublisherRequest[]
   dunsPhysicianRecords DunsPhysicianRecord[] @relation("DunsPhysicianRecordInstitution")
+  clinicalRotationHospitalAccesses ClinicalRotationHospitalAccess[]
+  clinicalRotationAvailabilityWindows ClinicalRotationAvailabilityWindow[]
+  clinicalRotationBlackouts ClinicalRotationBlackout[]
+  clinicalRotationOfferings ClinicalRotationOffering[]
+  clinicalRotationApplications ClinicalRotationApplication[]
+  clinicalRotationAuditLogs ClinicalRotationAuditLog[]
 
   @@index([type])
   @@index([city])
@@ -312,6 +385,9 @@ model Specialty {
   dunsPhysicianRecords    DunsPhysicianRecord[] @relation("DunsPhysicianRecordSpecialty")
   fellowshipSpecialties   FellowshipSpecialty[] @relation("FellowshipSpecialtyBaseSpecialty")
   fellowshipPrograms      FellowshipProgram[] @relation("FellowshipProgramBaseSpecialty")
+  clinicalRotationOfferings ClinicalRotationOffering[]
+  clinicalRotationApplications ClinicalRotationApplication[]
+  clinicalRotationCoreRules ClinicalRotationCoreRule[]
 }
 
 model SpecialtyMetric {
@@ -448,6 +524,8 @@ model Department {
   electiveAvailabilityWindows ElectiveAvailabilityWindow[]
   electiveApplications  ElectiveApplication[]
   electiveRepresentativeAssignments ElectiveRepresentativeDepartmentAssignment[]
+  clinicalRotationOfferings ClinicalRotationOffering[]
+  clinicalRotationApplications ClinicalRotationApplication[]
 
   @@unique([institutionId, name])
   @@index([institutionId])
@@ -1419,6 +1497,229 @@ model FavoriteDepartment {
   department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@id([userId, departmentId])
+}
+
+model ClinicalRotationHospitalAccess {
+  id               String                     @id @default(cuid())
+  userId           String                     @map("user_id")
+  hospitalId       String                     @map("hospital_id")
+  role             ClinicalRotationAccessRole @default(REPRESENTATIVE)
+  isActive         Boolean                    @default(false) @map("is_active")
+  invitedAt        DateTime                   @default(now()) @map("invited_at")
+  activatedAt      DateTime?                  @map("activated_at")
+  deactivatedAt    DateTime?                  @map("deactivated_at")
+  lastResetAt      DateTime?                  @map("last_reset_at")
+  createdByAdminId String?                    @map("created_by_admin_id")
+  createdAt        DateTime                   @default(now()) @map("created_at")
+  updatedAt        DateTime                   @updatedAt @map("updated_at")
+  user             User                       @relation("ClinicalRotationHospitalAccessUser", fields: [userId], references: [id], onDelete: Cascade)
+  hospital         Institution                @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  createdByAdmin   User?                      @relation("ClinicalRotationHospitalAccessCreator", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+
+  @@unique([userId, hospitalId])
+  @@index([hospitalId, isActive])
+  @@index([userId, isActive])
+  @@index([createdByAdminId])
+}
+
+model ClinicalRotationAvailabilityWindow {
+  id              String                    @id @default(cuid())
+  hospitalId      String                    @map("hospital_id")
+  startsAt        DateTime                  @map("starts_at")
+  endsAt          DateTime                  @map("ends_at")
+  notes           String?
+  createdByUserId String?                   @map("created_by_user_id")
+  createdAt       DateTime                  @default(now()) @map("created_at")
+  updatedAt       DateTime                  @updatedAt @map("updated_at")
+  hospital        Institution               @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  blackouts       ClinicalRotationBlackout[]
+  createdByUser   User?                     @relation("ClinicalRotationAvailabilityWindowCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+
+  @@index([hospitalId, startsAt, endsAt])
+  @@index([createdByUserId])
+}
+
+model ClinicalRotationBlackout {
+  id                   String                              @id @default(cuid())
+  hospitalId           String                              @map("hospital_id")
+  availabilityWindowId String?                             @map("availability_window_id")
+  startsAt             DateTime                            @map("starts_at")
+  endsAt               DateTime                            @map("ends_at")
+  reason               String?
+  createdByUserId      String?                             @map("created_by_user_id")
+  createdAt            DateTime                            @default(now()) @map("created_at")
+  updatedAt            DateTime                            @updatedAt @map("updated_at")
+  hospital             Institution                         @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  availabilityWindow   ClinicalRotationAvailabilityWindow? @relation(fields: [availabilityWindowId], references: [id], onDelete: SetNull)
+  createdByUser        User?                               @relation("ClinicalRotationBlackoutCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+
+  @@index([hospitalId, startsAt, endsAt])
+  @@index([availabilityWindowId])
+  @@index([createdByUserId])
+}
+
+model ClinicalRotationOffering {
+  id                   String                         @id @default(cuid())
+  hospitalId           String                         @map("hospital_id")
+  specialtyId          String                         @map("specialty_id")
+  departmentId         String?                        @map("department_id")
+  coreSpecialty        ClinicalRotationCoreSpecialty? @map("core_specialty")
+  slug                 String                         @unique
+  displayName          String                         @map("display_name")
+  startsAt             DateTime                       @map("starts_at")
+  endsAt               DateTime                       @map("ends_at")
+  minimumParticipants  Int                            @default(1) @map("minimum_participants")
+  maximumCapacity      Int?                           @map("maximum_capacity")
+  priceAmount          Decimal                        @db.Decimal(10, 2) @map("price_amount")
+  priceCurrency        String                         @default("ILS") @map("price_currency")
+  priceUnit            ClinicalRotationPriceUnit      @default(PER_WEEK) @map("price_unit")
+  paymentMethod        ClinicalRotationPaymentMethod  @map("payment_method")
+  paymentLink          String?                        @map("payment_link")
+  status               ClinicalRotationOfferingStatus @default(DRAFT)
+  publishedAt          DateTime?                      @map("published_at")
+  pausedAt             DateTime?                      @map("paused_at")
+  closedAt             DateTime?                      @map("closed_at")
+  studentInstructions  String?                        @map("student_instructions")
+  internalNotes        String?                        @map("internal_notes")
+  createdByUserId      String?                        @map("created_by_user_id")
+  updatedByUserId      String?                        @map("updated_by_user_id")
+  createdAt            DateTime                       @default(now()) @map("created_at")
+  updatedAt            DateTime                       @updatedAt @map("updated_at")
+  hospital             Institution                    @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  specialty            Specialty                      @relation(fields: [specialtyId], references: [id], onDelete: Restrict)
+  department           Department?                    @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  createdByUser        User?                          @relation("ClinicalRotationOfferingCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  updatedByUser        User?                          @relation("ClinicalRotationOfferingUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  applications         ClinicalRotationApplication[]
+  auditLogs            ClinicalRotationAuditLog[]
+
+  @@index([hospitalId, status, startsAt])
+  @@index([specialtyId, status])
+  @@index([departmentId])
+  @@index([coreSpecialty, status])
+  @@index([createdByUserId])
+  @@index([updatedByUserId])
+}
+
+model ClinicalRotationApplication {
+  id                String                            @id @default(cuid())
+  offeringId        String                            @map("offering_id")
+  studentUserId     String                            @map("student_user_id")
+  hospitalId        String                            @map("hospital_id")
+  specialtyId       String                            @map("specialty_id")
+  departmentId      String?                           @map("department_id")
+  coreSpecialty     ClinicalRotationCoreSpecialty?    @map("core_specialty")
+  requestedStartAt  DateTime                          @map("requested_start_at")
+  requestedEndAt    DateTime                          @map("requested_end_at")
+  status            ClinicalRotationApplicationStatus @default(SUBMITTED)
+  studentNotes      String?                           @map("student_notes")
+  hospitalNotes     String?                           @map("hospital_notes")
+  adminNotes        String?                           @map("admin_notes")
+  ruleSnapshot      Json?                             @map("rule_snapshot_json")
+  limitEvaluation   Json?                             @map("limit_evaluation_json")
+  decidedByUserId   String?                           @map("decided_by_user_id")
+  decidedAt         DateTime?                         @map("decided_at")
+  completedByUserId String?                           @map("completed_by_user_id")
+  completedAt       DateTime?                         @map("completed_at")
+  cancelledByUserId String?                           @map("cancelled_by_user_id")
+  cancelledAt       DateTime?                         @map("cancelled_at")
+  createdAt         DateTime                          @default(now()) @map("created_at")
+  updatedAt         DateTime                          @updatedAt @map("updated_at")
+  offering          ClinicalRotationOffering          @relation(fields: [offeringId], references: [id], onDelete: Restrict)
+  studentUser       User                              @relation("ClinicalRotationApplicationStudent", fields: [studentUserId], references: [id], onDelete: Cascade)
+  hospital          Institution                       @relation(fields: [hospitalId], references: [id], onDelete: Restrict)
+  specialty         Specialty                         @relation(fields: [specialtyId], references: [id], onDelete: Restrict)
+  department        Department?                       @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  decidedByUser     User?                             @relation("ClinicalRotationApplicationDecider", fields: [decidedByUserId], references: [id], onDelete: SetNull)
+  completedByUser   User?                             @relation("ClinicalRotationApplicationCompleter", fields: [completedByUserId], references: [id], onDelete: SetNull)
+  cancelledByUser   User?                             @relation("ClinicalRotationApplicationCanceller", fields: [cancelledByUserId], references: [id], onDelete: SetNull)
+  payment           ClinicalRotationPayment?
+  auditLogs         ClinicalRotationAuditLog[]
+
+  @@index([offeringId, status])
+  @@index([studentUserId, status, requestedStartAt])
+  @@index([hospitalId, status, requestedStartAt])
+  @@index([specialtyId, status])
+  @@index([coreSpecialty, status])
+  @@index([departmentId])
+  @@index([decidedByUserId])
+  @@index([completedByUserId])
+  @@index([cancelledByUserId])
+}
+
+model ClinicalRotationPayment {
+  id              String                        @id @default(cuid())
+  applicationId   String                        @unique @map("application_id")
+  status          ClinicalRotationPaymentStatus @default(NOT_REQUIRED)
+  method          ClinicalRotationPaymentMethod @map("method")
+  amount          Decimal                       @db.Decimal(10, 2)
+  currency        String                        @default("ILS")
+  paymentLink     String?                       @map("payment_link")
+  linkSentAt      DateTime?                     @map("link_sent_at")
+  paidAt          DateTime?                     @map("paid_at")
+  waivedAt        DateTime?                     @map("waived_at")
+  overdueAt       DateTime?                     @map("overdue_at")
+  updatedByUserId String?                       @map("updated_by_user_id")
+  notes           String?
+  createdAt       DateTime                      @default(now()) @map("created_at")
+  updatedAt       DateTime                      @updatedAt @map("updated_at")
+  application     ClinicalRotationApplication   @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  updatedByUser   User?                         @relation("ClinicalRotationPaymentUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  auditLogs       ClinicalRotationAuditLog[]
+
+  @@index([status, updatedAt])
+  @@index([method, status])
+  @@index([updatedByUserId])
+}
+
+model ClinicalRotationCoreRule {
+  id              String                                      @id @default(cuid())
+  coreSpecialty   ClinicalRotationCoreSpecialty               @map("core_specialty")
+  specialtyId     String?                                     @map("specialty_id")
+  maxWeeks        Int                                         @map("max_weeks")
+  effectiveDate   DateTime                                    @map("effective_date")
+  enforcementMode ClinicalRotationCoreRuleEnforcementMode     @default(WARN) @map("enforcement_mode")
+  isActive        Boolean                                     @default(true) @map("is_active")
+  notes           String?
+  createdByUserId String?                                     @map("created_by_user_id")
+  updatedByUserId String?                                     @map("updated_by_user_id")
+  createdAt       DateTime                                    @default(now()) @map("created_at")
+  updatedAt       DateTime                                    @updatedAt @map("updated_at")
+  specialty       Specialty?                                  @relation(fields: [specialtyId], references: [id], onDelete: SetNull)
+  createdByUser   User?                                       @relation("ClinicalRotationCoreRuleCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  updatedByUser   User?                                       @relation("ClinicalRotationCoreRuleUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+
+  @@unique([coreSpecialty, effectiveDate])
+  @@index([coreSpecialty, isActive, effectiveDate])
+  @@index([specialtyId])
+  @@index([createdByUserId])
+  @@index([updatedByUserId])
+}
+
+model ClinicalRotationAuditLog {
+  id            String                       @id @default(cuid())
+  actorUserId   String?                      @map("actor_user_id")
+  action        String
+  entityType    String                       @map("entity_type")
+  entityId      String?                      @map("entity_id")
+  hospitalId    String?                      @map("hospital_id")
+  offeringId    String?                      @map("offering_id")
+  applicationId String?                      @map("application_id")
+  paymentId     String?                      @map("payment_id")
+  metadata      Json?
+  createdAt     DateTime                     @default(now()) @map("created_at")
+  actor         User?                        @relation("ClinicalRotationAuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+  hospital      Institution?                 @relation(fields: [hospitalId], references: [id], onDelete: SetNull)
+  offering      ClinicalRotationOffering?    @relation(fields: [offeringId], references: [id], onDelete: SetNull)
+  application   ClinicalRotationApplication? @relation(fields: [applicationId], references: [id], onDelete: SetNull)
+  payment       ClinicalRotationPayment?     @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+
+  @@index([action, createdAt])
+  @@index([actorUserId, createdAt])
+  @@index([hospitalId, createdAt])
+  @@index([offeringId, createdAt])
+  @@index([applicationId, createdAt])
+  @@index([paymentId, createdAt])
 }
 
 model AuditLog {

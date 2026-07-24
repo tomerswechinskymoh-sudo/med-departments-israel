@@ -39,6 +39,7 @@
     "verify:hospital-logos": "node --import tsx src/server/jobs/verify-hospital-logos.ts",
     "verify:onboarding-experience": "tsx src/server/jobs/verify-onboarding-experience-eligibility.ts",
     "verify:neon-network-transfer": "node --import tsx src/server/jobs/verify-neon-network-transfer.ts",
+    "verify:clinical-rotations": "tsx src/server/jobs/verify-clinical-rotations.ts",
     "enrichment:mock": "tsx src/server/jobs/run-department-enrichment.ts",
     "openings:process-expired": "tsx src/server/jobs/run-expired-openings.ts",
     "crawl:beilinson-ent": "tsx scripts/crawl-beilinson-ent.ts",
