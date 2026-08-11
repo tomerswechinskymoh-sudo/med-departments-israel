@@ -5,9 +5,15 @@ import {
   submitClinicalRotationApplication
 } from "@/lib/clinical-rotations";
 import { clinicalRotationApplicationSubmissionSchema } from "@/lib/clinical-rotations-validation";
+import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin } from "@/lib/security";
 
 export async function POST(request: Request) {
+  const rateLimit = checkRateLimit(request, "clinical-rotations:applications", { limit: 8, windowMs: 60_000 });
+  if (!rateLimit.ok) {
+    return rateLimitResponse(rateLimit.retryAfter);
+  }
+
   const auth = await requireClinicalRotationStudentApiSession();
 
   if (!auth.ok) {
@@ -37,6 +43,7 @@ export async function POST(request: Request) {
     offeringId: parsed.data.offeringId,
     requestedStartAt,
     requestedEndAt,
+    acceptedRequirements: parsed.data.acceptedRequirements,
     studentNotes: parsed.data.studentNotes
   });
 

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { UploadedFileCategory } from "@prisma/client";
 import { getSession } from "@/lib/auth";
+import { hasClinicalRotationIdentityReviewPermission } from "@/lib/clinical-rotations-privacy";
 import { canUserPublishDepartment } from "@/lib/queries";
 import { prisma } from "@/lib/prisma";
 
@@ -57,6 +58,25 @@ export async function GET(
     }
 
     return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
+  }
+
+  if (file.category === UploadedFileCategory.CLINICAL_ROTATION_IDENTITY_DOCUMENT) {
+    if (session.role === "admin" && (await hasClinicalRotationIdentityReviewPermission(session.userId))) {
+      return new NextResponse(new Uint8Array(file.bytes), {
+        headers: {
+          "Content-Type": file.mimeType,
+          "Content-Length": String(file.sizeBytes),
+          "Content-Disposition": `attachment; filename="${encodeURIComponent(file.originalName)}"`,
+          "Cache-Control": "private, no-store"
+        }
+      });
+    }
+
+    return NextResponse.json({ error: "גישה נדחתה." }, { status: 403 });
+  }
+
+  if (file.category === UploadedFileCategory.CLINICAL_ROTATION_ELIGIBILITY_IMPORT) {
+    return NextResponse.json({ error: "קובץ המקור נמחק לאחר העיבוד ואינו זמין להורדה." }, { status: 410 });
   }
 
   if (file.reviewSubmissionId && session.role !== "admin") {

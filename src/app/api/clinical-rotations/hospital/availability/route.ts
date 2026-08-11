@@ -6,9 +6,13 @@ import {
 } from "@/lib/clinical-rotations";
 import { clinicalRotationAvailabilityMutationSchema } from "@/lib/clinical-rotations-validation";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin } from "@/lib/security";
 
 export async function POST(request: Request) {
+  const rateLimit = checkRateLimit(request, "clinical-rotations:hospital-availability", { limit: 30, windowMs: 60_000 });
+  if (!rateLimit.ok) return rateLimitResponse(rateLimit.retryAfter);
+
   if (!hasValidSameOrigin(request)) {
     return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
   }

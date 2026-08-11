@@ -57,9 +57,13 @@ function verifyPublishValidation() {
     endsAt: date("2026-09-14"),
     minimumParticipants: 2,
     maximumCapacity: 5,
+    minDurationWeeks: 1,
+    maxDurationWeeks: 4,
     priceAmount: 500,
     paymentMethod: "EXTERNAL_PAYMENT_LINK",
     paymentLink: "http://payments.example.test/checkout",
+    requirements: "אישור לימודים וביטוח",
+    cancellationPolicy: "ביטול דורש אישור מתאם",
     openWindows: [{ startsAt: date("2026-09-01"), endsAt: date("2026-09-30") }],
     blackouts: []
   });

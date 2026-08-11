@@ -51,7 +51,37 @@ export default async function ClinicalRotationOfferingPage({
           </div>
           <div>
             <dt className="font-black text-slate-500">משתתפים מאושרים</dt>
-            <dd className="mt-1 font-semibold text-ink">{offering.participantCount}</dd>
+            <dd className="mt-1 font-semibold text-ink">{offering.participantCount}{offering.maximumCapacity ? ` / ${offering.maximumCapacity}` : ""}</dd>
+          </div>
+          <div>
+            <dt className="font-black text-slate-500">משך</dt>
+            <dd className="mt-1 font-semibold text-ink">{offering.minDurationWeeks}-{offering.maxDurationWeeks} שבועות</dd>
+          </div>
+          <div>
+            <dt className="font-black text-slate-500">שפת עבודה</dt>
+            <dd className="mt-1 font-semibold text-ink">{offering.workLanguage ?? "לא צוין"}</dd>
+          </div>
+          <div>
+            <dt className="font-black text-slate-500">איש קשר</dt>
+            <dd className="mt-1 font-semibold text-ink">{offering.departmentContactName ?? "דרך מתאם הסבב"}</dd>
+          </div>
+          <div>
+            <dt className="font-black text-slate-500">דרישות</dt>
+            <dd className="mt-1 font-semibold text-ink">{offering.requirements ?? "לא צוינו דרישות נוספות"}</dd>
+          </div>
+          <div>
+            <dt className="font-black text-slate-500">מדיניות ביטול</dt>
+            <dd className="mt-1 font-semibold text-ink">{offering.cancellationPolicy ?? "לא צוינה"}</dd>
+          </div>
+          <div>
+            <dt className="font-black text-slate-500">הרשמה קבוצתית</dt>
+            <dd className="mt-1 font-semibold text-ink">{offering.groupRegistrationEnabled ? "אפשרית בהזמנה בלבד" : "לא זמינה"}</dd>
+          </div>
+          <div>
+            <dt className="font-black text-slate-500">אישורים נדרשים</dt>
+            <dd className="mt-1 font-semibold text-ink">
+              {offering.requiresDeanApproval ? "אישור דיקן · " : ""}{offering.requiresInsurance ? "ביטוח" : "ללא דרישה שסומנה"}
+            </dd>
           </div>
         </dl>
         <div className="flex flex-wrap gap-2">

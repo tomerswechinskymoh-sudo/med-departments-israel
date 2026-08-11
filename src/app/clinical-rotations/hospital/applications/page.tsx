@@ -40,6 +40,7 @@ export default async function ClinicalRotationHospitalApplicationsPage({ searchP
       <div className="space-y-3">
         {data.applications.map((application) => {
           const approvedCount = data.applications.filter((item) => item.offeringId === application.offeringId && (item.status === "APPROVED" || item.status === "COMPLETED")).length;
+          const cancellationCount = data.cancellations.filter((item) => item.studentUserId === application.studentUserId).length;
           return (
             <Card key={application.id} className="space-y-3">
               <div className="flex flex-wrap items-start justify-between gap-3">
@@ -48,6 +49,7 @@ export default async function ClinicalRotationHospitalApplicationsPage({ searchP
                   <p className="mt-1 text-sm font-semibold text-slate-600">{application.studentUser.email}</p>
                   <p className="mt-1 text-sm text-slate-700">{application.offering.displayName} · {clinicalRotationDateRangeLabel(application.requestedStartAt, application.requestedEndAt)}</p>
                   <p className="mt-1 text-xs font-bold text-slate-500">מינימום סבב: {approvedCount}/{application.offering.minimumParticipants}</p>
+                  <p className="mt-1 text-xs font-bold text-slate-500">ביטולים קודמים במודול: {cancellationCount}</p>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <Badge>{clinicalRotationApplicationStatusLabels[application.status]}</Badge>
@@ -61,7 +63,20 @@ export default async function ClinicalRotationHospitalApplicationsPage({ searchP
                 {application.status === "SUBMITTED" ? (
                   <>
                     <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/applications" payload={{ action: "approve", applicationId: application.id }} label="אישור" />
+                    <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/applications" payload={{ action: "waitlist", applicationId: application.id }} label="המתנה" tone="neutral" />
                     <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/applications" payload={{ action: "decline", applicationId: application.id }} label="דחייה" tone="danger" />
+                  </>
+                ) : null}
+                {application.status === "WAITLISTED" ? (
+                  <>
+                    <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/applications" payload={{ action: "approve", applicationId: application.id }} label="אישור" />
+                    <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/applications" payload={{ action: "decline", applicationId: application.id }} label="דחייה" tone="danger" />
+                  </>
+                ) : null}
+                {application.status === "CANCELLATION_REQUESTED" ? (
+                  <>
+                    <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/applications" payload={{ action: "approveCancellation", applicationId: application.id }} label="אישור ביטול" />
+                    <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/applications" payload={{ action: "rejectCancellation", applicationId: application.id }} label="דחיית ביטול" tone="neutral" />
                   </>
                 ) : null}
                 {application.status === "APPROVED" ? (

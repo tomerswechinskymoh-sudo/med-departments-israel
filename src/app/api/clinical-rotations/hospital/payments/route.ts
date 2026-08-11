@@ -1,13 +1,18 @@
 import { NextResponse } from "next/server";
 import {
   requireClinicalRotationHospitalApiAccess,
+  retryClinicalRotationPaymentLink,
   updateClinicalRotationPaymentStatus
 } from "@/lib/clinical-rotations";
 import { clinicalRotationPaymentActionSchema } from "@/lib/clinical-rotations-validation";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin } from "@/lib/security";
 
 export async function POST(request: Request) {
+  const rateLimit = checkRateLimit(request, "clinical-rotations:hospital-payments", { limit: 30, windowMs: 60_000 });
+  if (!rateLimit.ok) return rateLimitResponse(rateLimit.retryAfter);
+
   if (!hasValidSameOrigin(request)) {
     return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
   }
@@ -33,12 +38,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: auth.error }, { status: auth.status });
   }
 
-  const result = await updateClinicalRotationPaymentStatus({
-    session: auth.session,
-    paymentId: parsed.data.paymentId,
-    status: parsed.data.status,
-    notes: parsed.data.notes
-  });
+  const result = parsed.data.action === "retryPaymentLink"
+    ? await retryClinicalRotationPaymentLink({
+        session: auth.session,
+        paymentId: parsed.data.paymentId
+      })
+    : await updateClinicalRotationPaymentStatus({
+        session: auth.session,
+        paymentId: parsed.data.paymentId,
+        status: parsed.data.status!,
+        notes: parsed.data.notes
+      });
 
   if (!result.ok) {
     return NextResponse.json({ error: result.error }, { status: result.status });

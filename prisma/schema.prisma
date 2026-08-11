@@ -112,13 +112,16 @@ enum ClinicalRotationOfferingStatus {
   PUBLISHED
   PAUSED
   CLOSED
+  CANCELLED
 }
 
 enum ClinicalRotationApplicationStatus {
   DRAFT
   SUBMITTED
+  WAITLISTED
   APPROVED
   DECLINED
+  CANCELLATION_REQUESTED
   CANCELLED
   COMPLETED
 }
@@ -127,6 +130,7 @@ enum ClinicalRotationPaymentStatus {
   NOT_REQUIRED
   CASH_DUE
   LINK_PENDING
+  LINK_DELIVERY_FAILED
   LINK_SENT
   PAID
   WAIVED
@@ -155,6 +159,81 @@ enum ClinicalRotationCoreRuleEnforcementMode {
   BLOCK
 }
 
+enum ClinicalRotationAdminPermissionKey {
+  CAN_REVIEW_IDENTITY_DOCUMENTS
+}
+
+enum ClinicalRotationIdentityVerificationStatus {
+  NOT_SUBMITTED
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum ClinicalRotationEligibilityImportStatus {
+  ACTIVE
+  INACTIVE
+  FAILED
+}
+
+enum ClinicalRotationSourceDeletionStatus {
+  NOT_STORED
+  PENDING_DELETION
+  DELETED
+  RETRY_NEEDED
+}
+
+enum ClinicalRotationNotificationOutboxType {
+  PAYMENT_LINK_EMAIL
+}
+
+enum ClinicalRotationNotificationOutboxStatus {
+  PENDING
+  PROCESSING
+  SENT
+  FAILED
+}
+
+enum ClinicalRotationGroupStatus {
+  SUBMITTED
+  APPROVED
+  DECLINED
+  CANCELLED
+  EXPIRED
+}
+
+enum ClinicalRotationGroupMemberStatus {
+  JOINED
+  APPROVED
+  DECLINED
+  CANCELLED
+  REMOVED
+}
+
+enum ClinicalRotationCancellationStatus {
+  REQUESTED
+  APPROVED
+  REJECTED
+  RECORDED
+}
+
+enum ClinicalRotationCancellationActorType {
+  STUDENT
+  COORDINATOR
+  ADMIN
+}
+
+enum ClinicalRotationCancellationReasonCategory {
+  SCHEDULE_CONFLICT
+  PERSONAL
+  ELIGIBILITY
+  CAPACITY
+  PAYMENT
+  HOSPITAL
+  OTHER
+}
+
 enum FellowshipExperienceVisibility {
   ADMIN_ONLY
   PUBLIC_ANONYMIZED
@@ -169,6 +248,8 @@ enum UploadedFileCategory {
   REVIEW_VERIFICATION_PROOF
   REPRESENTATIVE_REQUEST_PROOF
   USER_VERIFICATION_PROOF
+  CLINICAL_ROTATION_IDENTITY_DOCUMENT
+  CLINICAL_ROTATION_ELIGIBILITY_IMPORT
 }
 
 enum DepartmentScrapeRevisionStatus {
@@ -257,81 +338,93 @@ model Role {
 }
 
 model User {
-  id                          String                  @id @default(cuid())
-  email                       String                  @unique
-  passwordHash                String                  @map("password_hash")
-  fullName                    String                  @map("full_name")
-  phone                       String?
-  linkedinId                  String?                 @unique @map("linkedin_id")
-  googleId                    String?                 @unique @map("google_id")
-  facebookId                  String?                 @unique @map("facebook_id")
-  profileImageUrl             String?                 @map("profile_image_url")
-  linkedinConnectedAt         DateTime?               @map("linkedin_connected_at")
-  roleKey                     RoleKey                 @default(STUDENT) @map("role_key")
-  isApprovedPublisher         Boolean                 @default(false) @map("is_approved_publisher")
-  emailVerified               Boolean                 @default(false) @map("email_verified")
-  emailVerifiedAt             DateTime?               @map("email_verified_at")
-  emailVerificationToken      String?                 @unique @map("email_verification_token")
-  emailVerificationExpiresAt  DateTime?               @map("email_verification_expires_at")
-  roleStatus                  String?                 @map("role_status")
-  verificationStatus          VerificationStatus      @default(PENDING_EMAIL_VERIFICATION) @map("verification_status")
-  verificationProofUrl        String?                 @map("verification_proof_url")
-  verificationSubmittedAt     DateTime?               @map("verification_submitted_at")
-  verificationRejectionReason String?                 @map("verification_rejection_reason")
-  marketingConsent            Boolean                 @default(false) @map("marketing_consent")
-  marketingConsentAt          DateTime?               @map("marketing_consent_at")
-  verificationToken           String?                 @unique @map("verification_token")
-  tokenExpiry                 DateTime?               @map("token_expiry")
-  verifiedByAdminId           String?                 @map("verified_by_admin_id")
-  verifiedAt                  DateTime?               @map("verified_at")
-  createdAt                   DateTime                @default(now()) @map("created_at")
-  updatedAt                   DateTime                @updatedAt @map("updated_at")
-  role                        Role                    @relation(fields: [roleKey], references: [key], onUpdate: Cascade)
-  verifiedByAdmin             User?                   @relation("UserVerifier", fields: [verifiedByAdminId], references: [id], onDelete: SetNull)
-  verifiedUsers               User[]                  @relation("UserVerifier")
-  favorites                   FavoriteDepartment[]
-  representativeProfile       RepresentativeProfile?
-  representativeAssignments   RepresentativeAssignment[] @relation("RepresentativeAssignments")
-  createdRepresentativeAssignments RepresentativeAssignment[] @relation("RepresentativeAssignmentCreator")
-  submittedDepartmentChangeRequests DepartmentChangeRequest[] @relation("DepartmentChangeSubmitter")
-  reviewedDepartmentChangeRequests DepartmentChangeRequest[] @relation("DepartmentChangeReviewer")
-  createdOfficialUpdates      OfficialDepartmentUpdate[] @relation("OfficialUpdateAuthor")
-  createdResidencyOpenings    ResidencyOpening[]      @relation("ResidencyOpeningAuthor")
-  reviewedResidencyOpenings   ResidencyOpening[]      @relation("ResidencyOpeningReviewer")
-  createdResearchOpportunities ResearchOpportunity[]  @relation("ResearchOpportunityAuthor")
-  publisherRequests           PublisherRequest[]      @relation("PublisherRequestOwner")
-  reviewedPublisherRequests   PublisherRequest[]      @relation("PublisherRequestReviewer")
-  moderatedReviewSubmissions  ReviewSubmission[]      @relation("ReviewSubmissionModerator")
-  verifiedReviewSubmissions   ReviewSubmission[]      @relation("ReviewSubmissionVerifier")
-  reviewedOpeningApplications OpeningApplication[]    @relation("OpeningApplicationReviewer")
-  reviewReports               ReviewReport[]
-  uploadedFiles               UploadedFile[]          @relation("UploadedFileOwner")
-  auditEntries                AuditLog[]              @relation("AuditActor")
-  reviewedDepartmentScrapeRevisions DepartmentScrapeRevision[] @relation("DepartmentScrapeRevisionReviewer")
-  reviewedDepartmentRepresentativeRequests DepartmentRepresentativeRequest[] @relation("DepartmentRepresentativeRequestReviewer")
-  reviewedDunsImportBatches DunsImportBatch[] @relation("DunsImportBatchReviewer")
-  createdDataImportBatches DataImportBatch[] @relation("DataImportBatchCreator")
-  reviewedDataImportBatches DataImportBatch[] @relation("DataImportBatchReviewer")
-  createdDataImportJobs DataImportJob[] @relation("DataImportJobCreator")
-  createdElectiveDepartmentAccounts ElectiveDepartmentAccount[] @relation("ElectiveDepartmentAccountCreator")
-  electiveApplications       ElectiveApplication[]    @relation("ElectiveApplicationApplicant")
-  clinicalRotationHospitalAccesses ClinicalRotationHospitalAccess[] @relation("ClinicalRotationHospitalAccessUser")
-  createdClinicalRotationHospitalAccesses ClinicalRotationHospitalAccess[] @relation("ClinicalRotationHospitalAccessCreator")
+  id                                         String                               @id @default(cuid())
+  email                                      String                               @unique
+  passwordHash                               String                               @map("password_hash")
+  fullName                                   String                               @map("full_name")
+  phone                                      String?
+  linkedinId                                 String?                              @unique @map("linkedin_id")
+  googleId                                   String?                              @unique @map("google_id")
+  facebookId                                 String?                              @unique @map("facebook_id")
+  profileImageUrl                            String?                              @map("profile_image_url")
+  linkedinConnectedAt                        DateTime?                            @map("linkedin_connected_at")
+  roleKey                                    RoleKey                              @default(STUDENT) @map("role_key")
+  isApprovedPublisher                        Boolean                              @default(false) @map("is_approved_publisher")
+  emailVerified                              Boolean                              @default(false) @map("email_verified")
+  emailVerifiedAt                            DateTime?                            @map("email_verified_at")
+  emailVerificationToken                     String?                              @unique @map("email_verification_token")
+  emailVerificationExpiresAt                 DateTime?                            @map("email_verification_expires_at")
+  roleStatus                                 String?                              @map("role_status")
+  verificationStatus                         VerificationStatus                   @default(PENDING_EMAIL_VERIFICATION) @map("verification_status")
+  verificationProofUrl                       String?                              @map("verification_proof_url")
+  verificationSubmittedAt                    DateTime?                            @map("verification_submitted_at")
+  verificationRejectionReason                String?                              @map("verification_rejection_reason")
+  marketingConsent                           Boolean                              @default(false) @map("marketing_consent")
+  marketingConsentAt                         DateTime?                            @map("marketing_consent_at")
+  verificationToken                          String?                              @unique @map("verification_token")
+  tokenExpiry                                DateTime?                            @map("token_expiry")
+  verifiedByAdminId                          String?                              @map("verified_by_admin_id")
+  verifiedAt                                 DateTime?                            @map("verified_at")
+  createdAt                                  DateTime                             @default(now()) @map("created_at")
+  updatedAt                                  DateTime                             @updatedAt @map("updated_at")
+  role                                       Role                                 @relation(fields: [roleKey], references: [key], onUpdate: Cascade)
+  verifiedByAdmin                            User?                                @relation("UserVerifier", fields: [verifiedByAdminId], references: [id], onDelete: SetNull)
+  verifiedUsers                              User[]                               @relation("UserVerifier")
+  favorites                                  FavoriteDepartment[]
+  representativeProfile                      RepresentativeProfile?
+  representativeAssignments                  RepresentativeAssignment[]           @relation("RepresentativeAssignments")
+  createdRepresentativeAssignments           RepresentativeAssignment[]           @relation("RepresentativeAssignmentCreator")
+  submittedDepartmentChangeRequests          DepartmentChangeRequest[]            @relation("DepartmentChangeSubmitter")
+  reviewedDepartmentChangeRequests           DepartmentChangeRequest[]            @relation("DepartmentChangeReviewer")
+  createdOfficialUpdates                     OfficialDepartmentUpdate[]           @relation("OfficialUpdateAuthor")
+  createdResidencyOpenings                   ResidencyOpening[]                   @relation("ResidencyOpeningAuthor")
+  reviewedResidencyOpenings                  ResidencyOpening[]                   @relation("ResidencyOpeningReviewer")
+  createdResearchOpportunities               ResearchOpportunity[]                @relation("ResearchOpportunityAuthor")
+  publisherRequests                          PublisherRequest[]                   @relation("PublisherRequestOwner")
+  reviewedPublisherRequests                  PublisherRequest[]                   @relation("PublisherRequestReviewer")
+  moderatedReviewSubmissions                 ReviewSubmission[]                   @relation("ReviewSubmissionModerator")
+  verifiedReviewSubmissions                  ReviewSubmission[]                   @relation("ReviewSubmissionVerifier")
+  reviewedOpeningApplications                OpeningApplication[]                 @relation("OpeningApplicationReviewer")
+  reviewReports                              ReviewReport[]
+  uploadedFiles                              UploadedFile[]                       @relation("UploadedFileOwner")
+  auditEntries                               AuditLog[]                           @relation("AuditActor")
+  reviewedDepartmentScrapeRevisions          DepartmentScrapeRevision[]           @relation("DepartmentScrapeRevisionReviewer")
+  reviewedDepartmentRepresentativeRequests   DepartmentRepresentativeRequest[]    @relation("DepartmentRepresentativeRequestReviewer")
+  reviewedDunsImportBatches                  DunsImportBatch[]                    @relation("DunsImportBatchReviewer")
+  createdDataImportBatches                   DataImportBatch[]                    @relation("DataImportBatchCreator")
+  reviewedDataImportBatches                  DataImportBatch[]                    @relation("DataImportBatchReviewer")
+  createdDataImportJobs                      DataImportJob[]                      @relation("DataImportJobCreator")
+  createdElectiveDepartmentAccounts          ElectiveDepartmentAccount[]          @relation("ElectiveDepartmentAccountCreator")
+  electiveApplications                       ElectiveApplication[]                @relation("ElectiveApplicationApplicant")
+  clinicalRotationHospitalAccesses           ClinicalRotationHospitalAccess[]     @relation("ClinicalRotationHospitalAccessUser")
+  createdClinicalRotationHospitalAccesses    ClinicalRotationHospitalAccess[]     @relation("ClinicalRotationHospitalAccessCreator")
   createdClinicalRotationAvailabilityWindows ClinicalRotationAvailabilityWindow[] @relation("ClinicalRotationAvailabilityWindowCreator")
-  createdClinicalRotationBlackouts ClinicalRotationBlackout[] @relation("ClinicalRotationBlackoutCreator")
-  createdClinicalRotationOfferings ClinicalRotationOffering[] @relation("ClinicalRotationOfferingCreator")
-  updatedClinicalRotationOfferings ClinicalRotationOffering[] @relation("ClinicalRotationOfferingUpdater")
-  clinicalRotationApplications ClinicalRotationApplication[] @relation("ClinicalRotationApplicationStudent")
-  decidedClinicalRotationApplications ClinicalRotationApplication[] @relation("ClinicalRotationApplicationDecider")
-  completedClinicalRotationApplications ClinicalRotationApplication[] @relation("ClinicalRotationApplicationCompleter")
-  cancelledClinicalRotationApplications ClinicalRotationApplication[] @relation("ClinicalRotationApplicationCanceller")
-  clinicalRotationPaymentUpdates ClinicalRotationPayment[] @relation("ClinicalRotationPaymentUpdater")
-  createdClinicalRotationCoreRules ClinicalRotationCoreRule[] @relation("ClinicalRotationCoreRuleCreator")
-  updatedClinicalRotationCoreRules ClinicalRotationCoreRule[] @relation("ClinicalRotationCoreRuleUpdater")
-  clinicalRotationAuditLogs ClinicalRotationAuditLog[] @relation("ClinicalRotationAuditActor")
-  createdFellowshipSpecialties FellowshipSpecialty[] @relation("FellowshipSpecialtyCreator")
-  createdFellowshipPrograms FellowshipProgram[] @relation("FellowshipProgramCreator")
-  createdFellowshipExperiences FellowshipIsraeliExperience[] @relation("FellowshipExperienceCreator")
+  createdClinicalRotationBlackouts           ClinicalRotationBlackout[]           @relation("ClinicalRotationBlackoutCreator")
+  createdClinicalRotationOfferings           ClinicalRotationOffering[]           @relation("ClinicalRotationOfferingCreator")
+  updatedClinicalRotationOfferings           ClinicalRotationOffering[]           @relation("ClinicalRotationOfferingUpdater")
+  clinicalRotationApplications               ClinicalRotationApplication[]        @relation("ClinicalRotationApplicationStudent")
+  decidedClinicalRotationApplications        ClinicalRotationApplication[]        @relation("ClinicalRotationApplicationDecider")
+  completedClinicalRotationApplications      ClinicalRotationApplication[]        @relation("ClinicalRotationApplicationCompleter")
+  cancelledClinicalRotationApplications      ClinicalRotationApplication[]        @relation("ClinicalRotationApplicationCanceller")
+  clinicalRotationPaymentUpdates             ClinicalRotationPayment[]            @relation("ClinicalRotationPaymentUpdater")
+  createdClinicalRotationNotifications       ClinicalRotationNotificationOutbox[] @relation("ClinicalRotationNotificationCreator")
+  createdClinicalRotationCoreRules           ClinicalRotationCoreRule[]           @relation("ClinicalRotationCoreRuleCreator")
+  updatedClinicalRotationCoreRules           ClinicalRotationCoreRule[]           @relation("ClinicalRotationCoreRuleUpdater")
+  clinicalRotationAuditLogs                  ClinicalRotationAuditLog[]           @relation("ClinicalRotationAuditActor")
+  clinicalRotationIdentity                   ClinicalRotationStudentIdentity?
+  verifiedClinicalRotationIdentities         ClinicalRotationStudentIdentity[]    @relation("ClinicalRotationIdentityVerifier")
+  clinicalRotationAdminPermissions           ClinicalRotationAdminPermission[]    @relation("ClinicalRotationAdminPermissionUser")
+  grantedClinicalRotationAdminPermissions    ClinicalRotationAdminPermission[]    @relation("ClinicalRotationAdminPermissionGranter")
+  createdClinicalRotationEligibilityImports  ClinicalRotationEligibilityImport[]  @relation("ClinicalRotationEligibilityImportCreator")
+  createdClinicalRotationGroups              ClinicalRotationGroupApplication[]   @relation("ClinicalRotationGroupCreator")
+  decidedClinicalRotationGroups              ClinicalRotationGroupApplication[]   @relation("ClinicalRotationGroupDecider")
+  clinicalRotationGroupMemberships           ClinicalRotationGroupMember[]        @relation("ClinicalRotationGroupMemberUser")
+  clinicalRotationCancellations              ClinicalRotationCancellation[]       @relation("ClinicalRotationCancellationStudent")
+  actedClinicalRotationCancellations         ClinicalRotationCancellation[]       @relation("ClinicalRotationCancellationActor")
+  decidedClinicalRotationCancellations       ClinicalRotationCancellation[]       @relation("ClinicalRotationCancellationDecider")
+  createdFellowshipSpecialties               FellowshipSpecialty[]                @relation("FellowshipSpecialtyCreator")
+  createdFellowshipPrograms                  FellowshipProgram[]                  @relation("FellowshipProgramCreator")
+  createdFellowshipExperiences               FellowshipIsraeliExperience[]        @relation("FellowshipExperienceCreator")
 
   @@index([roleKey])
   @@index([isApprovedPublisher])
@@ -340,29 +433,32 @@ model User {
 }
 
 model Institution {
-  id                String             @id @default(cuid())
-  name              String
-  slug              String             @unique
-  type              InstitutionType
-  city              String?
-  region            String?
-  latitude          Float?
-  longitude         Float?
-  summary           String
-  websiteUrl        String?            @map("website_url")
-  coverImageUrl     String?            @map("cover_image_url")
-  createdAt         DateTime           @default(now()) @map("created_at")
-  updatedAt         DateTime           @updatedAt @map("updated_at")
-  departments       Department[]
-  medicalArrays     MedicalArray[]
-  publisherRequests PublisherRequest[]
-  dunsPhysicianRecords DunsPhysicianRecord[] @relation("DunsPhysicianRecordInstitution")
-  clinicalRotationHospitalAccesses ClinicalRotationHospitalAccess[]
+  id                                  String                               @id @default(cuid())
+  name                                String
+  slug                                String                               @unique
+  type                                InstitutionType
+  city                                String?
+  region                              String?
+  latitude                            Float?
+  longitude                           Float?
+  summary                             String
+  websiteUrl                          String?                              @map("website_url")
+  coverImageUrl                       String?                              @map("cover_image_url")
+  createdAt                           DateTime                             @default(now()) @map("created_at")
+  updatedAt                           DateTime                             @updatedAt @map("updated_at")
+  departments                         Department[]
+  medicalArrays                       MedicalArray[]
+  publisherRequests                   PublisherRequest[]
+  dunsPhysicianRecords                DunsPhysicianRecord[]                @relation("DunsPhysicianRecordInstitution")
+  clinicalRotationHospitalAccesses    ClinicalRotationHospitalAccess[]
   clinicalRotationAvailabilityWindows ClinicalRotationAvailabilityWindow[]
-  clinicalRotationBlackouts ClinicalRotationBlackout[]
-  clinicalRotationOfferings ClinicalRotationOffering[]
-  clinicalRotationApplications ClinicalRotationApplication[]
-  clinicalRotationAuditLogs ClinicalRotationAuditLog[]
+  clinicalRotationBlackouts           ClinicalRotationBlackout[]
+  clinicalRotationOfferings           ClinicalRotationOffering[]
+  clinicalRotationApplications        ClinicalRotationApplication[]
+  clinicalRotationGroups              ClinicalRotationGroupApplication[]
+  clinicalRotationCancellations       ClinicalRotationCancellation[]
+  clinicalRotationAuditLogs           ClinicalRotationAuditLog[]
+  clinicalRotationNotifications       ClinicalRotationNotificationOutbox[]
 
   @@index([type])
   @@index([city])
@@ -370,57 +466,57 @@ model Institution {
 }
 
 model Specialty {
-  id                      String                    @id @default(cuid())
-  name                    String
-  slug                    String                    @unique
-  description             String
-  groupAsArray            Boolean                   @default(false) @map("group_as_array")
-  dataSourceNotes         String?                   @map("data_source_notes")
-  dataLastUpdated         DateTime?                 @map("data_last_updated")
-  departments             Department[]
-  medicalArrays           MedicalArray[]
-  dashboardConfig         SpecialtyDashboardConfig?
-  metrics                 SpecialtyMetric[]
-  yearlyMetrics           SpecialtyYearlyMetric[]
-  dunsPhysicianRecords    DunsPhysicianRecord[] @relation("DunsPhysicianRecordSpecialty")
-  fellowshipSpecialties   FellowshipSpecialty[] @relation("FellowshipSpecialtyBaseSpecialty")
-  fellowshipPrograms      FellowshipProgram[] @relation("FellowshipProgramBaseSpecialty")
-  clinicalRotationOfferings ClinicalRotationOffering[]
+  id                           String                        @id @default(cuid())
+  name                         String
+  slug                         String                        @unique
+  description                  String
+  groupAsArray                 Boolean                       @default(false) @map("group_as_array")
+  dataSourceNotes              String?                       @map("data_source_notes")
+  dataLastUpdated              DateTime?                     @map("data_last_updated")
+  departments                  Department[]
+  medicalArrays                MedicalArray[]
+  dashboardConfig              SpecialtyDashboardConfig?
+  metrics                      SpecialtyMetric[]
+  yearlyMetrics                SpecialtyYearlyMetric[]
+  dunsPhysicianRecords         DunsPhysicianRecord[]         @relation("DunsPhysicianRecordSpecialty")
+  fellowshipSpecialties        FellowshipSpecialty[]         @relation("FellowshipSpecialtyBaseSpecialty")
+  fellowshipPrograms           FellowshipProgram[]           @relation("FellowshipProgramBaseSpecialty")
+  clinicalRotationOfferings    ClinicalRotationOffering[]
   clinicalRotationApplications ClinicalRotationApplication[]
-  clinicalRotationCoreRules ClinicalRotationCoreRule[]
+  clinicalRotationCoreRules    ClinicalRotationCoreRule[]
 }
 
 model SpecialtyMetric {
-  id              String    @id @default(cuid())
-  specialtyId     String    @map("specialty_id")
-  metricKey       String    @map("metric_key")
-  label           String
-  value           Float?
-  rawValue        String?   @map("raw_value")
-  unit            String?
-  sourceNotes     String?   @map("source_notes")
-  lastUpdated     DateTime? @map("last_updated")
-  createdAt       DateTime  @default(now()) @map("created_at")
-  updatedAt       DateTime  @updatedAt @map("updated_at")
-  specialty       Specialty @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+  id          String    @id @default(cuid())
+  specialtyId String    @map("specialty_id")
+  metricKey   String    @map("metric_key")
+  label       String
+  value       Float?
+  rawValue    String?   @map("raw_value")
+  unit        String?
+  sourceNotes String?   @map("source_notes")
+  lastUpdated DateTime? @map("last_updated")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  specialty   Specialty @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
 
   @@unique([specialtyId, metricKey])
   @@index([metricKey])
 }
 
 model SpecialtyYearlyMetric {
-  id              String    @id @default(cuid())
-  specialtyId     String    @map("specialty_id")
-  metricKey       String    @map("metric_key")
-  year            Int
-  value           Float?
-  rawValue        String?   @map("raw_value")
-  unit            String?
-  sourceNotes     String?   @map("source_notes")
-  lastUpdated     DateTime? @map("last_updated")
-  createdAt       DateTime  @default(now()) @map("created_at")
-  updatedAt       DateTime  @updatedAt @map("updated_at")
-  specialty       Specialty @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+  id          String    @id @default(cuid())
+  specialtyId String    @map("specialty_id")
+  metricKey   String    @map("metric_key")
+  year        Int
+  value       Float?
+  rawValue    String?   @map("raw_value")
+  unit        String?
+  sourceNotes String?   @map("source_notes")
+  lastUpdated DateTime? @map("last_updated")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  specialty   Specialty @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
 
   @@unique([specialtyId, metricKey, year])
   @@index([metricKey, year])
@@ -462,70 +558,72 @@ model DataExplanation {
 }
 
 model Department {
-  id                      String                   @id @default(cuid())
-  institutionId           String                   @map("institution_id")
-  specialtyId             String                   @map("specialty_id")
-  medicalArrayId          String?                  @map("medical_array_id")
-  slug                    String                   @unique
-  importStableKey         String?                  @unique @map("import_stable_key")
-  name                    String
-  shortSummary            String                   @map("short_summary")
-  about                   String
-  practicalInfo           String                   @map("practical_info")
-  publicContactEmail      String?                  @map("public_contact_email")
-  publicContactPhone      String?                  @map("public_contact_phone")
-  websiteUrl              String?                  @map("website_url")
-  applicationUrl          String?                  @map("application_url")
-  dataSourceNotes         String?                  @map("data_source_notes")
-  dataLastUpdated         DateTime?                @map("data_last_updated")
-  contactName             String?                  @map("contact_name")
-  residentsCount          Int?                     @map("residents_count")
-  medianResidencyLength   String?                  @map("median_residency_length")
-  shlavAlephPassRate      Float?                   @map("shlav_aleph_pass_rate")
-  shlavBetPassRate        Float?                   @map("shlav_bet_pass_rate")
-  newResidentsThisYear    Int?                     @map("new_residents_this_year")
-  expectedGraduatesThisYear Int?                   @map("expected_graduates_this_year")
-  genderBalance           String?                  @map("gender_balance")
-  perks                   String?
-  candidatePreferences    String?                  @map("candidate_preferences")
-  educationLocationBreakdown Json?                 @map("education_location_breakdown")
-  coverImageUrl           String?                  @map("cover_image_url")
-  futureEnrichmentEnabled Boolean                  @default(false) @map("future_enrichment_enabled")
-  createdAt               DateTime                 @default(now()) @map("created_at")
-  updatedAt               DateTime                 @updatedAt @map("updated_at")
-  institution             Institution              @relation(fields: [institutionId], references: [id], onDelete: Cascade)
-  specialty               Specialty                @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
-  medicalArray            MedicalArray?            @relation(fields: [medicalArrayId], references: [id], onDelete: SetNull)
-  heads                   DepartmentHead[]
-  residencyOpenings       ResidencyOpening[]
-  researchOpportunities   ResearchOpportunity[]
-  officialUpdates         OfficialDepartmentUpdate[]
-  reviewSubmissions       ReviewSubmission[]
-  reviews                 Review[]
-  favorites               FavoriteDepartment[]
-  publisherRequests       PublisherRequest[]
-  uploadedFiles           UploadedFile[]
-  representativeAssignments RepresentativeAssignment[]
-  departmentChangeRequests DepartmentChangeRequest[]
-  scrapeRevisions        DepartmentScrapeRevision[]
-  mistakeReports         DepartmentMistakeReport[]
-  representativeRequests DepartmentRepresentativeRequest[]
-  externalMetrics        DepartmentExternalMetric[]
-  externalPeople         DepartmentExternalPerson[]
-  metrics                DepartmentMetric[]
-  yearlyMetrics          DepartmentYearlyMetric[]
-  researchMetrics        DepartmentResearchMetric[]
-  dataImportRecords      DataImportRecord[]
-  dataImportRowLogs      DataImportRowLog[]
-  dunsPhysicianRecords   DunsPhysicianRecord[] @relation("DunsPhysicianRecordDepartment")
-  electiveDepartmentAccount ElectiveDepartmentAccount?
-  electiveSettings      ElectiveDepartmentSettings?
-  electiveTrackSettings ElectiveDepartmentTrackSettings[]
-  electiveAvailabilityWindows ElectiveAvailabilityWindow[]
-  electiveApplications  ElectiveApplication[]
+  id                                String                                       @id @default(cuid())
+  institutionId                     String                                       @map("institution_id")
+  specialtyId                       String                                       @map("specialty_id")
+  medicalArrayId                    String?                                      @map("medical_array_id")
+  slug                              String                                       @unique
+  importStableKey                   String?                                      @unique @map("import_stable_key")
+  name                              String
+  shortSummary                      String                                       @map("short_summary")
+  about                             String
+  practicalInfo                     String                                       @map("practical_info")
+  publicContactEmail                String?                                      @map("public_contact_email")
+  publicContactPhone                String?                                      @map("public_contact_phone")
+  websiteUrl                        String?                                      @map("website_url")
+  applicationUrl                    String?                                      @map("application_url")
+  dataSourceNotes                   String?                                      @map("data_source_notes")
+  dataLastUpdated                   DateTime?                                    @map("data_last_updated")
+  contactName                       String?                                      @map("contact_name")
+  residentsCount                    Int?                                         @map("residents_count")
+  medianResidencyLength             String?                                      @map("median_residency_length")
+  shlavAlephPassRate                Float?                                       @map("shlav_aleph_pass_rate")
+  shlavBetPassRate                  Float?                                       @map("shlav_bet_pass_rate")
+  newResidentsThisYear              Int?                                         @map("new_residents_this_year")
+  expectedGraduatesThisYear         Int?                                         @map("expected_graduates_this_year")
+  genderBalance                     String?                                      @map("gender_balance")
+  perks                             String?
+  candidatePreferences              String?                                      @map("candidate_preferences")
+  educationLocationBreakdown        Json?                                        @map("education_location_breakdown")
+  coverImageUrl                     String?                                      @map("cover_image_url")
+  futureEnrichmentEnabled           Boolean                                      @default(false) @map("future_enrichment_enabled")
+  createdAt                         DateTime                                     @default(now()) @map("created_at")
+  updatedAt                         DateTime                                     @updatedAt @map("updated_at")
+  institution                       Institution                                  @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  specialty                         Specialty                                    @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+  medicalArray                      MedicalArray?                                @relation(fields: [medicalArrayId], references: [id], onDelete: SetNull)
+  heads                             DepartmentHead[]
+  residencyOpenings                 ResidencyOpening[]
+  researchOpportunities             ResearchOpportunity[]
+  officialUpdates                   OfficialDepartmentUpdate[]
+  reviewSubmissions                 ReviewSubmission[]
+  reviews                           Review[]
+  favorites                         FavoriteDepartment[]
+  publisherRequests                 PublisherRequest[]
+  uploadedFiles                     UploadedFile[]
+  representativeAssignments         RepresentativeAssignment[]
+  departmentChangeRequests          DepartmentChangeRequest[]
+  scrapeRevisions                   DepartmentScrapeRevision[]
+  mistakeReports                    DepartmentMistakeReport[]
+  representativeRequests            DepartmentRepresentativeRequest[]
+  externalMetrics                   DepartmentExternalMetric[]
+  externalPeople                    DepartmentExternalPerson[]
+  metrics                           DepartmentMetric[]
+  yearlyMetrics                     DepartmentYearlyMetric[]
+  researchMetrics                   DepartmentResearchMetric[]
+  dataImportRecords                 DataImportRecord[]
+  dataImportRowLogs                 DataImportRowLog[]
+  dunsPhysicianRecords              DunsPhysicianRecord[]                        @relation("DunsPhysicianRecordDepartment")
+  electiveDepartmentAccount         ElectiveDepartmentAccount?
+  electiveSettings                  ElectiveDepartmentSettings?
+  electiveTrackSettings             ElectiveDepartmentTrackSettings[]
+  electiveAvailabilityWindows       ElectiveAvailabilityWindow[]
+  electiveApplications              ElectiveApplication[]
   electiveRepresentativeAssignments ElectiveRepresentativeDepartmentAssignment[]
-  clinicalRotationOfferings ClinicalRotationOffering[]
-  clinicalRotationApplications ClinicalRotationApplication[]
+  clinicalRotationOfferings         ClinicalRotationOffering[]
+  clinicalRotationApplications      ClinicalRotationApplication[]
+  clinicalRotationGroups            ClinicalRotationGroupApplication[]
+  clinicalRotationCancellations     ClinicalRotationCancellation[]
 
   @@unique([institutionId, name])
   @@index([institutionId])
@@ -535,36 +633,36 @@ model Department {
 }
 
 model DepartmentMetric {
-  id              String     @id @default(cuid())
-  departmentId    String     @map("department_id")
-  metricKey       String     @map("metric_key")
-  label           String
-  value           Float?
-  rawValue        String?    @map("raw_value")
-  unit            String?
-  sourceNotes     String?    @map("source_notes")
-  lastUpdated     DateTime?  @map("last_updated")
-  createdAt       DateTime   @default(now()) @map("created_at")
-  updatedAt       DateTime   @updatedAt @map("updated_at")
-  department      Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  id           String     @id @default(cuid())
+  departmentId String     @map("department_id")
+  metricKey    String     @map("metric_key")
+  label        String
+  value        Float?
+  rawValue     String?    @map("raw_value")
+  unit         String?
+  sourceNotes  String?    @map("source_notes")
+  lastUpdated  DateTime?  @map("last_updated")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@unique([departmentId, metricKey])
   @@index([metricKey])
 }
 
 model DepartmentYearlyMetric {
-  id              String     @id @default(cuid())
-  departmentId    String     @map("department_id")
-  metricKey       String     @map("metric_key")
-  year            Int
-  value           Float?
-  rawValue        String?    @map("raw_value")
-  unit            String?
-  sourceNotes     String?    @map("source_notes")
-  lastUpdated     DateTime?  @map("last_updated")
-  createdAt       DateTime   @default(now()) @map("created_at")
-  updatedAt       DateTime   @updatedAt @map("updated_at")
-  department      Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  id           String     @id @default(cuid())
+  departmentId String     @map("department_id")
+  metricKey    String     @map("metric_key")
+  year         Int
+  value        Float?
+  rawValue     String?    @map("raw_value")
+  unit         String?
+  sourceNotes  String?    @map("source_notes")
+  lastUpdated  DateTime?  @map("last_updated")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+  department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@unique([departmentId, metricKey, year])
   @@index([metricKey, year])
@@ -606,41 +704,41 @@ model OpenAlexAliasMapping {
 }
 
 model MedicalArray {
-  id                         String                     @id @default(cuid())
-  hospitalId                 String                     @map("hospital_id")
-  specialtyId                String                     @map("specialty_id")
-  name                       String
-  slug                       String                     @unique
-  description                String?
-  recruitedResidentsByYear   Json?                      @map("recruited_residents_by_year")
-  totalPublicationsCount     Int?                       @map("total_publications_count")
-  residentPublicationsCount  Int?                       @map("resident_publications_count")
-  publicationYears           Json?                      @map("publication_years")
-  publicationSourceUrl       String?                    @map("publication_source_url")
-  specialistsCount           Int?                       @map("specialists_count")
-  createdAt                  DateTime                   @default(now()) @map("created_at")
-  updatedAt                  DateTime                   @updatedAt @map("updated_at")
-  hospital                   Institution                @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  specialty                  Specialty                  @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
-  departments                Department[]
-  externalMetrics            DepartmentExternalMetric[]
-  externalPeople             DepartmentExternalPerson[]
+  id                        String                     @id @default(cuid())
+  hospitalId                String                     @map("hospital_id")
+  specialtyId               String                     @map("specialty_id")
+  name                      String
+  slug                      String                     @unique
+  description               String?
+  recruitedResidentsByYear  Json?                      @map("recruited_residents_by_year")
+  totalPublicationsCount    Int?                       @map("total_publications_count")
+  residentPublicationsCount Int?                       @map("resident_publications_count")
+  publicationYears          Json?                      @map("publication_years")
+  publicationSourceUrl      String?                    @map("publication_source_url")
+  specialistsCount          Int?                       @map("specialists_count")
+  createdAt                 DateTime                   @default(now()) @map("created_at")
+  updatedAt                 DateTime                   @updatedAt @map("updated_at")
+  hospital                  Institution                @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  specialty                 Specialty                  @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+  departments               Department[]
+  externalMetrics           DepartmentExternalMetric[]
+  externalPeople            DepartmentExternalPerson[]
 
   @@unique([hospitalId, specialtyId])
   @@index([specialtyId])
 }
 
 model SalaryAssumption {
-  id                      String   @id @default(cuid())
-  key                     String   @unique
-  label                   String
-  centerMonthlySalary     Float    @map("center_monthly_salary")
-  peripheryMonthlySalary  Float    @map("periphery_monthly_salary")
-  seniorityIncrement      Float    @default(0) @map("seniority_increment")
-  assumptionsJson         Json?    @map("assumptions_json")
-  active                  Boolean  @default(true)
-  createdAt               DateTime @default(now()) @map("created_at")
-  updatedAt               DateTime @updatedAt @map("updated_at")
+  id                     String   @id @default(cuid())
+  key                    String   @unique
+  label                  String
+  centerMonthlySalary    Float    @map("center_monthly_salary")
+  peripheryMonthlySalary Float    @map("periphery_monthly_salary")
+  seniorityIncrement     Float    @default(0) @map("seniority_increment")
+  assumptionsJson        Json?    @map("assumptions_json")
+  active                 Boolean  @default(true)
+  createdAt              DateTime @default(now()) @map("created_at")
+  updatedAt              DateTime @updatedAt @map("updated_at")
 }
 
 model RepresentativeProfile {
@@ -669,55 +767,55 @@ model RepresentativeAssignment {
 }
 
 model DepartmentHead {
-  id              String      @id @default(cuid())
-  departmentId    String      @map("department_id")
+  id              String     @id @default(cuid())
+  departmentId    String     @map("department_id")
   name            String
   title           String
   role            String?
   bio             String
-  profileImageUrl String?     @map("profile_image_url")
-  displayOrder    Int         @default(0) @map("display_order")
-  createdAt       DateTime    @default(now()) @map("created_at")
-  updatedAt       DateTime    @updatedAt @map("updated_at")
-  department      Department  @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  profileImageUrl String?    @map("profile_image_url")
+  displayOrder    Int        @default(0) @map("display_order")
+  createdAt       DateTime   @default(now()) @map("created_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+  department      Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@index([departmentId, displayOrder])
 }
 
 model ResidencyOpening {
-  id                 String                 @id @default(cuid())
-  departmentId       String                 @map("department_id")
-  createdByUserId    String?                @map("created_by_user_id")
-  reviewedByUserId   String?                @map("reviewed_by_user_id")
-  supersedesOpeningId String?               @map("supersedes_opening_id")
-  title              String
-  summary            String
-  openingType        OpeningType            @map("opening_type")
-  isImmediate        Boolean                @default(false) @map("is_immediate")
-  openingsCount      Int?                   @map("openings_count")
-  topApplicantsToEmail Int                  @default(5) @map("top_applicants_to_email")
-  status             OpportunityStatus
-  committeeDate      DateTime?              @map("committee_date")
-  applicationDeadline DateTime?             @map("application_deadline")
-  expectedStartDate  DateTime?              @map("expected_start_date")
-  notes              String?
-  supportingInfo     String?                @map("supporting_info")
-  topMatchesDeliveredAt DateTime?           @map("top_matches_delivered_at")
-  topMatchesLastError String?               @map("top_matches_last_error")
-  reviewNote         String?                @map("review_note")
-  reviewedAt         DateTime?              @map("reviewed_at")
-  contentStatus      ContentStatus          @default(PUBLISHED) @map("content_status")
-  publishedAt        DateTime?              @map("published_at")
-  createdAt          DateTime               @default(now()) @map("created_at")
-  updatedAt          DateTime               @updatedAt @map("updated_at")
-  department         Department             @relation(fields: [departmentId], references: [id], onDelete: Cascade)
-  createdBy          User?                  @relation("ResidencyOpeningAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  reviewedBy         User?                  @relation("ResidencyOpeningReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
-  supersedesOpening  ResidencyOpening?      @relation("OpeningRevision", fields: [supersedesOpeningId], references: [id], onDelete: SetNull)
-  pendingRevisions   ResidencyOpening[]     @relation("OpeningRevision")
-  acceptanceCriteria OpeningAcceptanceCriteria?
-  applications       OpeningApplication[]
-  attachments        UploadedFile[]         @relation("OpeningFiles")
+  id                    String                     @id @default(cuid())
+  departmentId          String                     @map("department_id")
+  createdByUserId       String?                    @map("created_by_user_id")
+  reviewedByUserId      String?                    @map("reviewed_by_user_id")
+  supersedesOpeningId   String?                    @map("supersedes_opening_id")
+  title                 String
+  summary               String
+  openingType           OpeningType                @map("opening_type")
+  isImmediate           Boolean                    @default(false) @map("is_immediate")
+  openingsCount         Int?                       @map("openings_count")
+  topApplicantsToEmail  Int                        @default(5) @map("top_applicants_to_email")
+  status                OpportunityStatus
+  committeeDate         DateTime?                  @map("committee_date")
+  applicationDeadline   DateTime?                  @map("application_deadline")
+  expectedStartDate     DateTime?                  @map("expected_start_date")
+  notes                 String?
+  supportingInfo        String?                    @map("supporting_info")
+  topMatchesDeliveredAt DateTime?                  @map("top_matches_delivered_at")
+  topMatchesLastError   String?                    @map("top_matches_last_error")
+  reviewNote            String?                    @map("review_note")
+  reviewedAt            DateTime?                  @map("reviewed_at")
+  contentStatus         ContentStatus              @default(PUBLISHED) @map("content_status")
+  publishedAt           DateTime?                  @map("published_at")
+  createdAt             DateTime                   @default(now()) @map("created_at")
+  updatedAt             DateTime                   @updatedAt @map("updated_at")
+  department            Department                 @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  createdBy             User?                      @relation("ResidencyOpeningAuthor", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  reviewedBy            User?                      @relation("ResidencyOpeningReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  supersedesOpening     ResidencyOpening?          @relation("OpeningRevision", fields: [supersedesOpeningId], references: [id], onDelete: SetNull)
+  pendingRevisions      ResidencyOpening[]         @relation("OpeningRevision")
+  acceptanceCriteria    OpeningAcceptanceCriteria?
+  applications          OpeningApplication[]
+  attachments           UploadedFile[]             @relation("OpeningFiles")
 
   @@index([departmentId, contentStatus])
   @@index([status, contentStatus])
@@ -728,61 +826,61 @@ model ResidencyOpening {
 }
 
 model OpeningAcceptanceCriteria {
-  id                                   String            @id @default(cuid())
-  openingId                            String            @unique @map("opening_id")
-  researchImportance                   Int               @default(3) @map("research_importance")
-  departmentElectiveImportance         Int               @default(3) @map("department_elective_importance")
-  departmentInternshipImportance       Int               @default(3) @map("department_internship_importance")
-  residentSelectionInfluence           Int               @default(3) @map("resident_selection_influence")
-  specialistSelectionInfluence         Int               @default(3) @map("specialist_selection_influence")
-  departmentHeadInfluence              Int               @default(3) @map("department_head_influence")
-  medicalSchoolInfluence               Int               @default(3) @map("medical_school_influence")
-  recommendationsImportance            Int               @default(3) @map("recommendations_importance")
-  personalFitImportance                Int               @default(3) @map("personal_fit_importance")
-  previousDepartmentExperienceImportance Int             @default(3) @map("previous_department_experience_importance")
-  notes                                String?
-  whatWeAreLookingFor                  String?           @map("what_we_are_looking_for")
-  createdAt                            DateTime          @default(now()) @map("created_at")
-  updatedAt                            DateTime          @updatedAt @map("updated_at")
-  opening                              ResidencyOpening  @relation(fields: [openingId], references: [id], onDelete: Cascade)
+  id                                     String           @id @default(cuid())
+  openingId                              String           @unique @map("opening_id")
+  researchImportance                     Int              @default(3) @map("research_importance")
+  departmentElectiveImportance           Int              @default(3) @map("department_elective_importance")
+  departmentInternshipImportance         Int              @default(3) @map("department_internship_importance")
+  residentSelectionInfluence             Int              @default(3) @map("resident_selection_influence")
+  specialistSelectionInfluence           Int              @default(3) @map("specialist_selection_influence")
+  departmentHeadInfluence                Int              @default(3) @map("department_head_influence")
+  medicalSchoolInfluence                 Int              @default(3) @map("medical_school_influence")
+  recommendationsImportance              Int              @default(3) @map("recommendations_importance")
+  personalFitImportance                  Int              @default(3) @map("personal_fit_importance")
+  previousDepartmentExperienceImportance Int              @default(3) @map("previous_department_experience_importance")
+  notes                                  String?
+  whatWeAreLookingFor                    String?          @map("what_we_are_looking_for")
+  createdAt                              DateTime         @default(now()) @map("created_at")
+  updatedAt                              DateTime         @updatedAt @map("updated_at")
+  opening                                ResidencyOpening @relation(fields: [openingId], references: [id], onDelete: Cascade)
 }
 
 model OpeningApplication {
-  id                        String                   @id @default(cuid())
-  openingId                 String                   @map("opening_id")
-  reviewedByUserId          String?                  @map("reviewed_by_user_id")
-  applicantType             ReviewSourceType         @map("applicant_type")
-  fullName                  String                   @map("full_name")
-  phone                     String
-  email                     String?
-  medicalSchool             String?                  @map("medical_school")
-  didDepartmentElective     Boolean                  @default(false) @map("did_department_elective")
-  departmentElectiveDetails String?                  @map("department_elective_details")
-  hasResearch               Boolean                  @default(false) @map("has_research")
-  researchDetails           String?                  @map("research_details")
-  didInternshipThere        Boolean                  @default(false) @map("did_internship_there")
-  internshipDetails         String?                  @map("internship_details")
-  recommendationDetails     String?                  @map("recommendation_details")
-  departmentFamiliarityDetails String?               @map("department_familiarity_details")
-  motivationText            String                   @map("motivation_text")
-  relevantExperience        String                   @map("relevant_experience")
-  additionalNotes           String?                  @map("additional_notes")
-  matchScore                Int?                     @map("match_score")
-  matchShortSummary         String?                  @map("match_short_summary")
-  matchStrengths            Json?                    @map("match_strengths")
-  matchConcerns             Json?                    @map("match_concerns")
-  matchEngine               String?                  @map("match_engine")
-  matchEvaluatedAt          DateTime?                @map("match_evaluated_at")
-  matchEvaluationError      String?                  @map("match_evaluation_error")
-  isTopMatch                Boolean                  @default(false) @map("is_top_match")
-  status                    OpeningApplicationStatus @default(SUBMITTED)
-  reviewerNote              String?                  @map("reviewer_note")
-  reviewedAt                DateTime?                @map("reviewed_at")
-  createdAt                 DateTime                 @default(now()) @map("created_at")
-  updatedAt                 DateTime                 @updatedAt @map("updated_at")
-  opening                   ResidencyOpening         @relation(fields: [openingId], references: [id], onDelete: Cascade)
-  reviewedBy                User?                    @relation("OpeningApplicationReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
-  files                     UploadedFile[]           @relation("ApplicationFiles")
+  id                           String                   @id @default(cuid())
+  openingId                    String                   @map("opening_id")
+  reviewedByUserId             String?                  @map("reviewed_by_user_id")
+  applicantType                ReviewSourceType         @map("applicant_type")
+  fullName                     String                   @map("full_name")
+  phone                        String
+  email                        String?
+  medicalSchool                String?                  @map("medical_school")
+  didDepartmentElective        Boolean                  @default(false) @map("did_department_elective")
+  departmentElectiveDetails    String?                  @map("department_elective_details")
+  hasResearch                  Boolean                  @default(false) @map("has_research")
+  researchDetails              String?                  @map("research_details")
+  didInternshipThere           Boolean                  @default(false) @map("did_internship_there")
+  internshipDetails            String?                  @map("internship_details")
+  recommendationDetails        String?                  @map("recommendation_details")
+  departmentFamiliarityDetails String?                  @map("department_familiarity_details")
+  motivationText               String                   @map("motivation_text")
+  relevantExperience           String                   @map("relevant_experience")
+  additionalNotes              String?                  @map("additional_notes")
+  matchScore                   Int?                     @map("match_score")
+  matchShortSummary            String?                  @map("match_short_summary")
+  matchStrengths               Json?                    @map("match_strengths")
+  matchConcerns                Json?                    @map("match_concerns")
+  matchEngine                  String?                  @map("match_engine")
+  matchEvaluatedAt             DateTime?                @map("match_evaluated_at")
+  matchEvaluationError         String?                  @map("match_evaluation_error")
+  isTopMatch                   Boolean                  @default(false) @map("is_top_match")
+  status                       OpeningApplicationStatus @default(SUBMITTED)
+  reviewerNote                 String?                  @map("reviewer_note")
+  reviewedAt                   DateTime?                @map("reviewed_at")
+  createdAt                    DateTime                 @default(now()) @map("created_at")
+  updatedAt                    DateTime                 @updatedAt @map("updated_at")
+  opening                      ResidencyOpening         @relation(fields: [openingId], references: [id], onDelete: Cascade)
+  reviewedBy                   User?                    @relation("OpeningApplicationReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  files                        UploadedFile[]           @relation("ApplicationFiles")
 
   @@index([openingId, status])
   @@index([openingId, isTopMatch])
@@ -808,33 +906,33 @@ model ElectiveDepartmentAccount {
 }
 
 model ElectiveRepresentativeAccount {
-  id             String                                      @id @default(cuid())
-  name           String
-  email          String                                      @unique
-  username       String                                      @unique
-  passwordHash   String                                      @map("password_hash")
-  phone          String?
-  isActive       Boolean                                     @default(true) @map("is_active")
-  lastLoginAt    DateTime?                                   @map("last_login_at")
-  createdAt      DateTime                                    @default(now()) @map("created_at")
-  updatedAt      DateTime                                    @updatedAt @map("updated_at")
-  assignments    ElectiveRepresentativeDepartmentAssignment[]
-  proposedApplications ElectiveApplication[]                 @relation("ElectiveApplicationProposedBy")
-  decidedApplications  ElectiveApplication[]                 @relation("ElectiveApplicationDecidedBy")
+  id                   String                                       @id @default(cuid())
+  name                 String
+  email                String                                       @unique
+  username             String                                       @unique
+  passwordHash         String                                       @map("password_hash")
+  phone                String?
+  isActive             Boolean                                      @default(true) @map("is_active")
+  lastLoginAt          DateTime?                                    @map("last_login_at")
+  createdAt            DateTime                                     @default(now()) @map("created_at")
+  updatedAt            DateTime                                     @updatedAt @map("updated_at")
+  assignments          ElectiveRepresentativeDepartmentAssignment[]
+  proposedApplications ElectiveApplication[]                        @relation("ElectiveApplicationProposedBy")
+  decidedApplications  ElectiveApplication[]                        @relation("ElectiveApplicationDecidedBy")
 
   @@index([isActive])
 }
 
 model ElectiveRepresentativeDepartmentAssignment {
-  id                         String                               @id @default(cuid())
-  representativeAccountId    String                               @map("representative_account_id")
-  departmentId               String                               @map("department_id")
-  role                       ElectiveRepresentativeAssignmentRole @default(PRIMARY)
-  receivesApplicationEmails  Boolean                              @default(true) @map("receives_application_emails")
-  createdAt                  DateTime                             @default(now()) @map("created_at")
-  updatedAt                  DateTime                             @updatedAt @map("updated_at")
-  representativeAccount      ElectiveRepresentativeAccount         @relation(fields: [representativeAccountId], references: [id], onDelete: Cascade)
-  department                 Department                           @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  id                        String                               @id @default(cuid())
+  representativeAccountId   String                               @map("representative_account_id")
+  departmentId              String                               @map("department_id")
+  role                      ElectiveRepresentativeAssignmentRole @default(PRIMARY)
+  receivesApplicationEmails Boolean                              @default(true) @map("receives_application_emails")
+  createdAt                 DateTime                             @default(now()) @map("created_at")
+  updatedAt                 DateTime                             @updatedAt @map("updated_at")
+  representativeAccount     ElectiveRepresentativeAccount        @relation(fields: [representativeAccountId], references: [id], onDelete: Cascade)
+  department                Department                           @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@unique([representativeAccountId, departmentId])
   @@index([departmentId])
@@ -842,42 +940,42 @@ model ElectiveRepresentativeDepartmentAssignment {
 }
 
 model ElectiveDepartmentSettings {
-  id                 String                    @id @default(cuid())
-  departmentId       String                    @unique @map("department_id")
-  maxStudentsAtOnce  Int                       @default(1) @map("max_students_at_once")
-  availabilityMode   ElectiveAvailabilityMode  @default(CLOSED_BY_DEFAULT) @map("availability_mode")
-  minDurationDays    Int?                      @map("min_duration_days")
-  maxDurationDays    Int?                      @map("max_duration_days")
-  allowApplications  Boolean                   @default(false) @map("allow_applications")
-  contactEmail       String?                   @map("contact_email")
-  contactPhone       String?                   @map("contact_phone")
-  instructions       String?
-  notes              String?
-  adminNotes         String?                   @map("admin_notes")
-  createdAt          DateTime                  @default(now()) @map("created_at")
-  updatedAt          DateTime                  @updatedAt @map("updated_at")
-  department         Department                @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  id                String                   @id @default(cuid())
+  departmentId      String                   @unique @map("department_id")
+  maxStudentsAtOnce Int                      @default(1) @map("max_students_at_once")
+  availabilityMode  ElectiveAvailabilityMode @default(CLOSED_BY_DEFAULT) @map("availability_mode")
+  minDurationDays   Int?                     @map("min_duration_days")
+  maxDurationDays   Int?                     @map("max_duration_days")
+  allowApplications Boolean                  @default(false) @map("allow_applications")
+  contactEmail      String?                  @map("contact_email")
+  contactPhone      String?                  @map("contact_phone")
+  instructions      String?
+  notes             String?
+  adminNotes        String?                  @map("admin_notes")
+  createdAt         DateTime                 @default(now()) @map("created_at")
+  updatedAt         DateTime                 @updatedAt @map("updated_at")
+  department        Department               @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@index([availabilityMode])
 }
 
 model ElectiveDepartmentTrackSettings {
-  id                 String            @id @default(cuid())
-  departmentId       String            @map("department_id")
-  trackType          ElectiveTrackType @map("track_type")
-  allowApplications  Boolean           @default(false) @map("allow_applications")
-  maxStudentsAtOnce  Int               @default(1) @map("max_students_at_once")
-  minDurationDays    Int?              @map("min_duration_days")
-  maxDurationDays    Int?              @map("max_duration_days")
-  notes              String?
-  paymentRequired    Boolean           @default(false) @map("payment_required")
-  paymentAmount      Decimal?          @db.Decimal(10, 2) @map("payment_amount")
-  paymentCurrency    String            @default("ILS") @map("payment_currency")
-  paymentLink        String?           @map("payment_link")
-  paymentInstructions String?          @map("payment_instructions")
-  createdAt          DateTime          @default(now()) @map("created_at")
-  updatedAt          DateTime          @updatedAt @map("updated_at")
-  department         Department        @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  id                  String            @id @default(cuid())
+  departmentId        String            @map("department_id")
+  trackType           ElectiveTrackType @map("track_type")
+  allowApplications   Boolean           @default(false) @map("allow_applications")
+  maxStudentsAtOnce   Int               @default(1) @map("max_students_at_once")
+  minDurationDays     Int?              @map("min_duration_days")
+  maxDurationDays     Int?              @map("max_duration_days")
+  notes               String?
+  paymentRequired     Boolean           @default(false) @map("payment_required")
+  paymentAmount       Decimal?          @map("payment_amount") @db.Decimal(10, 2)
+  paymentCurrency     String            @default("ILS") @map("payment_currency")
+  paymentLink         String?           @map("payment_link")
+  paymentInstructions String?           @map("payment_instructions")
+  createdAt           DateTime          @default(now()) @map("created_at")
+  updatedAt           DateTime          @updatedAt @map("updated_at")
+  department          Department        @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@unique([departmentId, trackType])
   @@index([trackType, allowApplications])
@@ -885,18 +983,18 @@ model ElectiveDepartmentTrackSettings {
 }
 
 model ElectiveAvailabilityWindow {
-  id           String               @id @default(cuid())
-  departmentId String               @map("department_id")
-  trackType    ElectiveTrackType?   @map("track_type")
-  status       ElectiveWindowStatus
-  startsAt     DateTime             @map("starts_at")
-  endsAt       DateTime             @map("ends_at")
-  capacityOverride Int?             @map("capacity_override")
-  reason       String?
-  note         String?
-  createdAt    DateTime             @default(now()) @map("created_at")
-  updatedAt    DateTime             @updatedAt @map("updated_at")
-  department   Department           @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  id               String               @id @default(cuid())
+  departmentId     String               @map("department_id")
+  trackType        ElectiveTrackType?   @map("track_type")
+  status           ElectiveWindowStatus
+  startsAt         DateTime             @map("starts_at")
+  endsAt           DateTime             @map("ends_at")
+  capacityOverride Int?                 @map("capacity_override")
+  reason           String?
+  note             String?
+  createdAt        DateTime             @default(now()) @map("created_at")
+  updatedAt        DateTime             @updatedAt @map("updated_at")
+  department       Department           @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@index([departmentId, startsAt, endsAt])
   @@index([departmentId, trackType, startsAt, endsAt])
@@ -904,31 +1002,31 @@ model ElectiveAvailabilityWindow {
 }
 
 model ElectiveApplication {
-  id                 String                    @id @default(cuid())
-  departmentId       String                    @map("department_id")
-  applicantUserId    String?                   @map("applicant_user_id")
-  applicantName      String                    @map("applicant_name")
-  applicantEmail     String                    @map("applicant_email")
-  applicantPhone     String?                   @map("applicant_phone")
-  medicalSchool      String?                   @map("medical_school")
-  requestedStartDate DateTime?                 @map("requested_start_date")
-  requestedEndDate   DateTime?                 @map("requested_end_date")
-  trackType          ElectiveTrackType         @default(ISRAELI_FACULTY_STUDENT) @map("track_type")
-  status             ElectiveApplicationStatus @default(SUBMITTED)
-  studentNotes       String?                   @map("student_notes")
-  representativeNotes String?                  @map("representative_notes")
-  adminNotes         String?                   @map("admin_notes")
-  proposedStartDate  DateTime?                 @map("proposed_start_date")
-  proposedEndDate    DateTime?                 @map("proposed_end_date")
-  proposedByRepresentativeId String?           @map("proposed_by_representative_id")
-  decisionByRepresentativeId String?           @map("decision_by_representative_id")
-  decisionAt         DateTime?                 @map("decision_at")
-  createdAt          DateTime                  @default(now()) @map("created_at")
-  updatedAt          DateTime                  @updatedAt @map("updated_at")
-  department         Department                @relation(fields: [departmentId], references: [id], onDelete: Cascade)
-  applicantUser      User?                     @relation("ElectiveApplicationApplicant", fields: [applicantUserId], references: [id], onDelete: SetNull)
-  proposedByRepresentative ElectiveRepresentativeAccount? @relation("ElectiveApplicationProposedBy", fields: [proposedByRepresentativeId], references: [id], onDelete: SetNull)
-  decisionByRepresentative ElectiveRepresentativeAccount? @relation("ElectiveApplicationDecidedBy", fields: [decisionByRepresentativeId], references: [id], onDelete: SetNull)
+  id                         String                         @id @default(cuid())
+  departmentId               String                         @map("department_id")
+  applicantUserId            String?                        @map("applicant_user_id")
+  applicantName              String                         @map("applicant_name")
+  applicantEmail             String                         @map("applicant_email")
+  applicantPhone             String?                        @map("applicant_phone")
+  medicalSchool              String?                        @map("medical_school")
+  requestedStartDate         DateTime?                      @map("requested_start_date")
+  requestedEndDate           DateTime?                      @map("requested_end_date")
+  trackType                  ElectiveTrackType              @default(ISRAELI_FACULTY_STUDENT) @map("track_type")
+  status                     ElectiveApplicationStatus      @default(SUBMITTED)
+  studentNotes               String?                        @map("student_notes")
+  representativeNotes        String?                        @map("representative_notes")
+  adminNotes                 String?                        @map("admin_notes")
+  proposedStartDate          DateTime?                      @map("proposed_start_date")
+  proposedEndDate            DateTime?                      @map("proposed_end_date")
+  proposedByRepresentativeId String?                        @map("proposed_by_representative_id")
+  decisionByRepresentativeId String?                        @map("decision_by_representative_id")
+  decisionAt                 DateTime?                      @map("decision_at")
+  createdAt                  DateTime                       @default(now()) @map("created_at")
+  updatedAt                  DateTime                       @updatedAt @map("updated_at")
+  department                 Department                     @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  applicantUser              User?                          @relation("ElectiveApplicationApplicant", fields: [applicantUserId], references: [id], onDelete: SetNull)
+  proposedByRepresentative   ElectiveRepresentativeAccount? @relation("ElectiveApplicationProposedBy", fields: [proposedByRepresentativeId], references: [id], onDelete: SetNull)
+  decisionByRepresentative   ElectiveRepresentativeAccount? @relation("ElectiveApplicationDecidedBy", fields: [decisionByRepresentativeId], references: [id], onDelete: SetNull)
 
   @@index([departmentId, status])
   @@index([departmentId, trackType, status])
@@ -939,22 +1037,22 @@ model ElectiveApplication {
 }
 
 model FellowshipSpecialty {
-  id              String              @id @default(cuid())
-  baseSpecialtyId String?             @map("base_specialty_id")
-  slug            String              @unique
-  nameHe          String              @map("name_he")
-  nameEn          String?             @map("name_en")
-  description     String?
-  beforeContent   String?             @map("before_content")
-  duringContent   String?             @map("during_content")
-  afterContent    String?             @map("after_content")
-  isPublished     Boolean             @default(false) @map("is_published")
-  createdByAdminId String?            @map("created_by_admin_id")
-  createdAt       DateTime            @default(now()) @map("created_at")
-  updatedAt       DateTime            @updatedAt @map("updated_at")
-  baseSpecialty   Specialty?          @relation("FellowshipSpecialtyBaseSpecialty", fields: [baseSpecialtyId], references: [id], onDelete: SetNull)
-  createdByAdmin  User?               @relation("FellowshipSpecialtyCreator", fields: [createdByAdminId], references: [id], onDelete: SetNull)
-  programs        FellowshipProgram[]
+  id                 String                        @id @default(cuid())
+  baseSpecialtyId    String?                       @map("base_specialty_id")
+  slug               String                        @unique
+  nameHe             String                        @map("name_he")
+  nameEn             String?                       @map("name_en")
+  description        String?
+  beforeContent      String?                       @map("before_content")
+  duringContent      String?                       @map("during_content")
+  afterContent       String?                       @map("after_content")
+  isPublished        Boolean                       @default(false) @map("is_published")
+  createdByAdminId   String?                       @map("created_by_admin_id")
+  createdAt          DateTime                      @default(now()) @map("created_at")
+  updatedAt          DateTime                      @updatedAt @map("updated_at")
+  baseSpecialty      Specialty?                    @relation("FellowshipSpecialtyBaseSpecialty", fields: [baseSpecialtyId], references: [id], onDelete: SetNull)
+  createdByAdmin     User?                         @relation("FellowshipSpecialtyCreator", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+  programs           FellowshipProgram[]
   israeliExperiences FellowshipIsraeliExperience[]
 
   @@index([baseSpecialtyId])
@@ -962,27 +1060,27 @@ model FellowshipSpecialty {
 }
 
 model FellowshipProgram {
-  id                    String              @id @default(cuid())
-  fellowshipSpecialtyId String              @map("fellowship_specialty_id")
-  baseSpecialtyId       String?             @map("base_specialty_id")
+  id                    String                        @id @default(cuid())
+  fellowshipSpecialtyId String                        @map("fellowship_specialty_id")
+  baseSpecialtyId       String?                       @map("base_specialty_id")
   country               String
   city                  String?
   institution           String
-  departmentName        String?             @map("department_name")
+  departmentName        String?                       @map("department_name")
   duration              String?
   requirements          String?
-  contactName           String?             @map("contact_name")
-  contactEmail          String?             @map("contact_email")
-  contactPhone          String?             @map("contact_phone")
-  websiteUrl            String?             @map("website_url")
+  contactName           String?                       @map("contact_name")
+  contactEmail          String?                       @map("contact_email")
+  contactPhone          String?                       @map("contact_phone")
+  websiteUrl            String?                       @map("website_url")
   notes                 String?
-  isPublished           Boolean             @default(false) @map("is_published")
-  createdByAdminId      String?             @map("created_by_admin_id")
-  createdAt             DateTime            @default(now()) @map("created_at")
-  updatedAt             DateTime            @updatedAt @map("updated_at")
-  fellowshipSpecialty   FellowshipSpecialty @relation(fields: [fellowshipSpecialtyId], references: [id], onDelete: Cascade)
-  baseSpecialty         Specialty?          @relation("FellowshipProgramBaseSpecialty", fields: [baseSpecialtyId], references: [id], onDelete: SetNull)
-  createdByAdmin        User?               @relation("FellowshipProgramCreator", fields: [createdByAdminId], references: [id], onDelete: SetNull)
+  isPublished           Boolean                       @default(false) @map("is_published")
+  createdByAdminId      String?                       @map("created_by_admin_id")
+  createdAt             DateTime                      @default(now()) @map("created_at")
+  updatedAt             DateTime                      @updatedAt @map("updated_at")
+  fellowshipSpecialty   FellowshipSpecialty           @relation(fields: [fellowshipSpecialtyId], references: [id], onDelete: Cascade)
+  baseSpecialty         Specialty?                    @relation("FellowshipProgramBaseSpecialty", fields: [baseSpecialtyId], references: [id], onDelete: SetNull)
+  createdByAdmin        User?                         @relation("FellowshipProgramCreator", fields: [createdByAdminId], references: [id], onDelete: SetNull)
   israeliExperiences    FellowshipIsraeliExperience[]
 
   @@index([fellowshipSpecialtyId, isPublished])
@@ -1050,20 +1148,20 @@ model OfficialDepartmentUpdate {
 }
 
 model DepartmentChangeRequest {
-  id               String           @id @default(cuid())
-  departmentId     String           @map("department_id")
-  submittedByUserId String          @map("submitted_by_user_id")
-  reviewedByUserId String?          @map("reviewed_by_user_id")
-  summary          String?          @map("summary")
-  payload          Json
-  status           SubmissionStatus @default(PENDING_REVIEW)
-  adminNote        String?          @map("admin_note")
-  reviewedAt       DateTime?        @map("reviewed_at")
-  createdAt        DateTime         @default(now()) @map("created_at")
-  updatedAt        DateTime         @updatedAt @map("updated_at")
-  department       Department       @relation(fields: [departmentId], references: [id], onDelete: Cascade)
-  submittedBy      User             @relation("DepartmentChangeSubmitter", fields: [submittedByUserId], references: [id], onDelete: Cascade)
-  reviewedBy       User?            @relation("DepartmentChangeReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  id                String           @id @default(cuid())
+  departmentId      String           @map("department_id")
+  submittedByUserId String           @map("submitted_by_user_id")
+  reviewedByUserId  String?          @map("reviewed_by_user_id")
+  summary           String?          @map("summary")
+  payload           Json
+  status            SubmissionStatus @default(PENDING_REVIEW)
+  adminNote         String?          @map("admin_note")
+  reviewedAt        DateTime?        @map("reviewed_at")
+  createdAt         DateTime         @default(now()) @map("created_at")
+  updatedAt         DateTime         @updatedAt @map("updated_at")
+  department        Department       @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  submittedBy       User             @relation("DepartmentChangeSubmitter", fields: [submittedByUserId], references: [id], onDelete: Cascade)
+  reviewedBy        User?            @relation("DepartmentChangeReviewer", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
 
   @@index([departmentId, status])
   @@index([submittedByUserId, status])
@@ -1107,78 +1205,78 @@ model DepartmentScrapeRevision {
 }
 
 model DepartmentMistakeReport {
-  id             String                         @id @default(cuid())
-  departmentId   String                         @map("department_id")
-  explanation    String
-  reporterName   String                         @map("reporter_name")
-  reporterEmail  String                         @map("reporter_email")
-  reporterPhone  String?                        @map("reporter_phone")
-  status         DepartmentMistakeReportStatus  @default(OPEN)
-  adminNotes     String?                        @map("admin_notes")
-  createdAt      DateTime                       @default(now()) @map("created_at")
-  resolvedAt     DateTime?                      @map("resolved_at")
-  department     Department                     @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  id            String                        @id @default(cuid())
+  departmentId  String                        @map("department_id")
+  explanation   String
+  reporterName  String                        @map("reporter_name")
+  reporterEmail String                        @map("reporter_email")
+  reporterPhone String?                       @map("reporter_phone")
+  status        DepartmentMistakeReportStatus @default(OPEN)
+  adminNotes    String?                       @map("admin_notes")
+  createdAt     DateTime                      @default(now()) @map("created_at")
+  resolvedAt    DateTime?                     @map("resolved_at")
+  department    Department                    @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@index([departmentId, status])
   @@index([reporterEmail, createdAt])
 }
 
 model DepartmentRepresentativeRequest {
-  id              String                                @id @default(cuid())
-  departmentId    String                                @map("department_id")
-  requesterName   String                                @map("requester_name")
-  requesterEmail  String                                @map("requester_email")
-  requesterPhone  String                                @map("requester_phone")
-  requesterRole   DepartmentRepresentativeRequesterRole @map("requester_role")
-  note            String?
-  proofFileId     String?                               @map("proof_file_id")
-  status          DepartmentRepresentativeRequestStatus @default(PENDING)
-  adminNotes      String?                               @map("admin_notes")
-  createdAt       DateTime                              @default(now()) @map("created_at")
-  reviewedAt      DateTime?                             @map("reviewed_at")
-  reviewedById    String?                               @map("reviewed_by_id")
-  department      Department                            @relation(fields: [departmentId], references: [id], onDelete: Cascade)
-  reviewedBy      User?                                 @relation("DepartmentRepresentativeRequestReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+  id             String                                @id @default(cuid())
+  departmentId   String                                @map("department_id")
+  requesterName  String                                @map("requester_name")
+  requesterEmail String                                @map("requester_email")
+  requesterPhone String                                @map("requester_phone")
+  requesterRole  DepartmentRepresentativeRequesterRole @map("requester_role")
+  note           String?
+  proofFileId    String?                               @map("proof_file_id")
+  status         DepartmentRepresentativeRequestStatus @default(PENDING)
+  adminNotes     String?                               @map("admin_notes")
+  createdAt      DateTime                              @default(now()) @map("created_at")
+  reviewedAt     DateTime?                             @map("reviewed_at")
+  reviewedById   String?                               @map("reviewed_by_id")
+  department     Department                            @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  reviewedBy     User?                                 @relation("DepartmentRepresentativeRequestReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
 
   @@index([departmentId, status])
   @@index([requesterEmail, departmentId, status])
 }
 
 model DunsImportBatch {
-  id          String                @id @default(cuid())
-  sourceUrl   String?               @map("source_url")
-  rawText     String?               @map("raw_text")
-  parsedJson  Json?                 @map("parsed_json")
-  status      DunsImportBatchStatus @default(PENDING_REVIEW)
-  createdAt   DateTime              @default(now()) @map("created_at")
-  reviewedAt  DateTime?             @map("reviewed_at")
-  reviewedById String?              @map("reviewed_by_id")
-  records     DunsPhysicianRecord[]
-  metrics     DepartmentExternalMetric[]
-  reviewedBy  User?                 @relation("DunsImportBatchReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
+  id           String                     @id @default(cuid())
+  sourceUrl    String?                    @map("source_url")
+  rawText      String?                    @map("raw_text")
+  parsedJson   Json?                      @map("parsed_json")
+  status       DunsImportBatchStatus      @default(PENDING_REVIEW)
+  createdAt    DateTime                   @default(now()) @map("created_at")
+  reviewedAt   DateTime?                  @map("reviewed_at")
+  reviewedById String?                    @map("reviewed_by_id")
+  records      DunsPhysicianRecord[]
+  metrics      DepartmentExternalMetric[]
+  reviewedBy   User?                      @relation("DunsImportBatchReviewer", fields: [reviewedById], references: [id], onDelete: SetNull)
 
   @@index([status, createdAt])
 }
 
 model DunsPhysicianRecord {
-  id                    String       @id @default(cuid())
-  batchId               String       @map("batch_id")
-  physicianName         String       @map("physician_name")
-  roleTitle             String?      @map("role_title")
-  hospitalNameRaw       String       @map("hospital_name_raw")
-  specialtyRaw          String       @map("specialty_raw")
-  rawText               String?      @map("raw_text")
-  sourceUrl             String?      @map("source_url")
-  rankingYear           Int?         @map("ranking_year")
-  dedupeKey             String?      @unique @map("dedupe_key")
-  normalizedHospitalId  String?      @map("normalized_hospital_id")
-  normalizedSpecialtyId String?      @map("normalized_specialty_id")
-  normalizedDepartmentId String?     @map("normalized_department_id")
-  confidenceScore       Float?       @map("confidence_score")
-  batch                 DunsImportBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
-  normalizedHospital    Institution? @relation("DunsPhysicianRecordInstitution", fields: [normalizedHospitalId], references: [id], onDelete: SetNull)
-  normalizedSpecialty   Specialty?   @relation("DunsPhysicianRecordSpecialty", fields: [normalizedSpecialtyId], references: [id], onDelete: SetNull)
-  normalizedDepartment  Department?  @relation("DunsPhysicianRecordDepartment", fields: [normalizedDepartmentId], references: [id], onDelete: SetNull)
+  id                     String          @id @default(cuid())
+  batchId                String          @map("batch_id")
+  physicianName          String          @map("physician_name")
+  roleTitle              String?         @map("role_title")
+  hospitalNameRaw        String          @map("hospital_name_raw")
+  specialtyRaw           String          @map("specialty_raw")
+  rawText                String?         @map("raw_text")
+  sourceUrl              String?         @map("source_url")
+  rankingYear            Int?            @map("ranking_year")
+  dedupeKey              String?         @unique @map("dedupe_key")
+  normalizedHospitalId   String?         @map("normalized_hospital_id")
+  normalizedSpecialtyId  String?         @map("normalized_specialty_id")
+  normalizedDepartmentId String?         @map("normalized_department_id")
+  confidenceScore        Float?          @map("confidence_score")
+  batch                  DunsImportBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  normalizedHospital     Institution?    @relation("DunsPhysicianRecordInstitution", fields: [normalizedHospitalId], references: [id], onDelete: SetNull)
+  normalizedSpecialty    Specialty?      @relation("DunsPhysicianRecordSpecialty", fields: [normalizedSpecialtyId], references: [id], onDelete: SetNull)
+  normalizedDepartment   Department?     @relation("DunsPhysicianRecordDepartment", fields: [normalizedDepartmentId], references: [id], onDelete: SetNull)
 
   @@index([batchId])
   @@index([normalizedHospitalId, normalizedSpecialtyId])
@@ -1212,22 +1310,22 @@ model DepartmentExternalMetric {
 }
 
 model DepartmentExternalPerson {
-  id              String            @id @default(cuid())
-  departmentId    String?           @map("department_id")
-  medicalArrayId  String?           @map("medical_array_id")
-  sourceName      String            @map("source_name")
-  personName      String            @map("person_name")
-  roleTitle       String?           @map("role_title")
-  description     String?
-  sourceUrl       String?           @map("source_url")
-  rankingYear     Int?              @map("ranking_year")
-  sourceRecordId  String?           @map("source_record_id")
-  approved        Boolean           @default(false)
-  createdAt       DateTime          @default(now()) @map("created_at")
-  updatedAt       DateTime          @updatedAt @map("updated_at")
-  department      Department?       @relation(fields: [departmentId], references: [id], onDelete: Cascade)
-  medicalArray    MedicalArray?     @relation(fields: [medicalArrayId], references: [id], onDelete: Cascade)
-  sourceRecord    DataImportRecord? @relation(fields: [sourceRecordId], references: [id], onDelete: SetNull)
+  id             String            @id @default(cuid())
+  departmentId   String?           @map("department_id")
+  medicalArrayId String?           @map("medical_array_id")
+  sourceName     String            @map("source_name")
+  personName     String            @map("person_name")
+  roleTitle      String?           @map("role_title")
+  description    String?
+  sourceUrl      String?           @map("source_url")
+  rankingYear    Int?              @map("ranking_year")
+  sourceRecordId String?           @map("source_record_id")
+  approved       Boolean           @default(false)
+  createdAt      DateTime          @default(now()) @map("created_at")
+  updatedAt      DateTime          @updatedAt @map("updated_at")
+  department     Department?       @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  medicalArray   MedicalArray?     @relation(fields: [medicalArrayId], references: [id], onDelete: Cascade)
+  sourceRecord   DataImportRecord? @relation(fields: [sourceRecordId], references: [id], onDelete: SetNull)
 
   @@unique([departmentId, sourceName, personName, rankingYear])
   @@unique([medicalArrayId, sourceName, personName, rankingYear])
@@ -1262,21 +1360,21 @@ model DataImportBatch {
 }
 
 model DataImportRowLog {
-  id                    String           @id @default(cuid())
-  batchId               String?          @map("batch_id")
-  sourceFile            String           @map("source_file")
-  target                String
-  rowNumber             Int              @map("row_number")
-  stableKey             String?          @map("stable_key")
-  status                String
-  warningsJson          Json?            @map("warnings_json")
-  errorsJson            Json?            @map("errors_json")
-  payloadJson           Json?            @map("payload_json")
-  normalizedSpecialtyId String?          @map("normalized_specialty_id")
-  normalizedDepartmentId String?         @map("normalized_department_id")
-  createdAt             DateTime         @default(now()) @map("created_at")
-  batch                 DataImportBatch? @relation(fields: [batchId], references: [id], onDelete: SetNull)
-  normalizedDepartment  Department?      @relation(fields: [normalizedDepartmentId], references: [id], onDelete: SetNull)
+  id                     String           @id @default(cuid())
+  batchId                String?          @map("batch_id")
+  sourceFile             String           @map("source_file")
+  target                 String
+  rowNumber              Int              @map("row_number")
+  stableKey              String?          @map("stable_key")
+  status                 String
+  warningsJson           Json?            @map("warnings_json")
+  errorsJson             Json?            @map("errors_json")
+  payloadJson            Json?            @map("payload_json")
+  normalizedSpecialtyId  String?          @map("normalized_specialty_id")
+  normalizedDepartmentId String?          @map("normalized_department_id")
+  createdAt              DateTime         @default(now()) @map("created_at")
+  batch                  DataImportBatch? @relation(fields: [batchId], references: [id], onDelete: SetNull)
+  normalizedDepartment   Department?      @relation(fields: [normalizedDepartmentId], references: [id], onDelete: SetNull)
 
   @@index([batchId, status])
   @@index([target, status])
@@ -1324,32 +1422,32 @@ model DataImportSource {
 }
 
 model DataImportRecord {
-  id                    String                 @id @default(cuid())
-  batchId               String                 @map("batch_id")
-  sourceType            DataSourceType         @map("source_type")
-  target                DataImportTarget
-  status                ImportRecordStatus     @default(PENDING_REVIEW)
-  recordType            String                 @map("record_type")
-  payloadJson           Json                   @map("payload_json")
-  rawText               String?                @map("raw_text")
-  sourceSnippet         String?                @map("source_snippet")
-  sourceUrl             String?                @map("source_url")
-  sourceLabel           String?                @map("source_label")
-  rankingYear           Int?                   @map("ranking_year")
-  physicianName         String?                @map("physician_name")
-  roleTitle             String?                @map("role_title")
-  hospitalNameRaw       String?                @map("hospital_name_raw")
-  specialtyRaw          String?                @map("specialty_raw")
-  normalizedHospitalId  String?                @map("normalized_hospital_id")
-  normalizedSpecialtyId String?                @map("normalized_specialty_id")
-  normalizedDepartmentId String?               @map("normalized_department_id")
-  confidenceScore       Float?                 @map("confidence_score")
-  dedupeKey             String?                @unique @map("dedupe_key")
-  createdAt             DateTime               @default(now()) @map("created_at")
-  updatedAt             DateTime               @updatedAt @map("updated_at")
-  batch                 DataImportBatch        @relation(fields: [batchId], references: [id], onDelete: Cascade)
-  normalizedDepartment  Department?            @relation(fields: [normalizedDepartmentId], references: [id], onDelete: SetNull)
-  externalPeople        DepartmentExternalPerson[]
+  id                     String                     @id @default(cuid())
+  batchId                String                     @map("batch_id")
+  sourceType             DataSourceType             @map("source_type")
+  target                 DataImportTarget
+  status                 ImportRecordStatus         @default(PENDING_REVIEW)
+  recordType             String                     @map("record_type")
+  payloadJson            Json                       @map("payload_json")
+  rawText                String?                    @map("raw_text")
+  sourceSnippet          String?                    @map("source_snippet")
+  sourceUrl              String?                    @map("source_url")
+  sourceLabel            String?                    @map("source_label")
+  rankingYear            Int?                       @map("ranking_year")
+  physicianName          String?                    @map("physician_name")
+  roleTitle              String?                    @map("role_title")
+  hospitalNameRaw        String?                    @map("hospital_name_raw")
+  specialtyRaw           String?                    @map("specialty_raw")
+  normalizedHospitalId   String?                    @map("normalized_hospital_id")
+  normalizedSpecialtyId  String?                    @map("normalized_specialty_id")
+  normalizedDepartmentId String?                    @map("normalized_department_id")
+  confidenceScore        Float?                     @map("confidence_score")
+  dedupeKey              String?                    @unique @map("dedupe_key")
+  createdAt              DateTime                   @default(now()) @map("created_at")
+  updatedAt              DateTime                   @updatedAt @map("updated_at")
+  batch                  DataImportBatch            @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  normalizedDepartment   Department?                @relation(fields: [normalizedDepartmentId], references: [id], onDelete: SetNull)
+  externalPeople         DepartmentExternalPerson[]
 
   @@index([batchId, status])
   @@index([normalizedDepartmentId])
@@ -1358,43 +1456,43 @@ model DataImportRecord {
 }
 
 model ReviewSubmission {
-  id                     String            @id @default(cuid())
-  departmentId           String            @map("department_id")
-  reviewerType           ReviewSourceType  @map("reviewer_type")
-  fullName               String?           @map("full_name")
+  id                     String             @id @default(cuid())
+  departmentId           String             @map("department_id")
+  reviewerType           ReviewSourceType   @map("reviewer_type")
+  fullName               String?            @map("full_name")
   phone                  String
   email                  String?
-  isAnonymous            Boolean           @default(true) @map("is_anonymous")
-  teachingQuality        Int               @map("teaching_quality")
-  workAtmosphere         Int               @map("work_atmosphere")
-  seniorsApproachability Int               @map("seniors_approachability")
-  researchExposure       Int               @map("research_exposure")
-  lifestyleBalance       Int               @map("lifestyle_balance")
-  overallRecommendation  Int               @map("overall_recommendation")
+  isAnonymous            Boolean            @default(true) @map("is_anonymous")
+  teachingQuality        Int                @map("teaching_quality")
+  workAtmosphere         Int                @map("work_atmosphere")
+  seniorsApproachability Int                @map("seniors_approachability")
+  researchExposure       Int                @map("research_exposure")
+  lifestyleBalance       Int                @map("lifestyle_balance")
+  overallRecommendation  Int                @map("overall_recommendation")
   pros                   String
   cons                   String
   tips                   String
-  roleDetails            Json?             @map("role_details")
-  consentToContact       Boolean           @map("consent_to_contact")
-  consentToTerms         Boolean           @map("consent_to_terms")
-  consentNoPatientInfo   Boolean           @map("consent_no_patient_info")
+  roleDetails            Json?              @map("role_details")
+  consentToContact       Boolean            @map("consent_to_contact")
+  consentToTerms         Boolean            @map("consent_to_terms")
+  consentNoPatientInfo   Boolean            @map("consent_no_patient_info")
   verificationStatus     VerificationStatus @default(PENDING_PROOF) @map("verification_status")
-  verificationToken      String?           @unique @map("verification_token")
-  tokenExpiry            DateTime?         @map("token_expiry")
-  proofUploadedAt        DateTime?         @map("proof_uploaded_at")
-  verifiedByAdminId      String?           @map("verified_by_admin_id")
-  verifiedAt             DateTime?         @map("verified_at")
-  status                 SubmissionStatus  @default(PENDING_REVIEW)
-  adminNote              String?           @map("admin_note")
-  reviewedByUserId       String?           @map("reviewed_by_user_id")
-  reviewedAt             DateTime?         @map("reviewed_at")
-  createdAt              DateTime          @default(now()) @map("created_at")
-  updatedAt              DateTime          @updatedAt @map("updated_at")
-  department             Department        @relation(fields: [departmentId], references: [id], onDelete: Cascade)
-  reviewedBy             User?             @relation("ReviewSubmissionModerator", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
-  verifiedByAdmin        User?             @relation("ReviewSubmissionVerifier", fields: [verifiedByAdminId], references: [id], onDelete: SetNull)
+  verificationToken      String?            @unique @map("verification_token")
+  tokenExpiry            DateTime?          @map("token_expiry")
+  proofUploadedAt        DateTime?          @map("proof_uploaded_at")
+  verifiedByAdminId      String?            @map("verified_by_admin_id")
+  verifiedAt             DateTime?          @map("verified_at")
+  status                 SubmissionStatus   @default(PENDING_REVIEW)
+  adminNote              String?            @map("admin_note")
+  reviewedByUserId       String?            @map("reviewed_by_user_id")
+  reviewedAt             DateTime?          @map("reviewed_at")
+  createdAt              DateTime           @default(now()) @map("created_at")
+  updatedAt              DateTime           @updatedAt @map("updated_at")
+  department             Department         @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  reviewedBy             User?              @relation("ReviewSubmissionModerator", fields: [reviewedByUserId], references: [id], onDelete: SetNull)
+  verifiedByAdmin        User?              @relation("ReviewSubmissionVerifier", fields: [verifiedByAdminId], references: [id], onDelete: SetNull)
   publishedReview        Review?
-  verificationFiles      UploadedFile[]    @relation("ReviewSubmissionFiles")
+  verificationFiles      UploadedFile[]     @relation("ReviewSubmissionFiles")
 
   @@index([departmentId, status])
   @@index([reviewerType, status])
@@ -1402,41 +1500,41 @@ model ReviewSubmission {
 }
 
 model Review {
-  id                     String           @id @default(cuid())
-  departmentId           String           @map("department_id")
-  submissionId           String           @unique @map("submission_id")
-  reviewerType           ReviewSourceType @map("reviewer_type")
-  displayName            String?          @map("display_name")
-  isAnonymous            Boolean          @default(true) @map("is_anonymous")
-  teachingQuality        Int              @map("teaching_quality")
-  workAtmosphere         Int              @map("work_atmosphere")
-  seniorsApproachability Int              @map("seniors_approachability")
-  researchExposure       Int              @map("research_exposure")
-  lifestyleBalance       Int              @map("lifestyle_balance")
-  overallRecommendation  Int              @map("overall_recommendation")
+  id                     String             @id @default(cuid())
+  departmentId           String             @map("department_id")
+  submissionId           String             @unique @map("submission_id")
+  reviewerType           ReviewSourceType   @map("reviewer_type")
+  displayName            String?            @map("display_name")
+  isAnonymous            Boolean            @default(true) @map("is_anonymous")
+  teachingQuality        Int                @map("teaching_quality")
+  workAtmosphere         Int                @map("work_atmosphere")
+  seniorsApproachability Int                @map("seniors_approachability")
+  researchExposure       Int                @map("research_exposure")
+  lifestyleBalance       Int                @map("lifestyle_balance")
+  overallRecommendation  Int                @map("overall_recommendation")
   pros                   String
   cons                   String
   tips                   String
   verificationStatus     VerificationStatus @default(VERIFIED) @map("verification_status")
-  publishedAt            DateTime         @default(now()) @map("published_at")
-  createdAt              DateTime         @default(now()) @map("created_at")
-  updatedAt              DateTime         @updatedAt @map("updated_at")
-  department             Department       @relation(fields: [departmentId], references: [id], onDelete: Cascade)
-  submission             ReviewSubmission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  publishedAt            DateTime           @default(now()) @map("published_at")
+  createdAt              DateTime           @default(now()) @map("created_at")
+  updatedAt              DateTime           @updatedAt @map("updated_at")
+  department             Department         @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  submission             ReviewSubmission   @relation(fields: [submissionId], references: [id], onDelete: Cascade)
   reports                ReviewReport[]
 
   @@index([departmentId, publishedAt])
 }
 
 model ReviewReport {
-  id             String    @id @default(cuid())
-  reviewId       String    @map("review_id")
-  reporterUserId String?   @map("reporter_user_id")
+  id             String   @id @default(cuid())
+  reviewId       String   @map("review_id")
+  reporterUserId String?  @map("reporter_user_id")
   reason         String
   details        String?
-  createdAt      DateTime  @default(now()) @map("created_at")
-  review         Review    @relation(fields: [reviewId], references: [id], onDelete: Cascade)
-  reporter       User?     @relation(fields: [reporterUserId], references: [id], onDelete: SetNull)
+  createdAt      DateTime @default(now()) @map("created_at")
+  review         Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  reporter       User?    @relation(fields: [reporterUserId], references: [id], onDelete: SetNull)
 
   @@index([reviewId])
 }
@@ -1464,29 +1562,32 @@ model PublisherRequest {
 }
 
 model UploadedFile {
-  id                   String               @id @default(cuid())
-  departmentId         String?              @map("department_id")
-  openingId            String?              @map("opening_id")
-  openingApplicationId String?              @map("opening_application_id")
-  reviewSubmissionId   String?              @map("review_submission_id")
-  uploadedByUserId     String?              @map("uploaded_by_user_id")
-  category             UploadedFileCategory
-  isPublic             Boolean              @default(false) @map("is_public")
-  originalName         String               @map("original_name")
-  mimeType             String               @map("mime_type")
-  sizeBytes            Int                  @map("size_bytes")
-  bytes                Bytes
-  createdAt            DateTime             @default(now()) @map("created_at")
-  department           Department?          @relation(fields: [departmentId], references: [id], onDelete: SetNull)
-  opening              ResidencyOpening?    @relation("OpeningFiles", fields: [openingId], references: [id], onDelete: SetNull)
-  application          OpeningApplication?  @relation("ApplicationFiles", fields: [openingApplicationId], references: [id], onDelete: SetNull)
-  reviewSubmission     ReviewSubmission?    @relation("ReviewSubmissionFiles", fields: [reviewSubmissionId], references: [id], onDelete: SetNull)
-  uploadedBy           User?                @relation("UploadedFileOwner", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
+  id                       String                           @id @default(cuid())
+  departmentId             String?                          @map("department_id")
+  openingId                String?                          @map("opening_id")
+  openingApplicationId     String?                          @map("opening_application_id")
+  reviewSubmissionId       String?                          @map("review_submission_id")
+  uploadedByUserId         String?                          @map("uploaded_by_user_id")
+  category                 UploadedFileCategory
+  isPublic                 Boolean                          @default(false) @map("is_public")
+  originalName             String                           @map("original_name")
+  mimeType                 String                           @map("mime_type")
+  sizeBytes                Int                              @map("size_bytes")
+  bytes                    Bytes
+  createdAt                DateTime                         @default(now()) @map("created_at")
+  department               Department?                      @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  opening                  ResidencyOpening?                @relation("OpeningFiles", fields: [openingId], references: [id], onDelete: SetNull)
+  application              OpeningApplication?              @relation("ApplicationFiles", fields: [openingApplicationId], references: [id], onDelete: SetNull)
+  reviewSubmission         ReviewSubmission?                @relation("ReviewSubmissionFiles", fields: [reviewSubmissionId], references: [id], onDelete: SetNull)
+  uploadedBy               User?                            @relation("UploadedFileOwner", fields: [uploadedByUserId], references: [id], onDelete: SetNull)
+  clinicalRotationIdentity                ClinicalRotationStudentIdentity?   @relation("ClinicalRotationIdentityPendingDocument")
+  clinicalRotationEligibilityImportSource ClinicalRotationEligibilityImport? @relation("ClinicalRotationEligibilityImportSourceFile")
 
   @@index([departmentId])
   @@index([openingId, category])
   @@index([openingApplicationId, category])
   @@index([reviewSubmissionId, category])
+  @@index([uploadedByUserId, category])
 }
 
 model FavoriteDepartment {
@@ -1497,6 +1598,88 @@ model FavoriteDepartment {
   department   Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
 
   @@id([userId, departmentId])
+}
+
+model ClinicalRotationStudentIdentity {
+  id                    String                                     @id @default(cuid())
+  userId                String                                     @unique @map("user_id")
+  studentAnonymousKey   String?                                    @unique @map("student_anonymous_key")
+  keyVersion            Int                                        @default(1) @map("key_version")
+  status                ClinicalRotationIdentityVerificationStatus @default(NOT_SUBMITTED)
+  pendingDocumentFileId String?                                    @unique @map("pending_document_file_id")
+  submittedAt           DateTime?                                  @map("submitted_at")
+  decidedAt             DateTime?                                  @map("decided_at")
+  verifierUserId        String?                                    @map("verifier_user_id")
+  documentDeletedAt     DateTime?                                  @map("document_deleted_at")
+  reviewerNote          String?                                    @map("reviewer_note")
+  createdAt             DateTime                                   @default(now()) @map("created_at")
+  updatedAt             DateTime                                   @updatedAt @map("updated_at")
+  user                  User                                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  verifierUser          User?                                      @relation("ClinicalRotationIdentityVerifier", fields: [verifierUserId], references: [id], onDelete: SetNull)
+  pendingDocumentFile   UploadedFile?                              @relation("ClinicalRotationIdentityPendingDocument", fields: [pendingDocumentFileId], references: [id], onDelete: SetNull)
+
+  @@index([status, submittedAt])
+  @@index([studentAnonymousKey, keyVersion])
+  @@index([verifierUserId])
+}
+
+model ClinicalRotationAdminPermission {
+  id              String                             @id @default(cuid())
+  userId          String                             @map("user_id")
+  key             ClinicalRotationAdminPermissionKey
+  isActive        Boolean                            @default(true) @map("is_active")
+  grantedByUserId String?                            @map("granted_by_user_id")
+  grantedAt       DateTime                           @default(now()) @map("granted_at")
+  revokedAt       DateTime?                          @map("revoked_at")
+  createdAt       DateTime                           @default(now()) @map("created_at")
+  updatedAt       DateTime                           @updatedAt @map("updated_at")
+  user            User                               @relation("ClinicalRotationAdminPermissionUser", fields: [userId], references: [id], onDelete: Cascade)
+  grantedByUser   User?                              @relation("ClinicalRotationAdminPermissionGranter", fields: [grantedByUserId], references: [id], onDelete: SetNull)
+
+  @@unique([userId, key])
+  @@index([key, isActive])
+  @@index([grantedByUserId])
+}
+
+model ClinicalRotationEligibilityImport {
+  id                String                                  @id @default(cuid())
+  sourceLabel       String                                  @map("source_label")
+  status            ClinicalRotationEligibilityImportStatus @default(INACTIVE)
+  keyVersion        Int                                     @default(1) @map("key_version")
+  rowCount          Int                                     @default(0) @map("row_count")
+  acceptedRowCount  Int                                     @default(0) @map("accepted_row_count")
+  rejectedRowCount  Int                                     @default(0) @map("rejected_row_count")
+  validationSummary Json?                                   @map("validation_summary_json")
+  sourceFileId      String?                                 @unique @map("source_file_id")
+  sourceDeletionStatus ClinicalRotationSourceDeletionStatus  @default(NOT_STORED) @map("source_deletion_status")
+  sourceDeletionErrorCategory String?                        @map("source_deletion_error_category")
+  sourceDeletionRetryAt DateTime?                            @map("source_deletion_retry_at")
+  sourceDeletedAt   DateTime?                               @map("source_deleted_at")
+  activatedAt       DateTime?                               @map("activated_at")
+  deactivatedAt     DateTime?                               @map("deactivated_at")
+  createdByUserId   String?                                 @map("created_by_user_id")
+  createdAt         DateTime                                @default(now()) @map("created_at")
+  updatedAt         DateTime                                @updatedAt @map("updated_at")
+  createdByUser     User?                                   @relation("ClinicalRotationEligibilityImportCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  sourceFile        UploadedFile?                           @relation("ClinicalRotationEligibilityImportSourceFile", fields: [sourceFileId], references: [id], onDelete: SetNull)
+  entries           ClinicalRotationEligibilityEntry[]
+
+  @@index([status, activatedAt])
+  @@index([keyVersion])
+  @@index([sourceDeletionStatus, sourceDeletionRetryAt])
+  @@index([createdByUserId])
+}
+
+model ClinicalRotationEligibilityEntry {
+  id                  String                            @id @default(cuid())
+  importId            String                            @map("import_id")
+  studentAnonymousKey String                            @map("student_anonymous_key")
+  keyVersion          Int                               @default(1) @map("key_version")
+  createdAt           DateTime                          @default(now()) @map("created_at")
+  import              ClinicalRotationEligibilityImport @relation(fields: [importId], references: [id], onDelete: Cascade)
+
+  @@unique([importId, keyVersion, studentAnonymousKey])
+  @@index([keyVersion, studentAnonymousKey])
 }
 
 model ClinicalRotationHospitalAccess {
@@ -1523,17 +1706,17 @@ model ClinicalRotationHospitalAccess {
 }
 
 model ClinicalRotationAvailabilityWindow {
-  id              String                    @id @default(cuid())
-  hospitalId      String                    @map("hospital_id")
-  startsAt        DateTime                  @map("starts_at")
-  endsAt          DateTime                  @map("ends_at")
+  id              String                     @id @default(cuid())
+  hospitalId      String                     @map("hospital_id")
+  startsAt        DateTime                   @map("starts_at")
+  endsAt          DateTime                   @map("ends_at")
   notes           String?
-  createdByUserId String?                   @map("created_by_user_id")
-  createdAt       DateTime                  @default(now()) @map("created_at")
-  updatedAt       DateTime                  @updatedAt @map("updated_at")
-  hospital        Institution               @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  createdByUserId String?                    @map("created_by_user_id")
+  createdAt       DateTime                   @default(now()) @map("created_at")
+  updatedAt       DateTime                   @updatedAt @map("updated_at")
+  hospital        Institution                @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
   blackouts       ClinicalRotationBlackout[]
-  createdByUser   User?                     @relation("ClinicalRotationAvailabilityWindowCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  createdByUser   User?                      @relation("ClinicalRotationAvailabilityWindowCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
 
   @@index([hospitalId, startsAt, endsAt])
   @@index([createdByUserId])
@@ -1559,92 +1742,230 @@ model ClinicalRotationBlackout {
 }
 
 model ClinicalRotationOffering {
-  id                   String                         @id @default(cuid())
-  hospitalId           String                         @map("hospital_id")
-  specialtyId          String                         @map("specialty_id")
-  departmentId         String?                        @map("department_id")
-  coreSpecialty        ClinicalRotationCoreSpecialty? @map("core_specialty")
-  slug                 String                         @unique
-  displayName          String                         @map("display_name")
-  startsAt             DateTime                       @map("starts_at")
-  endsAt               DateTime                       @map("ends_at")
-  minimumParticipants  Int                            @default(1) @map("minimum_participants")
-  maximumCapacity      Int?                           @map("maximum_capacity")
-  priceAmount          Decimal                        @db.Decimal(10, 2) @map("price_amount")
-  priceCurrency        String                         @default("ILS") @map("price_currency")
-  priceUnit            ClinicalRotationPriceUnit      @default(PER_WEEK) @map("price_unit")
-  paymentMethod        ClinicalRotationPaymentMethod  @map("payment_method")
-  paymentLink          String?                        @map("payment_link")
-  status               ClinicalRotationOfferingStatus @default(DRAFT)
-  publishedAt          DateTime?                      @map("published_at")
-  pausedAt             DateTime?                      @map("paused_at")
-  closedAt             DateTime?                      @map("closed_at")
-  studentInstructions  String?                        @map("student_instructions")
-  internalNotes        String?                        @map("internal_notes")
-  createdByUserId      String?                        @map("created_by_user_id")
-  updatedByUserId      String?                        @map("updated_by_user_id")
-  createdAt            DateTime                       @default(now()) @map("created_at")
-  updatedAt            DateTime                       @updatedAt @map("updated_at")
-  hospital             Institution                    @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
-  specialty            Specialty                      @relation(fields: [specialtyId], references: [id], onDelete: Restrict)
-  department           Department?                    @relation(fields: [departmentId], references: [id], onDelete: SetNull)
-  createdByUser        User?                          @relation("ClinicalRotationOfferingCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  updatedByUser        User?                          @relation("ClinicalRotationOfferingUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
-  applications         ClinicalRotationApplication[]
-  auditLogs            ClinicalRotationAuditLog[]
+  id                       String                             @id @default(cuid())
+  hospitalId               String                             @map("hospital_id")
+  specialtyId              String                             @map("specialty_id")
+  departmentId             String?                            @map("department_id")
+  coreSpecialty            ClinicalRotationCoreSpecialty?     @map("core_specialty")
+  slug                     String                             @unique
+  displayName              String                             @map("display_name")
+  startsAt                 DateTime                           @map("starts_at")
+  endsAt                   DateTime                           @map("ends_at")
+  minimumParticipants      Int                                @default(1) @map("minimum_participants")
+  maximumCapacity          Int?                               @map("maximum_capacity")
+  minDurationWeeks         Int                                @default(1) @map("min_duration_weeks")
+  maxDurationWeeks         Int                                @default(12) @map("max_duration_weeks")
+  priceAmount              Decimal                            @map("price_amount") @db.Decimal(10, 2)
+  priceCurrency            String                             @default("ILS") @map("price_currency")
+  priceUnit                ClinicalRotationPriceUnit          @default(PER_WEEK) @map("price_unit")
+  paymentMethod            ClinicalRotationPaymentMethod      @map("payment_method")
+  paymentLink              String?                            @map("payment_link")
+  status                   ClinicalRotationOfferingStatus     @default(DRAFT)
+  publishedAt              DateTime?                          @map("published_at")
+  pausedAt                 DateTime?                          @map("paused_at")
+  closedAt                 DateTime?                          @map("closed_at")
+  cancelledAt              DateTime?                          @map("cancelled_at")
+  requirements             String?                            @map("requirements")
+  cancellationPolicy       String?                            @map("cancellation_policy")
+  workLanguage             String?                            @map("work_language")
+  departmentContactName    String?                            @map("department_contact_name")
+  departmentContactEmail   String?                            @map("department_contact_email")
+  requiresDeanApproval     Boolean                            @default(false) @map("requires_dean_approval")
+  requiresInsurance        Boolean                            @default(true) @map("requires_insurance")
+  groupRegistrationEnabled Boolean                            @default(false) @map("group_registration_enabled")
+  groupMinSize             Int?                               @map("group_min_size")
+  groupMaxSize             Int?                               @map("group_max_size")
+  isPreviewOnly            Boolean                            @default(false) @map("is_preview_only")
+  applicationBlockedReason String?                            @map("application_blocked_reason")
+  studentInstructions      String?                            @map("student_instructions")
+  internalNotes            String?                            @map("internal_notes")
+  createdByUserId          String?                            @map("created_by_user_id")
+  updatedByUserId          String?                            @map("updated_by_user_id")
+  createdAt                DateTime                           @default(now()) @map("created_at")
+  updatedAt                DateTime                           @updatedAt @map("updated_at")
+  hospital                 Institution                        @relation(fields: [hospitalId], references: [id], onDelete: Cascade)
+  specialty                Specialty                          @relation(fields: [specialtyId], references: [id], onDelete: Restrict)
+  department               Department?                        @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  createdByUser            User?                              @relation("ClinicalRotationOfferingCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  updatedByUser            User?                              @relation("ClinicalRotationOfferingUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  applications             ClinicalRotationApplication[]
+  groupApplications        ClinicalRotationGroupApplication[]
+  cancellations            ClinicalRotationCancellation[]
+  auditLogs                ClinicalRotationAuditLog[]
+  notificationOutbox       ClinicalRotationNotificationOutbox[]
 
   @@index([hospitalId, status, startsAt])
   @@index([specialtyId, status])
   @@index([departmentId])
   @@index([coreSpecialty, status])
+  @@index([groupRegistrationEnabled, status])
+  @@index([isPreviewOnly, status])
   @@index([createdByUserId])
   @@index([updatedByUserId])
 }
 
 model ClinicalRotationApplication {
-  id                String                            @id @default(cuid())
-  offeringId        String                            @map("offering_id")
-  studentUserId     String                            @map("student_user_id")
-  hospitalId        String                            @map("hospital_id")
-  specialtyId       String                            @map("specialty_id")
-  departmentId      String?                           @map("department_id")
-  coreSpecialty     ClinicalRotationCoreSpecialty?    @map("core_specialty")
-  requestedStartAt  DateTime                          @map("requested_start_at")
-  requestedEndAt    DateTime                          @map("requested_end_at")
-  status            ClinicalRotationApplicationStatus @default(SUBMITTED)
-  studentNotes      String?                           @map("student_notes")
-  hospitalNotes     String?                           @map("hospital_notes")
-  adminNotes        String?                           @map("admin_notes")
-  ruleSnapshot      Json?                             @map("rule_snapshot_json")
-  limitEvaluation   Json?                             @map("limit_evaluation_json")
-  decidedByUserId   String?                           @map("decided_by_user_id")
-  decidedAt         DateTime?                         @map("decided_at")
-  completedByUserId String?                           @map("completed_by_user_id")
-  completedAt       DateTime?                         @map("completed_at")
-  cancelledByUserId String?                           @map("cancelled_by_user_id")
-  cancelledAt       DateTime?                         @map("cancelled_at")
-  createdAt         DateTime                          @default(now()) @map("created_at")
-  updatedAt         DateTime                          @updatedAt @map("updated_at")
-  offering          ClinicalRotationOffering          @relation(fields: [offeringId], references: [id], onDelete: Restrict)
-  studentUser       User                              @relation("ClinicalRotationApplicationStudent", fields: [studentUserId], references: [id], onDelete: Cascade)
-  hospital          Institution                       @relation(fields: [hospitalId], references: [id], onDelete: Restrict)
-  specialty         Specialty                         @relation(fields: [specialtyId], references: [id], onDelete: Restrict)
-  department        Department?                       @relation(fields: [departmentId], references: [id], onDelete: SetNull)
-  decidedByUser     User?                             @relation("ClinicalRotationApplicationDecider", fields: [decidedByUserId], references: [id], onDelete: SetNull)
-  completedByUser   User?                             @relation("ClinicalRotationApplicationCompleter", fields: [completedByUserId], references: [id], onDelete: SetNull)
-  cancelledByUser   User?                             @relation("ClinicalRotationApplicationCanceller", fields: [cancelledByUserId], references: [id], onDelete: SetNull)
-  payment           ClinicalRotationPayment?
-  auditLogs         ClinicalRotationAuditLog[]
+  id                     String                            @id @default(cuid())
+  offeringId             String                            @map("offering_id")
+  studentUserId          String                            @map("student_user_id")
+  hospitalId             String                            @map("hospital_id")
+  specialtyId            String                            @map("specialty_id")
+  departmentId           String?                           @map("department_id")
+  coreSpecialty          ClinicalRotationCoreSpecialty?    @map("core_specialty")
+  studentAnonymousKey    String?                           @map("student_anonymous_key")
+  keyVersion             Int?                              @map("key_version")
+  groupId                String?                           @map("group_id")
+  requestedStartAt       DateTime                          @map("requested_start_at")
+  requestedEndAt         DateTime                          @map("requested_end_at")
+  durationWeeks          Int?                              @map("duration_weeks")
+  status                 ClinicalRotationApplicationStatus @default(SUBMITTED)
+  studentNotes           String?                           @map("student_notes")
+  hospitalNotes          String?                           @map("hospital_notes")
+  adminNotes             String?                           @map("admin_notes")
+  eligibilitySnapshot    Json?                             @map("eligibility_snapshot_json")
+  complianceSnapshot     Json?                             @map("compliance_snapshot_json")
+  ruleSnapshot           Json?                             @map("rule_snapshot_json")
+  limitEvaluation        Json?                             @map("limit_evaluation_json")
+  acceptedRequirementsAt DateTime?                         @map("accepted_requirements_at")
+  decidedByUserId        String?                           @map("decided_by_user_id")
+  decidedAt              DateTime?                         @map("decided_at")
+  completedByUserId      String?                           @map("completed_by_user_id")
+  completedAt            DateTime?                         @map("completed_at")
+  cancelledByUserId      String?                           @map("cancelled_by_user_id")
+  cancelledAt            DateTime?                         @map("cancelled_at")
+  createdAt              DateTime                          @default(now()) @map("created_at")
+  updatedAt              DateTime                          @updatedAt @map("updated_at")
+  offering               ClinicalRotationOffering          @relation(fields: [offeringId], references: [id], onDelete: Restrict)
+  studentUser            User                              @relation("ClinicalRotationApplicationStudent", fields: [studentUserId], references: [id], onDelete: Cascade)
+  hospital               Institution                       @relation(fields: [hospitalId], references: [id], onDelete: Restrict)
+  specialty              Specialty                         @relation(fields: [specialtyId], references: [id], onDelete: Restrict)
+  department             Department?                       @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  group                  ClinicalRotationGroupApplication? @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  decidedByUser          User?                             @relation("ClinicalRotationApplicationDecider", fields: [decidedByUserId], references: [id], onDelete: SetNull)
+  completedByUser        User?                             @relation("ClinicalRotationApplicationCompleter", fields: [completedByUserId], references: [id], onDelete: SetNull)
+  cancelledByUser        User?                             @relation("ClinicalRotationApplicationCanceller", fields: [cancelledByUserId], references: [id], onDelete: SetNull)
+  payment                ClinicalRotationPayment?
+  groupMembership        ClinicalRotationGroupMember?
+  cancellations          ClinicalRotationCancellation[]
+  auditLogs              ClinicalRotationAuditLog[]
+  notificationOutbox     ClinicalRotationNotificationOutbox[]
 
   @@index([offeringId, status])
   @@index([studentUserId, status, requestedStartAt])
   @@index([hospitalId, status, requestedStartAt])
   @@index([specialtyId, status])
   @@index([coreSpecialty, status])
+  @@index([studentAnonymousKey, keyVersion, status])
+  @@index([groupId, status])
   @@index([departmentId])
   @@index([decidedByUserId])
   @@index([completedByUserId])
   @@index([cancelledByUserId])
+}
+
+model ClinicalRotationGroupApplication {
+  id                         String                         @id @default(cuid())
+  offeringId                 String                         @map("offering_id")
+  hospitalId                 String                         @map("hospital_id")
+  departmentId               String?                        @map("department_id")
+  creatorUserId              String                         @map("creator_user_id")
+  creatorStudentAnonymousKey String?                        @map("creator_student_anonymous_key")
+  keyVersion                 Int?                           @map("key_version")
+  status                     ClinicalRotationGroupStatus    @default(SUBMITTED)
+  inviteTokenHash            String                         @unique @map("invite_token_hash")
+  inviteExpiresAt            DateTime                       @map("invite_expires_at")
+  inviteRevokedAt            DateTime?                      @map("invite_revoked_at")
+  maxMembers                 Int                            @map("max_members")
+  requestedStartAt           DateTime                       @map("requested_start_at")
+  requestedEndAt             DateTime                       @map("requested_end_at")
+  durationWeeks              Int                            @map("duration_weeks")
+  acceptedRequirementsAt     DateTime?                      @map("accepted_requirements_at")
+  complianceSnapshot         Json?                          @map("compliance_snapshot_json")
+  coordinatorNotes           String?                        @map("coordinator_notes")
+  decidedByUserId            String?                        @map("decided_by_user_id")
+  decidedAt                  DateTime?                      @map("decided_at")
+  createdAt                  DateTime                       @default(now()) @map("created_at")
+  updatedAt                  DateTime                       @updatedAt @map("updated_at")
+  offering                   ClinicalRotationOffering       @relation(fields: [offeringId], references: [id], onDelete: Restrict)
+  hospital                   Institution                    @relation(fields: [hospitalId], references: [id], onDelete: Restrict)
+  department                 Department?                    @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  creatorUser                User                           @relation("ClinicalRotationGroupCreator", fields: [creatorUserId], references: [id], onDelete: Cascade)
+  decidedByUser              User?                          @relation("ClinicalRotationGroupDecider", fields: [decidedByUserId], references: [id], onDelete: SetNull)
+  applications               ClinicalRotationApplication[]
+  members                    ClinicalRotationGroupMember[]
+  cancellations              ClinicalRotationCancellation[]
+  auditLogs                  ClinicalRotationAuditLog[]
+  notificationOutbox          ClinicalRotationNotificationOutbox[]
+
+  @@index([offeringId, status])
+  @@index([hospitalId, status, requestedStartAt])
+  @@index([creatorUserId, status])
+  @@index([creatorStudentAnonymousKey, keyVersion])
+  @@index([inviteExpiresAt])
+}
+
+model ClinicalRotationGroupMember {
+  id                     String                            @id @default(cuid())
+  groupId                String                            @map("group_id")
+  applicationId          String                            @unique @map("application_id")
+  userId                 String                            @map("user_id")
+  studentAnonymousKey    String?                           @map("student_anonymous_key")
+  keyVersion             Int?                              @map("key_version")
+  status                 ClinicalRotationGroupMemberStatus @default(JOINED)
+  complianceSnapshot     Json?                             @map("compliance_snapshot_json")
+  acceptedRequirementsAt DateTime?                         @map("accepted_requirements_at")
+  joinedAt               DateTime                          @default(now()) @map("joined_at")
+  updatedAt              DateTime                          @updatedAt @map("updated_at")
+  group                  ClinicalRotationGroupApplication  @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  application            ClinicalRotationApplication       @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  user                   User                              @relation("ClinicalRotationGroupMemberUser", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([groupId, userId])
+  @@index([groupId, status])
+  @@index([studentAnonymousKey, keyVersion])
+}
+
+model ClinicalRotationCancellation {
+  id                         String                                     @id @default(cuid())
+  applicationId              String                                     @map("application_id")
+  groupId                    String?                                    @map("group_id")
+  studentUserId              String?                                    @map("student_user_id")
+  studentAnonymousKey        String?                                    @map("student_anonymous_key")
+  keyVersion                 Int?                                       @map("key_version")
+  hospitalId                 String                                     @map("hospital_id")
+  offeringId                 String                                     @map("offering_id")
+  departmentId               String?                                    @map("department_id")
+  actorUserId                String?                                    @map("actor_user_id")
+  actorType                  ClinicalRotationCancellationActorType      @map("actor_type")
+  status                     ClinicalRotationCancellationStatus         @default(REQUESTED)
+  reasonCategory             ClinicalRotationCancellationReasonCategory @map("reason_category")
+  note                       String?
+  applicationStatusAtRequest ClinicalRotationApplicationStatus          @map("application_status_at_request")
+  paymentStatusAtRequest     ClinicalRotationPaymentStatus?             @map("payment_status_at_request")
+  beforeApproval             Boolean                                    @map("before_approval")
+  requestedAt                DateTime                                   @default(now()) @map("requested_at")
+  decidedByUserId            String?                                    @map("decided_by_user_id")
+  decidedAt                  DateTime?                                  @map("decided_at")
+  createdAt                  DateTime                                   @default(now()) @map("created_at")
+  updatedAt                  DateTime                                   @updatedAt @map("updated_at")
+  application                ClinicalRotationApplication                @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  group                      ClinicalRotationGroupApplication?          @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  studentUser                User?                                      @relation("ClinicalRotationCancellationStudent", fields: [studentUserId], references: [id], onDelete: SetNull)
+  hospital                   Institution                                @relation(fields: [hospitalId], references: [id], onDelete: Restrict)
+  offering                   ClinicalRotationOffering                   @relation(fields: [offeringId], references: [id], onDelete: Restrict)
+  department                 Department?                                @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  actorUser                  User?                                      @relation("ClinicalRotationCancellationActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+  decidedByUser              User?                                      @relation("ClinicalRotationCancellationDecider", fields: [decidedByUserId], references: [id], onDelete: SetNull)
+  auditLogs                  ClinicalRotationAuditLog[]
+
+  @@index([applicationId, status])
+  @@index([groupId, status])
+  @@index([studentAnonymousKey, keyVersion, requestedAt])
+  @@index([hospitalId, requestedAt])
+  @@index([offeringId, requestedAt])
+  @@index([departmentId])
+  @@index([actorUserId])
+  @@index([decidedByUserId])
 }
 
 model ClinicalRotationPayment {
@@ -1666,28 +1987,64 @@ model ClinicalRotationPayment {
   application     ClinicalRotationApplication   @relation(fields: [applicationId], references: [id], onDelete: Cascade)
   updatedByUser   User?                         @relation("ClinicalRotationPaymentUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
   auditLogs       ClinicalRotationAuditLog[]
+  notificationOutbox ClinicalRotationNotificationOutbox[]
 
   @@index([status, updatedAt])
   @@index([method, status])
   @@index([updatedByUserId])
 }
 
+model ClinicalRotationNotificationOutbox {
+  id                String                                  @id @default(cuid())
+  type              ClinicalRotationNotificationOutboxType
+  status            ClinicalRotationNotificationOutboxStatus @default(PENDING)
+  paymentId         String?                                 @map("payment_id")
+  applicationId     String?                                 @map("application_id")
+  groupId           String?                                 @map("group_id")
+  hospitalId        String?                                 @map("hospital_id")
+  offeringId        String?                                 @map("offering_id")
+  attemptCount      Int                                     @default(0) @map("attempt_count")
+  lockedAt          DateTime?                               @map("locked_at")
+  nextAttemptAt     DateTime?                               @map("next_attempt_at")
+  sentAt            DateTime?                               @map("sent_at")
+  failedAt          DateTime?                               @map("failed_at")
+  lastErrorCategory String?                                 @map("last_error_category")
+  createdByUserId   String?                                 @map("created_by_user_id")
+  metadata          Json?
+  createdAt         DateTime                                @default(now()) @map("created_at")
+  updatedAt         DateTime                                @updatedAt @map("updated_at")
+  payment           ClinicalRotationPayment?                @relation(fields: [paymentId], references: [id], onDelete: Cascade)
+  application       ClinicalRotationApplication?            @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  group             ClinicalRotationGroupApplication?       @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  hospital          Institution?                            @relation(fields: [hospitalId], references: [id], onDelete: SetNull)
+  offering          ClinicalRotationOffering?               @relation(fields: [offeringId], references: [id], onDelete: SetNull)
+  createdByUser     User?                                   @relation("ClinicalRotationNotificationCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+
+  @@unique([type, paymentId])
+  @@index([status, nextAttemptAt])
+  @@index([applicationId])
+  @@index([groupId])
+  @@index([hospitalId, status])
+  @@index([offeringId])
+  @@index([createdByUserId])
+}
+
 model ClinicalRotationCoreRule {
-  id              String                                      @id @default(cuid())
-  coreSpecialty   ClinicalRotationCoreSpecialty               @map("core_specialty")
-  specialtyId     String?                                     @map("specialty_id")
-  maxWeeks        Int                                         @map("max_weeks")
-  effectiveDate   DateTime                                    @map("effective_date")
-  enforcementMode ClinicalRotationCoreRuleEnforcementMode     @default(WARN) @map("enforcement_mode")
-  isActive        Boolean                                     @default(true) @map("is_active")
+  id              String                                  @id @default(cuid())
+  coreSpecialty   ClinicalRotationCoreSpecialty           @map("core_specialty")
+  specialtyId     String?                                 @map("specialty_id")
+  maxWeeks        Int                                     @map("max_weeks")
+  effectiveDate   DateTime                                @map("effective_date")
+  enforcementMode ClinicalRotationCoreRuleEnforcementMode @default(WARN) @map("enforcement_mode")
+  isActive        Boolean                                 @default(true) @map("is_active")
   notes           String?
-  createdByUserId String?                                     @map("created_by_user_id")
-  updatedByUserId String?                                     @map("updated_by_user_id")
-  createdAt       DateTime                                    @default(now()) @map("created_at")
-  updatedAt       DateTime                                    @updatedAt @map("updated_at")
-  specialty       Specialty?                                  @relation(fields: [specialtyId], references: [id], onDelete: SetNull)
-  createdByUser   User?                                       @relation("ClinicalRotationCoreRuleCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
-  updatedByUser   User?                                       @relation("ClinicalRotationCoreRuleUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+  createdByUserId String?                                 @map("created_by_user_id")
+  updatedByUserId String?                                 @map("updated_by_user_id")
+  createdAt       DateTime                                @default(now()) @map("created_at")
+  updatedAt       DateTime                                @updatedAt @map("updated_at")
+  specialty       Specialty?                              @relation(fields: [specialtyId], references: [id], onDelete: SetNull)
+  createdByUser   User?                                   @relation("ClinicalRotationCoreRuleCreator", fields: [createdByUserId], references: [id], onDelete: SetNull)
+  updatedByUser   User?                                   @relation("ClinicalRotationCoreRuleUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
 
   @@unique([coreSpecialty, effectiveDate])
   @@index([coreSpecialty, isActive, effectiveDate])
@@ -1697,40 +2054,46 @@ model ClinicalRotationCoreRule {
 }
 
 model ClinicalRotationAuditLog {
-  id            String                       @id @default(cuid())
-  actorUserId   String?                      @map("actor_user_id")
-  action        String
-  entityType    String                       @map("entity_type")
-  entityId      String?                      @map("entity_id")
-  hospitalId    String?                      @map("hospital_id")
-  offeringId    String?                      @map("offering_id")
-  applicationId String?                      @map("application_id")
-  paymentId     String?                      @map("payment_id")
-  metadata      Json?
-  createdAt     DateTime                     @default(now()) @map("created_at")
-  actor         User?                        @relation("ClinicalRotationAuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
-  hospital      Institution?                 @relation(fields: [hospitalId], references: [id], onDelete: SetNull)
-  offering      ClinicalRotationOffering?    @relation(fields: [offeringId], references: [id], onDelete: SetNull)
-  application   ClinicalRotationApplication? @relation(fields: [applicationId], references: [id], onDelete: SetNull)
-  payment       ClinicalRotationPayment?     @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+  id             String                            @id @default(cuid())
+  actorUserId    String?                           @map("actor_user_id")
+  action         String
+  entityType     String                            @map("entity_type")
+  entityId       String?                           @map("entity_id")
+  hospitalId     String?                           @map("hospital_id")
+  offeringId     String?                           @map("offering_id")
+  applicationId  String?                           @map("application_id")
+  groupId        String?                           @map("group_id")
+  cancellationId String?                           @map("cancellation_id")
+  paymentId      String?                           @map("payment_id")
+  metadata       Json?
+  createdAt      DateTime                          @default(now()) @map("created_at")
+  actor          User?                             @relation("ClinicalRotationAuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+  hospital       Institution?                      @relation(fields: [hospitalId], references: [id], onDelete: SetNull)
+  offering       ClinicalRotationOffering?         @relation(fields: [offeringId], references: [id], onDelete: SetNull)
+  application    ClinicalRotationApplication?      @relation(fields: [applicationId], references: [id], onDelete: SetNull)
+  group          ClinicalRotationGroupApplication? @relation(fields: [groupId], references: [id], onDelete: SetNull)
+  cancellation   ClinicalRotationCancellation?     @relation(fields: [cancellationId], references: [id], onDelete: SetNull)
+  payment        ClinicalRotationPayment?          @relation(fields: [paymentId], references: [id], onDelete: SetNull)
 
   @@index([action, createdAt])
   @@index([actorUserId, createdAt])
   @@index([hospitalId, createdAt])
   @@index([offeringId, createdAt])
   @@index([applicationId, createdAt])
+  @@index([groupId, createdAt])
+  @@index([cancellationId, createdAt])
   @@index([paymentId, createdAt])
 }
 
 model AuditLog {
-  id          String    @id @default(cuid())
-  actorUserId String?   @map("actor_user_id")
+  id          String   @id @default(cuid())
+  actorUserId String?  @map("actor_user_id")
   action      String
-  entityType  String    @map("entity_type")
-  entityId    String?   @map("entity_id")
+  entityType  String   @map("entity_type")
+  entityId    String?  @map("entity_id")
   metadata    Json?
-  createdAt   DateTime  @default(now()) @map("created_at")
-  actor       User?     @relation("AuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now()) @map("created_at")
+  actor       User?    @relation("AuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
 
   @@index([action, createdAt])
 }

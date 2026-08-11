@@ -59,6 +59,9 @@ export default async function ClinicalRotationHospitalOfferingsPage({ searchPara
                 <p className="mt-1 text-sm font-semibold text-slate-600">{offering.specialty.name}{offering.department ? ` · ${offering.department.name}` : ""}</p>
               </div>
               <p className="text-sm text-slate-700">{clinicalRotationDateRangeLabel(offering.startsAt, offering.endsAt)} · {clinicalRotationPriceLabel(offering)}</p>
+              <p className="text-xs font-bold text-slate-500">
+                {offering.minDurationWeeks}-{offering.maxDurationWeeks} שבועות · קיבולת {offering.maximumCapacity ?? "לא הוגדרה"} · {offering.groupRegistrationEnabled ? "קבוצות פעילות" : "ללא קבוצות"}
+              </p>
               <div className="flex flex-wrap gap-2">
                 <Link href={`/clinical-rotations/hospital/offerings/${offering.id}?hospitalId=${context.selectedHospital.id}`} className="rounded-full bg-brand-700 px-4 py-2 text-xs font-black text-white">
                   עריכה
@@ -70,6 +73,9 @@ export default async function ClinicalRotationHospitalOfferingsPage({ searchPara
                 )}
                 {offering.status !== "CLOSED" ? (
                   <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/offerings" payload={{ action: "close", offeringId: offering.id }} label="סגירה" tone="danger" />
+                ) : null}
+                {offering.status !== "CANCELLED" ? (
+                  <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/offerings" payload={{ action: "cancel", offeringId: offering.id }} label="ביטול סבב" tone="danger" />
                 ) : null}
               </div>
             </Card>

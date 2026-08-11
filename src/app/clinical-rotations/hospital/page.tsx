@@ -53,20 +53,23 @@ export default async function ClinicalRotationHospitalPage({ searchParams }: { s
         </Card>
       ) : null}
 
-      <div className="grid gap-3 md:grid-cols-5">
+      <div className="grid gap-3 md:grid-cols-7">
         <Card><p className="text-xs font-black text-slate-500">חלונות פתוחים</p><p className="mt-2 text-3xl font-black text-ink">{data.windows.length}</p></Card>
         <Card><p className="text-xs font-black text-slate-500">סגירות</p><p className="mt-2 text-3xl font-black text-ink">{data.blackouts.length}</p></Card>
         <Card><p className="text-xs font-black text-slate-500">סבבים</p><p className="mt-2 text-3xl font-black text-ink">{data.offerings.length}</p></Card>
         <Card><p className="text-xs font-black text-slate-500">בקשות</p><p className="mt-2 text-3xl font-black text-ink">{data.applications.length}</p></Card>
+        <Card><p className="text-xs font-black text-slate-500">קבוצות</p><p className="mt-2 text-3xl font-black text-ink">{data.groups.length}</p></Card>
+        <Card><p className="text-xs font-black text-slate-500">ביטולים</p><p className="mt-2 text-3xl font-black text-ink">{data.cancellations.length}</p></Card>
         <Card><p className="text-xs font-black text-slate-500">תשלומים</p><p className="mt-2 text-3xl font-black text-ink">{data.payments.length}</p></Card>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-5">
+      <div className="grid gap-4 lg:grid-cols-6">
         {[
           ["/clinical-rotations/hospital/availability", "זמינות"],
           ["/clinical-rotations/hospital/offerings", "סבבים"],
           ["/clinical-rotations/hospital/offerings/new", "סבב חדש"],
           ["/clinical-rotations/hospital/applications", "בקשות"],
+          ["/clinical-rotations/hospital/groups", "קבוצות"],
           ["/clinical-rotations/hospital/payments", "תשלומים"]
         ].map(([href, label]) => (
           <Link key={href} href={`${href}?hospitalId=${context.selectedHospital.id}`} className="rounded-2xl border border-brand-100 bg-white p-4 text-sm font-black text-brand-800 shadow-sm">

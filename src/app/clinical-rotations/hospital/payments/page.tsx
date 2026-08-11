@@ -53,6 +53,9 @@ export default async function ClinicalRotationHospitalPaymentsPage({ searchParam
               </Badge>
             </div>
             <div className="flex flex-wrap gap-2">
+              {payment.status === "LINK_PENDING" || payment.status === "LINK_DELIVERY_FAILED" ? (
+                <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/payments" payload={{ paymentId: payment.id, action: "retryPaymentLink" }} label="שליחה חוזרת של קישור" tone="neutral" />
+              ) : null}
               <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/payments" payload={{ paymentId: payment.id, status: "PAID" }} label="שולם" />
               <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/payments" payload={{ paymentId: payment.id, status: "WAIVED" }} label="ויתור" tone="neutral" />
               <ClinicalRotationActionForm endpoint="/api/clinical-rotations/hospital/payments" payload={{ paymentId: payment.id, status: "OVERDUE" }} label="באיחור" tone="danger" />

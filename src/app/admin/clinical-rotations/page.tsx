@@ -16,9 +16,13 @@ export const metadata = clinicalRotationNoIndexMetadata;
 const links = [
   ["/admin/clinical-rotations/hospitals", "בתי חולים"],
   ["/admin/clinical-rotations/users", "נציגים"],
+  ["/admin/clinical-rotations/verifications", "אימות זהות"],
+  ["/admin/clinical-rotations/eligibility-imports", "רשימות זכאות"],
   ["/admin/clinical-rotations/core-rules", "כללי ליבה"],
   ["/admin/clinical-rotations/applications", "בקשות"],
-  ["/admin/clinical-rotations/payments", "תשלומים"]
+  ["/admin/clinical-rotations/cancellations", "ביטולים"],
+  ["/admin/clinical-rotations/payments", "תשלומים"],
+  ["/admin/clinical-rotations/audit", "ביקורת"]
 ] as const;
 
 export default async function AdminClinicalRotationsPage() {
@@ -60,7 +64,7 @@ export default async function AdminClinicalRotationsPage() {
               .filter((row) => row.warning)
               .map((row) => (
                 <div key={`${student.studentUserId}-${row.coreSpecialty}`} className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm">
-                  <p className="font-black text-ink">{student.fullName} · {student.email}</p>
+                  <p className="font-black text-ink">{student.studentRef}</p>
                   <p className="mt-1 text-amber-900">
                     {clinicalRotationCoreSpecialtyLabels[row.coreSpecialty]}: הושלם {row.completedWeeks}, עתידי מאושר {row.futureApprovedWeeks}, מגבלה {row.ruleLimitWeeks}, מצב {row.enforcementMode}
                   </p>
@@ -78,7 +82,7 @@ export default async function AdminClinicalRotationsPage() {
         <div className="mt-4 space-y-3">
           {data.studentSummaries.map((student) => (
             <div key={student.studentUserId} className="rounded-2xl border border-brand-100 bg-white p-4 text-sm">
-              <p className="font-black text-ink">{student.fullName} · {student.email}</p>
+              <p className="font-black text-ink">{student.studentRef}</p>
               <div className="mt-3 grid gap-2 md:grid-cols-2">
                 {student.byCoreSpecialty.map((row) => (
                   <div key={row.coreSpecialty} className="rounded-xl bg-slate-50 px-3 py-2">

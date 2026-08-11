@@ -13,16 +13,20 @@ import {
   clinicalRotationOfferingStatusSchema
 } from "@/lib/clinical-rotations-validation";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin } from "@/lib/security";
 
 export async function POST(request: Request) {
+  const rateLimit = checkRateLimit(request, "clinical-rotations:hospital-offerings", { limit: 20, windowMs: 60_000 });
+  if (!rateLimit.ok) return rateLimitResponse(rateLimit.retryAfter);
+
   if (!hasValidSameOrigin(request)) {
     return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
   }
 
   const body = await request.json().catch(() => null);
 
-  if (body?.action === "publish" || body?.action === "pause" || body?.action === "close") {
+  if (body?.action === "publish" || body?.action === "pause" || body?.action === "close" || body?.action === "cancel") {
     const parsedStatus = clinicalRotationOfferingStatusSchema.safeParse(body);
 
     if (!parsedStatus.success) {
@@ -82,10 +86,24 @@ export async function POST(request: Request) {
       endsAt,
       minimumParticipants: parsed.data.minimumParticipants,
       maximumCapacity: parsed.data.maximumCapacity,
+      minDurationWeeks: parsed.data.minDurationWeeks,
+      maxDurationWeeks: parsed.data.maxDurationWeeks,
       priceAmount: parsed.data.priceAmount,
       priceUnit: parsed.data.priceUnit,
       paymentMethod: parsed.data.paymentMethod,
       paymentLink: parsed.data.paymentLink,
+      requirements: parsed.data.requirements,
+      cancellationPolicy: parsed.data.cancellationPolicy,
+      workLanguage: parsed.data.workLanguage,
+      departmentContactName: parsed.data.departmentContactName,
+      departmentContactEmail: parsed.data.departmentContactEmail,
+      requiresDeanApproval: parsed.data.requiresDeanApproval,
+      requiresInsurance: parsed.data.requiresInsurance,
+      groupRegistrationEnabled: parsed.data.groupRegistrationEnabled,
+      groupMinSize: parsed.data.groupMinSize,
+      groupMaxSize: parsed.data.groupMaxSize,
+      isPreviewOnly: parsed.data.isPreviewOnly,
+      applicationBlockedReason: parsed.data.applicationBlockedReason,
       studentInstructions: parsed.data.studentInstructions,
       internalNotes: parsed.data.internalNotes,
       publish: parsed.data.publish
@@ -134,9 +152,17 @@ export async function POST(request: Request) {
       endsAt,
       minimumParticipants: parsed.data.minimumParticipants,
       maximumCapacity: parsed.data.maximumCapacity,
+      minDurationWeeks: parsed.data.minDurationWeeks,
+      maxDurationWeeks: parsed.data.maxDurationWeeks,
       priceAmount: parsed.data.priceAmount,
       paymentMethod: parsed.data.paymentMethod,
       paymentLink: parsed.data.paymentLink,
+      requirements: parsed.data.requirements,
+      cancellationPolicy: parsed.data.cancellationPolicy,
+      groupRegistrationEnabled: parsed.data.groupRegistrationEnabled,
+      groupMinSize: parsed.data.groupMinSize,
+      groupMaxSize: parsed.data.groupMaxSize,
+      isPreviewOnly: parsed.data.isPreviewOnly,
       openWindows: windows,
       blackouts
     });
@@ -158,10 +184,24 @@ export async function POST(request: Request) {
         endsAt,
         minimumParticipants: parsed.data.minimumParticipants,
         maximumCapacity: parsed.data.maximumCapacity ?? null,
+        minDurationWeeks: parsed.data.minDurationWeeks,
+        maxDurationWeeks: parsed.data.maxDurationWeeks,
         priceAmount: parsed.data.priceAmount,
         priceUnit: parsed.data.priceUnit,
         paymentMethod: parsed.data.paymentMethod,
         paymentLink: parsed.data.paymentMethod === "EXTERNAL_PAYMENT_LINK" ? parsed.data.paymentLink ?? null : null,
+        requirements: parsed.data.requirements ?? null,
+        cancellationPolicy: parsed.data.cancellationPolicy ?? null,
+        workLanguage: parsed.data.workLanguage ?? null,
+        departmentContactName: parsed.data.departmentContactName ?? null,
+        departmentContactEmail: parsed.data.departmentContactEmail ?? null,
+        requiresDeanApproval: parsed.data.requiresDeanApproval,
+        requiresInsurance: parsed.data.requiresInsurance,
+        groupRegistrationEnabled: parsed.data.groupRegistrationEnabled,
+        groupMinSize: parsed.data.groupRegistrationEnabled ? parsed.data.groupMinSize ?? null : null,
+        groupMaxSize: parsed.data.groupRegistrationEnabled ? parsed.data.groupMaxSize ?? null : null,
+        isPreviewOnly: parsed.data.isPreviewOnly,
+        applicationBlockedReason: parsed.data.applicationBlockedReason ?? null,
         studentInstructions: parsed.data.studentInstructions ?? null,
         internalNotes: parsed.data.internalNotes ?? null,
         status: nextStatus,

@@ -47,9 +47,12 @@ export default async function AdminClinicalRotationPaymentsPage() {
               </Badge>
             </div>
             <div className="flex flex-wrap gap-2">
-              <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/payments" payload={{ paymentId: payment.id, status: "PAID" }} label="שולם" />
-              <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/payments" payload={{ paymentId: payment.id, status: "WAIVED" }} label="ויתור" tone="neutral" />
-              <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/payments" payload={{ paymentId: payment.id, status: "OVERDUE" }} label="באיחור" tone="danger" />
+              {payment.status === "LINK_PENDING" || payment.status === "LINK_DELIVERY_FAILED" ? (
+                <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/payments" payload={{ paymentId: payment.id, action: "retryPaymentLink" }} label="שליחה חוזרת של קישור" tone="neutral" />
+              ) : null}
+              <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/payments" payload={{ paymentId: payment.id, status: "PAID", notes: "פעולת אדמין ידנית" }} label="שולם" />
+              <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/payments" payload={{ paymentId: payment.id, status: "WAIVED", notes: "פעולת אדמין ידנית" }} label="ויתור" tone="neutral" />
+              <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/payments" payload={{ paymentId: payment.id, status: "OVERDUE", notes: "פעולת אדמין ידנית" }} label="באיחור" tone="danger" />
             </div>
           </Card>
         ))}

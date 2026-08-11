@@ -18,14 +18,17 @@ export const clinicalRotationOfferingStatusValues = [
   "DRAFT",
   "PUBLISHED",
   "PAUSED",
-  "CLOSED"
+  "CLOSED",
+  "CANCELLED"
 ] as const;
 
 export const clinicalRotationApplicationStatusValues = [
   "DRAFT",
   "SUBMITTED",
+  "WAITLISTED",
   "APPROVED",
   "DECLINED",
+  "CANCELLATION_REQUESTED",
   "CANCELLED",
   "COMPLETED"
 ] as const;
@@ -34,6 +37,7 @@ export const clinicalRotationPaymentStatusValues = [
   "NOT_REQUIRED",
   "CASH_DUE",
   "LINK_PENDING",
+  "LINK_DELIVERY_FAILED",
   "LINK_SENT",
   "PAID",
   "WAIVED",
@@ -76,8 +80,10 @@ export const clinicalRotationPriceUnitLabels: Record<ClinicalRotationPriceUnitVa
 export const clinicalRotationApplicationStatusLabels: Record<ClinicalRotationApplicationStatusValue, string> = {
   DRAFT: "טיוטה",
   SUBMITTED: "הוגשה",
+  WAITLISTED: "ברשימת המתנה",
   APPROVED: "אושרה",
   DECLINED: "נדחתה",
+  CANCELLATION_REQUESTED: "בקשת ביטול",
   CANCELLED: "בוטלה",
   COMPLETED: "הושלמה"
 };
@@ -86,6 +92,7 @@ export const clinicalRotationPaymentStatusLabels: Record<ClinicalRotationPayment
   NOT_REQUIRED: "לא נדרש",
   CASH_DUE: "לתשלום במזומן",
   LINK_PENDING: "ממתין לשליחת קישור",
+  LINK_DELIVERY_FAILED: "שליחת קישור נכשלה",
   LINK_SENT: "קישור נשלח",
   PAID: "שולם",
   WAIVED: "ויתרו על תשלום",
@@ -213,9 +220,17 @@ export function validateClinicalRotationOfferingPublishInput(input: {
   endsAt?: Date | null;
   minimumParticipants?: number | null;
   maximumCapacity?: number | null;
+  minDurationWeeks?: number | null;
+  maxDurationWeeks?: number | null;
   priceAmount?: number | null;
   paymentMethod?: string | null;
   paymentLink?: string | null;
+  requirements?: string | null;
+  cancellationPolicy?: string | null;
+  groupRegistrationEnabled?: boolean | null;
+  groupMinSize?: number | null;
+  groupMaxSize?: number | null;
+  isPreviewOnly?: boolean | null;
   openWindows: DateRangeLike[];
   blackouts: DateRangeLike[];
 }) {
@@ -229,6 +244,14 @@ export function validateClinicalRotationOfferingPublishInput(input: {
   if (input.maximumCapacity !== null && input.maximumCapacity !== undefined && input.maximumCapacity < input.minimumParticipants) {
     return { ok: false as const, error: "קיבולת מקסימלית לא יכולה להיות נמוכה ממספר המשתתפים המינימלי." };
   }
+  if (!input.minDurationWeeks || input.minDurationWeeks < 1) {
+    return { ok: false as const, error: "משך מינימלי חייב להיות לפחות שבוע אחד." };
+  }
+  if (!input.maxDurationWeeks || input.maxDurationWeeks < input.minDurationWeeks) {
+    return { ok: false as const, error: "משך מקסימלי חייב להיות גדול או שווה למשך המינימלי." };
+  }
+  if (!input.requirements?.trim()) return { ok: false as const, error: "יש להזין דרישות לסטודנטים." };
+  if (!input.cancellationPolicy?.trim()) return { ok: false as const, error: "יש להזין מדיניות ביטול." };
   if (input.priceAmount === null || input.priceAmount === undefined || input.priceAmount < 0) {
     return { ok: false as const, error: "יש להזין סכום תשלום תקין." };
   }
@@ -237,6 +260,23 @@ export function validateClinicalRotationOfferingPublishInput(input: {
   }
   if (input.paymentMethod === "EXTERNAL_PAYMENT_LINK" && !isHttpsUrl(input.paymentLink)) {
     return { ok: false as const, error: "בסוג תשלום חיצוני נדרש קישור HTTPS תקין." };
+  }
+  if (input.groupRegistrationEnabled) {
+    if (input.groupMinSize !== null && input.groupMinSize !== undefined && input.groupMinSize < 2) {
+      return { ok: false as const, error: "מינימום קבוצה חייב להיות לפחות 2." };
+    }
+    if (input.groupMaxSize !== null && input.groupMaxSize !== undefined && input.groupMaxSize < 2) {
+      return { ok: false as const, error: "מקסימום קבוצה חייב להיות לפחות 2." };
+    }
+    if (input.groupMinSize && input.groupMaxSize && input.groupMaxSize < input.groupMinSize) {
+      return { ok: false as const, error: "מקסימום קבוצה לא יכול להיות נמוך מהמינימום." };
+    }
+    if (input.maximumCapacity && input.groupMaxSize && input.groupMaxSize > input.maximumCapacity) {
+      return { ok: false as const, error: "מקסימום קבוצה לא יכול לעבור את קיבולת הסבב." };
+    }
+  }
+  if (input.isPreviewOnly) {
+    return { ok: false as const, error: "סבב תצוגה מקדימה לא ניתן לפרסום להגשות." };
   }
 
   const dateValidation = isClinicalRotationDateRangeAllowed({

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import {
   ClinicalRotationActionForm,
-  ClinicalRotationAdminAccessForm
+  ClinicalRotationAdminAccessForm,
+  ClinicalRotationAdminPermissionForm
 } from "@/components/clinical-rotations/clinical-rotation-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
@@ -29,6 +30,12 @@ export default async function AdminClinicalRotationUsersPage() {
       <Card>
         <h2 className="mb-4 text-xl font-black text-ink">הזמנה או עדכון נציג/ה</h2>
         <ClinicalRotationAdminAccessForm hospitals={hospitals.map((hospital) => ({ id: hospital.id, name: hospital.name }))} />
+      </Card>
+
+      <Card>
+        <h2 className="mb-4 text-xl font-black text-ink">הרשאת צפייה במסמכי אימות</h2>
+        <p className="mb-4 text-sm leading-7 text-slate-700">גם אדמין רגיל אינו מקבל גישה למסמכי זהות בלי הרשאה מפורשת.</p>
+        <ClinicalRotationAdminPermissionForm />
       </Card>
 
       <div className="space-y-3">

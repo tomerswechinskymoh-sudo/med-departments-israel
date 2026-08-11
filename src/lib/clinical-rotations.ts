@@ -2,6 +2,14 @@ import { randomUUID } from "node:crypto";
 import { notFound, redirect } from "next/navigation";
 import {
   ClinicalRotationApplicationStatus,
+  ClinicalRotationCancellationActorType,
+  ClinicalRotationCancellationReasonCategory,
+  ClinicalRotationCancellationStatus,
+  ClinicalRotationGroupMemberStatus,
+  ClinicalRotationGroupStatus,
+  ClinicalRotationIdentityVerificationStatus,
+  ClinicalRotationNotificationOutboxStatus,
+  ClinicalRotationNotificationOutboxType,
   ClinicalRotationOfferingStatus,
   ClinicalRotationPaymentMethod,
   ClinicalRotationPaymentStatus,
@@ -29,6 +37,11 @@ import {
   validateClinicalRotationOfferingPublishInput,
   type ClinicalRotationCoreSpecialtyValue
 } from "@/lib/clinical-rotations-shared";
+import {
+  createClinicalRotationInviteToken,
+  getClinicalRotationEligibilityState,
+  hashClinicalRotationInviteToken
+} from "@/lib/clinical-rotations-privacy";
 import { getBaseUrl, sendTransactionalEmail } from "@/lib/services/email";
 import { prisma } from "@/lib/prisma";
 import { slugify } from "@/lib/utils";
@@ -59,8 +72,11 @@ export function parseClinicalRotationSearch(input?: Record<string, SearchParamVa
     specialtyIds: splitClinicalRotationParam(input?.specialtyIds ?? input?.specialty),
     start: firstClinicalRotationParam(input?.start)?.trim() ?? "",
     end: firstClinicalRotationParam(input?.end)?.trim() ?? "",
+    region: firstClinicalRotationParam(input?.region)?.trim() ?? "",
+    durationWeeks: firstClinicalRotationParam(input?.durationWeeks)?.trim() ?? "",
     maxPrice: firstClinicalRotationParam(input?.maxPrice)?.trim() ?? "",
     paymentMethod: firstClinicalRotationParam(input?.paymentMethod)?.trim() ?? "",
+    groupOnly: firstClinicalRotationParam(input?.groupOnly) === "1",
     search: firstClinicalRotationParam(input?.search)?.trim() ?? ""
   };
 }
@@ -105,6 +121,8 @@ export async function createClinicalRotationAuditLog(
     hospitalId?: string | null;
     offeringId?: string | null;
     applicationId?: string | null;
+    groupId?: string | null;
+    cancellationId?: string | null;
     paymentId?: string | null;
     metadata?: Prisma.InputJsonValue;
   }
@@ -118,10 +136,279 @@ export async function createClinicalRotationAuditLog(
       hospitalId: input.hospitalId ?? null,
       offeringId: input.offeringId ?? null,
       applicationId: input.applicationId ?? null,
+      groupId: input.groupId ?? null,
+      cancellationId: input.cancellationId ?? null,
       paymentId: input.paymentId ?? null,
       metadata: input.metadata
     }
   });
+}
+
+async function lockClinicalRotationStudentIdentity(
+  tx: Prisma.TransactionClient,
+  input: { studentAnonymousKey: string; keyVersion: number }
+) {
+  await tx.$queryRaw`
+    SELECT "id"
+    FROM "ClinicalRotationStudentIdentity"
+    WHERE "student_anonymous_key" = ${input.studentAnonymousKey}
+      AND "key_version" = ${input.keyVersion}
+    FOR UPDATE
+  `;
+}
+
+async function findClinicalRotationDateConflict(
+  tx: Prisma.TransactionClient | typeof prisma,
+  input: {
+    studentAnonymousKey: string;
+    keyVersion: number;
+    requestedStartAt: Date;
+    requestedEndAt: Date;
+    excludeApplicationIds?: string[];
+  }
+) {
+  return tx.clinicalRotationApplication.findFirst({
+    where: {
+      studentAnonymousKey: input.studentAnonymousKey,
+      keyVersion: input.keyVersion,
+      status: { in: clinicalRotationApplicationBlockingStatuses() },
+      requestedStartAt: { lte: input.requestedEndAt },
+      requestedEndAt: { gte: input.requestedStartAt },
+      ...(input.excludeApplicationIds?.length ? { id: { notIn: input.excludeApplicationIds } } : {})
+    },
+    select: { id: true }
+  });
+}
+
+function clinicalRotationPaymentLinkDeliveryErrorCategory(error: unknown) {
+  if (!(error instanceof Error)) return "UNKNOWN";
+  if (error.message.includes("Missing RESEND_API_KEY") || error.message.includes("Missing EMAIL_FROM")) {
+    return "EMAIL_PROVIDER_NOT_CONFIGURED";
+  }
+  if (error.message.includes("Skipping delivery")) return "EMAIL_DELIVERY_SKIPPED";
+  return "EMAIL_DELIVERY_FAILED";
+}
+
+async function enqueueClinicalRotationPaymentLinkEmail(
+  tx: Prisma.TransactionClient,
+  input: {
+    paymentId: string;
+    applicationId: string;
+    hospitalId: string;
+    offeringId: string;
+    groupId?: string | null;
+    actorUserId?: string | null;
+  }
+) {
+  await tx.clinicalRotationNotificationOutbox.upsert({
+    where: {
+      type_paymentId: {
+        type: ClinicalRotationNotificationOutboxType.PAYMENT_LINK_EMAIL,
+        paymentId: input.paymentId
+      }
+    },
+    create: {
+      type: ClinicalRotationNotificationOutboxType.PAYMENT_LINK_EMAIL,
+      status: ClinicalRotationNotificationOutboxStatus.PENDING,
+      paymentId: input.paymentId,
+      applicationId: input.applicationId,
+      hospitalId: input.hospitalId,
+      offeringId: input.offeringId,
+      groupId: input.groupId ?? null,
+      createdByUserId: input.actorUserId ?? null,
+      metadata: { purpose: "payment_link_email" }
+    },
+    update: {
+      status: ClinicalRotationNotificationOutboxStatus.PENDING,
+      lockedAt: null,
+      nextAttemptAt: null,
+      failedAt: null,
+      lastErrorCategory: null,
+      createdByUserId: input.actorUserId ?? null
+    }
+  });
+}
+
+export async function deliverClinicalRotationPaymentLink(input: {
+  paymentId: string;
+  actorUserId?: string | null;
+}) {
+  const now = new Date();
+  const claim = await prisma.$transaction(async (tx) => {
+    const outbox = await tx.clinicalRotationNotificationOutbox.findFirst({
+      where: {
+        type: ClinicalRotationNotificationOutboxType.PAYMENT_LINK_EMAIL,
+        paymentId: input.paymentId
+      },
+      select: { id: true }
+    });
+
+    if (!outbox) {
+      return { action: "missing" as const };
+    }
+
+    await tx.$queryRaw`SELECT "id" FROM "ClinicalRotationNotificationOutbox" WHERE "id" = ${outbox.id} FOR UPDATE`;
+    const locked = await tx.clinicalRotationNotificationOutbox.findUnique({
+      where: { id: outbox.id },
+      include: {
+        payment: {
+          include: {
+            application: {
+              include: {
+                studentUser: { select: { fullName: true, email: true } },
+                hospital: { select: { name: true } },
+                offering: true
+              }
+            }
+          }
+        }
+      }
+    });
+
+    if (!locked?.payment || locked.status === ClinicalRotationNotificationOutboxStatus.SENT) {
+      return { action: "already_done" as const };
+    }
+
+    if (
+      locked.status === ClinicalRotationNotificationOutboxStatus.PROCESSING &&
+      locked.lockedAt &&
+      now.getTime() - locked.lockedAt.getTime() < 5 * 60 * 1000
+    ) {
+      return { action: "in_progress" as const };
+    }
+
+    await tx.clinicalRotationNotificationOutbox.update({
+      where: { id: locked.id },
+      data: {
+        status: ClinicalRotationNotificationOutboxStatus.PROCESSING,
+        lockedAt: now,
+        nextAttemptAt: null,
+        attemptCount: { increment: 1 },
+        lastErrorCategory: null
+      }
+    });
+
+    return { action: "send" as const, outboxId: locked.id, payment: locked.payment };
+  });
+
+  if (claim.action !== "send") {
+    return { ok: true as const, status: claim.action };
+  }
+
+  const { payment } = claim;
+  const application = payment.application;
+  if (!payment.paymentLink || payment.method !== ClinicalRotationPaymentMethod.EXTERNAL_PAYMENT_LINK) {
+    await prisma.$transaction(async (tx) => {
+      await tx.clinicalRotationNotificationOutbox.update({
+        where: { id: claim.outboxId },
+        data: {
+          status: ClinicalRotationNotificationOutboxStatus.FAILED,
+          lockedAt: null,
+          failedAt: new Date(),
+          lastErrorCategory: "PAYMENT_LINK_MISSING",
+          nextAttemptAt: new Date(Date.now() + 60 * 60 * 1000)
+        }
+      });
+      await tx.clinicalRotationPayment.update({
+        where: { id: payment.id },
+        data: { status: ClinicalRotationPaymentStatus.LINK_DELIVERY_FAILED }
+      });
+    });
+    return { ok: false as const, status: "failed" as const, errorCategory: "PAYMENT_LINK_MISSING" };
+  }
+
+  const dashboardUrl = `${getBaseUrl().replace(/\/$/, "")}/clinical-rotations/my-rotations`;
+  const emailPayload = buildClinicalRotationPaymentLinkEmailPayload({
+    studentName: application.studentUser.fullName,
+    studentEmail: application.studentUser.email,
+    hospitalName: application.hospital.name,
+    offeringName: application.offering.displayName,
+    dateRange: clinicalRotationDateRangeLabel(application.requestedStartAt, application.requestedEndAt),
+    amountLabel: clinicalRotationPriceLabel(application.offering),
+    paymentLink: payment.paymentLink,
+    dashboardUrl
+  });
+
+  try {
+    const emailResult = await sendTransactionalEmail(emailPayload);
+    if (!emailResult.delivered) {
+      throw new Error(emailResult.skipped ? "Email delivery skipped in local environment." : "Email delivery was not confirmed.");
+    }
+
+    const sentAt = new Date();
+    await prisma.$transaction(async (tx) => {
+      await tx.clinicalRotationPayment.update({
+        where: { id: payment.id },
+        data: {
+          status: ClinicalRotationPaymentStatus.LINK_SENT,
+          linkSentAt: sentAt,
+          updatedByUserId: input.actorUserId ?? payment.updatedByUserId
+        }
+      });
+      await tx.clinicalRotationNotificationOutbox.update({
+        where: { id: claim.outboxId },
+        data: {
+          status: ClinicalRotationNotificationOutboxStatus.SENT,
+          lockedAt: null,
+          sentAt,
+          failedAt: null,
+          nextAttemptAt: null,
+          lastErrorCategory: null
+        }
+      });
+      await createClinicalRotationAuditLog(tx, {
+        actorUserId: input.actorUserId ?? null,
+        action: "clinical_rotation.payment_link_sent",
+        entityType: "ClinicalRotationPayment",
+        entityId: payment.id,
+        hospitalId: application.hospitalId,
+        offeringId: application.offeringId,
+        applicationId: application.id,
+        groupId: application.groupId,
+        paymentId: payment.id,
+        metadata: { delivered: true, outboxId: claim.outboxId }
+      });
+    });
+
+    return { ok: true as const, status: "sent" as const };
+  } catch (error) {
+    const errorCategory = clinicalRotationPaymentLinkDeliveryErrorCategory(error);
+    const retryAt = new Date(Date.now() + 60 * 60 * 1000);
+    await prisma.$transaction(async (tx) => {
+      await tx.clinicalRotationPayment.update({
+        where: { id: payment.id },
+        data: {
+          status: ClinicalRotationPaymentStatus.LINK_DELIVERY_FAILED,
+          linkSentAt: null,
+          updatedByUserId: input.actorUserId ?? payment.updatedByUserId
+        }
+      });
+      await tx.clinicalRotationNotificationOutbox.update({
+        where: { id: claim.outboxId },
+        data: {
+          status: ClinicalRotationNotificationOutboxStatus.FAILED,
+          lockedAt: null,
+          failedAt: new Date(),
+          nextAttemptAt: retryAt,
+          lastErrorCategory: errorCategory
+        }
+      });
+      await createClinicalRotationAuditLog(tx, {
+        actorUserId: input.actorUserId ?? null,
+        action: "clinical_rotation.payment_link_delivery_failed",
+        entityType: "ClinicalRotationPayment",
+        entityId: payment.id,
+        hospitalId: application.hospitalId,
+        offeringId: application.offeringId,
+        applicationId: application.id,
+        groupId: application.groupId,
+        paymentId: payment.id,
+        metadata: { errorCategory, outboxId: claim.outboxId }
+      });
+    });
+
+    return { ok: false as const, status: "failed" as const, errorCategory };
+  }
 }
 
 export async function requireClinicalRotationStudentSession(nextPath: string) {
@@ -243,9 +530,76 @@ export async function requireClinicalRotationHospitalApiAccess(hospitalId: strin
   return { ok: true as const, session, isAdmin: false as const };
 }
 
+async function getClinicalRotationApprovedStudentIdentity(session: AppSession) {
+  const identity = await prisma.clinicalRotationStudentIdentity.findUnique({
+    where: { userId: session.userId },
+    select: {
+      id: true,
+      status: true,
+      studentAnonymousKey: true,
+      keyVersion: true,
+      documentDeletedAt: true
+    }
+  });
+
+  if (!identity || identity.status === ClinicalRotationIdentityVerificationStatus.NOT_SUBMITTED) {
+    return {
+      ok: false as const,
+      status: 403,
+      error: "לפני הגשה לסבב קליני יש להשלים אימות זהות וזכאות."
+    };
+  }
+
+  if (identity.status === ClinicalRotationIdentityVerificationStatus.PENDING_REVIEW) {
+    return {
+      ok: false as const,
+      status: 403,
+      error: "בקשת האימות שלך ממתינה לבדיקה ידנית."
+    };
+  }
+
+  if (identity.status !== ClinicalRotationIdentityVerificationStatus.APPROVED || !identity.studentAnonymousKey) {
+    return {
+      ok: false as const,
+      status: 403,
+      error: "אימות הזהות לא אושר לסבבים קליניים."
+    };
+  }
+
+  const eligibility = await getClinicalRotationEligibilityState(identity.studentAnonymousKey, identity.keyVersion);
+  if (!eligibility.ok) {
+    return { ok: false as const, status: 403, error: eligibility.message };
+  }
+
+  return {
+    ok: true as const,
+    identity: {
+      ...identity,
+      studentAnonymousKey: identity.studentAnonymousKey
+    },
+    eligibility
+  };
+}
+
+function clinicalRotationApplicationBlockingStatuses() {
+  return [
+    ClinicalRotationApplicationStatus.SUBMITTED,
+    ClinicalRotationApplicationStatus.WAITLISTED,
+    ClinicalRotationApplicationStatus.APPROVED,
+    ClinicalRotationApplicationStatus.CANCELLATION_REQUESTED
+  ];
+}
+
+function clinicalRotationApprovedCapacityStatuses() {
+  return [
+    ClinicalRotationApplicationStatus.APPROVED,
+    ClinicalRotationApplicationStatus.COMPLETED
+  ];
+}
+
 export async function getClinicalRotationSearchOptions() {
   const offerings = await prisma.clinicalRotationOffering.findMany({
-    where: { status: ClinicalRotationOfferingStatus.PUBLISHED },
+    where: { status: ClinicalRotationOfferingStatus.PUBLISHED, isPreviewOnly: false },
     select: {
       hospital: { select: { id: true, name: true, city: true, region: true } },
       specialty: { select: { id: true, name: true } }
@@ -255,7 +609,10 @@ export async function getClinicalRotationSearchOptions() {
 
   return {
     hospitals: Array.from(new Map(offerings.map((offering) => [offering.hospital.id, offering.hospital])).values()),
-    specialties: Array.from(new Map(offerings.map((offering) => [offering.specialty.id, offering.specialty])).values())
+    specialties: Array.from(new Map(offerings.map((offering) => [offering.specialty.id, offering.specialty])).values()),
+    regions: Array.from(
+      new Set(offerings.map((offering) => offering.hospital.region).filter((region): region is string => Boolean(region)))
+    ).sort()
   };
 }
 
@@ -291,6 +648,7 @@ type ClinicalRotationOfferingListItemBase = Prisma.ClinicalRotationOfferingGetPa
 
 export type ClinicalRotationOfferingListItem = ClinicalRotationOfferingListItemBase & {
   participantCount: number;
+  remainingCapacity: number | null;
   minimumMet: boolean;
   priceLabel: string;
   dateLabel: string;
@@ -301,15 +659,21 @@ export async function listClinicalRotationOfferings(searchParams?: Record<string
   const startDate = search.start ? parseClinicalRotationDate(search.start) : null;
   const endDate = search.end ? parseClinicalRotationDate(search.end) : null;
   const maxPrice = search.maxPrice ? Number(search.maxPrice) : null;
+  const durationWeeks = search.durationWeeks ? Number(search.durationWeeks) : null;
   const hasValidPrice = maxPrice !== null && Number.isFinite(maxPrice);
+  const hasValidDuration = durationWeeks !== null && Number.isFinite(durationWeeks);
 
   const offerings = await prisma.clinicalRotationOffering.findMany({
     where: {
       status: ClinicalRotationOfferingStatus.PUBLISHED,
+      isPreviewOnly: false,
       ...(search.hospitalIds.length > 0 ? { hospitalId: { in: search.hospitalIds } } : {}),
       ...(search.specialtyIds.length > 0 ? { specialtyId: { in: search.specialtyIds } } : {}),
+      ...(search.region ? { hospital: { region: search.region } } : {}),
       ...(search.paymentMethod ? { paymentMethod: search.paymentMethod as ClinicalRotationPaymentMethod } : {}),
       ...(hasValidPrice ? { priceAmount: { lte: maxPrice! } } : {}),
+      ...(hasValidDuration ? { minDurationWeeks: { lte: durationWeeks! }, maxDurationWeeks: { gte: durationWeeks! } } : {}),
+      ...(search.groupOnly ? { groupRegistrationEnabled: true } : {}),
       ...(search.search
         ? {
             OR: [
@@ -339,9 +703,11 @@ export async function listClinicalRotationOfferings(searchParams?: Record<string
     })
     .map((offering) => {
       const participantCount = offering.applications.length;
+      const remainingCapacity = offering.maximumCapacity === null ? null : Math.max(0, offering.maximumCapacity - participantCount);
       return {
         ...offering,
         participantCount,
+        remainingCapacity,
         minimumMet: participantCount >= offering.minimumParticipants,
         priceLabel: clinicalRotationPriceLabel(offering),
         dateLabel: clinicalRotationDateRangeLabel(offering.startsAt, offering.endsAt)
@@ -360,9 +726,11 @@ export async function getClinicalRotationOfferingForStudent(offeringSlug: string
   }
 
   const participantCount = offering.applications.length;
+  const remainingCapacity = offering.maximumCapacity === null ? null : Math.max(0, offering.maximumCapacity - participantCount);
   return {
     ...offering,
     participantCount,
+    remainingCapacity,
     minimumMet: participantCount >= offering.minimumParticipants,
     priceLabel: clinicalRotationPriceLabel(offering),
     dateLabel: clinicalRotationDateRangeLabel(offering.startsAt, offering.endsAt)
@@ -370,7 +738,7 @@ export async function getClinicalRotationOfferingForStudent(offeringSlug: string
 }
 
 export async function getClinicalRotationHospitalDashboard(hospitalId: string) {
-  const [windows, blackouts, offerings, applications, payments] = await Promise.all([
+  const [windows, blackouts, offerings, applications, payments, groups, cancellations] = await Promise.all([
     prisma.clinicalRotationAvailabilityWindow.findMany({
       where: { hospitalId },
       orderBy: [{ startsAt: "asc" }]
@@ -415,10 +783,21 @@ export async function getClinicalRotationHospitalDashboard(hospitalId: string) {
       },
       orderBy: [{ updatedAt: "desc" }],
       take: 100
+    }),
+    getClinicalRotationHospitalGroups(hospitalId),
+    prisma.clinicalRotationCancellation.findMany({
+      where: { hospitalId },
+      include: {
+        application: { select: { id: true, status: true } },
+        offering: { select: { displayName: true } },
+        studentUser: { select: { fullName: true, email: true } }
+      },
+      orderBy: [{ requestedAt: "desc" }],
+      take: 100
     })
   ]);
 
-  return { windows, blackouts, offerings, applications, payments };
+  return { windows, blackouts, offerings, applications, payments, groups, cancellations };
 }
 
 export async function getClinicalRotationHospitalFormOptions(hospitalId: string) {
@@ -446,16 +825,24 @@ export async function getClinicalRotationHospitalFormOptions(hospitalId: string)
 }
 
 export async function getClinicalRotationStudentDashboard(session: AppSession) {
-  const [applications, rules] = await Promise.all([
+  const identity = await prisma.clinicalRotationStudentIdentity.findUnique({
+    where: { userId: session.userId },
+    select: { status: true, studentAnonymousKey: true, keyVersion: true, documentDeletedAt: true, decidedAt: true, reviewerNote: true }
+  });
+  const studentKeyFilter = identity?.studentAnonymousKey
+    ? { studentAnonymousKey: identity.studentAnonymousKey, keyVersion: identity.keyVersion }
+    : { studentUserId: session.userId };
+  const [applications, rules, cancellations] = await Promise.all([
     prisma.clinicalRotationApplication.findMany({
-      where: { studentUserId: session.userId },
+      where: studentKeyFilter,
       include: {
         offering: {
           select: {
             slug: true,
             displayName: true,
             minimumParticipants: true,
-            paymentMethod: true
+            paymentMethod: true,
+            groupRegistrationEnabled: true
           }
         },
         hospital: { select: { name: true } },
@@ -465,7 +852,16 @@ export async function getClinicalRotationStudentDashboard(session: AppSession) {
       },
       orderBy: [{ requestedStartAt: "asc" }]
     }),
-    getActiveClinicalRotationCoreRules()
+    getActiveClinicalRotationCoreRules(),
+    prisma.clinicalRotationCancellation.findMany({
+      where: studentKeyFilter,
+      include: {
+        offering: { select: { displayName: true, slug: true } },
+        hospital: { select: { name: true } }
+      },
+      orderBy: [{ requestedAt: "desc" }],
+      take: 20
+    })
   ]);
 
   const summary = summarizeClinicalRotationDashboard({
@@ -482,7 +878,7 @@ export async function getClinicalRotationStudentDashboard(session: AppSession) {
     }))
   });
 
-  return { applications, rules, summary };
+  return { identity, applications, rules, summary, cancellations };
 }
 
 export async function getActiveClinicalRotationCoreRules(date = new Date()) {
@@ -506,7 +902,8 @@ export async function getActiveClinicalRotationCoreRules(date = new Date()) {
 }
 
 async function evaluateStudentCoreLimit(input: {
-  studentUserId: string;
+  studentAnonymousKey: string;
+  keyVersion: number;
   coreSpecialty: ClinicalRotationCoreSpecialtyValue | null;
   requestedStartAt: Date;
   requestedEndAt: Date;
@@ -515,6 +912,9 @@ async function evaluateStudentCoreLimit(input: {
     return { rule: null, evaluation: evaluateClinicalRotationCoreLimit({ completedWeeks: 0, futureApprovedWeeks: 0, requestedWeeks: 0 }) };
   }
 
+  const rotationYear = input.requestedStartAt.getUTCFullYear();
+  const yearStart = new Date(Date.UTC(rotationYear, 0, 1));
+  const yearEnd = new Date(Date.UTC(rotationYear, 11, 31, 23, 59, 59, 999));
   const [rule, applications] = await Promise.all([
     prisma.clinicalRotationCoreRule.findFirst({
       where: {
@@ -526,9 +926,11 @@ async function evaluateStudentCoreLimit(input: {
     }),
     prisma.clinicalRotationApplication.findMany({
       where: {
-        studentUserId: input.studentUserId,
+        studentAnonymousKey: input.studentAnonymousKey,
+        keyVersion: input.keyVersion,
         coreSpecialty: input.coreSpecialty,
-        status: { in: [ClinicalRotationApplicationStatus.APPROVED, ClinicalRotationApplicationStatus.COMPLETED] }
+        status: { in: [ClinicalRotationApplicationStatus.APPROVED, ClinicalRotationApplicationStatus.COMPLETED] },
+        requestedStartAt: { gte: yearStart, lte: yearEnd }
       },
       select: {
         status: true,
@@ -562,8 +964,12 @@ export async function submitClinicalRotationApplication(input: {
   offeringId: string;
   requestedStartAt: Date;
   requestedEndAt: Date;
+  acceptedRequirements?: boolean;
   studentNotes?: string | null;
 }) {
+  const identity = await getClinicalRotationApprovedStudentIdentity(input.session);
+  if (!identity.ok) return identity;
+
   const offering = await prisma.clinicalRotationOffering.findUnique({
     where: { id: input.offeringId },
     include: {
@@ -583,6 +989,18 @@ export async function submitClinicalRotationApplication(input: {
     return { ok: false as const, status: 404, error: "הסבב לא נמצא או אינו פתוח להגשה." };
   }
 
+  if (offering.isPreviewOnly || offering.applicationBlockedReason) {
+    return {
+      ok: false as const,
+      status: 403,
+      error: offering.applicationBlockedReason ?? "זהו סבב תצוגה מקדימה ואי אפשר להגיש אליו בקשות."
+    };
+  }
+
+  if (!input.acceptedRequirements) {
+    return { ok: false as const, status: 400, error: "יש לאשר שקראת והבנת את דרישות הסבב." };
+  }
+
   const dateValidation = isClinicalRotationDateRangeAllowed({
     requestedStartAt: input.requestedStartAt,
     requestedEndAt: input.requestedEndAt,
@@ -595,11 +1013,19 @@ export async function submitClinicalRotationApplication(input: {
     return { ok: false as const, status: 400, error: dateValidation.error };
   }
 
+  if (dateValidation.weeks < offering.minDurationWeeks || dateValidation.weeks > offering.maxDurationWeeks) {
+    return {
+      ok: false as const,
+      status: 400,
+      error: `משך הסבב חייב להיות בין ${offering.minDurationWeeks} ל-${offering.maxDurationWeeks} שבועות.`
+    };
+  }
+
   if (offering.maximumCapacity) {
     const approvedCount = await prisma.clinicalRotationApplication.count({
       where: {
         offeringId: offering.id,
-        status: { in: [ClinicalRotationApplicationStatus.APPROVED, ClinicalRotationApplicationStatus.COMPLETED] },
+        status: { in: clinicalRotationApprovedCapacityStatuses() },
         requestedStartAt: { lte: input.requestedEndAt },
         requestedEndAt: { gte: input.requestedStartAt }
       }
@@ -610,11 +1036,23 @@ export async function submitClinicalRotationApplication(input: {
     }
   }
 
+  const conflict = await findClinicalRotationDateConflict(prisma, {
+    studentAnonymousKey: identity.identity.studentAnonymousKey,
+    keyVersion: identity.identity.keyVersion,
+    requestedStartAt: input.requestedStartAt,
+    requestedEndAt: input.requestedEndAt
+  });
+
+  if (conflict) {
+    return { ok: false as const, status: 409, error: "כבר קיימת בקשה או סבב חופף לתאריכים שנבחרו." };
+  }
+
   const coreSpecialty =
     (offering.coreSpecialty as ClinicalRotationCoreSpecialtyValue | null) ??
     inferClinicalRotationCoreSpecialty(offering.specialty.name);
   const limit = await evaluateStudentCoreLimit({
-    studentUserId: input.session.userId,
+    studentAnonymousKey: identity.identity.studentAnonymousKey,
+    keyVersion: identity.identity.keyVersion,
     coreSpecialty,
     requestedStartAt: input.requestedStartAt,
     requestedEndAt: input.requestedEndAt
@@ -628,7 +1066,6 @@ export async function submitClinicalRotationApplication(input: {
       hospitalId: offering.hospitalId,
       offeringId: offering.id,
       metadata: {
-        studentUserId: input.session.userId,
         requestedStartAt: input.requestedStartAt.toISOString(),
         requestedEndAt: input.requestedEndAt.toISOString(),
         coreSpecialty,
@@ -638,7 +1075,23 @@ export async function submitClinicalRotationApplication(input: {
     return { ok: false as const, status: 403, error: limit.evaluation.message ?? "הבקשה חסומה לפי כלל פעיל." };
   }
 
-  const application = await prisma.$transaction(async (tx) => {
+  let application;
+  try {
+    application = await prisma.$transaction(async (tx) => {
+      await lockClinicalRotationStudentIdentity(tx, {
+        studentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion
+      });
+      const transactionConflict = await findClinicalRotationDateConflict(tx, {
+        studentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion,
+        requestedStartAt: input.requestedStartAt,
+        requestedEndAt: input.requestedEndAt
+      });
+      if (transactionConflict) {
+        throw new Error("CLINICAL_ROTATION_DATE_CONFLICT");
+      }
+
     const created = await tx.clinicalRotationApplication.create({
       data: {
         offeringId: offering.id,
@@ -647,10 +1100,22 @@ export async function submitClinicalRotationApplication(input: {
         specialtyId: offering.specialtyId,
         departmentId: offering.departmentId,
         coreSpecialty,
+        studentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion,
         requestedStartAt: input.requestedStartAt,
         requestedEndAt: input.requestedEndAt,
+        durationWeeks: dateValidation.weeks,
         status: ClinicalRotationApplicationStatus.SUBMITTED,
         studentNotes: input.studentNotes?.trim() || null,
+        eligibilitySnapshot: {
+          importId: identity.eligibility.importId,
+          keyVersion: identity.eligibility.keyVersion,
+          matched: true
+        },
+        complianceSnapshot: {
+          coreSpecialty,
+          action: limit.evaluation.action
+        },
         ruleSnapshot: limit.rule
           ? {
               coreSpecialty: limit.rule.coreSpecialty,
@@ -659,7 +1124,8 @@ export async function submitClinicalRotationApplication(input: {
               enforcementMode: limit.rule.enforcementMode
             }
           : Prisma.JsonNull,
-        limitEvaluation: limit.evaluation
+        limitEvaluation: limit.evaluation,
+        acceptedRequirementsAt: new Date()
       }
     });
 
@@ -678,8 +1144,14 @@ export async function submitClinicalRotationApplication(input: {
       }
     });
 
-    return created;
-  });
+      return created;
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message === "CLINICAL_ROTATION_DATE_CONFLICT") {
+      return { ok: false as const, status: 409, error: "כבר קיימת בקשה או סבב חופף לתאריכים שנבחרו." };
+    }
+    throw error;
+  }
 
   return { ok: true as const, application, warning: limit.evaluation.action === "warn" ? limit.evaluation.message : null };
 }
@@ -714,9 +1186,17 @@ export async function validateClinicalRotationOfferingPublishById(offeringId: st
     endsAt: offering.endsAt,
     minimumParticipants: offering.minimumParticipants,
     maximumCapacity: offering.maximumCapacity,
+    minDurationWeeks: offering.minDurationWeeks,
+    maxDurationWeeks: offering.maxDurationWeeks,
     priceAmount: Number(offering.priceAmount),
     paymentMethod: offering.paymentMethod,
     paymentLink: offering.paymentLink,
+    requirements: offering.requirements,
+    cancellationPolicy: offering.cancellationPolicy,
+    groupRegistrationEnabled: offering.groupRegistrationEnabled,
+    groupMinSize: offering.groupMinSize,
+    groupMaxSize: offering.groupMaxSize,
+    isPreviewOnly: offering.isPreviewOnly,
     openWindows: offering.hospital.clinicalRotationAvailabilityWindows,
     blackouts: offering.hospital.clinicalRotationBlackouts
   });
@@ -732,10 +1212,24 @@ export async function createClinicalRotationOffering(input: {
   endsAt: Date;
   minimumParticipants: number;
   maximumCapacity?: number | null;
+  minDurationWeeks: number;
+  maxDurationWeeks: number;
   priceAmount: number;
   priceUnit: "TOTAL" | "PER_WEEK";
   paymentMethod: "CASH_AT_ROTATION" | "EXTERNAL_PAYMENT_LINK";
   paymentLink?: string | null;
+  requirements?: string | null;
+  cancellationPolicy?: string | null;
+  workLanguage?: string | null;
+  departmentContactName?: string | null;
+  departmentContactEmail?: string | null;
+  requiresDeanApproval?: boolean;
+  requiresInsurance?: boolean;
+  groupRegistrationEnabled?: boolean;
+  groupMinSize?: number | null;
+  groupMaxSize?: number | null;
+  isPreviewOnly?: boolean;
+  applicationBlockedReason?: string | null;
   studentInstructions?: string | null;
   internalNotes?: string | null;
   publish?: boolean;
@@ -770,9 +1264,17 @@ export async function createClinicalRotationOffering(input: {
         endsAt: input.endsAt,
         minimumParticipants: input.minimumParticipants,
         maximumCapacity: input.maximumCapacity,
+        minDurationWeeks: input.minDurationWeeks,
+        maxDurationWeeks: input.maxDurationWeeks,
         priceAmount: input.priceAmount,
         paymentMethod: input.paymentMethod,
         paymentLink: input.paymentLink,
+        requirements: input.requirements,
+        cancellationPolicy: input.cancellationPolicy,
+        groupRegistrationEnabled: input.groupRegistrationEnabled,
+        groupMinSize: input.groupMinSize,
+        groupMaxSize: input.groupMaxSize,
+        isPreviewOnly: input.isPreviewOnly,
         openWindows: windows,
         blackouts
       })
@@ -800,12 +1302,26 @@ export async function createClinicalRotationOffering(input: {
         endsAt: input.endsAt,
         minimumParticipants: input.minimumParticipants,
         maximumCapacity: input.maximumCapacity ?? null,
+        minDurationWeeks: input.minDurationWeeks,
+        maxDurationWeeks: input.maxDurationWeeks,
         priceAmount: input.priceAmount,
         priceUnit: input.priceUnit,
         paymentMethod: input.paymentMethod,
         paymentLink: input.paymentMethod === "EXTERNAL_PAYMENT_LINK" ? input.paymentLink?.trim() || null : null,
         status,
         publishedAt: status === ClinicalRotationOfferingStatus.PUBLISHED ? new Date() : null,
+        requirements: input.requirements?.trim() || null,
+        cancellationPolicy: input.cancellationPolicy?.trim() || null,
+        workLanguage: input.workLanguage?.trim() || null,
+        departmentContactName: input.departmentContactName?.trim() || null,
+        departmentContactEmail: input.departmentContactEmail?.trim() || null,
+        requiresDeanApproval: input.requiresDeanApproval === true,
+        requiresInsurance: input.requiresInsurance !== false,
+        groupRegistrationEnabled: input.groupRegistrationEnabled === true,
+        groupMinSize: input.groupRegistrationEnabled ? input.groupMinSize ?? null : null,
+        groupMaxSize: input.groupRegistrationEnabled ? input.groupMaxSize ?? null : null,
+        isPreviewOnly: input.isPreviewOnly === true,
+        applicationBlockedReason: input.applicationBlockedReason?.trim() || null,
         studentInstructions: input.studentInstructions?.trim() || null,
         internalNotes: input.internalNotes?.trim() || null,
         createdByUserId: input.session.userId,
@@ -834,7 +1350,7 @@ export async function createClinicalRotationOffering(input: {
 export async function updateClinicalRotationOfferingStatus(input: {
   session: AppSession;
   offeringId: string;
-  action: "publish" | "pause" | "close";
+  action: "publish" | "pause" | "close" | "cancel";
 }) {
   const offering = await prisma.clinicalRotationOffering.findUnique({
     where: { id: input.offeringId },
@@ -858,7 +1374,9 @@ export async function updateClinicalRotationOfferingStatus(input: {
       ? ClinicalRotationOfferingStatus.PUBLISHED
       : input.action === "pause"
         ? ClinicalRotationOfferingStatus.PAUSED
-        : ClinicalRotationOfferingStatus.CLOSED;
+        : input.action === "cancel"
+          ? ClinicalRotationOfferingStatus.CANCELLED
+          : ClinicalRotationOfferingStatus.CLOSED;
 
   await prisma.$transaction(async (tx) => {
     await tx.clinicalRotationOffering.update({
@@ -868,7 +1386,8 @@ export async function updateClinicalRotationOfferingStatus(input: {
         updatedByUserId: input.session.userId,
         ...(input.action === "publish" ? { publishedAt: now, pausedAt: null, closedAt: null } : {}),
         ...(input.action === "pause" ? { pausedAt: now } : {}),
-        ...(input.action === "close" ? { closedAt: now } : {})
+        ...(input.action === "close" ? { closedAt: now } : {}),
+        ...(input.action === "cancel" ? { cancelledAt: now, closedAt: now } : {})
       }
     });
 
@@ -904,15 +1423,44 @@ export async function approveClinicalRotationApplication(input: {
   const auth = await requireClinicalRotationHospitalApiAccess(application.hospitalId);
   if (!auth.ok) return auth;
 
-  if (application.status !== ClinicalRotationApplicationStatus.SUBMITTED) {
-    return { ok: false as const, status: 409, error: "ניתן לאשר רק בקשה שהוגשה וממתינה לבדיקה." };
+  if (application.studentUserId === input.session.userId) {
+    return { ok: false as const, status: 403, error: "אי אפשר לאשר בקשה של עצמך." };
+  }
+
+  if (application.groupId) {
+    return { ok: false as const, status: 409, error: "בקשה קבוצתית מאושרת דרך מסך הקבוצות." };
+  }
+
+  if (
+    application.status !== ClinicalRotationApplicationStatus.SUBMITTED &&
+    application.status !== ClinicalRotationApplicationStatus.WAITLISTED
+  ) {
+    return { ok: false as const, status: 409, error: "ניתן לאשר רק בקשה שהוגשה או נמצאת בהמתנה." };
   }
 
   const paymentStatus =
     application.offering.paymentMethod === ClinicalRotationPaymentMethod.CASH_AT_ROTATION
       ? ClinicalRotationPaymentStatus.CASH_DUE
       : ClinicalRotationPaymentStatus.LINK_PENDING;
-  const payment = await prisma.$transaction(async (tx) => {
+  let payment;
+  try {
+    payment = await prisma.$transaction(async (tx) => {
+    await tx.$queryRaw`SELECT "id" FROM "ClinicalRotationOffering" WHERE "id" = ${application.offeringId} FOR UPDATE`;
+    if (application.offering.maximumCapacity) {
+      const approvedCount = await tx.clinicalRotationApplication.count({
+        where: {
+          offeringId: application.offeringId,
+          status: { in: clinicalRotationApprovedCapacityStatuses() },
+          requestedStartAt: { lte: application.requestedEndAt },
+          requestedEndAt: { gte: application.requestedStartAt }
+        }
+      });
+
+      if (approvedCount >= application.offering.maximumCapacity) {
+        throw new Error("אין קיבולת זמינה בתאריכים שנבחרו.");
+      }
+    }
+
     const updatedApplication = await tx.clinicalRotationApplication.update({
       where: { id: application.id },
       data: {
@@ -943,65 +1491,41 @@ export async function approveClinicalRotationApplication(input: {
       }
     });
 
-    await createClinicalRotationAuditLog(tx, {
-      actorUserId: input.session.userId,
-      action: "clinical_rotation.application_approved",
+	    await createClinicalRotationAuditLog(tx, {
+	      actorUserId: input.session.userId,
+	      action: "clinical_rotation.application_approved",
       entityType: "ClinicalRotationApplication",
       entityId: updatedApplication.id,
       hospitalId: updatedApplication.hospitalId,
       offeringId: updatedApplication.offeringId,
       applicationId: updatedApplication.id,
       paymentId: upsertedPayment.id,
-      metadata: { paymentStatus }
-    });
+	      metadata: { paymentStatus }
+	    });
 
-    return upsertedPayment;
-  });
+	    if (application.offering.paymentMethod === ClinicalRotationPaymentMethod.EXTERNAL_PAYMENT_LINK) {
+	      await enqueueClinicalRotationPaymentLinkEmail(tx, {
+	        paymentId: upsertedPayment.id,
+	        applicationId: application.id,
+	        hospitalId: application.hospitalId,
+	        offeringId: application.offeringId,
+	        groupId: application.groupId,
+	        actorUserId: input.session.userId
+	      });
+	    }
 
-  if (application.offering.paymentMethod === ClinicalRotationPaymentMethod.EXTERNAL_PAYMENT_LINK) {
-    if (!application.offering.paymentLink) {
-      return { ok: false as const, status: 500, error: "חסר קישור תשלום בסבב שאושר." };
+	    return upsertedPayment;
+	    });
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("אין קיבולת זמינה")) {
+      return { ok: false as const, status: 409, error: error.message };
     }
-
-    const dashboardUrl = `${getBaseUrl().replace(/\/$/, "")}/clinical-rotations/my-rotations`;
-    const emailPayload = buildClinicalRotationPaymentLinkEmailPayload({
-      studentName: application.studentUser.fullName,
-      studentEmail: application.studentUser.email,
-      hospitalName: application.hospital.name,
-      offeringName: application.offering.displayName,
-      dateRange: clinicalRotationDateRangeLabel(application.requestedStartAt, application.requestedEndAt),
-      amountLabel: clinicalRotationPriceLabel(application.offering),
-      paymentLink: application.offering.paymentLink,
-      dashboardUrl
-    });
-    const emailResult = await sendTransactionalEmail(emailPayload);
-
-    await prisma.$transaction(async (tx) => {
-      await tx.clinicalRotationPayment.update({
-        where: { id: payment.id },
-        data: {
-          status: ClinicalRotationPaymentStatus.LINK_SENT,
-          linkSentAt: new Date(),
-          updatedByUserId: input.session.userId
-        }
-      });
-      await createClinicalRotationAuditLog(tx, {
-        actorUserId: input.session.userId,
-        action: "clinical_rotation.payment_link_sent",
-        entityType: "ClinicalRotationPayment",
-        entityId: payment.id,
-        hospitalId: application.hospitalId,
-        offeringId: application.offeringId,
-        applicationId: application.id,
-        paymentId: payment.id,
-        metadata: {
-          delivered: emailResult.delivered,
-          skipped: emailResult.skipped,
-          to: application.studentUser.email
-        }
-      });
-    });
+    throw error;
   }
+
+	  if (application.offering.paymentMethod === ClinicalRotationPaymentMethod.EXTERNAL_PAYMENT_LINK) {
+	    await deliverClinicalRotationPaymentLink({ paymentId: payment.id, actorUserId: input.session.userId });
+	  }
 
   return { ok: true as const };
 }
@@ -1009,7 +1533,7 @@ export async function approveClinicalRotationApplication(input: {
 export async function updateClinicalRotationApplicationStatus(input: {
   session: AppSession;
   applicationId: string;
-  status: "DECLINED" | "CANCELLED" | "COMPLETED";
+  status: "WAITLISTED" | "DECLINED" | "CANCELLED" | "COMPLETED";
   notes?: string | null;
   adminOverride?: boolean;
 }) {
@@ -1028,6 +1552,7 @@ export async function updateClinicalRotationApplicationStatus(input: {
       where: { id: application.id },
       data: {
         status: input.status,
+        ...(input.status === "WAITLISTED" ? { hospitalNotes: input.notes?.trim() || null, decidedByUserId: input.session.userId, decidedAt: now } : {}),
         ...(input.status === "DECLINED" ? { hospitalNotes: input.notes?.trim() || null, decidedByUserId: input.session.userId, decidedAt: now } : {}),
         ...(input.status === "CANCELLED" ? { cancelledByUserId: input.session.userId, cancelledAt: now } : {}),
         ...(input.status === "COMPLETED" ? { completedByUserId: input.session.userId, completedAt: now } : {})
@@ -1044,6 +1569,757 @@ export async function updateClinicalRotationApplicationStatus(input: {
       metadata: { from: application.status, to: input.status, adminOverride: input.adminOverride === true }
     });
   });
+
+  return { ok: true as const };
+}
+
+export async function requestClinicalRotationCancellation(input: {
+  session: AppSession;
+  applicationId: string;
+  reasonCategory: keyof typeof ClinicalRotationCancellationReasonCategory;
+  note?: string | null;
+}) {
+  const application = await prisma.clinicalRotationApplication.findUnique({
+    where: { id: input.applicationId },
+    include: { payment: true }
+  });
+
+  if (!application || application.studentUserId !== input.session.userId) {
+    return { ok: false as const, status: 404, error: "הבקשה לא נמצאה." };
+  }
+
+  if (
+    application.status !== ClinicalRotationApplicationStatus.SUBMITTED &&
+    application.status !== ClinicalRotationApplicationStatus.WAITLISTED &&
+    application.status !== ClinicalRotationApplicationStatus.APPROVED
+  ) {
+    return { ok: false as const, status: 409, error: "אי אפשר לבקש ביטול במצב הנוכחי." };
+  }
+
+  const cancellation = await prisma.$transaction(async (tx) => {
+    const created = await tx.clinicalRotationCancellation.create({
+      data: {
+        applicationId: application.id,
+        groupId: application.groupId,
+        studentUserId: input.session.userId,
+        studentAnonymousKey: application.studentAnonymousKey,
+        keyVersion: application.keyVersion,
+        hospitalId: application.hospitalId,
+        offeringId: application.offeringId,
+        departmentId: application.departmentId,
+        actorUserId: input.session.userId,
+        actorType: ClinicalRotationCancellationActorType.STUDENT,
+        reasonCategory: input.reasonCategory,
+        note: input.note?.trim() || null,
+        applicationStatusAtRequest: application.status,
+        paymentStatusAtRequest: application.payment?.status ?? null,
+        beforeApproval: application.status !== ClinicalRotationApplicationStatus.APPROVED
+      }
+    });
+
+    await tx.clinicalRotationApplication.update({
+      where: { id: application.id },
+      data: { status: ClinicalRotationApplicationStatus.CANCELLATION_REQUESTED }
+    });
+
+    await createClinicalRotationAuditLog(tx, {
+      actorUserId: input.session.userId,
+      action: "clinical_rotation.cancellation_requested",
+      entityType: "ClinicalRotationCancellation",
+      entityId: created.id,
+      hospitalId: application.hospitalId,
+      offeringId: application.offeringId,
+      applicationId: application.id,
+      groupId: application.groupId,
+      cancellationId: created.id,
+      metadata: {
+        reasonCategory: input.reasonCategory,
+        applicationStatusAtRequest: application.status,
+        paymentStatusAtRequest: application.payment?.status ?? null
+      }
+    });
+
+    return created;
+  });
+
+  return { ok: true as const, cancellation };
+}
+
+export async function decideClinicalRotationCancellation(input: {
+  session: AppSession;
+  applicationId: string;
+  approved: boolean;
+  notes?: string | null;
+}) {
+  const cancellation = await prisma.clinicalRotationCancellation.findFirst({
+    where: {
+      applicationId: input.applicationId,
+      status: ClinicalRotationCancellationStatus.REQUESTED
+    },
+    include: { application: { select: { id: true, hospitalId: true, offeringId: true, groupId: true } } },
+    orderBy: [{ requestedAt: "desc" }]
+  });
+
+  if (!cancellation) {
+    return { ok: false as const, status: 404, error: "בקשת הביטול לא נמצאה." };
+  }
+
+  const auth = await requireClinicalRotationHospitalApiAccess(cancellation.application.hospitalId);
+  if (!auth.ok) return auth;
+
+  const now = new Date();
+  await prisma.$transaction(async (tx) => {
+    await tx.clinicalRotationCancellation.update({
+      where: { id: cancellation.id },
+      data: {
+        status: input.approved
+          ? ClinicalRotationCancellationStatus.APPROVED
+          : ClinicalRotationCancellationStatus.REJECTED,
+        decidedByUserId: input.session.userId,
+        decidedAt: now,
+        note: input.notes?.trim() || cancellation.note
+      }
+    });
+
+    await tx.clinicalRotationApplication.update({
+      where: { id: cancellation.applicationId },
+      data: input.approved
+        ? {
+            status: ClinicalRotationApplicationStatus.CANCELLED,
+            cancelledByUserId: input.session.userId,
+            cancelledAt: now
+          }
+        : { status: cancellation.applicationStatusAtRequest }
+    });
+
+    await createClinicalRotationAuditLog(tx, {
+      actorUserId: input.session.userId,
+      action: input.approved
+        ? "clinical_rotation.cancellation_approved"
+        : "clinical_rotation.cancellation_rejected",
+      entityType: "ClinicalRotationCancellation",
+      entityId: cancellation.id,
+      hospitalId: cancellation.application.hospitalId,
+      offeringId: cancellation.application.offeringId,
+      applicationId: cancellation.applicationId,
+      groupId: cancellation.application.groupId,
+      cancellationId: cancellation.id,
+      metadata: { approved: input.approved }
+    });
+  });
+
+  return { ok: true as const };
+}
+
+async function validateClinicalRotationGroupJoinCapacity(input: {
+  groupId: string;
+  maxMembers: number;
+}) {
+  const memberCount = await prisma.clinicalRotationGroupMember.count({
+    where: {
+      groupId: input.groupId,
+      status: { in: [ClinicalRotationGroupMemberStatus.JOINED, ClinicalRotationGroupMemberStatus.APPROVED] }
+    }
+  });
+
+  return memberCount < input.maxMembers;
+}
+
+export async function createClinicalRotationGroupApplication(input: {
+  session: AppSession;
+  offeringId: string;
+  requestedStartAt: Date;
+  requestedEndAt: Date;
+  maxMembers: number;
+  acceptedRequirements?: boolean;
+  studentNotes?: string | null;
+}) {
+  const identity = await getClinicalRotationApprovedStudentIdentity(input.session);
+  if (!identity.ok) return identity;
+
+  const offering = await prisma.clinicalRotationOffering.findUnique({
+    where: { id: input.offeringId },
+    include: {
+      hospital: {
+        select: {
+          id: true,
+          clinicalRotationAvailabilityWindows: { select: { startsAt: true, endsAt: true } },
+          clinicalRotationBlackouts: { select: { startsAt: true, endsAt: true } }
+        }
+      },
+      specialty: { select: { name: true } }
+    }
+  });
+
+  if (!offering || offering.status !== ClinicalRotationOfferingStatus.PUBLISHED || !offering.groupRegistrationEnabled) {
+    return { ok: false as const, status: 404, error: "הסבב אינו פתוח להרשמה קבוצתית." };
+  }
+
+  if (offering.isPreviewOnly || offering.applicationBlockedReason) {
+    return { ok: false as const, status: 403, error: offering.applicationBlockedReason ?? "אי אפשר להגיש לסבב תצוגה מקדימה." };
+  }
+
+  if (!input.acceptedRequirements) {
+    return { ok: false as const, status: 400, error: "יש לאשר שקראת והבנת את דרישות הסבב." };
+  }
+
+  const groupMax = offering.groupMaxSize ?? offering.maximumCapacity ?? input.maxMembers;
+  const groupMin = offering.groupMinSize ?? 2;
+  if (input.maxMembers < groupMin || input.maxMembers > groupMax) {
+    return { ok: false as const, status: 400, error: `גודל הקבוצה חייב להיות בין ${groupMin} ל-${groupMax}.` };
+  }
+
+  const dateValidation = isClinicalRotationDateRangeAllowed({
+    requestedStartAt: input.requestedStartAt,
+    requestedEndAt: input.requestedEndAt,
+    offering,
+    openWindows: offering.hospital.clinicalRotationAvailabilityWindows,
+    blackouts: offering.hospital.clinicalRotationBlackouts
+  });
+  if (!dateValidation.ok) {
+    return { ok: false as const, status: 400, error: dateValidation.error };
+  }
+  if (dateValidation.weeks < offering.minDurationWeeks || dateValidation.weeks > offering.maxDurationWeeks) {
+    return { ok: false as const, status: 400, error: `משך הסבב חייב להיות בין ${offering.minDurationWeeks} ל-${offering.maxDurationWeeks} שבועות.` };
+  }
+
+  const coreSpecialty =
+    (offering.coreSpecialty as ClinicalRotationCoreSpecialtyValue | null) ??
+    inferClinicalRotationCoreSpecialty(offering.specialty.name);
+  const limit = await evaluateStudentCoreLimit({
+    studentAnonymousKey: identity.identity.studentAnonymousKey,
+    keyVersion: identity.identity.keyVersion,
+    coreSpecialty,
+    requestedStartAt: input.requestedStartAt,
+    requestedEndAt: input.requestedEndAt
+  });
+  if (limit.evaluation.action === "block") {
+    return { ok: false as const, status: 403, error: limit.evaluation.message ?? "הבקשה חסומה לפי כלל פעיל." };
+  }
+
+  const creatorConflict = await findClinicalRotationDateConflict(prisma, {
+    studentAnonymousKey: identity.identity.studentAnonymousKey,
+    keyVersion: identity.identity.keyVersion,
+    requestedStartAt: input.requestedStartAt,
+    requestedEndAt: input.requestedEndAt
+  });
+  if (creatorConflict) {
+    return { ok: false as const, status: 409, error: "כבר קיימת בקשה או סבב חופף לתאריכים שנבחרו." };
+  }
+
+  const inviteToken = createClinicalRotationInviteToken();
+  const inviteTokenHash = hashClinicalRotationInviteToken(inviteToken);
+  const inviteExpiresAt = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000);
+
+  let group;
+  try {
+    group = await prisma.$transaction(async (tx) => {
+      await lockClinicalRotationStudentIdentity(tx, {
+        studentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion
+      });
+      const transactionConflict = await findClinicalRotationDateConflict(tx, {
+        studentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion,
+        requestedStartAt: input.requestedStartAt,
+        requestedEndAt: input.requestedEndAt
+      });
+      if (transactionConflict) {
+        throw new Error("CLINICAL_ROTATION_DATE_CONFLICT");
+      }
+
+    const createdGroup = await tx.clinicalRotationGroupApplication.create({
+      data: {
+        offeringId: offering.id,
+        hospitalId: offering.hospitalId,
+        departmentId: offering.departmentId,
+        creatorUserId: input.session.userId,
+        creatorStudentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion,
+        inviteTokenHash,
+        inviteExpiresAt,
+        maxMembers: input.maxMembers,
+        requestedStartAt: input.requestedStartAt,
+        requestedEndAt: input.requestedEndAt,
+        durationWeeks: dateValidation.weeks,
+        acceptedRequirementsAt: new Date(),
+        complianceSnapshot: { creator: limit.evaluation.action, coreSpecialty }
+      }
+    });
+
+    const application = await tx.clinicalRotationApplication.create({
+      data: {
+        offeringId: offering.id,
+        studentUserId: input.session.userId,
+        hospitalId: offering.hospitalId,
+        specialtyId: offering.specialtyId,
+        departmentId: offering.departmentId,
+        coreSpecialty,
+        studentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion,
+        groupId: createdGroup.id,
+        requestedStartAt: input.requestedStartAt,
+        requestedEndAt: input.requestedEndAt,
+        durationWeeks: dateValidation.weeks,
+        status: ClinicalRotationApplicationStatus.SUBMITTED,
+        studentNotes: input.studentNotes?.trim() || null,
+        eligibilitySnapshot: { importId: identity.eligibility.importId, keyVersion: identity.eligibility.keyVersion, matched: true },
+        complianceSnapshot: { coreSpecialty, action: limit.evaluation.action },
+        ruleSnapshot: limit.rule
+          ? {
+              coreSpecialty: limit.rule.coreSpecialty,
+              maxWeeks: limit.rule.maxWeeks,
+              effectiveDate: limit.rule.effectiveDate.toISOString(),
+              enforcementMode: limit.rule.enforcementMode
+            }
+          : Prisma.JsonNull,
+        limitEvaluation: limit.evaluation,
+        acceptedRequirementsAt: new Date()
+      }
+    });
+
+    await tx.clinicalRotationGroupMember.create({
+      data: {
+        groupId: createdGroup.id,
+        applicationId: application.id,
+        userId: input.session.userId,
+        studentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion,
+        complianceSnapshot: { coreSpecialty, action: limit.evaluation.action },
+        acceptedRequirementsAt: new Date()
+      }
+    });
+
+    await createClinicalRotationAuditLog(tx, {
+      actorUserId: input.session.userId,
+      action: "clinical_rotation.group_created",
+      entityType: "ClinicalRotationGroupApplication",
+      entityId: createdGroup.id,
+      hospitalId: offering.hospitalId,
+      offeringId: offering.id,
+      applicationId: application.id,
+      groupId: createdGroup.id,
+      metadata: { maxMembers: input.maxMembers, expiresAt: inviteExpiresAt.toISOString() }
+    });
+
+      return createdGroup;
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message === "CLINICAL_ROTATION_DATE_CONFLICT") {
+      return { ok: false as const, status: 409, error: "כבר קיימת בקשה או סבב חופף לתאריכים שנבחרו." };
+    }
+    throw error;
+  }
+
+  return {
+    ok: true as const,
+    group,
+    inviteUrl: `${getBaseUrl().replace(/\/$/, "")}/clinical-rotations/groups/${inviteToken}`,
+    warning: limit.evaluation.action === "warn" ? limit.evaluation.message : null
+  };
+}
+
+export async function getClinicalRotationGroupInvite(inviteToken: string) {
+  const group = await prisma.clinicalRotationGroupApplication.findUnique({
+    where: { inviteTokenHash: hashClinicalRotationInviteToken(inviteToken) },
+    include: {
+      offering: {
+        include: {
+          hospital: { select: { name: true, region: true, city: true } },
+          specialty: { select: { name: true } },
+          department: { select: { name: true } }
+        }
+      },
+      members: { select: { id: true, status: true } }
+    }
+  });
+
+  if (!group || group.inviteRevokedAt || group.inviteExpiresAt < new Date() || group.status !== ClinicalRotationGroupStatus.SUBMITTED) {
+    notFound();
+  }
+
+  return {
+    group,
+    memberCount: group.members.filter((member) => member.status === ClinicalRotationGroupMemberStatus.JOINED).length
+  };
+}
+
+export async function joinClinicalRotationGroup(input: {
+  session: AppSession;
+  inviteToken: string;
+  acceptedRequirements?: boolean;
+  studentNotes?: string | null;
+}) {
+  const identity = await getClinicalRotationApprovedStudentIdentity(input.session);
+  if (!identity.ok) return identity;
+  if (!input.acceptedRequirements) {
+    return { ok: false as const, status: 400, error: "יש לאשר שקראת והבנת את דרישות הסבב." };
+  }
+
+  const group = await prisma.clinicalRotationGroupApplication.findUnique({
+    where: { inviteTokenHash: hashClinicalRotationInviteToken(input.inviteToken) },
+    include: {
+      offering: {
+        include: {
+          hospital: {
+            select: {
+              clinicalRotationAvailabilityWindows: { select: { startsAt: true, endsAt: true } },
+              clinicalRotationBlackouts: { select: { startsAt: true, endsAt: true } }
+            }
+          },
+          specialty: { select: { name: true } }
+        }
+      },
+      members: { select: { userId: true, status: true } }
+    }
+  });
+
+  if (!group || group.inviteRevokedAt || group.inviteExpiresAt < new Date() || group.status !== ClinicalRotationGroupStatus.SUBMITTED) {
+    return { ok: false as const, status: 404, error: "הזמנת הקבוצה אינה זמינה." };
+  }
+  if (group.members.some((member) => member.userId === input.session.userId)) {
+    return { ok: false as const, status: 409, error: "כבר הצטרפת לקבוצה הזו." };
+  }
+  if (!(await validateClinicalRotationGroupJoinCapacity({ groupId: group.id, maxMembers: group.maxMembers }))) {
+    return { ok: false as const, status: 409, error: "הקבוצה מלאה." };
+  }
+
+  const offering = group.offering;
+  if (offering.isPreviewOnly || offering.applicationBlockedReason) {
+    return { ok: false as const, status: 403, error: offering.applicationBlockedReason ?? "אי אפשר להצטרף לסבב תצוגה מקדימה." };
+  }
+
+  const dateValidation = isClinicalRotationDateRangeAllowed({
+    requestedStartAt: group.requestedStartAt,
+    requestedEndAt: group.requestedEndAt,
+    offering,
+    openWindows: offering.hospital.clinicalRotationAvailabilityWindows,
+    blackouts: offering.hospital.clinicalRotationBlackouts
+  });
+  if (!dateValidation.ok) {
+    return { ok: false as const, status: 400, error: dateValidation.error };
+  }
+
+  const coreSpecialty =
+    (offering.coreSpecialty as ClinicalRotationCoreSpecialtyValue | null) ??
+    inferClinicalRotationCoreSpecialty(offering.specialty.name);
+  const limit = await evaluateStudentCoreLimit({
+    studentAnonymousKey: identity.identity.studentAnonymousKey,
+    keyVersion: identity.identity.keyVersion,
+    coreSpecialty,
+    requestedStartAt: group.requestedStartAt,
+    requestedEndAt: group.requestedEndAt
+  });
+  if (limit.evaluation.action === "block") {
+    return { ok: false as const, status: 403, error: limit.evaluation.message ?? "הבקשה חסומה לפי כלל פעיל." };
+  }
+
+  const joinerConflict = await findClinicalRotationDateConflict(prisma, {
+    studentAnonymousKey: identity.identity.studentAnonymousKey,
+    keyVersion: identity.identity.keyVersion,
+    requestedStartAt: group.requestedStartAt,
+    requestedEndAt: group.requestedEndAt
+  });
+  if (joinerConflict) {
+    return { ok: false as const, status: 409, error: "כבר קיימת בקשה או סבב חופף לתאריכים שנבחרו." };
+  }
+
+  let result;
+  try {
+    result = await prisma.$transaction(async (tx) => {
+    await tx.$queryRaw`SELECT "id" FROM "ClinicalRotationGroupApplication" WHERE "id" = ${group.id} FOR UPDATE`;
+    await lockClinicalRotationStudentIdentity(tx, {
+      studentAnonymousKey: identity.identity.studentAnonymousKey,
+      keyVersion: identity.identity.keyVersion
+    });
+    const transactionConflict = await findClinicalRotationDateConflict(tx, {
+      studentAnonymousKey: identity.identity.studentAnonymousKey,
+      keyVersion: identity.identity.keyVersion,
+      requestedStartAt: group.requestedStartAt,
+      requestedEndAt: group.requestedEndAt
+    });
+    if (transactionConflict) {
+      throw new Error("CLINICAL_ROTATION_DATE_CONFLICT");
+    }
+
+    const memberCount = await tx.clinicalRotationGroupMember.count({
+      where: { groupId: group.id, status: { in: [ClinicalRotationGroupMemberStatus.JOINED, ClinicalRotationGroupMemberStatus.APPROVED] } }
+    });
+    if (memberCount >= group.maxMembers) {
+      throw new Error("הקבוצה מלאה.");
+    }
+
+    const application = await tx.clinicalRotationApplication.create({
+      data: {
+        offeringId: offering.id,
+        studentUserId: input.session.userId,
+        hospitalId: offering.hospitalId,
+        specialtyId: offering.specialtyId,
+        departmentId: offering.departmentId,
+        coreSpecialty,
+        studentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion,
+        groupId: group.id,
+        requestedStartAt: group.requestedStartAt,
+        requestedEndAt: group.requestedEndAt,
+        durationWeeks: group.durationWeeks,
+        status: ClinicalRotationApplicationStatus.SUBMITTED,
+        studentNotes: input.studentNotes?.trim() || null,
+        eligibilitySnapshot: { importId: identity.eligibility.importId, keyVersion: identity.eligibility.keyVersion, matched: true },
+        complianceSnapshot: { coreSpecialty, action: limit.evaluation.action },
+        limitEvaluation: limit.evaluation,
+        acceptedRequirementsAt: new Date()
+      }
+    });
+
+    const member = await tx.clinicalRotationGroupMember.create({
+      data: {
+        groupId: group.id,
+        applicationId: application.id,
+        userId: input.session.userId,
+        studentAnonymousKey: identity.identity.studentAnonymousKey,
+        keyVersion: identity.identity.keyVersion,
+        complianceSnapshot: { coreSpecialty, action: limit.evaluation.action },
+        acceptedRequirementsAt: new Date()
+      }
+    });
+
+    await createClinicalRotationAuditLog(tx, {
+      actorUserId: input.session.userId,
+      action: "clinical_rotation.group_joined",
+      entityType: "ClinicalRotationGroupMember",
+      entityId: member.id,
+      hospitalId: offering.hospitalId,
+      offeringId: offering.id,
+      applicationId: application.id,
+      groupId: group.id,
+      metadata: { coreLimitAction: limit.evaluation.action }
+    });
+
+    return { application, member };
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message === "CLINICAL_ROTATION_DATE_CONFLICT") {
+      return { ok: false as const, status: 409, error: "כבר קיימת בקשה או סבב חופף לתאריכים שנבחרו." };
+    }
+    if (error instanceof Error && error.message.includes("הקבוצה מלאה")) {
+      return { ok: false as const, status: 409, error: error.message };
+    }
+    throw error;
+  }
+
+  return {
+    ok: true as const,
+    ...result,
+    warning: limit.evaluation.action === "warn" ? limit.evaluation.message : null
+  };
+}
+
+export async function getClinicalRotationHospitalGroups(hospitalId: string) {
+  return prisma.clinicalRotationGroupApplication.findMany({
+    where: { hospitalId },
+    include: {
+      offering: { select: { displayName: true, slug: true, paymentMethod: true, priceAmount: true, priceCurrency: true, priceUnit: true, maximumCapacity: true } },
+      creatorUser: { select: { fullName: true, email: true, phone: true } },
+      members: {
+        include: {
+          user: { select: { fullName: true, email: true, phone: true } },
+          application: { select: { id: true, status: true, complianceSnapshot: true } }
+        },
+        orderBy: [{ joinedAt: "asc" }]
+      }
+    },
+    orderBy: [{ createdAt: "desc" }]
+  });
+}
+
+export async function updateClinicalRotationGroupStatus(input: {
+  session: AppSession;
+  groupId: string;
+  action: "approve" | "decline" | "cancel" | "revokeInvite";
+  notes?: string | null;
+}) {
+  const group = await prisma.clinicalRotationGroupApplication.findUnique({
+    where: { id: input.groupId },
+    include: {
+      offering: { include: { hospital: { select: { name: true } } } },
+      applications: {
+        include: { studentUser: { select: { fullName: true, email: true } } }
+      }
+    }
+  });
+
+  if (!group) return { ok: false as const, status: 404, error: "הקבוצה לא נמצאה." };
+  const auth = await requireClinicalRotationHospitalApiAccess(group.hospitalId);
+  if (!auth.ok) return auth;
+
+  if (group.applications.some((application) => application.studentUserId === input.session.userId) && input.action === "approve") {
+    return { ok: false as const, status: 403, error: "אי אפשר לאשר קבוצה שאתה חבר בה." };
+  }
+
+  if (input.action === "revokeInvite") {
+    await prisma.clinicalRotationGroupApplication.update({
+      where: { id: group.id },
+      data: { inviteRevokedAt: new Date(), coordinatorNotes: input.notes?.trim() || group.coordinatorNotes }
+    });
+    return { ok: true as const };
+  }
+
+  if (group.status !== ClinicalRotationGroupStatus.SUBMITTED) {
+    return { ok: false as const, status: 409, error: "ניתן לעדכן רק קבוצה שממתינה לבדיקה." };
+  }
+
+  const nextStatus =
+    input.action === "approve"
+      ? ClinicalRotationGroupStatus.APPROVED
+      : input.action === "decline"
+        ? ClinicalRotationGroupStatus.DECLINED
+        : ClinicalRotationGroupStatus.CANCELLED;
+  const nextApplicationStatus =
+    input.action === "approve"
+      ? ClinicalRotationApplicationStatus.APPROVED
+      : input.action === "decline"
+        ? ClinicalRotationApplicationStatus.DECLINED
+        : ClinicalRotationApplicationStatus.CANCELLED;
+  const paymentStatus =
+    group.offering.paymentMethod === ClinicalRotationPaymentMethod.CASH_AT_ROTATION
+      ? ClinicalRotationPaymentStatus.CASH_DUE
+      : ClinicalRotationPaymentStatus.LINK_PENDING;
+
+  const paymentIdsToDeliver: string[] = [];
+  try {
+    await prisma.$transaction(async (tx) => {
+      await tx.$queryRaw`SELECT "id" FROM "ClinicalRotationOffering" WHERE "id" = ${group.offeringId} FOR UPDATE`;
+      if (input.action === "approve" && group.offering.maximumCapacity) {
+        const approvedCount = await tx.clinicalRotationApplication.count({
+          where: {
+            offeringId: group.offeringId,
+            status: { in: clinicalRotationApprovedCapacityStatuses() },
+            requestedStartAt: { lte: group.requestedEndAt },
+            requestedEndAt: { gte: group.requestedStartAt }
+          }
+        });
+        if (approvedCount + group.applications.length > group.offering.maximumCapacity) {
+          throw new Error("אין קיבולת זמינה לאישור כל חברי הקבוצה.");
+        }
+      }
+
+      if (input.action === "approve") {
+        const groupApplicationIds = group.applications.map((application) => application.id);
+        for (const application of group.applications) {
+          if (!application.studentAnonymousKey || !application.keyVersion) {
+            throw new Error("CLINICAL_ROTATION_DATE_CONFLICT");
+          }
+          await lockClinicalRotationStudentIdentity(tx, {
+            studentAnonymousKey: application.studentAnonymousKey,
+            keyVersion: application.keyVersion
+          });
+          const conflict = await findClinicalRotationDateConflict(tx, {
+            studentAnonymousKey: application.studentAnonymousKey,
+            keyVersion: application.keyVersion,
+            requestedStartAt: group.requestedStartAt,
+            requestedEndAt: group.requestedEndAt,
+            excludeApplicationIds: groupApplicationIds
+          });
+          if (conflict) {
+            throw new Error("CLINICAL_ROTATION_DATE_CONFLICT");
+          }
+        }
+      }
+
+      await tx.clinicalRotationGroupApplication.update({
+        where: { id: group.id },
+        data: {
+          status: nextStatus,
+          coordinatorNotes: input.notes?.trim() || null,
+          decidedByUserId: input.session.userId,
+          decidedAt: new Date()
+        }
+      });
+
+      for (const application of group.applications) {
+        await tx.clinicalRotationApplication.update({
+          where: { id: application.id },
+          data: {
+            status: nextApplicationStatus,
+            decidedByUserId: input.session.userId,
+            decidedAt: new Date(),
+            ...(input.action === "cancel" ? { cancelledByUserId: input.session.userId, cancelledAt: new Date() } : {})
+          }
+        });
+
+        await tx.clinicalRotationGroupMember.updateMany({
+          where: { applicationId: application.id },
+          data: {
+            status: input.action === "approve"
+              ? ClinicalRotationGroupMemberStatus.APPROVED
+              : input.action === "decline"
+                ? ClinicalRotationGroupMemberStatus.DECLINED
+                : ClinicalRotationGroupMemberStatus.CANCELLED
+          }
+        });
+
+        if (input.action === "approve") {
+          const upsertedPayment = await tx.clinicalRotationPayment.upsert({
+            where: { applicationId: application.id },
+            create: {
+              applicationId: application.id,
+              method: group.offering.paymentMethod,
+              amount: group.offering.priceAmount,
+              currency: group.offering.priceCurrency,
+              paymentLink: group.offering.paymentLink,
+              status: paymentStatus,
+              linkSentAt: null,
+              updatedByUserId: input.session.userId
+            },
+            update: {
+              method: group.offering.paymentMethod,
+              amount: group.offering.priceAmount,
+              currency: group.offering.priceCurrency,
+              paymentLink: group.offering.paymentLink,
+              status: paymentStatus,
+              linkSentAt: null,
+              updatedByUserId: input.session.userId
+            }
+          });
+          if (group.offering.paymentMethod === ClinicalRotationPaymentMethod.EXTERNAL_PAYMENT_LINK) {
+            await enqueueClinicalRotationPaymentLinkEmail(tx, {
+              paymentId: upsertedPayment.id,
+              applicationId: application.id,
+              hospitalId: application.hospitalId,
+              offeringId: application.offeringId,
+              groupId: group.id,
+              actorUserId: input.session.userId
+            });
+            paymentIdsToDeliver.push(upsertedPayment.id);
+          }
+        }
+      }
+
+      await createClinicalRotationAuditLog(tx, {
+        actorUserId: input.session.userId,
+        action: `clinical_rotation.group_${input.action}`,
+        entityType: "ClinicalRotationGroupApplication",
+        entityId: group.id,
+        hospitalId: group.hospitalId,
+        offeringId: group.offeringId,
+        groupId: group.id,
+        metadata: { memberCount: group.applications.length }
+      });
+    });
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("אין קיבולת זמינה")) {
+      return { ok: false as const, status: 409, error: error.message };
+    }
+    if (error instanceof Error && error.message === "CLINICAL_ROTATION_DATE_CONFLICT") {
+      return { ok: false as const, status: 409, error: "לחבר/ה בקבוצה יש בקשה או סבב חופף בתאריכים שנבחרו." };
+    }
+    throw error;
+  }
+
+  for (const paymentId of paymentIdsToDeliver) {
+    await deliverClinicalRotationPaymentLink({ paymentId, actorUserId: input.session.userId });
+  }
 
   return { ok: true as const };
 }
@@ -1093,6 +2369,73 @@ export async function updateClinicalRotationPaymentStatus(input: {
   return { ok: true as const };
 }
 
+export async function retryClinicalRotationPaymentLink(input: {
+  session: AppSession;
+  paymentId: string;
+  adminOverride?: boolean;
+}) {
+  const payment = await prisma.clinicalRotationPayment.findUnique({
+    where: { id: input.paymentId },
+    include: {
+      application: {
+        select: {
+          id: true,
+          hospitalId: true,
+          offeringId: true,
+          groupId: true,
+          status: true
+        }
+      }
+    }
+  });
+
+  if (!payment) return { ok: false as const, status: 404, error: "רשומת התשלום לא נמצאה." };
+  const auth = await requireClinicalRotationHospitalApiAccess(payment.application.hospitalId);
+  if (!auth.ok) return auth;
+
+  if (payment.method !== ClinicalRotationPaymentMethod.EXTERNAL_PAYMENT_LINK || !payment.paymentLink) {
+    return { ok: false as const, status: 409, error: "אין קישור תשלום חיצוני לשליחה חוזרת." };
+  }
+
+  if (payment.status === ClinicalRotationPaymentStatus.LINK_SENT) {
+    return { ok: true as const, deliveryStatus: "already_sent" as const };
+  }
+
+  if (payment.status === ClinicalRotationPaymentStatus.PAID || payment.status === ClinicalRotationPaymentStatus.WAIVED) {
+    return { ok: false as const, status: 409, error: "אין לשלוח קישור תשלום לאחר סגירת התשלום." };
+  }
+
+  await prisma.$transaction(async (tx) => {
+    await enqueueClinicalRotationPaymentLinkEmail(tx, {
+      paymentId: payment.id,
+      applicationId: payment.application.id,
+      hospitalId: payment.application.hospitalId,
+      offeringId: payment.application.offeringId,
+      groupId: payment.application.groupId,
+      actorUserId: input.session.userId
+    });
+    await createClinicalRotationAuditLog(tx, {
+      actorUserId: input.session.userId,
+      action: "clinical_rotation.payment_link_retry_requested",
+      entityType: "ClinicalRotationPayment",
+      entityId: payment.id,
+      hospitalId: payment.application.hospitalId,
+      offeringId: payment.application.offeringId,
+      applicationId: payment.application.id,
+      groupId: payment.application.groupId,
+      paymentId: payment.id,
+      metadata: { adminOverride: input.adminOverride === true }
+    });
+  });
+
+  const delivery = await deliverClinicalRotationPaymentLink({
+    paymentId: payment.id,
+    actorUserId: input.session.userId
+  });
+
+  return { ok: true as const, deliveryStatus: delivery.status };
+}
+
 export async function getClinicalRotationAdminDashboard() {
   const [hospitals, accessCount, offerings, applications, payments, ruleViolations, studentSummaries] = await Promise.all([
     prisma.institution.count({ where: { type: InstitutionType.HOSPITAL } }),
@@ -1113,8 +2456,7 @@ export async function getClinicalRotationAdminDashboard() {
         coreSpecialty: true,
         requestedStartAt: true,
         requestedEndAt: true,
-        status: true,
-        studentUser: { select: { fullName: true, email: true } }
+        status: true
       },
       orderBy: [{ studentUser: { fullName: "asc" } }]
     })
@@ -1122,8 +2464,7 @@ export async function getClinicalRotationAdminDashboard() {
   const rules = await getActiveClinicalRotationCoreRules();
   const summaries = new Map<string, {
     studentUserId: string;
-    fullName: string;
-    email: string;
+    studentRef: string;
     byCoreSpecialty: ReturnType<typeof summarizeClinicalRotationDashboard>["byCoreSpecialty"];
   }>();
 
@@ -1133,8 +2474,7 @@ export async function getClinicalRotationAdminDashboard() {
     if (!existing) {
       summaries.set(application.studentUserId, {
         studentUserId: application.studentUserId,
-        fullName: application.studentUser.fullName,
-        email: application.studentUser.email,
+        studentRef: `סטודנט/ית ${application.studentUserId.slice(-6)}`,
         byCoreSpecialty: summarizeClinicalRotationDashboard({
           applications: rows.map((row) => ({
             status: row.status,

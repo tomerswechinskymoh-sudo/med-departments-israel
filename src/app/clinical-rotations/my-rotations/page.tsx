@@ -1,4 +1,8 @@
 import Link from "next/link";
+import {
+  ClinicalRotationCancellationForm,
+  ClinicalRotationIdentityVerificationForm
+} from "@/components/clinical-rotations/clinical-rotation-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -30,6 +34,18 @@ export default async function MyClinicalRotationsPage() {
         title="הסבבים הקליניים שלי"
         description="מעקב אחר בקשות, תשלומים ושבועות לפי תחום. שבועות שהושלמו מוצגים בנפרד מסבבים עתידיים שאושרו."
       />
+
+      <Card>
+        <h2 className="text-xl font-black text-ink">סטטוס אימות לסבבים קליניים</h2>
+        <p className="mt-2 text-sm leading-7 text-slate-700">
+          {dashboard.identity?.status === "APPROVED"
+            ? "האימות שלך אושר. המסמך המקורי נמחק לאחר ההחלטה ונשמרו רק פרטי החלטה מינימליים."
+            : dashboard.identity?.status === "PENDING_REVIEW"
+              ? "בקשת האימות שלך ממתינה לבדיקה ידנית."
+              : "לפני הגשה ראשונה נדרש אימות זהות וזכאות."}
+        </p>
+        {dashboard.identity?.status !== "APPROVED" ? <div className="mt-4"><ClinicalRotationIdentityVerificationForm /></div> : null}
+      </Card>
 
       <div className="grid gap-3 md:grid-cols-6">
         {Object.entries(dashboard.summary.buckets).map(([key, value]) => (
@@ -90,6 +106,9 @@ export default async function MyClinicalRotationsPage() {
                 ) : null}
               </p>
             ) : null}
+            {["SUBMITTED", "WAITLISTED", "APPROVED"].includes(application.status) ? (
+              <ClinicalRotationCancellationForm applicationId={application.id} />
+            ) : null}
           </Card>
         ))}
         {dashboard.applications.length === 0 ? (
@@ -101,6 +120,19 @@ export default async function MyClinicalRotationsPage() {
           </Card>
         ) : null}
       </div>
+
+      <Card>
+        <h2 className="text-xl font-black text-ink">ביטולים</h2>
+        <div className="mt-3 space-y-3">
+          {dashboard.cancellations.map((cancellation) => (
+            <div key={cancellation.id} className="rounded-2xl border border-brand-100 bg-white p-4 text-sm">
+              <p className="font-black text-ink">{cancellation.offering.displayName} · {cancellation.hospital.name}</p>
+              <p className="mt-1 text-slate-600">סטטוס: {cancellation.status} · סיבה: {cancellation.reasonCategory}</p>
+            </div>
+          ))}
+          {dashboard.cancellations.length === 0 ? <p className="text-sm text-slate-600">אין היסטוריית ביטולים.</p> : null}
+        </div>
+      </Card>
     </PageShell>
   );
 }

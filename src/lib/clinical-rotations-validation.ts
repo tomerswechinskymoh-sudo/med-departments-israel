@@ -24,7 +24,40 @@ export const clinicalRotationApplicationSubmissionSchema = z.object({
   offeringId: z.string().min(1, "חסר מזהה סבב."),
   requestedStartAt: dateString,
   requestedEndAt: dateString,
+  acceptedRequirements: z.boolean().default(false),
   studentNotes: z.preprocess(emptyToNull, z.string().max(2000).nullable().optional())
+});
+
+export const clinicalRotationIdentitySubmissionSchema = z.object({
+  israeliId: z.string().min(5, "יש להזין תעודת זהות.").max(20)
+});
+
+export const clinicalRotationEligibilityImportSchema = z.object({
+  sourceLabel: z.string().min(2, "יש להזין תווית מקור.").max(180),
+  activate: z.boolean().default(true)
+});
+
+export const clinicalRotationGroupCreateSchema = z.object({
+  offeringId: z.string().min(1, "חסר מזהה סבב."),
+  requestedStartAt: dateString,
+  requestedEndAt: dateString,
+  maxMembers: z.coerce.number().int().min(2).max(30),
+  acceptedRequirements: z.boolean().default(false),
+  studentNotes: z.preprocess(emptyToNull, z.string().max(2000).nullable().optional())
+});
+
+export const clinicalRotationGroupJoinSchema = z.object({
+  inviteToken: z.string().min(20),
+  requestedStartAt: dateString.optional(),
+  requestedEndAt: dateString.optional(),
+  acceptedRequirements: z.boolean().default(false),
+  studentNotes: z.preprocess(emptyToNull, z.string().max(2000).nullable().optional())
+});
+
+export const clinicalRotationCancellationRequestSchema = z.object({
+  applicationId: z.string().min(1),
+  reasonCategory: z.enum(["SCHEDULE_CONFLICT", "PERSONAL", "ELIGIBILITY", "CAPACITY", "PAYMENT", "HOSPITAL", "OTHER"]),
+  note: z.preprocess(emptyToNull, z.string().max(2000).nullable().optional())
 });
 
 export const clinicalRotationAvailabilityMutationSchema = z.object({
@@ -48,10 +81,24 @@ export const clinicalRotationOfferingMutationSchema = z.object({
   endsAt: dateString,
   minimumParticipants: z.coerce.number().int().min(1),
   maximumCapacity: z.preprocess(emptyToNull, z.coerce.number().int().min(1).nullable().optional()),
+  minDurationWeeks: z.coerce.number().int().min(1).max(52).default(1),
+  maxDurationWeeks: z.coerce.number().int().min(1).max(52).default(12),
   priceAmount: z.coerce.number().min(0),
   priceUnit: z.enum(clinicalRotationPriceUnitValues),
   paymentMethod: z.enum(clinicalRotationPaymentMethodValues),
   paymentLink: z.preprocess(emptyToNull, z.string().url().nullable().optional()),
+  requirements: z.preprocess(emptyToNull, z.string().max(4000).nullable().optional()),
+  cancellationPolicy: z.preprocess(emptyToNull, z.string().max(4000).nullable().optional()),
+  workLanguage: z.preprocess(emptyToNull, z.string().max(120).nullable().optional()),
+  departmentContactName: z.preprocess(emptyToNull, z.string().max(160).nullable().optional()),
+  departmentContactEmail: z.preprocess(emptyToNull, z.string().email().nullable().optional()),
+  requiresDeanApproval: z.boolean().default(false),
+  requiresInsurance: z.boolean().default(true),
+  groupRegistrationEnabled: z.boolean().default(false),
+  groupMinSize: z.preprocess(emptyToNull, z.coerce.number().int().min(2).nullable().optional()),
+  groupMaxSize: z.preprocess(emptyToNull, z.coerce.number().int().min(2).nullable().optional()),
+  isPreviewOnly: z.boolean().default(false),
+  applicationBlockedReason: z.preprocess(emptyToNull, z.string().max(1000).nullable().optional()),
   studentInstructions: z.preprocess(emptyToNull, z.string().max(4000).nullable().optional()),
   internalNotes: z.preprocess(emptyToNull, z.string().max(4000).nullable().optional()),
   publish: z.boolean().default(false)
@@ -59,20 +106,21 @@ export const clinicalRotationOfferingMutationSchema = z.object({
 
 export const clinicalRotationOfferingStatusSchema = z.object({
   offeringId: z.string().min(1),
-  action: z.enum(["publish", "pause", "close"])
+  action: z.enum(["publish", "pause", "close", "cancel"])
 });
 
 export const clinicalRotationApplicationActionSchema = z.object({
   applicationId: z.string().min(1),
-  action: z.enum(["approve", "decline", "cancel", "complete"]),
+  action: z.enum(["approve", "decline", "waitlist", "cancel", "complete", "approveCancellation", "rejectCancellation"]),
   notes: z.preprocess(emptyToNull, z.string().max(2000).nullable().optional())
 });
 
 export const clinicalRotationPaymentActionSchema = z.object({
   paymentId: z.string().min(1),
-  status: z.enum(["PAID", "WAIVED", "OVERDUE"]),
+  action: z.enum(["retryPaymentLink"]).optional(),
+  status: z.enum(["PAID", "WAIVED", "OVERDUE"]).optional(),
   notes: z.preprocess(emptyToNull, z.string().max(2000).nullable().optional())
-});
+}).refine((value) => value.action === "retryPaymentLink" || Boolean(value.status), "יש לבחור פעולת תשלום.");
 
 export const clinicalRotationAdminAccessSchema = z.object({
   action: z.enum(["inviteOrUpdate", "activate", "deactivate", "reset"]),
@@ -95,15 +143,16 @@ export const clinicalRotationCoreRuleSchema = z.object({
 
 export const clinicalRotationAdminApplicationOverrideSchema = z.object({
   applicationId: z.string().min(1),
-  action: z.enum(["approve", "decline", "cancel", "complete"]),
+  action: z.enum(["approve", "decline", "waitlist", "cancel", "complete", "approveCancellation", "rejectCancellation"]),
   notes: z.preprocess(emptyToNull, z.string().max(2000).nullable().optional())
 });
 
 export const clinicalRotationAdminPaymentOverrideSchema = z.object({
   paymentId: z.string().min(1),
-  status: z.enum(clinicalRotationPaymentStatusValues).refine(
-    (status) => status === "PAID" || status === "WAIVED" || status === "OVERDUE",
+  action: z.enum(["retryPaymentLink"]).optional(),
+  status: z.enum(clinicalRotationPaymentStatusValues).optional().refine(
+    (status) => !status || status === "PAID" || status === "WAIVED" || status === "OVERDUE",
     "סטטוס התשלום אינו ניתן לעדכון ידני כאן."
   ),
   notes: z.preprocess(emptyToNull, z.string().max(2000).nullable().optional())
-});
+}).refine((value) => value.action === "retryPaymentLink" || Boolean(value.status), "יש לבחור פעולת תשלום.");

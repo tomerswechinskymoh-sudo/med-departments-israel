@@ -47,10 +47,13 @@ export default async function AdminClinicalRotationApplicationsPage() {
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
-              {application.status === "SUBMITTED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "approve", applicationId: application.id }} label="אישור" /> : null}
-              {application.status !== "DECLINED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "decline", applicationId: application.id }} label="דחייה" tone="danger" /> : null}
-              {application.status !== "CANCELLED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "cancel", applicationId: application.id }} label="ביטול" tone="danger" /> : null}
-              {application.status !== "COMPLETED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "complete", applicationId: application.id }} label="הושלם" /> : null}
+              {application.status === "SUBMITTED" || application.status === "WAITLISTED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "approve", applicationId: application.id, notes: "פעולת אדמין ידנית" }} label="אישור" /> : null}
+              {application.status === "SUBMITTED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "waitlist", applicationId: application.id, notes: "פעולת אדמין ידנית" }} label="המתנה" tone="neutral" /> : null}
+              {application.status === "CANCELLATION_REQUESTED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "approveCancellation", applicationId: application.id, notes: "פעולת אדמין ידנית" }} label="אישור ביטול" /> : null}
+              {application.status === "CANCELLATION_REQUESTED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "rejectCancellation", applicationId: application.id, notes: "פעולת אדמין ידנית" }} label="דחיית ביטול" tone="neutral" /> : null}
+              {application.status !== "DECLINED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "decline", applicationId: application.id, notes: "פעולת אדמין ידנית" }} label="דחייה" tone="danger" /> : null}
+              {application.status !== "CANCELLED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "cancel", applicationId: application.id, notes: "פעולת אדמין ידנית" }} label="ביטול" tone="danger" /> : null}
+              {application.status !== "COMPLETED" ? <ClinicalRotationActionForm endpoint="/api/admin/clinical-rotations/applications" payload={{ action: "complete", applicationId: application.id, notes: "פעולת אדמין ידנית" }} label="הושלם" /> : null}
             </div>
           </Card>
         ))}

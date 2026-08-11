@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { ClinicalRotationApplicationForm } from "@/components/clinical-rotations/clinical-rotation-forms";
+import {
+  ClinicalRotationApplicationForm,
+  ClinicalRotationGroupApplicationForm
+} from "@/components/clinical-rotations/clinical-rotation-forms";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -44,6 +47,8 @@ export default async function ClinicalRotationApplyPage({
         <p className="text-sm leading-7 text-slate-700">
           יש לבחור תאריכים בתוך חלון הסבב. המערכת בודקת גם חלונות זמינות פתוחים וגם תאריכי סגירה של בית החולים.
         </p>
+        {offering.requirements ? <p className="text-sm leading-7 text-slate-700">דרישות: {offering.requirements}</p> : null}
+        {offering.cancellationPolicy ? <p className="text-sm leading-7 text-slate-700">מדיניות ביטול: {offering.cancellationPolicy}</p> : null}
         <ClinicalRotationApplicationForm
           offeringId={offering.id}
           defaultStart={formatClinicalRotationDateInput(offering.startsAt)}
@@ -53,6 +58,19 @@ export default async function ClinicalRotationApplyPage({
           חזרה לפרטי הסבב
         </Link>
       </Card>
+
+      {offering.groupRegistrationEnabled ? (
+        <Card className="space-y-4">
+          <h2 className="text-lg font-black text-ink">יצירת קבוצה</h2>
+          <p className="text-sm leading-7 text-slate-700">קישור ההזמנה יוצג פעם אחת ליוצר הקבוצה. כל חבר חייב להתחבר ולעבור בדיקות זכאות עצמאיות.</p>
+          <ClinicalRotationGroupApplicationForm
+            offeringId={offering.id}
+            defaultStart={formatClinicalRotationDateInput(offering.startsAt)}
+            defaultEnd={formatClinicalRotationDateInput(offering.endsAt)}
+            defaultMaxMembers={offering.groupMaxSize ?? offering.maximumCapacity ?? 2}
+          />
+        </Card>
+      ) : null}
     </PageShell>
   );
 }
