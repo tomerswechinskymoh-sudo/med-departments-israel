@@ -7,6 +7,7 @@ import {
   upsertSpecialtyMetric
 } from "@/lib/server/master-csv-importer";
 import { calculateSpecialtyMetrics } from "@/lib/specialty-metrics";
+import { metricExplanationRegistry } from "@/lib/metric-explanations";
 
 async function main() {
   const currentCsv = await fs.readFile("MASTER_Spec.csv", "utf8");
@@ -152,17 +153,34 @@ async function main() {
     ["relativeDemandIndex"],
     ["relativeDemandIndex"],
     {
-      specialtyMetrics: [{ metricKey: "relativeDemandIndex", value: 1.13, rawValue: "1.13", unit: "ratio" }]
+      specialtyMetrics: [{ metricKey: "relativeDemandIndex", value: 1.13, rawValue: "1.13", unit: "ratio" }],
+      dataExplanations: [{
+        sheet: "MASTER_Spec",
+        criterion: "מדד ביקוש יחסי",
+        normalizedCriterion: "מדד ביקוש יחסי",
+        metricKey: "relativeDemandIndex",
+        readableLabel: "מדד ביקוש יחסי",
+        explanation: "legacy imported calculation explanation",
+        sourceLabel: "משרד הבריאות",
+        isHidden: false,
+        isHighlighted: false,
+        isNationalMetric: true
+      }]
     }
   ).find((item) => item.key === "relativeDemandIndex");
   assert.equal(dashboardMetric?.value, "1.13", "public display must use two decimals without a percent sign");
+  assert.equal(
+    dashboardMetric?.tooltip,
+    metricExplanationRegistry.relativeDemandIndex.defaultExplanation,
+    "registry meaning must remain the code default even when imported metadata contains an older calculation explanation"
+  );
 
   console.log(JSON.stringify({
     status: "PASS",
     currentRows: currentPreview.rowCount,
     currentSpecialties: currentPreview.specialtyCount,
     relativeDemandValues: currentMetric.rows.filter((row) => row.shouldUpdate).length,
-    checks: 11
+    checks: 12
   }));
 }
 

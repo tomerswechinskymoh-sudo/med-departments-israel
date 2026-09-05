@@ -1001,7 +1001,9 @@ export function calculateSpecialtyMetrics(
         ? definition.sourceLabel
         : calculated.sourceLabel ?? definition.sourceLabel;
     const metadataExplanation =
-      definition.key === "newResidentsTrend"
+      definition.key === "relativeDemandIndex"
+        ? definition.description
+        : definition.key === "newResidentsTrend"
         ? newResidentsTrendTooltip
         : definition.key === "burnoutIndex"
           ? appendTooltipSentence(metadataTooltip(metadata, definition.description), burnoutTooltipSentence)

@@ -2108,7 +2108,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
 }
 
 const getPublicSpecialtyDashboardMetricsCached = publicDataCache(
-    "getSpecialtyDashboardMetrics",
+    "getSpecialtyDashboardMetrics:metric-content-v2",
     getPublicSpecialtyDashboardMetrics,
     [
       PUBLIC_DATA_CACHE_TAGS.departments,
