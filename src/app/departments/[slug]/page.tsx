@@ -17,6 +17,12 @@ import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
+  MetricExplanationInfo,
+  MetricExplanationProvider
+} from "@/components/metrics/metric-explanation";
+import type { MetricExplanationKey } from "@/lib/metric-explanations";
+import { getMetricExplanationOverrides } from "@/lib/server/metric-explanation-overrides";
+import {
   LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
   metadataDisplayAction,
   metadataSourceLabel,
@@ -113,6 +119,8 @@ function reviewPerspective(review: {
 }
 
 function MetricInfoTip({
+  metricKey,
+  metricLabel,
   sourceLabel,
   text,
   lastUpdated,
@@ -120,6 +128,8 @@ function MetricInfoTip({
   sourceUrl,
   displayAction
 }: {
+  metricKey?: MetricExplanationKey;
+  metricLabel?: string;
   sourceLabel: string;
   text?: string;
   lastUpdated?: string | Date | null;
@@ -127,36 +137,18 @@ function MetricInfoTip({
   sourceUrl?: string | null;
   displayAction?: string | null;
 }) {
-  const tooltipLines = [
-    text,
-    `מקור נתונים: ${sourceLabel}`
-  ].filter((line): line is string => Boolean(line));
-  const tooltipText = tooltipLines.join("\n");
-
   return (
-    <span className="relative inline-flex">
-      <span
-        tabIndex={0}
-        title={tooltipText}
-        aria-label={tooltipText}
-        className="group grid h-7 w-7 cursor-help place-items-center rounded-full border border-slate-200 bg-white text-[0.72rem] font-black text-slate-500 transition hover:border-brand-200 hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-200"
-      >
-        i
-        <span className="pointer-events-auto absolute left-0 top-9 z-20 hidden w-72 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
-          <span className="space-y-1">
-            {tooltipLines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
-          </span>
-        </span>
-      </span>
-    </span>
+    <MetricExplanationInfo
+      metricKey={metricKey}
+      metricLabel={metricLabel ?? metricKey ?? "מדד"}
+      fallbackText={text}
+      sourceLabel={sourceLabel}
+    />
   );
 }
 
 function DataMetricCard({
+  metricKey,
   label,
   value,
   sourceLabel,
@@ -168,6 +160,7 @@ function DataMetricCard({
   sourceUrl,
   displayAction
 }: {
+  metricKey?: MetricExplanationKey;
   label: string;
   value: string | number | null | undefined;
   sourceLabel: string;
@@ -194,6 +187,8 @@ function DataMetricCard({
           ) : null}
         </div>
         <MetricInfoTip
+          metricKey={metricKey}
+          metricLabel={label}
           sourceLabel={sourceLabel}
           text={tooltip}
           lastUpdated={lastUpdated}
@@ -258,6 +253,8 @@ function DurationBenchmarkCard({
           ) : null}
         </div>
         <MetricInfoTip
+          metricKey="residencyDuration"
+          metricLabel="משך התמחות ממוצע בפועל (שנים)"
           sourceLabel={sourceLabel}
           text={tooltip}
           metricType="נתון מחלקתי מול ממוצע ארצי בתחום"
@@ -288,6 +285,7 @@ function DurationBenchmarkCard({
 
 type DisplayMetric = {
   id: string;
+  metricKey?: MetricExplanationKey;
   label: string;
   value: string | number | null | undefined;
   sourceLabel: string;
@@ -327,6 +325,8 @@ function YearlyResidentsChart({
       <div className="flex items-start justify-between gap-3">
         <p className="text-sm font-bold text-slate-600">{title}</p>
         <MetricInfoTip
+          metricKey="newResidentsTrend"
+          metricLabel={title}
           sourceLabel={sourceLabel}
           text={tooltip}
           metricType={metricType}
@@ -448,6 +448,8 @@ function GenderBalanceCard({
       <div className="flex items-start justify-between gap-3">
         <p className="text-sm font-bold leading-5 text-slate-600">איזון מגדרי</p>
         <MetricInfoTip
+          metricKey="genderDistribution"
+          metricLabel="איזון מגדרי"
           sourceLabel={sourceLabel}
           text={tooltip}
           metricType="נתון מחלקתי"
@@ -516,6 +518,8 @@ function ClockMetricCard({
           <p className="text-sm font-bold leading-5 text-slate-600">{label}</p>
         </div>
         <MetricInfoTip
+          metricKey="medianWaitingTime"
+          metricLabel={label}
           sourceLabel={sourceLabel}
           text={tooltip}
           metricType="נתון מחלקתי"
@@ -562,6 +566,8 @@ function AcceptanceDistributionCard({
           ) : null}
         </div>
         <MetricInfoTip
+          metricKey="acceptanceDistribution"
+          metricLabel={ACCEPTANCE_DISTRIBUTION_TITLE}
           sourceLabel={sourceLabel}
           text={tooltip}
           metricType={metricType}
@@ -593,6 +599,7 @@ function AcceptanceDistributionCard({
 }
 
 function QuickHighlightCard({
+  metricKey,
   label,
   value,
   sourceLabel,
@@ -603,6 +610,7 @@ function QuickHighlightCard({
   sourceUrl,
   displayAction
 }: {
+  metricKey?: MetricExplanationKey;
   label: string;
   value: string | number | null | undefined;
   sourceLabel: string;
@@ -620,6 +628,8 @@ function QuickHighlightCard({
       <div className="flex items-start justify-between gap-2">
         <p className="text-[0.68rem] font-black text-slate-500">{label}</p>
         <MetricInfoTip
+          metricKey={metricKey}
+          metricLabel={label}
           sourceLabel={sourceLabel}
           text={tooltip}
           metricType={metricType}
@@ -665,6 +675,8 @@ function SalaryGapHighlight({
           {metricLabelFromMetadata(metadata, "פער שכר")}
         </p>
         <MetricInfoTip
+          metricKey="salaryGap"
+          metricLabel={metricLabelFromMetadata(metadata, "פער שכר")}
           sourceLabel={metadataSourceLabel(metadata, "סימולטור שכר של הר״י")}
           text={tooltip}
           metricType="נתון כללי לתחום"
@@ -1242,7 +1254,13 @@ export default async function DepartmentDetailsPage({
     );
   }
 
-  const reviewContext = await getReviewFormContext(department.slug);
+  const [reviewContext, metricExplanationOverrides] = await Promise.all([
+    getReviewFormContext(department.slug),
+    getMetricExplanationOverrides({
+      specialtyId: department.specialty.id,
+      departmentId: department.id
+    })
+  ]);
   const departmentExperienceReviews = department.reviews.map((review) => ({
     ...review,
     publishedAt: review.publishedAt ? review.publishedAt.toISOString() : null,
@@ -1770,6 +1788,7 @@ export default async function DepartmentDetailsPage({
   const workforceMetrics: DisplayMetric[] = [
     {
       id: "department-residents-count",
+      metricKey: "activeResidents",
       label: isMedicalArrayProfile
         ? "מספר מתמחים ממוצע למחלקה במערך"
         : metricLabelFromMetadata(residentsMeta, "מספר מתמחים"),
@@ -1789,6 +1808,7 @@ export default async function DepartmentDetailsPage({
     },
     {
       id: "department-senior-physicians",
+      metricKey: "seniorPhysiciansCount",
       label: isMedicalArrayProfile
         ? "מספר בכירים ממוצע למחלקה במערך"
         : metricLabelFromMetadata(seniorPhysiciansMeta, "מספר בכירים"),
@@ -1810,6 +1830,7 @@ export default async function DepartmentDetailsPage({
   const trainingMetrics: DisplayMetric[] = [
     {
       id: "residency-official-duration",
+      metricKey: "residencyDuration",
       label: "משך התמחות רשמי (שנים)",
       value: formatDurationMetricInYears(officialDurationMetric),
       sourceLabel: metadataSourceLabel(officialDurationMeta, importedSourceLabel(officialDurationMetric, "הר״י")),
@@ -1820,6 +1841,7 @@ export default async function DepartmentDetailsPage({
     },
     {
       id: "residency-average-duration",
+      metricKey: "residencyDuration",
       label: "משך התמחות ממוצע בפועל (שנים)",
       value: actualDurationMetric
         ? formatDurationMetricInYears(actualDurationMetric)
@@ -1832,6 +1854,7 @@ export default async function DepartmentDetailsPage({
     },
     {
       id: "residency-median-waiting-time",
+      metricKey: "medianWaitingTime",
       label: LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
       value: medianWaitingMetric ? formatImportedMetricValue(medianWaitingMetric) : null,
       sourceLabel: metadataSourceLabel(medianWaitingMeta, importedSourceLabel(medianWaitingMetric, "משרד הבריאות")),
@@ -1958,7 +1981,12 @@ export default async function DepartmentDetailsPage({
   const hasMultipleDepartmentsInHospitalSpecialty = department.siblingDepartmentCount > 1;
 
   return (
-    <PageShell className="space-y-5 py-6">
+    <MetricExplanationProvider
+      context={{ specialtyId: department.specialty.id, departmentId: department.id }}
+      overrides={metricExplanationOverrides}
+      isAdmin={session?.role === "admin"}
+    >
+      <PageShell className="space-y-5 py-6">
       {profileDebug ? (
         <script
           id="department-profile-debug"
@@ -2105,6 +2133,7 @@ export default async function DepartmentDetailsPage({
                 ) : null}
                 <DataMetricCard {...workforceMetrics[0]} />
                 <DataMetricCard
+                  metricKey="expectedOpenings"
                   label={expectedOpeningsLabel}
                   value={expectedOpeningsValue}
                   sourceLabel={metadataSourceLabel(expectedOpeningsMeta, expectedOpeningsSourceLabel)}
@@ -2144,6 +2173,7 @@ export default async function DepartmentDetailsPage({
                 <DataMetricCard {...workforceMetrics[1]} />
                 {electiveDemandMetric && !electiveDemandMeta?.isHidden ? (
                   <DataMetricCard
+                    metricKey="medianElectiveDemand"
                     label={metricLabelFromMetadata(electiveDemandMeta, "מספר אלקטיביסטים חציוני")}
                     value={formatImportedMetricValue(electiveDemandMetric)}
                     sourceLabel={metadataSourceLabel(electiveDemandMeta, importedSourceLabel(electiveDemandMetric, "מצביע על ביקוש המחלקה"))}
@@ -2298,6 +2328,7 @@ export default async function DepartmentDetailsPage({
             <SectionHeading title="מחקר ופרסומים" />
             <div className="mt-4 grid grid-cols-2 gap-2">
               <QuickHighlightCard
+                metricKey="departmentalPublicationsCount"
                 label={metricLabelFromMetadata(publicationMeta, "מספר פרסומים")}
                 value={publicationsValue}
                 sourceLabel={metadataSourceLabel(publicationMeta, publicationsSourceLabel)}
@@ -2309,6 +2340,7 @@ export default async function DepartmentDetailsPage({
                 displayAction={metadataDisplayAction(publicationMeta)}
               />
               <QuickHighlightCard
+                metricKey="hIndexEstimate"
                 label="h-index"
                 value={hIndexEstimate}
                 sourceLabel="OpenAlex"
@@ -2345,6 +2377,7 @@ export default async function DepartmentDetailsPage({
             <p className="text-sm font-black text-ink">נתונים מקצועיים</p>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <QuickHighlightCard
+                metricKey="boardPassA"
                 label={metricLabelFromMetadata(boardStageAMeta, "מעבר שלב א׳")}
                 value={boardStageA?.value ?? null}
                 sourceLabel={metadataSourceLabel(boardStageAMeta, boardStageA?.sourceLabel ?? "משרד הבריאות")}
@@ -2355,6 +2388,7 @@ export default async function DepartmentDetailsPage({
                 displayAction={metadataDisplayAction(boardStageAMeta)}
               />
               <QuickHighlightCard
+                metricKey="boardPassB"
                 label={metricLabelFromMetadata(boardStageBMeta, "מעבר שלב ב׳")}
                 value={boardStageB?.value ?? null}
                 sourceLabel={metadataSourceLabel(boardStageBMeta, boardStageB?.sourceLabel ?? "משרד הבריאות")}
@@ -2365,6 +2399,7 @@ export default async function DepartmentDetailsPage({
                 displayAction={metadataDisplayAction(boardStageBMeta)}
               />
               <QuickHighlightCard
+                metricKey="duns100PhysiciansCount"
                 label={metricLabelFromMetadata(duns100Meta, "DUNS100")}
                 value={duns100Value}
                 sourceLabel={metadataSourceLabel(duns100Meta, duns100SourceLabel)}
@@ -2378,6 +2413,7 @@ export default async function DepartmentDetailsPage({
                 displayAction={metadataDisplayAction(duns100Meta)}
               />
               <QuickHighlightCard
+                metricKey="burnoutIndex"
                 label={metricLabelFromMetadata(burnoutMeta, "מדד שחיקה")}
                 value={burnoutMetric ? formatImportedMetricValue(burnoutMetric) : null}
                 sourceLabel={metadataSourceLabel(burnoutMeta, importedSourceLabel(burnoutMetric, "דיווחי מתמחים משרד הבריאות"))}
@@ -2402,6 +2438,7 @@ export default async function DepartmentDetailsPage({
           </div>
         </aside>
       </section>
-    </PageShell>
+      </PageShell>
+    </MetricExplanationProvider>
   );
 }

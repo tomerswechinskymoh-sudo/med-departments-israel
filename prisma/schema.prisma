@@ -322,6 +322,12 @@ enum DataImportJobStatus {
   COMPLETED
 }
 
+enum MetricExplanationScope {
+  GLOBAL
+  SPECIALTY
+  DEPARTMENT
+}
+
 enum VerificationStatus {
   PENDING_EMAIL_VERIFICATION
   PENDING_PROOF
@@ -394,6 +400,7 @@ model User {
   createdDataImportBatches                   DataImportBatch[]                    @relation("DataImportBatchCreator")
   reviewedDataImportBatches                  DataImportBatch[]                    @relation("DataImportBatchReviewer")
   createdDataImportJobs                      DataImportJob[]                      @relation("DataImportJobCreator")
+  updatedMetricExplanationOverrides          MetricExplanationOverride[]          @relation("MetricExplanationOverrideUpdater")
   createdElectiveDepartmentAccounts          ElectiveDepartmentAccount[]          @relation("ElectiveDepartmentAccountCreator")
   electiveApplications                       ElectiveApplication[]                @relation("ElectiveApplicationApplicant")
   clinicalRotationHospitalAccesses           ClinicalRotationHospitalAccess[]     @relation("ClinicalRotationHospitalAccessUser")
@@ -478,6 +485,7 @@ model Specialty {
   dashboardConfig              SpecialtyDashboardConfig?
   metrics                      SpecialtyMetric[]
   yearlyMetrics                SpecialtyYearlyMetric[]
+  metricExplanationOverrides   MetricExplanationOverride[]
   dunsPhysicianRecords         DunsPhysicianRecord[]         @relation("DunsPhysicianRecordSpecialty")
   fellowshipSpecialties        FellowshipSpecialty[]         @relation("FellowshipSpecialtyBaseSpecialty")
   fellowshipPrograms           FellowshipProgram[]           @relation("FellowshipProgramBaseSpecialty")
@@ -557,6 +565,28 @@ model DataExplanation {
   @@index([isHidden, isHighlighted])
 }
 
+model MetricExplanationOverride {
+  id              String                 @id @default(cuid())
+  metricKey       String                 @map("metric_key")
+  scopeType       MetricExplanationScope @map("scope_type")
+  scopeKey        String                 @map("scope_key")
+  specialtyId     String?                @map("specialty_id")
+  departmentId    String?                @map("department_id")
+  text            String
+  updatedByUserId String?                @map("updated_by_user_id")
+  createdAt       DateTime               @default(now()) @map("created_at")
+  updatedAt       DateTime               @updatedAt @map("updated_at")
+  specialty       Specialty?             @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+  department      Department?            @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  updatedByUser   User?                  @relation("MetricExplanationOverrideUpdater", fields: [updatedByUserId], references: [id], onDelete: SetNull)
+
+  @@unique([metricKey, scopeType, scopeKey])
+  @@index([metricKey])
+  @@index([scopeType, specialtyId, metricKey])
+  @@index([scopeType, departmentId, metricKey])
+  @@index([updatedByUserId])
+}
+
 model Department {
   id                                String                                       @id @default(cuid())
   institutionId                     String                                       @map("institution_id")
@@ -613,6 +643,7 @@ model Department {
   researchMetrics                   DepartmentResearchMetric[]
   dataImportRecords                 DataImportRecord[]
   dataImportRowLogs                 DataImportRowLog[]
+  metricExplanationOverrides        MetricExplanationOverride[]
   dunsPhysicianRecords              DunsPhysicianRecord[]                        @relation("DunsPhysicianRecordDepartment")
   electiveDepartmentAccount         ElectiveDepartmentAccount?
   electiveSettings                  ElectiveDepartmentSettings?

@@ -45,6 +45,19 @@ type CsvPreview = {
     header: string;
     value: string;
   }>;
+  metricValidationIssuesCount: number;
+  metricValidationIssues: Array<{
+    rowNumber: number;
+    specialtyName: string;
+    header: string;
+    value: string;
+    message: string;
+  }>;
+  unmatchedSpecialtiesCount: number;
+  unmatchedSpecialties: Array<{
+    rowNumber: number;
+    specialtyName: string;
+  }>;
   zeroResidentDepartmentsCount: number;
   zeroResidentDepartments: Array<{
     rowNumber: number;
@@ -208,6 +221,36 @@ function PreviewCard({ preview }: { preview: CsvPreview }) {
             {preview.spreadsheetErrors.map((item) => (
               <li key={`${item.rowNumber}-${item.header}-${item.value}`}>
                 שורה {item.rowNumber}: {item.header} = {item.value}
+              </li>
+            ))}
+          </ul>
+        </details>
+      ) : null}
+
+      {preview.metricValidationIssues.length > 0 ? (
+        <details className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2">
+          <summary className="cursor-pointer text-xs font-black text-amber-900">
+            ערכים לא תקינים במדד ביקוש יחסי ({preview.metricValidationIssuesCount})
+          </summary>
+          <ul className="mt-2 max-h-40 overflow-auto text-xs text-amber-950">
+            {preview.metricValidationIssues.map((item) => (
+              <li key={`${item.rowNumber}-${item.specialtyName}-${item.value}`}>
+                שורה {item.rowNumber}: {item.specialtyName} · {item.value} · {item.message}
+              </li>
+            ))}
+          </ul>
+        </details>
+      ) : null}
+
+      {preview.unmatchedSpecialties.length > 0 ? (
+        <details className="mt-4 rounded-xl border border-rose-200 bg-rose-50 px-3 py-2">
+          <summary className="cursor-pointer text-xs font-black text-rose-900">
+            תחומי התמחות ללא התאמה ({preview.unmatchedSpecialtiesCount})
+          </summary>
+          <ul className="mt-2 max-h-40 overflow-auto text-xs text-rose-950">
+            {preview.unmatchedSpecialties.map((item) => (
+              <li key={`${item.rowNumber}-${item.specialtyName}`}>
+                שורה {item.rowNumber}: {item.specialtyName}
               </li>
             ))}
           </ul>

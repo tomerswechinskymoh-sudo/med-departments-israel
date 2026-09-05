@@ -17,6 +17,7 @@ export const PUBLIC_DATA_CACHE_TAGS = {
   departmentDetails: "public-department-details",
   specialtyMetrics: "public-specialty-metrics",
   dataExplanations: "public-data-explanations",
+  metricExplanations: "public-metric-explanations",
   options: "public-options"
 } as const;
 

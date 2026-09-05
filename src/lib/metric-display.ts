@@ -57,6 +57,7 @@ export const metricCriterionCandidates: Record<string, string[]> = {
   boardStageBPassRate: ["מעבר_שלב_ב"],
   inherited_boardStageBPassRate: ["מעבר_שלב_ב"],
   burnoutIndex: ["מדד_שחיקה"],
+  relativeDemandIndex: ["מדד ביקוש יחסי"],
   expectedNationalOpenings: ["מספר_תקנים_שצפויים להיפתח_ארצי"],
   expectedOpenings2026: ["צפי תקנים חדשים ב2026"],
   seniorPhysiciansCount: ["מספר_בכירים"],

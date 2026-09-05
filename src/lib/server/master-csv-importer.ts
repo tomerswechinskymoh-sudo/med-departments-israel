@@ -43,6 +43,7 @@ type MetricInput = {
   legacyKeys?: string[];
   unit?: string;
   occurrence?: number;
+  skipInvalid?: boolean;
 };
 
 type TextMetricInput = {
@@ -76,6 +77,19 @@ const MASTER_SPEC_FILE = "MASTER_Spec.csv";
 const MASTER_DEPT_FILE = "Master_Dept.csv";
 const DATA_EXP_FILE = "Data_Exp.csv";
 const OPENING_YEAR = 2026;
+export const RELATIVE_DEMAND_INDEX_HEADER = "מדד ביקוש יחסי";
+
+const OPTIONAL_MASTER_SPEC_HEADERS = new Set([
+  "מספר מיטות בתחום",
+  "הערות למספר מיטות",
+  "אחוז המתמחים שביצעו אלקטיב בתחום",
+  "אחוז האלקטיביסטים שהתחילו התמחות",
+  "מספר הסטאז׳רים המעוניינים בתחום ב2025",
+  "מספר הסטאז׳רים המעוניינים בתחום ב2024",
+  "אחוז הסטאז׳רים המעוניינים מסך הסטאז׳רים",
+  "אחוז המתמחים מסך המתמחים",
+  RELATIVE_DEMAND_INDEX_HEADER
+].map(normalizeCsvHeader));
 
 const SPECIALTY_NAME_ALIASES: Record<string, string> = {
   "רפואת המשפחה": "רפואת משפחה",
@@ -116,7 +130,14 @@ const SPECIALTY_NUMERIC_METRICS: MetricInput[] = [
   { key: "מעבר_שלב_א", label: "מעבר שלב א", header: "מעבר_שלב_א", legacyKeys: ["boardStageAPassRate"], unit: "%" },
   { key: "מעבר_שלב_ב", label: "מעבר שלב ב", header: "מעבר_שלב_ב", legacyKeys: ["boardStageBPassRate"], unit: "%" },
   { key: "מדד_שחיקה", label: "מדד שחיקה", header: "מדד_שחיקה", legacyKeys: ["burnoutIndex"], unit: "score" },
-  { key: "מספר_תקנים_שצפויים להיפתח_ארצי", label: "מספר תקנים צפויים להיפתח ארצי", header: "מספר_תקנים_שצפויים להיפתח_ארצי", legacyKeys: ["expectedNationalOpenings"], unit: "count" }
+  { key: "מספר_תקנים_שצפויים להיפתח_ארצי", label: "מספר תקנים צפויים להיפתח ארצי", header: "מספר_תקנים_שצפויים להיפתח_ארצי", legacyKeys: ["expectedNationalOpenings"], unit: "count" },
+  {
+    key: "relativeDemandIndex",
+    label: RELATIVE_DEMAND_INDEX_HEADER,
+    header: RELATIVE_DEMAND_INDEX_HEADER,
+    unit: "ratio",
+    skipInvalid: true
+  }
 ];
 
 const SPECIALTY_TEXT_METRICS: TextMetricInput[] = [
@@ -346,6 +367,48 @@ function canonicalSpecialtyName(name: string) {
   return SPECIALTY_NAME_ALIASES[cleaned] ?? cleaned;
 }
 
+export type SpecialtyLookupItem = {
+  id: string;
+  name: string;
+  slug: string;
+};
+
+export function matchExistingSpecialty<T extends SpecialtyLookupItem>(
+  specialties: T[],
+  rawName: string
+): T | null {
+  const canonicalName = canonicalSpecialtyName(rawName);
+  const normalizedName = normalizeCatalogLookupValue(canonicalName);
+  const slug = slugifyValue(canonicalName);
+
+  return specialties.find(
+    (specialty) =>
+      normalizeCatalogLookupValue(specialty.name) === normalizedName || specialty.slug === slug
+  ) ?? null;
+}
+
+export function parseSpecialtyRelativeDemandRows(csvText: string) {
+  const table = createCsvTable(csvText);
+  const hasColumn = table.headers.includes(normalizeCsvHeader(RELATIVE_DEMAND_INDEX_HEADER));
+
+  return {
+    hasColumn,
+    rows: table.rows
+      .filter((row) => canonicalSpecialtyName(row.get("תחום_התמחות")))
+      .map((row) => {
+        const parsed = parseNumberCell(row.get(RELATIVE_DEMAND_INDEX_HEADER));
+        return {
+          rowNumber: row.rowNumber,
+          specialtyName: canonicalSpecialtyName(row.get("תחום_התמחות")),
+          value: parsed.value,
+          rawValue: parsed.rawValue,
+          warning: parsed.warning ?? null,
+          shouldUpdate: hasColumn && !parsed.warning && parsed.value !== null
+        };
+      })
+  };
+}
+
 function sourceNoteFor(table: CsvTable, header: string, occurrence = 0) {
   return table.sourceNotes?.get(header, occurrence) || null;
 }
@@ -410,7 +473,7 @@ function departmentDisplayName(specialtyName: string, subDepartment: string) {
   return departmentDisplayNameFromSubDepartment(canonicalSpecialtyName(specialtyName), subDepartment);
 }
 
-async function upsertSpecialtyMetric(
+export async function upsertSpecialtyMetric(
   db: DbClient,
   input: {
     specialtyId: string;
@@ -1008,6 +1071,16 @@ async function loadDataExplanations(db: DbClient) {
 async function importSpecialtyCsv(db: DbClient, filePath: string, dataExplanations: MetricDisplayMetadata[]) {
   const rawText = await fs.readFile(filePath, "utf8");
   const table = createCsvTable(rawText);
+  const knownSpecialties = await db.specialty.findMany({
+    select: {
+      id: true,
+      name: true,
+      slug: true,
+      description: true,
+      dataSourceNotes: true,
+      dataLastUpdated: true
+    }
+  });
   const batch = await createBatch(db, {
     sourceFile: filePath,
     rawText,
@@ -1040,10 +1113,10 @@ async function importSpecialtyCsv(db: DbClient, filePath: string, dataExplanatio
     try {
       const syllabusText = cleanTextImportCell(row.get("הסבר על ההתמחות ע׳׳פ הרי"));
       const lastUpdated = parseDateCell(row.get("עודכן_אחרון"));
-      const specialty = await ensureSpecialty(db, {
-        name: specialtyName,
-        description: syllabusText || undefined
-      });
+      const specialty = matchExistingSpecialty(knownSpecialties, specialtyName);
+      if (!specialty) {
+        throw new Error(`תחום התמחות לא תואם לישות קיימת: ${specialtyNameRaw}`);
+      }
       const sourceNotes = nonEmptyValues(table.headers.map((header, index) => table.sourceNotes?.values[index]));
 
       await db.specialty.update({
@@ -1073,6 +1146,7 @@ async function importSpecialtyCsv(db: DbClient, filePath: string, dataExplanatio
         const metadata = metadataForMetric(dataExplanations, "MASTER_Spec", metric);
         const parsed = parseNumberCell(rowMetricValue(row, metric));
         if (parsed.warning) warnings.push(`${metric.label}: ${parsed.warning}`);
+        if (metric.skipInvalid && parsed.warning) continue;
         await upsertSpecialtyMetric(db, {
           specialtyId: specialty.id,
           metric,
@@ -1604,6 +1678,47 @@ function scanZeroResidentDepartments(table: CsvTable, kind: MasterCsvUploadKind)
   return findings;
 }
 
+function scanSpecialtyMetricValidation(table: CsvTable, kind: MasterCsvUploadKind) {
+  if (
+    kind !== "spec" ||
+    !table.headers.includes(normalizeCsvHeader(RELATIVE_DEMAND_INDEX_HEADER))
+  ) {
+    return [];
+  }
+
+  return table.rows.flatMap((row) => {
+    const specialtyName = canonicalSpecialtyName(row.get("תחום_התמחות"));
+    if (!specialtyName) return [];
+
+    const parsed = parseNumberCell(row.get(RELATIVE_DEMAND_INDEX_HEADER));
+    if (!parsed.warning) return [];
+
+    return [{
+      rowNumber: row.rowNumber,
+      specialtyName,
+      header: RELATIVE_DEMAND_INDEX_HEADER,
+      value: row.get(RELATIVE_DEMAND_INDEX_HEADER),
+      message: parsed.warning
+    }];
+  });
+}
+
+function scanUnmatchedSpecialties(
+  table: CsvTable,
+  kind: MasterCsvUploadKind,
+  knownSpecialties?: SpecialtyLookupItem[]
+) {
+  if (kind !== "spec" || !knownSpecialties) return [];
+
+  return table.rows.flatMap((row) => {
+    const specialtyName = canonicalSpecialtyName(row.get("תחום_התמחות"));
+    if (!specialtyName || rowLooksLikeSourceNote(specialtyName)) return [];
+    if (matchExistingSpecialty(knownSpecialties, specialtyName)) return [];
+
+    return [{ rowNumber: row.rowNumber, specialtyName }];
+  });
+}
+
 function headerCountMap(headers: string[]) {
   return headers.reduce<Map<string, { count: number; headers: string[]; indexes: number[] }>>((map, header, index) => {
     const normalizedHeader = normalizeCsvHeader(header);
@@ -1625,7 +1740,11 @@ function firstHeaderLabel(
   return counts.get(normalizedHeader)?.headers.find(Boolean) ?? normalizedHeader;
 }
 
-function diffHeaders(uploaded: CsvTable, reference: CsvTable) {
+function diffHeaders(
+  uploaded: CsvTable,
+  reference: CsvTable,
+  options: { optionalMissingHeaders?: Set<string> } = {}
+) {
   const uploadedCounts = headerCountMap(uploaded.rawHeaders);
   const referenceCounts = headerCountMap(reference.rawHeaders);
   const missingHeaders: string[] = [];
@@ -1650,7 +1769,7 @@ function diffHeaders(uploaded: CsvTable, reference: CsvTable) {
 
   for (const [normalizedHeader, referenceValue] of referenceCounts) {
     const uploadedCount = uploadedCounts.get(normalizedHeader)?.count ?? 0;
-    if (uploadedCount === 0) {
+    if (uploadedCount === 0 && !options.optionalMissingHeaders?.has(normalizedHeader)) {
       missingHeaders.push(firstHeaderLabel(referenceCounts, normalizedHeader));
     }
   }
@@ -1757,17 +1876,22 @@ export async function previewMasterCsvUpload(input: {
   csvText: string;
   fileName?: string;
   referenceCsvText?: string;
+  knownSpecialties?: SpecialtyLookupItem[];
 }) {
   const uploaded = tableForUploadKind(input.csvText, input.kind);
   const referenceText = input.referenceCsvText ?? await fs.readFile(sourcePathForUploadKind(input.kind), "utf8");
   const reference = tableForUploadKind(referenceText, input.kind);
-  const headerDiffs = diffHeaders(uploaded, reference);
+  const headerDiffs = diffHeaders(uploaded, reference, {
+    optionalMissingHeaders: input.kind === "spec" ? OPTIONAL_MASTER_SPEC_HEADERS : undefined
+  });
   const rowCount = uploaded.rows.length;
   const referenceRowCount = reference.rows.length;
   const entityCount = countCsvEntities(uploaded, input.kind);
   const referenceEntityCount = countCsvEntities(reference, input.kind);
   const spreadsheetErrors = scanSpreadsheetErrors(uploaded);
   const zeroResidentDepartments = scanZeroResidentDepartments(uploaded, input.kind);
+  const metricValidationIssues = scanSpecialtyMetricValidation(uploaded, input.kind);
+  const unmatchedSpecialties = scanUnmatchedSpecialties(uploaded, input.kind, input.knownSpecialties);
   const { changedCellsCount, changedRows } = compareTables(uploaded, reference);
   const warnings = [
     headerDiffs.missingHeaders.length > 0
@@ -1783,6 +1907,12 @@ export async function previewMasterCsvUpload(input: {
       ? `נמצאו ${headerDiffs.suspiciousChangedHeaders.length} כותרות עם הבדלי רווחים/קידוד בלבד; הן יטופלו כתואמות.`
       : null,
     spreadsheetErrors.length > 0 ? `נמצאו ${spreadsheetErrors.length} ערכי שגיאה מגיליון; הם יטופלו כחסר.` : null,
+    metricValidationIssues.length > 0
+      ? `נמצאו ${metricValidationIssues.length} ערכים לא תקינים במדד ביקוש יחסי; הם לא יעדכנו ערך קיים.`
+      : null,
+    unmatchedSpecialties.length > 0
+      ? `נמצאו ${unmatchedSpecialties.length} תחומי התמחות ללא התאמה; הם יועברו לבדיקת ייבוא ולא ייווצרו אוטומטית.`
+      : null,
     zeroResidentDepartments.length > 0
       ? `${zeroResidentDepartments.length} מחלקות עם מספר_מתמחים = 0 יוסתרו מעמודים ציבוריים.`
       : null
@@ -1811,6 +1941,10 @@ export async function previewMasterCsvUpload(input: {
     changedRows,
     spreadsheetErrorsCount: spreadsheetErrors.length,
     spreadsheetErrors: spreadsheetErrors.slice(0, 80),
+    metricValidationIssuesCount: metricValidationIssues.length,
+    metricValidationIssues: metricValidationIssues.slice(0, 80),
+    unmatchedSpecialtiesCount: unmatchedSpecialties.length,
+    unmatchedSpecialties: unmatchedSpecialties.slice(0, 80),
     zeroResidentDepartmentsCount: zeroResidentDepartments.length,
     zeroResidentDepartments: zeroResidentDepartments.slice(0, 40),
     warnings

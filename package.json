@@ -22,6 +22,8 @@
     "verify:public-imports": "tsx src/server/jobs/verify-public-imported-departments.ts",
     "verify:department-summary": "tsx src/server/jobs/debug-departments-summary.ts",
     "verify:metric-display": "tsx src/server/jobs/debug-departments-summary.ts",
+    "verify:master-spec-relative-demand": "node --import tsx src/server/jobs/verify-master-spec-relative-demand.ts",
+    "verify:metric-explanations": "node --import tsx src/server/jobs/verify-metric-explanations.ts",
     "verify:department-card-yearly": "node --import tsx src/server/jobs/verify-department-card-yearly-metrics.ts",
     "verify:department-card-chart": "node --import tsx src/server/jobs/verify-department-card-chart-render.ts",
     "verify:zero-resident-filter": "node --import tsx src/server/jobs/verify-public-zero-resident-filter.ts",

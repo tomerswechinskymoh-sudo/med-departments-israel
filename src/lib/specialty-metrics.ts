@@ -13,6 +13,7 @@ import {
   resolveMetricDisplayMetadata
 } from "@/lib/imported-metric-resolver";
 import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
+import { metricExplanationRegistry } from "@/lib/metric-explanations";
 
 export const specialtyMetricKeys = [
   "programsCount",
@@ -20,6 +21,7 @@ export const specialtyMetricKeys = [
   "genderDistribution",
   "residencyDuration",
   "medianWaitingTime",
+  "relativeDemandIndex",
   "acceptanceDistribution",
   "boardPassA",
   "boardPassB",
@@ -146,6 +148,7 @@ export const defaultSpecialtyDashboardMetrics: SpecialtyMetricKey[] = [
   "genderDistribution",
   "residencyDuration",
   "medianWaitingTime",
+  "relativeDemandIndex",
   "acceptanceDistribution",
   "boardPassA",
   "boardPassB",
@@ -169,6 +172,7 @@ const dashboardMetricDataExpKeys: Partial<Record<SpecialtyMetricKey, string[]>> 
   genderDistribution: ["אחוז_נשים", "אחוז_גברים", "womenPercent", "menPercent"],
   residencyDuration: ["משך_ממוצע_בפועל", "משך_התמחות_רשמי", "actualAverageDuration", "officialResidencyDuration"],
   medianWaitingTime: ["זמן_המתנה_חציוני_לתקן", "medianWaitingTime"],
+  relativeDemandIndex: ["relativeDemandIndex", "מדד ביקוש יחסי"],
   acceptanceDistribution: ["מספר המתקבלים שדיווחו שמצאו מיד התמחות", "acceptedImmediatelyReports"],
   boardPassA: ["מעבר_שלב_א", "boardStageAPassRate"],
   boardPassB: ["מעבר_שלב_ב", "boardStageBPassRate"],
@@ -205,6 +209,13 @@ function formatNumber(value: number) {
 
 function formatWholeNumber(value: number) {
   return new Intl.NumberFormat("he-IL", { maximumFractionDigits: 0 }).format(value);
+}
+
+function formatTwoDecimalNumber(value: number) {
+  return new Intl.NumberFormat("he-IL", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(value);
 }
 
 function formatNumberWithUnit(value: number, unit?: string | null) {
@@ -591,6 +602,23 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
             metricLevel: "מחושב"
           }
         : null;
+    }
+  },
+  {
+    key: "relativeDemandIndex",
+    label: metricExplanationRegistry.relativeDemandIndex.label,
+    description: metricExplanationRegistry.relativeDemandIndex.defaultExplanation,
+    unit: "ratio",
+    sourceLabel: "נתוני MASTER_Spec",
+    calculate: (_departments, context) => {
+      const metric = contextMetric(context, "relativeDemandIndex", "מדד ביקוש יחסי");
+      if (!metric || typeof metric.value !== "number" || !Number.isFinite(metric.value)) return null;
+
+      return {
+        value: formatTwoDecimalNumber(metric.value),
+        sourceLabel: sourceLabelForMetric(metric, "נתוני MASTER_Spec"),
+        metricLevel: "ארצי לתחום"
+      };
     }
   },
   {

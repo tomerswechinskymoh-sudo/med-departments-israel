@@ -1,4 +1,9 @@
 import type { SpecialtyMetricResult } from "@/lib/specialty-metrics";
+import {
+  MetricExplanationInfo,
+  MetricExplanationProvider
+} from "@/components/metrics/metric-explanation";
+import type { MetricExplanationOverrideRecord } from "@/lib/metric-explanations";
 
 function parseFirstNumber(value: string) {
   const match = value.match(/\d+(?:[.,]\d+)?/);
@@ -257,42 +262,28 @@ function BurnoutComparison({ value }: { value: string }) {
 }
 
 function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
-  const source = metric.sourceLabel ?? "מקור נתונים לא צוין";
-  const lines = [
-    metric.tooltip ?? metric.description,
-    `מקור נתונים: ${source}`
-  ].filter((line): line is string => Boolean(line));
-  const text = lines.join("\n");
-
   return (
-    <span className="relative inline-flex">
-      <span
-        tabIndex={0}
-        title={text}
-        aria-label={text}
-        className="group grid h-7 w-7 cursor-help place-items-center rounded-full border border-slate-200 bg-white text-[0.72rem] font-black text-slate-500 transition hover:border-brand-200 hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-200"
-      >
-        i
-        <span className="pointer-events-auto absolute left-0 top-9 z-20 hidden w-64 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
-          <span className="space-y-1">
-            {lines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
-          </span>
-        </span>
-      </span>
-    </span>
+    <MetricExplanationInfo
+      metricKey={metric.key}
+      metricLabel={metric.label}
+      fallbackText={metric.tooltip ?? metric.description}
+      sourceLabel={metric.sourceLabel ?? "מקור נתונים לא צוין"}
+    />
   );
 }
 
 export function SpecialtyDashboardMetrics({
+  specialtyId,
   specialtyName,
-  metrics
+  metrics,
+  explanationOverrides,
+  isAdmin
 }: {
+  specialtyId: string;
   specialtyName: string;
   metrics: SpecialtyMetricResult[];
+  explanationOverrides: MetricExplanationOverrideRecord[];
+  isAdmin: boolean;
 }) {
   const visibleMetrics = metrics.filter(
     (metric) => metric.key !== "centerSalary" && metric.key !== "peripherySalary"
@@ -303,7 +294,12 @@ export function SpecialtyDashboardMetrics({
   }
 
   return (
-    <section className="rounded-[1.25rem] border border-brand-100 bg-white/95 p-3 shadow-sm">
+    <MetricExplanationProvider
+      context={{ specialtyId }}
+      overrides={explanationOverrides}
+      isAdmin={isAdmin}
+    >
+      <section className="rounded-[1.25rem] border border-brand-100 bg-white/95 p-3 shadow-sm">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-sm font-bold text-brand-700">דשבורד {specialtyName}</p>
@@ -352,6 +348,7 @@ export function SpecialtyDashboardMetrics({
           </div>
         ))}
       </div>
-    </section>
+      </section>
+    </MetricExplanationProvider>
   );
 }

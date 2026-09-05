@@ -45,6 +45,7 @@ import { normalizeDepartmentNameSubDepartment } from "@/lib/department-normaliza
 import { metricFieldDefinitions, resolveImportedMetric } from "@/lib/imported-metric-resolver";
 import { isSpreadsheetErrorValue, missingImportedDataText } from "@/lib/spreadsheet-errors";
 import { getOpenAlexMappingStatus } from "@/lib/server/openalex-research";
+import { getMetricExplanationOverrides } from "@/lib/server/metric-explanation-overrides";
 import { average, formatDepartmentDisplayName } from "@/lib/utils";
 import { resolveCanonicalDepartmentSlug } from "@/server/department-catalog";
 
@@ -151,6 +152,7 @@ const SPECIALTY_DASHBOARD_DEPARTMENT_METRIC_KEYS = Array.from(
   new Set([
     ...ACTIVE_RESIDENTS_METRIC_KEYS,
     ...EFFECTIVE_HOSPITAL_METRIC_KEYS,
+    "relativeDemandIndex",
     ...Object.values(metricFieldDefinitions).flatMap((definition) => [
       ...definition.importedKeys,
       ...definition.dbKeys,
@@ -1940,6 +1942,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
   if (isNextProductionBuildPhase()) {
     return {
       metrics: [],
+      explanationOverrides: [],
       hasConfig: false
     };
   }
@@ -1958,7 +1961,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
     enabledMetrics
   );
 
-  const [specialty, departments, dataExplanations] = await Promise.all([
+  const [specialty, departments, dataExplanations, explanationOverrides] = await Promise.all([
     prisma.specialty.findUnique({
       where: {
         id: specialtyId
@@ -2054,7 +2057,8 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
     }),
     prisma.dataExplanation.findMany({
       select: dataExplanationSelect
-    })
+    }),
+    getMetricExplanationOverrides({ specialtyId })
   ]);
   const publicDepartments = departments.filter(hasDisplayableResidentCount);
   const metricInput = publicDepartments.map((department) => {
@@ -2098,6 +2102,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
       specialtyYearlyMetrics: specialty?.yearlyMetrics ?? [],
       dataExplanations: dataExplanations.map(toMetricDisplayMetadata)
     }),
+    explanationOverrides,
     hasConfig: Boolean(config)
   };
 }
@@ -2107,7 +2112,8 @@ const getPublicSpecialtyDashboardMetricsCached = publicDataCache(
     getPublicSpecialtyDashboardMetrics,
     [
       PUBLIC_DATA_CACHE_TAGS.departments,
-      PUBLIC_DATA_CACHE_TAGS.specialtyMetrics
+      PUBLIC_DATA_CACHE_TAGS.specialtyMetrics,
+      PUBLIC_DATA_CACHE_TAGS.metricExplanations
     ]
 );
 
@@ -2115,6 +2121,7 @@ export async function getSpecialtyDashboardMetrics(specialtyId?: string | null) 
   if (!specialtyId) {
     return {
       metrics: [],
+      explanationOverrides: [],
       hasConfig: false
     };
   }

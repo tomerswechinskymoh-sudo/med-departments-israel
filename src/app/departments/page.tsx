@@ -168,8 +168,11 @@ export default async function DepartmentsPage({
         <div className="space-y-4">
           {selectedSpecialty ? (
             <SpecialtyDashboardMetrics
+              specialtyId={selectedSpecialty.id}
               specialtyName={selectedSpecialty.name}
               metrics={specialtyDashboard.metrics}
+              explanationOverrides={specialtyDashboard.explanationOverrides}
+              isAdmin={session?.role === "admin"}
             />
           ) : null}
 

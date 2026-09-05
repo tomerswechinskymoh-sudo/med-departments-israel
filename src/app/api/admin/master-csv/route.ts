@@ -117,12 +117,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "לא נבחר קובץ CSV." }, { status: 400 });
     }
 
+    const knownSpecialties = uploads.some((upload) => upload.kind === "spec")
+      ? await prisma.specialty.findMany({ select: { id: true, name: true, slug: true } })
+      : undefined;
+
     const previews = await Promise.all(
       uploads.map((upload) =>
         previewMasterCsvUpload({
           kind: upload.kind,
           csvText: upload.text,
-          fileName: upload.fileName
+          fileName: upload.fileName,
+          knownSpecialties
         })
       )
     );
