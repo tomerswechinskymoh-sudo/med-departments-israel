@@ -1,5 +1,6 @@
 import type { SpecialtyMetricResult } from "@/lib/specialty-metrics";
 import {
+  MetricContentTitle,
   MetricExplanationInfo,
   MetricExplanationProvider
 } from "@/components/metrics/metric-explanation";
@@ -268,6 +269,7 @@ function MetricInfo({ metric }: { metric: SpecialtyMetricResult }) {
       metricLabel={metric.label}
       fallbackText={metric.tooltip ?? metric.description}
       sourceLabel={metric.sourceLabel ?? "מקור נתונים לא צוין"}
+      sourceUrl={metric.sourceUrl}
     />
   );
 }
@@ -323,7 +325,9 @@ export function SpecialtyDashboardMetrics({
             }`}
           >
             <div className="flex items-start justify-between gap-3">
-              <p className="text-xs font-bold text-slate-500">{metric.label}</p>
+              <p className="text-xs font-bold text-slate-500">
+                <MetricContentTitle metricKey={metric.key} fallbackTitle={metric.label} />
+              </p>
               <MetricInfo metric={metric} />
             </div>
             {(metric.visualType === "donut" || metric.key === "genderDistribution") && !metric.isPlaceholder ? (

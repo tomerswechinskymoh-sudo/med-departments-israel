@@ -572,7 +572,11 @@ model MetricExplanationOverride {
   scopeKey        String                 @map("scope_key")
   specialtyId     String?                @map("specialty_id")
   departmentId    String?                @map("department_id")
-  text            String
+  text            String?
+  title           String?
+  explanation     String?
+  sourceLabel     String?                @map("source_label")
+  sourceUrl       String?                @map("source_url")
   updatedByUserId String?                @map("updated_by_user_id")
   createdAt       DateTime               @default(now()) @map("created_at")
   updatedAt       DateTime               @updatedAt @map("updated_at")

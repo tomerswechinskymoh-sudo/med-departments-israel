@@ -13,7 +13,11 @@ const metricExplanationOverrideSelect = {
   scopeKey: true,
   specialtyId: true,
   departmentId: true,
-  text: true
+  text: true,
+  title: true,
+  explanation: true,
+  sourceLabel: true,
+  sourceUrl: true
 } satisfies Prisma.MetricExplanationOverrideSelect;
 
 export async function getMetricExplanationOverrides(

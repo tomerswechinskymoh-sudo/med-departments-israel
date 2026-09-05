@@ -107,7 +107,8 @@ export const metricExplanationRegistry = {
   relativeDemandIndex: {
     label: "מדד ביקוש יחסי",
     defaultExplanation:
-      "אחוז הסטאז׳רים המעוניינים במקצוע מתוך כלל הסטאז׳רים, חלקי אחוז המתמחים החדשים במקצוע מתוך כלל המתמחים החדשים בשנתיים האחרונות. ערך 1 מציין התאמה יחסית בין הביקוש לבין היקף הקליטה; ערך גבוה מ־1 מצביע על ביקוש גבוה ביחס להיקף הקליטה למקצוע.",
+      "אחוז הסטאז׳רים המעוניינים במקצוע מתוך כלל הסטאז׳רים, חלקי אחוז המתמחים במקצוע מתוך כלל המתמחים. ערך 1 מציין התאמה יחסית בין הביקוש לבין גודל המקצוע; ככל שהערך גבוה מ־1, הביקוש היחסי למקצוע גבוה יותר.",
+    defaultSourceLabel: "נתוני MASTER_Spec",
     format: "decimal-2"
   },
   custom: {
@@ -127,7 +128,11 @@ export type MetricExplanationOverrideRecord = {
   scopeKey: string;
   specialtyId: string | null;
   departmentId: string | null;
-  text: string;
+  text: string | null;
+  title: string | null;
+  explanation: string | null;
+  sourceLabel: string | null;
+  sourceUrl: string | null;
 };
 
 export type MetricExplanationContext = {
@@ -141,6 +146,34 @@ export type ResolvedMetricExplanation = {
   text: string;
   source: MetricExplanationSource;
   overrideId: string | null;
+};
+
+export type MetricContentField = "title" | "explanation" | "sourceLabel" | "sourceUrl";
+
+export type MetricContentProvenance = {
+  source: MetricExplanationSource;
+  overrideId: string | null;
+};
+
+export type ResolvedMetricContent = {
+  metricKey: MetricExplanationKey;
+  title: string;
+  explanation: string;
+  sourceLabel: string | null;
+  sourceUrl: string | null;
+  provenance: Record<MetricContentField, MetricContentProvenance>;
+};
+
+export type MetricContentDefaults = {
+  title?: string | null;
+  explanation?: string | null;
+  sourceLabel?: string | null;
+  sourceUrl?: string | null;
+};
+
+export type MetricRichTextSegment = {
+  text: string;
+  bold: boolean;
 };
 
 export const metricExplanationScopeLabels: Record<MetricExplanationScope, string> = {
@@ -186,35 +219,153 @@ export function findMetricExplanationOverride(
   ) ?? null;
 }
 
+function trimmedOrNull(value: string | null | undefined) {
+  const trimmed = value?.trim();
+  return trimmed ? trimmed : null;
+}
+
+function overrideFieldValue(
+  override: MetricExplanationOverrideRecord,
+  field: MetricContentField
+) {
+  if (field === "explanation") {
+    return override.explanation ?? override.text;
+  }
+  return override[field];
+}
+
+export function resolveMetricContent(
+  metricKey: MetricExplanationKey,
+  context: MetricExplanationContext,
+  overrides: MetricExplanationOverrideRecord[],
+  defaults: MetricContentDefaults = {}
+): ResolvedMetricContent {
+  const definition = metricExplanationRegistry[metricKey];
+  const definitionWithSources = definition as typeof definition & {
+    defaultSourceLabel?: string;
+    defaultSourceUrl?: string;
+  };
+  const registrySourceLabel = definitionWithSources.defaultSourceLabel ?? null;
+  const registrySourceUrl = definitionWithSources.defaultSourceUrl ?? null;
+  const content: Pick<ResolvedMetricContent, MetricContentField> = {
+    title: trimmedOrNull(defaults.title) ?? definition.label,
+    explanation: trimmedOrNull(defaults.explanation) ?? definition.defaultExplanation,
+    sourceLabel: trimmedOrNull(defaults.sourceLabel) ?? registrySourceLabel,
+    sourceUrl: defaults.sourceUrl === ""
+      ? null
+      : trimmedOrNull(defaults.sourceUrl) ?? registrySourceUrl
+  };
+  const provenance = Object.fromEntries(
+    (["title", "explanation", "sourceLabel", "sourceUrl"] as MetricContentField[]).map(
+      (field) => [field, { source: "DEFAULT", overrideId: null }]
+    )
+  ) as Record<MetricContentField, MetricContentProvenance>;
+
+  for (const scopeType of ["GLOBAL", "SPECIALTY", "DEPARTMENT"] as MetricExplanationScope[]) {
+    const override = findMetricExplanationOverride(metricKey, scopeType, context, overrides);
+    if (!override) continue;
+
+    for (const field of ["title", "explanation", "sourceLabel", "sourceUrl"] as MetricContentField[]) {
+      const rawValue = overrideFieldValue(override, field);
+      if (rawValue === null || rawValue === undefined) continue;
+
+      if (field === "sourceUrl" && rawValue.trim() === "") {
+        content.sourceUrl = null;
+      } else {
+        const value = trimmedOrNull(rawValue);
+        if (!value) continue;
+        content[field] = value;
+      }
+      provenance[field] = { source: scopeType, overrideId: override.id };
+    }
+  }
+
+  return { metricKey, ...content, provenance };
+}
+
 export function resolveMetricExplanation(
   metricKey: MetricExplanationKey,
   context: MetricExplanationContext,
   overrides: MetricExplanationOverrideRecord[],
   defaultText?: string | null
 ): ResolvedMetricExplanation {
-  const definition = metricExplanationRegistry[metricKey];
-  const priorities: MetricExplanationScope[] = ["DEPARTMENT", "SPECIALTY", "GLOBAL"];
+  const resolution = resolveMetricContent(metricKey, context, overrides, {
+    explanation: defaultText
+  });
+  return {
+    metricKey,
+    label: resolution.title,
+    text: resolution.explanation,
+    source: resolution.provenance.explanation.source,
+    overrideId: resolution.provenance.explanation.overrideId
+  };
+}
 
-  for (const scopeType of priorities) {
-    const override = findMetricExplanationOverride(metricKey, scopeType, context, overrides);
-    if (override?.text.trim()) {
-      return {
-        metricKey,
-        label: definition.label,
-        text: override.text.trim(),
-        source: scopeType,
-        overrideId: override.id
-      };
+export function parseMetricRichText(value: string): MetricRichTextSegment[] {
+  const delimiterCount = value.match(/\*\*/g)?.length ?? 0;
+  if (delimiterCount % 2 !== 0) {
+    return [{ text: value, bold: false }];
+  }
+
+  const segments: MetricRichTextSegment[] = [];
+  let cursor = 0;
+  let bold = false;
+
+  while (cursor < value.length) {
+    const delimiterIndex = value.indexOf("**", cursor);
+    if (delimiterIndex === -1) {
+      if (cursor < value.length) segments.push({ text: value.slice(cursor), bold });
+      break;
     }
+    if (delimiterIndex > cursor) {
+      segments.push({ text: value.slice(cursor, delimiterIndex), bold });
+    }
+    bold = !bold;
+    cursor = delimiterIndex + 2;
+  }
+
+  return segments;
+}
+
+export function metricRichTextToPlainText(value: string) {
+  return parseMetricRichText(value).map((segment) => segment.text).join("");
+}
+
+export function toggleMetricBoldMarkup(value: string, selectionStart: number, selectionEnd: number) {
+  const start = Math.max(0, Math.min(selectionStart, value.length));
+  const end = Math.max(start, Math.min(selectionEnd, value.length));
+  const hasWrappingMarkers =
+    start >= 2 && value.slice(start - 2, start) === "**" && value.slice(end, end + 2) === "**";
+
+  if (hasWrappingMarkers) {
+    return {
+      value: `${value.slice(0, start - 2)}${value.slice(start, end)}${value.slice(end + 2)}`,
+      selectionStart: start - 2,
+      selectionEnd: end - 2
+    };
   }
 
   return {
-    metricKey,
-    label: definition.label,
-    text: defaultText?.trim() || definition.defaultExplanation,
-    source: "DEFAULT",
-    overrideId: null
+    value: `${value.slice(0, start)}**${value.slice(start, end)}**${value.slice(end)}`,
+    selectionStart: start + 2,
+    selectionEnd: end + 2
   };
+}
+
+export function isValidMetricSourceUrl(value: string | null | undefined) {
+  const trimmed = value?.trim();
+  if (!trimmed) return true;
+
+  try {
+    const url = new URL(trimmed);
+    return (
+      (url.protocol === "http:" || url.protocol === "https:") &&
+      !url.username &&
+      !url.password
+    );
+  } catch {
+    return false;
+  }
 }
 
 export function canManageMetricExplanations(session: { role?: string | null } | null | undefined) {

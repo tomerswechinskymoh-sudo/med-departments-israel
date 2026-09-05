@@ -17,6 +17,7 @@ import { Card } from "@/components/ui/card";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
+  MetricContentTitle,
   MetricExplanationInfo,
   MetricExplanationProvider
 } from "@/components/metrics/metric-explanation";
@@ -143,6 +144,7 @@ function MetricInfoTip({
       metricLabel={metricLabel ?? metricKey ?? "מדד"}
       fallbackText={text}
       sourceLabel={sourceLabel}
+      sourceUrl={sourceUrl}
     />
   );
 }
@@ -179,7 +181,9 @@ function DataMetricCard({
     <div className={`flex min-h-[5.75rem] flex-col rounded-xl border border-slate-100 bg-white px-2.5 py-2.5 ${className}`}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-bold leading-5 text-slate-600">{label}</p>
+          <p className="text-sm font-bold leading-5 text-slate-600">
+            <MetricContentTitle metricKey={metricKey} fallbackTitle={label} />
+          </p>
           {isGeneralSpecialtyMetric ? (
             <span className="mt-1 inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[0.68rem] font-black text-blue-800">
               {metricType === "נתון ארצי לתחום" ? "ארצי לתחום" : "נתון כללי לתחום"}
@@ -245,7 +249,12 @@ function DurationBenchmarkCard({
     <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-bold leading-5 text-slate-600">משך התמחות ממוצע בפועל (שנים)</p>
+          <p className="text-sm font-bold leading-5 text-slate-600">
+            <MetricContentTitle
+              metricKey="residencyDuration"
+              fallbackTitle="משך התמחות ממוצע בפועל (שנים)"
+            />
+          </p>
           {comparisonLabel ? (
             <span className="mt-1 inline-flex rounded-full bg-slate-100 px-2 py-0.5 text-[0.68rem] font-black text-slate-700">
               {comparisonLabel}
@@ -323,7 +332,9 @@ function YearlyResidentsChart({
   return (
     <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
       <div className="flex items-start justify-between gap-3">
-        <p className="text-sm font-bold text-slate-600">{title}</p>
+        <p className="text-sm font-bold text-slate-600">
+          <MetricContentTitle metricKey="newResidentsTrend" fallbackTitle={title} />
+        </p>
         <MetricInfoTip
           metricKey="newResidentsTrend"
           metricLabel={title}
@@ -446,7 +457,9 @@ function GenderBalanceCard({
   return (
     <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
       <div className="flex items-start justify-between gap-3">
-        <p className="text-sm font-bold leading-5 text-slate-600">איזון מגדרי</p>
+        <p className="text-sm font-bold leading-5 text-slate-600">
+          <MetricContentTitle metricKey="genderDistribution" fallbackTitle="איזון מגדרי" />
+        </p>
         <MetricInfoTip
           metricKey="genderDistribution"
           metricLabel="איזון מגדרי"
@@ -515,7 +528,9 @@ function ClockMetricCard({
           <span className="grid h-8 w-8 place-items-center rounded-full bg-brand-50 text-sm font-black text-brand-800">
             ◷
           </span>
-          <p className="text-sm font-bold leading-5 text-slate-600">{label}</p>
+          <p className="text-sm font-bold leading-5 text-slate-600">
+            <MetricContentTitle metricKey="medianWaitingTime" fallbackTitle={label} />
+          </p>
         </div>
         <MetricInfoTip
           metricKey="medianWaitingTime"
@@ -558,7 +573,12 @@ function AcceptanceDistributionCard({
     <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2.5">
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-bold leading-5 text-slate-600">{ACCEPTANCE_DISTRIBUTION_TITLE}</p>
+          <p className="text-sm font-bold leading-5 text-slate-600">
+            <MetricContentTitle
+              metricKey="acceptanceDistribution"
+              fallbackTitle={ACCEPTANCE_DISTRIBUTION_TITLE}
+            />
+          </p>
           {metricType === "נתון כללי לתחום" || metricType === "נתון ארצי לתחום" ? (
             <span className="mt-1 inline-flex rounded-full bg-blue-50 px-2 py-0.5 text-[0.68rem] font-black text-blue-800">
               {metricType.replace(/^נתון\s+/, "")}
@@ -626,7 +646,9 @@ function QuickHighlightCard({
   return (
     <div className="rounded-xl border border-slate-100 bg-white px-2.5 py-2">
       <div className="flex items-start justify-between gap-2">
-        <p className="text-[0.68rem] font-black text-slate-500">{label}</p>
+        <p className="text-[0.68rem] font-black text-slate-500">
+          <MetricContentTitle metricKey={metricKey} fallbackTitle={label} />
+        </p>
         <MetricInfoTip
           metricKey={metricKey}
           metricLabel={label}
@@ -672,7 +694,10 @@ function SalaryGapHighlight({
     <div className="rounded-xl border border-amber-200 bg-gradient-to-l from-amber-50 to-white px-3 py-2">
       <div className="flex items-start justify-between gap-3">
         <p className="text-[0.68rem] font-black text-amber-900">
-          {metricLabelFromMetadata(metadata, "פער שכר")}
+          <MetricContentTitle
+            metricKey="salaryGap"
+            fallbackTitle={metricLabelFromMetadata(metadata, "פער שכר")}
+          />
         </p>
         <MetricInfoTip
           metricKey="salaryGap"
