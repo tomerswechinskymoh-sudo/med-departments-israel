@@ -514,12 +514,12 @@ export async function requireClinicalRotationHospitalApiAccess(hospitalId: strin
     return { ok: true as const, session, isAdmin: true as const };
   }
 
-  if (session.role !== "representative") {
+  if (session.role !== "representative" || !session.emailVerified || session.verificationStatus !== "VERIFIED") {
     return { ok: false as const, status: 403, error: "גישה נדחתה." };
   }
 
   const accesses = await prisma.clinicalRotationHospitalAccess.findMany({
-    where: { userId: session.userId, isActive: true },
+    where: { userId: session.userId, isActive: true, role: "REPRESENTATIVE" },
     select: { userId: true, hospitalId: true, isActive: true }
   });
 
@@ -1589,6 +1589,7 @@ export async function requestClinicalRotationCancellation(input: {
   }
 
   if (
+    application.status !== ClinicalRotationApplicationStatus.CANCELLATION_REQUESTED &&
     application.status !== ClinicalRotationApplicationStatus.SUBMITTED &&
     application.status !== ClinicalRotationApplicationStatus.WAITLISTED &&
     application.status !== ClinicalRotationApplicationStatus.APPROVED
@@ -1597,6 +1598,11 @@ export async function requestClinicalRotationCancellation(input: {
   }
 
   const cancellation = await prisma.$transaction(async (tx) => {
+    await tx.$queryRaw`SELECT "id" FROM "ClinicalRotationApplication" WHERE "id" = ${application.id} FOR UPDATE`;
+    const current = await tx.clinicalRotationApplication.findUniqueOrThrow({ where: { id: application.id } });
+    const pending = await tx.clinicalRotationCancellation.findFirst({ where: { applicationId: application.id, status: "REQUESTED" } });
+    if (current.status === "CANCELLATION_REQUESTED" && pending) return pending;
+    if (current.status !== application.status) throw new Error("מצב הבקשה השתנה; יש לרענן.");
     const created = await tx.clinicalRotationCancellation.create({
       data: {
         applicationId: application.id,
@@ -1668,7 +1674,14 @@ export async function decideClinicalRotationCancellation(input: {
   if (!auth.ok) return auth;
 
   const now = new Date();
-  await prisma.$transaction(async (tx) => {
+  const changed = await prisma.$transaction(async (tx) => {
+    await tx.$queryRaw`SELECT "id" FROM "ClinicalRotationApplication" WHERE "id" = ${cancellation.applicationId} FOR UPDATE`;
+    const current = await tx.clinicalRotationCancellation.findUniqueOrThrow({ where: { id: cancellation.id } });
+    if (current.status !== "REQUESTED") return false;
+    if (!auth.isAdmin) {
+      const currentAccess = await tx.clinicalRotationHospitalAccess.findFirst({ where: { userId: auth.session.userId, hospitalId: cancellation.application.hospitalId, isActive: true, role: "REPRESENTATIVE" } });
+      if (!currentAccess) return false;
+    }
     await tx.clinicalRotationCancellation.update({
       where: { id: cancellation.id },
       data: {
@@ -1706,8 +1719,10 @@ export async function decideClinicalRotationCancellation(input: {
       cancellationId: cancellation.id,
       metadata: { approved: input.approved }
     });
+    return true;
   });
 
+  if (!changed) return { ok: false as const, status: 409, error: "ההרשאה או מצב הביטול השתנו; יש לרענן." };
   return { ok: true as const };
 }
 

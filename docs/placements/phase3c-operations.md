@@ -11,7 +11,7 @@ External document verification is the approved product design. The institution m
 - `/placements`: public three-route overview; no application form or available seats.
 - `/admin/placements`: authenticated platform-admin design/readiness view. Chief/delegate slots are empty, not database accounts. Appointment is visibly blocked. This is not a commissioned coordinator dashboard.
 - `src/lib/placements/pilot-release.ts`: admission hard-disabled, empty accounts/offerings. An environment flag cannot activate it accidentally.
-- `src/lib/placements/request-guard.ts`: middleware AND individual legacy route handlers block new submissions, confirmations, offerings/quotas, imports, invitations, document intake, payment actions and representative grants. Existing department login/logout, applicant cancellation requests and authorized cancellation decisions remain under their existing authentication/origin/resource checks. No historical placement is deleted or cancelled by the switch. The existing cleanup endpoint is outside this gate.
+- `src/lib/placements/request-guard.ts`: middleware AND individual legacy route handlers block new submissions, confirmations, offerings/quotas, imports, invitations, document intake, payment actions and representative grants. Existing department login/logout, applicant cancellation requests and authorized cancellation decisions remain under authentication/origin/resource checks. Hospital mutation access now requires a verified, email-verified REPRESENTATIVE grant, not VIEW_ONLY. Cancellation request/decision transactions lock the application row, deduplicate requests and prevent repeated decisions; grants are rechecked inside the decision transaction. No historical placement is deleted or cancelled by the switch. The existing cleanup endpoint is outside this gate.
 - Review GET paths remain under their existing authorization. Unsafe legacy mutations are not restored. Full Phase 3B shared-allocation bridge is still local-only and must be reconciled before allowing new writes.
 
 The deployed gate already is the kill switch. Future enablement must preserve review/cancellation and necessary cleanup while disabling submissions/invitations/confirmation/uploads. Do not remove this gate just to expose a form.
@@ -31,7 +31,9 @@ node scripts/placements/phase3c/local-run.mjs node_modules/next/dist/bin/next st
 # In another terminal:
 node scripts/placements/phase3c/local-run.mjs node scripts/placements/phase3c/browser-local.mjs
 node scripts/placements/phase3c/local-run.mjs node --import tsx scripts/placements/phase3c/verify-guards.ts
-# Stop the foreground server with Ctrl-C. Keep the disposable DB for inspection.
+node scripts/placements/phase3c/local-run.mjs node scripts/placements/phase3c/verify-cancellation.mjs
+# Stop only the verified worktree server; keep the disposable DB for inspection:
+node scripts/placements/phase3c/stop.mjs
 ```
 
 URL: `http://localhost:3105/placements`. The wrapper supplies only loopback DB, private synthetic session key and local app URL; no mail, storage, payment or scraping credentials. Existing Phase 3B full workflow remains at `http://localhost:3104/placements`; its original repeatability instructions and caveats remain in `phase3b-report.md` in the original checkout. Do not run its fresh-only fixtures against the populated demo.
