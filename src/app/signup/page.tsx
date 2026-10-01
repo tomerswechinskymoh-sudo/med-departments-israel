@@ -2,6 +2,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
 import { SignupForm } from "@/components/forms/signup-form";
 import { getDepartmentOptions } from "@/lib/queries";
+import { siteIdentity } from "@/lib/brand-copy";
 
 export default async function SignupPage() {
   const departments = await getDepartmentOptions();
@@ -13,6 +14,7 @@ export default async function SignupPage() {
           <div className="text-center">
             <p className="text-sm font-bold text-brand-600">פתיחת חשבון</p>
             <h1 className="mt-2 text-4xl font-black tracking-tight text-ink">הצטרפות לפלטפורמה</h1>
+            <p className="mt-2 text-sm text-slate-600">מידע על הכשרה רפואית בישראל ב־<span dir="ltr">{siteIdentity.name}</span></p>
           </div>
           <div className="mt-6">
             <SignupForm departments={departments} />

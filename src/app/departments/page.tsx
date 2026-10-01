@@ -160,7 +160,7 @@ export default async function DepartmentsPage({
               בחרו תחום התמחות והשוו תוכניות
             </h1>
             <p className="mt-2 text-sm leading-7 text-slate-600 md:text-base">
-              מתחילים מנתונים לאומיים על תחום ההתמחות וממשיכים להשוואה בין המערכים השונים.
+              מתחילים מנתונים ארציים על תחום ההתמחות וממשיכים להשוואת מחלקות ומערכים בבתי חולים בישראל.
             </p>
           </div>
         </section>

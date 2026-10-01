@@ -1,9 +1,10 @@
 import Link from "next/link";
-import Image from "next/image";
 import { getSession } from "@/lib/auth";
 import { getDepartmentOptions } from "@/lib/queries";
 import { ExperienceCta } from "@/components/experience/experience-cta";
 import { LogoutButton } from "@/components/layout/logout-button";
+import { SiteBrand } from "@/components/layout/site-brand";
+import { siteIdentity } from "@/lib/brand-copy";
 
 export async function SiteHeader() {
   const session = await getSession();
@@ -20,23 +21,15 @@ export async function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/70 bg-white/78 backdrop-blur-2xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 md:px-6">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-4 md:flex-nowrap md:gap-4 md:px-6">
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            className="inline-flex items-center rounded-full border border-brand-100/70 bg-white/85 px-4 py-2 text-lg font-bold tracking-tight text-brand-900 shadow-panel"
+            aria-label={`${siteIdentity.name} — עמוד הבית`}
+            className="inline-flex items-center rounded-full border border-brand-100/70 bg-white/85 px-3 py-1.5 text-lg shadow-panel transition hover:border-brand-300"
           >
-            הדרך להתמחות
+            <SiteBrand />
           </Link>
-          <div className="inline-flex items-center rounded-full border border-brand-100 bg-white/80 px-2.5 py-1.5 text-xs font-bold text-brand-900 shadow-sm">
-            <Image
-              src="/logos/ministry-of-health-logo-he.jpg"
-              alt="לוגו משרד הבריאות"
-              width={72}
-              height={24}
-              className="h-6 w-auto object-contain"
-            />
-          </div>
           <nav className="hidden items-center gap-4 text-sm text-slate-700 md:flex">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href} className="transition hover:text-brand-700">

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
 import { Card } from "@/components/ui/card";
 import { LoginForm } from "@/components/forms/login-form";
+import { siteIdentity } from "@/lib/brand-copy";
 
 export default async function LoginPage({
   searchParams
@@ -25,6 +26,7 @@ export default async function LoginPage({
         <div className="text-center">
           <p className="text-sm font-bold text-brand-600">כניסה מאובטחת</p>
           <h1 className="mt-2 text-4xl font-black tracking-tight text-ink">ברוכים הבאים</h1>
+          <p className="mt-2 text-sm text-slate-600">לחשבון שלכם ב־<span dir="ltr">{siteIdentity.name}</span></p>
         </div>
         {signupCheckEmail ? (
           <p className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">

@@ -9,9 +9,10 @@ import {
   SearchPulseIcon
 } from "@/components/ui/med-icons";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { sourceCopy } from "@/lib/brand-copy";
 
 const trustItems = [
-  "מקורות רשמיים",
+  "נתונים ממקורות רשמיים",
   "שיתופי קהילה מאומתים",
   "מידע מתעדכן לאורך זמן"
 ];
@@ -37,8 +38,8 @@ const decisionSteps = [
 const dataCollectionCards = [
   {
     icon: "🏥",
-    title: "מקורות רשמיים",
-    description: "משרד הבריאות, נתוני התמחות, מידע ציבורי ופרסומים רשמיים"
+    title: "נתונים ופרסומים רשמיים",
+    description: "נתונים ופרסומים של משרד הבריאות וגופים מקצועיים במערכת הבריאות"
   },
   {
     icon: "🌐",
@@ -64,15 +65,15 @@ export default function HomePage() {
       <section className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/88 shadow-panel">
         <div className="grid gap-6 lg:grid-cols-[1fr_0.92fr]">
           <div className="space-y-6 p-5 md:p-7 lg:p-8">
-            <p className="text-sm font-semibold text-brand-700">לפני שבוחרים, בודקים</p>
+            <p className="text-sm font-semibold text-brand-700">מידע על הכשרה רפואית בישראל</p>
             <div className="space-y-4">
               <h1 className="max-w-3xl text-4xl font-bold leading-tight text-ink md:text-5xl lg:text-[3.4rem]">
-                לדעת איך מחלקה באמת נראית, לפני שנכנסים אליה
+                להשוות מחלקות והתמחויות בישראל
               </h1>
               <p className="max-w-2xl text-base leading-8 text-slate-700">
-                מחלקות, מסלולים, מידע רשמי וניסיון מצטבר מהשטח.
+                נתונים ארציים על תחומי התמחות, מחלקות ומסלולי הכשרה.
                 <br className="hidden md:block" />
-                מקום אחד להתחיל ממנו לפני שמשווים ובוחרים לאן להעמיק.
+                מידע ממקורות רשמיים וחוויות מהשטח לבחירה מושכלת של סטודנטים, סטאז׳רים ומתמחים.
               </p>
             </div>
 
@@ -148,7 +149,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="אמון ושקיפות"
             title="איך נאסף המידע?"
-            description="המידע באתר משלב מקורות רשמיים יחד עם ניסיון מהשטח כדי לעזור לקבל החלטות מושכלות."
+            description={sourceCopy.summary}
           />
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">

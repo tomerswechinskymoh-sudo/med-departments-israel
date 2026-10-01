@@ -1,6 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
+import { siteIdentity, sourceCopy } from "@/lib/brand-copy";
+import { SiteBrand } from "@/components/layout/site-brand";
 
 export function SiteFooter() {
   const links = [
@@ -20,17 +21,23 @@ export function SiteFooter() {
       <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-8 text-sm md:px-6">
         <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-semibold text-white">הדרך להתמחות</p>
+            <Link href="/" aria-label={`${siteIdentity.name} — עמוד הבית`} className="inline-flex text-lg">
+              <SiteBrand inverse />
+            </Link>
+            <p className="mt-1 text-xs text-brand-50/70">{siteIdentity.descriptor}</p>
             <p className="mt-2 max-w-xl leading-7 text-brand-50/80">
-              מקום אחד להבין איך מחלקות באמת נראות לפני שבוחרים סבב, מחקר או התמחות.
+              מידע על מחלקות והכשרה רפואית בישראל, ממקורות רשמיים ומדיווחים מהשטח.
             </p>
           </div>
-          <a
-            href={PUBLIC_CONTACT_MAILTO}
-            className="w-fit rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-brand-50 transition hover:border-white/40 hover:text-white"
-          >
-            {PUBLIC_CONTACT_EMAIL}
-          </a>
+          <div className="space-y-2">
+            <p className="text-xs text-brand-50/70">לפניות בנוגע לאתר</p>
+            <a
+              href={PUBLIC_CONTACT_MAILTO}
+              className="inline-flex w-fit rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-brand-50 transition hover:border-white/40 hover:text-white"
+            >
+              {PUBLIC_CONTACT_EMAIL}
+            </a>
+          </div>
         </div>
 
         <div className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-brand-50/88">
@@ -42,16 +49,10 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col gap-3 border-t border-white/10 pt-4 md:flex-row md:items-center md:justify-between">
-          <div className="inline-flex w-fit items-center rounded-full border border-white/15 bg-white px-4 py-2">
-            <Image
-              src="/logos/ministry-of-health-logo-he.jpg"
-              alt="לוגו משרד הבריאות"
-              width={132}
-              height={42}
-              className="h-9 w-auto object-contain"
-            />
-          </div>
-          <p className="text-xs text-brand-50/60">© {new Date().getFullYear()} הדרך להתמחות</p>
+          <p className="max-w-2xl text-xs leading-6 text-brand-50/70">
+            <span className="font-semibold text-brand-50">{sourceCopy.label}:</span> {sourceCopy.summary}
+          </p>
+          <p className="text-xs text-brand-50/60" dir="ltr">© {new Date().getFullYear()} {siteIdentity.name}</p>
         </div>
       </div>
     </footer>
