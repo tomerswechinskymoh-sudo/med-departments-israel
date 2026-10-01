@@ -7,6 +7,7 @@ export function SiteFooter() {
   const links = [
     { href: "/sitemap", label: "מפת אתר" },
     { href: "/about", label: "אודות" },
+    { href: "/placements", label: "סבבים ואלקטיבים" },
     { href: "/contact", label: "יצירת קשר" },
     { href: "/faq", label: "שאלות נפוצות" },
     { href: "/terms", label: "תנאים" },
