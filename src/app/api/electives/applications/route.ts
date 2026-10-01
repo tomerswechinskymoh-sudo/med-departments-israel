@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
@@ -12,6 +13,8 @@ import {
 import { electiveStudentApplicationSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const access = await getStudentElectivesAccess();
 
   if (!access.ok) {

@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 import { RoleKey, VerificationStatus } from "@prisma/client";
@@ -12,6 +13,8 @@ import { prisma } from "@/lib/prisma";
 import { hasValidSameOrigin } from "@/lib/security";
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const auth = await requireClinicalRotationAdminApiSession();
 
   if (!auth.ok) {

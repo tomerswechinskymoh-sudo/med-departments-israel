@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import {
   parseClinicalRotationDate,
@@ -9,6 +10,8 @@ import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin } from "@/lib/security";
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const rateLimit = checkRateLimit(request, "clinical-rotations:applications", { limit: 8, windowMs: 60_000 });
   if (!rateLimit.ok) {
     return rateLimitResponse(rateLimit.retryAfter);

@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { importClinicalRotationEligibilityList } from "@/lib/clinical-rotations-privacy";
@@ -7,6 +8,8 @@ import { hasValidSameOrigin } from "@/lib/security";
 import { readOptionalFormFile } from "@/lib/uploads";
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const rateLimit = checkRateLimit(request, "admin:clinical-rotations:eligibility-imports", { limit: 6, windowMs: 60_000 });
   if (!rateLimit.ok) return rateLimitResponse(rateLimit.retryAfter);
 

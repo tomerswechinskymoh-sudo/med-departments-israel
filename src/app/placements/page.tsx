@@ -20,6 +20,18 @@ export default function PlacementsPage() {
         </p>
       </section>
 
+      <section aria-labelledby="learner-routes" className="space-y-4">
+        <h2 id="learner-routes" className="text-xl font-bold">מסלולי ההכשרה</h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            ['סטודנט/ית לרפואה בישראל', 'אלקטיב בהתאם לאישור הפקולטה ולתנאי בית החולים.'],
+            ['סטודנט/ית ישראלי/ת לרפואה בחו״ל', 'סבב קליני בכפוף לזכאות ולדרישות המוסד.'],
+            ['סטאז׳ר/ית', 'אלקטיב במסגרת הסטאז׳ ובכפוף לאישורים המתאימים.']
+          ].map(([title, description]) => <Card key={title} className="space-y-3 bg-white"><h3 className="font-bold">{title}</h3><p className="text-sm leading-7">{description}</p><p className="text-sm font-semibold text-brand-800">ההרשמה טרם נפתחה</p></Card>)}
+        </div>
+        <p className="leading-8">הרשמה דרך המערכת תיפתח לאחר פרסום מועדים על ידי בית החולים. בחירת מסלול אינה אישור זכאות, והגשת בקשה אינה מבטיחה מקום.</p>
+        <p className="text-sm leading-7">אין להעלות או לשלוח מסמכים רגישים דרך המערכת בשלב זה.</p>
+      </section>
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="space-y-4 bg-white">
           <h2 className="text-xl font-bold text-ink">היכרות עם מחלקות</h2>

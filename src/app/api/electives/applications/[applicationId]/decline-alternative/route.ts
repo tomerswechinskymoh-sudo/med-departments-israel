@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
@@ -5,6 +6,8 @@ import { hasValidSameOrigin } from "@/lib/security";
 import { getStudentElectivesAccess } from "@/lib/student-electives";
 
 export async function POST(request: Request, { params }: { params: Promise<{ applicationId: string }> }) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const access = await getStudentElectivesAccess();
 
   if (!access.ok) {

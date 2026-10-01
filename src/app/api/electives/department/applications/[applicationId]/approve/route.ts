@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import { requireElectiveDepartmentApiSession } from "@/lib/elective-department-auth";
 import { updateRepresentativeApplicationDecision } from "@/lib/elective-representative-applications";
@@ -5,6 +6,8 @@ import { hasValidSameOrigin } from "@/lib/security";
 import { electiveRepresentativeApplicationActionSchema } from "@/lib/validation";
 
 export async function POST(request: Request, { params }: { params: Promise<{ applicationId: string }> }) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const auth = await requireElectiveDepartmentApiSession();
 
   if (auth.status === "disabled") {

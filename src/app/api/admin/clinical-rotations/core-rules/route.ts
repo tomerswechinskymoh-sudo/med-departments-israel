@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import {
   createOrUpdateClinicalRotationCoreRule,
@@ -8,6 +9,8 @@ import { clinicalRotationCoreRuleSchema } from "@/lib/clinical-rotations-validat
 import { hasValidSameOrigin } from "@/lib/security";
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const auth = await requireClinicalRotationAdminApiSession();
 
   if (!auth.ok) {

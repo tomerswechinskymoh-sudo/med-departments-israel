@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
@@ -9,6 +10,8 @@ import { generateElectiveRepresentativesByHospital, resetHospitalElectiveReprese
 import { electiveRepresentativeAccountSchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const session = await getSession();
 
   if (!session || session.role !== "admin") {

@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import { createAuditLog } from "@/lib/audit";
 import { canManageElectiveDepartment, requireElectiveDepartmentApiSession } from "@/lib/elective-department-auth";
@@ -6,6 +7,8 @@ import { hasValidSameOrigin } from "@/lib/security";
 import { electiveDepartmentPortalAvailabilitySchema } from "@/lib/validation";
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const auth = await requireElectiveDepartmentApiSession();
 
   if (auth.status === "disabled") {

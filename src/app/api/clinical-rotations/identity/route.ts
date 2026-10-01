@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import { requireClinicalRotationStudentApiSession } from "@/lib/clinical-rotations";
 import { submitClinicalRotationIdentityVerification } from "@/lib/clinical-rotations-privacy";
@@ -7,6 +8,8 @@ import { hasValidSameOrigin } from "@/lib/security";
 import { readOptionalFormFile } from "@/lib/uploads";
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const rateLimit = checkRateLimit(request, "clinical-rotations:identity", { limit: 4, windowMs: 60_000 });
   if (!rateLimit.ok) return rateLimitResponse(rateLimit.retryAfter);
 

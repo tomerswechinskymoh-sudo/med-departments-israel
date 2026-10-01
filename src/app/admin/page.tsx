@@ -179,6 +179,7 @@ export default async function AdminPage() {
 
   return (
     <PageShell className="space-y-6 py-8">
+      <Link href="/admin/placements" className="underline">בקרת פיילוט סבבים ואלקטיבים</Link>
       <SectionHeading
         eyebrow="דשבורד אדמין"
         title="אישורים, נתונים ופיקוח"

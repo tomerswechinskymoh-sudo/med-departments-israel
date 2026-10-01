@@ -3,12 +3,16 @@ import type { NextRequest } from "next/server";
 import { parseSessionTokenEdge } from "@/lib/auth-edge";
 import { getSessionCookieName } from "@/lib/session";
 
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
+
 const authRequiredPrefixes = ["/dashboard", "/favorites"];
 const representativePrefixes = ["/representative"];
 const adminPrefixes = ["/admin"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const requiresAuth = [...authRequiredPrefixes, ...representativePrefixes, ...adminPrefixes].some(
     (prefix) => pathname.startsWith(prefix)
   );
@@ -42,5 +46,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/favorites/:path*", "/representative/:path*", "/admin/:path*"]
+  matcher: ["/api/:path*", "/dashboard/:path*", "/favorites/:path*", "/representative/:path*", "/admin/:path*"]
 };

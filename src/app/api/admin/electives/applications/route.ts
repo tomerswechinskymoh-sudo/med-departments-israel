@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { createAuditLog } from "@/lib/audit";
@@ -10,6 +11,8 @@ function optionalDate(value?: string) {
 }
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const session = await getSession();
 
   if (!session || session.role !== "admin") {
@@ -59,6 +62,8 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const session = await getSession();
 
   if (!session || session.role !== "admin") {

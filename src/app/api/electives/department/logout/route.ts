@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import {
   clearElectiveDepartmentSessionCookie,
@@ -7,6 +8,8 @@ import {
 import { hasValidSameOrigin } from "@/lib/security";
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   if (!isElectiveDepartmentPortalEnabled()) {
     return NextResponse.json({ error: "פורטל המחלקות לא פעיל כרגע." }, { status: 404 });
   }

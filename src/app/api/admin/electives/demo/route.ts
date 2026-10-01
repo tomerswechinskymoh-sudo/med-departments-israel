@@ -1,3 +1,4 @@
+import { guardPlacementRequest } from "@/lib/placements/request-guard";
 import { NextResponse } from "next/server";
 import { createAuditLog } from "@/lib/audit";
 import { getSession } from "@/lib/auth";
@@ -27,6 +28,8 @@ function flattenSummary(summary: Awaited<ReturnType<typeof seedElectivesDemo>>) 
 }
 
 export async function POST(request: Request) {
+  const placementBlock = await guardPlacementRequest(request);
+  if (placementBlock) return placementBlock;
   const session = await getSession();
 
   if (!session || session.role !== "admin") {
