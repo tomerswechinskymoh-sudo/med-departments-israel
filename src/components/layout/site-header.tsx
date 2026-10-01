@@ -14,6 +14,7 @@ export async function SiteHeader() {
     ? [{ href: "/admin", label: "אדמין" }]
     : [
         { href: "/departments", label: "חיפוש מחלקות" },
+        { href: "/career-fit", label: "בחירת התמחות" },
         { href: "/placements", label: "סבבים ואלקטיבים" },
         { href: "/faq", label: "שאלות נפוצות" },
         { href: "/about", label: "אודות" },
@@ -85,7 +86,8 @@ export async function SiteHeader() {
         </div>
       </div>
       {!isAdmin ? (
-        <div className="border-t border-brand-100/70 px-4 py-2 text-sm font-semibold text-brand-800 lg:hidden">
+        <div className="flex flex-wrap gap-4 border-t border-brand-100/70 px-4 py-2 text-sm font-semibold text-brand-800 lg:hidden">
+          <Link href="/career-fit" className="inline-flex min-h-8 items-center hover:text-teal-700">בחירת התמחות</Link>
           <Link href="/placements" className="inline-flex min-h-8 items-center hover:text-teal-700">
             סבבים ואלקטיבים
           </Link>

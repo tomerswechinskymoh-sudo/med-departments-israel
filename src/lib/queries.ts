@@ -1254,6 +1254,8 @@ const getPublicDepartmentOptions = publicDataCache(
 );
 
 export async function getDepartmentOptions() {
+  // Do not persist the build-only empty fallback in the shared runtime cache.
+  if (isNextProductionBuildPhase()) return [];
   return getPublicDepartmentOptions();
 }
 

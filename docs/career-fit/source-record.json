@@ -1,0 +1,572 @@
+{
+  "version": "2026-10-01.1",
+  "retrievedAt": "2026-10-01",
+  "review": "Editorial source review during implementation; not independent clinical or psychometric validation",
+  "context": [
+    {
+      "source": "https://careersinmedicine.aamc.org/understand-yourself/personal-attributes",
+      "supports": "Separate interests and values",
+      "interpretation": "Original preference questions and separate importance controls",
+      "limitations": "No proprietary assessment content or scoring; not validation"
+    },
+    {
+      "source": "https://careersinmedicine.aamc.org/choose-your-specialty/finding-your-fit",
+      "supports": "Multiple considerations and stereotype caution",
+      "interpretation": "Multiple unresolved directions, missing evidence and exploration",
+      "limitations": "No predictive claim"
+    },
+    {
+      "source": "https://www.ima.org.il/internship/Specializations.aspx",
+      "supports": "Base, subspecialty and fellowship taxonomy",
+      "interpretation": "Preserve multiple pathways; category labels are not eligibility",
+      "limitations": "No prerequisite calculator; source remains authoritative"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "pathology",
+      "label": "פתולוגיה אבחנתית",
+      "aliases": [
+        "אנטומיה פתולוגית"
+      ],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "laboratory",
+        "diagnostic",
+        "focused"
+      ],
+      "missing": [
+        "procedural",
+        "acute",
+        "continuity",
+        "interaction",
+        "broad",
+        "outpatient",
+        "inpatient",
+        "theatre",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=32",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "תיאור בחינת ההתמחות כולל אבחון תכשירים מאקרוסקופיים ומיקרוסקופיים; זהו בסיס לבחינת עניין בדגימות ובפרשנות אבחנתית.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "emergency",
+      "label": "רפואה דחופה",
+      "aliases": [],
+      "pathways": [
+        "base",
+        "subspecialty"
+      ],
+      "supported": [
+        "acute",
+        "broad",
+        "inpatient"
+      ],
+      "missing": [
+        "procedural",
+        "diagnostic",
+        "continuity",
+        "interaction",
+        "focused",
+        "outpatient",
+        "theatre",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=293",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "מסלול ברפואה דחופה עם פנימית, כירורגיה, טיפול נמרץ ורפואה דחופה ילדים תומך בבחינת טיפול חריף והיקף רחב. קיימים מסלולי בסיס ועל.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "obgyn",
+      "label": "יילוד וגינקולוגיה",
+      "aliases": [
+        "מיילדות וגינקולוגיה"
+      ],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "focused",
+        "procedural",
+        "theatre"
+      ],
+      "missing": [
+        "diagnostic",
+        "acute",
+        "continuity",
+        "interaction",
+        "broad",
+        "outpatient",
+        "inpatient",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=20",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "תקופות ביילוד, גינקולוגיה ופריון ורשימות פעולות וניתוחים תומכות בבחינת תחום ממוקד ועיסוק מעשי.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "orthopedics",
+      "label": "כירורגיה אורתופדית",
+      "aliases": [
+        "אורתופדיה"
+      ],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "focused",
+        "procedural",
+        "theatre",
+        "acute"
+      ],
+      "missing": [
+        "diagnostic",
+        "continuity",
+        "interaction",
+        "broad",
+        "outpatient",
+        "inpatient",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=75",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "מסלול כירורגי עם ניתוחי עמוד שדרה וכף יד וטיפול נמרץ תומך בבחינת פעולות, חדר ניתוח וטיפול חריף.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "internal",
+      "label": "רפואה פנימית",
+      "aliases": [],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "inpatient",
+        "broad",
+        "acute"
+      ],
+      "missing": [
+        "procedural",
+        "diagnostic",
+        "continuity",
+        "interaction",
+        "focused",
+        "outpatient",
+        "theatre",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=1",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "מחלקת פנימית, רוטציות קליניות וטיפול נמרץ תומכים בבחינת עבודה באשפוז ובהיקף קליני רחב.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "surgery",
+      "label": "כירורגיה כללית",
+      "aliases": [],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "procedural",
+        "theatre",
+        "inpatient",
+        "acute"
+      ],
+      "missing": [
+        "diagnostic",
+        "continuity",
+        "interaction",
+        "broad",
+        "focused",
+        "outpatient",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=70",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "מסלול כירורגי, רשימת ניתוחים ורוטציות בטראומה וטיפול נמרץ תומכים בבחינת פעולות וטיפול סביב ניתוח.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "pediatrics",
+      "label": "רפואת ילדים",
+      "aliases": [],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "children",
+        "inpatient",
+        "outpatient",
+        "broad"
+      ],
+      "missing": [
+        "procedural",
+        "diagnostic",
+        "acute",
+        "continuity",
+        "interaction",
+        "focused",
+        "theatre",
+        "laboratory",
+        "imaging",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=10",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "המסלול כולל מחלקת ילדים, רפואת ילדים בקהילה ומגוון תחומי ילדים.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "family",
+      "label": "רפואת משפחה",
+      "aliases": [],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "outpatient",
+        "broad",
+        "continuity"
+      ],
+      "missing": [
+        "procedural",
+        "diagnostic",
+        "acute",
+        "interaction",
+        "focused",
+        "inpatient",
+        "theatre",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=99",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "תקופות ברפואת המשפחה ובמרפאות לצד רוטציות בפנימית, ילדים ופסיכיאטריה; רצף טיפולי הוא פירוש עריכתי למסגרת המרפאה.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "psychiatry",
+      "label": "פסיכיאטריה",
+      "aliases": [],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "inpatient",
+        "outpatient",
+        "focused"
+      ],
+      "missing": [
+        "procedural",
+        "diagnostic",
+        "acute",
+        "continuity",
+        "interaction",
+        "broad",
+        "theatre",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=50",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "המסלול כולל מחלקה פסיכיאטרית ושירות אמבולטורי. קיים גם מסלול למומחים ברפואת משפחה; יש לבדוק תנאים במקור.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "radiology",
+      "label": "רדיולוגיה אבחנתית",
+      "aliases": [
+        "דימות"
+      ],
+      "pathways": [
+        "base",
+        "subspecialty"
+      ],
+      "supported": [
+        "imaging",
+        "diagnostic",
+        "focused"
+      ],
+      "missing": [
+        "procedural",
+        "acute",
+        "continuity",
+        "interaction",
+        "broad",
+        "outpatient",
+        "inpatient",
+        "theatre",
+        "laboratory",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=48",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "המסלול ברדיולוגיה אבחנתית תומך בבחינת עניין בדימות ובפרשנות אבחנתית.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "anesthesia",
+      "label": "הרדמה",
+      "aliases": [],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "procedural",
+        "theatre",
+        "acute",
+        "inpatient"
+      ],
+      "missing": [
+        "diagnostic",
+        "continuity",
+        "interaction",
+        "broad",
+        "focused",
+        "outpatient",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=47",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "פעולות הרדמה סביב ניתוח ותקופת חובה בטיפול נמרץ תומכות במיפוי הפעילויות הללו.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "ent",
+      "label": "מחלות א.א.ג וכירורגיה של ראש וצוואר",
+      "aliases": [
+        "אף אוזן גרון",
+        "מחלות אף אוזן גרון וכירורגיית ראש וצוואר",
+        "מחלות אף אוזן גרון וכירורגיה של ראש וצוואר"
+      ],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "procedural",
+        "theatre",
+        "focused",
+        "inpatient"
+      ],
+      "missing": [
+        "diagnostic",
+        "acute",
+        "continuity",
+        "interaction",
+        "broad",
+        "outpatient",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=44",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "מחלקת אם כירורגית ורשימת פעולות תומכות בבחינת עיסוק כירורגי בתחום ראש וצוואר.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "dermatology",
+      "label": "מחלות עור ומין",
+      "aliases": [],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "focused",
+        "inpatient"
+      ],
+      "missing": [
+        "procedural",
+        "diagnostic",
+        "acute",
+        "continuity",
+        "interaction",
+        "broad",
+        "outpatient",
+        "theatre",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=4",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "תקופה במחלקת עור תומכת בבחינת תחום ממוקד ומסגרת מחלקתית; חסר אפיון לשאר ההעדפות.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "ophthalmology",
+      "label": "מחלות עיניים",
+      "aliases": [],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "focused",
+        "procedural",
+        "theatre"
+      ],
+      "missing": [
+        "diagnostic",
+        "acute",
+        "continuity",
+        "interaction",
+        "broad",
+        "outpatient",
+        "inpatient",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=78",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "תחום העיניים ורשימת פעולות וניתוחים תומכים בבחינת עיסוק ממוקד ופעולות.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "neurology",
+      "label": "נוירולוגיה",
+      "aliases": [],
+      "pathways": [
+        "base"
+      ],
+      "supported": [
+        "focused",
+        "inpatient"
+      ],
+      "missing": [
+        "procedural",
+        "diagnostic",
+        "acute",
+        "continuity",
+        "interaction",
+        "broad",
+        "outpatient",
+        "theatre",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=60",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "תקופה במחלקת נוירולוגיה תומכת בבחינת תחום ממוקד ומסגרת מחלקתית; אין אומדן לכמות הפעילות.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    },
+    {
+      "id": "rehabilitation",
+      "label": "רפואה פיזיקלית ושיקום",
+      "aliases": [
+        "שיקום"
+      ],
+      "pathways": [
+        "base",
+        "subspecialty"
+      ],
+      "supported": [
+        "focused",
+        "inpatient"
+      ],
+      "missing": [
+        "procedural",
+        "diagnostic",
+        "acute",
+        "continuity",
+        "interaction",
+        "broad",
+        "outpatient",
+        "theatre",
+        "laboratory",
+        "imaging",
+        "children",
+        "older"
+      ],
+      "sources": [
+        "https://www.ima.org.il/internship/Syllabus.aspx?SpId=43",
+        "https://www.ima.org.il/internship/Specializations.aspx"
+      ],
+      "interpretation": "תקופה במחלקת שיקום תומכת בבחינת תחום ממוקד ומסגרת מחלקתית; רצף הטיפול דורש אפיון נוסף.",
+      "limitation": "זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.",
+      "version": "2026-10-01.1"
+    }
+  ]
+}
