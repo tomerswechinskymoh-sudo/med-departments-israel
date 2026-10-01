@@ -9,7 +9,7 @@ import { siteIdentity } from "@/lib/brand-copy";
 export async function SiteHeader() {
   const session = await getSession();
   const isAdmin = session?.role === "admin";
-  const reviewDepartments = isAdmin ? [] : await getDepartmentOptions();
+  const reviewDepartments = isAdmin || !process.env.DATABASE_URL ? [] : await getDepartmentOptions();
   const navItems = isAdmin
     ? [{ href: "/admin", label: "אדמין" }]
     : [
