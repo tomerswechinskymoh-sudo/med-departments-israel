@@ -117,6 +117,7 @@ export default async function ComparePage({
           </p>
         </section>
 
+        <p className="rounded-xl border bg-white p-4 text-sm">מדד המחלקה של Hitmachut: אין מספיק נתונים לחישוב מדד המחלקה. כיסוי נתונים למדד: 0%. <Link href="/career-fit/methodology#department-index" className="underline">איך מחושב המדד?</Link></p>
         <Card className="rounded-2xl !p-0">
           <div className="hidden overflow-x-auto lg:block">
             <table className="min-w-full text-right text-sm">

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {mkdirSync,writeFileSync} from 'node:fs';
 const root=process.env.CAREER_FIT_URL??'http://localhost:3107';
 const live=!root.includes('localhost');
-const out='/private/tmp/hitmachut-phase4b/screenshots';mkdirSync(out,{recursive:true});
+const out='/private/tmp/hitmachut-phase4c/screenshots';mkdirSync(out,{recursive:true});
 const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
 const records=[];
 async function heading(p,name){await p.getByRole('heading',{name,exact:true}).waitFor();}
@@ -45,7 +45,12 @@ try{
   if(regions.length)await region.locator('select').first().selectOption('');
   await institution.locator('select').first().selectOption(hospitalOption);
   await page.locator('[data-personal-score]').first().waitFor();assert.equal(await page.locator('[data-personal-score]').first().innerText(),'100/100');
-  assert(await page.getByText('אין מספיק נתונים לציון כולל',{exact:true}).count()>0);
+  assert(await page.getByText('אין מספיק נתונים לחישוב מדד המחלקה',{exact:true}).count()>0);
+  assert(await page.getByText('כיסוי נתונים למדד: 0%',{exact:true}).count()>0);
+  await page.locator('[data-department-index]').first().getByText('למה אין מדד כולל?',{exact:true}).click();
+  assert(await page.locator('[data-department-index]').first().getByRole('link',{name:'איך מחושב המדד?'}).isVisible());
+  await page.getByLabel('סדר תוצאות').selectOption('name');await page.getByLabel('סדר תוצאות').selectOption('personal');
+  assert.equal(await page.getByLabel('סדר תוצאות').locator('option').filter({hasText:'מדד המחלקה'}).count(),0);
   await page.locator('main article').first().scrollIntoViewIfNeeded();
   await page.locator('main article').first().getByText('למה הציון הזה?',{exact:true}).click();
   await noOverflow(page);await page.screenshot({path:`${out}/${live?'live':'local'}-scores-${mobile?'mobile':'desktop'}.png`,fullPage:false});
@@ -62,11 +67,11 @@ try{
  }
  const context=await browser.newContext();const p=await context.newPage();
  const catalogResponse=await p.request.get(root+'/api/career-fit/catalog');assert.equal(catalogResponse.status(),200);const catalog=await catalogResponse.json();assert(catalog.departments.length>0);assert.deepEqual(Object.keys(catalog.departments[0]).sort(),['id','slug','name','specialtyId','specialtyName','hospital','hospitalName','region','type'].sort());
- writeFileSync('/private/tmp/hitmachut-phase4b/'+(live?'live':'local')+'-catalog-summary.json',JSON.stringify({count:catalog.departments.length,specialties:catalog.specialties,regionKnown:catalog.departments.filter(d=>d.region).length,typeKnown:catalog.departments.filter(d=>d.type).length},null,2));
- if(!live){await p.goto(root+'/login');await p.locator('input[type=email]').fill('career-fit@example.test');await p.locator('input[type=password]').fill('Synthetic-Career-Fit-Only!');await p.locator('button[type=submit]').click();await p.waitForURL(u=>u.pathname!='/login');await p.goto(root+`/compare?specialty=surgery&departments=career-fit-surgery-0,career-fit-surgery-1`);assert.equal(await p.getByRole('heading',{name:'כדי לצפות בהשוואה יש להתחבר או להירשם.'}).count(),0);await p.getByRole('heading',{name:'השוואה בתחום כירורגיה כללית',exact:true}).waitFor();await p.getByText('מוסד בדיקה 0',{exact:true}).first().waitFor();console.log('PASS authenticated isolated comparison');}
+ writeFileSync('/private/tmp/hitmachut-phase4c/'+(live?'live':'local')+'-catalog-summary.json',JSON.stringify({count:catalog.departments.length,specialties:catalog.specialties,regionKnown:catalog.departments.filter(d=>d.region).length,typeKnown:catalog.departments.filter(d=>d.type).length},null,2));
+ if(!live){await p.goto(root+'/login');await p.locator('input[type=email]').fill('career-fit@example.test');await p.locator('input[type=password]').fill('Synthetic-Career-Fit-Only!');await p.locator('button[type=submit]').click();await p.waitForURL(u=>u.pathname!='/login');await p.goto(root+`/compare?specialty=surgery&departments=career-fit-surgery-0,career-fit-surgery-1`);assert.equal(await p.getByRole('heading',{name:'כדי לצפות בהשוואה יש להתחבר או להירשם.'}).count(),0);await p.getByRole('heading',{name:'השוואה בתחום כירורגיה כללית',exact:true}).waitFor();await p.getByText('מוסד בדיקה 0',{exact:true}).first().waitFor();assert((await p.locator('main').innerText()).includes('מדד המחלקה של Hitmachut'));await p.goto(root+'/departments/career-fit-surgery-0');assert.equal(await p.locator('[data-department-index]').count(),1);console.log('PASS authenticated isolated comparison');}
  for(const path of ['/','/departments','/login','/placements','/career-fit/methodology']){const r=await p.goto(root+path);assert.equal(r.status(),200,path);if(path==='/placements')assert((await p.locator('body').innerText()).includes('טרם נפתח'));}
  // Safe, empty requests to pre-write guards, no real payloads or accounts.
  for(const path of ['/api/placements/documents','/api/clinical-rotations/applications','/api/clinical-rotations/hospital/offerings','/api/electives/applications']){const r=await p.request.post(root+path,{data:{},headers:{origin:root}});assert.equal(r.status(),403);assert.equal((await r.json()).code,'PILOT_NOT_ENABLED');}
  console.log('PASS public catalog whitelist, branding routes, guarded admissions/uploads/offerings');
- await context.close();writeFileSync('/private/tmp/hitmachut-phase4b/'+(live?'live':'local')+'-requests.json',JSON.stringify(records,null,2));
+ await context.close();writeFileSync('/private/tmp/hitmachut-phase4c/'+(live?'live':'local')+'-requests.json',JSON.stringify(records,null,2));
 }finally{await browser.close();}

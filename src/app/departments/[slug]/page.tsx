@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DepartmentIndexPanel } from "@/components/career-fit/department-index-panel";
 import { notFound } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { DepartmentPageActions } from "@/components/departments/department-page-actions";
@@ -2012,6 +2013,8 @@ export default async function DepartmentDetailsPage({
       isAdmin={session?.role === "admin"}
     >
       <PageShell className="space-y-5 py-6">
+        <DepartmentIndexPanel department={{id:department.id,specialtyId:department.specialty.id,hospital:null}}/>
+
       {profileDebug ? (
         <script
           id="department-profile-debug"

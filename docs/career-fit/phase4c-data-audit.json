@@ -1,0 +1,4194 @@
+{
+  "version": "2026-10-01.4c.1",
+  "retrievedAt": "2026-10-01T15:56:05.577Z",
+  "catalogSha256": "e8185cc4cd6c09994b33ddbfc1d189d3aab9db865aca18bb7ea7b14540562aa1",
+  "departments": 586,
+  "specialties": 28,
+  "publishedReviewResponses": 0,
+  "eligibleDepartments": 0,
+  "insufficientDepartments": 586,
+  "eligibleSpecialties": 0,
+  "metrics": [
+    {
+      "field": "אחוז_גברים",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Demographic context; no better direction",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 27
+    },
+    {
+      "field": "אחוז_נשים",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Demographic context; no better direction",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 27
+    },
+    {
+      "field": "זמן_המתנה_חציוני_לתקן",
+      "source": "משרד הבריאות",
+      "departments": 583,
+      "numericDepartments": 583,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 14
+    },
+    {
+      "field": "מדד_שחיקה",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "National specialty aggregate; constant within specialty, not departmental performance",
+      "direction": "none defensible for base",
+      "duplicates": "national specialty",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 1
+    },
+    {
+      "field": "מספר גברים",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Demographic context; no better direction",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 19
+    },
+    {
+      "field": "מספר המתקבלים שדיווחו שמצאו אחרי שנתיים",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 6
+    },
+    {
+      "field": "מספר המתקבלים שדיווחו שמצאו מיד התמחות",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 23
+    },
+    {
+      "field": "מספר המתקבלים שדיווחו שמצאו עד חצי שנה",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 21
+    },
+    {
+      "field": "מספר המתקבלים שדיווחו שמצאו עד שנה",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 16
+    },
+    {
+      "field": "מספר המתקבלים שדיווחו שמצאו עד שנתיים",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 12
+    },
+    {
+      "field": "מספר נשים",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Demographic context; no better direction",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 23
+    },
+    {
+      "field": "מספר_בכירים",
+      "source": "אתר המחלקה",
+      "departments": 3,
+      "numericDepartments": 2,
+      "specialties": 3,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Size/staffing context; overlapping structural counts, no size bonus",
+      "direction": "none defensible for base",
+      "duplicates": "staffing/size",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 1
+    },
+    {
+      "field": "מספר_מתמחים",
+      "source": "משרד הבריאות",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Size/staffing context; overlapping structural counts, no size bonus",
+      "direction": "none defensible for base",
+      "duplicates": "staffing/size",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 22
+    },
+    {
+      "field": "מעבר_שלב_א",
+      "source": "הר׳׳י",
+      "departments": 555,
+      "numericDepartments": 555,
+      "specialties": 26,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "National specialty aggregate; constant within specialty, not departmental performance",
+      "direction": "none defensible for base",
+      "duplicates": "national specialty",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 1
+    },
+    {
+      "field": "מעבר_שלב_ב",
+      "source": "הר׳׳י",
+      "departments": 573,
+      "numericDepartments": 573,
+      "specialties": 27,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "National specialty aggregate; constant within specialty, not departmental performance",
+      "direction": "none defensible for base",
+      "duplicates": "national specialty",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 1
+    },
+    {
+      "field": "משך_התמחות_רשמי",
+      "source": "הר׳׳י",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 1
+    },
+    {
+      "field": "משך_ממוצע_בפועל",
+      "source": "משרד הבריאות",
+      "departments": 485,
+      "numericDepartments": 485,
+      "specialties": 27,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 18
+    },
+    {
+      "field": "פער_שכר_פריפריה",
+      "source": "סימולטור שכר של הר׳׳י",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Specialty salary assumptions; not department pay or training",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 1
+    },
+    {
+      "field": "צפי תקנים חדשים ב2026",
+      "source": "מספר התקנים הצפויים להיפתח במחלקה, נתון משוער ע׳׳פ התקנים שנפתחו בשנים הקודמות.",
+      "departments": 586,
+      "numericDepartments": 0,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 0
+    },
+    {
+      "field": "שכר_לא_פריפריה",
+      "source": "סימולטור שכר של הר׳׳י",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Specialty salary assumptions; not department pay or training",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 1
+    },
+    {
+      "field": "שכר_פריפריה",
+      "source": "סימולטור שכר של הר׳׳י",
+      "departments": 586,
+      "numericDepartments": 586,
+      "specialties": 28,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Specialty salary assumptions; not department pay or training",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 1
+    },
+    {
+      "field": "תת מחלקה",
+      "source": null,
+      "departments": 158,
+      "numericDepartments": 0,
+      "specialties": 16,
+      "period": "not recorded; update timestamp is not measurement period",
+      "sampleN": null,
+      "status": "historical/undated; not established current",
+      "interpretation": "Structural/historical context; no common monotone training interpretation",
+      "direction": "none defensible for base",
+      "duplicates": "related source metrics; no base weight",
+      "suitability": "C",
+      "maxDistinctWithinSpecialty": 0
+    },
+    {
+      "field": "Review.teachingQuality/seniorsApproachability",
+      "source": "published verified resident reviews",
+      "departments": 0,
+      "specialties": 0,
+      "period": null,
+      "sampleN": 0,
+      "status": "no published observations",
+      "interpretation": "Potential training family; correlated teaching/approachability must stay one family",
+      "direction": "higher self-reported rating",
+      "duplicates": "same resident questionnaire; no separate satisfaction bonus",
+      "suitability": "D"
+    },
+    {
+      "field": "Review.workAtmosphere/lifestyleBalance",
+      "source": "published verified resident reviews",
+      "departments": 0,
+      "specialties": 0,
+      "period": null,
+      "sampleN": 0,
+      "status": "no published observations",
+      "interpretation": "Potential work environment family",
+      "direction": "higher self-reported rating",
+      "duplicates": "same family; burnout national excluded",
+      "suitability": "D"
+    },
+    {
+      "field": "Review.researchExposure",
+      "source": "published verified resident reviews",
+      "departments": 0,
+      "specialties": 0,
+      "period": null,
+      "sampleN": 0,
+      "status": "no published observations",
+      "interpretation": "Potential development experience family; no inference from publications",
+      "direction": "higher self-reported rating",
+      "duplicates": "publication counts not equivalent",
+      "suitability": "D"
+    },
+    {
+      "field": "Review.overallRecommendation",
+      "source": "published reviews",
+      "departments": 0,
+      "specialties": 0,
+      "period": null,
+      "sampleN": 0,
+      "status": "no published observations",
+      "interpretation": "Overlaps detailed experience; exclude independent bonus",
+      "direction": "higher self-report, not independent",
+      "duplicates": "all experience dimensions",
+      "suitability": "D"
+    },
+    {
+      "field": "DepartmentResearchMetric.publicationsCount",
+      "source": "OpenAlex",
+      "departments": 238,
+      "specialties": 26,
+      "period": "2022–2026; 2026 partial",
+      "sampleN": null,
+      "status": "historical/partial automated department matching",
+      "interpretation": "Research output context; not comparable opportunity or experience; ambiguity/mapping and size confounding",
+      "direction": "more publications is more output, not better training",
+      "duplicates": "size/productivity",
+      "suitability": "C"
+    },
+    {
+      "field": "DepartmentExternalMetric.duns100PhysiciansCount",
+      "source": "DUNS100",
+      "departments": 549,
+      "specialties": 28,
+      "period": "not recorded in metric; createdAt not observation year",
+      "sampleN": null,
+      "status": "existing approved recognition counts",
+      "interpretation": "Recognition only, explicitly excluded",
+      "direction": "none for base",
+      "duplicates": "roster/prestige",
+      "suitability": "C"
+    },
+    {
+      "field": "DepartmentYearlyMetric.newResidents",
+      "source": "MOH",
+      "departments": 586,
+      "specialties": 28,
+      "period": "2020–2024 actual; 2026 forecast separate",
+      "sampleN": null,
+      "status": "historical and forecast",
+      "interpretation": "Starts/access and size; arrays/campuses require existing aggregation, no bonus",
+      "direction": "none for base",
+      "duplicates": "resident count/size",
+      "suitability": "C"
+    },
+    {
+      "field": "Institution.hospital",
+      "source": "public effective catalog verified identity",
+      "departments": 586,
+      "specialties": 28,
+      "period": null,
+      "sampleN": null,
+      "status": "current record; measurement year absent",
+      "interpretation": "Exact institution preference",
+      "direction": "user preference only",
+      "duplicates": "institution identity/type",
+      "suitability": "B"
+    },
+    {
+      "field": "Institution.type",
+      "source": "public effective catalog verified identity",
+      "departments": 575,
+      "specialties": 28,
+      "period": null,
+      "sampleN": null,
+      "status": "current record; measurement year absent",
+      "interpretation": "Verified effective institution type preference; 11 identity mismatches withheld",
+      "direction": "user preference only",
+      "duplicates": "institution identity/type",
+      "suitability": "B"
+    },
+    {
+      "field": "Institution.region",
+      "source": "public effective catalog verified identity",
+      "departments": 0,
+      "specialties": 0,
+      "period": null,
+      "sampleN": null,
+      "status": "current record; measurement year absent",
+      "interpretation": "Actual raw Institution.region is NULL for all 586; unavailable",
+      "direction": "user preference only",
+      "duplicates": "institution identity/type",
+      "suitability": "D"
+    },
+    {
+      "field": "Internship survey elective recommendation / linkage",
+      "source": "existing Internship_Electives_Analysis.xlsx",
+      "departments": null,
+      "specialties": null,
+      "period": "survey 2020–2025; elective date not fixed",
+      "sampleN": 10516,
+      "status": "historical",
+      "interpretation": "527 hospital-specialty groups; 383 at N>=5; one recommendation dimension; 526 flagged manual review. Historical association within cohort only, not personal acceptance probability",
+      "direction": "elective recommendation, not residency training quality",
+      "duplicates": "mean/median/%4–5 same rating; linkage/access not separate quality",
+      "suitability": "C"
+    }
+  ],
+  "scalarFields": [
+    {
+      "field": "id",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "institution_id",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "specialty_id",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "slug",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "name",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "short_summary",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "about",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "practical_info",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "public_contact_email",
+      "type": "text",
+      "departments": 410,
+      "specialties": 26,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "public_contact_phone",
+      "type": "text",
+      "departments": 38,
+      "specialties": 22,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "cover_image_url",
+      "type": "text",
+      "departments": 0,
+      "specialties": 0,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "future_enrichment_enabled",
+      "type": "boolean",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "created_at",
+      "type": "timestamp without time zone",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "updated_at",
+      "type": "timestamp without time zone",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "candidate_preferences",
+      "type": "text",
+      "departments": 0,
+      "specialties": 0,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "contact_name",
+      "type": "text",
+      "departments": 513,
+      "specialties": 26,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "education_location_breakdown",
+      "type": "jsonb",
+      "departments": 0,
+      "specialties": 0,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "expected_graduates_this_year",
+      "type": "integer",
+      "departments": 0,
+      "specialties": 0,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "gender_balance",
+      "type": "text",
+      "departments": 0,
+      "specialties": 0,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "median_residency_length",
+      "type": "text",
+      "departments": 0,
+      "specialties": 0,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "new_residents_this_year",
+      "type": "integer",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "perks",
+      "type": "text",
+      "departments": 0,
+      "specialties": 0,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "residents_count",
+      "type": "integer",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "shlav_aleph_pass_rate",
+      "type": "double precision",
+      "departments": 555,
+      "specialties": 26,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "shlav_bet_pass_rate",
+      "type": "double precision",
+      "departments": 573,
+      "specialties": 27,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "website_url",
+      "type": "text",
+      "departments": 375,
+      "specialties": 27,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "medical_array_id",
+      "type": "text",
+      "departments": 201,
+      "specialties": 4,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "import_stable_key",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "D",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "application_url",
+      "type": "text",
+      "departments": 0,
+      "specialties": 0,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "data_source_notes",
+      "type": "text",
+      "departments": 586,
+      "specialties": 28,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    },
+    {
+      "field": "data_last_updated",
+      "type": "timestamp without time zone",
+      "departments": 0,
+      "specialties": 0,
+      "suitability": "C",
+      "interpretation": "Identity/descriptive/structural context; never a performance component",
+      "period": "not an established comparable measurement",
+      "sampleN": null,
+      "direction": "no base direction",
+      "duplicates": "related imported metric where applicable"
+    }
+  ],
+  "bySpecialty": [
+    {
+      "specialty": "רפואת משפחה",
+      "specialtyId": "cmoel26vd001le7j45vg38701",
+      "total": 5,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "אונקולוגיה",
+      "specialtyId": "cmoel26vd0015e7j42rlimjl0",
+      "total": 18,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "הרדמה",
+      "specialtyId": "cmoel26vd0016e7j4ggz0864m",
+      "total": 25,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "יילוד וגינקולוגיה",
+      "specialtyId": "cmoel26vd0017e7j440lcqvqk",
+      "total": 27,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "כירורגיה אורולוגית",
+      "specialtyId": "cmoel26vd0018e7j424qqc5yf",
+      "total": 21,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "כירורגיה אורתופדית",
+      "specialtyId": "cmoel26vd0019e7j4isesd8ak",
+      "total": 27,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "כירורגיה כללית",
+      "specialtyId": "cmoel26vd001ae7j4bfxd5c34",
+      "total": 34,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "כירורגית ילדים",
+      "specialtyId": "cmoel26vd001qe7j41g7xms32",
+      "total": 6,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "כירורגית כלי-דם",
+      "specialtyId": "cmoel26vd001re7j4r1in68w3",
+      "total": 14,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "מחלות א.א.ג וכירורגיה של ראש וצוואר",
+      "specialtyId": "cmoel26vd001ce7j4im1bt1ho",
+      "total": 21,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "מחלות עיניים",
+      "specialtyId": "cmoel26vd001ee7j4zjcgq8xv",
+      "total": 21,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "נוירולוגיה",
+      "specialtyId": "cmoel26vd001fe7j42pp9p21r",
+      "total": 20,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "פתולוגיה אבחנתית",
+      "specialtyId": "cmoel26vd001ge7j4063zpkd0",
+      "total": 19,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "קרדיולוגיה",
+      "specialtyId": "cmoelx020001lnc0r72foeq87",
+      "total": 13,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "רדיולוגיה אבחנתית",
+      "specialtyId": "cmoel26vd001he7j4kpl36cb7",
+      "total": 24,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "רפואה דחופה",
+      "specialtyId": "cmoel26vd001ie7j4umxejkgf",
+      "total": 23,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "רפואה פנימית",
+      "specialtyId": "cmoel26vd001je7j42ec58epg",
+      "total": 106,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "רפואת ילדים",
+      "specialtyId": "cmoel26vd001ke7j4xgw4twjw",
+      "total": 34,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "כירורגיה פלסטית ואסתטית",
+      "specialtyId": "cmoel26vd001be7j4oyckypw0",
+      "total": 15,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "כירורגיה של בית החזה",
+      "specialtyId": "cmoel26vd001pe7j47pj3vc8s",
+      "total": 12,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "מחלות עור ומין",
+      "specialtyId": "cmoel26vd001de7j441a5um4o",
+      "total": 7,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "נוירוכירורגיה",
+      "specialtyId": "cmoel26vd001oe7j48o1b7wwe",
+      "total": 9,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "רפואה גרעינית",
+      "specialtyId": "cmpnidtsy00q311demf0d79t6",
+      "total": 12,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "גריאטריה",
+      "specialtyId": "cmoel26vd001se7j4mzi891ic",
+      "total": 23,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "רפואה פיזיקלית ושיקום",
+      "specialtyId": "cmoelxfs5001ync0rg6skg3c6",
+      "total": 7,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "פסיכיאטריה",
+      "specialtyId": "cmoel26vd001me7j4zkf44qnp",
+      "total": 24,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "פסיכיאטריה של הילד ומתבגר",
+      "specialtyId": "cmoel26vd001ne7j49o4b5ja2",
+      "total": 18,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    },
+    {
+      "specialty": "בריאות הציבור",
+      "specialtyId": "cmpnidu4c00w811deyb0opzoz",
+      "total": 1,
+      "eligible": 0,
+      "medianCoreCoverage": 0,
+      "mainMissing": [
+        "resident training experience",
+        "resident work environment",
+        "resident development experience"
+      ]
+    }
+  ],
+  "researchGroups": [
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 8,
+      "numeric": 8,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 6,
+      "numeric": 6,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 6,
+      "numeric": 6,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 8,
+      "numeric": 8,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 14,
+      "numeric": 14,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 14,
+      "numeric": 14,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 14,
+      "numeric": 14,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 14,
+      "numeric": 14,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 14,
+      "numeric": 14,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 15,
+      "numeric": 15,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 15,
+      "numeric": 15,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 15,
+      "numeric": 15,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 15,
+      "numeric": 15,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 15,
+      "numeric": 15,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 12,
+      "numeric": 12,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 12,
+      "numeric": 12,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 12,
+      "numeric": 12,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 12,
+      "numeric": 12,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 13,
+      "numeric": 13,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 14,
+      "numeric": 14,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001be7j4oyckypw0",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001de7j441a5um4o",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001de7j441a5um4o",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001de7j441a5um4o",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001de7j441a5um4o",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001de7j441a5um4o",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 10,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 6,
+      "numeric": 6,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 6,
+      "numeric": 6,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 9,
+      "numeric": 9,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 5,
+      "numeric": 5,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 5,
+      "numeric": 5,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 12,
+      "numeric": 12,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 12,
+      "numeric": 12,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 13,
+      "numeric": 13,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 11,
+      "numeric": 11,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 12,
+      "numeric": 12,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001je7j42ec58epg",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001je7j42ec58epg",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001je7j42ec58epg",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001je7j42ec58epg",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001je7j42ec58epg",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 13,
+      "numeric": 13,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 12,
+      "numeric": 12,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 13,
+      "numeric": 13,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 13,
+      "numeric": 13,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 13,
+      "numeric": 13,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001le7j45vg38701",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 9,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 9,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 9,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 4,
+      "numeric": 4,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.35,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 9,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 5,
+      "numeric": 5,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 9,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001pe7j47pj3vc8s",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001pe7j47pj3vc8s",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001pe7j47pj3vc8s",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001pe7j47pj3vc8s",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.45,
+      "max_confidence": 0.45
+    },
+    {
+      "specialty_id": "cmoel26vd001pe7j47pj3vc8s",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.45,
+      "max_confidence": 0.45
+    },
+    {
+      "specialty_id": "cmoel26vd001qe7j41g7xms32",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001qe7j41g7xms32",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001qe7j41g7xms32",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001qe7j41g7xms32",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001qe7j41g7xms32",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001re7j4r1in68w3",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001re7j4r1in68w3",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001re7j4r1in68w3",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001re7j4r1in68w3",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001re7j4r1in68w3",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 3,
+      "numeric": 3,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.35,
+      "max_confidence": 0.35
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 7,
+      "numeric": 7,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": true,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.5,
+      "max_confidence": 0.5
+    },
+    {
+      "specialty_id": "cmoel26vd001se7j4mzi891ic",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 10,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoelx020001lnc0r72foeq87",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 5,
+      "numeric": 5,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelx020001lnc0r72foeq87",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 5,
+      "numeric": 5,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelx020001lnc0r72foeq87",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 5,
+      "numeric": 5,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelx020001lnc0r72foeq87",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 5,
+      "numeric": 5,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelx020001lnc0r72foeq87",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 5,
+      "numeric": 5,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 2,
+      "min_confidence": 0.45,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": true,
+      "is_ambiguous": false,
+      "rows": 2,
+      "numeric": 0,
+      "min_confidence": 0.1,
+      "max_confidence": 0.1
+    },
+    {
+      "specialty_id": "cmpnidtsy00q311demf0d79t6",
+      "year": 2022,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmpnidtsy00q311demf0d79t6",
+      "year": 2023,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmpnidtsy00q311demf0d79t6",
+      "year": 2024,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmpnidtsy00q311demf0d79t6",
+      "year": 2025,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    },
+    {
+      "specialty_id": "cmpnidtsy00q311demf0d79t6",
+      "year": 2026,
+      "source": "OpenAlex",
+      "needs_mapping": false,
+      "is_ambiguous": false,
+      "rows": 1,
+      "numeric": 1,
+      "min_confidence": 0.72,
+      "max_confidence": 0.72
+    }
+  ],
+  "electiveWorkbook": {
+    "source": "existing Internship_Electives_Analysis.xlsx",
+    "departmentSpecialtyHospitalGroups": 527,
+    "ratedElectives": 10516,
+    "groupsAtLeast5": 383,
+    "manualReviewGroups": 526,
+    "years": {
+      "2020": 2794,
+      "2021": 3156,
+      "2022": 2918,
+      "2023": 3342,
+      "2024": 3295,
+      "2025": 3137
+    },
+    "candidateFields": [
+      {
+        "field": "qus_56",
+        "label": "אתה תמליץ על סבב אלקטיב במחלקה זו לאור התנסותך בה כמחלקת חובה במהלך הסטאז'   - פנימית",
+        "nonEmpty": 10152,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_57",
+        "label": "אתה תמליץ על סבב אלקטיב במחלקה זו לאור התנסותך בה כמחלקת חובה במהלך הסטאז' - כירורגית",
+        "nonEmpty": 10146,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_58",
+        "label": "אתה תמליץ על סבב אלקטיב במחלקה זו לאור התנסותך בה כמחלקת חובה במהלך הסטאז' - ילדים",
+        "nonEmpty": 10148,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_59",
+        "label": "אתה תמליץ על סבב אלקטיב במחלקה זו לאור התנסותך בה כמחלקת חובה במהלך הסטאז' - מלר\"ד",
+        "nonEmpty": 10142,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_60",
+        "label": "אתה תמליץ על סבב אלקטיב במחלקה זו לאור התנסותך בה כמחלקת חובה במהלך הסטאז' - הרדמה וטיפול נמרץ",
+        "nonEmpty": 10126,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_77",
+        "label": "גורם ראשון לבחירת התמחות",
+        "nonEmpty": 9230,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_78",
+        "label": "גורם שני לבחירת התמחות",
+        "nonEmpty": 9120,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_79",
+        "label": "גורם שלישי לבחירת התמחות",
+        "nonEmpty": 8819,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_80",
+        "label": "גורם רביעי לבחירת התמחות",
+        "nonEmpty": 8160,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_81",
+        "label": "גורם חמישי לבחירת התמחות",
+        "nonEmpty": 7695,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_82",
+        "label": "אזור ראשון להעדפה להתמחות",
+        "nonEmpty": 9172,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_83",
+        "label": "אזור שני להעדפה להתמחות",
+        "nonEmpty": 8738,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_84",
+        "label": "אזור שלישי להעדפה להתמחות",
+        "nonEmpty": 8293,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_85",
+        "label": "אזור רביעי להעדפה להתמחות",
+        "nonEmpty": 8055,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_86",
+        "label": "אזור חמישי להעדפה להתמחות",
+        "nonEmpty": 8028,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_87",
+        "label": "גורם למיקום התמחות-אני במקור מהאזור הזה",
+        "nonEmpty": 9646,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_88",
+        "label": "גורם למיקום התמחות-אקבל תמריץ כספי להתמחות בפריפריה",
+        "nonEmpty": 9625,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_89",
+        "label": "גורם למיקום התמחות-באזור זה יש אפשרות להתמחות בתחום בו אני מעוניין",
+        "nonEmpty": 9640,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_90",
+        "label": "גורם למיקום התמחות-אני מעוניין לחיות באזור זה",
+        "nonEmpty": 9639,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_91",
+        "label": "גורם למיקום התמחות-נוח מבחינה משפחתית (קרובים באזור)",
+        "nonEmpty": 9645,
+        "scope": "public_aggregate_only"
+      },
+      {
+        "field": "qus_104",
+        "label": "מסלול התמחות המועדף עליך",
+        "nonEmpty": 9241,
+        "scope": "public_aggregate_only"
+      }
+    ],
+    "nThreshold": 5,
+    "population": "internship survey respondents reporting prior electives; not resident training experience",
+    "independentDimensions": 1,
+    "mapping": "hospital-specialty groups, not canonical department/campus IDs"
+  },
+  "relations": {
+    "ResearchOpportunity": [],
+    "DepartmentExternalMetric": [
+      {
+        "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+        "rows": 18,
+        "departments": 18
+      },
+      {
+        "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+        "rows": 25,
+        "departments": 25
+      },
+      {
+        "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+        "rows": 24,
+        "departments": 24
+      },
+      {
+        "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+        "rows": 20,
+        "departments": 20
+      },
+      {
+        "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+        "rows": 25,
+        "departments": 25
+      },
+      {
+        "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+        "rows": 30,
+        "departments": 30
+      },
+      {
+        "specialty_id": "cmoel26vd001be7j4oyckypw0",
+        "rows": 15,
+        "departments": 15
+      },
+      {
+        "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+        "rows": 20,
+        "departments": 20
+      },
+      {
+        "specialty_id": "cmoel26vd001de7j441a5um4o",
+        "rows": 6,
+        "departments": 6
+      },
+      {
+        "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+        "rows": 21,
+        "departments": 21
+      },
+      {
+        "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+        "rows": 20,
+        "departments": 20
+      },
+      {
+        "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+        "rows": 18,
+        "departments": 18
+      },
+      {
+        "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+        "rows": 24,
+        "departments": 24
+      },
+      {
+        "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+        "rows": 23,
+        "departments": 23
+      },
+      {
+        "specialty_id": "cmoel26vd001je7j42ec58epg",
+        "rows": 86,
+        "departments": 86
+      },
+      {
+        "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+        "rows": 32,
+        "departments": 32
+      },
+      {
+        "specialty_id": "cmoel26vd001le7j45vg38701",
+        "rows": 5,
+        "departments": 5
+      },
+      {
+        "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+        "rows": 24,
+        "departments": 24
+      },
+      {
+        "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+        "rows": 18,
+        "departments": 18
+      },
+      {
+        "specialty_id": "cmoel26vd001oe7j48o1b7wwe",
+        "rows": 9,
+        "departments": 9
+      },
+      {
+        "specialty_id": "cmoel26vd001pe7j47pj3vc8s",
+        "rows": 12,
+        "departments": 12
+      },
+      {
+        "specialty_id": "cmoel26vd001qe7j41g7xms32",
+        "rows": 6,
+        "departments": 6
+      },
+      {
+        "specialty_id": "cmoel26vd001re7j4r1in68w3",
+        "rows": 13,
+        "departments": 13
+      },
+      {
+        "specialty_id": "cmoel26vd001se7j4mzi891ic",
+        "rows": 23,
+        "departments": 23
+      },
+      {
+        "specialty_id": "cmoelx020001lnc0r72foeq87",
+        "rows": 12,
+        "departments": 12
+      },
+      {
+        "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+        "rows": 7,
+        "departments": 7
+      },
+      {
+        "specialty_id": "cmpnidtsy00q311demf0d79t6",
+        "rows": 12,
+        "departments": 12
+      },
+      {
+        "specialty_id": "cmpnidu4c00w811deyb0opzoz",
+        "rows": 1,
+        "departments": 1
+      }
+    ],
+    "DepartmentExternalPerson": [],
+    "DepartmentHead": [
+      {
+        "specialty_id": "cmoel26vd0015e7j42rlimjl0",
+        "rows": 16,
+        "departments": 16
+      },
+      {
+        "specialty_id": "cmoel26vd0016e7j4ggz0864m",
+        "rows": 25,
+        "departments": 25
+      },
+      {
+        "specialty_id": "cmoel26vd0017e7j440lcqvqk",
+        "rows": 27,
+        "departments": 26
+      },
+      {
+        "specialty_id": "cmoel26vd0018e7j424qqc5yf",
+        "rows": 20,
+        "departments": 20
+      },
+      {
+        "specialty_id": "cmoel26vd0019e7j4isesd8ak",
+        "rows": 27,
+        "departments": 27
+      },
+      {
+        "specialty_id": "cmoel26vd001ae7j4bfxd5c34",
+        "rows": 33,
+        "departments": 33
+      },
+      {
+        "specialty_id": "cmoel26vd001be7j4oyckypw0",
+        "rows": 15,
+        "departments": 15
+      },
+      {
+        "specialty_id": "cmoel26vd001ce7j4im1bt1ho",
+        "rows": 19,
+        "departments": 19
+      },
+      {
+        "specialty_id": "cmoel26vd001de7j441a5um4o",
+        "rows": 6,
+        "departments": 6
+      },
+      {
+        "specialty_id": "cmoel26vd001ee7j4zjcgq8xv",
+        "rows": 20,
+        "departments": 20
+      },
+      {
+        "specialty_id": "cmoel26vd001fe7j42pp9p21r",
+        "rows": 19,
+        "departments": 19
+      },
+      {
+        "specialty_id": "cmoel26vd001ge7j4063zpkd0",
+        "rows": 14,
+        "departments": 14
+      },
+      {
+        "specialty_id": "cmoel26vd001he7j4kpl36cb7",
+        "rows": 20,
+        "departments": 20
+      },
+      {
+        "specialty_id": "cmoel26vd001ie7j4umxejkgf",
+        "rows": 21,
+        "departments": 21
+      },
+      {
+        "specialty_id": "cmoel26vd001je7j42ec58epg",
+        "rows": 129,
+        "departments": 103
+      },
+      {
+        "specialty_id": "cmoel26vd001ke7j4xgw4twjw",
+        "rows": 36,
+        "departments": 32
+      },
+      {
+        "specialty_id": "cmoel26vd001me7j4zkf44qnp",
+        "rows": 12,
+        "departments": 12
+      },
+      {
+        "specialty_id": "cmoel26vd001ne7j49o4b5ja2",
+        "rows": 9,
+        "departments": 9
+      },
+      {
+        "specialty_id": "cmoel26vd001oe7j48o1b7wwe",
+        "rows": 8,
+        "departments": 8
+      },
+      {
+        "specialty_id": "cmoel26vd001pe7j47pj3vc8s",
+        "rows": 9,
+        "departments": 9
+      },
+      {
+        "specialty_id": "cmoel26vd001qe7j41g7xms32",
+        "rows": 5,
+        "departments": 5
+      },
+      {
+        "specialty_id": "cmoel26vd001re7j4r1in68w3",
+        "rows": 10,
+        "departments": 10
+      },
+      {
+        "specialty_id": "cmoel26vd001se7j4mzi891ic",
+        "rows": 12,
+        "departments": 12
+      },
+      {
+        "specialty_id": "cmoelx020001lnc0r72foeq87",
+        "rows": 13,
+        "departments": 13
+      },
+      {
+        "specialty_id": "cmoelxfs5001ync0rg6skg3c6",
+        "rows": 5,
+        "departments": 5
+      },
+      {
+        "specialty_id": "cmpnidtsy00q311demf0d79t6",
+        "rows": 11,
+        "departments": 11
+      }
+    ],
+    "OfficialDepartmentUpdate": []
+  },
+  "notes": [
+    "Read-only aggregates; no review text, people, applicants or external ENT repo retrieved.",
+    "A=base, B=personal only, C=context, D=not usable now. No A metrics admitted.",
+    "Core coverage 0 is admitted performance coverage, not completeness of all site facts."
+  ]
+}
