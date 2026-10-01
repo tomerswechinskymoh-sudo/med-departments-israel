@@ -41,3 +41,16 @@ Rollback: pre-Phase4C **6602a204cde92fe46f2f0803f4e0fddd5b508773**, READY **dpl_
 Starting allowance **16% remaining (84% used)**. Target14–15%, hard13%; account-wide rounded usage, not precise attribution. Final allowance/release/live receipt appended after deployment.
 
 Placements remain **DEPLOYED_GUARDED — PILOT_NOT_ENABLED**. No bookings/uploads/offerings/representative activation, scraping, enrichment, outreach, psychometric validation or unrelated work.
+
+## Final production receipt
+
+- Deployed code **e933809d98cfad8384f0762b5fd3dd62bc0ae351**, focused16-file Phase4C commit pushed to existing origin/main from Phase4B production6602a20. No Phase3B dirty code or unrelated documentation checkpoint included.
+- Existing project READY **dpl_HjEKagm79ko7B8hts6hyNXuprcZZ**, https://project-2i9uv-hl6qk188p-tomerswechinskymoh-sudos-projects.vercel.app. Git source SHA/main/project ID and www/apex aliases verified through Vercel API. [Deployment receipt](phase4c-deployment-receipt.json).
+- Live https://www.hitmachut.org/career-fit/departments and https://www.hitmachut.org/career-fit/methodology verified with actual personal100/100, base null/coverage0%/explanation/version, sorting and desktop/mobile interaction. Zero-weight Personal Match null verified; no base0/100. Both numeric meanings stay separate.
+- Live full desktop/mobile questionnaire-to-department journeys, public comparison gate, branding/directory/login/placements and existing empty pre-write guard403/PILOT_NOT_ENABLED checks passed. Apex redirect and unchanged586-department projection passed. [Apex receipt](phase4c-apex-receipt.json).
+- Affected real department/comparison pages verified on desktop/mobile with existing access gates; no production account access was bypassed. Authenticated index panel/comparison contents were tested on the isolated synthetic database, not under a real production account. [Protected-page URLs/receipt](phase4c-protected-pages-receipt.json). One initial check read streamed content too early; waiting for the actual gate heading fixed the verification assertion, without a product change.
+- Live [desktop](phase4c-screenshots/live-scores-desktop.png)/[mobile](phase4c-screenshots/live-scores-mobile.png) screenshots inspected. TypeScript/build/32 scoring tests and34 guarded handlers passed. No placement/schema/dependency/API-catalog change in the code diff.
+- Final allowance **15% remaining (85% used)** from starting16%/84%: **1 rounded account-wide weekly point**, within target and3-point maximum. No subagents/model overrides/resets.
+- Rollback remains prior READY dpl_GwaBBZ1YACzQ5V7hXQB3Qdf41q8D /6602a204cde92fe46f2f0803f4e0fddd5b508773; not invoked. Placements **DEPLOYED_GUARDED — PILOT_NOT_ENABLED** unchanged.
+
+Post-release receipts are retained in a local documentation checkpoint; production stays on the tested code commit above. Phase4C report/methodology/handoff/audit/receipts/screenshots are copied into the originally requested repository for the next session, without changing its unrelated dirty source files. The active release worktree is the existing hitmachut-phase4b-release on phase4c-department-index.

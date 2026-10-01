@@ -1,0 +1,27 @@
+{
+  "id": "dpl_HjEKagm79ko7B8hts6hyNXuprcZZ",
+  "url": "project-2i9uv-hl6qk188p-tomerswechinskymoh-sudos-projects.vercel.app",
+  "readyState": "READY",
+  "gitSource": {
+    "ref": "main",
+    "repoId": 1216740239,
+    "sha": "e933809d98cfad8384f0762b5fd3dd62bc0ae351",
+    "type": "github",
+    "prId": null
+  },
+  "projectId": "prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE",
+  "aliases": [
+    "www.hitmachut.org",
+    "project-2i9uv.vercel.app",
+    "hitmachut.org",
+    "project-2i9uv-tomerswechinskymoh-sudos-projects.vercel.app",
+    "project-2i9uv-git-main-tomerswechinskymoh-sudos-projects.vercel.app"
+  ],
+  "rollback": {
+    "id": "dpl_GwaBBZ1YACzQ5V7hXQB3Qdf41q8D",
+    "sha": "6602a204cde92fe46f2f0803f4e0fddd5b508773"
+  },
+  "startingRemainingPercent": 16,
+  "finalRemainingPercent": 15,
+  "checkedAt": "2026-10-01T16:15:09.695285+00:00"
+}

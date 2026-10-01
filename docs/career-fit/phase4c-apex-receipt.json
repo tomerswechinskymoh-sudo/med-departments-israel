@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-01T16:11:01.455Z",
+  "checks": [
+    {
+      "route": "/career-fit",
+      "url": "https://www.hitmachut.org/career-fit",
+      "compactMatrix": true,
+      "mspiBlocked": true
+    },
+    {
+      "route": "/career-fit/departments",
+      "url": "https://www.hitmachut.org/career-fit/departments",
+      "personalScore": 100,
+      "baseScore": null
+    },
+    {
+      "publicProjectionUnchanged": true,
+      "departments": 586
+    },
+    {
+      "route": "/career-fit/methodology",
+      "verified": true
+    }
+  ]
+}

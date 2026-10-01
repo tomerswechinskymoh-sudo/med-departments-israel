@@ -13,3 +13,7 @@ Reproduce tests: `node --import tsx --test scripts/career-fit/scoring.test.ts sc
 Before admitting any future cohort, establish independently justified dimensions with appropriate actual measurement scope/N/period, duplicate groups and frozen references; perform real ±20% weight and leave-one-out rank diagnostics/cohort stability. Current actual ranking sensitivity is not estimable. Do not populate the registry automatically from numeric availability or synthetic tests. Unstable specialties remain withheld. Future acquisition/manual review/validation requires a separately authorized phase; not an implied continuation.
 
 Placements stay DEPLOYED_GUARDED — PILOT_NOT_ENABLED. Existing admissions/uploads/documents/offerings/representative flags and pre-write guards remain unchanged. No migration/database write is needed to roll back Phase4C. Rollback is Phase4B commit6602a204cde92fe46f2f0803f4e0fddd5b508773 / deploymentdpl_GwaBBZ1YACzQ5V7hXQB3Qdf41q8D. Final release receipt is in the Phase4C report.
+
+Active release worktree: `/Users/tomerswechinsky/Documents/CODEX/hitmachut-phase4b-release`, branch `phase4c-department-index`, based directly on Phase4B production6602a20. Original dirty checkout is preserved; Phase4C handoff copies there are documentation only.
+
+Final production: e933809d98cfad8384f0762b5fd3dd62bc0ae351 / READY dpl_HjEKagm79ko7B8hts6hyNXuprcZZ. Live desktop/mobile and protected-page gates passed; authenticated content verified locally. Starting16% → final15% remaining (1 rounded weekly point). Full receipts in phase4c-report.md.
