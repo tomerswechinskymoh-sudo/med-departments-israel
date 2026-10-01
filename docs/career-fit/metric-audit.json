@@ -1,0 +1,67 @@
+{
+  "version": "2026-10-01.4b.1",
+  "retrieved": "2026-10-01",
+  "sourceRows": 633,
+  "sourceSha256": {
+    "Master_Dept.csv": "7e7ef4f41b6b963d757c0206e6a376500d514a132c7eab74da66878e27060d1d",
+    "Data_Exp.csv": "d8b741d97295ce5e4d2d28b8c2f131bca606267334293f8aab25a251f7a9e8d9"
+  },
+  "metrics": {
+    "מעבר_שלב_א": {
+      "numericRows": 588,
+      "specialties": 26,
+      "maxDistinctWithinSpecialty": 1
+    },
+    "מעבר_שלב_ב": {
+      "numericRows": 611,
+      "specialties": 27,
+      "maxDistinctWithinSpecialty": 1
+    },
+    "מדד_שחיקה": {
+      "numericRows": 633,
+      "specialties": 28,
+      "maxDistinctWithinSpecialty": 1
+    },
+    "מספר_בכירים": {
+      "numericRows": 2,
+      "specialties": 2,
+      "maxDistinctWithinSpecialty": 1
+    },
+    "מספר_מתמחים": {
+      "numericRows": 633,
+      "specialties": 28,
+      "maxDistinctWithinSpecialty": 27
+    },
+    "מספר פרסומים מחלקתי": {
+      "numericRows": 0,
+      "specialties": 0,
+      "maxDistinctWithinSpecialty": 0
+    },
+    "DUNS100": {
+      "numericRows": 0,
+      "specialties": 0,
+      "maxDistinctWithinSpecialty": 0
+    },
+    "זמן_המתנה_חציוני_לתקן": {
+      "numericRows": 583,
+      "specialties": 28,
+      "maxDistinctWithinSpecialty": 15
+    }
+  },
+  "publicCatalog": {
+    "departments": 586,
+    "specialties": 28,
+    "known": {
+      "region": 0,
+      "hospital": 586,
+      "type": 575
+    }
+  },
+  "baseIndexEligibleDepartments": 0,
+  "baseIndexEligibleSpecialties": 0,
+  "notes": [
+    "Source rows are not the live visible cohort. Do not equate denominators.",
+    "Data_Exp explicitly identifies pass rates and burnout as national specialty aggregates.",
+    "No restricted review records, applicant data or external ENT data were retrieved."
+  ]
+}

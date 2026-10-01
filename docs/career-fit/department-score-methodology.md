@@ -1,0 +1,40 @@
+# Department scores — 2026-10-01.4b.1
+
+These are two independent systems. **מדד המחלקה של Hitmachut** is a fixed-version editorial composite of admitted documented departmental dimensions, identical for every user; it is not validated quality, clinical advice, admission probability or career success. **התאמה להעדפות שלך** is an explicit-preference match, usable without the specialty questionnaire. Display is `87/100`, never a probability.
+
+## Availability audit (before result testing)
+
+Read `metric-audit.json` for exact source counts/hashes and the 2026-10-01 live public projection. Source CSV rows and currently visible departments have different denominators. Schema presence is not evidence of complete or comparable live observations. Existing protected department pages and review records remain protected; no new API fields were exposed.
+
+| Metric | Actual field / source | Scope / period | Coverage / completeness | Interpretation; score eligibility |
+|---|---|---|---|---|
+| Institution preference | Public effective institution ID/name via `getDepartmentOptions` | Public department-to-institution mapping; year absent | 586/586 visible departments | Personal exact match only; no universal better institution |
+| Institution type | `Institution.type`, only verified identity matches | Institution, period absent | 575/586 | Personal exact match only; 11 unknown |
+| Region | Recorded `Institution.region`, no inferred city/default | Institution, period absent | 0/586 safely mapped/normalized | Personal engine supports it; no current live evaluation possible |
+| Exam A/B | `DepartmentMetric` imported/inherited `boardStageAPassRate` / `boardStageBPassRate`; Master_Dept + Data_Exp | **National specialty**, source says since 2020 | Same value within each populated specialty; audit counts recorded | Not departmental performance; excluded from base and personal |
+| Burnout | Imported `מדד_שחיקה`; MOH via Data_Exp | **National specialty residents**, observation year absent | One value per specialty | Not departmental resident experience; excluded |
+| Resident counts/new starts | `residentsCount`, imported resident counts, `DepartmentYearlyMetric.newResidents` | Department/array grouping may differ; new-start years 2020–24, 2026 forecasts distinct | Source present, complete staffing/campus reconciliation not established | Size/context has no monotone quality direction. Do not reward size repeatedly; personal size unsupported in this module |
+| Senior roster counts | `מספר_בכירים`, department metric/roster | Only two numeric source rows; completeness unknown | Observed ≠ complete headcount | No teaching, mentoring or workload inference; excluded |
+| Research | `DepartmentResearchMetric.publicationsCount/year/source/confidenceScore/needsMapping/isAmbiguous`; OpenAlex | Department matching, year; ambiguity must be reviewed | CSV has zero numeric publication rows. Separate DB query exists; no verified comparable campus/year cohort admitted | Research context ≠ teaching quality; matching status alone insufficient. Excluded pending permitted provenance review |
+| Reviews | `Review` teaching/approachability/research/lifestyle plus reviewerType, publishedAt; `ReviewSubmission` role details | Residents/interns/students must remain separate; publication date ≠ measurement period | Directory averages do not establish a fixed respondent-category/year/sample core; protected records not fetched | No eligible compatible cohort established; excluded. Do not combine students' impressions with residents' work experience |
+| Clinical services/exposure | Descriptive services/about; role-detail clinicalExposure | Descriptive/subjective scopes differ; no fixed period/core | Comparable complete inventory unavailable | Presence/volume cannot establish resident hands-on experience; excluded |
+| External recognition | DUNS100 / external metric fields | Recognition, not training/clinical performance; year varies/absent | CSV zero numeric Duns rows; no admitted common core | Context only, never prestige bonus |
+| Historical entry wait | Imported median wait | Historical applicants/access, period incomplete | Present in source, not current access probability | Context only; no acceptance prediction or quality direction |
+
+No external ENT project was opened or imported. No cross-year staffing ratios, salary, protected attributes, hospital patient surveys, publications/prestige proxies or placements flags enter scoring. **Zero admitted base cohorts, zero base-scored departments/specialties.** This is a guard, not a score of zero or a finding that no useful data exist elsewhere. Known public facts remain visible; unavailable component performance is not invented. Establishing additional compatible/permitted source data is a prerequisite, not a task silently completed here.
+
+## Base index formula and gate
+
+Configuration fixes cohort ID/version, specialty, compatible reference period, frozen department IDs and fixed normalization bounds (published bounds or explicitly reviewed editorial reference bounds). Every metric specifies source field/source, department-campus scope, period, family, correlation group, weight, direction, fixed-linear transformation, missing policy, rationale and eligibility. No runtime user-filter cohort normalization.
+
+For admitted metric x: `n = 100 × clamp((x-min)/(max-min),0,1)`; lower-is-better reverses to `100-n`. Bounds and direction require review before admission. Within family g: `C_g = Σ(metricWeight × n)/Σ(metricWeight)`. Across families: `I = Σ(familyWeight × C_g)/Σ(familyWeight)`, **equal family weights 1 by default**, an editorial product choice. At least two independent families and two reference departments are required. Duplicate correlation-group IDs are rejected to prevent declared correlated indicators being counted twice; substantive correlation review remains required.
+
+All core observations must be finite and match specialty, campus, period and source. Department must belong to frozen cohort. **Every core metric is required, even under diagnostic reweighting**: no per-department denominator reduction, imputation, missing=0 or partial overall ranking. Otherwise `score=null`, `status=INSUFFICIENT_COMPARABLE_DATA`. Fully observed components may remain visible without overall score; coverage is separate from performance. There are presently no admitted observed components in this public projection. Explanations carry the same values, normalized components, weights and contributions used in the calculation. The public wrapper reads real department IDs and the versioned admitted-cohort registry (currently empty); no example score is published.
+
+## Personal formula
+
+For selected supported soft preferences j, `P = 100 × Σ(w_j × exactMatch_j)/Σ(w_j)`, weights explicitly 0–3. Unsupported preferences never enter the denominator. All selected supported soft values must be known, otherwise no score. Zero weights/no selected soft preferences => no score. Only known hard mismatches exclude; unknown hard values go to unverified and get no score. Hard conditions do not also earn soft points. Values, matching flags and contribution rows originate in the same calculation. With only institution selected: chosen institution 100/100, another known institution 0/100. This means membership preference only. Unknown type when type is selected yields no score, not 0/100. Ties stay ties. Filters/pagination cannot change individual contributions.
+
+## Robustness plan
+
+For any admitted complete cohort, test each family weight ×0.8 and ×1.2 and leave-one-family-out diagnostics. Diagnostics are not public overall scores and may involve only one family. Freeze raw observations and reference bounds; do not optimize weights for preferred hospitals. With zero admitted real cohorts, real base-index sensitivity/ordering is **not estimable**. Synthetic sensitivity checks test arithmetic and can demonstrate unstable ordering; they do not validate clinical quality or the questionnaire. Personal institution/type exact matches have structural ties and reflect user priorities; no universal hospital winner is implied.

@@ -1,0 +1,13 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import assert from 'node:assert/strict';
+import {matchDepartments,type Catalog} from '../../src/lib/career-fit/scoring';
+import {publicDepartmentIndex} from '../../src/lib/career-fit/department-index';
+const catalog:Catalog=JSON.parse(readFileSync('/private/tmp/hitmachut-phase4b/catalog.json','utf8'));
+for(const d of catalog.departments)assert.equal(publicDepartmentIndex(d).score,null);
+const specialty=catalog.specialties.find(s=>s.name==='כירורגיה כללית')!;
+const cohort=catalog.departments.filter(d=>d.specialtyId===specialty.id);
+const chosen=cohort.find(d=>d.type==='HOSPITAL')!;
+const results=matchDepartments(cohort,[{factor:'hospital',values:[chosen.hospital!],weight:3,hard:false},{factor:'type',values:['HOSPITAL'],weight:1,hard:false}]);
+const example=(r:typeof results.comparable[number])=>({department:r.department.name,institution:r.department.hospitalName,score:r.score!*100,components:r.contributions.map(c=>({factor:c.factor,actualValue:c.factor==='hospital'?r.department.hospitalName:c.value,weight:c.weight,match:c.matches,points:c.contribution*100}))});
+const output={retrieved:catalog.retrievedAt,baseEligible:0,personalInstitutionEligible:catalog.departments.length,personalInstitutionSpecialties:new Set(catalog.departments.filter(d=>d.hospital).map(d=>d.specialtyId)).size,personalInstitutionAndTypeEligible:catalog.departments.filter(d=>d.hospital&&d.type).length,personalInstitutionAndTypeSpecialties:new Set(catalog.departments.filter(d=>d.hospital&&d.type).map(d=>d.specialtyId)).size,examplePreferences:{specialty:specialty.name,institution:chosen.hospitalName,institutionWeight:3,type:'HOSPITAL',typeWeight:1},examples:[example(results.comparable[0]),example(results.comparable.find(r=>r.department.hospital!==chosen.hospital)!)],robustness:'Base: not estimable, no admitted cohorts. Personal chosen institution contributes 75 points, matching type 25; same-type other institutions tie at 25. Weight perturbation affects personal arithmetic only; no clinical ordering conclusion.'};
+writeFileSync('/private/tmp/hitmachut-phase4b/real-score-audit.json',JSON.stringify(output,null,2));console.log(JSON.stringify(output,null,2));

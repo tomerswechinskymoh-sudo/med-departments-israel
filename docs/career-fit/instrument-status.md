@@ -1,0 +1,24 @@
+# Instrument gate — reviewed 2026-10-01
+
+**No validated instrument is integrated.** The unchanged original Hebrew 28-item, 16-editorial-profile tool remains exploratory. Its compact renderer is not an MSPI implementation. No test items, proprietary manuals or scoring keys were copied; no accounts, payments or rights-holder outreach occurred. No alternatives were substituted: the bounded review concentrated on the requested specialty-interest instrument.
+
+| Evidence/version | What is established | What is not established |
+|---|---|---|
+| [AAMC official MSPI landing](https://careersinmedicine.aamc.org/understand-yourself/interests-mspi), accessed 2026-10-01 | Medical Specialty Preference Inventory; medical-work interests, not ability, values or indecision | Current edition identifier, current item count, exact options, ordering, reverse coding, missing-answer rules and authorized scoring. Linked About/FAQ pages require sign-in. |
+| Glavin, Richard & Porfeli (2009), [Predictive validity](https://www.sciencedirect.com/science/article/abs/pii/S0001879108001255), DOI 10.1016/j.jvb.2008.11.004 | Historical second edition (2002 revision); 506 medical students, specialty choice assessed one year later | Not evidence of success, satisfaction, Israeli training suitability or validation of our 28 questions. Publisher abstract available; full publisher page access was limited. |
+| Porfeli, Richard & Savickas, [author manuscript, MSPI–Revised](https://www.marksavickas.com/files/1_Savickas_bio/Interviews/Savickas%20Publications/Papers%20and%20Published%20Abstracts/MSPI-R.pdf), methods pp.7–10 | Historical 150-item administration; 104 scored plus 46 pilot items; responses 1–7 increasing desirability. Historical 38 interest areas and six specialty outputs: family, internal, obstetrics/gynecology, pediatrics, psychiatry, surgery. US/Canadian medical-student database, 2005–2009; 2,339 students with second-year residency outcomes; 16 sufficiently represented specialties analyzed. | Research comparisons of item/factor models are not the current authorized scoring specification. Selected predictor subsets are not permission to shorten the administered questionnaire. Current missing-answer rules and full response labels remain unverified. |
+| [2010 published scale-development paper](https://www.sciencedirect.com/science/article/abs/pii/S0001879110000825) | Later scale-development research exists | Must not combine this edition/model with the 2009 study or author manuscript as one version. No current algorithm reconstructed. |
+
+Historical US outputs are not an Israeli eligibility taxonomy. No one-to-one Israeli route mapping has been approved. No Hebrew licensed version or Hebrew/Israeli validation was established by the bounded publisher/original-research search; this is an evidence gap, not a claim that none exists.
+
+[AAMC terms](https://careersinmedicine.aamc.org/aamc-careers-medicine-terms-and-conditions), updated 2025-12-30, checked 2026-10-01, grant limited personal access and restrict copying/modification/distribution and algorithm discovery. They do not establish Hitmachut's reproduction, translation, scoring or public website-use rights. Individual student access and an accessible paper are not a website license. The terms caution that assessment development/testing used US medical-student samples.
+
+[ITC Guidelines for Translating and Adapting Tests, second edition v2.4 (2017)](https://www.intestcom.org/files/guideline_test_adaptation_2ed.pdf), reached from [official ITC page](https://www.intestcom.org/page/14), checked 2026-10-01: permission precedes adaptation; translation alone does not establish equivalence or population validity. ITC guidance is not an instrument license or a validation of Hitmachut.
+
+## Later setup checklist (no outreach authorized in this phase)
+
+1. Obtain publisher-confirmed edition, authorized item/option/instruction/order specification, scoring and missing-answer rules, supported outputs and applicable validation report.
+2. Establish written digital reproduction, hosting, scoring and translation rights for this site and audience. Verify Hebrew license and separate empirical language/population evidence; describe limitations if evidence is absent.
+3. Implement one authorized adapter; preserve exact content and rules; review Israeli pathway mapping separately. Never reuse editorial profiles as licensed scoring. Test scoring against publisher-authorized examples before activation.
+
+`instruments.ts` defines an empty authorized registry, blocked MSPI status and a typed adapter for version, rights, population, missing rules and dedicated scoring. `InstrumentGrid` renders supplied per-item choices and optional policies; it does not impose a five-point scale, neutral default, unknown choice, shuffle or shortening. The exploratory adapter alone supplies those existing options. Answers remain in memory.
