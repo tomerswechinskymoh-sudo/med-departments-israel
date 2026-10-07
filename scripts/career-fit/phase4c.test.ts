@@ -34,6 +34,6 @@ test('N safeguard, population separation and exact explanation reconciliation',(
 test('bounds/ties/specialty cohort/missing core/duplicate source are deterministic',()=>{
  for(const value of [-10,1,3,5,100]){const x=structuredClone(d);Object.values(x.observations).forEach(o=>{o!.value=value;});const r=scoreDepartment(x,c);assert(r.score!==null&&r.score>=0&&r.score<=100);assert.deepEqual(r,scoreDepartment(x,c));assert.equal(r.score,scoreDepartment({...x,id:'b'},c).score);}
  assert.equal(scoreDepartment({...d,specialtyId:'other'},c).score,null);
- for(const m of c.metrics){const x=structuredClone(d);delete x.observations[m.id];assert.equal(scoreDepartment(x,c).score,null);assert.equal(scoreDepartment(x,c,{[m.family]:0}).score,null);}
+ for(const m of c.metrics){const x={...structuredClone(d),observations:{...d.observations}};delete x.observations[m.id];assert.equal(scoreDepartment(x,c).score,null);assert.equal(scoreDepartment(x,c,{[m.family]:0}).score,null);}
  assert(!validCohort({...c,metrics:c.metrics.map(m=>({...m,sourceField:'Review.training'}))}));
 });

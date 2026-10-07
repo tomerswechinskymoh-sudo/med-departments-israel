@@ -423,3 +423,11 @@ npm run import:department-heads -- ./data/department-heads.csv
 - `DepartmentEnrichmentService` הוא interface מוכן להרחבה
 - `MockDepartmentEnrichmentService` מספק תוצאות דמה כרגע
 - `src/server/jobs/run-department-enrichment.ts` מדגים job עתידי
+
+## Specialty-fit questionnaire
+
+`/career-fit` serves one30-question original medical-context RIASEC questionnaire. No preview flag is required. Department/placement gates are unchanged. Scoring is experimental, not a validated Hebrew instrument. Answers are saved locally for up to30 days since the last change; no answer API/database writes.
+
+Occupation data: O*NET31.0 Database, USDOL/ETA, [CC BY4.0](https://www.onetcenter.org/license_db.html). Original interest values are unchanged; Hitmachut selected physician rows and added an Israeli specialty crosswalk. USDOL/ETA has not approved, endorsed, or tested the additions. The current questions are original; historical official-item translations/research archives are not part of this public release.
+
+Release audit: [career-fit-release.md](docs/career-fit/career-fit-release.md). Sources and limitations are available at `/career-fit/sources`; department methodology remains at `/career-fit/methodology#department-index`.
