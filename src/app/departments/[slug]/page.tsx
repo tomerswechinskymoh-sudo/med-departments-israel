@@ -1289,7 +1289,7 @@ export default async function DepartmentDetailsPage({
   ]);
   const departmentExperienceReviews = department.reviews.map((review) => ({
     ...review,
-    publishedAt: review.publishedAt ? review.publishedAt.toISOString() : null,
+    publishedAt: review.publishedAt ? new Date(review.publishedAt).toISOString() : null,
     perspective: reviewPerspective(review)
   }));
   const region = resolveInstitutionRegion(department.institution);
@@ -1340,7 +1340,7 @@ export default async function DepartmentDetailsPage({
     specialtyName: arraySpecialtyName,
     isArray: isMedicalArrayProfile
   };
-  const canViewDepartmentDetails = Boolean(session && session.verificationStatus !== "REJECTED");
+  const canViewDepartmentDetails = Boolean(session && (session.role === "admin" || (session.emailVerified && session.verificationStatus === "VERIFIED")));
 
   if (!canViewDepartmentDetails) {
     const lock = departmentLockCopy(session);
@@ -2317,11 +2317,6 @@ export default async function DepartmentDetailsPage({
                     <p className="text-xs text-slate-500">
                       {assignment.user.representativeProfile?.title ?? "נציג/ת מחלקה"}
                     </p>
-                    {assignment.user.email ? (
-                      <a href={`mailto:${assignment.user.email}`} className="text-xs font-semibold text-brand-700">
-                        יצירת קשר
-                      </a>
-                    ) : null}
                   </div>
                 </div>
               ))}

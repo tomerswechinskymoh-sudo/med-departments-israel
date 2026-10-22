@@ -1,10 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export function LogoutButton() {
-  const router = useRouter();
   const [isPending, setIsPending] = useState(false);
 
   async function handleLogout() {
@@ -14,9 +12,8 @@ export function LogoutButton() {
       method: "POST"
     });
 
-    router.push("/");
-    router.refresh();
-    setIsPending(false);
+    // Discard the client router cache so Back cannot restore another session's profile.
+    window.location.replace("/");
   }
 
   return (

@@ -57,6 +57,15 @@ function reviewRoleDetails(input: {
 }
 
 export async function seedDatabase(prisma: PrismaClient, context: SeedContext = {}) {
+  // Defense in depth: neither web handlers nor indirect/CLI calls may seed a hosted database.
+  if (!["development", "test"].includes(process.env.NODE_ENV ?? "") || process.env.VERCEL || process.env.VERCEL_ENV) {
+    throw new Error("Demo seeding is disabled outside an explicit local development/test runtime.");
+  }
+  for (const connection of [process.env.DATABASE_URL, process.env.DIRECT_URL]) {
+    if (!connection || !["localhost", "127.0.0.1", "[::1]"].includes(new URL(connection).hostname)) {
+      throw new Error("Demo seeding requires loopback-only database connections.");
+    }
+  }
   if (context.clearExisting !== false) {
     await prisma.reviewReport.deleteMany();
     await prisma.review.deleteMany();

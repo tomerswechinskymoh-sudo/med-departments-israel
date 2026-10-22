@@ -2226,7 +2226,6 @@ async function getPublicDepartmentPageData(
           user: {
             select: {
               id: true,
-              email: true,
               fullName: true,
               profileImageUrl: true,
               representativeProfile: {
@@ -2608,7 +2607,7 @@ async function getPublicDepartmentPageData(
 }
 
 const getPublicDepartmentPageDataCached = publicDataCache(
-    "getPublicDepartmentPageData",
+    "getPublicDepartmentPageData-security-20261022",
     getPublicDepartmentPageData,
     [
       PUBLIC_DATA_CACHE_TAGS.departments,

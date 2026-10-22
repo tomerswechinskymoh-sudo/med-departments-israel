@@ -101,6 +101,9 @@ export function publicDataCache<TArgs extends unknown[], TResult>(
   });
 
   return async (...args: TArgs) => {
+    // Build-only empty projections must never populate the runtime data cache.
+    if (process.env.NEXT_PHASE === "phase-production-build") return fn(...args);
+
     const key = cacheKey(name, args);
 
     if (useMemoryCache()) {
