@@ -1,5 +1,6 @@
 "use client";
 
+
 import { useState } from "react";
 import { ReviewForm } from "@/components/forms/review-form";
 import { Modal } from "@/components/ui/modal";
@@ -10,7 +11,7 @@ export function ExperienceCta({
   className,
   buttonClassName,
   description,
-  initiallyOpen = false
+  initiallyOpen = false,
 }: {
   departments: {
     id: string;
@@ -35,10 +36,13 @@ export function ExperienceCta({
     <div className={className}>
       <button
         type="button"
-        onClick={() => setOpen(true)}
+        onClick={() => {
+
+          setOpen(true);
+        }}
         className={
           buttonClassName ??
-          "inline-flex items-center justify-center rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-6 py-3 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-200/50 transition hover:-translate-y-0.5 hover:shadow-xl"
+          "inline-flex items-center justify-center rounded-lg border border-brand-200 bg-brand-50 px-6 py-3 text-sm font-semibold text-brand-800  transition hover:-translate-y-0.5 "
         }
       >
         הוספת חוויה
@@ -57,7 +61,10 @@ export function ExperienceCta({
         <ReviewForm
           departments={departments}
           selectedDepartmentId={selectedDepartmentId}
-          onSubmitted={closeModal}
+          onSubmitted={() => {
+
+            closeModal();
+          }}
         />
       </Modal>
     </div>

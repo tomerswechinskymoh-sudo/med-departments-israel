@@ -1,4 +1,6 @@
 import Link from "next/link";
+
+import { ProductIcon } from "@/components/ui/product-icon";
 import { FavoriteToggleButton } from "@/components/departments/favorite-toggle-button";
 import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { Badge } from "@/components/ui/badge";
@@ -8,29 +10,28 @@ import { departmentNewResidentsChartRows } from "@/lib/department-yearly-residen
 import { missingImportedDataText } from "@/lib/spreadsheet-errors";
 import { formatDate, getDepartmentHref } from "@/lib/utils";
 
-function MetricChip({
-  label,
-  value
-}: {
-  label: string;
-  value: number;
-}) {
+function MetricChip({ label, value }: { label: string; value: number }) {
   const tone =
     value >= 4
       ? "border-emerald-100 bg-emerald-50 text-emerald-900"
       : value >= 3
         ? "border-brand-100 bg-brand-50 text-brand-900"
-        : "border-amber-200 bg-amber-50 text-amber-900";
+        : "border-brand-200 bg-amber-50 text-amber-900";
 
   return (
     <div className={`min-w-0 rounded-xl border px-3 py-2.5 ${tone}`}>
-      <span className="block truncate text-[0.68rem] font-semibold opacity-80">{label}</span>
+      <span className="block truncate text-[0.68rem] font-semibold opacity-80">
+        {label}
+      </span>
       {value ? (
         <div className="mt-2 flex min-w-0 items-center gap-2">
-          <div className="flex h-2.5 flex-1 overflow-hidden rounded-full bg-white/70">
-            <div className="rounded-full bg-current" style={{ width: `${(value / 5) * 100}%` }} />
+          <div className="flex h-2.5 flex-1 overflow-hidden rounded-lg bg-white/70">
+            <div
+              className="rounded-lg bg-current"
+              style={{ width: `${(value / 5) * 100}%` }}
+            />
           </div>
-          <span className="inline-flex shrink-0 items-center justify-center rounded-full border border-current/15 bg-white/75 px-2 py-0.5 text-xs font-bold">
+          <span className="inline-flex shrink-0 items-center justify-center rounded-lg border border-current/15 bg-white/75 px-2 py-0.5 text-xs font-bold">
             {value.toFixed(1)}
           </span>
         </div>
@@ -44,27 +45,35 @@ function MetricChip({
 function DataPill({
   label,
   value,
-  helper
+  helper,
 }: {
   label: string;
   value: string | number;
   helper?: string;
 }) {
   return (
-    <div className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2" title={helper}>
-      <p className="text-[0.68rem] font-bold text-slate-500">{label}</p>
+    <div
+      className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2"
+      title={helper}
+    >
+      <p className="card-data-label"><ProductIcon name="people"/>{label}</p>
       <p className="mt-1 text-sm font-black text-ink">{value}</p>
-      {helper ? <p className="mt-0.5 truncate text-[0.65rem] font-semibold text-slate-400">{helper}</p> : null}
+      {helper ? (
+        <p className="mt-0.5 truncate text-[0.65rem] font-semibold text-slate-600">
+          {helper}
+        </p>
+      ) : null}
     </div>
   );
 }
 
 const DEPARTMENT_NEW_RESIDENTS_TREND_LABEL = "מתמחים חדשים במחלקה לפי שנה";
-const ARRAY_NEW_RESIDENTS_TREND_LABEL = "מספר מתמחים חדשים בממוצע למחלקה במערך לפי שנה";
+const ARRAY_NEW_RESIDENTS_TREND_LABEL =
+  "מספר מתמחים חדשים בממוצע למחלקה במערך לפי שנה";
 
 function MiniYearlyResidentsChart({
   rows,
-  title = DEPARTMENT_NEW_RESIDENTS_TREND_LABEL
+  title = DEPARTMENT_NEW_RESIDENTS_TREND_LABEL,
 }: {
   rows?: Array<{ year: number; value: number | null }>;
   title?: string;
@@ -76,12 +85,13 @@ function MiniYearlyResidentsChart({
       <div
         className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2"
         title={title}
+        role="group"
         aria-label={title}
       >
-        <p className="text-[0.68rem] font-black text-slate-600">
-          {title}
+        <p className="text-[0.68rem] font-black text-slate-600">{title}</p>
+        <p className="mt-1 text-xs font-semibold text-slate-600">
+          {missingImportedDataText}
         </p>
-        <p className="mt-1 text-xs font-semibold text-slate-400">{missingImportedDataText}</p>
       </div>
     );
   }
@@ -90,6 +100,7 @@ function MiniYearlyResidentsChart({
     <div
       className="rounded-xl border border-sky-100 bg-sky-50/70 px-3 py-2"
       title={title}
+      role="group"
       aria-label={title}
     >
       <div className="flex items-center justify-between gap-2">
@@ -97,7 +108,10 @@ function MiniYearlyResidentsChart({
           {title}
         </p>
       </div>
-      <div className="mt-2 grid min-w-0 grid-cols-5 items-end gap-1.5" dir="ltr">
+      <div
+        className="mt-2 grid min-w-0 grid-cols-5 items-end gap-1.5"
+        dir="ltr"
+      >
         {chartRows.map((row) => (
           <div key={row.year} className="min-w-0 text-center" dir="ltr">
             <p className="mb-1 truncate text-[0.62rem] font-black text-sky-950">
@@ -123,7 +137,9 @@ function MiniYearlyResidentsChart({
 export function DepartmentCard({
   department,
   showFavoriteButton = false,
-  variant = "card"
+  favoriteVariant = "icon",
+  onFavoriteChange,
+  variant = "card",
 }: {
   department: {
     id: string;
@@ -131,6 +147,7 @@ export function DepartmentCard({
     name: string;
     institutionName: string;
     institutionSlug?: string | null;
+    institutionBrandingKey?: string | null;
     institutionCoverImageUrl?: string | null;
     city?: string | null;
     region?: string | null;
@@ -149,7 +166,10 @@ export function DepartmentCard({
     hasResearch: boolean;
     residentsCount?: number | null;
     newResidentsLatest?: number | null;
-    departmentNewResidentsYearly?: Array<{ year: number; value: number | null }>;
+    departmentNewResidentsYearly?: Array<{
+      year: number;
+      value: number | null;
+    }>;
     seniorPhysiciansCount?: number | null;
     duns100PhysiciansCount?: number | null;
     expectedOpeningsCount?: number | null;
@@ -168,55 +188,73 @@ export function DepartmentCard({
     favoriteDepartmentId?: string | null;
   };
   showFavoriteButton?: boolean;
+  favoriteVariant?: "icon" | "remove";
+  onFavoriteChange?: (departmentId: string, isFavorite: boolean) => void;
   variant?: "card" | "row";
 }) {
   const departmentHref = getDepartmentHref({
     slug: department.slug,
-    id: department.hrefDepartmentId ?? department.id
+    id: department.hrefDepartmentId ?? department.id,
   });
   const isRow = variant === "row";
   const favoriteDepartmentId =
-    department.favoriteDepartmentId ?? (department.isArrayCard ? null : department.id);
+    department.favoriteDepartmentId ??
+    (department.isArrayCard ? null : department.id);
   const activeResidentsStat =
     typeof department.residentsCount === "number"
       ? {
-          label: department.isArrayCard ? "ממוצע מתמחים למחלקה" : "מתמחים פעילים",
-          value: department.residentsCount
+          label: department.isArrayCard
+            ? "ממוצע מתמחים למחלקה"
+            : "מתמחים פעילים",
+          value: department.residentsCount,
         }
       : null;
 
   return (
     <Card
-      className={`group relative overflow-hidden border border-white/90 bg-white/96 p-0 transition hover:-translate-y-0.5 hover:shadow-panel ${
+      className={`department-card group relative overflow-hidden border border-brand-100 bg-white !p-0 transition hover:shadow-panel ${
         isRow ? "rounded-[1.25rem]" : "flex h-full flex-col justify-between"
       }`}
     >
       <Link
         href={departmentHref}
+
+
+
         aria-label={`לצפייה בעמוד המחלקה ${department.name}`}
         className="absolute inset-0 z-10 rounded-[1.25rem]"
       />
 
+      {showFavoriteButton && favoriteDepartmentId && favoriteVariant !== "remove" && <div className="department-card-bookmark">
+        <FavoriteToggleButton departmentId={favoriteDepartmentId} departmentSlug={department.slug} initialFavorite={Boolean(department.isFavorite)} variant={favoriteVariant} />
+      </div>}
+
       <div
-        className={`relative z-20 flex flex-1 flex-col justify-between ${
-          isRow ? "gap-4 p-4 md:p-5 lg:grid lg:grid-cols-[1fr_260px] lg:items-center" : "p-6"
+        className={`department-card-body relative z-20 flex flex-1 flex-col justify-between ${
+          isRow
+            ? "gap-4 p-4 md:p-5 lg:grid lg:grid-cols-[1fr_210px] lg:items-center"
+            : "p-6"
         }`}
       >
-        <div className="pointer-events-none">
+        <div className="department-card-details pointer-events-none">
           {isRow ? (
             <div className="flex gap-4">
               <InstitutionLogo
                 institution={{
                   name: department.institutionName,
                   slug: department.institutionSlug,
-                  coverImageUrl: department.institutionCoverImageUrl
+                  brandingKey: department.institutionBrandingKey,
+                  type: department.institutionType,
+                  coverImageUrl: department.institutionCoverImageUrl,
                 }}
                 size="md"
                 className="mt-0.5"
               />
               <div className="min-w-0 space-y-2">
                 {department.region ? (
-                  <p className="text-xs font-black text-brand-700">{department.region}</p>
+                  <p className="department-location text-xs font-black text-brand-700">
+                    <ProductIcon name="location"/>{department.region}
+                  </p>
                 ) : null}
                 <p className="text-base font-bold leading-7 text-slate-700">
                   {department.institutionName}
@@ -225,12 +263,15 @@ export function DepartmentCard({
                   {department.name}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  <p className="inline-flex rounded-full border border-teal-100 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-900">
+                  <p className="inline-flex rounded-lg border border-teal-100 bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-900">
                     {department.specialtyName}
                   </p>
                   {department.isArrayCard ? (
-                    <p className="inline-flex rounded-full border border-brand-100 bg-brand-50 px-3 py-1.5 text-xs font-bold text-brand-900">
-                      מערך · {department.arrayDepartmentCount === 1 ? "מחלקה אחת" : `${department.arrayDepartmentCount} מחלקות`}
+                    <p className="inline-flex rounded-lg border border-brand-100 bg-brand-50 px-3 py-1.5 text-xs font-bold text-brand-900">
+                      מערך ·{" "}
+                      {department.arrayDepartmentCount === 1
+                        ? "מחלקה אחת"
+                        : `${department.arrayDepartmentCount} מחלקות`}
                     </p>
                   ) : null}
                 </div>
@@ -244,16 +285,18 @@ export function DepartmentCard({
           ) : (
             <>
               <div className="flex flex-wrap items-center gap-2">
-                {department.hasOpenResidency ? <Badge tone="success">משרות פתוחות</Badge> : null}
+                {department.hasOpenResidency ? (
+                  <Badge tone="success">משרות פתוחות</Badge>
+                ) : null}
                 {department.hasUpcomingCommittee ? (
                   <Badge tone="default">ועדה מתוכננת</Badge>
                 ) : null}
-                {department.hasResearch ? <Badge tone="success">מחקר פתוח</Badge> : null}
-                {department.region ? <Badge tone="default">{department.region}</Badge> : null}
-                {!department.hasOpenResidency ? (
-                  <Badge tone="warning">אין משרות פתוחות כרגע</Badge>
+                {department.hasResearch ? (
+                  <Badge tone="success">מחקר פתוח</Badge>
                 ) : null}
-                {!department.hasResearch ? <Badge tone="default">ללא מחקר פתוח</Badge> : null}
+                {department.region ? (
+                  <span className="department-location"><ProductIcon name="location"/>{department.region}</span>
+                ) : null}
               </div>
 
               <div className="mt-5 flex gap-3 rounded-[1.25rem] border border-slate-100 bg-slate-50/90 px-4 py-4">
@@ -261,7 +304,9 @@ export function DepartmentCard({
                   institution={{
                     name: department.institutionName,
                     slug: department.institutionSlug,
-                    coverImageUrl: department.institutionCoverImageUrl
+                  brandingKey: department.institutionBrandingKey,
+                  type: department.institutionType,
+                    coverImageUrl: department.institutionCoverImageUrl,
                   }}
                   size="sm"
                 />
@@ -288,31 +333,61 @@ export function DepartmentCard({
                 {department.shortSummary}
               </p>
 
-              <div className="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                <MetricChip label="הוראה" value={department.teachingQuality ?? 0} />
-                <MetricChip label="איזון" value={department.lifestyleBalance ?? 0} />
-                <MetricChip label="קליניקה" value={department.clinicalExposure ?? 0} />
-              </div>
+              {Boolean(
+                department.teachingQuality ||
+                  department.lifestyleBalance ||
+                  department.clinicalExposure,
+              ) && (
+                <div className="mt-5 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                  <MetricChip
+                    label="הוראה"
+                    value={department.teachingQuality ?? 0}
+                  />
+                  <MetricChip
+                    label="איזון"
+                    value={department.lifestyleBalance ?? 0}
+                  />
+                  <MetricChip
+                    label="קליניקה"
+                    value={department.clinicalExposure ?? 0}
+                  />
+                </div>
+              )}
             </>
           ) : null}
         </div>
 
-        <div className={`relative z-30 ${isRow ? "space-y-3 lg:border-r lg:border-slate-100 lg:pr-4" : "mt-6 space-y-4"}`}>
+        <div
+          className={`department-card-metrics relative z-30 ${isRow ? "space-y-3 lg:border-r lg:border-slate-100 lg:pr-4" : "mt-6 space-y-4"}`}
+        >
           {isRow ? (
             <div className="flex flex-wrap gap-2">
-              {department.hasOpenResidency ? <Badge tone="success">משרות פתוחות</Badge> : null}
-              {department.hasUpcomingCommittee ? <Badge tone="default">ועדה מתוכננת</Badge> : null}
+              {department.hasOpenResidency ? (
+                <Badge tone="success">משרות פתוחות</Badge>
+              ) : null}
+              {department.hasUpcomingCommittee ? (
+                <Badge tone="default">ועדה מתוכננת</Badge>
+              ) : null}
             </div>
           ) : null}
 
-          {isRow && (activeResidentsStat || department.departmentNewResidentsYearly?.length) ? (
+          {isRow &&
+          (activeResidentsStat ||
+            department.departmentNewResidentsYearly?.length) ? (
             <div className="grid gap-2">
               {activeResidentsStat ? (
-                <DataPill label={activeResidentsStat.label} value={activeResidentsStat.value} />
+                <DataPill
+                  label={activeResidentsStat.label}
+                  value={activeResidentsStat.value}
+                />
               ) : null}
               <MiniYearlyResidentsChart
                 rows={department.departmentNewResidentsYearly}
-                title={department.isArrayCard ? ARRAY_NEW_RESIDENTS_TREND_LABEL : DEPARTMENT_NEW_RESIDENTS_TREND_LABEL}
+                title={
+                  department.isArrayCard
+                    ? ARRAY_NEW_RESIDENTS_TREND_LABEL
+                    : DEPARTMENT_NEW_RESIDENTS_TREND_LABEL
+                }
               />
             </div>
           ) : null}
@@ -326,50 +401,36 @@ export function DepartmentCard({
                 </div>
               </>
             ) : (
-              <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-500">
+              <span className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-500">
                 אין עדיין ביקורות
               </span>
             )}
           </div>
 
           {!isRow ? (
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                <p className="text-slate-500">מתמחים פעילים</p>
-                <p className="mt-1 font-bold text-ink">{department.residentsCount ?? "אין נתונים"}</p>
-              </div>
-              <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-2">
-                <p className="text-slate-500">שלב א׳</p>
-                <p className="mt-1 font-bold text-ink">
-                  {typeof department.shlavAlephPassRate === "number"
-                    ? `${Math.round(department.shlavAlephPassRate).toLocaleString("he-IL")}%`
-                    : "אין נתונים"}
-                </p>
-              </div>
+            <div className="department-data-pills">
+              <div className="department-data-pill"><span><ProductIcon name="people"/>מתמחים פעילים</span><strong>{department.residentsCount ?? "אין נתון"}</strong></div>
+              <div className="department-data-pill"><span><ProductIcon name="award"/>מעבר שלב א׳</span><strong>{typeof department.shlavAlephPassRate === "number" ? `${Math.round(department.shlavAlephPassRate).toLocaleString("he-IL")}%` : "אין נתון"}</strong></div>
             </div>
           ) : null}
 
           {department.dataLastUpdated ? (
-            <p className="text-[0.68rem] font-semibold leading-5 text-slate-400">
+            <p className="department-updated text-[0.68rem] font-semibold leading-5 text-slate-600">
               עודכן: {formatDate(department.dataLastUpdated)}
             </p>
           ) : null}
 
           <div className="flex flex-wrap gap-3">
             <Link
+
+
+
               href={departmentHref}
-              className="pointer-events-auto rounded-full bg-brand-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-800"
+              className="pointer-events-auto rounded-lg bg-brand-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-800"
             >
               לעמוד המחלקה
             </Link>
-            {showFavoriteButton && favoriteDepartmentId ? (
-              <div className="pointer-events-auto">
-                <FavoriteToggleButton
-                  departmentId={favoriteDepartmentId}
-                  initialFavorite={Boolean(department.isFavorite)}
-                />
-              </div>
-            ) : null}
+            {showFavoriteButton && favoriteDepartmentId && favoriteVariant === "remove" && <FavoriteToggleButton departmentId={favoriteDepartmentId} departmentSlug={department.slug} initialFavorite={Boolean(department.isFavorite)} variant="remove" onFavoriteChange={onFavoriteChange} />}
           </div>
         </div>
       </div>

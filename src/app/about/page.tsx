@@ -1,213 +1,55 @@
 import Link from "next/link";
+import { ProductIcon } from "@/components/ui/product-icon";
 import { PageShell } from "@/components/layout/page-shell";
-import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
-import { siteIdentity, sourceCopy } from "@/lib/brand-copy";
+import { PageIntro } from "@/components/ui/page-intro";
+import { ApprovedBrand } from "@/components/layout/approved-brand";
+import { PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
 
-const navItems = ["למה זה קיים", "איך זה עובד", "מי עומד מאחורי זה", "מקורות נתונים ואחריות", "יצירת קשר"];
-
-const storySections = [
-  {
-    title: "למה זה קיים",
-    body: [
-      "בחירת התמחות היא החלטה שמעצבת שנים קדימה: איפה עובדים, ממי לומדים, כמה תמיכה מקבלים, ואיך נראים החיים מחוץ לבית החולים. למרות זאת, חלק גדול מהמידע עדיין עובר בשיחות מסדרון, קבוצות סגורות או המלצות נקודתיות.",
-      "הדרך להתמחות נבנתה כדי להפוך את השלב הזה לשקוף ומסודר יותר. במקום להתחיל משמועות, אפשר להתחיל מנתונים, הקשר וחוויות שנאספות בזהירות."
-    ]
-  },
-  {
-    title: "מי עומד מאחורי זה",
-    body: [
-      "האתר נוסד ונבנה על ידי תומר סבצ׳ינסקי, סטודנט לרפואה.",
-      "המיזם הוקם מתוך היכרות עם אתגרי בחירת ההתמחות בישראל ומתוך רצון להנגיש מידע אמין, שקוף ועדכני לרופאים בתחילת דרכם. מטרת האתר היא לרכז במקום אחד מידע על מחלקות, מסלולי התמחות וחוויות מהשטח, ולאפשר קבלת החלטות מושכלת יותר לגבי המשך הדרך המקצועית."
-    ]
-  },
-  {
-    title: "מקורות נתונים ואחריות",
-    body: [
-      sourceCopy.summary,
-      "המידע משלב גם מקורות ציבוריים, מדדי מחקר משוערים ושיתופי משתמשים שעוברים בדיקה לפני פרסום.",
-      "כאשר נתון חסר, משוער או מגיע ברמת תחום ההתמחות ולא ברמת המחלקה הספציפית, אנחנו משתדלים לסמן זאת בצורה ברורה. האתר נועד לסייע בקבלת החלטות, לא להחליף בירור רשמי מול מוסד רפואי או שיחה עם מי שמכיר את המחלקה מקרוב."
-    ]
-  },
-  {
-    title: "יצירת קשר",
-    body: [
-      "אפשר לפנות לגבי תיקוני מידע, שיתופי פעולה, שאלות פרטיות, בקשות להסרת תוכן או רעיונות לשיפור.",
-      "אם הפנייה קשורה למחלקה מסוימת, כדאי לצרף קישור לעמוד ושתי שורות על מה שצריך לבדוק."
-    ]
-  }
-];
-
-const phoneScreens = [
-  {
-    title: "דף תחום",
-    subtitle: "תמונת מצב ארצית",
-    rows: ["משך התמחות", "פער שכר", "מתמחים חדשים"]
-  },
-  {
-    title: "דף מחלקה",
-    subtitle: "נתונים, קשר וחוויות",
-    rows: ["כוח אדם", "הנהלה", "מחקר ופרסומים"]
-  },
-  {
-    title: "השוואת מחלקות",
-    subtitle: "סריקה מהירה בין אפשרויות",
-    rows: ["מוסד", "אזור", "מדדים מרכזיים"]
-  }
-];
-
-function anchorFor(title: string) {
-  return title.replace(/\s+/g, "-");
-}
-
-function PhoneMockup() {
-  return (
-    <div className="relative mx-auto w-full max-w-[270px]" aria-label="תצוגה מקדימה של מסכי האתר">
-      <div className="rounded-[2.2rem] border border-slate-200 bg-slate-950 p-3 shadow-[0_28px_90px_-42px_rgba(15,23,42,0.85)]">
-        <div className="overflow-hidden rounded-[1.65rem] bg-[#f7fafc] p-3">
-          <div className="mx-auto mb-3 h-1.5 w-16 rounded-full bg-slate-300" />
-          <div className="relative h-[390px]">
-            {phoneScreens.map((screen, index) => (
-              <div
-                key={screen.title}
-                className="about-phone-panel absolute inset-0 rounded-[1.35rem] bg-white p-4 shadow-sm"
-                style={{ animationDelay: `${index * 3.5}s` }}
-              >
-                <p className="text-xs font-black text-brand-700">{screen.subtitle}</p>
-                <h3 className="mt-2 text-2xl font-black text-ink">{screen.title}</h3>
-                <div className="mt-5 space-y-3">
-                  {screen.rows.map((row, rowIndex) => (
-                    <div key={row} className="rounded-2xl border border-slate-100 bg-slate-50 p-3">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-bold text-slate-700">{row}</span>
-                        <span className="h-2 w-10 rounded-full bg-brand-300" />
-                      </div>
-                      <div className="mt-3 h-2 rounded-full bg-white">
-                        <div
-                          className="h-full rounded-full bg-teal-600"
-                          style={{ width: `${52 + rowIndex * 16}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-2">
-                  {[0, 1, 2].map((item) => (
-                    <span
-                      key={item}
-                      className={`h-1.5 rounded-full ${item === index ? "bg-brand-700" : "bg-slate-200"}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
+export const metadata = {
+  title: "אודות — מבעיה אישית לפתרון מערכתי | hitmachut.org",
+  description: "הסיפור מאחורי התמחות.org: מהצורך להבין את אפשרויות ההתמחות בישראל להנגשת מידע, השוואת מחלקות ובחירה מושכלת.",
+  alternates: { canonical: "/about" },
+};
 export default function AboutPage() {
   return (
-    <PageShell className="space-y-8 py-8 md:py-10">
-      <section className="scroll-reveal grid items-center gap-8 border-b border-brand-100 pb-8 lg:grid-cols-[1fr_340px]">
-        <div>
-          <p className="text-sm font-semibold text-brand-700">אודות</p>
-          <h1 className="mt-3 max-w-4xl text-4xl font-bold leading-tight text-ink md:text-5xl">
-            מידע טוב יותר לרגע שבו בוחרים התמחות
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-9 text-slate-700">
-            <span dir="ltr">{siteIdentity.name}</span> מרכזת מידע על הכשרה רפואית, מחלקות ומסלולי התמחות בישראל.
-            נתונים ארציים ומידע מהשטח עוזרים לסטודנטים, סטאז׳רים ומתמחים להשוות בין אפשרויות.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {["מידע אמין ושקוף", "חוויות מהשטח", "נתונים ושיתופים במקום אחד"].map((chip) => (
-              <span
-                key={chip}
-                className="rounded-full border border-brand-100 bg-white px-4 py-2 text-xs font-bold text-brand-900 shadow-sm"
-              >
-                {chip}
-              </span>
-            ))}
-          </div>
-        </div>
-        <PhoneMockup />
+    <PageShell className="about-page">
+      <PageIntro eyebrow="אודות" title="מבעיה אישית לפתרון מערכתי" image="people"
+        description="מהצורך להבין את אפשרויות ההתמחות בישראל, לרצון לתת לכל רופאה ורופא תמונה ברורה יותר של הדרך שלפניהם." />
+      <section className="about-vision" aria-labelledby="story-title">
+        <h2 id="story-title">הסיפור מאחורי האתר</h2>
+        <p>מה שהתחיל בצורך אישי להבין טוב יותר את אפשרויות ההתמחות בישראל, הפך לרעיון רחב יותר: לרכז מידע, להנגיש נתונים ולאפשר לסטודנטים לרפואה, לסטאז׳רים ולרופאים לבחור את דרכם על בסיס תמונה ברורה ומבוססת יותר.</p>
+        <p>האתר נוסד ונבנה על ידי תומר סבצ׳ינסקי, סטודנט לרפואה. הוא נולד מתוך השאלות שמלוות את הבחירה: מה ההבדלים בין המחלקות, אילו הזדמנויות הן מציעות, ומה חשוב לברר לפני שמחליטים.</p>
       </section>
-
-      <nav className="sticky top-16 z-20 -mx-2 flex gap-2 overflow-x-auto rounded-2xl border border-white/80 bg-white/82 p-2 shadow-sm backdrop-blur transition-colors duration-300">
-        {navItems.map((item) => (
-          <a
-            key={item}
-            href={`#${anchorFor(item)}`}
-            className="shrink-0 rounded-full px-4 py-2 text-sm font-bold text-slate-600 transition hover:bg-brand-50 hover:text-brand-900"
-          >
-            {item}
-          </a>
-        ))}
-      </nav>
-
-      <section id="איך-זה-עובד" className="scroll-reveal grid gap-7 rounded-2xl bg-white px-5 py-6 shadow-panel md:px-7 lg:grid-cols-[0.95fr_1.05fr]">
-        <div>
-          <p className="text-sm font-semibold text-brand-700">איך זה עובד?</p>
-          <h2 className="mt-2 text-3xl font-black text-ink">מתחילים מהתחום, ממשיכים למחלקה</h2>
-          <p className="mt-4 text-sm leading-8 text-slate-700">
-            האתר בנוי כמו מסע קצר: קודם מבינים את תחום ההתמחות ברמה ארצית, אחר כך
-            עוברים להשוואה בין מחלקות ומוסדות, ובסוף קוראים חוויות ודיווחים שמוסיפים
-            הקשר אנושי לנתונים.
-          </p>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-3">
-          {phoneScreens.map((screen, index) => (
-            <div key={screen.title} className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4">
-              <p className="text-xs font-black text-brand-700">0{index + 1}</p>
-              <h3 className="mt-2 text-lg font-black text-ink">{screen.title}</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-600">{screen.subtitle}</p>
-            </div>
-          ))}
+      <section aria-labelledby="possibilities-title">
+        <h2 id="possibilities-title" className="sr-only">מה האתר מאפשר</h2>
+        <div className="about-values">
+          {([
+            ["compass", "בחירה מושכלת", "מכירים את תחומי ההתמחות ואת המחלקות, ובונים רשימה שמתאימה לשאלות ולצרכים שלכם."],
+            ["document", "שקיפות והקשר", "רואים מה ידוע, מה מקור המידע ומה עדיין חסר — בלי להפוך חוסר מידע לציון."],
+            ["database", "מידע במקום אחד", "משווים מחלקות באותו תחום על בסיס מדדים מוגדרים ונתונים ממקורות שונים."],
+            ["people", "ניסיון מהקהילה", "מוסיפים לנתונים את ההקשר של חוויות מהשטח, שעוברות בדיקה לפני פרסום."],
+          ] as const).map(([icon,title,text]) => <article key={title}><ProductIcon name={icon}/><h3>{title}</h3><p>{text}</p></article>)}
         </div>
       </section>
-
-      <section className="space-y-0 rounded-2xl bg-white px-5 py-2 shadow-panel md:px-7">
-        {storySections.map((section) => (
-          <article
-            key={section.title}
-            id={anchorFor(section.title)}
-            className="scroll-reveal border-b border-slate-100 py-7 last:border-b-0"
-          >
-            <h2 className="text-3xl font-black text-ink">{section.title}</h2>
-            <div className="mt-4 max-w-4xl space-y-3 text-sm leading-8 text-slate-700">
-              {section.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-            {section.title === "יצירת קשר" ? (
-              <a
-                href={PUBLIC_CONTACT_MAILTO}
-                className="mt-5 inline-flex rounded-full bg-brand-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
-              >
-                {PUBLIC_CONTACT_EMAIL}
-              </a>
-            ) : null}
-          </article>
-        ))}
+      <section className="about-process">
+        <div className="section-intro"><h2>פחות מידע מפוזר. יותר מקום לבחירה.</h2><p>המידע על ההתמחות מפוזר בין פרסומים, אתרי בתי חולים ושיחות עם עמיתים. אנחנו מנסים לחבר בין המקורות ולהפוך את הבירור למסודר ונגיש.</p></div>
+        <ol className="process-grid">
+          {[["מוצאים כיוון", "מחפשים לפי תחום ואזור. אפשר להתחיל גם משאלון בחירת ההתמחות הניסיוני (Beta)."], ["משווים ובודקים", "בוחנים נתונים ומקורות, שומרים מחלקות ומזהים אילו שאלות עדיין פתוחות."], ["משלימים את התמונה", "קוראים חוויות, פונים למחלקה ומקבלים החלטה מתוך ההקשר האישי והמקצועי שלכם."]].map(([title,text],i)=><li key={title}><span className="step-number">{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}
+        </ol>
       </section>
-
-      <section className="scroll-reveal rounded-2xl bg-[#06121f] px-5 py-5 text-white shadow-panel md:px-7">
-        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-sm font-semibold text-brand-100">ממשיכים לבדיקה</p>
-            <p className="mt-2 text-sm leading-7 text-white/78">
-              הדרך הכי טובה להבין את האתר היא לבחור תחום התמחות ולהשוות בין מחלקות.
-            </p>
-          </div>
-          <Link
-            href="/departments"
-            className="inline-flex w-fit rounded-full bg-white px-5 py-3 text-sm font-semibold text-brand-900 transition hover:bg-brand-50"
-          >
-            למאגר המחלקות
-          </Link>
+      <section className="about-sources" id="sources">
+        <div className="section-intro"><h2>מקורות המידע והדרך שבה הוא מוצג</h2><p>מקור ועדכניות הם חלק מהמידע, ולא הערת שוליים.</p></div>
+        <div className="about-source-grid">
+          <article><ProductIcon name="database"/><h3>פרסומים רשמיים</h3><p>נתונים ופרסומים של משרד הבריאות, הר״י ובתי החולים. כשנתון מתייחס לכלל תחום ההתמחות או למערך, הדבר מצוין לצד התצוגה.</p></article>
+          <article><ProductIcon name="people"/><h3>חוויות ומידע מהשטח</h3><p>שיתופי משתמשים עוברים בדיקה לפני פרסום. חוויה אישית מוסיפה הקשר, ואינה מחליפה בירור ישיר עם המחלקה.</p></article>
+          <article><ProductIcon name="document"/><h3>מקורות ומגבלות</h3><p>מידע חסר או משוער מסומן. מדדי מחקר והערכות מוצגים לפי הגדרותיהם; מומלץ לבדוק את תאריך העדכון ואת המקור.</p></article>
         </div>
       </section>
+      <div className="about-contribute">
+        <section><h2>עוזרים להשלים ולדייק</h2><p>מכירים את המחלקה מקרוב? אפשר לשתף חוויה או לדווח על טעות בעמוד המחלקה. צרפו קישור ומקור לבדיקה; העדכונים נבדקים לפני פרסום.</p><a className="text-link" href={PUBLIC_CONTACT_MAILTO}>ליצירת קשר ולתיקוני מידע ←</a></section>
+        <section className="about-ministry"><ApprovedBrand placement="account"/><h2>הקשר למשרד הבריאות</h2><p>האתר נמצא באחריות משרד הבריאות. האחריות על האתר משתלבת במטרה להנגיש לרופאים מידע ברור ושימושי על אפשרויות ההתמחות בישראל.</p></section>
+      </div>
+      <section className="about-next"><h2>מוכנים להתחיל?</h2><p>חפשו מחלקות, שמרו את האפשרויות שמעניינות אתכם והשוו ביניהן.</p><div className="hero-actions"><Link className="button-link" href="/departments"><ProductIcon name="search"/>למאגר המחלקות</Link><Link className="button-link secondary" href="/compare"><ProductIcon name="compare"/>להשוואת מחלקות</Link></div></section>
     </PageShell>
   );
 }

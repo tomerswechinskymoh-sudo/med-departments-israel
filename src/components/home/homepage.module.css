@@ -1,0 +1,143 @@
+@font-face { font-family: "Homepage Heebo"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/fonts/heebo/hebrew.woff2") format("woff2"); unicode-range: U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F; }
+@font-face { font-family: "Homepage Heebo"; font-style: normal; font-weight: 100 900; font-display: swap; src: url("/fonts/heebo/latin.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+/* Homepage-only V4/V5 styling. No document-wide selectors or shared tokens. */
+.root { --navy:#0c1b46; --blue:#0062df; --teal:#066c73; --muted:#52658b; --border:#e0ebf7; background:#fff; color:var(--navy); font-family:"Homepage Heebo",Arial,sans-serif; font-size:16px; line-height:1.65; min-height:100vh; }
+.root :global(h1),.root :global(h2),.root :global(h3) { letter-spacing:0; }
+.root :global(a),.root :global(button) { -webkit-tap-highlight-color:transparent; }
+.root :global(a:focus-visible),.root :global(button:focus-visible) { outline:3px solid var(--blue); outline-offset:3px; }
+.root :global(a:hover) { text-decoration:underline; text-underline-offset:4px; }
+.root :global(.skip-link) { position:fixed; top:-100px; right:16px; z-index:100; background:var(--navy); color:#fff; padding:12px 24px; border-radius:8px; }
+.root :global(.skip-link:focus) { top:12px; }
+.root :global(.site-header) { position:sticky; top:0; z-index:40; border-bottom:1px solid var(--border); background:#fff; }
+.root :global(.header-inner) { max-width:1320px; margin:auto; min-height:64px; display:flex; align-items:center; gap:18px; padding:8px 24px; }
+.root :global(.site-wordmark) { display:inline-flex; flex-direction:column; flex-shrink:0; color:#075193; line-height:1; }
+.root :global(.wordmark-name) { display:flex; direction:ltr; align-items:baseline; font-size:30px; }
+.root :global(.wordmark-name strong) { font-weight:800; }
+.root :global(.wordmark-name>span) { color:#0077da; font-size:27px; font-weight:400; }
+.root :global(.wordmark-caption) { margin-top:5px; font-size:9px; color:#536b97; text-align:right; }
+.root :global(.ministry-brand) { display:inline-flex; flex-shrink:0; padding-inline-end:16px; border-inline-end:1px solid var(--border); }
+.root :global(.ministry-brand img) { width:90px; height:auto; object-fit:contain; }
+.root :global(.public-nav) { display:flex; align-items:center; justify-content:center; gap:18px; margin-inline:auto; font-size:14px; font-weight:600; flex-wrap:wrap; row-gap:4px; }
+.root :global(.public-nav a) { display:flex; align-items:center; gap:6px; min-height:44px; white-space:nowrap; }
+.root :global(.header-account) { display:flex; gap:8px; align-items:center; flex-shrink:0; }
+.root :global(.button-link) { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:44px; padding:10px 22px; border:1px solid var(--blue); border-radius:7px; background:var(--blue); color:#fff; font-weight:600; line-height:1.4; }
+.root :global(.button-link:hover) { background:#0055c5; text-decoration:none; }
+.root :global(.button-link.secondary) { background:#fff; color:var(--blue); }
+.root :global(.button-link.secondary:hover) { background:#eff7ff; }
+.root :global(.button-link svg) { width:21px; height:21px; }
+.root :global(.header-account .button-link) { min-height:40px; padding:8px 19px; font-size:14px; }
+.root :global(.nav-toggle) { display:none; }
+.root :global(.beta-badge) { display:inline-flex; align-items:center; background:#e8f0ff; border:1px solid #c5d8ff; border-radius:4px; color:#064799; padding:2px 7px; font-size:12px; font-weight:500; line-height:1.65; }
+.root :global(.home-page) { width:100%; max-width:1280px; margin:auto; padding:0 30px 80px; }
+.root :global(.home-page:focus) { outline:none; }
+.root :global(.home-hero) { position:relative; isolation:isolate; min-height:423px; margin-inline:-30px; padding:36px 30px 78px; background:#f1f8fc; }
+.root :global(.clinicians-illustration) { position:relative; overflow:hidden; background:#e8f3f8; margin:0; }
+.root :global(.home-hero .home-hero-image) { position:absolute; z-index:-2; inset:0; }
+.root :global(.home-hero-image img) { object-fit:cover; object-position:left 0%; }
+.root :global(.home-hero::after) { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(270deg,#f8fcff 0%,rgba(250,253,255,.98) 29%,rgba(247,252,255,.91) 44%,rgba(244,251,255,.12) 62%,transparent 78%); pointer-events:none; }
+.root :global(.home-hero-copy) { width:48%; margin-inline-end:auto; }
+.root :global(.home-hero h1) { color:var(--navy); font-size:clamp(42px,4.8vw,62px); font-weight:800; line-height:1.12; margin:10px 0 16px; }
+.root :global(.hero-description) { font-size:19px; line-height:1.55; color:#354b76; max-width:570px; }
+.root :global(.hero-actions) { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:30px; }
+.root :global(.home-hero .button-link) { min-height:49px; font-size:16px; }
+.root :global(.journey-cards) { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; position:relative; margin-top:-48px; padding:12px; background:#fff; border:1px solid var(--border); border-radius:14px; }
+.root :global(.journey-cards article) { display:flex; flex-direction:column; padding:16px 18px 8px; background:linear-gradient(130deg,#f4fbff,#f9fcfe); border:1px solid #edf5fb; border-radius:10px; }
+.root :global(.feature-heading) { display:flex; align-items:center; gap:10px; }
+.root :global(.feature-heading h2) { font-size:18px; font-weight:700; line-height:1.5; }
+.root :global(.icon-tile) { display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; flex-shrink:0; border-radius:50%; background:#e4f0ff; color:var(--blue); }
+.root :global(.journey-cards p) { color:var(--muted); line-height:1.65; margin:12px 0 8px; font-size:16px; }
+.root :global(.feature-link) { display:flex; align-items:center; gap:10px; color:var(--blue); font-weight:600; min-height:44px; margin-top:auto; }
+.root :global(.feature-link .beta-badge) { margin-inline-start:auto; }
+.root :global(.text-link) { color:var(--blue); text-decoration:underline; text-underline-offset:3px; font-weight:500; }
+.root :global(.home-story) { margin-top:18px; display:flex; align-items:center; justify-content:space-between; gap:24px; background:#eaf7fc; border-radius:12px; padding:18px 24px; }
+.root :global(.home-story h2) { font-size:24px; font-weight:800; line-height:1.25; }
+.root :global(.home-story p) { color:var(--muted); line-height:1.65; margin-top:4px; }
+.root :global(.home-story>a) { flex-shrink:0; font-size:14px; }
+.root :global(.process-section) { padding:32px 0 18px; }
+.root :global(.section-intro) { text-align:center; }
+.root :global(.section-intro h2) { font-size:26px; font-weight:700; line-height:1.25; }
+.root :global(.section-intro>p) { color:var(--muted); max-width:800px; margin:8px auto 0; font-size:16px; line-height:1.7; }
+.root :global(.process-grid) { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:26px; margin-top:22px; }
+.root :global(.process-grid li) { position:relative; border:1px solid var(--border); border-radius:10px; padding:18px; background:#fff; }
+.root :global(.step-number) { float:right; margin-inline-end:10px; display:inline-grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--teal); color:white; font-size:17px; font-weight:600; }
+.root :global(.process-grid h3) { margin:3px 0 14px; font-size:18px; font-weight:700; line-height:1.6; }
+.root :global(.process-grid p) { clear:both; color:var(--muted); font-size:15px; line-height:1.65; }
+.root :global(.home-sources) { padding:8px 0 24px; text-align:center; }
+.root :global(.source-cards) { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:18px 0 12px; text-align:right; }
+.root :global(.source-cards article) { padding:18px; border:1px solid var(--border); background:#f4fafd; border-radius:10px; }
+.root :global(.source-cards svg) { color:#008ab4; float:right; margin:0 0 10px 12px; }
+.root :global(.source-cards h3) { font-size:17px; font-weight:700; line-height:1.25; }
+.root :global(.source-cards p) { clear:both; color:var(--muted); line-height:1.7; margin-top:8px; font-size:14px; }
+.root :global(.home-sources>.text-link) { font-size:13px; display:inline-flex; align-items:center; min-height:44px; }
+.root :global(.site-footer) { border-top:1px solid var(--border); background:#fff; }
+.root :global(.footer-inner) { max-width:1280px; margin:auto; display:grid; grid-template-columns:auto 1fr; align-items:center; gap:24px; padding:28px 24px 18px; }
+.root :global(.footer-brand) { display:flex; align-items:center; gap:22px; }
+.root :global(.footer-brand .ministry-brand) { padding-inline-end:22px; }
+.root :global(.footer-brand .ministry-brand img) { width:114px; }
+.root :global(.footer-navigation) { display:grid; gap:6px; }
+.root :global(.footer-navigation nav) { display:flex; flex-wrap:wrap; gap:0 22px; }
+.root :global(.footer-navigation a) { display:inline-flex; align-items:center; min-height:44px; font-size:14px; font-weight:500; }
+.root :global(.footer-navigation nav:first-child a) { color:#264d7e; font-weight:600; }
+.root :global(.footer-note) { grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; gap:16px; border-top:1px solid var(--border); padding-top:16px; font-size:13px; color:var(--muted); }
+.root :global(.footer-note>span) { flex-shrink:0; }
+@media(min-width:1280px) { .root :global(.home-hero) { border-radius:0 0 14px 14px; } }
+@media(max-width:1190px) and (min-width:1024px) {
+ .root :global(.header-inner) { padding-inline:26px; gap:16px; }
+ .root :global(.public-nav) { gap:16px; font-size:13px; }
+ .root :global(.wordmark-name) { font-size:28px; } .root :global(.wordmark-name>span) { font-size:24px; }
+ .root :global(.wordmark-caption) { font-size:8px; } .root :global(.ministry-brand img) { width:80px; }
+ .root :global(.header-account .button-link) { padding-inline:16px; }
+ .root :global(.home-hero h1) { font-size:54px; } .root :global(.home-hero .button-link) { padding-inline:18px; }
+}
+@media(max-width:1023px) {
+ .root :global(.header-inner) { flex-wrap:wrap; gap:12px; }
+ .root :global(.nav-toggle) { display:inline-flex; align-items:center; gap:8px; min-height:44px; margin-inline-start:auto; font-size:14px; font-weight:600; }
+ .root :global(.public-nav) { display:none; order:5; width:100%; }
+ .root :global(.public-nav.is-open) { display:flex; flex-direction:column; align-items:stretch; }
+ .root :global(.public-nav a) { padding:8px 12px; border-top:1px solid var(--border); }
+ .root :global(.home-hero-copy) { width:52%; }
+ .root :global(.home-hero h1) { font-size:43px; }
+ .root :global(.home-hero .button-link) { font-size:14px; padding-inline:12px; }
+ .root :global(.feature-heading) { align-items:flex-start; gap:8px; }
+ .root :global(.feature-heading h2) { font-size:17px; }
+ .root :global(.icon-tile) { width:36px; height:36px; } .root :global(.icon-tile svg) { width:24px; height:24px; }
+ .root :global(.journey-cards) { gap:10px; padding:10px; } .root :global(.journey-cards article) { padding:16px 12px 10px; }
+ .root :global(.home-story) { align-items:flex-start; } .root :global(.home-story h2) { font-size:22px; } .root :global(.home-story p) { font-size:14px; }
+ .root :global(.source-cards) { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .root :global(.footer-inner) { grid-template-columns:1fr; gap:16px; }
+}
+@media(max-width:639px) {
+ .root :global(.header-inner) { padding:4px 16px 8px; gap:10px; }
+ .root :global(.ministry-brand) { padding-inline-end:9px; } .root :global(.ministry-brand img) { width:72px; }
+ .root :global(.wordmark-name) { font-size:26px; } .root :global(.wordmark-name>span) { font-size:22px; } .root :global(.wordmark-caption) { font-size:8px; }
+ .root :global(.nav-toggle) { font-size:12px; gap:6px; }
+ .root :global(.header-account) { width:100%; } .root :global(.header-account .button-link) { flex:1; }
+ .root :global(.home-page) { padding-inline:16px; }
+ .root :global(.home-hero) { margin-inline:-16px; padding:28px 16px 240px; min-height:0; }
+ .root :global(.home-hero-copy) { width:100%; }
+ .root :global(.home-hero h1) { font-size:41px; line-height:1.13; margin-block:12px 16px; }
+ .root :global(.hero-description) { font-size:16px; line-height:1.65; }
+ .root :global(.hero-actions) { flex-direction:column; align-items:stretch; margin-top:22px; }
+ .root :global(.home-hero .button-link) { font-size:16px; min-height:48px; }
+ .root :global(.home-hero .home-hero-image) { inset:auto 0 0; height:250px; }
+ .root :global(.home-hero-image img) { object-position:10% 21%; }
+ .root :global(.home-hero::after) { background:linear-gradient(#f8fcff 0%,#f8fcff 53%,transparent 74%); }
+ .root :global(.journey-cards) { grid-template-columns:1fr; margin-top:-20px; padding:8px; }
+ .root :global(.journey-cards article) { padding:16px 14px 10px; }
+ .root :global(.feature-heading) { align-items:center; gap:12px; } .root :global(.feature-heading h2) { font-size:18px; }
+ .root :global(.journey-cards p) { font-size:15px; }
+ .root :global(.home-story) { display:block; padding:20px; } .root :global(.home-story h2) { font-size:24px; line-height:1.4; } .root :global(.home-story p) { font-size:15px; }
+ .root :global(.home-story>a) { display:inline-flex; align-items:center; min-height:44px; margin-top:10px; }
+ .root :global(.section-intro h2) { font-size:24px; }
+ .root :global(.process-grid) { grid-template-columns:1fr; gap:12px; }
+ .root :global(.source-cards) { gap:10px; } .root :global(.source-cards article) { padding:16px; }
+ .root :global(.source-cards h3) { font-size:16px; } .root :global(.source-cards p) { font-size:13px; }
+ .root :global(.footer-inner) { padding-inline:16px; }
+ .root :global(.footer-brand) { gap:18px; } .root :global(.footer-brand .ministry-brand) { padding-inline-end:18px; }
+ .root :global(.footer-navigation nav) { gap:0 18px; } .root :global(.footer-note) { display:block; }
+ .root :global(.footer-note>span) { display:block; margin-top:12px; text-align:left; }
+}
+
+.root :global(.footer-brand .wordmark-name) { font-size:30px; }
+.root :global(.footer-brand .wordmark-name>span) { font-size:27px; }
+.root :global(.footer-brand .wordmark-caption) { font-size:9px; margin-top:3px; }

@@ -1,8 +1,9 @@
 "use client";
 
-import { useDeferredValue, useMemo, useRef, useState } from "react";
-import type { ChangeEvent, FormEvent, KeyboardEvent } from "react";
-import { usePathname, useRouter } from "next/navigation";
+
+import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import type { ChangeEvent, FormEvent, KeyboardEvent, ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { Card } from "@/components/ui/card";
 
 type SuggestionItem =
@@ -85,7 +86,7 @@ function SuggestionGroup({
   query,
   activeIndex,
   offset,
-  onSelect
+  onSelect,
 }: {
   title: string;
   suggestions: SuggestionItem[];
@@ -100,7 +101,9 @@ function SuggestionGroup({
 
   return (
     <div className="space-y-1">
-      <p className="px-3 text-[0.7rem] font-bold tracking-wide text-slate-400">{title}</p>
+      <p className="px-3 text-[0.7rem] font-bold tracking-wide text-slate-400">
+        {title}
+      </p>
       <div className="space-y-1">
         {suggestions.map((suggestion, index) => {
           const absoluteIndex = offset + index;
@@ -109,6 +112,10 @@ function SuggestionGroup({
           return (
             <button
               key={suggestion.key}
+              role="option"
+              aria-selected={isActive}
+              id={`department-suggestion-${absoluteIndex}`}
+              tabIndex={-1}
               type="button"
               onMouseDown={(event) => {
                 event.preventDefault();
@@ -126,7 +133,7 @@ function SuggestionGroup({
                   {highlightMatch(suggestion.subtitle, query)}
                 </p>
               </div>
-              <span className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-[0.68rem] font-semibold text-slate-500">
+              <span className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-[0.68rem] font-semibold text-slate-500">
                 {suggestion.type === "institution"
                   ? "מוסד"
                   : suggestion.type === "specialty"
@@ -142,19 +149,26 @@ function SuggestionGroup({
 }
 
 export function DepartmentFilters({
+  specialtySelector,
   filters,
   institutions,
   specialties,
   departments,
-  regions
+  regions,
 }: {
+  specialtySelector?: ReactNode;
   filters: {
     search?: string;
     regions?: string[];
     specialties?: string[];
     sort?: "recommended" | "rating" | "reviews" | "openings" | "research";
   };
-  institutions: { id: string; name: string; type: "HOSPITAL" | "HMO"; region: string }[];
+  institutions: {
+    id: string;
+    name: string;
+    type: "HOSPITAL" | "HMO";
+    region: string;
+  }[];
   specialties: { id: string; name: string }[];
   regions: readonly string[];
   departments: {
@@ -164,7 +178,6 @@ export function DepartmentFilters({
     specialty: { id: string; name: string };
   }[];
 }) {
-  const router = useRouter();
   const pathname = usePathname();
   const formRef = useRef<HTMLFormElement | null>(null);
   const [searchValue, setSearchValue] = useState(filters.search ?? "");
@@ -176,10 +189,14 @@ export function DepartmentFilters({
   const suggestionGroups = useMemo(() => {
     const normalizedQuery = normalizeSearchValue(deferredSearchValue);
     const departmentsForSelectedSpecialty = selectedSpecialtyId
-      ? departments.filter((department) => department.specialty.id === selectedSpecialtyId)
+      ? departments.filter(
+          (department) => department.specialty.id === selectedSpecialtyId,
+        )
       : [];
     const institutionIdsForSelectedSpecialty = new Set(
-      departmentsForSelectedSpecialty.map((department) => department.institution.id)
+      departmentsForSelectedSpecialty.map(
+        (department) => department.institution.id,
+      ),
     );
 
     if (!normalizedQuery) {
@@ -187,7 +204,7 @@ export function DepartmentFilters({
         institutions: [] as SuggestionItem[],
         specialties: [] as SuggestionItem[],
         departments: [] as SuggestionItem[],
-        flat: [] as SuggestionItem[]
+        flat: [] as SuggestionItem[],
       };
     }
 
@@ -195,7 +212,7 @@ export function DepartmentFilters({
       .filter(
         (institution) =>
           institutionIdsForSelectedSpecialty.has(institution.id) &&
-          normalizeSearchValue(institution.name).includes(normalizedQuery)
+          normalizeSearchValue(institution.name).includes(normalizedQuery),
       )
       .slice(0, 3)
       .map(
@@ -204,12 +221,15 @@ export function DepartmentFilters({
           type: "institution",
           value: institution.name,
           title: institution.name,
-          subtitle: institution.type === "HOSPITAL" ? "בית חולים" : "קהילה / קופה"
-        })
+          subtitle:
+            institution.type === "HOSPITAL" ? "בית חולים" : "קהילה / קופה",
+        }),
       );
 
     const specialtySuggestions = specialties
-      .filter((specialty) => normalizeSearchValue(specialty.name).includes(normalizedQuery))
+      .filter((specialty) =>
+        normalizeSearchValue(specialty.name).includes(normalizedQuery),
+      )
       .slice(0, 3)
       .map(
         (specialty): SuggestionItem => ({
@@ -217,8 +237,8 @@ export function DepartmentFilters({
           type: "specialty",
           value: specialty.id,
           title: specialty.name,
-          subtitle: "תחום התמחות"
-        })
+          subtitle: "תחום התמחות",
+        }),
       );
 
     const departmentSuggestions = departmentsForSelectedSpecialty
@@ -233,26 +253,48 @@ export function DepartmentFilters({
           type: "department",
           value: department.name,
           title: department.name,
-          subtitle: `${department.institution.name} · ${department.specialty.name}`
-        })
+          subtitle: `${department.institution.name} · ${department.specialty.name}`,
+        }),
       );
 
-    const flat = [...institutionSuggestions, ...specialtySuggestions, ...departmentSuggestions].slice(0, 10);
+    const flat = [
+      ...institutionSuggestions,
+      ...specialtySuggestions,
+      ...departmentSuggestions,
+    ].slice(0, 10);
 
     return {
       institutions: institutionSuggestions,
       specialties: specialtySuggestions,
       departments: departmentSuggestions,
-      flat
+      flat,
     };
-  }, [deferredSearchValue, departments, institutions, selectedSpecialtyId, specialties]);
+  }, [
+    deferredSearchValue,
+    departments,
+    institutions,
+    selectedSpecialtyId,
+    specialties,
+  ]);
 
-  const hasSuggestions = suggestionGroups.flat.length > 0 && searchValue.trim().length > 0;
+  useEffect(() => {
+    if (suggestionsOpen && activeSuggestionIndex >= 0)
+      document
+        .getElementById(`department-suggestion-${activeSuggestionIndex}`)
+        ?.scrollIntoView({ block: "nearest" });
+  }, [activeSuggestionIndex, suggestionsOpen]);
+
+  const hasSuggestions =
+    suggestionGroups.flat.length > 0 && searchValue.trim().length > 0;
 
   const submitWithFormData = (formData: FormData) => {
     const params = buildSearchParams(formData);
-    const nextUrl = params.toString() ? `${pathname}?${params.toString()}` : pathname;
-    router.replace(nextUrl, { scroll: false });
+    const nextUrl = params.toString()
+      ? `${pathname}?${params.toString()}`
+      : pathname;
+    // A document navigation keeps filter results reliable when streamed router
+    // transitions stall. Query semantics and comparison storage stay unchanged.
+    window.location.replace(nextUrl);
   };
 
   const submitCurrentForm = () => {
@@ -271,7 +313,9 @@ export function DepartmentFilters({
   };
 
   const handleFormChange = (event: ChangeEvent<HTMLFormElement>) => {
-    const target = event.target as unknown as HTMLInputElement | HTMLSelectElement;
+    const target = event.target as unknown as
+      | HTMLInputElement
+      | HTMLSelectElement;
 
     if (target.name === "search") {
       return;
@@ -313,7 +357,7 @@ export function DepartmentFilters({
       event.preventDefault();
       setSuggestionsOpen(true);
       setActiveSuggestionIndex((currentIndex) =>
-        currentIndex + 1 >= suggestionGroups.flat.length ? 0 : currentIndex + 1
+        currentIndex + 1 >= suggestionGroups.flat.length ? 0 : currentIndex + 1,
       );
       return;
     }
@@ -322,12 +366,16 @@ export function DepartmentFilters({
       event.preventDefault();
       setSuggestionsOpen(true);
       setActiveSuggestionIndex((currentIndex) =>
-        currentIndex <= 0 ? suggestionGroups.flat.length - 1 : currentIndex - 1
+        currentIndex <= 0 ? suggestionGroups.flat.length - 1 : currentIndex - 1,
       );
       return;
     }
 
-    if (event.key === "Enter" && suggestionsOpen && activeSuggestionIndex >= 0) {
+    if (
+      event.key === "Enter" &&
+      suggestionsOpen &&
+      activeSuggestionIndex >= 0
+    ) {
       event.preventDefault();
       const activeSuggestion = suggestionGroups.flat[activeSuggestionIndex];
       if (activeSuggestion) {
@@ -344,8 +392,16 @@ export function DepartmentFilters({
   };
 
   return (
-    <Card className="sticky top-24 overflow-visible rounded-[1.25rem] border border-brand-100/80 bg-white/96 p-0">
-      <form ref={formRef} onSubmit={handleSubmit} onChange={handleFormChange} className="space-y-4 p-4">
+    <Card className="directory-filters !p-0">
+      <div className="directory-specialty">{specialtySelector}</div>
+      <form
+        ref={formRef}
+        action={pathname}
+        method="get"
+        onSubmit={handleSubmit}
+        onChange={handleFormChange}
+        className="directory-filter-form"
+      >
         <input
           type="hidden"
           name="specialty"
@@ -353,16 +409,28 @@ export function DepartmentFilters({
           readOnly
         />
 
-        <div>
+        <div className="sr-only">
           <p className="text-sm font-bold text-ink">חיפוש</p>
           <p className="mt-1 text-xs leading-6 text-slate-500">
             חיפוש לפי מוסד או מחלקה. בחירת תחום ההתמחות נשארת בראש העמוד.
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative filter-search">
+          <label htmlFor="directory-query" className="filter-label">
+            חיפוש חופשי
+          </label>
           <input
+            id="directory-query"
             type="text"
+            role="combobox"
+            aria-label="חיפוש לפי מחלקה או מוסד"
+            aria-autocomplete="list"
+            aria-activedescendant={
+              suggestionsOpen && activeSuggestionIndex >= 0
+                ? `department-suggestion-${activeSuggestionIndex}`
+                : undefined
+            }
             name="search"
             value={searchValue}
             onChange={(event) => {
@@ -392,7 +460,9 @@ export function DepartmentFilters({
           {hasSuggestions && suggestionsOpen ? (
             <div
               id="department-search-suggestions"
-              className="absolute inset-x-0 top-[calc(100%+0.6rem)] z-30 rounded-[1.5rem] border border-brand-100 bg-white p-3 shadow-panel"
+              role="listbox"
+              aria-label="הצעות חיפוש"
+              className="mt-2 max-h-64 overflow-y-auto rounded-xl border border-brand-100 bg-white p-3 shadow-sm"
             >
               <div className="space-y-3">
                 <SuggestionGroup
@@ -416,7 +486,10 @@ export function DepartmentFilters({
                   suggestions={suggestionGroups.departments}
                   query={searchValue}
                   activeIndex={activeSuggestionIndex}
-                  offset={suggestionGroups.institutions.length + suggestionGroups.specialties.length}
+                  offset={
+                    suggestionGroups.institutions.length +
+                    suggestionGroups.specialties.length
+                  }
                   onSelect={applySuggestion}
                 />
               </div>
@@ -424,8 +497,8 @@ export function DepartmentFilters({
           ) : null}
         </div>
 
-        <div>
-          <p className="mb-2 text-xs font-bold text-slate-500">אזור</p>
+        <div className="filter-regions">
+          <p className="filter-label">אזור</p>
           <div className="flex flex-wrap gap-2">
             {regions.map((region) => {
               const inputId = `region-${region}`;
@@ -435,7 +508,7 @@ export function DepartmentFilters({
                 <label
                   key={region}
                   htmlFor={inputId}
-                  className={`cursor-pointer rounded-full border px-3 py-2 text-xs font-bold transition ${
+                  className={`cursor-pointer rounded-lg border px-3 py-2 text-xs font-bold transition ${
                     checked
                       ? "border-brand-300 bg-brand-700 text-white shadow-sm"
                       : "border-slate-200 bg-white text-slate-600 hover:border-brand-200 hover:bg-brand-50"
@@ -456,8 +529,8 @@ export function DepartmentFilters({
           </div>
         </div>
 
-        <div>
-          <label htmlFor="department-sort" className="mb-2 block text-xs font-bold text-slate-500">
+        <div className="filter-sort">
+          <label htmlFor="department-sort" className="filter-label">
             סידור תוצאות
           </label>
           <select
@@ -474,10 +547,7 @@ export function DepartmentFilters({
           </select>
         </div>
 
-        <button
-          type="submit"
-          className="w-full rounded-xl bg-brand-700 px-4 py-3 text-sm font-bold text-white transition hover:bg-brand-800"
-        >
+        <button type="submit" className="filter-submit button-link">
           הצגת תוצאות
         </button>
       </form>

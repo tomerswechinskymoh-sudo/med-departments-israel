@@ -1,181 +1,173 @@
+export const metadata = {
+  title: "הדרך להתמחות שלך | hitmachut.org",
+  alternates: { canonical: "/" },
+};
 import Link from "next/link";
-import { HomeHeroImage } from "@/components/home/home-hero-image";
-import { HomeSection } from "@/components/home/home-section";
-import { PageShell } from "@/components/layout/page-shell";
-import { Card } from "@/components/ui/card";
+import styles from "@/components/home/homepage.module.css";
+import { HomepageImage } from "@/components/home/homepage-image";
 import {
-  ClipboardHeartIcon,
-  DepartmentDirectoryIcon,
-  SearchPulseIcon
-} from "@/components/ui/med-icons";
-import { SectionHeading } from "@/components/ui/section-heading";
-import { sourceCopy } from "@/lib/brand-copy";
-
-const trustItems = [
-  "נתונים ממקורות רשמיים",
-  "שיתופי קהילה מאומתים",
-  "מידע מתעדכן לאורך זמן"
-];
-
-const decisionSteps = [
+  HomepageIcon,
+  type HomepageIconName,
+} from "@/components/home/homepage-icon";
+const journeys: {
+  icon: HomepageIconName;
+  title: string;
+  text: string;
+  href: string;
+  action: string;
+  beta?: boolean;
+}[] = [
   {
-    title: "בוחרים תחום התמחות",
-    description: "מתחילים מהתחום שרוצים להשוות",
-    icon: SearchPulseIcon
+    icon: "compass",
+    title: "בוחרים כיוון להתמחות",
+    text: "מבררים תחומי עניין והעדפות בעזרת שאלון ניסיוני. נקודת פתיחה למחשבה ולשיחה.",
+    href: "/career-fit",
+    action: "להתחלת השאלון",
+    beta: true,
   },
   {
+    icon: "compare",
     title: "משווים בין מחלקות",
-    description: "רואים תוכניות, נתונים ומידע שימושי",
-    icon: DepartmentDirectoryIcon
+    text: "מחפשים לפי התמחות ואזור, ובוחנים את האפשרויות באותו הקשר ועם אותם מדדים.",
+    href: "/departments",
+    action: "לחיפוש מחלקות",
   },
   {
-    title: "נכנסים לפרופיל מלא",
-    description: "פותחים עמוד מחלקה עם תמונה מלאה",
-    icon: ClipboardHeartIcon
-  }
+    icon: "document",
+    title: "מעמיקים בפרופיל המחלקה",
+    text: "קוראים על ההכשרה, הנתונים וחוויות מהשטח. בודקים את המקורות ואת מה שעוד חסר.",
+    href: "/departments",
+    action: "למאגר המחלקות",
+  },
 ];
-
-const dataCollectionCards = [
-  {
-    icon: "🏥",
-    title: "נתונים ופרסומים רשמיים",
-    description: "נתונים ופרסומים של משרד הבריאות וגופים מקצועיים במערכת הבריאות"
-  },
-  {
-    icon: "🌐",
-    title: "אתרי בתי חולים ומחלקות",
-    description:
-      "מידע על מחלקות, צוותים, תחומי עניין, דרכי יצירת קשר ונתונים המתפרסמים באתרי בתי החולים"
-  },
-  {
-    icon: "👩‍⚕️",
-    title: "הקהילה הרפואית",
-    description: "חוויות מאומתות של סטודנטים, סטאז׳רים ומתמחים לאחר אימות"
-  },
-  {
-    icon: "📊",
-    title: "נתונים משלימים",
-    description: "מחקר, פרסומים, מדדים אקדמיים ונתונים המתעדכנים לאורך זמן"
-  }
-];
-
 export default function HomePage() {
   return (
-    <PageShell className="space-y-8 py-6 md:space-y-10 md:py-10">
-      <section className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/88 shadow-panel">
-        <div className="grid gap-6 lg:grid-cols-[1fr_0.92fr]">
-          <div className="space-y-6 p-5 md:p-7 lg:p-8">
-            <p className="text-sm font-semibold text-brand-700">מידע על הכשרה רפואית בישראל</p>
-            <div className="space-y-4">
-              <h1 className="max-w-3xl text-4xl font-bold leading-tight text-ink md:text-5xl lg:text-[3.4rem]">
-                להשוות מחלקות והתמחויות בישראל
-              </h1>
-              <p className="max-w-2xl text-base leading-8 text-slate-700">
-                נתונים ארציים על תחומי התמחות, מחלקות ומסלולי הכשרה.
-                <br className="hidden md:block" />
-                מידע ממקורות רשמיים וחוויות מהשטח לבחירה מושכלת של סטודנטים, סטאז׳רים ומתמחים.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-3">
-              <Link
-                href="/departments"
-                className="inline-flex min-h-14 items-center justify-center rounded-full bg-brand-700 px-7 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-800"
-              >
-                למאגר המחלקות
-              </Link>
-              <Link
-                href="/about"
-                className="inline-flex min-h-14 items-center justify-center rounded-full border border-brand-200 bg-white px-6 py-3 text-sm font-semibold text-brand-800 transition hover:bg-brand-50"
-              >
-                איך נאסף המידע
-              </Link>
-            </div>
-
-            <div className="grid gap-2 md:grid-cols-3">
-              {decisionSteps.map((step, index) => (
-                <div
-                  key={step.title}
-                  className="rounded-2xl border border-brand-100 bg-brand-50/60 px-4 py-3"
-                >
-                  <p className="text-xs font-black text-brand-700">שלב {index + 1}</p>
-                  <p className="mt-1 text-sm font-bold text-ink">{step.title}</p>
-                  <p className="mt-1 text-xs leading-5 text-slate-600">{step.description}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {trustItems.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-brand-100 bg-brand-50/70 px-4 py-2 text-xs font-semibold text-brand-800"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid gap-3 p-5 pt-0 md:p-7 md:pt-0 lg:p-8 lg:pr-0">
-            <HomeHeroImage />
-
-            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              <Card className="bg-brand-900 py-5 text-white">
-                <p className="text-xs font-semibold text-brand-100">מבפנים</p>
-                <p className="mt-2 text-sm leading-7 text-brand-50">
-                  להבין את המחלקה מבפנים
-                </p>
-              </Card>
-              <Card className="py-5">
-                <p className="text-xs font-semibold text-brand-700">ביום־יום</p>
-                <p className="mt-2 text-sm leading-7 text-slate-700">
-                  לראות איך זה באמת מרגיש ביום־יום
-                </p>
-              </Card>
-              <Card className="py-5">
-                <p className="text-xs font-semibold text-brand-700">לפני שנכנסים</p>
-                <p className="mt-2 text-sm leading-7 text-slate-700">
-                  לדעת למה לצפות לפני שנכנסים
-                </p>
-              </Card>
-            </div>
+    <div className={styles.root} data-homepage-release="01">
+      <main id="main-content" tabIndex={-1} className="home-page">
+      <section className="home-hero">
+        <HomepageImage
+          priority
+          className="home-hero-image"
+          sizes="100vw"
+        />
+        <div className="home-hero-copy">
+          <h1>
+            הדרך לבחור
+            <br />
+            התמחות בישראל
+          </h1>
+          <p className="hero-description">
+            מכירים את האפשרויות, משווים נתונים וקוראים חוויות מהשטח — כדי להגיע
+            לבחירה שלכם עם תמונה רחבה יותר.
+          </p>
+          <div className="hero-actions">
+            <Link href="/departments" className="button-link">
+              <HomepageIcon name="search" />
+              למאגר המחלקות
+            </Link>
+            <Link href="/career-fit" className="button-link secondary">
+              התחילו בשאלון <span className="beta-badge">Beta</span>
+            </Link>
           </div>
         </div>
       </section>
-
-      <HomeSection tone="plain" className="space-y-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionHeading
-            eyebrow="אמון ושקיפות"
-            title="איך נאסף המידע?"
-            description={sourceCopy.summary}
-          />
-        </div>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {dataCollectionCards.map((card) => (
-            <Card key={card.title} className="bg-white py-5">
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-2xl">
-                {card.icon}
+      <section className="journey-cards" aria-label="מאיפה מתחילים">
+        {journeys.map((j, i) => (
+          <article key={j.href + j.title}>
+            <div className="feature-heading">
+              <span className="icon-tile">
+                <HomepageIcon name={j.icon} />
               </span>
-              <h3 className="mt-4 text-lg font-bold text-ink">{card.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-700">{card.description}</p>
-            </Card>
+              <h2>
+                {i + 1}. {j.title}
+              </h2>
+            </div>
+            <p>{j.text}</p>
+            <Link href={j.href} className="feature-link">
+              {j.action}
+              <span aria-hidden="true">←</span>
+              {j.beta && <span className="beta-badge">Beta</span>}
+            </Link>
+          </article>
+        ))}
+      </section>
+      <section className="home-story" aria-labelledby="home-story-title">
+        <div><h2 id="home-story-title">מבעיה אישית לפתרון מערכתי</h2>
+        <p>הצורך להבין את אפשרויות ההתמחות הפך לרצון להנגיש מידע מסודר לכל מי שבוחר את דרכו ברפואה.</p></div>
+        <Link className="text-link" href="/about">הסיפור מאחורי האתר ←</Link>
+      </section>
+      <section className="process-section">
+        <div className="section-intro">
+          <h2>איך זה עובד</h2>
+          <p>שלושה צעדים לבירור ממוקד של האפשרויות שלכם.</p>
+        </div>
+        <ol className="process-grid">
+          {[
+            [
+              "מגדירים מה מחפשים",
+              "תחום התמחות, אזור ובית חולים. אפשר להתחיל גם מהשאלון הניסיוני.",
+            ],
+            [
+              "משווים ובודקים",
+              "בודקים מקורות, הגדרות ומידע חסר. משווים מחלקות מאותו תחום.",
+            ],
+            [
+              "מעמיקים ושואלים",
+              "שומרים מחלקות, קוראים חוויות ומשלימים את התמונה בשיחה עם המחלקה.",
+            ],
+          ].map(([title, text], i) => (
+            <li key={title}>
+              <span className="step-number">{i + 1}</span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+      <section className="home-sources">
+        <div className="section-intro">
+          <h2>יודעים מאיפה המידע מגיע</h2>
+          <p>
+            המידע באתר משלב נתונים רשמיים ממשרד הבריאות וממקורות נוספים, לצד מידע וחוויות מהשטח. מומלץ להתייחס לכל נתון בהתאם למקורו, למועד עדכונו ולמגבלותיו.
+          </p>
+        </div>
+        <div className="source-cards">
+          {(
+            [
+              [
+                "database",
+                "פרסומים רשמיים",
+                "משרד הבריאות, הר״י וגופים מקצועיים.",
+              ],
+              [
+                "building",
+                "בתי חולים ומחלקות",
+                "מידע ציבורי על ההכשרה והפעילות.",
+              ],
+              [
+                "people",
+                "ניסיון מהשטח",
+                "שיתופי קהילה לאחר בדיקה, לצד הנתונים.",
+              ],
+              [
+                "shield",
+                "שקיפות והקשר",
+                "מקור, רמת פירוט וסימון של מידע חסר או משוער.",
+              ],
+            ] as const
+          ).map(([icon, title, text]) => (
+            <article key={title}>
+              <HomepageIcon name={icon} />
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
           ))}
         </div>
-        <p className="mx-auto max-w-3xl rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 text-center text-sm leading-7 text-slate-600">
-          המידע באתר נאסף ממקורות ציבוריים ומשיתופי קהילה מאומתים. ייתכנו פערים או שינויים
-          בין פרסומים רשמיים לעדכונים בשטח.
-        </p>
-        <div className="flex justify-center">
-          <Link
-            href="/departments"
-            className="inline-flex min-h-14 items-center justify-center rounded-full bg-brand-700 px-7 py-3 text-sm font-semibold text-white transition hover:bg-brand-800"
-          >
-            התחל להשוות מחלקות
-          </Link>
-        </div>
-      </HomeSection>
-    </PageShell>
+        <Link className="text-link" href="/about">
+          על האתר ומקורות המידע ←
+        </Link>
+      </section>
+    </main>
+    </div>
   );
 }

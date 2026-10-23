@@ -1110,6 +1110,7 @@ export function ReviewForm({
         </button>
         {step < 3 ? (
           <button
+            key="next-step"
             type="button"
             onClick={() => setStep((current) => (current === 1 ? 2 : 3))}
             className="rounded-full bg-brand-700 px-6 py-3 text-sm font-bold text-white transition hover:bg-brand-800"
@@ -1119,6 +1120,7 @@ export function ReviewForm({
           </button>
         ) : (
           <button
+            key="submit-review"
             type="submit"
             disabled={isSubmitting}
             className="rounded-full bg-gradient-to-l from-brand-700 to-teal-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-brand-300/40 transition hover:from-brand-800 hover:to-teal-700 disabled:opacity-60"

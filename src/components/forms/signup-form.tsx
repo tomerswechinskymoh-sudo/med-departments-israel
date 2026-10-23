@@ -1,4 +1,7 @@
 "use client";
+import { ProductIcon } from "@/components/ui/product-icon";
+import Link from "next/link";
+
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -8,12 +11,17 @@ import { MEDICAL_FACULTY_OPTIONS } from "@/lib/constants";
 import {
   getExperienceContributionEligibility,
   type ExperienceContributionCategory,
-  type StudentTrack
+  type StudentTrack,
 } from "@/lib/onboarding-contribution";
 import { signupSchema } from "@/lib/validation";
 import { ReviewForm } from "@/components/forms/review-form";
 
-type RoleStatus = "medical_student" | "intern" | "resident" | "specialist" | "other";
+type RoleStatus =
+  | "medical_student"
+  | "intern"
+  | "resident"
+  | "specialist"
+  | "other";
 type ContributionStatus = "not_eligible" | "submitted" | "skipped";
 type MedicalFaculty = (typeof MEDICAL_FACULTY_OPTIONS)[number];
 
@@ -54,57 +62,68 @@ type FormValues = {
 const roleStatusOptions: Array<{ value: RoleStatus; label: string }> = [
   {
     value: "medical_student",
-    label: "סטודנט/ית לרפואה"
+    label: "סטודנט/ית לרפואה",
   },
   {
     value: "intern",
-    label: "סטאז׳ר/ית"
+    label: "סטאז׳ר/ית",
   },
   {
     value: "resident",
-    label: "מתמחה"
+    label: "מתמחה",
   },
   {
     value: "specialist",
-    label: "רופא/ה מומחה/ית"
+    label: "רופא/ה מומחה/ית",
   },
   {
     value: "other",
-    label: "לא במקצוע רפואי / אחר"
-  }
+    label: "לא במקצוע רפואי / אחר",
+  },
 ];
 
 const studentTrackOptions = [
   { value: "six_year", label: "מסלול 6 שנתי" },
-  { value: "four_year", label: "מסלול 4 שנתי" }
+  { value: "four_year", label: "מסלול 4 שנתי" },
 ] as const;
 
 const studentYearOptions = Array.from({ length: 7 }, (_, index) => index + 1);
 
 const onboardingContributionCopy =
-  "האתר נבנה כדי לעזור לסטודנטים, סטאז׳רים ומתמחים לבחור התמחות ומחלקה בצורה שקופה יותר.\nכמו שהמידע כאן עוזר לך, נשמח שגם תחזיר/י ידע לקהילה ותשתף/י חוויה ממחלקה שבה היית.\nהחוויה אנונימית כברירת מחדל, אלא אם תבחר/י אחרת.";
+  "Hitmachut מבוסס על עיקרון פשוט: כולנו נעזרים בניסיון של אחרים, ויכולים לתרום מהניסיון שלנו בחזרה. לכן אנחנו מבקשים ממי שכבר צבר ניסיון קליני לשתף חוויה ממחלקה שבה התנסה, כדי לעזור לאחרים לקבל החלטה מושכלת.";
 
 function normalizeOptional(value?: string | number | null) {
   if (value === null || value === undefined) return "";
   return String(value);
 }
 
-export function SignupForm({ departments }: { departments: DepartmentOption[] }) {
+export function SignupForm({
+  departments,
+  maxUploadMb = 4,
+}: {
+  departments: DepartmentOption[];
+  maxUploadMb?: number;
+}) {
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
   const [step, setStep] = useState<"account" | "experience">("account");
   const [formError, setFormError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [devVerificationUrl, setDevVerificationUrl] = useState<string | null>(null);
+  const [devVerificationUrl, setDevVerificationUrl] = useState<string | null>(
+    null,
+  );
   const [verificationProof, setVerificationProof] = useState<File | null>(null);
   const [experienceSubmitted, setExperienceSubmitted] = useState(false);
-  const [careerContextError, setCareerContextError] = useState<string | null>(null);
+  const [careerContextError, setCareerContextError] = useState<string | null>(
+    null,
+  );
 
   const {
     register,
     handleSubmit,
     setValue,
     watch,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -121,8 +140,8 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
       studentYear: "",
       medicalFaculty: "",
       onboardingInstitutionId: "",
-      onboardingDepartmentId: ""
-    }
+      onboardingDepartmentId: "",
+    },
   });
 
   const roleStatus = watch("roleStatus");
@@ -144,29 +163,34 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
             {
               id: department.institution.id,
               name: department.institution.name,
-              type: department.institution.type
-            }
-          ])
-        ).values()
+              type: department.institution.type,
+            },
+          ]),
+        ).values(),
       ).sort((left, right) => left.name.localeCompare(right.name, "he")),
-    [departments]
+    [departments],
   );
 
   const availableDepartments = useMemo(
     () =>
       departments
-        .filter((department) => department.institution.id === selectedInstitutionId)
+        .filter(
+          (department) => department.institution.id === selectedInstitutionId,
+        )
         .sort((left, right) => {
-          const specialtyCompare = left.specialty.name.localeCompare(right.specialty.name, "he");
+          const specialtyCompare = left.specialty.name.localeCompare(
+            right.specialty.name,
+            "he",
+          );
           return specialtyCompare || left.name.localeCompare(right.name, "he");
         }),
-    [departments, selectedInstitutionId]
+    [departments, selectedInstitutionId],
   );
 
   useEffect(() => {
     if (!selectedDepartmentId) return;
     const departmentStillValid = availableDepartments.some(
-      (department) => department.id === selectedDepartmentId
+      (department) => department.id === selectedDepartmentId,
     );
     if (!departmentStillValid) {
       setValue("onboardingDepartmentId", "");
@@ -176,20 +200,29 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
   const contributionEligibility = getExperienceContributionEligibility({
     roleStatus,
     studentTrack,
-    studentYear
+    studentYear,
   });
 
   const initialRoleDetails = useMemo(
     () => ({
       medicalSchool: medicalFaculty || undefined,
-      studentTrack: roleStatus === "medical_student" ? studentTrack || undefined : undefined,
+      studentTrack:
+        roleStatus === "medical_student"
+          ? studentTrack || undefined
+          : undefined,
       studentYear:
         roleStatus === "medical_student" && studentYear
           ? Number(studentYear)
           : undefined,
-      contributionCategory: contributionEligibility.category ?? undefined
+      contributionCategory: contributionEligibility.category ?? undefined,
     }),
-    [contributionEligibility.category, medicalFaculty, roleStatus, studentTrack, studentYear]
+    [
+      contributionEligibility.category,
+      medicalFaculty,
+      roleStatus,
+      studentTrack,
+      studentYear,
+    ],
   );
 
   function validateCareerContext(values: FormValues) {
@@ -201,11 +234,15 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
     }
 
     if (values.roleStatus === "intern") {
-      if (!values.onboardingInstitutionId) return "יש לבחור בית חולים לסטאז׳ או לסבב.";
+      if (!values.onboardingInstitutionId)
+        return "יש לבחור בית חולים לסטאז׳ או לסבב.";
       return null;
     }
 
-    if (values.roleStatus === "resident" || values.roleStatus === "specialist") {
+    if (
+      values.roleStatus === "resident" ||
+      values.roleStatus === "specialist"
+    ) {
       if (!values.onboardingInstitutionId) return "יש לבחור בית חולים.";
       if (!values.onboardingDepartmentId) return "יש לבחור מחלקה.";
       return null;
@@ -321,10 +358,13 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
     return (
       <div className="space-y-4 rounded-2xl border border-emerald-100 bg-emerald-50/80 p-5 text-sm leading-7 text-emerald-900">
         <p className="font-bold">ההרשמה התקבלה</p>
-        <p>{successMessage}</p>
+        <p role="status">{successMessage}</p>
+        <Link href="/login" className="font-semibold underline">להתחברות או בקשת קישור אימות חדש</Link>
         {devVerificationUrl ? (
           <div className="rounded-2xl border border-emerald-200 bg-white px-4 py-3">
-            <p className="font-bold">סביבת פיתוח: ניתן לאמת את המייל דרך הקישור הבא</p>
+            <p className="font-bold">
+              סביבת פיתוח: ניתן לאמת את המייל דרך הקישור הבא
+            </p>
             <a
               href={devVerificationUrl}
               className="mt-2 block break-all font-semibold text-brand-800 underline underline-offset-4"
@@ -341,7 +381,7 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
     return (
       <div className="space-y-6">
         <div className="rounded-[1.75rem] border border-brand-100 bg-brand-50/70 p-5 text-sm leading-8 text-slate-700">
-          <p className="text-base font-black text-ink">שיתוף ידע לקהילה</p>
+          <p className="text-base font-black text-ink">הניסיון שלך יכול לעזור לרופא הבא</p>
           {onboardingContributionCopy.split("\n").map((line) => (
             <p key={line} className="mt-2">
               {line}
@@ -356,7 +396,7 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
               type="button"
               disabled={isSubmitting}
               onClick={completeAfterContribution}
-              className="rounded-full bg-brand-700 px-6 py-3 text-sm font-bold text-white disabled:opacity-60"
+              className="rounded-lg bg-brand-700 px-6 py-3 text-sm font-bold text-white disabled:opacity-60"
             >
               {isSubmitting ? "משלים/ה הרשמה..." : "המשך להרשמה"}
             </button>
@@ -366,11 +406,13 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
             departments={departments}
             selectedDepartmentId={selectedDepartmentId}
             initialInstitutionId={selectedInstitutionId}
-            initialReviewerType={contributionEligibility.reviewerType ?? "INTERN"}
+            initialReviewerType={
+              contributionEligibility.reviewerType ?? "INTERN"
+            }
             initialContact={{
               fullName,
               phone,
-              email
+              email,
             }}
             initialRoleDetails={initialRoleDetails}
             lockReviewerType
@@ -384,7 +426,7 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
           <button
             type="button"
             onClick={() => setStep("account")}
-            className="rounded-full border border-brand-100 px-5 py-3 text-sm font-bold text-brand-800 transition hover:bg-brand-50"
+            className="rounded-lg border border-brand-100 px-5 py-3 text-sm font-bold text-brand-800 transition hover:bg-brand-50"
           >
             חזרה לפרטי ההרשמה
           </button>
@@ -392,79 +434,188 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
             type="button"
             disabled={isSubmitting}
             onClick={completeAfterSkip}
-            className="rounded-full bg-slate-900 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800 disabled:opacity-60"
+            className="rounded-lg bg-slate-900 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800 disabled:opacity-60"
           >
             אין לי חוויה לשתף כרגע
           </button>
         </div>
 
-        {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}
+        {formError ? (
+          <p role="alert" className="text-sm text-rose-600">
+            {formError}
+          </p>
+        ) : null}
       </div>
     );
   }
 
   return (
-    <form onSubmit={submitAccount} className="space-y-5">
-      <div>
-        <label className="mb-2 block text-sm font-semibold text-ink">שם מלא</label>
-        <input
-          {...register("fullName")}
-          className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
-        />
-        {errors.fullName ? (
-          <p className="mt-2 text-xs text-rose-600">{errors.fullName.message}</p>
-        ) : null}
+    <form
+      noValidate
+      onSubmit={submitAccount}
+      className="space-y-5"
+
+    >
+      <div className="auth-progress">
+        <span>
+          <b>1</b> · פרטי חשבון
+        </span>
+        <span>
+          <b>2</b> · רקע מקצועי
+        </span>
+        <span>
+          <b>3</b> · אימות
+        </span>
+      </div>
+      <h2 className="form-section-title">פרטי חשבון</h2>
+      <div><label htmlFor="signup-fullName" className="mb-2 block text-sm font-semibold text-ink">שם מלא<span className="required-marker" aria-hidden="true">*</span></label>
+        <input id="signup-fullName" autoComplete="name" {...register("fullName")} placeholder="לדוגמה: דנה לוי" aria-invalid={Boolean(errors.fullName)} aria-describedby={errors.fullName ? "error-fullName" : undefined} className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300" /></div>
+      {errors.fullName && <p id="error-fullName" role="alert" className="text-sm text-rose-700">{errors.fullName.message}</p>}
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <div>
+          <label
+            htmlFor="signup-email"
+            className="mb-2 block text-sm font-semibold text-ink"
+          >
+            אימייל<span className="required-marker" aria-hidden="true">*</span>
+          </label>
+          <input
+            {...register("email")}
+            id="signup-email"
+            aria-required="true"
+            placeholder="name@example.com"
+            autoComplete="email"
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? "error-email" : undefined}
+            type="email"
+            className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
+          />
+          {errors.email ? (
+            <p
+              id="error-email"
+              role="alert"
+              className="mt-2 text-xs text-rose-600"
+            >
+              {errors.email.message}
+            </p>
+          ) : null}
+        </div>
+        <div>
+          <label
+            htmlFor="signup-phone"
+            className="mb-2 block text-sm font-semibold text-ink"
+          >
+            טלפון
+          </label>
+          <input
+            {...register("phone")}
+            id="signup-phone"
+            placeholder="050-1234567"
+            autoComplete="tel"
+            aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? "error-phone" : undefined}
+            className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
+          />
+          {errors.phone ? (
+            <p
+              id="error-phone"
+              role="alert"
+              className="mt-2 text-xs text-rose-600"
+            >
+              {errors.phone.message}
+            </p>
+          ) : null}
+        </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
         <div>
-          <label className="mb-2 block text-sm font-semibold text-ink">אימייל</label>
+          <label
+            htmlFor="signup-password"
+            className="mb-2 block text-sm font-semibold text-ink"
+          >
+            סיסמה<span className="required-marker" aria-hidden="true">*</span>
+          </label>
           <input
-            {...register("email")}
-            type="email"
+            {...register("password")}
+            id="signup-password"
+            aria-required="true"
+            placeholder="בחרו סיסמה מאובטחת"
+            autoComplete="new-password"
+            aria-invalid={Boolean(errors.password)}
+            aria-describedby={errors.password ? "error-password" : undefined}
+            type={showPassword ? "text" : "password"}
             className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
           />
-          {errors.email ? <p className="mt-2 text-xs text-rose-600">{errors.email.message}</p> : null}
+          {errors.password ? (
+            <p
+              id="error-password"
+              role="alert"
+              className="mt-2 text-xs text-rose-600"
+            >
+              {errors.password.message}
+            </p>
+          ) : null}
         </div>
         <div>
-          <label className="mb-2 block text-sm font-semibold text-ink">טלפון</label>
+          <label
+            htmlFor="signup-confirmPassword"
+            className="mb-2 block text-sm font-semibold text-ink"
+          >
+            אימות סיסמה<span className="required-marker" aria-hidden="true">*</span>
+          </label>
           <input
-            {...register("phone")}
+            {...register("confirmPassword")}
+            id="signup-confirmPassword"
+            aria-required="true"
+            placeholder="הקלידו שוב את הסיסמה"
+            autoComplete="new-password"
+            aria-invalid={Boolean(errors.confirmPassword)}
+            aria-describedby={
+              errors.confirmPassword ? "error-confirmPassword" : undefined
+            }
+            type={showPassword ? "text" : "password"}
             className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
           />
-          {errors.phone ? <p className="mt-2 text-xs text-rose-600">{errors.phone.message}</p> : null}
+          {errors.confirmPassword ? (
+            <p
+              id="error-confirmPassword"
+              role="alert"
+              className="mt-2 text-xs text-rose-600"
+            >
+              {errors.confirmPassword.message}
+            </p>
+          ) : null}
         </div>
       </div>
 
-      <div className="rounded-[1.5rem] border border-brand-100 bg-white p-4">
-        <label className="mb-3 block text-sm font-semibold text-ink">סטטוס מקצועי</label>
-        <div className="grid gap-3 md:grid-cols-2">
-          {roleStatusOptions.map((option) => (
-            <label
-              key={option.value}
-              className="flex cursor-pointer items-center gap-3 rounded-2xl border border-brand-100 bg-surface px-4 py-3 text-sm leading-6 text-slate-700 has-[:checked]:border-brand-300 has-[:checked]:bg-brand-50"
-            >
-              <input
-                {...register("roleStatus")}
-                type="radio"
-                value={option.value}
-                className="h-4 w-4 border-brand-200 text-brand-700"
-              />
-              <span>
-                <span className="block font-black text-ink">{option.label}</span>
-              </span>
-            </label>
-          ))}
-        </div>
-        {errors.roleStatus ? (
-          <p className="mt-2 text-xs text-rose-600">{errors.roleStatus.message}</p>
-        ) : null}
+      <button
+        type="button"
+        className="text-link text-sm"
+        aria-pressed={showPassword}
+        onClick={() => setShowPassword(!showPassword)}
+      >
+        <ProductIcon name={showPassword ? "eye-off" : "eye"} className="inline-block h-5 w-5 me-2"/>{showPassword ? "הסתרת סיסמאות" : "הצגת סיסמאות"}
+      </button>
+      <h2 className="form-section-title">רקע מקצועי</h2>
+      <div>
+        <label htmlFor="signup-roleStatus" className="mb-2 block text-sm font-semibold text-ink">סטטוס מקצועי</label>
+        <select {...register("roleStatus")} id="signup-roleStatus"
+          aria-invalid={Boolean(errors.roleStatus)}
+          aria-describedby={errors.roleStatus ? "error-roleStatus" : undefined}
+          className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300">
+          {roleStatusOptions.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
+        </select>
+        {errors.roleStatus && <p id="error-roleStatus" role="alert" className="mt-2 text-xs text-rose-600">{errors.roleStatus.message}</p>}
       </div>
 
       {roleStatus === "medical_student" ? (
         <div className="grid gap-4 rounded-[1.5rem] border border-brand-100 bg-brand-50/50 p-4 md:grid-cols-3">
           <label className="block">
-            <span className="mb-2 block text-sm font-semibold text-ink">מסלול לימודים</span>
+            <span className="mb-2 block text-sm font-semibold text-ink">
+              מסלול לימודים
+            </span>
             <select
               {...register("studentTrack")}
               className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
@@ -478,7 +629,9 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
             </select>
           </label>
           <label className="block">
-            <span className="mb-2 block text-sm font-semibold text-ink">שנת לימוד</span>
+            <span className="mb-2 block text-sm font-semibold text-ink">
+              שנת לימוד
+            </span>
             <select
               {...register("studentYear")}
               className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
@@ -492,7 +645,9 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
             </select>
           </label>
           <label className="block">
-            <span className="mb-2 block text-sm font-semibold text-ink">פקולטה</span>
+            <span className="mb-2 block text-sm font-semibold text-ink">
+              פקולטה
+            </span>
             <select
               {...register("medicalFaculty")}
               className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
@@ -508,11 +663,15 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
         </div>
       ) : null}
 
-      {roleStatus === "intern" || roleStatus === "resident" || roleStatus === "specialist" ? (
+      {roleStatus === "intern" ||
+      roleStatus === "resident" ||
+      roleStatus === "specialist" ? (
         <div className="grid gap-4 rounded-[1.5rem] border border-brand-100 bg-brand-50/50 p-4 md:grid-cols-2">
           <label className="block">
             <span className="mb-2 block text-sm font-semibold text-ink">
-              {roleStatus === "intern" ? "בית חולים" : "בית חולים נוכחי או אחרון"}
+              {roleStatus === "intern"
+                ? "בית חולים"
+                : "בית חולים נוכחי או אחרון"}
             </span>
             <select
               {...register("onboardingInstitutionId")}
@@ -529,7 +688,9 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
 
           {roleStatus === "resident" || roleStatus === "specialist" ? (
             <label className="block">
-              <span className="mb-2 block text-sm font-semibold text-ink">מחלקה נוכחית או אחרונה</span>
+              <span className="mb-2 block text-sm font-semibold text-ink">
+                מחלקה נוכחית או אחרונה
+              </span>
               <select
                 {...register("onboardingDepartmentId")}
                 className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
@@ -546,43 +707,36 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
         </div>
       ) : null}
 
-      {careerContextError ? <p className="text-sm text-rose-600">{careerContextError}</p> : null}
+      {careerContextError ? (
+        <p role="alert" className="text-sm text-rose-600">
+          {careerContextError}
+        </p>
+      ) : null}
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-ink">סיסמה</label>
-          <input
-            {...register("password")}
-            type="password"
-            className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
-          />
-          {errors.password ? (
-            <p className="mt-2 text-xs text-rose-600">{errors.password.message}</p>
-          ) : null}
-        </div>
-        <div>
-          <label className="mb-2 block text-sm font-semibold text-ink">אימות סיסמה</label>
-          <input
-            {...register("confirmPassword")}
-            type="password"
-            className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
-          />
-          {errors.confirmPassword ? (
-            <p className="mt-2 text-xs text-rose-600">{errors.confirmPassword.message}</p>
-          ) : null}
-        </div>
-      </div>
-
+      <h2 className="form-section-title">אימות הסטטוס המקצועי</h2>
       <div className="rounded-2xl border border-brand-100 bg-brand-50/60 p-4">
-        <label className="mb-2 block text-sm font-semibold text-ink">אישור סטטוס מקצועי</label>
+        <label
+          htmlFor="verification-file"
+          className="mb-2 block text-sm font-semibold text-ink"
+        >
+          אישור סטטוס מקצועי
+        </label>
         <input
+          id="verification-file"
           type="file"
+          aria-describedby="verification-file-help"
           accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
-          onChange={(event) => setVerificationProof(event.target.files?.[0] ?? null)}
-          className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none transition file:me-3 file:rounded-full file:border-0 file:bg-brand-700 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white focus:border-brand-300"
+          onChange={(event) =>
+            setVerificationProof(event.target.files?.[0] ?? null)
+          }
+          className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none transition file:me-3 file:rounded-lg file:border-0 file:bg-brand-700 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white focus:border-brand-300"
         />
-        <p className="mt-2 text-xs leading-5 text-slate-500">
-          אפשר להעלות PDF, JPG או PNG עד 5MB.
+        <p
+          id="verification-file-help"
+          className="mt-2 text-xs leading-5 text-slate-600"
+        >
+          אפשר להעלות PDF, JPG או PNG עד {maxUploadMb}MB. המסמך אינו מוצג לציבור
+          ואינו נשלח לאנליטיקה.
         </p>
       </div>
 
@@ -604,10 +758,22 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
           type="checkbox"
           className="mt-1 h-4 w-4 rounded border-brand-200 text-brand-700"
         />
-        <span>אני מאשר/ת את תנאי השימוש, מדיניות הפרטיות ושמירת המידע לצורכי אימות</span>
+        <span>
+          אני מאשר/ת את{" "}
+          <Link className="underline" href="/terms">
+            תנאי השימוש
+          </Link>
+          ,{" "}
+          <Link className="underline" href="/privacy">
+            מדיניות הפרטיות
+          </Link>{" "}
+          ושמירת המידע לצורכי אימות
+        </span>
       </label>
       {errors.privacyVerificationConsent ? (
-        <p className="text-xs text-rose-600">{errors.privacyVerificationConsent.message}</p>
+        <p className="text-xs text-rose-600">
+          {errors.privacyVerificationConsent.message}
+        </p>
       ) : null}
 
       <label className="flex items-start gap-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm leading-6 text-slate-700">
@@ -617,14 +783,21 @@ export function SignupForm({ departments }: { departments: DepartmentOption[] })
           className="mt-1 h-4 w-4 rounded border-brand-200 text-brand-700"
         />
         <span>
-          <span className="block font-semibold text-ink">אני מאשר/ת קבלת עדכונים במייל</span>
+          <span className="block font-semibold text-ink">
+            אני מאשר/ת קבלת עדכונים במייל
+          </span>
           <span className="mt-1 block text-xs leading-5 text-slate-600">
-            אני מאשר/ת לאתר לאסוף את פרטיי ולשלוח אליי עדכונים, חידושים, משרות חדשות, הודעות מערכת ותוכן שיווקי.
+            אני מאשר/ת לאתר לאסוף את פרטיי ולשלוח אליי עדכונים, חידושים, משרות
+            חדשות, הודעות מערכת ותוכן שיווקי.
           </span>
         </span>
       </label>
 
-      {formError ? <p className="text-sm text-rose-600">{formError}</p> : null}
+      {formError ? (
+        <p role="alert" className="text-sm text-rose-600">
+          {formError}
+        </p>
+      ) : null}
 
       <button
         type="submit"

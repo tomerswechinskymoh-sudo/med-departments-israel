@@ -1,6 +1,12 @@
+import { ProductIcon } from "@/components/ui/product-icon";
+import type { CSSProperties } from "react";
+export const metadata = { robots: { index: false, follow: false } };
+import { PageIntro } from "@/components/ui/page-intro";
+
+import { ComparisonRemove } from "@/components/departments/comparison-remove";
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
-import { getDepartmentComparisonData } from "@/lib/queries";
+import { getDepartmentComparisonData, getDepartmentOptions } from "@/lib/queries";
 import { LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL } from "@/lib/metric-display";
 import { Card } from "@/components/ui/card";
 import { PageShell } from "@/components/layout/page-shell";
@@ -11,7 +17,7 @@ const comparisonColumns = [
   "בית חולים",
   "משך התמחות ממוצע בפועל (שנים)",
   "טווח מתמחים חדשים צפוי ב-2026",
-  LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL
+  LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
 ] as const;
 
 function parseDepartmentIds(value: string | string[] | undefined) {
@@ -24,30 +30,38 @@ function parseDepartmentIds(value: string | string[] | undefined) {
 }
 
 export default async function ComparePage({
-  searchParams
+  searchParams,
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const [params, session] = await Promise.all([searchParams, getSession()]);
   const departments = parseDepartmentIds(params.departments);
-  const specialtyId = typeof params.specialty === "string" ? params.specialty : undefined;
+  const specialtyId =
+    typeof params.specialty === "string" ? params.specialty : undefined;
+  const options = session ? await getDepartmentOptions() : [];
   const comparison = session
-    ? await getDepartmentComparisonData({ departmentIds: departments, specialtyId })
+    ? await getDepartmentComparisonData({
+        departmentIds: departments,
+        specialtyId,
+      })
     : null;
 
   if (!session) {
     const next = `/compare?${new URLSearchParams({
       ...(specialtyId ? { specialty: specialtyId } : {}),
-      departments: departments.join(",")
+      departments: departments.join(","),
     }).toString()}`;
 
     return (
       <PageShell className="py-8">
         <Card className="mx-auto max-w-2xl rounded-2xl text-center">
           <p className="text-sm font-black text-brand-700">גישה להשוואה</p>
-          <h1 className="mt-3 text-3xl font-black text-ink">כדי לצפות בהשוואה יש להתחבר או להירשם.</h1>
+          <h1 className="mt-3 text-3xl font-black text-ink">
+            כדי לצפות בהשוואה יש להתחבר או להירשם.
+          </h1>
           <p className="mt-3 text-sm leading-7 text-slate-600">
-            אפשר לבחור מחלקות בחיפוש גם בלי חשבון, אבל טבלת ההשוואה זמינה למשתמשים רשומים.
+            אפשר לבחור מחלקות בחיפוש גם בלי חשבון, אבל טבלת ההשוואה זמינה
+            למשתמשים רשומים.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
@@ -72,8 +86,12 @@ export default async function ComparePage({
     return (
       <PageShell className="py-8">
         <Card className="mx-auto max-w-2xl rounded-2xl text-center">
-          <h1 className="text-3xl font-black text-ink">לא נבחרו מחלקות להשוואה</h1>
-          <p className="mt-3 text-sm text-slate-600">חזרו לחיפוש ובחרו עד 4 מחלקות או מערכים.</p>
+          <h1 className="text-3xl font-black text-ink">
+            לא נבחרו מחלקות להשוואה
+          </h1>
+          <p className="mt-3 text-sm text-slate-600">
+            חזרו לחיפוש ובחרו עד 4 מחלקות או מערכים.
+          </p>
           <Link
             href="/departments"
             className="mt-6 inline-flex rounded-full bg-brand-700 px-5 py-3 text-sm font-black text-white"
@@ -89,7 +107,9 @@ export default async function ComparePage({
     return (
       <PageShell className="py-8">
         <Card className="mx-auto max-w-2xl rounded-2xl text-center">
-          <h1 className="text-3xl font-black text-ink">ניתן להשוות מחלקות רק בתוך אותו תחום התמחות.</h1>
+          <h1 className="text-3xl font-black text-ink">
+            ניתן להשוות מחלקות רק בתוך אותו תחום התמחות.
+          </h1>
           <p className="mt-3 text-sm text-slate-600">
             בחרו מחלקות מתוך אותו תחום התמחות וחזרו לטבלת ההשוואה.
           </p>
@@ -105,106 +125,151 @@ export default async function ComparePage({
   }
 
   return (
-    <div className="min-h-screen bg-[#f3f7fa]">
-      <PageShell className="space-y-5 py-6">
-        <section className="rounded-2xl border border-brand-100 bg-white/95 p-5 shadow-sm">
-          <p className="text-sm font-black text-brand-700">השוואת מחלקות</p>
-          <h1 className="mt-2 text-3xl font-black text-ink md:text-4xl">
-            השוואה בתחום {comparison.specialtyName ?? "ההתמחות"}
-          </h1>
-          <p className="mt-2 text-sm leading-7 text-slate-600">
-            מוצגות עד 4 מחלקות או מערכים מאותו תחום. נתוני מערך מסומנים כממוצע למחלקה במערך.
+    <PageShell className="compare-page space-y-6">
+      <PageIntro
+        eyebrow="השוואת מחלקות"
+        title="השוואת מחלקות"
+        image="corridor"
+        description="אותן הגדרות, מבט אחד. השוו בין המחלקות שבחרתם ובדקו את המקורות בפרופיל המלא."
+      />
+
+      <div className="compare-selection-bar">
+        <div>
+          <p className="mb-3 text-sm">
+            {comparison.rows.length} מחלקות נבחרו · עד ארבע מחלקות מאותו תחום
           </p>
-        </section>
-
-        <p className="rounded-xl border bg-white p-4 text-sm">מדד המחלקה של Hitmachut: אין מספיק נתונים לחישוב מדד המחלקה. כיסוי נתונים למדד: 0%. <Link href="/career-fit/methodology#department-index" className="underline">איך מחושב המדד?</Link></p>
-        <Card className="rounded-2xl !p-0">
-          <div className="hidden overflow-x-auto lg:block">
-            <table className="min-w-full text-right text-sm">
-              <thead className="bg-slate-50 text-xs font-black text-slate-500">
-                <tr>
-                  {comparisonColumns.map((column) => (
-                    <th key={column} className="px-4 py-3">
-                      {column}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {comparison.rows.map((row) => (
-                  <tr key={row.id} className="bg-white">
-                    <td className="px-4 py-4">
-                      <p className="font-black text-ink">{row.name}</p>
-                      {row.isArray ? (
-                        <p className="mt-1 text-xs font-bold text-brand-700">
-                          ממוצע למחלקה במערך · {row.arrayDepartmentCount} מחלקות
-                        </p>
-                      ) : null}
-                    </td>
-                    <td className="px-4 py-4">
-                      <div className="flex items-center gap-3">
-                        <InstitutionLogo
-                          institution={{
-                            name: row.hospitalName,
-                            slug: row.hospitalSlug,
-                            coverImageUrl: row.hospitalCoverImageUrl
-                          }}
-                          size="sm"
-                        />
-                        <span className="font-bold text-slate-700">{row.hospitalName}</span>
-                      </div>
-                    </td>
-                    <td className="px-4 py-4">{row.actualDuration}</td>
-                    <td className="px-4 py-4">
-                      <span>{row.expectedOpenings2026}</span>
-                      {row.isArray ? <span className="block text-xs font-bold text-slate-500">ממוצע למחלקה במערך</span> : null}
-                    </td>
-                    <td className="px-4 py-4">{row.medianWaitingTime}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="grid gap-3 p-4 lg:hidden">
+          <div className="compare-selection-chips">
             {comparison.rows.map((row) => (
-              <div key={row.id} className="rounded-xl border border-slate-100 bg-white px-4 py-4">
-                <p className="text-lg font-black text-ink">{row.name}</p>
-                <div className="mt-2 flex items-center gap-3">
-                  <InstitutionLogo
-                    institution={{
-                      name: row.hospitalName,
-                      slug: row.hospitalSlug,
-                      coverImageUrl: row.hospitalCoverImageUrl
-                    }}
-                    size="sm"
-                  />
-                  <p className="text-sm font-bold text-slate-600">{row.hospitalName}</p>
-                </div>
-                {row.isArray ? (
-                  <p className="mt-2 inline-flex rounded-full bg-brand-50 px-3 py-1 text-xs font-black text-brand-800">
-                    ממוצע למחלקה במערך · {row.arrayDepartmentCount} מחלקות
-                  </p>
-                ) : null}
-                <div className="mt-4 grid gap-2">
-                  <div className="rounded-lg bg-slate-50 px-3 py-2">
-                    <p className="text-xs font-bold text-slate-500">משך התמחות ממוצע בפועל</p>
-                    <p className="mt-1 font-black text-ink">{row.actualDuration}</p>
-                  </div>
-                  <div className="rounded-lg bg-slate-50 px-3 py-2">
-                    <p className="text-xs font-bold text-slate-500">טווח מתמחים חדשים צפוי ב-2026</p>
-                    <p className="mt-1 font-black text-ink">{row.expectedOpenings2026}</p>
-                  </div>
-                  <div className="rounded-lg bg-slate-50 px-3 py-2">
-                    <p className="text-xs font-bold text-slate-500">{LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL}</p>
-                    <p className="mt-1 font-black text-ink">{row.medianWaitingTime}</p>
-                  </div>
-                </div>
-              </div>
+              <span key={row.id}>
+                <InstitutionLogo institution={{name: row.hospitalName, slug: row.hospitalSlug}} size="sm" />
+                <span>
+                  <strong>{row.hospitalName}</strong>
+                  <small>{row.name}</small>
+                </span>
+              </span>
             ))}
           </div>
-        </Card>
-      </PageShell>
-    </div>
+        </div>
+        <Link
+          href={
+            specialtyId
+              ? `/departments?specialty=${encodeURIComponent(specialtyId)}`
+              : "/departments"
+          }
+          className="button-link secondary"
+        >
+          הוספת מחלקה +
+        </Link>
+      </div>
+      <Card className="!p-0">
+        <p
+          id="comparison-note"
+          className="p-4 text-sm leading-7 text-slate-600"
+        >
+          אין נתון אינו אפס. נתוני מערך מסומנים כממוצע למחלקה; אין כאן דירוג
+          כולל של איכות המחלקות.
+        </p>
+        <p className="px-4 pb-3 text-sm text-brand-800 sm:hidden">
+          החליקו בתוך הטבלה כדי לראות מחלקות נוספות.
+        </p>
+        <div
+          className="comparison-scroll"
+          role="region"
+          aria-label="טבלת השוואת מחלקות — ניתנת לגלילה אופקית"
+          tabIndex={0}
+        >
+          <table
+            className="comparison-table"
+            aria-describedby="comparison-note"
+            style={
+              {
+                "--comparison-columns": comparison.rows.length,
+              } as CSSProperties
+            }
+          >
+            <caption className="sr-only">השוואת מחלקות שנבחרו</caption>
+            <thead>
+              <tr>
+                <th scope="col">מדד להשוואה</th>
+                {comparison.rows.map((row) => (
+                  <th scope="col" key={row.id}>
+                    <span className="compare-institution-mark">
+                      <InstitutionLogo institution={{name: row.hospitalName, slug: row.hospitalSlug}} size="sm" />
+                    </span>
+                    <p className="text-lg font-bold">{row.hospitalName}</p>
+                    <p className="mt-2 font-normal">{row.name}</p>
+                    {row.isArray && (
+                      <p className="mt-2 text-xs">
+                        ממוצע למחלקה במערך · {row.arrayDepartmentCount} מחלקות
+                      </p>
+                    )}
+                    <ComparisonRemove
+                      id={row.id}
+                      ids={comparison.rows.map((r) => r.id)}
+                      specialtyId={row.specialtyId}
+                    />
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                {
+                  label: "משך התמחות ממוצע בפועל (שנים)",
+                  field: "actualDuration",
+                },
+                {
+                  label: "טווח מתמחים חדשים צפוי ב־2026",
+                  field: "expectedOpenings2026",
+                },
+                {
+                  label: LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
+                  field: "medianWaitingTime",
+                },
+              ].map((metric) => (
+                <tr key={metric.field}>
+                  <th scope="row">{metric.label}</th>
+                  {comparison.rows.map((row) => (
+                    <td key={row.id}>
+                      {String(
+                        row[
+                          metric.field as
+                            | "actualDuration"
+                            | "expectedOpenings2026"
+                            | "medianWaitingTime"
+                        ] ?? "אין נתון",
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+              <tr>
+                <th scope="row">להעמקה</th>
+                {comparison.rows.map((row) => (
+                  <td key={row.id}>
+                    <Link
+                      className="text-link"
+                      href={options.find(option => option.id === row.id) ? `/departments/${encodeURIComponent(options.find(option => option.id === row.id)!.slug)}?departmentId=${encodeURIComponent(row.id)}` : "/departments"}
+                    >
+                      לפרופיל המחלקה ←
+                    </Link>
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Card>
+      <p className="text-sm leading-7 text-slate-600">
+        נתוני ההשוואה מוצגים לפי מקורותיהם והגדרותיהם הקיימות. לא מוצגים כאן
+        ציונים, שיעורי מעבר או חוות דעת שאין להם נתון מתאים.{" "}
+        <Link
+          className="underline"
+          href="/career-fit/methodology#department-index"
+        >
+          על מגבלות מדד המחלקה
+        </Link>
+      </p>
+    </PageShell>
   );
 }

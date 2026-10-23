@@ -1,4 +1,7 @@
 "use client";
+import Link from "next/link";
+import { ProductIcon } from "@/components/ui/product-icon";
+
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -8,35 +11,50 @@ export function FavoriteToggleButton({
   departmentId,
   initialFavorite,
   variant = "text",
-  className
+  className,
+  onFavoriteChange,
+  saveLabel,
 }: {
   departmentId: string;
+  departmentSlug?: string;
   initialFavorite: boolean;
-  variant?: "text" | "icon";
+  variant?: "text" | "icon" | "remove";
   className?: string;
+  onFavoriteChange?: (departmentId: string, isFavorite: boolean) => void;
+  saveLabel?: string;
 }) {
   const router = useRouter();
   const [isFavorite, setIsFavorite] = useState(initialFavorite);
   const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState(false);
 
   async function toggleFavorite() {
+    if (isPending) return;
     setIsPending(true);
+    setError(false);
+    try {
+      const response = await fetch("/api/favorites/toggle", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ departmentId }),
+      });
 
-    const response = await fetch("/api/favorites/toggle", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ departmentId })
-    });
+      if (response.ok) {
+        const payload = (await response.json()) as { isFavorite: boolean };
+        setIsFavorite(payload.isFavorite);
+        onFavoriteChange?.(departmentId, payload.isFavorite);
 
-    if (response.ok) {
-      const payload = (await response.json()) as { isFavorite: boolean };
-      setIsFavorite(payload.isFavorite);
-      router.refresh();
+        router.refresh();
+      } else {
+        setError(true);
+      }
+    } catch {
+      setError(true);
+    } finally {
+      setIsPending(false);
     }
-
-    setIsPending(false);
   }
 
   if (variant === "icon") {
@@ -45,14 +63,26 @@ export function FavoriteToggleButton({
         type="button"
         onClick={toggleFavorite}
         disabled={isPending}
-        aria-label={isFavorite ? "הסרה מהשמורים" : "שמירת מחלקה להשוואה"}
+        aria-pressed={isFavorite}
+        aria-label={
+          error
+            ? "השמירה נכשלה. נסו שוב"
+            : isFavorite
+              ? "הסרה מהשמורים"
+              : "שמירת מחלקה להשוואה"
+        }
         title={isFavorite ? "הסרה מהשמורים" : "שמירת מחלקה להשוואה"}
         className={cn(
           "inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-100 bg-white/95 text-brand-800 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 disabled:opacity-50",
           isFavorite ? "border-amber-300 bg-amber-50 text-amber-700" : null,
-          className
+          className,
         )}
       >
+        {error ? (
+          <span role="alert" className="text-xs">
+            נסו שוב
+          </span>
+        ) : null}
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"
@@ -74,17 +104,30 @@ export function FavoriteToggleButton({
       type="button"
       onClick={toggleFavorite}
       disabled={isPending}
+      aria-live="polite"
+      aria-pressed={variant === "text" ? isFavorite : undefined}
       className={cn(
-        "rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-800 transition hover:bg-brand-50 disabled:opacity-50",
-        className
+        variant === "remove" ? "favorite-remove" : "rounded-full border border-brand-200 px-4 py-2 text-sm font-semibold text-brand-800 transition hover:bg-brand-50 disabled:opacity-50",
+        className,
       )}
     >
-      {isPending ? "מעדכן..." : isFavorite ? "הסרה מהרשימה" : "שמור להשוואה"}
+      {variant === "remove" && <ProductIcon name="trash" />}
+      {error
+        ? "השמירה נכשלה — נסו שוב"
+        : isPending
+          ? "מעדכן..."
+          : isFavorite
+            ? variant === "remove" ? "הסרה" : "הסרה מהרשימה"
+            : saveLabel ?? "שמור להשוואה"}
     </button>
   );
 }
 
-export function LoginRequiredBookmarkButton({ className }: { className?: string }) {
+export function LoginRequiredBookmarkButton({
+  className,
+}: {
+  className?: string;
+}) {
   const [message, setMessage] = useState<string | null>(null);
 
   return (
@@ -96,10 +139,14 @@ export function LoginRequiredBookmarkButton({ className }: { className?: string 
         title="שמירת מחלקה להשוואה"
         className={cn(
           "inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-100 bg-white/95 text-brand-800 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50",
-          className
+          className,
         )}
       >
-        <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-5 w-5 fill-none"
+        >
           <path
             d="M7 4.75A2.25 2.25 0 0 1 9.25 2.5h5.5A2.25 2.25 0 0 1 17 4.75v16l-5-3.1-5 3.1v-16Z"
             stroke="currentColor"
@@ -109,8 +156,14 @@ export function LoginRequiredBookmarkButton({ className }: { className?: string 
         </svg>
       </button>
       {message ? (
-        <p className="absolute left-0 top-12 z-20 w-56 rounded-2xl border border-brand-100 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-panel">
-          {message}
+        <p
+          role="status"
+          className="absolute left-0 top-12 z-20 w-56 rounded-2xl border border-brand-100 bg-white px-3 py-2 text-xs font-semibold text-slate-700 shadow-panel"
+        >
+          {message}{" "}
+          <Link href="/login" className="underline">
+            להתחברות
+          </Link>
         </p>
       ) : null}
     </div>

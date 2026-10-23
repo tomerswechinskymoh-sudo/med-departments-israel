@@ -1,38 +1,18 @@
+export const metadata = { robots: { index: false, follow: false } };
 import { requireAuth } from "@/lib/auth-guards";
-import { getFavoritesData } from "@/lib/queries";
-import { DepartmentCard } from "@/components/departments/department-card";
-import { EmptyState } from "@/components/ui/empty-state";
-import { PageShell } from "@/components/layout/page-shell";
-import { SectionHeading } from "@/components/ui/section-heading";
-
+import { getFavoritesData, getDepartmentOptions } from "@/lib/queries";
+import { FavoritesContent } from "@/components/departments/favorites-content";
 export const dynamic = "force-dynamic";
-
-export default async function FavoritesPage() {
+export default async function FavoritesPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const params = await searchParams;
   const session = await requireAuth();
-  const favorites = await getFavoritesData(session.userId);
-
-  return (
-    <PageShell className="space-y-8 py-10">
-      <SectionHeading
-        eyebrow="הרשימה שלי"
-        title="המחלקות ששמרת להשוואה"
-        description="גישה מהירה למחלקות שתרצו לחזור אליהן."
-      />
-
-      {favorites.length === 0 ? (
-        <EmptyState
-          title="אין מחלקות שמורות"
-          description="אפשר לשמור מחלקות להשוואה מתוך חיפוש המחלקות או מתוך עמוד מחלקה."
-          ctaHref="/departments"
-          ctaLabel="לחיפוש מחלקות"
-        />
-      ) : (
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {favorites.map((department) => (
-            <DepartmentCard key={department.id} department={department} showFavoriteButton />
-          ))}
-        </div>
-      )}
-    </PageShell>
-  );
+  // Join only already-public identity fields from the existing options contract.
+  const [saved, options] = await Promise.all([getFavoritesData(session.userId), getDepartmentOptions()]);
+  const favorites = saved.map(item => {
+    const option = options.find(option => option.id === item.id);
+    return { ...item, specialtyId: option?.specialty.id ?? "", institutionSlug: undefined };
+  });
+  const filter = typeof params.specialty === "string" ? params.specialty : "";
+  const sort = ["department", "institution"].includes(String(params.sort)) ? String(params.sort) : "recent";
+  return <FavoritesContent key={`${session.userId}:${filter}:${sort}`} initialFavorites={favorites} filter={filter} sort={sort} />;
 }

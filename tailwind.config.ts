@@ -6,16 +6,16 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          50: "#edf5fa",
-          100: "#d7e8f2",
+          50: "#f0f8ff",
+          100: "#e0edf9",
           200: "#b3cfe2",
           300: "#84aecb",
           400: "#5b8eb0",
           500: "#3b7396",
           600: "#295b7a",
-          700: "#1b4460",
-          800: "#112f45",
-          900: "#091c2d"
+          700: "#0062df",
+          800: "#074896",
+          900: "#0c1b46",
         },
         teal: {
           50: "#ecfcf8",
@@ -27,25 +27,24 @@ const config: Config = {
           600: "#0e8f7c",
           700: "#0e6c61",
           800: "#114f49",
-          900: "#123f3d"
+          900: "#123f3d",
         },
-        ink: "#10273a",
-        surface: "#f4f7fb"
+        ink: "#0c1b46",
+        surface: "#f7fbff",
       },
       boxShadow: {
-        panel:
-          "0 30px 80px -38px rgba(9, 28, 45, 0.38), 0 18px 34px -28px rgba(27, 68, 96, 0.28)"
+        panel: "0 2px 8px rgba(16, 45, 80, 0.035)",
       },
       fontFamily: {
-        sans: ["Rubik", "Heebo", "Assistant", "Segoe UI", "Arial", "sans-serif"]
+        sans: ["Heebo", "Arial", "sans-serif"],
       },
       backgroundImage: {
         "hero-grid":
-          "radial-gradient(circle at top left, rgba(19,179,154,0.14), transparent 32%), radial-gradient(circle at top right, rgba(59,115,150,0.16), transparent 28%), linear-gradient(135deg, rgba(255,255,255,0.18), transparent 48%)"
-      }
-    }
+          "radial-gradient(circle at top left, rgba(19,179,154,0.14), transparent 32%), radial-gradient(circle at top right, rgba(59,115,150,0.16), transparent 28%), linear-gradient(135deg, rgba(255,255,255,0.18), transparent 48%)",
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 };
 
 export default config;

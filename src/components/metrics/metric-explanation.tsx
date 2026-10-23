@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useId,
   useMemo,
   useRef,
   useState,
@@ -671,17 +672,42 @@ export function MetricExplanationInfo({
     resolvedSourceLabel ? `מקור נתונים: ${resolvedSourceLabel}` : ""
   ].filter(Boolean).join("\n");
   const [isEditing, setIsEditing] = useState(false);
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [infoOffset, setInfoOffset] = useState(0);
+  const infoId = useId();
 
   return (
-    <span className="relative inline-flex items-center gap-1">
-      <span
-        tabIndex={0}
+    <span
+      className="relative inline-flex items-center gap-1"
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setIsInfoOpen(false);
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && isInfoOpen) {
+          event.preventDefault();
+          setIsInfoOpen(false);
+          event.currentTarget.querySelector("button")?.focus();
+        }
+      }}
+    >
+      <button
+        type="button"
+        onClick={(event) => {
+          const left = event.currentTarget.getBoundingClientRect().left;
+          const width = Math.min(320, window.innerWidth - 48);
+          setInfoOffset(Math.min(Math.max(left, 16), window.innerWidth - width - 16) - left);
+          setIsInfoOpen((open) => !open);
+        }}
+        aria-expanded={isInfoOpen}
+        aria-controls={isInfoOpen ? infoId : undefined}
         title={tooltipText}
-        aria-label={tooltipText}
+        aria-label={`מידע ומקור: ${metricRichTextToPlainText(metricLabel)}`}
         className="group grid h-7 w-7 cursor-help place-items-center rounded-full border border-slate-200 bg-white text-[0.72rem] font-black text-slate-500 transition hover:border-brand-200 hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-200"
       >
         i
-        <span className="pointer-events-auto absolute left-0 top-9 z-20 hidden w-80 rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl group-hover:block group-focus:block">
+      </button>
+      {isInfoOpen ? (
+        <span id={infoId} role="region" style={{ left: infoOffset }} aria-label={`הסבר על ${metricRichTextToPlainText(metricLabel)}`} className="pointer-events-auto absolute top-9 z-20 block max-h-96 w-80 max-w-[calc(100vw-3rem)] overflow-y-auto rounded-xl border border-slate-200 bg-white px-3 py-2 text-right text-xs font-semibold leading-5 text-slate-700 shadow-xl">
           {explanation ? (
             <span className="block"><MetricRichText value={explanation} /></span>
           ) : null}
@@ -691,7 +717,7 @@ export function MetricExplanationInfo({
             </span>
           ) : null}
         </span>
-      </span>
+      ) : null}
       {provider?.isAdmin && supportedKey ? (
         <button
           type="button"

@@ -1,10 +1,16 @@
+export const metadata = {
+  title: "חיפוש מחלקות והתמחויות | hitmachut.org",
+  alternates: { canonical: "/departments" },
+};
+import { PageIntro } from "@/components/ui/page-intro";
+
 import { getSession } from "@/lib/auth";
 import { departmentFilterSchema } from "@/lib/validation";
 import { DepartmentCard } from "@/components/departments/department-card";
 import {
   CompareSelectableShell,
   DepartmentCompareProvider,
-  type DepartmentCompareOption
+  type DepartmentCompareOption,
 } from "@/components/departments/department-comparison-selection";
 import { DepartmentFilters } from "@/components/departments/department-filters";
 import { SpecialtySelector } from "@/components/departments/specialty-selector";
@@ -16,7 +22,7 @@ import {
   getDirectoryData,
   getDirectoryFilters,
   getDepartmentOptions,
-  getSpecialtyDashboardMetrics
+  getSpecialtyDashboardMetrics,
 } from "@/lib/queries";
 
 function toMultiValue(value: string | string[] | undefined) {
@@ -34,7 +40,9 @@ function getDefaultSpecialtyId(specialties: { id: string; name: string }[]) {
   );
 }
 
-function toParamEntries(searchParams: Record<string, string | string[] | undefined>) {
+function toParamEntries(
+  searchParams: Record<string, string | string[] | undefined>,
+) {
   const entries: Array<[string, string]> = [];
 
   for (const [key, value] of Object.entries(searchParams)) {
@@ -53,27 +61,33 @@ function toParamEntries(searchParams: Record<string, string | string[] | undefin
 }
 
 export default async function DepartmentsPage({
-  searchParams
+  searchParams,
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const [session, availableFilters, rawSearchParams, reviewDepartments] = await Promise.all([
-    getSession(),
-    getDirectoryFilters(),
-    searchParams,
-    getDepartmentOptions()
-  ]);
+  const [session, availableFilters, rawSearchParams, reviewDepartments] =
+    await Promise.all([
+      getSession(),
+      getDirectoryFilters(),
+      searchParams,
+      getDepartmentOptions(),
+    ]);
 
-  const defaultSpecialtyId = getDefaultSpecialtyId(availableFilters.specialties);
+  const defaultSpecialtyId = getDefaultSpecialtyId(
+    availableFilters.specialties,
+  );
   const requestedSpecialtyId = toMultiValue(rawSearchParams.specialty)?.[0];
   const selectedSpecialtyId = availableFilters.specialties.some(
-    (specialty) => specialty.id === requestedSpecialtyId
+    (specialty) => specialty.id === requestedSpecialtyId,
   )
     ? requestedSpecialtyId
     : defaultSpecialtyId;
 
-  const parsedFilters = departmentFilterSchema.parse({
-    search: typeof rawSearchParams.search === "string" ? rawSearchParams.search : undefined,
+  const filterResult = departmentFilterSchema.safeParse({
+    search:
+      typeof rawSearchParams.search === "string"
+        ? rawSearchParams.search
+        : undefined,
     institutions: toMultiValue(rawSearchParams.institution),
     specialties: selectedSpecialtyId ? [selectedSpecialtyId] : undefined,
     regions: toMultiValue(rawSearchParams.region),
@@ -81,7 +95,10 @@ export default async function DepartmentsPage({
     hasOpenPositions: rawSearchParams.hasOpenPositions,
     hasResearch: rawSearchParams.hasResearch,
     hasReviews: rawSearchParams.hasReviews,
-    sort: typeof rawSearchParams.sort === "string" ? rawSearchParams.sort : undefined,
+    sort:
+      typeof rawSearchParams.sort === "string"
+        ? rawSearchParams.sort
+        : undefined,
     prioritizeOpenings: rawSearchParams.prioritizeOpenings,
     prioritizeCommittee: rawSearchParams.prioritizeCommittee,
     researchPriority:
@@ -107,20 +124,24 @@ export default async function DepartmentsPage({
     clinicalPriority:
       typeof rawSearchParams.clinicalPriority === "string"
         ? rawSearchParams.clinicalPriority
-        : undefined
+        : undefined,
   });
-  const searchAcrossSpecialties = Boolean(rawSearchParams.search) && !rawSearchParams.specialty;
+  const parsedFilters = filterResult.success
+    ? filterResult.data
+    : departmentFilterSchema.parse({});
+  const searchAcrossSpecialties =
+    Boolean(rawSearchParams.search) && !rawSearchParams.specialty;
   const effectiveFilters = {
     ...parsedFilters,
-    searchAcrossSpecialties
+    searchAcrossSpecialties,
   };
 
   const [departments, specialtyDashboard] = await Promise.all([
     getDirectoryData(effectiveFilters, session?.userId),
-    getSpecialtyDashboardMetrics(selectedSpecialtyId)
+    getSpecialtyDashboardMetrics(selectedSpecialtyId),
   ]);
   const selectedSpecialty = availableFilters.specialties.find(
-    (specialty) => specialty.id === selectedSpecialtyId
+    (specialty) => specialty.id === selectedSpecialtyId,
   );
   const filtersKey = JSON.stringify(effectiveFilters);
   const compareOptionsByDepartmentId = new Map<string, DepartmentCompareOption>(
@@ -131,54 +152,45 @@ export default async function DepartmentsPage({
         department.id,
         {
           id: compareId,
+          slug: department.slug,
           name: department.name,
           institutionName: department.institutionName,
+          institutionSlug: department.institutionSlug,
           specialtyId: department.specialtyId,
           specialtyName: department.specialtyName,
-          isArray: department.isArrayCard
-        }
+          isArray: department.isArrayCard,
+        },
       ];
-    })
+    }),
   );
 
   return (
-    <div className="min-h-screen bg-[#f3f7fa]">
+    <div className="directory-page">
       <PageShell className="space-y-5 py-5">
+        <PageIntro
+          eyebrow="חיפוש מחלקות"
+          title="חיפוש מחלקות והשוואת תוכניות"
+          image="corridor"
+          description="חפשו לפי תחום התמחות, מוסד ואזור. בחרו מחלקות כדי להשוות ביניהן, והעמיקו במקורות ובחוויות מהשטח."
+        />
+
         {rawSearchParams.signup === "checkEmail" ? (
-          <section className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold leading-6 text-amber-900">
+          <section className="rounded-2xl border border-brand-200 bg-amber-50 px-4 py-3 text-sm font-bold leading-6 text-amber-900">
             ההרשמה התקבלה. בדקו את המייל ולחצו על קישור האימות לפני התחברות.
           </section>
         ) : null}
-        <section className="rounded-2xl border border-brand-100 bg-white/95 p-4 shadow-sm md:p-5">
-          <SpecialtySelector
-            specialties={availableFilters.specialties}
-            selectedSpecialtyId={selectedSpecialtyId}
-            preservedParams={toParamEntries(rawSearchParams)}
-          />
-          <div className="mt-4 max-w-3xl">
-            <h1 className="text-2xl font-black leading-tight text-ink md:text-3xl">
-              בחרו תחום התמחות והשוו תוכניות
-            </h1>
-            <p className="mt-2 text-sm leading-7 text-slate-600 md:text-base">
-              מתחילים מנתונים ארציים על תחום ההתמחות וממשיכים להשוואת מחלקות ומערכים בבתי חולים בישראל.
-            </p>
-          </div>
-        </section>
 
         <div className="space-y-4">
-          {selectedSpecialty ? (
-            <SpecialtyDashboardMetrics
-              specialtyId={selectedSpecialty.id}
-              specialtyName={selectedSpecialty.name}
-              metrics={specialtyDashboard.metrics}
-              explanationOverrides={specialtyDashboard.explanationOverrides}
-              isAdmin={session?.role === "admin"}
-            />
-          ) : null}
-
-          <div className="grid gap-4 lg:grid-cols-[280px_1fr] lg:items-start">
-            <aside className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:overscroll-contain lg:pe-1">
+          <div className="directory-layout">
+            <aside aria-label="סינון תוצאות" className="directory-filter-bar">
               <DepartmentFilters
+                specialtySelector={
+                  <SpecialtySelector
+                    specialties={availableFilters.specialties}
+                    selectedSpecialtyId={selectedSpecialtyId}
+                    preservedParams={toParamEntries(rawSearchParams)}
+                  />
+                }
                 key={filtersKey}
                 filters={parsedFilters}
                 institutions={availableFilters.institutions}
@@ -189,23 +201,51 @@ export default async function DepartmentsPage({
             </aside>
 
             <div className="min-w-0 space-y-4">
-              <div className="flex flex-wrap items-center justify-between gap-3 rounded-[1.25rem] border border-brand-100 bg-white/94 px-4 py-3">
+              {selectedSpecialty ? (
+                <section id="specialty-dashboard" className="directory-dashboard">
+                  <nav className="directory-section-nav" aria-label="ניווט במאגר"><span>תמונת מצב ארצית</span><a href="#department-results">מעבר לרשימת המחלקות <span>({departments.length})</span><span aria-hidden="true">↓</span></a></nav>
+                  <SpecialtyDashboardMetrics
+                    specialtyId={selectedSpecialty.id}
+                    specialtyName={selectedSpecialty.name}
+                    metrics={specialtyDashboard.metrics}
+                          explanationOverrides={
+                      specialtyDashboard.explanationOverrides
+                    }
+                    isAdmin={session?.role === "admin"}
+                  />
+                </section>
+              ) : null}
+
+              <div id="department-results" tabIndex={-1} role="region" aria-label="תוצאות חיפוש מחלקות" className="flex flex-wrap items-center justify-between gap-3 rounded-[1.25rem] border border-brand-100 bg-white/94 px-4 py-3">
                 <div>
-                  <p className="text-sm font-bold text-ink">{departments.length} תוכניות נמצאו</p>
-                  <p className="mt-1 text-xs text-slate-500">
+                  <p className="text-sm font-bold text-ink">
+                    {departments.length} תוכניות נמצאו
+                  </p>
+                  <p className="mt-1 text-xs text-slate-600">
                     {searchAcrossSpecialties
                       ? "החיפוש מתבצע בכל תחומי ההתמחות."
                       : `מוצגות תוכניות בתחום ${selectedSpecialty?.name ?? "ההתמחות שנבחרה"} בלבד.`}
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
-                    סידור: {parsedFilters.sort === "rating" ? "דירוג" : parsedFilters.sort === "reviews" ? "ביקורות" : parsedFilters.sort === "openings" ? "משרות" : parsedFilters.sort === "research" ? "מחקר" : "מומלץ"}
+                  <p className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600">
+                    סידור:{" "}
+                    {parsedFilters.sort === "rating"
+                      ? "דירוג"
+                      : parsedFilters.sort === "reviews"
+                        ? "ביקורות"
+                        : parsedFilters.sort === "openings"
+                          ? "משרות"
+                          : parsedFilters.sort === "research"
+                            ? "מחקר"
+                            : "מומלץ"}
                   </p>
-                  <ExperienceCta
-                    departments={reviewDepartments}
-                    buttonClassName="inline-flex rounded-full border border-amber-200 bg-gradient-to-l from-amber-300 via-amber-200 to-orange-100 px-4 py-2 text-xs font-bold text-amber-950 shadow-sm shadow-amber-200/40 transition hover:-translate-y-0.5"
-                  />
+                  <div id="share-experience" className="scroll-mt-36">
+                    <ExperienceCta
+                      departments={reviewDepartments}
+                      buttonClassName="inline-flex rounded-lg border border-brand-200 bg-brand-50 px-4 py-2 text-xs font-bold text-brand-800  transition hover:-translate-y-0.5"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -213,20 +253,30 @@ export default async function DepartmentsPage({
                 <EmptyState
                   title="לא נמצאו תוכניות תואמות"
                   description="נסו לבחור תחום התמחות אחר, להסיר אזור או לפתוח את הסינון."
-                  ctaHref={selectedSpecialtyId ? `/departments?specialty=${selectedSpecialtyId}` : "/departments"}
+                  ctaHref={
+                    selectedSpecialtyId
+                      ? `/departments?specialty=${selectedSpecialtyId}`
+                      : "/departments"
+                  }
                   ctaLabel="איפוס סינון"
+                  filterReset
                 />
               ) : selectedSpecialtyId ? (
-                <DepartmentCompareProvider
+                <DepartmentCompareProvider layout="sidebar"
                   specialtyId={selectedSpecialtyId}
                   isAuthenticated={Boolean(session)}
                 >
-                  <div className="grid gap-4">
+                  <div className="directory-cards grid gap-4 md:grid-cols-2">
                     {departments.map((department) => {
-                      const compareOption = compareOptionsByDepartmentId.get(department.id);
+                      const compareOption = compareOptionsByDepartmentId.get(
+                        department.id,
+                      );
 
                       return compareOption ? (
-                        <CompareSelectableShell key={department.id} option={compareOption}>
+                        <CompareSelectableShell
+                          key={department.id}
+                          option={compareOption}
+                        >
                           <DepartmentCard
                             department={department}
                             showFavoriteButton={Boolean(session)}
@@ -245,7 +295,7 @@ export default async function DepartmentsPage({
                   </div>
                 </DepartmentCompareProvider>
               ) : (
-                <div className="grid gap-4">
+                <div className="directory-cards grid gap-4 md:grid-cols-2">
                   {departments.map((department) => (
                     <DepartmentCard
                       key={department.id}

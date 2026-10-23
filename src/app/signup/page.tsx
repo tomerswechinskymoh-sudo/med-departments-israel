@@ -1,25 +1,41 @@
+import { getMaxUploadMbLabel } from "@/lib/uploads";
+import Link from "next/link";
+import { ApprovedBrand } from "@/components/layout/approved-brand";
 import { PageShell } from "@/components/layout/page-shell";
-import { Card } from "@/components/ui/card";
+import { AuthAside } from "@/components/layout/auth-aside";
 import { SignupForm } from "@/components/forms/signup-form";
 import { getDepartmentOptions } from "@/lib/queries";
-import { siteIdentity } from "@/lib/brand-copy";
-
+export const metadata = {
+  title: "הרשמה | hitmachut.org",
+  alternates: { canonical: "/signup" },
+  robots: { index: false, follow: true },
+};
 export default async function SignupPage() {
   const departments = await getDepartmentOptions();
-
   return (
-    <PageShell className="flex min-h-[76vh] items-center justify-center bg-[radial-gradient(circle_at_top_left,#dff4ff,transparent_34%),linear-gradient(180deg,#f8fbff_0%,#eef6f8_100%)] px-4 py-12">
-      <div className="mx-auto w-full max-w-4xl">
-        <Card className="rounded-[2rem] border border-white/80 bg-white/92 p-7 shadow-2xl shadow-brand-900/10 backdrop-blur md:p-9">
-          <div className="text-center">
-            <p className="text-sm font-bold text-brand-600">פתיחת חשבון</p>
-            <h1 className="mt-2 text-4xl font-black tracking-tight text-ink">הצטרפות לפלטפורמה</h1>
-            <p className="mt-2 text-sm text-slate-600">מידע על הכשרה רפואית בישראל ב־<span dir="ltr">{siteIdentity.name}</span></p>
-          </div>
+    <PageShell className="account-page">
+      <div className="auth-shell auth-shell--signup">
+        <section className="auth-panel">
+          <ApprovedBrand placement="account" />
+          <p className="eyebrow">פתיחת חשבון</p>
+          <h1>מצטרפים לדרך להתמחות</h1>
+          <p>
+            פרטי חשבון, רקע מקצועי ואימות. הגישה לפרטים מוגנים כפופה לאישור.
+          </p>
           <div className="mt-6">
-            <SignupForm departments={departments} />
+            <SignupForm
+              departments={departments}
+              maxUploadMb={Math.min(5, getMaxUploadMbLabel())}
+            />
           </div>
-        </Card>
+          <p className="mt-6 text-sm">
+            כבר יש חשבון?{" "}
+            <Link className="text-link" href="/login">
+              התחברות
+            </Link>
+          </p>
+        </section>
+        <AuthAside variant="signup" />
       </div>
     </PageShell>
   );

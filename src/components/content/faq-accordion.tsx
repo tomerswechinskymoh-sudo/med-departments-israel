@@ -1,80 +1,212 @@
 "use client";
-
+import {
+  ProductIcon,
+  type ProductIconName,
+} from "@/components/ui/product-icon";
+import Link from "next/link";
 import { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { QuestionSparkIcon } from "@/components/ui/med-icons";
-import { PUBLIC_CONTACT_EMAIL, PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
-
-type FaqItem = {
-  title: string;
-  body: readonly string[];
-};
-
+import { PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
+type FaqItem = { title: string; body: readonly string[] };
+const extras = [
+  {
+    title: "איך משתמשים בהשוואת מחלקות?",
+    body: [
+      "במאגר המחלקות בוחרים עד ארבע מחלקות מאותו תחום. בחירת המחלקות נשמרת במכשיר; טבלת ההשוואה זמינה לאחר התחברות. נתונים חסרים מסומנים במפורש.",
+    ],
+    category: "שימוש באתר",
+    href: "/departments",
+  },
+  {
+    title: "האם צריך חשבון כדי לצפות במידע?",
+    body: [
+      "חיפוש המחלקות ומידע ציבורי זמינים ללא חשבון. שמירת מחלקות, השוואה ופרטים מוגנים כפופים להתחברות ולהרשאות. יצירת חשבון כוללת אימות מייל ובדיקת הסטטוס המקצועי.",
+    ],
+    category: "הרשמה ואימות",
+    href: "/signup",
+  },
+  {
+    title: "אילו קבצים ניתן להעלות לאימות?",
+    body: [
+      "PDF, JPG או PNG בהתאם למגבלת הגודל שמופיעה בטופס ההרשמה. העלו רק מסמך הנדרש לאימות הסטטוס המקצועי. המסמך פרטי ואינו נשלח לאנליטיקה.",
+    ],
+    category: "הרשמה ואימות",
+    href: "/privacy",
+  },
+  {
+    title: "מהו שאלון בחירת התמחות (Beta)?",
+    body: [
+      "כלי ניסיוני בן 30 שאלות ושישה תחומי עניין. הוא טרם עבר תיקוף מדעי ואינו מחליף ייעוץ מקצועי. כל השאלות נדרשות לדירוג; דילוג אינו תשובה ניטרלית.",
+    ],
+    category: "שאלון Beta",
+    href: "/career-fit",
+  },
+  {
+    title: "היכן נשמרות תשובות השאלון?",
+    body: [
+      "במכשיר זה, למשך עד 30 יום מהשינוי האחרון. התשובות, הציונים וההמלצות אינם נשלחים לשרת או לאנליטיקה. אפשר למחוק אותם מתוך השאלון.",
+    ],
+    category: "פרטיות",
+    href: "/cookies",
+  },
+  {
+    title: "האם נתון חסר אומר שהמחלקה פחות טובה?",
+    body: [
+      "לא. נתון חסר אינו אפס. חשוב לבדוק את המקור, שנת הנתון והאם הוא מתייחס למחלקה או לכלל תחום ההתמחות.",
+    ],
+    category: "מקורות מידע",
+    href: "/about",
+  },
+];
 export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
-  const [openIndex, setOpenIndex] = useState(0);
-
+  const [query, setQuery] = useState(""),
+    [category, setCategory] = useState("הכל");
+  const all = [
+    ...items.map((i) => ({
+      ...i,
+      category: i.title.includes("נתונ")
+        ? "מקורות מידע"
+        : i.title.includes("אנונימ")
+          ? "פרטיות"
+          : "שימוש באתר",
+      href: "/contact",
+    })),
+    ...extras,
+  ];
+  const filtered = all.filter(
+    (i) =>
+      (category === "הכל" || i.category === category) &&
+      `${i.title} ${i.body.join(" ")}`.includes(query.trim()),
+  );
   return (
-    <div className="space-y-4">
-      {items.map((item, index) => {
-        const isOpen = index === openIndex;
-
-        return (
-          <Card
-            key={item.title}
-            id={`faq-${index + 1}`}
-            className={`overflow-hidden rounded-[1.5rem] border transition ${isOpen ? "border-brand-200 shadow-panel" : "border-brand-100/80"}`}
+    <>
+      <label className="faq-search">
+        <span className="sr-only">חיפוש בשאלות נפוצות</span>
+        <input
+          type="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="חפשו שאלה או נושא…"
+        />
+        {query && (
+          <button
+            type="button"
+            className="text-link"
+            onClick={() => setQuery("")}
           >
-            <button
-              type="button"
-              onClick={() => setOpenIndex(isOpen ? -1 : index)}
-              className="flex w-full items-center justify-between gap-4 px-5 py-5 text-right"
-              aria-expanded={isOpen}
-              aria-controls={`faq-panel-${index + 1}`}
+            ניקוי
+          </button>
+        )}
+      </label>
+      <div className="faq-categories" role="group" aria-label="קטגוריות">
+        {[
+          "הכל",
+          "שימוש באתר",
+          "מקורות מידע",
+          "הרשמה ואימות",
+          "פרטיות",
+          "שאלון Beta",
+        ].map((c) => (
+          <button
+            key={c}
+            aria-pressed={category === c}
+            onClick={() => setCategory(c)}
+          >
+            {c !== "הכל" && (
+              <ProductIcon
+                name={
+                  (
+                    {
+                      "שימוש באתר": "search",
+                      "מקורות מידע": "database",
+                      "הרשמה ואימות": "people",
+                      פרטיות: "shield",
+                      "שאלון Beta": "compare",
+                    } as Record<string, ProductIconName>
+                  )[c]
+                }
+              />
+            )}
+            {c}
+          </button>
+        ))}
+      </div>
+      <p className="mb-4 text-sm text-slate-600" role="status">
+        {filtered.length} תשובות
+      </p>
+      <div className="faq-grid">
+        <div>
+          {filtered.map((item, index) => (
+            <details
+              className="faq-item"
+              key={item.title}
+              open={query || index === 0 ? true : undefined}
             >
-              <div className="flex items-center gap-4">
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-50 text-brand-900">
-                  <QuestionSparkIcon className="h-5 w-5" />
-                </span>
-                <div>
-                  <p className="text-lg font-bold text-ink">{item.title}</p>
-                </div>
+              <summary>{item.title}</summary>
+              <div className="faq-answer">
+                {item.body.map((p) => (
+                  <p key={p} className="mb-3">
+                    {p}
+                  </p>
+                ))}
+                <Link className="text-link" href={item.href}>
+                  למידע נוסף ←
+                </Link>
               </div>
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-100 bg-brand-50 text-lg font-semibold text-brand-900">
-                {isOpen ? "−" : "+"}
-              </span>
-            </button>
-
-            <div
-              id={`faq-panel-${index + 1}`}
-              className={`grid transition-[grid-template-rows,opacity] duration-200 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-80"}`}
-            >
-              <div className="overflow-hidden">
-                <div className="border-t border-brand-100/70 px-5 pb-5 pt-4">
-                  <div className="space-y-3 text-sm leading-8 text-slate-700">
-                    {item.body.map((paragraph) => (
-                      <p key={paragraph}>
-                        {paragraph.includes(PUBLIC_CONTACT_EMAIL) ? (
-                          <>
-                            {paragraph.replace(PUBLIC_CONTACT_EMAIL, "")}
-                            <a
-                              href={PUBLIC_CONTACT_MAILTO}
-                              className="font-bold text-brand-800 underline underline-offset-4"
-                            >
-                              {PUBLIC_CONTACT_EMAIL}
-                            </a>
-                          </>
-                        ) : (
-                          paragraph
-                        )}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            </details>
+          ))}
+          {!filtered.length && (
+            <div className="rounded-xl border bg-white p-6">
+              <h2 className="font-bold">לא נמצאה תשובה מתאימה</h2>
+              <p className="my-3">נסו ניסוח אחר או בחרו בכל הקטגוריות.</p>
+              <button
+                className="button-link secondary"
+                onClick={() => {
+                  setQuery("");
+                  setCategory("הכל");
+                }}
+              >
+                איפוס החיפוש
+              </button>
             </div>
-          </Card>
-        );
-      })}
-    </div>
+          )}
+        </div>
+        <aside className="faq-aside">
+          <section className="faq-contact">
+            <span className="icon-tile">
+              <ProductIcon name="mail" />
+            </span>
+            <h2>עדיין יש לכם שאלות?</h2>
+            <p>
+              אנחנו כאן לעזור. אפשר לפנות עם שאלה, תיקון מידע או הצעה לשיפור.
+            </p>
+            <a className="button-link" href={PUBLIC_CONTACT_MAILTO}>
+              <ProductIcon name="mail" />
+              פנייה באמצעות אימייל
+            </a>
+          </section>
+          <section>
+            <ProductIcon name="database" />
+            <h2>שקיפות ואמינות המידע</h2>
+            <p>
+              לצד הנתונים חשוב להבין מהיכן הגיעו, מה הם מתארים ומה עדיין חסר.
+            </p>
+            <Link className="text-link" href="/about">
+              למידע על המקורות ←
+            </Link>
+          </section>
+          <section>
+            <ProductIcon name="shield" />
+            <h2>פרטיות והגנת מידע</h2>
+            <p>
+              מסמכי האימות אינם מוצגים לציבור. קראו על המידע שנשמר ועל הבחירות
+              שלכם.
+            </p>
+            <Link className="text-link" href="/privacy">
+              למדיניות הפרטיות ←
+            </Link>
+          </section>
+        </aside>
+      </div>
+    </>
   );
 }

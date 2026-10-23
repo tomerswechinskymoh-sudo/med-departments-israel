@@ -1,6 +1,6 @@
 export default function DepartmentsLoading() {
   return (
-    <main className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <main aria-busy="true" aria-label="טעינת נתוני המחלקות" className="mx-auto min-h-screen max-w-7xl px-4 py-16 md:px-6">
       <div className="grid gap-6 md:grid-cols-3">
         {Array.from({ length: 6 }).map((_, index) => (
           <div
