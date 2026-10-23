@@ -1,6 +1,12 @@
-import { StaticPage } from "@/components/content/static-page";
-import { staticPages } from "@/lib/static-pages";
+import { PolicyPage } from "@/components/content/policy-page";
+import policies from "@/content/legal-policies.json";
+
+export const metadata = {
+  title: `${policies.privacy.title} | Hitmachut.org`,
+  description: policies.privacy.description,
+  alternates: { canonical: "/privacy" },
+};
 
 export default function PrivacyPage() {
-  return <StaticPage {...staticPages.privacy} />;
+  return <PolicyPage document={policies.privacy} />;
 }

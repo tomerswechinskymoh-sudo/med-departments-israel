@@ -1,0 +1,69 @@
+.page { max-width: 1180px; color: #172c51; padding-top: 32px; padding-bottom: 48px; }
+.hero { padding: clamp(24px, 5vw, 52px); border: 1px solid #d9e7f2; border-radius: 24px; background: linear-gradient(120deg, #f0f8ff, #fff 65%); }
+.eyebrow { color: #096485; font-size: 14px; font-weight: 800; margin: 0 0 12px; }
+.hero h1 { font-size: clamp(32px, 4.4vw, 52px); line-height: 1.15; font-weight: 850; letter-spacing: -.025em; margin: 0; }
+.description { max-width: 65ch; font-size: 19px; line-height: 1.8; margin: 20px 0; color: #425571; }
+.date { font-size: 14px; color: #50617b; margin: 0; }
+.summary { margin: 24px 0 36px; border-inline-start: 4px solid #0b8b93; padding: 24px 28px; background: #f1faf9; border-radius: 4px 16px 16px 4px; }
+.summary h2, .contact h2 { font-size: 22px; font-weight: 800; margin: 0 0 12px; }
+.summary ul { display: grid; gap: 10px; list-style: disc; padding-inline-start: 22px; margin: 0; line-height: 1.8; }
+.summary > p { font-size: 13px; color: #52657b; margin: 16px 0 0; }
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); align-items: start; gap: 42px; }
+.toc { position: sticky; top: 115px; border: 1px solid #dce6ef; border-radius: 16px; padding: 20px; background: #fff; }
+.toc h2 { font-size: 17px; font-weight: 800; margin: 0 0 12px; }
+.toc ol { list-style: decimal; padding-inline-start: 20px; margin: 0; color: #52657b; }
+.toc li { padding: 3px 0; font-size: 14px; line-height: 1.6; }
+.toc a { display: inline-block; padding: 3px 2px; color: #294b73; text-underline-offset: 4px; }
+.toc a:hover { text-decoration: underline; }
+.article { min-width: 0; max-width: 78ch; }
+.section { padding-bottom: 32px; margin-bottom: 28px; border-bottom: 1px solid #e0e8ef; }
+.section h2 { display: flex; align-items: baseline; gap: 12px; margin: 0 0 18px; font-size: 25px; font-weight: 800; line-height: 1.45; scroll-margin-top: 130px; }
+.number { font-size: 14px; font-weight: 700; color: #086f77; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.section p, .section li { font-size: 17px; line-height: 1.95; color: #364961; overflow-wrap: anywhere; }
+.section p { margin: 0 0 16px; }
+.section > ul { list-style: disc; padding-inline-start: 24px; margin: 18px 0; }
+.section li + li { margin-top: 10px; }
+.section a { color: #075dad; text-decoration: underline; text-underline-offset: 4px; }
+.page a:focus-visible, .section h2:focus { outline: 3px solid #087b90; outline-offset: 5px; border-radius: 3px; }
+.section h2:focus:not(:focus-visible) { outline: none; }
+.tableWrapper { min-width: 0; margin-top: 24px; }
+.table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 14px; line-height: 1.8; overflow-wrap: anywhere; }
+.table caption, .tableCaption { text-align: start; font-size: 15px; font-weight: 700; padding-bottom: 12px; color: #294b73; }
+.table th, .table td { padding: 14px 10px; border: 1px solid #d8e4ee; text-align: start; vertical-align: top; }
+.table thead { background: #edf5fb; }
+.table tbody th { background: #f7fafc; font-weight: 700; }
+.table td { color: #364961; }
+.identifier { display: block; overflow-wrap: anywhere; text-align: start; margin-bottom: 6px; font-size: .9em; }
+.mobileTable { display: none; }
+.contact { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; margin-top: 16px; background: #edf5fb; padding: 28px; border-radius: 20px; }
+.contact p { color: #425571; line-height: 1.8; margin: 0; }
+.contact a { font-weight: 700; color: #075dad; text-decoration: underline; text-underline-offset: 4px; overflow-wrap: anywhere; }
+.policies { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 28px; padding: 28px 0 0; font-size: 14px; }
+.policies a { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 1000px) { .layout { grid-template-columns: minmax(0,1fr); gap: 32px; } .toc { position: static; } .toc ol { columns: 2; column-gap: 32px; } .toc li { break-inside: avoid; } .article { max-width: none; } }
+@media (max-width: 600px) {
+  .page { padding-top: 20px; } .hero { border-radius: 18px; padding: 26px 20px; }
+  .description { font-size: 17px; } .summary { padding: 20px; margin-bottom: 28px; }
+  .toc ol { columns: auto; } .section h2 { font-size: 23px; gap: 10px; }
+  .section p, .section li { font-size: 16px; line-height: 1.95; }
+  .table { display: none; } .mobileTable { display: block; }
+  .mobileTable dl { border: 1px solid #d8e4ee; border-radius: 12px; margin: 0 0 16px; padding: 18px; background: #f7fafc; }
+  .mobileTable dl > div + div { margin-top: 14px; }
+  .mobileTable dt { font-size: 13px; font-weight: 700; color: #294b73; margin-bottom: 3px; }
+  .mobileTable dd { font-size: 15px; line-height: 1.8; color: #364961; margin: 0; overflow-wrap: anywhere; }
+  .contact { padding: 22px 20px; } .contact a { font-size: 14px; }
+}
+@media print {
+  .page { max-width: none; padding: 0; color: #000; }
+  .page ~ footer { display: none; }
+  .hero { border: 0; padding: 0 0 20px; background: none; }
+  .hero h1 { font-size: 28pt; } .description { font-size: 12pt; }
+  .toc, .policies { display: none; } .layout { display: block; }
+  .summary { background: none; border: 1px solid #aaa; padding: 16px; }
+  .article { max-width: none; } .section { margin-bottom: 14px; padding-bottom: 14px; }
+  .section h2 { font-size: 16pt; break-after: avoid; }
+  .section p, .section li { color: #000; font-size: 11pt; line-height: 1.7; orphans: 3; widows: 3; }
+  .table { display: table; font-size: 9pt; } .mobileTable { display: none; }
+  .table tr, .contact { break-inside: avoid; } .table thead { display: table-header-group; }
+  .contact { background: none; border: 1px solid #aaa; padding: 16px; }
+}

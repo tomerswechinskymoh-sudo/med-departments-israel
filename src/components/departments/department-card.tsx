@@ -53,11 +53,11 @@ function DataPill({
 }) {
   return (
     <div
-      className="rounded-xl border border-slate-100 bg-slate-50 px-3 py-2"
+      className="department-residents-kpi rounded-xl border border-slate-100 bg-slate-50 px-3 py-2"
       title={helper}
     >
       <p className="card-data-label"><ProductIcon name="people"/>{label}</p>
-      <p className="mt-1 text-sm font-black text-ink">{value}</p>
+      <p className="department-residents-value mt-1 text-sm font-black text-ink">{value}</p>
       {helper ? (
         <p className="mt-0.5 truncate text-[0.65rem] font-semibold text-slate-600">
           {helper}
@@ -409,7 +409,7 @@ export function DepartmentCard({
 
           {!isRow ? (
             <div className="department-data-pills">
-              <div className="department-data-pill"><span><ProductIcon name="people"/>מתמחים פעילים</span><strong>{department.residentsCount ?? "אין נתון"}</strong></div>
+              <div className="department-data-pill"><span><ProductIcon name="people"/>מתמחים פעילים</span><strong className="department-residents-value">{department.residentsCount ?? "אין נתון"}</strong></div>
               <div className="department-data-pill"><span><ProductIcon name="award"/>מעבר שלב א׳</span><strong>{typeof department.shlavAlephPassRate === "number" ? `${Math.round(department.shlavAlephPassRate).toLocaleString("he-IL")}%` : "אין נתון"}</strong></div>
             </div>
           ) : null}

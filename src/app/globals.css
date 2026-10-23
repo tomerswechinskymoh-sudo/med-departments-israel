@@ -3454,3 +3454,10 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
   .header-inner .public-nav { min-width: 0; flex-wrap: wrap; row-gap: 6px; }
   .header-account { flex-shrink: 0; }
 }
+
+/* V6: presentation only; directory-scoped to preserve other page layouts. */
+.directory-page .dashboard-duration-pair { gap: 16px; }
+.directory-page .dashboard-duration-pair > div { flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 4px; min-width: 0; }
+.directory-page .dashboard-duration-pair > div strong { font-size: clamp(23px, 2.2vw, 28px); line-height: 1.35; overflow-wrap: anywhere; }
+.directory-page .department-card .department-residents-value { display: block; font-size: clamp(30px, 2.7vw, 36px); font-weight: 850; line-height: 1.25; font-variant-numeric: tabular-nums; color: #172c51; overflow-wrap: anywhere; }
+.directory-page .department-residents-kpi { min-width: 0; }

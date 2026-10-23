@@ -1,6 +1,12 @@
-import { StaticPage } from "@/components/content/static-page";
-import { staticPages } from "@/lib/static-pages";
+import { PolicyPage } from "@/components/content/policy-page";
+import policies from "@/content/legal-policies.json";
+
+export const metadata = {
+  title: `${policies.accessibility.title} | Hitmachut.org`,
+  description: policies.accessibility.description,
+  alternates: { canonical: "/accessibility" },
+};
 
 export default function AccessibilityPage() {
-  return <StaticPage {...staticPages.accessibility} />;
+  return <PolicyPage document={policies.accessibility} />;
 }
