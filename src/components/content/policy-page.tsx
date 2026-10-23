@@ -66,8 +66,8 @@ export function PolicyPage({ document }: { document: PolicyDocument }) {
         </article>
       </div>
       <aside className={styles.contact} aria-labelledby="policy-contact-title">
-        <div><h2 id="policy-contact-title">יש שאלה או בקשה?</h2><p>תומר סבצ&apos;ינסקי — מייסד האתר והגורם האחראי להפעלתו בשלב הנוכחי. לפניות בנושאי פרטיות, זכויות, נגישות ותוכן האתר.</p></div>
-        <a href={PUBLIC_CONTACT_MAILTO}><bdi>{PUBLIC_CONTACT_EMAIL}</bdi></a>
+        <div><h2 id="policy-contact-title">פניות בנוגע לאתר</h2><p>לשאלות על פרטיות, זכויות, נגישות ותוכן האתר, אפשר לפנות לכתובת המענה של האתר.</p></div>
+        <a href={PUBLIC_CONTACT_MAILTO}><bdi dir="ltr">{PUBLIC_CONTACT_EMAIL}</bdi></a>
       </aside>
       <nav className={styles.policies} aria-label="מסמכי מדיניות נוספים">
         <Link href="/privacy">פרטיות</Link><Link href="/cookies">עוגיות ואחסון מקומי</Link><Link href="/accessibility">נגישות</Link><Link href="/terms">תנאי שימוש</Link>

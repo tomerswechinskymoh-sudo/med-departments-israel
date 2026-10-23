@@ -714,6 +714,20 @@ export function SignupForm({
       ) : null}
 
       <h2 className="form-section-title">אימות הסטטוס המקצועי</h2>
+      <div className="rounded-2xl border border-brand-100 bg-white p-4 text-sm leading-7 text-slate-700">
+        <p>
+          ההרשמה ומסירת המסמך הן לבחירתכם. פרטי החשבון והמסמך משמשים
+          להפעלת החשבון ולאימות הסטטוס המקצועי; ללא פרטי החובה והאימות לא
+          ניתן להשלים הרשמה ולקבל את הגישה התלויה בהם. הטלפון הוא שדה רשות.
+          מסמך האימות אינו מוצג לציבור, ואין מחיקה אוטומטית שלו בתום הבדיקה.
+        </p>
+        <p>
+          <Link className="underline" href="/privacy#scope">זהות הגורם האחראי ודרכי הפנייה</Link>,{" "}
+          <Link className="underline" href="/privacy#providers">ספקי השירות ומקבלי המידע</Link>{" "}
+          ו־<Link className="underline" href="/privacy#rights">זכויות עיון ותיקון</Link>{" "}
+          מפורטים במדיניות הפרטיות. העלו רק מידע הנחוץ לאימות, ללא פרטי מטופלים.
+        </p>
+      </div>
       <div className="rounded-2xl border border-brand-100 bg-brand-50/60 p-4">
         <label
           htmlFor="verification-file"

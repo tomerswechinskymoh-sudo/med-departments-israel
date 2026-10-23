@@ -6,7 +6,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import { PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
-type FaqItem = { title: string; body: readonly string[] };
+type FaqItem = { title: string; body: readonly string[]; href?: string };
 const extras = [
   {
     title: "איך משתמשים בהשוואת מחלקות?",
@@ -68,7 +68,7 @@ export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
         : i.title.includes("אנונימ")
           ? "פרטיות"
           : "שימוש באתר",
-      href: "/contact",
+      href: i.href ?? "/contact",
     })),
     ...extras,
   ];
