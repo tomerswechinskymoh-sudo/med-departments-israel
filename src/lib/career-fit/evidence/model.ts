@@ -19,11 +19,11 @@ export const israeli = israeliData as Item[];
 export const mms = mmsData as Item[];
 export const crosswalk = crosswalkData as Crosswalk[];
 export const itemsFor = (mode:Mode):readonly Item[] => mode==='quick'?medical:[...medical,...israeli,...mms];
-export const interestChoices = ['בכלל לא','מעט','לא בטוח/ה','במידה רבה','במידה רבה מאוד'];
+export const interestChoices = ['בכלל לא','במידה מעטה','במידה בינונית','במידה רבה','במידה רבה מאוד'];
 export const importanceChoices = ['בכלל לא חשוב','חשוב מעט','חשוב במידה בינונית','חשוב במידה רבה','חשוב במידה רבה מאוד'];
 export const sectionsFor = (mode:Mode) => mode==='quick'
  ? RIASEC.map((d,i)=>({id:d,label:interestLabels[d],start:i*5,end:(i+1)*5}))
  : [{id:'medical',label:'אופי העבודה הרפואית שמושך אותי',start:0,end:30},{id:'israeli',label:'מה חשוב לי בבחירת התמחות',start:30,end:56},{id:'mmsccq',label:'קריירה, אורח חיים והכשרה',start:56,end:82}];
 export const disclaimer = 'השאלון נועד לסייע בחשיבה על התאמה בין ההעדפות שלכם לבין תחומי התמחות אפשריים. הוא אינו מהווה ייעוץ אישי, אינו מחליף התנסות קלינית או שיקול דעת מקצועי, ואינו מבטיח קבלה להתמחות, שביעות רצון או הצלחה בתחום.';
-export const fitDisclaimer = 'מדד ההתאמה משווה את דפוס תחומי העניין שלכם למאפייני העבודה של התחום ואינו מהווה הסתברות לקבלה או הצלחה.';
+export const fitDisclaimer = 'הציון מתוך 100 מבטא דמיון מחושב בין דפוס תחומי העניין שלכם לפרופיל התחום. הוא אינו הסתברות לקבלה להתמחות או הערכת הצלחה עתידית. זהו כלי Beta שטרם עבר תיקוף מדעי מלא.';
 export const onetNotice = 'This application includes information from the O*NET Career Exploration Tools by the U.S. Department of Labor, Employment and Training Administration (USDOL/ETA). Used under the O*NET Tools Developer License. O*NET® is a trademark of USDOL/ETA. Hitmachut has modified all or some of this information. USDOL/ETA has not approved, endorsed, or tested these modifications.';

@@ -20,6 +20,8 @@ import {
   type Mode,
   type AnswerMap,
 } from "@/lib/career-fit/evidence/model";
+import { VERSION as CATALOG_VERSION } from "@/lib/career-fit/config";
+import type { Catalog } from "@/lib/career-fit/scoring";
 import { explainSpecialty } from "@/lib/career-fit/evidence/explanation";
 import { answered, rankSpecialties } from "@/lib/career-fit/evidence/scoring";
 import {
@@ -169,7 +171,7 @@ export function EvidenceQuestionnaire() {
                 const position = s.start + n,
                   done = answered(q, answers),
                   skipped = draft?.skipped.includes(q.id),
-                  status = done ? "נענתה" : skipped ? "דולגה" : "טרם נענתה";
+                  status = done ? "נענתה" : draft?.uncertain.includes(q.id) ? "לא בטוח/ה" : skipped ? "דולגה" : "טרם נענתה";
                 return (
                   <button
                     type="button"
@@ -270,6 +272,14 @@ export function EvidenceQuestionnaire() {
           למחוק אותן בסיום.
         </p>
       )}
+      {draft && draft.legacyMidpoints.length > 0 && (
+        <section aria-label="בדיקת תשובות מטיוטה קודמת" className="rounded-xl border border-brand-200 bg-brand-50 p-4 text-sm">
+          <p>בטיוטה הקודמת בחרתם ״לא בטוח/ה״ באמצע הסולם. הערכים והציונים נשמרו כפי שהיו. כעת אפשר לבחור ״במידה בינונית״ או ״לא בטוח/ה״ בנפרד, ללא ציון. מומלץ לבדוק את השאלות הבאות:</p>
+          <div className="flex flex-wrap gap-3">
+            {draft.legacyMidpoints.map(id => <button key={id} type="button" className={link} onClick={() => navigate(items.findIndex(q => q.id === id))}>שאלה {items.findIndex(q => q.id === id) + 1}</button>)}
+          </div>
+        </section>
+      )}
       {!ready && <p role="status">טוענים את השאלון השמור…</p>}
       {ready && stage === "intro" && (
         <>
@@ -338,8 +348,8 @@ export function EvidenceQuestionnaire() {
               className="my-3 block h-2 w-full overflow-hidden rounded-full accent-teal-700 [&::-webkit-progress-bar]:bg-brand-50 [&::-webkit-progress-value]:bg-teal-700 [&::-moz-progress-bar]:bg-teal-700"
             />
             <p className="text-xs text-slate-600">
-              {items.filter((q) => answered(q, answers)).length} נענו · דילוג
-              נשאר כחסר מידע
+              {items.filter((q) => answered(q, answers)).length} נענו · דילוג ואי־ודאות
+              נשארים כחסר מידע
             </p>
           </section>
           <div className="quiz-workspace grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
@@ -371,7 +381,7 @@ export function EvidenceQuestionnaire() {
                     ? "סוג העבודה הרפואית שמושך אתכם"
                     : "שיקולים בבחירת ההתמחות שלכם"}
                 </p>
-                <fieldset aria-describedby="question-help">
+                <fieldset aria-describedby={item.helper ? "question-help item-help" : "question-help"}>
                   <legend className="w-full">
                     <h2
                       ref={question}
@@ -387,10 +397,10 @@ export function EvidenceQuestionnaire() {
                   >
                     {!item.dimension
                       ? "בחרו תשובה אחת לפי החשיבות עבורכם. ניסיון או ידע שעדיין חסרים אפשר להשאיר ללא תשובה."
-                      : "חשבו על סוג העבודה הרפואית שמעניין אתכם, ולא על מידת הניסיון שלכם כיום. ״לא בטוח/ה״ הוא אמצע הסולם; דילוג נשאר ללא ציון."}
+                      : "חשבו על סוג העבודה הרפואית שמעניין אתכם, ולא על מידת הניסיון שלכם כיום. ״לא בטוח/ה״ ודילוג נשמרים ללא ציון. לקבלת תוצאות יש לחזור ולהשלים תשובה בסולם לכל שאלה."}
                   </p>
                   {item.helper && (
-                    <p className="mb-4 rounded-lg border border-brand-100 bg-brand-50 p-3 text-sm">
+                    <p id="item-help" className="mb-4 rounded-lg border border-brand-100 bg-brand-50 p-3 text-sm">
                       {item.helper}
                     </p>
                   )}
@@ -412,6 +422,7 @@ export function EvidenceQuestionnaire() {
                             name={item.id}
                             value={value}
                             checked={selected}
+                            onClick={() => { if (draft && selected && draft.legacyMidpoints.includes(item.id)) update(respond(draft, value)); }}
                             onChange={() =>
                               draft && update(respond(draft, value))
                             }
@@ -426,6 +437,14 @@ export function EvidenceQuestionnaire() {
                         </label>
                       );
                     })}
+                  </div>
+                  <div className="mt-4 border-t border-slate-100 pt-4">
+                    <button type="button" aria-pressed={draft?.uncertain.includes(item.id) ?? false}
+                      className={`${focus} w-full rounded-xl border-2 px-4 py-3 text-sm sm:w-auto ${draft?.uncertain.includes(item.id) ? "border-brand-700 bg-brand-50 font-semibold text-brand-900" : "border-slate-200 bg-white text-slate-700 hover:border-brand-300"}`}
+                      onClick={() => draft && update(respond(draft, null, "uncertain"))}>
+                      לא בטוח/ה
+                    </button>
+                    {draft?.uncertain.includes(item.id) && <p role="status" className="mt-2 text-sm text-slate-600">נשמר ללא ציון. אפשר להמשיך ולחזור לשאלה לפני חישוב התוצאות.</p>}
                   </div>
                 </fieldset>
                 <div className="mt-5 flex flex-col gap-3 border-t border-slate-100 pt-5 sm:flex-row sm:justify-between">
@@ -621,6 +640,19 @@ function EvidenceResults({
   answers: AnswerMap;
   onEdit: () => void;
 }) {
+  const [specialties, setSpecialties] = useState<Catalog["specialties"]>([]);
+  const [catalogFailed, setCatalogFailed] = useState(false);
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("/api/career-fit/catalog", { signal: controller.signal, credentials: "omit", cache: "no-store" })
+      .then(async response => {
+        if (!response.ok) throw new Error("catalog");
+        const data = await response.json();
+        if (data.version !== CATALOG_VERSION || !Array.isArray(data.specialties)) throw new Error("catalog");
+        setSpecialties(data.specialties.filter((s: { id?: unknown; name?: unknown }) => typeof s.id === "string" && typeof s.name === "string"));
+      }).catch(error => { if (error.name !== "AbortError") setCatalogFailed(true); });
+    return () => controller.abort();
+  }, []);
   const result = rankSpecialties(mode, answers),
     top = result.ranked.filter((r) => r.correlation >= 0).slice(0, 3);
   return (
@@ -678,12 +710,13 @@ function EvidenceResults({
                     <p className="text-sm text-slate-600">
                       מדד התאמה לדפוס העניין
                     </p>
-                    <a
-                      className={link}
-                      href={`#occupation-${r.specialty.code}`}
-                    >
-                      לפרטים על ההתאמה
-                    </a>
+                    <p className="my-3 text-sm text-slate-700">{explainSpecialty(r).shared[0]?.text ?? "כיוון לבירור לפי דפוס תחומי העניין שלכם."}</p>
+                    <FitExplanation row={r} />
+                    {specialties.find(s => s.name === r.specialty.specialty) ? (
+                      <Link className={`${link} mt-3`} prefetch={false} href={`/departments?${new URLSearchParams({ specialty: specialties.find(s => s.name === r.specialty.specialty)!.id })}`}>
+                        למחלקות בתחום {r.specialty.specialty}
+                      </Link>
+                    ) : <p className="mt-3 text-sm text-slate-600">{catalogFailed ? "קישור לתחום אינו זמין כרגע." : specialties.length ? "התחום אינו מופיע כרגע בקטלוג המחלקות." : "טוענים קישור למחלקות בתחום…"} <Link href="/departments" className={link}>לחיפוש מחלקות</Link></p>}
                   </Card>
                 ))}
               </div>
@@ -702,7 +735,6 @@ function EvidenceResults({
               כל התחומים שמופו — לפי מדד התאמה
             </h2>
             {result.ranked.map((r) => {
-              const explanation = explainSpecialty(r);
               return (
                 <article
                   id={`occupation-${r.specialty.code}`}
@@ -730,11 +762,74 @@ function EvidenceResults({
                       style={{ width: `${r.index}%` }}
                     />
                   </div>
+                  <FitExplanation row={r} />
+                </article>
+              );
+            })}
+          </section>
+        </>
+      )}
+      <details className="space-y-5 rounded-2xl border border-brand-100 bg-white p-5">
+        <summary className="min-h-[44px] cursor-pointer text-xl font-bold focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700">פירוט הפרופיל שלכם</summary>
+        <h3 className="font-semibold">ששת תחומי העניין — RIASEC</h3>
+        <div className="grid gap-5 sm:grid-cols-2">
+          {RIASEC.map((d) => (
+            <Band
+              key={d}
+              label={`${d} · ${interestLabels[d]}`}
+              value={result.profile[d].normalized}
+              text={
+                result.profile[d].sum === null
+                  ? `${result.profile[d].count}/${result.profile[d].total} נענו`
+                  : `${result.profile[d].sum}/${result.profile[d].max}`
+              }
+            />
+          ))}
+        </div>
+      </details>
+      <details className="rounded-xl border border-brand-100 bg-white p-5">
+        <summary className="cursor-pointer font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700">
+          <span aria-hidden="true" className="me-2 inline-block text-brand-700">
+            ⌄
+          </span>
+          תחומים ללא דירוג: מיפוי חלקי או חסר
+        </summary>
+        <p className="mt-3 text-sm">
+          היעדר ציון אינו חוסר התאמה. מיפויים משוערים אינם מקבלים את ציון המקצוע
+          הרחב.
+        </p>
+        <ul className="mt-3 space-y-2 text-sm">
+          {crosswalk
+            .filter((c) => c.mapping !== "direct")
+            .map((c) => (
+              <li key={c.specialty}>
+                {c.specialty} —{" "}
+                {c.mapping === "approximate"
+                  ? "מיפוי משוער בלבד, לא משוקלל"
+                  : "אין מיפוי אמין"}
+                {!c.catalog ? " · מקצוע בסיס נוסף" : ""}
+              </li>
+            ))}
+        </ul>
+        <Link className={link} href="/career-fit/sources#coverage">
+          טבלת הכיסוי והמקורות
+        </Link>
+      </details>
+      <p className="text-sm text-slate-600">
+        מדד התאמה להתמחות אינו מדד המחלקה ואינו התאמה להעדפות מחלקה. שלושתם
+        נשארים נפרדים.
+      </p>
+      <EvidenceAttribution />
+    </div>
+  );
+}
+
+function FitExplanation({ row: r }: { row: ReturnType<typeof rankSpecialties>["ranked"][number] }) {
+  const explanation = explainSpecialty(r);
+  return (
                   <details data-fit-explanation>
                     <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-3 rounded-lg font-semibold text-brand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700">
-                      {r.correlation > 0
-                        ? "למה התחום מתאים לך?"
-                        : "מה דומה ומה שונה בפרופיל שלך?"}
+                      למה ההתמחות הזו מתאימה לי?
                       <span aria-hidden="true">⌄</span>
                     </summary>
                     <div className="space-y-4 pt-3">
@@ -786,7 +881,7 @@ function EvidenceResults({
                         className="rounded-xl border border-brand-100 bg-brand-50/40 p-3 sm:p-4"
                       >
                         <summary className="flex min-h-[44px] cursor-pointer items-center justify-between gap-3 rounded-lg font-semibold text-brand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700">
-                          איך חושב המדד?<span aria-hidden="true">⌄</span>
+                          פירוט מתקדם של ההתאמה<span aria-hidden="true">⌄</span>
                         </summary>
                         <div className="space-y-4 pt-3">
                           <h4 className="font-semibold">
@@ -866,63 +961,5 @@ function EvidenceResults({
                       </details>
                     </div>
                   </details>
-                </article>
-              );
-            })}
-          </section>
-        </>
-      )}
-      <Card className="space-y-5">
-        <h2 className="text-2xl font-bold">הפרופיל שלכם</h2>
-        <h3 className="font-semibold">ששת תחומי העניין — RIASEC</h3>
-        <div className="grid gap-5 sm:grid-cols-2">
-          {RIASEC.map((d) => (
-            <Band
-              key={d}
-              label={`${d} · ${interestLabels[d]}`}
-              value={result.profile[d].normalized}
-              text={
-                result.profile[d].sum === null
-                  ? `${result.profile[d].count}/${result.profile[d].total} נענו`
-                  : `${result.profile[d].sum}/${result.profile[d].max}`
-              }
-            />
-          ))}
-        </div>
-      </Card>
-      <details className="rounded-xl border border-brand-100 bg-white p-5">
-        <summary className="cursor-pointer font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-700">
-          <span aria-hidden="true" className="me-2 inline-block text-brand-700">
-            ⌄
-          </span>
-          תחומים ללא דירוג: מיפוי חלקי או חסר
-        </summary>
-        <p className="mt-3 text-sm">
-          היעדר ציון אינו חוסר התאמה. מיפויים משוערים אינם מקבלים את ציון המקצוע
-          הרחב.
-        </p>
-        <ul className="mt-3 space-y-2 text-sm">
-          {crosswalk
-            .filter((c) => c.mapping !== "direct")
-            .map((c) => (
-              <li key={c.specialty}>
-                {c.specialty} —{" "}
-                {c.mapping === "approximate"
-                  ? "מיפוי משוער בלבד, לא משוקלל"
-                  : "אין מיפוי אמין"}
-                {!c.catalog ? " · מקצוע בסיס נוסף" : ""}
-              </li>
-            ))}
-        </ul>
-        <Link className={link} href="/career-fit/sources#coverage">
-          טבלת הכיסוי והמקורות
-        </Link>
-      </details>
-      <p className="text-sm text-slate-600">
-        מדד התאמה להתמחות אינו מדד המחלקה ואינו התאמה להעדפות מחלקה. שלושתם
-        נשארים נפרדים.
-      </p>
-      <EvidenceAttribution />
-    </div>
   );
 }

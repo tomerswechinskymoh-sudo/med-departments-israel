@@ -1,3 +1,4 @@
+import { DUNS100_TITLE, DUNS100_DESCRIPTION, DUNS100_LIST_URL } from "./duns100-presentation";
 export const metricExplanationRegistry = {
   programsCount: {
     label: "מספר תוכניות",
@@ -89,8 +90,10 @@ export const metricExplanationRegistry = {
     defaultExplanation: "יחס בין מספר המועמדויות למספר המשרות כאשר הנתונים זמינים."
   },
   duns100PhysiciansCount: {
-    label: "מספר רופאים ב-DUNS100",
-    defaultExplanation: "רופאים שנספרו מנתוני DUNS100 ומוצגים כאינדיקציה לפעילות או לבולטות מקצועית."
+    label: DUNS100_TITLE,
+    defaultExplanation: DUNS100_DESCRIPTION,
+    defaultSourceLabel: "DUNS100 Medical",
+    defaultSourceUrl: DUNS100_LIST_URL
   },
   medianElectiveDemand: {
     label: "מספר אלקטיביסטים חציוני",

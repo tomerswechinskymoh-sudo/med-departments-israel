@@ -11,6 +11,7 @@ import {
   type ReactNode,
   type RefObject
 } from "react";
+import { DUNS100_MAPPING_NOTE, DUNS100_AGGREGATE_NOTE, DUNS100_METHODOLOGY_URL, DUNS100_LIST_URL, duns100SourceYearLabel } from "@/lib/duns100-presentation";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/ui/modal";
@@ -702,7 +703,7 @@ export function MetricExplanationInfo({
         aria-controls={isInfoOpen ? infoId : undefined}
         title={tooltipText}
         aria-label={`מידע ומקור: ${metricRichTextToPlainText(metricLabel)}`}
-        className="group grid h-7 w-7 cursor-help place-items-center rounded-full border border-slate-200 bg-white text-[0.72rem] font-black text-slate-500 transition hover:border-brand-200 hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-200"
+        className={`group grid ${supportedKey === "duns100PhysiciansCount" ? "h-11 w-11 shrink-0" : "h-7 w-7"} cursor-help place-items-center rounded-full border border-slate-200 bg-white text-[0.72rem] font-black text-slate-500 transition hover:border-brand-200 hover:text-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-200`}
       >
         i
       </button>
@@ -711,9 +712,15 @@ export function MetricExplanationInfo({
           {explanation ? (
             <span className="block"><MetricRichText value={explanation} /></span>
           ) : null}
+          {supportedKey === "duns100PhysiciansCount" && <>
+            <span className="mt-3 block">{DUNS100_MAPPING_NOTE}</span>
+            {!provider?.context.departmentId && <span className="mt-3 block">{DUNS100_AGGREGATE_NOTE}</span>}
+            <span className="mt-3 block">{duns100SourceYearLabel(resolvedSourceLabel)}</span>
+            <a href={DUNS100_METHODOLOGY_URL} target="_blank" rel="noreferrer noopener" className="mt-2 inline-flex min-h-[44px] items-center font-bold text-brand-700 underline">למתודולוגיה הרשמית של DUNS100</a>
+          </>}
           {resolvedSourceLabel ? (
             <span className="mt-1 block">
-              מקור נתונים: <MetricSource label={resolvedSourceLabel} url={resolvedSourceUrl} />
+              מקור נתונים: <MetricSource label={resolvedSourceLabel} url={resolvedSourceUrl ?? (supportedKey === "duns100PhysiciansCount" ? DUNS100_LIST_URL : null)} />
             </span>
           ) : null}
         </span>

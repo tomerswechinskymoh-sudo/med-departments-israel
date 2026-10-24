@@ -1,3 +1,4 @@
+import { DUNS100_TITLE, DUNS100_DESCRIPTION } from "./duns100-presentation";
 import {
   LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
   metadataDisplayAction,
@@ -916,8 +917,8 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
   },
   {
     key: "duns100PhysiciansCount",
-    label: "מספר רופאים ב-DUNS100",
-    description: "רופאים שנספרו מייבוא DUNS100 מאושר",
+    label: DUNS100_TITLE,
+    description: DUNS100_DESCRIPTION,
     unit: "count",
     sourceLabel: "DUNS100",
     calculate: (departments) => {

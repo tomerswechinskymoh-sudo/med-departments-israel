@@ -31,7 +31,7 @@ test('final26 factor assignments independently match both published tables, not 
  }
  for(const removed of ['A2','B6','B7','C10','D18','D19','G33'])assert(!mms.some(i=>i.sourceItemId===removed));
 });
-test('complete source scoring uses sums0–20 in both tracks; unsure2 is scored and skipped is not',()=>{
+test('complete source scoring uses sums0–20 in both tracks; midpoint2 is scored and skipped is not',()=>{
  for(const [mode,items,max] of [['quick',mini,20],['deep',short,20]] as const){
   const a=answers(items,[2,2,2,2,2,2]);for(const p of Object.values(interestProfile(mode,a))){assert.equal(p.sum,max/2);assert.equal(p.normalized,.5);}
   a[items[0].id]=0;assert.notEqual(interestProfile(mode,a).R.sum,null);

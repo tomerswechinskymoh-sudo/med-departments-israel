@@ -1,3 +1,4 @@
+import { DUNS100_TITLE, DUNS100_DESCRIPTION } from "@/lib/duns100-presentation";
 
 import Link from "next/link";
 import { ProfileSectionNav } from "@/components/departments/profile-section-nav";
@@ -2586,16 +2587,13 @@ export default async function DepartmentDetailsPage({
                 />
                 <QuickHighlightCard
                   metricKey="duns100PhysiciansCount"
-                  label={metricLabelFromMetadata(duns100Meta, "DUNS100")}
+                  label={DUNS100_TITLE}
                   value={duns100Value}
                   sourceLabel={metadataSourceLabel(
                     duns100Meta,
                     duns100SourceLabel,
                   )}
-                  tooltip={metadataTooltip(
-                    duns100Meta,
-                    "רופאים שנספרו מנתוני DUNS100 ומוצגים כאינדיקציה לפעילות/בולטות מקצועית.",
-                  )}
+                  tooltip={DUNS100_DESCRIPTION}
                   lastUpdated={duns100LastUpdated}
                   missingText={MISSING_IMPORTED_VALUE}
                   sourceUrl={duns100Meta?.sourceUrl}

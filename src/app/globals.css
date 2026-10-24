@@ -1965,14 +1965,6 @@ details[open] > summary::before {
   background: #e4ecf6;
   color: #16284e;
 }
-.quiz-options label:nth-child(-n + 2) .quiz-choice-number {
-  background: #ffdedf;
-  color: #6c2839;
-}
-.quiz-options label:nth-child(n + 4) .quiz-choice-number {
-  background: #cde4ff;
-  color: #004bad;
-}
 .quiz-options label:has(input:checked) {
   box-shadow: inset 0 0 0 1px var(--blue);
 }

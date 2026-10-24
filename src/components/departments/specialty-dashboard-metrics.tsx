@@ -1,3 +1,4 @@
+import { DUNS100_TITLE, DUNS100_DESCRIPTION } from "@/lib/duns100-presentation";
 
 import { LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL } from "@/lib/metric-display";
 import type { SpecialtyMetricKey, SpecialtyMetricResult } from "@/lib/specialty-metrics";
@@ -70,7 +71,7 @@ export function SpecialtyDashboardMetrics({ specialtyId, specialtyName, metrics,
         const sourceText = (metric: SpecialtyMetricResult) => `${metric.metricLevel === "מחושב" ? "מחושב · " : ""}${metric.sourceLabel ?? "מקור נתונים לא צוין"}`;
         const commonSource = compact.length > 1 && compact.every(metric => sourceText(metric) === sourceText(compact[0])) ? sourceText(compact[0]) : null;
         const renderMetric = (metric: SpecialtyMetricResult) => <article key={metric.key} data-metric-key={metric.key} className={`dashboard-metric ${metric.isPlaceholder ? "dashboard-metric--missing" : ""} ${metric.isHighlighted ? "dashboard-metric--highlighted" : ""}`}>
-          <div className="dashboard-metric-title"><ProductIcon name={icons[metric.key] ?? group.icon}/><h4><MetricContentTitle metricKey={metric.key} fallbackTitle={metric.key === "medianWaitingTime" && metric.label === LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL ? "מרישיון לתחילת התמחות" : metric.label}/></h4><MetricExplanationInfo metricKey={metric.key} metricLabel={metric.label} fallbackText={metric.tooltip ?? metric.description} sourceLabel={metric.sourceLabel ?? "מקור נתונים לא צוין"} sourceUrl={metric.sourceUrl}/></div>
+          <div className="dashboard-metric-title"><ProductIcon name={icons[metric.key] ?? group.icon}/><h4><MetricContentTitle metricKey={metric.key} fallbackTitle={metric.key === "duns100PhysiciansCount" ? DUNS100_TITLE : metric.key === "medianWaitingTime" && metric.label === LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL ? "מרישיון לתחילת התמחות" : metric.label}/></h4><MetricExplanationInfo metricKey={metric.key} metricLabel={metric.key === "duns100PhysiciansCount" ? DUNS100_TITLE : metric.label} fallbackText={metric.key === "duns100PhysiciansCount" ? DUNS100_DESCRIPTION : metric.tooltip ?? metric.description} sourceLabel={metric.sourceLabel ?? "מקור נתונים לא צוין"} sourceUrl={metric.sourceUrl}/></div>
           <MetricValue metric={metric}/>{!(commonSource && compact.includes(metric)) && <p className="dashboard-source">{sourceText(metric)}</p>}
         </article>;
         return items.length > 0 && <section className={`dashboard-group dashboard-group--${index}`} key={group.title}>
