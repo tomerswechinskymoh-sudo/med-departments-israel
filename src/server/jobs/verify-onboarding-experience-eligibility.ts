@@ -10,15 +10,15 @@ type Scenario = {
 
 const scenarios: Scenario[] = [
   {
-    name: "early 6-year student year 4",
-    input: { roleStatus: "medical_student", studentTrack: "six_year", studentYear: 4 },
+    name: "early 6-year student year 3",
+    input: { roleStatus: "medical_student", studentTrack: "six_year", studentYear: 3 },
     expectedEligible: false,
     expectedReviewerType: null,
     expectedCategory: null
   },
   {
-    name: "clinical 6-year student year 5",
-    input: { roleStatus: "medical_student", studentTrack: "six_year", studentYear: 5 },
+    name: "clinical 6-year student year 4",
+    input: { roleStatus: "medical_student", studentTrack: "six_year", studentYear: 4 },
     expectedEligible: true,
     expectedReviewerType: "STUDENT",
     expectedCategory: "student"
@@ -52,11 +52,11 @@ const scenarios: Scenario[] = [
     expectedCategory: "resident_or_physician"
   },
   {
-    name: "specialist",
+    name: "specialist exempt by owner instruction",
     input: { roleStatus: "specialist" },
-    expectedEligible: true,
-    expectedReviewerType: "RESIDENT",
-    expectedCategory: "resident_or_physician"
+    expectedEligible: false,
+    expectedReviewerType: null,
+    expectedCategory: null
   },
   {
     name: "non-medical user",

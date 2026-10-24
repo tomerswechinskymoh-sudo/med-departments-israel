@@ -198,12 +198,30 @@ export const signupSchema = z
     experienceContributionCategory: z.preprocess(
       emptyToUndefined,
       z.enum(["student", "intern", "resident_or_physician"]).optional()
-    )
+    ),
+    experienceContributionReceipt: z.preprocess(emptyToUndefined, z.string().max(512).optional())
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ["confirmPassword"],
     message: "הסיסמאות אינן תואמות."
   });
+
+export const signupRequestSchema = signupSchema.superRefine((data, ctx) => {
+  const requireField = (field: "studentTrack" | "studentYear" | "medicalFaculty" | "onboardingInstitutionId" | "onboardingDepartmentId", message: string) => {
+    if (!data[field]) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [field], message });
+  };
+  if (data.roleStatus === "medical_student") {
+    requireField("studentTrack", "יש לבחור מסלול לימודים.");
+    requireField("studentYear", "יש לבחור שנת לימוד.");
+    requireField("medicalFaculty", "יש לבחור פקולטה לרפואה.");
+  }
+  if (data.roleStatus === "intern" || data.roleStatus === "resident" || data.roleStatus === "specialist") {
+    requireField("onboardingInstitutionId", "יש לבחור בית חולים.");
+  }
+  if (data.roleStatus === "resident" || data.roleStatus === "specialist") {
+    requireField("onboardingDepartmentId", "יש לבחור מחלקה.");
+  }
+});
 
 export const departmentFilterSchema = z.object({
   search: z.preprocess(emptyToUndefined, z.string().optional()),

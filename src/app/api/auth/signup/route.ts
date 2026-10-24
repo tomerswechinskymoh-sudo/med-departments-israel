@@ -5,7 +5,9 @@ import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin } from "@/lib/security";
-import { signupSchema } from "@/lib/validation";
+import { signupRequestSchema } from "@/lib/validation";
+import { getExperienceContributionEligibility } from "@/lib/onboarding-contribution";
+import { readSignupExperienceReceipt, signupExperienceMatches } from "@/lib/server/signup-experience";
 import { assertUserVerificationProofFile, readOptionalFormFile, storeUploadedFile } from "@/lib/uploads";
 import {
   createTokenExpiry,
@@ -50,9 +52,10 @@ export async function POST(request: Request) {
     onboardingInstitutionId: formData.get("onboardingInstitutionId"),
     onboardingDepartmentId: formData.get("onboardingDepartmentId"),
     experienceContributionStatus: formData.get("experienceContributionStatus"),
-    experienceContributionCategory: formData.get("experienceContributionCategory")
+    experienceContributionCategory: formData.get("experienceContributionCategory"),
+    experienceContributionReceipt: formData.get("experienceContributionReceipt") ?? undefined
   };
-  const parsed = signupSchema.safeParse(body);
+  const parsed = signupRequestSchema.safeParse(body);
 
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "קלט לא תקין." }, { status: 400 });
@@ -68,6 +71,35 @@ export async function POST(request: Request) {
       { error: error instanceof Error ? error.message : "קובץ האימות אינו תקין." },
       { status: 400 }
     );
+  }
+
+  const contributionEligibility = getExperienceContributionEligibility(parsed.data);
+  let experienceSubmissionId: string | null = null;
+  if (contributionEligibility.eligible) {
+    experienceSubmissionId = readSignupExperienceReceipt(parsed.data.experienceContributionReceipt);
+    const experienceRequired = () => NextResponse.json(
+      { code: "EXPERIENCE_REQUIRED", error: "כדי להשלים הרשמה יש לשלוח חוויה על מחלקה במסגרת תהליך ההרשמה. לא ניתן לדלג על שלב זה." },
+      { status: 400 }
+    );
+    if (!experienceSubmissionId) return experienceRequired();
+    const submission = await prisma.reviewSubmission.findUnique({
+      where: { id: experienceSubmissionId },
+      select: {
+        email: true,
+        reviewerType: true,
+        roleDetails: true,
+        status: true,
+        consentToContact: true,
+        consentToTerms: true,
+        consentNoPatientInfo: true,
+        verificationFiles: {
+          where: { category: UploadedFileCategory.REVIEW_VERIFICATION_PROOF, isPublic: false },
+          select: { id: true },
+          take: 1
+        }
+      }
+    });
+    if (!signupExperienceMatches(parsed.data, submission)) return experienceRequired();
   }
 
   const email = parsed.data.email.trim().toLowerCase();
@@ -166,8 +198,9 @@ export async function POST(request: Request) {
         medicalFaculty: parsed.data.medicalFaculty ?? null,
         institutionId: parsed.data.onboardingInstitutionId ?? null,
         departmentId: parsed.data.onboardingDepartmentId ?? null,
-        experienceContributionStatus: parsed.data.experienceContributionStatus ?? null,
-        experienceContributionCategory: parsed.data.experienceContributionCategory ?? null
+        experienceContributionStatus: contributionEligibility.eligible ? "submitted" : "not_eligible",
+        experienceContributionCategory: contributionEligibility.category,
+        experienceSubmissionId
       },
       rejectedReregistration: isRejectedReregistration
     }

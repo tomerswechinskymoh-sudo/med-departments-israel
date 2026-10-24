@@ -12,6 +12,8 @@ import { checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
 import { hasValidSameOrigin, sanitizePlainText } from "@/lib/security";
 import { readOptionalFormFile, storeUploadedFile } from "@/lib/uploads";
 import { reviewSubmissionSchema } from "@/lib/validation";
+import { hasSignupExperienceText, SIGNUP_EXPERIENCE_TEXT_REQUIREMENT } from "@/lib/onboarding-contribution";
+import { canIssueSignupExperienceReceipt, createSignupExperienceReceipt } from "@/lib/server/signup-experience";
 import {
   createTokenExpiry,
   createVerificationToken,
@@ -39,6 +41,7 @@ export async function POST(request: Request) {
   }
 
   const verificationDocument = readOptionalFormFile(formData.get("verificationDocument"));
+  const signupContribution = formData.get("signupContribution") === "true";
   const body = {
     departmentId: formData.get("departmentId"),
     reviewerType: formData.get("reviewerType"),
@@ -65,6 +68,20 @@ export async function POST(request: Request) {
 
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "קלט לא תקין." }, { status: 400 });
+  }
+
+  if (signupContribution && (!parsed.data.email || !verificationDocument)) {
+    return NextResponse.json({ error: "חוויה במסגרת הרשמה מחייבת את האימייל ומסמך האימות של ההרשמה." }, { status: 400 });
+  }
+  if (signupContribution && !hasSignupExperienceText({
+    pros: sanitizePlainText(parsed.data.pros),
+    cons: sanitizePlainText(parsed.data.cons),
+    tips: sanitizePlainText(parsed.data.tips)
+  })) {
+    return NextResponse.json({ error: SIGNUP_EXPERIENCE_TEXT_REQUIREMENT }, { status: 400 });
+  }
+  if (signupContribution && !canIssueSignupExperienceReceipt()) {
+    return NextResponse.json({ error: "לא ניתן להשלים את השיתוף כרגע. נסו שוב מאוחר יותר." }, { status: 503 });
   }
 
   if (!verificationDocument && !parsed.data.email) {
@@ -213,5 +230,8 @@ export async function POST(request: Request) {
     }
   }
 
-  return NextResponse.json({ message: "השיתוף נשמר. הוא יעלה רק אחרי בדיקה קצרה." });
+  return NextResponse.json({
+    message: "השיתוף נשמר. הוא יעלה רק אחרי בדיקה קצרה.",
+    signupExperienceReceipt: signupContribution ? createSignupExperienceReceipt(submission.id) : undefined
+  });
 }

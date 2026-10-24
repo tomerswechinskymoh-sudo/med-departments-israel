@@ -1,4 +1,5 @@
 "use client";
+import { hasSignupExperienceText, SIGNUP_EXPERIENCE_TEXT_REQUIREMENT } from "@/lib/onboarding-contribution";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -408,6 +409,7 @@ export function ReviewForm({
   lockReviewerType = false,
   verificationAlreadyProvided = false,
   initialVerificationDocument = null,
+  signupContribution = false,
   onSubmitted
 }: {
   departments: {
@@ -436,9 +438,10 @@ export function ReviewForm({
   lockReviewerType?: boolean;
   verificationAlreadyProvided?: boolean;
   initialVerificationDocument?: File | null;
+  signupContribution?: boolean;
   compact?: boolean;
   showGuidancePanels?: boolean;
-  onSubmitted?: () => void;
+  onSubmitted?: (signupExperienceReceipt?: string) => void;
 }) {
   const router = useRouter();
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -592,6 +595,11 @@ export function ReviewForm({
 
   const onSubmit = handleSubmit(async (values) => {
     setMessage(null);
+    if (signupContribution && !hasSignupExperienceText(values)) {
+      setMessage(SIGNUP_EXPERIENCE_TEXT_REQUIREMENT);
+      setStep(2);
+      return;
+    }
     const formData = new FormData();
     formData.set("departmentId", values.departmentId);
     formData.set("reviewerType", values.reviewerType);
@@ -612,6 +620,7 @@ export function ReviewForm({
     formData.set("consentToContact", String(values.consentToContact));
     formData.set("consentToTerms", String(values.consentToTerms));
     formData.set("consentNoPatientInfo", String(values.consentNoPatientInfo));
+    if (signupContribution) formData.set("signupContribution", "true");
 
     if (effectiveVerificationDocument) {
       formData.set("verificationDocument", effectiveVerificationDocument);
@@ -623,11 +632,15 @@ export function ReviewForm({
     });
 
     const payload = (await response.json().catch(() => null)) as
-      | { error?: string; message?: string }
+      | { error?: string; message?: string; signupExperienceReceipt?: string }
       | null;
 
     if (!response.ok) {
       setMessage(payload?.error ?? "לא הצלחנו לשמור את השיתוף.");
+      return;
+    }
+    if (signupContribution && !payload?.signupExperienceReceipt) {
+      setMessage("לא ניתן לאשר את שליחת החוויה לצורך הרשמה. נסו שוב או פנו לצוות האתר.");
       return;
     }
 
@@ -658,7 +671,7 @@ export function ReviewForm({
     setSelectedInstitutionId(initialInstitutionId);
     setVerificationDocument(null);
     router.refresh();
-    onSubmitted?.();
+    onSubmitted?.(payload?.signupExperienceReceipt);
   });
 
   const stepItems = [
@@ -822,9 +835,9 @@ export function ReviewForm({
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm font-bold text-ink">פרטים אופציונליים</p>
+              <p className="text-sm font-bold text-ink">{signupContribution ? "פרטי קשר ואופן הפרסום" : "פרטים אופציונליים"}</p>
               <p className="mt-1 text-xs leading-6 text-slate-500">
-                אפשר להשאיר פרטים לאימות, ואפשר גם לשלוח בעילום שם.
+                {signupContribution ? "האימייל נלקח מההרשמה ומשמש לשיוך החוויה לחשבון. הטלפון הוא רשות, ואפשר לבחור פרסום ללא שם. הזהות ופרטי האימות נשמרים במערכת." : "אפשר להשאיר פרטים לאימות, ואפשר גם לשלוח בעילום שם."}
               </p>
             </div>
             <div className="grid gap-3 md:grid-cols-3">
@@ -850,6 +863,7 @@ export function ReviewForm({
                 <input
                   {...register("email")}
                   type="email"
+                  readOnly={signupContribution}
                   className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none transition focus:border-brand-300"
                   placeholder="לא חובה"
                 />
@@ -1021,6 +1035,7 @@ export function ReviewForm({
           </div>
 
           <div className="grid gap-5">
+            {signupContribution ? <p className="text-sm leading-7 text-slate-600">{SIGNUP_EXPERIENCE_TEXT_REQUIREMENT}</p> : null}
             <label className="block">
               <span className="mb-2 block text-sm font-semibold text-ink">מה עבד טוב?</span>
               <textarea

@@ -22,7 +22,7 @@ type RoleStatus =
   | "resident"
   | "specialist"
   | "other";
-type ContributionStatus = "not_eligible" | "submitted" | "skipped";
+type ContributionStatus = "not_eligible" | "submitted";
 type MedicalFaculty = (typeof MEDICAL_FACULTY_OPTIONS)[number];
 
 type DepartmentOption = {
@@ -90,7 +90,7 @@ const studentTrackOptions = [
 const studentYearOptions = Array.from({ length: 7 }, (_, index) => index + 1);
 
 const onboardingContributionCopy =
-  "Hitmachut מבוסס על עיקרון פשוט: כולנו נעזרים בניסיון של אחרים, ויכולים לתרום מהניסיון שלנו בחזרה. לכן אנחנו מבקשים ממי שכבר צבר ניסיון קליני לשתף חוויה ממחלקה שבה התנסה, כדי לעזור לאחרים לקבל החלטה מושכלת.";
+  "כדי להשלים את ההרשמה, יש לשתף חוויה אמיתית ממחלקה שבה התנסית. זהו שלב חובה לסטודנטים במסלול שש־שנתי משנה ד׳, במסלול ארבע־שנתי משנה ג׳, לסטאז׳רים ולמתמחים, ולא ניתן לדלג עליו. אפשר לבחור כל מחלקה שבה התנסית ולבקש פרסום ללא שם. החוויה תישלח לבדיקה ולא תפורסם אוטומטית.";
 
 function normalizeOptional(value?: string | number | null) {
   if (value === null || value === undefined) return "";
@@ -113,7 +113,7 @@ export function SignupForm({
     null,
   );
   const [verificationProof, setVerificationProof] = useState<File | null>(null);
-  const [experienceSubmitted, setExperienceSubmitted] = useState(false);
+  const [experienceReceipt, setExperienceReceipt] = useState<{ token: string; context: string } | null>(null);
   const [careerContextError, setCareerContextError] = useState<string | null>(
     null,
   );
@@ -202,6 +202,13 @@ export function SignupForm({
     studentTrack,
     studentYear,
   });
+  const contributionContext = JSON.stringify([
+    email.trim().toLowerCase(),
+    roleStatus,
+    roleStatus === "medical_student" ? studentTrack : null,
+    roleStatus === "medical_student" ? Number(studentYear) : null
+  ]);
+  const experienceSubmitted = experienceReceipt?.context === contributionContext;
 
   const initialRoleDetails = useMemo(
     () => ({
@@ -257,6 +264,12 @@ export function SignupForm({
     setSuccessMessage(null);
     setDevVerificationUrl(null);
 
+    if (contributionEligibility.eligible && !experienceSubmitted) {
+      setFormError("יש לשלוח חוויה על מחלקה כדי להשלים את ההרשמה.");
+      setStep("experience");
+      return;
+    }
+
     if (!verificationProof) {
       setFormError("יש להעלות אישור לצורך אימות.");
       setStep("account");
@@ -281,6 +294,9 @@ export function SignupForm({
     formData.set("onboardingDepartmentId", values.onboardingDepartmentId ?? "");
     formData.set("experienceContributionStatus", contributionStatus);
     formData.set("experienceContributionCategory", contributionEligibility.category ?? "");
+    if (contributionEligibility.eligible && experienceSubmitted && experienceReceipt) {
+      formData.set("experienceContributionReceipt", experienceReceipt.token);
+    }
 
     const response = await fetch("/api/auth/signup", {
       method: "POST",
@@ -291,10 +307,12 @@ export function SignupForm({
       error?: string;
       message?: string;
       verificationUrl?: string;
+      code?: string;
     } | null;
 
     if (!response.ok) {
       setFormError(payload?.error ?? "ההרשמה נכשלה.");
+      if (payload?.code === "EXPERIENCE_REQUIRED") setExperienceReceipt(null);
       setStep("account");
       return;
     }
@@ -334,19 +352,6 @@ export function SignupForm({
 
     await createAccount(values, contributionEligibility.eligible ? "submitted" : "not_eligible");
   });
-
-  function completeAfterSkip() {
-    void handleSubmit(async (values) => {
-      const contextError = validateCareerContext(values);
-      if (contextError) {
-        setCareerContextError(contextError);
-        setStep("account");
-        return;
-      }
-
-      await createAccount(values, "skipped");
-    })();
-  }
 
   function completeAfterContribution() {
     void handleSubmit(async (values) => {
@@ -416,9 +421,12 @@ export function SignupForm({
             }}
             initialRoleDetails={initialRoleDetails}
             lockReviewerType
+            signupContribution
             verificationAlreadyProvided
             initialVerificationDocument={verificationProof}
-            onSubmitted={() => setExperienceSubmitted(true)}
+            onSubmitted={(receipt) => {
+              if (receipt) setExperienceReceipt({ token: receipt, context: contributionContext });
+            }}
           />
         )}
 
@@ -429,14 +437,6 @@ export function SignupForm({
             className="rounded-lg border border-brand-100 px-5 py-3 text-sm font-bold text-brand-800 transition hover:bg-brand-50"
           >
             חזרה לפרטי ההרשמה
-          </button>
-          <button
-            type="button"
-            disabled={isSubmitting}
-            onClick={completeAfterSkip}
-            className="rounded-lg bg-slate-900 px-5 py-3 text-sm font-bold text-white transition hover:bg-slate-800 disabled:opacity-60"
-          >
-            אין לי חוויה לשתף כרגע
           </button>
         </div>
 
@@ -466,7 +466,13 @@ export function SignupForm({
         <span>
           <b>3</b> · אימות
         </span>
+        {contributionEligibility.eligible ? <span><b>4</b> · חוויה על מחלקה</span> : null}
       </div>
+      {contributionEligibility.eligible ? (
+        <p role="status" className="rounded-2xl border border-brand-100 bg-brand-50/70 p-4 text-sm leading-7 text-slate-700">
+          לאחר מילוי הפרטים נדרש שיתוף חוויה אמיתית על מחלקה שבה התנסית כדי להשלים הרשמה. לא ניתן לדלג על שלב זה. אפשר לבחור פרסום ללא שם; החוויה תיבדק לפני פרסום.
+        </p>
+      ) : null}
       <h2 className="form-section-title">פרטי חשבון</h2>
       <div><label htmlFor="signup-fullName" className="mb-2 block text-sm font-semibold text-ink">שם מלא<span className="required-marker" aria-hidden="true">*</span></label>
         <input id="signup-fullName" autoComplete="name" {...register("fullName")} placeholder="לדוגמה: דנה לוי" aria-invalid={Boolean(errors.fullName)} aria-describedby={errors.fullName ? "error-fullName" : undefined} className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 outline-none transition focus:border-brand-300" /></div>
