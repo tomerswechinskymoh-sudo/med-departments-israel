@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "חיפוש מחלקות והתמחויות | hitmachut.org",
+  title: "חיפוש והשוואת מחלקות התמחות | hitmachut.org",
   alternates: { canonical: "/departments" },
 };
 import { PageIntro } from "@/components/ui/page-intro";
@@ -168,8 +168,8 @@ export default async function DepartmentsPage({
     <div className="directory-page">
       <PageShell className="space-y-5 py-5">
         <PageIntro
-          eyebrow="חיפוש מחלקות"
-          title="חיפוש מחלקות והשוואת תוכניות"
+          eyebrow="מאגר המחלקות"
+          title="חיפוש והשוואת מחלקות"
           image="corridor"
           description="חפשו לפי תחום התמחות, מוסד ואזור. בחרו מחלקות כדי להשוות ביניהן, והעמיקו במקורות ובחוויות מהשטח."
         />

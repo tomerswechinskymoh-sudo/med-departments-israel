@@ -172,6 +172,10 @@ details[open] > summary::before {
 .public-nav a:hover {
   color: var(--blue);
 }
+.public-nav a.nav-primary {
+  color: var(--blue);
+  font-weight: 800;
+}
 .header-account {
   display: flex;
   gap: 8px;

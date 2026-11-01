@@ -141,3 +141,19 @@
 .root :global(.footer-brand .wordmark-name) { font-size:30px; }
 .root :global(.footer-brand .wordmark-name>span) { font-size:27px; }
 .root :global(.footer-brand .wordmark-caption) { font-size:9px; margin-top:3px; }
+
+/* The department directory is the primary entry point; the questionnaire is optional. */
+.root :global(.hero-actions) { align-items:flex-start; }
+.root :global(.hero-secondary-link) { display:block; flex-basis:100%; min-height:44px; padding-block:8px; color:#354b76; font-size:14px; line-height:1.7; text-decoration:underline; text-underline-offset:3px; }
+.root :global(.hero-secondary-link .beta-badge) { white-space:nowrap; }
+.root :global(.journey-cards article.journey-primary) { border-color:#a9c8f4; background:#edf5ff; }
+.root :global(.journey-primary .feature-heading h2) { color:#064799; }
+.root :global(.feature-primary-link) { margin-top:auto; font-size:15px; padding-inline:12px; }
+.root :global(.journey-cards article.journey-secondary) { background:#fff; }
+.root :global(.journey-secondary .icon-tile) { background:#f1f5f9; color:#52658b; }
+@media(max-width:639px) {
+ .root :global(.home-hero) { padding-top:20px; }
+ .root :global(.home-hero h1) { font-size:36px; }
+ .root :global(.hero-actions) { align-items:stretch; margin-top:18px; gap:4px; }
+ .root :global(.hero-secondary-link) { font-size:14px; }
+}

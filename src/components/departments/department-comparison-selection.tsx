@@ -282,12 +282,12 @@ export function CompareSelectableShell({
               : "border-slate-200 bg-white/95 text-slate-700 hover:border-brand-200 hover:text-brand-800"
           }`}
           aria-pressed={selected}
-          title="בחירה להשוואה"
+          title={selected ? "הסרה מההשוואה" : "הוספה להשוואה"}
         >
           <span className="flex h-4 w-4 items-center justify-center rounded-lg border border-current text-[0.65rem]">
             {selected ? "✓" : "+"}
           </span>
-          להשוואה
+          {selected ? "נוסף להשוואה" : "הוספה להשוואה"}
         </button>
       </div>
       {children}

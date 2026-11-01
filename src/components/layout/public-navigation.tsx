@@ -37,6 +37,7 @@ export function PublicNavigation({
           <Link
             key={item.href}
             href={item.href}
+            className={item.href === "/departments" ? "nav-primary" : undefined}
             aria-current={path === item.href ? "page" : undefined}
             onClick={() => {
               setOpen(false);
@@ -45,7 +46,7 @@ export function PublicNavigation({
           >
             {item.label}
             {item.href === "/career-fit" && (
-              <span className="beta-badge">Beta</span>
+              <span className="beta-badge">(Beta)</span>
             )}
           </Link>
         ))}

@@ -10,7 +10,7 @@ export async function SiteHeader() {
     session?.role === "admin"
       ? [{ href: "/admin", label: "ניהול האתר" }]
       : [
-          { href: "/departments", label: "חיפוש מחלקות" },
+          { href: "/departments", label: "חיפוש והשוואת מחלקות" },
           { href: "/career-fit", label: "בחירת התמחות" },
           { href: "/about", label: "אודות" },
           { href: "/faq", label: "שאלות נפוצות" },
