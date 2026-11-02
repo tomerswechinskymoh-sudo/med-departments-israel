@@ -10,6 +10,7 @@ import { getSession } from "@/lib/auth";
 import { DepartmentPageActions } from "@/components/departments/department-page-actions";
 import { PUBLIC_CONTACT_EMAIL } from "@/lib/contact";
 import { DepartmentCompareProfileButton } from "@/components/departments/department-comparison-selection";
+import { ExternalSurveyPanel } from "@/components/departments/external-survey-panel";
 import { DepartmentExperienceTabs } from "@/components/departments/department-experience-tabs";
 import {
   FavoriteToggleButton,
@@ -2767,6 +2768,7 @@ export default async function DepartmentDetailsPage({
                 ))}
               </div>
             </Card>}</div>
+          <ExternalSurveyPanel specialtyId={department.specialty.id} specialtyName={department.specialty.name} departmentContext />
           <Card className="rounded-xl !p-4">
               <div id="department-experiences" tabIndex={-1} className="scroll-mt-36" />
               <DepartmentExperienceTabs

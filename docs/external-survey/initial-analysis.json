@@ -1,0 +1,123 @@
+{
+  "rowCount": 365,
+  "uniqueResponses": 365,
+  "exactDuplicateRows": 0,
+  "duplicateTimestamps": 0,
+  "missingByColumn": [
+    {
+      "column": 1,
+      "missing": 0
+    },
+    {
+      "column": 2,
+      "missing": 0
+    },
+    {
+      "column": 3,
+      "missing": 0
+    },
+    {
+      "column": 4,
+      "missing": 2
+    },
+    {
+      "column": 5,
+      "missing": 0
+    },
+    {
+      "column": 6,
+      "missing": 0
+    },
+    {
+      "column": 7,
+      "missing": 0
+    },
+    {
+      "column": 8,
+      "missing": 0
+    },
+    {
+      "column": 9,
+      "missing": 0
+    },
+    {
+      "column": 10,
+      "missing": 0
+    },
+    {
+      "column": 11,
+      "missing": 0
+    },
+    {
+      "column": 12,
+      "missing": 277
+    }
+  ],
+  "distinctSpecialties": 28,
+  "matchedSpecialties": 26,
+  "distinctInstitutionValues": 105,
+  "matchedInstitutionValues": 77,
+  "uniqueMatchedInstitutions": 36,
+  "institutionValuesRequiringReview": 28,
+  "matchedSpecialtyRows": 362,
+  "matchedInstitutionRows": 317,
+  "comments": 88,
+  "commentsApproved": 0,
+  "commentsRejected": 0,
+  "commentRiskFlags": {
+    "HUMAN_REVIEW_REQUIRED": 88,
+    "POSSIBLE_SELF_IDENTIFICATION": 5,
+    "POSSIBLE_PERSON_REFERENCE": 6,
+    "POSSIBLE_PATIENT_INFORMATION": 6
+  },
+  "reportMonths": {
+    "2024-08": 350,
+    "2024-09": 1,
+    "2024-11": 1,
+    "2025-03": 2,
+    "2025-10": 1,
+    "2025-12": 1,
+    "2026-05": 7,
+    "2026-09": 2
+  },
+  "parseStatuses": {
+    "shifts": {
+      "RANGE": 126,
+      "EXACT": 195,
+      "AMBIGUOUS": 42,
+      "PARTIAL_EQUIVALENT": 1,
+      "INVALID": 1
+    },
+    "hours": {
+      "AMBIGUOUS": 146,
+      "EXACT": 218,
+      "INVALID": 1
+    },
+    "salary": {
+      "EXACT": 225,
+      "AMBIGUOUS": 113,
+      "RANGE": 27
+    },
+    "calm": {
+      "EXACT": 365
+    },
+    "peers": {
+      "EXACT": 365
+    },
+    "seniors": {
+      "EXACT": 365
+    },
+    "family": {
+      "EXACT": 365
+    }
+  },
+  "salaryBases": {
+    "GROSS": 357,
+    "UNKNOWN": 2,
+    "NET": 6
+  },
+  "publicationStatus": "PENDING_PUBLICATION_RIGHTS",
+  "nationalGroupsAtThreshold": 11,
+  "institutionGroupsAtThreshold": 2,
+  "nationalMetricsAtThreshold": 57
+}

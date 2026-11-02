@@ -440,6 +440,8 @@ model User {
 }
 
 model Institution {
+  externalSurveyResponses             ExternalSurveyResponse[]
+  externalSurveyAggregates            ExternalSurveyAggregate[]
   id                                  String                               @id @default(cuid())
   name                                String
   slug                                String                               @unique
@@ -473,6 +475,8 @@ model Institution {
 }
 
 model Specialty {
+  externalSurveyResponses      ExternalSurveyResponse[]
+  externalSurveyAggregates     ExternalSurveyAggregate[]
   id                           String                        @id @default(cuid())
   name                         String
   slug                         String                        @unique
@@ -2131,4 +2135,117 @@ model AuditLog {
   actor       User?    @relation("AuditActor", fields: [actorUserId], references: [id], onDelete: SetNull)
 
   @@index([action, createdAt])
+}
+
+// External evidence is deliberately not a Review or ReviewSubmission. No user or
+// department relation exists, so imports cannot enter verified department ratings.
+enum SurveyPublicationStatus {
+  PENDING_PUBLICATION_RIGHTS
+  PENDING_PRIVACY_REVIEW
+  SUPPRESSED
+  PUBLISHED
+}
+
+model ExternalSurveySource {
+  id                      String @id
+  sourceType              String @default("EXTERNAL_SURVEY") @map("source_type")
+  title                   String
+  importVersion           String @map("import_version")
+  datasetHash             String @default("") @map("dataset_hash")
+  aggregateRightsStatus   String @default("PENDING_PUBLICATION_RIGHTS") @map("aggregate_rights_status")
+  quoteRightsStatus       String @default("PENDING_PUBLICATION_RIGHTS") @map("quote_rights_status")
+  aggregateRightsEvidence Json? @map("aggregate_rights_evidence")
+  quoteRightsEvidence     Json? @map("quote_rights_evidence")
+  createdAt               DateTime @default(now()) @map("created_at")
+  updatedAt               DateTime @updatedAt @map("updated_at")
+  responses               ExternalSurveyResponse[]
+  mappings                ExternalSurveyMapping[]
+  imports                 ExternalSurveyImport[]
+  aggregates              ExternalSurveyAggregate[]
+}
+
+model ExternalSurveyResponse {
+  id                String @id @default(cuid())
+  sourceId          String @map("source_id")
+  fingerprint       String
+  rawEncrypted      String @map("raw_encrypted")
+  reportedAt        DateTime? @map("reported_at")
+  reportYear        Int? @map("report_year")
+  specialtyId       String? @map("specialty_id")
+  institutionId     String? @map("institution_id")
+  specialtyDetail   String? @map("specialty_detail")
+  matchLevel        String @map("match_level")
+  normalized        Json
+  hasTip            Boolean @map("has_tip")
+  tipStatus         String @default("PENDING_REVIEW") @map("tip_status")
+  tipRiskFlags      Json @map("tip_risk_flags")
+  approvedTip       String? @map("approved_tip")
+  tipReviewEvidence Json? @map("tip_review_evidence")
+  status            SurveyPublicationStatus @default(PENDING_PUBLICATION_RIGHTS)
+  importVersion     String @map("import_version")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+  source            ExternalSurveySource @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+  specialty         Specialty? @relation(fields: [specialtyId], references: [id], onDelete: Restrict)
+  institution       Institution? @relation(fields: [institutionId], references: [id], onDelete: Restrict)
+
+  @@unique([sourceId, fingerprint])
+  @@index([sourceId, specialtyId])
+  @@index([sourceId, tipStatus])
+}
+
+model ExternalSurveyMapping {
+  id             String @id @default(cuid())
+  sourceId       String @map("source_id")
+  kind           String
+  rawValue       String @map("raw_value")
+  targetId       String? @map("target_id")
+  category       String
+  confidence     Float
+  matchStatus    String @map("match_status")
+  rationale      String
+  reviewEvidence Json? @map("review_evidence")
+  source         ExternalSurveySource @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@unique([sourceId, kind, rawValue])
+}
+
+model ExternalSurveyImport {
+  id            String @id @default(cuid())
+  sourceId      String @map("source_id")
+  fileHash      String @map("file_hash")
+  importVersion String @map("import_version")
+  rowCount      Int @map("row_count")
+  insertedCount Int @map("inserted_count")
+  report        Json
+  createdAt     DateTime @default(now()) @map("created_at")
+  source        ExternalSurveySource @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+
+  @@index([sourceId, fileHash])
+}
+
+model ExternalSurveyAggregate {
+  id                  String @id @default(cuid())
+  sourceId            String @map("source_id")
+  groupKey            String @map("group_key")
+  specialtyId         String @map("specialty_id")
+  institutionId       String? @map("institution_id")
+  metricKey           String @map("metric_key")
+  respondentCount     Int @map("respondent_count")
+  value               Float?
+  method              String
+  calculatedCount     Int @map("calculated_count")
+  periodStartYear     Int? @map("period_start_year")
+  periodEndYear       Int? @map("period_end_year")
+  datasetHash         String @map("dataset_hash")
+  privacyReviewHash   String? @map("privacy_review_hash")
+  privacyEvidence     Json? @map("privacy_evidence")
+  status              SurveyPublicationStatus @default(PENDING_PUBLICATION_RIGHTS)
+  updatedAt           DateTime @updatedAt @map("updated_at")
+  source              ExternalSurveySource @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+  specialty           Specialty @relation(fields: [specialtyId], references: [id], onDelete: Restrict)
+  institution         Institution? @relation(fields: [institutionId], references: [id], onDelete: Restrict)
+
+  @@unique([sourceId, groupKey, metricKey])
+  @@index([specialtyId, status, institutionId])
 }

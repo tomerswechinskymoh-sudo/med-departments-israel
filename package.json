@@ -80,7 +80,9 @@
     "analyze:clalit-missing-profile-text": "tsx scripts/analyze-clalit-missing-profile-text.ts",
     "crawl": "tsx scripts/run-hospital-crawler-autopilot.ts",
     "crawl:sheba-ent": "tsx src/server/jobs/crawl-sheba-ent.ts",
-    "export:sheba-ent": "tsx src/server/jobs/export-sheba-ent.ts"
+    "export:sheba-ent": "tsx src/server/jobs/export-sheba-ent.ts",
+    "survey": "node --import tsx scripts/external-survey.ts",
+    "test:survey": "node --import tsx --test tests/external-survey/*.test.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

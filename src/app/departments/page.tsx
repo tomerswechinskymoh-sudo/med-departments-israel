@@ -14,6 +14,7 @@ import {
 } from "@/components/departments/department-comparison-selection";
 import { DepartmentFilters } from "@/components/departments/department-filters";
 import { SpecialtySelector } from "@/components/departments/specialty-selector";
+import { ExternalSurveyPanel } from "@/components/departments/external-survey-panel";
 import { SpecialtyDashboardMetrics } from "@/components/departments/specialty-dashboard-metrics";
 import { ExperienceCta } from "@/components/experience/experience-cta";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -215,6 +216,8 @@ export default async function DepartmentsPage({
                   />
                 </section>
               ) : null}
+
+              {selectedSpecialty && !searchAcrossSpecialties ? <ExternalSurveyPanel specialtyId={selectedSpecialty.id} specialtyName={selectedSpecialty.name} /> : null}
 
               <div id="department-results" tabIndex={-1} role="region" aria-label="תוצאות חיפוש מחלקות" className="flex flex-wrap items-center justify-between gap-3 rounded-[1.25rem] border border-brand-100 bg-white/94 px-4 py-3">
                 <div>

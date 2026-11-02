@@ -19,3 +19,8 @@ data/crawler/review/
 data/crawler/discovery/**/raw/
 storage/verification-documents/*
 !storage/verification-documents/.gitkeep
+
+# External survey responses and operator reports must never enter source control.
+storage/external-surveys/
+*.survey-private.json
+*מתמחים*תגובות*.xlsx
