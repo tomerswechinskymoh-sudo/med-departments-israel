@@ -15,6 +15,7 @@ import {
 } from "@/lib/onboarding-contribution";
 import { signupSchema } from "@/lib/validation";
 import { ReviewForm } from "@/components/forms/review-form";
+import { VerificationFileInput } from "@/components/forms/verification-file-input";
 
 type RoleStatus =
   | "medical_student"
@@ -298,10 +299,17 @@ export function SignupForm({
       formData.set("experienceContributionReceipt", experienceReceipt.token);
     }
 
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      body: formData
-    });
+    let response: Response;
+    try {
+      response = await fetch("/api/auth/signup", {
+        method: "POST",
+        body: formData
+      });
+    } catch {
+      setFormError("לא ניתן לשלוח את ההרשמה כרגע. בדקו את החיבור לאינטרנט ונסו שוב. המסמך שבחרתם נשמר בטופס.");
+      setStep("account");
+      return;
+    }
 
     const payload = (await response.json().catch(() => null)) as {
       error?: string;
@@ -311,7 +319,9 @@ export function SignupForm({
     } | null;
 
     if (!response.ok) {
-      setFormError(payload?.error ?? "ההרשמה נכשלה.");
+      setFormError(payload?.error ?? (response.status === 413
+        ? `הקובץ או הבקשה גדולים מדי. בחרו מסמך קטן יותר (עד ${maxUploadMb}MB) ונסו שוב.`
+        : "לא ניתן להשלים את ההרשמה כרגע. המסמך שבחרתם נשמר בטופס; נסו שוב."));
       if (payload?.code === "EXPERIENCE_REQUIRED") setExperienceReceipt(null);
       setStep("account");
       return;
@@ -734,31 +744,14 @@ export function SignupForm({
           מפורטים במדיניות הפרטיות. העלו רק מידע הנחוץ לאימות, ללא פרטי מטופלים.
         </p>
       </div>
-      <div className="rounded-2xl border border-brand-100 bg-brand-50/60 p-4">
-        <label
-          htmlFor="verification-file"
-          className="mb-2 block text-sm font-semibold text-ink"
-        >
-          אישור סטטוס מקצועי
-        </label>
-        <input
-          id="verification-file"
-          type="file"
-          aria-describedby="verification-file-help"
-          accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
-          onChange={(event) =>
-            setVerificationProof(event.target.files?.[0] ?? null)
-          }
-          className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none transition file:me-3 file:rounded-lg file:border-0 file:bg-brand-700 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white focus:border-brand-300"
-        />
-        <p
-          id="verification-file-help"
-          className="mt-2 text-xs leading-5 text-slate-600"
-        >
-          אפשר להעלות PDF, JPG או PNG עד {maxUploadMb}MB. המסמך אינו מוצג לציבור
-          ואינו נשלח לאנליטיקה.
-        </p>
-      </div>
+      <VerificationFileInput
+        file={verificationProof}
+        maxUploadMb={maxUploadMb}
+        onSelect={(file) => {
+          setVerificationProof(file);
+          setFormError(null);
+        }}
+      />
 
       <label className="flex items-start gap-3 rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm leading-6 text-slate-700">
         <input

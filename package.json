@@ -82,7 +82,8 @@
     "crawl:sheba-ent": "tsx src/server/jobs/crawl-sheba-ent.ts",
     "export:sheba-ent": "tsx src/server/jobs/export-sheba-ent.ts",
     "survey": "node --import tsx scripts/external-survey.ts",
-    "test:survey": "node --import tsx --test tests/external-survey/*.test.ts"
+    "test:survey": "node --import tsx --test tests/external-survey/*.test.ts",
+    "test:upload": "node --import tsx --test tests/upload/validation.test.ts && node tests/upload/browser.mjs"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
