@@ -1,7 +1,9 @@
+import { profiles } from "../../src/lib/career-fit/profile-data";
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { questions, profiles, scoredDimensions, availability, type Profile } from '../../src/lib/career-fit/config';
-import { matchSpecialties, summarize, matchDepartments, type Department, type Preference } from '../../src/lib/career-fit/scoring';
+import { questions, scoredDimensions, availability, type Profile } from '../../src/lib/career-fit/config';
+import { matchSpecialties as scoreSpecialties, summarize, matchDepartments, type Department, type Preference } from '../../src/lib/career-fit/scoring';
+const matchSpecialties: typeof scoreSpecialties = (answers, priorities = {}, candidates = profiles, set = questions) => scoreSpecialties(answers, priorities, candidates, set);
 const all=Object.fromEntries(questions.map(q=>[q.id,4]));
 const row=(id:string,patch:Partial<Department>={}):Department=>({id,slug:id,name:id,specialtyId:'s',specialtyName:'s',hospital:'h',hospitalName:'hospital',region:'צפון',type:'HOSPITAL',...patch});
 const pref:Preference[]=[{factor:'region',values:['צפון'],hard:false,weight:1},{factor:'type',values:['HOSPITAL'],hard:false,weight:1}];

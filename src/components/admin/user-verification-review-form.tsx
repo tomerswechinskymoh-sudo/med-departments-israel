@@ -14,6 +14,7 @@ export function UserVerificationReviewForm({ userId }: { userId: string }) {
     setIsPending(true);
     setMessage(null);
 
+    try {
     const response = await fetch(`/api/admin/user-verifications/${userId}`, {
       method: "POST",
       headers: {
@@ -25,12 +26,15 @@ export function UserVerificationReviewForm({ userId }: { userId: string }) {
     const payload = (await response.json().catch(() => null)) as { error?: string; message?: string } | null;
     setMessage(payload?.message ?? payload?.error ?? null);
     router.refresh();
-    setIsPending(false);
+    } catch { setMessage("השמירה נכשלה. לא התקבל אישור למחיקה; יש לנסות שוב."); }
+    finally { setIsPending(false); }
   }
 
   return (
     <div className="mt-4 space-y-3 rounded-2xl border border-brand-100 bg-white p-4">
+      <p className="text-sm">אישור או חסימה מוחקים את מסמכי אימות ההרשמה באותה פעולה. אסמכתאות לחוויות נשמרות. כשל במחיקה מונע את שמירת ההחלטה.</p>
       <select
+        aria-label="החלטה על אימות ההרשמה"
         value={status}
         onChange={(event) => setStatus(event.target.value)}
         className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
@@ -39,12 +43,13 @@ export function UserVerificationReviewForm({ userId }: { userId: string }) {
         <option value="REJECTED">דחייה</option>
       </select>
       <textarea
+        aria-label="הערת אדמין או סיבת דחייה"
         value={adminNote}
         onChange={(event) => setAdminNote(event.target.value)}
         placeholder="הערת אדמין או סיבת דחייה"
         className="min-h-24 w-full rounded-2xl border border-brand-100 bg-white px-4 py-3 text-sm outline-none"
       />
-      {message ? <p className="text-xs text-slate-500">{message}</p> : null}
+      {message ? <p role="status" className="text-sm text-slate-700">{message}</p> : null}
       <button
         type="button"
         onClick={submitModeration}

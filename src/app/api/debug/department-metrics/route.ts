@@ -59,9 +59,8 @@ export async function GET(request: Request) {
   noStore();
 
   const session = await getSession();
-  const isDev = process.env.NODE_ENV !== "production";
 
-  if (!isDev && session?.role !== "admin") {
+  if (session?.role !== "admin") {
     return NextResponse.json({ error: "אין הרשאה." }, { status: 403 });
   }
 

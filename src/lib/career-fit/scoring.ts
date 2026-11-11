@@ -1,4 +1,4 @@
-import { dimensions, profiles, questions, scoredDimensions, type Dimension, type Profile, type Question } from './config';
+import { dimensions, questions, scoredDimensions, type Dimension, type Profile, type Question } from './config';
 export type Answers = Record<string, number | null>;
 export type Priorities = Partial<Record<Dimension, number>>;
 const stable = (a:string,b:string)=>a < b ? -1 : a > b ? 1 : 0;
@@ -8,7 +8,7 @@ export function summarize(answers:Answers, set:Question[]=questions) {
     return [d,{value:values.length ? values.reduce((a,b)=>a+b,0)/values.length/4 : null,count:values.length}];
   })) as Record<Dimension,{value:number|null;count:number}>;
 }
-export function matchSpecialties(answers:Answers, priorities:Priorities={}, candidates:Profile[]=profiles, set:Question[]=questions) {
+export function matchSpecialties(answers:Answers, priorities:Priorities={}, candidates:Profile[]=[], set:Question[]=questions) {
   const summary=summarize(answers,set);
   const active=scoredDimensions.filter(d=>summary[d].value!==null && (priorities[d]??1)>0);
   const weight=(d:Dimension)=>Math.min(3,Math.max(0,priorities[d]??1));
@@ -52,7 +52,7 @@ export function matchDepartments(departments:Department[], preferences:Preferenc
   const sort=(a:typeof rows[number],b:typeof rows[number])=>(b.score??0)-(a.score??0)||stable(a.department.id,b.department.id);
   return {ranked:denominator>0,comparable:rows.filter(r=>r.group==='comparable').sort(sort),insufficient:rows.filter(r=>r.group==='insufficient'),unverified:rows.filter(r=>r.group==='unverified'),excluded:rows.filter(r=>r.group==='excluded')};
 }
-export function catalogProfile(name:string) {
+export function catalogProfile(name:string, profiles:Profile[]=[]) {
   const normalize=(s:string)=>s.replace(/[.״"׳'\s-]/g,'');
   return profiles.find(p=>[p.label,...p.aliases].some(n=>normalize(n)===normalize(name)));
 }

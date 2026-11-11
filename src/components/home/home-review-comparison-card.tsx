@@ -3,7 +3,7 @@ import { ReviewBubbleIcon } from "@/components/ui/med-icons";
 import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { reviewerTypeLabel } from "@/lib/queries";
+import { reviewerTypeLabel } from "@/lib/query-labels";
 import { formatDate, getDepartmentHref } from "@/lib/utils";
 
 type HomeReview = {

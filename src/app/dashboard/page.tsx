@@ -1,3 +1,5 @@
+import { MarketingPreferences } from "@/components/forms/marketing-preferences";
+import { hasDocumentedMarketingConsent } from "@/lib/marketing-consent";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
 import { requireAuth } from "@/lib/auth-guards";
@@ -91,6 +93,7 @@ export default async function DashboardPage() {
         </div>
       </section>
 
+      <MarketingPreferences initial={hasDocumentedMarketingConsent(data)} />
       <section className="grid gap-6 lg:grid-cols-2">
         <Card>
           <div className="flex items-center justify-between">

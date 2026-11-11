@@ -112,6 +112,14 @@ test("real route handlers enforce submission before account writes, using memory
     },
     uploadedFile: { create: async ({ data }: { data: Prisma.UploadedFileUncheckedCreateInput }) => { writes.push("file.create"); assert.equal(data.isPublic, false); const file = { ...data, id: `file-${++nextId}` }; if (data.reviewSubmissionId) submissions.get(data.reviewSubmissionId)!.verificationFiles.push({ id: file.id }); return file; } },
     auditLog: { create: async ({ data }: { data: Audit }) => { writes.push("audit.create"); audits.push(data); return data; } },
+    $queryRaw: async (query: TemplateStringsArray, userId: string) => {
+      assert.equal(query.join("?"), 'SELECT id FROM "User" WHERE id = ? FOR UPDATE');
+      assert.equal(userId, user?.id); reads.push("consent.user.lock"); return [{ id: userId }];
+    },
+    marketingConsentEvent: { create: async ({ data }: { data: Prisma.MarketingConsentEventUncheckedCreateInput }) => {
+      assert.equal(data.userId, user?.id); assert.equal(data.consent, false); assert.equal(data.source, "signup");
+      assert.ok(data.version); writes.push("marketing.consent.record"); return data;
+    } },
     $transaction: async (fn: (tx: PrismaClient) => unknown) => fn(db as unknown as PrismaClient)
   };
   const db = new Proxy(allowed, { get(target, key) { assert.ok(key in target, `Unexpected database operation ${String(key)}`); return Reflect.get(target, key); } });
@@ -180,6 +188,7 @@ test("real route handlers enforce submission before account writes, using memory
       writes = []; audits = [];
       const response = await signup.POST(request("/api/auth/signup", form({ ...account, experienceContributionStatus: "skipped", experienceContributionCategory: "intern", experienceContributionReceipt: validReceipt })));
       assert.equal(response.status, 200); assert.ok(writes.includes("user.create"));
+      assert.ok(writes.includes("marketing.consent.record")); assert.equal(user?.marketingConsent, false);
       const audit = audits.find((entry) => entry.action === "auth.registration")!;
       const onboarding = (audit.metadata as { onboarding: Record<string, unknown> }).onboarding;
       assert.equal(onboarding.experienceContributionStatus, "submitted");

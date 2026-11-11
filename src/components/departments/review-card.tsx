@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { DoctorAvatarIcon, ReviewBubbleIcon } from "@/components/ui/med-icons";
 import { RatingStars } from "@/components/ui/rating-stars";
-import { reviewerTypeLabel } from "@/lib/queries";
+import { reviewerTypeLabel } from "@/lib/query-labels";
 import { formatDate } from "@/lib/utils";
 
 function textOrFallback(text: string, fallback: string) {

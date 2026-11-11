@@ -49,27 +49,6 @@ export const considerations = ['מחקר','הוראה','שעות צפויות','
 export type Pathway = 'base' | 'subspecialty' | 'fellowship';
 export const pathwayLabels: Record<Pathway,string> = {base:'מקצוע בסיס',subspecialty:'מקצוע על — נדרש מסלול קודם לפי הר״י',fellowship:'השתלמות עמיתים — אינה התמחות בסיס'};
 export type Profile = {id:string;label:string;aliases:string[];pathways:Pathway[];supported:Dimension[];missing:Dimension[];sources:string[];interpretation:string;limitation:string;version:string};
-const entries: [string,string,number,Dimension[],string,string[]?,Pathway[]?][] = [
- ['pathology','פתולוגיה אבחנתית',32,['laboratory','diagnostic','focused'],'תיאור בחינת ההתמחות כולל אבחון תכשירים מאקרוסקופיים ומיקרוסקופיים; זהו בסיס לבחינת עניין בדגימות ובפרשנות אבחנתית.',['אנטומיה פתולוגית']],
- ['emergency','רפואה דחופה',293,['acute','broad','inpatient'],'מסלול ברפואה דחופה עם פנימית, כירורגיה, טיפול נמרץ ורפואה דחופה ילדים תומך בבחינת טיפול חריף והיקף רחב. קיימים מסלולי בסיס ועל.',[],['base','subspecialty']],
- ['obgyn','יילוד וגינקולוגיה',20,['focused','procedural','theatre'],'תקופות ביילוד, גינקולוגיה ופריון ורשימות פעולות וניתוחים תומכות בבחינת תחום ממוקד ועיסוק מעשי.',['מיילדות וגינקולוגיה']],
- ['orthopedics','כירורגיה אורתופדית',75,['focused','procedural','theatre','acute'],'מסלול כירורגי עם ניתוחי עמוד שדרה וכף יד וטיפול נמרץ תומך בבחינת פעולות, חדר ניתוח וטיפול חריף.',['אורתופדיה']],
- ['internal','רפואה פנימית',1,['inpatient','broad','acute'],'מחלקת פנימית, רוטציות קליניות וטיפול נמרץ תומכים בבחינת עבודה באשפוז ובהיקף קליני רחב.'],
- ['surgery','כירורגיה כללית',70,['procedural','theatre','inpatient','acute'],'מסלול כירורגי, רשימת ניתוחים ורוטציות בטראומה וטיפול נמרץ תומכים בבחינת פעולות וטיפול סביב ניתוח.'],
- ['pediatrics','רפואת ילדים',10,['children','inpatient','outpatient','broad'],'המסלול כולל מחלקת ילדים, רפואת ילדים בקהילה ומגוון תחומי ילדים.'],
- ['family','רפואת משפחה',99,['outpatient','broad','continuity'],'תקופות ברפואת המשפחה ובמרפאות לצד רוטציות בפנימית, ילדים ופסיכיאטריה; רצף טיפולי הוא פירוש עריכתי למסגרת המרפאה.'],
- ['psychiatry','פסיכיאטריה',50,['inpatient','outpatient','focused'],'המסלול כולל מחלקה פסיכיאטרית ושירות אמבולטורי. קיים גם מסלול למומחים ברפואת משפחה; יש לבדוק תנאים במקור.'],
- ['radiology','רדיולוגיה אבחנתית',48,['imaging','diagnostic','focused'],'המסלול ברדיולוגיה אבחנתית תומך בבחינת עניין בדימות ובפרשנות אבחנתית.',['דימות'],['base','subspecialty']],
- ['anesthesia','הרדמה',47,['procedural','theatre','acute','inpatient'],'פעולות הרדמה סביב ניתוח ותקופת חובה בטיפול נמרץ תומכות במיפוי הפעילויות הללו.'],
- ['ent','מחלות א.א.ג וכירורגיה של ראש וצוואר',44,['procedural','theatre','focused','inpatient'],'מחלקת אם כירורגית ורשימת פעולות תומכות בבחינת עיסוק כירורגי בתחום ראש וצוואר.',['אף אוזן גרון','מחלות אף אוזן גרון וכירורגיית ראש וצוואר','מחלות אף אוזן גרון וכירורגיה של ראש וצוואר']],
- ['dermatology','מחלות עור ומין',4,['focused','inpatient'],'תקופה במחלקת עור תומכת בבחינת תחום ממוקד ומסגרת מחלקתית; חסר אפיון לשאר ההעדפות.'],
- ['ophthalmology','מחלות עיניים',78,['focused','procedural','theatre'],'תחום העיניים ורשימת פעולות וניתוחים תומכים בבחינת עיסוק ממוקד ופעולות.'],
- ['neurology','נוירולוגיה',60,['focused','inpatient'],'תקופה במחלקת נוירולוגיה תומכת בבחינת תחום ממוקד ומסגרת מחלקתית; אין אומדן לכמות הפעילות.'],
- ['rehabilitation','רפואה פיזיקלית ושיקום',43,['focused','inpatient'],'תקופה במחלקת שיקום תומכת בבחינת תחום ממוקד ומסגרת מחלקתית; רצף הטיפול דורש אפיון נוסף.',['שיקום'],['base','subspecialty']]
-];
-export const profiles: Profile[] = entries.map(([id,label,sp,supported,interpretation,aliases=[],pathways=['base']])=>({id,label,aliases,pathways,supported,missing:scoredDimensions.filter(d=>!supported.includes(d)),sources:[`${'https://www.ima.org.il/internship/Syllabus.aspx'}?SpId=${sp}`,IMA],interpretation,limitation:'זהו מיפוי עריכתי של פעילויות במסלול, לא מדידה של תדירותן או חוויית ההתמחות. היקף הפעילות, קשר עם מטופלים והאפשרויות משתנים בין מסגרות; יש לברר בשיחה ובחשיפה בשטח.',version:VERSION}));
-export const unprofiledBase = ['אונקולוגיה','ביוכימיה קלינית','בריאות הציבור','גריאטריה','כירורגיה אורולוגית','כירורגיה פלסטית ואסתטית','כירורגיה של בית החזה','כירורגית ילדים','כירורגית כלי-דם','מיקרוביולוגיה קלינית','נוירוכירורגיה','פסיכיאטריה של הילד ומתבגר','רפואה גרעינית','רפואה משפטית','רפואה תעסוקתית'];
-export const multiplePathwayBase = ['אונקולוגיה','גריאטריה','כירורגית ילדים','כירורגית כלי-דם','רדיולוגיה אבחנתית','רפואה גרעינית','רפואה דחופה','רפואה פיזיקלית ושיקום'];
 export const availability = [
  {id:'region',label:'אזור',supported:true,field:'Institution.region',scope:'מיקום מוסד; שנת עדכון לא זמינה',meaning:'אזור רשום ומנורמל בלבד. ערך חסר אינו ניחוש לפי עיר.'},
  {id:'hospital',label:'מוסד מועדף',supported:true,field:'Department.institution.id/name',scope:'קטלוג המחלקות הציבורי; שנת עדכון לא זמינה',meaning:'זהות מוסד, ללא מסקנה על איכות או יוקרה.'},

@@ -367,6 +367,10 @@ model User {
   verificationRejectionReason                String?                              @map("verification_rejection_reason")
   marketingConsent                           Boolean                              @default(false) @map("marketing_consent")
   marketingConsentAt                         DateTime?                            @map("marketing_consent_at")
+  marketingConsentSource String? @map("marketing_consent_source")
+  marketingConsentVersion String? @map("marketing_consent_version")
+  marketingRevokedAt DateTime? @map("marketing_revoked_at")
+  marketingConsentEvents MarketingConsentEvent[]
   verificationToken                          String?                              @unique @map("verification_token")
   tokenExpiry                                DateTime?                            @map("token_expiry")
   verifiedByAdminId                          String?                              @map("verified_by_admin_id")
@@ -2248,4 +2252,30 @@ model ExternalSurveyAggregate {
 
   @@unique([sourceId, groupKey, metricKey])
   @@index([specialtyId, status, institutionId])
+}
+
+model MarketingConsentEvent {
+  id String @id @default(cuid())
+  userId String @map("user_id")
+  consent Boolean
+  source String
+  version String
+  createdAt DateTime @default(now()) @map("created_at")
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId, createdAt])
+}
+
+model SourceVisibility {
+  id String @id @default("global")
+  ima Boolean @default(true)
+  duns100 Boolean @default(true)
+  revision Int @default(0)
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+}
+
+model SignupDocumentDeletion {
+  userId String @id @map("user_id")
+  status String
+  deletedCount Int @map("deleted_count")
+  deletedAt DateTime @default(now()) @map("deleted_at")
 }

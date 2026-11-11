@@ -1,3 +1,4 @@
+import { SITE_RESPONSIBILITY } from "@/lib/site-responsibility";
 import Link from "next/link";
 import { ProductIcon } from "@/components/ui/product-icon";
 import { PageShell } from "@/components/layout/page-shell";
@@ -19,11 +20,11 @@ export default function AboutPage() {
         <h2 id="story-title">איך הכול התחיל</h2>
         <p>אתר Hitmachut.org הוקם ביוזמת תומר סבצ&apos;ינסקי, סטודנט לרפואה ועובד משרד הבריאות, מתוך צורך אישי להבין טוב יותר את אפשרויות ההתמחות בישראל.</p>
         <p>היוזמה נולדה מתוך ההבנה שהמידע הדרוש לבחירת התמחות מפוזר בין מקורות שונים, וכי לצד נתונים רשמיים יש ערך משמעותי גם לניסיון של רופאים שכבר התנסו במחלקות.</p>
-        <p>בהמשך קודמה היוזמה בסיוע מינהל תכנון אסטרטגי וכלכלי במשרד הבריאות, מתוך רצון להפוך צורך אישי לכלי המסייע לקהילה הרפואית כולה.</p>
+        <p>{SITE_RESPONSIBILITY}</p>
       </section>
       <section className="about-vision" aria-labelledby="planning-title">
         <h2 id="planning-title">מהצורך האישי לתכנון מערכתי</h2>
-        <p>קידומה של היוזמה נעשה בסיוע מינהל תכנון אסטרטגי וכלכלי במשרד הבריאות. החיבור בין צורך שעלה מהשטח לבין חשיבה מערכתית, נתונים ותכנון ארוך טווח סייע לקדם את הרעיון של הנגשת מידע על התמחות רפואית לכלל הרופאים.</p>
+        <p>משרד הבריאות אחראי להפעלת האתר, לתוכן ולמידע שבו. מינהל תכנון אסטרטגי וכלכלי פועל במסגרת המשרד.</p>
         <p>האתר מבקש לחבר בין מידע ממקורות רשמיים לבין הידע והחוויות של הקהילה הרפואית, כדי לתת לבחירה האישית בסיס ברור ומבוסס יותר.</p>
       </section>
       <section aria-labelledby="possibilities-title">
@@ -53,7 +54,7 @@ export default function AboutPage() {
       </section>
       <div className="about-contribute">
         <section><h2>עוזרים להשלים ולדייק</h2><p>מכירים את המחלקה מקרוב? אפשר לשתף חוויה או לדווח על טעות בעמוד המחלקה. צרפו קישור ומקור לבדיקה; העדכונים נבדקים לפני פרסום.</p><a className="text-link" href={PUBLIC_CONTACT_MAILTO}>ליצירת קשר ולתיקוני מידע ←</a></section>
-        <section className="about-ministry"><ApprovedBrand placement="account"/><h2>הקשר למשרד הבריאות</h2><p>מינהל תכנון אסטרטגי וכלכלי במשרד הבריאות סייע לקידום היוזמה ולהנגשת מידע על אפשרויות ההתמחות. תומר סבצ&apos;ינסקי אחראי להפעלת האתר בשלב הנוכחי. פרטים על האחריות לעיבוד המידע ועל פניות בנושא פרטיות מופיעים במדיניות הפרטיות.</p></section>
+        <section className="about-ministry"><ApprovedBrand placement="account"/><h2>אחריות משרד הבריאות</h2><p>{SITE_RESPONSIBILITY}</p></section>
       </div>
       <section className="about-next"><h2>מוכנים להתחיל?</h2><p>חפשו מחלקות, שמרו את האפשרויות שמעניינות אתכם והשוו ביניהן.</p><div className="hero-actions"><Link className="button-link" href="/departments"><ProductIcon name="search"/>למאגר המחלקות</Link><Link className="button-link secondary" href="/compare"><ProductIcon name="compare"/>להשוואת מחלקות</Link></div></section>
     </PageShell>

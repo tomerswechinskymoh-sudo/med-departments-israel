@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-10",
+  "environment": "isolated local PostgreSQL 17 + Next production build + Chrome; synthetic records only",
+  "productionWrites": false,
+  "build": "passed (compile, lint, TypeScript, page generation)",
+  "migrations": {
+    "appliedToEmptyLocalDatabase": 40
+  },
+  "focusedIntegration": {
+    "passed": 12,
+    "failed": 0
+  },
+  "careerFitAndUpload": {
+    "passed": 23,
+    "failed": 0
+  },
+  "signupEligibility": {
+    "passed": 8,
+    "eligible": 4,
+    "exempt": 4
+  },
+  "survey": {
+    "passed": 11,
+    "failed": 0,
+    "skipped": 1,
+    "reason": "real external source fixture unavailable"
+  },
+  "http": "passed",
+  "browser": {
+    "records": 53,
+    "axeScans": 45,
+    "axeViolations": 0,
+    "pageOverflow": 0,
+    "widthsCssPx": [
+      1440,
+      320
+    ],
+    "textEnlargementCssPercent": 200
+  },
+  "sourcePersistenceAfterServerRestart": "passed; both flags restored true without import",
+  "historicalCleanup": "dry-run plus single safe batch executed only on synthetic database; pending and review proof preserved",
+  "restoreLedger": "export and dry-run CLI passed; actual replay behavior covered by integration test",
+  "limitations": [
+    "no NVDA or VoiceOver",
+    "no physical mobile device",
+    "no native browser 200% zoom",
+    "no real email delivery or provider suppression webhook test",
+    "no production cleanup or deployment",
+    "no exhaustive professional accessibility certification"
+  ]
+}

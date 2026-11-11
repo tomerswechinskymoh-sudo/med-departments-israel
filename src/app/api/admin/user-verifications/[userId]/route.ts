@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { RoleKey, VerificationStatus } from "@prisma/client";
+import { decideRegistration } from "@/lib/server/registration-decision";
+import { hasValidSameOrigin } from "@/lib/security";
 import { getSession } from "@/lib/auth";
-import { createAuditLog } from "@/lib/audit";
 import { prisma } from "@/lib/prisma";
 import { userVerificationModerationSchema } from "@/lib/validation";
 import { sendUserVerificationRejectionEmail } from "@/lib/verification";
@@ -10,6 +10,7 @@ export async function POST(
   request: Request,
   { params }: { params: Promise<{ userId: string }> }
 ) {
+  if (!hasValidSameOrigin(request)) return NextResponse.json({ error: "בקשה לא תקינה." }, { status: 403 });
   const session = await getSession();
 
   if (!session || session.role !== "admin") {
@@ -36,54 +37,24 @@ export async function POST(
 
   const approved = parsed.data.status === "APPROVED";
 
+  try {
+    await decideRegistration({ userId, actorId: session.userId, approved, note: parsed.data.adminNote });
+  } catch {
+    await prisma.auditLog.create({ data: { actorUserId: session.userId, action: "signup.document_cleanup_failed", entityType: "User", entityId: userId, metadata: { decisionSaved: false, retryRequired: true } } }).catch(() => {
+      console.error("signup.document_cleanup_failed", { userId, decisionSaved: false });
+    });
+    // Do not expose database errors, document content, names, or URLs.
+    return NextResponse.json({ code: "DECISION_NOT_SAVED", error: "ההחלטה לא נשמרה והמחיקה לא אושרה. יש לנסות שוב; אם התקלה נמשכת, יש לברר את שיוך המסמכים. המשתמש נשאר במצבו הקודם." }, { status: 409 });
+  }
   if (!approved) {
     try {
-      await sendUserVerificationRejectionEmail({
-        to: user.email,
-        fullName: user.fullName,
-        reason: parsed.data.adminNote
-      });
-    } catch (error) {
-      console.error("[user-verification] rejection email failed", {
-        userId,
-        error
-      });
-
-      return NextResponse.json(
-        { error: "בקשת האימות לא נדחתה כי שליחת מייל הדחייה נכשלה." },
-        { status: 502 }
-      );
+      await sendUserVerificationRejectionEmail({ to: user.email, fullName: user.fullName, reason: parsed.data.adminNote });
+    } catch {
+      return NextResponse.json({ message: "הבקשה נדחתה ומסמכי אימות ההרשמה נמחקו. שליחת הודעת השירות נכשלה; ניתן לנסות שוב את הפעולה לשליחה חוזרת.", notificationFailed: true });
     }
   }
 
-  await prisma.user.update({
-    where: {
-      id: userId
-    },
-    data: {
-      roleKey:
-        approved && (user.roleStatus === "resident" || user.roleStatus === "specialist")
-          ? RoleKey.RESIDENT
-          : user.roleKey,
-      verificationStatus: approved ? VerificationStatus.VERIFIED : VerificationStatus.REJECTED,
-      verificationRejectionReason: approved ? null : parsed.data.adminNote ?? null,
-      verifiedByAdminId: session.userId,
-      verifiedAt: new Date()
-    }
-  });
-
-  await createAuditLog({
-    actorUserId: session.userId,
-    action: approved ? "user.verification_approved" : "user.verification_rejected",
-    entityType: "User",
-    entityId: userId,
-    metadata: {
-      roleStatus: user.roleStatus,
-      adminNote: parsed.data.adminNote ?? null
-    }
-  });
-
   return NextResponse.json({
-    message: approved ? "הסטטוס המקצועי אושר." : "בקשת האימות נדחתה."
+    message: approved ? "הסטטוס המקצועי אושר ומסמכי אימות ההרשמה נמחקו." : "בקשת האימות נדחתה ומסמכי אימות ההרשמה נמחקו."
   });
 }

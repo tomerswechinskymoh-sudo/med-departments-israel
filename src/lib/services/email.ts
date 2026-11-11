@@ -3,6 +3,8 @@ export type TransactionalEmailInput = {
   subject: string;
   html: string;
   text: string;
+  replyTo?: string;
+  headers?: Record<string, string>;
 };
 
 export type TransactionalEmailResult = {
@@ -60,12 +62,15 @@ export async function sendTransactionalEmail(input: TransactionalEmailInput) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${resendApiKey}`
     },
+    signal: AbortSignal.timeout(12000),
     body: JSON.stringify({
       from: emailFrom,
       to: [input.to],
       subject: input.subject,
       html: input.html,
-      text: input.text
+      text: input.text,
+      reply_to: input.replyTo,
+      headers: input.headers
     })
   });
 

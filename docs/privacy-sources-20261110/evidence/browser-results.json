@@ -1,0 +1,544 @@
+[
+  {
+    "path": "/",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/departments?specialty=test-specialty",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/departments/test-department?id=test-department",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/departments/test-department?id=test-department",
+    "role": "student",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/compare?departments=test-department,test-department-two",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/compare?departments=test-department,test-department-two",
+    "role": "student",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/career-fit",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/career-fit/departments",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/faq",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/signup",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/login",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/forgot-password",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/reset-password?token=synthetic-invalid",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/privacy",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/terms",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/accessibility",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/cookies",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/contact",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/about",
+    "role": "public",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/dashboard",
+    "role": "student",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/favorites",
+    "role": "student",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/admin",
+    "role": "admin",
+    "width": 1440,
+    "status": 200,
+    "overflow": {
+      "width": 1440,
+      "scroll": 1440
+    },
+    "violations": []
+  },
+  {
+    "path": "/",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/departments?specialty=test-specialty",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/departments/test-department?id=test-department",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/departments/test-department?id=test-department",
+    "role": "student",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/compare?departments=test-department,test-department-two",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/compare?departments=test-department,test-department-two",
+    "role": "student",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/career-fit",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/career-fit/departments",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/faq",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/signup",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/login",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/forgot-password",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/reset-password?token=synthetic-invalid",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/privacy",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/terms",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/accessibility",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/cookies",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/contact",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/about",
+    "role": "public",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/dashboard",
+    "role": "student",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/favorites",
+    "role": "student",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "/admin",
+    "role": "admin",
+    "width": 320,
+    "status": 200,
+    "overflow": {
+      "width": 320,
+      "scroll": 320
+    },
+    "violations": []
+  },
+  {
+    "path": "experience-modal",
+    "width": 320,
+    "violations": []
+  },
+  {
+    "path": "privacy-text-200",
+    "overflow": {
+      "width": 1280,
+      "scroll": 1280
+    }
+  },
+  {
+    "path": "/ text-200",
+    "overflow": {
+      "width": 1280,
+      "scroll": 1280
+    }
+  },
+  {
+    "path": "/departments?specialty=test-specialty text-200",
+    "overflow": {
+      "width": 1280,
+      "scroll": 1280
+    }
+  },
+  {
+    "path": "/departments/test-department?id=test-department text-200",
+    "overflow": {
+      "width": 1280,
+      "scroll": 1280
+    }
+  },
+  {
+    "path": "/compare?departments=test-department,test-department-two text-200",
+    "overflow": {
+      "width": 1280,
+      "scroll": 1280
+    }
+  },
+  {
+    "path": "/signup text-200",
+    "overflow": {
+      "width": 1280,
+      "scroll": 1280
+    }
+  },
+  {
+    "path": "/admin text-200",
+    "overflow": {
+      "width": 1280,
+      "scroll": 1280
+    }
+  },
+  {
+    "checks": "keyboard, dialog, source matrix, permissions, HTML/hydration, restoration",
+    "passed": true
+  }
+]

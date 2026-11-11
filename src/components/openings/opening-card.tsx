@@ -2,7 +2,7 @@ import Link from "next/link";
 import { InstitutionLogo } from "@/components/departments/institution-logo";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { openingTypeLabel } from "@/lib/queries";
+import { openingTypeLabel } from "@/lib/query-labels";
 import { formatDate } from "@/lib/utils";
 
 function statusLabel(status: "OPEN" | "UPCOMING" | "CLOSED") {

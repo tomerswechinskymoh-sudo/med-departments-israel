@@ -1,3 +1,4 @@
+import { recordMarketingConsent } from "@/lib/server/marketing";
 import { NextResponse } from "next/server";
 import { RoleKey, UploadedFileCategory, VerificationStatus } from "@prisma/client";
 import { createAuditLog } from "@/lib/audit";
@@ -126,6 +127,11 @@ export async function POST(request: Request) {
   const requestOrigin = new URL(request.url).origin;
   const verificationUrl = getUserEmailVerificationUrl(verificationToken, requestOrigin);
   const user = await prisma.$transaction(async (tx) => {
+    if (existingUser) {
+      await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${existingUser.id} FOR UPDATE`;
+      const current = await tx.user.findUniqueOrThrow({ where: { id: existingUser.id } });
+      if (current.verificationStatus !== VerificationStatus.REJECTED) throw new Error("REGISTRATION_CHANGED");
+    }
     const userRecord = existingUser
       ? await tx.user.update({
           where: {
@@ -167,6 +173,8 @@ export async function POST(request: Request) {
           }
         });
 
+    await recordMarketingConsent(tx, userRecord.id, parsed.data.marketingConsent, "signup");
+
     const proof = await storeUploadedFile(tx, {
       file: proofFile,
       category: UploadedFileCategory.USER_VERIFICATION_PROOF,
@@ -182,7 +190,8 @@ export async function POST(request: Request) {
         verificationProofUrl: `/api/files/${proof.id}`
       }
     });
-  });
+  }).catch(() => null);
+  if (!user) return NextResponse.json({ error: "ההרשמה לא נשמרה. יש לנסות שוב; ייתכן שמצב החשבון השתנה בזמן ההגשה." }, { status: 409 });
 
   await createAuditLog({
     actorUserId: user.id,

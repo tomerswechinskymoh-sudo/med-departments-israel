@@ -12,8 +12,8 @@ const prismaLog = (
         { emit: "event", level: "query" }
       ]
     : process.env.NODE_ENV === "development"
-      ? ["warn", "error"]
-      : ["error"]
+      ? ["warn"]
+      : []
 ) as PrismaLogOption;
 
 export const prisma =

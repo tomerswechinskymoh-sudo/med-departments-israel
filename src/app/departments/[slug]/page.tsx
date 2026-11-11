@@ -1,3 +1,4 @@
+import { getSourceVisibility } from "@/lib/server/source-visibility";
 import { DUNS100_TITLE, DUNS100_DESCRIPTION } from "@/lib/duns100-presentation";
 
 import Link from "next/link";
@@ -1315,6 +1316,7 @@ export default async function DepartmentDetailsPage({
   params: Promise<{ slug: string }>;
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
+  const sourceVisibility = await getSourceVisibility();
   const [{ slug }, resolvedSearchParams, session] = await Promise.all([
     params,
     searchParams,
@@ -2364,7 +2366,7 @@ export default async function DepartmentDetailsPage({
     sourceUrl: expectedOpeningsMeta?.sourceUrl, displayAction: metadataDisplayAction(expectedOpeningsMeta),
   }];
   const profileKpis = profileKpiCandidates.filter(metric => hasMetricValue(metric.value));
-  const missingProfileKpis = [workforceMetrics[0], trainingMetrics[0], trainingMetrics[2], profileKpiCandidates[3]].filter(metric => !hasMetricValue(metric.value));
+  const missingProfileKpis = [workforceMetrics[0], ...(sourceVisibility.ima ? [trainingMetrics[0]] : []), trainingMetrics[2], profileKpiCandidates[3]].filter(metric => !hasMetricValue(metric.value));
 
   const hasGenderData = womenPercent !== null || menPercent !== null;
   const profileGenderCard = (<GenderBalanceCard
@@ -2546,7 +2548,7 @@ export default async function DepartmentDetailsPage({
           <div className="profile-career-grid"><Card id="profile-work" tabIndex={-1} className="profile-work rounded-xl !p-4">
               <SectionHeading title="הכשרה ותנאי עבודה" />
               <div className="profile-professional-grid">
-                <QuickHighlightCard
+                {sourceVisibility.ima && <QuickHighlightCard
                   metricKey="boardPassA"
                   label={metricLabelFromMetadata(
                     boardStageAMeta,
@@ -2565,8 +2567,8 @@ export default async function DepartmentDetailsPage({
                   lastUpdated={boardStageA?.lastUpdated}
                   sourceUrl={boardStageAMeta?.sourceUrl}
                   displayAction={metadataDisplayAction(boardStageAMeta)}
-                />
-                <QuickHighlightCard
+                />}
+                {sourceVisibility.ima && <QuickHighlightCard
                   metricKey="boardPassB"
                   label={metricLabelFromMetadata(
                     boardStageBMeta,
@@ -2585,8 +2587,8 @@ export default async function DepartmentDetailsPage({
                   lastUpdated={boardStageB?.lastUpdated}
                   sourceUrl={boardStageBMeta?.sourceUrl}
                   displayAction={metadataDisplayAction(boardStageBMeta)}
-                />
-                <QuickHighlightCard
+                />}
+                {sourceVisibility.duns100 && <QuickHighlightCard
                   metricKey="duns100PhysiciansCount"
                   label={DUNS100_TITLE}
                   value={duns100Value}
@@ -2599,7 +2601,7 @@ export default async function DepartmentDetailsPage({
                   missingText={MISSING_IMPORTED_VALUE}
                   sourceUrl={duns100Meta?.sourceUrl}
                   displayAction={metadataDisplayAction(duns100Meta)}
-                />
+                />}
                 <QuickHighlightCard
                   metricKey="burnoutIndex"
                   label={metricLabelFromMetadata(burnoutMeta, "מדד שחיקה")}
@@ -2628,7 +2630,7 @@ export default async function DepartmentDetailsPage({
                   displayAction={metadataDisplayAction(burnoutMeta)}
                 />
               </div>
-            </Card><div className="profile-salary-panel">
+            </Card>{sourceVisibility.ima && <div className="profile-salary-panel">
                 <SalaryGapHighlight
                   metricType={salaryMetricType}
                   metadata={salaryGapMeta}
@@ -2636,7 +2638,7 @@ export default async function DepartmentDetailsPage({
                   peripheryMetric={peripherySalaryMetric}
                   gapMetric={salaryGapMetric}
                 />
-              </div><Card className="profile-research rounded-xl !p-4">
+              </div>}<Card className="profile-research rounded-xl !p-4">
               <SectionHeading title="מחקר ופרסומים" />
               <div className="mt-4 grid grid-cols-2 gap-2">
                 <QuickHighlightCard

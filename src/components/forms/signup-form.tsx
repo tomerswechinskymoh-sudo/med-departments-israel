@@ -1,4 +1,6 @@
 "use client";
+import { SITE_RESPONSIBILITY } from "@/lib/site-responsibility";
+import { MARKETING_CONSENT_COPY, SERVICE_EMAIL_COPY } from "@/lib/marketing-consent";
 import { ProductIcon } from "@/components/ui/product-icon";
 import Link from "next/link";
 
@@ -729,13 +731,14 @@ export function SignupForm({
         </p>
       ) : null}
 
+      <p className="text-sm leading-7">{SITE_RESPONSIBILITY}</p>
       <h2 className="form-section-title">אימות הסטטוס המקצועי</h2>
       <div className="rounded-2xl border border-brand-100 bg-white p-4 text-sm leading-7 text-slate-700">
         <p>
           ההרשמה ומסירת המסמך הן לבחירתכם. פרטי החשבון והמסמך משמשים
           להפעלת החשבון ולאימות הסטטוס המקצועי; ללא פרטי החובה והאימות לא
           ניתן להשלים הרשמה ולקבל את הגישה התלויה בהם. הטלפון הוא שדה רשות.
-          מסמך האימות אינו מוצג לציבור, ואין מחיקה אוטומטית שלו בתום הבדיקה.
+          מסמך אימות ההרשמה אינו מוצג לציבור. הוא נשמר כל עוד ההרשמה ממתינה להחלטה ונמחק מהמערכת הפעילה עם אישור המשתמש או חסימתו בבדיקת ההרשמה. אסמכתאות לחוויות נשמרות בנפרד לפי מטרתן.
         </p>
         <p>
           <Link className="underline" href="/privacy#scope">זהות הגורם האחראי ודרכי הפנייה</Link>,{" "}
@@ -780,7 +783,7 @@ export function SignupForm({
           <Link className="underline" href="/privacy">
             מדיניות הפרטיות
           </Link>{" "}
-          ושמירת המידע לצורכי אימות
+          ועיבוד המידע לצורכי אימות, לרבות שמירת מסמך אימות ההרשמה עד להחלטה ומחיקתו מהמערכת הפעילה עם אישור או חסימה
         </span>
       </label>
       {errors.privacyVerificationConsent ? (
@@ -795,16 +798,9 @@ export function SignupForm({
           type="checkbox"
           className="mt-1 h-4 w-4 rounded border-brand-200 text-brand-700"
         />
-        <span>
-          <span className="block font-semibold text-ink">
-            אני מאשר/ת קבלת עדכונים במייל
-          </span>
-          <span className="mt-1 block text-xs leading-5 text-slate-600">
-            אני מאשר/ת לאתר לאסוף את פרטיי ולשלוח אליי עדכונים, חידושים, משרות
-            חדשות, הודעות מערכת ותוכן שיווקי.
-          </span>
-        </span>
+        <span>{MARKETING_CONSENT_COPY}</span>
       </label>
+      <p className="text-sm leading-7 text-slate-700">{SERVICE_EMAIL_COPY}</p>
 
       {formError ? (
         <p role="alert" className="text-sm text-rose-600">

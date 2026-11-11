@@ -15,6 +15,7 @@ import {
   OPENING_TYPE_LABELS
 } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
+import { publicPrisma } from "@/lib/server/source-visibility";
 import {
   publicDataCache,
   PUBLIC_DATA_CACHE_TAGS
@@ -162,6 +163,7 @@ const SPECIALTY_DASHBOARD_DEPARTMENT_METRIC_KEYS = Array.from(
 );
 
 const compactDepartmentMetricSelect = {
+  sourceNotes: true,
   metricKey: true,
   value: true,
   rawValue: true,
@@ -1033,7 +1035,7 @@ export async function resolveDepartmentBySlugOrFallback(
 export async function getHomePageData() {
   const [featuredDepartments, latestReviews, featuredOpenings, latestResearchOpportunities, stats] =
     await Promise.all([
-      prisma.department.findMany({
+      publicPrisma.department.findMany({
         where: publicVisibleDepartmentWhere,
         include: {
           institution: true,
@@ -1070,7 +1072,7 @@ export async function getHomePageData() {
         },
         take: 4
       }),
-      prisma.review.findMany({
+      publicPrisma.review.findMany({
         where: {
           department: {
             is: publicVisibleDepartmentWhere
@@ -1103,7 +1105,7 @@ export async function getHomePageData() {
         },
         take: 4
       }),
-      prisma.residencyOpening.findMany({
+      publicPrisma.residencyOpening.findMany({
         where: {
           contentStatus: ContentStatus.PUBLISHED,
           status: {
@@ -1132,7 +1134,7 @@ export async function getHomePageData() {
         orderBy: [{ isImmediate: "desc" }, { committeeDate: "asc" }, { publishedAt: "desc" }],
         take: 5
       }),
-      prisma.researchOpportunity.findMany({
+      publicPrisma.researchOpportunity.findMany({
         where: {
           contentStatus: ContentStatus.PUBLISHED,
           department: {
@@ -1151,25 +1153,25 @@ export async function getHomePageData() {
         },
         take: 4
       }),
-      prisma.$transaction([
-        prisma.institution.count({
+      publicPrisma.$transaction([
+        publicPrisma.institution.count({
           where: {
             departments: {
               some: publicVisibleDepartmentWhere
             }
           }
         }),
-        prisma.department.count({
+        publicPrisma.department.count({
           where: publicVisibleDepartmentWhere
         }),
-        prisma.review.count({
+        publicPrisma.review.count({
           where: {
             department: {
               is: publicVisibleDepartmentWhere
             }
           }
         }),
-        prisma.residencyOpening.count({
+        publicPrisma.residencyOpening.count({
           where: {
             contentStatus: ContentStatus.PUBLISHED,
             status: {
@@ -1239,7 +1241,7 @@ const getPublicDepartmentOptions = publicDataCache(
     async () => {
       if (isNextProductionBuildPhase()) return [];
 
-      const departments = await prisma.department.findMany({
+      const departments = await publicPrisma.department.findMany({
         where: publicVisibleDepartmentWhere,
         select: publicDepartmentOptionSelect,
         orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
@@ -1307,7 +1309,7 @@ const getDirectoryFiltersCached = publicDataCache(
       }
 
       const [specialties, departmentRows] = await Promise.all([
-        prisma.specialty.findMany({
+        publicPrisma.specialty.findMany({
           where: {
             AND: [
               {
@@ -1330,7 +1332,7 @@ const getDirectoryFiltersCached = publicDataCache(
             name: "asc"
           }
         }),
-        prisma.department.findMany({
+        publicPrisma.department.findMany({
           where: publicVisibleDepartmentWhere,
           select: publicDepartmentFilterSelect,
           orderBy: [{ institution: { name: "asc" } }, { name: "asc" }]
@@ -1423,7 +1425,7 @@ async function getPublicDirectoryData(
     return [];
   }
 
-  const departments = await prisma.department.findMany({
+  const departments = await publicPrisma.department.findMany({
     where: {
       AND: [
         publicVisibleDepartmentWhere,
@@ -1902,7 +1904,7 @@ async function getFavoriteDepartmentIdSet(userId: string, departmentIds: string[
   const uniqueDepartmentIds = Array.from(new Set(departmentIds.filter(Boolean)));
   if (uniqueDepartmentIds.length === 0) return new Set<string>();
 
-  const favorites = await prisma.favoriteDepartment.findMany({
+  const favorites = await publicPrisma.favoriteDepartment.findMany({
     where: {
       userId,
       departmentId: {
@@ -1949,7 +1951,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
     };
   }
 
-  const config = await prisma.specialtyDashboardConfig.findUnique({
+  const config = await publicPrisma.specialtyDashboardConfig.findUnique({
       where: {
         specialtyId
       }
@@ -1964,7 +1966,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
   );
 
   const [specialty, departments, dataExplanations, explanationOverrides] = await Promise.all([
-    prisma.specialty.findUnique({
+    publicPrisma.specialty.findUnique({
       where: {
         id: specialtyId
       },
@@ -2005,7 +2007,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
         }
       }
     }),
-    prisma.department.findMany({
+    publicPrisma.department.findMany({
       where: {
         specialtyId,
         ...publicVisibleDepartmentWhere
@@ -2057,7 +2059,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
         }
       }
     }),
-    prisma.dataExplanation.findMany({
+    publicPrisma.dataExplanation.findMany({
       select: dataExplanationSelect
     }),
     getMetricExplanationOverrides({ specialtyId })
@@ -2136,7 +2138,7 @@ const getDataExplanationsCached = publicDataCache(
     async () => {
   if (isNextProductionBuildPhase()) return [];
 
-  const rows = await prisma.dataExplanation.findMany({
+  const rows = await publicPrisma.dataExplanation.findMany({
     select: dataExplanationSelect,
     orderBy: [{ sheet: "asc" }, { criterion: "asc" }]
   });
@@ -2164,7 +2166,7 @@ async function getPublicDepartmentPageData(
     return null;
   }
 
-  const department = await prisma.department.findUnique({
+  const department = await publicPrisma.department.findUnique({
     where: {
       id: matchedDepartment.id
     },
@@ -2380,7 +2382,7 @@ async function getPublicDepartmentPageData(
   const effectiveHospitalName = effectiveHospitalNameForPublicDepartment(department);
   const effectiveInstitutionRecord =
     effectiveHospitalName !== department.institution.name
-      ? await prisma.institution.findFirst({
+      ? await publicPrisma.institution.findFirst({
           where: {
             name: effectiveHospitalName
           }
@@ -2397,7 +2399,7 @@ async function getPublicDepartmentPageData(
   };
   const effectiveInstitutionId = effectiveInstitutionRecord?.id ?? department.institutionId;
   const [sameSpecialtyDepartmentsRaw, forcedArrayDepartmentsRaw, fallbackMedicalArray] = await Promise.all([
-    prisma.department.findMany({
+    publicPrisma.department.findMany({
       where: {
         specialtyId: department.specialtyId,
         ...publicVisibleDepartmentWhere
@@ -2425,7 +2427,7 @@ async function getPublicDepartmentPageData(
       }
     }),
     isRequiredArrayProfile
-      ? prisma.department.findMany({
+      ? publicPrisma.department.findMany({
           where: {
             specialtyId: department.specialtyId,
             ...publicVisibleDepartmentWhere
@@ -2482,7 +2484,7 @@ async function getPublicDepartmentPageData(
         })
       : Promise.resolve(null),
     isRequiredArrayProfile && !department.medicalArray
-      ? prisma.medicalArray.findUnique({
+      ? publicPrisma.medicalArray.findUnique({
           where: {
             hospitalId_specialtyId: {
               hospitalId: effectiveInstitutionId,
@@ -2626,7 +2628,7 @@ export async function getDepartmentPageData(
     return department;
   }
 
-  const favorite = await prisma.favoriteDepartment.findUnique({
+  const favorite = await publicPrisma.favoriteDepartment.findUnique({
     where: {
       userId_departmentId: {
         userId: viewerId,
@@ -2856,7 +2858,7 @@ async function getPublicDepartmentComparisonData(input: {
     };
   }
 
-  const departmentsRaw = await prisma.department.findMany({
+  const departmentsRaw = await publicPrisma.department.findMany({
     where: {
       ...publicVisibleDepartmentWhere,
       id: {
@@ -3039,7 +3041,7 @@ export async function getDepartmentComparisonData(input: Parameters<typeof getPu
 }
 
 export async function getActiveSalaryAssumption() {
-  return prisma.salaryAssumption.findFirst({
+  return publicPrisma.salaryAssumption.findFirst({
     where: {
       active: true
     },
@@ -3050,7 +3052,7 @@ export async function getActiveSalaryAssumption() {
 }
 
 export async function getOpeningPageData(openingId: string) {
-  const opening = await prisma.residencyOpening.findFirst({
+  const opening = await publicPrisma.residencyOpening.findFirst({
     where: {
       id: openingId,
       contentStatus: ContentStatus.PUBLISHED,
@@ -3095,7 +3097,7 @@ export async function getOpeningPageData(openingId: string) {
 }
 
 export async function getOpeningApplicationPageData(openingId: string) {
-  const opening = await prisma.residencyOpening.findFirst({
+  const opening = await publicPrisma.residencyOpening.findFirst({
     where: {
       id: openingId,
       contentStatus: ContentStatus.PUBLISHED,
@@ -3153,7 +3155,7 @@ export async function getInstitutionOptions() {
 }
 
 export async function getUserDashboardData(userId: string) {
-  const user = await prisma.user.findUnique({
+  const user = await publicPrisma.user.findUnique({
     where: {
       id: userId
     },
@@ -3214,7 +3216,7 @@ export async function getUserDashboardData(userId: string) {
 }
 
 export async function getFavoritesData(userId: string) {
-  const favorites = await prisma.favoriteDepartment.findMany({
+  const favorites = await publicPrisma.favoriteDepartment.findMany({
     where: {
       userId,
       department: {
@@ -4089,36 +4091,4 @@ export async function canUserPublishDepartment(userId: string, departmentId: str
   return Boolean(assignment);
 }
 
-export function userRoleLabel(roleKey: RoleKey) {
-  switch (roleKey) {
-    case RoleKey.ADMIN:
-      return "אדמין";
-    case RoleKey.REPRESENTATIVE:
-      return "נציג/ת מחלקה";
-    case RoleKey.RESIDENT:
-      return "מתמחה";
-    case RoleKey.STUDENT:
-    default:
-      return "סטודנט/ית / סטאז'ר/ית";
-  }
-}
-
-export function reviewerTypeLabel(reviewerType: ReviewSourceType) {
-  switch (reviewerType) {
-    case ReviewSourceType.RESIDENT:
-      return "מתמחה";
-    case ReviewSourceType.STUDENT:
-      return "סטודנט/ית";
-    case ReviewSourceType.INTERN:
-    default:
-      return "סטאז'ר/ית";
-  }
-}
-
-export function openingTypeLabel(openingType: OpeningType) {
-  return OPENING_TYPE_LABELS[openingType];
-}
-
-export function openingApplicationStatusLabel(status: OpeningApplicationStatus) {
-  return APPLICATION_STATUS_LABELS[status];
-}
+export { userRoleLabel, reviewerTypeLabel, openingTypeLabel, openingApplicationStatusLabel } from "@/lib/query-labels";

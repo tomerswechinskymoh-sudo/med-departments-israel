@@ -1,4 +1,6 @@
 import { unstable_cache } from "next/cache";
+import { getSourceVisibility, withSourceVisibility } from "@/lib/server/source-visibility";
+import { projectVisibleSources, type SourceVisibility } from "@/lib/source-visibility";
 
 type AsyncFn<TArgs extends unknown[], TResult> = (...args: TArgs) => Promise<TResult>;
 export type PublicDataCacheDiagnosticEvent = {
@@ -95,7 +97,8 @@ export function publicDataCache<TArgs extends unknown[], TResult>(
   fn: AsyncFn<TArgs, TResult>,
   tags: string[]
 ): AsyncFn<TArgs, TResult> {
-  const nextCached = unstable_cache(fn, [name], {
+  const compute = (flags: SourceVisibility, args: TArgs) => withSourceVisibility(flags, async () => projectVisibleSources(await fn(...args), flags));
+  const nextCached = unstable_cache(compute, [name, "source-visibility-v1"], {
     revalidate: PUBLIC_DATA_CACHE_REVALIDATE_SECONDS,
     tags
   });
@@ -104,7 +107,8 @@ export function publicDataCache<TArgs extends unknown[], TResult>(
     // Build-only empty projections must never populate the runtime data cache.
     if (process.env.NEXT_PHASE === "phase-production-build") return fn(...args);
 
-    const key = cacheKey(name, args);
+    const flags = await getSourceVisibility();
+    const key = cacheKey(name, [flags, ...args]);
 
     if (useMemoryCache()) {
       const cached = memoryCache.get(key);
@@ -113,7 +117,7 @@ export function publicDataCache<TArgs extends unknown[], TResult>(
         return cached.value as TResult;
       }
 
-      const value = await fn(...args);
+      const value = await compute(flags, args);
       memoryCache.set(key, {
         value,
         expiresAt: Date.now() + PUBLIC_DATA_CACHE_REVALIDATE_SECONDS * 1000
@@ -123,13 +127,13 @@ export function publicDataCache<TArgs extends unknown[], TResult>(
     }
 
     if (process.env.NEON_TRANSFER_DISABLE_NEXT_CACHE === "1") {
-      const value = await fn(...args);
+      const value = await compute(flags, args);
       logDiagnostic(name, "uncached", value);
       return value;
     }
 
     try {
-      const value = await nextCached(...args);
+      const value = await nextCached(flags, args);
       logDiagnostic(name, "next_lookup", value);
       return value;
     } catch (error) {
@@ -137,7 +141,7 @@ export function publicDataCache<TArgs extends unknown[], TResult>(
         throw error;
       }
 
-      const value = await fn(...args);
+      const value = await compute(flags, args);
       logDiagnostic(name, "next_unavailable", value);
       return value;
     }

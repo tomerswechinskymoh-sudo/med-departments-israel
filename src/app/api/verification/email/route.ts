@@ -30,18 +30,18 @@ export async function GET(request: Request) {
     return NextResponse.redirect(new URL("/login?verificationError=expired", request.url));
   }
 
-  await prisma.user.update({
-    where: {
-      id: user.id
-    },
-    data: {
-      emailVerified: true,
-      emailVerifiedAt: new Date(),
-      emailVerificationToken: null,
-      emailVerificationExpiresAt: null,
-      verificationStatus: VerificationStatus.PENDING_ADMIN_REVIEW
-    }
+  const updated = await prisma.$transaction(async tx => {
+    await tx.$queryRaw`SELECT id FROM "User" WHERE id = ${user.id} FOR UPDATE`;
+    const current = await tx.user.findUniqueOrThrow({ where: { id: user.id } });
+    if (current.emailVerificationToken !== token || (current.emailVerificationExpiresAt && current.emailVerificationExpiresAt < new Date())) return false;
+    await tx.user.update({ where: { id: user.id }, data: {
+      emailVerified: true, emailVerifiedAt: new Date(), emailVerificationToken: null, emailVerificationExpiresAt: null,
+      // A late email confirmation must never undo an admin decision or reopen document access.
+      ...([VerificationStatus.VERIFIED, VerificationStatus.REJECTED].includes(current.verificationStatus as "VERIFIED" | "REJECTED") ? {} : { verificationStatus: VerificationStatus.PENDING_ADMIN_REVIEW })
+    }});
+    return true;
   });
+  if (!updated) return NextResponse.redirect(new URL("/login?verificationError=expired", request.url));
 
   await createAuditLog({
     actorUserId: user.id,

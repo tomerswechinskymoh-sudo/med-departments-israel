@@ -3,7 +3,7 @@ import { hasSignupExperienceText, SIGNUP_EXPERIENCE_TEXT_REQUIREMENT } from "@/l
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import type { UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
 import { z } from "zod";
@@ -445,6 +445,14 @@ export function ReviewForm({
 }) {
   const router = useRouter();
   const [step, setStep] = useState<1 | 2 | 3>(1);
+  const proofId = useId();
+  const roleGroupId = useId();
+  const stepHeading = useRef<HTMLHeadingElement>(null);
+  const previousStep = useRef(step);
+  useEffect(() => {
+    if (previousStep.current !== step) stepHeading.current?.focus();
+    previousStep.current = step;
+  }, [step]);
   const [message, setMessage] = useState<string | null>(null);
   const [verificationDocument, setVerificationDocument] = useState<File | null>(null);
   const institutions = useMemo(
@@ -683,7 +691,7 @@ export function ReviewForm({
   return (
     <form onSubmit={onSubmit} className="space-y-6">
       {message ? (
-        <div className="rounded-[1.5rem] border border-emerald-100 bg-emerald-50/90 px-5 py-4 text-sm leading-7 text-emerald-900">
+        <div role="status" className="rounded-[1.5rem] border border-emerald-100 bg-emerald-50/90 px-5 py-4 text-sm leading-7 text-emerald-900">
           {message}
         </div>
       ) : null}
@@ -694,6 +702,7 @@ export function ReviewForm({
             key={item.value}
             type="button"
             onClick={() => setStep(item.value)}
+            aria-current={step === item.value ? "step" : undefined}
             className={cn(
               "rounded-full border px-4 py-2.5 text-sm font-bold transition",
               step === item.value
@@ -701,7 +710,7 @@ export function ReviewForm({
                 : "border-brand-100 bg-white text-slate-600 hover:bg-brand-50"
             )}
           >
-            {item.label}
+            {item.value} מתוך 3 · {item.label}
           </button>
         ))}
       </div>
@@ -712,8 +721,8 @@ export function ReviewForm({
       {step === 1 ? (
         <section className="space-y-8 rounded-[1.75rem] bg-white p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
           <div>
-            <p className="text-sm font-semibold text-brand-700">שלב 1</p>
-            <h3 className="mt-1 text-3xl font-black text-ink">מאיפה נקודת המבט שלך?</h3>
+            <p className="text-sm font-semibold text-brand-700">שלב 1 מתוך 3</p>
+            <h3 ref={stepHeading} tabIndex={-1} className="mt-1 text-3xl font-black text-ink">מאיפה נקודת המבט שלך?</h3>
           </div>
 
           {lockReviewerType ? (
@@ -724,36 +733,36 @@ export function ReviewForm({
               </p>
             </div>
           ) : (
-            <div className="grid gap-4 md:grid-cols-3">
+            <fieldset className="grid gap-4 md:grid-cols-3">
+              <legend className="sr-only">סוג המשתף</legend>
               {roleOptions.map((role) => (
-                <button
+                <label
                   key={role.value}
-                  type="button"
-                  onClick={() => {
-                    setValue("reviewerType", role.value, { shouldValidate: true });
-                    setValue("roleDetails", getRoleDetailsDefaults(role.value), {
-                      shouldValidate: true
-                    });
-                  }}
                   className={cn(
-                    "min-h-36 rounded-[1.5rem] border p-5 text-right transition",
+                    "relative min-h-36 cursor-pointer focus-within:outline focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-brand-700 rounded-[1.5rem] border p-5 text-right transition",
                     reviewerType === role.value
                       ? "border-brand-300 bg-brand-900 text-white shadow-panel"
                       : "border-slate-200 bg-white text-ink shadow-sm hover:-translate-y-0.5 hover:border-brand-200"
                   )}
                 >
-                  <p className="text-xl font-black">{role.label}</p>
-                  <p
+                  <input type="radio" name={roleGroupId} value={role.value} checked={reviewerType === role.value}
+                    className="sr-only" aria-describedby={`${roleGroupId}-${role.value}`}
+                    onChange={() => {
+                      setValue("reviewerType", role.value, { shouldValidate: true });
+                      setValue("roleDetails", getRoleDetailsDefaults(role.value), { shouldValidate: true });
+                    }} />
+                  <span className="text-xl font-black">{role.label}</span>
+                  <span id={`${roleGroupId}-${role.value}`}
                     className={cn(
-                      "mt-2 text-sm leading-7",
+                      "block mt-2 text-sm leading-7",
                       reviewerType === role.value ? "text-white/82" : "text-slate-600"
                     )}
                   >
                     {role.description}
-                  </p>
-                </button>
+                  </span>
+                </label>
               ))}
-            </div>
+            </fieldset>
           )}
 
           {reviewerType === "RESIDENT" ? (
@@ -879,14 +888,16 @@ export function ReviewForm({
               </div>
             ) : (
               <div>
-                <label className="mb-2 block text-sm font-semibold text-ink">העלאת הוכחה</label>
+                <label htmlFor={proofId} className="mb-2 block text-sm font-semibold text-ink">העלאת הוכחה לחוויה (רשות)</label>
                 <input
+                  id={proofId}
+                  aria-describedby={`${proofId}-instructions`}
                   type="file"
                   accept=".pdf,.jpg,.jpeg,.png,.webp,.heic"
                   onChange={(event) => setVerificationDocument(event.target.files?.[0] ?? null)}
                   className="block w-full text-sm text-slate-700"
                 />
-                <p className="mt-2 text-xs leading-6 text-slate-500">{verificationCopyForType(reviewerType)}</p>
+                <p id={`${proofId}-instructions`} className="mt-2 text-xs leading-6 text-slate-500">{verificationCopyForType(reviewerType)}</p>
               </div>
             )}
 
@@ -906,8 +917,8 @@ export function ReviewForm({
       {step === 2 ? (
         <section className="space-y-7 rounded-[1.75rem] bg-white p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
           <div>
-            <p className="text-sm font-semibold text-brand-700">שלב 2 · {reviewerTypeLabel}</p>
-            <h3 className="mt-1 text-2xl font-black text-ink">ספרו על החוויה בקצרה</h3>
+            <p className="text-sm font-semibold text-brand-700">שלב 2 מתוך 3 · {reviewerTypeLabel}</p>
+            <h3 ref={stepHeading} tabIndex={-1} className="mt-1 text-2xl font-black text-ink">ספרו על החוויה בקצרה</h3>
             <p className="mt-2 text-sm leading-7 text-slate-600">{EXPERIENCE_RATING_HELPER_TEXT}</p>
           </div>
 
@@ -1077,8 +1088,8 @@ export function ReviewForm({
       {step === 3 ? (
         <section className="space-y-6 rounded-[1.75rem] bg-white p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
           <div>
-            <p className="text-sm font-semibold text-brand-700">שלב 3</p>
-            <h3 className="mt-1 text-2xl font-black text-ink">מבט אחרון לפני שליחה</h3>
+            <p className="text-sm font-semibold text-brand-700">שלב 3 מתוך 3</p>
+            <h3 ref={stepHeading} tabIndex={-1} className="mt-1 text-2xl font-black text-ink">מבט אחרון לפני שליחה</h3>
           </div>
 
           <div className="rounded-[1.5rem] border border-amber-300 bg-amber-50 px-5 py-5 text-amber-950 shadow-sm">
@@ -1106,7 +1117,7 @@ export function ReviewForm({
           </div>
 
           {Object.keys(errors).length > 0 ? (
-            <div className="rounded-2xl border border-rose-100 bg-rose-50 px-4 py-3 text-sm leading-7 text-rose-700">
+            <div role="alert" className="rounded-2xl border border-rose-100 bg-rose-50 px-4 py-3 text-sm leading-7 text-rose-700">
               יש כמה שדות שצריך להשלים לפני השליחה. אפשר לחזור לשלבים הקודמים ולתקן.
             </div>
           ) : null}

@@ -19,6 +19,7 @@ export async function GET(
   const file = await prisma.uploadedFile.findUnique({
     where: { id: fileId },
     include: {
+      uploadedBy: { select: { verificationStatus: true } },
       reviewSubmission: {
         select: {
           departmentId: true
@@ -46,6 +47,9 @@ export async function GET(
   }
 
   if (file.category === UploadedFileCategory.USER_VERIFICATION_PROOF) {
+    if (!file.uploadedBy || ["VERIFIED", "REJECTED"].includes(file.uploadedBy.verificationStatus)) {
+      return NextResponse.json({ error: "מסמך אימות ההרשמה אינו זמין לאחר החלטה." }, { status: 410, headers: { "Cache-Control": "private, no-store" } });
+    }
     if (session.role === "admin" || file.uploadedByUserId === session.userId) {
       return new NextResponse(new Uint8Array(file.bytes), {
         headers: {

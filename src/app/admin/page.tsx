@@ -1,3 +1,5 @@
+import { SourceVisibilityControls } from "@/components/admin/source-visibility-controls";
+import { getSourceVisibility } from "@/lib/server/source-visibility";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Prisma } from "@prisma/client";
@@ -177,8 +179,10 @@ export default async function AdminPage() {
   const hasVerificationAction = data.pendingUserVerifications.length > 0;
   const hasMistakeAction = data.pendingMistakeReports.length > 0;
 
+  const sourceVisibility = await getSourceVisibility();
   return (
     <PageShell className="space-y-6 py-8">
+      <SourceVisibilityControls initial={sourceVisibility} />
       <Link href="/admin/placements" className="underline">בקרת פיילוט סבבים ואלקטיבים</Link>
       <SectionHeading
         eyebrow="דשבורד אדמין"

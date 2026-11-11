@@ -16,9 +16,9 @@ async function main(){
   const overflow=async()=>assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   const screenshot=async(label:string)=>{await page.screenshot({path:`${out}/${name}-${label}.png`,fullPage:true});};
   if(!live)await page.route('**/api/career-fit/catalog',r=>r.fulfill({json:JSON.parse(readFileSync('scripts/career-fit/fixtures/phase4c-catalog.json','utf8'))}));
-  const response=await page.goto(root+'/career-fit');assert.equal(response?.status(),200);await page.getByRole('heading',{name:'מצאו את ההתמחות שמתאימה לכם',exact:true}).waitFor();
-  assert(!stale.test(await page.locator('main').innerText()));assert.equal(await page.locator('html').getAttribute('dir'),'rtl');assert(await page.getByText('30 שאלות · כ-4–6 דקות',{exact:true}).isVisible());
-  assert.equal(await page.getByRole('list',{name:'המסע שלכם להתמחות'}).count(),1);assert.equal(await page.getByRole('region',{name:'על השאלון'}).count(),1);
+  const response=await page.goto(root+'/career-fit');assert.equal(response?.status(),200);await page.getByRole('heading',{name:'שאלון התאמה להתמחות',exact:true}).waitFor();
+  assert(!stale.test(await page.locator('main').innerText()));assert.equal(await page.locator('html').getAttribute('dir'),'rtl');assert(await page.getByText('30 שאלות · כ־4–6 דקות · שמירה במכשיר',{exact:true}).isVisible());
+  assert.equal(await page.getByRole('heading',{name:'מה מעניין אתכם בעבודה הרפואית?',exact:true}).count(),1);assert.equal(await page.getByRole('region',{name:'על השאלון'}).count(),1);
   const start=page.getByRole('button',{name:'התחילו את שאלון ההתאמה',exact:false});assert.equal(await start.count(),1);assert(await start.isDisabled());await screenshot('landing');await overflow();
   await page.getByRole('checkbox').check();await start.click();await page.getByRole('heading',{name:medical[0].hebrew,exact:true}).waitFor();
   const nav=width>=1024?page.getByRole('complementary',{name:'שלבי השאלון'}):page.locator('details').filter({has:page.locator('summary').filter({hasText:'כל השאלות'})});
@@ -39,7 +39,7 @@ async function main(){
    if(i===1){await page.getByRole('button',{name:'חזרה',exact:true}).click();await page.getByRole('heading',{name:medical[0].hebrew,exact:true}).waitFor();await page.getByRole('button',{name:'המשך',exact:true}).click();}
    await page.getByRole('button',{name:i===29?'לבדיקת התשובות':'המשך',exact:true}).click();
   }
-  assert(await page.getByText('עניתם על 30 מתוך 30 שאלות.',{exact:true}).isVisible());await screenshot('review');await page.getByRole('button',{name:'צפו בתוצאות שלי',exact:true}).click();await page.getByRole('heading',{name:'ההתמחויות שהכי מתאימות לפרופיל שלכם',exact:true}).waitFor();
+  assert(await page.getByText('עניתם על 30 מתוך 30 שאלות.',{exact:true}).isVisible());await screenshot('review');await page.getByRole('button',{name:'צפו בתוצאות שלי',exact:true}).click();await page.getByRole('heading',{name:'כיווני התמחות להמשך בירור',exact:true}).waitFor();
   const rows=page.locator('article[id^="occupation-"]'),expected=rankSpecialties('quick',answers).ranked;assert.equal(await rows.count(),17);assert.deepEqual(await rows.evaluateAll(xs=>xs.map(x=>x.id)),expected.map(r=>'occupation-'+r.specialty.code));
   assert.equal(await page.getByRole('region',{name:'שלושת הכיוונים המובילים'}).locator('h3').count(),3);
   for(let i=0;i<expected.length;i++)assert(await rows.nth(i).getByText(`${expected[i].displayIndex}/100`,{exact:true}).isVisible());

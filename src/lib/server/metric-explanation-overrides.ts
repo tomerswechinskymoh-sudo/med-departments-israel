@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client";
-import { prisma } from "@/lib/prisma";
+import { publicPrisma as prisma } from "@/lib/server/source-visibility";
 import {
   metricExplanationRegistry,
   type MetricExplanationContext,
