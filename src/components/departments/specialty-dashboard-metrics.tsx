@@ -51,23 +51,32 @@ function MetricValue({ metric }: { metric: SpecialtyMetricResult }) {
   }
   return <p className="dashboard-value">{metric.value}{["centerSalary", "peripherySalary"].includes(metric.key) && !metric.value.includes("₪") ? " ₪" : ""}</p>;
 }
-export function SpecialtyDashboardMetrics({ specialtyId, specialtyName, metrics, explanationOverrides, isAdmin, contextItems = [] }: {
+export function SpecialtyDashboardMetrics({ specialtyId, specialtyName, metrics, explanationOverrides, isAdmin, contextItems = [], compactLayout = false }: {
   specialtyId: string; specialtyName: string; metrics: SpecialtyMetricResult[]; explanationOverrides: MetricExplanationOverrideRecord[]; isAdmin: boolean;
+  compactLayout?: boolean;
   contextItems?: { key: string; label: string; value: string; href?: string }[];
 }) {
   if (!metrics.length && !contextItems.length) return null;
+  const layoutGroups = compactLayout ? groups.map((group, index) => ({
+    ...group,
+    keys: index === 0 ? [...group.keys, "burnoutIndex" as const]
+      : index === 1 ? [...group.keys, "newResidentsTrend" as const]
+      : group.keys.filter(key => key !== "burnoutIndex" && key !== "newResidentsTrend")
+  })) : groups;
   return <MetricExplanationProvider context={{ specialtyId }} overrides={explanationOverrides} isAdmin={isAdmin}>
-    <section className="specialty-dashboard" aria-labelledby="dashboard-title">
+    <section className={`specialty-dashboard${compactLayout ? " specialty-dashboard--compact" : ""}`} aria-labelledby="dashboard-title">
 
       <header className="dashboard-heading"><div><p className="eyebrow">תמונת מצב ארצית</p><h2 id="dashboard-title">{specialtyName} — נתונים ומגמות</h2></div><p>נתוני התחום כולו, ללא תלות בסינון המחלקות. נתונים מחושבים ומקורות מצוינים לצד המדדים.</p></header>
       {contextItems.length > 0 && <div className="dashboard-context">{contextItems.map(item => <p key={item.key}><strong>{item.label}: </strong>{item.href ? <a href={item.href} target="_blank" rel="noreferrer">{item.value} ↗</a> : item.value}</p>)}</div>}
-      {groups.map((group, index) => {
+      {layoutGroups.map((group, index) => {
         const items = metrics.filter(metric => group.keys.includes(metric.key));
         // Bundles change presentation only. Every enabled metric retains its own
         // key, value, explanation, source and publication-filtered result.
         const chartKeys = ["acceptanceDistribution", "newResidentsTrend", "salaryGap"];
         const compact = items.filter(metric => !chartKeys.includes(metric.key));
         const charts = items.filter(metric => chartKeys.includes(metric.key));
+        const stackCharts = compactLayout && index === 1;
+        if (stackCharts) charts.sort((a, b) => chartKeys.indexOf(a.key) - chartKeys.indexOf(b.key));
         const sourceText = (metric: SpecialtyMetricResult) => `${metric.metricLevel === "מחושב" ? "מחושב · " : ""}${metric.sourceLabel ?? "מקור נתונים לא צוין"}`;
         const commonSource = compact.length > 1 && compact.every(metric => sourceText(metric) === sourceText(compact[0])) ? sourceText(compact[0]) : null;
         const renderMetric = (metric: SpecialtyMetricResult) => <article key={metric.key} data-metric-key={metric.key} className={`dashboard-metric ${metric.isPlaceholder ? "dashboard-metric--missing" : ""} ${metric.isHighlighted ? "dashboard-metric--highlighted" : ""}`}>
@@ -78,7 +87,8 @@ export function SpecialtyDashboardMetrics({ specialtyId, specialtyName, metrics,
           <h3><ProductIcon name={group.icon} />{group.title}</h3>
           <div className={`dashboard-topic ${charts.length ? "dashboard-topic--with-chart" : ""}`}>
             {compact.length > 0 && <div className="dashboard-metric-bundle">{compact.map(renderMetric)}{commonSource && <p className="dashboard-bundle-source">מקור לכל המדדים בקבוצה: {commonSource}</p>}</div>}
-            {charts.map(metric => <div key={metric.key} className={`dashboard-chart-panel ${metric.isPlaceholder ? "dashboard-chart-panel--missing" : ""}`}>{renderMetric(metric)}</div>)}
+            {stackCharts && charts.length > 0 ? <div className="dashboard-chart-stack">{charts.map(metric => <div key={metric.key} className={`dashboard-chart-panel ${metric.isPlaceholder ? "dashboard-chart-panel--missing" : ""}`}>{renderMetric(metric)}</div>)}</div>
+              : charts.map(metric => <div key={metric.key} className={`dashboard-chart-panel ${metric.isPlaceholder ? "dashboard-chart-panel--missing" : ""}`}>{renderMetric(metric)}</div>)}
           </div>
         </section>;
       })}

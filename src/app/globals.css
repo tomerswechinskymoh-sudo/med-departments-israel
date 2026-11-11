@@ -3457,3 +3457,27 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
 .directory-page .dashboard-duration-pair > div strong { font-size: clamp(23px, 2.2vw, 28px); line-height: 1.35; overflow-wrap: anywhere; }
 .directory-page .department-card .department-residents-value { display: block; font-size: clamp(30px, 2.7vw, 36px); font-weight: 850; line-height: 1.25; font-variant-numeric: tabular-nums; color: #172c51; overflow-wrap: anywhere; }
 .directory-page .department-residents-kpi { min-width: 0; }
+
+/* With both optional sources hidden, keep the remaining specialty data together. */
+.directory-page .specialty-dashboard--compact .dashboard-group--0 .dashboard-metric-bundle { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.directory-page .specialty-dashboard--compact .dashboard-metric .dashboard-metric-title { flex-wrap: wrap; }
+.directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-topic { align-items: stretch; }
+.directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-metric-bundle { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-metric-bundle > .dashboard-metric { grid-column: auto; align-self: stretch; padding: 16px; border: 0; }
+.directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-metric-bundle > .dashboard-metric:nth-child(even) { border-inline-start: 1px solid #dfebf6; }
+.directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-metric-bundle > .dashboard-metric:nth-child(n+3) { border-top: 1px solid #dfebf6; }
+.directory-page .specialty-dashboard--compact .dashboard-duration-pair { grid-template-columns: 1fr; }
+.directory-page .specialty-dashboard--compact .dashboard-chart-stack { display: grid; gap: 12px; min-width: 0; }
+.directory-page .specialty-dashboard--compact .dashboard-chart-panel .dashboard-metric { padding: 14px 16px; }
+.directory-page .specialty-dashboard--compact .dashboard-chart-panel .metric-chart { margin-top: 8px; }
+.directory-page .specialty-dashboard--compact .dashboard-chart-panel .metric-chart-rows { gap: 8px; }
+.directory-page .specialty-dashboard--compact .dashboard-chart-panel .metric-chart-unit { margin-bottom: 8px; }
+.directory-page .specialty-dashboard--compact .dashboard-chart-panel .metric-chart--vertical .metric-chart-track { height: 88px; }
+@media(max-width:639px) {
+ .directory-page .specialty-dashboard--compact .dashboard-group--0 .dashboard-metric-bundle { grid-template-columns: repeat(2,minmax(0,1fr)); }
+ .directory-page .specialty-dashboard--compact .dashboard-group--0 .dashboard-metric-bundle > .dashboard-metric { grid-column: auto; padding: 14px 12px; border: 0 !important; }
+ .directory-page .specialty-dashboard--compact .dashboard-group--0 .dashboard-metric-bundle > .dashboard-metric:nth-child(even) { border-inline-start: 1px solid #ccdfef !important; }
+ .directory-page .specialty-dashboard--compact .dashboard-group--0 .dashboard-metric-bundle > .dashboard-metric:nth-child(n+3) { border-top: 1px solid #ccdfef !important; }
+ .directory-page .specialty-dashboard--compact .dashboard-group--0 .dashboard-value { font-size: 24px; }
+ .directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-metric-bundle > .dashboard-metric { padding: 14px 12px; }
+}

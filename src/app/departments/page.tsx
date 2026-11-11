@@ -5,6 +5,7 @@ export const metadata = {
 import { PageIntro } from "@/components/ui/page-intro";
 
 import { getSession } from "@/lib/auth";
+import { getSourceVisibility } from "@/lib/server/source-visibility";
 import { departmentFilterSchema } from "@/lib/validation";
 import { DepartmentCard } from "@/components/departments/department-card";
 import {
@@ -137,9 +138,10 @@ export default async function DepartmentsPage({
     searchAcrossSpecialties,
   };
 
-  const [departments, specialtyDashboard] = await Promise.all([
+  const [departments, specialtyDashboard, sourceVisibility] = await Promise.all([
     getDirectoryData(effectiveFilters, session?.userId),
     getSpecialtyDashboardMetrics(selectedSpecialtyId),
+    getSourceVisibility(),
   ]);
   const selectedSpecialty = availableFilters.specialties.find(
     (specialty) => specialty.id === selectedSpecialtyId,
@@ -209,7 +211,8 @@ export default async function DepartmentsPage({
                     specialtyId={selectedSpecialty.id}
                     specialtyName={selectedSpecialty.name}
                     metrics={specialtyDashboard.metrics}
-                          explanationOverrides={
+                    compactLayout={!sourceVisibility.ima && !sourceVisibility.duns100}
+                    explanationOverrides={
                       specialtyDashboard.explanationOverrides
                     }
                     isAdmin={session?.role === "admin"}
