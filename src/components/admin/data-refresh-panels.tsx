@@ -101,6 +101,7 @@ function objectValue(value: unknown) {
 
 function formatRunDate(value: string | Date) {
   return new Intl.DateTimeFormat("he-IL", {
+    timeZone: "Asia/Jerusalem",
     dateStyle: "short",
     timeStyle: "short"
   }).format(new Date(value));

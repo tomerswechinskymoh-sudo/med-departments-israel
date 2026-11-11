@@ -87,6 +87,7 @@
     "test:privacy-sources": "node --import tsx --test tests/privacy-sources/*.test.ts tests/privacy-sources/*.test.cjs",
     "cleanup:signup-documents": "tsx scripts/cleanup-signup-documents.ts",
     "test:accessibility": "node tests/privacy-sources/browser.mjs",
+    "test:admin-hydration": "node --import tsx tests/privacy-sources/admin-hydration.ts",
     "restore:signup-deletions": "tsx scripts/restore-signup-deletion-ledger.ts"
   },
   "prisma": {

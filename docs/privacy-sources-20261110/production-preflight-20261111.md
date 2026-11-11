@@ -42,3 +42,11 @@ The migration is additive; old code remains available while the new build comple
 - Onboarding route regression: 12 passed after extending the in-memory mock for the new consent row lock/event. It still verifies all mandatory/exempt groups and signup without marketing consent. Local HTTP checks passed for approval, document access, legacy denial, late email, unsubscribe, account permissions and login success/failure.
 
 These tests do not constitute a full screen-reader or physical-mobile audit. Full mail delivery is not tested with real users. Missing verified marketing sender details keep marketing fail-closed; service mail configuration remains present. Historical document cleanup remains explicitly unperformed.
+
+## Production smoke finding and bounded follow-up
+
+The first staged build applied the migration successfully, passed 17 HTTP checks and was promoted. Authenticated smoke verified all four source combinations and preserved the Ministry resident count; both flags were restored true. No user/file/review counts changed and no historical deletion ran.
+
+The admin browser then exposed React hydration error 418. The application was safely rolled back to the previous deployment while retaining the additive schema. The error also reproduced in that previous deployment. A local UTC server with a synthetic crawler-run timestamp reproduced exactly the same error in a Jerusalem browser. `DataRefreshPanels.formatRunDate` used the host's default timezone, producing different server and browser text. Its timezone is now explicitly `Asia/Jerusalem`; no data operations or crawler behavior changed.
+
+After the one-line formatter correction, the production build passed again. `npm run test:admin-hydration` passed against a UTC local server with Jerusalem and Los Angeles browser timezones. This test refuses non-local database/app targets, uses synthetic fixtures, and blocks browser writes. The follow-up deployment does not run another migration; the already applied migration remains at its verified checksum. The final deployment URL and live smoke receipt are recorded in the separate execution report.
