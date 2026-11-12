@@ -4,6 +4,10 @@ import subprocess,json,hashlib,sys,os,tarfile,re,datetime
 ROOT=Path(__file__).resolve().parents[2]; OUT=ROOT/'docs/staz-survey-20261112'
 PROJECT='prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE';TEAM='team_Jj2tczP8vf4XPr74gxyasW5A'
 BASE='7397eb8d5a6e0bbc4f0a0cd6cfff0755ee09c314';OLD='dpl_CEaQ4tTqrFiLRtT1XRQiHnvbM5yZ'
+QUICK_REVIEW='--quick-review' in sys.argv
+if QUICK_REVIEW:
+ OUT=ROOT/'docs/staz-survey-ux-20261112'
+ BASE='e4507b3f5d698965868bfbea41b20c02fbcda617';OLD='dpl_AnDbii2qL6penLNwsgsnhuqGF5F5'
 def run(args,**kw):return subprocess.check_output(args,cwd=ROOT,text=True,**kw).strip()
 def git(*args):return run(['git',*args])
 def write(n,v):(OUT/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
@@ -30,7 +34,7 @@ if phase=='preflight':
  s=snapshot();assert s['main']==BASE;write('preflight.json',s);print('Production aliases, source, protection and cron verified')
 elif phase=='deploy':
  s=snapshot();assert s['main']==BASE and s['project']==read('preflight.json')['project'];write('immediate-predeploy.json',s)
- assert read('checks.json')['passed'] and read('production-import.json')['passed']
+ assert read('checks.json')['passed'] and read('production-baseline.json' if QUICK_REVIEW else 'production-import.json')['passed']
  assert not git('diff','HEAD','--name-only');commit=git('rev-parse','HEAD');assert git('rev-parse','HEAD^')==BASE
  target=Path('/private/tmp/hitmachut-staz-release-'+commit[:12]);target.mkdir(exist_ok=False)
  archive=OUT/'source.tar';subprocess.run(['git','archive','--format=tar','-o',str(archive),commit],cwd=ROOT,check=True)

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "unitAndRegressionPassed": 13,
+  "quickActionDatabaseIntegrationPassed": true,
+  "existingModerationDatabaseIntegrationPassed": true,
+  "isolatedSyntheticDataOnly": true,
+  "browserOneClickPerComponentPassed": true,
+  "cursorPaginationNoSkippedRows": true,
+  "browserScans": 4,
+  "axeViolations": 0,
+  "horizontalOverflow": false,
+  "permissionsAndCsrfPassed": true,
+  "adminEntryButtonPassed": true,
+  "typescriptPassed": true,
+  "productionBuildPassed": true,
+  "productionMutationRequired": false
+}

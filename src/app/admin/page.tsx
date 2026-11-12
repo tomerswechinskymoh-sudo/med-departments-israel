@@ -183,8 +183,10 @@ export default async function AdminPage() {
   return (
     <PageShell className="space-y-6 py-8">
       <SourceVisibilityControls initial={sourceVisibility} />
-      <Link href="/admin/survey-reviews" className="rounded-lg border border-brand-200 bg-brand-50 p-4 font-bold text-brand-900">אישור חוויות סקר הסטאז׳ · תור פרטי</Link>
-      <Link href="/admin/placements" className="underline">בקרת פיילוט סבבים ואלקטיבים</Link>
+      <div className="flex flex-wrap items-center gap-3">
+        <Link href="/admin/survey-reviews" className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-brand-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-brand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"><span>ניהול תגובות סקר הסטאז׳</span><span aria-hidden="true">←</span></Link>
+        <Link href="/admin/placements" className="inline-flex min-h-11 items-center px-3 text-sm text-brand-800 underline underline-offset-4">בקרת פיילוט סבבים ואלקטיבים</Link>
+      </div>
       <SectionHeading
         eyebrow="דשבורד אדמין"
         title="אישורים, נתונים ופיקוח"

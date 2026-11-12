@@ -11,13 +11,51 @@ export const decisionSchema = z.object({
 }).strict();
 export type Decision = z.infer<typeof decisionSchema>;
 export class ModerationError extends Error { constructor(public code: string, public status = 400) { super(code); } }
-export async function moderate(db: PrismaClient, id: string, input: Decision, actor: { userId: string; name: string }) {
-  const d = decisionSchema.parse(input);
+export const componentActionSchema = z.object({
+  revision: z.number().int().nonnegative(), component: z.enum(['TEXT', 'RATING']), action: z.enum(['PUBLISH', 'HIDE']),
+  targetDepartmentId: z.string().max(150).nullable(), mappingExceptionReason: z.string().max(1000), reviewed: z.literal(true),
+  text: z.string().max(12000).optional(), metricId: z.string().max(150).optional()
+}).strict();
+export type ComponentAction = z.infer<typeof componentActionSchema>;
+type ComponentRow = Pick<Decision, 'revision' | 'targetDepartmentId' | 'mappingConfirmed' | 'publishText' | 'publishRatings' | 'privacyReviewed'> & {
+  status: string; mappingExceptionReason: string | null; approvedPublicText: string | null; adminNotes: string | null;
+  ratings: { id: string; selected: boolean }[];
+};
+// One explicit click approves only the displayed component. Never inherit pending selections.
+export function componentDecision(row: ComponentRow, action: ComponentAction): { decision: Decision; otherComponentReset: boolean } {
+  const publishing = action.action === 'PUBLISH';
+  const sameMapping = row.targetDepartmentId === action.targetDepartmentId && (row.mappingExceptionReason ?? '') === action.mappingExceptionReason.trim();
+  const preserve = row.status === 'APPROVED' && (!publishing || sameMapping);
+  let publishText = preserve && row.publishText;
+  let selectedMetricIds = preserve && row.publishRatings ? row.ratings.filter(r => r.selected).map(r => r.id) : [];
+  let text = row.approvedPublicText ?? '';
+  if (action.component === 'TEXT') {
+    publishText = publishing;
+    if (publishing) { if (action.text === undefined) throw new ModerationError('TEXT_REQUIRED'); text = action.text; }
+  } else {
+    if (!action.metricId || !row.ratings.some(r => r.id === action.metricId)) throw new ModerationError('INVALID_RATING_EVIDENCE');
+    selectedMetricIds = selectedMetricIds.filter(id => id !== action.metricId);
+    if (publishing) selectedMetricIds.push(action.metricId);
+  }
+  return { otherComponentReset: publishing && row.status === 'APPROVED' && !sameMapping && (action.component === 'TEXT' ? row.publishRatings : row.publishText), decision: {
+    revision: action.revision, action: publishText || selectedMetricIds.length ? 'APPROVE' : 'SAVE',
+    targetDepartmentId: publishing ? action.targetDepartmentId : row.targetDepartmentId,
+    mappingConfirmed: publishing ? true : row.mappingConfirmed,
+    mappingExceptionReason: publishing ? action.mappingExceptionReason : row.mappingExceptionReason ?? '',
+    approvedPublicText: text, publishText, publishRatings: selectedMetricIds.length > 0, selectedMetricIds,
+    privacyReviewed: publishing ? action.reviewed : row.privacyReviewed, adminNotes: row.adminNotes ?? ''
+  } };
+}
+export async function moderate(db: PrismaClient, id: string, input: Decision | ComponentAction, actor: { userId: string; name: string }) {
+  const component = 'component' in input ? componentActionSchema.parse(input) : null;
+  const fullDecision = component ? null : decisionSchema.parse(input);
   return db.$transaction(async tx => {
     // Shared source lock serializes imports, per-item decisions and source changes.
     await tx.$executeRaw`SELECT pg_advisory_xact_lock(72613011)`;
     const row = await tx.surveyReview.findUnique({ where: { id }, include: { ratings: true } });
     if (!row || row.sourceId !== SOURCE_ID) throw new ModerationError('NOT_FOUND', 404);
+    const quick = component ? componentDecision(row, component) : null;
+    const d = quick?.decision ?? fullDecision!;
     if (row.revision !== d.revision) throw new ModerationError('STALE_REVISION', 409);
     const target = d.targetDepartmentId ? await tx.department.findFirst({ where: { id: d.targetDepartmentId, ...publicVisibleDepartmentWhere }, select: { id: true, institutionId: true } }) : null;
     if (d.targetDepartmentId && !target) throw new ModerationError('INVALID_DEPARTMENT');
@@ -26,9 +64,11 @@ export async function moderate(db: PrismaClient, id: string, input: Decision, ac
     const selected = row.ratings.filter(r => d.selectedMetricIds.includes(r.id));
     if (new Set(d.selectedMetricIds).size !== d.selectedMetricIds.length || selected.length !== d.selectedMetricIds.length || selected.some(r => !r.verified || r.normalizedValue === null || r.sourceRowNumber !== row.sourceRowNumber || (row.sourceColumnLetter === 'BL' ? r.sourceColumn !== 'BK' : row.sourceColumnLetter === 'BP' ? r.sourceColumn !== 'BO' : true))) throw new ModerationError('INVALID_RATING_EVIDENCE');
     const text = sanitizePlainText(d.approvedPublicText, 12000);
-    // Changes to an approved payload always unpublish it; a second explicit approval is required.
+    // The full editor saves changed payloads for re-review. Component buttons are an
+    // explicit approval of the visible component; the other component is retained
+    // only when its already-approved mapping is unchanged.
     const changed = row.targetDepartmentId !== d.targetDepartmentId || row.approvedPublicText !== (text || null) || row.publishText !== d.publishText || row.publishRatings !== d.publishRatings || row.mappingConfirmed !== d.mappingConfirmed || row.privacyReviewed !== d.privacyReviewed || row.ratings.some(r => r.selected !== d.selectedMetricIds.includes(r.id)) || (row.mappingExceptionReason ?? '') !== d.mappingExceptionReason.trim();
-    const approvalInvalidated = row.status === 'APPROVED' && changed;
+    const approvalInvalidated = !component && row.status === 'APPROVED' && changed;
     let status: 'PENDING_REVIEW' | 'NEEDS_MAPPING' | 'APPROVED' | 'REJECTED' = d.action === 'REJECT' ? 'REJECTED' : d.action === 'NEEDS_MAPPING' ? 'NEEDS_MAPPING' : 'PENDING_REVIEW';
     if (d.action === 'APPROVE' && !approvalInvalidated) {
       if (!row.sourceVerified) throw new ModerationError('WORKBOOK_VERIFICATION_REQUIRED');
@@ -46,8 +86,8 @@ export async function moderate(db: PrismaClient, id: string, input: Decision, ac
     const updated = await tx.surveyReview.update({ where: { id }, data: { targetDepartmentId: target?.id ?? null, mappingConfirmed: d.mappingConfirmed, mappingExceptionReason: sanitizePlainText(d.mappingExceptionReason, 1000) || null,
       approvedPublicText: text || null, publishText: d.publishText, publishRatings: d.publishRatings, privacyReviewed: d.privacyReviewed, adminNotes: sanitizePlainText(d.adminNotes, 2000),
       status, reviewedByUserId: actor.userId, reviewedByName: actor.name, reviewedAt: new Date(), revision: { increment: 1 } } });
-    await tx.auditLog.create({ data: { actorUserId: actor.userId, action: 'STAZ_REVIEW_' + (approvalInvalidated ? 'APPROVAL_INVALIDATED' : d.action), entityType: 'SurveyReview', entityId: id, metadata: { previousStatus: row.status, status, revision: updated.revision, targetDepartmentId: target?.id ?? null, publishText: d.publishText, publishRatings: d.publishRatings, selectedMetricIds: selected.map(r => r.id), privacyReviewed: d.privacyReviewed, previousTextHash: createHash('sha256').update(row.approvedPublicText ?? '').digest('hex'), textHash: createHash('sha256').update(text).digest('hex') } } });
-    return { id, status, revision: updated.revision, approvalInvalidated };
+    await tx.auditLog.create({ data: { actorUserId: actor.userId, action: 'STAZ_REVIEW_' + (component ? component.action + '_' + component.component : approvalInvalidated ? 'APPROVAL_INVALIDATED' : d.action), entityType: 'SurveyReview', entityId: id, metadata: { previousStatus: row.status, status, revision: updated.revision, targetDepartmentId: target?.id ?? null, publishText: d.publishText, publishRatings: d.publishRatings, selectedMetricIds: selected.map(r => r.id), privacyReviewed: d.privacyReviewed, otherComponentReset: quick?.otherComponentReset ?? false, previousTextHash: createHash('sha256').update(row.approvedPublicText ?? '').digest('hex'), textHash: createHash('sha256').update(text).digest('hex') } } });
+    return { id, status, revision: updated.revision, approvalInvalidated, otherComponentReset: quick?.otherComponentReset ?? false };
   });
 }
 export const sourceSchema = z.object({ revision: z.number().int().nonnegative(), action: z.enum(['HIDE','ENABLE','CONFIRM_PERMISSION','REVOKE_PERMISSION']), confirmed: z.literal(true), evidence: z.string().max(2000).optional(), authorizedByController: z.boolean().optional(), permitsTextAndRatings: z.boolean().optional() }).strict();

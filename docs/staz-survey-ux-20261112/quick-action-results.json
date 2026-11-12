@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "syntheticOnly": true,
+  "oneClickText": true,
+  "oneClickRating": true,
+  "independentRemoval": true,
+  "preservesOtherApproval": true,
+  "mappingChangesInvalidateOtherComponent": true,
+  "staleAndForeignMetricRejected": true,
+  "sourceAndRightsGate": true,
+  "unitAndRegressionTests": 13,
+  "productionBuildPassed": true
+}

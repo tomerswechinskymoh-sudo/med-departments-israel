@@ -13,7 +13,7 @@ export async function GET(request: Request, context: { params: Promise<{ id: str
     const { rawEncrypted, ...safe } = row;
     const original = unseal<Candidate>(rawEncrypted, row.sourceReviewKey);
     const audit = await prisma.auditLog.findMany({ where: { entityType: 'SurveyReview', entityId: id }, orderBy: { createdAt: 'desc' }, take: 20, select: { id: true, action: true, createdAt: true, metadata: true, actor: { select: { fullName: true } } } });
-    return NextResponse.json({ ...safe, original, audit }, { headers: noStore });
+    return NextResponse.json({ ...safe, text: row.approvedPublicText ?? original.proposedText, privacyFlags: original.privacyFlags, original, audit }, { headers: noStore });
   } catch (e) { return fail(e); }
 }
 export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {

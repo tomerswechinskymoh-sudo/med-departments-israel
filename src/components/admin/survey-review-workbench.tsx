@@ -4,14 +4,15 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ReviewCard } from '@/components/departments/review-card';
+import { SurveyReviewQuickCard, type SurveyQueueRow } from './survey-review-quick-card';
 import { DISCLOSURE, type Candidate, type DepartmentOption, type RatingEvidence } from '@/lib/staz-survey/domain';
-import type { Decision } from '@/server/staz-survey/moderation';
+import type { ComponentAction, Decision } from '@/server/staz-survey/moderation';
 const labels: Record<string, string> = { PENDING_REVIEW: 'ממתינות לבדיקה', NEEDS_MAPPING: 'דורשות שיוך', APPROVED: 'מאושרות', REJECTED: 'נדחו', mappingRequired: 'ללא הצעת שיוך בטוחה', displayed: 'מוצגות כרגע', hiddenBySource: 'מאושרות המוסתרות באמצעות המקור', withRatings: 'עם דירוג מאומת מוצע' };
 const errors: Record<string, string> = { FORBIDDEN: 'נדרשת כניסת אדמין.', INVALID_ORIGIN: 'הבקשה נדחתה. רעננו את העמוד.', STALE_REVISION: 'הרשומה השתנתה בחלון אחר. יש לפתוח אותה שוב.', WORKBOOK_VERIFICATION_REQUIRED: 'נדרשת הצלבה עם קובץ המקור בייבוא המקומי לפני אישור.', MAPPING_CONFIRMATION_REQUIRED: 'יש לבחור ולאשר מחלקת יעד.', HOSPITAL_EXCEPTION_REASON_REQUIRED: 'המוסד אינו תואם או אינו מזוהה. יש לכתוב נימוק חריג מפורט.', HOSPITAL_SCOPE_REASON_REQUIRED: 'זו תגובה על כלל בית החולים. נדרש נימוק מפורש להצגתה במחלקה.', PRIVACY_REVIEW_REQUIRED: 'יש להשלים בדיקת פרטיות ידנית.', SELECT_CONTENT: 'יש לבחור טקסט, דירוגים או את שניהם.', TEXT_REQUIRED: 'יש להזין טקסט לפרסום.', SELECT_VERIFIED_METRIC: 'יש לבחור לפחות מדד מאומת אחד.', PERMISSION_REQUIRED: 'הפרסום חסום עד לתיעוד היתר שימוש במקור.', DOCUMENTED_PERMISSION_REQUIRED: 'נדרשים אסמכתה ושני אישורי זכויות מפורשים.', INVALID_RATING_EVIDENCE: 'המדד אינו שייך לרשומה או אינו מאומת.' };
 const field = 'w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm';
-type QueueRow = { id: string; sourceReviewKey: string; sourceYear: number; originalHospital: string; originalDepartmentOrScope: string; sourceQuestion: string; status: string; mappingConfidence: string; mappingReason: string; suggestedDepartmentId: string | null; targetDepartmentId: string | null; mappingConfirmed: boolean; sourceVerified: boolean; ratings: { id: string }[] };
+type QueueRow = SurveyQueueRow;
 type Source = { isPublicEnabled: boolean; permissionConfirmedAt: string | null; permissionEvidence: string | null; revision: number };
-type Queue = { source: Source; rows: QueueRow[]; total: number; page: number; counts: Record<string, number>; catalog: DepartmentOption[]; facets: { hospitals: string[]; departments: string[]; questions: string[]; years: number[] }; latestImports: { id: string; createdAt: string; report: Record<string, unknown> }[] };
+type Queue = { source: Source; rows: QueueRow[]; total: number; page: number; nextCursor: string | null; counts: Record<string, number>; catalog: DepartmentOption[]; facets: { hospitals: string[]; departments: string[]; questions: string[]; years: number[] }; latestImports: { id: string; createdAt: string; report: Record<string, unknown> }[] };
 type Detail = Omit<QueueRow, 'ratings'> & { original: Candidate; revision: number; approvedPublicText: string | null; publishText: boolean; publishRatings: boolean; privacyReviewed: boolean; mappingExceptionReason: string | null; adminNotes: string | null; mappedInstitutionId: string | null; reviewedByName: string | null; reviewedAt: string | null; ratings: (RatingEvidence & { id: string; selected: boolean })[]; audit: { id: string; action: string; createdAt: string; actor: { fullName: string } | null }[] };
 async function api(url: string, init?: RequestInit) {
   const r = await fetch(url, { cache: 'no-store', ...init }); const body = await r.json();
@@ -29,6 +30,8 @@ export function SurveyReviewWorkbench() {
   const [busy, setBusy] = useState(false), [file, setFile] = useState<File | null>(null), [report, setReport] = useState<Record<string, unknown> | null>(null);
   const [evidence, setEvidence] = useState(''), [rights, setRights] = useState(false), [scope, setScope] = useState(false);
   const requestId = useRef(0), detailId = useRef(0), dialogRef = useRef<HTMLDivElement>(null);
+  const moreRef = useRef<HTMLDivElement>(null), moreBusy = useRef(false);
+  const [loadingMore, setLoadingMore] = useState(false), [moreError, setMoreError] = useState('');
   useEffect(() => {
     if (!detail) return;
     const previous = document.activeElement as HTMLElement | null, overflow = document.body.style.overflow;
@@ -36,12 +39,38 @@ export function SurveyReviewWorkbench() {
     return () => { document.body.style.overflow = overflow; previous?.focus(); };
   }, [detail?.id]);
   const load = useCallback(async () => {
-    const n = ++requestId.current; setLoading(true);
+    const n = ++requestId.current; setLoading(true); setMoreError('');
     try { const value = await api('/api/admin/survey-reviews?' + new URLSearchParams(filters)); if (n === requestId.current) setData(value); }
     catch (e) { if (n === requestId.current) setError((e as Error).message); }
     finally { if (n === requestId.current) setLoading(false); }
   }, [filters]);
   useEffect(() => { void load(); }, [load]);
+  const loadMore = useCallback(async () => {
+    if (!data?.nextCursor || moreBusy.current || loading) return;
+    const generation = requestId.current; moreBusy.current = true; setLoadingMore(true); setMoreError('');
+    try {
+      const value: Queue = await api('/api/admin/survey-reviews?' + new URLSearchParams({ ...filters, cursor: data.nextCursor }));
+      if (generation === requestId.current) setData(current => current ? { ...current, nextCursor: value.nextCursor, counts: value.counts, rows: [...current.rows, ...value.rows.filter(r => !current.rows.some(old => old.id === r.id))] } : current);
+    } catch (e) { if (generation === requestId.current) setMoreError((e as Error).message); }
+    finally { moreBusy.current = false; setLoadingMore(false); }
+  }, [data?.nextCursor, filters, loading]);
+  useEffect(() => {
+    if (!moreRef.current || !data?.nextCursor || moreError) return;
+    const observer = new IntersectionObserver(entries => { if (entries.some(e => e.isIntersecting)) void loadMore(); }, { rootMargin: '600px' });
+    observer.observe(moreRef.current); return () => observer.disconnect();
+  }, [loadMore, data?.nextCursor, moreError]);
+  async function saveComponent(id: string, action: ComponentAction) {
+    const result = await api('/api/admin/survey-reviews/' + id, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(action) });
+    const updated: QueueRow = await api('/api/admin/survey-reviews/' + id);
+    // Keep the card in place so its second button remains available, even in a status filter.
+    setData(current => {
+      if (!current) return current;
+      const old = current.rows.find(r => r.id === id), counts = { ...current.counts };
+      if (old && old.status !== updated.status) { counts[old.status] = Math.max(0, (counts[old.status] ?? 0) - 1); counts[updated.status] = (counts[updated.status] ?? 0) + 1; }
+      return { ...current, counts, rows: current.rows.map(r => r.id === id ? updated : r) };
+    });
+    return result;
+  }
   const filter = (key: string, value: string) => setFilters(v => ({ ...v, [key]: value, page: '1' }));
   async function run(fn: () => Promise<void>) { setBusy(true); setError(''); setMessage(''); try { await fn(); } catch (e) { setError((e as Error).message); } finally { setBusy(false); } }
   async function open(id: string) {
@@ -69,14 +98,13 @@ export function SurveyReviewWorkbench() {
   const departmentLabel = (id: string | null) => { const d = data?.catalog.find(c => c.id === id); return d ? `${d.institution.name} · ${d.name}` : 'לא נקבע'; };
   return <div dir="rtl" className="space-y-6">
     <Link href="/admin" className="text-sm underline">חזרה לניהול</Link>
-    <header><p className="text-sm font-bold text-brand-700">תור פרטי · אישור פריט־פריט</p><h1 className="mt-1 text-3xl font-black">חוויות סקר הסטאז׳</h1><p className="mt-2 text-sm leading-7 text-slate-600">{DISCLOSURE}. אין אישור אוטומטי. יש לבדוק את המקור, השיוך, המדדים והפרטיות בכל תגובה.</p></header>
+    <header><p className="text-xs font-bold text-brand-700">ניהול חוויות</p><h1 className="mt-1 text-3xl font-black text-ink">תגובות סקר הסטאז׳</h1><p className="mt-2 text-sm leading-7 text-slate-600">קוראים, בודקים את המחלקה ומפרסמים. התגובה והציון נבחרים בנפרד, ישירות ברשימה.</p></header>
     <div aria-live="polite">{error && <p role="alert" className="rounded-lg bg-rose-50 p-3 text-rose-800">{error}</p>}{message && <p role="status" className="rounded-lg bg-emerald-50 p-3 text-emerald-800">{message}</p>}{loading && <p>טוען את התור…</p>}</div>
     {data && <>
-      <Card className="space-y-4 border-amber-200">
-        <div className="flex flex-wrap justify-between gap-3"><div><h2 className="text-xl font-black">שליטה בכל מקור הסקר</h2><p className="mt-1 text-sm">פרסום: <strong>{data.source.isPublicEnabled ? 'מופעל' : 'כבוי'}</strong> · זכויות: <strong>{data.source.permissionConfirmedAt ? 'היתר מתועד' : 'טרם אושרו'}</strong></p></div>
-          <Button variant="danger" disabled={busy} onClick={() => sourceAction('HIDE')}>הסתר את כל חוויות סקר הסטאז׳ מהאתר</Button></div>
-        <p className="text-sm text-slate-600">הכפתור מסתיר גם טקסטים ודירוגים שכבר אושרו, ללא מחיקה. הפעלה מחדש אינה מאשרת פריטים נוספים.</p>
-        <Button variant="secondary" disabled={busy || !data.source.permissionConfirmedAt || data.source.isPublicEnabled} onClick={() => sourceAction('ENABLE')}>הפעל מחדש רק תוכן שאושר</Button>
+      <div className="rounded-xl border border-brand-200 bg-brand-50/50 p-4">
+        <div className="flex flex-wrap items-center justify-between gap-3"><div><p className="text-sm font-bold text-brand-900">{data.source.isPublicEnabled ? 'מקור הסקר פעיל' : 'מקור הסקר כבוי — אישורים נשמרים ללא פרסום'}</p><p className="mt-1 text-xs leading-6 text-slate-600">{data.source.permissionConfirmedAt ? 'היתר שימוש מתועד.' : 'זכויות השימוש טרם אושרו.'} פרסום בפועל דורש היתר והפעלת המקור.</p></div><Button variant="secondary" className="text-rose-800" disabled={busy} onClick={() => sourceAction('HIDE')}>הסתר את כל חוויות סקר הסטאז׳ מהאתר</Button></div>
+        <details className="mt-3"><summary className="cursor-pointer text-xs font-semibold text-brand-800">הגדרות מקור, זכויות וייבוא</summary><div className="mt-4 space-y-4 border-t border-brand-200 pt-4">
+        <Button variant="secondary" disabled={busy || !data.source.permissionConfirmedAt || data.source.isPublicEnabled} onClick={() => sourceAction('ENABLE')}>הפעל רק תוכן שאושר</Button>
         <details><summary className="cursor-pointer font-bold">תיעוד זכויות השימוש</summary><div className="mt-3 space-y-3">
           {data.source.permissionEvidence && <p className="text-sm">אסמכתה קיימת: {data.source.permissionEvidence}</p>}
           <label className="block text-sm">אסמכתה להיתר מבעל השליטה בסקר<textarea value={evidence} onChange={e => setEvidence(e.target.value)} className={field} maxLength={2000} placeholder="מסמך / תאריך / היקף ההרשאה שנבדקו" /></label>
@@ -84,8 +112,6 @@ export function SurveyReviewWorkbench() {
           <label className="flex gap-2 text-sm"><input type="checkbox" checked={scope} onChange={e => setScope(e.target.checked)} />ההיתר מכסה פרסום טקסטים ודירוגים נבחרים ב־hitmachut.org.</label>
           <div className="flex flex-wrap gap-2"><Button disabled={busy || !rights || !scope || evidence.trim().length < 12} onClick={() => sourceAction('CONFIRM_PERMISSION')}>שמור היתר והשאר מקור כבוי</Button><Button variant="secondary" disabled={busy || !data.source.permissionConfirmedAt} onClick={() => sourceAction('REVOKE_PERMISSION')}>בטל היתר והסתר מקור</Button></div>
         </div></details>
-      </Card>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">{Object.entries(labels).map(([key, label]) => <div key={key} className="rounded-xl border border-slate-200 bg-white p-3"><p className="text-xs text-slate-600">{label}</p><p className="mt-1 text-2xl font-black">{data.counts[key] ?? 0}</p></div>)}</div>
       <Card><details><summary className="cursor-pointer text-lg font-bold">ייבוא CSV ודוחות קליטה</summary><div className="mt-4 space-y-4">
         <p className="text-sm leading-6">עד 3MB. תחילה בדיקת קובץ ותצוגת דוח, ורק לאחר מכן קליטה. ייבוא חוזר שומר החלטות. קובץ XLSM מוצלב מקומית בלבד ללא הפעלת מאקרו; רשומות חדשות מ־CSV בלבד חסומות לאישור עד להצלבה.</p>
         <label className="block text-sm">קובץ מועמדות<input type="file" accept=".csv,text/csv" className={field} onChange={e => { setFile(e.target.files?.[0] ?? null); setReport(null); }} /></label>
@@ -93,19 +119,23 @@ export function SurveyReviewWorkbench() {
         {report && <Report report={report} />}
         {data.latestImports.map(r => <details key={r.id}><summary className="cursor-pointer text-sm">דוח ייבוא · {date(r.createdAt)}</summary><Report report={r.report} /></details>)}
       </div></details></Card>
-      <Card className="space-y-4"><h2 className="text-xl font-bold">תור הבדיקה</h2>
-        <form className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" onSubmit={(e: FormEvent<HTMLFormElement>) => { e.preventDefault(); filter('q', String(new FormData(e.currentTarget).get('q') ?? '')); }}>
+        </div></details>
+      </div>
+      <section aria-label="תור התגובות" className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3"><div className="flex flex-wrap gap-4 text-sm"><span><strong>{data.counts.PENDING_REVIEW ?? 0}</strong> בהמתנה</span><span><strong>{data.counts.APPROVED ?? 0}</strong> מאושרות</span><span><strong>{data.total}</strong> בתוצאה</span></div><button type="button" className="min-h-9 px-2 text-xs text-brand-800 underline" disabled={loading} onClick={() => void load()}>רענון התור</button></div>
+        <details className="rounded-lg border border-brand-100 bg-white p-3"><summary className="cursor-pointer text-sm font-semibold text-brand-800">חיפוש וסינון התגובות</summary>
+        <form className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" onSubmit={(e: FormEvent<HTMLFormElement>) => { e.preventDefault(); filter('q', String(new FormData(e.currentTarget).get('q') ?? '')); }}>
           <label className="text-sm">חיפוש בטקסט ובמקור<div className="flex gap-1"><input name="q" className={field} maxLength={150} placeholder="טקסט לחיפוש" /><Button type="submit" variant="secondary">חפש</Button></div></label>
-          <label className="text-sm">סטטוס<select className={field} value={filters.status ?? ''} onChange={e => filter('status', e.target.value)}><option value="">כל הסטטוסים</option>{['PENDING_REVIEW','NEEDS_MAPPING','APPROVED','REJECTED'].map(v => <option key={v} value={v}>{labels[v]}</option>)}</select></label>
-          {([['hospital','בית חולים',data.facets.hospitals],['department','מחלקת מקור',data.facets.departments],['question','שאלת מקור',data.facets.questions],['year','שנת סקר',data.facets.years.map(String)]] as const).map(([key, label, values]) => <label key={key} className="text-sm">{label}<select className={field} value={filters[key] ?? ''} onChange={e => filter(key, e.target.value)}><option value="">הכול</option>{values.map(v => <option key={v}>{v}</option>)}</select></label>)}
+          <label className="text-sm">סטטוס<select aria-label="סטטוס" className={field} value={filters.status ?? ''} onChange={e => filter('status', e.target.value)}><option value="">כל הסטטוסים</option>{['PENDING_REVIEW','NEEDS_MAPPING','APPROVED','REJECTED'].map(v => <option key={v} value={v}>{labels[v]}</option>)}</select></label>
+          {([['hospital','בית חולים',data.facets.hospitals],['department','מחלקת מקור',data.facets.departments],['question','שאלת מקור',data.facets.questions],['year','שנת סקר',data.facets.years.map(String)]] as const).map(([key, label, values]) => <label key={key} className="text-sm">{label}<select aria-label={label} className={field} value={filters[key] ?? ''} onChange={e => filter(key, e.target.value)}><option value="">הכול</option>{values.map(v => <option key={v}>{v}</option>)}</select></label>)}
           <label className="text-sm">מחלקת יעד<select className={field} value={filters.target ?? ''} onChange={e => filter('target', e.target.value)}><option value="">כל היעדים</option>{data.catalog.map(d => <option key={d.id} value={d.id}>{d.institution.name} · {d.name}</option>)}</select></label>
           <div className="space-y-2 pt-5"><label className="flex gap-2 text-sm"><input type="checkbox" checked={filters.unmapped === 'true'} onChange={e => filter('unmapped', String(e.target.checked))} />רק ללא שיוך מאושר</label><label className="flex gap-2 text-sm"><input type="checkbox" checked={filters.ratings === 'true'} onChange={e => filter('ratings', String(e.target.checked))} />רק עם דירוג מוצע מאומת</label></div>
         </form>
-        <p className="text-sm">{data.total} פריטים בתוצאה · עמוד {data.page}</p>
-        <div className="space-y-3">{data.rows.map(r => <article key={r.id} className="rounded-lg border border-slate-200 p-4"><div className="flex flex-wrap items-start justify-between gap-3"><div><p className="font-bold">{r.originalHospital} · {r.originalDepartmentOrScope}</p><p className="mt-1 text-sm text-slate-600">{r.sourceQuestion} · {r.sourceYear} · {labels[r.status]}</p><p className="mt-2 text-sm">יעד מוצע: {departmentLabel(r.suggestedDepartmentId)}</p><p className="text-sm">יעד שנבחר: {departmentLabel(r.targetDepartmentId)}{r.mappingConfirmed ? ' · השיוך אושר' : ' · טרם אושר שיוך'}</p><p className="mt-1 text-xs text-slate-500">{r.mappingReason} · {r.ratings.length} מדדים מאומתים{!r.sourceVerified ? ' · נדרשת הצלבת מקור' : ''}</p></div><Button disabled={busy} onClick={() => open(r.id)}>בדוק פריט</Button></div></article>)}</div>
-        {!data.rows.length && <p>לא נמצאו רשומות בסינון הזה.</p>}
-        <div className="flex gap-3"><Button variant="secondary" disabled={data.page <= 1 || loading} onClick={() => setFilters(v => ({ ...v, page: String(data.page - 1) }))}>הקודם</Button><Button variant="secondary" disabled={data.page * 20 >= data.total || loading} onClick={() => setFilters(v => ({ ...v, page: String(data.page + 1) }))}>הבא</Button></div>
-      </Card>
+        </details>
+        <div className="space-y-5">{data.rows.map(r => <SurveyReviewQuickCard key={r.id} row={r} catalog={data.catalog} enabled={Boolean(data.source.isPublicEnabled && data.source.permissionConfirmedAt)} save={saveComponent} inspect={open} />)}</div>
+        {!data.rows.length && <p className="rounded-xl border border-slate-200 bg-white p-8 text-center text-slate-600">לא נמצאו תגובות בסינון הזה.</p>}
+        <div ref={moreRef} className="flex justify-center py-4" aria-live="polite">{data.nextCursor ? <div className="text-center">{moreError && <p role="alert" className="mb-2 text-sm text-rose-800">{moreError}</p>}<Button variant="secondary" disabled={loading || loadingMore} onClick={() => void loadMore()}>{loadingMore ? 'טוען תגובות נוספות…' : 'טעינת תגובות נוספות'}</Button><p className="mt-2 text-xs text-slate-500">התגובות הבאות נטענות אוטומטית בגלילה.</p></div> : data.rows.length > 0 && <p className="text-sm text-slate-500">הגעתם לסוף הרשימה.</p>}</div>
+      </section>
     </>}
     {detail && decision && <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/60 p-2 sm:p-6" ref={dialogRef} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="review-title" onKeyDown={e => {
       if (e.key === 'Escape' && !busy) setDetail(null);

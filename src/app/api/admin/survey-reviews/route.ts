@@ -11,6 +11,7 @@ export async function GET(request: Request) {
   try {
     await adminRequest(request);
     const p = new URL(request.url).searchParams, page = Math.max(1, Math.min(300, Number(p.get('page')) || 1));
+    const cursor = p.get('cursor')?.slice(0, 150);
     const where: Prisma.SurveyReviewWhereInput = { sourceId: SOURCE_ID };
     const status = p.get('status'); if (status && ['PENDING_REVIEW','NEEDS_MAPPING','APPROVED','REJECTED'].includes(status)) where.status = status as SurveyReviewStatus;
     for (const [parameter, field] of [['hospital','originalHospital'],['department','originalDepartmentOrScope'],['question','sourceQuestion']] as const) if (p.get(parameter)) where[field] = p.get(parameter)!.slice(0, 500);
@@ -25,8 +26,8 @@ export async function GET(request: Request) {
     }
     const [source, total, rows, grouped, catalog, facets, withRatings, displayed, latestImports, mappingRequired] = await Promise.all([
       prisma.surveyReviewSource.findUnique({ where: { id: SOURCE_ID } }), prisma.surveyReview.count({ where }),
-      prisma.surveyReview.findMany({ where, orderBy: [{ sourceRowNumber: 'asc' }, { sourceColumnLetter: 'asc' }], skip: (page - 1) * 20, take: 20,
-        select: { id: true, sourceReviewKey: true, sourceYear: true, originalHospital: true, originalDepartmentOrScope: true, sourceQuestion: true, status: true, mappingConfidence: true, mappingReason: true, suggestedDepartmentId: true, targetDepartmentId: true, mappingConfirmed: true, sourceVerified: true, ratings: { where: { verified: true }, select: { id: true } } } }),
+      prisma.surveyReview.findMany({ where, orderBy: [{ sourceRowNumber: 'asc' }, { sourceColumnLetter: 'asc' }], ...(cursor ? { cursor: { id: cursor }, skip: 1 } : { skip: (page - 1) * 20 }), take: 20,
+        select: { id: true, revision: true, sourceReviewKey: true, sourceYear: true, sourceColumnLetter: true, originalHospital: true, originalDepartmentOrScope: true, sourceQuestion: true, status: true, mappingConfidence: true, mappingReason: true, suggestedDepartmentId: true, targetDepartmentId: true, mappedInstitutionId: true, mappingConfirmed: true, mappingExceptionReason: true, sourceVerified: true, rawEncrypted: true, approvedPublicText: true, publishText: true, publishRatings: true, ratings: true } }),
       prisma.surveyReview.groupBy({ by: ['status'], where: { sourceId: SOURCE_ID }, _count: true }), readCatalog(prisma),
       prisma.surveyReview.findMany({ where: { sourceId: SOURCE_ID }, distinct: ['originalHospital','originalDepartmentOrScope','sourceQuestion','sourceYear'], select: { originalHospital: true, originalDepartmentOrScope: true, sourceQuestion: true, sourceYear: true } }),
       prisma.surveyReview.count({ where: { sourceId: SOURCE_ID, ratings: { some: { verified: true } } } }), prisma.surveyReview.count({ where: publicSurveyWhere() }),
@@ -34,7 +35,11 @@ export async function GET(request: Request) {
       prisma.surveyReview.count({ where: { sourceId: SOURCE_ID, suggestedDepartmentId: null, mappingConfirmed: false } })
     ]);
     const counts = Object.fromEntries(grouped.map(g => [g.status, g._count]));
-    return NextResponse.json({ source: source ?? { id: SOURCE_ID, title: SOURCE_TITLE, isPublicEnabled: false, permissionConfirmedAt: null, permissionEvidence: null, revision: 0 }, rows, total, page, catalog,
+    const queueRows = rows.map(({ rawEncrypted, approvedPublicText, ...row }) => {
+      const original = unseal<Candidate>(rawEncrypted, row.sourceReviewKey);
+      return { ...row, text: approvedPublicText ?? original.proposedText, privacyFlags: original.privacyFlags };
+    });
+    return NextResponse.json({ source: source ?? { id: SOURCE_ID, title: SOURCE_TITLE, isPublicEnabled: false, permissionConfirmedAt: null, permissionEvidence: null, revision: 0 }, rows: queueRows, total, page, nextCursor: rows.length === 20 ? rows.at(-1)!.id : null, catalog,
       counts: { ...counts, mappingRequired, displayed, hiddenBySource: source && sourceAllowsPublication(source) ? 0 : counts.APPROVED ?? 0, withRatings },
       facets: { hospitals: [...new Set(facets.map(r => r.originalHospital))].sort(), departments: [...new Set(facets.map(r => r.originalDepartmentOrScope))].sort(), questions: [...new Set(facets.map(r => r.sourceQuestion))].sort(), years: [...new Set(facets.map(r => r.sourceYear))].sort() }, latestImports }, { headers: noStore });
   } catch (e) { return fail(e); }

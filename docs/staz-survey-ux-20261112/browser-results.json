@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "syntheticOnly": true,
+  "oneClickPerComponent": true,
+  "noConfirmDialog": true,
+  "keepsCardInPlace": true,
+  "cursorNoSkippedRows": true,
+  "sourceRemainedOff": true,
+  "independentRemoval": true,
+  "adminEntry": true,
+  "scans": [
+    {
+      "label": "inline-queue-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "advanced-editor-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "inline-queue-375",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "advanced-editor-375",
+      "violations": [],
+      "overflow": false
+    }
+  ]
+}
