@@ -36,7 +36,7 @@ try{
  await page.setViewportSize({width:1440,height:1100});
  await page.goto(base+'/departments/'+fixture.departmentSlug);
  await page.getByText(fixture.text,{exact:true}).waitFor();assert.ok(await page.getByRole('img',{name:'דירוג 5 מתוך 5',exact:true}).count()>=1);
- await page.getByRole('link',{name:/חוויות מאושרות מסקר הסטאז׳/}).waitFor();
+ await page.getByRole('link',{name:/חוויות מאושרות/}).waitFor();
  const metricSizes=[];
  for(const width of [1440,768,375]){
   await page.setViewportSize({width,height:1100});await scan('profile-'+width);

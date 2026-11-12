@@ -1,6 +1,6 @@
 "use client";
 
-import { DISCLOSURE, type PublicSurveyExperience } from "@/lib/staz-survey/domain";
+import type { PublicSurveyExperience } from "@/lib/staz-survey/domain";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import { ReviewCard } from "@/components/departments/review-card";
@@ -209,8 +209,7 @@ export function DepartmentExperienceTabs({
               <SummaryMetric label="עומס ואיזון חיים" value={selectedSummary.lifestyleBalance} />
               <SummaryMetric label="חשיפה קלינית" value={selectedSummary.clinicalExposure} />
             </div>}
-            {surveySelected.length > 0 && <p className="text-xs leading-6 text-slate-600">{DISCLOSURE}. דירוגי האלקטיב מוצגים בנפרד מדירוגי חוויות משתמשי האתר.</p>}
-            {surveyMetrics.map(metric => <div key={metric.code} className="rounded-lg border border-brand-100 bg-brand-50 p-3"><p className="text-xs font-bold">{metric.label} · סקר הסטאז׳ · {metric.count} דירוגים שנבחרו ואושרו</p><RatingStars value={metric.value} /></div>)}
+            {surveyMetrics.map(metric => <div key={metric.code} className="rounded-lg border border-brand-100 bg-brand-50 p-3"><p className="text-xs font-bold">{metric.label} · {metric.count} דירוגים</p><RatingStars value={metric.value} /></div>)}
             {surveyTexts.map(survey => <ReviewCard key={survey.id} survey={survey} />)}
             {selectedReviews.map((review) => (
               <ReviewCard key={review.id} review={review} canReport={canReport} />

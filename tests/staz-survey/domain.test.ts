@@ -58,9 +58,9 @@ test('BL/BK and BP/BO come from the identical row, BG has no department rating; 
     await assert.rejects(verifyWorkbook([candidate()], path), /UNSAFE_CELL/);
   } finally { await rm(dir, { recursive: true, force: true }); }
 });
-test('existing card supports survey provenance, escaped text and no artificial scores or empty rating-only cards', () => {
+test('existing card retains year and perspective, escaped text and no artificial scores or empty rating-only cards', () => {
   const survey = { id: 'synthetic', year: 2022, hospitalScope: false, text: '<script>synthetic</script>', ratings: [] };
   const html = renderToStaticMarkup(createElement(ReviewCard, { survey }));
-  assert.ok(html.includes('מתוך סקר')); assert.ok(!html.includes('<script>')); assert.ok(!html.includes('הוראה')); assert.ok(!html.includes('אומת'));
+  assert.ok(html.includes('2022') && html.includes('סטאז׳ר/ית')); assert.ok(!html.includes('סקר')); assert.ok(!html.includes('<script>')); assert.ok(!html.includes('הוראה')); assert.ok(!html.includes('אומת'));
   assert.equal(renderToStaticMarkup(createElement(ReviewCard, { survey: { ...survey, text: null, ratings: [{ code: 'ELECTIVE_RECOMMENDATION', label: 'אלקטיב', value: 5 }] } })), '');
 });

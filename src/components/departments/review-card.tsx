@@ -1,4 +1,4 @@
-import { SOURCE_LABEL, type PublicSurveyExperience } from "@/lib/staz-survey/domain";
+import type { PublicSurveyExperience } from "@/lib/staz-survey/domain";
 import { ReportReviewButton } from "@/components/departments/report-review-button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -35,9 +35,9 @@ export function ReviewCard(props: { review: NativeReview; canReport: boolean; su
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3"><span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-900"><ReviewBubbleIcon className="h-5 w-5" /></span>
           <div className="flex flex-wrap gap-2"><Badge tone="default">סטאז׳ר/ית</Badge><Badge tone="warning">בעילום שם</Badge></div></div>
-        <span className="text-xs text-slate-500">שנת הסקר: {survey.year}</span>
+        <span className="text-xs text-slate-500">{survey.year}</span>
       </div>
-      <p className="mt-3 text-xs text-slate-500">{SOURCE_LABEL}{survey.hospitalScope ? ' · תגובה על כלל בית החולים' : ''}</p>
+      {survey.hospitalScope && <p className="mt-3 text-xs text-slate-500">תגובה על כלל בית החולים</p>}
       {survey.ratings.length > 0 && <div className="mt-4 grid gap-3 md:grid-cols-3">{survey.ratings.map(r => <div key={r.code}><p className="text-xs text-slate-500">{r.label}</p><RatingStars value={r.value} /></div>)}</div>}
       <div className="mt-5 rounded-2xl bg-brand-50/60 p-4"><p className="text-sm font-semibold text-ink">מה עבד טוב</p><p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-slate-600">{survey.text}</p></div>
     </Card>;

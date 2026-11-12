@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2];OUT=ROOT/'docs/staz-survey-20261112'
 if '--quick-review' in sys.argv:OUT=ROOT/'docs/staz-survey-ux-20261112'
 if '--mapping-review' in sys.argv:OUT=ROOT/'docs/staz-survey-mapping-20261112'
+if '--copy-review' in sys.argv:OUT=ROOT/'docs/staz-survey-copy-20261112'
 TEAM='team_Jj2tczP8vf4XPr74gxyasW5A';PROJECT='prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE'
 phase=sys.argv[1];assert phase in ['staged','live']
 d=json.loads((OUT/'deployment.json').read_text());headers={'User-Agent':'Hitmachut-Staz-Authorized-Release-Smoke'}
@@ -27,4 +28,5 @@ for path,expected in [('/',[200]),('/admin/survey-reviews',[307,302]),('/api/adm
   checks.append({'path':path,'status':res.status,'passed':ok});print(path,res.status,'OK'if ok else'FAILED',flush=True)
 report={'passed':all(c['passed']for c in checks),'phase':phase,'checks':checks,'scope':'Unauthenticated read-only checks; authenticated moderation and privacy workflows verified on isolated test branch; production source remains disabled.'}
 if '--mapping-review' in sys.argv:report['scope']='Unauthenticated read-only checks; authenticated moderation and privacy workflows verified on isolated test branch; production source enabled under user authorization, only manually approved content eligible.'
+if '--copy-review' in sys.argv:report['scope']='Read-only public routes and admin access gates. Presentation-only update; approval decisions, source rights and database unchanged.'
 (OUT/(phase+'-smoke.json')).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');assert report['passed']

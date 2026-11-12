@@ -1,7 +1,5 @@
 export const SOURCE_ID = 'STAZ_SURVEY_2020_2025';
 export const SOURCE_TITLE = 'סקר הסטאז׳ (2020–2025)';
-export const DISCLOSURE = 'מוצגות תגובות חיוביות נבחרות מהסקר, שאינן משקפות את כלל התגובות';
-export const SOURCE_LABEL = 'מתוך סקר הסטאז׳ · 2020–2025';
 export type SourceColumn = 'BL' | 'BP' | 'BG';
 export const CONTEXT = {
   BL: { hospital: 'BI', department: 'BJ', rating: 'BK', questionCode: 'qus_70', rotation: 'ELECTIVE_1' },

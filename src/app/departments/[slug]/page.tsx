@@ -2258,9 +2258,7 @@ export default async function DepartmentDetailsPage({
   const dataSectionTitle = isMedicalArrayProfile
     ? "נתונים ומדדים במערך"
     : "נתונים ומדדים מרכזיים";
-  const experienceSectionTitle = isMedicalArrayProfile
-    ? "חוות דעת מהמערך"
-    : "חוות דעת מתמחים";
+  const experienceSectionTitle = "חוות דעת מהמחלקה";
   const managersSectionTitle = isMedicalArrayProfile
     ? "אנשי קשר מרכזיים במערך"
     : "אנשי קשר מרכזיים";
@@ -2427,7 +2425,7 @@ export default async function DepartmentDetailsPage({
               <div className="profile-identity-meta"><span><ProductIcon name="location" />{[department.institution.city, region].filter(Boolean).join(" · ")}</span>
                 {isMedicalArrayProfile && arrayDepartmentCount > 1 && <span>{arrayDepartmentCount} מחלקות במערך</span>}
                 {department.residencyOpenings.length > 0 && <Badge tone="success">משרות פתוחות</Badge>}
-                {department.summary.reviewCount > 0 ? <><RatingStars value={department.summary.overallRecommendation} /><span>{department.summary.reviewCount} ביקורות מאושרות</span></> : <a href="#department-experiences">{surveyExperiences.length ? `${surveyExperiences.length} חוויות מאושרות מסקר הסטאז׳` : "אין עדיין חוות דעת מאושרות"}</a>}
+                {department.summary.reviewCount > 0 ? <><RatingStars value={department.summary.overallRecommendation} /><span>{department.summary.reviewCount} ביקורות מאושרות</span></> : <a href="#department-experiences">{surveyExperiences.length ? `${surveyExperiences.length} חוויות מאושרות` : "אין עדיין חוות דעת מאושרות"}</a>}
               </div>
             </div>
           </div>

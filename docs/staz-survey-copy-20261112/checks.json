@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "unitAndNativeRegressionTestsPassed": 16,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "diffCheckPassed": true,
+  "scope": "Public wording and matching admin preview only. Source metadata remains in admin. No database, moderation, rating calculations or source permissions changed."
+}

@@ -12,6 +12,10 @@ MAPPING_REVIEW='--mapping-review' in sys.argv
 if MAPPING_REVIEW:
  OUT=ROOT/'docs/staz-survey-mapping-20261112'
  BASE='3a3f8a207f62b0b5f4ce51f07c63471501a6aec2';OLD='dpl_F7nM84f8xguxpQjh7tS6ewyyQ8jT'
+COPY_REVIEW='--copy-review' in sys.argv
+if COPY_REVIEW:
+ OUT=ROOT/'docs/staz-survey-copy-20261112'
+ BASE='ff2e538a5cab8cdf6f53cc4af9d577268cc9e045';OLD='dpl_EZA7CUHVFfzRACRKBf8sDrL291R4'
 def run(args,**kw):return subprocess.check_output(args,cwd=ROOT,text=True,**kw).strip()
 def git(*args):return run(['git',*args])
 def write(n,v):(OUT/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
@@ -38,7 +42,8 @@ if phase=='preflight':
  s=snapshot();assert s['main']==BASE;write('preflight.json',s);print('Production aliases, source, protection and cron verified')
 elif phase=='deploy':
  s=snapshot();assert s['main']==BASE and s['project']==read('preflight.json')['project'];write('immediate-predeploy.json',s)
- assert read('checks.json')['passed'] and read('production-migration.json' if MAPPING_REVIEW else 'production-baseline.json' if QUICK_REVIEW else 'production-import.json')['passed']
+ assert read('checks.json')['passed']
+ if not COPY_REVIEW:assert read('production-migration.json' if MAPPING_REVIEW else 'production-baseline.json' if QUICK_REVIEW else 'production-import.json')['passed']
  assert not git('diff','HEAD','--name-only');commit=git('rev-parse','HEAD');assert git('rev-parse','HEAD^')==BASE
  target=Path('/private/tmp/hitmachut-staz-release-'+commit[:12]);target.mkdir(exist_ok=False)
  archive=OUT/'source.tar';subprocess.run(['git','archive','--format=tar','-o',str(archive),commit],cwd=ROOT,check=True)
