@@ -1,0 +1,244 @@
+{
+  "version": "2026-11-12-v1",
+  "method": "Per-response review of both electives; never a year-wide or global swap. Source text and original fields remain immutable.",
+  "corrections": [
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R84:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "הניסוח על מטופלות מאושפזות מתאים לאלקטיב נשים באותה שורה; תיקון מסתבר לפי ההקשר, ללא אימות חיצוני של השאלון.",
+      "contextHash": "600c024681e39fb8f9a778e5d61c5250aec5d69b9da2e99dc60f98324463a25d",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R103:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "שני הטקסטים מציינים במפורש בתי חולים הפוכים ביחס לעמודות האלקטיב.",
+      "contextHash": "d32b2faa228f9ac646a3edd095220c1950d9fbccc7eade60c143df88880c9a4f",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R103:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "שני הטקסטים מציינים במפורש בתי חולים הפוכים ביחס לעמודות האלקטיב.",
+      "contextHash": "2455b83638bd792b4328990cbb72cec88988c769fb461b3da59304bf4c3bf307",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R628:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "43f03420981309106d70014008197a012cc19d7dad27d5cc2b870ee60fee33c9",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1597:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "הטקסט מתאר כירורגיית ילדים, ולא נשים. האלקטיב האחר הוא כירורגיה; תת־התחום דורש שיוך ידני.",
+      "contextHash": "8cf420d2f94d79944b2586715ce395982b26f028c47aa688c864891f0971e15f",
+      "requiresManualTarget": true
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1667:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "fb319efa0d6ad46f5649e7cc18b6de45d346b24f1f71d5ff0a28df7aabf2098f",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1886:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "הטקסט מתאר אשפוז יום ילדים; הטקסט המקביל מתאר אולטרסאונד ופענוח CT/MRI. ההקשרים הפוכים לשדות האלקטיבים.",
+      "contextHash": "2acde08b27232aa0ccdc8028178d4a2b8cd4de3149d19fbc3b4cd54d0208549a",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2460:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "d33ca0d016e23b58392b444c199bcc550004d04e7bcc71273fe8f9ee851c0377",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2833:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "8dedb34a9a312cff98d0f204b072006c4de4a08aa45f7c9bd37cbe11c65450b4",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3067:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "ab8669fe62530b0ecf4b00c83732ada0910c3122ee11b62098d372740dae1014",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3165:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "הטקסט מציין במפורש את בית החולים של האלקטיב האחר באותה שורה.",
+      "contextHash": "0249edfadc126edf1a475ba293610deeb1673ba4decbcbd53089c2f58ff42a20",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3452:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "הטקסט מציין במפורש את בית החולים של האלקטיב האחר באותה שורה.",
+      "contextHash": "5d682258194c95418ae1d5ccc630e90d89c78a745a808e678ef44b2a56adb555",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3558:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "63cfdf6e8c9de9d7eb52506f7a189285a6d0304a2aa36b2894dd9c84a3524608",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3564:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "f6fec184f5757151af16aadc218ab71f3a10df39f1c723df5e097155d295ed2b",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3631:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "הטקסט מציין במפורש את בית החולים של האלקטיב האחר באותה שורה.",
+      "contextHash": "a86d5a16cbca08c2fb6a9a762ed6dd00002ecbf67a6b508996a788bf618032a6",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3633:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "שני הטקסטים מתארים ילדים ומיון בהתאמה הפוכה לשדות האלקטיבים.",
+      "contextHash": "80944c087c8d6f9c7fa361029750496ca42860cec1eb573f4d09a9429cfc80f8",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3633:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "שני הטקסטים מתארים ילדים ומיון בהתאמה הפוכה לשדות האלקטיבים.",
+      "contextHash": "4cd00607d8840d6201a71ef7aa699096e836647588f8676d9d586e163e13ba39",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3912:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "2894e1408e7c515de6f52acb036e39c66c2fca2884b3bffb3cf7e3a18e284d42",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4107:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "cf47b27ed260c54da718a6387a814b994bb66a66271dc84184a9bc0db3b8a0c7",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5385:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "a234bb9ce27a750cdb9fdcc5c0016884a0210391f57951c9613b1b72cc4d42af",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5627:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "תיאור הבדיקה והמחלות הנוירולוגיות מתאים לאלקטיב נוירולוגיה; הטקסט המקביל מתאר צוות רב־תחומי ושיפור תפקודי, המתאים לשיקום.",
+      "contextHash": "d54c76c700c347b54ddda1cb1307e01498b96744129e81be879a072e8d16e33a",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5703:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "הטקסט מציין במפורש את בית החולים של האלקטיב האחר באותה שורה.",
+      "contextHash": "0f8a610b902e732215f57b7a4b5def53a1b62ba1d40bc5c069ec4cae8926b749",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5817:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "שני הטקסטים מציינים במפורש אא״ג וכלי דם בהתאמה הפוכה לשדות האלקטיבים.",
+      "contextHash": "7e5c482e0fe178accfbddd9a07aeb2230473d0f9537b27203591a3c2d9fe2897",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5817:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "שני הטקסטים מציינים במפורש אא״ג וכלי דם בהתאמה הפוכה לשדות האלקטיבים.",
+      "contextHash": "57e8877e898d049291451feeff8bb01da048a798f35ec130daf77e630ed736a3",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6224:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "הטקסט מציין במפורש רמב״ם וכירורגיית ילדים; האלקטיב האחר הוא כירורגיה ברמב״ם. תת־התחום דורש שיוך ידני.",
+      "contextHash": "55c787022c95f2f70bba7503fde5338b071cf19ba7e2f7a3be9b10ebc0768509",
+      "requiresManualTarget": true
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6350:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "הטקסט מציין במפורש רפואת משפחה; זה האלקטיב האחר בשורה, ללא בית חולים בשדה המקור.",
+      "contextHash": "9b3b8e04472666ffdde994e459f41be8f190efbc820a36180a6ab01367806091",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6378:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "הטקסט מציין במפורש את בית החולים של האלקטיב האחר באותה שורה.",
+      "contextHash": "e6cb71b70ccd92c591ac5f58e1dfdf59c25ecb84ce3f8242c88172037f327237",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6567:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "faa18b18780c55f5b8d0e619c4568af931130121f60edcc10508eb9d466c9b14",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6602:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "6e17edb62296344bb7ae96a254d45764e14ef12566e479e13594c6370e4d434c",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7393:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "86d3a2ae98ca0e91ab0d07ef931ad6353f62a00c9b03816ad3d458e1da201ffe",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9241:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "13228e0ce2e9fe95bc9bca1ff13559014a734c1de6c52cbb377986cb224f8689",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9364:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "תוכן הטקסט מתאר את התחום של האלקטיב האחר באותה שורת מקור.",
+      "contextHash": "5f544efca0dbc3229ed92aa90629f0245e06980a6a48e02f7feb1b7916f04d34",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10036:CBL",
+      "rotation": "ELECTIVE_2",
+      "reason": "שני הטקסטים מציינים במפורש כירורגיה ורפואת משפחה בהתאמה הפוכה לשדות האלקטיבים.",
+      "contextHash": "9f310cb3c6eb43e7751d7ae065027fa37bf3a10d7e9235363eace91378c29b75",
+      "requiresManualTarget": false
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10036:CBP",
+      "rotation": "ELECTIVE_1",
+      "reason": "שני הטקסטים מציינים במפורש כירורגיה ורפואת משפחה בהתאמה הפוכה לשדות האלקטיבים.",
+      "contextHash": "1f7578f0baa82bd4d8cb3ad3a3947454a33ed2542d6564cadda01a040933501e",
+      "requiresManualTarget": false
+    }
+  ]
+}

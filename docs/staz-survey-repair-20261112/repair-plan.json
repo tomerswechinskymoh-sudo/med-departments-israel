@@ -1,0 +1,23 @@
+{
+  "execute": false,
+  "reviewed": 3608,
+  "corrections": 34,
+  "contextEnriched": 2856,
+  "alreadyCurrent": 0,
+  "ratingsReassociated": 34,
+  "numericRatingsChanged": 1,
+  "manualTargetsRequired": 8,
+  "approvedCorrections": 0,
+  "approvalsPreserved": 34,
+  "sourceEnabled": false,
+  "decisionsPreserved": true,
+  "snapshot": "snap-bitter-voice-amrxs0qo",
+  "snapshotExpiresAt": "2026-11-19T18:00:00Z",
+  "testBranch": "br-green-water-am92jotr",
+  "limitations": [
+    "Corrections are per-response interpretations from paired source evidence, not an authoritative questionnaire codebook.",
+    "Do not globally reverse comments or reverse by year.",
+    "Remaining responses cannot be assumed correct merely because no explicit opposite-elective reference was detected.",
+    "Public source remains disabled; all prior approvals are preserved."
+  ]
+}

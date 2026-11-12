@@ -7,12 +7,37 @@ export const CONTEXT = {
   BG: { hospital: 'CT', department: null, rating: null, questionCode: 'qus_66', rotation: 'HOSPITAL_OVERALL' }
 } as const;
 export type RatingEvidence = { metricCode: string; label: string; questionCode: string; question: string; sourceRowNumber: number; sourceColumn: string; rawAnswer: string; scale: string; normalizedValue: number | null; rotationContext: string; confidence: string; verified: boolean };
+export type ElectiveRotation = 'ELECTIVE_1' | 'ELECTIVE_2';
+export type ElectiveEvidence = { hospital: string; department: string; text: string; rating: RatingEvidence };
+export type ElectiveCorrection = { version: string; rotation: ElectiveRotation; reason: string; contextHash: string; requiresManualTarget: boolean };
 export type Candidate = {
   sourceReviewKey: string; sourceRowNumber: number; sourceColumnLetter: SourceColumn; sourceYear: number;
   originalHospital: string; originalDepartmentOrScope: string; sourceQuestion: string;
   rawHospital: string; rawDepartment: string; proposedText: string; originalText: string;
   sourceVerified: boolean; workbookHash: string | null; ratings: RatingEvidence[]; privacyFlags: string[];
+  // Original CSV/cell fields above remain immutable. Corrections are a separate,
+  // evidence-bound interpretation of the two electives from this same source row.
+  electives?: Record<ElectiveRotation, ElectiveEvidence>;
+  electiveCorrection?: ElectiveCorrection;
 };
+export function effectiveCandidate(row: Candidate): Candidate {
+  const correction = row.electiveCorrection;
+  if (!correction) return row;
+  const evidence = row.electives?.[correction.rotation];
+  const column = correction.rotation === 'ELECTIVE_1' ? 'BK' : 'BO';
+  if (row.sourceColumnLetter === 'BG' || !evidence || evidence.rating.sourceRowNumber !== row.sourceRowNumber || evidence.rating.sourceColumn !== column || evidence.rating.rotationContext !== correction.rotation) throw new Error('INVALID_ELECTIVE_CORRECTION');
+  return { ...row, originalHospital: evidence.hospital, rawHospital: evidence.hospital, originalDepartmentOrScope: evidence.department, rawDepartment: evidence.department, ratings: [{ ...evidence.rating, confidence: 'REVIEWED_ELECTIVE_ASSOCIATION' }] };
+}
+export function ratingMatchesCandidate(row: Candidate, rating: RatingEvidence): boolean {
+  if (row.sourceColumnLetter === 'BG') return false;
+  const context = row.electiveCorrection ? CONTEXT[row.electiveCorrection.rotation === 'ELECTIVE_1' ? 'BL' : 'BP'] : CONTEXT[row.sourceColumnLetter];
+  const evidence = effectiveCandidate(row).ratings.find(r => r.metricCode === rating.metricCode);
+  return Boolean(evidence && evidence.verified && rating.verified && evidence.normalizedValue !== null &&
+    evidence.sourceColumn === context.rating && evidence.rotationContext === context.rotation && evidence.questionCode === context.questionCode &&
+    evidence.sourceRowNumber === row.sourceRowNumber && rating.sourceRowNumber === row.sourceRowNumber &&
+    evidence.sourceColumn === rating.sourceColumn && evidence.rotationContext === rating.rotationContext &&
+    evidence.questionCode === rating.questionCode && evidence.rawAnswer === rating.rawAnswer && evidence.normalizedValue === rating.normalizedValue);
+}
 export type DepartmentOption = { id: string; name: string; slug: string; institutionId: string; institution: { name: string }; specialty: { name: string }; kind?: 'DEPARTMENT' | 'ARRAY'; medicalArray?: { id: string; name: string; slug: string } | null };
 export type Mapping = { suggestedDepartmentId: string | null; suggestedMedicalArrayId: string | null; mappedInstitutionId: string | null; mappingConfidence: string; mappingReason: string };
 export type PublicSurveyExperience = { id: string; text: string | null; year: number; hospitalScope: boolean; ratings: { code: string; label: string; value: number }[] };
@@ -62,11 +87,13 @@ function hospitalsIn(catalog: DepartmentOption[]) {
   return index;
 }
 export function suggestMapping(row: Candidate, catalog: DepartmentOption[]): Mapping {
+  row = effectiveCandidate(row);
   const none = (reason: string, institution: string | null = null): Mapping => ({ suggestedDepartmentId: null, suggestedMedicalArrayId: null, mappedInstitutionId: institution, mappingConfidence: 'NEEDS_MAPPING', mappingReason: reason });
   const matchingHospital = hospitalsIn(catalog).get(hospitalKey(row.rawHospital)) ?? [];
   const hospitals = [...new Set(matchingHospital.map(d => d.institutionId))];
   if (hospitals.length !== 1) return none('שם המוסד חסר, עמום או אינו תואם מוסד יחיד באתר');
   const institution = hospitals[0];
+  if (row.electiveCorrection?.requiresManualTarget) return none('האלקטיב תוקן, אך הטקסט מתאר תת־תחום שאינו תואם בדיוק למחלקה בשדה המקור. יש לבחור מחלקה לאחר בדיקה.', institution);
   if (row.sourceColumnLetter === 'BG') return none('כלל בית החולים: אין שיוך אוטומטי למחלקה ואין דירוג מחלקה', institution);
   if (/קהילה|קופת|מרפאת|מחוץ|אחר/.test(row.rawDepartment + ' ' + row.rawHospital)) return none('הקשר קהילה / מוסד חיצוני / אחר דורש בירור', institution);
   if (hospitalKey(row.originalHospital) !== hospitalKey(row.rawHospital)) return none('שם המוסד המעובד סותר את שורת המקור', institution);

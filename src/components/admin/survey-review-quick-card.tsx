@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import type { DepartmentOption, RatingEvidence } from '@/lib/staz-survey/domain';
+import type { DepartmentOption, RatingEvidence, ElectiveCorrection } from '@/lib/staz-survey/domain';
 import type { ComponentAction } from '@/server/staz-survey/moderation';
 
 export type SurveyQueueRow = {
@@ -12,6 +12,7 @@ export type SurveyQueueRow = {
   mappedInstitutionId: string | null; mappingConfirmed: boolean; mappingExceptionReason: string | null; sourceVerified: boolean;
   text: string; privacyFlags: string[]; publishText: boolean; publishRatings: boolean;
   ratings: (RatingEvidence & { id: string; selected: boolean })[];
+  electiveCorrection?: ElectiveCorrection | null;
 };
 const field = 'w-full min-w-0 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-100';
 
@@ -52,6 +53,7 @@ export function SurveyReviewQuickCard({ row, catalog, enabled, save, inspect }: 
       <p className="text-sm font-semibold text-ink">{row.originalHospital}<span className="mx-2 text-slate-300" aria-hidden="true">/</span>{row.originalDepartmentOrScope}</p>
       <span className="text-xs text-slate-500">סקר {row.sourceYear}{hospitalScope ? ' · כלל בית החולים' : ''}</span>
     </div>
+    {row.electiveCorrection && <p className="border-b border-amber-100 bg-amber-50 px-4 py-2 text-xs leading-6 text-amber-950 sm:px-6">שיוך האלקטיב תוקן, כולל מקור הציון. {row.electiveCorrection.reason}</p>}
     <div className="grid gap-5 p-4 sm:p-6 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-8">
       <div className="min-w-0 space-y-4">
         <div className="flex items-center justify-between gap-3"><h3 className="text-xs font-bold text-slate-500">התגובה</h3><button type="button" className="min-h-9 px-2 text-xs font-semibold text-brand-800 underline underline-offset-4" disabled={busy} onClick={() => setEditing(v => !v)}>{editing ? 'סיום עריכה' : 'עריכת טקסט'}</button></div>

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "adminOnly": true,
+  "sourceHidden": true,
+  "correctedHospitalAndRating": true,
+  "bothElectivesVisible": true,
+  "scans": [
+    {
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

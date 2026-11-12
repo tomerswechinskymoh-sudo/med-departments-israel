@@ -1,7 +1,8 @@
 import { createHash } from 'node:crypto';
 import ExcelJS from 'exceljs';
 import { readFile } from 'node:fs/promises';
-import { SOURCE_ID, CONTEXT, clean, parseRating, privacyFlags, type Candidate, type SourceColumn } from '@/lib/staz-survey/domain';
+import { SOURCE_ID, CONTEXT, clean, parseRating, privacyFlags, type Candidate, type SourceColumn, type ElectiveEvidence } from '@/lib/staz-survey/domain';
+import { applyReviewedElectiveCorrection } from './association';
 export const hash = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
 export const MAX_CSV_BYTES = 3 * 1024 * 1024;
 // Bounded RFC 4180 parser, including quoted commas, newlines, BOM and escaped quotes.
@@ -60,8 +61,14 @@ export async function verifyWorkbook(candidates: Candidate[], path: string): Pro
     const originalText = cellText(row, c.sourceColumnLetter), hospital = cellText(row, context.hospital), department = context.department ? cellText(row, context.department) : '';
     const year = cellText(row, 'B').match(/(?:202[0-5])/g)?.[0];
     if (clean(originalText).replace(/\s+/g, ' ') !== clean(c.proposedText).replace(/\s+/g, ' ') || hospital !== clean(c.rawHospital) || (context.department && department !== clean(c.rawDepartment)) || Number(year) !== c.sourceYear) throw new Error(`SOURCE_MISMATCH_R${row}_C${c.sourceColumnLetter}`);
-    const raw = context.rating ? cellText(row, context.rating) : '';
-    return { ...c, originalText, sourceVerified: true, workbookHash: fileHash, ratings: context.rating ? [{ metricCode: 'ELECTIVE_RECOMMENDATION', label: 'המלצה על סבב אלקטיב', questionCode: context.questionCode, question: cellText(2, context.rating), sourceRowNumber: row, sourceColumn: context.rating, rawAnswer: raw, scale: '1–5; גבוה = המלצה רבה יותר', normalizedValue: parseRating(raw), rotationContext: context.rotation, confidence: 'EXACT_SAME_ROW_AND_ROTATION', verified: parseRating(raw) !== null }] : [] };
+    const elective = (col: 'BL' | 'BP'): ElectiveEvidence => {
+      const ctx = CONTEXT[col], answer = cellText(row, ctx.rating);
+      return { hospital: cellText(row, ctx.hospital), department: cellText(row, ctx.department), text: cellText(row, col),
+        rating: { metricCode: 'ELECTIVE_RECOMMENDATION', label: 'המלצה על סבב אלקטיב', questionCode: ctx.questionCode, question: cellText(2, ctx.rating), sourceRowNumber: row, sourceColumn: ctx.rating, rawAnswer: answer, scale: '1–5; גבוה = המלצה רבה יותר', normalizedValue: parseRating(answer), rotationContext: ctx.rotation, confidence: 'EXACT_SAME_ROW_AND_ROTATION', verified: parseRating(answer) !== null } };
+    };
+    return applyReviewedElectiveCorrection({ ...c, originalText, sourceVerified: true, workbookHash: fileHash,
+      ratings: context.rating ? [elective(c.sourceColumnLetter as 'BL' | 'BP').rating] : [],
+      ...(c.sourceColumnLetter !== 'BG' ? { electives: { ELECTIVE_1: elective('BL'), ELECTIVE_2: elective('BP') } } : {}) });
   });
 }
 export function fingerprint(c: Candidate) {

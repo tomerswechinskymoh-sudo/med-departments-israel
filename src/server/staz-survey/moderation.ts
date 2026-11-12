@@ -2,7 +2,7 @@ import { publicVisibleDepartmentWhere, isRequiredMedicalArraySpecialty } from '@
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import type { PrismaClient } from '@prisma/client';
-import { SOURCE_ID, sourceAllowsPublication, suggestMapping, type Candidate } from '@/lib/staz-survey/domain';
+import { SOURCE_ID, sourceAllowsPublication, suggestMapping, ratingMatchesCandidate, type Candidate } from '@/lib/staz-survey/domain';
 import { readCatalog } from './importer';
 import { unseal } from '@/server/external-survey/crypto';
 import { sanitizePlainText } from '@/lib/security';
@@ -67,12 +67,13 @@ export async function moderate(db: PrismaClient, id: string, input: Decision | C
     const array = d.targetMedicalArrayId ? await tx.medicalArray.findFirst({ where: { id: d.targetMedicalArrayId, departments: { some: publicVisibleDepartmentWhere } }, select: { id: true, hospitalId: true, specialty: { select: { name: true, groupAsArray: true } } } }) : null;
     if (d.targetDepartmentId && !target) throw new ModerationError('INVALID_DEPARTMENT');
     if (d.targetMedicalArrayId && (!array || !(array.specialty.groupAsArray || isRequiredMedicalArraySpecialty(array.specialty.name)))) throw new ModerationError('INVALID_DEPARTMENT');
-    const mappedInstitutionId = row.mappedInstitutionId ?? suggestMapping(unseal<Candidate>(row.rawEncrypted, row.sourceReviewKey), await readCatalog(tx)).mappedInstitutionId;
+    const original = unseal<Candidate>(row.rawEncrypted, row.sourceReviewKey);
+    const mappedInstitutionId = row.mappedInstitutionId ?? suggestMapping(original, await readCatalog(tx)).mappedInstitutionId;
     const targetInstitutionId = target?.institutionId ?? array?.hospitalId;
     const mismatch = Boolean(targetInstitutionId && (!mappedInstitutionId || targetInstitutionId !== mappedInstitutionId));
     if (d.mappingConfirmed && mismatch && d.mappingExceptionReason.trim().length < 12) throw new ModerationError('HOSPITAL_EXCEPTION_REASON_REQUIRED');
     const selected = row.ratings.filter(r => d.selectedMetricIds.includes(r.id));
-    if (new Set(d.selectedMetricIds).size !== d.selectedMetricIds.length || selected.length !== d.selectedMetricIds.length || selected.some(r => !r.verified || r.normalizedValue === null || r.sourceRowNumber !== row.sourceRowNumber || (row.sourceColumnLetter === 'BL' ? r.sourceColumn !== 'BK' : row.sourceColumnLetter === 'BP' ? r.sourceColumn !== 'BO' : true))) throw new ModerationError('INVALID_RATING_EVIDENCE');
+    if (new Set(d.selectedMetricIds).size !== d.selectedMetricIds.length || selected.length !== d.selectedMetricIds.length || selected.some(r => !ratingMatchesCandidate(original, r))) throw new ModerationError('INVALID_RATING_EVIDENCE');
     const text = sanitizePlainText(d.approvedPublicText, 12000);
     // The full editor saves changed payloads for re-review. Component buttons are an
     // explicit approval of the visible component; the other component is retained

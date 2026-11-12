@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "planned": 34,
+  "corrected": 34,
+  "enriched": 2856,
+  "numericRatingChanges": 1,
+  "existingApprovalsPreserved": 34,
+  "originalEvidencePreserved": true,
+  "sourceHidden": true,
+  "correctedRatingCanBeManuallyApproved": true,
+  "selectedMetricPreservedOnRepeat": true,
+  "repeatedRepairNoChanges": true,
+  "repeatedImportNoChanges": true,
+  "nativeDataUnchanged": true
+}

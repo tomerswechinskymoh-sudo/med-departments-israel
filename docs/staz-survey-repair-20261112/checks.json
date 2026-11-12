@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "unitAndNativeRegressionTestsPassed": 19,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "diffCheckPassed": true,
+  "isolatedDatabaseIntegrationPassed": true,
+  "desktopAndMobileAccessibilityPassed": true,
+  "all3608RecordsAnd2856RatingsVerifiedAfterTestRepair": true
+}

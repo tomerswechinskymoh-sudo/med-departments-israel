@@ -2,7 +2,7 @@ import { publicVisibleDepartmentWhere, isRequiredMedicalArraySpecialty } from '@
 import type { PrismaClient, Prisma } from '@prisma/client';
 import { randomUUID } from 'node:crypto';
 import { seal, unseal } from '@/server/external-survey/crypto';
-import { SOURCE_ID, SOURCE_TITLE, suggestMapping, type Candidate, type DepartmentOption } from '@/lib/staz-survey/domain';
+import { SOURCE_ID, SOURCE_TITLE, suggestMapping, effectiveCandidate, type Candidate, type DepartmentOption } from '@/lib/staz-survey/domain';
 import { fingerprint } from './parse';
 export async function readCatalog(db: PrismaClient | Prisma.TransactionClient) {
   const rows = await db.department.findMany({ where: publicVisibleDepartmentWhere, select: { id: true, name: true, slug: true, institutionId: true, institution: { select: { name: true } }, specialty: { select: { name: true, groupAsArray: true } }, medicalArray: { select: { id: true, name: true, slug: true, hospitalId: true, specialtyId: true } }, specialtyId: true }, orderBy: [{ institution: { name: 'asc' } }, { name: 'asc' }] });
@@ -17,7 +17,7 @@ export function dryRun(candidates: Candidate[], catalog: DepartmentOption[], exi
     if (old) { report.existing++; if (old !== fingerprint(c)) { report.changed++; report.conflicts.push({ sourceReviewKey: c.sourceReviewKey, reason: 'SOURCE_CHANGED_EXISTING_RECORD_PRESERVED' }); } } else report.inserted++;
     const mapping = suggestMapping(c, catalog);
     if (mapping.suggestedDepartmentId || mapping.suggestedMedicalArrayId) report.suggested++; else report.needsMapping++;
-    if (c.ratings.some(r => r.verified && r.normalizedValue !== null)) report.withVerifiedRating++; else report.withoutRating++;
+    if (effectiveCandidate(c).ratings.some(r => r.verified && r.normalizedValue !== null)) report.withVerifiedRating++; else report.withoutRating++;
     if (c.sourceColumnLetter === 'BG') report.hospitalScope++;
     if (c.sourceVerified) report.sourceVerified++;
   }
@@ -37,7 +37,7 @@ export async function importCandidates(db: PrismaClient, candidates: Candidate[]
       if (!old?.sourceVerified || !c.sourceVerified || old.sourceFingerprint !== fingerprint(c) || evidenceChecked.has(c.sourceReviewKey)) continue;
       evidenceChecked.add(c.sourceReviewKey);
       const prior = unseal<Candidate>(old.rawEncrypted, c.sourceReviewKey);
-      if (JSON.stringify(prior.ratings) !== JSON.stringify(c.ratings)) {
+      if (JSON.stringify(effectiveCandidate(prior).ratings) !== JSON.stringify(effectiveCandidate(c).ratings)) {
         report.changed++; report.conflicts.push({ sourceReviewKey: c.sourceReviewKey, reason: 'RATING_EVIDENCE_CHANGED_EXISTING_DECISIONS_PRESERVED' });
       }
     }
@@ -51,18 +51,19 @@ export async function importCandidates(db: PrismaClient, candidates: Candidate[]
         // Only enrich previously unverified evidence with exact matching source content.
         // Existing approval choices, text, mapping, rejection and selected metrics are never overwritten.
         if (!old.sourceVerified && c.sourceVerified && old.sourceFingerprint === fingerprint(c)) {
-          await tx.surveyReview.update({ where: { id: old.id }, data: { sourceVerified: true, workbookHash: c.workbookHash, rawEncrypted: seal(c, c.sourceReviewKey), revision: { increment: 1 }, ...(old.status === 'APPROVED' ? { status: 'PENDING_REVIEW' as const } : {}) } });
-          await tx.surveyReviewRating.createMany({ data: c.ratings.map(r => ({ ...r, reviewId: old.id })), skipDuplicates: true }); enriched++;
+          const effective = effectiveCandidate(c);
+          await tx.surveyReview.update({ where: { id: old.id }, data: { sourceVerified: true, workbookHash: c.workbookHash, rawEncrypted: seal(c, c.sourceReviewKey), originalHospital: effective.originalHospital, originalDepartmentOrScope: effective.originalDepartmentOrScope, revision: { increment: 1 }, ...(old.status === 'APPROVED' ? { status: 'PENDING_REVIEW' as const } : {}) } });
+          await tx.surveyReviewRating.createMany({ data: effectiveCandidate(c).ratings.map(r => ({ ...r, reviewId: old.id })), skipDuplicates: true }); enriched++;
         }
         continue;
       }
-      const id = randomUUID(), mapping = suggestMapping(c, catalog);
+      const id = randomUUID(), mapping = suggestMapping(c, catalog), effective = effectiveCandidate(c);
       reviews.push({ id, sourceId: SOURCE_ID, sourceReviewKey: c.sourceReviewKey, batchId: batch.id, sourceRowNumber: c.sourceRowNumber, sourceColumnLetter: c.sourceColumnLetter,
-        sourceYear: c.sourceYear, originalHospital: c.originalHospital, originalDepartmentOrScope: c.originalDepartmentOrScope, sourceQuestion: c.sourceQuestion,
+        sourceYear: c.sourceYear, originalHospital: effective.originalHospital, originalDepartmentOrScope: effective.originalDepartmentOrScope, sourceQuestion: c.sourceQuestion,
         rawEncrypted: seal(c, c.sourceReviewKey), sourceFingerprint: fingerprint(c), sourceVerified: c.sourceVerified, workbookHash: c.workbookHash, ...mapping,
         // All first-import records await review; mapping need is separately filterable.
         status: 'PENDING_REVIEW' });
-      ratings.push(...c.ratings.map(r => ({ ...r, id: randomUUID(), reviewId: id })));
+      ratings.push(...effective.ratings.map(r => ({ ...r, id: randomUUID(), reviewId: id })));
     }
     for (let i = 0; i < reviews.length; i += 200) await tx.surveyReview.createMany({ data: reviews.slice(i, i + 200) });
     for (let i = 0; i < ratings.length; i += 300) await tx.surveyReviewRating.createMany({ data: ratings.slice(i, i + 300) });

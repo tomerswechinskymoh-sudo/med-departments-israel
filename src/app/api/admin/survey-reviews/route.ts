@@ -37,7 +37,7 @@ export async function GET(request: Request) {
     const counts = Object.fromEntries(grouped.map(g => [g.status, g._count]));
     const queueRows = rows.map(({ rawEncrypted, approvedPublicText, ...row }) => {
       const original = unseal<Candidate>(rawEncrypted, row.sourceReviewKey);
-      return { ...row, ...(!row.mappingConfirmed ? suggestMapping(original, catalog) : {}), text: approvedPublicText ?? original.proposedText, privacyFlags: original.privacyFlags };
+      return { ...row, ...(!row.mappingConfirmed ? suggestMapping(original, catalog) : {}), text: approvedPublicText ?? original.proposedText, privacyFlags: original.privacyFlags, electiveCorrection: original.electiveCorrection ?? null };
     });
     return NextResponse.json({ source: source ?? { id: SOURCE_ID, title: SOURCE_TITLE, isPublicEnabled: false, permissionConfirmedAt: null, permissionEvidence: null, revision: 0 }, rows: queueRows, total, page, nextCursor: rows.length === 20 ? rows.at(-1)!.id : null, catalog: mappingOptions(catalog),
       counts: { ...counts, mappingRequired, displayed, hiddenBySource: source && sourceAllowsPublication(source) ? 0 : counts.APPROVED ?? 0, withRatings },

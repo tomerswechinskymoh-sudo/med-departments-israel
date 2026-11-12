@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "recordsChecked": 3608,
+  "ratingsChecked": 2856,
+  "correctedAssociations": 34,
+  "electiveContextPairs": 2856,
+  "sourceEnabled": false,
+  "publiclyEligible": 0,
+  "approved": 35,
+  "approvedText": 34,
+  "approvedRatings": 34,
+  "originalSourceEvidencePreserved": true,
+  "allEffectiveRatingsMatchSameRowElective": true
+}
