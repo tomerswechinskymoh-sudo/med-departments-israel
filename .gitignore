@@ -24,3 +24,12 @@ storage/verification-documents/*
 storage/external-surveys/
 *.survey-private.json
 *מתמחים*תגובות*.xlsx
+
+# Internship survey: local source only, never deploy respondent data.
+*.xlsm
+storage/staz-surveys/
+*staz*download.csv
+*staz*private*
+# Local release evidence archives and generated provider manifests.
+docs/staz-survey-20261112/source.tar
+docs/staz-survey-20261112/source.json

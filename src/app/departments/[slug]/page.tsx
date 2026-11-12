@@ -1,3 +1,5 @@
+import { publicSurveyExperiences } from "@/server/staz-survey/public";
+import { prisma as surveyPrisma } from "@/lib/prisma";
 import { getSourceVisibility } from "@/lib/server/source-visibility";
 import { DUNS100_TITLE, DUNS100_DESCRIPTION } from "@/lib/duns100-presentation";
 
@@ -1479,6 +1481,8 @@ export default async function DepartmentDetailsPage({
     );
   }
 
+  const surveyExperiences = await publicSurveyExperiences(surveyPrisma, isMedicalArrayProfile ? arrayDepartments.map(d => d.id) : [department.id], session);
+
   const metricRecord = (metricKey: string) =>
     profileExternalMetrics.find(
       (metric) =>
@@ -2776,6 +2780,7 @@ export default async function DepartmentDetailsPage({
               <DepartmentExperienceTabs
                 title={experienceSectionTitle}
                 reviews={departmentExperienceReviews}
+                surveyExperiences={surveyExperiences}
                 canReport={Boolean(session)}
                 emptyAction={
                   <ExperienceCta

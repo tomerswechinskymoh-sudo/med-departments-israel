@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "newUnitAndNativeRegression": 8,
+  "existingExternalSurveyPassed": 11,
+  "unrelatedSourceFileTestSkipped": 1,
+  "uploadAndReleaseGuardPassed": 9,
+  "isolatedDatabaseIntegrationPassed": true,
+  "finalMigrationTransactionalTestPassed": true,
+  "browserRtlScans": 4,
+  "axeViolations": 0,
+  "horizontalOverflow": false,
+  "httpPermissionsAndCsrfPassed": true,
+  "csvImportHttpPassed": true,
+  "publicSourceKillSwitchPassed": true,
+  "realRowsVerified": 3608,
+  "typescriptPassed": true,
+  "prismaValidatePassed": true,
+  "productionBuildPassed": true,
+  "unavailableUnrelatedSuite": "Legacy privacy integration requires isolated localhost PostgreSQL 55439; not available in this environment.",
+  "emergencyHideDuringImportPassed": true
+}

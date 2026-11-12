@@ -1,0 +1,25 @@
+{
+  "summary": [
+    {
+      "label": "queue-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "detail-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "queue-375",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "detail-375",
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "failures": []
+}

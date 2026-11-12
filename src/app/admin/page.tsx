@@ -183,6 +183,7 @@ export default async function AdminPage() {
   return (
     <PageShell className="space-y-6 py-8">
       <SourceVisibilityControls initial={sourceVisibility} />
+      <Link href="/admin/survey-reviews" className="rounded-lg border border-brand-200 bg-brand-50 p-4 font-bold text-brand-900">אישור חוויות סקר הסטאז׳ · תור פרטי</Link>
       <Link href="/admin/placements" className="underline">בקרת פיילוט סבבים ואלקטיבים</Link>
       <SectionHeading
         eyebrow="דשבורד אדמין"

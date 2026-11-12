@@ -638,6 +638,7 @@ model Department {
   residencyOpenings                 ResidencyOpening[]
   researchOpportunities             ResearchOpportunity[]
   officialUpdates                   OfficialDepartmentUpdate[]
+  surveyReviews                     SurveyReview[]
   reviewSubmissions                 ReviewSubmission[]
   reviews                           Review[]
   favorites                         FavoriteDepartment[]
@@ -2278,4 +2279,106 @@ model SignupDocumentDeletion {
   status String
   deletedCount Int @map("deleted_count")
   deletedAt DateTime @default(now()) @map("deleted_at")
+}
+
+// Private moderation evidence; public output is adapted into the existing experience UI.
+// No synthetic user, phone number, verification or missing numeric scores is created.
+enum SurveyReviewStatus {
+  PENDING_REVIEW
+  NEEDS_MAPPING
+  APPROVED
+  REJECTED
+}
+
+model SurveyReviewSource {
+  id                    String               @id
+  title                 String
+  isPublicEnabled       Boolean              @default(false)
+  permissionConfirmedAt DateTime?
+  permissionConfirmedBy String?
+  permissionEvidence    String?
+  revision              Int                  @default(0)
+  createdAt             DateTime             @default(now())
+  updatedAt             DateTime             @updatedAt
+  reviews               SurveyReview[]
+  imports               SurveyReviewImport[]
+}
+
+model SurveyReviewImport {
+  id           String             @id @default(cuid())
+  sourceId     String
+  csvHash      String
+  workbookHash String?
+  actorUserId  String?
+  report       Json
+  createdAt    DateTime           @default(now())
+  source       SurveyReviewSource @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+  reviews      SurveyReview[]
+
+  @@index([sourceId, createdAt])
+}
+
+model SurveyReview {
+  id                        String               @id @default(cuid())
+  sourceId                  String
+  sourceReviewKey           String               @unique
+  batchId                   String
+  sourceRowNumber           Int
+  sourceColumnLetter        String
+  sourceYear                Int
+  originalHospital          String
+  originalDepartmentOrScope String
+  sourceQuestion            String
+  rawEncrypted              String
+  sourceFingerprint         String
+  sourceVerified            Boolean              @default(false)
+  workbookHash              String?
+  suggestedDepartmentId     String?
+  mappingConfidence         String
+  mappingReason             String
+  mappedInstitutionId       String?
+  targetDepartmentId        String?
+  mappingConfirmed          Boolean              @default(false)
+  mappingExceptionReason    String?
+  status                    SurveyReviewStatus   @default(PENDING_REVIEW)
+  approvedPublicText        String?
+  publishText               Boolean              @default(false)
+  publishRatings            Boolean              @default(false)
+  privacyReviewed           Boolean              @default(false)
+  adminNotes                String?
+  reviewedByUserId          String?
+  reviewedByName            String?
+  reviewedAt                DateTime?
+  revision                  Int                  @default(0)
+  createdAt                 DateTime             @default(now())
+  updatedAt                 DateTime             @updatedAt
+  source                    SurveyReviewSource   @relation(fields: [sourceId], references: [id], onDelete: Restrict)
+  batch                     SurveyReviewImport   @relation(fields: [batchId], references: [id], onDelete: Restrict)
+  department                Department?          @relation(fields: [targetDepartmentId], references: [id], onDelete: Restrict)
+  ratings                   SurveyReviewRating[]
+
+  @@index([sourceId, status])
+  @@index([targetDepartmentId, status])
+  @@index([originalHospital, originalDepartmentOrScope])
+}
+
+model SurveyReviewRating {
+  id              String       @id @default(cuid())
+  reviewId        String
+  metricCode      String
+  label           String
+  questionCode    String
+  question        String
+  sourceRowNumber Int
+  sourceColumn    String
+  rawAnswer       String
+  scale           String
+  normalizedValue Int?
+  rotationContext String
+  confidence      String
+  verified        Boolean      @default(false)
+  selected        Boolean      @default(false)
+  review          SurveyReview @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+
+  @@unique([reviewId, metricCode])
 }

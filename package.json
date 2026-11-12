@@ -88,7 +88,9 @@
     "cleanup:signup-documents": "tsx scripts/cleanup-signup-documents.ts",
     "test:accessibility": "node tests/privacy-sources/browser.mjs",
     "test:admin-hydration": "node --import tsx tests/privacy-sources/admin-hydration.ts",
-    "restore:signup-deletions": "tsx scripts/restore-signup-deletion-ledger.ts"
+    "restore:signup-deletions": "tsx scripts/restore-signup-deletion-ledger.ts",
+    "survey:staz": "node --import tsx scripts/staz-survey/import.ts",
+    "test:staz": "node --import tsx --test tests/staz-survey/*.test.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

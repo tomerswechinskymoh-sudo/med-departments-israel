@@ -1,5 +1,6 @@
 "use client";
 
+import { DISCLOSURE, type PublicSurveyExperience } from "@/lib/staz-survey/domain";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import { ReviewCard } from "@/components/departments/review-card";
@@ -108,12 +109,14 @@ export function DepartmentExperienceTabs({
   title,
   reviews,
   canReport,
-  emptyAction
+  emptyAction,
+  surveyExperiences = []
 }: {
   title: string;
   reviews: DepartmentExperienceReview[];
   canReport: boolean;
   emptyAction?: ReactNode;
+  surveyExperiences?: PublicSurveyExperience[];
 }) {
   const counts = useMemo(
     () =>
@@ -124,16 +127,22 @@ export function DepartmentExperienceTabs({
         },
         {
           student: 0,
-          intern: 0,
+          intern: surveyExperiences.length,
           resident_or_physician: 0
         }
       ),
-    [reviews]
+    [reviews, surveyExperiences]
   );
   const [selectedTab, setSelectedTab] = useState<ExperiencePerspective>(() => defaultTabKey(counts));
   const selected = tabs.find((tab) => tab.key === selectedTab) ?? tabs[0];
   const selectedReviews = reviews.filter((review) => perspectiveForReview(review) === selected.key);
-  const hasAnyReviews = reviews.length > 0;
+  const surveySelected = selected.key === "intern" ? surveyExperiences : [];
+  const surveyTexts = surveySelected.filter(r => r.text);
+  const surveyMetrics = [...new Set(surveySelected.flatMap(r => r.ratings.map(v => v.code)))].map(code => {
+    const values = surveySelected.flatMap(r => r.ratings.filter(v => v.code === code));
+    return { code, label: values[0].label, count: values.length, value: average(values.map(v => v.value)) };
+  });
+  const hasAnyReviews = reviews.length > 0 || surveyExperiences.length > 0;
   const selectedSummary = {
     teachingQuality: average(selectedReviews.map((review) => review.teachingQuality)),
     seniorsApproachability: average(selectedReviews.map((review) => review.seniorsApproachability)),
@@ -184,7 +193,7 @@ export function DepartmentExperienceTabs({
             <p className="font-semibold text-slate-700">אין עדיין חוויות מאושרות במחלקה הזו.</p>
             {emptyAction ? <div className="mt-3">{emptyAction}</div> : null}
           </div>
-        ) : selectedReviews.length === 0 ? (
+        ) : selectedReviews.length === 0 && surveySelected.length === 0 ? (
           <div className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-4 text-sm text-slate-600">
             <p className="font-semibold text-slate-700">עדיין אין חוויות בקטגוריה זו</p>
             <p className="mt-1">{selected.emptyText}</p>
@@ -192,14 +201,17 @@ export function DepartmentExperienceTabs({
           </div>
         ) : (
           <>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {selectedReviews.length > 0 && <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               <SummaryMetric label="דירוג כללי" value={selectedSummary.overallRecommendation} />
               <SummaryMetric label="איכות הוראה" value={selectedSummary.teachingQuality} />
               <SummaryMetric label="זמינות בכירים" value={selectedSummary.seniorsApproachability} />
               <SummaryMetric label="חשיפה למחקר" value={selectedSummary.researchExposure} />
               <SummaryMetric label="עומס ואיזון חיים" value={selectedSummary.lifestyleBalance} />
               <SummaryMetric label="חשיפה קלינית" value={selectedSummary.clinicalExposure} />
-            </div>
+            </div>}
+            {surveySelected.length > 0 && <p className="text-xs leading-6 text-slate-600">{DISCLOSURE}. דירוגי האלקטיב מוצגים בנפרד מדירוגי חוויות משתמשי האתר.</p>}
+            {surveyMetrics.map(metric => <div key={metric.code} className="rounded-lg border border-brand-100 bg-brand-50 p-3"><p className="text-xs font-bold">{metric.label} · סקר הסטאז׳ · {metric.count} דירוגים שנבחרו ואושרו</p><RatingStars value={metric.value} /></div>)}
+            {surveyTexts.map(survey => <ReviewCard key={survey.id} survey={survey} />)}
             {selectedReviews.map((review) => (
               <ReviewCard key={review.id} review={review} canReport={canReport} />
             ))}

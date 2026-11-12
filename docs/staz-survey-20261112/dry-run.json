@@ -1,0 +1,16 @@
+{
+  "read": 3608,
+  "inserted": 3608,
+  "existing": 0,
+  "duplicates": 0,
+  "changed": 0,
+  "needsMapping": 2800,
+  "suggested": 808,
+  "withVerifiedRating": 2043,
+  "withoutRating": 1565,
+  "hospitalScope": 752,
+  "sourceVerified": 3608,
+  "errors": 0,
+  "decisionsPreserved": true,
+  "conflicts": []
+}

@@ -1,0 +1,514 @@
+{
+  "rows": 3608,
+  "eligibleCatalogDepartments": 586,
+  "reasons": {
+    "קיימות כמה יחידות מתאימות; יש לבחור מחלקה מפורשת": 355,
+    "שם המוסד חסר, עמום או אינו תואם מוסד יחיד באתר": 1630,
+    "לא נמצאה מחלקה תואמת בבטחה": 390,
+    "כלל בית החולים: אין שיוך אוטומטי למחלקה ואין דירוג מחלקה": 425,
+    "מוסד תואם ויעד יחיד; ההצעה מחייבת אישור אדמין": 808
+  },
+  "suggestedTargets": [
+    {
+      "hospital": "מרכז רפואי וולפסון",
+      "department": "רפואת ילדים",
+      "count": 23
+    },
+    {
+      "hospital": "מרכז רפואי מאיר",
+      "department": "רפואת ילדים",
+      "count": 23
+    },
+    {
+      "hospital": "מרכז רפואי הלל יפה",
+      "department": "רפואת ילדים",
+      "count": 22
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "הרדמה",
+      "count": 19
+    },
+    {
+      "hospital": "מרכז רפואי בני ציון",
+      "department": "רפואת ילדים",
+      "count": 18
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "הרדמה",
+      "count": 18
+    },
+    {
+      "hospital": "מרכז רפואי מאיר",
+      "department": "כירורגיה אורתופדית",
+      "count": 18
+    },
+    {
+      "hospital": "מרכז רפואי כרמל",
+      "department": "רפואת ילדים",
+      "count": 17
+    },
+    {
+      "hospital": "מרכז רפואי הלל יפה",
+      "department": "כירורגיה אורתופדית",
+      "count": 16
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 16
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "כירורגיה אורתופדית",
+      "count": 16
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 16
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 16
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "הרדמה",
+      "count": 16
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "כירורגיה אורתופדית",
+      "count": 14
+    },
+    {
+      "hospital": "מרכז רפואי מאיר",
+      "department": "הרדמה",
+      "count": 14
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "מחלות עור ומין",
+      "count": 14
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "מחלות עיניים",
+      "count": 13
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 13
+    },
+    {
+      "hospital": "מרכז רפואי קפלן",
+      "department": "רפואת ילדים",
+      "count": 13
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "הרדמה",
+      "count": 12
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "פסיכיאטריה",
+      "count": 12
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "נוירולוגיה",
+      "count": 11
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "אונקולוגיה",
+      "count": 11
+    },
+    {
+      "hospital": "מרכז רפואי כרמל",
+      "department": "כירורגיה אורולוגית",
+      "count": 11
+    },
+    {
+      "hospital": "מרכז רפואי מאיר",
+      "department": "נוירולוגיה",
+      "count": 11
+    },
+    {
+      "hospital": "מרכז רפואי כרמל",
+      "department": "הרדמה",
+      "count": 11
+    },
+    {
+      "hospital": "מרכז רפואי מאיר",
+      "department": "כירורגיה כללית",
+      "count": 10
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "נוירולוגיה",
+      "count": 10
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "אונקולוגיה",
+      "count": 10
+    },
+    {
+      "hospital": "מרכז רפואי בני ציון",
+      "department": "כירורגיה כללית",
+      "count": 10
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "מחלות עור ומין",
+      "count": 10
+    },
+    {
+      "hospital": "מרכז רפואי ברזילי",
+      "department": "כירורגיה אורתופדית",
+      "count": 10
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "מחלות עור ומין",
+      "count": 10
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "רפואה דחופה",
+      "count": 9
+    },
+    {
+      "hospital": "מרכז רפואי וולפסון",
+      "department": "כירורגיה אורתופדית",
+      "count": 9
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "נוירולוגיה",
+      "count": 8
+    },
+    {
+      "hospital": "מרכז רפואי בני ציון",
+      "department": "מחלות עיניים",
+      "count": 8
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "כירורגיה אורתופדית",
+      "count": 8
+    },
+    {
+      "hospital": "מרכז רפואי וולפסון",
+      "department": "מחלות עיניים",
+      "count": 8
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "רפואת ילדים",
+      "count": 8
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "כירורגיה כללית",
+      "count": 8
+    },
+    {
+      "hospital": "מרכז רפואי כרמל",
+      "department": "נוירולוגיה",
+      "count": 8
+    },
+    {
+      "hospital": "מרכז רפואי ברזילי",
+      "department": "רפואת ילדים",
+      "count": 7
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "כירורגיה אורתופדית",
+      "count": 7
+    },
+    {
+      "hospital": "מרכז רפואי וולפסון",
+      "department": "רפואה דחופה",
+      "count": 7
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "רפואה דחופה",
+      "count": 7
+    },
+    {
+      "hospital": "מרכז רפואי בני ציון",
+      "department": "כירורגיה אורתופדית",
+      "count": 7
+    },
+    {
+      "hospital": "מרכז רפואי קפלן",
+      "department": "כירורגיה אורתופדית",
+      "count": 7
+    },
+    {
+      "hospital": "מרכז רפואי הלל יפה",
+      "department": "רפואה דחופה",
+      "count": 6
+    },
+    {
+      "hospital": "מרכז רפואי כרמל",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 6
+    },
+    {
+      "hospital": "מרכז רפואי הלל יפה",
+      "department": "מחלות עיניים",
+      "count": 6
+    },
+    {
+      "hospital": "מרכז רפואי הלל יפה",
+      "department": "הרדמה",
+      "count": 6
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "נוירולוגיה",
+      "count": 6
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "מחלות עיניים",
+      "count": 6
+    },
+    {
+      "hospital": "מרכז רפואי ברזילי",
+      "department": "הרדמה",
+      "count": 6
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "אונקולוגיה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי קפלן",
+      "department": "הרדמה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי קפלן",
+      "department": "גריאטריה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי קפלן",
+      "department": "מחלות עיניים",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי בני ציון",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי מאיר",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי בני ציון",
+      "department": "הרדמה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי כרמל",
+      "department": "רפואה דחופה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי קפלן",
+      "department": "כירורגיה כללית",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי הלל יפה",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "מחלות עיניים",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי בני ציון",
+      "department": "נוירולוגיה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "פסיכיאטריה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "כירורגיה אורולוגית",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "רפואה דחופה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי כרמל",
+      "department": "גריאטריה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי מאיר",
+      "department": "רפואה דחופה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי קפלן",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי ברזילי",
+      "department": "גריאטריה",
+      "count": 5
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "כירורגיה אורולוגית",
+      "count": 4
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "כירורגיה אורולוגית",
+      "count": 4
+    },
+    {
+      "hospital": "מרכז רפואי סורוקה",
+      "department": "נוירוכירורגיה",
+      "count": 4
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "רפואה דחופה",
+      "count": 4
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "מחלות עיניים",
+      "count": 4
+    },
+    {
+      "hospital": "מרכז רפואי כרמל",
+      "department": "כירורגיה אורתופדית",
+      "count": 4
+    },
+    {
+      "hospital": "מרכז רפואי הלל יפה",
+      "department": "נוירולוגיה",
+      "count": 4
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "אונקולוגיה",
+      "count": 4
+    },
+    {
+      "hospital": "מרכז רפואי קפלן",
+      "department": "כירורגיה אורולוגית",
+      "count": 3
+    },
+    {
+      "hospital": "מרכז רפואי ברזילי",
+      "department": "פסיכיאטריה",
+      "count": 3
+    },
+    {
+      "hospital": "מרכז רפואי הלל יפה",
+      "department": "פסיכיאטריה",
+      "count": 3
+    },
+    {
+      "hospital": "מרכז רפואי וולפסון",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 3
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "כירורגיה אורולוגית",
+      "count": 3
+    },
+    {
+      "hospital": "מרכז רפואי קפלן",
+      "department": "רפואה דחופה",
+      "count": 3
+    },
+    {
+      "hospital": "מרכז רפואי ברזילי",
+      "department": "רדיולוגיה אבחנתית",
+      "count": 3
+    },
+    {
+      "hospital": "מרכז רפואי רמב\"ם",
+      "department": "נוירוכירורגיה",
+      "count": 3
+    },
+    {
+      "hospital": "מרכז רפואי כרמל",
+      "department": "מחלות עיניים",
+      "count": 2
+    },
+    {
+      "hospital": "מרכז רפואי ברזילי",
+      "department": "כירורגיה כללית",
+      "count": 2
+    },
+    {
+      "hospital": "מרכז רפואי מאיר",
+      "department": "מחלות עיניים",
+      "count": 2
+    },
+    {
+      "hospital": "מרכז רפואי מאיר",
+      "department": "גריאטריה",
+      "count": 2
+    },
+    {
+      "hospital": "מרכז רפואי ברזילי",
+      "department": "מחלות עיניים",
+      "count": 2
+    },
+    {
+      "hospital": "מרכז רפואי ברזילי",
+      "department": "רפואה דחופה",
+      "count": 2
+    },
+    {
+      "hospital": "מרכז רפואי שערי צדק",
+      "department": "כירורגיה כללית",
+      "count": 1
+    },
+    {
+      "hospital": "מרכז רפואי וולפסון",
+      "department": "הרדמה",
+      "count": 1
+    },
+    {
+      "hospital": "מרכז רפואי שיבא",
+      "department": "נוירוכירורגיה",
+      "count": 1
+    }
+  ],
+  "allSuggestionsRequireManualConfirmation": true
+}

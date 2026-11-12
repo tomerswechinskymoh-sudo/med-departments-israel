@@ -112,7 +112,9 @@ test("idempotency compares canonical JSON, independent of PostgreSQL property or
 test("survey boundary preserves moderation, auth, questionnaire, metric calculations and comparison layout", () => {
   // Review form accessibility and public source projection are intentionally changed by
   // the 2026-11-10 task; their behavior is covered in tests/privacy-sources.
-  const files = [ "src/components/departments/department-experience-tabs.tsx", "src/app/api/reviews/route.ts", "src/app/api/admin/reviews/[reviewId]/route.ts", "src/lib/auth.ts", "src/app/compare/page.tsx", "src/lib/specialty-metrics.ts", "src/lib/career-fit/evidence/scoring.ts", "src/lib/career-fit/evidence/model.ts", "src/components/career-fit/evidence-questionnaire.tsx"];
+  // Internship experiences extend the existing tabs in 2026-11-12; native rendering
+  // is compared against the previous implementation in tests/staz-survey/native-regression.test.ts.
+  const files = [ "src/app/api/reviews/route.ts", "src/app/api/admin/reviews/[reviewId]/route.ts", "src/lib/auth.ts", "src/app/compare/page.tsx", "src/lib/specialty-metrics.ts", "src/lib/career-fit/evidence/scoring.ts", "src/lib/career-fit/evidence/model.ts", "src/components/career-fit/evidence-questionnaire.tsx"];
   for (const file of files) {
     const original = execFileSync("git", ["show", `d55f195b6efa7370bb5ab27f3d500f33355e05a2:${file}`]);
     const current = execFileSync("git", ["hash-object", file], { encoding: "utf8" }).trim();

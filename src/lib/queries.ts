@@ -376,7 +376,7 @@ function isNextProductionBuildPhase() {
   return process.env.NEXT_PHASE === "phase-production-build";
 }
 
-const publicVisibleDepartmentWhere = {
+export const publicVisibleDepartmentWhere = {
   AND: [
     publicImportedDepartmentWhere,
     publicDisplayableResidentCountWhere,
