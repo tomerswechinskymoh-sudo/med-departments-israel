@@ -1,0 +1,4312 @@
+{
+  "version": "2026-11-12-encoding-v2",
+  "workbookHash": "9c8aeb3c63176b410a76fc51ec3ef5099c00a6b882743cd8a6b8e1d7015371d1",
+  "reason": "תיקון לפי תבנית קידוד שנבדקה בקובץ המקור: עמודות פירוט שני האלקטיבים הוחלפו. בית החולים, המחלקה והציון נלקחו יחד מהאלקטיב המתאים באותה שורה. זהו כלל שנמצא בנתונים, ללא תיעוד רשמי של גרסת השאלון.",
+  "corrections": [
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R76:CBL",
+      "contextHash": "10f78be329832c1f00c87d91ec37acc13a93d16e41bfdb5d30cfde24a9ee15f1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R76:CBP",
+      "contextHash": "ec686610776ed0d2c21301d4045507df2d855ae14dcbc1a4a739f681b643c059",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R89:CBP",
+      "contextHash": "70b4efd977a3eb0fd1b78ac4eb1389d1f01618841e3f311d60e2f743bfe2775d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R92:CBL",
+      "contextHash": "0cf00e704cfcca6747f04824abd83dc496768191576efa201f71c09354861311",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R92:CBP",
+      "contextHash": "fdb47abb127457448ba412959185e419a3c7ca9b8f7023b51d47cbd60e3b3943",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R96:CBP",
+      "contextHash": "563b7c3544f64715abf94bc554f8147e80fdbe9bb58b5af68f6e2728236ff64c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R100:CBP",
+      "contextHash": "595dd8732e41423f751b38eee9f9f80259ca02824eee9dbd1baddf6a5f71e703",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R102:CBL",
+      "contextHash": "8ef59cab89203f0f9a135db6a88d011366acd492a16a0554bf565150d7165624",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R115:CBL",
+      "contextHash": "7f71370626278964ba56bdf93cf1b29f461a0d78b4c58ad8f3f732707a74d643",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R115:CBP",
+      "contextHash": "e6b75018049f23095f5d5f012319ceaa78941747a05249b84109fbe49df2f89d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R123:CBL",
+      "contextHash": "8ddf7b31cfce9d3955d6753807bec99ffd89de58840a3c9a978aa900a21fd210",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R123:CBP",
+      "contextHash": "e35b48dea9d138856d661361f27db7206b6019cc256462297857e5a94cf1499e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R127:CBP",
+      "contextHash": "caecbc158b2eeb84d9feb63a1ebed651e904dea3934fec427b83fe83037f47cb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R226:CBL",
+      "contextHash": "d7f01659737c6fc1c7ce6ff3881f276112efdccb8a39ffd15724043375973a3e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R226:CBP",
+      "contextHash": "1a04b576a5de23ab996de0db6c4c660c249bd8d518fcd80134cd1f33971837da",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R232:CBL",
+      "contextHash": "ab06ff7a38c0876df12af394bfe3db1f69e198ec55963377c920f8018a6ff56f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R232:CBP",
+      "contextHash": "0c466203125c3d249d29ce707276b4cf2aaede1a44d673ae7ca596a5fc420501",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R401:CBL",
+      "contextHash": "7a282b074043a1cba319e84e089a9819234288cd15e402657ea29f04a28cbd3b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R423:CBL",
+      "contextHash": "4a6207a140395926dd152fe3eacf770adf6e26fc276402f3a455b986da4730b7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R424:CBL",
+      "contextHash": "2dbbc7f1db81d88c2954f789ae3f4aac59b35038302ff0122c981d1ccf63e904",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R424:CBP",
+      "contextHash": "df352aa42fb7ff8bc5f9a1f4486b25e3e39d691c063ac4c2757b3f5b6b9d57ca",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R425:CBP",
+      "contextHash": "c4bf2932fa7b6e1b6d1b6e8268c6a889c166a828450af3bb8e14fe4dc8c9d3e5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R439:CBL",
+      "contextHash": "26b8182322d44706a37c5a11385e17c49e0076efcbd081cfea73acc0d9c024d4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R439:CBP",
+      "contextHash": "9e00ed7d26bd1eb8b5353f782ede9bd91b6d9c26445b15be14cd1ad38796ecac",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R441:CBP",
+      "contextHash": "275aff009ba65f30c0d4cf796504d427b519c11eba5ed75756c6b8a60fdaac47",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R472:CBL",
+      "contextHash": "52eeef3a9d49ad6a20228a92033d0ef67b76d93775cde0f27d552a8f49052633",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R472:CBP",
+      "contextHash": "fc20e9fab62526a6eacf41f10c905366c68f3781ba67debad7c20d7b6dd196e2",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R473:CBL",
+      "contextHash": "4fd9b897887ea5e6d1b3bb288100269c3dde9fd106625a8d51a5c7f10aa9e22a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R473:CBP",
+      "contextHash": "35a608233caac4945924d4d87fc8b4de433f5ff70f05ca2dec605a90467c8201",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R474:CBL",
+      "contextHash": "04edfadcbf437fab1fb62e6fb407bec36ac62f0586f73eb6d0dccfb3c2b31ee4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R474:CBP",
+      "contextHash": "339e70dde182f27b055631407504ae414d646f5ab9d630d5803eced897359ec4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R580:CBL",
+      "contextHash": "01a79e65703272155c51b947cda959960a7010e69a611cbf82df3b0bf8a894b5",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R580:CBP",
+      "contextHash": "5884025f8c13211f0da398729c66bfdff7e41059f0dc2fd62ea61f588275218a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R594:CBL",
+      "contextHash": "b181339eaa8a6bebaeba56f39d30cacf0e5537095b72266102beac1282008335",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R594:CBP",
+      "contextHash": "4df78e1c011b4a56e6e075f07a1c0ac0debbe2feb4dc0a11772f9fbb02e8efaf",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R595:CBL",
+      "contextHash": "fba99c2c8bb76ace8cc5ddffdec9417de2c7e6af8da8bf6264a2119c7d3e2511",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R595:CBP",
+      "contextHash": "3de78fe510dde3d81ca3f739af17f7d4576152f04b4542bb675f0b6d6543970f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R604:CBL",
+      "contextHash": "62e0f8dcb27ce06d8c51203ca16042506c0d0de9ad58b52fa0dc9d91bc1fa263",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R604:CBP",
+      "contextHash": "09d273b188df80e53f2d48802cc6dd69b230f05f89f124d3949436f0d46a1dca",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R617:CBL",
+      "contextHash": "2230b074c0f213497b7226a77abd0d31602bb047d81419635cbd067ea82e011a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R623:CBP",
+      "contextHash": "d50ab8cb6b69de365bfab01d99ae4ce1d062f43c866bad235d082c94796c304c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R633:CBP",
+      "contextHash": "ca2796a1811e705183eed28f7ba9dc3f3eca9853a71bc8d87180aa2816d8ac9b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R642:CBP",
+      "contextHash": "b289f0f34efab726462300e69f2749c16fc365e328a3137c4e384d8aa900aeff",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R648:CBL",
+      "contextHash": "290444132330ec1c7d5d80fb2c85cd405ee2efd00ee04fdab8f380048a7bce44",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R648:CBP",
+      "contextHash": "6496cc8d002e837b0e6f18ff721dab3cbef76feb10c525ccc6849e4a2b7d0f09",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R654:CBL",
+      "contextHash": "11b58fc569c7c245702aeb8a4eaa9437ff2059b981d029631ede88a228fd067c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R654:CBP",
+      "contextHash": "600178a1241425f4e95114b1cba1d1d0522c4fea7812bd5810748eb4bc29fbb6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R689:CBL",
+      "contextHash": "ccb5eae4577872c13ad4c72bbe958cdafbb88a277004c8622649f7065be25545",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R697:CBL",
+      "contextHash": "ebf48d19a1e15ab1b5617851323dc87fd823f323b515f922893f3c5ba2fab655",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R697:CBP",
+      "contextHash": "6de1cdceb94dfa30c967a553741b7d08a4393ac78032f2cf5800d2ddde5a9d54",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R711:CBP",
+      "contextHash": "1fb992209c022636e26f22db2fa4b5229bb1cba8fcc6952e62591b8abc0018a6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R714:CBP",
+      "contextHash": "48d4b7f7d727003ba7ff125e1c95a83109405c0f5fb16ed85de1c0d89576abf9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R717:CBL",
+      "contextHash": "d0cb7d2a5505f090b5e7db88be1d1a6e5672d8ba8c053464992f8a56817ebd68",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R726:CBL",
+      "contextHash": "c3dfd9251dcb943738b5a7ff8cc103be9fa847a9c8a6bb76e598e1cd2ce90ca2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R726:CBP",
+      "contextHash": "a67e5f1559bdd73e76f80219dd252f463eb1341ddb8e5c9243ddb9b60f4c3d1a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R730:CBL",
+      "contextHash": "f2b930613305e0b489c0ec769267481e2c0c7be7b62e4dfb5c3402e7c1ac1046",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R730:CBP",
+      "contextHash": "4323469081d87ed020cf51b2a37026ca32a5f6ea19c934b970792b8d29430b92",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R806:CBP",
+      "contextHash": "cbef9194c14e77765af39b2ef23c1af6f16de49f6bae78bda08ea8db41081dfe",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R814:CBL",
+      "contextHash": "59f316a541176d7c24c1f59e42dbc98e837002086747bb59b007ef16e1e2220e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R814:CBP",
+      "contextHash": "1d654e0b16ed6eeaa35eede8f333eef141b2bb9425c3f84d622e2ed60d2689c7",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R818:CBP",
+      "contextHash": "8881ecd78a781337da9c6a0cb0ba824f6e08ca0ead535fa2304c021289e3c0b6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R827:CBL",
+      "contextHash": "f3e985971a28aca3c89417f13f0f99b90808a8cfeaf55bfad7c910f2004cc5d9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R827:CBP",
+      "contextHash": "1c049ac9dddd3414ef498f6b430fae742f8182c473a0ea55aef4a8b5d88bde3f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R828:CBP",
+      "contextHash": "0171f3f66a936b1009134eb4ce147b1baec2c091b3fdd1e1f09b55a79d5ca57c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R829:CBL",
+      "contextHash": "0deb483c23353f4d0ecad5407c3cd468a3d3f095a76c84cbad6db1aafe0d837e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R833:CBP",
+      "contextHash": "961494cd77339f0f88df5d3b5bb2341ba910ba9438159515c691dcebe9b663d6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1067:CBP",
+      "contextHash": "cf20da5323a41cc864191b42900a7d527a487d31f1f5e3f456c3684c4615ce9b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1069:CBP",
+      "contextHash": "58c5fc02bc6b9c831f3ebb7373912e721359e91797090ea9864fd993efb77110",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1071:CBL",
+      "contextHash": "2e1c355b5e4be07c56cab0413ea960ad52b359431bd36b580c2487fa7153a183",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1071:CBP",
+      "contextHash": "0213dee81fa98ef79145334b1c89ca1247730b91059c31cef89ba4079449ffaa",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1076:CBL",
+      "contextHash": "fd23f183475ae2518a0e7d7fa56229bd4b672146d8573b7e261f55db12777f91",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1076:CBP",
+      "contextHash": "290d3d3fb3ba03911b0a9bce3f4418c774d820944497d4595cbd4c6f73c1b89b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1081:CBL",
+      "contextHash": "0ec4e4087a7938fa420873b20e899b383db9782a640c26d3fbd6beb7acbc41ca",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1081:CBP",
+      "contextHash": "f853fae205d299060e0b1559fc2cd80cb75f190443b5057e2dc51d9eb00be173",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1083:CBP",
+      "contextHash": "15aef3697a57330ea63f8f319e1b9b68bd88d4e5e8d7dc60ea94a92b78fa506b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1084:CBP",
+      "contextHash": "0dd5f110fb8efa4bc33893b28ea16900d3d932754248ccfe8e71f36e8426b521",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1087:CBP",
+      "contextHash": "08d76ab8373040c96dbd9891932dd38805e063b925a36d5f427ff50f4cfa0cff",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1097:CBP",
+      "contextHash": "9145a7f7685c037a7b9f3b43c3583fb560444c51054c1df630d6c9b4eeed843d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1098:CBL",
+      "contextHash": "16b5bcf03484e961e77e15a263242a7ba58356498078be26204cbee3a4ebfa7c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1098:CBP",
+      "contextHash": "ed6ff7e854a4448e04762c841687fa75674aa7bee4e7b87c233e774cbf9a550a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1099:CBP",
+      "contextHash": "2c1b65fc49194ed40acd79eca0bda1fe0149f986e504cbb1ba771f5f8ae0b1fb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1100:CBL",
+      "contextHash": "b3189ec1dcf875211005361e008cf75e53bddf97b5531d2868702b1043523f01",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1100:CBP",
+      "contextHash": "a4a4a59939334e9f7667edcd69c70fe7f45d3f22c850cb899821a03d21e2992b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1107:CBL",
+      "contextHash": "9881d57d11772e984bca848e79ad747027e7170e3653743461631366d6b5da7c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1107:CBP",
+      "contextHash": "73f3ac8790b587b02cc8a4af2c30db7df746eaf19a81c821ba6b6024270be747",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1114:CBP",
+      "contextHash": "9ffd960682587bc7f1e0f1d5de7756bcee1de6ed7d50a1a792de4bf3fd7187ef",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1116:CBP",
+      "contextHash": "0511542f430c5ccc37b85ddceab837fe3b35802123346fad7e749a7fe5c46630",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1121:CBP",
+      "contextHash": "114702ca8186c2897d542757467e617e8a646f739c15eff81a9659c5f56e8cc8",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1230:CBL",
+      "contextHash": "7f13149d3e17369e372e37207e05a27c06060de2127a46fd9f785d1a535973e6",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1230:CBP",
+      "contextHash": "3a01783815427028d7f32b783fe1306cf3d985be5f66fa464892b5b399360628",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1247:CBL",
+      "contextHash": "0cfd98dac31a2484df24c2b2dcb2db380dc12779a8a37026e61c80584a31e3aa",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1247:CBP",
+      "contextHash": "80f71922bacc937a129d00917883d45d1f242331a7e3dcd58ceb3c211409616d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1248:CBL",
+      "contextHash": "ced1d9677e7a57155f432ca15614afff23472b9c7f689e2647fd6a8267072123",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1248:CBP",
+      "contextHash": "9c5943aba4e3878686d342c84bec8f979495876b8ea139c1bd6f34ecc19b3e8b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1252:CBL",
+      "contextHash": "65d713e3dc0bee9a0f394d4d45aac48e18db03a77dcaa8f958dfaa5221153ff8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1252:CBP",
+      "contextHash": "245e1af5742d1a71a3a54b10b1a2e749388644e8f691bd4cda83f01ca38d1ce5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1258:CBL",
+      "contextHash": "f94758446b9b4d2139db98e6f31d1a1f741a2de80c4679689d83b08f8309ba9d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1258:CBP",
+      "contextHash": "413103625f3c98883606d807a33fdf9188f6a8a181ce54527ce9889df66a0835",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1264:CBL",
+      "contextHash": "cc90031fba7b4693b503753c078676f2fec03595c90149fa951b8c2cb7b693cb",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1375:CBP",
+      "contextHash": "404ef546fa2268ab738cbcdd9c3bb2ba12ea1fab1dcb6ca97d2f6e0ee1e78916",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1379:CBL",
+      "contextHash": "20291a0bfb61bddaf67d7ebce362ca20e9c129ab8ba02402064d3a5248484c13",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1382:CBL",
+      "contextHash": "156757d89925afa534eae3ea70c71fd4f6141f4bac0aff28c70f3f4093543322",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1382:CBP",
+      "contextHash": "ff7e3efdb3097cdb7219afec67dc9613099439b137bd1ee0be40a52053c533bb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1388:CBL",
+      "contextHash": "bfe6e7282798d4150adef4a80da6088b99a854d41040e07217051f3b1f9698ab",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1388:CBP",
+      "contextHash": "d29a0b1b650bee6705cf8803b2039427e17a8ceacebf420bd00e12ecd88f3cdb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1389:CBL",
+      "contextHash": "4b54349348e621ae9b985a0892445f1344fedfb5bcc912e475b21b288fd23e08",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1389:CBP",
+      "contextHash": "ad6698023c596a08a5d45dbaa6600cd4b696346f27422047842ad1c5f6f8db7d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1395:CBP",
+      "contextHash": "daed849b3c1ce791b398e9a5556931a6a6d05d721b5d09d20b6f84c57d36d9fa",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1398:CBL",
+      "contextHash": "a8fde960f57db7d4150b9ab11d8bb12958973c01f87bc45c713c35ef7c445350",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1405:CBP",
+      "contextHash": "418ac6495cae9ebbfd7f5381e4415de26b46eabd4fc07171fa1a04b97eb16d95",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1406:CBL",
+      "contextHash": "3b264230a3564bbe667146903ddd043e6445ec2e1c48b65e548ec709f6cf77b0",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1406:CBP",
+      "contextHash": "1d52f62d2586bcd3b9b7c23612ef5fa165005c14e72fbe51412f3a100f4be174",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1409:CBP",
+      "contextHash": "e45eef1d89aa92998e29b0fc90df62f2c0a583962e948a9e2d456c5d583b3250",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1417:CBL",
+      "contextHash": "efdc94718ffdd05d7a5390bfe2bee71607b1b5ac033631c58e7f0796fe1ef1e8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1521:CBL",
+      "contextHash": "3f46cc54160317ea4b1a4330326621b3dc5b9c91fbb0b57442b2cb1fe29d967f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1521:CBP",
+      "contextHash": "65fb72c9629628a2b9a0a816691d88128da0086fbb1f3b2c2740ee6456cde3f9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1531:CBL",
+      "contextHash": "abe8c7d2721b9a8e34830820fe13b812e487d68789fa25c134cce395e1a3da64",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1531:CBP",
+      "contextHash": "084f42acee9e5207b5e9b62b1b8769a688277668d4bb0b8815587ea03315f035",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1577:CBP",
+      "contextHash": "a3b049504a8c2c4cd19e82764c50d8b42d1a7882e62f12017929e58813082e87",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1584:CBL",
+      "contextHash": "06a9e14067a682c70d95f8ef5f30ba2859ad085fb4320a2bf9adaae414fdb7e1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1584:CBP",
+      "contextHash": "d499e34d5e927bbef9713033400198b37ddf535878fe409a512eb0c4010fa8fb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1589:CBL",
+      "contextHash": "dec5b4ae2e02b978d40ce5804ab01490c3077091ae774a286745bff1ab2ddb82",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1593:CBL",
+      "contextHash": "41163435fd40080afa1e1ed5ddebbb68d4652c54d37c197f76f74ff2d7c26a69",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1594:CBL",
+      "contextHash": "874848c154e6254dac8c777d65f24ede77b1e21f7d23d458cd79352be1ef3d2c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1595:CBP",
+      "contextHash": "a1f41b7f798aecf1bee42ee444191707670256273b53ee29da372dcef59eaf2e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1605:CBL",
+      "contextHash": "990059723684c50fb742287fcb4d6b784f0d7232fc8ea68829f2ff4e0518fa72",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1608:CBP",
+      "contextHash": "76f377cbd9485ca1857f907341f014846e4418e8b17c317cf225020271bc9d6e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1661:CBL",
+      "contextHash": "3e82f599c45a0b9be399d5c1dfae6b124103f5c224564702a951a6b1e5f857f8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1661:CBP",
+      "contextHash": "93ddeba420bd95588e2c2adc319a32be6d0228564bb340ed62c57ae22815fb95",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1762:CBP",
+      "contextHash": "f34166ae55aa4015e70866a6a433d33921f72b43117fc6b26708f134295696d9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1769:CBL",
+      "contextHash": "ffebdc0f4d6bc166ff096c1314ad29e55ef757baf232712abbbb1cdd6986bc56",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1784:CBP",
+      "contextHash": "d4aff3f2af40344712e75d92c19fe8328ce14ab9e76d59807f49a7e4453cfd53",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1788:CBP",
+      "contextHash": "06433d0cb1c013818e640e4b4b933f4d383a235b1bd7d87fcbdae3878dbd85ce",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1791:CBL",
+      "contextHash": "9817297e35b861236859ec1d0f7854d8949cad2cc4ef199b55c00622aa2dc2c1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1791:CBP",
+      "contextHash": "3bf7d280dcbd8e062e0b0f77a9dbb4b13c111cb7a4a146e0e5d599b4632259c4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1792:CBL",
+      "contextHash": "5f74a3ac4a169571783355e5255acb926220378c918dc4168cb011266c506daa",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1792:CBP",
+      "contextHash": "407d7a1953a8d17332948e055cc1f3389fa6619a53d4416ca5a6e226b1615f2d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1794:CBL",
+      "contextHash": "b70825babff3891c0861fa503e10ded47965a2b4ff255f2e0e9c7f212590fcf2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1794:CBP",
+      "contextHash": "445f511d871761f9f3a2956ad4ba6c56d5aa1135b542b3fae73a477153da3289",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1809:CBL",
+      "contextHash": "9ec6e97252f84e052cb3d667d8486be62d03288ba3e09d6cc8856673f696f386",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1809:CBP",
+      "contextHash": "0daba8a13810bd97d83bc4dc6ecb79d68eb1f2307f59c2172fc8338523c8368e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1814:CBL",
+      "contextHash": "c47b44730717b92e72053265fdd95ead35616c08b2712cbbca332aab0a48d737",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1814:CBP",
+      "contextHash": "9bf8b56d44c26121ee6079ee757c5b645794dee491bdf07cfa256b081d25296a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1853:CBL",
+      "contextHash": "f88a53b954114076df2debc4eb6caf8a62ae1641868cb52c71b380d1e4def6c8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1853:CBP",
+      "contextHash": "d8f8c017f0a29d2c0a895ff9ac3d8ae7f159faf91cb9c10b43f53184d37dbfd2",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1855:CBP",
+      "contextHash": "2dcee917afc8ee4abcf87ed9194b7402f0619a88ec48f00e123666784bdba58f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1890:CBL",
+      "contextHash": "290d7c6e6b0816866306b1d3b28962d6bebb6339fde06f897cfb251eb1ae1e48",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1890:CBP",
+      "contextHash": "5a401ee3261b70298102445bd7de52647dca5cd351bc64740ec0a6a14d7a068c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1892:CBP",
+      "contextHash": "9eaaac7ae74824285923f3dfa7484783e53ef47093032dae03f06d03cc369efd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1895:CBL",
+      "contextHash": "6083b9f58b37e1556965d848548073a20e0a88b60c5aaa4eff9da8b9a4c6cd20",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1895:CBP",
+      "contextHash": "bf3ccd041167a67301df6238dd03c24ffabd7077fd4076f7b78342ce582d90a4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1901:CBL",
+      "contextHash": "c064b9c9d84188e68d9c90d70fd1d9c82deb6871a4c69a69344367e824db13cd",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1901:CBP",
+      "contextHash": "b427cb358bb53cd2814ff72d5098ac8a69380754d4abc50222cad93c9114302d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1902:CBL",
+      "contextHash": "fb78e914738d5ce7301b67a71ec8cc193bd8c8bbd776bc51ee6791d1f451bae6",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1902:CBP",
+      "contextHash": "7573a403e7de4132c01bdd5c46223757e7ad98322af1562ac82e6e1c0802d90a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1903:CBP",
+      "contextHash": "13fc30f526ff3bf1bcda6d548ab5249058691349dc527e05df47d19c4d8dcb48",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1904:CBL",
+      "contextHash": "cc151210ea64a5d57b84a1a4b35910dcc46da58468e77508af8bd374cbb05700",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1904:CBP",
+      "contextHash": "4279e86cf1c0b3c8d722abf95245f8f3934963094cd8e7c74b1ed1bc61c4dac2",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1905:CBP",
+      "contextHash": "a298fb7a20fef94e12ce1053ab1d3ea45f7ce257caf0220e2746b0a5f878c273",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1909:CBL",
+      "contextHash": "c9d29e1ce948ae989d4fe829d7c9ff5e31e253735710d0044ae2657cb237a91d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1909:CBP",
+      "contextHash": "09f84b89ff30b0737f47a7c5350b65d7b2da72fe3bd40bbc1eca6c71771352a5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1910:CBL",
+      "contextHash": "54427ed3af18fdf2ce44dcd8d4fa443f8a9891b28a25cd1f6091418d5c1dfdb8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1970:CBL",
+      "contextHash": "22650b0b530c663135933676500565460bce760b3b8fe042420914a64dec67c1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1970:CBP",
+      "contextHash": "28fb69f479cf15c878c72d5aec32029d632e09cc7b8c7c129f27a09e56ec6668",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R1972:CBP",
+      "contextHash": "a5ccfbb3a14bbd671a7ae357f986a1b7b668679a728d632a91c5ca477541898e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2018:CBP",
+      "contextHash": "9346035b9858f77e3d235139797b47e3d2ce0cac3861bdc5658535ce5a718ad5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2026:CBL",
+      "contextHash": "63585733ade15efc5b337368006e869c03c4f671d3a9347ae28f8a199e84972e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2026:CBP",
+      "contextHash": "194ef927a18d6d38211a12ce23373dcc71ee67669f9a723bbbf51b3c38b0165c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2036:CBL",
+      "contextHash": "8685a66cbdac4055ba4641f2507f0783e3a7e9783111b6e338b605bbc1b27bf4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2036:CBP",
+      "contextHash": "46dbffb95dcad282acc876f417f1b395b1c3a581b0a27d2ce9f71e8a3bf017e8",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2038:CBL",
+      "contextHash": "154b952278fef0b2bf48c34e4608cd80b8aaac616375df5703a085867c4e52f4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2038:CBP",
+      "contextHash": "d5b4b48a711b5aadee0faf4474b0e767c19227bc46555e2fc4eb7d39c780230c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2042:CBL",
+      "contextHash": "1bd62916d1c34fef1d4679f623f28800d924f159a968e557e1914fbbdac9225f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2042:CBP",
+      "contextHash": "1624570a33e0e2caa07774a0a65dee4293a334fda94ae4e00cf063951b12a4eb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2043:CBL",
+      "contextHash": "ab6ad307dbb28a9ea324555ecac35adaf6a6e99437bb4d1e1ab4686e43b6dc09",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2043:CBP",
+      "contextHash": "a45334336b6c2af0e49aeae8817469910933691d555a6c365e7eaf5c3c508876",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2044:CBL",
+      "contextHash": "d4fd000d955a28c0dcf59a802ee8193eced9c95f71bedfaf27642e04dbf0b3f1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2044:CBP",
+      "contextHash": "b3b54ac50116e5c556ff8174774961f1847404f934c69753b2a8313163c6fb5a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2046:CBL",
+      "contextHash": "0326c809f10b389a7afe8765acbdd13679eeb063157c1fad602f82a4f746bf10",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2049:CBP",
+      "contextHash": "dd546d6fa960ec8dc3d62d00d4cc5b0ff9d920066cc9ba3b7503e2babb120973",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2055:CBL",
+      "contextHash": "75ac5797b8391d579f7fb6f323c2f353e6ec9e54289efac11d0c8c6b1d4f1c45",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2091:CBL",
+      "contextHash": "98d1a6e87c50719ec0ab66a777ac40a2390d1bf67dbcc8ad54837d7eac35fc0d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2091:CBP",
+      "contextHash": "2a47dc4ae75d91e20a429c4c252f36302edd975528a8108f2210877062501872",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2162:CBP",
+      "contextHash": "b7e45ed21fee7f54a835f9dee9671f46ea40c34a252bcff63716d3bf97cda107",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2163:CBP",
+      "contextHash": "2ccfc1e25ed5eb33b282ef115eb7106614b89a670f525cc74c22f5d66d547aa1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2284:CBL",
+      "contextHash": "2246d8c81226da482aacf9aca746fb71088dcee54b9e93b4889e1f25fbfa0a5a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2287:CBL",
+      "contextHash": "227e0154a08844c4c7160b76a731934468f7fe18421107b6eb86b7b41f4370fb",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2288:CBL",
+      "contextHash": "48b87d2357c63fb935a0495e262da0a78aca325ba858bb97bb23d7921599f2fa",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2291:CBL",
+      "contextHash": "7ba4a5f2a240a3d12b79a2bdd9457d510a0d4d417d34289db7a94d31767eaf92",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2387:CBP",
+      "contextHash": "45c2cbae95323a4488d0e712fdb0400b2f4fb963cdecb79ed39ee27412a15662",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2388:CBL",
+      "contextHash": "4a4478c1a9e48d9ad898bfd422e4a73d5ce055eed4453b7676d44273dfc4b687",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2388:CBP",
+      "contextHash": "27fa47765090debf36c81e1a1b68dff9cca206af423ef60f9c223a3dfed59c8b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2443:CBL",
+      "contextHash": "d59dade0e0b28a11cc2ce5f21726d391383b05b3ff94e9d909b281cb3152be51",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2446:CBP",
+      "contextHash": "6b205cf07037ce6eeb0736f7e2116319015486f9d42fe82323c19ff172981892",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2450:CBL",
+      "contextHash": "dec6ddae010b0ec63377d7cdeaf86b1afebda26caebd453f3ce54d2093b71dcb",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2450:CBP",
+      "contextHash": "e1eba35a283e8f4826c89f55cb20036dcb206d755d0d4c9092ac4b3b9fc44c2b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2455:CBP",
+      "contextHash": "07ad940e7fb3a71ac410767e1bc5495b4ae39dbb6a5ec1279f69e8e6d9e7845b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2459:CBL",
+      "contextHash": "e02ec20bfda2f79ad79a2eb0f6c39ab6b70c2694710b39854a742b013a69a6bf",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2460:CBL",
+      "contextHash": "6d5ab14ee6c7d9ef573a7964b0fb4c883f70546d18a295aea5253e793f5c1393",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2464:CBP",
+      "contextHash": "680971713d2c198dabbcf31777018331715fbbba15f3fba0e99e95e629d91e37",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2565:CBP",
+      "contextHash": "19f33f752ce223864eefd477067943e90a9731098d274fec389f349953c4127a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2569:CBL",
+      "contextHash": "3ca9e4116e38732248802f2260edf08be94dae045acc6849305e165a54b9488d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2569:CBP",
+      "contextHash": "9746c33b0b7dae1d1ad04fe2bcf2a8cca886a7f0112f9faa998747e172d63488",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2575:CBL",
+      "contextHash": "d60e4e21792ff200f4b155d10e558b3d50accf4037afa56d71788599be712673",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2579:CBP",
+      "contextHash": "2e031b3bd19a3f687274b4e953eaa0365cea5b5b819a0d64063bd6f77bac80c0",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2594:CBL",
+      "contextHash": "e56218423b866a3964cdeea4cabc56776f5b49ee3a24d90d1e5ffe9298180a5f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2594:CBP",
+      "contextHash": "ef2f44a11eb09f9befbbaba6aa19362fdada7c8e28c35e8d1ccdf58373385039",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2598:CBL",
+      "contextHash": "adf4ee38a2f3b36915d58434de716a586d5e18e6e70aa331dbd022bb3cfe7369",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2598:CBP",
+      "contextHash": "de116853a6345299d2562c03d655fb28b2d87e26b0b0e56e10d4bec04b1c62a0",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2607:CBP",
+      "contextHash": "f7d6da3cb089a23ea7ab75aeebd2f84dbc8fa4afe49db7968b609d97c678fa99",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2614:CBP",
+      "contextHash": "86b553b2a4430dd959d873bc43840d4654848ca0dc09b5102543d306d6dfa968",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2616:CBP",
+      "contextHash": "f181e7e35d854615cebfaba28da18852133b8f95cba570d5828ff66f563c7686",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2617:CBP",
+      "contextHash": "a71b54932a3e1b6db1e76f9620a36818e1f811592dd92db112a3902f877ac524",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2624:CBP",
+      "contextHash": "4bb3264d5b81821ff59957beb6f17e8f2c4fba73c965d15314cf462536c3371f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2625:CBL",
+      "contextHash": "0569fe9d5817ddaf8ee38dfa6db45bac697acf22919acf2829b1efa00f532210",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2625:CBP",
+      "contextHash": "f32ca05967e543fa1687ea7f60361210986c80b16ff4ca93c4eae0af8993d768",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2626:CBP",
+      "contextHash": "c437522f08e6a4b6e017eca88d435f8790f374bd2bee15ae2fd1bbc7f26895d9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2673:CBL",
+      "contextHash": "412f5e3ddde9b82a33f3277dbc1be3afd8abfef39c1a62f998884bb9b6ea180a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2676:CBP",
+      "contextHash": "67b66ff0363ac51ebe79c9ee6b3be0164fa29c0260b9a2253c75ea3b8560a93b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2679:CBL",
+      "contextHash": "057d214095a14ca0c12c3b6353f4e54b0429af3351e607aa9f3f51abc432e010",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2679:CBP",
+      "contextHash": "7bbac966730e8ffeb4d37e1b76e362b72d97f3d5d4865579a5835714fcc00a78",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2795:CBP",
+      "contextHash": "0102fbe173707fa9e24b2687223efb7fefe7744380b0bb3fde33a5d0c6c4d04b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2807:CBP",
+      "contextHash": "30453983c5f978edbcde8b99a41f7463e000d1636687127570724cc1fbf7769c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2809:CBL",
+      "contextHash": "155512601a7afb2a3f6871f273181346064814c117947574e620f0256dad3243",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2809:CBP",
+      "contextHash": "6c19ed33df33eb829c0bc7fa83db9a722e323a27f2a157593fa746e3b2fc11df",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2810:CBL",
+      "contextHash": "e7758754ca1c5e4a73f7994bc4b8c4662760a322356d8d2b174c0924c5b3f2b4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2810:CBP",
+      "contextHash": "ee804eb25bd9b07dd21bb46e68e8802652e70a2b6e691ec73bb847dbf6131b69",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2812:CBL",
+      "contextHash": "be3475f8ed4cfa3b9b27393d95c0328388fc6859b1bcfcd6cdb83c343914645f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2822:CBL",
+      "contextHash": "af6b9c73e1264a6a2ab2aa1d530cda6b89f85cac565546542947ca59029202ed",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2822:CBP",
+      "contextHash": "8c7f3518cddab10546a4571933611e5b81fafc2697e53888f361a48ca72934d5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2831:CBL",
+      "contextHash": "4e4bf226e4fe253120639ca929101b1290a568346898b3f827220e932b5f2030",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2831:CBP",
+      "contextHash": "592d2d7d073ceea64c63d59c37033d99735b82e50f8d5f3736fab956722858ce",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2833:CBP",
+      "contextHash": "046ca7be9620e819386506c9025ea0a998c3a179bc4fba07c112f8c24d41f5a5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2836:CBL",
+      "contextHash": "3e3735f18cb62aa99f2a35143ac315bdf1d947a81d1d9dccfe282d94baeecf0c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2838:CBL",
+      "contextHash": "56f36f76e627e1f9d74144dd017f2c933902ee1690be92ed3e154f1123074cb4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2838:CBP",
+      "contextHash": "10735226a7b637a1d6b2b00eb59b53d9df154b3bc5b3c8981b8ea29ae5ce7dba",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2840:CBL",
+      "contextHash": "88651ac8875f3d28f758465e86e6202e9092c8db620f77e5e6125afae3bd63d4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2840:CBP",
+      "contextHash": "76f970843ec8ebe4be151bc48870895c9bd6a44e747afa0b5b14bd0a3eec23b8",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2884:CBL",
+      "contextHash": "a353eb3dfa30428858654ed7a2596a10a5a69e3310bd4c9e016c61a4d575060e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2895:CBL",
+      "contextHash": "af06afa75ce04036fd751896d5339a77a5c4499c9d63d36f948dfa657f382e51",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2895:CBP",
+      "contextHash": "690649611ae44a85b80c04bc8f4904461c08b74537b51e8a37ec2c855b500786",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2901:CBL",
+      "contextHash": "7b18c77e9f1e57a2f7cda2c0a39aa4d3933ad978aa3e1bf40e0dde2d469a979d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2906:CBL",
+      "contextHash": "ba6bbd066097dd7458c5275bc98996dd4812d7367f8de23160667073e1974a62",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2906:CBP",
+      "contextHash": "fdd58c3ec592e39544a36232805394c880a5f935e2381848abaff709ae05b6a2",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2911:CBP",
+      "contextHash": "7b85565d8f416dce0f55be90d895abda9a27bce6e92ef2c9c14e50435b629970",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2913:CBL",
+      "contextHash": "1b049f79a2c9b72443fd86d8dce183b5d0efec62282f9f09a76f994a0c71e509",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2913:CBP",
+      "contextHash": "303b9e3e64c6dc2c3453380ad2a12c50994847c2997b9c3ae9b3ef4544a8e678",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2914:CBL",
+      "contextHash": "8c16032859107b2471e0ecf96ab466103781e1e71a349fc650d7a435786e3eee",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2914:CBP",
+      "contextHash": "6c3ccbaee2b71f8b320ab2112308da57149ae0fb7bb0eb5c0ec5990f11e15332",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2917:CBL",
+      "contextHash": "8eb21390ecb50e48a45bd326ef94dcbc392e8bc1fc27960177164300544c1c4b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2917:CBP",
+      "contextHash": "78bc7e2c8551f8beba592b21429d556332ba01e43af84eef3555209105672b48",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2923:CBP",
+      "contextHash": "f761a962abcc26b43e340f23952f0c76423318af17bdbe68cf6d8025e152025e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2925:CBP",
+      "contextHash": "a5293915f78d7dbb1712a39c1c2545cb64c59141788bceebb886ea525b49db82",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2927:CBP",
+      "contextHash": "21b5ff839494ce1b8c56c5d66cc81d52fada9435328b8f599cef663c2584e6e0",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2928:CBL",
+      "contextHash": "18e6d038d6c2d0cee3dca4a202d3e8e45f90c84e9fd49761b7cff8ad2fb66651",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2931:CBP",
+      "contextHash": "cc120b10e3f6bb6146eea2c4bb65acc11ab72c5958fa8596c4e2d8dba1735dc4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2936:CBL",
+      "contextHash": "2aa012fec056a69528ff9ac2eb8d71253298360ca8611d29612e44da6bc719c8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2978:CBL",
+      "contextHash": "1e202e141321ad80e9257b421680e8a67d0352642183256029d5ca42e3e2fbfb",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2980:CBP",
+      "contextHash": "0ba71c891be22357573e8bb844614777f0baf80532361710a75d73e67407c914",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2983:CBL",
+      "contextHash": "acf2196cf3f611b1c14a30bf5f7c0b8673f79142854a5a65fd0d65788f38c8f9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2983:CBP",
+      "contextHash": "2e5700d98362283dee03ef33a5c775cb4dd087abb4b1e33924cbe537e112553c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2990:CBL",
+      "contextHash": "7ee47a64161cbf344395d59b761ba4a29cdb4572567b2c52d6024c9c894a521f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2990:CBP",
+      "contextHash": "9e3b45ab77f29c5703017ff15bb2f5299b755dc17c2839173f446c91d70e177b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2991:CBL",
+      "contextHash": "a1fda55a6aadad74507edeb9e57b8500c44c221d430ad081bda658f3f1bb0c55",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2991:CBP",
+      "contextHash": "0b3b4a31d3a28c15e80c063cf58c1682903cbaf6b8344704946c6f9abbcfe0fc",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R2995:CBL",
+      "contextHash": "e2792ef3f794da8748b4eedfcd694dd4493d5a7306d08e4e9ea6c6a7b203b99c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3002:CBL",
+      "contextHash": "a52f992a8fab88faf790cd3254bd11b710fd59112c33bd5c4a57caf092291763",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3002:CBP",
+      "contextHash": "addb55308d45a2afe7d485093ed35c3a399d1dec546a6047351c0940d81bc5ee",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3042:CBL",
+      "contextHash": "13b9314482699e31677d1e83fc5dc98b99619e75408072863d83de3235b40090",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3042:CBP",
+      "contextHash": "8e9d5e5b89c1c6d6303b4bd174ad2419743459f8d951d87be66e9486c88391b0",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3049:CBP",
+      "contextHash": "1a494661d8853ed82725824b21e4d2ad6938f1a185b6228ec6613717b450d684",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3054:CBP",
+      "contextHash": "dcdde39c26d2f7291a3f6c66b913ca1d5cbb625c0abc0884d976a81aa11ec5f3",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3059:CBP",
+      "contextHash": "3bddb3fe904bc108a05bcad1e2d2f360d860b280b618a360248f8ffa0df552c8",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3143:CBL",
+      "contextHash": "fce2f66dde37ae4d203c570a079b604f59ef077dea4bf910f8f62f2e4de68e5e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3143:CBP",
+      "contextHash": "b5da27d69aabef00fc18e33116bce8aac88794a7cc434a40a2f19793f28f0879",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3147:CBL",
+      "contextHash": "2173a80c9dffbf28dcfdd60ce09e152be4ba1b47372a2ec757323e5ed9a42b5b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3150:CBP",
+      "contextHash": "487f3861681cffcd6f1d6a8dc4826cbff81b109a4c9b1aab339db60e9bbd9303",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3154:CBL",
+      "contextHash": "b6e4b4caaf065217b9d9942a375002c6b6276a6dccbf36d8a20785e4a6b1ac5e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3154:CBP",
+      "contextHash": "35fac62d16048274fc68b7d575348148dcad4bb8ff663e3b0ffee6bc0da71528",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3158:CBL",
+      "contextHash": "9901d0e2d530650ac2f6fa09e81f4fed978c42fbcad5097dad011e2867d8cfff",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3158:CBP",
+      "contextHash": "bfe0388ee20841f0b163d37c8b19cf0e9b264302cb26da50e09f86039d265245",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3159:CBL",
+      "contextHash": "d108299091ed0aa63243c9009d7180878202e6753b5fa4f5c6a751608e0baa82",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3162:CBL",
+      "contextHash": "731de133d4f0d56e8baabc0f0ffa544cdfd478c64d8c07b387747355d84cd8f1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3162:CBP",
+      "contextHash": "018c91bedd316a32c7f57fbe6335bf0b5dd99e36ed47b4879e98f75406723b60",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3165:CBP",
+      "contextHash": "023b47e655f6443e73619bc1469a9f91397475e52deb292ec30d20c9fbc798f9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3172:CBL",
+      "contextHash": "a1a89b4e9fc07a6f04d5ab2090527e40698628d1a7f077b8a4256d27d505e078",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3172:CBP",
+      "contextHash": "79b6970507e2b9c80a3168ba6d981bac36f915c720ee414f67a5835bc73d4462",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3173:CBL",
+      "contextHash": "9c147547dd2282ebaf45c9a1f20f74b45fa0f6e0a602be540c034bbd380e2aba",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3235:CBL",
+      "contextHash": "57bed2fd5f80b76785c84de738e848859a8d078cba30c6521993da45b0043f45",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3235:CBP",
+      "contextHash": "367ab51ed0acab43e7fe33759fb8e0a52932a34af8df24b3ddf8b6cd5d28d781",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3252:CBL",
+      "contextHash": "57c58209b2e48d7b4f2080fe16d54f941be00af0e38ed0e18c76253a4e6df46b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3258:CBP",
+      "contextHash": "d10e050625e9b7a2d36cd05852bc370808522e17d6b4f1a20b6f4774d250a733",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3261:CBL",
+      "contextHash": "8088bda04462fc9aeaf1869e51325a1c5df513754aa174b82e844274c74cac48",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3261:CBP",
+      "contextHash": "91d8943654df561f8c1b7a6c145967b9f0172047bef9651152c21ab826a8a511",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3276:CBL",
+      "contextHash": "da86beb81003b40b6053a6f84050e1e41e68fdd48e8cd8a328997c2581cd221c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3276:CBP",
+      "contextHash": "d329a60fe8d2fd77394e557f357a41ff97d0066021750bd4f770b973a910bdca",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3283:CBL",
+      "contextHash": "1c479b2fefcfc5498c35d216d76b1dc03087963ba47819cafe6fa1a383e86189",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3284:CBL",
+      "contextHash": "7f2e6debb9fe9490d42205fb48900e4632ebdc8869cf95c0f8ef904cee8fe6e4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3286:CBP",
+      "contextHash": "b29fadfdd8fa6c6f1d495914a44c12798937899d7eca577e102344eace00381a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3291:CBL",
+      "contextHash": "1f4349fa4ed8c5d52544b0c291ca65b1ea0603bd1189d286e1220b6d1ff65e30",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3388:CBL",
+      "contextHash": "f215e496db100b01b1309f0c9262e84c67e5761edb43f9a88639ac8d7f3548fc",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3388:CBP",
+      "contextHash": "9d1ddb61f21d102e40b069041b4fcd18ee705a51aa6d1cbfc688c9dd70263e5a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3421:CBL",
+      "contextHash": "3ac8526d87323eee18e930f314147eef0f307f155978c090295684acf760612b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3435:CBL",
+      "contextHash": "00ae7f4e36af77a5769f97943cdbd14ab9a3b8bf2508521bb428f5b687469674",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3435:CBP",
+      "contextHash": "64c9818bbe164d05b40bdba3cc8212e35e604925ae6a29984d18ca38b688efe9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3444:CBP",
+      "contextHash": "f9462a1641ca1820595b6ef695f1d4e1db4e11cfa674e1040d612b526a0c2ad6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3446:CBP",
+      "contextHash": "6122983cd8728f692268a9e21d809e8742a6ba45462f8d77f37ad541f87e38ae",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3452:CBL",
+      "contextHash": "9811701c95938bd1e756e240c9b3784bde66f4d3edda3b43500dc6038868dde1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3458:CBP",
+      "contextHash": "fb5e995336a9c8a455d91ab51fc7ad890a58c1a94c03973317c276240a68304d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3459:CBL",
+      "contextHash": "96b25efc2edbedef3c20ca9e6fe24de193ae09c0eb127ce5981d8a651abd41f7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3459:CBP",
+      "contextHash": "b4e830b4d85b075feaaa33b2dedad22dbf16e6a9b8f602ea6cee8df7fd580c69",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3461:CBL",
+      "contextHash": "9f34f6fe6b1294974f40443979c5f1633d647bddb63e0ea491031d52f693a62e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3464:CBP",
+      "contextHash": "5301face6e290937b8c3a454d63a3e2a8fd79f2d2cc56167d9c6c23e377f3a86",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3466:CBL",
+      "contextHash": "bd07d2fcdbf9f72d0204473419b3feba6cbab172f76d8ff7e9057fadc2a0822f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3535:CBP",
+      "contextHash": "f3ba255ab0ebb1ff526bd8bc32f44b8da0bee9aaa0fc2a838de7a865b1a16080",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3536:CBP",
+      "contextHash": "a54ada5f36d7232d5055702f311ccd2307f912cd9552f4f0f8c3a3c96181d2e2",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3545:CBP",
+      "contextHash": "b609243d792dbb6b25120ef47460bd90f1e11d39564f481101acf082017108be",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3555:CBL",
+      "contextHash": "3a5f80fc342eb459434e717b11df99f6fa426f3de0950978431fbfa2471a48ab",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3556:CBP",
+      "contextHash": "79bca5baa48c09239eaab6d7da94963c07919dd2e7b66b260f15cd0fcfc296c9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3558:CBL",
+      "contextHash": "6080a708fa0c47ca58a4730205137ebf5a8aa67126ae93e2bb18f3c1f948818c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3561:CBL",
+      "contextHash": "b7c28c32eaaf3bfd2f09eea93f373659c5059528bbd89351a530d61d90156ccc",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3561:CBP",
+      "contextHash": "f427eb5044c7edc86c2ae9660b51056cc434e36b76eb78e7f47dc5e81ec5d735",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3564:CBL",
+      "contextHash": "d2c5a031407752f859815ccab87cfefe0ca40eaf4533774f18a31c2d259f3653",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3617:CBL",
+      "contextHash": "9d636f227b215bde19c08a51b384726fd65d8a6bb14bcda7a2e05c995ba43154",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3617:CBP",
+      "contextHash": "fc2e2e2379e39f5f8080d397e7f83ccfcf9c663b37b4d130b58bb223d59da80d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3622:CBP",
+      "contextHash": "927adc7be255e335937e62edf2529681d4d1c911675b0db6e20608f71d42bb93",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3626:CBP",
+      "contextHash": "660334b3c517aa777ae218290b94ea88bd7fb58ca767660eb1616824f065e9af",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3627:CBL",
+      "contextHash": "c446e57452fea5077160d484ccf571be39abb2949e4fbfe9ea57f5137faecce2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3627:CBP",
+      "contextHash": "53fb3d73cac35343d2b6d4860c198a489759245e996a2c09e6b8e36896eea6ae",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3631:CBL",
+      "contextHash": "700f9b8db07a5384c2d7650a7a8e082ffa051243396e60f8c7458965393013e6",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3674:CBL",
+      "contextHash": "7708389230e0719cbac6689928675f70cf0a32c97c467b14bbb9294a21aa51ca",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3676:CBL",
+      "contextHash": "f38d1875f1bdcffca998deaa462997ab52a8c272b5ae8e0a84b5038cb04ff77a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3677:CBP",
+      "contextHash": "207887fb451e2e962d84b7b63269ad8da9ed51281bc1179823e01a24a5cd4eef",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3718:CBL",
+      "contextHash": "12bed65d9998389b99c3ea17074ca3054f89b410b449ba15f49ee1b39aea9fd6",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3718:CBP",
+      "contextHash": "c6b7a4fe2b024bf6ada8516f9ead3b314d1fef43d35da6535fbd0f5eb6421619",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3721:CBP",
+      "contextHash": "24e1e147fb966eb8682f36ac235bdee5d3ab3b5d56174a79ccd492d9a74783a1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3722:CBP",
+      "contextHash": "a3b3a1b7ed7c1c5e76cdd7bd8ba535a4ac2e61d9f940e0634d86685f096878e5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3729:CBL",
+      "contextHash": "de33e5e583c9dcc9283076663826d5eae239f313911e08c6c44031b30372a8c9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3734:CBL",
+      "contextHash": "f8d30d4d7b5dfdbc4cce15ce198a2728bb9aceb1a2f1ace75fcf7fd0213bfae6",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3734:CBP",
+      "contextHash": "d7f7ff52fb853512e1507846f188247a72ecc23ed889ca9ac5c327736727b435",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3739:CBL",
+      "contextHash": "4857c478c1d155ea984fcf5c0826ba564437ff546a0814b78e866271ee718165",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3739:CBP",
+      "contextHash": "a17088e09848e9a02be550e61fd221a79813f9eef035d8497b0861cea5944fb5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3781:CBL",
+      "contextHash": "bfced9cc07fd1a55289c27894121e8ecf44d8f917b69691210dd0ab2ac0ff4b4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3781:CBP",
+      "contextHash": "d2e998da661ab875c1111cff63b3768b6a948cb72253fa05674d400263d7414a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3782:CBL",
+      "contextHash": "6e15fe462b31bfc421e1ac4bd0c1348ccff4dd6259e96df2f014a9d23e069994",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3793:CBL",
+      "contextHash": "64d4622f831e96868247031edc391b2064d49ab3a2643328303057674b2dc19d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3821:CBL",
+      "contextHash": "41068607e264bdd08477ff7c9746ccd5c7a827b778d831ec2222b2fa372780c8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3822:CBP",
+      "contextHash": "02ff56c0e4b187d7538e5edd70f779290dbbe5577ba6a71ae12202e29cd548ca",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3829:CBP",
+      "contextHash": "fba142a8f054e875d04a80453dce6f28087df4b48fc8d8750a08eb15b7091887",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3835:CBP",
+      "contextHash": "74274eabecd3c17aa3cd79aa6d72f7a144769d0a7e98700066be4a5aae698520",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3891:CBL",
+      "contextHash": "336a8c87689e50bb4bbec43fdeb9427d4c36eecfc766f1e8762812ded7da2294",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3891:CBP",
+      "contextHash": "91d8a52a10c7ad9b0c1b2e4aede3072b1446ea9645b3651d95405477041c1bdd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3905:CBL",
+      "contextHash": "6037c4e7d9e364e013ad0fb1bd5f791ef3e7ae2e4be020618eec2ee994e93602",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3908:CBL",
+      "contextHash": "afdedf03d68cc2eba404d302b99d8bdbe79378cb5f7563d3fc31b18a0d1e3c97",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3911:CBL",
+      "contextHash": "18a7ebac00d61cc47d5b6d55f5b83c7942a06f935cf300d4696a69b0c3c8dd1e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3911:CBP",
+      "contextHash": "caa53c2eb2209897b108e45219ffdabd2b6b13250f02d16b26387c5dab63e2f5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3913:CBL",
+      "contextHash": "e54a76f5c9a689f0973cc14eea339e9e887fe70198c0ae986519cfbbd0e6864a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3919:CBL",
+      "contextHash": "d535dbfe4b52750cac568c8a61021ba2a1460b7a2dadc59ce68624f1db482afa",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3921:CBP",
+      "contextHash": "87feeb1e8d824e988ea65a14a67e037e6d2c3dc0b5c6d34eeb920576208de5cb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3922:CBL",
+      "contextHash": "a2f596c6b6d28fa4fe3d7d89ef4080dce6a464827807a8c32fe4d0c3bc9277c5",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3922:CBP",
+      "contextHash": "d620b7e8796e14e136a26b28578c1e4b1e107eb1ae1bd73f3b287e75a001d5c3",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3941:CBL",
+      "contextHash": "32fd0a815255141ff082014f4c67507d1b302faf427ec4f2012a71e863b5459a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3941:CBP",
+      "contextHash": "00dc6646567615aa68e91cc5d6cbb19b73312cb98073cbc9cf9710f05d357331",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3944:CBL",
+      "contextHash": "da839d2c02801656de51c157ddecb220304326c691207aa7abcf0e6ec70478f3",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3944:CBP",
+      "contextHash": "45a5b048a92a3ae0a50800e68a767c6aac3585c89a0c62e8bd62e14f757033d7",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3978:CBL",
+      "contextHash": "10dc651468913e84cf0f71717adafe24a6841c700c5080cabb1b48d07ffacb75",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3978:CBP",
+      "contextHash": "683f85c4f23b6b3ea1b0cfd25b59f78a2af2c5ffc56f3168825623b8c7d6a90a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3986:CBP",
+      "contextHash": "0be35871a606bf46bc7ecd65d0a7aaf56ca91f100e44df65452cdbc8ab8ceb2e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3987:CBP",
+      "contextHash": "1b7909b1132dfdd9febfc7d3c70cc873d18cb6dbc796f39215bd654e6d444c6b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3988:CBL",
+      "contextHash": "4df805246e69a66d84e40d64d5f40931d2f9ae54dc54f49cdf86f8fdc7ffab21",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3988:CBP",
+      "contextHash": "b743058ff0189521ebf73aaeed71d9e622c49377df08df645fceca5ab331cbb1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3996:CBP",
+      "contextHash": "70aae4d22c7d1823f14884a67fde97f95d1effedbe1e41ecec27e59b480a569c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3997:CBL",
+      "contextHash": "db0a854af6fd6f9587f8f8a20d4f7dfde0da7b66deee262e2a8256fe070fa8f2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R3997:CBP",
+      "contextHash": "f06b59fa384c12f2bd902240afe91b28bbd1cc91d567176cfe20cb7000a861a4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4001:CBL",
+      "contextHash": "09d0dd5bb5746aeef6bcb19f55b9ede7737779c6e2b5fe4ed5fb330d6155a105",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4001:CBP",
+      "contextHash": "f17e6615f4352873bb748731c1f620bf6e6a1717be8b0533306b455009c9980e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4097:CBL",
+      "contextHash": "2df42b0a83108cb8ab3e46e47130d8276ce35bfc419bf444f18d9701606b9e0f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4103:CBP",
+      "contextHash": "db60b7e039e52555d4a6871a472b4f8675b5c2cb405cad0f41617728789c6da1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4112:CBL",
+      "contextHash": "e589bc0bd4a5a4c9419e2c6d5f6e3975e9231f5f59d685570339f3c4ac06505e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4124:CBL",
+      "contextHash": "1a9ebd7016ca10d789e24468ab1d544d5934638693144dc465fc44f268fad5b2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4124:CBP",
+      "contextHash": "a76320f701c50884d4fbc86a912b60faac9c68fdfd95b4bc6885ad62a45df28a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4132:CBL",
+      "contextHash": "fc1e88a307b598338be0b052cc9ff8983ef007a6c45f0c5b7c651b200a86b972",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4132:CBP",
+      "contextHash": "761fc3693fb4047cc181b826327d7d6555af1ac3d8b303f62148b2df433f6071",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4137:CBL",
+      "contextHash": "08872e241c6a94b32d7ba8cfd5d48b95ae8e2a4741baf2e1edd00cf1b6abf9bd",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4137:CBP",
+      "contextHash": "15799d96a3401909cee7b966db660882f5d39c941d81f1997773d1cd3b114652",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4138:CBL",
+      "contextHash": "7fc40a3ca1a3f82d304cd2a8967c1a90fe45ade0a02f0fa0f12cc3286cdfa313",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4138:CBP",
+      "contextHash": "17f6232480bdf1c28f12bba863bd8bc5006f79bb9743c30014079aee9466f847",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4141:CBL",
+      "contextHash": "ca9f1de9e140c799a5727aec4e1fadf99c02148933f96a2185ebe06ad959fe2a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4141:CBP",
+      "contextHash": "27a36002af6dcca41d551128436b02e83fad82612f375ef99447ed00d61fe083",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4142:CBL",
+      "contextHash": "1a965f01a8da9d6754c29306f32ab6706b5951dd71f05f02a242d80409f237f3",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4142:CBP",
+      "contextHash": "e6be3c1c142da30b02b31ba88afc7139e5c74793f99de0a76a35ec8e54f4a686",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4202:CBL",
+      "contextHash": "15c275b896141bb7e8eb0ccd169f785377662aa5f888ea6a9120a8dc1871aef3",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4202:CBP",
+      "contextHash": "d64981452590a7d1d30378e631a2e1c91a790df3aae9d105cc2b2b696aefb9b6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4205:CBP",
+      "contextHash": "8dec8b4c1aa0ec4e6b902990b3d28ba86309f41347a7c8a23a93c5dd823a2d58",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4207:CBL",
+      "contextHash": "ba525e667bfc459de6ace05dc66490f4602dac9e59b1c1635e72b62a70b6a09a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4207:CBP",
+      "contextHash": "03a16c185d8eea69e88113810e0a5e4f46af13a67f0f7915c46c54eaa1e271f9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4252:CBL",
+      "contextHash": "25ce9a2aecd4da0a39def2adcef88359527281024578c4f9084171d10aef912e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4254:CBL",
+      "contextHash": "f5665192ac5cdb9f0638a40070bcafd51d5d6927ad1f69e1da44b9b19e784734",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4254:CBP",
+      "contextHash": "f571cd179861ef63c6d598f80efcbeadd08e1c7529f2e04233108eb2fc15a8b1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4255:CBL",
+      "contextHash": "3b4f15980b0a8b0bb1f668b1f8c0d4e5d051e30347c239361c52d844a34d3ab2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4255:CBP",
+      "contextHash": "7c4ce4b5d731c191b428d063e249fb53a3cdf3c4222b3c719d8d185b1dc0fd03",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4263:CBL",
+      "contextHash": "e6618fde180111ccdcf7bb401909ecc8daf3fdddb696a82be929dd97a3312ac1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4263:CBP",
+      "contextHash": "42eb2a345396b99a17d0bc8bd0e34012dfb492819dddffb43c7adc5c62da50be",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4264:CBP",
+      "contextHash": "3479c0d1bc2eade0b621032061eef5438c5c60696dfdfc25d33280b2c53fe4ca",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4269:CBL",
+      "contextHash": "bec8ba2be22d4292c19896e3a64e839ee608d3930cb923296288297ddd960f75",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4269:CBP",
+      "contextHash": "c83070a53800beb091010d8d4e9184d44b781e279de564ff07578831a68baecd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4282:CBP",
+      "contextHash": "22dd44a731ccda20203fdf1aceb59180d5c92ea164a5663e6e5559a8ed60361a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4285:CBL",
+      "contextHash": "44af3048887e63851f67f3dc0f52037fb74aebb08f4acb50b62fa1faf5bf3bc4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4285:CBP",
+      "contextHash": "61a8fd42b15e6d08c9a217d90c4db9364e707e5d1572b6ea76630232759065f7",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4326:CBL",
+      "contextHash": "eb0fa32baffd7b914ac59a419795cf354012050669a65622f7b5c8648d375ebf",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4326:CBP",
+      "contextHash": "ec58f226c879e34c09a5775372bd3303f5eeeef30af1bb6171edbe89b21a530b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4430:CBL",
+      "contextHash": "93e3d8f7d74965b4ae974eeeaa6f4f94520c65087b214639978358873fc013c9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4489:CBP",
+      "contextHash": "bf86ed29a7fa263b1534afa868bbd8a34175956376bb7830f6f3d895edffac0e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4495:CBL",
+      "contextHash": "18b99f463f5e796733db579a252158f8dc3c34430fcd48afd5b8445a7007779b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4505:CBL",
+      "contextHash": "b996eb7a88ae21034da5b52f46da558f347a7a60d48d99beda8b9f557e0a1290",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4505:CBP",
+      "contextHash": "723f23e2a80793314ece37cda7b8bc6cd69ce8b8fac13e1107b460bcc54c3f8c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4507:CBP",
+      "contextHash": "384637b9f202fc3e77bc45e79341a1abb6602e328dcc7a9c4caa15f0eb31e2e2",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4520:CBL",
+      "contextHash": "3e69345fd67f7b30df380d678d60df8893829303aaa50eeb7e881c0dd8c7a968",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4521:CBP",
+      "contextHash": "d871695ba2940563c287f8c93c4e6fdfeeea0ba727d6c2ad0e87088bcc0c1482",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4522:CBL",
+      "contextHash": "c49a0672dc8efa02f84071a27f765379af4a26c238f78d9aa4cb8a185fc65df0",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4522:CBP",
+      "contextHash": "d9315d94e88cea07f7058c5c178e435337b0ff8118817cc670edf70a92368c3f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4616:CBL",
+      "contextHash": "3e4697c0a3e1634cadc62ea6bcabb792e303e185e6e428a28ad2f85c3a46a7e2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4616:CBP",
+      "contextHash": "b7ccbc9cfd688917818c4e4dda9f71dd3d6bb6ff58672db53c800d8e6531f451",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4618:CBP",
+      "contextHash": "314027d2090c3e5237274a345016c8ea5d3170ae19aea4fa50f8ea647c23f13e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4619:CBP",
+      "contextHash": "c3626d4075af57ece7bba798cc0a45f822ca48bf6289cbb2843ea8ca9a5dc936",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4624:CBP",
+      "contextHash": "342619f9fd0f56d786de8e5581f865d5e979d02a275417177bd2b09585a58c73",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4633:CBP",
+      "contextHash": "99b1b5af30ccbeae3c0ba3b4bca6ba3679d71db3824592214f0fd71a7dfc3ffd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4641:CBP",
+      "contextHash": "f26395f64656c252171dd677046af2b75e6d61354401869dba6baee37502abd5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4659:CBP",
+      "contextHash": "96ecbb0fe2de33ce4e04155129ac8beaa72dae977735dbbfde57612c37ab7518",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4661:CBL",
+      "contextHash": "69f8928cb798d7986590e0a754fa3e3aa1cfb9001ae3a81dbb30698a444770d7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4661:CBP",
+      "contextHash": "66e2ccd60f50a701e458bd19094f67b87d5c2d303c5852ecbc78d2dab023da3b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4662:CBL",
+      "contextHash": "9584ee3da4eea6fd1aaaf2cef06f0a6b4f68307782426e121a007e311ed8efbf",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4668:CBP",
+      "contextHash": "c97472267ab3a76f875e633b654793c5b84cfce77aefa34b57593c43adf1a141",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4669:CBP",
+      "contextHash": "1d181345f432914279a5e7f382114bcff7ff754447e84eb97b581b87deb1ebb9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4712:CBL",
+      "contextHash": "db28f46ec2fac71a6523b3699ba7b7528277678b0761351f2eff0aedb164149d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4712:CBP",
+      "contextHash": "b807a131811dc9fa8f7124b23c2cd56070e62a67e349687801df067073134476",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4736:CBP",
+      "contextHash": "eac1dbbe6ef158aef0b2b1046a991e8ee302671e478cb6a1c76198e295c88243",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4738:CBP",
+      "contextHash": "a1e7e3c30ddfd957a85bd1af2aab61ce448595acd60bea4350b4e9ce5ffcd3be",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4740:CBP",
+      "contextHash": "6d4e446f5a246ff5ce692e388cf0301e459b0470ab3e8fbd0d1e29c5698c964e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4763:CBL",
+      "contextHash": "7fe30bbea47010085f834de2304478952b3978ebc8e20b2eedf7a668171da098",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4763:CBP",
+      "contextHash": "1af0c5d20105c5ba9d63d57b18680c4e367ec5600ca1d1f30ff541d8b356358c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4768:CBL",
+      "contextHash": "c67075cca915bdf4f93556638b504f10d23a15b2b06aed79a86c251cb6baeeb1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4768:CBP",
+      "contextHash": "c9d74115595c05b2587baf4dbafae549806c0f3267153a20ec27ad8972f36f80",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4861:CBL",
+      "contextHash": "113ec2063974b4f601427a74413e3f0176a26939feb1bd86e32de5c2833ce017",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4868:CBP",
+      "contextHash": "5d6c8c10a3d152255227e293d018c6a7233423d6f9251a8802e0ec1a37dcaa81",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4871:CBL",
+      "contextHash": "98ce6b254deb9322b6f09431faefbae3af85186101a3d8862c26e5be3ea984eb",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4918:CBP",
+      "contextHash": "6c6f3d06f30c6dc5d2a0c95040ae4d3af61159a2b0967872b7b7ff79e1964663",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4927:CBL",
+      "contextHash": "329edb2e39747cf76f1883bd2f27afb6acd831eb384f54a07223be77d5f0edd8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4927:CBP",
+      "contextHash": "a7d1c432d63ad95689d9bb425285c77b7cb75d0f23616ecb8dd4f526ec59dea3",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4928:CBL",
+      "contextHash": "a3bce3fb62c71c9f0ef09fb3ff5a40740da2a9682373c6827f3d091290170ac3",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4932:CBL",
+      "contextHash": "f7b3dc6b46c68e9b0d301526e4d950fc5b115c66f05b9d3fb9f1f37fe6ceac8a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4932:CBP",
+      "contextHash": "8bea81a03ac19c84f431c4a8991f12a0fa89132fc06195e58d275ae76293be1b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4935:CBP",
+      "contextHash": "6a842ddb1b4a8f299c467ac822d74e08e463ba529fa807ad999a601b13026fae",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R4972:CBL",
+      "contextHash": "a22c035ef532b3ce61d552eb6843702ed715d8bc1d234840fc7a3a01be9279d4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5002:CBL",
+      "contextHash": "af12b54420ee4494355ce302e0b99c8838ee69834885dd5a49045518a797573d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5002:CBP",
+      "contextHash": "1f15eca83a9a17c6ec8be0033d04b3305848ae933e5e05ded05836ae01c9ba91",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5015:CBL",
+      "contextHash": "24493fe9ad949779f6b0a9444b8afd1ff60c4772d4226af2d3ab972e2ebd9c72",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5018:CBL",
+      "contextHash": "c566c111415783b2000732d2076dcfbd7348b673bd2624d884aefb3889a61b8f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5067:CBP",
+      "contextHash": "1fcef50611b418d28c5adb8dbeb22b1779d1bf37886e8572b6a9be47d576a5dd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5069:CBL",
+      "contextHash": "7a3200469529150245bc5731ac1ce63c66f44f35ba2593c75041960966e93ba0",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5070:CBL",
+      "contextHash": "3b6eb5ecd653541c31008d6f06f63f0214c50c5675dad4cd1cea373c57271be1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5070:CBP",
+      "contextHash": "54aca6b8c25d55227a0d1badb8020769aba72c214b68e3d8c0b9bfd93731cd58",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5071:CBL",
+      "contextHash": "411f831abc8a9b2ed7eacf6826659e81b22b8b5cdc0118f0fa56b4c58b88958f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5076:CBL",
+      "contextHash": "5a95d89280c450ef21fb9c9cc2ff349b14efb715fdfcc478ba4c3893837dfb25",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5078:CBP",
+      "contextHash": "f1845cc92701b6e27f990eee9ed0cf0bed64c79928da6fb2bfcf7bdac60509e6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5176:CBL",
+      "contextHash": "a98aab16deb3299ed7370af29f02740de9b41e72846e30c5647fd7a3128a2fa6",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5176:CBP",
+      "contextHash": "1c524f73e3a2bbce301d795f4273ddc7f00d414266fd1309c805dff744f475eb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5179:CBL",
+      "contextHash": "70f329f25e8e810c015efc4bfa24ca4f2c9059bf4fc6a079352ef221ee19d013",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5180:CBL",
+      "contextHash": "cd8fb8caa5e8553cfb9c255d6f2b1d146535e548812150c9df3825e975acde90",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5180:CBP",
+      "contextHash": "e9e732d7375356b0b104bc690ce3b9c875fc16eb0d2b5c3ae2f222fb54651536",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5236:CBL",
+      "contextHash": "193b36d26757ffe42c9b4805e152f4cc052a56ff993217259832908123bac7b9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5238:CBP",
+      "contextHash": "9a4d497c715942180deb4a9058f9a4a71bb8fce47bba1f203d4fd2898829a180",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5239:CBL",
+      "contextHash": "8910aad0d0d698c05ef60621f2d0ebc4d7f4a6600dfe972613c043f1a97a9fb8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5242:CBL",
+      "contextHash": "bb2938c7d57c304d3be77d09f42652cca6bcb5e1eefce91c1bcbff00e3c2373a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5245:CBL",
+      "contextHash": "eb89ac1bd469605eb1504ac737e3c0d3b96fa14729460a339bc6845eded3a094",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5282:CBP",
+      "contextHash": "8d7398a1d03c621a84238bd38552ea0396370d76bb503fad508e63a988b1248d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5292:CBL",
+      "contextHash": "db80321858072d4cc7b7abe7017d95198a95bacc34323321619c74bb6288fed9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5295:CBP",
+      "contextHash": "faba0b508ad54f3781c54120397ddd533e64a63d634c06d089fd5ab05182a262",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5361:CBL",
+      "contextHash": "dbb0302f0ac9c1f4f1f2d2a852896795767df3b200bd32ce1781cced570fab95",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5361:CBP",
+      "contextHash": "3c182d12489f40607d1a66fd933298d377b513717141a9ed673f0595dc3f9a4d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5369:CBL",
+      "contextHash": "a0cef44ba6265af77ab43cc313748b6fd12dd1cd5ecdf0f1538ef408d82242f3",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5380:CBL",
+      "contextHash": "583cf0a64d1dd4890db5d069804bfd8e86a24853009743933391d18aac2d40da",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5380:CBP",
+      "contextHash": "4abbb90fef59e6199a91dbdaeeb397ee35ce12a1869b5068d943233efd670edd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5383:CBL",
+      "contextHash": "3028c3fb04e3b5e70bc0814f94e58e7962ddd1e50f667970ae62f46262a8a208",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5410:CBL",
+      "contextHash": "584e59d14c8a6d852264174e658fc4f27229013d076d68792340a592014555f8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5423:CBP",
+      "contextHash": "5ef9be9a102721ddb9a54cd1b9ba16b111b0a00fa523551a6b125d384eb9ed65",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5425:CBL",
+      "contextHash": "8382172e65d306adfa01db85308c7990b236832497ffac4c84ce0a096b113439",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5434:CBL",
+      "contextHash": "f69ffd497d98cbad2a137ae111672ddf33c4cfcf2e832adbfa9f02fc3e4bb6ab",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5434:CBP",
+      "contextHash": "e45d8d755d04ff6d60838c882ad5c93d773bbd91be2476813867aa78395201a7",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5513:CBP",
+      "contextHash": "0c41a8f0bc41756ea6bc3d575001a2219567dc0650f7f66df8d57372abd40c4c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5514:CBL",
+      "contextHash": "e6832ffb2e5551cec447a4901663b1d02f687ed4d863da67c8a2c17ac7a9faec",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5514:CBP",
+      "contextHash": "8154171b3a4e244e2d3c7219a7c3f9e4265a3d110abb10a0415b3884fc0508e4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5516:CBL",
+      "contextHash": "88d0f97f45df104d5046325f29560020651fa4e7e332b320db0270750380c98e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5548:CBL",
+      "contextHash": "a01ecb202bff8c1b46641a723bf8a91db1c172f4947862ba11f874be306afbfb",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5548:CBP",
+      "contextHash": "3d822f9dd4069c766934a9064ccdb5a0249aac5fd8841801401c9938bafe630c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5619:CBL",
+      "contextHash": "2bd1b04edaf6556befbc375a754e382c48ee788b57730324fe7c8e3e86380ab3",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5619:CBP",
+      "contextHash": "be61665423047327a2eaf6b8ced8ef1045359cb5c6f0bb40dc2809a8be5441bb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5671:CBP",
+      "contextHash": "2d81e6e5b5d94fae6b5ab4e30f5f1fcc8b56c8c2450bee24aaeb5d652ed19884",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5680:CBL",
+      "contextHash": "7352559be49326d1a37ee33d9ba9a5381a24aa9c0de87e35ba3aa4bf3c6db674",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5685:CBP",
+      "contextHash": "47697b3c186685e5388828d8397d608de3a3a6cc4c185c11f3b2c030f07d34b9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5705:CBL",
+      "contextHash": "9a9dcbaa19a2efb6e2959a1cbf63fd2fc648020f715179510557c35b7da87be9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5706:CBP",
+      "contextHash": "2ab88565cdfd98752c0ad24801e1d348642f874a5ed94eacc5189fe8707bd292",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5768:CBP",
+      "contextHash": "be2a07c3fead4e49bfdbaf26fde9cd40de89b2844d2f6bd4eaa0d1814e5d145d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5793:CBL",
+      "contextHash": "70ebb112546602780f8f512f5cc70f89948550f1e2b1c7f014d5a619a0d675e1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5793:CBP",
+      "contextHash": "8e08a8e884aa1366603a0e254882239e9b6764aeaa1f8f1afa3f1de165b658a1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5802:CBP",
+      "contextHash": "2c36cbf59365b075eb5ba2d305d90dc2fb63dbfeca3f6951e3740f5281b5ab65",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5809:CBL",
+      "contextHash": "35e5a224dbd6b2b9ce326aea4fbb774ec86203c0f6781dc2380ae0ee221f1ee1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5810:CBL",
+      "contextHash": "c00217479e95790d346f3584805218dd1c8e2e4949d8605c065e49a48999f97d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5810:CBP",
+      "contextHash": "9bc90a42c44a0a89327a9835b268ed975e48e73804b72a50975fe1a7ba884f6b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5821:CBP",
+      "contextHash": "f058837bbd6d4ee0e3eab8b49210bbf7dafdb2bf965f9e291840f8fea4393fbe",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5823:CBL",
+      "contextHash": "f5093daeb9cc1a4798ab8e5dd40502ae3efcecdfccf38df80979cf3923ef370f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5823:CBP",
+      "contextHash": "b0b43237cbd922e89472f37c0fbc14bd9dc342d4040dd4a8d0952e84c6c49f1a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5853:CBP",
+      "contextHash": "122814e062187a19d69ed5ec7220df6b7f5c98189932de0d92cd667c0e74029b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5858:CBP",
+      "contextHash": "4636ffa81875812f1619f993f8717bee7024ebf68b942bc41d46787c74e7bf90",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5866:CBL",
+      "contextHash": "be2c822584c554b67e8b774ba63ee8ccb55a418f79fe918ebb4c483ec192947f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5874:CBL",
+      "contextHash": "3a5abc8b862bf77dfc66406ede3f703b43a3132462fefb5333deb56ecfd7707b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5879:CBL",
+      "contextHash": "3bbc1e08c8d3d66cb8c5d6f8ae0c782c44ff44ea7156e6c1cc6510b84c36708a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5879:CBP",
+      "contextHash": "e1b9cf24ddb1fef8d841c05fdcf5a6831733d3353b8c9ba9ffaa6521e1a5ed59",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5883:CBL",
+      "contextHash": "3ba3a9b94eecc7a43f1b613a617d68b73fbfdc203b6c02bc825fea11f70d5cb7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5883:CBP",
+      "contextHash": "cd2a5a6f2fdf3e8499a328c4b18d6da2f488eebb350043eef2cf7b831c928bc4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5916:CBP",
+      "contextHash": "5664a951f8e706012545d3b9669173784d884f071db2985339ad8d0c9d849fbb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5922:CBL",
+      "contextHash": "3bb405c066a5425c6c0998b0255b4272dbd7fea30c570fb94fc56939e50ca065",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5922:CBP",
+      "contextHash": "ffaae97475f419fd85150b0a55c2de9443d2b8fb8e6f648eaf7cf730b25ebe4a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5937:CBL",
+      "contextHash": "b9ca66d9310505a5628dee73cc5a653a454caa2d87cb576a94197d289031947c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5940:CBL",
+      "contextHash": "1cd0b9fafcfc95d09b945bb3951a90b7c24f55afe792e16571d8f4c0cc7626f7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5940:CBP",
+      "contextHash": "a307d1138dd14cf783a1b84e92789fde5a5edfa6a17956d1aa4489b7ed12d408",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5944:CBP",
+      "contextHash": "2b999ab6597f786f1da6e9453d72ec78a419e3c025ebb32a59ae7443e011196b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5947:CBL",
+      "contextHash": "b32951a9ea77d014897b24c53a220be467a59ab710c70558141bb264c3fe2e4f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5947:CBP",
+      "contextHash": "9a4d566bbaa449abaafb2cb6b06f960aa3c3869dcfb262b32d95e86ded326350",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5967:CBP",
+      "contextHash": "78c56d45bb5576d5a205d472f6602171f8177a63a44e7508648511f01c87674b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5972:CBP",
+      "contextHash": "e806d90805134ebb021551b8822fe543e4bbefc2f32cd26450fb12dd9f606625",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5973:CBL",
+      "contextHash": "7b43cbed064fae22dc986d246a2e3c8af2429df12817c259efdb9422de9b6ad3",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5973:CBP",
+      "contextHash": "69709c55453fe702592a50a6e8a47036bb67638c6c958ed97444b6af47b3d0c5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R5983:CBP",
+      "contextHash": "8b51c4fab13883d152bc3d3a299627897e2b08398ebbba3016da348b071ea0de",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6030:CBL",
+      "contextHash": "b023e51b9e8749af543d31ebd1e14961f48d2eec52e28d16f0a0b78498f33299",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6030:CBP",
+      "contextHash": "b694def94231301230c75d622290eba627c28ffccaf93576eeee1980be49627d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6132:CBL",
+      "contextHash": "060353f096cb42bbd53daafcd0212325adc348ae51b65bdcf91c37e4aa2aec1b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6132:CBP",
+      "contextHash": "aeab9d424f71137a35cfb4cf6e289c999a4c97fc64fe7b2ac9c968a02e0b41e4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6136:CBL",
+      "contextHash": "8defd7a6193b6b0817845e8480cc8471a6da4315de6abda5bb901b6000919901",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6136:CBP",
+      "contextHash": "5cf940f6228abe4fe0c3e982d4e7ffcf79a792a6d0d82f7d941fc76d7c892a74",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6137:CBP",
+      "contextHash": "02c917149120d2c2dd3d1409e2d8fb8934817f68b1597ed6a0db1f85bf0b867b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6138:CBL",
+      "contextHash": "ff266bf6ca74f830f3f948e8715df107bb8bf3da34b806016f178db7a906cdb7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6143:CBL",
+      "contextHash": "c39426742a17f420ffb4099b55e60ca11f8318817e4f64e845f7f3ef5ed7623d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6173:CBL",
+      "contextHash": "c018745777393a814e01b7ef3cc76d787001c52882155fd2d3874fe9f39ec63a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6173:CBP",
+      "contextHash": "58d76e3f5dc336f0c131414b0b65852970421fed2f9308ce02e46850109da381",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6224:CBP",
+      "contextHash": "b9fe5a17e9c98d82433223b2aa0861b813baa816c21a463b21f99ecf77a06b46",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6225:CBL",
+      "contextHash": "4ca7656a7340b2bdd642b5611368db71fe2dbd3c0963fa3b4da850b68c7e96a5",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6225:CBP",
+      "contextHash": "8a18c76bc754bd03a59b2b580d1ee346e260ffc2b47003c78ddbf81db60accfb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6259:CBP",
+      "contextHash": "401909440976f0c75ba87b15fa484586ce356fec897e06c09e6dd619bb3c2742",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6271:CBL",
+      "contextHash": "9d1e31855e09de65643205105355c61e260f8e53dd7382d1103036530ec4ad47",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6271:CBP",
+      "contextHash": "dd292b3a9589005704e0c6ce120b4e0d8c9db5286607e0d4f0a255183252a5f1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6274:CBP",
+      "contextHash": "53e0779f52ef8ac64ad2889a3a29884db395aaaa192aa0779417d901c7e6a1ce",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6305:CBP",
+      "contextHash": "386bc0b0d91a684421cf0882382d361e8bcfb0237adde86432cb3cc71f2d5933",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6307:CBL",
+      "contextHash": "4f270aa519ed0989a7051a7b015d8eb7c681a689f9f06fa9a6ee35c614c9a222",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6307:CBP",
+      "contextHash": "fd8f70a06dc6db95090c1e41f2bb183c902f32e769ff900d9d1a6bc267f06b51",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6355:CBL",
+      "contextHash": "d1f81ef595f8b02ebad8f74d825647ccc3413e4ac48f46471be98bfd30a29989",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6355:CBP",
+      "contextHash": "91ad7dd581a7db6c4492a34a1f80b2893a530d5aca3f5f9889d94e36287fe4dc",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6375:CBP",
+      "contextHash": "786f7ca050f86ac4c4579c5ba0aa4834d95a2e4e1cbc957f909ff10d8d49823c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6376:CBP",
+      "contextHash": "e37f798230e46c31fab1fe79f3decf1b6e4ec05061123383e8b399201f179996",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6383:CBL",
+      "contextHash": "b06ec7e050691b13cd5508ec5e81bda5ab61b2d0c149e4adbfcec389618c3731",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6384:CBP",
+      "contextHash": "4d0eac9a6f861cef5961592e6823dc2e53bcf3ad28c576cccd3cde880cb216db",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6389:CBL",
+      "contextHash": "10c1a95998e9a97c58b6c19a3ee6ca9b051a2bbbe7050b15801e5b4d1c1d2eab",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6389:CBP",
+      "contextHash": "0cd5d06550739709f8e73b362a5b978490373edf68878003f5239ab41a77a17f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6390:CBP",
+      "contextHash": "7176f61c57e0b1a4ee430b05404d9651ad3a628f14d2e697f4fbd31c623fc33f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6392:CBL",
+      "contextHash": "74ba681c96c7c9782dff279ed66c0ad3dfd15e1c26f75d59576ce65b62325054",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6392:CBP",
+      "contextHash": "22b03f2427e1c1fb54c870737c65a173c955c7890856f4cf5f5da8bb35a137a4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6395:CBL",
+      "contextHash": "96fb5d6c94367b6c9552fa94e9e557be7e15657b228cac7ee529cd9ddc068fff",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6395:CBP",
+      "contextHash": "b43b3f34b5f222e3fe5153016d32929be727fa86ffcae8b6ac13525940f50297",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6396:CBL",
+      "contextHash": "2b68c5f446ca0959e332361cae558f64f0b067e0f643f4f4f766cf4bfa5e58fa",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6401:CBP",
+      "contextHash": "62b7622c721a099ef2e4394c82c393420208cd44249bf5afd5878d4f04b9dcec",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6423:CBL",
+      "contextHash": "69aec8125dd58a243c77d6271456955b9f8498b0791ac1f56ac690b450a47e82",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6423:CBP",
+      "contextHash": "c05d84458e5048ceafdb14b8cbd59783013af0fcebd57aa4466e35f823217385",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6445:CBL",
+      "contextHash": "273b0d6d838692583231aa719aef363b390fb790e2b3dd0e78dd95a8c1ebdb3b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6445:CBP",
+      "contextHash": "62d73f848b9249106352249ba242f571d45be42d1a7db35955fd5871577256b0",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6519:CBL",
+      "contextHash": "0c82c11ae92ba5ad5c3365e68ffe19aa85110534886498c894019e87198b5b65",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6536:CBP",
+      "contextHash": "3bc95cb3406d09c888b18681b52852dbee47d3e6f60a972dbb63e6dbc0c0423a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6548:CBL",
+      "contextHash": "eef2a2aa98467b744a11dd1a7260edeaa8a2bc8548fe8912b095436c97fca533",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6567:CBP",
+      "contextHash": "3a4d29886e242461d547b2849ed9dbca3171b984105419d468d43df62742598d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6634:CBP",
+      "contextHash": "55a038c1bfaab962ffc849caef9e08420f129ebd464c41ebb23a1c7bdbfcc2e0",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6640:CBL",
+      "contextHash": "1f44e408ed1932db78b512fd60f683947ec97b9fe42c07b849a20381e0114d67",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6641:CBP",
+      "contextHash": "26660c0b04fd92e1fa421d414c62e58e812a5cf8a0f77ba1937b797bde112caa",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6645:CBL",
+      "contextHash": "ac35d38c625793313cb867ab4043ec87b120b31fcba6d5c00fdf191e6e7bfb5d",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6645:CBP",
+      "contextHash": "98ad277556a26871daab0984feea538840435711fe634463377f703ad18ec2c4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6665:CBL",
+      "contextHash": "bef401ee657ef4440ed3d3650aad3a5c8dba578c828f036ee8bd4d232517c59f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6665:CBP",
+      "contextHash": "6d95781812e06e6c55024fc7f3206cdc2371691ca5a64361b256d7c0c6645236",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6667:CBL",
+      "contextHash": "09ab61373706aede0d57ed59a1afa903a07f09c438a3723bbf90fc9776509f32",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6667:CBP",
+      "contextHash": "2208aebcda7ab2ec4b8e3041c17bad33bf410b068a7419273e2c22576919087a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6670:CBL",
+      "contextHash": "43f3fc0a634088b2a6fb5bbe757a87e35fb4531502ab683c409746abd7fc1ad2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6672:CBL",
+      "contextHash": "2b5b7d3c8161683a2970425ff4a8a62b5902633883c3af39248f438a3a28ee82",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6672:CBP",
+      "contextHash": "1d274f9b88632efcec753731d9c8cf8ef1cae8fb246b70d7b61157166a20326b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6674:CBL",
+      "contextHash": "dc828df2ef4bc6d6ba107162cdbe1a6afafbe26e8a37d78469a5071f43c030fd",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6675:CBP",
+      "contextHash": "6270173dea46a755f33e84909d7c370032eb08293f6219151d87bfcefc4b4823",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6676:CBL",
+      "contextHash": "7fc48e0e7e084443a225110c84f2c9794a7853e32bd20ab63b68c7e551792532",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6710:CBL",
+      "contextHash": "717c34edc61f084f7f6615dbe9ef6b151edd0f0fe70d7b70c02b6c0997834ace",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6725:CBP",
+      "contextHash": "36d43ff8d2760594587fdba24ff848a864c859ab4512e70788ecb48f83cc52af",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6739:CBP",
+      "contextHash": "1fc62c6f1b87d5645ac78657a896ba4e335109b4694c7edddc3e1ed2c3a02512",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6743:CBL",
+      "contextHash": "9f9d657d02a62fd6db873616af8ad015c13a11a874ba476652ad0669edde9a3c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6743:CBP",
+      "contextHash": "9069ead7dd383188cbe0372813899cd74b43650ff09aabfdc65b7f02a655f408",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6744:CBP",
+      "contextHash": "272d7c94a9c887bc9a842d734f3b2a74fe9ae703f494912a214c0c2c306fcc62",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6783:CBP",
+      "contextHash": "300ca988a1baeba6a7c46141ffbcf916558ce686248d4f9374f1134ce22e1bfd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6799:CBL",
+      "contextHash": "80f298297708c0a437cfcd5040d5d1e8857bcdf0e95bf9c2a6d2f91e7995f68e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6802:CBL",
+      "contextHash": "36dc16536ef8ebced1eb677f1d72238fca5ed71b453425b0c284995e99655c48",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6816:CBL",
+      "contextHash": "8b88b4402dca0cb65f618a1846fcce4f2d6b8afc9ecf45538223826f635b47e9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6816:CBP",
+      "contextHash": "1ee070d36617259d83cbfdae596f1c1ac62c5114a83c3ae60c8554943221f147",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6834:CBL",
+      "contextHash": "cdb0a65136ca610c305cda9f21e9507d676637c7c8d0da80f63579c5d0510854",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6838:CBL",
+      "contextHash": "eb833d6c7a5f03574b8c0ea81db54cb013841266b438df1154d0ae645abab626",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6838:CBP",
+      "contextHash": "e454820a78ecb10044f46e317b9761985f06f98e6f91b7c0dcfeab97d9f61cbb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6840:CBL",
+      "contextHash": "c15a314d12dac06ba422f477fc7afb7e61811954ecb89c17b6ac91e2c3c43320",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6840:CBP",
+      "contextHash": "1e8da7eb1d95eadddeb4fa3d49a86bc11991e41569018c2fbecf33d203402fff",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6877:CBP",
+      "contextHash": "f0c1877ec6fd48d13c8807393bbdff52d89706af547c9ac1b5b4d13fb8ce0a48",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6879:CBP",
+      "contextHash": "a5055721f6102288fed0ad4cb06cb2e21d019749caeef42f97b363bdf1650ca1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6885:CBL",
+      "contextHash": "d4a719d781076b5afe309e042c7798ca65a8f8a873b694b35e7175180a5d2faa",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6885:CBP",
+      "contextHash": "f8e374ee8be31602137d17afd2c2735646999634cc314805d553d9ddffbd14f7",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6889:CBL",
+      "contextHash": "fa09aa59cd4406cd3f256202e3523d02c9c38dc6fc6e925f916eca201482a983",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6889:CBP",
+      "contextHash": "e1deb1477204136f0e3e11256d043080ea9ebaa938397e7641cb0f2bac13a013",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6892:CBP",
+      "contextHash": "bce85523af778670ce601e620b34eace052124efbebadd87cd06118b7fa2730a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6900:CBL",
+      "contextHash": "864cff0bd62ce617993b5754ed10291683378acb1dd373748f82eb8b3fa776a3",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6903:CBP",
+      "contextHash": "6cd1ad3139c7b2f529e50f3923e6533308cf4d39aed0452657fae5ae20cf2f7f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6954:CBL",
+      "contextHash": "317d518523f137f2f5ff073bd804fcd9e9d245c09867cbf891f719f879ad0c29",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6954:CBP",
+      "contextHash": "114e970cc822c4a56ee1a1c54d98446c2f530b9d8df4656502c8bc3a5cff0ab3",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6991:CBL",
+      "contextHash": "7dbe21af11b0f4d76e7930421bdc53756dad1ba97c0de162de022df06ad904c4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R6991:CBP",
+      "contextHash": "da63057953a8063ba5aed6738c68ae5dd2782387040a33d0688817be82691567",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7020:CBP",
+      "contextHash": "0d80b8d4aed007746235dddbe722a729cd63151c9d50211c305fc62ba7a28048",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7049:CBL",
+      "contextHash": "6225cedf93ac65a5fa839aca62d6914a87b8cd3eef27ab913879b47b358509ad",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7080:CBP",
+      "contextHash": "999340323f7cd64a757ac1ec4f9397c85a1fd16afff145390c7cd134787eaa6a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7086:CBL",
+      "contextHash": "4a07cdd7a08880eef4bf651edc92547daf70f2b9a2637b99a4196958b288aef8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7086:CBP",
+      "contextHash": "c2896ebd3c8581e5490bb79fc71571c606726783b557c59c223d50928441b809",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7089:CBP",
+      "contextHash": "c2897943cbba1e09ade8c639d6254bcb1fc334132c5ef6e2c92da74ecf19fa3a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7092:CBL",
+      "contextHash": "ce1c8d9208304903caff74141e3396570b9421893cb7f7d3f522ccf845095881",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7099:CBL",
+      "contextHash": "14585736098892d839e95be0620252326acd84e88fee3778e2fbf3a9f09330a2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7153:CBP",
+      "contextHash": "0d4084bbed7c6cf646544a22b0abe529f6a7aa7b898eb9e035ba2abe2c6c3067",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7193:CBP",
+      "contextHash": "6bb1b4c94bb8f2225aa6646f1f285e17b5ee7244c0b08c2252ff9fd35c15a8c2",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7199:CBP",
+      "contextHash": "75f14cb2c3e756fed474e9e89deecd023c563dd8ce10b76bfb146d0166e3c161",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7203:CBP",
+      "contextHash": "81a2670055dc3cfedadb0f9df3eef0abeee6fc864d9074ad4b6a5896b72d22de",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7205:CBP",
+      "contextHash": "704f02a24dfb35a82b5e3c64a1919e8db1e6806bd20376c298c661f820287d8c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7207:CBP",
+      "contextHash": "d916eec861a24639ae3aa501bac2d40bca507a0f02c5eb5528cb9cd5f0ed2a0b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7235:CBL",
+      "contextHash": "a863a910e0948a8e444bd9d53e820caf6f16fb1a4f6cedbb67d6530912efffd7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7235:CBP",
+      "contextHash": "3dd2b82a1716825d6fba92e4b60b815428dd139b44723a8a9999c78c7f5c58ea",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7262:CBP",
+      "contextHash": "1d4e0bad1c8266a98255b3ac04010077a62c6ba97145aee9b6c996597c16ad1b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7266:CBL",
+      "contextHash": "54349ac9050eed14c3992dfb9e86a67f46500e8b9a5f4b31c079a2338a0446f9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7266:CBP",
+      "contextHash": "1d280d4cae039a0ed10966fb16dd2dda96ed1ba0aa2c068a7eb8a25a7fec942e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7267:CBL",
+      "contextHash": "a4539b9779b74b67829b8f5e0c361dd50f69a2ec7b9003a8906e8132ccf03bea",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7267:CBP",
+      "contextHash": "47495911791084f6b67fd7d55285390c052b0bcefc6bbc9f951e0ed474c83330",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7269:CBL",
+      "contextHash": "772f2ca8505f0422fb546651b6c7aefa7c71c622838198ad548cb05b14071f14",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7269:CBP",
+      "contextHash": "c8da276490e44e7994c307b350263098e3fdc16969c7e0e9e7cdc77fe4c6ab36",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7294:CBP",
+      "contextHash": "598a2db8e0d02fe2fabfe0d507de5079313d772c9a05d3600c27aaab753e3ef8",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7295:CBL",
+      "contextHash": "14e5b69235284bfafe4ffcf030ebcfebb01cb0b2b41c2e137000027868867a48",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7311:CBL",
+      "contextHash": "1ada88a76d182ba9c75664e1fae8cdd0d5aa314a03c9c18188fbd570180c78da",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7312:CBP",
+      "contextHash": "254b0fd8e038320f42d10cba37713349c37d2f6193cdd5e04ee8d32f5f9bf07f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7325:CBP",
+      "contextHash": "5afbb5cc3308ba3b3fe8b43f2a2c475e8ae869d7e9fa32ab17b5bfd5c96d9437",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7345:CBL",
+      "contextHash": "2787fb9fd19d78e279f47349dd1bed3e75026aec120b33814311c97c104a9911",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7346:CBP",
+      "contextHash": "c9b947f736f412f8e1d07e0be6cbd81f1fe5964905a606f68618e798e7c7a817",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7352:CBP",
+      "contextHash": "d264654323212543b5e0c9b45e3957c3b529474a44ea599a619ce2d873af6615",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7389:CBL",
+      "contextHash": "455c0485d351f2218964b9cafc0e1718c7bbd0b472c3e72b6996a1d0f80c0591",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7421:CBL",
+      "contextHash": "ddac7c8dd12d0c6fa1674570559fd7a16ba9c655a464b0042bf4f69e5c27728c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7489:CBL",
+      "contextHash": "9d93f2dcee481274807675f3681d5a5db1952b70ff3ab1003359e99a8a45a7ed",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7489:CBP",
+      "contextHash": "eb3511161c628c7b93671c409f520fe2bb84001a84be56d6a437857075016d25",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7492:CBL",
+      "contextHash": "755a99868642c7fc384f8b52a2de6009180fab6c9b8f5631b67760528b02eaba",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7508:CBL",
+      "contextHash": "83f6b4df1fc69e531c8c30295e2b2fa1a24f7641c2fcd605cf58bdeca97ff40b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7508:CBP",
+      "contextHash": "3b03f26b57c8df488bd1eed551594cd476513e94431e13686732a90a30867d71",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7510:CBL",
+      "contextHash": "f60ac1f976d59e0e873a695b606a63321f00946f531581c8d22aa2398b5e1e6f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7510:CBP",
+      "contextHash": "4b1dedb05c05485656fc08ed9ceed31bb1df2a56a0e566ebf00eee6526d02689",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7538:CBL",
+      "contextHash": "a8d0458d0bb16c099ea7977887400f1edbf02ec543c3a3707c3008cb69ee87d4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7538:CBP",
+      "contextHash": "bcc5b6577dfd353d07cb3d6b264a141b23b27c8cb7086ae914e6bada148c6444",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7571:CBP",
+      "contextHash": "d6c73d396c843bc20001d868f9c165f1ad279412f11c7d7b943254e1c33b4693",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7572:CBP",
+      "contextHash": "584879a1d51afe44b12792a4463f74c3cbb8112cd5dc562ce584951b0fb04836",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7575:CBP",
+      "contextHash": "3a3ee4a382c25cb2e07d25ac1e93829850c462d82b3c48549ad521d7e94bb5c5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7590:CBL",
+      "contextHash": "3a444cfc53c45bcbf3a706fad3e2f6e297795331b4bbfab9acf39bd42c3942dd",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7590:CBP",
+      "contextHash": "680516d4ed66c8ccdd5813c2f70ac8d9dd9228366e1bc98d167996d90853b903",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7654:CBL",
+      "contextHash": "4c88965911759dc7fb6327d3a6112cda298d0c6a861912d929128843f0d15641",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7655:CBL",
+      "contextHash": "6656e0611cf15658440f531186834c26507972d3ea9de245d15c9cef70d16490",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7655:CBP",
+      "contextHash": "5304eaf0d98cb28cc2efcd767370af4cca59c03275a89f1d04f90c6532f7183d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7699:CBP",
+      "contextHash": "f93070ba081deb4ddb54526eb4917d90218995084a12242f7c78dd63ab7e40b5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7732:CBL",
+      "contextHash": "a8f59513426b45ba1c95a899b474c58619192af50fe306e01379a3ba3828e9ec",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7737:CBL",
+      "contextHash": "a96b81be3ff3b7a000f2a4d6571be77c9823fd5193c279044dd0c2e0da275fa9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7754:CBP",
+      "contextHash": "55a853a8ac17bf0dabdee5bcd4fc0decbc2e8674bd30156edad5e3751624873f",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7799:CBP",
+      "contextHash": "6689ad67fa30292049f026e9b35663b8f2afa65a33173dbb137e2a95c760d9d1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7826:CBP",
+      "contextHash": "02befd32ef883eac5763fc0fcde7332408fa954e310a3bb8003f15bb62578384",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7827:CBL",
+      "contextHash": "9eacb650d07df2891451b590edf769f667fcd96285eac1f80743fd3cecb42ead",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7827:CBP",
+      "contextHash": "c3098f9ef73aee990f13fd8ba27bea76a9e3d1d50c17b65525b647801dfe4676",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7851:CBL",
+      "contextHash": "5e00aa88b3ea9e4d69227a057fde4c2d0ea0425ccc5a7de6db1fe0a0c199342c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7851:CBP",
+      "contextHash": "bcb973a964a94b4cdb16061ebae5545124b40574ff73c56cb55fea48b8d66ff6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7852:CBP",
+      "contextHash": "cd991aefb997fb914b40fc8c3706cd5ff457529030a2f996f6314d8f8fa8ccfd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7854:CBL",
+      "contextHash": "08ca895722c7d5604d393fddb7683311013c8d38f5abf6c17c83ebdb442ae0c1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7857:CBP",
+      "contextHash": "13c419b19219c5655664fbf63118b204bafcb36c39b21ae5a68f41948c94ba81",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7887:CBL",
+      "contextHash": "a81edb3b82db03c64766d1a4f396ecc25fc3297be7798d202539533ac95869e8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7887:CBP",
+      "contextHash": "e5d749b09311249186ab44a86dcaffd0bf88f66f37732929caba4c305adbf2e3",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7894:CBP",
+      "contextHash": "c63dceb5db25a2828ee1679ac20cb2021b7b623d029e11082fdf38c617908bbc",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7900:CBP",
+      "contextHash": "fccd7752cc091a2fec7596c3e2315d5af959d01d385bd05ac22339da7168a4c8",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7901:CBL",
+      "contextHash": "512d4d3b9f1b8652c504cc668cca787a3db4eb42844c2c72f443f8ec8b40fcef",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7901:CBP",
+      "contextHash": "8547d429acba0148568531005687756f3809304acbf42fc132654604a1f7246b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7902:CBL",
+      "contextHash": "cc4681baadc498687b41cd959695eb63edb9bb287fa2f4200026f699ed62a0a7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7930:CBP",
+      "contextHash": "b08d1942cac25bd1dbec90184cb406b3669a70af35173163ddc8b80ecee6f8f0",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7934:CBP",
+      "contextHash": "08cf6a2e67a0b948851e6fd1cf663188c480c3450b3bd0e848fe46130ee08ba0",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R7987:CBP",
+      "contextHash": "c57859a169e22bff073d9fff6e389a361528161c7f829dd69762c1fed9a090c9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8007:CBL",
+      "contextHash": "e5a6ed363cc8051fa2c7a1b0002a965714e90eab2d8101aa93767ffb1d001bd4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8008:CBL",
+      "contextHash": "1df7b8fad4a765882507fb9b86f848d5dcc21d17ef78cb3efa5d498b4c392d66",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8058:CBL",
+      "contextHash": "1a333979f73863083a1434d0128c7573d4b90b5f0cd2055ad83fab00821713f4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8058:CBP",
+      "contextHash": "a711a75a1c6a7641a6126a2a6658c7b1bc1e59a263cf53a00f5727984ca7ead4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8060:CBL",
+      "contextHash": "bc8b2587b3a7b43b62f90fd93c252696d8ad6f2f3d12104adbee114fbbdfa116",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8060:CBP",
+      "contextHash": "038097ac5a2b7c9c7d074a6a6839fe30dcc66c7e1a7f416961dda29b906f90c3",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8083:CBL",
+      "contextHash": "a1939be1aaeeeaba1d07d5385a930b7e15704a72c32c5d5bea798154846e65e4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8143:CBL",
+      "contextHash": "18371b663528737361898bee9d32e828c8643c34f16c473d53a081d2baa38989",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8143:CBP",
+      "contextHash": "668e60293931651b5d85167c97dff6cbcf5ca72c6770654165d0efc9c290212e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8144:CBL",
+      "contextHash": "6347708bdfa6873833eca77e1a13eb5c19d06611e2bcbd6233d50c0cc95297d2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8144:CBP",
+      "contextHash": "228069cdeb2de24ffe1190eb693ae86a9a0af34502d838afde05a6d57edfa789",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8156:CBL",
+      "contextHash": "16f27b478f0b8c6405987942b88b2351c09cb54c710679130488aac15d4854eb",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8158:CBL",
+      "contextHash": "d49fdeb365c2fea891c18a03cc803ee35daed49c067210ff0f37d7f2006076fe",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8159:CBP",
+      "contextHash": "67462094da1476ab95f6188cddf0c1b1fca7acf05293badea533485df5f93f5b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8182:CBP",
+      "contextHash": "afc630a5fc2160bfd2f7956e01d1c47ae5dde8e06f317143460db7add44d2e30",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8221:CBP",
+      "contextHash": "f9bf392ad2a8eba03e18f1fa335ef35480b77915719f2434594cd83f520178a3",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8239:CBP",
+      "contextHash": "8767b1bc6374de3a3c53be69fe81378f42fefb10c9f28bef667a137dccb9cc86",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8296:CBP",
+      "contextHash": "0d4bc56a43491e444e4cbe851312781e26910883cbe5d7e9edd7f7cee3fc2644",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8311:CBL",
+      "contextHash": "6e18a4a70aa3c0c9ecb8a7c6965c44b73e984e4d42f45c4ebd48670d7e0e43f1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8312:CBL",
+      "contextHash": "3be19edd1cff4eab0a06fc387f1aa139169aa307a231f87e95030e64a6c462b1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8312:CBP",
+      "contextHash": "36fd44720514208c386d09959c891d447497929d27ad1dee35ba4ac65ea06de4",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8345:CBP",
+      "contextHash": "09fa1ed8725ff44815214b8c0535028ab7e619a8ba329aa7de0fb9c1da72210a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8347:CBP",
+      "contextHash": "3618b10c6fd3bb74dd992b5f3107e3e8a93944c1405751d3cbead51ffd70ba9c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8362:CBL",
+      "contextHash": "1a4b942c68a0bc23ca9c9473a7a0016730fc12aaa6a2319593a2e915a888b829",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8418:CBP",
+      "contextHash": "16ec53c1a94fb69e0b07354bcefceaef853c0ce7e1f43b822944129482b64476",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8446:CBP",
+      "contextHash": "b345276a2f626fbdb88c46fdbe2762548821be1cdcc35324bf8d9f775bb262bc",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8492:CBP",
+      "contextHash": "61a30165e6e03809cf90c13ee4fd77a378527fcde271468cac19b4d6dcf3b082",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8493:CBL",
+      "contextHash": "e35f99e1cd6a7bccf68dbeb5001d4347aff2dfac97304244ddf0635b9f68c4c2",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8494:CBL",
+      "contextHash": "a8eaae4708a95828331e949d8405124915b3a9b54f5c59e53c36feaf9315cff7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8494:CBP",
+      "contextHash": "9c707221af89e5041e9932bdad0b96e8ee1f9b23761d5d46ffd6baa790cb9652",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8528:CBL",
+      "contextHash": "56070518e2981834fc7fa8e6ca4e9fbfab7978f2d43eead4369ee99f0e591b0f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8528:CBP",
+      "contextHash": "c15dfa6e5559a68e7d0df5f72c94b448a4f15a414a056ad3f5f6f6d39282a17d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8554:CBL",
+      "contextHash": "f11c9643accb2f2e7769b0f69eb0ab74c91a8d41d45dd11bb74e39f19b34b508",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8559:CBL",
+      "contextHash": "e2a3042a1203cbd31a44385c1aa9430cec71b2ec04ad62c77c1fd4717547d6f8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8559:CBP",
+      "contextHash": "2235e38ac56aa387ac1faacab400d8feba496d6de2869795c962dec5f88d3d9a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8569:CBL",
+      "contextHash": "d65260b1782abf19a40b796ac0140014ecd18bf1d4e28c19415a2ffe65e49366",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8578:CBP",
+      "contextHash": "6711cfb3c737774168988efce0b22e0dc8f34714328a1579c452bbfa76887ae9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8642:CBL",
+      "contextHash": "8aa90088c7b4065bf5330279f343c31ea7af79692017a1c325aac4cc690ad236",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8643:CBP",
+      "contextHash": "7f1414a7b93897df1768ec1b8c15ae276f979b9697a7100e40fe33fb97295c66",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8648:CBP",
+      "contextHash": "b4d9615f4323de4e94eca760cabfe6e3c45fee4779931af9f565de5ce3a53b3b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8690:CBP",
+      "contextHash": "25962eee933bd43151038b1e3d536fa49e9c970d5276b1fcd0937e057d567140",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8693:CBP",
+      "contextHash": "ae267df9040c5ffc8def4562af0bcf845927390721475f537f5499294d448246",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8725:CBP",
+      "contextHash": "674cd27ce48964785b01dbaf3ec200ec5f7ecf69018c0dccee2599f27a495ecd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8729:CBL",
+      "contextHash": "e41c058415bf2009b64c5bd39f169dbe7b004eb6ebe9209c25d96e4f9349980b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8729:CBP",
+      "contextHash": "6caa3a5d90ab586029f178bcd3ef771e40269cf7eae7c06f17d82a435afb26bd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8739:CBL",
+      "contextHash": "d60ed5527903816d0b30acd2cfa461cf0d732b84c12a217aef34c4eec068a159",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8742:CBL",
+      "contextHash": "9d492295470731bdc3a86ca54bdca7fcbbb794345dcae865175c5d973744be65",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8742:CBP",
+      "contextHash": "7c5e1c444b9fe6deb0a16e30bdce52e0a72171d933bbb3dcb70009faa8ec34e5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8758:CBL",
+      "contextHash": "7843e0c933ce71bbdfa60f36b5c6c2eec852c85ffa01042174d4b1d200973825",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8836:CBL",
+      "contextHash": "626247a4d1eb7d57dd8772e8a0ef66db8d2a04f1df9d9e6b58697213c1b0ae9e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8836:CBP",
+      "contextHash": "666c958ff04d8911c3e9914e9b1af0c7b728e2cc9649b96368db0d8e0436c5c5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8860:CBP",
+      "contextHash": "69bac93151a5097bd80c9d1147e47fd5885cc8f2dd8c4bd59f262aff6f2b6d08",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8861:CBP",
+      "contextHash": "ed56f85556defc12e19581365abde32e144a4472d04d36632f6d46392d35b3fb",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8888:CBP",
+      "contextHash": "c00cc7c2ae9a653a4e964c520bd1794c6adadd8e07a3a422551bfe0d85513c0e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8905:CBL",
+      "contextHash": "c489ce20260dc242f32f6ee74430c7a74e3ec2ed580b131d4dda12cf97e6b7b4",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R8985:CBP",
+      "contextHash": "75fdff2f23d3826be025cd32ec2d2a990ee134d1735e10fe062b768693049be9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9011:CBP",
+      "contextHash": "f2f1926f3bbece0bbde74180758832ab0085578ae1f0d66b341137e53f34be33",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9017:CBL",
+      "contextHash": "6dd3b144a4a68433bbd59e50d8f5ec96836726b490991fb30431497b73a3b9ca",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9017:CBP",
+      "contextHash": "6302164d0d41631c83386c1c1c885d097f915a82a81ccbcdccc3cabfc5a50907",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9021:CBL",
+      "contextHash": "3021c5952cbf65122b359c98c9aa3e40dabb00fbc738062295a718c2b931778c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9024:CBL",
+      "contextHash": "c6193391c173fc006e37e01438120966d1295421b3e0fe284127fb961edf4321",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9049:CBL",
+      "contextHash": "6495e36ae2175fdfd6df1e1fad08a118befb999386aacdb6ddbb0193d1e2bd5c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9057:CBL",
+      "contextHash": "87853b3b509fb1c83eec9d908b961e860f852591c53e2624c9ee4daf2aa4d436",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9112:CBL",
+      "contextHash": "702b9b3140df876e68cadcd784d310bc1bc73361beb6e8c604c8ba4d178103b6",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9112:CBP",
+      "contextHash": "5bc7c01488068b6acf62e8fe686037bbef2acb5a5e7693de8aee3889d16782c3",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9136:CBP",
+      "contextHash": "8a2f51ffabc3c2f56d2e3ccaefb184c4ffe0bfdc8f6362b2d5cd966ce8219407",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9138:CBL",
+      "contextHash": "5731f99104d4612faf2f5c570ae856ffcdbb69fd45329a4e8170c476a434efb9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9165:CBL",
+      "contextHash": "e15bf033794154fc140601a221202b7ae989bb3e4af1206f7ed6a85f0b8d1a0c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9165:CBP",
+      "contextHash": "dcde5c184147d49511987813f3a799afa43dd63becb947da6a2cd04eb2698360",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9167:CBL",
+      "contextHash": "7bcd8db96a64e5b118decd0a15ffbc7396331fd2f6ff8efc07bd698f0be82fa6",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9241:CBP",
+      "contextHash": "75a98e72363767a96fc312ce399d11f8f8eeeb4c2a1f65c920859dc7819d23e5",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9247:CBL",
+      "contextHash": "9545f67a11fdfe55aa9cc6d340082aac12a9b7d60659774e5479f957f7c0d15f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9258:CBL",
+      "contextHash": "f51efb06c3e093ca78bd24a90a699e32014efa3aa0b39273867a8c8c5064ff6e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9264:CBL",
+      "contextHash": "a4cb8f5164e7fa355c1b0e27c81c9d8f32f2a333a2c2a7926806ce4e3383b6e6",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9264:CBP",
+      "contextHash": "48ff6b6b13ea8b312bcd2587b1f728a5d8e282ea39bbe711001a035e3f4b90e8",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9272:CBL",
+      "contextHash": "cdeda9a820538f4f2cf89266ef54c50998d9d3c4b6fe8b47e3ab83f0fb3b2a8e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9272:CBP",
+      "contextHash": "932a3a8c9d4630e7793deecc201a8d813e35899cc8eafdd3a22486b1d311abcd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9303:CBP",
+      "contextHash": "cb45332578679389bb375d721d77cc0b4c7d8bf79240a6c8c921406cad78366c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9311:CBL",
+      "contextHash": "7665804935f9a200ee6f8cdca5c858549da7b3d4165a7adac270d7581f8856b7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9342:CBL",
+      "contextHash": "36193e3656775e9a436004a4ad298dc315fc7d3a9b068a81b26b76035b664df7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9352:CBP",
+      "contextHash": "d196d681f8de25fce2e60c61b5bfaa68067078078f0b2be2137b84a5d9178892",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9357:CBL",
+      "contextHash": "d28ad3fdf19eb4720978dde615d739e2d2a5e86dfef5a177f35da79da91c9630",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9357:CBP",
+      "contextHash": "44fd822b5cce9e6ba8c714365b20c25a4e5db2b87ccc963cc98c6a245d4d0422",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9358:CBL",
+      "contextHash": "6c0682264081ba815cf4bb2060e1d740b7c7e0fc408fb032586fa6ef1bb5d46c",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9400:CBL",
+      "contextHash": "da8a608422d00d89cd9edc5a1a2702c37345c0fb9279eb34db1617aa9e731587",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9400:CBP",
+      "contextHash": "59f020d0ea12132d010fc3a3bb20aae1818505eee512145d7c60999bfc30f030",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9425:CBP",
+      "contextHash": "599b99dd885daeddd32da89797c3139281430b90a80c997fa92afd2f3454520a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9450:CBL",
+      "contextHash": "89646e91acaec08a724fdc9af1940ea1c8ebb32d3bbc58eeba051163b30e237f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9452:CBL",
+      "contextHash": "fc4a4c8a1068b3aca9a47d1dedd998adaa6b182fee161ff0dc0e14c7339dd90a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9477:CBP",
+      "contextHash": "c8ebb8d098df8d2bbc587ce6a4ab734a09f51c0896b535b8250e26e74e7fdd35",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9513:CBP",
+      "contextHash": "9d1f97a2b97108b032cc75a05ff3d257c062370327658bafca0bc1533c3d7425",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9525:CBL",
+      "contextHash": "7fde57a75c58654fdf4276dba705fb20610c9adc296353cb63eaf66a4c7df881",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9525:CBP",
+      "contextHash": "3b6f01f8b93b27db452279da4cac53891fb42a1f5fc1f30fb4e6b78bf9a3d7d9",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9571:CBP",
+      "contextHash": "571d18be8767ef2a6d5d59540c83d7b1215df2611e6058e6058de377b4434ba8",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9572:CBP",
+      "contextHash": "b194d91d75677a78e919fbd9e9c0f62a864b45e17345c2716f23da63cecbce6d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9573:CBL",
+      "contextHash": "835d2aa979a287d490949594576d30eb27900830b1e8c91e3a64bf84033d47f8",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9592:CBL",
+      "contextHash": "ba0f3b07da4fe3dec7ab222c04f5276966b19cb6e9e2e996e73fd04973231207",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9627:CBL",
+      "contextHash": "50d62f52c7fbe16475ec0e9378b5ed9cc7e102bfff815b73bfc95ebe007d346f",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9644:CBL",
+      "contextHash": "5bdadbf74f1adde048050e39165141c8587341923d20152210d04210a105eb18",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9675:CBP",
+      "contextHash": "3822efa56371d5617bf72d4cc602770d26b7db0d2e7a2882e013703db2e56ecc",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9720:CBL",
+      "contextHash": "dbd4ccb00625619eade19cd314bb8a35dc627870e2679f6a5466a59b8a9e7886",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9727:CBP",
+      "contextHash": "093d3d1cae3eb8df97fea05013bca4fc3a660eee1cbeb559b23895f99860184a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9740:CBP",
+      "contextHash": "f22594a1cbc08612095a2374393b9447781ddc06b77392e15cec676f7f43a187",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9747:CBL",
+      "contextHash": "b5a6da4e70bf17a8f8e67f1b90689802449d633d1590c4863cbd4834c9cef504",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9747:CBP",
+      "contextHash": "a5fa987d43031072f8b4e31421687d919729af7a77fd960daede08316d9c53c2",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9772:CBL",
+      "contextHash": "5e46caa7d5a7f50a93bf2b75a84fddc1ad48a8deb36f5f3ee11b22e69210c1d9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9772:CBP",
+      "contextHash": "dcd09b50e252aacd4c5a3cd17d616c1bcd7b9260064970ef55d229bf5f09016a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9775:CBL",
+      "contextHash": "73b017af975d45a1731d86ff5f929f4375590e6e0675f2097ba8cc0e6691736b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9775:CBP",
+      "contextHash": "72ac2e8de5774d30ea26356e2d1a71a359602661376a7522178c5e62655da68e",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9778:CBL",
+      "contextHash": "7b65d5ab206af4e4ba53baf6e2c68c552c29b42053e9cefaf8be216a9b35c2a9",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9779:CBL",
+      "contextHash": "9549bd209739752173c31eb8c81b5f73e229e350b25c757e0a0e8ce86c5c672e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9779:CBP",
+      "contextHash": "d8c00e7404f3238e33293d5910fbbb94e8515c382744a4cf2df1f2da1f295d0b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9793:CBP",
+      "contextHash": "dae8c69ca7a91ebb00c0a81a3975a2fad0c905eb643658341570709fe9355651",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9807:CBL",
+      "contextHash": "2a1dfe9fa1d6445e5057820c141e5c0abda82ce9434e2d21116458f61fda149b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9807:CBP",
+      "contextHash": "98fcca5faf6f1a8694b1cd682120f25a4ca249b47ad4679d3fe74026e4334028",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9808:CBL",
+      "contextHash": "d1cd61d26dfc8146a0c14605fba0daeb3998d2cd4f7a65ca65aae92953ecc3a1",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9811:CBL",
+      "contextHash": "6cc6d9f8746bb27509403c1f369b89dd4a44f59dc124c3352c66f45e52c7f230",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9811:CBP",
+      "contextHash": "35c12783d60d5a52fc00d29e4280fd85af64c416ae63168707f11cde37dee7c3",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9833:CBP",
+      "contextHash": "c43702269f280237743f7b99493c938935fa1af3121b22e2cd6b1f1819f2b578",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9845:CBL",
+      "contextHash": "38fce4443bd4b9af16a47d88271ffb4f1d3a5a659f712d133ecf1aba4756f95b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9851:CBL",
+      "contextHash": "a5c036a65e8e9103fcc8c6c4d28df1497dc364826ada0d294697254715b3db26",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9865:CBP",
+      "contextHash": "f3ea9ecf1506708f9c88ea970113474ae243775724b3de4a4180376fec302e12",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9866:CBP",
+      "contextHash": "51203120e5a57b63e4ba70175ae10f80a001a829acef02270510ebcf54ff67db",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9881:CBL",
+      "contextHash": "315ad2b61e9c450e8d7288d40bed20764f8a14f2307ecbf9fc5744f2af234148",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9881:CBP",
+      "contextHash": "df615ec726db9ed615f0b1b020bd5175a6ff7c0ad4cd07bcd6ea50a10bb24448",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9884:CBL",
+      "contextHash": "ba16abf353d00d7ca95f0d92e3fa419a92449f0e5b5b1eb5761b852080627ec5",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9889:CBP",
+      "contextHash": "3acbc284c24180992335578243210e85741d54a475f05845dcfca611ba26dbd1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9913:CBL",
+      "contextHash": "ef8e4dc444935314ae932f739ad0c44cf1b2ae2023cdbd30373b1840d1e3989b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9913:CBP",
+      "contextHash": "3069eaf2a5c3428a64d6cbc67e315ed75f39778def7ef95c942c767bfcc81e69",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9914:CBP",
+      "contextHash": "ec6699e5ba0c3decf6ea09b230bffca5508a36f8a33ed1e381531058f6340518",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9917:CBP",
+      "contextHash": "48f036775e75b86f86617505aff3b538dc3958d57e814f0f23af8ab0543cef10",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9920:CBL",
+      "contextHash": "d8f653a496eeed2a9525d3b89877da8d9d32fb3f433d77f5c6eadbd73597a928",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9957:CBL",
+      "contextHash": "4533fb99215f52dd27b6dcc44239e2da5a1babe3deb08d4a9b7cc633930c8354",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9981:CBL",
+      "contextHash": "4fb674be9c158a274c4d547941b194ef9f68a1175f459f29c9286259bfefad95",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R9989:CBP",
+      "contextHash": "fbe99a25d4db4b4a510ada8c2d7c80b5947fd4f9a78e133dc2a8293d39df7823",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10006:CBL",
+      "contextHash": "cb9a3da8c2a16b2fbdd3ac21c68332b617109e633294e9b019f682f48f911749",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10006:CBP",
+      "contextHash": "46d1dfb79cd408adf1e017c499fd61d742a6c73e4074a18ae5d0b78b63bd935c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10016:CBP",
+      "contextHash": "1c07c016435ec85d5a4ebb70b1d77552879637b44cbb6e8e2e033f69228904ff",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10031:CBL",
+      "contextHash": "dd6c2188b5b9b804f9916fd127c495dffb96904a059f55912456e44f25170df0",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10031:CBP",
+      "contextHash": "e3d6fd39e781a65c7c8b481b1ec30be706b56663a113c2232e334e556f9c9a8c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10035:CBL",
+      "contextHash": "d31d27d9cff871bdba5a30e2fec9420532d7ca2efd38edb63171dd282e9e465e",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10035:CBP",
+      "contextHash": "3c8bbced8b554e36a51aa2982e96db8a71924ea8009e292e0413e77b54e29daf",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10039:CBL",
+      "contextHash": "e480340e6d27a191d5ca2ffc28c5aa1fe1ae51133c0fea78a52c390199f79a74",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10039:CBP",
+      "contextHash": "61896157fb872a6cc5ff19567741280977ac6525de82e47be260907fbfd89eb1",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10041:CBP",
+      "contextHash": "083f75b682f948c119b034b56d4c268e13757d8d2594857dc2b502485e3eaa3b",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10050:CBL",
+      "contextHash": "ac1eb6a17914754bf879fb4bf804a4cb8ce9a99d792f66ed8b9f0d282dad47ff",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10050:CBP",
+      "contextHash": "319634e3db4642f3039e4e0ef32a0bb5b63357fecd31abec4f0e690ef0180e9a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10052:CBL",
+      "contextHash": "8a88063f7a36a13b2b69801fe010290da1aa00c00819bf6dd43071f3235e6bc5",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10052:CBP",
+      "contextHash": "5cd7fd0224e4e6810b231d9e1edc7fbc812421d0d64816f318ffb7b53bb51443",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10055:CBP",
+      "contextHash": "af2468be7ce52a90898d77fcb0d76274d5778e3c2a607f68329b8250d87bdf50",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10056:CBL",
+      "contextHash": "8c0024cf4aad4467e32728ef479e490c2fa2c4dbe74adf166776cdb14a92e936",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10056:CBP",
+      "contextHash": "2791d8b086c9cb0ced976dbc33d7cb48b513bb94a1e30a5af1060f3b3960a0bd",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10081:CBL",
+      "contextHash": "a98a7673efe9cec7da75c0d979eb4e220e80f6732a017be67e8597b9c8cbea64",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10081:CBP",
+      "contextHash": "55aad0c1b5d90d1b1e1c5a27248ef7aab134c1fda8766979a0a31c46221c212d",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10099:CBL",
+      "contextHash": "d7aab0fea16318571be9c6782924d3a03a1bcdfd7e0a71d331917bf14a002746",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10141:CBP",
+      "contextHash": "be361da360eb75bf7636af50576c32f7788cdeda56ad5150dfb6c7e90541fd81",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10162:CBL",
+      "contextHash": "bf3065e2bc34c0b9c1fdae2d7c1b8711d9be9fad13ef9448f4c27344e5600c1b",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10162:CBP",
+      "contextHash": "b1778d5cd9d61974c9066116afe4dff2f0e3da8f708173bb748e86d4c3ce314c",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10188:CBL",
+      "contextHash": "7f5021edd3c35292ad0b688858fbb1d14315ed362a1d1474b0dad3a42e0432d7",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10188:CBP",
+      "contextHash": "901078b278bbadaebf5b279597ec33e7cbfc5b6c3d40949d82f5a4a06121e3c6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10197:CBP",
+      "contextHash": "e77e4688efa8fcc4130a916715464d97d766942615ab3c8c54055735ed808822",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10198:CBL",
+      "contextHash": "6a81d4944807e0f3ee6a1d8b93b8c2ca492167a4ce6c097c32847dc81c11507a",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10198:CBP",
+      "contextHash": "df97f2ecdd3bf5520c5e56636b7eb8f0daeb42bdc55830cebcba61cb33d037f6",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10209:CBL",
+      "contextHash": "4088093a3a07025d512a0cbc8e587822db65bf0bfcc9cf79a7bdf5c299a61355",
+      "rotation": "ELECTIVE_2"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10209:CBP",
+      "contextHash": "220ed72c4ccd896ec8031eff59b958ec823fd7da08749f091b870bb3fde91d1a",
+      "rotation": "ELECTIVE_1"
+    },
+    {
+      "sourceReviewKey": "STAZ_SURVEY_2020_2025:R10211:CBP",
+      "contextHash": "8ced823b0a100d2313c54a3889bb4c871f52c120fb683a684be5c544e868422d",
+      "rotation": "ELECTIVE_1"
+    }
+  ]
+}

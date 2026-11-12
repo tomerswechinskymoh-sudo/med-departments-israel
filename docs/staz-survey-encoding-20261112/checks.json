@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "unitAndNativeRegressionTestsPassed": 22,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "diffCheckPassed": true,
+  "isolatedDatabaseIntegrationPassed": true,
+  "manifestReproducedExactly": true,
+  "all3608RowsAnd2856RatingsVerifiedOnIsolatedBranch": true,
+  "noUiLayoutChanges": true
+}

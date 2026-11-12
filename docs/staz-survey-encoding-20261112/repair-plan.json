@@ -1,0 +1,17 @@
+{
+  "execute": false,
+  "reviewed": 3608,
+  "corrections": 861,
+  "contextEnriched": 0,
+  "alreadyCurrent": 1995,
+  "ratingsReassociated": 861,
+  "numericRatingsChanged": 41,
+  "manualTargetsRequired": 135,
+  "approvedCorrections": 3,
+  "approvalsPreserved": 34,
+  "sourceEnabled": false,
+  "decisionsPreserved": true,
+  "snapshot": "snap-bold-base-am8r9phj",
+  "snapshotExpiresAt": "2026-11-19T19:00:00Z",
+  "testBranch": "br-odd-pond-am3zif0n"
+}

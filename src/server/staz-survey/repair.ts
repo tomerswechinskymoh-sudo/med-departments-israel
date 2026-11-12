@@ -19,6 +19,8 @@ export async function repairElectiveAssociations(db: PrismaClient, candidates: C
     const decisions = () => rows.map(r => [r.id, r.status, r.publishText, r.publishRatings, r.approvedPublicText, r.privacyReviewed, r.reviewedAt, r.reviewedByUserId, r.reviewedByName, r.adminNotes, r.ratings.map(v => [v.id, v.selected]).sort()]);
     const priorDecisions = JSON.stringify(decisions());
     const enrichments: { id: string; rawEncrypted: string }[] = [];
+    const reviewUpdates: Record<string, unknown>[] = [], ratingUpdates: Record<string, unknown>[] = [];
+    const auditEntries: Prisma.AuditLogCreateManyInput[] = [];
     const report = { execute, reviewed: candidates.length, corrections: 0, contextEnriched: 0, alreadyCurrent: 0, ratingsReassociated: 0, numericRatingsChanged: 0, manualTargetsRequired: 0, approvedCorrections: 0, approvalsPreserved: rows.filter(r => r.status === 'APPROVED').length, sourceEnabled: false, decisionsPreserved: true, details: [] as Record<string, unknown>[] };
     const seen = new Set<string>();
     for (const c of candidates) {
@@ -55,14 +57,40 @@ export async function repairElectiveAssociations(db: PrismaClient, candidates: C
       if (row.status === 'APPROVED') report.approvedCorrections++;
       report.details.push({ sourceReviewKey: row.sourceReviewKey, previousHospital: row.originalHospital, previousDepartment: row.originalDepartmentOrScope, hospital: effective.originalHospital, department: effective.originalDepartmentOrScope, previousRatingColumn: oldRating.sourceColumn, ratingColumn: evidence.sourceColumn, previousRating: oldRating.normalizedValue, rating: evidence.normalizedValue, requiresManualTarget: !mapping.suggestedDepartmentId && !mapping.suggestedMedicalArrayId });
       if (execute) {
-        await tx.surveyReview.update({ where: { id: row.id }, data: after });
+        reviewUpdates.push({ id: row.id, targetDepartmentId: row.targetDepartmentId, targetMedicalArrayId: row.targetMedicalArrayId, mappingConfirmed: row.mappingConfirmed, ...after });
         // Keep the rating row ID and selected flag: a correction must not lose an
         // admin's separate decision to include or exclude that metric.
-        await tx.surveyReviewRating.update({ where: { id: oldRating.id }, data: evidence });
-        await tx.auditLog.create({ data: { action: 'STAZ_ELECTIVE_ASSOCIATION_CORRECTED', entityType: 'SurveyReview', entityId: row.id, metadata: { authorizationChannel: 'user-chat', authorizationDate: '2026-11-12', executedBy: 'Codex', correction: c.electiveCorrection, before, after: { ...after, rating: evidence }, originalFingerprint: row.sourceFingerprint, decisionsPreserved: true } as unknown as Prisma.InputJsonValue } });
+        ratingUpdates.push({ id: oldRating.id, ...evidence });
+        auditEntries.push({ action: 'STAZ_ELECTIVE_ASSOCIATION_CORRECTED', entityType: 'SurveyReview', entityId: row.id, metadata: { authorizationChannel: 'user-chat', authorizationDate: '2026-11-12', executedBy: 'Codex', correction: c.electiveCorrection, before, after: { ...after, rating: evidence }, originalFingerprint: row.sourceFingerprint, decisionsPreserved: true } as unknown as Prisma.InputJsonValue });
       }
     }
     if (execute && enrichments.length) {
+      // Bounded bulk writes keep the entire correction atomic even for a large
+      // cohort. No approval fields or rating selection flags are in these SETs.
+      for (let i = 0; i < reviewUpdates.length; i += 100) {
+        const reviews = JSON.stringify(reviewUpdates.slice(i, i + 100));
+        const count = await tx.$executeRaw`UPDATE "SurveyReview" r SET
+          "originalHospital"=e."originalHospital", "originalDepartmentOrScope"=e."originalDepartmentOrScope",
+          "suggestedDepartmentId"=e."suggestedDepartmentId", "suggestedMedicalArrayId"=e."suggestedMedicalArrayId",
+          "mappedInstitutionId"=e."mappedInstitutionId", "mappingConfidence"=e."mappingConfidence", "mappingReason"=e."mappingReason",
+          "targetDepartmentId"=e."targetDepartmentId", "targetMedicalArrayId"=e."targetMedicalArrayId", "mappingConfirmed"=e."mappingConfirmed"
+          FROM jsonb_to_recordset(${reviews}::jsonb) AS e(id text, "originalHospital" text, "originalDepartmentOrScope" text,
+            "suggestedDepartmentId" text, "suggestedMedicalArrayId" text, "mappedInstitutionId" text, "mappingConfidence" text,
+            "mappingReason" text, "targetDepartmentId" text, "targetMedicalArrayId" text, "mappingConfirmed" boolean)
+          WHERE r.id=e.id AND r."sourceId"=${SOURCE_ID}`;
+        assert.equal(count, reviewUpdates.slice(i, i + 100).length);
+        const ratings = JSON.stringify(ratingUpdates.slice(i, i + 100));
+        const ratingCount = await tx.$executeRaw`UPDATE "SurveyReviewRating" r SET
+          "metricCode"=e."metricCode", label=e.label, "questionCode"=e."questionCode", question=e.question,
+          "sourceRowNumber"=e."sourceRowNumber", "sourceColumn"=e."sourceColumn", "rawAnswer"=e."rawAnswer", scale=e.scale,
+          "normalizedValue"=e."normalizedValue", "rotationContext"=e."rotationContext", confidence=e.confidence, verified=e.verified
+          FROM jsonb_to_recordset(${ratings}::jsonb) AS e(id text, "metricCode" text, label text, "questionCode" text, question text,
+            "sourceRowNumber" integer, "sourceColumn" text, "rawAnswer" text, scale text, "normalizedValue" integer,
+            "rotationContext" text, confidence text, verified boolean)
+          WHERE r.id=e.id AND EXISTS(SELECT 1 FROM "SurveyReview" v WHERE v.id=r."reviewId" AND v."sourceId"=${SOURCE_ID})`;
+        assert.equal(ratingCount, ratingUpdates.slice(i, i + 100).length);
+        await tx.auditLog.createMany({ data: auditEntries.slice(i, i + 100) });
+      }
       // Bound batches avoid thousands of network round trips. SQL only touches
       // the encrypted evidence envelope and optimistic-lock revision.
       for (let i = 0; i < enrichments.length; i += 100) {

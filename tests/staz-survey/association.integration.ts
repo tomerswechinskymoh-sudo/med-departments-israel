@@ -12,7 +12,11 @@ async function main() {
   const p = process.env.STAZ_REPAIR_PRIVATE_DIR!; assert.ok(p);
   assert.equal(new URL(process.env.DATABASE_URL!).hostname, process.env.STAZ_REPAIR_DATABASE_HOST);
   assert.ok(!process.env.STAZ_REPAIR_DATABASE_HOST?.startsWith('ep-odd-pine-'));
-  const candidates = await verifyWorkbook(parseCandidates(await readFile(p+'/staz_positive_reviews_download.csv')), p+'/staz_survey_processed_download.xlsm');
+  const verified = await verifyWorkbook(parseCandidates(await readFile(p+'/staz_positive_reviews_download.csv')), p+'/staz_survey_processed_download.xlsm');
+  // Historical v1 migration test, run against its pre-v1 isolated snapshot.
+  // The full subsequent encoding migration has its own integration test.
+  const candidates = verified.map(c => c.electiveCorrection?.version === '2026-11-12-encoding-v2'
+    ? { ...c, electiveCorrection: undefined } : c);
   const db = new PrismaClient({ log: [] });
   try {
     const native = async () => { const out: Record<string, unknown> = {}; for (const table of ['Review','ReviewSubmission','Department','User','DepartmentMetric']) out[table] = await db.$queryRawUnsafe(`SELECT count(*)::int AS n, md5(string_agg(to_jsonb(r)::text, '' ORDER BY id)) AS digest FROM "${table}" r`); return out; };

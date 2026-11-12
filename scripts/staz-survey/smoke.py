@@ -6,6 +6,7 @@ if '--quick-review' in sys.argv:OUT=ROOT/'docs/staz-survey-ux-20261112'
 if '--mapping-review' in sys.argv:OUT=ROOT/'docs/staz-survey-mapping-20261112'
 if '--copy-review' in sys.argv:OUT=ROOT/'docs/staz-survey-copy-20261112'
 if '--association-repair' in sys.argv:OUT=ROOT/'docs/staz-survey-repair-20261112'
+if '--encoding-repair' in sys.argv:OUT=ROOT/'docs/staz-survey-encoding-20261112'
 TEAM='team_Jj2tczP8vf4XPr74gxyasW5A';PROJECT='prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE'
 phase=sys.argv[1];assert phase in ['staged','live']
 d=json.loads((OUT/'deployment.json').read_text());headers={'User-Agent':'Hitmachut-Staz-Authorized-Release-Smoke'}

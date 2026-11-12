@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "additionalCorrections": 861,
+  "totalCorrected": 895,
+  "numericRatingChanges": 41,
+  "approvedCorrections": 3,
+  "approvalsPreserved": 34,
+  "recordsVerified": 3608,
+  "originalEvidencePreserved": true,
+  "prior34CorrectionsUnchanged": true,
+  "unknownAndLegacyUnchanged": true,
+  "dryRunReadOnly": true,
+  "tamperedEvidenceRolledBack": true,
+  "oneAuditPerCorrection": true,
+  "repeatedRepairAndImportUnchanged": true,
+  "nativeDataUnchanged": true,
+  "sourceEnabled": false,
+  "publiclyEligible": 0
+}

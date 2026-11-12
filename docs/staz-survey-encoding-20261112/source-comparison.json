@@ -1,0 +1,7 @@
+{
+  "sourceNonemptyCellsCompared": 955182,
+  "normalizedDifferences": 0,
+  "originalXlsxSha256": "f79b3c236f2f9990f561022fb1e6e9986a9b8b8cacded41c9281366ed15ba752",
+  "driveXlsmSha256": "3655cef7c6b40f6824fb916d8aa3dc127d3596089d5b1d292b9ea31a04520bae",
+  "interpretation": "The source sheet is identical before later local processing; the text association issue predates the website import. This does not establish which collection/export step caused it."
+}
