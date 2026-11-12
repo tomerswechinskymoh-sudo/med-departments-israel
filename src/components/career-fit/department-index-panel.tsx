@@ -4,7 +4,7 @@ export function DepartmentIndexPanel({department}:{department:{id:string;special
  const base=publicDepartmentIndex(department);
  return <section className="rounded-xl border border-slate-200 bg-slate-50 p-4" data-department-index>
   <h5 className="font-bold">מדד המחלקה של Hitmachut</h5>
-  {base.score===null?<p className="mt-2 font-semibold">אין מספיק נתונים לחישוב מדד המחלקה</p>:<p dir="ltr" className="my-2 text-right text-3xl font-black">{Math.round(base.score)}/100</p>}
+  {base.score===null?<p className="mt-2 font-semibold">אין מספיק נתונים לחישוב מדד המחלקה</p>:<p dir="ltr" className="my-2 text-right text-2xl font-bold">{Math.round(base.score)}/100</p>}
   <p className="text-xs">מדד משוקלל המבוסס על הנתונים הזמינים באתר; זהה לכל המשתמשים.</p>
   <p className="mt-2 text-sm">כיסוי נתונים למדד: {Math.round(base.coverage*100)}%</p>
   <details className="mt-2 text-sm"><summary className="min-h-[44px] cursor-pointer py-2 font-semibold">{base.score===null?'למה אין מדד כולל?':'למה הציון הזה?'}</summary>

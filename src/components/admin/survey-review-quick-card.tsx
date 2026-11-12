@@ -8,7 +8,7 @@ import type { ComponentAction } from '@/server/staz-survey/moderation';
 export type SurveyQueueRow = {
   id: string; revision: number; sourceReviewKey: string; sourceYear: number; sourceColumnLetter: string;
   originalHospital: string; originalDepartmentOrScope: string; sourceQuestion: string; status: string;
-  mappingConfidence: string; mappingReason: string; suggestedDepartmentId: string | null; targetDepartmentId: string | null;
+  mappingConfidence: string; mappingReason: string; suggestedDepartmentId: string | null; targetDepartmentId: string | null; suggestedMedicalArrayId: string | null; targetMedicalArrayId: string | null;
   mappedInstitutionId: string | null; mappingConfirmed: boolean; mappingExceptionReason: string | null; sourceVerified: boolean;
   text: string; privacyFlags: string[]; publishText: boolean; publishRatings: boolean;
   ratings: (RatingEvidence & { id: string; selected: boolean })[];
@@ -21,12 +21,12 @@ export function SurveyReviewQuickCard({ row, catalog, enabled, save, inspect }: 
   inspect: (id: string) => void;
 }) {
   const uid = useId();
-  const [targetId, setTargetId] = useState(row.targetDepartmentId ?? row.suggestedDepartmentId ?? '');
+  const [targetId, setTargetId] = useState(row.targetMedicalArrayId ?? row.targetDepartmentId ?? row.suggestedMedicalArrayId ?? row.suggestedDepartmentId ?? '');
   const [text, setText] = useState(row.text), [editing, setEditing] = useState(false), [choosing, setChoosing] = useState(false), [search, setSearch] = useState('');
   const [reason, setReason] = useState(row.mappingExceptionReason ?? ''), [busy, setBusy] = useState(false), [message, setMessage] = useState(''), [error, setError] = useState('');
   useEffect(() => {
-    setTargetId(row.targetDepartmentId ?? row.suggestedDepartmentId ?? ''); setReason(row.mappingExceptionReason ?? '');
-  }, [row.revision, row.targetDepartmentId, row.suggestedDepartmentId, row.mappingExceptionReason]);
+    setTargetId(row.targetMedicalArrayId ?? row.targetDepartmentId ?? row.suggestedMedicalArrayId ?? row.suggestedDepartmentId ?? ''); setReason(row.mappingExceptionReason ?? '');
+  }, [row.revision, row.targetDepartmentId, row.targetMedicalArrayId, row.suggestedDepartmentId, row.suggestedMedicalArrayId, row.mappingExceptionReason]);
   // Publishing a rating must not discard an unrelated text draft.
   useEffect(() => { setText(row.text); }, [row.text]);
   const target = catalog.find(d => d.id === targetId);
@@ -34,14 +34,14 @@ export function SurveyReviewQuickCard({ row, catalog, enabled, save, inspect }: 
     .sort((a, b) => Number(b.institutionId === row.mappedInstitutionId) - Number(a.institutionId === row.mappedInstitutionId)).slice(0, 60), [catalog, search, row.mappedInstitutionId]);
   const hospitalScope = row.sourceColumnLetter === 'BG';
   const exception = Boolean(target && (hospitalScope || target.institutionId !== row.mappedInstitutionId));
-  const mappingChanged = row.targetDepartmentId !== targetId || (row.mappingExceptionReason ?? '') !== reason.trim();
+  const mappingChanged = (row.targetMedicalArrayId ?? row.targetDepartmentId) !== targetId || (row.mappingExceptionReason ?? '') !== reason.trim();
   const textApproved = row.status === 'APPROVED' && row.publishText;
   const ready = row.sourceVerified && Boolean(target) && (!exception || reason.trim().length >= 12);
   const validRatings = row.ratings.filter(r => r.verified && r.normalizedValue !== null);
   async function act(component: ComponentAction['component'], action: ComponentAction['action'], metricId?: string) {
     setBusy(true); setError(''); setMessage('');
     try {
-      const result = await save(row.id, { revision: row.revision, component, action, targetDepartmentId: targetId || null, mappingExceptionReason: reason, reviewed: true,
+      const result = await save(row.id, { revision: row.revision, component, action, targetDepartmentId: target?.kind === 'ARRAY' ? null : targetId || null, targetMedicalArrayId: target?.kind === 'ARRAY' ? targetId : null, mappingExceptionReason: reason, reviewed: true,
         ...(component === 'TEXT' && action === 'PUBLISH' ? { text } : {}), ...(metricId ? { metricId } : {}) });
       setEditing(false);
       setMessage(action === 'HIDE' ? 'האישור לרכיב בוטל.' : (enabled ? 'פורסם.' : 'אושר. יוצג רק לאחר אישור זכויות והפעלת המקור.') + (result.otherComponentReset ? ' השיוך השתנה — הרכיב השני דורש אישור מחדש.' : ''));
@@ -59,9 +59,11 @@ export function SurveyReviewQuickCard({ row, catalog, enabled, save, inspect }: 
         {text !== row.text && <p className="text-xs text-amber-900">השינוי בטקסט יישמר רק בלחיצה על פרסום התגובה.</p>}
         {row.privacyFlags.some(flag => flag !== 'HUMAN_PRIVACY_REVIEW_REQUIRED') && <p className="text-xs leading-6 text-amber-900">זוהה הקשר שעשוי לכלול פרטים מזהים. יש לבדוק ולהסיר אותם לפני פרסום.</p>}
         <div className="rounded-lg bg-brand-50/60 p-3">
-          <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-xs font-semibold text-slate-500">{row.mappingConfirmed && !mappingChanged ? 'מחלקה שנבחרה' : 'המחלקה המוצעת'}</p><p className="mt-1 break-words text-sm font-bold text-brand-900">{target ? `${target.institution.name} · ${target.name}` : 'לא נמצאה התאמה בטוחה — בחרו מחלקה'}</p></div>{target && <button type="button" className="min-h-9 shrink-0 px-2 text-sm font-semibold text-brand-800 underline underline-offset-4" disabled={busy} onClick={() => setChoosing(v => !v)}>{choosing ? 'סגירה' : 'החלפה'}</button>}</div>
+          <div className="flex items-start justify-between gap-3"><div className="min-w-0"><p className="text-xs font-semibold text-slate-500">{row.mappingConfirmed && !mappingChanged ? 'היעד שנבחר' : target?.kind === 'ARRAY' ? 'המערך המוצע' : 'המחלקה המוצעת'}</p><p className="mt-1 break-words text-sm font-bold text-brand-900">{target ? `${target.institution.name} · ${target.name}` : 'לא נמצאה התאמה בטוחה — בחרו מחלקה'}</p></div>{target && <button type="button" className="min-h-9 shrink-0 px-2 text-sm font-semibold text-brand-800 underline underline-offset-4" disabled={busy} onClick={() => setChoosing(v => !v)}>{choosing ? 'סגירה' : 'החלפה'}</button>}</div>
           {(choosing || !target) && <div className="mt-3 space-y-2"><label htmlFor={`${uid}-search`} className="block text-xs">חיפוש מחלקה או בית חולים</label><input id={`${uid}-search`} className={field} value={search} onChange={e => setSearch(e.target.value)} placeholder="הקלידו שם מחלקה או בית חולים" />
             <label htmlFor={`${uid}-target`} className="block text-xs">מחלקה לפרסום</label><select id={`${uid}-target`} className={field} value={targetId} onChange={e => { setTargetId(e.target.value); setChoosing(false); setError(''); }}><option value="">בחרו מחלקה</option>{target && !options.some(d => d.id === target.id) && <option value={target.id}>{target.institution.name} · {target.name}</option>}{options.map(d => <option key={d.id} value={d.id}>{d.institution.name} · {d.name}</option>)}</select><p className="text-xs text-slate-500">עד 60 התאמות. חיפוש ממוקד מציג מחלקות נוספות.</p></div>}
+          {target?.kind === 'ARRAY' && <p className="mt-2 text-xs leading-6 text-slate-600">התגובה תשויך למערך כולו, ללא ייחוס ליחידה א׳ או ב׳.</p>}
+          {!row.mappingConfirmed && <p className="mt-2 text-xs leading-6 text-slate-600">{row.mappingReason}</p>}
           {exception && <label className="mt-3 block text-xs leading-6 text-amber-900">{hospitalScope ? 'תגובה על כלל בית החולים: הסבירו מדוע היא מתאימה למחלקה זו.' : 'המוסד שונה או אינו מזוהה: נדרש נימוק לשיוך.'}<textarea className={`${field} mt-1`} value={reason} maxLength={1000} onChange={e => setReason(e.target.value)} placeholder="נימוק השיוך (12 תווים לפחות)" /></label>}
           {!row.sourceVerified && <p className="mt-2 text-xs text-amber-900">נדרשת הצלבה עם קובץ הסקר לפני אישור.</p>}
         </div>
@@ -74,7 +76,7 @@ export function SurveyReviewQuickCard({ row, catalog, enabled, save, inspect }: 
         <h3 className="text-xs font-bold text-slate-500">ציון המלצה</h3>
         {validRatings.length ? validRatings.map(r => {
           const approved = row.status === 'APPROVED' && row.publishRatings && r.selected;
-          return <div key={r.id} className="space-y-3"><div className="flex items-baseline gap-2"><span className="text-4xl font-black tracking-tight text-brand-900">{r.normalizedValue}</span><span className="text-sm text-slate-500">מתוך 5</span></div><p className="text-sm text-slate-600">{r.label}</p>
+          return <div key={r.id} className="space-y-3"><div className="flex items-baseline gap-2"><span className="text-2xl font-bold tracking-tight text-brand-900">{r.normalizedValue}</span><span className="text-sm text-slate-500">מתוך 5</span></div><p className="text-sm text-slate-600">{r.label}</p>
             <Button className="w-full" variant="secondary" disabled={busy || !ready || (approved && !mappingChanged)} onClick={() => act('RATING', 'PUBLISH', r.id)}>{approved && !mappingChanged ? (enabled ? 'הציון פורסם ✓' : 'הציון אושר ✓') : 'פרסום ציון המלצה'}</Button>
             {approved && <button type="button" disabled={busy} className="min-h-9 text-xs text-slate-600 underline underline-offset-4" onClick={() => act('RATING', 'HIDE', r.id)}>ביטול אישור הציון</button>}
           </div>;

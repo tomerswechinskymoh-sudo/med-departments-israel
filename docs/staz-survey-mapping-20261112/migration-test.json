@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "isolatedBranch": "br-round-wave-ama202vn",
+  "additiveMigrationApplied": true,
+  "bothMigrationsTestedInTemporarySchema": true,
+  "transactionRollbackVerified": true,
+  "initialColdConnectionRetrySucceeded": true
+}

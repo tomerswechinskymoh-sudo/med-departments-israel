@@ -246,12 +246,12 @@ function DataMetricCard({
         />
       </div>
       <p
-        className={`mt-1.5 text-base font-black leading-tight ${hasValue ? "text-ink" : "text-slate-600"}`}
+        className={`profile-metric-value mt-1.5 text-base font-black leading-tight ${hasValue ? "text-ink" : "text-slate-600"}`}
       >
         {hasValue ? value : MISSING_IMPORTED_VALUE}
       </p>
       {caption ? (
-        <p className="mt-1 text-xs font-semibold text-slate-500">{caption}</p>
+        <p className="profile-metric-caption mt-1 text-xs font-normal text-slate-500">{caption}</p>
       ) : null}
     </div>
   );
@@ -1481,7 +1481,7 @@ export default async function DepartmentDetailsPage({
     );
   }
 
-  const surveyExperiences = await publicSurveyExperiences(surveyPrisma, isMedicalArrayProfile ? arrayDepartments.map(d => d.id) : [department.id], session);
+  const surveyExperiences = await publicSurveyExperiences(surveyPrisma, isMedicalArrayProfile ? arrayDepartments.map(d => d.id) : [department.id], session, isMedicalArrayProfile && department.medicalArray ? [department.medicalArray.id] : []);
 
   const metricRecord = (metricKey: string) =>
     profileExternalMetrics.find(
@@ -2427,7 +2427,7 @@ export default async function DepartmentDetailsPage({
               <div className="profile-identity-meta"><span><ProductIcon name="location" />{[department.institution.city, region].filter(Boolean).join(" · ")}</span>
                 {isMedicalArrayProfile && arrayDepartmentCount > 1 && <span>{arrayDepartmentCount} מחלקות במערך</span>}
                 {department.residencyOpenings.length > 0 && <Badge tone="success">משרות פתוחות</Badge>}
-                {department.summary.reviewCount > 0 ? <><RatingStars value={department.summary.overallRecommendation} /><span>{department.summary.reviewCount} ביקורות מאושרות</span></> : <a href="#department-experiences">אין עדיין חוות דעת מאושרות</a>}
+                {department.summary.reviewCount > 0 ? <><RatingStars value={department.summary.overallRecommendation} /><span>{department.summary.reviewCount} ביקורות מאושרות</span></> : <a href="#department-experiences">{surveyExperiences.length ? `${surveyExperiences.length} חוויות מאושרות מסקר הסטאז׳` : "אין עדיין חוות דעת מאושרות"}</a>}
               </div>
             </div>
           </div>

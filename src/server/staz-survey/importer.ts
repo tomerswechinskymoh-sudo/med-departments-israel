@@ -1,11 +1,12 @@
-import { publicVisibleDepartmentWhere } from '@/lib/queries';
+import { publicVisibleDepartmentWhere, isRequiredMedicalArraySpecialty } from '@/lib/queries';
 import type { PrismaClient, Prisma } from '@prisma/client';
 import { randomUUID } from 'node:crypto';
 import { seal, unseal } from '@/server/external-survey/crypto';
 import { SOURCE_ID, SOURCE_TITLE, suggestMapping, type Candidate, type DepartmentOption } from '@/lib/staz-survey/domain';
 import { fingerprint } from './parse';
-export async function readCatalog(db: PrismaClient) {
-  return db.department.findMany({ where: publicVisibleDepartmentWhere, select: { id: true, name: true, slug: true, institutionId: true, institution: { select: { name: true } }, specialty: { select: { name: true } } }, orderBy: [{ institution: { name: 'asc' } }, { name: 'asc' }] });
+export async function readCatalog(db: PrismaClient | Prisma.TransactionClient) {
+  const rows = await db.department.findMany({ where: publicVisibleDepartmentWhere, select: { id: true, name: true, slug: true, institutionId: true, institution: { select: { name: true } }, specialty: { select: { name: true, groupAsArray: true } }, medicalArray: { select: { id: true, name: true, slug: true, hospitalId: true, specialtyId: true } }, specialtyId: true }, orderBy: [{ institution: { name: 'asc' } }, { name: 'asc' }] });
+  return rows.map(d => ({ ...d, medicalArray: d.medicalArray && d.medicalArray.hospitalId === d.institutionId && d.medicalArray.specialtyId === d.specialtyId && (d.specialty.groupAsArray || isRequiredMedicalArraySpecialty(d.specialty.name)) ? d.medicalArray : null }));
 }
 export function dryRun(candidates: Candidate[], catalog: DepartmentOption[], existing: { sourceReviewKey: string; sourceFingerprint: string }[] = []) {
   const known = new Map(existing.map(r => [r.sourceReviewKey, r.sourceFingerprint])); const seen = new Set<string>();
@@ -14,7 +15,8 @@ export function dryRun(candidates: Candidate[], catalog: DepartmentOption[], exi
     if (seen.has(c.sourceReviewKey)) { report.duplicates++; continue; } seen.add(c.sourceReviewKey);
     const old = known.get(c.sourceReviewKey);
     if (old) { report.existing++; if (old !== fingerprint(c)) { report.changed++; report.conflicts.push({ sourceReviewKey: c.sourceReviewKey, reason: 'SOURCE_CHANGED_EXISTING_RECORD_PRESERVED' }); } } else report.inserted++;
-    if (suggestMapping(c, catalog).suggestedDepartmentId) report.suggested++; else report.needsMapping++;
+    const mapping = suggestMapping(c, catalog);
+    if (mapping.suggestedDepartmentId || mapping.suggestedMedicalArrayId) report.suggested++; else report.needsMapping++;
     if (c.ratings.some(r => r.verified && r.normalizedValue !== null)) report.withVerifiedRating++; else report.withoutRating++;
     if (c.sourceColumnLetter === 'BG') report.hospitalScope++;
     if (c.sourceVerified) report.sourceVerified++;

@@ -701,7 +701,7 @@ function EvidenceResults({
                     <h3 className="text-xl font-bold">
                       {r.specialty.specialty}
                     </h3>
-                    <p className="my-4 text-4xl font-black text-brand-800">
+                    <p className="my-2 text-2xl font-bold text-brand-800">
                       <bdi>
                         {r.displayIndex}
                         <span className="text-base font-normal">/100</span>

@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "phase": "migration",
+  "appliedMigrations": 42,
+  "pending": [],
+  "fingerprint": {
+    "Review": [
+      {
+        "n": 7,
+        "digest": "734d51f00f7fbd7c4e5f3af3b0fc59fc"
+      }
+    ],
+    "ReviewSubmission": [
+      {
+        "n": 8,
+        "digest": "eb892aacbff100fca0884430f1bb05ab"
+      }
+    ],
+    "Department": [
+      {
+        "n": 1189,
+        "digest": "ee8b5f135a29d504ff64af6e3caa0817"
+      }
+    ],
+    "DepartmentMetric": [
+      {
+        "n": 13480,
+        "digest": "0dafd28181dea4795f2bd752b9eac459"
+      }
+    ],
+    "DepartmentYearlyMetric": [
+      {
+        "n": 4140,
+        "digest": "e092a8cabc0de9dc632a95e745acc75b"
+      }
+    ],
+    "SpecialtyMetric": [
+      {
+        "n": 644,
+        "digest": "7101a653a77d9446a5dee4a24da427f5"
+      }
+    ],
+    "SpecialtyYearlyMetric": [
+      {
+        "n": 140,
+        "digest": "b5412d9de3cf13c0de5d72276a914cbb"
+      }
+    ],
+    "SurveyReview": [
+      {
+        "n": 3608,
+        "digest": "8175301152fa011561d3e6639b637cce"
+      }
+    ],
+    "SurveyReviewRating": [
+      {
+        "n": 2856,
+        "digest": "c6e283bf6ef9906e2cdfb032311d0aa7"
+      }
+    ],
+    "SurveyReviewSource": [
+      {
+        "n": 1,
+        "digest": "8adbedb79e06fe0244b74d1536601d3a"
+      }
+    ]
+  },
+  "sourceEnabled": true,
+  "rightsConfirmed": true,
+  "counts": [
+    {
+      "_count": 3607,
+      "status": "PENDING_REVIEW"
+    },
+    {
+      "_count": 1,
+      "status": "APPROVED"
+    }
+  ],
+  "publicCheck": {
+    "approvedCount": 1,
+    "visibleCount": 1,
+    "textVisible": true,
+    "ratingsVisible": true,
+    "ratingValue": 5,
+    "manualUnitPreserved": true,
+    "departmentPath": "/departments/מרכז-רפואי-כרמל-general-surgery-כירורגיה-כללית-א"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "scans": [
+    {
+      "label": "favorites",
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "favorites",
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "career-results",
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "career-results",
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "department-fit",
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "department-fit",
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

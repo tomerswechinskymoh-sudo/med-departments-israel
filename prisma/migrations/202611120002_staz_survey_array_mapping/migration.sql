@@ -1,0 +1,10 @@
+BEGIN;
+SET LOCAL lock_timeout = '5s';
+SET LOCAL statement_timeout = '60s';
+ALTER TABLE "SurveyReview" ADD COLUMN "suggestedMedicalArrayId" TEXT, ADD COLUMN "targetMedicalArrayId" TEXT;
+ALTER TABLE "SurveyReview" ADD CONSTRAINT "SurveyReview_targetMedicalArrayId_fkey" FOREIGN KEY ("targetMedicalArrayId") REFERENCES "MedicalArray"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+CREATE INDEX "SurveyReview_targetMedicalArrayId_status_idx" ON "SurveyReview"("targetMedicalArrayId", "status");
+ALTER TABLE "SurveyReview" ADD CONSTRAINT "survey_review_single_target" CHECK ("targetDepartmentId" IS NULL OR "targetMedicalArrayId" IS NULL);
+ALTER TABLE "SurveyReview" DROP CONSTRAINT "survey_review_approval_gate";
+ALTER TABLE "SurveyReview" ADD CONSTRAINT "survey_review_approval_gate" CHECK (status <> 'APPROVED' OR (("targetDepartmentId" IS NOT NULL OR "targetMedicalArrayId" IS NOT NULL) AND "mappingConfirmed" AND "privacyReviewed" AND "sourceVerified" AND ("publishText" OR "publishRatings") AND (NOT "publishText" OR ("approvedPublicText" IS NOT NULL AND length(btrim("approvedPublicText")) > 0))));
+COMMIT;

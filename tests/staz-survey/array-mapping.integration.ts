@@ -1,0 +1,60 @@
+import assert from 'node:assert/strict';
+import { PrismaClient } from '@prisma/client';
+import { writeFile } from 'node:fs/promises';
+import { SOURCE_ID, suggestMapping, type Candidate } from '../../src/lib/staz-survey/domain';
+import { importCandidates, readCatalog } from '../../src/server/staz-survey/importer';
+import { changeSource, moderate, type ComponentAction } from '../../src/server/staz-survey/moderation';
+import { publicSurveyExperiences } from '../../src/server/staz-survey/public';
+const out='docs/staz-survey-mapping-20261112/';
+const privateDir='/private/tmp/hitmachut-staz-mapping-private-20261112/';
+async function main(){
+ assert.equal(new URL(process.env.DATABASE_URL!).hostname,process.env.STAZ_TEST_DATABASE_HOST);
+ assert.ok(process.env.STAZ_TEST_DATABASE_HOST?.startsWith('ep-old-snow-'));
+ const db=new PrismaClient({log:[]});
+ try{
+  const native=()=>db.$queryRaw`SELECT count(*)::int AS n,md5(string_agg(to_jsonb(r)::text,'' ORDER BY id)) AS digest FROM "Review" r`;
+  const before=await native(),catalog=await readCatalog(db);
+  const units=catalog.filter(d=>d.institution.name.includes('כרמל')&&d.specialty.name==='כירורגיה כללית');
+  assert.equal(units.length,2);const array=units[0].medicalArray!;assert.ok(array);assert.ok(units.every(d=>d.medicalArray?.id===array.id));
+  const rowNumber=Math.max(60000,(await db.surveyReview.aggregate({_max:{sourceRowNumber:true}}))._max.sourceRowNumber??0)+1;
+  const question='בדיקת מערך סינתטית '+rowNumber;
+  const candidate:Candidate={sourceReviewKey:`${SOURCE_ID}:R${rowNumber}:CBL`,sourceRowNumber:rowNumber,sourceColumnLetter:'BL',sourceYear:2025,originalHospital:'כרמל',rawHospital:'כרמל',originalDepartmentOrScope:'כירורגיה',rawDepartment:'כירורגיה',sourceQuestion:question,proposedText:'תגובה סינתטית לבדיקה בלבד: הצוות הסביר בסבלנות ואפשר להשתתף וללמוד במהלך הסבב.',originalText:'תגובה סינתטית בלבד',sourceVerified:true,workbookHash:'synthetic-array-mapping',privacyFlags:[],ratings:[{metricCode:'ELECTIVE_RECOMMENDATION',label:'המלצה על סבב אלקטיב',questionCode:'qus_70',question:'שאלה סינתטית',sourceRowNumber:rowNumber,sourceColumn:'BK',rawAnswer:'5',scale:'1–5',normalizedValue:5,rotationContext:'ELECTIVE_1',confidence:'EXACT_SAME_ROW_AND_ROTATION',verified:true}]};
+  assert.equal(suggestMapping(candidate,catalog).suggestedMedicalArrayId,array.id);
+  const actor={userId:'staz-test-admin',name:'מנהל בדיקה סינתטי'};
+  await importCandidates(db,[candidate],'synthetic-array-'+rowNumber,actor.userId);
+  const get=()=>db.surveyReview.findUniqueOrThrow({where:{sourceReviewKey:candidate.sourceReviewKey},include:{ratings:true}});
+  let row=await get();assert.equal(row.suggestedMedicalArrayId,array.id);assert.equal(row.targetDepartmentId,null);
+  const act=async(extra:Partial<ComponentAction>={})=>{const r=await moderate(db,row.id,{revision:row.revision,component:'TEXT',action:'PUBLISH',targetDepartmentId:null,targetMedicalArrayId:array.id,mappingExceptionReason:'',reviewed:true,text:candidate.proposedText,...extra},actor);row=await get();return r;};
+  await assert.rejects(act({targetDepartmentId:units[0].id}),/INVALID_DEPARTMENT/);
+  const foreign=catalog.find(d=>d.medicalArray&&d.institutionId!==units[0].institutionId)!.medicalArray!;
+  await assert.rejects(act({targetMedicalArrayId:foreign.id}),/HOSPITAL_EXCEPTION_REASON_REQUIRED/);
+  await act();assert.equal(row.publishRatings,false);
+  await act({component:'RATING',metricId:row.ratings[0].id});assert.equal(row.publishText,true);assert.equal(row.publishRatings,true);
+  const approved=row;
+  await importCandidates(db,[candidate],'synthetic-array-reimport',actor.userId);assert.deepEqual(await get(),approved);
+  let source=await db.surveyReviewSource.findUniqueOrThrow({where:{id:SOURCE_ID}});
+  source=await changeSource(db,{revision:source.revision,action:'CONFIRM_PERMISSION',confirmed:true,evidence:'Synthetic permission for isolated test only',authorizedByController:true,permitsTextAndRatings:true},actor.userId);
+  const arrayOutput=()=>publicSurveyExperiences(db,units.map(d=>d.id),{role:'admin'},[array.id]);
+  assert.deepEqual(await arrayOutput(),[]);
+  source=await changeSource(db,{revision:source.revision,action:'ENABLE',confirmed:true},actor.userId);
+  let published=(await arrayOutput()).filter(r=>r.id===row.id);assert.equal(published.length,1);assert.equal(published[0].text,candidate.proposedText);assert.equal(published[0].ratings[0].value,5);
+  assert.ok(!(await publicSurveyExperiences(db,[units[0].id],{role:'admin'})).some(r=>r.id===row.id));
+  assert.deepEqual(await publicSurveyExperiences(db,units.map(d=>d.id),null,[array.id]),[]);
+  assert.deepEqual(await publicSurveyExperiences(db,units.map(d=>d.id),{role:'student',emailVerified:false,verificationStatus:'PENDING'},[array.id]),[]);
+  const moved=await act({targetMedicalArrayId:null,targetDepartmentId:units[0].id});assert.equal(moved.otherComponentReset,true);assert.equal(row.publishRatings,false);
+  assert.equal(row.targetDepartmentId,units[0].id);assert.equal(row.targetMedicalArrayId,null);
+  assert.equal((await arrayOutput()).filter(r=>r.id===row.id).length,1);
+  await importCandidates(db,[candidate],'synthetic-unit-preservation',actor.userId);assert.equal((await get()).targetDepartmentId,units[0].id);
+  await changeSource(db,{revision:0,action:'HIDE',confirmed:true},actor.userId);assert.deepEqual(await arrayOutput(),[]);
+  assert.equal((await get()).status,'APPROVED');assert.equal((await get()).publishText,true);
+  source=await db.surveyReviewSource.findUniqueOrThrow({where:{id:SOURCE_ID}});await changeSource(db,{revision:source.revision,action:'ENABLE',confirmed:true},actor.userId);
+  assert.equal((await arrayOutput()).filter(r=>r.id===row.id).length,1);
+  // Reset only this synthetic test row so the browser can exercise the suggested array buttons.
+  await moderate(db,row.id,{revision:row.revision,action:'SAVE',targetDepartmentId:null,targetMedicalArrayId:null,mappingConfirmed:false,mappingExceptionReason:'',approvedPublicText:'',publishText:false,publishRatings:false,selectedMetricIds:[],privacyReviewed:false,adminNotes:''},actor);
+  assert.deepEqual(await native(),before);
+  await writeFile(privateDir+'browser-fixture.json',JSON.stringify({question,reviewId:row.id,arrayId:array.id,departmentId:units[0].id,departmentSlug:units[0].slug,otherDepartmentId:units[1].id,text:candidate.proposedText}),{mode:0o600});
+  const result={passed:true,syntheticOnly:true,arrayTarget:true,independentComponents:true,unitIsolation:true,foreignHospitalRejected:true,viewerGate:true,reimportPreservesDecision:true,manualUnitPreserved:true,sourceHideAndRestore:true,nativeReviewsUnchanged:true};
+  await writeFile(out+'array-integration.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
+ }finally{await db.$disconnect();}
+}
+main().catch(e=>{console.error(e instanceof assert.AssertionError?e.stack:e?.code??e?.message??'ARRAY_TEST_FAILED');process.exitCode=1;});

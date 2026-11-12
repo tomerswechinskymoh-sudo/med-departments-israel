@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "unitAndNativeRegressionTestsPassed": 16,
+  "externalSurveyTestsPassed": 11,
+  "externalSurveyRealFixtureSkipped": 1,
+  "arrayDatabaseIntegrationPassed": true,
+  "transactionalMigrationRollbackPassed": true,
+  "emergencyHideDuringImportLockPassed": true,
+  "browserScans": 21,
+  "axeViolations": 0,
+  "horizontalOverflow": false,
+  "typescriptPassed": true,
+  "productionBuildPassed": true,
+  "productionMigrationApplied": true,
+  "productionDataFingerprintsUnchanged": true,
+  "broaderSuiteLimitation": "privacy-sources integration suite did not execute: its required isolated local Postgres at 127.0.0.1:55439/hitmachut_test was not configured. Two release-guard tests passed. Task-specific permission, source visibility, CSRF, reimport and publication tests ran against the isolated Neon branch."
+}

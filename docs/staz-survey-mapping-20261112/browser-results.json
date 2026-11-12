@@ -1,0 +1,164 @@
+{
+  "passed": true,
+  "syntheticOnly": true,
+  "arrayPreselected": true,
+  "oneClickText": true,
+  "oneClickRating": true,
+  "publicArrayExperienceAndRating": true,
+  "truthfulSurveyHeader": true,
+  "metricSizes": [
+    {
+      "width": 1440,
+      "sizes": [
+        {
+          "height": 127.6875,
+          "value": 22,
+          "caption": 12
+        },
+        {
+          "height": 127.6875,
+          "value": 22,
+          "caption": null
+        },
+        {
+          "height": 127.6875,
+          "value": 22,
+          "caption": null
+        },
+        {
+          "height": 127.6875,
+          "value": 22,
+          "caption": 12
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "sizes": [
+        {
+          "height": 127.6875,
+          "value": 22,
+          "caption": 12
+        },
+        {
+          "height": 127.6875,
+          "value": 22,
+          "caption": null
+        },
+        {
+          "height": 128.6875,
+          "value": 22,
+          "caption": null
+        },
+        {
+          "height": 128.6875,
+          "value": 22,
+          "caption": 12
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "sizes": [
+        {
+          "height": 150,
+          "value": 20,
+          "caption": 12
+        },
+        {
+          "height": 150,
+          "value": 20,
+          "caption": null
+        },
+        {
+          "height": 170.5,
+          "value": 20,
+          "caption": null
+        },
+        {
+          "height": 170.5,
+          "value": 20,
+          "caption": 12
+        }
+      ]
+    }
+  ],
+  "scans": [
+    {
+      "label": "admin-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "admin-375",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "profile-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "profile-768",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "profile-375",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "directory-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "directory-375",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "comparison-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "comparison-375",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "home-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "home-375",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "dashboard-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "dashboard-375",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "admin-1440",
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "label": "admin-375",
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

@@ -109,7 +109,7 @@ test("real source: 365 rows, 28 specialties, 88 authentic tips, exact preservati
 test("idempotency compares canonical JSON, independent of PostgreSQL property order", () => {
   assert.equal(stableJson({ b: [2, { z: 1, a: 2 }], a: 1 }), stableJson({ a: 1, b: [2, { a: 2, z: 1 }] }));
 });
-test("survey boundary preserves moderation, auth, questionnaire, metric calculations and comparison layout", () => {
+test("survey boundary preserves moderation, auth, questionnaire, metric calculations and comparison layout", async () => {
   // Review form accessibility and public source projection are intentionally changed by
   // the 2026-11-10 task; their behavior is covered in tests/privacy-sources.
   // Internship experiences extend the existing tabs in 2026-11-12; native rendering
@@ -117,7 +117,10 @@ test("survey boundary preserves moderation, auth, questionnaire, metric calculat
   const files = [ "src/app/api/reviews/route.ts", "src/app/api/admin/reviews/[reviewId]/route.ts", "src/lib/auth.ts", "src/app/compare/page.tsx", "src/lib/specialty-metrics.ts", "src/lib/career-fit/evidence/scoring.ts", "src/lib/career-fit/evidence/model.ts", "src/components/career-fit/evidence-questionnaire.tsx"];
   for (const file of files) {
     const original = execFileSync("git", ["show", `d55f195b6efa7370bb5ab27f3d500f33355e05a2:${file}`]);
-    const current = execFileSync("git", ["hash-object", file], { encoding: "utf8" }).trim();
+    // The compact-tile task changes only the questionnaire result's typography.
+    // Normalize that exact presentation edit while still checking every behavior byte.
+    const source = (await readFile(file, 'utf8')).replace('className="my-2 text-2xl font-bold text-brand-800"', 'className="my-4 text-4xl font-black text-brand-800"');
+    const current = execFileSync("git", ["hash-object", "--stdin"], { input: source, encoding: "utf8" }).trim();
     const oldHash = execFileSync("git", ["hash-object", "--stdin"], { input: original, encoding: "utf8" }).trim();
     assert.equal(current, oldHash, file);
   }

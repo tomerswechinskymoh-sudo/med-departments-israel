@@ -10,10 +10,10 @@ export function StatCard({
   helper?: string;
 }) {
   return (
-    <Card className="rounded-[1.75rem] border-brand-100/80 bg-gradient-to-b from-white to-brand-50/60">
+    <Card className="stat-card border-brand-100/80 bg-gradient-to-b from-white to-brand-50/60">
       <p className="text-sm font-semibold text-slate-500">{label}</p>
-      <p className="mt-2 text-2xl font-bold tracking-tight text-brand-900 md:text-3xl">{value}</p>
-      {helper ? <p className="mt-2 text-xs leading-6 text-slate-500">{helper}</p> : null}
+      <p className="stat-card-value font-bold tracking-tight text-brand-900">{value}</p>
+      {helper ? <p className="mt-1 text-xs leading-5 text-slate-500">{helper}</p> : null}
     </Card>
   );
 }

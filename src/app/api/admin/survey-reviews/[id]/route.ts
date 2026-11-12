@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { SOURCE_ID, type Candidate } from '@/lib/staz-survey/domain';
+import { SOURCE_ID, suggestMapping, type Candidate } from '@/lib/staz-survey/domain';
 import { unseal } from '@/server/external-survey/crypto';
+import { readCatalog } from '@/server/staz-survey/importer';
 import { moderate } from '@/server/staz-survey/moderation';
 import { adminRequest, fail, noStore, invalidateSurvey, limitedJson } from '@/server/staz-survey/http';
 export const dynamic = 'force-dynamic';
@@ -13,7 +14,7 @@ export async function GET(request: Request, context: { params: Promise<{ id: str
     const { rawEncrypted, ...safe } = row;
     const original = unseal<Candidate>(rawEncrypted, row.sourceReviewKey);
     const audit = await prisma.auditLog.findMany({ where: { entityType: 'SurveyReview', entityId: id }, orderBy: { createdAt: 'desc' }, take: 20, select: { id: true, action: true, createdAt: true, metadata: true, actor: { select: { fullName: true } } } });
-    return NextResponse.json({ ...safe, text: row.approvedPublicText ?? original.proposedText, privacyFlags: original.privacyFlags, original, audit }, { headers: noStore });
+    return NextResponse.json({ ...safe, ...(!row.mappingConfirmed ? suggestMapping(original, await readCatalog(prisma)) : {}), text: row.approvedPublicText ?? original.proposedText, privacyFlags: original.privacyFlags, original, audit }, { headers: noStore });
   } catch (e) { return fail(e); }
 }
 export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {

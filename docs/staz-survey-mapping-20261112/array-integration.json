@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "syntheticOnly": true,
+  "arrayTarget": true,
+  "independentComponents": true,
+  "unitIsolation": true,
+  "foreignHospitalRejected": true,
+  "viewerGate": true,
+  "reimportPreservesDecision": true,
+  "manualUnitPreserved": true,
+  "sourceHideAndRestore": true,
+  "nativeReviewsUnchanged": true
+}

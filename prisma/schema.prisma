@@ -748,6 +748,7 @@ model OpenAlexAliasMapping {
 }
 
 model MedicalArray {
+  surveyReviews             SurveyReview[]
   id                        String                     @id @default(cuid())
   hospitalId                String                     @map("hospital_id")
   specialtyId               String                     @map("specialty_id")
@@ -2334,10 +2335,12 @@ model SurveyReview {
   sourceVerified            Boolean              @default(false)
   workbookHash              String?
   suggestedDepartmentId     String?
+  suggestedMedicalArrayId   String?
   mappingConfidence         String
   mappingReason             String
   mappedInstitutionId       String?
   targetDepartmentId        String?
+  targetMedicalArrayId      String?
   mappingConfirmed          Boolean              @default(false)
   mappingExceptionReason    String?
   status                    SurveyReviewStatus   @default(PENDING_REVIEW)
@@ -2355,10 +2358,12 @@ model SurveyReview {
   source                    SurveyReviewSource   @relation(fields: [sourceId], references: [id], onDelete: Restrict)
   batch                     SurveyReviewImport   @relation(fields: [batchId], references: [id], onDelete: Restrict)
   department                Department?          @relation(fields: [targetDepartmentId], references: [id], onDelete: Restrict)
+  medicalArray              MedicalArray?        @relation(fields: [targetMedicalArrayId], references: [id], onDelete: Restrict)
   ratings                   SurveyReviewRating[]
 
   @@index([sourceId, status])
   @@index([targetDepartmentId, status])
+  @@index([targetMedicalArrayId, status])
   @@index([originalHospital, originalDepartmentOrScope])
 }
 
