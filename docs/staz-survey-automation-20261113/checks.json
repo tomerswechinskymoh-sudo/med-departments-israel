@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "unitAndNativeRegressionTestsPassed": 26,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "diffCheckPassed": true,
+  "isolatedDatabaseIntegrationPassed": true,
+  "desktopAndMobileAccessibilityPassed": true,
+  "emergencyHideWhileImportLockHeldPassed": true,
+  "sourceToggleOneClickVerified": true
+}

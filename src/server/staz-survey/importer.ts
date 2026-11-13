@@ -1,13 +1,11 @@
-import { publicVisibleDepartmentWhere, isRequiredMedicalArraySpecialty } from '@/lib/queries';
+import { readCatalog } from './catalog';
+import { applyAutomaticReviews } from './automation';
 import type { PrismaClient, Prisma } from '@prisma/client';
 import { randomUUID } from 'node:crypto';
 import { seal, unseal } from '@/server/external-survey/crypto';
-import { SOURCE_ID, SOURCE_TITLE, suggestMapping, effectiveCandidate, type Candidate, type DepartmentOption } from '@/lib/staz-survey/domain';
+import { SOURCE_ID, SOURCE_TITLE, sourceAllowsPublication, suggestMapping, effectiveCandidate, type Candidate, type DepartmentOption } from '@/lib/staz-survey/domain';
 import { fingerprint } from './parse';
-export async function readCatalog(db: PrismaClient | Prisma.TransactionClient) {
-  const rows = await db.department.findMany({ where: publicVisibleDepartmentWhere, select: { id: true, name: true, slug: true, institutionId: true, institution: { select: { name: true } }, specialty: { select: { name: true, groupAsArray: true } }, medicalArray: { select: { id: true, name: true, slug: true, hospitalId: true, specialtyId: true } }, specialtyId: true }, orderBy: [{ institution: { name: 'asc' } }, { name: 'asc' }] });
-  return rows.map(d => ({ ...d, medicalArray: d.medicalArray && d.medicalArray.hospitalId === d.institutionId && d.medicalArray.specialtyId === d.specialtyId && (d.specialty.groupAsArray || isRequiredMedicalArraySpecialty(d.specialty.name)) ? d.medicalArray : null }));
-}
+export { readCatalog } from './catalog';
 export function dryRun(candidates: Candidate[], catalog: DepartmentOption[], existing: { sourceReviewKey: string; sourceFingerprint: string }[] = []) {
   const known = new Map(existing.map(r => [r.sourceReviewKey, r.sourceFingerprint])); const seen = new Set<string>();
   const report = { read: candidates.length, inserted: 0, existing: 0, duplicates: 0, changed: 0, needsMapping: 0, suggested: 0, withVerifiedRating: 0, withoutRating: 0, hospitalScope: 0, sourceVerified: 0, errors: 0, decisionsPreserved: true, conflicts: [] as { sourceReviewKey: string; reason: string }[] };
@@ -67,6 +65,8 @@ export async function importCandidates(db: PrismaClient, candidates: Candidate[]
     }
     for (let i = 0; i < reviews.length; i += 200) await tx.surveyReview.createMany({ data: reviews.slice(i, i + 200) });
     for (let i = 0; i < ratings.length; i += 300) await tx.surveyReviewRating.createMany({ data: ratings.slice(i, i + 300) });
+    const source = await tx.surveyReviewSource.findUniqueOrThrow({ where: { id: SOURCE_ID } });
+    if (source.autoApprovalEnabled && sourceAllowsPublication({ ...source, isPublicEnabled: true }) && reviews.length) await applyAutomaticReviews(tx, { actorUserId, catalog, sourceKeys: reviews.map(r => r.sourceReviewKey), execute: true });
     await tx.auditLog.create({ data: { actorUserId, action: 'STAZ_SURVEY_IMPORTED', entityType: 'SurveyReviewImport', entityId: batch.id, metadata: { csvHash, inserted: reviews.length, existing: report.existing, changed: report.changed, enriched } } });
     return { batchId: batch.id, ...report, inserted: reviews.length, enriched };
   }, { timeout: 120000, maxWait: 15000 });

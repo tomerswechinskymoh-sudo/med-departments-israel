@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "migration": "202611130001_staz_survey_automation",
+  "migrationsApplied": 43,
+  "additiveOnly": true,
+  "snapshot": "snap-orange-shadow-amjk9vtj",
+  "snapshotExpiresAt": "2026-11-20T12:00:00Z"
+}

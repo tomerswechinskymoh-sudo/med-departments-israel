@@ -2299,6 +2299,7 @@ model SurveyReviewSource {
   permissionConfirmedBy String?
   permissionEvidence    String?
   revision              Int                  @default(0)
+  autoApprovalEnabled   Boolean              @default(false)
   createdAt             DateTime             @default(now())
   updatedAt             DateTime             @updatedAt
   reviews               SurveyReview[]
@@ -2349,6 +2350,9 @@ model SurveyReview {
   publishRatings            Boolean              @default(false)
   privacyReviewed           Boolean              @default(false)
   adminNotes                String?
+  automationCategory        String?
+  automationReason          String?
+  automationVersion         String?
   reviewedByUserId          String?
   reviewedByName            String?
   reviewedAt                DateTime?
@@ -2362,6 +2366,7 @@ model SurveyReview {
   ratings                   SurveyReviewRating[]
 
   @@index([sourceId, status])
+  @@index([sourceId, automationCategory])
   @@index([targetDepartmentId, status])
   @@index([targetMedicalArrayId, status])
   @@index([originalHospital, originalDepartmentOrScope])

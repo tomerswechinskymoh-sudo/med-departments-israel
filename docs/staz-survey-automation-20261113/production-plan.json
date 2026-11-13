@@ -1,0 +1,22 @@
+{
+  "version": "2026-11-13-v1",
+  "execute": false,
+  "reviewed": 3608,
+  "changed": 3608,
+  "alreadyCurrent": 0,
+  "manualDecisionsPreserved": 59,
+  "approvedText": 1648,
+  "approvedRatings": 1666,
+  "newApprovedReviews": 2101,
+  "categories": {
+    "MANUAL": 59,
+    "EXCLUDED": 892,
+    "MAPPING": 233,
+    "UNCERTAIN": 670,
+    "POSITIVE": 1648,
+    "ASSOCIATION": 98,
+    "PRIVACY": 7,
+    "NON_POSITIVE": 1
+  },
+  "sourceEnabled": false
+}

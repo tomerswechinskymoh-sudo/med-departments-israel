@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "recordsChecked": 3608,
+  "ratingsChecked": 2856,
+  "automaticText": 1648,
+  "automaticRatings": 1666,
+  "manualDecisionsPreserved": 59,
+  "categories": {
+    "MANUAL": 59,
+    "EXCLUDED": 892,
+    "MAPPING": 233,
+    "UNCERTAIN": 670,
+    "POSITIVE": 1648,
+    "ASSOCIATION": 98,
+    "PRIVACY": 7,
+    "NON_POSITIVE": 1
+  },
+  "approved": 2160,
+  "approvedText": 1707,
+  "approvedRatings": 1717,
+  "sourceEnabled": false,
+  "publiclyEligible": 0,
+  "uncertainQueue": 670,
+  "sourceEvidencePreserved": true,
+  "ratingsMatchSameRowElective": true,
+  "ratingsAtLeastThreeForAutomation": true
+}

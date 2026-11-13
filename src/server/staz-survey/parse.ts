@@ -3,6 +3,7 @@ import ExcelJS from 'exceljs';
 import { readFile } from 'node:fs/promises';
 import { SOURCE_ID, CONTEXT, clean, parseRating, privacyFlags, type Candidate, type SourceColumn, type ElectiveEvidence } from '@/lib/staz-survey/domain';
 import { applyReviewedElectiveCorrection } from './association';
+import { classifySourceEncoding } from './source-encoding';
 export const hash = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
 export const MAX_CSV_BYTES = 3 * 1024 * 1024;
 // Bounded RFC 4180 parser, including quoted commas, newlines, BOM and escaped quotes.
@@ -56,6 +57,7 @@ export async function verifyWorkbook(candidates: Candidate[], path: string): Pro
   };
   for (const [col, code] of Object.entries({ B: 'compute_0002', BL: 'qus_118', BK: 'qus_70', BP: 'qus_117', BO: 'qus_73', BG: 'qus_66', CT: 'qus_103' })) if (cellText(1, col) !== code) throw new Error('WORKBOOK_QUESTION_MISMATCH');
   const fileHash = hash(bytes);
+  const columnCount = sheet.columnCount, profiles = new Map<number, Candidate['sourceEncodingProfile']>();
   return candidates.map(c => {
     const context = CONTEXT[c.sourceColumnLetter], row = c.sourceRowNumber;
     const originalText = cellText(row, c.sourceColumnLetter), hospital = cellText(row, context.hospital), department = context.department ? cellText(row, context.department) : '';
@@ -66,7 +68,13 @@ export async function verifyWorkbook(candidates: Candidate[], path: string): Pro
       return { hospital: cellText(row, ctx.hospital), department: cellText(row, ctx.department), text: cellText(row, col),
         rating: { metricCode: 'ELECTIVE_RECOMMENDATION', label: 'המלצה על סבב אלקטיב', questionCode: ctx.questionCode, question: cellText(2, ctx.rating), sourceRowNumber: row, sourceColumn: ctx.rating, rawAnswer: answer, scale: '1–5; גבוה = המלצה רבה יותר', normalizedValue: parseRating(answer), rotationContext: ctx.rotation, confidence: 'EXACT_SAME_ROW_AND_ROTATION', verified: parseRating(answer) !== null } };
     };
+    if (!profiles.has(row)) {
+      const cells: Record<string, string> = {};
+      for (let n = 1; n <= columnCount; n++) { const column = sheet.getCell(row, n).address.replace(/\d+$/, ''); cells[column] = cellText(row, column); }
+      profiles.set(row, classifySourceEncoding(cells).profile);
+    }
     return applyReviewedElectiveCorrection({ ...c, originalText, sourceVerified: true, workbookHash: fileHash,
+      sourceEncodingProfile: profiles.get(row),
       ratings: context.rating ? [elective(c.sourceColumnLetter as 'BL' | 'BP').rating] : [],
       ...(c.sourceColumnLetter !== 'BG' ? { electives: { ELECTIVE_1: elective('BL'), ELECTIVE_2: elective('BP') } } : {}) });
   });

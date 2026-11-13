@@ -19,6 +19,7 @@ export type Candidate = {
   // evidence-bound interpretation of the two electives from this same source row.
   electives?: Record<ElectiveRotation, ElectiveEvidence>;
   electiveCorrection?: ElectiveCorrection;
+  sourceEncodingProfile?: 'MODERN' | 'LEGACY' | 'UNKNOWN' | 'CONFLICT';
 };
 export function effectiveCandidate(row: Candidate): Candidate {
   const correction = row.electiveCorrection;

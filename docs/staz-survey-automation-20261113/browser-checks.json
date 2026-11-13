@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "defaultOnlyUncertain": true,
+  "anonymousAndStudentDenied": true,
+  "foreignOriginDenied": true,
+  "oneRequestPerToggle": true,
+  "noConfirmationDialog": true,
+  "hideAndRestorePreserveApprovals": true,
+  "manualSkipPreservesRating": true,
+  "desktopAndMobile": [
+    {
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    }
+  ]
+}

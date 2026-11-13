@@ -13,6 +13,8 @@ export type SurveyQueueRow = {
   text: string; privacyFlags: string[]; publishText: boolean; publishRatings: boolean;
   ratings: (RatingEvidence & { id: string; selected: boolean })[];
   electiveCorrection?: ElectiveCorrection | null;
+  automationCategory?: string | null;
+  automationReason?: string | null;
 };
 const field = 'w-full min-w-0 rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-100';
 
@@ -72,7 +74,9 @@ export function SurveyReviewQuickCard({ row, catalog, enabled, save, inspect }: 
         <div className="flex flex-wrap items-center gap-3">
           <Button disabled={busy || !ready || !text.trim() || (textApproved && !mappingChanged && text === row.text)} onClick={() => act('TEXT', 'PUBLISH')}>{textApproved && !mappingChanged && text === row.text ? (enabled ? 'התגובה פורסמה ✓' : 'התגובה אושרה ✓') : textApproved ? 'פרסום התגובה המעודכנת' : 'פרסום תגובה'}</Button>
           {textApproved && <button type="button" disabled={busy} className="min-h-11 px-2 text-xs text-slate-600 underline underline-offset-4" onClick={() => act('TEXT', 'HIDE')}>ביטול אישור התגובה</button>}
+          {!textApproved && row.automationCategory === 'UNCERTAIN' && <Button variant="secondary" disabled={busy} onClick={() => act('TEXT','HIDE')}>לא לפרסם את הטקסט</Button>}
         </div>
+        {row.automationReason && !textApproved && <p className="text-xs leading-6 text-slate-600">{row.automationReason}</p>}
       </div>
       <div className="min-w-0 space-y-4 border-t border-slate-100 pt-4 lg:border-r lg:border-t-0 lg:pr-6 lg:pt-0">
         <h3 className="text-xs font-bold text-slate-500">ציון המלצה</h3>

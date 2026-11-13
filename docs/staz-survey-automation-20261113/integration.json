@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "planned": {
+    "MANUAL": 59,
+    "EXCLUDED": 892,
+    "MAPPING": 233,
+    "UNCERTAIN": 670,
+    "POSITIVE": 1648,
+    "ASSOCIATION": 98,
+    "PRIVACY": 7,
+    "NON_POSITIVE": 1
+  },
+  "approvedText": 1648,
+  "approvedRatings": 1666,
+  "newApprovedReviews": 2101,
+  "manualDecisionsPreserved": 59,
+  "recordsChecked": 3608,
+  "ratingEvidenceUnchanged": true,
+  "textAndRatingsIndependent": true,
+  "defaultQueueOnlyUncertainText": true,
+  "hideRestoresAllApprovals": true,
+  "publicCountWhenEnabled": 2160,
+  "repeatedImportAndAutomationIdempotent": true,
+  "manualTextRejectionPreservesRating": true,
+  "unverifiedCsvRemainsPending": true,
+  "nativeDataUnchanged": true
+}
