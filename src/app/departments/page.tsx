@@ -5,6 +5,7 @@ export const metadata = {
 import { PageIntro } from "@/components/ui/page-intro";
 
 import { getSession } from "@/lib/auth";
+import { getExperienceDirectoryData } from "@/server/staz-survey/directory";
 import { getSourceVisibility } from "@/lib/server/source-visibility";
 import { departmentFilterSchema } from "@/lib/validation";
 import { DepartmentCard } from "@/components/departments/department-card";
@@ -21,7 +22,6 @@ import { ExperienceCta } from "@/components/experience/experience-cta";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageShell } from "@/components/layout/page-shell";
 import {
-  getDirectoryData,
   getDirectoryFilters,
   getDepartmentOptions,
   getSpecialtyDashboardMetrics,
@@ -139,7 +139,7 @@ export default async function DepartmentsPage({
   };
 
   const [departments, specialtyDashboard, sourceVisibility] = await Promise.all([
-    getDirectoryData(effectiveFilters, session?.userId),
+    getExperienceDirectoryData(effectiveFilters, session),
     getSpecialtyDashboardMetrics(selectedSpecialtyId),
     getSourceVisibility(),
   ]);

@@ -1693,6 +1693,8 @@ async function getPublicDirectoryData(
       specialtyId: department.specialty.id,
       medicalArrayId: department.medicalArray?.id ?? null,
       medicalArraySlug: department.medicalArray?.slug ?? null,
+      experienceDepartmentIds: [department.id],
+      experienceMedicalArrayIds: [] as string[],
       name: formatDepartmentDisplayName(department.name, department.specialty.name),
       institutionName: publicInstitution.name,
       institutionSlug: publicInstitution.slug,
@@ -1834,6 +1836,8 @@ async function getPublicDirectoryData(
         specialtyName: arraySpecialtyName,
         shortSummary: `מערך ${arraySpecialtyName} הכולל ${departmentCountText} בבית החולים ${first.institutionName}.`,
         reviewCount: totalReviewCount,
+        experienceDepartmentIds: group.map((item) => item.id),
+        experienceMedicalArrayIds: Array.from(new Set(group.flatMap((item) => item.medicalArrayId ? [item.medicalArrayId] : []))),
         averageOverall: weightedOverall,
         teachingQuality: average(group.map((item) => item.teachingQuality)),
         lifestyleBalance: average(group.map((item) => item.lifestyleBalance)),
@@ -1892,7 +1896,7 @@ async function getPublicDirectoryData(
 }
 
 const getPublicDirectoryDataCached = publicDataCache(
-    "getPublicDirectoryData",
+    "getPublicDirectoryData-experience-targets-v2",
     getPublicDirectoryData,
     [
       PUBLIC_DATA_CACHE_TAGS.departments,

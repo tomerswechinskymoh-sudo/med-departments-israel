@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "rambamCountAndRatingVisible": true,
+  "profileAnchorWorks": true,
+  "immediateHideRestore": true,
+  "scans": [
+    {
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

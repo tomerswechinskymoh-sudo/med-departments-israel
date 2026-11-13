@@ -28,6 +28,10 @@ AUTO_APPROVAL='--auto-approval' in sys.argv
 if AUTO_APPROVAL:
  OUT=ROOT/'docs/staz-survey-automation-20261113'
  BASE='874aa321052f9dbcd767c3b4a8fc60337ca5322d';OLD='dpl_97eLwVJwc8UmzBGSH4Mz1xQYWHRV'
+DIRECTORY_REVIEW='--directory-review' in sys.argv
+if DIRECTORY_REVIEW:
+ OUT=ROOT/'docs/staz-survey-directory-20261113'
+ BASE='c2dea0eaa756aadfe340b6df0fefde7e223aa09c';OLD='dpl_EawEe5GQh6VhF7w3uG2ycxHw2A9j'
 def run(args,**kw):return subprocess.check_output(args,cwd=ROOT,text=True,**kw).strip()
 def git(*args):return run(['git',*args])
 def write(n,v):(OUT/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
@@ -55,7 +59,7 @@ if phase=='preflight':
 elif phase=='deploy':
  s=snapshot();assert s['main']==BASE and s['project']==read('preflight.json')['project'];write('immediate-predeploy.json',s)
  assert read('checks.json')['passed']
- if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL:assert read('integration.json')['passed']
+ if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL or DIRECTORY_REVIEW:assert read('integration.json')['passed']
  elif not COPY_REVIEW:assert read('production-migration.json' if MAPPING_REVIEW else 'production-baseline.json' if QUICK_REVIEW else 'production-import.json')['passed']
  assert not git('diff','HEAD','--name-only');commit=git('rev-parse','HEAD');assert git('rev-parse','HEAD^')==BASE
  target=Path('/private/tmp/hitmachut-staz-release-'+commit[:12]);target.mkdir(exist_ok=False)

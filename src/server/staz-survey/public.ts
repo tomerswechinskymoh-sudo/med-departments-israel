@@ -12,8 +12,12 @@ export const publicSurveyWhere = (departmentIds?: string[], medicalArrayIds?: st
   ] }],
   OR: [{ publishText: true, approvedPublicText: { not: null } }, { publishRatings: true, ratings: { some: { selected: true, verified: true, normalizedValue: { not: null } } } }]
 });
-export async function publicSurveyExperiences(db: PrismaClient, departmentIds: string[], viewer: { role: string; emailVerified?: boolean; verificationStatus?: string } | null, medicalArrayIds: string[] = []): Promise<PublicSurveyExperience[]> {
-  if (!viewer || !(viewer.role === 'admin' || (viewer.emailVerified && viewer.verificationStatus === 'VERIFIED')) || (!departmentIds.length && !medicalArrayIds.length)) return [];
+export type SurveyViewer = { role: string; emailVerified?: boolean; verificationStatus?: string } | null;
+export function canViewSurveyExperiences(viewer: SurveyViewer) {
+  return Boolean(viewer && (viewer.role === 'admin' || (viewer.emailVerified && viewer.verificationStatus === 'VERIFIED')));
+}
+export async function publicSurveyExperiences(db: PrismaClient, departmentIds: string[], viewer: SurveyViewer, medicalArrayIds: string[] = []): Promise<PublicSurveyExperience[]> {
+  if (!canViewSurveyExperiences(viewer) || (!departmentIds.length && !medicalArrayIds.length)) return [];
   const rows = await db.surveyReview.findMany({ where: publicSurveyWhere(departmentIds, medicalArrayIds), select: {
     id: true, sourceYear: true, sourceColumnLetter: true, publishText: true, approvedPublicText: true, publishRatings: true,
     ratings: { where: { selected: true, verified: true, normalizedValue: { not: null } }, select: { metricCode: true, label: true, normalizedValue: true } }
