@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "stazTestsPassed": 35,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "diffCheckPassed": true,
+  "isolatedIntegrationPassed": true,
+  "screenWidths": [
+    1440,
+    768,
+    375
+  ],
+  "accessibilityViolations": 0,
+  "textQuotesTraversed": 13,
+  "personalRatingAndUnratedFiltersPassed": true,
+  "fullLongTextExpandable": true,
+  "sourceHideRestorePassed": true,
+  "originalRecordsUnchanged": true,
+  "testSourceRestoredDisabled": true,
+  "temporarySyntheticRowsRemaining": 0
+}

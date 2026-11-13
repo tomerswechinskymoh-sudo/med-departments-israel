@@ -36,6 +36,10 @@ PRESENTATION_REVIEW='--presentation-review' in sys.argv
 if PRESENTATION_REVIEW:
  OUT=ROOT/'docs/staz-survey-presentation-20261113'
  BASE='c272a67102cd9b67b1970003f27f1f32ee8ad145';OLD='dpl_AXgyNJZawNnXPbSGRruAtexnjcCr'
+CAROUSEL_REVIEW='--carousel-review' in sys.argv
+if CAROUSEL_REVIEW:
+ OUT=ROOT/'docs/staz-survey-carousel-20261113'
+ BASE='9aa3eb537398d50075e2d50a9de9d669b1c1e02f';OLD='dpl_6QbPi822n1hYX4DWmhpfxrkkDWRb'
 def run(args,**kw):return subprocess.check_output(args,cwd=ROOT,text=True,**kw).strip()
 def git(*args):return run(['git',*args])
 def write(n,v):(OUT/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
@@ -63,7 +67,7 @@ if phase=='preflight':
 elif phase=='deploy':
  s=snapshot();assert s['main']==BASE and s['project']==read('preflight.json')['project'];write('immediate-predeploy.json',s)
  assert read('checks.json')['passed']
- if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL or DIRECTORY_REVIEW or PRESENTATION_REVIEW:assert read('integration.json')['passed']
+ if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL or DIRECTORY_REVIEW or PRESENTATION_REVIEW or CAROUSEL_REVIEW:assert read('integration.json')['passed']
  elif not COPY_REVIEW:assert read('production-migration.json' if MAPPING_REVIEW else 'production-baseline.json' if QUICK_REVIEW else 'production-import.json')['passed']
  assert not git('diff','HEAD','--name-only');commit=git('rev-parse','HEAD');assert git('rev-parse','HEAD^')==BASE
  target=Path('/private/tmp/hitmachut-staz-release-'+commit[:12]);target.mkdir(exist_ok=False)

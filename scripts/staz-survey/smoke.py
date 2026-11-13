@@ -10,6 +10,7 @@ if '--encoding-repair' in sys.argv:OUT=ROOT/'docs/staz-survey-encoding-20261112'
 if '--auto-approval' in sys.argv:OUT=ROOT/'docs/staz-survey-automation-20261113'
 if '--directory-review' in sys.argv:OUT=ROOT/'docs/staz-survey-directory-20261113'
 if '--presentation-review' in sys.argv:OUT=ROOT/'docs/staz-survey-presentation-20261113'
+if '--carousel-review' in sys.argv:OUT=ROOT/'docs/staz-survey-carousel-20261113'
 TEAM='team_Jj2tczP8vf4XPr74gxyasW5A';PROJECT='prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE'
 phase=sys.argv[1];assert phase in ['staged','live']
 d=json.loads((OUT/'deployment.json').read_text());headers={'User-Agent':'Hitmachut-Staz-Authorized-Release-Smoke'}
@@ -37,4 +38,5 @@ if '--copy-review' in sys.argv:report['scope']='Read-only public routes and admi
 if '--auto-approval' in sys.argv:report['scope']='Read-only public routes and admin access gates. Automatic approvals, independent ratings, manual decisions and source hide/restore tested on isolated database. Public enablement explicitly authorized by user.'
 if '--directory-review' in sys.argv:report['scope']='Read-only route and access checks. Directory counts, independent elective ratings and immediate hide/restore tested on isolated database. Production approvals, associations and publication settings unchanged.'
 if '--presentation-review' in sys.argv:report['scope']='Read-only routes and access gates. User-authorized combined recommendation averages and compact layouts verified on isolated data at desktop and mobile sizes. Production records and source settings unchanged.'
+if '--carousel-review' in sys.argv:report['scope']='Read-only routes and access gates. Single-quote carousel, personal rating filters, keyboard controls, long text and source hide/restore verified on isolated data. Production approval decisions and source settings unchanged.'
 (OUT/(phase+'-smoke.json')).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');assert report['passed']

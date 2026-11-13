@@ -1,0 +1,209 @@
+{
+  "timeUtc": "2026-11-13T08:03:48.863507+00:00",
+  "main": "9aa3eb537398d50075e2d50a9de9d669b1c1e02f",
+  "project": {
+    "id": "prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE",
+    "accountId": "team_Jj2tczP8vf4XPr74gxyasW5A",
+    "name": "project-2i9uv",
+    "framework": "nextjs",
+    "nodeVersion": "24.x",
+    "buildCommand": null,
+    "installCommand": null,
+    "rootDirectory": null,
+    "outputDirectory": null,
+    "ssoProtection": {
+      "deploymentType": "all_except_custom_domains"
+    },
+    "commandForIgnoringBuildStep": "case $VERCEL_GIT_COMMIT_SHA in ba72c3cb5d78272317d0055722f1997b99649841|874aa321052f9dbcd767c3b4a8fc60337ca5322d|c2dea0eaa756aadfe340b6df0fefde7e223aa09c|c272a67102cd9b67b1970003f27f1f32ee8ad145|9aa3eb537398d50075e2d50a9de9d669b1c1e02f);;*)exit 1;;esac",
+    "autoExposeSystemEnvs": true,
+    "autoAssignCustomDomains": true,
+    "crons": {
+      "enabledAt": 1776758221939,
+      "disabledAt": null,
+      "updatedAt": 1794555848457,
+      "deploymentId": "dpl_6QbPi822n1hYX4DWmhpfxrkkDWRb",
+      "definitions": [
+        {
+          "host": "project-2i9uv-abxv05jnp-tomerswechinskymoh-sudos-projects.vercel.app",
+          "path": "/api/internal/clinical-rotations/cleanup",
+          "schedule": "0 2 * * *"
+        }
+      ]
+    },
+    "productionBranch": "main",
+    "environmentMetadata": [
+      {
+        "key": "AUTH_SECRET",
+        "target": [
+          "preview",
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1776757518283,
+        "updatedAt": 1776757518283
+      },
+      {
+        "key": "DIRECT_URL",
+        "target": [
+          "production",
+          "preview"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1776758137595,
+        "updatedAt": 1781789064108
+      },
+      {
+        "key": "APP_URL",
+        "target": [
+          "preview",
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1779511557726,
+        "updatedAt": 1779511557726
+      },
+      {
+        "key": "NEXTAUTH_URL",
+        "target": [
+          "preview",
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1779511578986,
+        "updatedAt": 1779511578986
+      },
+      {
+        "key": "EMAIL_FROM",
+        "target": [
+          "preview",
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1779511633079,
+        "updatedAt": 1779511633079
+      },
+      {
+        "key": "RESEND_API_KEY",
+        "target": [
+          "preview",
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1779511874988,
+        "updatedAt": 1779511874988
+      },
+      {
+        "key": "DATABASE_URL",
+        "target": [
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1780124588952,
+        "updatedAt": 1781789077728
+      },
+      {
+        "key": "FIRECRAWL_API_KEY",
+        "target": [
+          "preview",
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1780508165354,
+        "updatedAt": 1780508165354
+      },
+      {
+        "key": "SCRAPER_PROVIDER",
+        "target": [
+          "preview",
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1780508183141,
+        "updatedAt": 1780508183141
+      },
+      {
+        "key": "ENABLE_STUDENT_ELECTIVES_PREVIEW",
+        "target": [
+          "preview",
+          "production"
+        ],
+        "type": "encrypted",
+        "gitBranch": null,
+        "createdAt": 1782965817408,
+        "updatedAt": 1782965817408
+      },
+      {
+        "key": "ENABLE_ELECTIVE_DEPARTMENT_PORTAL",
+        "target": [
+          "preview",
+          "production"
+        ],
+        "type": "encrypted",
+        "gitBranch": null,
+        "createdAt": 1782965831893,
+        "updatedAt": 1782965831893
+      },
+      {
+        "key": "CLINICAL_ROTATIONS_ID_HMAC_SECRET",
+        "target": [
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1786340823739,
+        "updatedAt": 1786340823739
+      },
+      {
+        "key": "CLINICAL_ROTATIONS_CLEANUP_SECRET",
+        "target": [
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1786340926184,
+        "updatedAt": 1786439247816
+      },
+      {
+        "key": "CRON_SECRET",
+        "target": [
+          "production"
+        ],
+        "type": "sensitive",
+        "gitBranch": null,
+        "createdAt": 1786439250338,
+        "updatedAt": 1786439250338
+      },
+      {
+        "key": "EXTERNAL_SURVEY_ENCRYPTION_KEY",
+        "target": [
+          "production"
+        ],
+        "type": "encrypted",
+        "gitBranch": null,
+        "createdAt": 1793632217053,
+        "updatedAt": 1793632217053
+      }
+    ]
+  },
+  "aliases": [
+    {
+      "alias": "hitmachut.org",
+      "deploymentId": "dpl_6QbPi822n1hYX4DWmhpfxrkkDWRb",
+      "projectId": "prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE"
+    },
+    {
+      "alias": "www.hitmachut.org",
+      "deploymentId": "dpl_6QbPi822n1hYX4DWmhpfxrkkDWRb",
+      "projectId": "prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE"
+    }
+  ]
+}

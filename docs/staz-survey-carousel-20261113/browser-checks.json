@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "quotesTraversed": 13,
+  "oneQuoteOnly": true,
+  "originalTextYearAndRatingPreserved": true,
+  "ratingAndUnratedFilters": true,
+  "ratingOnlyNotRendered": true,
+  "aggregateUnaffectedByFilter": true,
+  "wrappingAndKeyboardNavigation": true,
+  "emptyAndSingleResultStates": true,
+  "roleChangeResetsFilter": true,
+  "fullLongTextExpandable": true,
+  "sourceHideRestoreAndViewerGate": true,
+  "approvalsAndRecordsUnchanged": true,
+  "scans": [
+    {
+      "width": 1440,
+      "height": 535.234375,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "height": 535.234375,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "height": 618.734375,
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

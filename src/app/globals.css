@@ -3520,6 +3520,50 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
 .directory-cards .department-card-metrics > .department-experience-summary { grid-column: 1 / -1; padding-block: 2px; }
 .department-experience-rating { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .department-experience-rating > span { font-size: 12px; white-space: nowrap; }
+
+/* One readable quote at a time, with explicit rating and manual navigation. */
+.experience-recommendation-summary { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; padding: 10px 14px; width: fit-content; border: 1px solid #dce8f3; border-radius: 10px; background: #f6faff; font-size: 13px; color: #526580; }
+.experience-recommendation-summary > span:first-child { font-weight: 700; color: #263e60; }
+.experience-category-metrics > summary,.experience-extra-ratings > summary { cursor: pointer; color: #526580; font-size: 12px; padding-block: 8px; }
+.experience-category-metrics > div { margin-top: 8px; }
+.experience-carousel-section { min-width: 0; }
+.experience-carousel-filter { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 12px; font-size: 13px; color: #526580; }
+.experience-carousel-filter label { font-weight: 600; color: #263e60; }
+.experience-carousel-filter select { min-height: 44px; min-width: 150px; max-width: 100%; padding: 8px 12px; border: 1px solid #bfd4eb; border-radius: 8px; background: #fff; color: #263e60; }
+.experience-carousel-filter > span { margin-inline-start: auto; font-size: 12px; }
+.experience-carousel { border: 1px solid #d9e7f4; border-radius: 14px; overflow: hidden; background: linear-gradient(145deg,#f3f9ff,#fff 75%); }
+.experience-carousel:focus-visible { outline: 3px solid #1765bd; outline-offset: 3px; }
+.experience-quote { padding: 20px 24px 12px; }
+.experience-quote-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: #526580; font-size: 12px; }
+.experience-quote-meta > div:first-child { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.experience-quote-year { color: #164777; font-weight: 700; font-variant-numeric: tabular-nums; }
+.experience-quote-scope { font-size: 12px; color: #526580; margin-top: 10px; }
+.experience-quote-body { position: relative; min-height: 96px; max-width: 72ch; margin: 12px auto 6px; padding: 18px 32px 6px 0; }
+.experience-quote-mark { position: absolute; top: -4px; right: 0; font-family: Georgia,serif; font-size: 52px; line-height: 1; color: #87afd4; }
+.experience-quote-part + .experience-quote-part { margin-top: 14px; }
+.experience-quote-part-label { margin-bottom: 4px; font-size: 12px; font-weight: 700; color: #526580; }
+.experience-quote blockquote { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 18px; line-height: 1.85; font-style: italic; color: #263e60; }
+.experience-quote-body--collapsed { max-height: 256px; overflow: hidden; mask-image: linear-gradient(#000 80%,transparent); }
+.experience-read-more { min-height: 44px; color: #1765bd; text-decoration: underline; text-underline-offset: 3px; font-size: 13px; font-weight: 600; }
+.experience-extra-ratings { margin-top: 8px; }
+.experience-extra-ratings > div { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: 12px; padding-block: 8px; }
+.experience-extra-ratings > div > div > span { display: block; font-size: 12px; color: #526580; margin-bottom: 4px; }
+.experience-carousel-navigation { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; border-top: 1px solid #dce8f3; background: #fff; }
+.experience-carousel-navigation button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 8px 14px; border: 1px solid #c7dcef; border-radius: 8px; color: #164777; font-size: 13px; font-weight: 600; }
+.experience-carousel-navigation button:hover:not(:disabled) { background: #edf6ff; }
+.experience-carousel-navigation button:disabled { opacity: .45; cursor: default; }
+.experience-carousel-navigation button > span[aria-hidden] { font-size: 20px; }
+.experience-carousel-position { font-size: 13px; color: #526580; font-variant-numeric: tabular-nums; }
+.experience-carousel-empty { border: 1px solid #dce8f3; border-radius: 10px; padding: 18px; color: #526580; font-size: 14px; }
+.experience-carousel-empty button { margin-top: 8px; min-height: 44px; color: #1765bd; text-decoration: underline; }
+@media(max-width:639px) {
+ .experience-quote { padding: 16px 14px 10px; }
+ .experience-quote-body { padding-right: 24px; margin-top: 14px; }
+ .experience-quote blockquote { font-size: 16px; }
+ .experience-quote-mark { font-size: 42px; }
+ .experience-carousel-navigation { gap: 8px; padding: 8px 10px; }
+ .experience-carousel-navigation button { padding-inline: 10px; }
+}
 @media(max-width:1023px) {
  .profile-page .profile-kpi-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
  .profile-page .profile-kpi-strip .profile-data-metric:nth-child(odd) { border-inline-start: 0; }

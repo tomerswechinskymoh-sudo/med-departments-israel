@@ -3,7 +3,7 @@
 import type { PublicSurveyExperience } from "@/lib/staz-survey/domain";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
-import { ReviewCard } from "@/components/departments/review-card";
+import { ExperienceCarousel } from "@/components/departments/experience-carousel";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { cn } from "@/lib/utils";
 import { experienceRecommendation } from "@/lib/experience-recommendation";
@@ -138,7 +138,6 @@ export function DepartmentExperienceTabs({
   const selected = tabs.find((tab) => tab.key === selectedTab) ?? tabs[0];
   const selectedReviews = reviews.filter((review) => perspectiveForReview(review) === selected.key);
   const surveySelected = selected.key === "intern" ? surveyExperiences : [];
-  const surveyTexts = surveySelected.filter(r => r.text);
   const recommendation = experienceRecommendation(selectedReviews, surveySelected);
   const surveyMetrics = [...new Set(surveySelected.flatMap(r => r.ratings.map(v => v.code)))].filter(code => code !== 'ELECTIVE_RECOMMENDATION').map(code => {
     const values = surveySelected.flatMap(r => r.ratings.filter(v => v.code === code));
@@ -170,7 +169,7 @@ export function DepartmentExperienceTabs({
         </span>
       </div>
 
-      <div className="flex gap-2 overflow-x-auto pb-1 sm:flex-wrap">
+      <div className="flex flex-wrap gap-2 pb-1">
         {tabs.map((tab) => (
           <button
             key={tab.key}
@@ -203,20 +202,18 @@ export function DepartmentExperienceTabs({
           </div>
         ) : (
           <>
-            {selectedReviews.length > 0 && <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              <SummaryMetric label="דירוג כללי" value={selectedSummary.overallRecommendation} />
+            {recommendation.count > 0 && <div className="experience-recommendation-summary"><span>דירוג כללי</span><RatingStars value={recommendation.average} /><span>{recommendation.count} דירוגים</span></div>}
+            {(selectedReviews.length > 0 || surveyMetrics.length > 0) && <details className="experience-category-metrics"><summary>מדדים נוספים בקטגוריה</summary><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {selectedReviews.length > 0 && <>
               <SummaryMetric label="איכות הוראה" value={selectedSummary.teachingQuality} />
               <SummaryMetric label="זמינות בכירים" value={selectedSummary.seniorsApproachability} />
               <SummaryMetric label="חשיפה למחקר" value={selectedSummary.researchExposure} />
               <SummaryMetric label="עומס ואיזון חיים" value={selectedSummary.lifestyleBalance} />
               <SummaryMetric label="חשיפה קלינית" value={selectedSummary.clinicalExposure} />
-            </div>}
-            {selectedReviews.length === 0 && recommendation.count > 0 && <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"><SummaryMetric label="דירוג כללי" value={recommendation.average} /></div>}
+              </>}
             {surveyMetrics.map(metric => <div key={metric.code} className="rounded-lg border border-brand-100 bg-brand-50 p-3"><p className="text-xs font-bold">{metric.label} · {metric.count} דירוגים</p><RatingStars value={metric.value} /></div>)}
-            {surveyTexts.map(survey => <ReviewCard key={survey.id} survey={survey} />)}
-            {selectedReviews.map((review) => (
-              <ReviewCard key={review.id} review={review} canReport={canReport} />
-            ))}
+            </div></details>}
+            <ExperienceCarousel key={selected.key} reviews={selectedReviews} surveyExperiences={surveySelected} canReport={canReport} />
           </>
         )}
       </div>
