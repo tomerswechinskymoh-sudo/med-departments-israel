@@ -23,7 +23,7 @@ async function main() {
     await page.goto(base + '/departments');
     await card.waitFor();
     assert.ok((await card.locator('[data-department-experiences]').innerText()).includes(fixture.rambam.experienceCount + ' חוויות מאושרות'));
-    assert.ok((await card.innerText()).includes('סטאז׳רים (' + fixture.rambam.recommendationCount + ')'));
+    assert.ok((await card.innerText()).includes(fixture.rambam.recommendationCount + ' דירוגים'));
     assert.ok((await card.innerText()).includes(fixture.rambam.recommendationAverage.toFixed(1)));
     for (const width of [1440, 375]) {
       await page.setViewportSize({ width, height: 1000 }); await card.scrollIntoViewIfNeeded();
@@ -40,11 +40,11 @@ async function main() {
     await page.getByRole('button', { name: /^סטאז׳רים \(/ }).waitFor();
     await db.surveyReviewSource.update({ where: { id: SOURCE_ID }, data: { isPublicEnabled: false } });
     await page.goto(base + '/departments'); await card.waitFor();
-    assert.ok(!(await card.innerText()).includes('המלצה על אלקטיב'));
+    assert.ok(!(await card.innerText()).includes(fixture.rambam.recommendationCount + ' דירוגים'));
     assert.ok(!(await card.locator('[data-department-experiences]').innerText()).includes(fixture.rambam.experienceCount + ' חוויות מאושרות'));
     await db.surveyReviewSource.update({ where: { id: SOURCE_ID }, data: { isPublicEnabled: true } });
     await page.reload(); await card.waitFor();
-    assert.ok((await card.innerText()).includes('סטאז׳רים (' + fixture.rambam.recommendationCount + ')'));
+    assert.ok((await card.innerText()).includes(fixture.rambam.recommendationCount + ' דירוגים'));
     assert.deepEqual(errors, []);
     const report = { passed: true, rambamCountAndRatingVisible: true, profileAnchorWorks: true, immediateHideRestore: true, scans, errors };
     await writeFile(out + '/browser-checks.json', JSON.stringify(report, null, 2) + '\n'); console.log(JSON.stringify(report));

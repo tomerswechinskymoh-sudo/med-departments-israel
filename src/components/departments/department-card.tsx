@@ -10,6 +10,7 @@ import { departmentNewResidentsChartRows } from "@/lib/department-yearly-residen
 import { missingImportedDataText } from "@/lib/spreadsheet-errors";
 import { formatDate, getDepartmentHref } from "@/lib/utils";
 import type { SurveyDirectorySummary } from "@/server/staz-survey/directory";
+import type { RecommendationSummary } from "@/lib/experience-recommendation";
 
 function MetricChip({ label, value }: { label: string; value: number }) {
   const tone =
@@ -157,6 +158,7 @@ export function DepartmentCard({
     shortSummary: string;
     reviewCount: number;
     surveySummary?: SurveyDirectorySummary;
+    experienceRecommendation?: RecommendationSummary;
     averageOverall: number;
     teachingQuality?: number;
     lifestyleBalance?: number;
@@ -200,6 +202,7 @@ export function DepartmentCard({
   });
   const isRow = variant === "row";
   const experienceCount = department.reviewCount + (department.surveySummary?.experienceCount ?? 0);
+  const recommendation = department.experienceRecommendation ?? { count: department.reviewCount, average: department.averageOverall };
   const favoriteDepartmentId =
     department.favoriteDepartmentId ??
     (department.isArrayCard ? null : department.id);
@@ -395,19 +398,15 @@ export function DepartmentCard({
             </div>
           ) : null}
 
-          <div className="grid gap-2 text-sm text-slate-600" data-department-experiences>
+          <div className="department-experience-summary" data-department-experiences>
             {experienceCount > 0 ? (
               <>
                 <Link href={`${departmentHref}#department-experiences`} className="pointer-events-auto w-fit text-sm font-semibold text-brand-700 underline underline-offset-4">
                   {experienceCount} חוויות מאושרות
                 </Link>
-                {department.reviewCount > 0 && <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs">המלצה כללית · {department.reviewCount} חוות דעת</span>
-                  <RatingStars value={department.averageOverall || 0} />
-                </div>}
-                {Boolean(department.surveySummary?.recommendationCount) && <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="text-xs">המלצה על אלקטיב · סטאז׳רים ({department.surveySummary!.recommendationCount})</span>
-                  <RatingStars value={department.surveySummary!.recommendationAverage} />
+                {recommendation.count > 0 && <div className="department-experience-rating">
+                  <RatingStars value={recommendation.average} />
+                  <span>{recommendation.count} דירוגים</span>
                 </div>}
               </>
             ) : (

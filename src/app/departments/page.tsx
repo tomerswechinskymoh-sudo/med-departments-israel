@@ -239,7 +239,7 @@ export default async function DepartmentsPage({
                     {parsedFilters.sort === "rating"
                       ? "דירוג"
                       : parsedFilters.sort === "reviews"
-                        ? "ביקורות"
+                        ? "חוויות"
                         : parsedFilters.sort === "openings"
                           ? "משרות"
                           : parsedFilters.sort === "research"

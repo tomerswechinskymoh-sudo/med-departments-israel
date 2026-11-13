@@ -1,6 +1,7 @@
 import type { PrismaClient } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getDirectoryData } from '@/lib/queries';
+import { combineRecommendations } from '@/lib/experience-recommendation';
 import { canViewSurveyExperiences, publicSurveyWhere, type SurveyViewer } from './public';
 
 type DirectoryTarget = { id: string; experienceDepartmentIds: string[]; experienceMedicalArrayIds: string[] };
@@ -58,13 +59,19 @@ export async function getExperienceDirectoryData(filters: Parameters<typeof getD
     const groups = new Map(fullCards.filter(card => card.isArrayCard).map(card => [`${card.institutionId}:${card.specialtyId}`, card]));
     targets = cards.map(card => {
       const group = card.isArrayCard ? groups.get(`${card.institutionId}:${card.specialtyId}`) : undefined;
-      return group ? { ...card, experienceDepartmentIds: group.experienceDepartmentIds, experienceMedicalArrayIds: group.experienceMedicalArrayIds } : card;
+      return group ? { ...card, experienceDepartmentIds: group.experienceDepartmentIds, experienceMedicalArrayIds: group.experienceMedicalArrayIds, nativeRecommendation: group.nativeRecommendation, reviewCount: group.reviewCount } : card;
     });
   }
   const summaries = await surveyDirectorySummaries(prisma, targets, viewer);
-  const result = cards.map(card => ({ ...card, surveySummary: summaries.get(card.id) }));
+  const result = cards.map(card => {
+    const surveySummary = summaries.get(card.id);
+    const target = targets.find(target => target.id === card.id)!;
+    const recommendation = combineRecommendations(target.nativeRecommendation, { count: surveySummary?.recommendationCount ?? 0, average: surveySummary?.recommendationAverage ?? 0 });
+    return { ...card, reviewCount: target.reviewCount, surveySummary, experienceRecommendation: recommendation };
+  });
   const visible = filters.hasReviews ? result.filter(card => card.reviewCount + (card.surveySummary?.experienceCount ?? 0) > 0) : result;
   if (filters.sort === 'reviews') visible.sort((a, b) =>
     (b.reviewCount + (b.surveySummary?.experienceCount ?? 0)) - (a.reviewCount + (a.surveySummary?.experienceCount ?? 0)));
+  if (filters.sort === 'rating') visible.sort((a, b) => b.experienceRecommendation.average - a.experienceRecommendation.average);
   return visible;
 }

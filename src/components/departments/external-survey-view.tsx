@@ -3,22 +3,19 @@ import { Card } from "@/components/ui/card";
 import { METRICS } from "@/lib/external-survey/parse";
 import type { SurveySummary } from "@/lib/external-survey/presentation";
 export function ExternalSurveyView({ summary, specialtyName, departmentContext = false }: { summary: SurveySummary; specialtyName: string; departmentContext?: boolean }) {
+  if (summary.state === 'empty' || summary.state === 'unavailable') return null;
   return (
     <Card dir="rtl" className="space-y-4" data-survey-state={summary.state}>
       <div>
-        <p className="text-xs font-bold text-brand-700">מקור נפרד · סקר חיצוני</p>
-        <h2 className="mt-1 text-xl font-black text-ink">חוויות מתמחים מהשטח</h2>
-        <h3 className="mt-2 text-base font-bold text-ink">מה מספרים מתמחים בתחום?</h3>
+        <h2 className="text-xl font-black text-ink">חוויות בתחום</h2>
         <p className="mt-1 text-sm text-slate-600">{specialtyName} · הקשר ברמת תחום ההתמחות בארץ</p>
       </div>
       {departmentContext ? <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-bold leading-6 text-amber-900">הנתונים כאן מתייחסים לתחום ההתמחות כולו, ואינם ביקורת על מחלקה זו או על בית החולים שלה.</p> : null}
       {summary.state === "locked" ? (
         <div className="rounded-lg bg-slate-50 p-4 text-sm leading-7 text-slate-700">
-          <p>הצפייה בחוויות מתמחים זמינה למשתמשים מאומתים, בהתאם להרשאות האתר.</p>
+          <p>הצפייה בחוויות זמינה למשתמשים מאומתים, בהתאם להרשאות האתר.</p>
           <Link className="font-bold text-brand-800 underline underline-offset-4" href="/login">כניסה לחשבון</Link>
         </div>
-      ) : summary.state !== "published" ? (
-        <p className="rounded-lg bg-slate-50 p-4 text-sm leading-7 text-slate-600">{summary.state === "unavailable" ? "נתוני הסקר אינם זמינים כעת. אפשר לנסות שוב בהמשך." : "טרם פורסמו נתוני סקר לתחום זה. נתונים יוצגו רק לאחר בדיקת המקור, הרשאת פרסום ופרטיות המשיבים."}</p>
       ) : (
         <>
           <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

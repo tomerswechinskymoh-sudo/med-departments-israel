@@ -541,7 +541,7 @@ export function DepartmentFilters({
           >
             <option value="recommended">מומלץ</option>
             <option value="rating">דירוג גבוה</option>
-            <option value="reviews">יותר ביקורות</option>
+            <option value="reviews">יותר חוויות</option>
             <option value="openings">משרות פתוחות קודם</option>
             <option value="research">מחקר פעיל קודם</option>
           </select>

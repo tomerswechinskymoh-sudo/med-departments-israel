@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "stazTestsPassed": 31,
+  "externalSurveyTestsPassed": 11,
+  "externalSourceFixtureSkipped": 1,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "diffCheckPassed": true,
+  "isolatedIntegrationPassed": true,
+  "unifiedRecommendationAcross21Arrays": true,
+  "desktopTabletMobileAccessibilityPassed": true,
+  "screenWidths": [
+    1920,
+    1440,
+    768,
+    375
+  ],
+  "hideRestoreRecalculatesAverage": true
+}

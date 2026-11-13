@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "singleWeightedRating": true,
+  "directoryMatchesProfile": true,
+  "noSourceHeadingOrEmptyPanel": true,
+  "hideRestoreRecalculatesAverage": true,
+  "scans": [
+    {
+      "width": 1920,
+      "dimensions": {
+        "bundleHeight": 153.390625,
+        "chartsBelow": true,
+        "heights": [
+          151.390625,
+          151.390625,
+          151.390625
+        ]
+      },
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "dimensions": {
+        "bundleHeight": 153.390625,
+        "chartsBelow": true,
+        "heights": [
+          151.390625,
+          151.390625,
+          151.390625
+        ]
+      },
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "dimensions": {
+        "bundleHeight": 276.6875,
+        "chartsBelow": true,
+        "heights": [
+          151.390625,
+          151.390625,
+          122.296875
+        ]
+      },
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "dimensions": {
+        "bundleHeight": 397.1875,
+        "chartsBelow": true,
+        "heights": [
+          148.59375,
+          122.296875,
+          122.296875
+        ]
+      },
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

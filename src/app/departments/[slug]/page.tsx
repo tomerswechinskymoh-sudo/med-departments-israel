@@ -1,4 +1,6 @@
 import { publicSurveyExperiences } from "@/server/staz-survey/public";
+import { experienceRecommendation } from "@/lib/experience-recommendation";
+import { getPublicExperienceReviews } from "@/lib/queries";
 import { prisma as surveyPrisma } from "@/lib/prisma";
 import { getSourceVisibility } from "@/lib/server/source-visibility";
 import { DUNS100_TITLE, DUNS100_DESCRIPTION } from "@/lib/duns100-presentation";
@@ -1357,11 +1359,6 @@ export default async function DepartmentDetailsPage({
       departmentId: department.id,
     }),
   ]);
-  const departmentExperienceReviews = department.reviews.map((review) => ({
-    ...review,
-    publishedAt: review.publishedAt ? new Date(review.publishedAt).toISOString() : null,
-    perspective: reviewPerspective(review),
-  }));
   const region = resolveInstitutionRegion(department.institution);
   const isMedicalArrayProfile = Boolean(
     department.specialty.groupAsArray && department.medicalArray,
@@ -1482,6 +1479,12 @@ export default async function DepartmentDetailsPage({
   }
 
   const surveyExperiences = await publicSurveyExperiences(surveyPrisma, isMedicalArrayProfile ? arrayDepartments.map(d => d.id) : [department.id], session, isMedicalArrayProfile && department.medicalArray ? [department.medicalArray.id] : []);
+  const nativeExperienceReviews = isMedicalArrayProfile ? await getPublicExperienceReviews(arrayDepartments.map(d => d.id)) : department.reviews;
+  const departmentExperienceReviews = nativeExperienceReviews.map(review => ({
+    ...review, publishedAt: review.publishedAt ? new Date(review.publishedAt).toISOString() : null, perspective: reviewPerspective(review)
+  }));
+  const experienceCount = departmentExperienceReviews.length + surveyExperiences.length;
+  const recommendation = experienceRecommendation(departmentExperienceReviews, surveyExperiences);
 
   const metricRecord = (metricKey: string) =>
     profileExternalMetrics.find(
@@ -2425,7 +2428,8 @@ export default async function DepartmentDetailsPage({
               <div className="profile-identity-meta"><span><ProductIcon name="location" />{[department.institution.city, region].filter(Boolean).join(" · ")}</span>
                 {isMedicalArrayProfile && arrayDepartmentCount > 1 && <span>{arrayDepartmentCount} מחלקות במערך</span>}
                 {department.residencyOpenings.length > 0 && <Badge tone="success">משרות פתוחות</Badge>}
-                {department.summary.reviewCount > 0 ? <><RatingStars value={department.summary.overallRecommendation} /><span>{department.summary.reviewCount} ביקורות מאושרות</span></> : <a href="#department-experiences">{surveyExperiences.length ? `${surveyExperiences.length} חוויות מאושרות` : "אין עדיין חוות דעת מאושרות"}</a>}
+                {recommendation.count > 0 && <RatingStars value={recommendation.average} />}
+                <a href="#department-experiences">{experienceCount ? `${experienceCount} חוויות מאושרות` : "אין עדיין חוויות מאושרות"}</a>
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { ReviewCard } from "@/components/departments/review-card";
 import { RatingStars } from "@/components/ui/rating-stars";
 import { cn } from "@/lib/utils";
+import { experienceRecommendation } from "@/lib/experience-recommendation";
 
 type ExperiencePerspective = "student" | "intern" | "resident_or_physician";
 
@@ -138,7 +139,8 @@ export function DepartmentExperienceTabs({
   const selectedReviews = reviews.filter((review) => perspectiveForReview(review) === selected.key);
   const surveySelected = selected.key === "intern" ? surveyExperiences : [];
   const surveyTexts = surveySelected.filter(r => r.text);
-  const surveyMetrics = [...new Set(surveySelected.flatMap(r => r.ratings.map(v => v.code)))].map(code => {
+  const recommendation = experienceRecommendation(selectedReviews, surveySelected);
+  const surveyMetrics = [...new Set(surveySelected.flatMap(r => r.ratings.map(v => v.code)))].filter(code => code !== 'ELECTIVE_RECOMMENDATION').map(code => {
     const values = surveySelected.flatMap(r => r.ratings.filter(v => v.code === code));
     return { code, label: values[0].label, count: values.length, value: average(values.map(v => v.value)) };
   });
@@ -153,7 +155,7 @@ export function DepartmentExperienceTabs({
         .map((review) => numberFromRoleDetails(review.submission?.roleDetails, "clinicalExposure"))
         .filter((value) => value > 0)
     ),
-    overallRecommendation: average(selectedReviews.map((review) => review.overallRecommendation))
+    overallRecommendation: recommendation.average
   };
 
   return (
@@ -209,6 +211,7 @@ export function DepartmentExperienceTabs({
               <SummaryMetric label="עומס ואיזון חיים" value={selectedSummary.lifestyleBalance} />
               <SummaryMetric label="חשיפה קלינית" value={selectedSummary.clinicalExposure} />
             </div>}
+            {selectedReviews.length === 0 && recommendation.count > 0 && <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3"><SummaryMetric label="דירוג כללי" value={recommendation.average} /></div>}
             {surveyMetrics.map(metric => <div key={metric.code} className="rounded-lg border border-brand-100 bg-brand-50 p-3"><p className="text-xs font-bold">{metric.label} · {metric.count} דירוגים</p><RatingStars value={metric.value} /></div>)}
             {surveyTexts.map(survey => <ReviewCard key={survey.id} survey={survey} />)}
             {selectedReviews.map((review) => (

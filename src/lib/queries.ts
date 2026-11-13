@@ -49,6 +49,7 @@ import { getOpenAlexMappingStatus } from "@/lib/server/openalex-research";
 import { getMetricExplanationOverrides } from "@/lib/server/metric-explanation-overrides";
 import { average, formatDepartmentDisplayName } from "@/lib/utils";
 import { resolveCanonicalDepartmentSlug } from "@/server/department-catalog";
+import { recommendationSummary, combineRecommendations } from "@/lib/experience-recommendation";
 
 const publishedReviewSelect = {
   id: true,
@@ -1695,6 +1696,7 @@ async function getPublicDirectoryData(
       medicalArraySlug: department.medicalArray?.slug ?? null,
       experienceDepartmentIds: [department.id],
       experienceMedicalArrayIds: [] as string[],
+      nativeRecommendation: recommendationSummary(department.reviews.map(review => review.overallRecommendation)),
       name: formatDepartmentDisplayName(department.name, department.specialty.name),
       institutionName: publicInstitution.name,
       institutionSlug: publicInstitution.slug,
@@ -1838,6 +1840,7 @@ async function getPublicDirectoryData(
         reviewCount: totalReviewCount,
         experienceDepartmentIds: group.map((item) => item.id),
         experienceMedicalArrayIds: Array.from(new Set(group.flatMap((item) => item.medicalArrayId ? [item.medicalArrayId] : []))),
+        nativeRecommendation: combineRecommendations(...group.map(item => item.nativeRecommendation)),
         averageOverall: weightedOverall,
         teachingQuality: average(group.map((item) => item.teachingQuality)),
         lifestyleBalance: average(group.map((item) => item.lifestyleBalance)),
@@ -1896,7 +1899,7 @@ async function getPublicDirectoryData(
 }
 
 const getPublicDirectoryDataCached = publicDataCache(
-    "getPublicDirectoryData-experience-targets-v2",
+    "getPublicDirectoryData-experience-recommendations-v3",
     getPublicDirectoryData,
     [
       PUBLIC_DATA_CACHE_TAGS.departments,
@@ -2648,6 +2651,14 @@ export async function getDepartmentPageData(
     ...department,
     isFavorite: Boolean(favorite)
   };
+}
+
+export async function getPublicExperienceReviews(departmentIds: string[]) {
+  return publicPrisma.review.findMany({
+    where: { departmentId: { in: departmentIds }, department: { is: publicVisibleDepartmentWhere } },
+    select: publishedReviewSelect,
+    orderBy: [{ publishedAt: 'desc' }, { id: 'asc' }]
+  });
 }
 
 type ComparisonMetricInput = {

@@ -38,7 +38,7 @@ export function ReviewCard(props: { review: NativeReview; canReport: boolean; su
         <span className="text-xs text-slate-500">{survey.year}</span>
       </div>
       {survey.hospitalScope && <p className="mt-3 text-xs text-slate-500">תגובה על כלל בית החולים</p>}
-      {survey.ratings.length > 0 && <div className="mt-4 grid gap-3 md:grid-cols-3">{survey.ratings.map(r => <div key={r.code}><p className="text-xs text-slate-500">{r.label}</p><RatingStars value={r.value} /></div>)}</div>}
+      {survey.ratings.length > 0 && <div className="mt-4 grid gap-3 md:grid-cols-3">{survey.ratings.map(r => <div key={r.code}><p className="text-xs text-slate-500">{r.code === 'ELECTIVE_RECOMMENDATION' ? 'המלצה כוללת' : r.label}</p><RatingStars value={r.value} /></div>)}</div>}
       <div className="mt-5 rounded-2xl bg-brand-50/60 p-4"><p className="text-sm font-semibold text-ink">מה עבד טוב</p><p className="mt-2 whitespace-pre-wrap text-sm leading-7 text-slate-600">{survey.text}</p></div>
     </Card>;
   }
