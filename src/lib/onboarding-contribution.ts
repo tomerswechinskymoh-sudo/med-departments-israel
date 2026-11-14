@@ -1,6 +1,7 @@
 export type SignupRoleStatus =
   | "medical_student"
   | "intern"
+  | "post_intern"
   | "resident"
   | "specialist"
   | "other";
@@ -37,12 +38,12 @@ function numericStudentYear(value: ExperienceContributionEligibilityInput["stude
 export function getExperienceContributionEligibility(
   input: ExperienceContributionEligibilityInput
 ): ExperienceContributionEligibility {
-  if (input.roleStatus === "intern") {
+  if (input.roleStatus === "intern" || input.roleStatus === "post_intern") {
     return {
       eligible: true,
       category: "intern",
       reviewerType: "INTERN",
-      reason: "intern"
+      reason: input.roleStatus
     };
   }
 

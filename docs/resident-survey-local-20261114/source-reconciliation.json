@@ -1,0 +1,16 @@
+{
+  "originalResponses": 365,
+  "rowsIncludingHeader": 366,
+  "comments": 88,
+  "liveSheetCompared": true,
+  "differingCells": 0,
+  "fileSha256": "ef103a6fb9dc048b41db5713513bb624b5a96cbedb8a86b64304e0d8adb30424",
+  "datasetHash": "7f225b837797cb5edcf717a6a91c9b01728c84a8b6690be0832a8462fb269fa6",
+  "selectionSha256": "2504ba9eb1169dc6b6c5ca8c8dbbd258b87e07764adf42c81cc090603b0fc113",
+  "reviewMethod": "ASSISTANT_REVIEW_UNDER_OWNER_INSTRUCTION",
+  "minimumRespondents": 1,
+  "approved": 66,
+  "negative": 17,
+  "pending": 5,
+  "noSourceTextInReport": true
+}

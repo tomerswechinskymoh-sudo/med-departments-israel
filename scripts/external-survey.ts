@@ -102,12 +102,12 @@ async function main() {
     console.log(JSON.stringify({ rightsRecorded: true, published: false }));
   } else if (command === "review-privacy") {
     const { data, evidence } = await decision();
-    for (const check of ["indirectIdentificationChecked", "noDemographicSlices", "smallGroupsSuppressed", "noInstitutionComparisons", "historicalPeriodClear"]) if (data[check] !== true) throw new Error(`Human privacy review must cover ${check}`);
-    if (!Array.isArray(data.groupKeys) || !data.groupKeys.length || data.groupKeys.some((k: unknown) => typeof k !== "string" || !k.startsWith("specialty:"))) throw new Error("Only explicit nationwide specialty groups are supported");
+    for (const check of ["indirectIdentificationChecked", "noDemographicSlices", "singleRespondentAuthorized", "institutionSpecialtyScopeReviewed", "historicalPeriodClear"]) if (data[check] !== true) throw new Error(`Human privacy review must cover ${check}`);
+    if (!Array.isArray(data.groupKeys) || !data.groupKeys.length || data.groupKeys.some((k: unknown) => typeof k !== "string" || !/^(specialty:[^:]+|institution:[^:]+:specialty:[^:]+)$/.test(k))) throw new Error("Only explicit national or institution-specialty groups are supported");
     await locked(async tx => {
       const source = await tx.externalSurveySource.findUniqueOrThrow({ where: { id: SOURCE_ID } });
       if (!source.datasetHash || data.datasetHash !== source.datasetHash) throw new Error("Privacy review is stale; review the current dataset");
-      const n = await tx.externalSurveyAggregate.updateMany({ where: { sourceId: SOURCE_ID, groupKey: { in: data.groupKeys }, institutionId: null, respondentCount: { gte: MIN_RESPONDENTS }, value: { not: null } }, data: { privacyReviewHash: source.datasetHash, privacyEvidence: json({ ...evidence, checks: data }) } });
+      const n = await tx.externalSurveyAggregate.updateMany({ where: { sourceId: SOURCE_ID, groupKey: { in: data.groupKeys }, respondentCount: { gte: MIN_RESPONDENTS }, value: { not: null } }, data: { privacyReviewHash: source.datasetHash, privacyEvidence: json({ ...evidence, checks: data }) } });
       if (!n.count) throw new Error("No eligible metrics in reviewed groups");
     });
     console.log(JSON.stringify({ privacyReviewRecorded: true, published: false }));
@@ -137,10 +137,10 @@ async function main() {
       }
       for (const [status, ids] of grouped) await tx.externalSurveyAggregate.updateMany({ where: { id: { in: ids } }, data: { status: status as "PUBLISHED" } });
       await tx.externalSurveyResponse.updateMany({ where: { sourceId: SOURCE_ID }, data: { status: source.quoteRightsStatus === "DOCUMENTED" ? "PENDING_PRIVACY_REVIEW" : "PENDING_PUBLICATION_RIGHTS" } });
-      const publishedSpecialties = [...new Set(aggregates.filter(a => grouped.get("PUBLISHED")?.includes(a.id)).map(a => a.specialtyId))];
+      const publishedPairs = [...new Map(aggregates.filter(a => a.institutionId && grouped.get("PUBLISHED")?.includes(a.id)).map(a => [a.groupKey, { specialtyId: a.specialtyId, institutionId: a.institutionId! }])).values()];
       let publishedTips = 0;
-      if (source.quoteRightsStatus === "DOCUMENTED" && source.quoteRightsEvidence) {
-        const approved = await tx.externalSurveyResponse.updateMany({ where: { sourceId: SOURCE_ID, specialtyId: { in: publishedSpecialties }, tipStatus: "APPROVED", approvedTip: { not: null }, tipReviewEvidence: { not: Prisma.DbNull } }, data: { status: "PUBLISHED" } });
+      if (source.quoteRightsStatus === "DOCUMENTED" && source.quoteRightsEvidence && publishedPairs.length) {
+        const approved = await tx.externalSurveyResponse.updateMany({ where: { sourceId: SOURCE_ID, OR: publishedPairs, tipStatus: "APPROVED", approvedTip: { not: null }, tipReviewEvidence: { not: Prisma.DbNull } }, data: { status: "PUBLISHED" } });
         publishedTips = approved.count;
       }
       return { publishedMetrics: grouped.get("PUBLISHED")?.length ?? 0, publishedTips, aggregateRightsStatus: source.aggregateRightsStatus, quoteRightsStatus: source.quoteRightsStatus };

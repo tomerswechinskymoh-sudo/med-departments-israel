@@ -15,7 +15,8 @@ import { getSession } from "@/lib/auth";
 import { DepartmentPageActions } from "@/components/departments/department-page-actions";
 import { PUBLIC_CONTACT_EMAIL } from "@/lib/contact";
 import { DepartmentCompareProfileButton } from "@/components/departments/department-comparison-selection";
-import { ExternalSurveyPanel } from "@/components/departments/external-survey-panel";
+import { ExternalSurveyView } from "@/components/departments/external-survey-view";
+import { getExternalSurveySummary } from "@/server/external-survey/summary";
 import { DepartmentExperienceTabs } from "@/components/departments/department-experience-tabs";
 import {
   FavoriteToggleButton,
@@ -1483,7 +1484,8 @@ export default async function DepartmentDetailsPage({
   const departmentExperienceReviews = nativeExperienceReviews.map(review => ({
     ...review, publishedAt: review.publishedAt ? new Date(review.publishedAt).toISOString() : null, perspective: reviewPerspective(review)
   }));
-  const experienceCount = departmentExperienceReviews.length + surveyExperiences.length;
+  const residentSurvey = await getExternalSurveySummary(department.specialty.id, { institutionName: department.institution.name, specialtyName: department.specialty.name, isArray: isMedicalArrayProfile, siblingCount: department.siblingDepartmentCount });
+  const experienceCount = departmentExperienceReviews.length + surveyExperiences.length + residentSurvey.quotes.length;
   const recommendation = experienceRecommendation(departmentExperienceReviews, surveyExperiences);
 
   const metricRecord = (metricKey: string) =>
@@ -2776,13 +2778,14 @@ export default async function DepartmentDetailsPage({
                 ))}
               </div>
             </Card>}</div>
-          <ExternalSurveyPanel specialtyId={department.specialty.id} specialtyName={department.specialty.name} departmentContext />
           <Card className="rounded-xl !p-4">
               <div id="department-experiences" tabIndex={-1} className="scroll-mt-36" />
               <DepartmentExperienceTabs
                 title={experienceSectionTitle}
                 reviews={departmentExperienceReviews}
                 surveyExperiences={surveyExperiences}
+                residentQuotes={residentSurvey.quotes}
+                residentMetrics={<ExternalSurveyView summary={residentSurvey} specialtyName={department.specialty.name} />}
                 canReport={Boolean(session)}
                 emptyAction={
                   <ExperienceCta

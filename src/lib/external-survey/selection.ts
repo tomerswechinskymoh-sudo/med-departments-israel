@@ -10,12 +10,12 @@ export const selectionSchema = z.object({
   reviewMethod: z.literal('ASSISTANT_REVIEW_UNDER_OWNER_INSTRUCTION'),
   ownerInstructionReference: z.string().min(20),
   sourcePermissionReference: z.string().min(20),
-  groupKeys: z.array(z.string().startsWith('specialty:')).min(1),
-  aggregateChecks: z.object({ allValidResponsesIncluded: z.literal(true), noDemographicSlices: z.literal(true), smallGroupsSuppressed: z.literal(true), noInstitutionComparisons: z.literal(true), historicalPeriodClear: z.literal(true), salaryBasesSeparated: z.literal(true), indirectIdentification: z.literal(true) }).strict(),
+  groupKeys: z.array(z.string().regex(/^(specialty:[^:]+|institution:[^:]+:specialty:[^:]+)$/)).min(1),
+  aggregateChecks: z.object({ allValidResponsesIncluded: z.literal(true), noDemographicSlices: z.literal(true), singleRespondentAuthorized: z.literal(true), institutionSpecialtyScopeReviewed: z.literal(true), historicalPeriodClear: z.literal(true), salaryBasesSeparated: z.literal(true), indirectIdentification: z.literal(true) }).strict(),
   tips: z.array(z.object({
     fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
     exactText: z.string().min(1),
-    sentiment: z.enum(['POSITIVE_OVERALL', 'NEGATIVE', 'UNCERTAIN']),
+    sentiment: z.enum(['POSITIVE_OVERALL', 'NON_NEGATIVE', 'NEGATIVE', 'UNCERTAIN']),
     status: z.enum(['APPROVED', 'REJECTED', 'PENDING_REVIEW']),
     rationale: z.string().min(8),
     privacyChecks: checks.optional(),
@@ -23,6 +23,6 @@ export const selectionSchema = z.object({
 }).strict().superRefine((plan, ctx) => {
   if (new Set(plan.tips.map(t => t.fingerprint)).size !== plan.tips.length) ctx.addIssue({ code: 'custom', message: 'Duplicate tip decision' });
   if (new Set(plan.groupKeys).size !== plan.groupKeys.length) ctx.addIssue({ code: 'custom', message: 'Duplicate group decision' });
-  for (const tip of plan.tips) if (tip.status === 'APPROVED' && (tip.sentiment !== 'POSITIVE_OVERALL' || !tip.privacyChecks)) ctx.addIssue({ code: 'custom', message: 'Approval requires positive overall sentiment and a documented content/privacy review' });
+  for (const tip of plan.tips) if (tip.status === 'APPROVED' && (!['POSITIVE_OVERALL', 'NON_NEGATIVE'].includes(tip.sentiment) || !tip.privacyChecks)) ctx.addIssue({ code: 'custom', message: 'Approval requires non-negative sentiment and a documented content/privacy review' });
 });
 export type SurveySelection = z.infer<typeof selectionSchema>;

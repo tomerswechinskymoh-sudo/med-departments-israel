@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "postInternOption": true,
+  "communityOnlyAndCombinedOptions": true,
+  "residentRequirementsPreserved": true,
+  "scans": [
+    {
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

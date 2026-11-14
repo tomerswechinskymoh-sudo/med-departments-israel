@@ -1,3 +1,4 @@
+import { signupWorkplaceLabel } from "@/lib/signup-workplace";
 import { MarketingPreferences } from "@/components/forms/marketing-preferences";
 import { hasDocumentedMarketingConsent } from "@/lib/marketing-consent";
 import Link from "next/link";
@@ -36,6 +37,8 @@ function professionalRoleStatusLabel(value: string | null) {
       return "סטודנט/ית לרפואה";
     case "intern":
       return "סטאז'ר/ית";
+    case "post_intern":
+      return "רופא/ה אחרי סטאז׳ ולפני התמחות";
     case "resident":
       return "מתמחה";
     case "specialist":
@@ -148,6 +151,7 @@ export default async function DashboardPage() {
               <p>
                 <span className="font-semibold text-ink">סטטוס מקצועי: </span>
                 {professionalRoleStatusLabel(data.roleStatus)}
+                {signupWorkplaceLabel(data.auditEntries[0]?.metadata) ? ` · ${signupWorkplaceLabel(data.auditEntries[0]?.metadata)}` : ""}
               </p>
               <p>
                 <span className="font-semibold text-ink">אימות חשבון: </span>

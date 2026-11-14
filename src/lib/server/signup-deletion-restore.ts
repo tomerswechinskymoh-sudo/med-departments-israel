@@ -34,7 +34,7 @@ export async function replaySignupDeletion(entry: DeletionLedgerEntry, execute =
     if (!execute) return 'eligible' as const;
     await tx.user.update({ where: { id: user.id }, data: {
       verificationStatus: entry.status as VerificationStatus,
-      roleKey: entry.status === 'VERIFIED' && ['resident', 'specialist'].includes(user.roleStatus ?? '') ? RoleKey.RESIDENT : user.roleKey,
+      roleKey: entry.status === 'VERIFIED' && ['resident', 'specialist', 'post_intern'].includes(user.roleStatus ?? '') ? RoleKey.RESIDENT : user.roleKey,
       verifiedAt: user.verifiedAt ?? cutoff
     }}); // The existing trigger deletes atomically and refuses ambiguous files.
     await tx.signupDocumentDeletion.update({ where: { userId: user.id }, data: { deletedAt: cutoff } });

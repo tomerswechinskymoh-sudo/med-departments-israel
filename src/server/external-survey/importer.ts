@@ -1,5 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
-import { aggregateRows, publicationStatus, type AggregateInput } from "@/lib/external-survey/aggregate";
+import { aggregateRows, publicationStatus, AGGREGATION_POLICY_VERSION, type AggregateInput } from "@/lib/external-survey/aggregate";
 import type { Mapping } from "@/lib/external-survey/mapping";
 import type { Normalized } from "@/lib/external-survey/parse";
 import { SOURCE_ID, SOURCE_TITLE, IMPORT_VERSION, hash, safeReport, type SurveyRow } from "./workbook";
@@ -52,7 +52,7 @@ export async function rebuildAggregates(tx: Prisma.TransactionClient) {
   const source = await tx.externalSurveySource.findUniqueOrThrow({ where: { id: SOURCE_ID } });
   const stored = await tx.externalSurveyResponse.findMany({ where: { sourceId: SOURCE_ID }, select: { fingerprint: true, specialtyId: true, institutionId: true, reportYear: true, normalized: true } });
   const input = stored.map(r => ({ ...r, normalized: r.normalized as unknown as Normalized }));
-  const datasetHash = hash(stableJson(input.sort((a, b) => a.fingerprint.localeCompare(b.fingerprint))));
+  const datasetHash = hash(stableJson({ policy: AGGREGATION_POLICY_VERSION, rows: input.sort((a, b) => a.fingerprint.localeCompare(b.fingerprint)) }));
   const aggregates = aggregateRows(input as AggregateInput[]);
   const changed = datasetHash !== source.datasetHash;
   if (changed) {

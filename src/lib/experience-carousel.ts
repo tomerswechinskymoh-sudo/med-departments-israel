@@ -1,3 +1,4 @@
+import type { SurveyQuote } from './external-survey/presentation';
 import type { PublicSurveyExperience } from './staz-survey/domain';
 
 export type QuoteReview = {
@@ -7,11 +8,11 @@ export type QuoteReview = {
 };
 export type ExperienceQuote = {
   id: string; nativeReviewId?: string; year: number | null; role: QuoteReview['reviewerType']; author: string | null;
-  rating: number | null; parts: { label: string | null; text: string }[]; otherRatings: { label: string; value: number }[]; hospitalScope: boolean;
+  rating: number | null; parts: { label: string | null; text: string }[]; otherRatings: { label: string; value: number }[]; hospitalScope: boolean; scopeLabel?: string;
 };
 const validRating = (value?: number) => typeof value === 'number' && Number.isFinite(value) && value >= 1 && value <= 5 ? value : null;
 
-export function experienceQuotes(reviews: QuoteReview[], experiences: PublicSurveyExperience[]): ExperienceQuote[] {
+export function experienceQuotes(reviews: QuoteReview[], experiences: PublicSurveyExperience[], residentQuotes: SurveyQuote[] = []): ExperienceQuote[] {
   const native = reviews.flatMap(review => {
     const parts = [
       { label: 'מה עבד טוב', text: review.pros }, { label: 'מה פחות עבד', text: review.cons }, { label: 'טיפים למי שמגיעים', text: review.tips }
@@ -34,7 +35,8 @@ export function experienceQuotes(reviews: QuoteReview[], experiences: PublicSurv
     otherRatings: experience.ratings.filter(rating => rating.code !== 'ELECTIVE_RECOMMENDATION' && validRating(rating.value) !== null).map(rating => ({ label: rating.label, value: rating.value })),
     hospitalScope: experience.hospitalScope
   }] : []);
-  return [...native, ...imported].sort((a, b) => (b.year ?? 0) - (a.year ?? 0) || a.id.localeCompare(b.id));
+  const residents: ExperienceQuote[] = residentQuotes.map(q => ({ id: `resident-survey:${q.id}`, year: q.year, role: "RESIDENT", author: null, rating: null, parts: [{ label: null, text: q.text }], otherRatings: [], hospitalScope: false, scopeLabel: q.scopeLabel }));
+  return [...native, ...imported, ...residents].sort((a, b) => (b.year ?? 0) - (a.year ?? 0) || a.id.localeCompare(b.id));
 }
 
 export function filterExperienceQuotes(quotes: ExperienceQuote[], rating: string) {

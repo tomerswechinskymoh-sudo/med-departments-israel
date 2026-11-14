@@ -1,3 +1,4 @@
+import { signupWorkplaceLabel } from "@/lib/signup-workplace";
 import { SourceVisibilityControls } from "@/components/admin/source-visibility-controls";
 import { getSourceVisibility } from "@/lib/server/source-visibility";
 import Link from "next/link";
@@ -119,6 +120,8 @@ function professionalRoleStatusLabel(value: string | null) {
       return "סטודנט/ית לרפואה";
     case "intern":
       return "סטאז'ר/ית";
+    case "post_intern":
+      return "רופא/ה אחרי סטאז׳ ולפני התמחות";
     case "resident":
       return "מתמחה";
     case "specialist":
@@ -221,6 +224,7 @@ export default async function AdminPage() {
                     <p>{user.email}{user.phone ? ` · ${user.phone}` : ""}</p>
                     <p className="text-xs font-semibold text-slate-500">
                       {professionalRoleStatusLabel(user.roleStatus)}
+                {signupWorkplaceLabel(user.auditEntries[0]?.metadata) ? ` · ${signupWorkplaceLabel(user.auditEntries[0]?.metadata)}` : ""}
                       {user.verificationSubmittedAt ? ` · ${formatDate(user.verificationSubmittedAt)}` : ""}
                     </p>
                   </div>

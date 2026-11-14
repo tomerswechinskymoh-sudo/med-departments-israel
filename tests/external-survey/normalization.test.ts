@@ -54,13 +54,13 @@ test("encrypted raw rows are authenticated and bound to their source fingerprint
   assert.throws(() => unseal(encrypted, "other:hash"));
   assert.throws(() => unseal(encrypted.slice(0, -4) + "ABCD", "source:hash"));
 });
-test("publication requires rights and current human review; local slices never publish", () => {
+test("publication requires rights and current review; owner-approved local n=1 is supported", () => {
   const input = { respondentCount: 10, value: 3, institutionId: null, rights: "DOCUMENTED", datasetHash: "current", privacyReviewHash: "current", evidence: { reference: "review" } };
   assert.equal(publicationStatus(input), "PUBLISHED");
-  assert.equal(publicationStatus({ ...input, respondentCount: 9 }), "SUPPRESSED");
+  assert.equal(publicationStatus({ ...input, respondentCount: 0 }), "SUPPRESSED");
   assert.equal(publicationStatus({ ...input, rights: "PENDING_PUBLICATION_RIGHTS" }), "PENDING_PUBLICATION_RIGHTS");
   assert.equal(publicationStatus({ ...input, privacyReviewHash: "stale" }), "PENDING_PRIVACY_REVIEW");
-  assert.equal(publicationStatus({ ...input, institutionId: "hospital" }), "PENDING_PRIVACY_REVIEW");
+  assert.equal(publicationStatus({ ...input, institutionId: "hospital" }), "PUBLISHED");
   assert.equal(publicationStatus({ ...input, evidence: null }), "PENDING_PRIVACY_REVIEW");
 });
 test("the existing verified-user rule is preserved", () => {
@@ -73,7 +73,7 @@ test("the existing verified-user rule is preserved", () => {
 test("public DTO rejects suppressed groups and contains only allowlisted aggregate fields", () => {
   const row = { metricKey: "peers", respondentCount: 10, value: 3.33333, method: "MEAN", calculatedCount: 0, periodStartYear: 2024, periodEndYear: 2024, status: "PUBLISHED", institutionId: null, datasetHash: "hash", privacyReviewHash: "hash", rawEncrypted: "secret", gender: "secret", reportedAt: "secret", approvedTip: "secret" };
   assert.deepEqual(publicMetric(row, "hash"), { key: "peers", respondents: 10, value: 3.3, method: "MEAN", calculated: false, startYear: 2024, endYear: 2024 });
-  assert.equal(publicMetric({ ...row, respondentCount: 9 }, "hash"), null);
+  assert.equal(publicMetric({ ...row, respondentCount: 0 }, "hash"), null);
   assert.equal(publicMetric({ ...row, metricKey: "salary" }, "hash"), null);
   assert.equal(publicMetric(row, "other"), null);
   assert.equal(publicMetric({ ...row, status: "PENDING_PUBLICATION_RIGHTS" }, "hash"), null);
@@ -97,13 +97,13 @@ test("real source: 365 rows, 28 specialties, 88 authentic tips, exact preservati
   for (const [a, b] of [["שיבא", "תל השומר"], ["רמבם", 'רמב"ם'], ["נהריה", "המרכז הרפואי לגליל"], ["אסף הרופא", "שמיר"], ["בילינסון", "בלינסון"]]) assert.equal(mapValue("INSTITUTION", a, catalog).targetId, mapValue("INSTITUTION", b, catalog).targetId);
   assert.equal(mapValue("INSTITUTION", "כללית", catalog).category, "HMO");
   const aggregates = aggregateRows(normalized.map(r => ({ specialtyId: r.specialty.targetId, institutionId: r.institution.targetId, reportYear: r.reportedAt?.getUTCFullYear() ?? null, normalized: r.normalized })));
-  assert.equal(new Set(aggregates.filter(a => !a.institutionId && a.value !== null).map(a => a.groupKey)).size, 11);
-  assert.equal(aggregates.filter(a => !a.institutionId && a.value !== null).length, 66);
-  assert.ok(aggregates.every(a => a.respondentCount >= 10 || a.value === null));
+  assert.equal(new Set(aggregates.filter(a => !a.institutionId && a.value !== null).map(a => a.groupKey)).size, 26);
+  assert.equal(aggregates.filter(a => !a.institutionId && a.value !== null).length, 180);
+  assert.ok(aggregates.every(a => a.respondentCount >= 1 || a.value === null));
   const one = normalized[0].normalized;
   const sparse = Array.from({ length: 10 }, (_, i) => ({ specialtyId: "same-specialty", institutionId: null, reportYear: 2024, normalized: { ...one, shifts: parseShifts(i === 0 ? null : "5"), hours: parseHours("8-16"), peers: parseLikert("4") } as Normalized }));
   const group = aggregateRows(sparse);
-  assert.equal(group.find(m => m.metricKey === "shifts")?.value, null);
+  assert.equal(group.find(m => m.metricKey === "shifts")?.value, 5);
   assert.equal(group.find(m => m.metricKey === "peers")?.respondentCount, 10);
 });
 test("idempotency compares canonical JSON, independent of PostgreSQL property order", () => {

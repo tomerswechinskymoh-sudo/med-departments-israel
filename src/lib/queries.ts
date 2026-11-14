@@ -3175,6 +3175,7 @@ export async function getUserDashboardData(userId: string) {
       id: userId
     },
     include: {
+      auditEntries: { where: { action: "auth.registration" }, select: { metadata: true }, orderBy: { createdAt: "desc" }, take: 1 },
       favorites: {
         where: {
           department: {
@@ -3637,6 +3638,7 @@ export async function getAdminDashboardData() {
         email: true,
         phone: true,
         roleStatus: true,
+        auditEntries: { where: { action: "auth.registration" }, select: { metadata: true }, orderBy: { createdAt: "desc" }, take: 1 },
         emailVerified: true,
         verificationStatus: true,
         verificationSubmittedAt: true,

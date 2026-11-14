@@ -1,5 +1,6 @@
 "use client";
 
+import type { SurveyQuote } from '@/lib/external-survey/presentation';
 import type { PublicSurveyExperience } from "@/lib/staz-survey/domain";
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
@@ -111,6 +112,8 @@ export function DepartmentExperienceTabs({
   reviews,
   canReport,
   emptyAction,
+  residentQuotes = [],
+  residentMetrics,
   surveyExperiences = []
 }: {
   title: string;
@@ -118,6 +121,8 @@ export function DepartmentExperienceTabs({
   canReport: boolean;
   emptyAction?: ReactNode;
   surveyExperiences?: PublicSurveyExperience[];
+  residentQuotes?: SurveyQuote[];
+  residentMetrics?: ReactNode;
 }) {
   const counts = useMemo(
     () =>
@@ -129,21 +134,22 @@ export function DepartmentExperienceTabs({
         {
           student: 0,
           intern: surveyExperiences.length,
-          resident_or_physician: 0
+          resident_or_physician: residentQuotes.length
         }
       ),
-    [reviews, surveyExperiences]
+    [reviews, surveyExperiences, residentQuotes]
   );
   const [selectedTab, setSelectedTab] = useState<ExperiencePerspective>(() => defaultTabKey(counts));
   const selected = tabs.find((tab) => tab.key === selectedTab) ?? tabs[0];
   const selectedReviews = reviews.filter((review) => perspectiveForReview(review) === selected.key);
   const surveySelected = selected.key === "intern" ? surveyExperiences : [];
+  const residentSelected = selected.key === "resident_or_physician" ? residentQuotes : [];
   const recommendation = experienceRecommendation(selectedReviews, surveySelected);
   const surveyMetrics = [...new Set(surveySelected.flatMap(r => r.ratings.map(v => v.code)))].filter(code => code !== 'ELECTIVE_RECOMMENDATION').map(code => {
     const values = surveySelected.flatMap(r => r.ratings.filter(v => v.code === code));
     return { code, label: values[0].label, count: values.length, value: average(values.map(v => v.value)) };
   });
-  const hasAnyReviews = reviews.length > 0 || surveyExperiences.length > 0;
+  const hasAnyReviews = reviews.length > 0 || surveyExperiences.length > 0 || residentQuotes.length > 0;
   const selectedSummary = {
     teachingQuality: average(selectedReviews.map((review) => review.teachingQuality)),
     seniorsApproachability: average(selectedReviews.map((review) => review.seniorsApproachability)),
@@ -188,13 +194,14 @@ export function DepartmentExperienceTabs({
         ))}
       </div>
 
+      {selected.key === "resident_or_physician" && residentMetrics}
       <div className="grid gap-4">
         {!hasAnyReviews ? (
           <div className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-4 text-sm text-slate-600">
             <p className="font-semibold text-slate-700">אין עדיין חוויות מאושרות במחלקה הזו.</p>
             {emptyAction ? <div className="mt-3">{emptyAction}</div> : null}
           </div>
-        ) : selectedReviews.length === 0 && surveySelected.length === 0 ? (
+        ) : selectedReviews.length === 0 && surveySelected.length === 0 && residentSelected.length === 0 ? (
           <div className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-4 text-sm text-slate-600">
             <p className="font-semibold text-slate-700">עדיין אין חוויות בקטגוריה זו</p>
             <p className="mt-1">{selected.emptyText}</p>
@@ -213,7 +220,7 @@ export function DepartmentExperienceTabs({
               </>}
             {surveyMetrics.map(metric => <div key={metric.code} className="rounded-lg border border-brand-100 bg-brand-50 p-3"><p className="text-xs font-bold">{metric.label} · {metric.count} דירוגים</p><RatingStars value={metric.value} /></div>)}
             </div></details>}
-            <ExperienceCarousel key={selected.key} reviews={selectedReviews} surveyExperiences={surveySelected} canReport={canReport} />
+            <ExperienceCarousel key={selected.key} reviews={selectedReviews} surveyExperiences={surveySelected} residentQuotes={residentSelected} canReport={canReport} />
           </>
         )}
       </div>

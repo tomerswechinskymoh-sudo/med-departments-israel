@@ -10,7 +10,7 @@ export async function decideRegistration(input: { userId: string; actorId: strin
     const status = input.approved ? VerificationStatus.VERIFIED : VerificationStatus.REJECTED;
     await tx.user.update({ where: { id: input.userId }, data: {
       verificationStatus: status,
-      roleKey: input.approved && ['resident', 'specialist'].includes(user.roleStatus ?? '') ? RoleKey.RESIDENT : user.roleKey,
+      roleKey: input.approved && ['resident', 'specialist', 'post_intern'].includes(user.roleStatus ?? '') ? RoleKey.RESIDENT : user.roleKey,
       verificationRejectionReason: input.approved ? null : input.note ?? null,
       verifiedByAdminId: input.actorId,
       verifiedAt: new Date()

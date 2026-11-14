@@ -39,9 +39,9 @@ export async function recordSelection(db: PrismaClient, document: string, workbo
         if (actual !== value && !(key === 'value' && typeof actual === 'number' && typeof value === 'number' && Math.abs(actual - value) < 1e-10)) throw new Error(`Aggregate reconciliation failed for ${a.metricKey}/${key}`);
       }
     }
-    const eligible = aggregates.filter(a => !a.institutionId && a.value !== null && a.respondentCount >= MIN_RESPONDENTS);
+    const eligible = aggregates.filter(a => a.value !== null && a.respondentCount >= MIN_RESPONDENTS);
     const eligibleGroups = new Set(eligible.map(a => a.groupKey));
-    if (plan.groupKeys.length !== eligibleGroups.size || plan.groupKeys.some(key => !eligibleGroups.has(key))) throw new Error('Explicit review must cover all eligible nationwide groups');
+    if (plan.groupKeys.length !== eligibleGroups.size || plan.groupKeys.some(key => !eligibleGroups.has(key))) throw new Error('Explicit review must cover all eligible national and institution-specialty groups');
     const reviewed = await tx.externalSurveyAggregate.updateMany({ where: { id: { in: eligible.map(a => a.id) } }, data: { privacyReviewHash: source.datasetHash, privacyEvidence: json({ ...evidence, checks: plan.aggregateChecks }) } });
     const priorSame = stored.every(r => !r.hasTip || (r.tipReviewEvidence as { documentSha256?: string } | null)?.documentSha256 === evidence.documentSha256);
     if (!priorSame) {

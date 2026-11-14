@@ -22,6 +22,7 @@ import { VerificationFileInput } from "@/components/forms/verification-file-inpu
 type RoleStatus =
   | "medical_student"
   | "intern"
+  | "post_intern"
   | "resident"
   | "specialist"
   | "other";
@@ -56,6 +57,8 @@ type FormValues = {
   studentTrack?: StudentTrack | "";
   studentYear?: number | string;
   medicalFaculty?: MedicalFaculty | "";
+  specialistWorkplace?: "hospital" | "community" | "both";
+  communityWorkplace?: string;
   onboardingInstitutionId?: string;
   onboardingDepartmentId?: string;
   experienceContributionStatus?: ContributionStatus;
@@ -71,6 +74,7 @@ const roleStatusOptions: Array<{ value: RoleStatus; label: string }> = [
     value: "intern",
     label: "סטאז׳ר/ית",
   },
+  { value: "post_intern", label: "רופא/ה אחרי סטאז׳ ולפני התמחות" },
   {
     value: "resident",
     label: "מתמחה",
@@ -93,7 +97,7 @@ const studentTrackOptions = [
 const studentYearOptions = Array.from({ length: 7 }, (_, index) => index + 1);
 
 const onboardingContributionCopy =
-  "כדי להשלים את ההרשמה, יש לשתף חוויה אמיתית ממחלקה שבה התנסית. זהו שלב חובה לסטודנטים במסלול שש־שנתי משנה ד׳, במסלול ארבע־שנתי משנה ג׳, לסטאז׳רים ולמתמחים, ולא ניתן לדלג עליו. אפשר לבחור כל מחלקה שבה התנסית ולבקש פרסום ללא שם. החוויה תישלח לבדיקה ולא תפורסם אוטומטית.";
+  "כדי להשלים את ההרשמה, יש לשתף חוויה אמיתית ממחלקה שבה התנסית. זהו שלב חובה לסטודנטים במסלול שש־שנתי משנה ד׳, במסלול ארבע־שנתי משנה ג׳, לסטאז׳רים, לרופאים אחרי סטאז׳ ולמתמחים, ולא ניתן לדלג עליו. אפשר לבחור כל מחלקה שבה התנסית ולבקש פרסום ללא שם. החוויה תישלח לבדיקה ולא תפורסם אוטומטית.";
 
 function normalizeOptional(value?: string | number | null) {
   if (value === null || value === undefined) return "";
@@ -142,12 +146,15 @@ export function SignupForm({
       studentTrack: "",
       studentYear: "",
       medicalFaculty: "",
+      specialistWorkplace: "hospital",
+      communityWorkplace: "",
       onboardingInstitutionId: "",
       onboardingDepartmentId: "",
     },
   });
 
   const roleStatus = watch("roleStatus");
+  const specialistWorkplace = watch("specialistWorkplace") ?? "hospital";
   const studentTrack = watch("studentTrack");
   const studentYear = watch("studentYear");
   const selectedInstitutionId = watch("onboardingInstitutionId");
@@ -243,7 +250,7 @@ export function SignupForm({
       return null;
     }
 
-    if (values.roleStatus === "intern") {
+    if (values.roleStatus === "intern" || values.roleStatus === "post_intern") {
       if (!values.onboardingInstitutionId)
         return "יש לבחור בית חולים לסטאז׳ או לסבב.";
       return null;
@@ -251,7 +258,7 @@ export function SignupForm({
 
     if (
       values.roleStatus === "resident" ||
-      values.roleStatus === "specialist"
+      (values.roleStatus === "specialist" && values.specialistWorkplace !== "community")
     ) {
       if (!values.onboardingInstitutionId) return "יש לבחור בית חולים.";
       if (!values.onboardingDepartmentId) return "יש לבחור מחלקה.";
@@ -293,8 +300,11 @@ export function SignupForm({
     formData.set("studentTrack", values.studentTrack ?? "");
     formData.set("studentYear", normalizeOptional(values.studentYear));
     formData.set("medicalFaculty", values.medicalFaculty ?? "");
-    formData.set("onboardingInstitutionId", values.onboardingInstitutionId ?? "");
-    formData.set("onboardingDepartmentId", values.onboardingDepartmentId ?? "");
+    const communityOnly = values.roleStatus === "specialist" && values.specialistWorkplace === "community";
+    formData.set("specialistWorkplace", values.roleStatus === "specialist" ? values.specialistWorkplace ?? "hospital" : "");
+    formData.set("communityWorkplace", values.roleStatus === "specialist" && values.specialistWorkplace !== "hospital" ? values.communityWorkplace ?? "" : "");
+    formData.set("onboardingInstitutionId", communityOnly ? "" : values.onboardingInstitutionId ?? "");
+    formData.set("onboardingDepartmentId", communityOnly || values.roleStatus === "post_intern" ? "" : values.onboardingDepartmentId ?? "");
     formData.set("experienceContributionStatus", contributionStatus);
     formData.set("experienceContributionCategory", contributionEligibility.category ?? "");
     if (contributionEligibility.eligible && experienceSubmitted && experienceReceipt) {
@@ -681,13 +691,21 @@ export function SignupForm({
         </div>
       ) : null}
 
-      {roleStatus === "intern" ||
+      {roleStatus === "specialist" && <div className="grid gap-4 rounded-2xl border border-brand-100 bg-brand-50/50 p-4 md:grid-cols-2">
+        <label className="block"><span className="mb-2 block text-sm font-semibold text-ink">מסגרת העבודה</span>
+          <select {...register("specialistWorkplace")} className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3">
+            <option value="hospital">בית חולים</option><option value="community">קהילה</option><option value="both">בית חולים וקהילה</option>
+          </select>
+        </label>
+        {specialistWorkplace !== "hospital" && <label className="block"><span className="mb-2 block text-sm font-semibold text-ink">קופה או מרפאה בקהילה (רשות)</span><input {...register("communityWorkplace")} maxLength={200} placeholder="למשל קופת חולים או מרפאה עצמאית" className="w-full rounded-2xl border border-brand-100 bg-white px-4 py-3" /></label>}
+      </div>}
+      {roleStatus === "intern" || roleStatus === "post_intern" ||
       roleStatus === "resident" ||
-      roleStatus === "specialist" ? (
+      (roleStatus === "specialist" && specialistWorkplace !== "community") ? (
         <div className="grid gap-4 rounded-[1.5rem] border border-brand-100 bg-brand-50/50 p-4 md:grid-cols-2">
           <label className="block">
             <span className="mb-2 block text-sm font-semibold text-ink">
-              {roleStatus === "intern"
+              {roleStatus === "post_intern" ? "בית החולים שבו עשית סטאז׳" : roleStatus === "intern"
                 ? "בית חולים"
                 : "בית חולים נוכחי או אחרון"}
             </span>

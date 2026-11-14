@@ -1,5 +1,7 @@
 import { METRICS, parsedMetric, type MetricKey, type Normalized } from "./parse";
-export const MIN_RESPONDENTS = 10;
+// Owner explicitly selected n=1 with respondent counts, 2026-11-14.
+export const MIN_RESPONDENTS = 1;
+export const AGGREGATION_POLICY_VERSION = "local-n1-20261114";
 export type AggregateInput = { specialtyId: string | null; institutionId: string | null; reportYear: number | null; normalized: Normalized };
 export type Aggregate = { groupKey: string; specialtyId: string; institutionId: string | null; metricKey: MetricKey; respondentCount: number; value: number | null; method: string; calculatedCount: number; periodStartYear: number | null; periodEndYear: number | null };
 export function metricValue(row: AggregateInput, metric: MetricKey) {
@@ -39,9 +41,7 @@ export function aggregateRows(rows: AggregateInput[]): Aggregate[] {
 export function publicationStatus(input: { respondentCount: number; value: number | null; institutionId: string | null; rights: string; datasetHash: string; privacyReviewHash: string | null; evidence: unknown }) {
   if (input.rights !== "DOCUMENTED") return "PENDING_PUBLICATION_RIGHTS" as const;
   if (input.respondentCount < MIN_RESPONDENTS || input.value === null) return "SUPPRESSED" as const;
-  // Institution slices are never released in v1, preventing nested-group
-  // differencing and a hospital league table. They remain internal diagnostics.
-  if (input.institutionId || !input.datasetHash || input.privacyReviewHash !== input.datasetHash || !input.evidence) return "PENDING_PRIVACY_REVIEW" as const;
+  if (!input.datasetHash || input.privacyReviewHash !== input.datasetHash || !input.evidence) return "PENDING_PRIVACY_REVIEW" as const;
   return "PUBLISHED" as const;
 }
 export function canReadSurvey(session: { role: string; emailVerified: boolean; verificationStatus: string } | null) {

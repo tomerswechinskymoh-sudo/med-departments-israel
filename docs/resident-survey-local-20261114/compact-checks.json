@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "profiles": [
+    {
+      "specialty": "pediatrics",
+      "href": "/departments/array-%D7%91%D7%99%D7%94%D7%97-%D7%9E%D7%A2%D7%99%D7%A0%D7%99-%D7%94%D7%99%D7%A9%D7%95%D7%A2%D7%94-pediatrics?departmentId=cmpnidynt026p11debllocd72",
+      "countText": "2 חוויות מאושרות",
+      "residentQuotes": 2,
+      "oneQuoteAtATime": true,
+      "guestCountsMatch": true,
+      "onlyLocalMetrics": true
+    }
+  ],
+  "scans": [
+    {
+      "width": 1440,
+      "tiles": [
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875
+      ],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "tiles": [
+        149.296875,
+        149.296875,
+        149.296875,
+        149.296875,
+        149.296875,
+        149.296875,
+        149.296875
+      ],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "tiles": [
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        149.296875,
+        149.296875,
+        129.296875
+      ],
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "exactTextAndYearVerified": true,
+  "noFabricatedOverallScores": true
+}

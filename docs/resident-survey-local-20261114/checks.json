@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "surveyUnitTestsPassed": 17,
+  "internshipRegressionTestsPassed": 36,
+  "signupTestsPassed": 3,
+  "existingOnboardingScenariosPassed": 8,
+  "originalSourceAndLiveSheetCompared": true,
+  "isolatedPublicationIntegrationPassed": true,
+  "allDirectoryProfilesAudited": 490,
+  "signupPersistenceAndVerificationPassed": true,
+  "productionBuildBrowserPassed": true,
+  "viewportWidths": [
+    1440,
+    768,
+    375
+  ],
+  "accessibilityViolations": 0,
+  "restoreSnapshot": "snap-raspy-band-am9uuv9f"
+}

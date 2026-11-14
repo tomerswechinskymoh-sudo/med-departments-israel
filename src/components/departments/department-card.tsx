@@ -158,6 +158,7 @@ export function DepartmentCard({
     shortSummary: string;
     reviewCount: number;
     surveySummary?: SurveyDirectorySummary;
+    residentSurveyCount?: number;
     experienceRecommendation?: RecommendationSummary;
     averageOverall: number;
     teachingQuality?: number;
@@ -201,7 +202,7 @@ export function DepartmentCard({
     id: department.hrefDepartmentId ?? department.id,
   });
   const isRow = variant === "row";
-  const experienceCount = department.reviewCount + (department.surveySummary?.experienceCount ?? 0);
+  const experienceCount = department.reviewCount + (department.surveySummary?.experienceCount ?? 0) + (department.residentSurveyCount ?? 0);
   const recommendation = department.experienceRecommendation ?? { count: department.reviewCount, average: department.averageOverall };
   const favoriteDepartmentId =
     department.favoriteDepartmentId ??

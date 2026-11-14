@@ -2,6 +2,7 @@
 
 import { useId, useMemo, useState, type KeyboardEvent } from 'react';
 import { experienceQuotes, filterExperienceQuotes, wrapQuoteIndex, type ExperienceQuote, type QuoteReview } from '@/lib/experience-carousel';
+import type { SurveyQuote } from '@/lib/external-survey/presentation';
 import type { PublicSurveyExperience } from '@/lib/staz-survey/domain';
 import { reviewerTypeLabel } from '@/lib/query-labels';
 import { RatingStars } from '@/components/ui/rating-stars';
@@ -16,6 +17,7 @@ function QuoteCard({ quote, canReport, showRating = true }: { quote: ExperienceQ
       <div><span className="experience-quote-year">{quote.year ?? 'לא צוינה שנה'}</span><span aria-hidden="true">·</span><span>{reviewerTypeLabel(quote.role)}</span><span aria-hidden="true">·</span><span>{quote.author ?? 'בעילום שם'}</span></div>
       {showRating && (quote.rating === null ? <span>ללא דירוג</span> : <RatingStars value={quote.rating} />)}
     </header>
+    {quote.scopeLabel && <p className="experience-quote-scope">{quote.scopeLabel}</p>}
     {quote.hospitalScope && <p className="experience-quote-scope">תגובה על כלל בית החולים</p>}
     <div id={quoteId} className={`experience-quote-body${long && !expanded ? ' experience-quote-body--collapsed' : ''}`}>
       <span aria-hidden="true" className="experience-quote-mark">“</span>
@@ -56,10 +58,10 @@ export function QuoteViewport({ quotes, canReport, label = 'תגובות מהמ�
   </div>;
 }
 
-export function ExperienceCarousel({ reviews, surveyExperiences, canReport }: { reviews: QuoteReview[]; surveyExperiences: PublicSurveyExperience[]; canReport: boolean }) {
+export function ExperienceCarousel({ reviews, surveyExperiences, residentQuotes = [], canReport }: { reviews: QuoteReview[]; surveyExperiences: PublicSurveyExperience[]; residentQuotes?: SurveyQuote[]; canReport: boolean }) {
   const [rating, setRating] = useState('all');
   const selectId = useId();
-  const quotes = useMemo(() => experienceQuotes(reviews, surveyExperiences), [reviews, surveyExperiences]);
+  const quotes = useMemo(() => experienceQuotes(reviews, surveyExperiences, residentQuotes), [reviews, surveyExperiences, residentQuotes]);
   const filtered = filterExperienceQuotes(quotes, rating);
   const ratingValues = [...new Set([1, 2, 3, 4, 5, ...quotes.flatMap(quote => quote.rating === null ? [] : [quote.rating])])].sort((a, b) => b - a);
   if (!quotes.length) return <p className="experience-carousel-empty">יש דירוגים בקטגוריה זו, אך עדיין אין תגובות טקסט.</p>;

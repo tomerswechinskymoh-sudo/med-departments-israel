@@ -50,6 +50,8 @@ export async function POST(request: Request) {
     studentTrack: formData.get("studentTrack"),
     studentYear: formData.get("studentYear"),
     medicalFaculty: formData.get("medicalFaculty"),
+    specialistWorkplace: formData.get("specialistWorkplace") ?? undefined,
+    communityWorkplace: formData.get("communityWorkplace") ?? undefined,
     onboardingInstitutionId: formData.get("onboardingInstitutionId"),
     onboardingDepartmentId: formData.get("onboardingDepartmentId"),
     experienceContributionStatus: formData.get("experienceContributionStatus"),
@@ -119,7 +121,7 @@ export async function POST(request: Request) {
 
   const passwordHash = await hashPassword(parsed.data.password);
   const roleKey =
-    parsed.data.roleStatus === "resident" || parsed.data.roleStatus === "specialist"
+    ["resident", "specialist", "post_intern"].includes(parsed.data.roleStatus)
       ? RoleKey.RESIDENT
       : RoleKey.STUDENT;
   const verificationToken = createVerificationToken();
@@ -205,8 +207,10 @@ export async function POST(request: Request) {
         studentTrack: parsed.data.studentTrack ?? null,
         studentYear: parsed.data.studentYear ?? null,
         medicalFaculty: parsed.data.medicalFaculty ?? null,
-        institutionId: parsed.data.onboardingInstitutionId ?? null,
-        departmentId: parsed.data.onboardingDepartmentId ?? null,
+        workplace: parsed.data.roleStatus === "specialist" ? parsed.data.specialistWorkplace ?? "hospital" : null,
+        communityWorkplace: parsed.data.roleStatus === "specialist" && ["community", "both"].includes(parsed.data.specialistWorkplace ?? "hospital") ? parsed.data.communityWorkplace ?? null : null,
+        institutionId: parsed.data.roleStatus === "specialist" && parsed.data.specialistWorkplace === "community" ? null : parsed.data.onboardingInstitutionId ?? null,
+        departmentId: parsed.data.roleStatus === "post_intern" || parsed.data.roleStatus === "specialist" && parsed.data.specialistWorkplace === "community" ? null : parsed.data.onboardingDepartmentId ?? null,
         experienceContributionStatus: contributionEligibility.eligible ? "submitted" : "not_eligible",
         experienceContributionCategory: contributionEligibility.category,
         experienceSubmissionId

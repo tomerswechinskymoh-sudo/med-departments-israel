@@ -47,7 +47,7 @@ export const fellowshipExperienceVisibilityValues = [
   "PUBLIC_ANONYMIZED",
   "PUBLIC_IDENTIFIED"
 ] as const;
-export const professionalRoleStatusValues = ["medical_student", "intern", "resident", "specialist", "other"] as const;
+export const professionalRoleStatusValues = ["medical_student", "intern", "post_intern", "resident", "specialist", "other"] as const;
 
 const emptyToUndefined = (value: unknown) => {
   if (typeof value !== "string") {
@@ -189,6 +189,8 @@ export const signupSchema = z
     studentTrack: z.preprocess(emptyToUndefined, z.enum(["six_year", "four_year"]).optional()),
     studentYear: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(7).optional()),
     medicalFaculty: z.preprocess(emptyToUndefined, z.enum(medicalFacultyValues).optional()),
+    specialistWorkplace: z.preprocess(emptyToUndefined, z.enum(["hospital", "community", "both"]).optional()),
+    communityWorkplace: z.preprocess(emptyToUndefined, z.string().trim().max(200).optional()),
     onboardingInstitutionId: z.preprocess(emptyToUndefined, z.string().optional()),
     onboardingDepartmentId: z.preprocess(emptyToUndefined, z.string().optional()),
     experienceContributionStatus: z.preprocess(
@@ -215,10 +217,10 @@ export const signupRequestSchema = signupSchema.superRefine((data, ctx) => {
     requireField("studentYear", "יש לבחור שנת לימוד.");
     requireField("medicalFaculty", "יש לבחור פקולטה לרפואה.");
   }
-  if (data.roleStatus === "intern" || data.roleStatus === "resident" || data.roleStatus === "specialist") {
+  if (data.roleStatus === "intern" || data.roleStatus === "post_intern" || data.roleStatus === "resident" || data.roleStatus === "specialist" && data.specialistWorkplace !== "community") {
     requireField("onboardingInstitutionId", "יש לבחור בית חולים.");
   }
-  if (data.roleStatus === "resident" || data.roleStatus === "specialist") {
+  if (data.roleStatus === "resident" || data.roleStatus === "specialist" && data.specialistWorkplace !== "community") {
     requireField("onboardingDepartmentId", "יש לבחור מחלקה.");
   }
 });

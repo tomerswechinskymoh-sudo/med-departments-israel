@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "publishedMetrics": 1177,
+  "nationalMetrics": 180,
+  "localMetrics": 997,
+  "nationalSpecialties": 26,
+  "localGroups": 157,
+  "publishedTips": 58,
+  "approvedTips": 66,
+  "negativeTips": 17,
+  "uncertainTips": 5,
+  "sourceRowsAndOtherDataUnchanged": true,
+  "idempotencyPassed": true,
+  "localScopeAndGuestPrivacyPassed": true,
+  "hideRestorePassed": true
+}
