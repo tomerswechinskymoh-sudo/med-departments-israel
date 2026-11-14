@@ -7,8 +7,9 @@ import { readWorkbook, normalizeRows, safeReport, SOURCE_ID, hash } from "@/serv
 import { readCatalog, importSurvey, rebuildAggregates, manualMappings } from "@/server/external-survey/importer";
 import { unseal } from "@/server/external-survey/crypto";
 import { aggregateRows, publicationStatus, MIN_RESPONDENTS } from "@/lib/external-survey/aggregate";
+import { recordSelection } from "@/server/external-survey/selection";
 import type { Catalog, Mapping } from "@/lib/external-survey/mapping";
-const { positionals, values: options } = parseArgs({ allowPositionals: true, options: { file: { type: "string" }, out: { type: "string" }, catalog: { type: "string" }, reviewer: { type: "string" } } });
+const { positionals, values: options } = parseArgs({ allowPositionals: true, options: { file: { type: "string" }, source: { type: "string" }, out: { type: "string" }, catalog: { type: "string" }, reviewer: { type: "string" } } });
 const command = positionals[0];
 const db = new PrismaClient({ log: [] });
 const json = (v: unknown) => JSON.parse(JSON.stringify(v)) as Prisma.InputJsonValue;
@@ -122,6 +123,9 @@ async function main() {
       await tx.externalSurveyResponse.update({ where: { id: response.id }, data: { tipStatus: data.status, approvedTip: data.status === "APPROVED" ? original : null, tipReviewEvidence: json({ ...evidence, individualPermissionReference: data.individualPermissionReference ?? null }), status: "PENDING_PUBLICATION_RIGHTS" } });
     });
     console.log(JSON.stringify({ tipReviewRecorded: true, published: false }));
+  } else if (command === "review-selection") {
+    const actor = await reviewer();
+    console.log(JSON.stringify(await recordSelection(db, await readFile(required(options.file, '--file'), 'utf8'), required(options.source, '--source'), actor)));
   } else if (command === "publish") {
     const result = await locked(async tx => {
       const source = await tx.externalSurveySource.findUniqueOrThrow({ where: { id: SOURCE_ID } });
@@ -146,6 +150,6 @@ async function main() {
 }
 main().catch(error => {
   // Never print Prisma parameters, original survey text, connection URLs or keys.
-  const message = error instanceof Prisma.PrismaClientKnownRequestError ? `Database operation failed (${error.code})` : error instanceof Error ? error.message : "Operation failed";
+  const message = error instanceof Prisma.PrismaClientKnownRequestError ? `Database operation failed (${error.code})` : error instanceof Error && error.name === 'ZodError' ? 'Invalid selection document' : error instanceof Error ? error.message : "Operation failed";
   console.error(message.replace(/postgres(?:ql)?:\/\/\S+/g, "[redacted]")); process.exitCode = 1;
 }).finally(() => db.$disconnect());

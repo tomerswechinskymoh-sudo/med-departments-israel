@@ -13,6 +13,7 @@ if '--presentation-review' in sys.argv:OUT=ROOT/'docs/staz-survey-presentation-2
 if '--carousel-review' in sys.argv:OUT=ROOT/'docs/staz-survey-carousel-20261113'
 if '--public-directory' in sys.argv:OUT=ROOT/'docs/staz-survey-public-directory-20261114'
 if '--account-navigation' in sys.argv:OUT=ROOT/'docs/account-navigation-20261114'
+if '--resident-survey-publication' in sys.argv:OUT=ROOT/'docs/resident-survey-publication-20261114'
 TEAM='team_Jj2tczP8vf4XPr74gxyasW5A';PROJECT='prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE'
 phase=sys.argv[1];assert phase in ['staged','live']
 d=json.loads((OUT/'deployment.json').read_text());headers={'User-Agent':'Hitmachut-Staz-Authorized-Release-Smoke'}
@@ -43,4 +44,5 @@ if '--presentation-review' in sys.argv:report['scope']='Read-only routes and acc
 if '--carousel-review' in sys.argv:report['scope']='Read-only routes and access gates. Single-quote carousel, personal rating filters, keyboard controls, long text and source hide/restore verified on isolated data. Production approval decisions and source settings unchanged.'
 if '--public-directory' in sys.argv:report['scope']='Read-only routes and access gates. Anonymous directory counts and recommendation averages match signed-in results; individual experience text retains its viewer gate. Source hide/restore verified on isolated data.'
 if '--account-navigation' in sys.argv:report['scope']='Read-only routes and access gates. Shared site navigation, personal account link, admin-only management entry and successful login redirects verified with synthetic users on isolated data.'
+if '--resident-survey-publication' in sys.argv:report['scope']='Read-only public routes and access gates. All valid resident survey metrics, separated salary bases, exact positive quotations and privacy thresholds verified on isolated data.'
 (OUT/(phase+'-smoke.json')).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');assert report['passed']

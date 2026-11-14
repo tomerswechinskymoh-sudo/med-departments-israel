@@ -88,9 +88,14 @@ export const METRICS = {
   seniors: { label: "יחס הבכירים", method: "MEAN", unit: "מתוך 5" },
   family: { label: "איזון עבודה־משפחה", method: "MEAN", unit: "מתוך 5" },
   hours: { label: "משך יום ללא תורנות", method: "MEDIAN", unit: "שעות" },
+  salaryGross: { label: "שכר חודשי ברוטו", method: "MEDIAN", unit: "₪" },
+  salaryNet: { label: "שכר חודשי נטו", method: "MEDIAN", unit: "₪" },
 } as const;
 export type MetricKey = keyof typeof METRICS;
-export type Normalized = Record<MetricKey, NumericParse> & { salary: SalaryParse; scale: typeof LIKERT_SCALE };
+export type Normalized = Record<Exclude<MetricKey, "salaryGross" | "salaryNet">, NumericParse> & { salary: SalaryParse; scale: typeof LIKERT_SCALE };
+export function parsedMetric(normalized: Normalized, metric: MetricKey): NumericParse {
+  return metric === "salaryGross" || metric === "salaryNet" ? normalized.salary : normalized[metric];
+}
 export function tipRiskFlags(tip: string) {
   if (!tip.trim()) return [];
   const flags = ["HUMAN_REVIEW_REQUIRED"];

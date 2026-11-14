@@ -59,8 +59,10 @@ export async function rebuildAggregates(tx: Prisma.TransactionClient) {
     await tx.externalSurveyAggregate.deleteMany({ where: { sourceId: SOURCE_ID } });
     await tx.externalSurveySource.update({ where: { id: SOURCE_ID }, data: { datasetHash } });
     await tx.externalSurveyResponse.updateMany({ where: { sourceId: SOURCE_ID }, data: { status: source.aggregateRightsStatus === "DOCUMENTED" ? "PENDING_PRIVACY_REVIEW" : "PENDING_PUBLICATION_RIGHTS" } });
-    await tx.externalSurveyAggregate.createMany({ data: aggregates.map(aggregate => ({ ...aggregate, sourceId: SOURCE_ID, datasetHash, status: publicationStatus({ ...aggregate, rights: source.aggregateRightsStatus, datasetHash, privacyReviewHash: null, evidence: null }) })) });
   }
+  // New metric definitions start unreviewed even when the original rows are unchanged.
+  // Existing aggregates and decisions survive a repeated import.
+  await tx.externalSurveyAggregate.createMany({ data: aggregates.map(aggregate => ({ ...aggregate, sourceId: SOURCE_ID, datasetHash, status: publicationStatus({ ...aggregate, rights: source.aggregateRightsStatus, datasetHash, privacyReviewHash: null, evidence: null }) })), skipDuplicates: true });
   return { stored: stored.length, datasetHash, nationalGroupsAtThreshold: new Set(aggregates.filter(a => !a.institutionId && a.value !== null).map(a => a.groupKey)).size, institutionGroupsAtThreshold: new Set(aggregates.filter(a => a.institutionId && a.value !== null).map(a => a.groupKey)).size, nationalMetricsAtThreshold: aggregates.filter(a => !a.institutionId && a.value !== null).length };
 }
 export async function readCatalog(db: PrismaClient) {

@@ -1,15 +1,18 @@
-import { METRICS, type MetricKey, type Normalized } from "./parse";
+import { METRICS, parsedMetric, type MetricKey, type Normalized } from "./parse";
 export const MIN_RESPONDENTS = 10;
 export type AggregateInput = { specialtyId: string | null; institutionId: string | null; reportYear: number | null; normalized: Normalized };
 export type Aggregate = { groupKey: string; specialtyId: string; institutionId: string | null; metricKey: MetricKey; respondentCount: number; value: number | null; method: string; calculatedCount: number; periodStartYear: number | null; periodEndYear: number | null };
 export function metricValue(row: AggregateInput, metric: MetricKey) {
   if (!row.reportYear) return null;
-  const parsed = row.normalized[metric];
+  const parsed = parsedMetric(row.normalized, metric);
   if (!["EXACT", "RANGE"].includes(parsed.parseStatus) || parsed.estimate === null || !Number.isFinite(parsed.estimate)) return null;
   if (metric === "calm" && !(row.normalized.shifts.estimate !== null && row.normalized.shifts.estimate > 0 && ["EXACT", "RANGE"].includes(row.normalized.shifts.parseStatus))) return null;
   if (metric === "shifts" && (parsed.estimate < 0 || parsed.estimate > 31)) return null;
   if (metric === "hours" && (parsed.estimate < 3 || parsed.estimate > 16)) return null;
-  if (!["shifts", "hours"].includes(metric) && (parsed.estimate < 1 || parsed.estimate > 5)) return null;
+  if (["salaryGross", "salaryNet"].includes(metric)) {
+    const salary = row.normalized.salary;
+    if (salary.basis !== (metric === "salaryGross" ? "GROSS" : "NET") || salary.currency !== "ILS" || salary.reportYear !== row.reportYear || salary.estimate! < 1000 || salary.estimate! > 100000) return null;
+  } else if (!["shifts", "hours"].includes(metric) && (parsed.estimate < 1 || parsed.estimate > 5)) return null;
   return parsed.estimate;
 }
 export function aggregateRows(rows: AggregateInput[]): Aggregate[] {
@@ -28,7 +31,7 @@ export function aggregateRows(rows: AggregateInput[]): Aggregate[] {
     return {
       groupKey, specialtyId: members[0].specialtyId!, institutionId: groupKey.startsWith("institution:") ? members[0].institutionId : null,
       metricKey, respondentCount: n, value: n < MIN_RESPONDENTS ? null : METRICS[metricKey].method === "MEDIAN" ? n % 2 ? values[middle] : (values[middle - 1] + values[middle]) / 2 : values.reduce((a, b) => a + b, 0) / n,
-      method: METRICS[metricKey].method, calculatedCount: valid.filter(r => r.normalized[metricKey].calculated).length,
+      method: METRICS[metricKey].method, calculatedCount: valid.filter(r => parsedMetric(r.normalized, metricKey).calculated).length,
       periodStartYear: years.length ? Math.min(...years) : null, periodEndYear: years.length ? Math.max(...years) : null,
     };
   }));

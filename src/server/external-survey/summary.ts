@@ -20,8 +20,8 @@ export async function getExternalSurveySummary(specialtyId: string): Promise<Sur
     const rows = await prisma.externalSurveyAggregate.findMany({ where: { sourceId: SOURCE_ID, specialtyId: resolvedId, institutionId: null, status: "PUBLISHED", respondentCount: { gte: 10 }, datasetHash: source.datasetHash, privacyReviewHash: source.datasetHash }, select: { metricKey: true, respondentCount: true, value: true, method: true, calculatedCount: true, periodStartYear: true, periodEndYear: true, status: true, institutionId: true, datasetHash: true, privacyReviewHash: true } });
     const metrics = rows.flatMap(row => { const metric = publicMetric(row, source.datasetHash); return metric ? [metric] : []; });
     if (!metrics.length) return { ...empty, state: "empty" };
-    const quotes = source.quoteRightsStatus === "DOCUMENTED" && source.quoteRightsEvidence ? await prisma.externalSurveyResponse.findMany({ where: { sourceId: SOURCE_ID, specialtyId: resolvedId, tipStatus: "APPROVED", status: "PUBLISHED", approvedTip: { not: null } }, select: { approvedTip: true }, take: 20, orderBy: { fingerprint: "asc" } }) : [];
-    return { state: "published", sourceTitle: source.title, metrics, quotes: quotes.flatMap(q => q.approvedTip ? [q.approvedTip] : []) };
+    const quotes = source.quoteRightsStatus === "DOCUMENTED" && source.quoteRightsEvidence ? await prisma.externalSurveyResponse.findMany({ where: { sourceId: SOURCE_ID, specialtyId: resolvedId, tipStatus: "APPROVED", status: "PUBLISHED", approvedTip: { not: null }, tipReviewEvidence: { not: Prisma.DbNull } }, select: { id: true, approvedTip: true, reportYear: true }, orderBy: [{ reportYear: "desc" }, { id: "asc" }] }) : [];
+    return { state: "published", sourceTitle: source.title, metrics, quotes: quotes.flatMap(q => q.approvedTip ? [{ id: q.id, text: q.approvedTip, year: q.reportYear }] : []) };
   } catch {
     console.error("[external-survey] Summary unavailable; content withheld");
     return { ...empty, state: "unavailable" };

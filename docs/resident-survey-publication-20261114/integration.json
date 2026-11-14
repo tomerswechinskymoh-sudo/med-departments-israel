@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "publishedMetrics": 66,
+  "specialties": 11,
+  "publishedTips": 29,
+  "approvedTips": 40,
+  "withheldPositiveTips": 11,
+  "negativeTips": 17,
+  "uncertainTips": 31,
+  "salaryGrossGroups": 9,
+  "salaryNetGroups": 0,
+  "sourceRowsAndOtherDataUnchanged": true,
+  "idempotencyPassed": true,
+  "authExactTextStaleDatasetAndSmallGroupGuardsPassed": true,
+  "hideRestorePassed": true
+}

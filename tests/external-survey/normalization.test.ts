@@ -98,7 +98,7 @@ test("real source: 365 rows, 28 specialties, 88 authentic tips, exact preservati
   assert.equal(mapValue("INSTITUTION", "כללית", catalog).category, "HMO");
   const aggregates = aggregateRows(normalized.map(r => ({ specialtyId: r.specialty.targetId, institutionId: r.institution.targetId, reportYear: r.reportedAt?.getUTCFullYear() ?? null, normalized: r.normalized })));
   assert.equal(new Set(aggregates.filter(a => !a.institutionId && a.value !== null).map(a => a.groupKey)).size, 11);
-  assert.equal(aggregates.filter(a => !a.institutionId && a.value !== null).length, 57);
+  assert.equal(aggregates.filter(a => !a.institutionId && a.value !== null).length, 66);
   assert.ok(aggregates.every(a => a.respondentCount >= 10 || a.value === null));
   const one = normalized[0].normalized;
   const sparse = Array.from({ length: 10 }, (_, i) => ({ specialtyId: "same-specialty", institutionId: null, reportYear: 2024, normalized: { ...one, shifts: parseShifts(i === 0 ? null : "5"), hours: parseHours("8-16"), peers: parseLikert("4") } as Normalized }));

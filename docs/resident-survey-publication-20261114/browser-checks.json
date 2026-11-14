@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "verifiedViewerMetrics": 7,
+  "exactQuotesNavigated": 4,
+  "departmentContextVerified": true,
+  "guestProtectedHtmlVerified": true,
+  "keyboardNavigationPassed": true,
+  "scans": [
+    {
+      "width": 1440,
+      "tiles": [
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875
+      ],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "tiles": [
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875
+      ],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "tiles": [
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875,
+        129.296875
+      ],
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "unitTestsPassed": 17,
+  "unitTestsSkipped": 0,
+  "realOriginalWorkbookVerified": true,
+  "isolatedDatabasePublicationPassed": true,
+  "browserChecksPassed": true,
+  "viewportWidths": [
+    1440,
+    768,
+    375
+  ],
+  "accessibilityViolations": 0,
+  "guestTextPrivacyPassed": true,
+  "compactMetricTileHeightPx": 129.3,
+  "restoreSnapshot": "snap-flat-pond-amx5oz5u",
+  "localIpv4WorkaroundOnly": true
+}

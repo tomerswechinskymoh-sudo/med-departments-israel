@@ -7,14 +7,14 @@ import { reviewerTypeLabel } from '@/lib/query-labels';
 import { RatingStars } from '@/components/ui/rating-stars';
 import { ReportReviewButton } from './report-review-button';
 
-function QuoteCard({ quote, canReport }: { quote: ExperienceQuote; canReport: boolean }) {
+function QuoteCard({ quote, canReport, showRating = true }: { quote: ExperienceQuote; canReport: boolean; showRating?: boolean }) {
   const [expanded, setExpanded] = useState(false);
   const quoteId = useId();
   const long = quote.parts.reduce((sum, part) => sum + part.text.length, 0) > 420 || quote.parts.reduce((sum, part) => sum + part.text.split('\n').length, 0) > 6;
   return <article className="experience-quote" data-experience-quote={quote.id}>
     <header className="experience-quote-meta">
       <div><span className="experience-quote-year">{quote.year ?? 'לא צוינה שנה'}</span><span aria-hidden="true">·</span><span>{reviewerTypeLabel(quote.role)}</span><span aria-hidden="true">·</span><span>{quote.author ?? 'בעילום שם'}</span></div>
-      {quote.rating === null ? <span>ללא דירוג</span> : <RatingStars value={quote.rating} />}
+      {showRating && (quote.rating === null ? <span>ללא דירוג</span> : <RatingStars value={quote.rating} />)}
     </header>
     {quote.hospitalScope && <p className="experience-quote-scope">תגובה על כלל בית החולים</p>}
     <div id={quoteId} className={`experience-quote-body${long && !expanded ? ' experience-quote-body--collapsed' : ''}`}>
@@ -30,7 +30,7 @@ function QuoteCard({ quote, canReport }: { quote: ExperienceQuote; canReport: bo
   </article>;
 }
 
-function QuoteViewport({ quotes, canReport }: { quotes: ExperienceQuote[]; canReport: boolean }) {
+export function QuoteViewport({ quotes, canReport, label = 'תגובות מהמחלקה', showRating = true }: { quotes: ExperienceQuote[]; canReport: boolean; label?: string; showRating?: boolean }) {
   const [index, setIndex] = useState(0);
   const active = wrapQuoteIndex(index, quotes.length), slideId = useId();
   const move = (direction: number) => setIndex(value => wrapQuoteIndex(value + direction, quotes.length));
@@ -42,10 +42,10 @@ function QuoteViewport({ quotes, canReport }: { quotes: ExperienceQuote[]; canRe
     else if (event.key === 'End') setIndex(quotes.length - 1);
     else move(event.key === 'ArrowLeft' ? 1 : -1);
   }
-  return <div className="experience-carousel" role="region" aria-roledescription="קרוסלה" aria-label="תגובות מהמחלקה" tabIndex={0} onKeyDown={onKeyDown}>
+  return <div className="experience-carousel" role="region" aria-roledescription="קרוסלה" aria-label={label} tabIndex={0} onKeyDown={onKeyDown}>
     <div id={slideId} aria-live="polite" aria-atomic="false">
       <div role="group" aria-roledescription="תגובה" aria-label={`תגובה ${active + 1} מתוך ${quotes.length}`}>
-        <QuoteCard key={quotes[active].id} quote={quotes[active]} canReport={canReport} />
+        <QuoteCard key={quotes[active].id} quote={quotes[active]} canReport={canReport} showRating={showRating} />
       </div>
     </div>
     <nav className="experience-carousel-navigation" aria-label="מעבר בין תגובות" data-carousel-navigation>

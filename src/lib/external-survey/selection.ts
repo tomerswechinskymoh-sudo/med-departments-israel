@@ -1,0 +1,28 @@
+import { z } from 'zod';
+
+// An explicitly delegated assistant review is recorded as such, never as a
+// human inspection or as consent obtained separately from every respondent.
+const checks = z.object({ personalInformation: z.literal(true), patientInformation: z.literal(true), personalAllegations: z.literal(true), indirectIdentification: z.literal(true) }).strict();
+export const selectionSchema = z.object({
+  sourceId: z.literal('resident-conditions-survey-2024'),
+  datasetHash: z.string().regex(/^[a-f0-9]{64}$/),
+  fileHash: z.string().regex(/^[a-f0-9]{64}$/),
+  reviewMethod: z.literal('ASSISTANT_REVIEW_UNDER_OWNER_INSTRUCTION'),
+  ownerInstructionReference: z.string().min(20),
+  sourcePermissionReference: z.string().min(20),
+  groupKeys: z.array(z.string().startsWith('specialty:')).min(1),
+  aggregateChecks: z.object({ allValidResponsesIncluded: z.literal(true), noDemographicSlices: z.literal(true), smallGroupsSuppressed: z.literal(true), noInstitutionComparisons: z.literal(true), historicalPeriodClear: z.literal(true), salaryBasesSeparated: z.literal(true), indirectIdentification: z.literal(true) }).strict(),
+  tips: z.array(z.object({
+    fingerprint: z.string().regex(/^[a-f0-9]{64}$/),
+    exactText: z.string().min(1),
+    sentiment: z.enum(['POSITIVE_OVERALL', 'NEGATIVE', 'UNCERTAIN']),
+    status: z.enum(['APPROVED', 'REJECTED', 'PENDING_REVIEW']),
+    rationale: z.string().min(8),
+    privacyChecks: checks.optional(),
+  }).strict()).min(1),
+}).strict().superRefine((plan, ctx) => {
+  if (new Set(plan.tips.map(t => t.fingerprint)).size !== plan.tips.length) ctx.addIssue({ code: 'custom', message: 'Duplicate tip decision' });
+  if (new Set(plan.groupKeys).size !== plan.groupKeys.length) ctx.addIssue({ code: 'custom', message: 'Duplicate group decision' });
+  for (const tip of plan.tips) if (tip.status === 'APPROVED' && (tip.sentiment !== 'POSITIVE_OVERALL' || !tip.privacyChecks)) ctx.addIssue({ code: 'custom', message: 'Approval requires positive overall sentiment and a documented content/privacy review' });
+});
+export type SurveySelection = z.infer<typeof selectionSchema>;
