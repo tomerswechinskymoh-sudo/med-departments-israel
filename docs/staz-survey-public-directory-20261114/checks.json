@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "unitTestsPassed": 36,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "integrationPassed": true,
+  "browserPassed": true,
+  "screenWidths": [
+    1440,
+    375
+  ],
+  "anonymousSummaryMatchesSignedIn": true,
+  "sourceHideRestorePassed": true,
+  "individualTextAccessGatePreserved": true,
+  "productionDataUnchanged": true
+}

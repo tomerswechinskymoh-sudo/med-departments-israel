@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "anonymousRambamCountAndRatingVisible": true,
+  "matchesAuthenticatedSummary": true,
+  "individualTextStillRequiresVerifiedViewer": true,
+  "profileAnchorWorks": true,
+  "immediateAnonymousHideRestore": true,
+  "scans": [
+    {
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

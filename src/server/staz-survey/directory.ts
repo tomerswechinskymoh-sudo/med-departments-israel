@@ -2,16 +2,18 @@ import type { PrismaClient } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { getDirectoryData } from '@/lib/queries';
 import { combineRecommendations } from '@/lib/experience-recommendation';
-import { canViewSurveyExperiences, publicSurveyWhere, type SurveyViewer } from './public';
+import { publicSurveyWhere, type SurveyViewer } from './public';
 
 type DirectoryTarget = { id: string; experienceDepartmentIds: string[]; experienceMedicalArrayIds: string[] };
 export type SurveyDirectorySummary = { experienceCount: number; recommendationCount: number; recommendationAverage: number };
 
 // Keep this overlay outside the directory cache. Hiding the source must also
 // remove its counts, ratings, filter matches and review ordering on the next read.
-export async function surveyDirectorySummaries(db: Pick<PrismaClient, 'surveyReview'>, cards: DirectoryTarget[], viewer: SurveyViewer) {
+// Aggregate counts and recommendations are public. Individual experience text
+// retains its separate viewer gate in publicSurveyExperiences.
+export async function surveyDirectorySummaries(db: Pick<PrismaClient, 'surveyReview'>, cards: DirectoryTarget[]) {
   const summaries = new Map<string, SurveyDirectorySummary>();
-  if (!canViewSurveyExperiences(viewer) || !cards.length) return summaries;
+  if (!cards.length) return summaries;
   const departments = new Map<string, Set<string>>(), arrays = new Map<string, Set<string>>();
   for (const card of cards) {
     for (const [index, ids] of [[departments, card.experienceDepartmentIds], [arrays, card.experienceMedicalArrayIds]] as const) {
@@ -52,7 +54,7 @@ export async function getExperienceDirectoryData(filters: Parameters<typeof getD
   // Filter after array grouping and after the current publication gate is read.
   const cards = await getDirectoryData({ ...filters, hasReviews: false }, viewer?.userId);
   let targets = cards;
-  if (canViewSurveyExperiences(viewer) && cards.some(card => card.isArrayCard) && (filters.search || filters.hasOpenPositions || filters.hasResearch)) {
+  if (cards.some(card => card.isArrayCard) && (filters.search || filters.hasOpenPositions || filters.hasResearch)) {
     // A matching unit can bring an entire array card into search results. Its
     // experience summary must still cover the same full array as the profile.
     const fullCards = await getDirectoryData({ specialties: filters.specialties, searchAcrossSpecialties: filters.searchAcrossSpecialties });
@@ -62,7 +64,7 @@ export async function getExperienceDirectoryData(filters: Parameters<typeof getD
       return group ? { ...card, experienceDepartmentIds: group.experienceDepartmentIds, experienceMedicalArrayIds: group.experienceMedicalArrayIds, nativeRecommendation: group.nativeRecommendation, reviewCount: group.reviewCount } : card;
     });
   }
-  const summaries = await surveyDirectorySummaries(prisma, targets, viewer);
+  const summaries = await surveyDirectorySummaries(prisma, targets);
   const result = cards.map(card => {
     const surveySummary = summaries.get(card.id);
     const target = targets.find(target => target.id === card.id)!;

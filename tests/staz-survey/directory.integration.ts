@@ -47,22 +47,29 @@ async function main() {
     assert.deepEqual(searched.find(c => c.institutionId === rambam.institutionId)?.surveySummary, rambam.surveySummary);
     const rated = await getExperienceDirectoryData({ ...filters, sort: 'rating' }, viewer);
     assert.ok(rated.every((card, i) => !i || rated[i - 1].experienceRecommendation.average >= card.experienceRecommendation.average));
-    for (const viewer of [null, { role: 'student', emailVerified: true, verificationStatus: 'PENDING' }]) {
-      assert.ok((await getExperienceDirectoryData(filters, viewer)).every(c => !c.surveySummary));
+    const summary = (rows: typeof cards) => rows.map(c => ({ id: c.id, count: count(c), recommendation: c.experienceRecommendation, survey: c.surveySummary }));
+    for (const guest of [null, { role: 'student', emailVerified: true, verificationStatus: 'PENDING' }]) {
+      assert.deepEqual(summary(await getExperienceDirectoryData(filters, guest)), summary(cards));
+      assert.deepEqual(await publicSurveyExperiences(db, rambam.experienceDepartmentIds, guest, rambam.experienceMedicalArrayIds), []);
     }
+    assert.deepEqual(summary(await getExperienceDirectoryData({ ...filters, hasReviews: true, sort: 'reviews' }, null)), summary(sorted));
+    assert.deepEqual(summary(await getExperienceDirectoryData({ ...filters, sort: 'rating' }, null)), summary(rated));
+    assert.deepEqual(summary(await getExperienceDirectoryData({ ...filters, search: matchingUnit.name }, null)), summary(searched));
     assert.deepEqual((await getExperienceDirectoryData(filters, { role: 'student', emailVerified: true, verificationStatus: 'VERIFIED' })).map(c => c.surveySummary), cards.map(c => c.surveySummary));
     await db.surveyReviewSource.update({ where: { id: SOURCE_ID }, data: { isPublicEnabled: false } });
     const hidden = await getExperienceDirectoryData(filters, viewer);
     assert.ok(hidden.every(c => !c.surveySummary));
     assert.ok(hidden.every(c => JSON.stringify(c.experienceRecommendation) === JSON.stringify(c.nativeRecommendation)));
     assert.ok((await getExperienceDirectoryData({ ...filters, hasReviews: true }, viewer)).every(c => c.reviewCount > 0));
+    assert.deepEqual(summary(await getExperienceDirectoryData(filters, null)), summary(hidden));
     await db.surveyReviewSource.update({ where: { id: SOURCE_ID }, data: { isPublicEnabled: true } });
     assert.deepEqual((await getExperienceDirectoryData(filters, viewer)).map(c => c.surveySummary), cards.map(c => c.surveySummary));
+    assert.deepEqual(summary(await getExperienceDirectoryData(filters, null)), summary(cards));
     assert.equal(await fingerprint(), before);
     await mkdir(out, { recursive: true });
     const mixed = populated.find(card => card.nativeRecommendation.count > 0)!;
     assert.ok(mixed);
-    const report = { passed: true, internalMedicineCards: cards.length, populatedCardsMatchedToProfile: populated.length, rambam: { href: getDepartmentHref({ slug: rambam.slug, id: rambam.hrefDepartmentId }), ...rambam.surveySummary }, mixed: { institution: mixed.institutionName, href: getDepartmentHref({ slug: mixed.slug, id: mixed.hrefDepartmentId }), experienceCount: mixed.reviewCount + mixed.surveySummary!.experienceCount, recommendation: mixed.experienceRecommendation, nativeRecommendation: mixed.nativeRecommendation }, unifiedWeightedRecommendationVerified: true, filterAndSortPassed: true, sameViewerGate: true, cachedDirectoryRespectsHideRestore: true, allApprovalsAndRatingsUnchanged: true };
+    const report = { passed: true, internalMedicineCards: cards.length, populatedCardsMatchedToProfile: populated.length, rambam: { href: getDepartmentHref({ slug: rambam.slug, id: rambam.hrefDepartmentId }), ...rambam.surveySummary }, mixed: { institution: mixed.institutionName, href: getDepartmentHref({ slug: mixed.slug, id: mixed.hrefDepartmentId }), experienceCount: mixed.reviewCount + mixed.surveySummary!.experienceCount, recommendation: mixed.experienceRecommendation, nativeRecommendation: mixed.nativeRecommendation }, unifiedWeightedRecommendationVerified: true, filterAndSortPassed: true, anonymousSummariesMatchAuthenticated: true, individualTextViewerGatePreserved: true, cachedDirectoryRespectsHideRestore: true, allApprovalsAndRatingsUnchanged: true };
     await writeFile(out + '/integration.json', JSON.stringify(report, null, 2) + '\n');
     console.log(JSON.stringify(report));
   } finally {

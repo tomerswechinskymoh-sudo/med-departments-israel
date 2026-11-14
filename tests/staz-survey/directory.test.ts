@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { surveyDirectorySummaries } from '../../src/server/staz-survey/directory';
-import { publicSurveyWhere } from '../../src/server/staz-survey/public';
+import { publicSurveyExperiences, publicSurveyWhere } from '../../src/server/staz-survey/public';
 
 test('directory counts array and department targets once and averages only published elective recommendations', async () => {
   const row = { targetDepartmentId: null as string | null, targetMedicalArrayId: 'array', sourceColumnLetter: 'BL', publishRatings: true, ratings: [{ normalizedValue: 5 }] };
@@ -18,16 +18,25 @@ test('directory counts array and department targets once and averages only publi
     { id: 'group', experienceDepartmentIds: ['a', 'b'], experienceMedicalArrayIds: ['array', 'array'] },
     { id: 'individual', experienceDepartmentIds: ['a'], experienceMedicalArrayIds: [] },
     { id: 'empty', experienceDepartmentIds: ['c'], experienceMedicalArrayIds: [] }
-  ], { role: 'admin' });
+  ]);
   assert.deepEqual(result.get('group'), { experienceCount: 4, recommendationCount: 2, recommendationAverage: 4 });
   assert.deepEqual(result.get('individual'), { experienceCount: 1, recommendationCount: 1, recommendationAverage: 3 });
   assert.equal(result.has('empty'), false);
 });
 
-test('directory uses the same viewer gate as department experiences', async () => {
-  const db = { surveyReview: { findMany: async () => { throw new Error('must not query'); } } };
+test('public directory summaries contain aggregates only while individual text keeps its viewer gate', async () => {
+  const db = { surveyReview: { findMany: async (query: any) => {
+    assert.deepEqual(Object.keys(query.select).sort(), ['publishRatings', 'ratings', 'sourceColumnLetter', 'targetDepartmentId', 'targetMedicalArrayId']);
+    return [{ targetDepartmentId: 'a', targetMedicalArrayId: null, sourceColumnLetter: 'BL', publishRatings: true, ratings: [{ normalizedValue: 4 }] }];
+  } } };
   const cards = [{ id: 'a', experienceDepartmentIds: ['a'], experienceMedicalArrayIds: [] }];
+  assert.deepEqual((await surveyDirectorySummaries(db as any, cards)).get('a'), { experienceCount: 1, recommendationCount: 1, recommendationAverage: 4 });
   for (const viewer of [null, { role: 'student', emailVerified: false, verificationStatus: 'VERIFIED' }, { role: 'student', emailVerified: true, verificationStatus: 'PENDING' }]) {
-    assert.equal((await surveyDirectorySummaries(db as any, cards, viewer)).size, 0);
+    assert.deepEqual(await publicSurveyExperiences(db as any, ['a'], viewer), []);
   }
+});
+
+test('empty directory never queries review data', async () => {
+  const db = { surveyReview: { findMany: async () => { throw new Error('must not query'); } } };
+  assert.equal((await surveyDirectorySummaries(db as any, [])).size, 0);
 });

@@ -11,6 +11,7 @@ if '--auto-approval' in sys.argv:OUT=ROOT/'docs/staz-survey-automation-20261113'
 if '--directory-review' in sys.argv:OUT=ROOT/'docs/staz-survey-directory-20261113'
 if '--presentation-review' in sys.argv:OUT=ROOT/'docs/staz-survey-presentation-20261113'
 if '--carousel-review' in sys.argv:OUT=ROOT/'docs/staz-survey-carousel-20261113'
+if '--public-directory' in sys.argv:OUT=ROOT/'docs/staz-survey-public-directory-20261114'
 TEAM='team_Jj2tczP8vf4XPr74gxyasW5A';PROJECT='prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE'
 phase=sys.argv[1];assert phase in ['staged','live']
 d=json.loads((OUT/'deployment.json').read_text());headers={'User-Agent':'Hitmachut-Staz-Authorized-Release-Smoke'}
@@ -39,4 +40,5 @@ if '--auto-approval' in sys.argv:report['scope']='Read-only public routes and ad
 if '--directory-review' in sys.argv:report['scope']='Read-only route and access checks. Directory counts, independent elective ratings and immediate hide/restore tested on isolated database. Production approvals, associations and publication settings unchanged.'
 if '--presentation-review' in sys.argv:report['scope']='Read-only routes and access gates. User-authorized combined recommendation averages and compact layouts verified on isolated data at desktop and mobile sizes. Production records and source settings unchanged.'
 if '--carousel-review' in sys.argv:report['scope']='Read-only routes and access gates. Single-quote carousel, personal rating filters, keyboard controls, long text and source hide/restore verified on isolated data. Production approval decisions and source settings unchanged.'
+if '--public-directory' in sys.argv:report['scope']='Read-only routes and access gates. Anonymous directory counts and recommendation averages match signed-in results; individual experience text retains its viewer gate. Source hide/restore verified on isolated data.'
 (OUT/(phase+'-smoke.json')).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');assert report['passed']
