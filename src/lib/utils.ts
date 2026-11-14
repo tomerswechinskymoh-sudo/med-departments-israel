@@ -25,7 +25,8 @@ export function slugify(value: string) {
     .replace(/^-+|-+$/g, "");
 }
 
-export function average(numbers: number[]) {
+export function average(input: Array<number | null | undefined>) {
+  const numbers = input.filter((value): value is number => typeof value === "number" && Number.isFinite(value));
   if (numbers.length === 0) {
     return 0;
   }

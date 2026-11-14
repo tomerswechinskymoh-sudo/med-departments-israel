@@ -1,3 +1,4 @@
+import { residentConditionRows } from "@/lib/resident-conditions";
 import { signupWorkplaceLabel } from "@/lib/signup-workplace";
 import { SourceVisibilityControls } from "@/components/admin/source-visibility-controls";
 import { getSourceVisibility } from "@/lib/server/source-visibility";
@@ -102,6 +103,7 @@ function roleDetailsRows(value: Prisma.JsonValue | null | undefined, reviewerTyp
     rows.push(["עומס ואיזון חיים", readJsonNumber(details.workloadBalance)]);
   }
 
+  if (reviewerType === "RESIDENT") rows.push(...residentConditionRows(value));
   return rows.filter((row) => row[1] !== null && row[1] !== undefined && row[1] !== "");
 }
 

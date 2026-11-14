@@ -16,11 +16,11 @@ type NativeReview = {
     reviewerType: "RESIDENT" | "INTERN" | "STUDENT";
     displayName: string | null;
     isAnonymous: boolean;
-    teachingQuality: number;
-    workAtmosphere: number;
-    seniorsApproachability: number;
-    researchExposure: number;
-    lifestyleBalance: number;
+    teachingQuality: number | null;
+    workAtmosphere: number | null;
+    seniorsApproachability: number | null;
+    researchExposure: number | null;
+    lifestyleBalance: number | null;
     overallRecommendation: number;
     pros: string;
     cons: string;

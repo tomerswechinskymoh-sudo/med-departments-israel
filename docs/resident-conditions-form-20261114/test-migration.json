@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "migration": "202611140003_resident_conditions_questionnaire",
+  "production": false,
+  "directConnection": true,
+  "nullableColumns": 10,
+  "overallRecommendationStillRequired": true,
+  "existingRecordsUnchanged": {
+    "Review": 7,
+    "ReviewSubmission": 8,
+    "ExternalSurveyResponse": 365,
+    "ExternalSurveyAggregate": 1464,
+    "SurveyReview": 3610,
+    "SurveyReviewRating": 2857,
+    "SurveyReviewSource": 1,
+    "ExternalSurveySource": 1
+  }
+}

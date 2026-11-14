@@ -1508,11 +1508,11 @@ model ReviewSubmission {
   phone                  String
   email                  String?
   isAnonymous            Boolean            @default(true) @map("is_anonymous")
-  teachingQuality        Int                @map("teaching_quality")
-  workAtmosphere         Int                @map("work_atmosphere")
-  seniorsApproachability Int                @map("seniors_approachability")
-  researchExposure       Int                @map("research_exposure")
-  lifestyleBalance       Int                @map("lifestyle_balance")
+  teachingQuality        Int?                @map("teaching_quality")
+  workAtmosphere         Int?                @map("work_atmosphere")
+  seniorsApproachability Int?                @map("seniors_approachability")
+  researchExposure       Int?                @map("research_exposure")
+  lifestyleBalance       Int?                @map("lifestyle_balance")
   overallRecommendation  Int                @map("overall_recommendation")
   pros                   String
   cons                   String
@@ -1551,11 +1551,11 @@ model Review {
   reviewerType           ReviewSourceType   @map("reviewer_type")
   displayName            String?            @map("display_name")
   isAnonymous            Boolean            @default(true) @map("is_anonymous")
-  teachingQuality        Int                @map("teaching_quality")
-  workAtmosphere         Int                @map("work_atmosphere")
-  seniorsApproachability Int                @map("seniors_approachability")
-  researchExposure       Int                @map("research_exposure")
-  lifestyleBalance       Int                @map("lifestyle_balance")
+  teachingQuality        Int?                @map("teaching_quality")
+  workAtmosphere         Int?                @map("work_atmosphere")
+  seniorsApproachability Int?                @map("seniors_approachability")
+  researchExposure       Int?                @map("research_exposure")
+  lifestyleBalance       Int?                @map("lifestyle_balance")
   overallRecommendation  Int                @map("overall_recommendation")
   pros                   String
   cons                   String

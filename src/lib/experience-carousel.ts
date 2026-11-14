@@ -1,16 +1,17 @@
+import { readResidentConditions } from "./resident-conditions";
 import type { SurveyQuote } from './external-survey/presentation';
 import type { PublicSurveyExperience } from './staz-survey/domain';
 
 export type QuoteReview = {
   id: string; reviewerType: 'RESIDENT' | 'INTERN' | 'STUDENT'; displayName: string | null; isAnonymous: boolean;
-  overallRecommendation: number; teachingQuality: number; workAtmosphere: number; seniorsApproachability: number;
-  researchExposure: number; lifestyleBalance: number; pros: string; cons: string; tips: string; publishedAt: string | Date | null;
+  overallRecommendation: number; teachingQuality: number | null; workAtmosphere: number | null; seniorsApproachability: number | null;
+  researchExposure: number | null; lifestyleBalance: number | null; pros: string; cons: string; tips: string; publishedAt: string | Date | null; submission?: { roleDetails: unknown } | null;
 };
 export type ExperienceQuote = {
   id: string; nativeReviewId?: string; year: number | null; role: QuoteReview['reviewerType']; author: string | null;
   rating: number | null; parts: { label: string | null; text: string }[]; otherRatings: { label: string; value: number }[]; hospitalScope: boolean; scopeLabel?: string;
 };
-const validRating = (value?: number) => typeof value === 'number' && Number.isFinite(value) && value >= 1 && value <= 5 ? value : null;
+const validRating = (value?: number | null) => typeof value === 'number' && Number.isFinite(value) && value >= 1 && value <= 5 ? value : null;
 
 export function experienceQuotes(reviews: QuoteReview[], experiences: PublicSurveyExperience[], residentQuotes: SurveyQuote[] = []): ExperienceQuote[] {
   const native = reviews.flatMap(review => {
@@ -19,14 +20,14 @@ export function experienceQuotes(reviews: QuoteReview[], experiences: PublicSurv
     ].filter(part => part.text.trim());
     if (!parts.length) return [];
     const date = review.publishedAt ? new Date(review.publishedAt) : null;
-    const year = date && Number.isFinite(date.getTime()) ? date.getUTCFullYear() : null;
+    const year = (review.reviewerType === "RESIDENT" ? readResidentConditions(review.submission?.roleDetails)?.year : null) ?? (date && Number.isFinite(date.getTime()) ? date.getUTCFullYear() : null);
     return [{ id: `native:${review.id}`, nativeReviewId: review.id, year, role: review.reviewerType, author: review.isAnonymous ? null : review.displayName,
       rating: validRating(review.overallRecommendation), parts,
       otherRatings: [
         { label: 'הוראה', value: review.teachingQuality }, { label: 'אווירה', value: review.workAtmosphere },
         { label: 'זמינות בכירים', value: review.seniorsApproachability }, { label: 'חשיפה למחקר', value: review.researchExposure },
         { label: 'איזון עומס', value: review.lifestyleBalance }
-      ].filter(rating => validRating(rating.value) !== null), hospitalScope: false }];
+      ].filter((rating): rating is { label: string; value: number } => validRating(rating.value) !== null), hospitalScope: false }];
   });
   const imported = experiences.flatMap(experience => experience.text?.trim() ? [{
     id: `import:${experience.id}`, year: experience.year, role: 'INTERN' as const, author: null,

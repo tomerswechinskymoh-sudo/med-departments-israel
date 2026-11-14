@@ -15,6 +15,8 @@ import {
   MEDICAL_FACULTY_OPTIONS
 } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { RESIDENT_CONDITIONS_VERSION } from "@/lib/resident-conditions";
+import { ResidentConditionsQuestions, optionalRatingInput } from "./resident-conditions-questions";
 import { reviewSubmissionSchema } from "@/lib/validation";
 
 type FormValues = z.infer<typeof reviewSubmissionSchema>;
@@ -65,8 +67,6 @@ const residentCompletionTimingOptions = [
   { value: "more_than_5_years", label: "לפני יותר מ-5 שנים" }
 ] as const;
 
-const monthlyDutyRangeOptions = ["0–2", "3–5", "6–8", "9–11", "12 ומעלה"] as const;
-
 const yesNoUnknownOptions = [
   { value: "yes", label: "כן" },
   { value: "no", label: "לא" },
@@ -114,6 +114,7 @@ function isSurgicalSpecialtyName(name?: string | null) {
 }
 
 function getRoleDetailsDefaults(reviewerType: ReviewerType): FormValues["roleDetails"] {
+  if (reviewerType === "RESIDENT") return { residentCurrentStatus: "active", residentConditions: { version: RESIDENT_CONDITIONS_VERSION, year: new Date().getFullYear() } };
   return {
     medicalSchool: MEDICAL_FACULTY_OPTIONS[0],
     overallRating: 4,
@@ -130,26 +131,26 @@ function getRoleDetailsDefaults(reviewerType: ReviewerType): FormValues["roleDet
     attitudeFromResidents: reviewerType === "STUDENT" ? undefined : 4,
     attitudeFromSeniors: reviewerType === "STUDENT" ? undefined : 4,
     workloadBalance: reviewerType === "STUDENT" ? undefined : 3,
-    residentCurrentStatus: reviewerType === "RESIDENT" ? "active" : undefined,
+    residentCurrentStatus: undefined,
     residencyCompletedTiming: undefined,
-    departmentElectiveImportance: reviewerType === "RESIDENT" ? 3 : undefined,
-    departmentObservationImportance: reviewerType === "RESIDENT" ? 3 : undefined,
-    outsideShiftsImportance: reviewerType === "RESIDENT" ? 3 : undefined,
-    researchImportance: reviewerType === "RESIDENT" ? 3 : undefined,
-    medicalSchoolInfluence: reviewerType === "RESIDENT" ? 3 : undefined,
-    departmentHeadInfluence: reviewerType === "RESIDENT" ? 3 : undefined,
-    seniorDecisionInfluence: reviewerType === "RESIDENT" ? 3 : undefined,
-    wholeDepartmentSelectionInfluence: reviewerType === "RESIDENT" ? 3 : undefined,
-    hasAdmissionCommittee: reviewerType === "RESIDENT" ? "unknown" : undefined,
-    monthlyDutyRange: reviewerType === "RESIDENT" ? monthlyDutyRangeOptions[1] : undefined,
-    parentPositionAvailable: reviewerType === "RESIDENT" ? "unknown" : undefined,
+    departmentElectiveImportance: undefined,
+    departmentObservationImportance: undefined,
+    outsideShiftsImportance: undefined,
+    researchImportance: undefined,
+    medicalSchoolInfluence: undefined,
+    departmentHeadInfluence: undefined,
+    seniorDecisionInfluence: undefined,
+    wholeDepartmentSelectionInfluence: undefined,
+    hasAdmissionCommittee: undefined,
+    monthlyDutyRange: undefined,
+    parentPositionAvailable: undefined,
     averageArrivalTime: undefined,
-    personalNeedsConsideration: reviewerType === "RESIDENT" ? 3 : undefined,
-    teamwork: reviewerType === "RESIDENT" ? 4 : undefined,
-    belonging: reviewerType === "RESIDENT" ? 4 : undefined,
-    stageAVacation: reviewerType === "RESIDENT" ? "unknown" : undefined,
-    stageBVacation: reviewerType === "RESIDENT" ? "unknown" : undefined,
-    conferenceFunding: reviewerType === "RESIDENT" ? "unknown" : undefined,
+    personalNeedsConsideration: undefined,
+    teamwork: undefined,
+    belonging: undefined,
+    stageAVacation: undefined,
+    stageBVacation: undefined,
+    conferenceFunding: undefined,
     surgicalAutonomy: undefined
   };
 }
@@ -196,12 +197,26 @@ function ratingSelectLabel(value: number) {
   return String(value);
 }
 
+function firstFormError(errors: unknown): string | null {
+  if (!errors || typeof errors !== "object") return null;
+  const data = errors as Record<string, unknown>;
+  if (typeof data.message === "string") return data.message;
+  for (const [key, value] of Object.entries(data)) {
+    if (key === "ref") continue;
+    const message = firstFormError(value);
+    if (message) return message;
+  }
+  return null;
+}
+
 function RatingSelect({
   label,
-  registration
+  registration,
+  allowEmpty = false
 }: {
   label: string;
   registration: UseFormRegisterReturn;
+  allowEmpty?: boolean;
 }) {
   return (
     <label className="block">
@@ -210,6 +225,7 @@ function RatingSelect({
         {...registration}
         className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
       >
+        {allowEmpty && <option value="">בחירה / ללא תשובה</option>}
         {[1, 2, 3, 4, 5].map((value) => (
           <option key={value} value={value}>
             {ratingSelectLabel(value)}
@@ -238,6 +254,7 @@ function ResidentQuestionnaire({
             {...register("roleDetails.medicalSchool")}
             className="w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
           >
+            <option value="">בחירה / ללא תשובה</option>
             {MEDICAL_FACULTY_OPTIONS.map((faculty) => (
               <option key={faculty} value={faculty}>
                 {faculty}
@@ -245,83 +262,54 @@ function ResidentQuestionnaire({
             ))}
           </select>
         </label>
-        <RatingSelect
-          label="המלצה כללית"
-          registration={register("overallRecommendation", { valueAsNumber: true })}
-        />
       </div>
 
       <section className="space-y-4">
         <h4 className="text-xl font-black text-ink">1. תהליך הקבלה למחלקה</h4>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          <RatingSelect label="חשיבות אלקטיב במחלקה" registration={register("roleDetails.departmentElectiveImportance", { valueAsNumber: true })} />
-          <RatingSelect label="חשיבות הסתכלות במחלקה" registration={register("roleDetails.departmentObservationImportance", { valueAsNumber: true })} />
-          <RatingSelect label="חשיבות תורנויות חוץ במחלקה" registration={register("roleDetails.outsideShiftsImportance", { valueAsNumber: true })} />
-          <RatingSelect label="חשיבות פרסומים ומחקר" registration={register("roleDetails.researchImportance", { valueAsNumber: true })} />
-          <RatingSelect label="חשיבות מוסד הלימוד" registration={register("roleDetails.medicalSchoolInfluence", { valueAsNumber: true })} />
-          <RatingSelect label="מנהל המחלקה קובע מי מתקבל" registration={register("roleDetails.departmentHeadInfluence", { valueAsNumber: true })} />
-          <RatingSelect label="מנהל המחלקה והבכירים קובעים מי מתקבל" registration={register("roleDetails.seniorDecisionInfluence", { valueAsNumber: true })} />
-          <RatingSelect label="כלל המחלקה משתתפת בבחירה" registration={register("roleDetails.wholeDepartmentSelectionInfluence", { valueAsNumber: true })} />
+          <RatingSelect allowEmpty label="חשיבות אלקטיב במחלקה" registration={register("roleDetails.departmentElectiveImportance", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="חשיבות הסתכלות במחלקה" registration={register("roleDetails.departmentObservationImportance", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="חשיבות תורנויות חוץ במחלקה" registration={register("roleDetails.outsideShiftsImportance", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="חשיבות פרסומים ומחקר" registration={register("roleDetails.researchImportance", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="חשיבות מוסד הלימוד" registration={register("roleDetails.medicalSchoolInfluence", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="מנהל המחלקה קובע מי מתקבל" registration={register("roleDetails.departmentHeadInfluence", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="מנהל המחלקה והבכירים קובעים מי מתקבל" registration={register("roleDetails.seniorDecisionInfluence", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="כלל המחלקה משתתפת בבחירה" registration={register("roleDetails.wholeDepartmentSelectionInfluence", optionalRatingInput)} />
           <label className="block">
             <span className="block text-sm font-bold text-ink">האם מתקיימת ועדת קבלה לפני בחירת מתמחים?</span>
             <select
               {...register("roleDetails.hasAdmissionCommittee")}
               className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
             >
+              <option value="">בחירה / ללא תשובה</option>
               {yesNoUnknownOptions.map((option) => (
                 <option key={option.value} value={option.value}>{option.label}</option>
               ))}
             </select>
           </label>
         </div>
-        <label className="block">
-          <span className="mb-2 block text-sm font-semibold text-ink">מה היית ממליץ למועמד שמעוניין להתקבל למחלקה?</span>
-          <textarea
-            {...register("tips")}
-            className="min-h-24 w-full rounded-2xl border border-brand-100 bg-surface px-4 py-3 outline-none transition focus:border-brand-300"
-          />
-        </label>
       </section>
 
       <section className="space-y-4">
         <h4 className="text-xl font-black text-ink">2. עומס ואיזון חיים</h4>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          <label className="block">
-            <span className="block text-sm font-bold text-ink">טווח תורנויות בחודש</span>
-            <select
-              {...register("roleDetails.monthlyDutyRange")}
-              className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
-            >
-              {monthlyDutyRangeOptions.map((option) => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </label>
-          <RatingSelect label="מידת שחיקה" registration={register("lifestyleBalance", { valueAsNumber: true })} />
+          <RatingSelect allowEmpty label="איזון עומס וחיים (5 = איזון טוב)" registration={register("lifestyleBalance", optionalRatingInput)} />
           <label className="block">
             <span className="block text-sm font-bold text-ink">האם קיימת משרת הורה?</span>
             <select
               {...register("roleDetails.parentPositionAvailable")}
               className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
             >
+              <option value="">בחירה / ללא תשובה</option>
               {yesNoUnknownOptions.map((option) => (
                 <option key={option.value} value={option.value}>{option.label}</option>
               ))}
             </select>
           </label>
-          <label className="block">
-            <span className="block text-sm font-bold text-ink">שעת הגעה ממוצעת בבוקר</span>
-            <input
-              {...register("roleDetails.averageArrivalTime")}
-              placeholder="למשל 07:30"
-              className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
-            />
-          </label>
-          <RatingSelect
+          <RatingSelect allowEmpty
             label="מידת ההתחשבות במקרים אישיים"
-            registration={register("roleDetails.personalNeedsConsideration", { valueAsNumber: true })}
+            registration={register("roleDetails.personalNeedsConsideration", optionalRatingInput)}
           />
-          <RatingSelect label="עומס ואיזון" registration={register("roleDetails.workloadBalance", { valueAsNumber: true })} />
         </div>
         <label className="block">
           <span className="mb-2 block text-sm font-semibold text-ink">האם יש משהו נוסף שחשוב לדעת על עומס העבודה במחלקה?</span>
@@ -335,10 +323,10 @@ function ResidentQuestionnaire({
       <section className="space-y-4">
         <h4 className="text-xl font-black text-ink">3. אווירה ויחסים במחלקה</h4>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <RatingSelect label="היחס בין המתמחים" registration={register("roleDetails.attitudeFromResidents", { valueAsNumber: true })} />
-          <RatingSelect label="היחס של הבכירים למתמחים" registration={register("roleDetails.attitudeFromSeniors", { valueAsNumber: true })} />
-          <RatingSelect label="תחושת עבודת צוות" registration={register("roleDetails.teamwork", { valueAsNumber: true })} />
-          <RatingSelect label="תחושת שייכות למחלקה" registration={register("roleDetails.belonging", { valueAsNumber: true })} />
+          <RatingSelect allowEmpty label="אווירה כללית" registration={register("workAtmosphere", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="זמינות בכירים" registration={register("seniorsApproachability", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="תחושת עבודת צוות" registration={register("roleDetails.teamwork", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="תחושת שייכות למחלקה" registration={register("roleDetails.belonging", optionalRatingInput)} />
         </div>
         <label className="block">
           <span className="mb-2 block text-sm font-semibold text-ink">כיצד היית מתאר/ת את האווירה במחלקה?</span>
@@ -358,6 +346,7 @@ function ResidentQuestionnaire({
               {...register("roleDetails.stageAVacation")}
               className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
             >
+              <option value="">בחירה / ללא תשובה</option>
               {yesNoPartialUnknownOptions.map((option) => (
                 <option key={option.value} value={option.value}>{option.label}</option>
               ))}
@@ -369,28 +358,30 @@ function ResidentQuestionnaire({
               {...register("roleDetails.stageBVacation")}
               className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
             >
+              <option value="">בחירה / ללא תשובה</option>
               {yesNoPartialUnknownOptions.map((option) => (
                 <option key={option.value} value={option.value}>{option.label}</option>
               ))}
             </select>
           </label>
-          <RatingSelect label="דירוג איכות ההוראה במחלקה" registration={register("teachingQuality", { valueAsNumber: true })} />
-          <RatingSelect label="דירוג הציפייה למחקר ופרסום" registration={register("researchExposure", { valueAsNumber: true })} />
+          <RatingSelect allowEmpty label="דירוג איכות ההוראה במחלקה" registration={register("teachingQuality", optionalRatingInput)} />
+          <RatingSelect allowEmpty label="דירוג הציפייה למחקר ופרסום" registration={register("researchExposure", optionalRatingInput)} />
           <label className="block">
             <span className="block text-sm font-bold text-ink">מימון כנסים וקורסים</span>
             <select
               {...register("roleDetails.conferenceFunding")}
               className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold outline-none transition focus:border-brand-300"
             >
+              <option value="">בחירה / ללא תשובה</option>
               {yesNoPartialUnknownOptions.map((option) => (
                 <option key={option.value} value={option.value}>{option.label}</option>
               ))}
             </select>
           </label>
           {isSurgical ? (
-            <RatingSelect
+            <RatingSelect allowEmpty
               label="הזדמנויות ניתוחיות ועצמאות"
-              registration={register("roleDetails.surgicalAutonomy", { valueAsNumber: true })}
+              registration={register("roleDetails.surgicalAutonomy", optionalRatingInput)}
             />
           ) : null}
         </div>
@@ -491,6 +482,7 @@ export function ReviewForm({
     watch,
     reset,
     setValue,
+    getValues,
     formState: { errors, isSubmitting }
   } = useForm<FormValues>({
     resolver: zodResolver(reviewSubmissionSchema),
@@ -502,12 +494,12 @@ export function ReviewForm({
       hasVerificationDocument: false,
       email: initialContact?.email ?? "",
       isAnonymous: true,
-      teachingQuality: 4,
-      workAtmosphere: 4,
-      seniorsApproachability: 4,
-      researchExposure: 3,
-      lifestyleBalance: 3,
-      overallRecommendation: 4,
+      teachingQuality: initialReviewerType === "RESIDENT" ? undefined : 4,
+      workAtmosphere: initialReviewerType === "RESIDENT" ? undefined : 4,
+      seniorsApproachability: initialReviewerType === "RESIDENT" ? undefined : 4,
+      researchExposure: initialReviewerType === "RESIDENT" ? undefined : 3,
+      lifestyleBalance: initialReviewerType === "RESIDENT" ? undefined : 3,
+      overallRecommendation: initialReviewerType === "RESIDENT" ? undefined : 4,
       pros: "",
       cons: "",
       tips: "",
@@ -533,6 +525,10 @@ export function ReviewForm({
   const reviewerTypeLabel = roleOptions.find((role) => role.value === reviewerType)?.label ?? "משתף";
   const isAnonymous = watch("isAnonymous");
   const selectedDepartmentIdValue = watch("departmentId");
+  const monthlyDuties = watch("roleDetails.residentConditions.monthlyDuties");
+  useEffect(() => {
+    if (reviewerType === "RESIDENT" && monthlyDuties === 0) setValue("roleDetails.residentConditions.calm", undefined);
+  }, [reviewerType, monthlyDuties, setValue]);
   const residentCurrentStatus = watch("roleDetails.residentCurrentStatus");
   const selectedInstitution = institutions.find((institution) => institution.id === selectedInstitutionId) ?? null;
   const selectedDepartment = departments.find((department) => department.id === selectedDepartmentIdValue) ?? null;
@@ -615,12 +611,12 @@ export function ReviewForm({
     formData.set("phone", values.phone ?? "");
     formData.set("email", values.email ?? "");
     formData.set("isAnonymous", String(values.isAnonymous));
-    formData.set("teachingQuality", String(values.teachingQuality));
-    formData.set("workAtmosphere", String(values.workAtmosphere));
-    formData.set("seniorsApproachability", String(values.seniorsApproachability));
-    formData.set("researchExposure", String(values.researchExposure));
-    formData.set("lifestyleBalance", String(values.lifestyleBalance));
-    formData.set("overallRecommendation", String(values.overallRecommendation));
+    formData.set("teachingQuality", values.teachingQuality == null ? "" : String(values.teachingQuality));
+    formData.set("workAtmosphere", values.workAtmosphere == null ? "" : String(values.workAtmosphere));
+    formData.set("seniorsApproachability", values.seniorsApproachability == null ? "" : String(values.seniorsApproachability));
+    formData.set("researchExposure", values.researchExposure == null ? "" : String(values.researchExposure));
+    formData.set("lifestyleBalance", values.lifestyleBalance == null ? "" : String(values.lifestyleBalance));
+    formData.set("overallRecommendation", values.overallRecommendation == null ? "" : String(values.overallRecommendation));
     formData.set("pros", values.pros ?? "");
     formData.set("cons", values.cons ?? "");
     formData.set("tips", values.tips ?? "");
@@ -661,12 +657,12 @@ export function ReviewForm({
       hasVerificationDocument: false,
       email: initialContact?.email ?? "",
       isAnonymous: true,
-      teachingQuality: 4,
-      workAtmosphere: 4,
-      seniorsApproachability: 4,
-      researchExposure: 3,
-      lifestyleBalance: 3,
-      overallRecommendation: 4,
+      teachingQuality: initialReviewerType === "RESIDENT" ? undefined : 4,
+      workAtmosphere: initialReviewerType === "RESIDENT" ? undefined : 4,
+      seniorsApproachability: initialReviewerType === "RESIDENT" ? undefined : 4,
+      researchExposure: initialReviewerType === "RESIDENT" ? undefined : 3,
+      lifestyleBalance: initialReviewerType === "RESIDENT" ? undefined : 3,
+      overallRecommendation: initialReviewerType === "RESIDENT" ? undefined : 4,
       pros: "",
       cons: "",
       tips: "",
@@ -696,7 +692,7 @@ export function ReviewForm({
         </div>
       ) : null}
 
-      <div className="grid gap-2 sm:grid-cols-3">
+      <div className="grid grid-cols-3 gap-2">
         {stepItems.map((item) => (
           <button
             key={item.value}
@@ -704,13 +700,13 @@ export function ReviewForm({
             onClick={() => setStep(item.value)}
             aria-current={step === item.value ? "step" : undefined}
             className={cn(
-              "rounded-full border px-4 py-2.5 text-sm font-bold transition",
+              "rounded-2xl border px-2 py-2.5 text-xs font-bold transition sm:rounded-full sm:px-4 sm:text-sm",
               step === item.value
                 ? "border-brand-300 bg-brand-900 text-white shadow-panel"
                 : "border-brand-100 bg-white text-slate-600 hover:bg-brand-50"
             )}
           >
-            {item.value} מתוך 3 · {item.label}
+            {item.value}<span className="hidden sm:inline"> מתוך 3 · </span><span className="block sm:inline">{item.label}</span>
           </button>
         ))}
       </div>
@@ -719,7 +715,7 @@ export function ReviewForm({
       <input type="hidden" {...register("hasVerificationDocument")} />
 
       {step === 1 ? (
-        <section className="space-y-8 rounded-[1.75rem] bg-white p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
+        <section className="space-y-8 rounded-[1.75rem] bg-white p-4 sm:p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
           <div>
             <p className="text-sm font-semibold text-brand-700">שלב 1 מתוך 3</p>
             <h3 ref={stepHeading} tabIndex={-1} className="mt-1 text-3xl font-black text-ink">מאיפה נקודת המבט שלך?</h3>
@@ -748,8 +744,14 @@ export function ReviewForm({
                   <input type="radio" name={roleGroupId} value={role.value} checked={reviewerType === role.value}
                     className="sr-only" aria-describedby={`${roleGroupId}-${role.value}`}
                     onChange={() => {
-                      setValue("reviewerType", role.value, { shouldValidate: true });
-                      setValue("roleDetails", getRoleDetailsDefaults(role.value), { shouldValidate: true });
+                      // Reset role-specific defaults as well as values: unmounting and
+                      // registering a field again must not restore another role's score.
+                      reset({
+                        ...getValues(), reviewerType: role.value,
+                        roleDetails: getRoleDetailsDefaults(role.value),
+                        ...Object.fromEntries(sharedRatingFields.map(field => [field.name,
+                          role.value === "RESIDENT" ? undefined : field.name === "researchExposure" || field.name === "lifestyleBalance" ? 3 : 4]))
+                      });
                     }} />
                   <span className="text-xl font-black">{role.label}</span>
                   <span id={`${roleGroupId}-${role.value}`}
@@ -915,18 +917,21 @@ export function ReviewForm({
       ) : null}
 
       {step === 2 ? (
-        <section className="space-y-7 rounded-[1.75rem] bg-white p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
+        <section className="space-y-7 rounded-[1.75rem] bg-white p-4 sm:p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
           <div>
             <p className="text-sm font-semibold text-brand-700">שלב 2 מתוך 3 · {reviewerTypeLabel}</p>
             <h3 ref={stepHeading} tabIndex={-1} className="mt-1 text-2xl font-black text-ink">ספרו על החוויה בקצרה</h3>
-            <p className="mt-2 text-sm leading-7 text-slate-600">{EXPERIENCE_RATING_HELPER_TEXT}</p>
+            <p className="mt-2 text-sm leading-7 text-slate-600">{reviewerType === "RESIDENT" ? "לכל דירוג מופיע פירוש הסולם לצד השאלה." : EXPERIENCE_RATING_HELPER_TEXT}</p>
           </div>
 
           {reviewerType === "RESIDENT" ? (
-            <ResidentQuestionnaire
-              register={register}
-              selectedSpecialtyName={selectedDepartment?.specialty.name}
-            />
+            <>
+              <ResidentConditionsQuestions register={register} noDuties={monthlyDuties === 0} signupContribution={signupContribution} />
+              <details className="rounded-xl border border-brand-100 p-4">
+                <summary className="cursor-pointer text-sm font-bold text-brand-800">עוד על הקבלה, ההכשרה והצוות (רשות)</summary>
+                <div className="mt-5"><ResidentQuestionnaire register={register} selectedSpecialtyName={selectedDepartment?.specialty.name} /></div>
+              </details>
+            </>
           ) : (
             <>
           <div className="grid gap-4 md:grid-cols-3">
@@ -1086,7 +1091,7 @@ export function ReviewForm({
       ) : null}
 
       {step === 3 ? (
-        <section className="space-y-6 rounded-[1.75rem] bg-white p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
+        <section className="space-y-6 rounded-[1.75rem] bg-white p-4 sm:p-6 shadow-[0_24px_80px_-46px_rgba(15,23,42,0.38)]">
           <div>
             <p className="text-sm font-semibold text-brand-700">שלב 3 מתוך 3</p>
             <h3 ref={stepHeading} tabIndex={-1} className="mt-1 text-2xl font-black text-ink">מבט אחרון לפני שליחה</h3>
@@ -1118,7 +1123,7 @@ export function ReviewForm({
 
           {Object.keys(errors).length > 0 ? (
             <div role="alert" className="rounded-2xl border border-rose-100 bg-rose-50 px-4 py-3 text-sm leading-7 text-rose-700">
-              יש כמה שדות שצריך להשלים לפני השליחה. אפשר לחזור לשלבים הקודמים ולתקן.
+              {firstFormError(errors) ?? "יש כמה שדות שצריך להשלים לפני השליחה."} אפשר לחזור לשלבים הקודמים ולתקן.
             </div>
           ) : null}
         </section>

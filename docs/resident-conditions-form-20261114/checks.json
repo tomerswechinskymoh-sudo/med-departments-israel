@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "unitTestsPassed": 61,
+  "unitTestsSkipped": 0,
+  "typescriptPassed": true,
+  "productionBuildPassed": true,
+  "onboardingEligibilityScenarios": 8,
+  "browserIntegration": "integration.json",
+  "migration": "test-migration.json",
+  "noProductionTestWrites": true
+}

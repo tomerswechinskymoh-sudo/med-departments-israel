@@ -1,4 +1,5 @@
-export function RatingStars({ value }: { value: number }) {
+export function RatingStars({ value }: { value: number | null }) {
+  if (value === null) return <span className="text-xs text-slate-500">ללא דירוג</span>;
   const rounded = Math.round(value);
 
   return (

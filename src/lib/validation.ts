@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { residentConditionsSchema } from "@/lib/resident-conditions";
 import { MAINLY_TAUGHT_BY_OPTIONS, MEDICAL_FACULTY_OPTIONS } from "@/lib/constants";
 
 export const reviewerTypeValues = ["RESIDENT", "INTERN", "STUDENT"] as const;
@@ -248,15 +249,16 @@ export const departmentFilterSchema = z.object({
 });
 
 const reviewRoleDetailsSchema = z.object({
-  medicalSchool: z.enum(medicalFacultyValues, {
+  residentConditions: residentConditionsSchema.optional(),
+  medicalSchool: z.preprocess(emptyToUndefined, z.enum(medicalFacultyValues, {
     errorMap: () => ({ message: "יש לבחור פקולטה לרפואה." })
-  }),
-  overallRating: scaleSchema,
-  researchEncouragement: scaleSchema,
-  mainlyTaughtBy: z.enum(mainlyTaughtByValues, {
+  }).optional()),
+  overallRating: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  researchEncouragement: z.preprocess(emptyToUndefined, scaleSchema.optional()),
+  mainlyTaughtBy: z.preprocess(emptyToUndefined, z.enum(mainlyTaughtByValues, {
     errorMap: () => ({ message: "יש לבחור מי הוביל את הלמידה בפועל." })
-  }),
-  clinicalExposure: scaleSchema,
+  }).optional()),
+  clinicalExposure: z.preprocess(emptyToUndefined, scaleSchema.optional()),
   fitForWho: z.preprocess(emptyToUndefined, z.string().optional()),
   studentTrack: z.preprocess(emptyToUndefined, z.enum(["six_year", "four_year"]).optional()),
   studentYear: z.preprocess(emptyToUndefined, z.coerce.number().int().min(1).max(7).optional()),
@@ -314,12 +316,12 @@ export const reviewSubmissionSchema = z
     email: z.preprocess(emptyToUndefined, z.string().email("יש להזין אימייל תקין.").optional()),
     hasVerificationDocument: z.boolean().default(false),
     isAnonymous: z.boolean(),
-    teachingQuality: scaleSchema,
-    workAtmosphere: scaleSchema,
-    seniorsApproachability: scaleSchema,
-    researchExposure: scaleSchema,
-    lifestyleBalance: scaleSchema,
-    overallRecommendation: scaleSchema,
+    teachingQuality: z.preprocess(v => emptyToUndefined(v ?? ""), scaleSchema.optional()),
+    workAtmosphere: z.preprocess(v => emptyToUndefined(v ?? ""), scaleSchema.optional()),
+    seniorsApproachability: z.preprocess(v => emptyToUndefined(v ?? ""), scaleSchema.optional()),
+    researchExposure: z.preprocess(v => emptyToUndefined(v ?? ""), scaleSchema.optional()),
+    lifestyleBalance: z.preprocess(v => emptyToUndefined(v ?? ""), scaleSchema.optional()),
+    overallRecommendation: z.coerce.number({ invalid_type_error: "יש לבחור ציון המלצה." }).int().min(1, "יש לבחור ציון המלצה.").max(5),
     pros: z.preprocess(emptyToUndefined, z.string().max(1500, "הטקסט ארוך מדי.").optional()),
     cons: z.preprocess(emptyToUndefined, z.string().max(1500, "הטקסט ארוך מדי.").optional()),
     tips: z.preprocess(emptyToUndefined, z.string().max(1500, "הטקסט ארוך מדי.").optional()),
@@ -335,6 +337,19 @@ export const reviewSubmissionSchema = z
     })
   })
   .superRefine((data, ctx) => {
+    const conditions = data.roleDetails.residentConditions;
+    if (conditions && data.reviewerType !== "RESIDENT") {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["roleDetails", "residentConditions"], message: "שאלון תנאי ההתמחות מיועד לחוויית מתמחה בלבד." });
+    }
+    // Legacy clients and the student/intern questionnaires retain their required fields.
+    if (!conditions) {
+      for (const key of ["teachingQuality", "workAtmosphere", "seniorsApproachability", "researchExposure", "lifestyleBalance"] as const) {
+        if (data[key] === undefined) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [key], message: "יש להשלים את הדירוג." });
+      }
+      for (const key of ["medicalSchool", "overallRating", "researchEncouragement", "mainlyTaughtBy", "clinicalExposure"] as const) {
+        if (data.roleDetails[key] === undefined) ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["roleDetails", key], message: "יש להשלים את פרטי החוויה." });
+      }
+    }
     if (!data.isAnonymous && !data.fullName) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
@@ -420,7 +435,7 @@ export const reviewSubmissionSchema = z
         });
       }
 
-      if (!data.roleDetails.attitudeFromResidents) {
+      if (!conditions && !data.roleDetails.attitudeFromResidents) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
           path: ["roleDetails", "attitudeFromResidents"],
@@ -428,7 +443,7 @@ export const reviewSubmissionSchema = z
         });
       }
 
-      if (!data.roleDetails.attitudeFromSeniors) {
+      if (!conditions && !data.roleDetails.attitudeFromSeniors) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
           path: ["roleDetails", "attitudeFromSeniors"],
@@ -436,7 +451,7 @@ export const reviewSubmissionSchema = z
         });
       }
 
-      if (!data.roleDetails.workloadBalance) {
+      if (!conditions && !data.roleDetails.workloadBalance) {
         ctx.addIssue({
           code: z.ZodIssueCode.custom,
           path: ["roleDetails", "workloadBalance"],

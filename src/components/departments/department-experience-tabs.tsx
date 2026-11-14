@@ -1,5 +1,7 @@
 "use client";
 
+import { residentConditionMetrics } from "@/lib/resident-conditions";
+import { ConditionMetricsGrid } from "./condition-metrics-grid";
 import type { SurveyQuote } from '@/lib/external-survey/presentation';
 import type { PublicSurveyExperience } from "@/lib/staz-survey/domain";
 import type { ReactNode } from "react";
@@ -16,11 +18,11 @@ type DepartmentExperienceReview = {
   reviewerType: "RESIDENT" | "INTERN" | "STUDENT";
   displayName: string | null;
   isAnonymous: boolean;
-  teachingQuality: number;
-  workAtmosphere: number;
-  seniorsApproachability: number;
-  researchExposure: number;
-  lifestyleBalance: number;
+  teachingQuality: number | null;
+  workAtmosphere: number | null;
+  seniorsApproachability: number | null;
+  researchExposure: number | null;
+  lifestyleBalance: number | null;
   overallRecommendation: number;
   pros: string;
   cons: string;
@@ -82,6 +84,7 @@ function perspectiveForReview(review: DepartmentExperienceReview): ExperiencePer
 }
 
 function SummaryMetric({ label, value }: { label: string; value: number }) {
+  if (!value) return null;
   return (
     <div className="rounded-lg border border-slate-100 bg-slate-50 px-3 py-3">
       <p className="text-xs font-black text-slate-500">{label}</p>
@@ -92,7 +95,8 @@ function SummaryMetric({ label, value }: { label: string; value: number }) {
   );
 }
 
-function average(values: number[]) {
+function average(input: Array<number | null>) {
+  const values = input.filter((v): v is number => v !== null);
   return values.length > 0
     ? values.reduce((sum, value) => sum + value, 0) / values.length
     : 0;
@@ -144,6 +148,7 @@ export function DepartmentExperienceTabs({
   const selectedReviews = reviews.filter((review) => perspectiveForReview(review) === selected.key);
   const surveySelected = selected.key === "intern" ? surveyExperiences : [];
   const residentSelected = selected.key === "resident_or_physician" ? residentQuotes : [];
+  const nativeConditions = residentConditionMetrics(selectedReviews);
   const recommendation = experienceRecommendation(selectedReviews, surveySelected);
   const surveyMetrics = [...new Set(surveySelected.flatMap(r => r.ratings.map(v => v.code)))].filter(code => code !== 'ELECTIVE_RECOMMENDATION').map(code => {
     const values = surveySelected.flatMap(r => r.ratings.filter(v => v.code === code));
@@ -162,6 +167,8 @@ export function DepartmentExperienceTabs({
     ),
     overallRecommendation: recommendation.average
   };
+
+  const hasNativeExtraMetrics = [selectedSummary.teachingQuality, selectedSummary.seniorsApproachability, selectedSummary.researchExposure, selectedSummary.lifestyleBalance, selectedSummary.clinicalExposure].some(value => value > 0);
 
   return (
     <div className="space-y-5">
@@ -195,6 +202,7 @@ export function DepartmentExperienceTabs({
       </div>
 
       {selected.key === "resident_or_physician" && residentMetrics}
+      {nativeConditions.length > 0 && <section aria-label="תנאי ההתמחות מדיווחים באתר" className="space-y-3 rounded-xl border border-brand-100 p-3 sm:p-4"><h3 className="text-lg font-bold">תנאי ההתמחות · דיווחים באתר</h3><ConditionMetricsGrid metrics={nativeConditions} /></section>}
       <div className="grid gap-4">
         {!hasAnyReviews ? (
           <div className="rounded-lg border border-slate-100 bg-slate-50 px-4 py-4 text-sm text-slate-600">
@@ -210,7 +218,7 @@ export function DepartmentExperienceTabs({
         ) : (
           <>
             {recommendation.count > 0 && <div className="experience-recommendation-summary"><span>דירוג כללי</span><RatingStars value={recommendation.average} /><span>{recommendation.count} דירוגים</span></div>}
-            {(selectedReviews.length > 0 || surveyMetrics.length > 0) && <details className="experience-category-metrics"><summary>מדדים נוספים בקטגוריה</summary><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {(hasNativeExtraMetrics || surveyMetrics.length > 0) && <details className="experience-category-metrics"><summary>מדדים נוספים בקטגוריה</summary><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {selectedReviews.length > 0 && <>
               <SummaryMetric label="איכות הוראה" value={selectedSummary.teachingQuality} />
               <SummaryMetric label="זמינות בכירים" value={selectedSummary.seniorsApproachability} />

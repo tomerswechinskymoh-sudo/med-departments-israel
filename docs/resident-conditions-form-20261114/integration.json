@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "pendingThenApproved": true,
+  "allSourceQuestionsPersisted": true,
+  "absentScoresNull": true,
+  "recommendationIndependent": true,
+  "experienceYearPreserved": true,
+  "signupReceipt": true,
+  "nonAdminDenied": true,
+  "guestTextAndMetricsPrivate": true,
+  "externalDataUnchanged": true,
+  "scans": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "violations": []
+    },
+    {
+      "width": 375,
+      "overflow": false,
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "externalMessagesSent": 0
+}

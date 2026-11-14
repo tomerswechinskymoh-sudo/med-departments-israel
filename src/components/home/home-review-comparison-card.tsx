@@ -11,11 +11,11 @@ type HomeReview = {
   reviewerType: "RESIDENT" | "INTERN" | "STUDENT";
   displayName: string | null;
   isAnonymous: boolean;
-  teachingQuality: number;
-  workAtmosphere: number;
-  seniorsApproachability: number;
-  researchExposure: number;
-  lifestyleBalance: number;
+  teachingQuality: number | null;
+  workAtmosphere: number | null;
+  seniorsApproachability: number | null;
+  researchExposure: number | null;
+  lifestyleBalance: number | null;
   overallRecommendation: number;
   pros: string;
   cons: string;
@@ -58,34 +58,35 @@ function metricTone(value: number) {
 function getStrengthChips(review: HomeReview) {
   const chips: string[] = [];
 
-  if (review.teachingQuality >= 4) {
+  if ((review.teachingQuality != null && review.teachingQuality >= 4)) {
     chips.push("הוראה חזקה");
   }
 
-  if (review.researchExposure >= 4) {
+  if ((review.researchExposure != null && review.researchExposure >= 4)) {
     chips.push("מחקר פעיל", "מתאים למי שמחפש מחקר");
   }
 
-  if (review.workAtmosphere >= 4) {
+  if ((review.workAtmosphere != null && review.workAtmosphere >= 4)) {
     chips.push("אווירה טובה");
   }
 
-  if (review.lifestyleBalance <= 2) {
+  if ((review.lifestyleBalance != null && review.lifestyleBalance <= 2)) {
     chips.push("עומס גבוה");
   }
 
-  if (review.seniorsApproachability >= 4 && review.researchExposure <= 3) {
+  if ((review.seniorsApproachability != null && review.seniorsApproachability >= 4) && (review.researchExposure != null && review.researchExposure <= 3)) {
     chips.push("מתאים למי שמחפש קליניקה");
   }
 
-  if (review.overallRecommendation >= 4) {
+  if ((review.overallRecommendation != null && review.overallRecommendation >= 4)) {
     chips.push("שווה בדיקה רצינית");
   }
 
   return Array.from(new Set(chips)).slice(0, 4);
 }
 
-function MetricStat({ label, value }: { label: string; value: number }) {
+function MetricStat({ label, value }: { label: string; value: number | null }) {
+  if (value === null) return null;
   return (
     <div className={`rounded-2xl border px-3 py-3 ${metricTone(value)}`}>
       <p className="text-[0.68rem] font-semibold tracking-wide opacity-80">{label}</p>
