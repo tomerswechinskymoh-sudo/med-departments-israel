@@ -44,6 +44,10 @@ PUBLIC_DIRECTORY='--public-directory' in sys.argv
 if PUBLIC_DIRECTORY:
  OUT=ROOT/'docs/staz-survey-public-directory-20261114'
  BASE='e4992c26a541b9ee065c67b0559662a9c0025cd7';OLD='dpl_Ejne4qfbeUETbwfN1aGUz7RLnwbB'
+ACCOUNT_NAVIGATION='--account-navigation' in sys.argv
+if ACCOUNT_NAVIGATION:
+ OUT=ROOT/'docs/account-navigation-20261114'
+ BASE='419566845df65bb5343ebf5ab9806e1526b33430';OLD='dpl_8UwcdGrbLNeZDSdCWj3wLiLbJ49F'
 def run(args,**kw):return subprocess.check_output(args,cwd=ROOT,text=True,**kw).strip()
 def git(*args):return run(['git',*args])
 def write(n,v):(OUT/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
@@ -71,7 +75,7 @@ if phase=='preflight':
 elif phase=='deploy':
  s=snapshot();assert s['main']==BASE and s['project']==read('preflight.json')['project'];write('immediate-predeploy.json',s)
  assert read('checks.json')['passed']
- if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL or DIRECTORY_REVIEW or PRESENTATION_REVIEW or CAROUSEL_REVIEW or PUBLIC_DIRECTORY:assert read('integration.json')['passed']
+ if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL or DIRECTORY_REVIEW or PRESENTATION_REVIEW or CAROUSEL_REVIEW or PUBLIC_DIRECTORY or ACCOUNT_NAVIGATION:assert read('integration.json')['passed']
  elif not COPY_REVIEW:assert read('production-migration.json' if MAPPING_REVIEW else 'production-baseline.json' if QUICK_REVIEW else 'production-import.json')['passed']
  assert not git('diff','HEAD','--name-only');commit=git('rev-parse','HEAD');assert git('rev-parse','HEAD^')==BASE
  target=Path('/private/tmp/hitmachut-staz-release-'+commit[:12]);target.mkdir(exist_ok=False)

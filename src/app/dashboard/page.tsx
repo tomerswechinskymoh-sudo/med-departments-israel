@@ -90,6 +90,14 @@ export default async function DashboardPage() {
               אזור נציגים
             </Link>
           ) : null}
+          {session.role === "admin" ? (
+            <Link
+              href="/admin"
+              className="rounded-full border border-brand-200 px-5 py-3 text-sm font-semibold text-brand-800"
+            >
+              ניהול האתר
+            </Link>
+          ) : null}
         </div>
       </section>
 

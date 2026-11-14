@@ -8,12 +8,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { safeInternalPath } from "@/lib/security";
 import { loginSchema } from "@/lib/validation";
 
 type FormValues = z.infer<typeof loginSchema>;
 
-export function LoginForm({ nextPath }: { nextPath?: string }) {
+export function LoginForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
@@ -72,7 +71,7 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
         }
 
 
-        router.push(safeInternalPath(nextPath, "/departments"));
+        router.replace("/departments");
         router.refresh();
       } catch {
         setFormError("לא ניתן להתחבר כרגע. בדקו את החיבור ונסו שוב.");

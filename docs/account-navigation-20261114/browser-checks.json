@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "actualPasswordLogins": 3,
+  "redirects": [
+    {
+      "role": "STUDENT",
+      "start": "/login",
+      "destination": "/departments"
+    },
+    {
+      "role": "STUDENT",
+      "start": "/login?next=%2Fdashboard",
+      "destination": "/departments"
+    },
+    {
+      "role": "ADMIN",
+      "start": "/login?next=%2Fadmin",
+      "destination": "/departments"
+    }
+  ],
+  "sharedNavigationAndSitemapRetained": true,
+  "personalAccountLinkForStudentAndAdmin": true,
+  "adminManagementOnlyInAdminAccount": true,
+  "studentAdminAccessDenied": true,
+  "scans": [
+    {
+      "role": "STUDENT",
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "role": "STUDENT",
+      "width": 1024,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "role": "STUDENT",
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "role": "ADMIN",
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "role": "ADMIN",
+      "width": 1024,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "role": "ADMIN",
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

@@ -19,12 +19,6 @@ export default async function LoginPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const params = await searchParams;
-  const nextPath =
-    typeof params.next === "string" &&
-    params.next.startsWith("/") &&
-    !params.next.startsWith("//")
-      ? params.next
-      : undefined;
   const verificationError =
     typeof params.verificationError === "string"
       ? params.verificationError
@@ -68,7 +62,7 @@ export default async function LoginPage({
             </p>
           ) : null}
           <div className="mt-6">
-            <LoginForm nextPath={nextPath} />
+            <LoginForm />
           </div>
           <p className="account-signup-link mt-6 text-center text-sm text-slate-600">
             אין לכם חשבון?{" "}

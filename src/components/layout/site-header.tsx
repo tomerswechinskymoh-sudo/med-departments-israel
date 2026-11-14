@@ -6,20 +6,17 @@ import { PublicNavigation } from "./public-navigation";
 import { LogoutButton } from "./logout-button";
 export async function SiteHeader() {
   const session = await getSession();
-  const items =
-    session?.role === "admin"
-      ? [{ href: "/admin", label: "ניהול האתר" }]
-      : [
-          { href: "/departments", label: "חיפוש והשוואת מחלקות" },
-          { href: "/career-fit", label: "בחירת התמחות" },
-          { href: "/about", label: "אודות" },
-          { href: "/faq", label: "שאלות נפוצות" },
-          { href: "/favorites", label: "הרשימה שלי" },
-          ...(session ? [{ href: "/dashboard", label: "האזור האישי" }] : []),
-          ...(session?.role === "representative"
-            ? [{ href: "/representative", label: "אזור נציגים" }]
-            : []),
-        ];
+  const items = [
+    { href: "/departments", label: "חיפוש והשוואת מחלקות" },
+    { href: "/career-fit", label: "בחירת התמחות" },
+    { href: "/about", label: "אודות" },
+    { href: "/faq", label: "שאלות נפוצות" },
+    { href: "/favorites", label: "הרשימה שלי" },
+    ...(session ? [{ href: "/dashboard", label: "אזור אישי" }] : []),
+    ...(session?.role === "representative"
+      ? [{ href: "/representative", label: "אזור נציגים" }]
+      : []),
+  ];
   return (
     <header className="site-header">
       <div className="header-inner">

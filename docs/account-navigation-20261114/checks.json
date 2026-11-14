@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "productionBuildPassed": true,
+  "typeChecksPassed": true,
+  "diffCheckPassed": true,
+  "realSyntheticLoginsPassed": 3,
+  "rolesTested": [
+    "STUDENT",
+    "ADMIN"
+  ],
+  "screenWidths": [
+    1440,
+    1024,
+    375
+  ],
+  "accessibilityViolations": 0,
+  "sourceSettingsUnchanged": true,
+  "syntheticPasswordsRestored": true,
+  "productionUserDataUnchanged": true
+}
