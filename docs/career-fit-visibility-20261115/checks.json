@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "unitTestsPassed": 66,
+  "unitTestsSkipped": 0,
+  "typescriptPassed": true,
+  "productionBuildPassed": true,
+  "isolatedMigrationPassed": true,
+  "adminHideRestorePassed": true,
+  "browserWidths": [
+    1440,
+    375
+  ],
+  "initialCareerFitEnabled": false
+}

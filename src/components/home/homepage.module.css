@@ -150,6 +150,9 @@
 .root :global(.journey-primary .feature-heading h2) { color:#064799; }
 .root :global(.feature-primary-link) { margin-top:auto; font-size:15px; padding-inline:12px; }
 .root :global(.journey-cards article.journey-secondary) { background:#fff; }
+@media (min-width: 640px) {
+  .root :global(.journey-cards[data-career-fit-visible="false"]) { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
 .root :global(.journey-secondary .icon-tile) { background:#f1f5f9; color:#52658b; }
 @media(max-width:639px) {
  .root :global(.home-hero) { padding-top:20px; }

@@ -38,10 +38,12 @@ const extras = [
       "כלי ניסיוני בן 30 שאלות ושישה תחומי עניין. הוא טרם עבר תיקוף מדעי ואינו מחליף ייעוץ מקצועי. כל השאלות נדרשות לדירוג; דילוג אינו תשובה ניטרלית.",
     ],
     category: "שאלון Beta",
+    careerFit: true,
     href: "/career-fit",
   },
   {
     title: "היכן נשמרות תשובות השאלון?",
+    careerFit: true,
     body: [
       "במכשיר ובדפדפן שבהם השתמשתם. טיוטה בת יותר מ־30 יום מהעדכון האחרון נמחקת בבדיקה הבאה כשפותחים את השאלון, ולא באמצעות מחיקה מתוזמנת כשהדפדפן סגור. התשובות, הציונים וההמלצות אינם נשלחים לשרת או לאנליטיקה. אפשר למחוק את ההתקדמות מתוך השאלון.",
     ],
@@ -57,7 +59,7 @@ const extras = [
     href: "/about",
   },
 ];
-export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
+export function FaqAccordion({ items, careerFitEnabled = false }: { items: readonly FaqItem[]; careerFitEnabled?: boolean }) {
   const [query, setQuery] = useState(""),
     [category, setCategory] = useState("הכל");
   const all = [
@@ -70,7 +72,7 @@ export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
           : "שימוש באתר",
       href: i.href ?? "/contact",
     })),
-    ...extras,
+    ...extras.filter(item => !item.careerFit || careerFitEnabled),
   ];
   const filtered = all.filter(
     (i) =>
@@ -104,7 +106,7 @@ export function FaqAccordion({ items }: { items: readonly FaqItem[] }) {
           "מקורות מידע",
           "הרשמה ואימות",
           "פרטיות",
-          "שאלון Beta",
+          ...(careerFitEnabled ? ["שאלון Beta"] : []),
         ].map((c) => (
           <button
             key={c}

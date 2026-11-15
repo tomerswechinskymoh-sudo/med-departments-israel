@@ -64,6 +64,10 @@ PUBLIC_RESIDENT_METRICS='--public-resident-metrics' in sys.argv
 if PUBLIC_RESIDENT_METRICS:
  OUT=ROOT/'docs/public-resident-metrics-20261115'
  BASE='04a7dff4c245d70cd1f6b55d2cd9dd6b30173ec9';OLD='dpl_D2LhEo95NSJQ9uwMAcGTRdYNp1qR'
+CAREER_FIT_VISIBILITY='--career-fit-visibility' in sys.argv
+if CAREER_FIT_VISIBILITY:
+ OUT=ROOT/'docs/career-fit-visibility-20261115'
+ BASE='f8a745a7b355da6af0bf9b913d08f2c0cc3c426f';OLD='dpl_7qJpKuXjHLXX7uEaWgUUMzvsV89x'
 def run(args,**kw):return subprocess.check_output(args,cwd=ROOT,text=True,**kw).strip()
 def git(*args):return run(['git',*args])
 def write(n,v):(OUT/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
@@ -91,7 +95,7 @@ if phase=='preflight':
 elif phase=='deploy':
  s=snapshot();assert s['main']==BASE and s['project']==read('preflight.json')['project'];write('immediate-predeploy.json',s)
  assert read('checks.json')['passed']
- if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL or DIRECTORY_REVIEW or PRESENTATION_REVIEW or CAROUSEL_REVIEW or PUBLIC_DIRECTORY or ACCOUNT_NAVIGATION or RESIDENT_SURVEY or RESIDENT_LOCAL or RESIDENT_FORM or PUBLIC_RESIDENT_METRICS:assert read('integration.json')['passed']
+ if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL or DIRECTORY_REVIEW or PRESENTATION_REVIEW or CAROUSEL_REVIEW or PUBLIC_DIRECTORY or ACCOUNT_NAVIGATION or RESIDENT_SURVEY or RESIDENT_LOCAL or RESIDENT_FORM or PUBLIC_RESIDENT_METRICS or CAREER_FIT_VISIBILITY:assert read('integration.json')['passed']
  elif not COPY_REVIEW:assert read('production-migration.json' if MAPPING_REVIEW else 'production-baseline.json' if QUICK_REVIEW else 'production-import.json')['passed']
  assert not git('diff','HEAD','--name-only');commit=git('rev-parse','HEAD');assert git('rev-parse','HEAD^')==BASE
  target=Path('/private/tmp/hitmachut-staz-release-'+commit[:12]);target.mkdir(exist_ok=False)
@@ -125,6 +129,7 @@ elif phase=='verify':
  write('provider-verified.json',{'passed':True,'filesCompared':len(uploaded),'omitted':sorted(omitted),'settingsUnchanged':True,'buildSucceeded':True,'noBuildTimeDatabaseMigration':True})
 elif phase=='promote':
  assert read('provider-verified.json')['passed'] and read('staged-smoke.json')['passed']
+ if CAREER_FIT_VISIBILITY:assert read('production-migration.json')['passed'] and not read('production-migration.json')['careerFitEnabled']
  s=snapshot();assert s['main']==BASE and s['project']==read('preflight.json')['project']
  d=read('deployment.json');assert api('/v13/deployments/'+d['id'])['readyState']=='READY'
  r=run(['vercel','promote',d['id'],'--scope',TEAM,'--yes','--non-interactive'],stderr=subprocess.STDOUT)

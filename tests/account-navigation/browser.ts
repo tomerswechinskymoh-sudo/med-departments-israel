@@ -44,7 +44,7 @@ async function main() {
       const isAdmin = user.roleKey === 'ADMIN';
       const accountLabel = isAdmin ? 'ניהול האתר' : 'אזור אישי', accountHref = isAdmin ? '/admin' : '/dashboard';
       await nav.getByRole('link', { name: accountLabel, exact: true }).waitFor();
-      for (const href of ['/departments', '/career-fit', '/about', '/faq', '/favorites', accountHref]) assert.equal(await nav.locator(`a[href="${href}"]`).count(), 1);
+      for (const href of ['/departments', '/about', '/faq', '/favorites', accountHref]) assert.equal(await nav.locator(`a[href="${href}"]`).count(), 1);
       assert.equal(await nav.locator(`a[href="${isAdmin ? '/dashboard' : '/admin'}"]`).count(), 0);
       assert.equal(await page.locator('footer a[href="/sitemap"]').count(), 1);
       redirects.push({ role: user.roleKey, start, destination: new URL(page.url()).pathname });

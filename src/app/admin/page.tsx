@@ -2,6 +2,8 @@ import { residentConditionRows } from "@/lib/resident-conditions";
 import { signupWorkplaceLabel } from "@/lib/signup-workplace";
 import { SourceVisibilityControls } from "@/components/admin/source-visibility-controls";
 import { getSourceVisibility } from "@/lib/server/source-visibility";
+import { getCareerFitVisibility } from "@/server/site-features/visibility";
+import { CareerFitVisibilityControl } from "@/components/admin/career-fit-visibility-control";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Prisma } from "@prisma/client";
@@ -185,8 +187,10 @@ export default async function AdminPage() {
   const hasMistakeAction = data.pendingMistakeReports.length > 0;
 
   const sourceVisibility = await getSourceVisibility();
+  const careerFit = await getCareerFitVisibility();
   return (
     <PageShell className="space-y-6 py-8">
+      <CareerFitVisibilityControl initial={careerFit} />
       <SourceVisibilityControls initial={sourceVisibility} />
       <div className="flex flex-wrap items-center gap-3">
         <Link href="/admin/survey-reviews" className="inline-flex min-h-12 items-center justify-center gap-3 rounded-lg bg-brand-700 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-brand-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-700"><span>ניהול תגובות סקר הסטאז׳</span><span aria-hidden="true">←</span></Link>

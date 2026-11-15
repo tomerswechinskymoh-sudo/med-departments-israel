@@ -4,11 +4,12 @@ import { SiteBrand } from "./site-brand";
 import { ApprovedBrand } from "./approved-brand";
 import { PublicNavigation } from "./public-navigation";
 import { LogoutButton } from "./logout-button";
+import { getCareerFitVisibility } from "@/server/site-features/visibility";
 export async function SiteHeader() {
-  const session = await getSession();
+  const [session, careerFit] = await Promise.all([getSession(), getCareerFitVisibility()]);
   const items = [
     { href: "/departments", label: "חיפוש והשוואת מחלקות" },
-    { href: "/career-fit", label: "בחירת התמחות" },
+    ...(careerFit.enabled ? [{ href: "/career-fit", label: "בחירת התמחות" }] : []),
     { href: "/about", label: "אודות" },
     { href: "/faq", label: "שאלות נפוצות" },
     { href: "/favorites", label: "הרשימה שלי" },

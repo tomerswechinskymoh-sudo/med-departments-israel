@@ -6,6 +6,7 @@ export const metadata = {
 import Link from "next/link";
 import styles from "@/components/home/homepage.module.css";
 import { HomepageImage } from "@/components/home/homepage-image";
+import { getCareerFitVisibility } from "@/server/site-features/visibility";
 import {
   HomepageIcon,
   type HomepageIconName,
@@ -43,7 +44,8 @@ const journeys: {
     beta: true,
   },
 ];
-export default function HomePage() {
+export default async function HomePage() {
+  const careerFit = await getCareerFitVisibility();
   return (
     <div className={styles.root} data-homepage-release="01">
       <main id="main-content" tabIndex={-1} className="home-page">
@@ -67,14 +69,14 @@ export default function HomePage() {
               <HomepageIcon name="search" />
               חיפוש והשוואת מחלקות
             </Link>
-            <Link href="/career-fit" className="hero-secondary-link">
+            {careerFit.enabled && <Link href="/career-fit" className="hero-secondary-link">
               עדיין מתלבטים באיזה תחום? נסו את שאלון ההתאמה <span className="beta-badge">(Beta)</span>
-            </Link>
+            </Link>}
           </div>
         </div>
       </section>
-      <section className="journey-cards" aria-label="מאיפה מתחילים">
-        {journeys.map((j) => (
+      <section className="journey-cards" data-career-fit-visible={careerFit.enabled} aria-label="מאיפה מתחילים">
+        {journeys.filter(j => !j.beta || careerFit.enabled).map((j) => (
           <article key={j.href + j.title} className={j.primary ? "journey-primary" : j.beta ? "journey-secondary" : undefined}>
             <div className="feature-heading">
               <span className="icon-tile">

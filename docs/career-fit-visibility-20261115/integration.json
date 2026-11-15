@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "adminToggleBothDirections": true,
+  "persistedAfterReload": true,
+  "guestAndStudentDenied": true,
+  "sameOriginEnforced": true,
+  "malformedInputRejected": true,
+  "auditVerified": true,
+  "hiddenLinksAndRoutes": true,
+  "enabledRoutesRestored": true,
+  "finalEnabled": false,
+  "scans": [
+    {
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

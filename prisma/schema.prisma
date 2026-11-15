@@ -2275,6 +2275,13 @@ model SourceVisibility {
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 }
 
+// Global product visibility, controlled only through the administrator interface.
+model SiteFeature {
+  key       String   @id
+  enabled   Boolean  @default(false)
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+}
+
 model SignupDocumentDeletion {
   userId String @id @map("user_id")
   status String

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "production": false,
+  "migration": "202611150001_career_fit_visibility",
+  "directConnection": true,
+  "careerFitEnabled": false,
+  "previousDataUnchanged": true,
+  "tablesVerified": [
+    "Review",
+    "ReviewSubmission",
+    "ExternalSurveyResponse",
+    "ExternalSurveyAggregate",
+    "SurveyReview",
+    "SurveyReviewRating",
+    "SurveyReviewSource",
+    "ExternalSurveySource",
+    "SourceVisibility"
+  ],
+  "migrationChecksum": "1f6341cd5ee74f901a188771e0d0fa1327a3ad3cc4c4f881bcbdc6b77222b6a4"
+}

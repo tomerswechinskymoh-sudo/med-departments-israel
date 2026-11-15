@@ -3,9 +3,11 @@ import { getDepartmentOptions } from '@/lib/queries';
 import { prisma } from '@/lib/prisma';
 import { normalizePublicRegion } from '@/lib/regions';
 import { VERSION } from '@/lib/career-fit/config';
+import { getCareerFitVisibility } from '@/server/site-features/visibility';
 export const dynamic = 'force-dynamic';
 /** Read-only public projection. No answer payloads, reviews, rosters or restricted metrics. */
 export async function GET() {
+  if (!(await getCareerFitVisibility()).enabled) return NextResponse.json({ error: 'NOT_FOUND' }, { status: 404, headers: { 'Cache-Control': 'private, no-store' } });
   try {
     if (!process.env.DATABASE_URL) throw new Error('unavailable');
     const options=await getDepartmentOptions();

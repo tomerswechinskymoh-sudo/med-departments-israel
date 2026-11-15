@@ -11,6 +11,7 @@ import { LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL } from "@/lib/metric-display";
 import { Card } from "@/components/ui/card";
 import { PageShell } from "@/components/layout/page-shell";
 import { InstitutionLogo } from "@/components/departments/institution-logo";
+import { getCareerFitVisibility } from "@/server/site-features/visibility";
 
 const comparisonColumns = [
   "מחלקה / מערך",
@@ -35,6 +36,7 @@ export default async function ComparePage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const [params, session] = await Promise.all([searchParams, getSession()]);
+  const careerFit = await getCareerFitVisibility();
   const departments = parseDepartmentIds(params.departments);
   const specialtyId =
     typeof params.specialty === "string" ? params.specialty : undefined;
@@ -263,12 +265,9 @@ export default async function ComparePage({
       <p className="text-sm leading-7 text-slate-600">
         נתוני ההשוואה מוצגים לפי מקורותיהם והגדרותיהם הקיימות. לא מוצגים כאן
         ציונים, שיעורי מעבר או חוות דעת שאין להם נתון מתאים.{" "}
-        <Link
-          className="underline"
-          href="/career-fit/methodology#department-index"
-        >
+        {careerFit.enabled && <Link className="underline" href="/career-fit/methodology#department-index">
           על מגבלות מדד המחלקה
-        </Link>
+        </Link>}
       </p>
     </PageShell>
   );

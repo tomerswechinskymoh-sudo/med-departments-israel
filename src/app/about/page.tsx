@@ -5,13 +5,15 @@ import { PageShell } from "@/components/layout/page-shell";
 import { PageIntro } from "@/components/ui/page-intro";
 import { ApprovedBrand } from "@/components/layout/approved-brand";
 import { PUBLIC_CONTACT_MAILTO } from "@/lib/contact";
+import { getCareerFitVisibility } from "@/server/site-features/visibility";
 
 export const metadata = {
   title: "אודות — מבעיה אישית לפתרון מערכתי | hitmachut.org",
   description: "הסיפור מאחורי התמחות.org: מהצורך להבין את אפשרויות ההתמחות בישראל להנגשת מידע, השוואת מחלקות ובחירה מושכלת.",
   alternates: { canonical: "/about" },
 };
-export default function AboutPage() {
+export default async function AboutPage() {
+  const careerFit = await getCareerFitVisibility();
   return (
     <PageShell className="about-page">
       <PageIntro eyebrow="אודות" title="מבעיה אישית לפתרון מערכתי" image="people"
@@ -41,7 +43,7 @@ export default function AboutPage() {
       <section className="about-process">
         <div className="section-intro"><h2>פחות מידע מפוזר. יותר מקום לבחירה.</h2><p>המידע על ההתמחות מפוזר בין פרסומים, אתרי בתי חולים ושיחות עם עמיתים. אנחנו מנסים לחבר בין המקורות ולהפוך את הבירור למסודר ונגיש.</p></div>
         <ol className="process-grid">
-          {[["מוצאים כיוון", "מחפשים לפי תחום ואזור. אפשר להתחיל גם משאלון בחירת ההתמחות הניסיוני (Beta)."], ["משווים ובודקים", "בוחנים נתונים ומקורות, שומרים מחלקות ומזהים אילו שאלות עדיין פתוחות."], ["משלימים את התמונה", "קוראים חוויות, פונים למחלקה ומקבלים החלטה מתוך ההקשר האישי והמקצועי שלכם."]].map(([title,text],i)=><li key={title}><span className="step-number">{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}
+          {[["מוצאים כיוון", careerFit.enabled ? "מחפשים לפי תחום ואזור. אפשר להתחיל גם משאלון בחירת ההתמחות הניסיוני (Beta)." : "מחפשים מחלקות לפי תחום התמחות ואזור."], ["משווים ובודקים", "בוחנים נתונים ומקורות, שומרים מחלקות ומזהים אילו שאלות עדיין פתוחות."], ["משלימים את התמונה", "קוראים חוויות, פונים למחלקה ומקבלים החלטה מתוך ההקשר האישי והמקצועי שלכם."]].map(([title,text],i)=><li key={title}><span className="step-number">{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}
         </ol>
       </section>
       <section className="about-sources" id="sources">

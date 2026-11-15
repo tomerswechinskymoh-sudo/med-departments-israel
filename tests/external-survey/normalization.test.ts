@@ -119,7 +119,14 @@ test("survey boundary preserves moderation, auth, questionnaire, metric calculat
     const original = execFileSync("git", ["show", `d55f195b6efa7370bb5ab27f3d500f33355e05a2:${file}`]);
     // The compact-tile task changes only the questionnaire result's typography.
     // Normalize that exact presentation edit while still checking every behavior byte.
-    const source = (await readFile(file, 'utf8')).replace('className="my-2 text-2xl font-bold text-brand-800"', 'className="my-4 text-4xl font-black text-brand-800"');
+    let source = (await readFile(file, 'utf8')).replace('className="my-2 text-2xl font-bold text-brand-800"', 'className="my-4 text-4xl font-black text-brand-800"');
+    // The admin visibility toggle only conditionally hides the methodology link.
+    // Remove those exact additions; keep the comparison data/layout baseline intact.
+    if (file === 'src/app/compare/page.tsx') source = source
+      .replace('import { getCareerFitVisibility } from "@/server/site-features/visibility";\n', '')
+      .replace('  const careerFit = await getCareerFitVisibility();\n', '')
+      .replace('{careerFit.enabled && <Link className="underline" href="/career-fit/methodology#department-index">', '<Link\n          className="underline"\n          href="/career-fit/methodology#department-index"\n        >')
+      .replace('על מגבלות מדד המחלקה\n        </Link>}', 'על מגבלות מדד המחלקה\n        </Link>');
     const current = execFileSync("git", ["hash-object", "--stdin"], { input: source, encoding: "utf8" }).trim();
     const oldHash = execFileSync("git", ["hash-object", "--stdin"], { input: original, encoding: "utf8" }).trim();
     assert.equal(current, oldHash, file);
