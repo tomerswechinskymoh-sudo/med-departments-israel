@@ -5,7 +5,7 @@ import { chromium } from 'playwright';
 import { prisma as db } from '../../src/lib/prisma';
 import { hashPassword } from '../../src/lib/password';
 // Next's local middleware redirects use localhost; keep cookies on that origin.
-const base = 'http://localhost:3097', out = 'docs/account-navigation-20261114';
+const base = 'http://localhost:3097', out = process.env.NAVIGATION_TEST_OUT ?? 'docs/account-navigation-20261114';
 
 async function main() {
   assert.equal(new URL(process.env.DATABASE_URL!).hostname, process.env.STAZ_TEST_DATABASE_HOST);
@@ -41,9 +41,11 @@ async function main() {
       assert.equal((await result).status(), 200);
       await page.waitForURL(base + '/departments');
       const header = page.locator('header.site-header'), nav = header.getByRole('navigation', { name: 'ניווט ראשי' });
-      await nav.getByRole('link', { name: 'אזור אישי', exact: true }).waitFor();
-      for (const href of ['/departments', '/career-fit', '/about', '/faq', '/favorites', '/dashboard']) assert.equal(await nav.locator(`a[href="${href}"]`).count(), 1);
-      assert.equal(await nav.locator('a[href="/admin"]').count(), 0);
+      const isAdmin = user.roleKey === 'ADMIN';
+      const accountLabel = isAdmin ? 'ניהול האתר' : 'אזור אישי', accountHref = isAdmin ? '/admin' : '/dashboard';
+      await nav.getByRole('link', { name: accountLabel, exact: true }).waitFor();
+      for (const href of ['/departments', '/career-fit', '/about', '/faq', '/favorites', accountHref]) assert.equal(await nav.locator(`a[href="${href}"]`).count(), 1);
+      assert.equal(await nav.locator(`a[href="${isAdmin ? '/dashboard' : '/admin'}"]`).count(), 0);
       assert.equal(await page.locator('footer a[href="/sitemap"]').count(), 1);
       redirects.push({ role: user.roleKey, start, destination: new URL(page.url()).pathname });
       if (start === '/login') { await context.close(); continue; }
@@ -51,7 +53,7 @@ async function main() {
         for (const width of [1440, 1024, 375]) {
           await page.setViewportSize({ width, height: 1000 });
           if (width === 375) await header.getByRole('button', { name: /תפריט/ }).click();
-          assert.equal(await nav.getByRole('link', { name: 'אזור אישי', exact: true }).isVisible(), true);
+          assert.equal(await nav.getByRole('link', { name: accountLabel, exact: true }).isVisible(), true);
           assert.equal(await nav.locator('a[href="/departments"]').isVisible(), true);
           assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false);
           await page.addScriptTag({ content: await readFile('node_modules/axe-core/axe.min.js', 'utf8') });
@@ -66,25 +68,27 @@ async function main() {
         }
       }
       await page.setViewportSize({ width: 1440, height: 1000 });
-      await nav.getByRole('link', { name: 'אזור אישי', exact: true }).click();
-      await page.waitForURL(base + '/dashboard'); await page.getByRole('heading', { name: user.fullName, exact: true }).waitFor();
-      const management = page.locator('main a[href="/admin"]');
-      assert.equal(await management.count(), user.roleKey === 'ADMIN' ? 1 : 0);
-      if (user.roleKey === 'ADMIN') {
-        await management.click(); await page.waitForURL(base + '/admin');
-        await nav.getByRole('link', { name: 'אזור אישי', exact: true }).waitFor();
+      await nav.getByRole('link', { name: accountLabel, exact: true }).click();
+      await page.waitForURL(base + accountHref);
+      if (isAdmin) {
+        await nav.getByRole('link', { name: 'ניהול האתר', exact: true }).waitFor();
+        const adminPage = await context.request.get(base + '/admin'); assert.equal(adminPage.status(), 200); assert.equal(adminPage.url(), base + '/admin');
       } else {
+        await page.getByRole('heading', { name: user.fullName, exact: true }).waitFor();
+        assert.equal(await page.locator('main a[href="/admin"]').count(), 0);
         const denied = await context.request.get(base + '/api/admin/survey-reviews'); assert.equal(denied.status(), 403);
         await page.goto(base + '/admin');
         await page.waitForURL(url => ['/', '/dashboard'].includes(url.pathname));
         await nav.getByRole('link', { name: 'אזור אישי', exact: true }).waitFor();
       }
+      await context.clearCookies(); await page.goto(base + '/departments');
+      assert.equal(await nav.locator('a[href="/admin"], a[href="/dashboard"]').count(), 0);
       await context.close();
     }
     assert.deepEqual(errors, []);
-    const report = { passed: true, actualPasswordLogins: 3, redirects, sharedNavigationAndSitemapRetained: true, personalAccountLinkForStudentAndAdmin: true, adminManagementOnlyInAdminAccount: true, studentAdminAccessDenied: true, scans, errors };
-    await writeFile(out + '/browser-checks.json', JSON.stringify(report, null, 2) + '\n');
-    await writeFile(out + '/integration.json', JSON.stringify({ passed: true, actualPasswordLogins: 3, navigationAndAuthorizationPassed: true }, null, 2) + '\n');
+    const report = { passed: true, actualPasswordLogins: 3, redirects, sharedNavigationAndSitemapRetained: true, personalAccountForStudent: true, directManagementLinkForAdminOnly: true, guestAccountLinksAbsent: true, studentAdminAccessDenied: true, scans, errors };
+    await writeFile(out + '/navigation-browser.json', JSON.stringify(report, null, 2) + '\n');
+    await writeFile(out + '/navigation-integration.json', JSON.stringify({ passed: true, actualPasswordLogins: 3, navigationAndAuthorizationPassed: true }, null, 2) + '\n');
     console.log(JSON.stringify(report));
   } finally {
     for (const user of users) await db.user.update({ where: { id: user.id }, data: { passwordHash: user.passwordHash } });

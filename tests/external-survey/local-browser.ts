@@ -26,7 +26,9 @@ async function main(){
    const countText=await card.getByRole('link',{name:/חוויות מאושרות/}).innerText();
    await context.clearCookies();const response=await page.goto(base+'/departments?specialty='+specialty.id);const html=await response!.text();
    assert.equal(await page.locator('.department-card').filter({hasText:match}).first().getByRole('link',{name:/חוויות מאושרות/}).innerText(),countText);
-   assert.equal(await page.locator('[data-survey-state="published"]').count(),0);
+   assert.equal(await page.locator('[data-survey-state="published"] dl > div').count(),expectedNational);
+   assert.equal(await page.locator('[data-survey-state="locked"]').count(),0);
+   assert.equal(await page.locator('[data-survey-state="published"] blockquote').count(),0);
    assert.ok(!html.includes('rawEncrypted'));
    await context.addCookies([cookie]);await page.goto(base+href);
    const tabs=page.locator('#department-experiences').locator('..');

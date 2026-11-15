@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "unitTestsPassed": 64,
+  "unitTestsSkipped": 0,
+  "typescriptPassed": true,
+  "productionBuildPassed": true,
+  "publishedSpecialties": 26,
+  "publishedMetricCells": 180,
+  "browserWidths": [
+    1440,
+    768,
+    375
+  ],
+  "databaseMigrationRequired": false,
+  "productionDataChanges": false,
+  "adminNavigationPassed": true,
+  "actualPasswordLogins": 3,
+  "navigationBrowserWidths": [
+    1440,
+    1024,
+    375
+  ],
+  "navigationAccessibilityViolations": 0
+}

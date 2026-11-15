@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "live": false,
+  "anonymous": true,
+  "samples": [
+    {
+      "specialty": "רפואה פנימית",
+      "specialtyId": "cmoel26vd001je7j42ec58epg",
+      "metricCount": 8,
+      "countAndYearsShown": true,
+      "localGuestDetailsLocked": true
+    },
+    {
+      "specialty": "רפואת ילדים",
+      "specialtyId": "cmoel26vd001ke7j4xgw4twjw",
+      "metricCount": 7,
+      "countAndYearsShown": true,
+      "localGuestDetailsLocked": true
+    },
+    {
+      "specialty": "פסיכיאטריה",
+      "specialtyId": "cmoel26vd001me7j4zkf44qnp",
+      "metricCount": 7,
+      "countAndYearsShown": true,
+      "localGuestDetailsLocked": true
+    }
+  ],
+  "scans": [
+    {
+      "width": 1440,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "guestMatchesVerified": true,
+  "rawRowsAndQuotesAbsent": true,
+  "sourceExplanationPreserved": true,
+  "errors": []
+}

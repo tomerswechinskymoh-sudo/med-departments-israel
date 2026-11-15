@@ -60,6 +60,10 @@ RESIDENT_FORM='--resident-conditions-form' in sys.argv
 if RESIDENT_FORM:
  OUT=ROOT/'docs/resident-conditions-form-20261114'
  BASE='7b717ce875d616d709420382e6451de5bbd8ee4b';OLD='dpl_WuvGWK4gwkMpQLcoQ3BR6wGWc8Zo'
+PUBLIC_RESIDENT_METRICS='--public-resident-metrics' in sys.argv
+if PUBLIC_RESIDENT_METRICS:
+ OUT=ROOT/'docs/public-resident-metrics-20261115'
+ BASE='04a7dff4c245d70cd1f6b55d2cd9dd6b30173ec9';OLD='dpl_D2LhEo95NSJQ9uwMAcGTRdYNp1qR'
 def run(args,**kw):return subprocess.check_output(args,cwd=ROOT,text=True,**kw).strip()
 def git(*args):return run(['git',*args])
 def write(n,v):(OUT/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
@@ -87,7 +91,7 @@ if phase=='preflight':
 elif phase=='deploy':
  s=snapshot();assert s['main']==BASE and s['project']==read('preflight.json')['project'];write('immediate-predeploy.json',s)
  assert read('checks.json')['passed']
- if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL or DIRECTORY_REVIEW or PRESENTATION_REVIEW or CAROUSEL_REVIEW or PUBLIC_DIRECTORY or ACCOUNT_NAVIGATION or RESIDENT_SURVEY or RESIDENT_LOCAL or RESIDENT_FORM:assert read('integration.json')['passed']
+ if ASSOCIATION_REPAIR or ENCODING_REPAIR or AUTO_APPROVAL or DIRECTORY_REVIEW or PRESENTATION_REVIEW or CAROUSEL_REVIEW or PUBLIC_DIRECTORY or ACCOUNT_NAVIGATION or RESIDENT_SURVEY or RESIDENT_LOCAL or RESIDENT_FORM or PUBLIC_RESIDENT_METRICS:assert read('integration.json')['passed']
  elif not COPY_REVIEW:assert read('production-migration.json' if MAPPING_REVIEW else 'production-baseline.json' if QUICK_REVIEW else 'production-import.json')['passed']
  assert not git('diff','HEAD','--name-only');commit=git('rev-parse','HEAD');assert git('rev-parse','HEAD^')==BASE
  target=Path('/private/tmp/hitmachut-staz-release-'+commit[:12]);target.mkdir(exist_ok=False)

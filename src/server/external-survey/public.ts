@@ -49,7 +49,9 @@ const sourceWhere = { id: RESIDENT_SOURCE_ID, sourceType: 'EXTERNAL_SURVEY', agg
 const quoteWhere = { sourceId: RESIDENT_SOURCE_ID, tipStatus: 'APPROVED', status: 'PUBLISHED' as const, approvedTip: { not: null }, tipReviewEvidence: { not: Prisma.DbNull } };
 export async function readSurveySummary(db: PrismaClient, specialtyId: string, viewer: Parameters<typeof canReadSurvey>[0], local?: { institutionName: string; specialtyName: string; isArray: boolean; siblingCount: number }): Promise<SurveySummary> {
   const empty = { metrics: [], quotes: [] };
-  if (!canReadSurvey(viewer)) return { ...empty, state: 'locked' };
+  // Specialty pages expose approved national aggregates to everyone. Hospital
+  // summaries and individual quotations retain the verified-viewer boundary.
+  if (local && !canReadSurvey(viewer)) return { ...empty, state: 'locked' };
   const c = await catalog(db);
   const scope = local ? resolveSurveyScope(specialtyId, local.institutionName, c) : { specialtyId: canonicalSurveySpecialty(specialtyId, c), institutionId: null };
   if (!scope) return { ...empty, state: 'empty' };

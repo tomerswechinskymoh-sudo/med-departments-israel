@@ -1,0 +1,9 @@
+# Public national survey metrics and direct admin navigation
+
+The specialty directory now displays its approved national survey metric tiles to guests and unverified visitors as well as verified users. Values, per-metric respondent counts, years, salary bases and the existing historical-source paragraph are unchanged.
+
+Only the national aggregate path is public. It never queries response rows or returns quotations. Local institution summaries and individual experiences retain the existing verified-user boundary. Documented source rights, published status, current dataset/privacy review and valid sample/value checks still apply to every public tile; withholding the source hides them immediately. No database migration or production data/approval changes are part of this release.
+
+Validation covers all 26 published specialties and 180 national metric cells on the isolated branch, exact anonymous/authenticated parity, source withholding inside a rolled-back transaction, local guest denial, no quotation reads, source/value validation, responsive guest browser checks and accessibility. Existing source and questionnaire regression checks remain in place. Release follows the established immutable archive, staged deployment, source comparison, smoke, promotion and GitHub main synchronization workflow.
+
+The shared header now links administrators directly to `/admin` under “ניהול האתר”, replacing their personal-area item. Other signed-in roles retain “אזור אישי”; guests receive neither account-only navigation item. Remaining navigation, sitemap, login destination and server authorization are unchanged. Actual password logins with the isolated synthetic student/admin accounts verify desktop/mobile links, direct admin access and non-admin denial; their original password hashes are restored.

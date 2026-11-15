@@ -16,6 +16,7 @@ if '--account-navigation' in sys.argv:OUT=ROOT/'docs/account-navigation-20261114
 if '--resident-survey-publication' in sys.argv:OUT=ROOT/'docs/resident-survey-publication-20261114'
 if '--resident-survey-local' in sys.argv:OUT=ROOT/'docs/resident-survey-local-20261114'
 if '--resident-conditions-form' in sys.argv:OUT=ROOT/'docs/resident-conditions-form-20261114'
+if '--public-resident-metrics' in sys.argv:OUT=ROOT/'docs/public-resident-metrics-20261115'
 TEAM='team_Jj2tczP8vf4XPr74gxyasW5A';PROJECT='prj_0YCcPYlSvFYIveAzKWI1wDO6PNaE'
 phase=sys.argv[1];assert phase in ['staged','live']
 d=json.loads((OUT/'deployment.json').read_text());headers={'User-Agent':'Hitmachut-Staz-Authorized-Release-Smoke'}
@@ -49,4 +50,5 @@ if '--account-navigation' in sys.argv:report['scope']='Read-only routes and acce
 if '--resident-survey-publication' in sys.argv:report['scope']='Read-only public routes and access gates. All valid resident survey metrics, separated salary bases, exact positive quotations and privacy thresholds verified on isolated data.'
 if '--resident-survey-local' in sys.argv:report['scope']='Read-only public routes and admin access gates. Verified local metrics, n=1 counts/years and exact non-negative resident quotes on isolated branch; guest text privacy preserved.'
 if '--resident-conditions-form' in sys.argv:report['scope']='Read-only routes and access gates. Resident survey questions, optional values, moderation, receipt and year/metric display tested on isolated branch. Existing survey data unchanged.'
+if '--public-resident-metrics' in sys.argv:report['scope']='Public national survey metrics retain source rights, publication and privacy review gates. Local details and individual quotations remain verified-only. No database changes.'
 (OUT/(phase+'-smoke.json')).write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n');assert report['passed']

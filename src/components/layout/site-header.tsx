@@ -12,7 +12,11 @@ export async function SiteHeader() {
     { href: "/about", label: "אודות" },
     { href: "/faq", label: "שאלות נפוצות" },
     { href: "/favorites", label: "הרשימה שלי" },
-    ...(session ? [{ href: "/dashboard", label: "אזור אישי" }] : []),
+    ...(session
+      ? [session.role === "admin"
+          ? { href: "/admin", label: "ניהול האתר" }
+          : { href: "/dashboard", label: "אזור אישי" }]
+      : []),
     ...(session?.role === "representative"
       ? [{ href: "/representative", label: "אזור נציגים" }]
       : []),

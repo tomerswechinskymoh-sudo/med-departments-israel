@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "specialties": 26,
+  "nationalMetrics": 180,
+  "guestMetricsExact": true,
+  "guestMatchesVerifiedViewer": true,
+  "quotesAlwaysEmpty": true,
+  "localGuestAccessLocked": true,
+  "sourceHideRestoreVerified": true,
+  "writesRolledBack": true
+}
