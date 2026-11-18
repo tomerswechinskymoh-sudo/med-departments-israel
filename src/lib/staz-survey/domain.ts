@@ -1,3 +1,5 @@
+import { isLevHasharon, LEV_HASHARON } from "@/lib/hospital-identity";
+
 export const SOURCE_ID = 'STAZ_SURVEY_2020_2025';
 export const SOURCE_TITLE = 'סקר הסטאז׳ (2020–2025)';
 export type SourceColumn = 'BL' | 'BP' | 'BG';
@@ -60,6 +62,7 @@ const hospitalAliases: Record<string, string[]> = {
   'העמק': ['העמק עפולה', 'המרכזי בעמק'], 'נהריה': ['לגליל', 'הגליל המערבי'], 'בני ציון': ['בני ציון חיפה'], 'מאיר': ['מאיר כפר סבא']
 };
 function hospitalKey(v: string) {
+  if (isLevHasharon(v)) return LEV_HASHARON;
   const n = norm(v);
   for (const [key, values] of Object.entries(hospitalAliases)) if ([key, ...values].some(x => norm(x) === n)) return norm(key);
   return n;

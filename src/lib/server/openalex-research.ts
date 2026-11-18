@@ -1,3 +1,4 @@
+import { isLevHasharon } from "@/lib/hospital-identity";
 import { Prisma, type PrismaClient } from "@prisma/client";
 
 type DbClient = PrismaClient | Prisma.TransactionClient;
@@ -244,8 +245,8 @@ export async function resolveOpenAlexAliases(
   ]);
   const institutionAliases = uniqueStrings([
     ...(institutionDb?.aliases ?? []),
-    ...dictionaryAliases(input.institutionName, INSTITUTION_ALIASES),
-    ...ruleAliases(input.institutionName, INSTITUTION_ALIAS_RULES)
+    ...(isLevHasharon(input.institutionName) ? [] : dictionaryAliases(input.institutionName, INSTITUTION_ALIASES)),
+    ...(isLevHasharon(input.institutionName) ? [] : ruleAliases(input.institutionName, INSTITUTION_ALIAS_RULES))
   ]);
   const specialtyDefaults = specialtyDictionaryAliases(input.specialtyName);
   const specialtyAliases = uniqueStrings([

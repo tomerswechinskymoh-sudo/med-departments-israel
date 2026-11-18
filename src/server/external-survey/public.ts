@@ -1,12 +1,12 @@
 import { Prisma, type PrismaClient } from '@prisma/client';
 import { canReadSurvey, MIN_RESPONDENTS } from '@/lib/external-survey/aggregate';
 import { publicMetric, type SurveySummary } from '@/lib/external-survey/presentation';
-import { canonicalRabinHospitalName, normalizeEffectiveHospitalText, RABIN_BEILINSON, RABIN_SCHNEIDER, RABIN_GEHA } from '@/lib/effective-hospital';
+import { resolveEffectiveHospitalName, RABIN_BEILINSON, RABIN_SCHNEIDER, RABIN_GEHA } from '@/lib/effective-hospital';
 
 export const RESIDENT_SOURCE_ID = 'resident-conditions-survey-2024';
 const aliases: Record<string, string> = { 'כירורגיה-פלסטית': 'plastic-surgery', 'פתולוגיה': 'diagnostic-pathology', 'פסיכיאטריה-של-הילד-והמתבגר': 'child-psychiatry' };
 type Catalog = { specialties: { id: string; slug: string }[]; institutions: { id: string; name: string; slug: string }[] };
-export const hospitalKey = (name: string) => canonicalRabinHospitalName(name) ?? normalizeEffectiveHospitalText(name);
+export const hospitalKey = (name: string) => resolveEffectiveHospitalName(name);
 export function canonicalSurveySpecialty(id: string, catalog: Catalog) {
   const selected = catalog.specialties.find(s => s.id === id);
   return catalog.specialties.find(s => s.slug === aliases[selected?.slug ?? ''])?.id ?? id;

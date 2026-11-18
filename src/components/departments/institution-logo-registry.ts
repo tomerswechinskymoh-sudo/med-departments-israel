@@ -527,6 +527,8 @@ export const INSTITUTION_LOGO_REGISTRY: readonly InstitutionLogoRecord[] = [
       "מרכז-לבהנ-לב-השרון"
     ],
     "nameAliases": [
+      "לב השרון",
+      "בית חולים לב השרון",
       "מרכז לבה\"נ לב השרון"
     ],
     "note": "No institution-specific owner-supplied asset found; use neutral initials."

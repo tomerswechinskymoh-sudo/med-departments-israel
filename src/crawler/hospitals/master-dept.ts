@@ -1,3 +1,4 @@
+import { isLevHasharon } from "@/lib/hospital-identity";
 import fs from "node:fs/promises";
 import crypto from "node:crypto";
 import path from "node:path";
@@ -388,6 +389,7 @@ export function classifySourceUrl(rawUrl: string | null | undefined, rowText = "
 }
 
 function providerGuess(hospitalName: string, rawUrl: string | null, institutionType: string): MasterDeptTarget["providerGuess"] {
+  if (isLevHasharon(hospitalName)) return "government";
   const host = rawUrl ? safeHost(rawUrl) : "";
   const joined = `${hospitalName} ${host} ${institutionType}`.toLowerCase();
   if (joined.includes("sheba") || /שיבא|תל השומר/.test(hospitalName)) return "sheba";
@@ -400,6 +402,7 @@ function providerGuess(hospitalName: string, rawUrl: string | null, institutionT
 }
 
 function classifyInstitutionType(hospitalName: string, rawInstitutionType: string, provider: MasterDeptTarget["providerGuess"]): InstitutionType {
+  if (isLevHasharon(hospitalName)) return "psychiatricHospital";
   const joined = `${hospitalName} ${rawInstitutionType}`.replace(/[׳'״"]/g, "");
   if (/קופ.?ח|מכבי שירותי בריאות|מאוחדת|לאומית|כללית שירותי בריאות/i.test(joined)) return "healthFund";
   if (/קהילת|שירותי בריאות קהילתיים|אסיא/i.test(joined)) return "communityProvider";
@@ -819,6 +822,7 @@ function sameDepartmentPath(parentUrl: string, childUrl: string) {
 }
 
 function targetMatchesDoctorHospital(target: MasterDeptTarget, normalizedDoctorHospital: string, rawDoctorHospital: string, doctorProvider: MasterDeptTarget["providerGuess"]) {
+  if (isLevHasharon(target.hospitalNameRaw) !== isLevHasharon(rawDoctorHospital)) return false;
   if (target.hospitalNameNormalized && (normalizedDoctorHospital.includes(target.hospitalNameNormalized) || target.hospitalNameNormalized.includes(normalizedDoctorHospital))) return true;
   if (doctorProvider === "ichilov" && target.providerGuess === "ichilov") return true;
   if (doctorProvider === "hadassah" && target.providerGuess === "hadassah") return true;

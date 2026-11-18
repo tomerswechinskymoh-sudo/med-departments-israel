@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import {writeFileSync} from 'node:fs';
+import {prisma} from '../../src/lib/prisma';
+import {getDirectoryData,getDirectoryFilters,getDepartmentOptions,getDepartmentPageData,getDepartmentComparisonData} from '../../src/lib/queries';
+import {getEffectiveHospitalNameForDepartment,RABIN_HASHARON,effectiveHospitalFilterId} from '../../src/lib/effective-hospital';
+import {LEV_HASHARON} from '../../src/lib/hospital-identity';
+import {resolveSurveyScope} from '../../src/server/external-survey/public';
+async function main(){
+ const institutions=await prisma.institution.findMany({select:{id:true,name:true,slug:true}});
+ const specialties=await prisma.specialty.findMany({select:{id:true,name:true,slug:true}});
+ const lev=institutions.find(i=>i.slug==='מרכז-לבהנ-לב-השרון')!;assert(lev);
+ const psych=specialties.find(s=>s.slug==='psychiatry')!;
+ const departments=await prisma.department.findMany({where:{institutionId:lev.id},include:{institution:true,specialty:true,metrics:true}});
+ assert.equal(departments.length,2);assert(departments.every(d=>getEffectiveHospitalNameForDepartment(d)===LEV_HASHARON));
+ const visible=departments.find(d=>d.specialtyId===psych.id)!;
+ const filters=await getDirectoryFilters();assert(filters.institutions.some(i=>i.id===effectiveHospitalFilterId(LEV_HASHARON)&&i.name===LEV_HASHARON));
+ assert(filters.institutions.some(i=>i.name===RABIN_HASHARON));
+ const options=await getDepartmentOptions();const option=options.find(d=>d.id===visible.id);assert(option);assert.equal(option.institution.name,LEV_HASHARON);
+ const levCards=await getDirectoryData({specialties:[psych.id],institutions:[effectiveHospitalFilterId(LEV_HASHARON)]});
+ assert.equal(levCards.length,1);assert.equal(levCards[0].institutionName,LEV_HASHARON);
+ const rabinCards=await getDirectoryData({specialties:[psych.id],institutions:[effectiveHospitalFilterId(RABIN_HASHARON)]});
+ assert(!rabinCards.some(d=>d.id===visible.id||d.institutionName===LEV_HASHARON));
+ const page=await getDepartmentPageData(visible.slug);assert(page);assert.equal(page.id,visible.id);assert.equal(page.institution.id,lev.id);assert.equal(page.institution.name,LEV_HASHARON);assert.equal(page.websiteUrl,visible.websiteUrl);
+ assert(page.researchMetrics.every(m=>m.needsMapping));assert.equal(page.externalMetrics.filter(m=>m.sourceName==='DUNS100'&&m.approved).length,0);
+ const comparison=await getDepartmentComparisonData({departmentIds:[visible.id]});assert(comparison.rows.some(r=>r.hospitalName.includes('לב השרון')));
+ const scope=resolveSurveyScope(psych.id,LEV_HASHARON,{specialties,institutions});assert.equal(scope?.institutionId,lev.id);
+ const metrics=await prisma.externalSurveyAggregate.count({where:{institutionId:lev.id}});assert.equal(metrics,8);
+ const report={passed:true,institutionId:lev.id,departmentId:visible.id,departmentSlug:visible.slug,preservedDepartmentIds:departments.map(d=>d.id),directoryCards:levCards.length,rabinPsychiatryCards:rabinCards.length,surveyMetricsPreserved:metrics,filtersDistinct:true,pageAndComparisonVerified:true,websiteUrl:page.websiteUrl,invalidResearchExcluded:true};
+ writeFileSync('docs/lev-hasharon-20261118/integration.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report));
+}
+main().finally(()=>prisma.$disconnect()).catch(e=>{console.error(e);process.exitCode=1;});

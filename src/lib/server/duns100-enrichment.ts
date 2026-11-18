@@ -1,3 +1,4 @@
+import { isLevHasharon } from "@/lib/hospital-identity";
 import { type PrismaClient } from "@prisma/client";
 
 type DbClient = PrismaClient;
@@ -131,7 +132,7 @@ function aliasesForInstitution(name: string) {
     name.replace(/^בי["׳']?ח\s+/i, ""),
     name.replace(/^בית החולים\s+/i, ""),
     name.replace(/^המרכז הרפואי\s+/i, ""),
-    ...aliasesFromRules(name, INSTITUTION_ALIAS_RULES)
+    ...(isLevHasharon(name) ? [] : aliasesFromRules(name, INSTITUTION_ALIAS_RULES))
   ]);
 }
 

@@ -1,3 +1,4 @@
+import { isLevHasharon, LEV_HASHARON } from "@/lib/hospital-identity";
 import { normalizeDepartmentNameSubDepartment } from "@/lib/department-normalization";
 
 export const RABIN_MEDICAL_CENTER = "מרכז רפואי רבין";
@@ -55,6 +56,7 @@ type DepartmentEffectiveHospitalInput = {
 };
 
 export function canonicalRabinHospitalName(value: string | null | undefined) {
+  if (isLevHasharon(value)) return null;
   const compact = compactHebrewText(value);
   if (!compact) return null;
 
@@ -84,7 +86,7 @@ function containsGeha(value: string | null | undefined) {
 }
 
 function containsHasharon(value: string | null | undefined) {
-  return compactHebrewText(value).includes("השרון");
+  return !isLevHasharon(value) && compactHebrewText(value).includes("השרון");
 }
 
 export function resolveEffectiveHospitalName(
@@ -92,6 +94,7 @@ export function resolveEffectiveHospitalName(
   subDepartmentValue?: string | null
 ) {
   const originalName = normalizeEffectiveHospitalText(originalHospitalName);
+  if (isLevHasharon(originalName)) return LEV_HASHARON;
   const rabinOriginalName = canonicalRabinHospitalName(originalName);
   const hospitalName = rabinOriginalName ?? originalName;
 

@@ -1,3 +1,4 @@
+import { isLevHasharon } from "@/lib/hospital-identity";
 import { normalizeWhitespace } from "@/crawler/clalit/utils";
 
 export type HospitalAlias = {
@@ -76,6 +77,7 @@ export function normalizeHospitalAliasInput(value: string) {
 }
 
 export function resolveHospitalAlias(value: string) {
+  if (isLevHasharon(value)) return hospitalAliasRegistry.find(alias => alias.slug === "lev-hasharon")!;
   const raw = value ?? "";
   const normalized = normalizeHospitalAliasInput(raw);
   const haystack = `${raw} ${normalized}`;

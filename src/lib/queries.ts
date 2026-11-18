@@ -1238,7 +1238,7 @@ export async function getHomePageData() {
 }
 
 const getPublicDepartmentOptions = publicDataCache(
-    "getDepartmentOptions",
+    "getDepartmentOptions-lev-hasharon-v1",
     async () => {
       if (isNextProductionBuildPhase()) return [];
 
@@ -1298,7 +1298,7 @@ function toDirectoryFilterDepartment(
 }
 
 const getDirectoryFiltersCached = publicDataCache(
-    "getDirectoryFilters",
+    "getDirectoryFilters-lev-hasharon-v1",
     async () => {
       if (isNextProductionBuildPhase()) {
         return {
@@ -1899,7 +1899,7 @@ async function getPublicDirectoryData(
 }
 
 const getPublicDirectoryDataCached = publicDataCache(
-    "getPublicDirectoryData-experience-recommendations-v3",
+    "getPublicDirectoryData-experience-recommendations-v3-lev-hasharon-v1",
     getPublicDirectoryData,
     [
       PUBLIC_DATA_CACHE_TAGS.departments,
@@ -2616,7 +2616,7 @@ async function getPublicDepartmentPageData(
 }
 
 const getPublicDepartmentPageDataCached = publicDataCache(
-    "getPublicDepartmentPageData-security-20261022",
+    "getPublicDepartmentPageData-security-20261022-lev-hasharon-v1",
     getPublicDepartmentPageData,
     [
       PUBLIC_DATA_CACHE_TAGS.departments,
@@ -3043,7 +3043,7 @@ async function getPublicDepartmentComparisonData(input: {
 }
 
 const getDepartmentComparisonDataCached = publicDataCache(
-    "getDepartmentComparisonData",
+    "getDepartmentComparisonData-lev-hasharon-v1",
     getPublicDepartmentComparisonData,
     [
       PUBLIC_DATA_CACHE_TAGS.departments,

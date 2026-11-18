@@ -1,3 +1,5 @@
+import { isLevHasharon } from "@/lib/hospital-identity";
+
 export type HospitalLogoInput = {
   name?: string | null;
   slug?: string | null;
@@ -202,11 +204,13 @@ function logoMatchesText(definition: HospitalLogoDefinition, value?: string | nu
 }
 
 export function getHospitalLogoByName(name?: string | null) {
+  if (isLevHasharon(name)) return null;
   const logo = HOSPITAL_LOGO_DEFINITIONS.find((definition) => logoMatchesText(definition, name));
   return logo ? publicLogoPath(logo.filename) : null;
 }
 
 export function getHospitalLogoBySlug(slug?: string | null) {
+  if (isLevHasharon(slug)) return null;
   const normalizedSlug = normalizeSlug(slug);
   if (!normalizedSlug) return null;
 
