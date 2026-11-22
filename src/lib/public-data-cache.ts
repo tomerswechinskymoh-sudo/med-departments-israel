@@ -98,7 +98,7 @@ export function publicDataCache<TArgs extends unknown[], TResult>(
   tags: string[]
 ): AsyncFn<TArgs, TResult> {
   const compute = (flags: SourceVisibility, args: TArgs) => withSourceVisibility(flags, async () => projectVisibleSources(await fn(...args), flags));
-  const nextCached = unstable_cache(compute, [name, "source-visibility-v1"], {
+  const nextCached = unstable_cache(compute, [name, "source-visibility-v2-ima-categories"], {
     revalidate: PUBLIC_DATA_CACHE_REVALIDATE_SECONDS,
     tags
   });

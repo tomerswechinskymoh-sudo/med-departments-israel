@@ -2270,6 +2270,8 @@ model MarketingConsentEvent {
 model SourceVisibility {
   id String @id @default("global")
   ima Boolean @default(true)
+  imaFinance Boolean @default(true) @map("ima_finance")
+  imaExams Boolean @default(true) @map("ima_exams")
   duns100 Boolean @default(true)
   revision Int @default(0)
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at")

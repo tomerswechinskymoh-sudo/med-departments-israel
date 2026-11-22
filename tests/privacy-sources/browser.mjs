@@ -54,7 +54,7 @@ try {
  for (const role of [null,'student']) {await account(context,role);const r=await context.request.patch(base+'/api/admin/source-visibility',{data:{source:'ima',enabled:false}});assert.equal(r.status(),403);}
  await account(context,'admin');
  for(const ima of [true,false]) for(const duns100 of [true,false]) {
-  for(const [source,enabled] of [['ima',ima],['duns100',duns100]]) {const r=await context.request.patch(base+'/api/admin/source-visibility',{data:{source,enabled}});assert.equal(r.status(),200);}
+  for(const [source,enabled] of [['ima',ima],['imaFinance',ima],['imaExams',ima],['duns100',duns100]]) {const r=await context.request.patch(base+'/api/admin/source-visibility',{data:{source,enabled}});assert.equal(r.status(),200);}
   await account(context,'student');
   for(const path of ['/','/departments?specialty=test-specialty','/departments/test-department?id=test-department','/compare?departments=test-department,test-department-two','/api/career-fit/catalog','/favorites']) {
    const r=await context.request.get(base+path);assert.equal(r.status(),200);const body=await r.text();
@@ -64,8 +64,8 @@ try {
   const legacy=await context.request.get(base+'/career-fit/departments');const html=await legacy.text();if(!ima) assert(!html.includes('תיאור בחינת ההתמחות כולל אבחון תכשירים'));
   await account(context,'admin');
  }
- for(const source of ['ima','duns100']) await context.request.patch(base+'/api/admin/source-visibility',{data:{source,enabled:true}});
- await page.goto(base+'/admin');const toggle=page.getByRole('switch',{name:/הצגת נתוני הר״י/});await toggle.focus();await page.keyboard.press('Space');await page.getByRole('status').filter({hasText:'ההגדרה נשמרה'}).waitFor();assert.equal(await toggle.getAttribute('aria-checked'),'false');await toggle.click();await page.getByRole('switch',{name:/הצגת נתוני הר״י/,checked:true}).waitFor();
+ for(const source of ['ima','imaFinance','imaExams','duns100']) await context.request.patch(base+'/api/admin/source-visibility',{data:{source,enabled:true}});
+ await page.goto(base+'/admin');const toggle=page.getByRole('switch',{name:/מידע נוסף על ההתמחות — הר״י/});await toggle.focus();await page.keyboard.press('Space');await page.getByRole('status').filter({hasText:'ההגדרה נשמרה'}).waitFor();assert.equal(await toggle.getAttribute('aria-checked'),'false');await toggle.click();await page.getByRole('switch',{name:/מידע נוסף על ההתמחות — הר״י/,checked:true}).waitFor();
  await page.route('**/api/admin/source-visibility',r=>r.fulfill({status:503,contentType:'application/json',body:'{}'}));await toggle.click();await page.getByRole('status').filter({hasText:'העדכון לא אושר'}).waitFor();assert.equal(await toggle.getAttribute('aria-checked'),'true');await page.unroute('**/api/admin/source-visibility');
  summary.push({checks:'keyboard, dialog, source matrix, permissions, HTML/hydration, restoration',passed:true});
 } finally {await writeFile(output+(process.env.INTERACTIONS_ONLY?'interaction-results.json':'browser-results.json'),JSON.stringify(summary,null,2));await browser.close();}

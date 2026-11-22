@@ -1,3 +1,4 @@
+import { ACADEMIC_MISSING_VALUE, departmentAcademicValues, formatAcademicPercent } from '@/lib/department-academic-metrics';
 import { publicSurveyExperiences } from "@/server/staz-survey/public";
 import { experienceRecommendation } from "@/lib/experience-recommendation";
 import { getPublicExperienceReviews } from "@/lib/queries";
@@ -199,7 +200,9 @@ function DataMetricCard({
   className = "",
   sourceUrl,
   displayAction,
+  missingText = MISSING_IMPORTED_VALUE,
 }: {
+  missingText?: string;
   metricKey?: MetricExplanationKey;
   label: string;
   value: string | number | null | undefined;
@@ -214,7 +217,7 @@ function DataMetricCard({
 }) {
   const hasValue =
     hasMetricValue(value);
-  const metricIcons: Record<string, ProductIconName> = { activeResidents: "people", seniorPhysiciansCount: "people", medianWaitingTime: "clock", expectedOpenings: "building", officialResidencyDuration: "calendar", residencyDuration: "calendar", boardPassA: "award", boardPassB: "award", burnoutIndex: "pulse" };
+  const metricIcons: Record<string, ProductIconName> = { activeResidents: "people", seniorPhysiciansCount: "people", professorsAmongSeniors: "award", departmentBoardPassA: "award", departmentBoardPassB: "award", medianWaitingTime: "clock", expectedOpenings: "building", officialResidencyDuration: "calendar", residencyDuration: "calendar", boardPassA: "award", boardPassB: "award", burnoutIndex: "pulse" };
   const isGeneralSpecialtyMetric =
     metricType === "נתון כללי לתחום" || metricType === "נתון ארצי לתחום";
 
@@ -251,7 +254,7 @@ function DataMetricCard({
       <p
         className={`profile-metric-value mt-1.5 text-base font-black leading-tight ${hasValue ? "text-ink" : "text-slate-600"}`}
       >
-        {hasValue ? value : MISSING_IMPORTED_VALUE}
+        {hasValue ? value : missingText}
       </p>
       {caption ? (
         <p className="profile-metric-caption mt-1 text-xs font-normal text-slate-500">{caption}</p>
@@ -1683,108 +1686,11 @@ export default async function DepartmentDetailsPage({
             source: sourceFromName(medianDurationMetric.sourceName),
           }
         : null;
-  const boardStageAMetric = metricRecord("boardStageAPassRate");
-  const importedBoardStageA = findImportedMetric(
-    importedDepartmentMetrics,
-    "מעבר_שלב_א",
-    "boardStageAPassRate",
-    "inherited_boardStageAPassRate",
-  );
-  const specialtyBoardStageA = findImportedMetric(
-    importedSpecialtyMetrics,
-    "מעבר_שלב_א",
-    "boardStageAPassRate",
-  );
-  const boardStageA =
-    department.shlavAlephPassRate !== null &&
-    department.shlavAlephPassRate !== undefined
-      ? {
-          value: `${formatWholeImportedNumber(department.shlavAlephPassRate)}%`,
-          sourceLabel: "משרד הבריאות",
-          metricType: "נתון מחלקתי",
-        }
-      : importedBoardStageA
-        ? {
-            value: formatRoundedPercentMetricValue(importedBoardStageA),
-            sourceLabel: importedSourceLabel(
-              importedBoardStageA,
-              "משרד הבריאות",
-            ),
-            metricType: importedBoardStageA.metricKey.startsWith("inherited_")
-              ? "נתון ארצי לתחום"
-              : "נתון מחלקתי",
-            lastUpdated: importedBoardStageA.lastUpdated,
-          }
-        : boardStageAMetric
-          ? {
-              value: `${formatWholeImportedNumber(boardStageAMetric.value)}%`,
-              sourceLabel: sourceLabelFromExternalMetricSource(
-                boardStageAMetric.sourceName,
-              ),
-              metricType: "נתון מחלקתי",
-            }
-          : specialtyBoardStageA
-            ? {
-                value: formatRoundedPercentMetricValue(specialtyBoardStageA),
-                sourceLabel: importedSourceLabel(
-                  specialtyBoardStageA,
-                  "משרד הבריאות",
-                ),
-                metricType: "נתון ארצי לתחום",
-                lastUpdated: specialtyBoardStageA.lastUpdated,
-              }
-            : null;
-  const boardStageBMetric = metricRecord("boardStageBPassRate");
-  const importedBoardStageB = findImportedMetric(
-    importedDepartmentMetrics,
-    "מעבר_שלב_ב",
-    "boardStageBPassRate",
-    "inherited_boardStageBPassRate",
-  );
-  const specialtyBoardStageB = findImportedMetric(
-    importedSpecialtyMetrics,
-    "מעבר_שלב_ב",
-    "boardStageBPassRate",
-  );
-  const boardStageB =
-    department.shlavBetPassRate !== null &&
-    department.shlavBetPassRate !== undefined
-      ? {
-          value: `${formatWholeImportedNumber(department.shlavBetPassRate)}%`,
-          sourceLabel: "משרד הבריאות",
-          metricType: "נתון מחלקתי",
-        }
-      : importedBoardStageB
-        ? {
-            value: formatRoundedPercentMetricValue(importedBoardStageB),
-            sourceLabel: importedSourceLabel(
-              importedBoardStageB,
-              "משרד הבריאות",
-            ),
-            metricType: importedBoardStageB.metricKey.startsWith("inherited_")
-              ? "נתון ארצי לתחום"
-              : "נתון מחלקתי",
-            lastUpdated: importedBoardStageB.lastUpdated,
-          }
-        : boardStageBMetric
-          ? {
-              value: `${formatWholeImportedNumber(boardStageBMetric.value)}%`,
-              sourceLabel: sourceLabelFromExternalMetricSource(
-                boardStageBMetric.sourceName,
-              ),
-              metricType: "נתון מחלקתי",
-            }
-          : specialtyBoardStageB
-            ? {
-                value: formatRoundedPercentMetricValue(specialtyBoardStageB),
-                sourceLabel: importedSourceLabel(
-                  specialtyBoardStageB,
-                  "משרד הבריאות",
-                ),
-                metricType: "נתון ארצי לתחום",
-                lastUpdated: specialtyBoardStageB.lastUpdated,
-              }
-            : null;
+  const academicValues = departmentAcademicValues(importedDepartmentMetrics);
+  const specialtyBoardStageA = findImportedMetric(importedSpecialtyMetrics, "מעבר_שלב_א", "boardStageAPassRate");
+  const specialtyExamMetaA = specialtyMetricMetadata(dataExplanations, "מעבר_שלב_א", "boardStageAPassRate");
+  const specialtyExamMetaB = specialtyMetricMetadata(dataExplanations, "מעבר_שלב_ב", "boardStageBPassRate");
+  const specialtyBoardStageB = findImportedMetric(importedSpecialtyMetrics, "מעבר_שלב_ב", "boardStageBPassRate");
   const openingsCount = department.residencyOpenings.reduce(
     (sum, opening) => sum + (opening.openingsCount ?? 0),
     0,
@@ -2040,16 +1946,6 @@ export default async function DepartmentDetailsPage({
     "מספר אלקטיביסטים חציוני",
     "medianElectiveDemand",
   );
-  const boardStageAMeta = departmentMetricMetadata(
-    dataExplanations,
-    "מעבר_שלב_א",
-    "boardStageAPassRate",
-  );
-  const boardStageBMeta = departmentMetricMetadata(
-    dataExplanations,
-    "מעבר_שלב_ב",
-    "boardStageBPassRate",
-  );
   const duns100Meta = departmentMetricMetadata(
     dataExplanations,
     "DUNS100",
@@ -2110,14 +2006,6 @@ export default async function DepartmentDetailsPage({
     departmentSalaryGapMetric
       ? "נתון מחלקתי"
       : "נתון כללי לתחום";
-  const stageAMetricType = metricTypeFromMetadata(
-    boardStageAMeta,
-    boardStageA?.metricType,
-  );
-  const stageBMetricType = metricTypeFromMetadata(
-    boardStageBMeta,
-    boardStageB?.metricType,
-  );
   const workforceMetrics: DisplayMetric[] = [
     {
       id: "department-residents-count",
@@ -2395,8 +2283,7 @@ export default async function DepartmentDetailsPage({
                     displayAction={metadataDisplayAction(genderMeta)}
                   />);
 
-  const hasAvailableDemographics = hasGenderData || hasMetricValue(workforceMetrics[1].value) || isMedicalArrayProfile;
-  const profileMissingSummary = (missingProfileKpis.length > 0 || !hasGenderData || !hasMetricValue(workforceMetrics[1].value)) && <div className="profile-missing-summary"><p>נתונים שטרם סופקו</p><div>{!hasGenderData && profileGenderCard}{!hasMetricValue(workforceMetrics[1].value) && <DataMetricCard {...workforceMetrics[1]} />}{missingProfileKpis.map(metric => <DataMetricCard key={metric.id} {...metric} />)}</div></div>;
+  const profileMissingSummary = (missingProfileKpis.length > 0 || !hasGenderData) && <div className="profile-missing-summary"><p>נתונים שטרם סופקו</p><div>{!hasGenderData && profileGenderCard}{missingProfileKpis.map(metric => <DataMetricCard key={metric.id} {...metric} />)}</div></div>;
 
   return (
     <MetricExplanationProvider
@@ -2510,13 +2397,17 @@ export default async function DepartmentDetailsPage({
                     isMedicalArrayProfile ? "ממוצע למחלקה במערך" : "נתון מחלקתי"
                   }
                 />
-              {hasAvailableDemographics ? <div className="profile-demographics">
+              <div className="profile-demographics">
                 {hasGenderData && profileGenderCard}
-                {hasMetricValue(workforceMetrics[1].value) && <DataMetricCard {...workforceMetrics[1]} />}
+                <div className="profile-senior-pair">
+                  <DataMetricCard {...workforceMetrics[1]} />
+                  <DataMetricCard metricKey="professorsAmongSeniors" label="שיעור פרופסורים מתוך הבכירים" value={formatAcademicPercent(academicValues.professorsAmongSeniors)} missingText={ACADEMIC_MISSING_VALUE} sourceLabel="נתון מחלקתי" tooltip="אחוז הרופאים בעלי תואר פרופסור מתוך כלל הרופאים הבכירים במחלקה." caption={isMedicalArrayProfile ? `נתון מחלקתי: ${department.name}` : undefined} />
+                </div>
+                {session?.role === "admin" && <Link className="profile-metric-edit-link" href={`/admin/departments/${department.id}#academic-metrics`}>עריכת מדדי המחלקה ↗</Link>}
                 {isMedicalArrayProfile && <DataMetricCard label="מספר מחלקות במערך" value={arrayDepartmentCount} sourceLabel="בי״ח" metricType="סך הכל במערך" />}
-              </div> : profileMissingSummary}
+              </div>
             </div>
-            {hasAvailableDemographics && profileMissingSummary}
+            {profileMissingSummary}
           </Card>
           <Card id="profile-training" tabIndex={-1} className="profile-training rounded-xl !p-4"><SectionHeading title="מבנה ההתמחות וקבלה" /><div className="profile-training-grid">
             <DurationBenchmarkCard
@@ -2553,49 +2444,29 @@ export default async function DepartmentDetailsPage({
                     displayAction={metadataDisplayAction(acceptanceDisplayMeta)}
                   />
           </div></Card>
+          {sourceVisibility.imaExams && <Card id="profile-exams" className="profile-exams rounded-xl !p-4">
+            <div className="profile-exam-heading"><SectionHeading title="מעבר בחינות ההתמחות" />{session?.role === "admin" && <Link className="profile-metric-edit-link" href={`/admin/departments/${department.id}#academic-metrics`}>עריכת נתוני המחלקה ↗</Link>}</div>
+            <p className="mt-2 text-sm text-slate-600">נתוני התחום מוצגים להשוואה. נתוני המחלקה מוצגים רק אם סופקו בנפרד.</p>
+            <div className="profile-exam-comparison">
+              <section className="profile-exam-scope profile-exam-scope--specialty" aria-labelledby="specialty-exams-title">
+                <h3 id="specialty-exams-title">התחום · {department.specialty.name}</h3><p>נתוני הר״י ברמה הארצית</p>
+                <div className="profile-exam-pair">
+                  <DataMetricCard metricKey="boardPassA" label="מעבר שלב א׳" value={specialtyBoardStageA ? formatRoundedPercentMetricValue(specialtyBoardStageA) : null} missingText={ACADEMIC_MISSING_VALUE} sourceLabel={importedSourceLabel(specialtyBoardStageA, "הר״י")} tooltip={metadataTooltip(specialtyExamMetaA, "שיעור מעבר שלב א׳ בתחום ההתמחות כולו לפי הר״י. זה אינו שיעור המעבר של המחלקה.")} sourceUrl={specialtyExamMetaA?.sourceUrl} metricType="נתון ארצי לתחום" />
+                  <DataMetricCard metricKey="boardPassB" label="מעבר שלב ב׳" value={specialtyBoardStageB ? formatRoundedPercentMetricValue(specialtyBoardStageB) : null} missingText={ACADEMIC_MISSING_VALUE} sourceLabel={importedSourceLabel(specialtyBoardStageB, "הר״י")} tooltip={metadataTooltip(specialtyExamMetaB, "שיעור מעבר שלב ב׳ בתחום ההתמחות כולו לפי הר״י. זה אינו שיעור המעבר של המחלקה.")} sourceUrl={specialtyExamMetaB?.sourceUrl} metricType="נתון ארצי לתחום" />
+                </div>
+              </section>
+              <section className="profile-exam-scope" aria-labelledby="department-exams-title">
+                <h3 id="department-exams-title">המחלקה{isMedicalArrayProfile ? ` · ${department.name}` : ""}</h3><p>נתונים מחלקתיים נפרדים</p>
+                <div className="profile-exam-pair">
+                  <DataMetricCard metricKey="departmentBoardPassA" label="מעבר שלב א׳ במחלקה" value={formatAcademicPercent(academicValues.departmentBoardPassA)} missingText={ACADEMIC_MISSING_VALUE} sourceLabel="נתון מחלקתי" />
+                  <DataMetricCard metricKey="departmentBoardPassB" label="מעבר שלב ב׳ במחלקה" value={formatAcademicPercent(academicValues.departmentBoardPassB)} missingText={ACADEMIC_MISSING_VALUE} sourceLabel="נתון מחלקתי" />
+                </div>
+              </section>
+            </div>
+          </Card>}
           <div className="profile-career-grid"><Card id="profile-work" tabIndex={-1} className="profile-work rounded-xl !p-4">
               <SectionHeading title="הכשרה ותנאי עבודה" />
               <div className="profile-professional-grid">
-                {sourceVisibility.ima && <QuickHighlightCard
-                  metricKey="boardPassA"
-                  label={metricLabelFromMetadata(
-                    boardStageAMeta,
-                    "מעבר שלב א׳",
-                  )}
-                  value={boardStageA?.value ?? null}
-                  sourceLabel={metadataSourceLabel(
-                    boardStageAMeta,
-                    boardStageA?.sourceLabel ?? "משרד הבריאות",
-                  )}
-                  tooltip={metadataTooltip(
-                    boardStageAMeta,
-                    "שיעור מעבר שלב א׳ למחלקה כאשר קיים נתון מחלקתי.",
-                  )}
-                  metricType={stageAMetricType}
-                  lastUpdated={boardStageA?.lastUpdated}
-                  sourceUrl={boardStageAMeta?.sourceUrl}
-                  displayAction={metadataDisplayAction(boardStageAMeta)}
-                />}
-                {sourceVisibility.ima && <QuickHighlightCard
-                  metricKey="boardPassB"
-                  label={metricLabelFromMetadata(
-                    boardStageBMeta,
-                    "מעבר שלב ב׳",
-                  )}
-                  value={boardStageB?.value ?? null}
-                  sourceLabel={metadataSourceLabel(
-                    boardStageBMeta,
-                    boardStageB?.sourceLabel ?? "משרד הבריאות",
-                  )}
-                  tooltip={metadataTooltip(
-                    boardStageBMeta,
-                    "שיעור מעבר שלב ב׳ למחלקה כאשר קיים נתון מחלקתי.",
-                  )}
-                  metricType={stageBMetricType}
-                  lastUpdated={boardStageB?.lastUpdated}
-                  sourceUrl={boardStageBMeta?.sourceUrl}
-                  displayAction={metadataDisplayAction(boardStageBMeta)}
-                />}
                 {sourceVisibility.duns100 && <QuickHighlightCard
                   metricKey="duns100PhysiciansCount"
                   label={DUNS100_TITLE}
@@ -2638,7 +2509,7 @@ export default async function DepartmentDetailsPage({
                   displayAction={metadataDisplayAction(burnoutMeta)}
                 />
               </div>
-            </Card>{sourceVisibility.ima && <div className="profile-salary-panel">
+            </Card>{sourceVisibility.imaFinance && <div className="profile-salary-panel">
                 <SalaryGapHighlight
                   metricType={salaryMetricType}
                   metadata={salaryGapMeta}

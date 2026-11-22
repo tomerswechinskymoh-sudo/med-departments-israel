@@ -53,7 +53,7 @@ test('race: decision finishes first; late upload is rejected',async()=>{
 });
 test('all four source states filter raw server and derived public projections; restoration retains records',async()=>{
  for (const ima of [true,false]) for(const duns100 of [true,false]) {
-  await prisma.sourceVisibility.update({where:{id:'global'},data:{ima,duns100,revision:{increment:1}}});
+  await prisma.sourceVisibility.update({where:{id:'global'},data:{ima,imaFinance:ima,imaExams:ima,duns100,revision:{increment:1}}});
   const data=await getDepartmentPageData('test-department',undefined,'test-department');
   assert(data);const raw=JSON.stringify(data);assert.equal(raw.includes('IMA_PRIVATE_SENTINEL'),ima);assert.equal(raw.includes('9876.54321'),duns100);assert.equal(raw.includes('87.654321'),ima);assert(raw.includes('residentsCount'));
   const directory=await getDirectoryData({specialties:['test-specialty']});assert(directory.length>0);assert.equal(directory[0]?.averageOverall,4);assert.equal(directory[0]?.duns100PhysiciansCount,duns100?9876.54321:null);

@@ -1492,7 +1492,7 @@ async function getPublicDirectoryData(
         select: compactInstitutionSelect
       },
       specialty: {
-        select: compactSpecialtySelect
+        select: { ...compactSpecialtySelect, metrics: { where: { metricKey: { in: ["מעבר_שלב_א", "מעבר_שלב_ב", "boardStageAPassRate", "boardStageBPassRate"] } }, select: compactDepartmentMetricSelect } }
       },
       medicalArray: {
         select: {
@@ -1646,11 +1646,9 @@ async function getPublicDirectoryData(
       department.residentsCount ??
       importedMetricValue(department.metrics, "מספר_מתמחים", "residentsCount", "activeResidentsCount");
     const shlavAlephPassRate =
-      department.shlavAlephPassRate ??
-      importedMetricValue(department.metrics, "boardStageAPassRate", "inherited_boardStageAPassRate");
+      importedMetricValue(department.specialty.metrics, "מעבר_שלב_א", "boardStageAPassRate");
     const shlavBetPassRate =
-      department.shlavBetPassRate ??
-      importedMetricValue(department.metrics, "boardStageBPassRate", "inherited_boardStageBPassRate");
+      importedMetricValue(department.specialty.metrics, "מעבר_שלב_ב", "boardStageBPassRate");
     const newResidentsLatest =
       department.newResidentsThisYear ??
       latestYearlyMetricValue(department.yearlyMetrics, "newResidents", { beforeYear: 2026 });
@@ -4053,6 +4051,7 @@ export async function getDepartmentEditorPageData(departmentId: string) {
       id: departmentId
     },
     include: {
+      metrics: { where: { metricKey: { in: ["professorsAmongSeniors", "departmentBoardPassA", "departmentBoardPassB"] } } },
       institution: true,
       specialty: true,
       heads: {

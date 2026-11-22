@@ -5,7 +5,7 @@ import { getSession } from '@/lib/auth';
 import { hasValidSameOrigin } from '@/lib/security';
 import { prisma } from '@/lib/prisma';
 import { PUBLIC_DATA_CACHE_TAGS, clearPublicDataMemoryCache } from '@/lib/public-data-cache';
-const schema = z.object({ source: z.enum(['ima','duns100']), enabled: z.boolean() }).strict();
+const schema = z.object({ source: z.enum(['ima','imaFinance','imaExams','duns100']), enabled: z.boolean() }).strict();
 export async function PATCH(request: Request) {
   const session = await getSession();
   if (session?.role !== 'admin' || !hasValidSameOrigin(request)) return NextResponse.json({ error: 'גישה נדחתה.' }, { status: 403 });

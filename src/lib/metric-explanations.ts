@@ -12,6 +12,18 @@ export const metricExplanationRegistry = {
     label: "מספר בכירים",
     defaultExplanation: "מספר הרופאים הבכירים במחלקה לפי הנתונים הזמינים."
   },
+  professorsAmongSeniors: {
+    label: "שיעור פרופסורים מתוך הבכירים",
+    defaultExplanation: "אחוז בעלי תואר פרופסור מתוך כלל הרופאים הבכירים במחלקה. אין הסקה מתואר מנהל המחלקה או ממספר הבכירים."
+  },
+  departmentBoardPassA: {
+    label: "מעבר שלב א׳ במחלקה",
+    defaultExplanation: "שיעור מעבר שלב א׳ בקרב נבחני המחלקה, כאשר סופק נתון מחלקתי. נתון התחום של הר״י מוצג בנפרד."
+  },
+  departmentBoardPassB: {
+    label: "מעבר שלב ב׳ במחלקה",
+    defaultExplanation: "שיעור מעבר שלב ב׳ בקרב נבחני המחלקה, כאשר סופק נתון מחלקתי. נתון התחום של הר״י מוצג בנפרד."
+  },
   genderDistribution: {
     label: "התפלגות מגדרית",
     defaultExplanation: "התפלגות המתמחים לפי מגדר על בסיס הנתונים הזמינים."

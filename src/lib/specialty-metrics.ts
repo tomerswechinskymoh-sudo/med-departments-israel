@@ -644,7 +644,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "שיעור מעבר שלב א׳",
     description: "ממוצע מעבר בחינות שלב א׳",
     unit: "%",
-    sourceLabel: "משרד הבריאות",
+    sourceLabel: "הר״י",
     calculate: (departments, context) => {
       const specialtyBoardMetric = contextMetric(context, "מעבר_שלב_א", "boardStageAPassRate");
       if (specialtyBoardMetric) {
@@ -652,16 +652,14 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
         return displayValue
           ? {
               value: displayValue,
-              sourceLabel: sourceLabelForMetric(specialtyBoardMetric, "משרד הבריאות")
+              sourceLabel: sourceLabelForMetric(specialtyBoardMetric, "הר״י"),
+              metricLevel: "ארצי לתחום"
             }
           : null;
       }
 
-      const value =
-        averageMetric(departments, "boardStageAPassRate") ??
-        averageMetric(departments, "inherited_boardStageAPassRate") ??
-        average(departments.map((department) => department.shlavAlephPassRate));
-      return value !== null ? `${formatWholeNumber(value)}%` : null;
+      // Do not infer a national exam rate by averaging copied department values.
+      return null;
     }
   },
   {
@@ -669,7 +667,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     label: "שיעור מעבר שלב ב׳",
     description: "ממוצע מעבר בחינות שלב ב׳",
     unit: "%",
-    sourceLabel: "משרד הבריאות",
+    sourceLabel: "הר״י",
     calculate: (departments, context) => {
       const specialtyBoardMetric = contextMetric(context, "מעבר_שלב_ב", "boardStageBPassRate");
       if (specialtyBoardMetric) {
@@ -677,16 +675,14 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
         return displayValue
           ? {
               value: displayValue,
-              sourceLabel: sourceLabelForMetric(specialtyBoardMetric, "משרד הבריאות")
+              sourceLabel: sourceLabelForMetric(specialtyBoardMetric, "הר״י"),
+              metricLevel: "ארצי לתחום"
             }
           : null;
       }
 
-      const value =
-        averageMetric(departments, "boardStageBPassRate") ??
-        averageMetric(departments, "inherited_boardStageBPassRate") ??
-        average(departments.map((department) => department.shlavBetPassRate));
-      return value !== null ? `${formatWholeNumber(value)}%` : null;
+      // Do not infer a national exam rate by averaging copied department values.
+      return null;
     }
   },
   {

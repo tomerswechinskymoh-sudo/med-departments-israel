@@ -8,7 +8,7 @@ const scope = new AsyncLocalStorage<SourceVisibility>();
 export async function getSourceVisibility() {
   noStore();
   const value = await prisma.sourceVisibility.findUniqueOrThrow({ where: { id: 'global' } });
-  return { ima: value.ima, duns100: value.duns100, revision: value.revision };
+  return { ima: value.ima, imaFinance: value.imaFinance, imaExams: value.imaExams, duns100: value.duns100, revision: value.revision };
 }
 export function withSourceVisibility<T>(flags: SourceVisibility, fn: () => Promise<T>) { return scope.run(flags, fn); }
 

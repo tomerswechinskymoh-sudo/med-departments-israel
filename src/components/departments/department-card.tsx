@@ -420,7 +420,7 @@ export function DepartmentCard({
           {!isRow ? (
             <div className="department-data-pills">
               <div className="department-data-pill"><span><ProductIcon name="people"/>מתמחים פעילים</span><strong className="department-residents-value">{department.residentsCount ?? "אין נתון"}</strong></div>
-              <div className="department-data-pill"><span><ProductIcon name="award"/>מעבר שלב א׳</span><strong>{typeof department.shlavAlephPassRate === "number" ? `${Math.round(department.shlavAlephPassRate).toLocaleString("he-IL")}%` : "אין נתון"}</strong></div>
+              {typeof department.shlavAlephPassRate === "number" && <div className="department-data-pill"><span><ProductIcon name="award"/>מעבר שלב א׳ בתחום</span><strong>{`${Math.round(department.shlavAlephPassRate).toLocaleString("he-IL")}%`}</strong></div>}
             </div>
           ) : null}
 

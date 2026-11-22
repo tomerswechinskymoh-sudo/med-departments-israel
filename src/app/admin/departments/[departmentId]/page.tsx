@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import { DepartmentAcademicMetricsForm } from "@/components/admin/department-academic-metrics-form";
+import { departmentAcademicValues } from "@/lib/department-academic-metrics";
 import { requireAdmin } from "@/lib/auth-guards";
 import { getDepartmentEditorPageData } from "@/lib/queries";
 import { DepartmentEditorForm } from "@/components/forms/department-editor-form";
@@ -38,6 +40,9 @@ export default async function AdminDepartmentEditPage({
         </div>
       </Card>
 
+      <Card>
+        <DepartmentAcademicMetricsForm departmentId={department.id} initialValues={departmentAcademicValues(department.metrics)} />
+      </Card>
       <Card>
         <DepartmentEditorForm
           initialValues={{

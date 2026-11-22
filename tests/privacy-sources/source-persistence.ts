@@ -9,7 +9,7 @@ const memberPayload = Buffer.from(JSON.stringify({userId:'test-member',role:'stu
 const readHeaders = { Cookie:'med_departments_session='+memberPayload+'.'+createHmac('sha256',process.env.AUTH_SECRET!).update(memberPayload).digest('base64url') };
 const headers = { 'Content-Type':'application/json', Cookie:'med_departments_session='+payload+'.'+createHmac('sha256',process.env.AUTH_SECRET!).update(payload).digest('base64url') };
 async function save(enabled:boolean) {
-  for(const source of ['ima','duns100']) assert.equal((await fetch(base+'/api/admin/source-visibility',{method:'PATCH',headers,body:JSON.stringify({source,enabled})})).status,200);
+  for(const source of ['ima','imaFinance','imaExams','duns100']) assert.equal((await fetch(base+'/api/admin/source-visibility',{method:'PATCH',headers,body:JSON.stringify({source,enabled})})).status,200);
 }
 async function main() {
   if(process.argv.includes('--prepare')) {await save(false);console.log('Persisted both sources off; restart local server before verification.');return;}

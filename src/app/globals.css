@@ -3263,6 +3263,20 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
 .profile-content #overview .mt-4.space-y-3 { font-size: 16px; line-height: 1.85; margin-top: 12px; max-width: 980px; }
 .profile-data-layout { display: grid; grid-template-columns: minmax(0,2fr) minmax(0,1fr); gap: 20px; margin-top: 18px; align-items: start; }
 .profile-demographics { display: grid; gap: 12px; }
+.profile-page .profile-senior-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.profile-page .profile-data-layout:not(:has(.profile-demographics [data-value-state="available"])) .profile-demographics:has(.profile-senior-pair) { grid-template-columns: minmax(0,1fr); }
+.profile-page .profile-senior-pair .profile-metric-label { font-size: .8rem; line-height: 1.55; }
+.profile-page .profile-senior-pair [data-value-state="missing"] .profile-metric-value,
+.profile-page .profile-exams [data-value-state="missing"] .profile-metric-value { font-size: .82rem; font-weight: 500; line-height: 1.6; }
+.profile-metric-edit-link { color: #036386; font-size: .8rem; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.profile-exam-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.profile-exam-comparison { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-top: 18px; }
+.profile-exam-scope { min-width: 0; padding: 16px; border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; }
+.profile-exam-scope--specialty { background: #eff8fc; border-color: #d8eaf2; }
+.profile-exam-scope h3 { font-size: .95rem; font-weight: 800; color: #153b52; }
+.profile-exam-scope > p { margin-top: 4px; font-size: .75rem; color: #526479; }
+.profile-exam-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin-top: 12px; }
+@media (max-width: 700px) { .profile-exam-comparison { grid-template-columns: 1fr; gap: 12px; } .profile-exam-scope { padding: 12px; } }
 .profile-page .profile-yearly { padding: 18px; }
 .profile-page #official-data .metric-chart--vertical { padding: 0; }
 .profile-page #official-data .metric-chart--vertical .metric-chart-track { height: 164px; max-width: 54px; }
@@ -3382,8 +3396,8 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
 .directory-page .department-card-metrics { margin-top: 12px; padding-top: 0; }
 .directory-page .department-card-details { padding-inline-end: 0; }
 .directory-page .department-card:has(.department-card-bookmark) .department-card-details { padding-inline-end: 28px; }
-.profile-page .profile-data-layout:not(:has(.profile-demographics > [data-value-state="available"])) { grid-template-columns: 1fr; gap: 12px; }
-.profile-page .profile-data-layout:not(:has(.profile-demographics > [data-value-state="available"])) .profile-demographics { grid-template-columns: 1fr 1fr; gap: 12px; }
+.profile-page .profile-data-layout:not(:has(.profile-demographics [data-value-state="available"])) { grid-template-columns: 1fr; gap: 12px; }
+.profile-page .profile-data-layout:not(:has(.profile-demographics [data-value-state="available"])) .profile-demographics { grid-template-columns: 1fr 1fr; gap: 12px; }
 .profile-page .profile-demographics [data-value-state="missing"] { padding: 12px; }
 .profile-page .profile-demographics [data-value-state="missing"] > p { margin-top: 4px; }
 .profile-page .profile-missing-summary { margin-top: 12px; padding-top: 10px; }
@@ -3409,7 +3423,7 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
  .profile-page .profile-career-grid,.profile-page .profile-training-grid { grid-template-columns: 1fr; }
  .profile-page .profile-professional-grid { grid-template-columns: 1fr 1fr; }
  .profile-page .profile-contact-list { grid-template-columns: 1fr; }
- .profile-page .profile-data-layout:not(:has(.profile-demographics > [data-value-state="available"])) .profile-demographics { grid-template-columns: 1fr; }
+ .profile-page .profile-data-layout:not(:has(.profile-demographics [data-value-state="available"])) .profile-demographics { grid-template-columns: 1fr; }
 }
 /* Shared provenance belongs to its bundle; per-metric source controls stay intact. */
 .dashboard-bundle-source { grid-column: 1/-1; border-top: 1px solid #dfebf6; margin: 0; padding: 10px 16px; color: #5a6b83; font-size: var(--type-meta); line-height: 1.6; }
@@ -3429,13 +3443,13 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
 /* Account for the existing document scroll padding once, including on mobile. */
 #department-results { scroll-margin-top: 0; }
 .profile-content [id] { scroll-margin-top: 15px; }
-.profile-page .profile-data-layout:not(:has(.profile-demographics > [data-value-state="available"])) { grid-template-columns: minmax(0,2fr) minmax(0,1fr); gap: 20px; }
+.profile-page .profile-data-layout:not(:has(.profile-demographics [data-value-state="available"])) { grid-template-columns: minmax(0,2fr) minmax(0,1fr); gap: 20px; }
 .profile-page .profile-data-layout > .profile-missing-summary { margin: 0; border: 1px solid #e2eaf3; border-radius: 8px; padding: 14px; background: #f8fafc; }
 .profile-page .profile-data-layout > .profile-missing-summary > div { grid-template-columns: 1fr; gap: 0; }
 .profile-page .profile-data-layout > .profile-missing-summary [data-value-state="missing"] { padding: 12px 0; background: none; border-bottom: 1px solid #e0e9f2; border-radius: 0; }
 .profile-page .profile-data-layout > .profile-missing-summary [data-value-state="missing"]:last-child { border: 0; padding-bottom: 0; }
 @media(max-width:639px) {
- .profile-page .profile-data-layout:not(:has(.profile-demographics > [data-value-state="available"])) { grid-template-columns: 1fr; }
+ .profile-page .profile-data-layout:not(:has(.profile-demographics [data-value-state="available"])) { grid-template-columns: 1fr; }
 }
 /* Axe: missing-data text also meets contrast on the blue overview surface. */
 .directory-page .dashboard-missing { color: #526580; }
