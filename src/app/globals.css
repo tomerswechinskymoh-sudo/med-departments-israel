@@ -3427,19 +3427,21 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
 }
 /* Shared provenance belongs to its bundle; per-metric source controls stay intact. */
 .dashboard-bundle-source { grid-column: 1/-1; border-top: 1px solid #dfebf6; margin: 0; padding: 10px 16px; color: #5a6b83; font-size: var(--type-meta); line-height: 1.6; }
-.demand-comparison { margin-top: 12px; min-width: 0; }
-.demand-comparison-values { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 12px; }
+.demand-comparison { display: flex; flex-wrap: wrap; align-items: start; gap: 12px 18px; margin-top: 8px; min-width: 0; }
+.demand-comparison-data { flex: 1 1 200px; min-width: 0; }
+.demand-comparison-values { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: end; gap: 12px; }
 .demand-comparison-values > div { min-width: 0; }
 .demand-comparison-values > div + div { border-inline-start: 1px solid #d6e5f2; padding-inline-start: 12px; }
 .demand-comparison-values span { display: block; color: #526580; font-size: .75rem; line-height: 1.5; }
-.demand-comparison-values strong { display: block; margin: 6px 0 0; font-size: 1.65rem; line-height: 1.25; font-weight: 750; font-variant-numeric: tabular-nums; text-align: right; color: #153b52; }
-.demand-comparison .demand-level { display: inline-block; margin: 12px 0 0; border-radius: 8px; background: #e7edf6; padding: 6px 9px; color: #334b69; font-size: .78rem; line-height: 1.5; font-weight: 700; }
+.demand-comparison-values strong { display: block; margin: 4px 0 0; padding-top: 0; font-size: 22px; line-height: 1.4; font-weight: 750; font-variant-numeric: tabular-nums; text-align: right; color: #153b52; }
+.demand-comparison .demand-comparison-values strong.dashboard-value { padding-top: 0; }
+.demand-comparison .demand-level { display: inline-block; margin: 6px 0 0; border-radius: 6px; background: #e7edf6; padding: 3px 8px; color: #334b69; font-size: .78rem; line-height: 1.5; font-weight: 700; }
 .demand-level[data-demand-level="high"],.demand-level[data-demand-level="veryHigh"] { background: #e6e9fc; color: #373d85; }
 .demand-level[data-demand-level="low"],.demand-level[data-demand-level="veryLow"] { background: #e0f1f4; color: #185966; }
-.demand-comparison .demand-sample-size { margin: 8px 0 0; color: #526580; font-size: .7rem; line-height: 1.6; }
-.demand-methodology { margin-top: 8px; color: #526580; font-size: .72rem; line-height: 1.8; }
-.demand-methodology summary { cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-.demand-methodology p { margin-top: 8px; }
+.demand-comparison .demand-sample-size { margin: 4px 0 0; color: #526580; font-size: .7rem; line-height: 1.6; }
+.demand-methodology { flex: 1.2 1 240px; min-width: 0; margin: 0; padding: 10px 12px; border-radius: 6px; background: #edf3f9; color: #526580; font-size: .72rem; line-height: 1.7; }
+.demand-methodology h5 { margin: 0; font-size: inherit; font-weight: 600; color: #344e70; }
+.demand-methodology p { margin: 4px 0 0; }
 .directory-page .dashboard-group--2 .dashboard-metric-bundle { grid-template-columns: 1fr 1fr; }
 .directory-page .dashboard-group--2 .dashboard-metric-bundle > .dashboard-metric + .dashboard-metric { border-top: 0; border-inline-start: 1px solid #dfebf6; }
 .directory-page .dashboard-group--2 .dashboard-metric-bundle > .dashboard-metric--missing { grid-column: 1/-1; border-inline: 0; border-top: 1px solid #dfebf6; }
@@ -3492,10 +3494,18 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
 .directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-metric-bundle { grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1px; background: #dfebf6; overflow: hidden; }
 .directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-metric-bundle > .dashboard-metric { grid-column: auto; align-self: stretch; padding: 14px 16px; border: 0; background: #f6faff; }
 .directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-bundle-source { border: 0; background: #f6faff; }
-/* The demand explanation grows independently of the adjacent metric cards. */
-.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) { align-items: start; gap: 12px; border: 0; background: transparent; overflow: visible; }
-.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) > .dashboard-metric { align-self: start; border: 1px solid #dfebf6; border-radius: 8px; background: #f6faff; }
-.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) > .dashboard-bundle-source { border: 0; background: transparent; }
+/* Give demand and its explanation room beside the two compact admission metrics. */
+.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) { display: flex; flex-wrap: wrap; align-items: stretch; gap: 12px; border: 0; background: transparent; overflow: visible; }
+.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) > .dashboard-metric { flex: 1 1 160px; align-self: stretch; border: 1px solid #dfebf6; border-radius: 8px; background: #f6faff; }
+.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) > [data-metric-key="relativeDemandIndex"] { flex: 2.5 1 460px; }
+.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) .dashboard-source { margin-top: auto; }
+.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) > .dashboard-bundle-source { flex-basis: 100%; border: 0; background: transparent; }
+@media(max-width:1023px) {
+ .directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) > [data-metric-key="relativeDemandIndex"] { flex-basis: 100%; }
+}
+@media(max-width:479px) {
+ .directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) > .dashboard-metric { flex-basis: 100%; }
+}
 .directory-page .specialty-dashboard--compact .dashboard-duration-pair { grid-template-columns: 1fr; }
 .directory-page .specialty-dashboard--compact .dashboard-chart-stack { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 12px; min-width: 0; }
 .directory-page .specialty-dashboard--compact .dashboard-chart-panel .dashboard-metric { padding: 14px 16px; }

@@ -6,7 +6,7 @@ import { DemandMetricValue } from '../../src/components/departments/demand-metri
 (globalThis as typeof globalThis & {React: typeof React}).React=React;
 test('comparison renders the metric, computed mean, denominator, class and accessible methodology',()=>{
  const html=renderToStaticMarkup(React.createElement(DemandMetricValue,{value:'1.65',comparison:{average:.8175,specialtyCount:28,level:'veryHigh'}}));
- for(const text of ['1.65','0.82','ממוצע כלל המקצועות','28 מקצועות עם נתון','ביקוש גבוה מאוד מהממוצע','<details','<summary','מה משמעות רמת הביקוש?']) assert(html.includes(text),text);
+ for(const text of ['1.65','0.82','ממוצע כלל המקצועות','28 מקצועות עם נתון','ביקוש גבוה מאוד מהממוצע','<h5>מה משמעות רמת הביקוש?</h5>']) assert(html.includes(text),text);
 });
 test('a missing profession retains the benchmark without assigning a category',()=>{
  const html=renderToStaticMarkup(React.createElement(DemandMetricValue,{value:null,comparison:{average:.8175,specialtyCount:28,level:null}}));
