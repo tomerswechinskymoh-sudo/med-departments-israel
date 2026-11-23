@@ -3427,6 +3427,19 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
 }
 /* Shared provenance belongs to its bundle; per-metric source controls stay intact. */
 .dashboard-bundle-source { grid-column: 1/-1; border-top: 1px solid #dfebf6; margin: 0; padding: 10px 16px; color: #5a6b83; font-size: var(--type-meta); line-height: 1.6; }
+.demand-comparison { margin-top: 12px; min-width: 0; }
+.demand-comparison-values { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 12px; }
+.demand-comparison-values > div { min-width: 0; }
+.demand-comparison-values > div + div { border-inline-start: 1px solid #d6e5f2; padding-inline-start: 12px; }
+.demand-comparison-values span { display: block; color: #526580; font-size: .75rem; line-height: 1.5; }
+.demand-comparison-values strong { display: block; margin: 6px 0 0; font-size: 1.65rem; line-height: 1.25; font-weight: 750; font-variant-numeric: tabular-nums; text-align: right; color: #153b52; }
+.demand-comparison .demand-level { display: inline-block; margin: 12px 0 0; border-radius: 8px; background: #e7edf6; padding: 6px 9px; color: #334b69; font-size: .78rem; line-height: 1.5; font-weight: 700; }
+.demand-level[data-demand-level="high"],.demand-level[data-demand-level="veryHigh"] { background: #e6e9fc; color: #373d85; }
+.demand-level[data-demand-level="low"],.demand-level[data-demand-level="veryLow"] { background: #e0f1f4; color: #185966; }
+.demand-comparison .demand-sample-size { margin: 8px 0 0; color: #526580; font-size: .7rem; line-height: 1.6; }
+.demand-methodology { margin-top: 8px; color: #526580; font-size: .72rem; line-height: 1.8; }
+.demand-methodology summary { cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.demand-methodology p { margin-top: 8px; }
 .directory-page .dashboard-group--2 .dashboard-metric-bundle { grid-template-columns: 1fr 1fr; }
 .directory-page .dashboard-group--2 .dashboard-metric-bundle > .dashboard-metric + .dashboard-metric { border-top: 0; border-inline-start: 1px solid #dfebf6; }
 .directory-page .dashboard-group--2 .dashboard-metric-bundle > .dashboard-metric--missing { grid-column: 1/-1; border-inline: 0; border-top: 1px solid #dfebf6; }

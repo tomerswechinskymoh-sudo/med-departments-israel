@@ -16,6 +16,7 @@ import {
 } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 import { publicPrisma } from "@/lib/server/source-visibility";
+import { calculateDemandBenchmark, DEMAND_METRIC_KEYS } from "@/lib/demand-benchmark";
 import {
   publicDataCache,
   PUBLIC_DATA_CACHE_TAGS
@@ -154,7 +155,7 @@ const SPECIALTY_DASHBOARD_DEPARTMENT_METRIC_KEYS = Array.from(
   new Set([
     ...ACTIVE_RESIDENTS_METRIC_KEYS,
     ...EFFECTIVE_HOSPITAL_METRIC_KEYS,
-    "relativeDemandIndex",
+    ...DEMAND_METRIC_KEYS,
     ...Object.values(metricFieldDefinitions).flatMap((definition) => [
       ...definition.importedKeys,
       ...definition.dbKeys,
@@ -1970,7 +1971,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
     enabledMetrics
   );
 
-  const [specialty, departments, dataExplanations, explanationOverrides] = await Promise.all([
+  const [specialty, departments, dataExplanations, explanationOverrides, demandMetrics] = await Promise.all([
     publicPrisma.specialty.findUnique({
       where: {
         id: specialtyId
@@ -2067,7 +2068,12 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
     publicPrisma.dataExplanation.findMany({
       select: dataExplanationSelect
     }),
-    getMetricExplanationOverrides({ specialtyId })
+    getMetricExplanationOverrides({ specialtyId }),
+    // Specialty rows, independent of directory filters and department counts.
+    publicPrisma.specialtyMetric.findMany({
+      where: { metricKey: { in: DEMAND_METRIC_KEYS } },
+      select: { specialtyId: true, metricKey: true, value: true, rawValue: true, sourceNotes: true }
+    })
   ]);
   const publicDepartments = departments.filter(hasDisplayableResidentCount);
   const metricInput = publicDepartments.map((department) => {
@@ -2107,6 +2113,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
 
   return {
     metrics: calculateSpecialtyMetrics(metricInput, enabledMetrics, displayOrder, {
+      demandBenchmark: calculateDemandBenchmark(demandMetrics),
       specialtyMetrics: specialty?.metrics ?? [],
       specialtyYearlyMetrics: specialty?.yearlyMetrics ?? [],
       dataExplanations: dataExplanations.map(toMetricDisplayMetadata)
@@ -2117,7 +2124,7 @@ async function getPublicSpecialtyDashboardMetrics(specialtyId: string) {
 }
 
 const getPublicSpecialtyDashboardMetricsCached = publicDataCache(
-    "getSpecialtyDashboardMetrics:metric-content-v2",
+    "getSpecialtyDashboardMetrics:demand-benchmark-v1",
     getPublicSpecialtyDashboardMetrics,
     [
       PUBLIC_DATA_CACHE_TAGS.departments,

@@ -1,4 +1,6 @@
 import { DUNS100_TITLE, DUNS100_DESCRIPTION } from "./duns100-presentation";
+import { compareDemand, relativeDemandValue, type DemandBenchmark, type DemandComparison } from "./demand-benchmark";
+import { formatGenderPercent, formatImportedGenderPercent } from "./gender-percent-display";
 import {
   LICENSE_TO_RESIDENCY_WAIT_TIME_LABEL,
   metadataDisplayAction,
@@ -60,6 +62,7 @@ export type SpecialtyMetricResult = {
   isPlaceholder?: boolean;
   isHighlighted?: boolean;
   visualType?: MetricVisualType | null;
+  demandComparison?: DemandComparison;
   comparisonValues?: {
     centerSalary?: string | null;
     peripherySalary?: string | null;
@@ -114,6 +117,7 @@ export type SpecialtyImportedYearlyMetric = {
 };
 
 export type SpecialtyMetricContext = {
+  demandBenchmark?: DemandBenchmark;
   specialtyMetrics?: SpecialtyImportedMetric[];
   specialtyYearlyMetrics?: SpecialtyImportedYearlyMetric[];
   dataExplanations?: MetricDisplayMetadata[];
@@ -127,6 +131,7 @@ type SpecialtyMetricCalculation =
       tooltip?: string;
       metricLevel?: "מחלקתי" | "ארצי לתחום" | "מחושב";
       comparisonValues?: SpecialtyMetricResult["comparisonValues"];
+      demandComparison?: DemandComparison;
     }
   | null;
 
@@ -519,7 +524,7 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     calculate: (departments, context) => {
       const specialtyWomenMetric = contextMetric(context, "אחוז_נשים", "womenPercent", "femaleResidentsPercent");
       if (specialtyWomenMetric) {
-        const displayValue = formatMetricValue(specialtyWomenMetric);
+        const displayValue = formatImportedGenderPercent(specialtyWomenMetric);
         return displayValue
           ? {
               value: `${displayValue} נשים`,
@@ -533,7 +538,8 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
         averageMetric(departments, "womenPercent") ??
         average(departments.map((department) => parsePercentForLabel(department.genderBalance, "נשים")));
       if (womenAverage === null) return null;
-      return `${formatNumber(womenAverage)}% נשים`;
+      const displayValue = formatGenderPercent(womenAverage);
+      return displayValue ? `${displayValue} נשים` : null;
     }
   },
   {
@@ -613,12 +619,14 @@ export const specialtyMetricDefinitions: SpecialtyMetricDefinition[] = [
     sourceLabel: "נתוני MASTER_Spec",
     calculate: (_departments, context) => {
       const metric = contextMetric(context, "relativeDemandIndex", "מדד ביקוש יחסי");
-      if (!metric || typeof metric.value !== "number" || !Number.isFinite(metric.value)) return null;
+      const value = relativeDemandValue(context.specialtyMetrics ?? []);
+      if (!metric || value === null) return null;
 
       return {
-        value: formatTwoDecimalNumber(metric.value),
+        value: formatTwoDecimalNumber(value),
         sourceLabel: sourceLabelForMetric(metric, "נתוני MASTER_Spec"),
-        metricLevel: "ארצי לתחום"
+        metricLevel: "ארצי לתחום",
+        demandComparison: context.demandBenchmark ? compareDemand(value, context.demandBenchmark) : undefined
       };
     }
   },
@@ -1030,6 +1038,8 @@ export function calculateSpecialtyMetrics(
       isHighlighted: metadata?.isHighlighted,
       visualType: metadata?.visualType
         ?? (definition.key === "residencyDuration" ? "badge" : null),
+      demandComparison: typeof calculated === "object" && calculated !== null ? calculated.demandComparison
+        : key === "relativeDemandIndex" && context.demandBenchmark ? { ...context.demandBenchmark, level: null } : undefined,
       comparisonValues:
         typeof calculated === "object" && calculated !== null
           ? calculated.comparisonValues

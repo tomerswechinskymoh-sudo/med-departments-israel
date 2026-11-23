@@ -6,6 +6,7 @@ import { MetricContentTitle, MetricExplanationInfo, MetricExplanationProvider } 
 import type { MetricExplanationOverrideRecord } from "@/lib/metric-explanations";
 import { ProductIcon, type ProductIconName } from "@/components/ui/product-icon";
 import { MetricChart, type MetricChartRow } from "./metric-chart";
+import { DemandMetricValue } from "./demand-metric-value";
 
 const groups: { title: string; icon: ProductIconName; keys: SpecialtyMetricKey[] }[] = [
   { title: "סקירה כללית", icon: "people", keys: ["programsCount", "activeResidents", "genderDistribution", "israelVsAbroad"] },
@@ -30,6 +31,7 @@ function distribution(value: string): MetricChartRow[] {
   });
 }
 function MetricValue({ metric }: { metric: SpecialtyMetricResult }) {
+  if (metric.key === "relativeDemandIndex") return <DemandMetricValue value={metric.isPlaceholder ? null : metric.value} comparison={metric.demandComparison} />;
   if (metric.isPlaceholder) return <p className="dashboard-missing">אין נתון זמין</p>;
   if (metric.key === "residencyDuration") {
     const rows = distribution(metric.value);

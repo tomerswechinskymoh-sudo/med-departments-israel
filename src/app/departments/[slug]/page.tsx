@@ -1,4 +1,5 @@
 import { ACADEMIC_MISSING_VALUE, departmentAcademicValues, formatAcademicPercent } from '@/lib/department-academic-metrics';
+import { formatGenderPercent } from '@/lib/gender-percent-display';
 import { publicSurveyExperiences } from "@/server/staz-survey/public";
 import { experienceRecommendation } from "@/lib/experience-recommendation";
 import { getPublicExperienceReviews } from "@/lib/queries";
@@ -520,7 +521,7 @@ function GenderBalanceCard({
         </p>
       ) : (
         <div className="gender-breakdown">
-          <div><span>נשים</span><strong>{womenPercent === null ? "אין נתון" : `${womenPercent.toLocaleString("he-IL")}%`}</strong></div>
+          <div><span>נשים</span><strong>{formatGenderPercent(womenPercent) ?? "אין נתון"}</strong></div>
           <div><span>גברים</span><strong>{menPercent === null ? "אין נתון" : `${menPercent.toLocaleString("he-IL")}%`}</strong></div>
         </div>
       )}
