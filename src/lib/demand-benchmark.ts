@@ -11,7 +11,7 @@ export const demandLevelLabels = {
 } as const;
 export type DemandLevel = keyof typeof demandLevelLabels;
 export type DemandComparison = DemandBenchmark & { level: DemandLevel | null };
-export const DEMAND_COMPARISON_EXPLANATION = 'הממוצע הוא ממוצע חשבוני של כל המקצועות שיש להם מדד ביקוש תקין: כל מקצוע נספר פעם אחת, כולל המקצוע המוצג. אפס נכלל בחישוב; נתון חסר אינו נכלל. הממוצע אינו תלוי בסינון המחלקות. התיאור הוא סיווג תצוגה של האתר: עד 20% מעל או מתחת לממוצע — דומה לממוצע; יותר מ־20% ופחות מ־50% — גבוה או נמוך; 50% ומעלה — גבוה מאוד או נמוך מאוד. החישוב משתמש בערכים לפני עיגול. ערך הייחוס 1 שבהגדרת המדד אינו הממוצע המחושב של המקצועות.';
+export const DEMAND_COMPARISON_EXPLANATION = 'דומה לממוצע: פער של עד 20%. גבוה או נמוך מהממוצע: פער של יותר מ־20% ופחות מ־50%. גבוה מאוד או נמוך מאוד: פער של 50% ומעלה.';
 
 export function relativeDemandValue(metrics: ImportedMetricLike[]) {
   const value = resolveImportedMetric(metrics, DEMAND_METRIC_KEYS[0], { aliases: DEMAND_METRIC_KEYS.slice(1) })?.value;

@@ -10,6 +10,6 @@ export function DemandMetricValue({ value, comparison }: { value: string | null;
     </div>
     {comparison?.level && <p className="demand-level" data-demand-level={comparison.level}>{demandLevelLabels[comparison.level]}</p>}
     {hasAverage && <p className="demand-sample-size">ממוצע מחושב מ־{comparison!.specialtyCount} מקצועות עם נתון</p>}
-    <details className="demand-methodology"><summary>איך מחושבת ההשוואה?</summary><p>{DEMAND_COMPARISON_EXPLANATION}</p></details>
+    <details className="demand-methodology"><summary>מה משמעות רמת הביקוש?</summary><p>{DEMAND_COMPARISON_EXPLANATION}</p></details>
   </div>;
 }
