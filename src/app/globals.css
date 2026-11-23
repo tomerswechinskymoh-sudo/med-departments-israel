@@ -3492,6 +3492,10 @@ input::placeholder,textarea::placeholder { color: #69788f; opacity: 1; font-weig
 .directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-metric-bundle { grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1px; background: #dfebf6; overflow: hidden; }
 .directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-metric-bundle > .dashboard-metric { grid-column: auto; align-self: stretch; padding: 14px 16px; border: 0; background: #f6faff; }
 .directory-page .specialty-dashboard--compact .dashboard-group--1 .dashboard-bundle-source { border: 0; background: #f6faff; }
+/* The demand explanation grows independently of the adjacent metric cards. */
+.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) { align-items: start; gap: 12px; border: 0; background: transparent; overflow: visible; }
+.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) > .dashboard-metric { align-self: start; border: 1px solid #dfebf6; border-radius: 8px; background: #f6faff; }
+.directory-page .specialty-dashboard .dashboard-group--1 .dashboard-metric-bundle:has(> [data-metric-key="relativeDemandIndex"]) > .dashboard-bundle-source { border: 0; background: transparent; }
 .directory-page .specialty-dashboard--compact .dashboard-duration-pair { grid-template-columns: 1fr; }
 .directory-page .specialty-dashboard--compact .dashboard-chart-stack { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; gap: 12px; min-width: 0; }
 .directory-page .specialty-dashboard--compact .dashboard-chart-panel .dashboard-metric { padding: 14px 16px; }
